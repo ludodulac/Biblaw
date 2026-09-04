@@ -1,0 +1,54 @@
+{
+  "id": "theme-devotion",
+  "recordType": "theme",
+  "label": "Dévotion",
+  "searchTerms": ["dévotion", "adoration", "respect", "s’incliner", "culte", "prière"],
+  "senses": [
+    {
+      "id": "devotion-attitude-interieure",
+      "label": "La dévotion comme attitude intérieure",
+      "definition": "Disposition de respect, d’humilité et de disponibilité qui prépare l’approche du supérieur."
+    },
+    {
+      "id": "devotion-pratique",
+      "label": "La dévotion comme pratique adressée au divin",
+      "definition": "Prière, adoration, offrande et inclination qui engagent concrètement la vie."
+    }
+  ],
+  "subthemes": [
+    {
+      "id": "devotion-condition-approche",
+      "label": "La dévotion comme condition d’approche",
+      "summary": "Le respect et la dévotion accompagnent le non-savoir dans l’approche des mondes supérieurs.",
+      "evidenceIds": ["m105-v9-v17"]
+    },
+    {
+      "id": "devotion-incarnee",
+      "label": "Une dévotion qui engage la vie",
+      "summary": "La prière associée relie inclination, offrande, pureté et engagement concret du corps et de la vie.",
+      "evidenceIds": ["m105-prayer-001-devotion"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "m105-v9-v17",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [9, 17],
+      "relation": "devotion-as-approach",
+      "sourcePages": [1071, 1072]
+    },
+    {
+      "id": "m105-prayer-001-devotion",
+      "recordId": "michael-book-17-prayer-001",
+      "sourceType": "prayer",
+      "relation": "prayer-inclination-offering-and-purity",
+      "sourcePages": [1072, 1073]
+    }
+  ],
+  "validation": {
+    "status": "editorially-indexed",
+    "indexedFrom": ["michael-psalm-105", "michael-book-17-prayer-001"],
+    "reviewNotes": "Thème créé à partir de la question du verset 9, de la réponse de Michaël et de la prière attenante."
+  }
+}
