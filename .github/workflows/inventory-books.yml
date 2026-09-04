@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/inventory_books.py'
       - 'Bible essénienne (classée par livres).pdf'
+      - '.github/workflows/inventory-books.yml'
 
 permissions:
   contents: write
@@ -22,7 +23,7 @@ jobs:
         run: python scripts/inventory_books.py
       - name: Commit inventory
         run: |
-          if git diff --quiet -- data/pilot/book-inventory.json; then
+          if [ -z "$(git status --porcelain -- data/pilot/book-inventory.json)" ]; then
             echo 'No inventory changes'
             exit 0
           fi
