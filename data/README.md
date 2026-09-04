@@ -6,8 +6,9 @@ générés depuis ces JSON et ne devront jamais devenir la source de vérité.
 
 ## États de validation
 
-- `machine-extracted-needs-human-review` : découpage automatique à relire.
+- `machine-extracted-needs-human-review` : découpage automatique à relire ou à soumettre aux contrôles automatisés.
 - `pilot-needs-human-review` : interprétation initiale à valider.
+- `machine-validated` : enregistrement régénéré depuis le PDF et ayant passé les contrôles automatisés de structure, pagination et relations éditoriales ; ce statut ne remplace pas une validation humaine antérieure.
 - `validated` : texte et rattachements comparés au PDF par une personne.
 
 ## Règle fondamentale
