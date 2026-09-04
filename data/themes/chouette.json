@@ -1,0 +1,79 @@
+{
+  "id": "theme-chouette",
+  "recordType": "theme",
+  "label": "Chouette",
+  "searchTerms": ["chouette", "vision de la Chouette", "esprit de la chouette"],
+  "ambiguousWith": ["sens courant ou exclamatif du mot chouette"],
+  "senses": [
+    {
+      "id": "owl-animal",
+      "label": "La chouette comme animal",
+      "definition": "Animal nocturne cité comme point de départ de l'enseignement."
+    },
+    {
+      "id": "owl-symbolic-vision",
+      "label": "La vision dans l'obscurité",
+      "definition": "Capacité symbolique de percevoir au-delà de la surface et des apparences."
+    },
+    {
+      "id": "owl-michael-totem",
+      "label": "L'animal totémique associé à Michaël",
+      "definition": "Sens documenté dans une note éditoriale ultérieure du corpus."
+    }
+  ],
+  "subthemes": [
+    {
+      "id": "seeing-imperfection",
+      "label": "Voir ses imperfections sans les condamner",
+      "summary": "Observer avec calme ce qui est imparfait et le conduire vers une transformation.",
+      "evidenceIds": ["owl-psalm-26-v3-v6"]
+    },
+    {
+      "id": "seeing-beyond-appearances",
+      "label": "Voir derrière les apparences",
+      "summary": "Développer une perception capable d'atteindre les racines et les germes cachés.",
+      "evidenceIds": ["owl-psalm-26-v7"]
+    },
+    {
+      "id": "visible-and-invisible",
+      "label": "Voir dans le visible et l'invisible",
+      "summary": "Relation formulée dans la note rattachée au psaume 143.",
+      "evidenceIds": ["owl-note-143-2"]
+    }
+  ],
+  "answerCards": [],
+  "evidence": [
+    {
+      "id": "owl-psalm-26-v1-v2",
+      "recordId": "michael-psalm-026",
+      "sourceType": "verse",
+      "verseNumbers": [1, 2],
+      "relation": "primary-image"
+    },
+    {
+      "id": "owl-psalm-26-v3-v6",
+      "recordId": "michael-psalm-026",
+      "sourceType": "verse",
+      "verseNumbers": [3, 4, 5, 6],
+      "relation": "imperfection-and-transformation"
+    },
+    {
+      "id": "owl-psalm-26-v7",
+      "recordId": "michael-psalm-026",
+      "sourceType": "verse",
+      "verseNumbers": [7],
+      "relation": "roots-behind-appearances"
+    },
+    {
+      "id": "owl-note-143-2",
+      "recordId": "michael-psalm-143-note-002",
+      "sourceType": "note",
+      "relation": "totemic-cross-reference"
+    }
+  ],
+  "validation": {
+    "status": "in-review",
+    "lastReviewedAt": null,
+    "reviewNotes": "First theme-well pilot. Answer cards will be added only after evidence review."
+  }
+}
