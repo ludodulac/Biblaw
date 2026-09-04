@@ -6,6 +6,7 @@ on:
     paths:
       - "Bible essénienne (classée par livres).pdf"
       - "scripts/extract_book17.py"
+      - "scripts/normalize_book17_dialogues.py"
       - "scripts/validate_book17.py"
       - "data/**"
       - ".github/workflows/validate-book17.yml"
@@ -29,6 +30,9 @@ jobs:
 
       - name: Re-extract book 17 from the source PDF
         run: python3 scripts/extract_book17.py
+
+      - name: Normalize dialogue attribution
+        run: python3 scripts/normalize_book17_dialogues.py
 
       - name: Apply automated validation
         run: python3 scripts/validate_book17.py --apply
