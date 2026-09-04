@@ -1,0 +1,32 @@
+name: Build thematic directory
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/thematic-index/books/**'
+      - 'scripts/build_thematic_directory.py'
+      - '.github/workflows/build-thematic-directory.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build thematic directory
+        run: python scripts/build_thematic_directory.py
+      - name: Commit thematic directory
+        run: |
+          if [ -z "$(git status --porcelain -- data/thematic-index/theme-directory.json)" ]; then
+            echo 'No thematic directory changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/thematic-index/theme-directory.json
+          git commit -m 'Build thematic directory'
+          git push
