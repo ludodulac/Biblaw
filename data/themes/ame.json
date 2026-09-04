@@ -1,0 +1,17 @@
+{
+  "id":"theme-ame","recordType":"theme","label":"Âme",
+  "searchTerms":["âme","langage de l’âme","âme vivante","nourrir l’âme"],
+  "senses":[
+    {"id":"ame-langage-pur","label":"Le langage pur de l’âme","definition":"L’âme est associée à un langage sans trouble derrière les apparences, entier et non animé par la convoitise."},
+    {"id":"ame-vivante","label":"L’âme vivante et présente dans la vie","definition":"La prière demande que l’âme soit vivante, vraie et qu’elle participe aux vies et aux pensées."}
+  ],
+  "subthemes":[
+    {"id":"nourrir-ame-parole","label":"Nourrir l’âme par la parole sacrée","summary":"La parole de Michaël est décrite comme nourrissant l’âme et fortifiant le chemin.","evidenceIds":["m106-prayer-002-soul"]},
+    {"id":"langage-pur-ame","label":"Aller vers le langage pur de l’âme","summary":"Le discernement du vrai conduit vers ce qui parle le langage pur de l’âme, sans trouble ni convoitise.","evidenceIds":["m106-soul-v12"]}
+  ],
+  "evidence":[
+    {"id":"m106-soul-v12","recordId":"michael-psalm-106","sourceType":"verse","verseNumbers":[12],"relation":"pure-language-of-soul","sourcePages":[1075]},
+    {"id":"m106-prayer-002-soul","recordId":"michael-book-17-prayer-002","sourceType":"prayer","relation":"word-nourishes-soul-and-prayer-for-living-true-souls","sourcePages":[1075,1076]}
+  ],
+  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-106","michael-book-17-prayer-002"],"reviewNotes":"Premier index général de l’Âme dans la tranche 105–130 ; il devra être fortement enrichi par les textes suivants."}
+}
