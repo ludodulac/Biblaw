@@ -1,17 +1,22 @@
 {
   "id":"theme-discernement","recordType":"theme","label":"Discernement",
-  "searchTerms":["discernement","discerner le vrai du faux","reconnaître le vrai","reconnaître le faux","voir derrière les apparences"],
+  "searchTerms":["discernement","discerner le vrai du faux","reconnaître le vrai","reconnaître le faux","voir derrière les apparences","vigilance","attention"],
   "senses":[{"id":"discernement-vrai-faux","label":"Discerner le vrai du faux","definition":"Capacité à reconnaître la vérité vécue derrière les discours, les apparences et les influences trompeuses."}],
   "subthemes":[
     {"id":"ne-pas-suivre-aveuglement","label":"Ne pas suivre sans discernement","summary":"Suivre des intelligences ou des guides sans discernement expose à l’illusion et à la perte.","evidenceIds":["m106-disc-v5-v8"]},
     {"id":"reconnaitre-authentique","label":"Reconnaître l’être authentique","summary":"Le discernement s’appuie sur l’accord entre ce que l’être est, ce qu’il dit et le résultat produit dans la vie.","evidenceIds":["m106-disc-v9-v14"]},
-    {"id":"aller-vers-langage-pur","label":"S’orienter vers ce qui porte un langage pur","summary":"La réponse de Michaël oriente vers ce qui est entier, sincère, sans convoitise et porteur d’un résultat de vérité.","evidenceIds":["m106-disc-v12-v14"]}
+    {"id":"aller-vers-langage-pur","label":"S’orienter vers ce qui porte un langage pur","summary":"La réponse de Michaël oriente vers ce qui est entier, sincère, sans convoitise et porteur d’un résultat de vérité.","evidenceIds":["m106-disc-v12-v14"]},
+    {"id":"vigilance-derriere-apparences","label":"Maintenir attention et vigilance derrière les apparences","summary":"Le discernement exige de regarder ce qui agit derrière les paroles et les apparences, comme l’animal vigilant face au danger.","evidenceIds":["m107-disc-v15-v20"]},
+    {"id":"observer-resultats-manifestes","label":"Observer attitudes, atmosphères et actes","summary":"Pour éprouver une parole, le texte invite à examiner les attitudes, atmosphères, actes et manifestations qui la suivent.","evidenceIds":["m107-disc-v20-v24"]}
   ],
   "evidence":[
     {"id":"m106-disc-v5-v8","recordId":"michael-psalm-106","sourceType":"verse","verseNumbers":[5,6,7,8],"relation":"warning-against-undiscerning-following","sourcePages":[1074]},
     {"id":"m106-disc-v9-v14","recordId":"michael-psalm-106","sourceType":"verse","verseNumbers":[9,10,11,12,13,14],"relation":"question-and-answer-on-discerning-true-from-false","sourcePages":[1074,1075]},
     {"id":"m106-disc-v12-v14","recordId":"michael-psalm-106","sourceType":"verse","verseNumbers":[12,13,14],"relation":"criteria-of-truth-and-authenticity","sourcePages":[1075]},
-    {"id":"m106-prayer-002-discernment","recordId":"michael-book-17-prayer-002","sourceType":"prayer","relation":"request-to-reveal-the-liar-and-follow-a-just-path","sourcePages":[1075,1076]}
+    {"id":"m106-prayer-002-discernment","recordId":"michael-book-17-prayer-002","sourceType":"prayer","relation":"request-to-reveal-the-liar-and-follow-a-just-path","sourcePages":[1075,1076]},
+    {"id":"m107-disc-v15-v20","recordId":"michael-psalm-107","sourceType":"verse","verseNumbers":[15,16,17,18,19,20],"relation":"vigilance-and-inner-discernment","sourcePages":[1078,1079]},
+    {"id":"m107-disc-v20-v24","recordId":"michael-psalm-107","sourceType":"verse","verseNumbers":[20,21,22,23,24],"relation":"discern-by-manifestations-and-soul","sourcePages":[1079]},
+    {"id":"m107-prayer-003-discernment","recordId":"michael-book-17-prayer-003","sourceType":"prayer","relation":"prayer-for-conscious-vigilance-against-seduction","sourcePages":[1080]}
   ],
-  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-106","michael-book-17-prayer-002"],"reviewNotes":"Thème central du psaume 106, explicitement formulé dans le titre et la question du verset 10."}
+  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-106","michael-book-17-prayer-002","michael-psalm-107","michael-book-17-prayer-003"],"reviewNotes":"Le psaume 107 enrichit le discernement par la vigilance, l’observation intérieure et l’examen des manifestations concrètes derrière les paroles."}
 }
