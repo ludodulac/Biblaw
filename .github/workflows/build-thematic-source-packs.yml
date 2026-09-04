@@ -1,0 +1,33 @@
+name: Build thematic source packs
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/build_thematic_source_packs.py'
+      - 'data/corpus/books/**'
+      - 'data/notes/books/**'
+      - '.github/workflows/build-thematic-source-packs.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build thematic source packs
+        run: python scripts/build_thematic_source_packs.py
+      - name: Commit source packs
+        run: |
+          if [ -z "$(git status --porcelain -- data/thematic-index/source-packs)" ]; then
+            echo 'No source-pack changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/thematic-index/source-packs
+          git commit -m 'Build thematic source packs for books 1-10'
+          git push
