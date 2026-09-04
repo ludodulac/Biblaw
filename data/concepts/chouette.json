@@ -1,0 +1,65 @@
+{
+  "id": "concept-chouette",
+  "label": "Chouette",
+  "recordType": "concept",
+  "aliases": ["vision de la Chouette", "esprit de la chouette"],
+  "senses": [
+    {
+      "id": "chouette-animal",
+      "label": "Animal nocturne",
+      "status": "explicit"
+    },
+    {
+      "id": "chouette-symbolic-vision",
+      "label": "Vision dans l'obscurité et au-delà des apparences",
+      "status": "explicit"
+    },
+    {
+      "id": "chouette-michael-totem",
+      "label": "Animal totémique associé à l'Archange Michaël",
+      "status": "explicit-in-note"
+    }
+  ],
+  "themes": [
+    "vision",
+    "obscurité",
+    "imperfection",
+    "transformation",
+    "discernement",
+    "absence de condamnation",
+    "visible et invisible"
+  ],
+  "references": [
+    {
+      "recordId": "michael-psalm-026",
+      "verses": [1, 2, 7, 12],
+      "relation": "primary-teaching"
+    },
+    {
+      "recordId": "michael-psalm-143-note-002",
+      "sourcePrintedPage": 1654,
+      "relation": "cross-reference-and-totemic-explanation"
+    }
+  ],
+  "relations": [
+    {
+      "type": "advice",
+      "label": "Observer ses imperfections avec calme, sans condamnation",
+      "evidence": [{ "recordId": "michael-psalm-026", "verses": [3, 4] }]
+    },
+    {
+      "type": "principle",
+      "label": "Une vision juste des imperfections permet à la Lumière de se stabiliser et de grandir",
+      "evidence": [{ "recordId": "michael-psalm-026", "verses": [5, 6] }]
+    },
+    {
+      "type": "practice",
+      "label": "Développer une vision capable de percevoir les racines cachées derrière les apparences",
+      "evidence": [{ "recordId": "michael-psalm-026", "verses": [7] }]
+    }
+  ],
+  "validation": {
+    "status": "pilot-needs-human-review",
+    "interpretationPolicy": "Every relation must retain exact source evidence."
+  }
+}
