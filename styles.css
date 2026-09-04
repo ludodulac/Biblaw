@@ -1,0 +1,56 @@
+:root {
+  color-scheme: light;
+  --ink: #18201c;
+  --muted: #66706a;
+  --line: #dfe5e1;
+  --paper: #ffffff;
+  --wash: #f4f7f5;
+  --accent: #1d6047;
+  --accent-dark: #164a38;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; color: var(--ink); background: var(--wash); }
+button, input, textarea { font: inherit; }
+button, .button { border: 0; border-radius: .65rem; background: var(--accent); color: white; padding: .7rem 1rem; cursor: pointer; font-weight: 650; }
+button:hover, .button:hover { background: var(--accent-dark); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.topbar { height: 4.25rem; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem, 4vw, 3rem); background: var(--paper); border-bottom: 1px solid var(--line); }
+.brand { color: var(--ink); text-decoration: none; font-family: Georgia, serif; font-size: 1.55rem; font-weight: 700; }
+.privacy { color: var(--muted); font-size: .88rem; }
+main { padding: clamp(1rem, 4vw, 3rem); }
+.empty-state { max-width: 760px; margin: 6vh auto 0; text-align: center; }
+.eyebrow { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+h1 { max-width: 650px; margin: .5rem auto 1rem; font-family: Georgia, serif; font-size: clamp(2.15rem, 6vw, 4.35rem); line-height: 1.02; }
+.lede { color: var(--muted); font-size: 1.08rem; }
+.drop-zone { margin-top: 2.5rem; padding: clamp(2rem, 7vw, 4rem); display: flex; flex-direction: column; align-items: center; gap: .8rem; background: var(--paper); border: 2px dashed #b7c5bd; border-radius: 1.25rem; outline: none; transition: .2s ease; }
+.drop-zone:hover, .drop-zone:focus-visible, .drop-zone.is-dragging { border-color: var(--accent); background: #f8fcfa; transform: translateY(-2px); }
+.file-icon { display: grid; place-items: center; width: 4.25rem; height: 5rem; color: var(--accent); background: #e4f0e9; border-radius: .55rem; font-weight: 900; font-size: .85rem; }
+.drop-zone span, .drop-zone small { color: var(--muted); }
+.error { color: #a52626; font-weight: 650; }
+.workspace { max-width: 1500px; margin: 0 auto; }
+.document-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.file-summary { display: flex; flex-direction: column; min-width: 0; }
+.file-summary strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-summary span, #textStatus { color: var(--muted); font-size: .84rem; }
+.button-secondary { background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+.button-secondary:hover { background: #edf2ef; }
+.panels { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr); gap: 1rem; height: calc(100vh - 9.5rem); }
+.panel { min-height: 0; overflow: hidden; display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 1rem; }
+.panel-head { min-height: 4.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 1rem; border-bottom: 1px solid var(--line); }
+.panel-head h2 { margin: 0; font-size: 1rem; }
+.panel-head p { margin: .2rem 0 0; }
+.pager { display: flex; align-items: center; gap: .5rem; font-size: .86rem; }
+.pager button, .actions button { padding: .5rem .7rem; }
+#pageNumber { width: 3.4rem; padding: .35rem; border: 1px solid var(--line); border-radius: .4rem; text-align: center; }
+.canvas-wrap { flex: 1; overflow: auto; display: grid; justify-items: center; align-items: start; padding: 1.25rem; background: #e7ebe8; }
+#pdfCanvas { max-width: 100%; height: auto; background: white; box-shadow: 0 8px 25px rgba(20,35,28,.15); }
+.actions { display: flex; gap: .4rem; }
+#extractedText { flex: 1; width: 100%; resize: none; padding: 1rem; border: 0; outline: 0; color: var(--ink); background: #fcfdfc; line-height: 1.55; }
+@media (max-width: 850px) {
+  .panels { grid-template-columns: 1fr; height: auto; }
+  .panel { min-height: 70vh; }
+  .privacy { display: none; }
+  .document-bar { align-items: flex-start; }
+  .panel-head { flex-wrap: wrap; }
+}
