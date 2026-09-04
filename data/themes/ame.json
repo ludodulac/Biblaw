@@ -1,17 +1,24 @@
 {
   "id":"theme-ame","recordType":"theme","label":"Âme",
-  "searchTerms":["âme","langage de l’âme","âme vivante","nourrir l’âme"],
+  "searchTerms":["âme","langage de l’âme","âme vivante","nourrir l’âme","âme universelle","immortel"],
   "senses":[
     {"id":"ame-langage-pur","label":"Le langage pur de l’âme","definition":"L’âme est associée à un langage sans trouble derrière les apparences, entier et non animé par la convoitise."},
-    {"id":"ame-vivante","label":"L’âme vivante et présente dans la vie","definition":"La prière demande que l’âme soit vivante, vraie et qu’elle participe aux vies et aux pensées."}
+    {"id":"ame-vivante","label":"L’âme vivante et présente dans la vie","definition":"L’âme est présentée comme une réalité vivante appelée à participer consciemment à la vie et aux pensées."},
+    {"id":"ame-immortelle","label":"L’âme comme réalité immortelle","definition":"Le psaume 107 décrit l’âme comme ce qui ne s’éteint pas, ne quitte pas l’être et ne peut mourir."}
   ],
   "subthemes":[
     {"id":"nourrir-ame-parole","label":"Nourrir l’âme par la parole sacrée","summary":"La parole de Michaël est décrite comme nourrissant l’âme et fortifiant le chemin.","evidenceIds":["m106-prayer-002-soul"]},
-    {"id":"langage-pur-ame","label":"Aller vers le langage pur de l’âme","summary":"Le discernement du vrai conduit vers ce qui parle le langage pur de l’âme, sans trouble ni convoitise.","evidenceIds":["m106-soul-v12"]}
+    {"id":"langage-pur-ame","label":"Aller vers le langage pur de l’âme","summary":"Le discernement du vrai conduit vers ce qui parle le langage pur de l’âme, sans trouble ni convoitise.","evidenceIds":["m106-soul-v12","m107-soul-v20-v22"]},
+    {"id":"agir-en-accord-ame","label":"Ne pas agir contre son âme","summary":"Un faux guide se reconnaît notamment lorsqu’il conduit l’être à agir contre son âme et l’âme universelle.","evidenceIds":["m107-soul-v23-v24"]},
+    {"id":"dignite-ame-terre","label":"Retrouver la dignité d’être une âme sur la terre","summary":"La connaissance de sa nature d’âme vivante redonne fondement, dignité et orientation au chemin terrestre.","evidenceIds":["m107-soul-v26-v27"]}
   ],
   "evidence":[
     {"id":"m106-soul-v12","recordId":"michael-psalm-106","sourceType":"verse","verseNumbers":[12],"relation":"pure-language-of-soul","sourcePages":[1075]},
-    {"id":"m106-prayer-002-soul","recordId":"michael-book-17-prayer-002","sourceType":"prayer","relation":"word-nourishes-soul-and-prayer-for-living-true-souls","sourcePages":[1075,1076]}
+    {"id":"m106-prayer-002-soul","recordId":"michael-book-17-prayer-002","sourceType":"prayer","relation":"word-nourishes-soul-and-prayer-for-living-true-souls","sourcePages":[1075,1076]},
+    {"id":"m107-soul-v20-v22","recordId":"michael-psalm-107","sourceType":"verse","verseNumbers":[20,21,22],"relation":"soul-reveals-truth-through-manifestation","sourcePages":[1079]},
+    {"id":"m107-soul-v23-v24","recordId":"michael-psalm-107","sourceType":"verse","verseNumbers":[23,24],"relation":"soul-as-criterion-against-domination","sourcePages":[1079]},
+    {"id":"m107-soul-v26-v27","recordId":"michael-psalm-107","sourceType":"verse","verseNumbers":[26,27],"relation":"living-soul-dignity-and-immortality","sourcePages":[1079,1080]},
+    {"id":"m107-prayer-003-soul","recordId":"michael-book-17-prayer-003","sourceType":"prayer","relation":"protect-light-of-soul-and-live-as-spirit-soul-body","sourcePages":[1080]}
   ],
-  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-106","michael-book-17-prayer-002"],"reviewNotes":"Premier index général de l’Âme dans la tranche 105–130 ; il devra être fortement enrichi par les textes suivants."}
+  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-106","michael-book-17-prayer-002","michael-psalm-107","michael-book-17-prayer-003"],"reviewNotes":"Le psaume 107 développe fortement l’âme comme critère de vérité, dignité terrestre et réalité immortelle."}
 }
