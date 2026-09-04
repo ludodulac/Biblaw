@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedFrom": "data/thematic-index/books/book-*.json",
   "manualEditingAllowed": false,
-  "themeCount": 263,
+  "themeCount": 307,
   "themes": [
     {
       "id": "abstraction",
@@ -252,6 +252,62 @@
       ]
     },
     {
+      "id": "activite",
+      "label": "Activité",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-053",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 53,
+          "psalmTitle": "J’ai pu entrer dans toutes les eaux du monde",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            8,
+            11,
+            15
+          ],
+          "teaching": "La bénédiction n’est pas une invitation à la passivité : chacun doit donner une place concrète à la Lumière dans sa vie.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-053",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 53,
+          "psalmTitle": "J’ai pu entrer dans toutes les eaux du monde",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            8,
+            11,
+            15
+          ],
+          "teaching": "La bénédiction n’est pas une invitation à la passivité : chacun doit donner une place concrète à la Lumière dans sa vie.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "activite-creatrice",
       "label": "Activité créatrice",
       "score": 3,
@@ -324,13 +380,18 @@
     {
       "id": "activite-et-receptivite",
       "label": "Activité et réceptivité",
-      "score": 3,
-      "occurrenceCount": 1,
+      "score": 5,
+      "occurrenceCount": 2,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "ouriel",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "gabriel",
+          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -358,6 +419,23 @@
           ],
           "teaching": "La vie juste alterne activité consciente qui ensemence et repos réceptif relié à la Lumière qui féconde et instruit.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-052",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 52,
+          "psalmTitle": "N’offrez la Lumière qu’à ceux qui souhaitent la partager",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4
+          ],
+          "teaching": "Gabriel demande de rester dans un pôle actif sans devenir tentateur ni se laisser féconder passivement par n’importe quelle influence.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -384,6 +462,23 @@
           ],
           "teaching": "La vie juste alterne activité consciente qui ensemence et repos réceptif relié à la Lumière qui féconde et instruit.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-052",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 52,
+          "psalmTitle": "N’offrez la Lumière qu’à ceux qui souhaitent la partager",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4
+          ],
+          "teaching": "Gabriel demande de rester dans un pôle actif sans devenir tentateur ni se laisser féconder passivement par n’importe quelle influence.",
+          "score": 2
         }
       ]
     },
@@ -711,6 +806,58 @@
       ]
     },
     {
+      "id": "alchimie",
+      "label": "Alchimie",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-028",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 28,
+          "psalmTitle": "La gratitude, clé de l’alchimie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            7,
+            8
+          ],
+          "teaching": "L’alchimie consiste à transformer les forces inférieures et inconscientes en richesse de conscience au lieu de perdre ou rejeter leur énergie.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-028",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 28,
+          "psalmTitle": "La gratitude, clé de l’alchimie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            7,
+            8
+          ],
+          "teaching": "L’alchimie consiste à transformer les forces inférieures et inconscientes en richesse de conscience au lieu de perdre ou rejeter leur énergie.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "alliance",
       "label": "Alliance",
       "score": 13,
@@ -915,8 +1062,8 @@
     {
       "id": "amour",
       "label": "Amour",
-      "score": 19,
-      "occurrenceCount": 8,
+      "score": 21,
+      "occurrenceCount": 9,
       "centralPsalmCount": 3,
       "archangels": [
         {
@@ -926,8 +1073,8 @@
         },
         {
           "id": "gabriel",
-          "score": 7,
-          "occurrenceCount": 3
+          "score": 9,
+          "occurrenceCount": 4
         }
       ],
       "topPsalms": [
@@ -1075,6 +1222,24 @@
           ],
           "teaching": "L'amour se multiplie lorsqu'il est donné et triomphe de la pauvreté intérieure.",
           "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-029",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Laisse jaillir l’eau de la joie qui fait tout pousser",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            15,
+            17
+          ],
+          "teaching": "L’eau de la vie naît de l’amour ; la joie est le mouvement qui ouvre les ténèbres à ce royaume sans frontières.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -1221,6 +1386,24 @@
             11
           ],
           "teaching": "L'amour se multiplie lorsqu'il est donné et triomphe de la pauvreté intérieure.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-029",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Laisse jaillir l’eau de la joie qui fait tout pousser",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            15,
+            17
+          ],
+          "teaching": "L’eau de la vie naît de l’amour ; la joie est le mouvement qui ouvre les ténèbres à ce royaume sans frontières.",
           "score": 2
         }
       ]
@@ -1371,14 +1554,19 @@
     {
       "id": "anges",
       "label": "Anges",
-      "score": 21,
-      "occurrenceCount": 9,
-      "centralPsalmCount": 3,
+      "score": 27,
+      "occurrenceCount": 11,
+      "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "michael",
           "score": 9,
           "occurrenceCount": 4
+        },
+        {
+          "id": "gabriel",
+          "score": 8,
+          "occurrenceCount": 3
         },
         {
           "id": "ouriel",
@@ -1389,11 +1577,6 @@
           "id": "raphael",
           "score": 5,
           "occurrenceCount": 2
-        },
-        {
-          "id": "gabriel",
-          "score": 2,
-          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -1447,6 +1630,50 @@
             6
           ],
           "teaching": "Les vertus humaines peuvent devenir nourriture et réconfort pour les Anges comme les fruits des règnes nourrissent l'homme.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-050",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Donnez un corps de manifestation concret aux Anges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10
+          ],
+          "teaching": "L’homme n’a pas à fuir dans le monde angélique mais à nourrir ce qui est angélique en lui et à lui offrir une manifestation adaptée au monde terrestre.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-054",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 54,
+          "psalmTitle": "Seules les vertus vous conduiront vers les Anges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "L’Ange devient connaissable intérieurement lorsque la vertu correspondante habite réellement l’être.",
           "score": 3
         },
         {
@@ -1603,6 +1830,50 @@
             6
           ],
           "teaching": "Les vertus humaines peuvent devenir nourriture et réconfort pour les Anges comme les fruits des règnes nourrissent l'homme.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-050",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Donnez un corps de manifestation concret aux Anges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10
+          ],
+          "teaching": "L’homme n’a pas à fuir dans le monde angélique mais à nourrir ce qui est angélique en lui et à lui offrir une manifestation adaptée au monde terrestre.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-054",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 54,
+          "psalmTitle": "Seules les vertus vous conduiront vers les Anges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "L’Ange devient connaissable intérieurement lorsque la vertu correspondante habite réellement l’être.",
           "score": 3
         },
         {
@@ -2125,12 +2396,75 @@
       ]
     },
     {
-      "id": "association",
-      "label": "Association",
+      "id": "assimilation",
+      "label": "Assimilation",
       "score": 3,
       "occurrenceCount": 1,
       "centralPsalmCount": 1,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-030",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Deviens une lumière dans la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            6,
+            7,
+            9
+          ],
+          "teaching": "Un savoir ou une lumière ne deviennent utiles qu’à la mesure où l’homme peut les intégrer et leur donner une réalisation avant de passer à autre chose.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-030",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Deviens une lumière dans la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            6,
+            7,
+            9
+          ],
+          "teaching": "Un savoir ou une lumière ne deviennent utiles qu’à la mesure où l’homme peut les intégrer et leur donner une réalisation avant de passer à autre chose.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "association",
+      "label": "Association",
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "michael",
           "score": 3,
@@ -2154,6 +2488,24 @@
           ],
           "teaching": "La puissance de réalisation vient de l'union et de l'association, physique ou invisible, à partir de critères solides.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-048",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 48,
+          "psalmTitle": "Associez-vous avec un maître et tous vos travaux prendront sens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6
+          ],
+          "teaching": "S’associer consciemment à une œuvre incarnée évite que prières, méditations et forces créatrices restent dispersées ou sans destination.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -2172,6 +2524,24 @@
             7
           ],
           "teaching": "La puissance de réalisation vient de l'union et de l'association, physique ou invisible, à partir de critères solides.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-048",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 48,
+          "psalmTitle": "Associez-vous avec un maître et tous vos travaux prendront sens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6
+          ],
+          "teaching": "S’associer consciemment à une œuvre incarnée évite que prières, méditations et forces créatrices restent dispersées ou sans destination.",
           "score": 3
         }
       ]
@@ -2626,10 +2996,15 @@
     {
       "id": "beaute",
       "label": "Beauté",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "michael",
           "score": 3,
@@ -2656,6 +3031,28 @@
           ],
           "teaching": "La beauté de la nature et des êtres doit être captée par les sens puis recréée intérieurement et extérieurement.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-033",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Connais-tu le vrai visage de ton âme?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11
+          ],
+          "teaching": "La beauté est un principe actif de l’âme qui organise la forme, protège l’harmonie et rayonne selon la qualité de l’eau spirituelle.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -2677,6 +3074,28 @@
             10
           ],
           "teaching": "La beauté de la nature et des êtres doit être captée par les sens puis recréée intérieurement et extérieurement.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-033",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Connais-tu le vrai visage de ton âme?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11
+          ],
+          "teaching": "La beauté est un principe actif de l’âme qui organise la forme, protège l’harmonie et rayonne selon la qualité de l’eau spirituelle.",
           "score": 3
         }
       ]
@@ -2894,6 +3313,74 @@
             12
           ],
           "teaching": "Un objectif de Lumière donne force, direction, sens et ouvre un chemin d’immortalité.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "baton-de-dieu",
+      "label": "Bâton de Dieu",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-046",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Le secret du bâton de Dieu, une clé essentielle pour traverser les épreuves",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9,
+            10,
+            11,
+            12,
+            15
+          ],
+          "teaching": "Le bâton figure la force qui redresse l’homme et lui rappelle sa verticalité lorsque sa conduite s’écarte de la direction supérieure.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-046",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Le secret du bâton de Dieu, une clé essentielle pour traverser les épreuves",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9,
+            10,
+            11,
+            12,
+            15
+          ],
+          "teaching": "Le bâton figure la force qui redresse l’homme et lui rappelle sa verticalité lorsque sa conduite s’écarte de la direction supérieure.",
           "score": 3
         }
       ]
@@ -3945,10 +4432,15 @@
     {
       "id": "coherence",
       "label": "Cohérence",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "ouriel",
           "score": 3,
@@ -3971,6 +4463,27 @@
           ],
           "teaching": "L'homme doit aligner ses centres, ses choix et ses actes avec ce qu'il dit vouloir profondément.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-038",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Laisse l’eau de la vie couler à travers toi",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            5,
+            8,
+            9,
+            12
+          ],
+          "teaching": "Croire une chose et en vivre une autre coupe l’âme de sa source ; la vérité doit être effectivement mise en œuvre.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -3988,6 +4501,27 @@
             8
           ],
           "teaching": "L'homme doit aligner ses centres, ses choix et ses actes avec ce qu'il dit vouloir profondément.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-038",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Laisse l’eau de la vie couler à travers toi",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            5,
+            8,
+            9,
+            12
+          ],
+          "teaching": "Croire une chose et en vivre une autre coupe l’âme de sa source ; la vérité doit être effectivement mise en œuvre.",
           "score": 3
         }
       ]
@@ -5208,6 +5742,62 @@
       ]
     },
     {
+      "id": "corps-de-manifestation",
+      "label": "Corps de manifestation",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-050",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Donnez un corps de manifestation concret aux Anges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Une pensée ou une vertu invisible doit être organisée en forme complète pour vivre réellement sur la terre.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-050",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Donnez un corps de manifestation concret aux Anges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Une pensée ou une vertu invisible doit être organisée en forme complète pour vivre réellement sur la terre.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "corps-dimmortalite",
       "label": "Corps d’immortalité",
       "score": 2,
@@ -5256,6 +5846,76 @@
           ],
           "teaching": "La vie quotidienne peut former un corps d'immortalité lorsque pensée, volonté et œuvre sont reliées à l'éternité.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "corps-ame-esprit",
+      "label": "Corps, âme et esprit",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-042",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Es-tu une taupe, un poisson ou un aigle?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "Corps, âme et esprit appartiennent à des mondes distincts qui doivent communiquer sans être confondus ni utilisés pour satisfaire les besoins d’un autre plan.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-042",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Es-tu une taupe, un poisson ou un aigle?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "Corps, âme et esprit appartiennent à des mondes distincts qui doivent communiquer sans être confondus ni utilisés pour satisfaire les besoins d’un autre plan.",
+          "score": 3
         }
       ]
     },
@@ -5906,14 +6566,14 @@
     {
       "id": "discipline",
       "label": "Discipline",
-      "score": 3,
-      "occurrenceCount": 1,
+      "score": 5,
+      "occurrenceCount": 2,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "gabriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 5,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -5935,6 +6595,24 @@
           ],
           "teaching": "La discipline transmise par les sages vise à rendre le corps et les sens plus subtils afin que l'homme puisse vérifier par lui-même.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-027",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment éveiller son âme dans la source de Gabriel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            6,
+            8,
+            16
+          ],
+          "teaching": "La discipline et le travail rendent possible une relation stable à l’âme au lieu d’une sensibilité stagnante et stérile.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -5956,6 +6634,24 @@
           ],
           "teaching": "La discipline transmise par les sages vise à rendre le corps et les sens plus subtils afin que l'homme puisse vérifier par lui-même.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-027",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment éveiller son âme dans la source de Gabriel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            6,
+            8,
+            16
+          ],
+          "teaching": "La discipline et le travail rendent possible une relation stable à l’âme au lieu d’une sensibilité stagnante et stérile.",
+          "score": 2
         }
       ]
     },
@@ -6222,14 +6918,14 @@
     {
       "id": "eau",
       "label": "Eau",
-      "score": 19,
-      "occurrenceCount": 8,
-      "centralPsalmCount": 4,
+      "score": 22,
+      "occurrenceCount": 9,
+      "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "gabriel",
-          "score": 13,
-          "occurrenceCount": 5
+          "score": 16,
+          "occurrenceCount": 6
         },
         {
           "id": "michael",
@@ -6310,6 +7006,30 @@
             6
           ],
           "teaching": "L'eau doit circuler pour emporter les résidus et féconder la vie; la stagnation permet aux impuretés de s'accumuler.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-025",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 25,
+          "psalmTitle": "Approche-toi du divin par le respect et la discipline",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            12,
+            16,
+            17,
+            23,
+            25
+          ],
+          "teaching": "L’eau de Gabriel représente la conscience et la spiritualité vivantes qui doivent circuler à travers tous les centres et échanges de l’homme.",
           "score": 3
         },
         {
@@ -6441,6 +7161,30 @@
             6
           ],
           "teaching": "L'eau doit circuler pour emporter les résidus et féconder la vie; la stagnation permet aux impuretés de s'accumuler.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-025",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 25,
+          "psalmTitle": "Approche-toi du divin par le respect et la discipline",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            12,
+            16,
+            17,
+            23,
+            25
+          ],
+          "teaching": "L’eau de Gabriel représente la conscience et la spiritualité vivantes qui doivent circuler à travers tous les centres et échanges de l’homme.",
           "score": 3
         },
         {
@@ -6506,21 +7250,233 @@
       ]
     },
     {
-      "id": "engagement",
-      "label": "Engagement",
-      "score": 10,
-      "occurrenceCount": 4,
-      "centralPsalmCount": 2,
+      "id": "eau-ascendante",
+      "label": "Eau ascendante",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
       "archangels": [
-        {
-          "id": "ouriel",
-          "score": 4,
-          "occurrenceCount": 2
-        },
         {
           "id": "gabriel",
           "score": 3,
           "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-032",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 32,
+          "psalmTitle": "L’homme est le reflet inversé de la nature",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "L’homme accomplit un mouvement inverse de la nature visible : l’eau intérieure doit jaillir vers les hauteurs et la bénédiction des hauteurs redescendre sanctifier le corps.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-032",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 32,
+          "psalmTitle": "L’homme est le reflet inversé de la nature",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "L’homme accomplit un mouvement inverse de la nature visible : l’eau intérieure doit jaillir vers les hauteurs et la bénédiction des hauteurs redescendre sanctifier le corps.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "eau-de-vie",
+      "label": "Eau de vie",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-038",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Laisse l’eau de la vie couler à travers toi",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6,
+            8,
+            9
+          ],
+          "teaching": "L’eau de la vie circule lorsque la pensée et la conduite sont cohérentes ; les blocages et les convictions non vécues produisent la stagnation.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-038",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Laisse l’eau de la vie couler à travers toi",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6,
+            8,
+            9
+          ],
+          "teaching": "L’eau de la vie circule lorsque la pensée et la conduite sont cohérentes ; les blocages et les convictions non vécues produisent la stagnation.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "eau-sacree",
+      "label": "Eau sacrée",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-054",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 54,
+          "psalmTitle": "Seules les vertus vous conduiront vers les Anges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            15,
+            17,
+            18
+          ],
+          "teaching": "L’eau doit être imprégnée de pureté, guérison et beauté ; un petit geste conscient envers elle peut avoir une grande portée.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-054",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 54,
+          "psalmTitle": "Seules les vertus vous conduiront vers les Anges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            15,
+            17,
+            18
+          ],
+          "teaching": "L’eau doit être imprégnée de pureté, guérison et beauté ; un petit geste conscient envers elle peut avoir une grande portée.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "eaux-du-monde",
+      "label": "Eaux du monde",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-053",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 53,
+          "psalmTitle": "J’ai pu entrer dans toutes les eaux du monde",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            12,
+            14
+          ],
+          "teaching": "Gabriel relie sa présence aux sources, rivières, lacs et océans et présente les habitants de l’eau comme des partenaires possibles d’une relation consciente.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-053",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 53,
+          "psalmTitle": "J’ai pu entrer dans toutes les eaux du monde",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            12,
+            14
+          ],
+          "teaching": "Gabriel relie sa présence aux sources, rivières, lacs et océans et présente les habitants de l’eau comme des partenaires possibles d’une relation consciente.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "engagement",
+      "label": "Engagement",
+      "score": 13,
+      "occurrenceCount": 5,
+      "centralPsalmCount": 3,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 6,
+          "occurrenceCount": 2
+        },
+        {
+          "id": "ouriel",
+          "score": 4,
+          "occurrenceCount": 2
         },
         {
           "id": "michael",
@@ -6569,6 +7525,26 @@
             9
           ],
           "teaching": "Le travail personnel et collectif engagé construit la Nation Essénienne et donne une base à la présence des Archanges.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-051",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 51,
+          "psalmTitle": "Deviens un pilier du monde divin et il t’élèvera",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "Accepter une responsabilité apparemment lourde pour le vrai et le juste finit par alléger la vie et inscrire l’être dans une continuité plus grande.",
           "score": 3
         },
         {
@@ -6650,6 +7626,26 @@
           "score": 3
         },
         {
+          "recordId": "book-06-psalm-051",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 51,
+          "psalmTitle": "Deviens un pilier du monde divin et il t’élèvera",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "Accepter une responsabilité apparemment lourde pour le vrai et le juste finit par alléger la vie et inscrire l’être dans une continuité plus grande.",
+          "score": 3
+        },
+        {
           "recordId": "book-04-psalm-011",
           "bookNumber": 4,
           "bookTitle": "Vous êtes l’espoir d’un monde",
@@ -6681,6 +7677,114 @@
             13
           ],
           "teaching": "Détermination, enthousiasme, volonté et présence doivent accompagner un engagement conscient dans la vie.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "ensemencement",
+      "label": "Ensemencement",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-036",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 36,
+          "psalmTitle": "Les 4 étapes de l’homme-arbre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "teaching": "Au niveau causal, l’homme peut semer dans le monde des forces qui préparent une humanité future ; cette capacité exige d’avoir consolidé les trois étapes précédentes.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-036",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 36,
+          "psalmTitle": "Les 4 étapes de l’homme-arbre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "teaching": "Au niveau causal, l’homme peut semer dans le monde des forces qui préparent une humanité future ; cette capacité exige d’avoir consolidé les trois étapes précédentes.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "ensemencement-de-la-destinee",
+      "label": "Ensemencement de la destinée",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-041",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Comment vivre et travailler avec les forces pures du soleil",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            11,
+            12
+          ],
+          "teaching": "La première fécondation de la journée et sa répétition dans le temps construisent progressivement le futur terrestre et spirituel.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-041",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Comment vivre et travailler avec les forces pures du soleil",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            11,
+            12
+          ],
+          "teaching": "La première fécondation de la journée et sa répétition dans le temps construisent progressivement le futur terrestre et spirituel.",
           "score": 2
         }
       ]
@@ -6740,13 +7844,18 @@
     {
       "id": "espace-sacre",
       "label": "Espace sacré",
-      "score": 5,
-      "occurrenceCount": 2,
+      "score": 7,
+      "occurrenceCount": 3,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "ouriel",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "gabriel",
+          "score": 2,
           "occurrenceCount": 1
         },
         {
@@ -6791,6 +7900,25 @@
           ],
           "teaching": "Un espace intérieur consacré doit être préservé afin que le bruit, l’obscurité et les paroles vaines n’envahissent pas le lieu de la vérité.",
           "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-034",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Seule une école de Dieu peut recevoir et transmettre l’élixir de la vie divine",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            11
+          ],
+          "teaching": "La capacité de recevoir dépend de l’espace que l’homme construit en lui ; la note précise que la rencontre est établie par le divin en lui et non par les concepts humains.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -6828,6 +7956,25 @@
             14
           ],
           "teaching": "Un espace intérieur consacré doit être préservé afin que le bruit, l’obscurité et les paroles vaines n’envahissent pas le lieu de la vérité.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-034",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Seule une école de Dieu peut recevoir et transmettre l’élixir de la vie divine",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            11
+          ],
+          "teaching": "La capacité de recevoir dépend de l’espace que l’homme construit en lui ; la note précise que la rencontre est établie par le divin en lui et non par les concepts humains.",
           "score": 2
         }
       ]
@@ -8237,6 +9384,68 @@
       ]
     },
     {
+      "id": "fecondation",
+      "label": "Fécondation",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-039",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Que ton œil soit le lieu de la fécondation et de l’enfantement de la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10
+          ],
+          "teaching": "La Lumière féconde l’homme par la vision, et l’homme féconde ensuite le monde par ce qu’il met au monde à partir de cette réception.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-039",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Que ton œil soit le lieu de la fécondation et de l’enfantement de la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10
+          ],
+          "teaching": "La Lumière féconde l’homme par la vision, et l’homme féconde ensuite le monde par ce qu’il met au monde à partir de cette réception.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "fees",
       "label": "Fées",
       "score": 2,
@@ -8397,10 +9606,15 @@
     {
       "id": "gratitude",
       "label": "Gratitude",
-      "score": 2,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 0,
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "ouriel",
           "score": 2,
@@ -8408,6 +9622,24 @@
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-06-psalm-028",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 28,
+          "psalmTitle": "La gratitude, clé de l’alchimie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            8
+          ],
+          "teaching": "La gratitude est une attention consciente à la vie qui permet de recevoir les influences comme des occasions d’échange et de transformation.",
+          "score": 3
+        },
         {
           "recordId": "book-04-psalm-007",
           "bookNumber": 4,
@@ -8426,6 +9658,24 @@
         }
       ],
       "occurrences": [
+        {
+          "recordId": "book-06-psalm-028",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 28,
+          "psalmTitle": "La gratitude, clé de l’alchimie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            8
+          ],
+          "teaching": "La gratitude est une attention consciente à la vie qui permet de recevoir les influences comme des occasions d’échange et de transformation.",
+          "score": 3
+        },
         {
           "recordId": "book-04-psalm-007",
           "bookNumber": 4,
@@ -8739,14 +9989,14 @@
     {
       "id": "generosite",
       "label": "Générosité",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "gabriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 6,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -8774,6 +10024,22 @@
           ],
           "teaching": "La générosité rapproche du modèle divin : donner véritablement ne diminue pas l'être mais permet à la vie et à l'abondance de circuler.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-052",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 52,
+          "psalmTitle": "N’offrez la Lumière qu’à ceux qui souhaitent la partager",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2
+          ],
+          "teaching": "Donner sagesse et lumière doit être un acte pur et humble, offert pour le bien réel de l’autre et non pour la supériorité personnelle.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -8800,6 +10066,22 @@
             13
           ],
           "teaching": "La générosité rapproche du modèle divin : donner véritablement ne diminue pas l'être mais permet à la vie et à l'abondance de circuler.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-052",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 52,
+          "psalmTitle": "N’offrez la Lumière qu’à ceux qui souhaitent la partager",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2
+          ],
+          "teaching": "Donner sagesse et lumière doit être un acte pur et humble, offert pour le bien réel de l’autre et non pour la supériorité personnelle.",
           "score": 3
         }
       ]
@@ -8850,6 +10132,58 @@
             4
           ],
           "teaching": "L'harmonie avec le cosmos conserve des forces, la sensibilité et la communion avec le divin.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "harmonie-des-mondes",
+      "label": "Harmonie des mondes",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-049",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 49,
+          "psalmTitle": "Établis le lien magique qui t’unit avec la nature",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            7,
+            8
+          ],
+          "teaching": "La vie juste équilibre nature vivante, monde humain et monde divin sans sacrifier l’un à l’autre.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-049",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 49,
+          "psalmTitle": "Établis le lien magique qui t’unit avec la nature",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            7,
+            8
+          ],
+          "teaching": "La vie juste équilibre nature vivante, monde humain et monde divin sans sacrifier l’un à l’autre.",
           "score": 3
         }
       ]
@@ -9031,6 +10365,58 @@
       ]
     },
     {
+      "id": "hieroglyphe-vivant",
+      "label": "Hiéroglyphe vivant",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-043",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 43,
+          "psalmTitle": "Comment attirer l’attention du monde divin",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            5
+          ],
+          "teaching": "L’homme apparaît dans les mondes subtils comme une écriture vivante révélant son potentiel et la qualité de ses accumulations intérieures.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-043",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 43,
+          "psalmTitle": "Comment attirer l’attention du monde divin",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            5
+          ],
+          "teaching": "L’homme apparaît dans les mondes subtils comme une écriture vivante révélant son potentiel et la qualité de ses accumulations intérieures.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "homme-et-femme",
       "label": "Homme et femme",
       "score": 2,
@@ -9077,6 +10463,120 @@
           ],
           "teaching": "Le psaume associe symboliquement l'homme au rayon et au Père, la femme à la coupe et à la Mère, puis leur union à l'organisation de la Lumière dans l'être humain.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "homme-arbre",
+      "label": "Homme-arbre",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-036",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 36,
+          "psalmTitle": "Les 4 étapes de l’homme-arbre",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7
+          ],
+          "teaching": "L’homme-arbre relie volonté, sentiments et pensée, puis accède à une quatrième étape causale où il devient capable d’ensemencer la destinée.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-036",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 36,
+          "psalmTitle": "Les 4 étapes de l’homme-arbre",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7
+          ],
+          "teaching": "L’homme-arbre relie volonté, sentiments et pensée, puis accède à une quatrième étape causale où il devient capable d’ensemencer la destinée.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "honorer",
+      "label": "Honorer",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-031",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 31,
+          "psalmTitle": "Accueillez et honorez le Père à travers les maîtres",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6,
+            7
+          ],
+          "teaching": "Honorer le maître revient à reconnaître la présence qu’il sert plutôt qu’à juger sa valeur selon les apparences du monde humain.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-031",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 31,
+          "psalmTitle": "Accueillez et honorez le Père à travers les maîtres",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6,
+            7
+          ],
+          "teaching": "Honorer le maître revient à reconnaître la présence qu’il sert plutôt qu’à juger sa valeur selon les apparences du monde humain.",
+          "score": 3
         }
       ]
     },
@@ -9451,6 +10951,58 @@
       ]
     },
     {
+      "id": "immortalite-de-lame",
+      "label": "Immortalité de l’âme",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-042",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Es-tu une taupe, un poisson ou un aigle?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            15
+          ],
+          "teaching": "L’incarnation est passagère ; c’est la vie intérieure qui peut être éveillée jusqu’à l’immortalité et devenir calice du divin.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-042",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Es-tu une taupe, un poisson ou un aigle?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            15
+          ],
+          "teaching": "L’incarnation est passagère ; c’est la vie intérieure qui peut être éveillée jusqu’à l’immortalité et devenir calice du divin.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "imperfection",
       "label": "Imperfection",
       "score": 3,
@@ -9513,10 +11065,15 @@
     {
       "id": "impersonnalite",
       "label": "Impersonnalité",
-      "score": 2,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 0,
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "michael",
           "score": 2,
@@ -9524,6 +11081,26 @@
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-06-psalm-047",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 47,
+          "psalmTitle": "L’impersonnalité est la clé du bonheur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            8,
+            9,
+            15
+          ],
+          "teaching": "Pensée, parole et activité doivent être reconduites à leur source impersonnelle plutôt qu’utilisées au service des calculs de la personnalité limitée.",
+          "score": 3
+        },
         {
           "recordId": "book-01-psalm-005",
           "bookNumber": 1,
@@ -9542,6 +11119,26 @@
         }
       ],
       "occurrences": [
+        {
+          "recordId": "book-06-psalm-047",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 47,
+          "psalmTitle": "L’impersonnalité est la clé du bonheur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            8,
+            9,
+            15
+          ],
+          "teaching": "Pensée, parole et activité doivent être reconduites à leur source impersonnelle plutôt qu’utilisées au service des calculs de la personnalité limitée.",
+          "score": 3
+        },
         {
           "recordId": "book-01-psalm-005",
           "bookNumber": 1,
@@ -10134,14 +11731,19 @@
     {
       "id": "joie",
       "label": "Joie",
-      "score": 5,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 1,
+      "score": 8,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "michael",
           "score": 5,
           "occurrenceCount": 2
+        },
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -10164,6 +11766,35 @@
             9
           ],
           "teaching": "La joie est présentée comme qualité de la Lumière et condition juste de l'action, de la prière et de la méditation.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-029",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Laisse jaillir l’eau de la joie qui fait tout pousser",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "teaching": "La joie est un jaillissement profond du monde divin qui met la vie en mouvement, fertilise la terre intérieure et relie l’unité individuelle au tout.",
           "score": 3
         },
         {
@@ -10205,6 +11836,35 @@
             9
           ],
           "teaching": "La joie est présentée comme qualité de la Lumière et condition juste de l'action, de la prière et de la méditation.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-029",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Laisse jaillir l’eau de la joie qui fait tout pousser",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "teaching": "La joie est un jaillissement profond du monde divin qui met la vie en mouvement, fertilise la terre intérieure et relie l’unité individuelle au tout.",
           "score": 3
         },
         {
@@ -10809,14 +12469,19 @@
     {
       "id": "lumiere",
       "label": "Lumière",
-      "score": 8,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 2,
+      "score": 11,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "michael",
           "score": 8,
           "occurrenceCount": 3
+        },
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -10858,6 +12523,29 @@
             14
           ],
           "teaching": "La Lumière ne doit pas rester croyance : elle doit devenir vie, acte, corps et responsabilité sur la terre.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-030",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Deviens une lumière dans la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            6,
+            7,
+            8,
+            11,
+            12,
+            13,
+            17,
+            18
+          ],
+          "teaching": "La Lumière doit être assimilée progressivement, reçue avec hospitalité et partagée pour grandir réellement dans le monde.",
           "score": 3
         },
         {
@@ -10916,6 +12604,29 @@
             14
           ],
           "teaching": "La Lumière ne doit pas rester croyance : elle doit devenir vie, acte, corps et responsabilité sur la terre.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-030",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Deviens une lumière dans la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            6,
+            7,
+            8,
+            11,
+            12,
+            13,
+            17,
+            18
+          ],
+          "teaching": "La Lumière doit être assimilée progressivement, reçue avec hospitalité et partagée pour grandir réellement dans le monde.",
           "score": 3
         },
         {
@@ -11046,6 +12757,64 @@
             7
           ],
           "teaching": "La lune désigne un monde subtil lié à la nuit, au sommeil et à une perception au-delà des formes évidentes.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "lacher-du-lest",
+      "label": "Lâcher du lest",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-044",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 44,
+          "psalmTitle": "Comme dans une montgolfière, lâche du lest pour t’envoler vers les mondes supérieurs",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "teaching": "S’élever demande de cesser d’alimenter les attaches, peurs et alliances qui emprisonnent l’énergie dans l’éphémère.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-044",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 44,
+          "psalmTitle": "Comme dans une montgolfière, lâche du lest pour t’envoler vers les mondes supérieurs",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "teaching": "S’élever demande de cesser d’alimenter les attaches, peurs et alliances qui emprisonnent l’énergie dans l’éphémère.",
           "score": 3
         }
       ]
@@ -11394,10 +13163,15 @@
     {
       "id": "maitre",
       "label": "Maître",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 11,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 3,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 8,
+          "occurrenceCount": 3
+        },
         {
           "id": "michael",
           "score": 3,
@@ -11430,6 +13204,58 @@
           ],
           "teaching": "Le maître est un homme qui a transformé ses épreuves en matière pour faire triompher la Lumière jusqu’à devenir un passage concret vers le divin.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-031",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 31,
+          "psalmTitle": "Accueillez et honorez le Père à travers les maîtres",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "teaching": "Le maître est présenté comme un enracinement terrestre de la Lumière, un visage du Père et un support autour duquel l’Enseignement peut être organisé.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-048",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 48,
+          "psalmTitle": "Associez-vous avec un maître et tous vos travaux prendront sens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "Le maître donne une orientation et un corps d’œuvre aux pratiques de ceux qui ne perçoivent pas encore directement les mondes subtils.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-043",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 43,
+          "psalmTitle": "Comment attirer l’attention du monde divin",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "Les maîtres servent d’intermédiaires parce qu’ils ont construit les organes et richesses permettant un échange conscient avec les mondes supérieurs.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -11457,6 +13283,116 @@
             16
           ],
           "teaching": "Le maître est un homme qui a transformé ses épreuves en matière pour faire triompher la Lumière jusqu’à devenir un passage concret vers le divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-031",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 31,
+          "psalmTitle": "Accueillez et honorez le Père à travers les maîtres",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "teaching": "Le maître est présenté comme un enracinement terrestre de la Lumière, un visage du Père et un support autour duquel l’Enseignement peut être organisé.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-048",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 48,
+          "psalmTitle": "Associez-vous avec un maître et tous vos travaux prendront sens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "Le maître donne une orientation et un corps d’œuvre aux pratiques de ceux qui ne perçoivent pas encore directement les mondes subtils.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-043",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 43,
+          "psalmTitle": "Comment attirer l’attention du monde divin",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "Les maîtres servent d’intermédiaires parce qu’ils ont construit les organes et richesses permettant un échange conscient avec les mondes supérieurs.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "maitre-interieur",
+      "label": "Maître intérieur",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-047",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 47,
+          "psalmTitle": "L’impersonnalité est la clé du bonheur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "Le corps devient cohérent lorsqu’une seule orientation supérieure le gouverne au lieu d’une multitude d’influences concurrentes.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-047",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 47,
+          "psalmTitle": "L’impersonnalité est la clé du bonheur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "Le corps devient cohérent lorsqu’une seule orientation supérieure le gouverne au lieu d’une multitude d’influences concurrentes.",
           "score": 3
         }
       ]
@@ -12529,6 +14465,64 @@
       ]
     },
     {
+      "id": "musique",
+      "label": "Musique",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-035",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Les forces créatrices et magiques cachées derrière tous les sons",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            5,
+            12,
+            13
+          ],
+          "teaching": "La musique enseigne à distinguer harmonie et cacophonie et peut relier l’âme individuelle à l’âme universelle.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-035",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Les forces créatrices et magiques cachées derrière tous les sons",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            5,
+            12,
+            13
+          ],
+          "teaching": "La musique enseigne à distinguer harmonie et cacophonie et peut relier l’âme individuelle à l’âme universelle.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "mere",
       "label": "Mère",
       "score": 9,
@@ -12879,10 +14873,15 @@
     {
       "id": "nation-essenienne",
       "label": "Nation Essénienne",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 11,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 3,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 8,
+          "occurrenceCount": 3
+        },
         {
           "id": "michael",
           "score": 3,
@@ -12911,6 +14910,71 @@
           ],
           "teaching": "La Nation Essénienne est présentée comme une communauté appelée à devenir fondement d’une civilisation et continuité de la Lumière sur la terre.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-040",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Préparez l’avènement du futur maître de la Nation Essénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Gabriel donne à la Nation le sceau d’une eau qui ne stagne jamais : fidélité à la source, renouvellement vivant et pureté de l’enseignement.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-053",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 53,
+          "psalmTitle": "J’ai pu entrer dans toutes les eaux du monde",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            6,
+            9,
+            10,
+            12,
+            14,
+            15
+          ],
+          "teaching": "Le travail de la Nation est présenté comme un support terrestre permettant à l’alliance de Gabriel d’entrer dans les eaux et de prendre une forme durable.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-045",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Naît-on Essénien ou le devient-on?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            12,
+            16,
+            17
+          ],
+          "teaching": "Les temples et la Nation sont présentés comme des milieux de formation où l’être peut être durablement nourri dans une autre orientation.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -12935,20 +14999,90 @@
           ],
           "teaching": "La Nation Essénienne est présentée comme une communauté appelée à devenir fondement d’une civilisation et continuité de la Lumière sur la terre.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-040",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Préparez l’avènement du futur maître de la Nation Essénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Gabriel donne à la Nation le sceau d’une eau qui ne stagne jamais : fidélité à la source, renouvellement vivant et pureté de l’enseignement.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-053",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 53,
+          "psalmTitle": "J’ai pu entrer dans toutes les eaux du monde",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            6,
+            9,
+            10,
+            12,
+            14,
+            15
+          ],
+          "teaching": "Le travail de la Nation est présenté comme un support terrestre permettant à l’alliance de Gabriel d’entrer dans les eaux et de prendre une forme durable.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-045",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Naît-on Essénien ou le devient-on?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            12,
+            16,
+            17
+          ],
+          "teaching": "Les temples et la Nation sont présentés comme des milieux de formation où l’être peut être durablement nourri dans une autre orientation.",
+          "score": 2
         }
       ]
     },
     {
       "id": "nature",
       "label": "Nature",
-      "score": 7,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 1,
+      "score": 10,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "michael",
           "score": 4,
           "occurrenceCount": 2
+        },
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
         },
         {
           "id": "ouriel",
@@ -12978,6 +15112,27 @@
           "score": 3
         },
         {
+          "recordId": "book-06-psalm-049",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 49,
+          "psalmTitle": "Établis le lien magique qui t’unit avec la nature",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "teaching": "La nature est un monde vivant d’êtres et d’intelligences avec lequel l’homme doit rétablir une relation consciente, respectueuse et réciproque.",
+          "score": 3
+        },
+        {
           "recordId": "book-01-psalm-002",
           "bookNumber": 1,
           "bookTitle": "Trouve ton propre chemin",
@@ -13034,6 +15189,27 @@
           "score": 3
         },
         {
+          "recordId": "book-06-psalm-049",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 49,
+          "psalmTitle": "Établis le lien magique qui t’unit avec la nature",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "teaching": "La nature est un monde vivant d’êtres et d’intelligences avec lequel l’homme doit rétablir une relation consciente, respectueuse et réciproque.",
+          "score": 3
+        },
+        {
           "recordId": "book-01-psalm-002",
           "bookNumber": 1,
           "bookTitle": "Trouve ton propre chemin",
@@ -13065,6 +15241,60 @@
             15
           ],
           "teaching": "La nature est une source actuelle de communion et de transmission de sagesse.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "non-melange-des-enseignements",
+      "label": "Non-mélange des enseignements",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-040",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Préparez l’avènement du futur maître de la Nation Essénienne",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            8,
+            9
+          ],
+          "teaching": "Rester vivant ne signifie pas mélanger les courants : la fidélité à la source et à l’inspirateur protège l’identité de l’école.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-040",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Préparez l’avènement du futur maître de la Nation Essénienne",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            8,
+            9
+          ],
+          "teaching": "Rester vivant ne signifie pas mélanger les courants : la fidélité à la source et à l’inspirateur protège l’identité de l’école.",
           "score": 2
         }
       ]
@@ -13604,6 +15834,56 @@
       ]
     },
     {
+      "id": "parole-creatrice",
+      "label": "Parole créatrice",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-035",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Les forces créatrices et magiques cachées derrière tous les sons",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            10
+          ],
+          "teaching": "Une part essentielle du pouvoir créateur de la parole réside dans les qualités vibratoires du son.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-035",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Les forces créatrices et magiques cachées derrière tous les sons",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            10
+          ],
+          "teaching": "Une part essentielle du pouvoir créateur de la parole réside dans les qualités vibratoires du son.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "parole-magique",
       "label": "Parole magique",
       "score": 2,
@@ -13712,10 +15992,15 @@
     {
       "id": "patience",
       "label": "Patience",
-      "score": 2,
-      "occurrenceCount": 1,
+      "score": 4,
+      "occurrenceCount": 2,
       "centralPsalmCount": 0,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        },
         {
           "id": "michael",
           "score": 2,
@@ -13738,6 +16023,23 @@
           ],
           "teaching": "La patience de la pierre est une attente ouverte qui ne faiblit pas en intensité.",
           "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-030",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Deviens une lumière dans la Lumière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            12
+          ],
+          "teaching": "Patience et calme stabilisent la réception des influences supérieures et ouvrent le sentiment d’éternité.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -13755,6 +16057,23 @@
             7
           ],
           "teaching": "La patience de la pierre est une attente ouverte qui ne faiblit pas en intensité.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-030",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Deviens une lumière dans la Lumière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            12
+          ],
+          "teaching": "Patience et calme stabilisent la réception des influences supérieures et ouvrent le sentiment d’éternité.",
           "score": 2
         }
       ]
@@ -14659,6 +16978,168 @@
       ]
     },
     {
+      "id": "pilier",
+      "label": "Pilier",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-051",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 51,
+          "psalmTitle": "Deviens un pilier du monde divin et il t’élèvera",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "teaching": "Le monde divin cherche des hommes capables de porter et stabiliser une œuvre sur la terre plutôt que de rechercher seulement un réconfort spirituel.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-051",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 51,
+          "psalmTitle": "Deviens un pilier du monde divin et il t’élèvera",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "teaching": "Le monde divin cherche des hommes capables de porter et stabiliser une œuvre sur la terre plutôt que de rechercher seulement un réconfort spirituel.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "place-de-lhomme",
+      "label": "Place de l’homme",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-050",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Donnez un corps de manifestation concret aux Anges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            5,
+            6,
+            10
+          ],
+          "teaching": "La plénitude vient de l’accomplissement de la tâche humaine d’intermédiaire et non de la fuite vers un monde qui n’est pas celui du corps.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-050",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Donnez un corps de manifestation concret aux Anges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            5,
+            6,
+            10
+          ],
+          "teaching": "La plénitude vient de l’accomplissement de la tâche humaine d’intermédiaire et non de la fuite vers un monde qui n’est pas celui du corps.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "placenta",
+      "label": "Placenta",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-040",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Préparez l’avènement du futur maître de la Nation Essénienne",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            10,
+            11
+          ],
+          "teaching": "L’école est comparée à un placenta dont le travail, les chants, méditations et activités forment la substance nourricière d’un futur corps de Lumière.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-040",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Préparez l’avènement du futur maître de la Nation Essénienne",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            10,
+            11
+          ],
+          "teaching": "L’école est comparée à un placenta dont le travail, les chants, méditations et activités forment la substance nourricière d’un futur corps de Lumière.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "plante",
       "label": "Plante",
       "score": 2,
@@ -15451,10 +17932,15 @@
     {
       "id": "purete",
       "label": "Pureté",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "michael",
           "score": 3,
@@ -15482,6 +17968,27 @@
           ],
           "teaching": "La pureté n’est pas une fin mais la condition permettant de recevoir justement l’inspiration supérieure et de l’incarner.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-026",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Sois pur pour recevoir la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10
+          ],
+          "teaching": "La pureté de l’intention, du cœur, de la vision et surtout de la réceptivité conditionne la qualité de ce qui peut féconder l’homme.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -15504,6 +18011,145 @@
             10
           ],
           "teaching": "La pureté n’est pas une fin mais la condition permettant de recevoir justement l’inspiration supérieure et de l’incarner.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-026",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Sois pur pour recevoir la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10
+          ],
+          "teaching": "La pureté de l’intention, du cœur, de la vision et surtout de la réceptivité conditionne la qualité de ce qui peut féconder l’homme.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "purification",
+      "label": "Purification",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-041",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Comment vivre et travailler avec les forces pures du soleil",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            7,
+            10,
+            11
+          ],
+          "teaching": "L’exposition consciente au soleil et l’eau du matin sont données comme moyens de nettoyer les influences accumulées et d’ensemencer une nouvelle vie.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-041",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Comment vivre et travailler avec les forces pures du soleil",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            7,
+            10,
+            11
+          ],
+          "teaching": "L’exposition consciente au soleil et l’eau du matin sont données comme moyens de nettoyer les influences accumulées et d’ensemencer une nouvelle vie.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "purification-dans-le-temps",
+      "label": "Purification dans le temps",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-045",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Naît-on Essénien ou le devient-on?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "teaching": "Le psaume décrit des cycles longs de reconstruction et de purification des corps et organes afin qu’ils puissent capter une autre nourriture.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-045",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Naît-on Essénien ou le devient-on?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "teaching": "Le psaume décrit des cycles longs de reconstruction et de purification des corps et organes afin qu’ils puissent capter une autre nourriture.",
           "score": 3
         }
       ]
@@ -15952,6 +18598,66 @@
       ]
     },
     {
+      "id": "reflet-interieur-exterieur",
+      "label": "Reflet intérieur-extérieur",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-037",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Tu rencontreras à l’extérieur ce qui vit à l’intérieur de toi",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9
+          ],
+          "teaching": "L’homme rencontre extérieurement ce qu’il porte et peut percevoir intérieurement ; le monde devient un miroir de la qualité de son âme.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-037",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Tu rencontreras à l’extérieur ce qui vit à l’intérieur de toi",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9
+          ],
+          "teaching": "L’homme rencontre extérieurement ce qu’il porte et peut percevoir intérieurement ; le monde devient un miroir de la qualité de son âme.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "regard",
       "label": "Regard",
       "score": 7,
@@ -16316,6 +19022,66 @@
           ],
           "teaching": "L'homme véritable se définit aussi par le respect conscient de la vie et des mondes qui le constituent.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "respect-et-discipline",
+      "label": "Respect et discipline",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-025",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 25,
+          "psalmTitle": "Approche-toi du divin par le respect et la discipline",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            10,
+            11,
+            18,
+            22,
+            24
+          ],
+          "teaching": "Le respect et la discipline préparent l’atmosphère et le corps capables de recevoir sans profanation la présence divine.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-025",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 25,
+          "psalmTitle": "Approche-toi du divin par le respect et la discipline",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            10,
+            11,
+            18,
+            22,
+            24
+          ],
+          "teaching": "Le respect et la discipline préparent l’atmosphère et le corps capables de recevoir sans profanation la présence divine.",
+          "score": 3
         }
       ]
     },
@@ -17293,10 +20059,15 @@
     {
       "id": "receptivite",
       "label": "Réceptivité",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "michael",
           "score": 3,
@@ -17324,6 +20095,24 @@
           ],
           "teaching": "Recevoir une qualité divine demande d'en devenir soi-même la forme, la couleur et la vertu correspondantes.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-026",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Sois pur pour recevoir la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Recevoir n’est pas passif : la réceptivité doit être consciente, subtile et pure pour donner naissance à quelque chose de vrai.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -17346,6 +20135,24 @@
             9
           ],
           "teaching": "Recevoir une qualité divine demande d'en devenir soi-même la forme, la couleur et la vertu correspondantes.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-026",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Sois pur pour recevoir la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Recevoir n’est pas passif : la réceptivité doit être consciente, subtile et pure pour donner naissance à quelque chose de vrai.",
           "score": 3
         }
       ]
@@ -18428,6 +21235,188 @@
       ]
     },
     {
+      "id": "simplicite",
+      "label": "Simplicité",
+      "score": 6,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 6,
+          "occurrenceCount": 3
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-038",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Laisse l’eau de la vie couler à travers toi",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            8,
+            10
+          ],
+          "teaching": "La simplicité reconnecte à la source propre de l’être et permet d’exprimer sans fabrication ce qui est le plus pur.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-044",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 44,
+          "psalmTitle": "Comme dans une montgolfière, lâche du lest pour t’envoler vers les mondes supérieurs",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            8
+          ],
+          "teaching": "Il ne s’agit pas d’abandonner la terre mais de donner au corps le nécessaire et d’orienter le surplus d’énergie vers ce qui est plus haut.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-049",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 49,
+          "psalmTitle": "Établis le lien magique qui t’unit avec la nature",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            6
+          ],
+          "teaching": "Prendre seulement ce qui est nécessaire et ne pas accumuler allège la destinée et protège la relation à la nature.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-038",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Laisse l’eau de la vie couler à travers toi",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            8,
+            10
+          ],
+          "teaching": "La simplicité reconnecte à la source propre de l’être et permet d’exprimer sans fabrication ce qui est le plus pur.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-044",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 44,
+          "psalmTitle": "Comme dans une montgolfière, lâche du lest pour t’envoler vers les mondes supérieurs",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            8
+          ],
+          "teaching": "Il ne s’agit pas d’abandonner la terre mais de donner au corps le nécessaire et d’orienter le surplus d’énergie vers ce qui est plus haut.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-049",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 49,
+          "psalmTitle": "Établis le lien magique qui t’unit avec la nature",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            6
+          ],
+          "teaching": "Prendre seulement ce qui est nécessaire et ne pas accumuler allège la destinée et protège la relation à la nature.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "soleil",
+      "label": "Soleil",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-041",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Comment vivre et travailler avec les forces pures du soleil",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            7,
+            8,
+            10,
+            12
+          ],
+          "teaching": "Le soleil est modèle de fidélité, source d’éveil et première influence à laquelle l’homme doit consciemment ouvrir sa journée.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-041",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Comment vivre et travailler avec les forces pures du soleil",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            7,
+            8,
+            10,
+            12
+          ],
+          "teaching": "Le soleil est modèle de fidélité, source d’éveil et première influence à laquelle l’homme doit consciemment ouvrir sa journée.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "soleil-verite",
       "label": "Soleil-vérité",
       "score": 3,
@@ -18535,6 +21524,72 @@
             9
           ],
           "teaching": "Le sommeil peut devenir un temps préparé de perception et de communion avec des mondes subtils.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "son",
+      "label": "Son",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-035",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Les forces créatrices et magiques cachées derrière tous les sons",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "Le son transporte des images, des âmes et des forces capables de construire, consacrer, féconder ou détruire.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-035",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Les forces créatrices et magiques cachées derrière tous les sons",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "Le son transporte des images, des âmes et des forces capables de construire, consacrer, féconder ou détruire.",
           "score": 3
         }
       ]
@@ -18743,6 +21798,160 @@
             5
           ],
           "teaching": "Les souhaits et idées créatrices finissent par former la maison de l’homme ; s’ils sont limités, ils l’enferment même lorsqu’ils se réalisent.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "source",
+      "label": "Source",
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 5,
+          "occurrenceCount": 2
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-027",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment éveiller son âme dans la source de Gabriel",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            9,
+            10,
+            13,
+            16
+          ],
+          "teaching": "La source visible enseigne l’existence d’une eau plus subtile qui féconde la conscience, nourrit l’âme et ouvre une autre perception de la réalité.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-047",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 47,
+          "psalmTitle": "L’impersonnalité est la clé du bonheur",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            5,
+            7,
+            9
+          ],
+          "teaching": "L’homme juste agit comme une source pure qui abreuve et nourrit sans intérêt personnel.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-027",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment éveiller son âme dans la source de Gabriel",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            9,
+            10,
+            13,
+            16
+          ],
+          "teaching": "La source visible enseigne l’existence d’une eau plus subtile qui féconde la conscience, nourrit l’âme et ouvre une autre perception de la réalité.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-047",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 47,
+          "psalmTitle": "L’impersonnalité est la clé du bonheur",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            5,
+            7,
+            9
+          ],
+          "teaching": "L’homme juste agit comme une source pure qui abreuve et nourrit sans intérêt personnel.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "source-fleuve-ocean",
+      "label": "Source, fleuve et océan",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-037",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Tu rencontreras à l’extérieur ce qui vit à l’intérieur de toi",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "teaching": "La source renvoie à l’amour, le fleuve à la sagesse et l’océan à la conscience où les courants s’unissent et où l’âme révèle son origine divine.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-037",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Tu rencontreras à l’extérieur ce qui vit à l’intérieur de toi",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "teaching": "La source renvoie à l’amour, le fleuve à la sagesse et l’océan à la conscience où les courants s’unissent et où l’âme révèle son origine divine.",
           "score": 3
         }
       ]
@@ -18993,12 +22202,71 @@
       ]
     },
     {
+      "id": "taupe-poisson-aigle",
+      "label": "Taupe, poisson et aigle",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-042",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Es-tu une taupe, un poisson ou un aigle?",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "teaching": "Taupe, poisson et aigle figurent trois rapports à l’espace et à la conscience : enfermement matériel, ouverture spirituelle encore limitée, puis liberté supérieure.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-042",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Es-tu une taupe, un poisson ou un aigle?",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "teaching": "Taupe, poisson et aigle figurent trois rapports à l’espace et à la conscience : enfermement matériel, ouverture spirituelle encore limitée, puis liberté supérieure.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "temple",
       "label": "Temple",
-      "score": 4,
-      "occurrenceCount": 2,
+      "score": 6,
+      "occurrenceCount": 3,
       "centralPsalmCount": 0,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        },
         {
           "id": "michael",
           "score": 2,
@@ -19040,6 +22308,27 @@
           ],
           "teaching": "Les limitations du corps doivent être transformées en fondations du temple de méditation et de l'union avec Dieu.",
           "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-025",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 25,
+          "psalmTitle": "Approche-toi du divin par le respect et la discipline",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            18,
+            19,
+            20,
+            21,
+            23,
+            24
+          ],
+          "teaching": "Le temple existe extérieurement, dans le maître puis dans l’homme lui-même lorsque la vie et la Lumière peuvent y couler.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -19071,6 +22360,27 @@
             10
           ],
           "teaching": "Les limitations du corps doivent être transformées en fondations du temple de méditation et de l'union avec Dieu.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-025",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 25,
+          "psalmTitle": "Approche-toi du divin par le respect et la discipline",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            18,
+            19,
+            20,
+            21,
+            23,
+            24
+          ],
+          "teaching": "Le temple existe extérieurement, dans le maître puis dans l’homme lui-même lorsque la vie et la Lumière peuvent y couler.",
           "score": 2
         }
       ]
@@ -20120,6 +23430,62 @@
       ]
     },
     {
+      "id": "tresor-interieur",
+      "label": "Trésor intérieur",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-043",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 43,
+          "psalmTitle": "Comment attirer l’attention du monde divin",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "Le monde divin reconnaît l’homme à ce qu’il a réellement développé, aux alliances, capacités et semences qu’il peut mettre au service d’une œuvre.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-043",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 43,
+          "psalmTitle": "Comment attirer l’attention du monde divin",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "Le monde divin reconnaît l’homme à ce qu’il a réellement développé, aux alliances, capacités et semences qu’il peut mettre au service d’une œuvre.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "union",
       "label": "Union",
       "score": 5,
@@ -20275,16 +23641,81 @@
       ]
     },
     {
+      "id": "verticalite",
+      "label": "Verticalité",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-046",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Le secret du bâton de Dieu, une clé essentielle pour traverser les épreuves",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            6,
+            12,
+            14,
+            15
+          ],
+          "teaching": "L’essence humaine est décrite comme une colonne qui doit placer le divin avant la dispersion horizontale et assumer la réparation de ses actes.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-046",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Le secret du bâton de Dieu, une clé essentielle pour traverser les épreuves",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            6,
+            12,
+            14,
+            15
+          ],
+          "teaching": "L’essence humaine est décrite comme une colonne qui doit placer le divin avant la dispersion horizontale et assumer la réparation de ses actes.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "vertus",
       "label": "Vertus",
-      "score": 6,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 2,
+      "score": 9,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "michael",
           "score": 6,
           "occurrenceCount": 2
+        },
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -20329,6 +23760,28 @@
           ],
           "teaching": "Une vertu naturelle doit être reconnue, cultivée et menée à son accomplissement; l'ensemble des vertus prépare l'éveil de la graine divine.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-054",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 54,
+          "psalmTitle": "Seules les vertus vous conduiront vers les Anges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            15,
+            16
+          ],
+          "teaching": "La rencontre avec les Anges passe par l’incarnation réelle des vertus plutôt que par des noms, canalisations ou représentations extérieures.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -20372,6 +23825,28 @@
             19
           ],
           "teaching": "Une vertu naturelle doit être reconnue, cultivée et menée à son accomplissement; l'ensemble des vertus prépare l'éveil de la graine divine.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-054",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 54,
+          "psalmTitle": "Seules les vertus vous conduiront vers les Anges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            15,
+            16
+          ],
+          "teaching": "La rencontre avec les Anges passe par l’incarnation réelle des vertus plutôt que par des noms, canalisations ou représentations extérieures.",
           "score": 3
         }
       ]
@@ -20433,10 +23908,15 @@
     {
       "id": "vie-et-mort",
       "label": "Vie et mort",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "michael",
           "score": 3,
@@ -20465,6 +23945,28 @@
           ],
           "teaching": "L’homme se tient entre vie et mort ; les formes visibles passent tandis que la vie intérieure reliée au divin constitue la part durable.",
           "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-032",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 32,
+          "psalmTitle": "L’homme est le reflet inversé de la nature",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "teaching": "Le courant naturel descend pour nourrir le corps alors que l’homme doit intérieurement faire remonter l’eau de son âme vers l’esprit et distinguer ce mouvement vivant de la mort.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -20488,6 +23990,28 @@
             9
           ],
           "teaching": "L’homme se tient entre vie et mort ; les formes visibles passent tandis que la vie intérieure reliée au divin constitue la part durable.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-032",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 32,
+          "psalmTitle": "L’homme est le reflet inversé de la nature",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "teaching": "Le courant naturel descend pour nourrir le corps alors que l’homme doit intérieurement faire remonter l’eau de son âme vers l’esprit et distinguer ce mouvement vivant de la mort.",
           "score": 3
         }
       ]
@@ -20825,6 +24349,116 @@
       ]
     },
     {
+      "id": "visage-et-masque",
+      "label": "Visage et masque",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-033",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Connais-tu le vrai visage de ton âme?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            8,
+            10,
+            12
+          ],
+          "teaching": "Derrière les visages changeants existe un visage d’âme que l’homme doit laisser transparaître avec authenticité.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-033",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Connais-tu le vrai visage de ton âme?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            8,
+            10,
+            12
+          ],
+          "teaching": "Derrière les visages changeants existe un visage d’âme que l’homme doit laisser transparaître avec authenticité.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "vision-collective",
+      "label": "Vision collective",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-039",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Que ton œil soit le lieu de la fécondation et de l’enfantement de la Lumière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            13,
+            14
+          ],
+          "teaching": "L’union des regards et des âmes forme un fleuve collectif capable d’orienter une culture et de renouveler le monde.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-039",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Que ton œil soit le lieu de la fécondation et de l’enfantement de la Lumière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            13,
+            14
+          ],
+          "teaching": "L’union des regards et des âmes forme un fleuve collectif capable d’orienter une culture et de renouveler le monde.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "volonte",
       "label": "Volonté",
       "score": 2,
@@ -20927,8 +24561,8 @@
     {
       "id": "verite",
       "label": "Vérité",
-      "score": 11,
-      "occurrenceCount": 4,
+      "score": 13,
+      "occurrenceCount": 5,
       "centralPsalmCount": 3,
       "archangels": [
         {
@@ -20937,13 +24571,13 @@
           "occurrenceCount": 2
         },
         {
-          "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "gabriel",
+          "score": 4,
+          "occurrenceCount": 2
         },
         {
-          "id": "gabriel",
-          "score": 2,
+          "id": "ouriel",
+          "score": 3,
           "occurrenceCount": 1
         }
       ],
@@ -21034,6 +24668,26 @@
           ],
           "teaching": "Le monde divin ne perçoit que ce qui est véritable dans l'homme et non son apparence ou ses faux-semblants.",
           "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-037",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Tu rencontreras à l’extérieur ce qui vit à l’intérieur de toi",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6,
+            13,
+            16
+          ],
+          "teaching": "La vérité élargit le regard au-delà des apparences et unifie les mondes au lieu d’enfermer la perception dans les concepts humains.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -21122,6 +24776,26 @@
             6
           ],
           "teaching": "Le monde divin ne perçoit que ce qui est véritable dans l'homme et non son apparence ou ses faux-semblants.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-037",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Tu rencontreras à l’extérieur ce qui vit à l’intérieur de toi",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6,
+            13,
+            16
+          ],
+          "teaching": "La vérité élargit le regard au-delà des apparences et unifie les mondes au lieu d’enfermer la perception dans les concepts humains.",
           "score": 2
         }
       ]
@@ -21183,14 +24857,14 @@
     {
       "id": "ame",
       "label": "Âme",
-      "score": 20,
-      "occurrenceCount": 8,
-      "centralPsalmCount": 4,
+      "score": 30,
+      "occurrenceCount": 12,
+      "centralPsalmCount": 6,
       "archangels": [
         {
           "id": "gabriel",
-          "score": 7,
-          "occurrenceCount": 3
+          "score": 17,
+          "occurrenceCount": 7
         },
         {
           "id": "michael",
@@ -21288,6 +24962,54 @@
           "score": 3
         },
         {
+          "recordId": "book-06-psalm-027",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment éveiller son âme dans la source de Gabriel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16
+          ],
+          "teaching": "L’âme est une réalité potentielle qu’il faut éveiller, nourrir et associer aux mondes divins pour qu’elle partage réellement la vie de l’homme.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-033",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Connais-tu le vrai visage de ton âme?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            12
+          ],
+          "teaching": "L’âme est l’eau céleste cachée derrière les masques de la personnalité et porte le vrai visage lumineux qui relie l’homme à sa famille divine.",
+          "score": 3
+        },
+        {
           "recordId": "book-01-psalm-009",
           "bookNumber": 1,
           "bookTitle": "Trouve ton propre chemin",
@@ -21350,6 +25072,37 @@
             5
           ],
           "teaching": "Les aspirations de l'âme doivent être distinguées des objectifs du corps et recevoir une priorité réelle.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-025",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 25,
+          "psalmTitle": "Approche-toi du divin par le respect et la discipline",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La purification de l’environnement intérieur ouvre une relation consciente avec l’âme plus grande et un chemin de libération au-delà du corps.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-029",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Laisse jaillir l’eau de la joie qui fait tout pousser",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4
+          ],
+          "teaching": "La joie ouvre l’accès à l’âme et permet de reconnaître sa présence également dans la profondeur de l’autre.",
           "score": 2
         }
       ],
@@ -21433,6 +25186,54 @@
           "score": 3
         },
         {
+          "recordId": "book-06-psalm-027",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment éveiller son âme dans la source de Gabriel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16
+          ],
+          "teaching": "L’âme est une réalité potentielle qu’il faut éveiller, nourrir et associer aux mondes divins pour qu’elle partage réellement la vie de l’homme.",
+          "score": 3
+        },
+        {
+          "recordId": "book-06-psalm-033",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Connais-tu le vrai visage de ton âme?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            12
+          ],
+          "teaching": "L’âme est l’eau céleste cachée derrière les masques de la personnalité et porte le vrai visage lumineux qui relie l’homme à sa famille divine.",
+          "score": 3
+        },
+        {
           "recordId": "book-01-psalm-009",
           "bookNumber": 1,
           "bookTitle": "Trouve ton propre chemin",
@@ -21496,16 +25297,52 @@
           ],
           "teaching": "Les aspirations de l'âme doivent être distinguées des objectifs du corps et recevoir une priorité réelle.",
           "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-025",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 25,
+          "psalmTitle": "Approche-toi du divin par le respect et la discipline",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La purification de l’environnement intérieur ouvre une relation consciente avec l’âme plus grande et un chemin de libération au-delà du corps.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-029",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Laisse jaillir l’eau de la joie qui fait tout pousser",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4
+          ],
+          "teaching": "La joie ouvre l’accès à l’âme et permet de reconnaître sa présence également dans la profondeur de l’autre.",
+          "score": 2
         }
       ]
     },
     {
       "id": "echange",
       "label": "Échange",
-      "score": 2,
-      "occurrenceCount": 1,
+      "score": 6,
+      "occurrenceCount": 3,
       "centralPsalmCount": 0,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 4,
+          "occurrenceCount": 2
+        },
         {
           "id": "michael",
           "score": 2,
@@ -21529,6 +25366,42 @@
             8
           ],
           "teaching": "La relation juste avec la Terre implique un échange mutuel plutôt qu'une exploitation unilatérale.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-026",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Sois pur pour recevoir la Lumière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            9,
+            11,
+            12
+          ],
+          "teaching": "Offrir la Lumière la renforce et la manière de s’approcher de la source détermine la qualité de ce qui revient dans la destinée.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-028",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 28,
+          "psalmTitle": "La gratitude, clé de l’alchimie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5
+          ],
+          "teaching": "Toute manifestation porte des êtres et des mondes qui cherchent à rencontrer d’autres univers ; l’homme doit rendre cet échange conscient et harmonieux.",
           "score": 2
         }
       ],
@@ -21550,16 +25423,57 @@
           ],
           "teaching": "La relation juste avec la Terre implique un échange mutuel plutôt qu'une exploitation unilatérale.",
           "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-026",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Sois pur pour recevoir la Lumière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            9,
+            11,
+            12
+          ],
+          "teaching": "Offrir la Lumière la renforce et la manière de s’approcher de la source détermine la qualité de ce qui revient dans la destinée.",
+          "score": 2
+        },
+        {
+          "recordId": "book-06-psalm-028",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 28,
+          "psalmTitle": "La gratitude, clé de l’alchimie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5
+          ],
+          "teaching": "Toute manifestation porte des êtres et des mondes qui cherchent à rencontrer d’autres univers ; l’homme doit rendre cet échange conscient et harmonieux.",
+          "score": 2
         }
       ]
     },
     {
       "id": "ecole-de-dieu",
       "label": "École de Dieu",
-      "score": 2,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 0,
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
       "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "michael",
           "score": 2,
@@ -21567,6 +25481,25 @@
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-06-psalm-034",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Seule une école de Dieu peut recevoir et transmettre l’élixir de la vie divine",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "L’école agit comme un intermédiaire et un transformateur qui rend les forces divines assimilables et crée l’espace approprié pour leur manifestation.",
+          "score": 3
+        },
         {
           "recordId": "book-01-psalm-004",
           "bookNumber": 1,
@@ -21585,6 +25518,25 @@
         }
       ],
       "occurrences": [
+        {
+          "recordId": "book-06-psalm-034",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Seule une école de Dieu peut recevoir et transmettre l’élixir de la vie divine",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "L’école agit comme un intermédiaire et un transformateur qui rend les forces divines assimilables et crée l’espace approprié pour leur manifestation.",
+          "score": 3
+        },
         {
           "recordId": "book-01-psalm-004",
           "bookNumber": 1,
@@ -21710,6 +25662,124 @@
           ],
           "teaching": "L'écoute subtile demande calme, ouverture des sens et attention à ce que le souffle transmet.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "elixir-de-vie",
+      "label": "Élixir de vie",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-034",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Seule une école de Dieu peut recevoir et transmettre l’élixir de la vie divine",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            11
+          ],
+          "teaching": "L’élixir divin ne peut être reçu que dans une coupe intérieure préparée et permet l’édification d’un corps divin à travers les vies.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-034",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Seule une école de Dieu peut recevoir et transmettre l’élixir de la vie divine",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            11
+          ],
+          "teaching": "L’élixir divin ne peut être reçu que dans une coupe intérieure préparée et permet l’édification d’un corps divin à travers les vies.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "epreuve",
+      "label": "Épreuve",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-046",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Le secret du bâton de Dieu, une clé essentielle pour traverser les épreuves",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "L’épreuve peut être lue comme un message demandant correction et éveil plutôt que comme la preuve d’un abandon divin.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-046",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Le secret du bâton de Dieu, une clé essentielle pour traverser les épreuves",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "L’épreuve peut être lue comme un message demandant correction et éveil plutôt que comme la preuve d’un abandon divin.",
+          "score": 3
         }
       ]
     },
@@ -21852,6 +25922,70 @@
           ],
           "teaching": "Le juste chemin refuse à la fois l'obsession des forces sombres et l'inconscience qui les nie.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "etat-essenien",
+      "label": "État essénien",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-045",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Naît-on Essénien ou le devient-on?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            14,
+            15,
+            17
+          ],
+          "teaching": "Être Essénien est décrit comme un état d’être où esprit, corps et sens ont été progressivement réorientés et nourris par la Lumière.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-045",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Naît-on Essénien ou le devient-on?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            14,
+            15,
+            17
+          ],
+          "teaching": "Être Essénien est décrit comme un état d’être où esprit, corps et sens ont été progressivement réorientés et nourris par la Lumière.",
+          "score": 3
         }
       ]
     },
@@ -22075,6 +26209,70 @@
             11
           ],
           "teaching": "L'éveil demande que l'homme cesse la passivité et reprenne responsabilité sur son intelligence et ses choix.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "oeil",
+      "label": "Œil",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-06-psalm-039",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Que ton œil soit le lieu de la fécondation et de l’enfantement de la Lumière",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9,
+            11,
+            12,
+            13
+          ],
+          "teaching": "L’œil est à la fois lac récepteur et source fécondante ; ce qu’il accueille oriente le chemin de destinée.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-06-psalm-039",
+          "bookNumber": 6,
+          "bookTitle": "Vivre avec son âme",
+          "archangel": "gabriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Que ton œil soit le lieu de la fécondation et de l’enfantement de la Lumière",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9,
+            11,
+            12,
+            13
+          ],
+          "teaching": "L’œil est à la fois lac récepteur et source fécondante ; ce qu’il accueille oriente le chemin de destinée.",
           "score": 3
         }
       ]
