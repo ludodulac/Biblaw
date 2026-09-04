@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate documentary extraction of books 1-10 and diagnose missing psalm headings."""
+"""Validate documentary extraction of books 1-10 and diagnose internal gaps."""
 from __future__ import annotations
 import json, re, subprocess
 from pathlib import Path
@@ -23,7 +23,8 @@ for book_no in range(1, 11):
     for path in sorted(book_dir.glob("psalm-*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         nums = [v["number"] for v in data.get("verses", [])]
-        expected = list(range(1, max(nums, default=0) + 1))
+        unique_sorted = sorted(set(nums))
+        expected = list(range(min(unique_sorted, default=1), max(unique_sorted, default=0) + 1)) if unique_sorted else []
         psalms.append({
             "number": data["number"],
             "title": data["title"],
@@ -31,9 +32,13 @@ for book_no in range(1, 11):
             "verseCount": len(nums),
             "verseSequenceComplete": nums == expected,
             "missingVerses": [n for n in expected if n not in nums],
+            "duplicateOrOutOfOrderVerses": nums != unique_sorted,
         })
     numbers = [p["number"] for p in psalms]
-    expected_psalms = list(range(1, max(numbers, default=0) + 1))
+    if numbers:
+        expected_psalms = list(range(min(numbers), max(numbers) + 1))
+    else:
+        expected_psalms = []
     missing_psalms = [n for n in expected_psalms if n not in numbers]
     diagnostics = []
     for missing in missing_psalms:
@@ -52,6 +57,7 @@ for book_no in range(1, 11):
         "title": book.get("title"),
         "archangel": book.get("archangel"),
         "psalmCount": len(psalms),
+        "psalmRange": [min(numbers), max(numbers)] if numbers else None,
         "psalmNumbers": numbers,
         "missingPsalms": missing_psalms,
         "psalmsWithVerseGaps": [p for p in psalms if not p["verseSequenceComplete"]],
