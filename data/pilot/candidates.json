@@ -1,0 +1,57 @@
+{
+  "purpose": "Representative dialogue samples to validate before batch extraction",
+  "selectionCriteria": [
+    "numbered psalm",
+    "question by Olivier Manitara",
+    "answer by the Archangel",
+    "adjacent numbered prayer",
+    "editorial note when available"
+  ],
+  "candidates": [
+    {
+      "archangel": "michael",
+      "bookNumber": 17,
+      "psalmNumber": 105,
+      "title": "Aux infidèles",
+      "psalmPages": [1071, 1072],
+      "prayerNumber": 1,
+      "prayerPages": [1072, 1073],
+      "questionVerses": [9],
+      "hasEditorialSpeakerNote": true,
+      "status": "structured-pilot"
+    },
+    {
+      "archangel": "gabriel",
+      "bookNumber": 18,
+      "psalmNumber": 112,
+      "title": "Le vêtement blanc des Esséniens",
+      "psalmPages": [1202, 1203, 1204, 1205],
+      "prayerNumber": 1,
+      "prayerStartPage": 1205,
+      "hasQuestions": true,
+      "status": "candidate-needs-speaker-review"
+    },
+    {
+      "archangel": "raphael",
+      "bookNumber": 19,
+      "psalmNumber": 104,
+      "title": "Le secret de la pensée angélique",
+      "psalmStartPage": 1341,
+      "prayerNumber": 3,
+      "prayerStartPage": 1344,
+      "questionVerses": [22],
+      "status": "candidate-needs-speaker-review"
+    },
+    {
+      "archangel": "ouriel",
+      "bookNumber": 20,
+      "psalmNumber": 105,
+      "title": "Chaque épreuve est une chance",
+      "psalmStartPage": 1464,
+      "prayerNumber": 2,
+      "prayerStartPage": 1467,
+      "questionVerses": [18],
+      "status": "candidate-needs-speaker-review"
+    }
+  ]
+}
