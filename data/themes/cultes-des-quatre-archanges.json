@@ -1,0 +1,19 @@
+{
+  "id":"theme-cultes-quatre-archanges","recordType":"theme","label":"Cultes des quatre Archanges",
+  "searchTerms":["culte du feu","culte de l’eau","culte de l’air","culte de la terre","4 Cultes","4 Sceaux","4 Archanges","temples", "consacrés"],
+  "senses":[
+    {"id":"cultes-ancrage","label":"Les quatre cultes comme ancrage d’une alliance sur la terre","definition":"Le psaume 117 présente les cultes du feu, de l’eau, de l’air et de la terre comme des formes concrètes destinées à établir une relation entre monde divin, terre et Nation Essénienne."},
+    {"id":"quatre-sceaux-equilibre","label":"Les quatre sceaux comme structure d’équilibre","definition":"Les quatre sceaux et les quatre cultes sont décrits comme une structure de protection, d’équilibre et de réconciliation entre règnes et mondes."}
+  ],
+  "subthemes":[
+    {"id":"ouverture-feu","label":"Ouverture du culte du feu","summary":"La participation collective au culte du feu est présentée comme une première étape ayant donné un lien terrestre plus concret au monde divin.","evidenceIds":["m117-cults-v1-v8"]},
+    {"id":"quatre-portes","label":"Ouvrir successivement les quatre portes","summary":"Après le feu, le texte demande l’ouverture des cultes de l’eau, de l’air et de la terre pour compléter la structure des quatre Archanges.","evidenceIds":["m117-cults-v12-v18"]},
+    {"id":"reconciliation-regnes","label":"Ancrer les cultes pour réconcilier les règnes","summary":"L’œuvre des quatre cultes est reliée à la reconnaissance de l’interdépendance avec les règnes supérieurs et inférieurs et à une réconciliation entre eux.","evidenceIds":["m117-cults-v17-v25"]}
+  ],
+  "evidence":[
+    {"id":"m117-cults-v1-v8","recordId":"michael-psalm-117","sourceType":"verse","verseNumbers":[1,2,3,4,5,6,7,8],"relation":"fire-cult-as-first-earthly-opening","sourcePages":[1130]},
+    {"id":"m117-cults-v12-v18","recordId":"michael-psalm-117","sourceType":"verse","verseNumbers":[12,13,14,15,16,17,18],"relation":"four-seals-and-four-cults-to-be-anchored","sourcePages":[1131]},
+    {"id":"m117-cults-v17-v25","recordId":"michael-psalm-117","sourceType":"verse","verseNumbers":[17,18,19,20,21,22,23,24,25],"relation":"world-balance-reconciliation-and-consecration-of-four-temples","sourcePages":[1131,1132]}
+  ],
+  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-117"],"reviewNotes":"Le psaume 117 n’a pas de prière directement associée. Il fournit une première entrée structurée sur les quatre cultes, les quatre sceaux et leur fonction d’ancrage et d’équilibre."}
+}
