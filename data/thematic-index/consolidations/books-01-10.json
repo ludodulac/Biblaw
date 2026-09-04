@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "id": "books-01-10",
+  "status": "first-transversal-pass",
+  "scope": {
+    "bookNumbers": [1,2,3,4,5,6,7,8,9,10],
+    "psalmsOnly": true,
+    "notesUsedAsContext": true,
+    "prayersIndexed": false,
+    "validationReport": {"books":10,"psalmAnalyses":256,"themeRelations":838,"errors":0,"warnings":0}
+  },
+  "purpose": "Relier les enseignements récurrents sans effacer la manière propre dont chaque Archange les développe. Cette consolidation complète les analyses livre par livre ; elle ne les remplace pas.",
+  "archangelSignatures": {
+    "michael": {
+      "books": [1,5,9],
+      "orientation": "Feu, conscience, vérité, maîtrise, choix, fidélité et capacité de devenir un être fiable qui engage sa puissance créatrice dans une œuvre de Lumière.",
+      "characteristicMovements": ["s'éveiller","choisir","purifier","maîtriser","tenir l'engagement","protéger le divin","agir"]
+    },
+    "gabriel": {
+      "books": [2,6,10],
+      "orientation": "Eau, Source, âme, réceptivité, échange, mémoire et purification de ce qui circule afin que l'homme transmette le divin sans mélange et donne une forme juste à la vie.",
+      "characteristicMovements": ["recevoir","purifier","faire circuler","remonter à la Source","féconder","transmettre","réconcilier"]
+    },
+    "raphael": {
+      "books": [3,7],
+      "orientation": "Air, souffle, respiration, organes subtils et construction d'un être capable de vivre au-delà des seules enveloppes mortelles.",
+      "characteristicMovements": ["respirer","méditer","affiner","percevoir","construire les organes subtils","unir esprit et matière","rendre vivant"]
+    },
+    "ouriel": {
+      "books": [4,8],
+      "orientation": "Terre, stabilité, alchimie, transformation et réalisation concrète : conduire la matière de la vie, même imparfaite, jusqu'à une œuvre utile au Bien commun.",
+      "characteristicMovements": ["se stabiliser","transformer","persévérer","réaliser","organiser","incarner","construire ensemble"]
+    }
+  },
+  "transversalThemes": [
+    {
+      "themeId": "lumiere",
+      "label": "Lumière",
+      "sharedCore": "La Lumière n'est pas seulement une idée : elle doit devenir une présence consciente, une orientation, une nourriture et finalement une réalité incarnée dans la vie.",
+      "anchorBooks": [1,3,4,5,8,9,10],
+      "archangelNuances": {
+        "michael": "La Lumière demande choix, vérité, vigilance et fidélité ; elle devient autorité intérieure et feu d'éveil.",
+        "gabriel": "La Lumière doit circuler dans une eau pure et être transmise sans déformation depuis la Source.",
+        "raphael": "La Lumière forme et anime des organes subtils capables de respirer dans des mondes supérieurs.",
+        "ouriel": "La Lumière doit être conduite jusqu'à la matière, au travail, aux relations et aux œuvres concrètes."
+      },
+      "relatedThemes": ["conscience","purete","source","feu","eau","souffle","realisation"]
+    },
+    {
+      "themeId": "ame",
+      "label": "Âme",
+      "sharedCore": "L'âme désigne une dimension vivante de l'homme qui doit être réveillée, nourrie, écoutée et dotée de conditions lui permettant de participer consciemment à la vie terrestre.",
+      "anchorBooks": [1,3,4,6,7,9,10],
+      "archangelNuances": {
+        "michael": "L'âme est reliée à l'éveil, au choix et à la capacité de ne pas laisser des influences étrangères diriger la vie.",
+        "gabriel": "L'âme est pensée comme une eau vivante : elle reçoit, reflète, échange, féconde et doit rester reliée à sa Source.",
+        "raphael": "L'âme respire entre corps et esprit et participe à la construction de l'être subtil qui peut traverser la mort.",
+        "ouriel": "L'âme doit trouver une terre stable et une réalisation afin que sa destinée ne reste pas abstraite."
+      },
+      "relatedThemes": ["eau","respiration","destinee","conscience","corps-subtil"]
+    },
+    {
+      "themeId": "mere",
+      "label": "Mère / Terre-Mère",
+      "sharedCore": "La Mère est la terre vivante qui porte, forme, stabilise, nourrit et rend possible l'incarnation ; la relation avec elle engage aussi la responsabilité envers les règnes de la nature.",
+      "anchorBooks": [1,2,3,4,6,7,8,9,10],
+      "archangelNuances": {
+        "michael": "La Mère donne la base et la stabilité nécessaires pour que l'homme soit droit, responsable et capable de porter la volonté supérieure.",
+        "gabriel": "La Mère donne substance, langage et mémoire ; elle est le milieu de réconciliation avec les pierres, plantes, animaux et forces de la nature.",
+        "raphael": "La Mère donne la terre et le corps dans lesquels le souffle et les organes subtils peuvent s'enraciner.",
+        "ouriel": "La Mère est la réalité concrète dans laquelle toute alchimie doit être vérifiée par une œuvre, une stabilité et un fruit."
+      },
+      "relatedThemes": ["terre","nature","regnes","corps","stabilite","reconciliation-des-mondes"]
+    },
+    {
+      "themeId": "purete",
+      "label": "Pureté",
+      "sharedCore": "La pureté est la capacité de ne pas mélanger indistinctement les influences, intentions et mondes ; elle rend la perception, la relation et la transmission plus justes.",
+      "anchorBooks": [1,2,5,6,7,9,10],
+      "archangelNuances": {
+        "michael": "La pureté est une condition de proximité avec le feu et de fiabilité devant le monde divin ; elle sépare le vrai du faux.",
+        "gabriel": "La pureté est celle de l'eau et de la Source : recevoir et transmettre sans charger le courant de mélanges étrangers.",
+        "raphael": "La pureté affine l'air, la respiration, la perception et les organes subtils.",
+        "ouriel": "La pureté se vérifie par l'intention et par la transformation juste de la matière de vie."
+      },
+      "relatedThemes": ["verite","discernement","source","eau","feu","receptivite"]
+    },
+    {
+      "themeId": "discernement",
+      "label": "Discernement",
+      "sharedCore": "Discerner consiste à reconnaître l'origine, la direction, la qualité et les conséquences d'une influence, d'une parole, d'un enseignement ou d'un acte.",
+      "anchorBooks": [1,2,5,6,7,8,9,10],
+      "archangelNuances": {
+        "michael": "Le discernement tranche entre vérité et illusion, inspirateurs justes et influences qui capturent la conscience.",
+        "gabriel": "Le discernement remonte à la Source, observe ce qui s'est mélangé dans le courant et vérifie les fruits concrets.",
+        "raphael": "Le discernement demande des sens et organes subtils affinés par le souffle, la méditation et la sérénité.",
+        "ouriel": "Le discernement se mesure à ce que l'homme nourrit et à la direction réelle donnée à ses forces et à ses œuvres."
+      },
+      "relatedThemes": ["verite","influences","source","perception","vigilance","actes"]
+    },
+    {
+      "themeId": "responsabilite",
+      "label": "Responsabilité",
+      "sharedCore": "L'homme est un intermédiaire créateur : pensées, paroles, sentiments, choix et actes nourrissent des êtres et des mondes ; il doit donc répondre de ce qu'il fait vivre.",
+      "anchorBooks": [1,2,4,5,8,9,10],
+      "archangelNuances": {
+        "michael": "La responsabilité est inséparable de la puissance créatrice et du devoir de maîtriser ce qui agit par l'homme.",
+        "gabriel": "La responsabilité concerne ce que l'homme met dans la Source et transmet aux règnes, aux autres et à sa descendance.",
+        "raphael": "La responsabilité concerne la qualité des respirations, nourritures et échanges qui construisent le corps subtil.",
+        "ouriel": "La responsabilité exige de transformer et réaliser plutôt que de laisser les forces et circonstances décider à la place de l'homme."
+      },
+      "relatedThemes": ["pouvoir-createur","parole","pensee","descendance","regnes","realisation"]
+    },
+    {
+      "themeId": "alliance",
+      "label": "Alliance",
+      "sharedCore": "Une alliance est un lien vivant qui oriente la vie, donne accès à des forces et implique réciprocité, fidélité et conséquences.",
+      "anchorBooks": [2,3,5,6,7,8,9,10],
+      "archangelNuances": {
+        "michael": "L'alliance demande fidélité, engagement et protection de ce qui a été confié.",
+        "gabriel": "L'alliance organise les échanges et les circulations entre les mondes ; elle doit rester reliée à une origine pure.",
+        "raphael": "L'alliance relie le souffle humain aux intelligences et traditions qui peuvent construire l'être immortel.",
+        "ouriel": "L'alliance doit acquérir une forme terrestre : organisation, œuvre, communauté et Bien commun."
+      },
+      "relatedThemes": ["fidelite","engagement","ronde-des-archanges","nation-essenienne","echange"]
+    },
+    {
+      "themeId": "parole",
+      "label": "Parole / Verbe",
+      "sharedCore": "La parole est une puissance de manifestation : elle révèle des associations intérieures, nourrit des mondes et peut construire, guérir, endetter, tromper ou consacrer.",
+      "anchorBooks": [2,5,8,9,10],
+      "archangelNuances": {
+        "michael": "La parole doit devenir droite, vraie, maîtrisée et au service d'une intelligence supérieure.",
+        "gabriel": "La parole porte une eau et une origine ; selon sa source et son intérêt, elle libère ou crée une dette.",
+        "raphael": "La parole est liée au souffle qui lui donne une âme et une qualité de transmission.",
+        "ouriel": "La parole fait partie des forces à transformer et à conduire dans une réalisation utile."
+      },
+      "relatedThemes": ["verite","souffle","source","dette","pouvoir-createur","benediction"]
+    },
+    {
+      "themeId": "corps",
+      "label": "Corps et corps subtils",
+      "sharedCore": "Le corps physique est un véhicule et une base, mais l'homme est décrit comme composé ou entouré de dimensions plus vastes qui se construisent par sa manière de vivre.",
+      "anchorBooks": [2,3,6,7,8,9,10],
+      "archangelNuances": {
+        "michael": "Le corps devient instrument de verticalité, d'action et de manifestation d'une volonté juste.",
+        "gabriel": "Le corps est entouré d'un corps d'eau modelé par les influences, échanges et états d'âme.",
+        "raphael": "La construction consciente des organes et corps subtils est centrale pour l'immortalité et la respiration dans les mondes supérieurs.",
+        "ouriel": "Le corps est le lieu où la transformation doit devenir stable, utile et concrète."
+      },
+      "relatedThemes": ["corps-deau","organes-subtils","immortalite","verticalite","terre"]
+    },
+    {
+      "themeId": "nation-essenienne",
+      "label": "Nation Essénienne / communauté",
+      "sharedCore": "La communauté est présentée comme un corps vivant capable de donner une forme collective et terrestre à une alliance avec le monde divin.",
+      "anchorBooks": [2,4,5,6,8,9,10],
+      "archangelNuances": {
+        "michael": "La Nation demande engagement, discipline, fidélité, vérité et participation active ; elle protège et porte une cause supérieure.",
+        "gabriel": "La Nation est une source, une famille et un milieu d'échanges capable de relier les règnes et de transmettre une vie plus pure.",
+        "raphael": "La communauté fournit un milieu respiratoire, une tradition et une continuité permettant à l'enseignement de prendre corps.",
+        "ouriel": "La Nation est l'œuvre collective où les différences deviennent des organes complémentaires au service du Bien commun."
+      },
+      "relatedThemes": ["oeuvre-collective","bien-commun","soutien-mutuel","alliance","ronde-des-archanges"]
+    },
+    {
+      "themeId": "transformation",
+      "label": "Transformation",
+      "sharedCore": "Le chemin spirituel n'est pas une fuite hors de la matière humaine : il transforme progressivement ce qui est donné — influences, habitudes, faiblesses, corps et circonstances — afin d'en changer la direction et le fruit.",
+      "anchorBooks": [1,4,5,6,7,8,9,10],
+      "archangelNuances": {
+        "michael": "Transformer signifie brûler le faux, maîtriser les forces et engager la volonté dans une direction choisie.",
+        "gabriel": "Transformer signifie purifier le courant, alléger les charges, changer les associations et réorienter la destinée depuis la Source.",
+        "raphael": "Transformer signifie faire respirer et affiner la matière jusqu'à construire un support plus subtil et durable.",
+        "ouriel": "La transformation est l'alchimie même : tout événement ou imperfection peut devenir matière d'œuvre s'il est consciemment conduit."
+      },
+      "relatedThemes": ["alchimie","purification","maitrise","guerison","accomplissement","immortalite"]
+    }
+  ],
+  "softwareUse": {
+    "rules": [
+      "A transversal theme must retain per-Archangel nuances.",
+      "Do not replace book-level evidence with this synthesis; drill down to book and psalm relations for citations and ranking.",
+      "When ranking psalms for a theme, prefer central over important over related, then use the editorial teaching and verse coverage rather than word frequency.",
+      "Concrete symbolic themes remain independently searchable even when they also illustrate a broader transversal theme."
+    ]
+  }
+}
