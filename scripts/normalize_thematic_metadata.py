@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Keep thematic book metadata synchronized with the corpus and apply explicit repairs.
 
-Titles are documentary metadata and are always copied from the structured psalm corpus.
+Titles and note links are documentary metadata and are copied from the structured Psalm corpus.
 Evidence repairs are explicit editorial decisions, never inferred from keywords.
 Legacy enum aliases are normalized mechanically so book files cannot fail validation
 because a semantically equivalent historical value was used.
@@ -33,6 +33,7 @@ for path in sorted(BOOKS.glob("book-*.json")):
     if not isinstance(book_no, int):
         continue
     for psalm in data.get("psalmAnalyses", []):
+        source = None
         number = psalm.get("number")
         if isinstance(number, int):
             source_path = CORPUS / f"book-{book_no:02d}" / f"psalm-{number:03d}.json"
@@ -41,6 +42,17 @@ for path in sorted(BOOKS.glob("book-*.json")):
                 source_title = source.get("title")
                 if source_title and psalm.get("title") != source_title:
                     psalm["title"] = source_title
+                    changed = True
+                source_notes = list(source.get("noteIds", []))
+                # The indexing method requires every editorial note attached to a Psalm
+                # to be considered as context. Keep that relationship explicit and
+                # mechanically synchronized with the corpus.
+                if source_notes:
+                    if psalm.get("notesUsed") != source_notes:
+                        psalm["notesUsed"] = source_notes
+                        changed = True
+                elif "notesUsed" in psalm and psalm.get("notesUsed"):
+                    psalm.pop("notesUsed", None)
                     changed = True
         record_id = psalm.get("recordId")
         for rel in psalm.get("themes", []):
