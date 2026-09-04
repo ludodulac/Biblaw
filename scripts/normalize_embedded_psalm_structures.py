@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Normalize deterministic structures accidentally absorbed into Psalm verses.
 
-Two documentary patterns are handled:
+Handled documentary patterns:
 1. an internal numbered list that resets to 1 and then returns to the next Psalm verse;
-2. a printed prayer marker ("Pr. N.") appended to the final Psalm verse.
+2. a printed prayer marker ("Pr. N.") appended to the final Psalm verse;
+3. the heading/cartouche of the following book appended to the final Psalm verse.
 
 The operation is structural only: no semantic/editorial guess is needed.
 """
@@ -143,9 +144,29 @@ def normalize_appended_prayer(record: dict) -> bool:
     return True
 
 
+def normalize_appended_book_heading(record: dict) -> bool:
+    verses = record.get("verses", [])
+    if not verses:
+        return False
+    final = verses[-1]
+    text = final.get("text", "")
+    # PDF text can space letters inside display headings, but the LIVRE marker itself
+    # has so far remained recognizable. Allow internal spacing defensively.
+    match = re.search(r"\s+L\s*I\s*V\s*R\s*E\s+\d+\b", text, flags=re.IGNORECASE)
+    if not match:
+        return False
+    psalm_text = text[: match.start()].strip()
+    if not psalm_text:
+        return False
+    final["text"] = psalm_text
+    record.setdefault("extraction", {})["appendedNextBookHeadingNormalized"] = True
+    return True
+
+
 changed_records = 0
 lists_moved = 0
 prayers_split = 0
+book_headings_stripped = 0
 for path in sorted(BOOKS.glob("book-*/psalm-*.json")):
     record = json.loads(path.read_text(encoding="utf-8"))
     before_lists = len(record.get("embeddedLists", []))
@@ -154,8 +175,13 @@ for path in sorted(BOOKS.glob("book-*/psalm-*.json")):
     lists_moved += max(0, after_lists - before_lists)
     changed_prayer = normalize_appended_prayer(record)
     prayers_split += int(changed_prayer)
-    if changed_list or changed_prayer:
+    changed_heading = normalize_appended_book_heading(record)
+    book_headings_stripped += int(changed_heading)
+    if changed_list or changed_prayer or changed_heading:
         write_json(path, record)
         changed_records += 1
 
-print(f"Normalized {changed_records} Psalms: {lists_moved} embedded numbered lists, {prayers_split} appended prayers")
+print(
+    f"Normalized {changed_records} Psalms: {lists_moved} embedded numbered lists, "
+    f"{prayers_split} appended prayers, {book_headings_stripped} appended next-book headings"
+)
