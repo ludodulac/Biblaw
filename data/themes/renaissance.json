@@ -1,0 +1,55 @@
+{
+  "id": "theme-renaissance",
+  "recordType": "theme",
+  "label": "Renaissance",
+  "searchTerms": ["renaissance", "renaître", "mourir pour renaître", "processus de la renaissance"],
+  "senses": [
+    {
+      "id": "renaissance-transformation",
+      "label": "Renaître comme transformation de l’être",
+      "definition": "Passage nécessaire hors de l’état ancien afin de vivre avec une intelligence supérieure."
+    },
+    {
+      "id": "renaissance-approche-divin",
+      "label": "Renaître pour approcher le monde divin",
+      "definition": "Processus intérieur présenté comme condition d’une approche authentique des mondes supérieurs."
+    }
+  ],
+  "subthemes": [
+    {
+      "id": "mourir-pour-renaitre",
+      "label": "Mourir à l’ancien état pour renaître",
+      "summary": "La renaissance demande une rupture avec l’état passif et conditionné.",
+      "evidenceIds": ["m105-v4-v5"]
+    },
+    {
+      "id": "renaissance-et-monde-divin",
+      "label": "Renaissance et accès au monde divin",
+      "summary": "Le chemin vers les mondes supérieurs est lié au processus de renaissance dans la pureté et la vérité.",
+      "evidenceIds": ["m105-v15-v19"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "m105-v4-v5",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [4, 5],
+      "relation": "death-to-old-state-and-rebirth",
+      "sourcePages": [1071]
+    },
+    {
+      "id": "m105-v15-v19",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [15, 19],
+      "relation": "rebirth-as-path-to-higher-worlds",
+      "sourcePages": [1072]
+    }
+  ],
+  "validation": {
+    "status": "editorially-indexed",
+    "indexedFrom": ["michael-psalm-105"],
+    "reviewNotes": "Thème créé à partir de l’enseignement explicite du psaume 105."
+  }
+}
