@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Validate documentary extraction of books 1-10 and diagnose internal gaps."""
+"""Validate documentary extraction of books 1-10 and diagnose internal gaps.
+
+This validator is intentionally rerunnable after each extraction-rule correction.
+"""
 from __future__ import annotations
 import json, re, subprocess
 from pathlib import Path
@@ -24,7 +27,6 @@ def compact_excerpt(raw: str, missing: int) -> list[str]:
             for j in range(max(0, i - 4), min(len(lines), i + 7)):
                 interesting.add(j)
     if not interesting:
-        # Preserve a bounded page excerpt for headings split across lines.
         interesting.update(range(min(len(lines), 80)))
     return [re.sub(r"\s+", " ", lines[i]).strip() for i in sorted(interesting) if lines[i].strip()][:120]
 
@@ -55,10 +57,7 @@ for book_no in range(1, 11):
         last = min(nxt["pages"][0] if nxt and nxt["pages"] else first + 2, book["source"]["pdfPages"][1])
         raw = extract_text(first, last)
         candidate_lines = [re.sub(r"\s+", " ", line).strip() for line in raw.splitlines() if re.search(rf"(^|\s){missing}(?:\s|[.)-])", line)]
-        diagnostics.append({
-            "missingPsalm": missing, "pdfPages": [first,last], "candidateLines": candidate_lines[:30],
-            "sourceExcerpt": compact_excerpt(raw, missing),
-        })
+        diagnostics.append({"missingPsalm": missing, "pdfPages": [first,last], "candidateLines": candidate_lines[:30], "sourceExcerpt": compact_excerpt(raw, missing)})
     books_report.append({
         "bookNumber": book_no, "title": book.get("title"), "archangel": book.get("archangel"), "psalmCount": len(psalms),
         "psalmRange": [min(numbers), max(numbers)] if numbers else None, "psalmNumbers": numbers,
