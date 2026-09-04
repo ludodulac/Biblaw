@@ -1,70 +1,25 @@
 {
-  "id": "theme-mensonge-illusion",
-  "recordType": "theme",
-  "label": "Mensonge et illusion",
-  "searchTerms": ["mensonge", "illusion", "monde d’illusions", "se mentir à soi-même", "faux"],
-  "senses": [
-    {
-      "id": "mensonge-a-soi",
-      "label": "Se mentir à soi-même",
-      "definition": "Refus de voir sa propre réalité et construction d’une représentation fausse de soi."
-    },
-    {
-      "id": "illusion-conditionnante",
-      "label": "L’illusion comme monde qui conditionne l’être",
-      "definition": "Monde faux qui enferme, oriente les pensées et détourne de la vérité."
-    }
+  "id":"theme-mensonge-illusion","recordType":"theme","label":"Mensonge et illusion",
+  "searchTerms":["mensonge","illusion","monde d’illusions","se mentir à soi-même","faux","paraître","lumières trompeuses"],
+  "senses":[
+    {"id":"mensonge-a-soi","label":"Se mentir à soi-même","definition":"Refus de voir sa propre réalité et construction d’une représentation fausse de soi."},
+    {"id":"illusion-conditionnante","label":"L’illusion comme monde qui conditionne l’être","definition":"Monde faux qui enferme, oriente les pensées et détourne de la vérité."},
+    {"id":"illusion-spirituelle","label":"L’illusion spirituelle et le faux guide","definition":"Une intelligence, un discours ou une personne peut se présenter comme vraie ou lumineuse tout en conduisant vers l’égarement."}
   ],
-  "subthemes": [
-    {
-      "id": "refus-de-se-voir",
-      "label": "Refuser de se voir dans la vérité",
-      "summary": "L’infidélité à la Lumière est liée au mensonge intérieur et au refus de regarder sa vie avec lucidité.",
-      "evidenceIds": ["m105-v1-v3"]
-    },
-    {
-      "id": "mondes-illusoires",
-      "label": "Vivre dans des mondes illusoires",
-      "summary": "L’être peut être modelé par des mondes qu’il ne reconnaît pas et qu’il prend pour sa propre réalité.",
-      "evidenceIds": ["m105-v3-v8", "m105-v16"]
-    }
+  "subthemes":[
+    {"id":"refus-de-se-voir","label":"Refuser de se voir dans la vérité","summary":"L’infidélité à la Lumière est liée au mensonge intérieur et au refus de regarder sa vie avec lucidité.","evidenceIds":["m105-v1-v3","m106-v7-v9"]},
+    {"id":"mondes-illusoires","label":"Vivre dans des mondes illusoires","summary":"L’être peut être modelé par des mondes qu’il ne reconnaît pas et qu’il prend pour sa propre réalité.","evidenceIds":["m105-v3-v8","m105-v16"]},
+    {"id":"faux-guides","label":"Être conduit par des intelligences et des guides illusionnés","summary":"Le psaume 106 décrit des intelligences trompeuses et des illusionnistes parfois eux-mêmes prisonniers de leurs mensonges.","evidenceIds":["m106-v4-v8"]},
+    {"id":"etre-et-paraitre","label":"Distinguer ce qui est de ce qui paraît être","summary":"La vérité se manifeste dans l’accord entre l’être et la parole, tandis que l’illusion cherche l’apparence et la mise en valeur.","evidenceIds":["m106-v8-v14"]}
   ],
-  "evidence": [
-    {
-      "id": "m105-v1-v3",
-      "recordId": "michael-psalm-105",
-      "sourceType": "verse",
-      "verseNumbers": [1, 3],
-      "relation": "self-deception",
-      "sourcePages": [1071]
-    },
-    {
-      "id": "m105-v3-v8",
-      "recordId": "michael-psalm-105",
-      "sourceType": "verse",
-      "verseNumbers": [3, 6, 8],
-      "relation": "illusion-and-conditioning",
-      "sourcePages": [1071]
-    },
-    {
-      "id": "m105-v16",
-      "recordId": "michael-psalm-105",
-      "sourceType": "verse",
-      "verseNumbers": [16],
-      "relation": "liar-remains-in-illusion",
-      "sourcePages": [1072]
-    },
-    {
-      "id": "m105-prayer-001-illusion",
-      "recordId": "michael-book-17-prayer-001",
-      "sourceType": "prayer",
-      "relation": "human-world-as-enslavement-to-illusion",
-      "sourcePages": [1072, 1073]
-    }
+  "evidence":[
+    {"id":"m105-v1-v3","recordId":"michael-psalm-105","sourceType":"verse","verseNumbers":[1,3],"relation":"self-deception","sourcePages":[1071]},
+    {"id":"m105-v3-v8","recordId":"michael-psalm-105","sourceType":"verse","verseNumbers":[3,6,8],"relation":"illusion-and-conditioning","sourcePages":[1071]},
+    {"id":"m105-v16","recordId":"michael-psalm-105","sourceType":"verse","verseNumbers":[16],"relation":"liar-remains-in-illusion","sourcePages":[1072]},
+    {"id":"m105-prayer-001-illusion","recordId":"michael-book-17-prayer-001","sourceType":"prayer","relation":"human-world-as-enslavement-to-illusion","sourcePages":[1072,1073]},
+    {"id":"m106-v4-v8","recordId":"michael-psalm-106","sourceType":"verse","verseNumbers":[4,5,6,7,8],"relation":"deceptive-intelligences-and-false-guides","sourcePages":[1074]},
+    {"id":"m106-v9-v14","recordId":"michael-psalm-106","sourceType":"verse","verseNumbers":[9,12,13,14],"relation":"being-versus-appearance","sourcePages":[1074,1075]},
+    {"id":"m106-prayer-002-illusion","recordId":"michael-book-17-prayer-002","sourceType":"prayer","relation":"request-to-remove-illusion-false-selves-and-lies","sourcePages":[1075,1076]}
   ],
-  "validation": {
-    "status": "editorially-indexed",
-    "indexedFrom": ["michael-psalm-105", "michael-book-17-prayer-001"],
-    "reviewNotes": "Le thème rassemble ici le mensonge intérieur et les mondes illusoires explicitement reliés dans le texte."
-  }
+  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-105","michael-book-17-prayer-001","michael-psalm-106","michael-book-17-prayer-002"],"reviewNotes":"Le psaume 106 enrichit fortement le thème par la question des faux guides, des intelligences trompeuses et de la distinction entre être et paraître."}
 }
