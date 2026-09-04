@@ -1,59 +1,113 @@
-# 2026-09-04 — Indexation thématique du livre 17 de Michaël
+# 2026-09-04 — Reprise de l’indexation thématique livre par livre
 
-## Méthode permanente
+## Décision méthodologique actuelle
 
-Le corpus structuré et l’index thématique sont deux couches distinctes. Chaque texte validé est lu éditorialement ; les thèmes existants sont enrichis avant d’en créer de nouveaux. Les références sont reliées à des passages précis. Une occurrence lexicale ne suffit pas à constituer une pertinence thématique. Les prières sont intégrées lorsqu’elles apportent une matière sémantique réelle. Les erreurs techniques déterministes sont corrigées directement ; seules les ambiguïtés éditoriales authentiques vont dans `data/incoherences.json`.
+L’indexation thématique repart méthodologiquement de zéro, **livre par livre**, sans supprimer le corpus documentaire déjà extrait et validé. Les travaux thématiques antérieurs sur Michaël 105–130 sont conservés comme prototype exploratoire, mais ne constituent plus la référence finale de méthode.
 
-Les affirmations cosmologiques ou doctrinales sont indexées comme contenu du corpus, sans être transformées en affirmations scientifiques externes.
+Le corpus structuré et l’expertise thématique sont deux couches distinctes :
 
-## Tranche 105–118
+- `data/corpus/` contient les textes documentaires structurés ;
+- `data/thematic-index/` contient l’analyse éditoriale directement exploitable par le logiciel ;
+- `progression/` documente la méthode et l’avancement ;
+- `data/incoherences.json` reste le registre permanent des ambiguïtés éditoriales réelles nécessitant une décision humaine.
 
-105–112 : première constitution des thèmes Lumière, Renaissance, Monde divin, Mensonge et illusion, Dévotion, Non-savoir, Intelligence supérieure, Discernement, Authenticité et vérité, Connaissance de soi, Âme, Nature et Mère, Libre arbitre et autonomie, Interdépendance et universel, Anges et vertus, Stabilité et enracinement, Tradition de la Lumière, Œuvre et soutien mutuel, Équilibre des mondes, Responsabilité et conséquences, Nutrition et nourriture intérieure, Essentiel et simplicité.
+Les erreurs techniques déterministes doivent être corrigées automatiquement dans les scripts et ne doivent pas être transformées en demandes de validation humaine.
 
-113 : Ancêtres et mémoire ; approfondissement de Tradition de la Lumière.
-114 : Royauté de la Lumière ; Partage et générosité.
-115 : Corps d’éternité ; Incarnation et réalisation.
-116 : Constance et persévérance ; Technologie et intelligence électrique.
-117 : Cultes des quatre Archanges. Aucun texte de prière directement associé.
-118 : Éveil et présence consciente.
+## Unité de travail : le livre entier
 
-## Continuation 1 — psaumes 119 à 122
+Pour chaque livre, l’analyse prend en compte :
 
-119 + prière 14 : `Pureté et conformité divine`. Grande règle : distinguer les mondes, préparer un réceptacle conforme et ne pas projeter les intérêts humains sur le monde divin.
+1. le titre du livre ;
+2. l’Archange ;
+3. l’ordre des psaumes ;
+4. les titres de tous les psaumes ;
+5. les notes éditoriales liées au livre ou aux psaumes ;
+6. les passages des psaumes eux-mêmes ;
+7. les relations entre les psaumes à l’échelle du livre.
 
-120 + prière 15 : `Bien commun`. Harmonisation des points de vue dans une intelligence supérieure commune, cercle comme espace de vérité, vigilance et réalisation terrestre.
+Les titres sont des **indices de compréhension**, pas des thèmes automatiques. Les notes servent de contexte éditorial et peuvent modifier ou préciser l’interprétation d’un passage.
 
-121 + prière 16 : `Choix et croisée des chemins`. Le choix est relié au maintien de l’âme et de la conscience individuelle, au discernement et à un engagement réellement assumé.
+Les prières restent liées aux psaumes pour l’affichage et l’export mais **ne sont pas indexées thématiquement dans cette phase**.
 
-122 + prière 17 : `Temple vivant de la Mère`. Terre intérieure et extérieure capable de recevoir une semence supérieure ; nature comme temple vivant ; attention sensorielle et intention consciente dans le contact avec les règnes.
+## Définition d’un thème
 
-## Continuation 2 — psaumes 123 à 126
+Le mot « thème » est pris au sens large : un être, un élément, un objet, un lieu, une pratique, un symbole ou un concept peut constituer un thème s’il porte un enseignement significatif dans le texte.
 
-123 + prière 18 : `Le vrai et l’imitation`. Distinction entre réalité vécue, association effective, masques, images et imitation extérieure.
+Exemples : Chouette, Assemblée, Feu, Eau, Pierre, Arbre, Cerf, Mère, Père, Ange, Prière, Temple, Âme, Mort, Lumière, Sagesse, Travail, Nourriture, Alliance, etc.
 
-124 + prière 19 : `Conscience et transformation intégrale`. La conscience comme terre de la deuxième naissance ; assimilation d’une semence de sagesse jusqu’à l’action et à la transformation de l’être.
+L’index n’est pas une liste de mots. Une occurrence lexicale isolée ne suffit pas. Un thème est retenu lorsque le passage affirme, définit, distingue, relie, prescrit, interdit ou développe réellement quelque chose à son sujet. Inversement, un passage peut nourrir un thème sans employer son terme exact.
 
-125 + prière 20 : approfondissement d’`Équilibre des mondes`. Formulation centrale : unir les mondes sans les mélanger ; l’homme est l’intermédiaire responsable qui doit connaître les lois de chaque plan et adapter intelligemment le passage entre eux.
+Pour chaque relation thème ↔ psaume, l’analyse conserve au minimum :
 
-126 + prière 21 : approfondissement d’`Authenticité et vérité`. Le thème de l’hypocrisie n’est volontairement pas créé séparément : le texte renforce la cohérence intérieur/extérieur, l’abandon des masques et de l’autojustification et la priorité donnée au fait d’être soi-même vrai plutôt que de juger le faux chez autrui.
+- l’importance (`central`, `important`, `related`) ;
+- le caractère direct ou symbolique ;
+- les versets concernés ;
+- ce que le passage enseigne ;
+- l’Archange, le livre et le psaume par la référence structurée.
 
-## Continuation 3 — psaumes 127 à 130
+Cette structure permettra ensuite de classer les psaumes importants pour un thème, de distinguer les enseignements par Archange et de produire des synthèses transversales sans aplatir leurs différences.
 
-127 + prière 22 : `Protection des règnes de la Mère`. Passage de la compassion abstraite à l’action organisée pour les minéraux, végétaux, animaux et autres règnes ; responsabilité de ne pas laisser la cruauté et l’indifférence devenir normales.
+## Chaîne documentaire livres 1–10
 
-128 + prière 23 : `Enseignement à vivre`. La sagesse doit être assimilée comme une nourriture, devenir pensée, orientation, action et œuvre concrète plutôt que rester parole contemplée.
+Une chaîne automatique a été mise en place pour extraire et valider les dix premiers livres du PDF source. La numérotation des psaumes est suivie par Archange d’un livre au suivant. Les cas typographiques irréguliers sont traités par règles reproductibles.
 
-129 + prière 24 : `Légèreté et maîtrise de soi`. Se connaître, se stabiliser, mettre de l’ordre dans sa propre maison et cesser de transférer son désordre ou son poids sur les autres êtres et mondes.
+Le cas Raphaël 16 (« Le secret de l’aigle ») était absorbé dans la numérotation du psaume précédent dans le PDF extrait. Il a été séparé automatiquement ; les numéros imprimés d’origine 22–29 restent conservés dans `sourceNumber` tandis que les versets du psaume 16 sont normalisés 1–8.
 
-130 + prière 25 : `Porte du feu et lien ciel-terre`. Le culte du feu comme porte et structure de continuité entre ciel et terre ; accomplissement des quatre cultes, protection des règnes et préparation d’une terre nettoyée pour une nouvelle semence.
+État documentaire actuel :
 
-## État atteint
+- livres 1–10 extraits ;
+- validation structurelle : `passed` ;
+- aucun trou de psaume ;
+- aucun trou de versets selon la structure normalisée ;
+- titres et notes conservés ;
+- prières exclues des paquets de lecture thématique.
 
-- Psaumes Michaël 105 à 130 : indexation thématique éditoriale de première passe terminée.
-- Prières du livre 17 : intégrées dans la passe thématique lorsqu’elles sont associées aux psaumes traités.
-- Les thèmes constitués sont enregistrés dans `data/themes/` et déclarés dans `data/catalog.json`.
-- Aucun nouveau cas n’a nécessité une décision humaine pendant les continuations 119–130.
+Les paquets de lecture sont produits sous `data/thematic-index/source-packs/`.
+
+## Indexation éditoriale réalisée
+
+### Livre 1 — Michaël — « Trouve ton propre chemin »
+
+Statut : **indexation thématique éditoriale complète de première passe**.
+
+Fichier : `data/thematic-index/books/book-01.json`.
+
+L’axe central du livre relie conscience, orientation de la vie, Lumière, monde divin, Terre/Mère, vertus, responsabilité, préparation, discernement, amour, fidélité, feu et âme.
+
+Les réalités concrètes significatives sont bien traitées comme thèmes lorsqu’elles portent un enseignement : par exemple le Cerf, la Pierre, l’Arbre, la Tortue, l’Eau, la Montagne, la Cendre, les animaux, le corps, le cœur, la Mère et le Père.
+
+### Livre 2 — Gabriel — « Le secret des 3 mondes »
+
+Statut : **indexation thématique éditoriale complète de première passe**.
+
+Fichier : `data/thematic-index/books/book-02.json`.
+
+Axe central : l’homme vit entre plusieurs plans reliés par des échanges. Pour accueillir le divin, il doit purifier l’eau de ses relations, organiser son corps et sa vie, développer une vie intérieure consciente, établir des alliances réelles et incarner concrètement ce qu’il reçoit.
+
+Thèmes structurants : Eau, trois mondes, aura, relations, guérison, alliance, monde divin, cœur, corps, vie intérieure, purification, communauté, engagement, création, âme, amour, générosité, travail sur soi, connaissance de soi, cycles et harmonie.
+
+Particularité forte de Gabriel dans ce livre : l’**eau** devient un modèle transversal de circulation, purification, fécondation, échange et guérison entre êtres et mondes.
+
+## Travaux antérieurs Michaël 105–130
+
+Les fichiers thématiques produits auparavant pour Michaël 105–130 sont conservés comme **prototype de méthode** et comme matière réutilisable. Ils ne doivent pas être considérés comme l’indexation finale tant que leurs livres respectifs n’ont pas été retraités dans la nouvelle méthode complète : contexte du livre, titres, notes, lecture de tous les psaumes, puis synthèse à l’échelle du livre.
+
+Les prières utilisées dans cette ancienne passe ne doivent plus être prises comme source primaire pour l’indexation thématique actuelle.
+
+## Cible produit confirmée
+
+Le moteur final doit permettre :
+
+- recherche dans les **Psaumes seulement** ;
+- recherche dans les **annexes seulement** ;
+- recherche dans **Psaumes + annexes** ;
+- classement des psaumes les plus importants pour un thème selon l’analyse éditoriale, pas selon la fréquence des mots ;
+- affichage de l’expertise d’un thème : principes, fonctions, conditions, dangers, relations et différences par Archange ;
+- ouverture du psaume complet dans une vue de type PDF ;
+- export du **psaume seul** ou du **psaume + prière associée**.
+
+Le bouton `Index` devra afficher uniquement les thèmes effectivement constitués par l’analyse éditoriale, pas automatiquement les titres de psaumes ni tous les mots rencontrés.
 
 ## Étape suivante
 
-La prochaine phase n’est plus de créer des thèmes psaume après psaume dans cette tranche. Il faut maintenant effectuer une revue transversale 105–130 : détecter les synonymes et quasi-doublons, décider des thèmes parents/enfants et relations, vérifier les références et les fichiers orphelins, puis produire un index dérivé reproductible destiné au moteur de recherche et au bouton `Index`. Le bouton ne devra afficher que les thèmes éditorialement constitués, jamais les simples titres de psaumes.
+Continuer dans l’ordre canonique/source : livre 3, puis livre 4, etc. Pour chaque livre : lecture des paquets, analyse de tous les psaumes, synthèse du livre, stockage dans `data/thematic-index/books/`, puis consolidation progressive des thèmes transversaux. Les ambiguïtés réelles seulement doivent remonter dans `data/incoherences.json`.
