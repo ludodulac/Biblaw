@@ -37,4 +37,13 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/thematic-index/books data/thematic-index/theme-directory.json data/thematic-index/validation-report.json
           git commit -m 'Normalize and validate thematic index'
-          git push
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying after refreshing main"
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 2))
+          done
+          echo 'Unable to publish thematic validation after 3 attempts' >&2
+          exit 1
