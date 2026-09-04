@@ -1,82 +1,59 @@
-# 2026-09-04 — Passage à l’indexation thématique
+# 2026-09-04 — Indexation thématique du livre 17 de Michaël
 
-## Décision et méthode
+## Méthode permanente
 
-Le corpus structuré n’est pas encore un index thématique. Chaque texte traité est suivi d’une indexation éditoriale. Chaque thème possède son fichier dans `data/themes/` et s’enrichit avec les nouveaux textes. On réutilise un thème existant plutôt que créer un doublon, on relie les thèmes à des passages précis, on distingue occurrence lexicale et pertinence thématique, et seules les ambiguïtés éditoriales réelles sont consignées dans `data/incoherences.json`.
+Le corpus structuré et l’index thématique sont deux couches distinctes. Chaque texte validé est lu éditorialement ; les thèmes existants sont enrichis avant d’en créer de nouveaux. Les références sont reliées à des passages précis. Une occurrence lexicale ne suffit pas à constituer une pertinence thématique. Les prières sont intégrées lorsqu’elles apportent une matière sémantique réelle. Les erreurs techniques déterministes sont corrigées directement ; seules les ambiguïtés éditoriales authentiques vont dans `data/incoherences.json`.
 
-Chaque psaume est traité avec sa prière associée lorsqu’elle enrichit réellement les thèmes. Les erreurs techniques déterministes sont corrigées directement ; seules les ambiguïtés de sens nécessitant une décision humaine interrompent le travail.
+Les affirmations cosmologiques ou doctrinales sont indexées comme contenu du corpus, sans être transformées en affirmations scientifiques externes.
 
-## Psaumes 105–112 — réalisés
+## Tranche 105–118
 
-105 : Lumière, Renaissance, Monde divin, Mensonge et illusion, Dévotion, Non-savoir, Intelligence supérieure.
-106 : enrichissements + création de Discernement, Authenticité et vérité, Connaissance de soi, Âme.
-107 : Nature et Mère, Libre arbitre et autonomie ; enrichissements du discernement, de l’âme et de l’illusion.
-108 : Interdépendance et universel, Anges et vertus.
-109 : Stabilité et enracinement, Tradition de la Lumière, Œuvre et soutien mutuel.
-110 : Équilibre des mondes, Responsabilité et conséquences.
-111 : Nutrition et nourriture intérieure, Essentiel et simplicité.
-112 : approfondissement majeur d’Authenticité et vérité et du corps collectif de l’œuvre.
+105–112 : première constitution des thèmes Lumière, Renaissance, Monde divin, Mensonge et illusion, Dévotion, Non-savoir, Intelligence supérieure, Discernement, Authenticité et vérité, Connaissance de soi, Âme, Nature et Mère, Libre arbitre et autonomie, Interdépendance et universel, Anges et vertus, Stabilité et enracinement, Tradition de la Lumière, Œuvre et soutien mutuel, Équilibre des mondes, Responsabilité et conséquences, Nutrition et nourriture intérieure, Essentiel et simplicité.
 
-## Psaume 113 + prière 9 — réalisés
+113 : Ancêtres et mémoire ; approfondissement de Tradition de la Lumière.
+114 : Royauté de la Lumière ; Partage et générosité.
+115 : Corps d’éternité ; Incarnation et réalisation.
+116 : Constance et persévérance ; Technologie et intelligence électrique.
+117 : Cultes des quatre Archanges. Aucun texte de prière directement associé.
+118 : Éveil et présence consciente.
 
-Titre : « Retrouve la terre de ta tradition », pages 1108–1112.
+## Continuation 1 — psaumes 119 à 122
 
-`Tradition de la Lumière` est fortement enrichi : racines, terre, continuité des ancêtres, mémoire historique et lien entre passé, présent et futur.
+119 + prière 14 : `Pureté et conformité divine`. Grande règle : distinguer les mondes, préparer un réceptacle conforme et ne pas projeter les intérêts humains sur le monde divin.
 
-Nouveau thème :
-- `Ancêtres et mémoire` : retrouver l’origine, marcher avec ceux qui ont précédé, reprendre consciemment une œuvre déjà commencée et éviter de recommencer indéfiniment les mêmes expériences.
+120 + prière 15 : `Bien commun`. Harmonisation des points de vue dans une intelligence supérieure commune, cercle comme espace de vérité, vigilance et réalisation terrestre.
 
-## Psaume 114 + prière 10 — réalisés
+121 + prière 16 : `Choix et croisée des chemins`. Le choix est relié au maintien de l’âme et de la conscience individuelle, au discernement et à un engagement réellement assumé.
 
-Titre : « Les rois de la Lumière », pages 1113–1116.
+122 + prière 17 : `Temple vivant de la Mère`. Terre intérieure et extérieure capable de recevoir une semence supérieure ; nature comme temple vivant ; attention sensorielle et intention consciente dans le contact avec les règnes.
 
-Nouveaux thèmes :
-- `Royauté de la Lumière` : dignité, service, accueil, unification des règnes, Père venant régner lorsque les mondes sont harmonisés.
-- `Partage et générosité` : vie comme don, partage de ce qui est sain et réellement travaillé, refus de la séduction et de l’empoisonnement par des contenus faux ou non assimilés.
+## Continuation 2 — psaumes 123 à 126
 
-Le psaume enrichit aussi les axes Œuvre et soutien mutuel, Stabilité et enracinement, Interdépendance et universel et Lumière.
+123 + prière 18 : `Le vrai et l’imitation`. Distinction entre réalité vécue, association effective, masques, images et imitation extérieure.
 
-## Psaume 115 + prière 11 — réalisés
+124 + prière 19 : `Conscience et transformation intégrale`. La conscience comme terre de la deuxième naissance ; assimilation d’une semence de sagesse jusqu’à l’action et à la transformation de l’être.
 
-Titre : « Comment former ton corps d’éternité », pages 1117–1122.
+125 + prière 20 : approfondissement d’`Équilibre des mondes`. Formulation centrale : unir les mondes sans les mélanger ; l’homme est l’intermédiaire responsable qui doit connaître les lois de chaque plan et adapter intelligemment le passage entre eux.
 
-Nouveaux thèmes :
-- `Corps d’éternité` : formation simultanée du corps terrestre et du corps céleste, formation des organes de perception du monde supérieur, corps de compréhension et corps d’action juste.
-- `Incarnation et réalisation` : puiser l’inspiration dans le supérieur et la conduire jusque dans une forme terrestre, ne pas remplacer l’action par la prière passive, préparer les conditions concrètes permettant l’incarnation correcte d’une œuvre.
+126 + prière 21 : approfondissement d’`Authenticité et vérité`. Le thème de l’hypocrisie n’est volontairement pas créé séparément : le texte renforce la cohérence intérieur/extérieur, l’abandon des masques et de l’autojustification et la priorité donnée au fait d’être soi-même vrai plutôt que de juger le faux chez autrui.
 
-## Psaume 116 + prière 12 — réalisés
+## Continuation 3 — psaumes 127 à 130
 
-Titre : « Les dangers de l’intelligence technologique », pages 1123–1129.
+127 + prière 22 : `Protection des règnes de la Mère`. Passage de la compassion abstraite à l’action organisée pour les minéraux, végétaux, animaux et autres règnes ; responsabilité de ne pas laisser la cruauté et l’indifférence devenir normales.
 
-Nouveaux thèmes :
-- `Constance et persévérance` : aller jusqu’au bout de la pensée, de la parole et de l’œuvre ; l’accomplissement fortifie, l’inachevé affaiblit.
-- `Technologie et intelligence électrique` : index fidèle à la cosmologie propre du psaume concernant technologie, électricité, influences subtiles et asservissement. Ces formulations sont enregistrées comme doctrine du texte et non comme validation scientifique externe.
+128 + prière 23 : `Enseignement à vivre`. La sagesse doit être assimilée comme une nourriture, devenir pensée, orientation, action et œuvre concrète plutôt que rester parole contemplée.
 
-## Psaume 117 — réalisé
+129 + prière 24 : `Légèreté et maîtrise de soi`. Se connaître, se stabiliser, mettre de l’ordre dans sa propre maison et cesser de transférer son désordre ou son poids sur les autres êtres et mondes.
 
-Titre : « Une œuvre primordiale pour l’humanité », pages 1130–1132. Aucun texte de prière directement associé.
+130 + prière 25 : `Porte du feu et lien ciel-terre`. Le culte du feu comme porte et structure de continuité entre ciel et terre ; accomplissement des quatre cultes, protection des règnes et préparation d’une terre nettoyée pour une nouvelle semence.
 
-Nouveau thème :
-- `Cultes des quatre Archanges` : cultes du feu, de l’eau, de l’air et de la terre, quatre sceaux, quatre temples, ancrage terrestre de l’alliance et réconciliation des règnes.
+## État atteint
 
-Le psaume enrichit également Œuvre et soutien mutuel, Équilibre des mondes, Interdépendance et universel et Incarnation et réalisation.
+- Psaumes Michaël 105 à 130 : indexation thématique éditoriale de première passe terminée.
+- Prières du livre 17 : intégrées dans la passe thématique lorsqu’elles sont associées aux psaumes traités.
+- Les thèmes constitués sont enregistrés dans `data/themes/` et déclarés dans `data/catalog.json`.
+- Aucun nouveau cas n’a nécessité une décision humaine pendant les continuations 119–130.
 
-## Psaume 118 + prière 13 — réalisés
+## Étape suivante
 
-Titre : « 5 questions fondamentales à se poser », pages 1133–1135.
-
-Nouveau thème :
-- `Éveil et présence consciente` : lecture vivifiante des textes sacrés, concentration, attention, présence à la nourriture, à la parole, à la prière et au sommeil, direction de la vie depuis le centre et l’âme plutôt que par automatisme.
-
-Le psaume renforce également Incarnation et réalisation : la Lumière doit toucher le plan physique et recevoir un corps concret dans la vie.
-
-## État d’avancement
-
-- Psaumes 105 à 118 : indexés thématiquement.
-- Prières associées 1 à 13 : traitées lorsqu’elles s’appliquent ; le psaume 117 n’a pas de prière associée.
-- Psaumes 119 à 130 : structurés, à indexer séquentiellement.
-- Aucun cas de sens réellement ambigu nécessitant une décision humaine n’a été rencontré sur 113–118.
-
-## Suite
-
-Poursuivre avec le psaume 119 et sa prière, puis avancer sans interruption jusqu’à 130 tant qu’aucune ambiguïté éditoriale réelle n’exige l’utilisateur. À la fin de la tranche 105–130 : revue transversale des synonymes, chevauchements, hiérarchies et relations entre thèmes ; vérification des références ; préparation des données destinées au moteur et au bouton `Index`, qui doit afficher uniquement les thèmes éditorialement constitués.
+La prochaine phase n’est plus de créer des thèmes psaume après psaume dans cette tranche. Il faut maintenant effectuer une revue transversale 105–130 : détecter les synonymes et quasi-doublons, décider des thèmes parents/enfants et relations, vérifier les références et les fichiers orphelins, puis produire un index dérivé reproductible destiné au moteur de recherche et au bouton `Index`. Le bouton ne devra afficher que les thèmes éditorialement constitués, jamais les simples titres de psaumes.
