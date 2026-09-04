@@ -327,7 +327,6 @@
   ],
   "dialogueSegments": [
     {
-      "id": "michael-psalm-124-dialogue-001",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Ô mon Père Michaël, il y a tellement de mondes qui veulent accaparer l’attention de l’homme et s’emparer de sa conscience afin de vivre en lui ! Comment devons-nous nous protéger ? Comment être vigilants et développer le juste discernement qui nous permet de distinguer les bonnes semences de l’ivraie ?",
@@ -335,13 +334,14 @@
       "verseNumber": 28,
       "positionAfterVerse": 27,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1165
-      ]
+      ],
+      "id": "michael-psalm-124-dialogue-001"
     }
   ],
   "noteIds": [],
@@ -353,11 +353,18 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "machine-validated",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 34,
-      "prayerDetectedByAdjacency": true
-    }
+      "prayerDetectedByAdjacency": true,
+      "verseCountMatchesExtractionReport": true,
+      "sourcePageRangeMatchesExtractionReport": true,
+      "dialogueRelationsConsistent": true,
+      "noteRelationsConsistent": true,
+      "prayerRelationsConsistent": true
+    },
+    "validatedOn": "2026-09-04",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

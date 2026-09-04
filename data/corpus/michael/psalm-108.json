@@ -327,7 +327,6 @@
   ],
   "dialogueSegments": [
     {
-      "id": "michael-psalm-108-dialogue-001",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Père Michaël, comment avoir le regard et l’attitude justes envers toutes les créatures qui nous entourent ? Comment nous approcher de tous les règnes de la Mère en portant l’intelligence du Père ?",
@@ -335,13 +334,14 @@
       "verseNumber": 29,
       "positionAfterVerse": 28,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1083
-      ]
+      ],
+      "id": "michael-psalm-108-dialogue-001"
     }
   ],
   "noteIds": [],
@@ -353,11 +353,18 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "machine-validated",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 34,
-      "prayerDetectedByAdjacency": true
-    }
+      "prayerDetectedByAdjacency": true,
+      "verseCountMatchesExtractionReport": true,
+      "sourcePageRangeMatchesExtractionReport": true,
+      "dialogueRelationsConsistent": true,
+      "noteRelationsConsistent": true,
+      "prayerRelationsConsistent": true
+    },
+    "validatedOn": "2026-09-04",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

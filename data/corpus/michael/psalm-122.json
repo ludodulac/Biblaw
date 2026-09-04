@@ -282,7 +282,6 @@
   ],
   "dialogueSegments": [
     {
-      "id": "michael-psalm-122-dialogue-001",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Ô mon Père Michaël, enseigne-nous comment nous devons faire pour aller dans la nature et entrer en contact avec tous les règnes de la Mère. Comment faire pour entrer dans le réel et le vivant ?",
@@ -290,13 +289,14 @@
       "verseNumber": 21,
       "positionAfterVerse": 20,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1152
-      ]
+      ],
+      "id": "michael-psalm-122-dialogue-001"
     }
   ],
   "noteIds": [
@@ -310,11 +310,18 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "machine-validated",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 29,
-      "prayerDetectedByAdjacency": true
-    }
+      "prayerDetectedByAdjacency": true,
+      "verseCountMatchesExtractionReport": true,
+      "sourcePageRangeMatchesExtractionReport": true,
+      "dialogueRelationsConsistent": true,
+      "noteRelationsConsistent": true,
+      "prayerRelationsConsistent": true
+    },
+    "validatedOn": "2026-09-04",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

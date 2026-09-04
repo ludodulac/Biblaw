@@ -527,7 +527,6 @@
   ],
   "dialogueSegments": [
     {
-      "id": "michael-psalm-125-dialogue-001",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Ô mon Père Michaël, comment faire pour savoir d’une façon certaine que notre vie est sur le bon chemin ? Comment faire pour devenir conscients des 2 mondes et pouvoir les équilibrer ?",
@@ -535,13 +534,14 @@
       "verseNumber": 44,
       "positionAfterVerse": 43,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1171
-      ]
+      ],
+      "id": "michael-psalm-125-dialogue-001"
     }
   ],
   "noteIds": [],
@@ -553,11 +553,18 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "machine-validated",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 56,
-      "prayerDetectedByAdjacency": true
-    }
+      "prayerDetectedByAdjacency": true,
+      "verseCountMatchesExtractionReport": true,
+      "sourcePageRangeMatchesExtractionReport": true,
+      "dialogueRelationsConsistent": true,
+      "noteRelationsConsistent": true,
+      "prayerRelationsConsistent": true
+    },
+    "validatedOn": "2026-09-04",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

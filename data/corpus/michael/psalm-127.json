@@ -290,7 +290,6 @@
   ],
   "dialogueSegments": [
     {
-      "id": "michael-psalm-127-dialogue-001",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Ô mon Père Michaël, ce que tu dis est vrai, nous avons été abusés et conduits dans l’ignorance et dans l’irrespect. Que devons-nous faire maintenant pour arrêter ce fléau ?",
@@ -298,13 +297,14 @@
       "verseNumber": 22,
       "positionAfterVerse": 21,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1178
-      ]
+      ],
+      "id": "michael-psalm-127-dialogue-001"
     }
   ],
   "noteIds": [
@@ -318,11 +318,18 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "machine-validated",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 30,
-      "prayerDetectedByAdjacency": true
-    }
+      "prayerDetectedByAdjacency": true,
+      "verseCountMatchesExtractionReport": true,
+      "sourcePageRangeMatchesExtractionReport": true,
+      "dialogueRelationsConsistent": true,
+      "noteRelationsConsistent": true,
+      "prayerRelationsConsistent": true
+    },
+    "validatedOn": "2026-09-04",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

@@ -255,7 +255,6 @@
   ],
   "dialogueSegments": [
     {
-      "id": "michael-psalm-120-dialogue-001",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Ô Père Michaël, comment faire pour reconnaître ceux qui ont la vision juste, ceux qui peuvent s’unir, qui peuvent s’assembler au nom de l’intelligence supérieure afin de réaliser une œuvre qui aille dans le sens du Bien commun et qui ne soit pas dans le chaos du monde des hommes ?",
@@ -263,13 +262,14 @@
       "verseNumber": 18,
       "positionAfterVerse": 17,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1143
-      ]
+      ],
+      "id": "michael-psalm-120-dialogue-001"
     }
   ],
   "noteIds": [],
@@ -281,11 +281,18 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "machine-validated",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 26,
-      "prayerDetectedByAdjacency": true
-    }
+      "prayerDetectedByAdjacency": true,
+      "verseCountMatchesExtractionReport": true,
+      "sourcePageRangeMatchesExtractionReport": true,
+      "dialogueRelationsConsistent": true,
+      "noteRelationsConsistent": true,
+      "prayerRelationsConsistent": true
+    },
+    "validatedOn": "2026-09-04",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

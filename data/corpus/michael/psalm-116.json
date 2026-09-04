@@ -256,7 +256,7 @@
     {
       "number": 27,
       "speakerId": "olivier-manitara",
-      "speechRole": "answer",
+      "speechRole": "question",
       "text": "Père Michaël, ta parole nous éclaire et nous donne la vie, mais les hommes sont bien loin de ton enseignement, car aujourd’hui la technologie est partout autour de nous et même en nous. Elle fait partie de nos vies. Comment pouvons-nous faire pour porter sur terre l’alliance avec l’intelligence divine ?",
       "sourcePages": [
         1126
@@ -364,7 +364,6 @@
   ],
   "dialogueSegments": [
     {
-      "id": "michael-psalm-116-dialogue-001",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Père Michaël, qui sont ces êtres électriques qui vivent autour de l’homme jusqu’à animer sa vie ? D’où viennent-ils ? Sont-ils engendrés par l’homme ou viennent-ils d’une intelligence destructrice ?",
@@ -372,16 +371,16 @@
       "verseNumber": 18,
       "positionAfterVerse": 17,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1125
-      ]
+      ],
+      "id": "michael-psalm-116-dialogue-001"
     },
     {
-      "id": "michael-psalm-116-dialogue-002",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Père Michaël, ta parole nous éclaire et nous donne la vie, mais les hommes sont bien loin de ton enseignement, car aujourd’hui la technologie est partout autour de nous et même en nous. Elle fait partie de nos vies. Comment pouvons-nous faire pour porter sur terre l’alliance avec l’intelligence divine ?",
@@ -389,13 +388,14 @@
       "verseNumber": 27,
       "positionAfterVerse": 26,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1126
-      ]
+      ],
+      "id": "michael-psalm-116-dialogue-002"
     }
   ],
   "noteIds": [],
@@ -407,11 +407,18 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "machine-validated",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 38,
-      "prayerDetectedByAdjacency": true
-    }
+      "prayerDetectedByAdjacency": true,
+      "verseCountMatchesExtractionReport": true,
+      "sourcePageRangeMatchesExtractionReport": true,
+      "dialogueRelationsConsistent": true,
+      "noteRelationsConsistent": true,
+      "prayerRelationsConsistent": true
+    },
+    "validatedOn": "2026-09-04",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

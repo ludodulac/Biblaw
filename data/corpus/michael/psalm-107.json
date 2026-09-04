@@ -264,7 +264,6 @@
   ],
   "dialogueSegments": [
     {
-      "id": "michael-psalm-107-dialogue-001",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Père Michaël, comment faire pour reconnaître le vrai ? Comment faire pour démasquer celui qui est caché derrière les apparences pour nous capturer et nous emprisonner dans des faux-semblants ? Comment éveiller en soi la sagesse d’une intelligence supérieure et lui demeurer fidèle ?",
@@ -272,13 +271,14 @@
       "verseNumber": 15,
       "positionAfterVerse": 14,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1078
-      ]
+      ],
+      "id": "michael-psalm-107-dialogue-001"
     }
   ],
   "noteIds": [],
@@ -290,11 +290,18 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "machine-validated",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 27,
-      "prayerDetectedByAdjacency": true
-    }
+      "prayerDetectedByAdjacency": true,
+      "verseCountMatchesExtractionReport": true,
+      "sourcePageRangeMatchesExtractionReport": true,
+      "dialogueRelationsConsistent": true,
+      "noteRelationsConsistent": true,
+      "prayerRelationsConsistent": true
+    },
+    "validatedOn": "2026-09-04",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

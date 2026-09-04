@@ -300,7 +300,6 @@
   ],
   "dialogueSegments": [
     {
-      "id": "michael-psalm-119-dialogue-001",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Ô mon Père Michaël, nous sommes conscients que la vie des hommes n’est pas guidée par un monde supérieur divin. Nous savons que nous sommes gouvernés par des mondes qui n’ont pas la volonté de nous libérer, mais au contraire, de nous asservir. Peux-tu nous dire comment faire pour nous lier puissamment à un monde supérieur afin de connaître le bon génie et l’Ange qui pourront nous guider au sein de la Ronde des Archanges et de la Nation Essénienne ?",
@@ -308,13 +307,14 @@
       "verseNumber": 20,
       "positionAfterVerse": 19,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1138
-      ]
+      ],
+      "id": "michael-psalm-119-dialogue-001"
     }
   ],
   "noteIds": [],
@@ -326,11 +326,18 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "machine-validated",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 31,
-      "prayerDetectedByAdjacency": true
-    }
+      "prayerDetectedByAdjacency": true,
+      "verseCountMatchesExtractionReport": true,
+      "sourcePageRangeMatchesExtractionReport": true,
+      "dialogueRelationsConsistent": true,
+      "noteRelationsConsistent": true,
+      "prayerRelationsConsistent": true
+    },
+    "validatedOn": "2026-09-04",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

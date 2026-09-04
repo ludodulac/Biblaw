@@ -346,7 +346,6 @@
   ],
   "dialogueSegments": [
     {
-      "id": "michael-psalm-115-dialogue-001",
       "speakerId": "olivier-manitara",
       "speechRole": "question",
       "text": "Père Michaël, comment faire pour être réellement ce que l’on est ? Comment construire chaque jour son avenir conformément à la volonté du Père ?",
@@ -354,13 +353,14 @@
       "verseNumber": 24,
       "positionAfterVerse": 23,
       "recognitionBasis": [
-        "address-to-father",
+        "direct-address-to-father-at-verse-start",
         "interrogative-form",
         "editorial-rule-questions-addressed-to-archangel"
       ],
       "sourcePages": [
         1120
-      ]
+      ],
+      "id": "michael-psalm-115-dialogue-001"
     }
   ],
   "noteIds": [],
@@ -372,11 +372,18 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "machine-validated",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 36,
-      "prayerDetectedByAdjacency": true
-    }
+      "prayerDetectedByAdjacency": true,
+      "verseCountMatchesExtractionReport": true,
+      "sourcePageRangeMatchesExtractionReport": true,
+      "dialogueRelationsConsistent": true,
+      "noteRelationsConsistent": true,
+      "prayerRelationsConsistent": true
+    },
+    "validatedOn": "2026-09-04",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }
