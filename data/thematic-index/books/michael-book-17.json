@@ -1,0 +1,48 @@
+{
+  "id": "michael-book-17",
+  "archangel": "michael",
+  "bookNumber": 17,
+  "title": "L’heure du choix",
+  "status": "in-progress",
+  "scope": {
+    "psalms": [105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130],
+    "primaryIndexSource": "psalms",
+    "prayersIndexed": false,
+    "notesUsedAsContext": true,
+    "titlesUsedAsContext": true
+  },
+  "contextAvailability": {
+    "bookTitle": true,
+    "bookIntroductionRecordReferencedByPsalms": "michael-book-17-introduction",
+    "bookIntroductionFileLocated": false,
+    "note": "Le contexte de livre est référencé dans les psaumes mais aucun fichier correspondant n'a encore été localisé dans data/. L'indexation avance avec les sources disponibles."
+  },
+  "processedPsalms": [105],
+  "psalmAnalyses": [
+    {
+      "psalmId": "michael-psalm-105",
+      "number": 105,
+      "title": "Aux infidèles",
+      "printedPages": [1071,1072],
+      "noteIds": ["michael-psalm-105-note-001"],
+      "titleSignals": ["infidélité", "fidélité à la Lumière"],
+      "strongThemes": [
+        "fidelite-et-infidélité",
+        "lumiere",
+        "connaissance-de-soi",
+        "mensonge-et-illusion",
+        "influences-et-mondes-invisibles",
+        "renaissance",
+        "intelligence-superieure",
+        "feu",
+        "culte",
+        "devotion-et-adoration",
+        "perception-et-sens",
+        "non-savoir",
+        "purete-et-verite",
+        "monde-divin",
+        "ame-et-sommeil"
+      ]
+    }
+  ]
+}
