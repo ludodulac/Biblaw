@@ -1,11 +1,19 @@
 {
   "schemaVersion": 1,
-  "status": "passed",
+  "status": "failed",
   "stats": {
-    "books": 10,
-    "psalmAnalyses": 256,
-    "themeRelations": 838
+    "books": 11,
+    "psalmAnalyses": 282,
+    "themeRelations": 916
   },
-  "errors": [],
+  "errors": [
+    {
+      "file": "data/thematic-index/books/book-11.json",
+      "recordId": "book-11-psalm-051",
+      "themeId": "oiseau-poisson-papillon",
+      "type": "invalid-importance",
+      "value": "supporting"
+    }
+  ],
   "warnings": []
 }
