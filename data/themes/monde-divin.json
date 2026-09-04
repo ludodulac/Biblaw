@@ -1,0 +1,62 @@
+{
+  "id": "theme-monde-divin",
+  "recordType": "theme",
+  "label": "Monde divin",
+  "searchTerms": ["monde divin", "mondes supérieurs", "monde supérieur divin", "au-delà de toute forme"],
+  "senses": [
+    {
+      "id": "monde-divin-transcendant",
+      "label": "Le monde divin au-delà des formes",
+      "definition": "Réalité supérieure qui ne peut être réduite aux formes, structures ou mots du monde ordinaire."
+    },
+    {
+      "id": "monde-divin-approche",
+      "label": "Approcher les mondes supérieurs",
+      "definition": "Approche conditionnée par la pureté, la vérité, le non-savoir et la renaissance."
+    }
+  ],
+  "subthemes": [
+    {
+      "id": "transcendance-monde-divin",
+      "label": "Transcendance du monde divin",
+      "summary": "Le monde divin est présenté comme supérieur à toute forme, création, structure et formulation.",
+      "evidenceIds": ["m105-v15"]
+    },
+    {
+      "id": "conditions-approche-mondes-superieurs",
+      "label": "Conditions pour approcher les mondes supérieurs",
+      "summary": "Pureté, vérité, renaissance, respect, dévotion et non-savoir constituent les conditions d’approche.",
+      "evidenceIds": ["m105-v15-v18"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "m105-v15",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [15],
+      "relation": "transcendence",
+      "sourcePages": [1072]
+    },
+    {
+      "id": "m105-v15-v18",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [15, 17, 18],
+      "relation": "conditions-of-approach",
+      "sourcePages": [1072]
+    },
+    {
+      "id": "m105-prayer-001-transcendence",
+      "recordId": "michael-book-17-prayer-001",
+      "sourceType": "prayer",
+      "relation": "michael-described-beyond-form-and-creation",
+      "sourcePages": [1072, 1073]
+    }
+  ],
+  "validation": {
+    "status": "editorially-indexed",
+    "indexedFrom": ["michael-psalm-105", "michael-book-17-prayer-001"],
+    "reviewNotes": "Thème créé à partir des formulations explicites du psaume 105 et de sa prière."
+  }
+}
