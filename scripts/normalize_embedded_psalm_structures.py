@@ -1,0 +1,161 @@
+#!/usr/bin/env python3
+"""Normalize deterministic structures accidentally absorbed into Psalm verses.
+
+Two documentary patterns are handled:
+1. an internal numbered list that resets to 1 and then returns to the next Psalm verse;
+2. a printed prayer marker ("Pr. N.") appended to the final Psalm verse.
+
+The operation is structural only: no semantic/editorial guess is needed.
+"""
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+BOOKS = ROOT / "data/corpus/books"
+PRAYERS = ROOT / "data/prayers"
+
+
+def write_json(path: Path, data: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def infer_list_label(text: str, count: int) -> str:
+    compact = re.sub(r"\s+", " ", text).strip()
+    m = re.search(rf"\b{count}\s+([^:;.]+?)(?:\s*:|$)", compact, flags=re.IGNORECASE)
+    if m:
+        return f"{count} {m.group(1).strip()}"
+    return f"Liste numérotée de {count} éléments"
+
+
+def normalize_numbered_lists(record: dict) -> bool:
+    verses = record.get("verses", [])
+    if not isinstance(verses, list) or len(verses) < 4:
+        return False
+
+    changed = False
+    while True:
+        found = None
+        for start in range(1, len(verses)):
+            previous_number = verses[start - 1].get("number")
+            if not isinstance(previous_number, int) or previous_number < 2:
+                continue
+            if verses[start].get("number") != 1:
+                continue
+
+            expected = 1
+            end = start
+            while end < len(verses) and verses[end].get("number") == expected:
+                expected += 1
+                end += 1
+
+            count = expected - 1
+            if count < 2 or end >= len(verses):
+                continue
+            if verses[end].get("number") != previous_number + 1:
+                continue
+
+            found = (start, end, previous_number, count)
+            break
+
+        if found is None:
+            break
+
+        start, end, after_verse, count = found
+        items = verses[start:end]
+        preceding = verses[start - 1]
+        embedded = {
+            "afterVerse": after_verse,
+            "label": infer_list_label(preceding.get("text", ""), count),
+            "itemCount": count,
+            "items": [
+                {
+                    "number": item.get("number"),
+                    "text": item.get("text", ""),
+                    "sourcePages": item.get("sourcePages", []),
+                }
+                for item in items
+            ],
+            "normalizationBasis": "number-reset-followed-by-main-sequence-resumption",
+        }
+        record.setdefault("embeddedLists", []).append(embedded)
+        verses = verses[:start] + verses[end:]
+        record["verses"] = verses
+        record.setdefault("extraction", {})["embeddedNumberedListNormalized"] = True
+        changed = True
+
+    return changed
+
+
+def normalize_appended_prayer(record: dict) -> bool:
+    verses = record.get("verses", [])
+    if not verses:
+        return False
+
+    final = verses[-1]
+    text = final.get("text", "")
+    match = re.search(r"\s+Pr\.\s*(\d+)\.\s+", text)
+    if not match:
+        return False
+
+    prayer_number = int(match.group(1))
+    psalm_text = text[: match.start()].strip()
+    prayer_text = text[match.end() :].strip()
+    if not psalm_text or not prayer_text:
+        return False
+
+    final["text"] = psalm_text
+    archangel = record.get("archangel")
+    book_no = record.get("book", {}).get("number")
+    psalm_id = record.get("id")
+    if not archangel or not isinstance(book_no, int) or not psalm_id:
+        raise RuntimeError(f"Incomplete Psalm metadata for appended prayer in {psalm_id!r}")
+
+    prayer_id = f"{archangel}-book-{book_no:02d}-prayer-{prayer_number:03d}"
+    pages = sorted({p for p in final.get("sourcePages", []) if isinstance(p, int)})
+    prayer = {
+        "id": prayer_id,
+        "recordType": "master-prayer",
+        "archangel": archangel,
+        "bookNumber": book_no,
+        "number": prayer_number,
+        "speakerId": "olivier-manitara",
+        "text": prayer_text,
+        "source": {
+            "document": record.get("source", {}).get("document"),
+            "printedPages": pages,
+        },
+        "appliesToPsalmId": psalm_id,
+        "attachment": {
+            "basis": "printed-prayer-marker-and-editorial-adjacency",
+            "description": f"Prayer {prayer_number} is printed immediately after {psalm_id} and begins with marker 'Pr. {prayer_number}.'.",
+        },
+        "validation": {"status": "machine-extracted-needs-human-review"},
+    }
+    write_json(PRAYERS / f"{prayer_id}.json", prayer)
+    prayer_ids = record.setdefault("prayerIds", [])
+    if prayer_id not in prayer_ids:
+        prayer_ids.append(prayer_id)
+    record.setdefault("extraction", {})["appendedPrayerNormalized"] = True
+    return True
+
+
+changed_records = 0
+lists_moved = 0
+prayers_split = 0
+for path in sorted(BOOKS.glob("book-*/psalm-*.json")):
+    record = json.loads(path.read_text(encoding="utf-8"))
+    before_lists = len(record.get("embeddedLists", []))
+    changed_list = normalize_numbered_lists(record)
+    after_lists = len(record.get("embeddedLists", []))
+    lists_moved += max(0, after_lists - before_lists)
+    changed_prayer = normalize_appended_prayer(record)
+    prayers_split += int(changed_prayer)
+    if changed_list or changed_prayer:
+        write_json(path, record)
+        changed_records += 1
+
+print(f"Normalized {changed_records} Psalms: {lists_moved} embedded numbered lists, {prayers_split} appended prayers")
