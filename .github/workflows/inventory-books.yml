@@ -1,0 +1,33 @@
+name: Inventory Bible books
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/inventory_books.py'
+      - 'Bible essénienne (classée par livres).pdf'
+
+permissions:
+  contents: write
+
+jobs:
+  inventory:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Inventory books
+        run: python scripts/inventory_books.py
+      - name: Commit inventory
+        run: |
+          if git diff --quiet -- data/pilot/book-inventory.json; then
+            echo 'No inventory changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/pilot/book-inventory.json
+          git commit -m 'Inventory Bible book structure'
+          git push
