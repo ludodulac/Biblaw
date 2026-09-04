@@ -11,7 +11,8 @@
   "source": {
     "document": "Bible essénienne (classée par livres).pdf",
     "pdfPages": [
-      551
+      551,
+      552
     ]
   },
   "verses": [
@@ -112,6 +113,20 @@
       "sourcePages": [
         551
       ]
+    },
+    {
+      "number": 15,
+      "text": "Je suis heureux et satisfait de ce travail et sache, ô mon fils, que la Mère est fière de toi et heureuse du travail accompli.",
+      "sourcePages": [
+        552
+      ]
+    },
+    {
+      "number": 16,
+      "text": "Grandissez et portez fièrement le nom d’Essénien sur la terre pour le bien de tous les êtres.",
+      "sourcePages": [
+        552
+      ]
     }
   ],
   "noteIds": [
@@ -119,12 +134,13 @@
     "book-09-psalm-074-note-002"
   ],
   "extraction": {
-    "headingBasis": "numbered-line"
+    "headingBasis": "numbered-line",
+    "resumedVerseAfterFootnoteNormalized": true
   },
   "validation": {
     "status": "machine-extracted-needs-review",
     "checks": {
-      "verseCount": 14,
+      "verseCount": 16,
       "verseSequenceStartsAtOne": true
     }
   }

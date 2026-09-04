@@ -11,7 +11,8 @@
   "source": {
     "document": "Bible essénienne (classée par livres).pdf",
     "pdfPages": [
-      268
+      268,
+      269
     ]
   },
   "verses": [
@@ -91,6 +92,13 @@
       "sourcePages": [
         268
       ]
+    },
+    {
+      "number": 12,
+      "text": "Rappelle-toi : aie un objectif, une raison de vivre plus grande que toi. Si tu engages tout ton être, toutes les forces, tout ce qui t’a été donné pour la réalisation de ce but, tu découvriras le sens de la vie. C’est le chemin de l’immortalité. Dirige et engage tout ton être vers cela.",
+      "sourcePages": [
+        269
+      ]
     }
   ],
   "noteIds": [
@@ -98,12 +106,13 @@
   ],
   "extraction": {
     "headingBasis": "numbered-line",
+    "resumedVerseAfterFootnoteNormalized": true,
     "wrappedTitleNormalized": true
   },
   "validation": {
     "status": "machine-extracted-needs-review",
     "checks": {
-      "verseCount": 11,
+      "verseCount": 12,
       "verseSequenceStartsAtOne": true
     }
   }

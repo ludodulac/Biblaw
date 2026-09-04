@@ -11,7 +11,8 @@
   "source": {
     "document": "Bible essénienne (classée par livres).pdf",
     "pdfPages": [
-      384
+      384,
+      385
     ]
   },
   "verses": [
@@ -84,6 +85,13 @@
       "sourcePages": [
         384
       ]
+    },
+    {
+      "number": 11,
+      "text": "Que chacune de tes paroles, de tes réalisations, chacun de tes actes soit l’enfantement de la Lumière à travers un corps de plus en plus spiritualisé, stable et concret dans la vérité.",
+      "sourcePages": [
+        385
+      ]
     }
   ],
   "noteIds": [
@@ -91,12 +99,13 @@
   ],
   "extraction": {
     "headingBasis": "numbered-line",
+    "resumedVerseAfterFootnoteNormalized": true,
     "wrappedTitleNormalized": true
   },
   "validation": {
     "status": "machine-extracted-needs-review",
     "checks": {
-      "verseCount": 10,
+      "verseCount": 11,
       "verseSequenceStartsAtOne": true
     }
   }
