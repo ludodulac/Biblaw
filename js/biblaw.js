@@ -1,16 +1,5 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const paths = [
-    'data/corpus/michael/psalm-026.json', 'data/corpus/michael/psalm-105.json',
-    'data/corpus/gabriel/psalm-112.json', 'data/corpus/gabriel/psalm-182.json',
-    'data/corpus/raphael/psalm-104.json', 'data/corpus/ouriel/psalm-105.json',
-    'data/prayers/michael-book-17-prayer-001.json', 'data/prayers/gabriel-book-18-prayer-001.json',
-    'data/prayers/gabriel-book-26-prayer-066.json', 'data/prayers/raphael-book-19-prayer-003.json',
-    'data/prayers/ouriel-book-20-prayer-002.json', 'data/notes/michael-psalm-143-note-002.json',
-    'data/notes/michael-psalm-105-note-001.json', 'data/notes/gabriel-psalm-112-note-001.json',
-    'data/notes/gabriel-psalm-182-note-001.json', 'data/notes/raphael-psalm-104-note-001.json',
-    'data/themes/chouette.json'
-  ];
   const state = { mode: 'themes', records: [], theme: null, sense: '', active: null };
   const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[’']/g, ' ').replace(/[^a-z0-9\s-]/g, ' ').replace(/\s+/g, ' ').trim();
   const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
@@ -21,7 +10,8 @@
 
   async function load() {
     try {
-      const loaded = await Promise.all(paths.map(path => fetch(path).then(r => { if (!r.ok) throw Error(path); return r.json(); })));
+      const catalog = await fetch('data/catalog.json').then(r => { if (!r.ok) throw Error('catalog'); return r.json(); });
+      const loaded = await Promise.all(catalog.records.map(path => fetch(path).then(r => { if (!r.ok) throw Error(path); return r.json(); })));
       state.theme = loaded.find(r => r.id === 'theme-chouette'); state.records = loaded.filter(r => r.recordType);
       const prayers = new Map(state.records.filter(r => r.recordType === 'master-prayer').map(r => [r.appliesToPsalmId, r]));
       state.records.filter(r => r.recordType === 'psalm').forEach(r => { if (prayers.has(r.id)) r.attachedPrayer = prayers.get(r.id); });

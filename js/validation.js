@@ -1,12 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id), pdf = 'Bible%20ess%C3%A9nienne%20(class%C3%A9e%20par%20livres).pdf';
-  const configs = [
-    ['michael-psalm-105', 'data/corpus/michael/psalm-105.json', 'data/prayers/michael-book-17-prayer-001.json', 'data/notes/michael-psalm-105-note-001.json'],
-    ['gabriel-psalm-112', 'data/corpus/gabriel/psalm-112.json', 'data/prayers/gabriel-book-18-prayer-001.json', 'data/notes/gabriel-psalm-112-note-001.json'],
-    ['raphael-psalm-104', 'data/corpus/raphael/psalm-104.json', 'data/prayers/raphael-book-19-prayer-003.json', 'data/notes/raphael-psalm-104-note-001.json'],
-    ['ouriel-psalm-105', 'data/corpus/ouriel/psalm-105.json', 'data/prayers/ouriel-book-20-prayer-002.json'],
-    ['gabriel-psalm-182', 'data/corpus/gabriel/psalm-182.json', 'data/prayers/gabriel-book-26-prayer-066.json', 'data/notes/gabriel-psalm-182-note-001.json']
-  ];
+  const representativePilots = new Set(['gabriel-psalm-112', 'raphael-psalm-104', 'ouriel-psalm-105', 'gabriel-psalm-182']);
   const state = { records: new Map(), active: null };
   const checks = [['sequence', 'Tous les numéros de versets sont présents et dans le bon ordre.'], ['speakers', 'Les paroles de l’Archange et les questions d’Olivier sont bien distinguées.'], ['prayer', 'La prière est bien celle placée immédiatement après ce psaume.'], ['notes', 'Les appels de notes et leur rattachement au verset sont exacts.'], ['source', 'Les pages, le livre, le titre et les dates éventuelles concordent avec le PDF.']];
   const esc = v => String(v || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
@@ -14,12 +8,15 @@
   const key = suffix => `biblaw-review:${state.active.psalm.id}:${suffix}`;
 
   async function load() {
-    for (const [id, ...paths] of configs) {
-      const docs = await Promise.all(paths.map(path => fetch(path).then(r => { if (!r.ok) throw Error(path); return r.json(); })));
-      state.records.set(id, { psalm: docs[0], prayer: docs.find(x => x.recordType === 'master-prayer'), notes: docs.filter(x => x.recordType === 'note') });
-    }
+    const catalog = await fetch('data/catalog.json').then(r => { if (!r.ok) throw Error('catalog'); return r.json(); });
+    const docs = await Promise.all(catalog.records.map(path => fetch(path).then(r => { if (!r.ok) throw Error(path); return r.json(); })));
+    const prayers = new Map(docs.filter(x => x.recordType === 'master-prayer').map(x => [x.appliesToPsalmId, x]));
+    const notes = docs.filter(x => x.recordType === 'note');
+    docs.filter(x => x.recordType === 'psalm' && ((x.archangel === 'michael' && x.book?.number === 17) || representativePilots.has(x.id))).sort((a, b) => a.book.number - b.book.number || a.number - b.number).forEach(psalm => {
+      state.records.set(psalm.id, { psalm, prayer: prayers.get(psalm.id), notes: notes.filter(note => note.appliesTo?.recordId === psalm.id) });
+    });
     $('recordSelect').innerHTML = [...state.records.values()].map(({ psalm }) => `<option value="${psalm.id}">${angel(psalm.archangel)} · Psaume ${psalm.number} — ${esc(psalm.title)}</option>`).join('');
-    $('recordSelect').onchange = () => render($('recordSelect').value); $('saveReview').onclick = saveReview; $('copyReview').onclick = copyReview; render(configs[0][0]);
+    $('recordSelect').onchange = () => render($('recordSelect').value); $('saveReview').onclick = saveReview; $('copyReview').onclick = copyReview; render('michael-psalm-105');
   }
   function render(id) {
     state.active = state.records.get(id); const { psalm, prayer, notes } = state.active, pages = psalm.source.printedPages;
