@@ -10,6 +10,7 @@ on:
       - 'scripts/build_thematic_directory.py'
       - '.github/workflows/validate-thematic-index.yml'
 
+# Every editorial book commit must pass this normalization/validation chain.
 permissions:
   contents: write
 
