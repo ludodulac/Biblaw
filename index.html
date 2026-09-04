@@ -1,78 +1,8 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Biblaw — Espace PDF</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="./" aria-label="Accueil Biblaw">Biblaw</a>
-    <span class="privacy">Traitement local · aucun envoi</span>
-  </header>
-
-  <main>
-    <section id="emptyState" class="empty-state">
-      <div class="intro">
-        <p class="eyebrow">Espace de travail documentaire</p>
-        <h1>Ajoutez le PDF sur lequel travailler</h1>
-        <p class="lede">Consultez le document et récupérez son texte, directement dans votre navigateur.</p>
-      </div>
-
-      <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-controls="pdfInput">
-        <div class="file-icon" aria-hidden="true">PDF</div>
-        <strong>Déposez votre PDF ici</strong>
-        <span>ou</span>
-        <label class="button" for="pdfInput">Choisir un fichier</label>
-        <input id="pdfInput" type="file" accept="application/pdf,.pdf" hidden>
-        <small>PDF uniquement · 50 Mo maximum</small>
-      </div>
-      <p id="errorMessage" class="error" role="alert" hidden></p>
-    </section>
-
-    <section id="workspace" class="workspace" hidden>
-      <div class="document-bar">
-        <div class="file-summary">
-          <strong id="fileName"></strong>
-          <span id="fileDetails"></span>
-        </div>
-        <button id="changeFile" class="button button-secondary" type="button">Changer de PDF</button>
-      </div>
-
-      <div class="panels">
-        <section class="panel viewer-panel" aria-label="Aperçu du PDF">
-          <div class="panel-head">
-            <h2>Document</h2>
-            <div class="pager">
-              <button id="prevPage" type="button" aria-label="Page précédente">←</button>
-              <span>Page <input id="pageNumber" type="number" min="1" value="1" aria-label="Numéro de page"> / <span id="pageCount">—</span></span>
-              <button id="nextPage" type="button" aria-label="Page suivante">→</button>
-            </div>
-          </div>
-          <div id="canvasWrap" class="canvas-wrap">
-            <canvas id="pdfCanvas"></canvas>
-          </div>
-        </section>
-
-        <section class="panel text-panel" aria-label="Texte extrait">
-          <div class="panel-head">
-            <div>
-              <h2>Texte extrait</h2>
-              <p id="textStatus">Préparation…</p>
-            </div>
-            <div class="actions">
-              <button id="copyText" type="button" disabled>Copier</button>
-              <button id="downloadText" type="button" disabled>Télécharger</button>
-            </div>
-          </div>
-          <textarea id="extractedText" readonly placeholder="Le texte du PDF apparaîtra ici."></textarea>
-        </section>
-      </div>
-    </section>
-  </main>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0f13"><title>Biblaw — Recherche dans les psaumes</title><meta name="description" content="Recherche hors ligne dans les psaumes, versets, prières et notes de la Bible essénienne."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/biblaw.css"></head><body>
+<header class="site-header"><a class="wordmark" href="index.html"><span class="wordmark-mark">B</span><span>Biblaw</span></a><nav class="site-actions"><button id="themesToggle" class="secondary" aria-expanded="false">Répertoire des thèmes</button><a class="quiet-link" href="reader.html">Lecteur PDF</a></nav></header>
+<main class="shell"><section class="intro"><div class="kicker">Corpus documentaire · pilote</div><h1>Retrouver une parole</h1><p>Explorez les psaumes, versets, prières et notes par terme, expression ou thème. La recherche utilise uniquement l’index préparé dans Biblaw.</p><div id="corpusStats" class="stats">Chargement du corpus…</div></section>
+<section class="search-panel"><div class="mode"><button class="mode-button active" id="modeThemes">Thèmes</button><button class="mode-button" id="modeExact">Mots et phrases</button></div><p id="modeHelp" class="help">Retrouve les sens, sous-thèmes et passages déjà reliés éditorialement.</p><label class="label" for="query">Que cherchez-vous ?</label><div class="search-field"><span>⌕</span><input id="query" type="search" value="chouette" autocomplete="off"></div><div class="filters"><fieldset><legend>Types de texte</legend><label><input type="checkbox" name="sourceType" value="psalm" checked> Psaumes</label><label><input type="checkbox" name="sourceType" value="prayer" checked> Prières</label><label><input type="checkbox" name="sourceType" value="note" checked> Notes</label><label><input type="checkbox" name="sourceType" value="annex" checked> Annexes</label></fieldset><div><label class="label" for="archangelFilter">Archange</label><select class="input" id="archangelFilter"><option value="">Tous</option><option value="michael">Michaël</option><option value="gabriel">Gabriel</option><option value="raphael">Raphaël</option><option value="ouriel">Ouriel</option></select></div></div><button id="searchButton" class="primary">Rechercher</button></section>
+<section id="ambiguityPanel" class="panel" hidden><div class="panel-heading"><div><div class="kicker">Préciser le sens</div><h2>Que signifie « chouette » ici ?</h2></div><button id="closeAmbiguity" class="secondary">Tout afficher</button></div><div id="senseChoices" class="sense-grid"></div></section>
+<section id="themesPanel" class="panel" hidden><div class="panel-heading"><div><h2>Répertoire des thèmes</h2><p>Les thèmes sont enrichis et validés progressivement.</p></div><button id="closeThemes" class="secondary">Fermer</button></div><div id="themeDirectory" class="theme-directory"></div></section>
+<section class="results-section"><div class="results-heading"><h2>Résultats</h2><span id="resultCount" class="muted"></span></div><div id="results" class="results"><div class="empty">Préparation des résultats…</div></div></section></main>
+<dialog id="recordDialog" class="record-dialog"><div class="dialog-head"><div><div id="dialogEyebrow" class="kicker"></div><h2 id="dialogTitle"></h2></div><button id="closeDialog" class="icon-button" aria-label="Fermer">×</button></div><div id="dialogContent" class="dialog-content"></div><div class="dialog-actions"><button id="printRecord" class="secondary">Imprimer</button><button id="downloadRecord" class="primary">Télécharger le texte</button></div></dialog><script src="js/biblaw.js"></script></body></html>
