@@ -214,11 +214,20 @@
   ],
   "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review",
+    "status": "validated",
+    "validatedOn": "2026-09-04",
     "checks": {
       "verseSequenceComplete": true,
       "verseCount": 19,
-      "speakerBoundarySupportedByEditorialNote": true
+      "speakerBoundarySupportedByEditorialNote": true,
+      "speakerAttribution": true,
+      "prayerAdjacency": true,
+      "noteAttachment": true,
+      "sourceMetadata": true
+    },
+    "review": {
+      "note": "Les questions imprimées comme versets, notamment le verset 9, doivent rester des versets. Les questions non numérotées doivent néanmoins être reconnues comme des questions adressées à l’Archange ; des formulations comme « Ô Père… » ou « Père… » constituent des indices, à confirmer par le contexte et la mise en page.",
+      "editorialRuleId": "questions-addressed-to-archangel"
     }
   }
 }
