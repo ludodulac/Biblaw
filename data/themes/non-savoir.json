@@ -1,0 +1,50 @@
+{
+  "id": "theme-non-savoir",
+  "recordType": "theme",
+  "label": "Non-savoir",
+  "searchTerms": ["non-savoir", "ne pas savoir", "accepter de ne pas savoir", "ignorance consciente"],
+  "senses": [
+    {
+      "id": "non-savoir-humilite",
+      "label": "Le non-savoir comme humilité",
+      "definition": "Reconnaître que l’on ne sait pas afin de devenir disponible à une réalité supérieure."
+    }
+  ],
+  "subthemes": [
+    {
+      "id": "reconnaitre-egarement",
+      "label": "Reconnaître son égarement",
+      "summary": "Savoir que l’on est perdu devient la première impulsion d’une recherche authentique.",
+      "evidenceIds": ["m105-v12-v14"]
+    },
+    {
+      "id": "non-savoir-et-receptivite",
+      "label": "Non-savoir et réceptivité",
+      "summary": "Le non-savoir vide l’être de ses certitudes afin qu’il puisse recevoir ce qui vient d’un monde supérieur.",
+      "evidenceIds": ["m105-v17-v18"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "m105-v12-v14",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [12, 13, 14],
+      "relation": "acknowledging-lost-state",
+      "sourcePages": [1072]
+    },
+    {
+      "id": "m105-v17-v18",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [17, 18],
+      "relation": "emptiness-and-receptivity",
+      "sourcePages": [1072]
+    }
+  ],
+  "validation": {
+    "status": "editorially-indexed",
+    "indexedFrom": ["michael-psalm-105"],
+    "reviewNotes": "Le thème est explicitement formulé au verset 17 et préparé par les versets 12 à 14."
+  }
+}
