@@ -41,6 +41,24 @@
     "prayerIds": { "type": "array", "items": { "type": "string" } },
     "contextIds": { "type": "array", "items": { "type": "string" } },
     "temporalMentions": { "type": "array" },
+    "dialogueSegments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "speakerId", "speechRole", "text", "numbering"],
+        "properties": {
+          "id": { "type": "string" },
+          "speakerId": { "type": "string" },
+          "speechRole": { "enum": ["question", "answer", "teaching", "editorial-cue"] },
+          "text": { "type": "string" },
+          "numbering": { "enum": ["numbered-verse", "unnumbered-interlude"] },
+          "verseNumber": { "type": ["integer", "null"] },
+          "positionAfterVerse": { "type": ["integer", "null"] },
+          "editorialCue": { "type": ["string", "null"] },
+          "sourcePages": { "type": "array", "items": { "type": "integer" } }
+        }
+      }
+    },
     "conceptIds": { "type": "array", "items": { "type": "string" } },
     "validation": { "type": "object" }
   }
