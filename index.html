@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biblaw — Espace PDF</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Accueil Biblaw">Biblaw</a>
+    <span class="privacy">Traitement local · aucun envoi</span>
+  </header>
+
+  <main>
+    <section id="emptyState" class="empty-state">
+      <div class="intro">
+        <p class="eyebrow">Espace de travail documentaire</p>
+        <h1>Ajoutez le PDF sur lequel travailler</h1>
+        <p class="lede">Consultez le document et récupérez son texte, directement dans votre navigateur.</p>
+      </div>
+
+      <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-controls="pdfInput">
+        <div class="file-icon" aria-hidden="true">PDF</div>
+        <strong>Déposez votre PDF ici</strong>
+        <span>ou</span>
+        <label class="button" for="pdfInput">Choisir un fichier</label>
+        <input id="pdfInput" type="file" accept="application/pdf,.pdf" hidden>
+        <small>PDF uniquement · 50 Mo maximum</small>
+      </div>
+      <p id="errorMessage" class="error" role="alert" hidden></p>
+    </section>
+
+    <section id="workspace" class="workspace" hidden>
+      <div class="document-bar">
+        <div class="file-summary">
+          <strong id="fileName"></strong>
+          <span id="fileDetails"></span>
+        </div>
+        <button id="changeFile" class="button button-secondary" type="button">Changer de PDF</button>
+      </div>
+
+      <div class="panels">
+        <section class="panel viewer-panel" aria-label="Aperçu du PDF">
+          <div class="panel-head">
+            <h2>Document</h2>
+            <div class="pager">
+              <button id="prevPage" type="button" aria-label="Page précédente">←</button>
+              <span>Page <input id="pageNumber" type="number" min="1" value="1" aria-label="Numéro de page"> / <span id="pageCount">—</span></span>
+              <button id="nextPage" type="button" aria-label="Page suivante">→</button>
+            </div>
+          </div>
+          <div id="canvasWrap" class="canvas-wrap">
+            <canvas id="pdfCanvas"></canvas>
+          </div>
+        </section>
+
+        <section class="panel text-panel" aria-label="Texte extrait">
+          <div class="panel-head">
+            <div>
+              <h2>Texte extrait</h2>
+              <p id="textStatus">Préparation…</p>
+            </div>
+            <div class="actions">
+              <button id="copyText" type="button" disabled>Copier</button>
+              <button id="downloadText" type="button" disabled>Télécharger</button>
+            </div>
+          </div>
+          <textarea id="extractedText" readonly placeholder="Le texte du PDF apparaîtra ici."></textarea>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha512-B7J/5Qf2XQ+ZQ2XkX7iPv/8iS9PvyMZIE4XV8uRrX4XDJVST2VyBXPvsFtsgc7D8+1ca3HQ4P5O7r5gXnnCN8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="app.js"></script>
+</body>
+</html>
