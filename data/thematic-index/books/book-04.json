@@ -1,136 +1,1440 @@
 {
   "schemaVersion": 2,
-  "book": {"number": 4, "title": "Vous êtes l’espoir d’un monde", "archangel": "ouriel"},
-  "method": {"status":"editorially-indexed","source":"validated-psalm-corpus","titlesUsedAsContext":true,"notesUsedAsContext":true,"prayersIndexed":false,"rule":"Index meaningful teachings, beings, symbols, elements, practices and concepts; do not build a word list."},
+  "book": {
+    "number": 4,
+    "title": "Vous êtes l’espoir d’un monde",
+    "archangel": "ouriel"
+  },
+  "method": {
+    "status": "editorially-indexed",
+    "source": "validated-psalm-corpus",
+    "titlesUsedAsContext": true,
+    "notesUsedAsContext": true,
+    "prayersIndexed": false,
+    "rule": "Index meaningful teachings, beings, symbols, elements, practices and concepts; do not build a word list."
+  },
   "bookSynthesis": {
     "centralAxis": "Ouriel enseigne à rendre la Lumière concrète : stabiliser la vie terrestre, connaître sa destinée intérieure, persévérer, conduire chaque œuvre vers la perfection, unir hauteur spirituelle et réalisation quotidienne, vivre en harmonie avec la nature et préserver un espace intérieur vrai où le monde divin peut agir.",
-    "majorThemes": ["stabilite","realisation","perseverance","perfection","vie-interieure","destinee","ame","nature","regnes","montagne","arbre","animal","silence","verite","mensonge","alliance","travail","corps","esprit-et-matiere","jardin-interieur","esperance","responsabilite","activite-creatrice"]
+    "majorThemes": [
+      "stabilite",
+      "realisation",
+      "perseverance",
+      "perfection",
+      "vie-interieure",
+      "destinee",
+      "ame",
+      "nature",
+      "regnes",
+      "montagne",
+      "arbre",
+      "animal",
+      "silence",
+      "verite",
+      "mensonge",
+      "alliance",
+      "travail",
+      "corps",
+      "esprit-et-matiere",
+      "jardin-interieur",
+      "esperance",
+      "responsabilite",
+      "activite-creatrice"
+    ]
   },
   "psalmAnalyses": [
-    {"recordId":"book-04-psalm-001","number":1,"title":"Découvre ta propre histoire","titleSignals":["histoire","Père","Mère"],"themes":[
-      {"themeId":"connaissance-directe","label":"Connaissance directe","importance":"central","directness":"direct","verseNumbers":[2,4],"teaching":"L'homme ne doit pas répéter une histoire reçue mais connaître par lui-même sa relation au Père, à la Mère et au monde."},
-      {"themeId":"pere-et-mere","label":"Père et Mère","importance":"central","directness":"direct","verseNumbers":[1,4],"teaching":"Père et Mère sont les deux principes fondamentaux que l'homme doit reconnaître dans sa propre expérience."},
-      {"themeId":"clarte","label":"Clarté","importance":"important","directness":"direct","verseNumbers":[1,3],"teaching":"La clarté est une vision reliée à l'alliance solaire et permet de voir sa propre histoire sans simple répétition."}
-    ]},
-    {"recordId":"book-04-psalm-002","number":2,"title":"Sois léger pour parvenir au but de ta vie","titleSignals":["légèreté","but"],"themes":[
-      {"themeId":"legerete","label":"Légèreté","importance":"central","directness":"direct","verseNumbers":[2,3,4,5,6],"teaching":"La légèreté n'est pas fuite de la difficulté mais souplesse permettant de traverser les épreuves sans perdre son but."},
-      {"themeId":"but-de-la-vie","label":"But de la vie","importance":"central","directness":"direct","verseNumbers":[3,4,5,6],"teaching":"La légèreté sert une cause plus grande et aide l'homme à rester orienté vers son objectif profond."}
-    ]},
-    {"recordId":"book-04-psalm-003","number":3,"title":"Ange ou animal?","titleSignals":["Ange","animal","homme"],"themes":[
-      {"themeId":"ange-et-animal","label":"Ange et animal","importance":"central","directness":"direct","verseNumbers":[1,2,3,4],"teaching":"L'homme se tient entre le monde animal et le monde angélique et doit savoir quelle intelligence habite et dirige son comportement."},
-      {"themeId":"animal","label":"Animal","importance":"important","directness":"direct","verseNumbers":[1,2,4],"teaching":"L'animal désigne ici la force instinctive, conditionnée et impulsive qui peut habiter l'homme."},
-      {"themeId":"anges","label":"Anges","importance":"important","directness":"direct","verseNumbers":[1,3,4,5],"teaching":"La présence angélique se reconnaît à la clarté de la pensée, à la lumière du regard et à une parole douce, guérissante et authentique."}
-    ]},
-    {"recordId":"book-04-psalm-004","number":4,"title":"Trouve la quintessence des choses","titleSignals":["quintessence","essentiel"],"themes":[
-      {"themeId":"quintessence","label":"Quintessence","importance":"central","directness":"direct","verseNumbers":[2,3,4,5,7],"teaching":"L'homme doit aller au noyau vivant de la magie, de la sagesse et de l'amour et les mettre en pratique plutôt que les connaître superficiellement."},
-      {"themeId":"essentiel","label":"Essentiel","importance":"central","directness":"direct","verseNumbers":[2,7],"teaching":"La vie intérieure doit chercher ce qui est concentré, essentiel et réellement vivant dans une chose."},
-      {"themeId":"sagesse","label":"Sagesse","importance":"important","directness":"direct","verseNumbers":[4,7],"teaching":"La sagesse n'est pas seulement un savoir appris mais un état d'être vécu intérieurement."}
-    ]},
-    {"recordId":"book-04-psalm-005","number":5,"title":"L’endroit magique en toi","titleSignals":["espace sacré","âme","pierre précieuse"],"themes":[
-      {"themeId":"ame","label":"Âme","importance":"central","directness":"direct","verseNumbers":[1,3,7,8,9],"teaching":"L'âme est comparée à une pierre précieuse unique qu'il faut dégager de l'éphémère pour agir en conformité avec sa nature."},
-      {"themeId":"pierre-precieuse","label":"Pierre précieuse","importance":"central","directness":"symbolic","verseNumbers":[1,7,8,11],"teaching":"La pierre précieuse figure l'identité singulière de l'âme portant une vertu universelle."},
-      {"themeId":"espace-sacre","label":"Espace sacré","importance":"central","directness":"direct","verseNumbers":[8,10,11,12,13],"teaching":"Une terre ou un espace intérieur stable doit être construit pour permettre à l'âme et au monde divin de s'exprimer sans être repris par l'éphémère."}
-    ]},
-    {"recordId":"book-04-psalm-006","number":6,"title":"Comme une rivière qui coule sur la terre","titleSignals":["rivière","eau","transformation"],"themes":[
-      {"themeId":"riviere","label":"Rivière","importance":"central","directness":"symbolic","verseNumbers":[1,2,5,6],"teaching":"La rivière représente la Lumière qui transforme la terre de l'homme, parfois au prix d'un inconfort nécessaire."},
-      {"themeId":"eau","label":"Eau","importance":"central","directness":"symbolic","verseNumbers":[1,2,5,6],"teaching":"L'eau doit circuler pour emporter les résidus et féconder la vie; la stagnation permet aux impuretés de s'accumuler."},
-      {"themeId":"transformation","label":"Transformation","importance":"important","directness":"direct","verseNumbers":[3,5,6],"teaching":"Accueillir de nouvelles visions demande d'accepter que la Lumière modifie les anciennes stabilités."}
-    ]},
-    {"recordId":"book-04-psalm-007","number":7,"title":"Deviens nourriture et réconfort pour les anges","titleSignals":["nourriture","Anges","règnes"],"themes":[
-      {"themeId":"regnes","label":"Règnes","importance":"central","directness":"direct","verseNumbers":[1,2,3,4,5],"teaching":"L'homme évolue avec tous les règnes et doit les associer à son élévation au lieu de s'en séparer."},
-      {"themeId":"anges","label":"Anges","importance":"central","directness":"direct","verseNumbers":[4,5,6],"teaching":"Les vertus humaines peuvent devenir nourriture et réconfort pour les Anges comme les fruits des règnes nourrissent l'homme."},
-      {"themeId":"gratitude","label":"Gratitude","importance":"important","directness":"direct","verseNumbers":[4,6],"teaching":"La gratitude véritable s'exprime par une offrande vivante de vertus et non par de simples paroles."}
-    ]},
-    {"recordId":"book-04-psalm-008","number":8,"title":"Une clé pour se libérer de la souffrance","titleSignals":["souffrance","cause","libération"],"themes":[
-      {"themeId":"souffrance","label":"Souffrance","importance":"central","directness":"direct","verseNumbers":[1,2,3,4,7],"teaching":"La souffrance doit être comprise depuis sa cause intérieure plutôt qu'adoptée à travers les modèles collectifs du monde."},
-      {"themeId":"cause-et-consequence","label":"Cause et conséquence","importance":"central","directness":"direct","verseNumbers":[2,4,7],"teaching":"Comprendre la cause d'un événement permet d'agir pour qu'il ne se reproduise pas et évite l'accumulation de conséquences futures."},
-      {"themeId":"vie-interieure","label":"Vie intérieure","importance":"important","directness":"direct","verseNumbers":[2,6],"teaching":"C'est l'être intérieur qui doit modeler le corps et donner le sens juste à l'expérience."}
-    ]},
-    {"recordId":"book-04-psalm-009","number":9,"title":"Les contradictions des hommes","titleSignals":["centres","cohérence","âme"],"themes":[
-      {"themeId":"sens-et-centres","label":"Sens et centres","importance":"central","directness":"direct","verseNumbers":[1,2,3,4,5,6],"teaching":"Yeux, bouche, oreilles, respiration et goût reflètent des dimensions précises de l'âme et de la vie intérieure."},
-      {"themeId":"coherence","label":"Cohérence","importance":"central","directness":"direct","verseNumbers":[6,8],"teaching":"L'homme doit aligner ses centres, ses choix et ses actes avec ce qu'il dit vouloir profondément."},
-      {"themeId":"instant-present","label":"Instant présent","importance":"important","directness":"direct","verseNumbers":[5,8],"teaching":"Le goût est associé à la capacité de vivre consciemment l'instant présent et d'agir selon ce que l'on croit réellement."}
-    ]},
-    {"recordId":"book-04-psalm-010","number":10,"title":"La voie de l’arbre fruitier","titleSignals":["arbre","racines","fruits"],"themes":[
-      {"themeId":"arbre","label":"Arbre","importance":"central","directness":"symbolic","verseNumbers":[1,2,3,4,5],"teaching":"L'arbre enseigne à tenir ensemble racines, tronc et sommet, profondeur terrestre et capacité de porter des fruits."},
-      {"themeId":"fruit","label":"Fruit","importance":"central","directness":"symbolic","verseNumbers":[3,4],"teaching":"L'homme doit devenir un fruit vivant et attirant avant de vouloir imposer une forme particulière de réalisation."},
-      {"themeId":"generations","label":"Générations","importance":"important","directness":"direct","verseNumbers":[3],"teaching":"Les branches et fruits de l'homme portent des semences destinées aux générations futures."}
-    ]},
-    {"recordId":"book-04-psalm-011","number":11,"title":"Vous êtes l’espoir d’un monde","titleSignals":["espoir","authenticité","engagement"],"themes":[
-      {"themeId":"esperance","label":"Espérance","importance":"central","directness":"direct","verseNumbers":[1,2,5,7],"teaching":"Des êtres conscients peuvent devenir des repères et des lumières pour un monde qui a perdu le sens et les modèles."},
-      {"themeId":"authenticite","label":"Authenticité","importance":"central","directness":"direct","verseNumbers":[3,4,5],"teaching":"L'espoir n'est crédible que si l'homme est vrai, sincère et ne prétend pas être ce qu'il n'est pas."},
-      {"themeId":"engagement","label":"Engagement","importance":"important","directness":"direct","verseNumbers":[6,7],"teaching":"L'homme doit affirmer son choix de vie sans timidité et montrer concrètement une autre possibilité."}
-    ]},
-    {"recordId":"book-04-psalm-012","number":12,"title":"L’huile d’Ouriel et la nouvelle alliance","titleSignals":["huile","alliance","Ronde des Archanges"],"notesUsed":["book-04-psalm-012-note-001","book-04-psalm-012-note-002","book-04-psalm-012-note-003"],"themes":[
-      {"themeId":"huile-douriel","label":"Huile d’Ouriel","importance":"central","directness":"direct","verseNumbers":[4],"teaching":"L'huile ayant alimenté la flamme du temple sert de support concret pour rappeler et réactiver les forces travaillées durant la célébration."},
-      {"themeId":"alliance","label":"Alliance","importance":"central","directness":"direct","verseNumbers":[4,5,6,7,8],"teaching":"L'alliance entre monde divin et monde humain doit être entretenue quotidiennement et incarnée dans des supports, pensées et œuvres."},
-      {"themeId":"ronde-des-archanges","label":"Ronde des Archanges","importance":"important","directness":"editorial","verseNumbers":[6,7],"teaching":"La note éditoriale situe cette célébration comme clôture du premier cycle de quatre célébrations devenu la Ronde des Archanges."}
-    ]},
-    {"recordId":"book-04-psalm-013","number":13,"title":"Le secret de la plénitude est dans la persévérance","titleSignals":["persévérance","plénitude"],"themes":[
-      {"themeId":"perseverance","label":"Persévérance","importance":"central","directness":"direct","verseNumbers":[2,3,4,5,6,9,10],"teaching":"La plénitude naît de la capacité à mener les aspirations et œuvres jusqu'à leur réalisation concrète."},
-      {"themeId":"plenitude","label":"Plénitude","importance":"central","directness":"direct","verseNumbers":[1,2,5,6,7,9,10],"teaching":"La vie devient pleine lorsque l'homme accomplit ce qu'il porte profondément plutôt que de rester dans le souhait passif."},
-      {"themeId":"realisation","label":"Réalisation","importance":"important","directness":"direct","verseNumbers":[3,4,5,6,9,10],"teaching":"Commencer par de petites réalisations achevées donne progressivement force et capacité pour des objectifs plus vastes."}
-    ]},
-    {"recordId":"book-04-psalm-014","number":14,"title":"Fais de ta vie quotidienne une œuvre d’art","titleSignals":["vie quotidienne","œuvre","hauteurs et profondeurs"],"themes":[
-      {"themeId":"vie-quotidienne","label":"Vie quotidienne","importance":"central","directness":"direct","verseNumbers":[2,3,4,5,8,9,10,12,13,16],"teaching":"La vie quotidienne est le lieu où l'inspiration supérieure doit devenir comportement, corps et œuvre concrète."},
-      {"themeId":"hauteurs-et-profondeurs","label":"Hauteurs et profondeurs","importance":"central","directness":"symbolic","verseNumbers":[1,2,3,5,6,7,8,9,13,14,15],"teaching":"L'homme doit unir inspiration des hauteurs et réalisation dans la vallée plutôt que vivre dans un seul pôle."},
-      {"themeId":"incarnation","label":"Incarnation","importance":"central","directness":"direct","verseNumbers":[4,5,7,10,11,12],"teaching":"Une perception spirituelle n'accomplit son but que lorsqu'elle devient forme, acte et œuvre sur la terre."}
-    ]},
-    {"recordId":"book-04-psalm-015","number":15,"title":"Réunir les conditions du bonheur","titleSignals":["bonheur","conditions","monde intérieur"],"themes":[
-      {"themeId":"bonheur","label":"Bonheur","importance":"central","directness":"direct","verseNumbers":[1,2,3,4,5,6,7,8],"teaching":"Le bonheur doit exister comme germe et qualité intérieure avant de pouvoir être rencontré et organisé à l'extérieur."},
-      {"themeId":"monde-interieur-et-exterieur","label":"Monde intérieur et extérieur","importance":"central","directness":"direct","verseNumbers":[1,2,3,4,6,7,8],"teaching":"Le monde extérieur reflète la vie intérieure; l'esprit doit orienter la matière et lui donner les conditions à réaliser."},
-      {"themeId":"consecration","label":"Consécration","importance":"important","directness":"direct","verseNumbers":[7,8],"teaching":"Une vie intérieure consacrée au monde divin produit stabilité et détermination pour structurer la vie extérieure."}
-    ]},
-    {"recordId":"book-04-psalm-016","number":16,"title":"Retrouve confiance et accomplis ta destinée","titleSignals":["confiance","destinée","racines"],"themes":[
-      {"themeId":"destinee","label":"Destinée","importance":"central","directness":"direct","verseNumbers":[1,2,5,7,9,10,11,14,15,16,17,19,20,21],"teaching":"Chaque être porte une orientation et une mission de l'âme qui doivent guider la vie extérieure au lieu d'être remplacées par des buts imposés."},
-      {"themeId":"confiance","label":"Confiance","importance":"central","directness":"direct","verseNumbers":[9,10,11,12],"teaching":"La confiance naît d'un enracinement dans l'âme et devient force pour entreprendre ce qui correspond à sa destinée."},
-      {"themeId":"racines","label":"Racines","importance":"important","directness":"symbolic","verseNumbers":[8,9,10],"teaching":"Les racines intérieures parlent des dons, talents et orientations profondes qui permettent de ne plus douter de son chemin."},
-      {"themeId":"sagesse","label":"Sagesse","importance":"important","directness":"direct","verseNumbers":[14,15,16,18,19,20],"teaching":"La sagesse est une continuité d'expérience de l'âme qui permet d'accueillir le nouveau sans perdre l'essentiel."}
-    ]},
-    {"recordId":"book-04-psalm-017","number":17,"title":"Cherche la perfection en toute chose","titleSignals":["perfection","lois spirituelles","œuvre"],"themes":[
-      {"themeId":"perfection","label":"Perfection","importance":"central","directness":"direct","verseNumbers":[1,2,3,7,9,10,11,12,13,15,16,18,23,24,25,26],"teaching":"La perfection est l'effort de conduire une œuvre, dans le corps, l'âme et l'esprit, jusqu'à son union avec le principe divin."},
-      {"themeId":"lois-spirituelles","label":"Lois spirituelles","importance":"central","directness":"direct","verseNumbers":[15,16,18,21,22,23,24],"teaching":"Les œuvres ne peuvent être accomplies pleinement sans connaître et respecter les lois qui gouvernent l'âme et les principes supérieurs."},
-      {"themeId":"responsabilite","label":"Responsabilité","importance":"important","directness":"direct","verseNumbers":[3,4,10,11],"teaching":"Mener ce que l'on entreprend jusqu'au bout protège la conscience des forces de laisser-aller et d'abandon."}
-    ]},
-    {"recordId":"book-04-psalm-018","number":18,"title":"De la survie à la vie véritable","titleSignals":["vie véritable","sagesse","expérience"],"themes":[
-      {"themeId":"vie-veritable","label":"Vie véritable","importance":"central","directness":"direct","verseNumbers":[1,3,4,5,7,8,9,10,11,12,13,14,15,16],"teaching":"La vie véritable est une expérience consciente, simple et en mouvement, gouvernée par des lois de sagesse plutôt que par la simple survie."},
-      {"themeId":"sagesse","label":"Sagesse","importance":"central","directness":"direct","verseNumbers":[2,3,4,5,11,14],"teaching":"La sagesse consiste à comprendre et expérimenter les lois qui expliquent pourquoi les choses réussissent ou échouent."},
-      {"themeId":"stabilite","label":"Stabilité","importance":"important","directness":"direct","verseNumbers":[5,12,13,15],"teaching":"Une stabilité intérieure permet d'accueillir l'énergie nouvelle et le changement sans perdre son orientation."}
-    ]},
-    {"recordId":"book-04-psalm-019","number":19,"title":"Contemple la nature et deviens inébranlable","titleSignals":["nature","stabilité","magie"],"themes":[
-      {"themeId":"stabilite","label":"Stabilité","importance":"central","directness":"direct","verseNumbers":[1,2,3,4,5,10,15,18,22,25,27,28],"teaching":"La stabilité du corps et de la nature inférieure est la base permettant à une vie intérieure puissante de recevoir et manifester l'esprit divin."},
-      {"themeId":"nature","label":"Nature","importance":"central","directness":"direct","verseNumbers":[1,2,9,18,25,28],"teaching":"Montagnes, forêts et océans enseignent paix, stabilité et équilibre à la partie terrestre de l'homme."},
-      {"themeId":"activite-creatrice","label":"Activité créatrice","importance":"central","directness":"direct","verseNumbers":[10,11,12,13,14,15,16,19,20,21,23,29],"teaching":"Pensées, sentiments et volonté sont des forces créatrices réelles qui façonnent l'invisible puis la vie matérielle."},
-      {"themeId":"magie","label":"Magie","importance":"important","directness":"direct","verseNumbers":[11,19,20,21,24],"teaching":"La magie est la science d'une action consciente dans les mondes subtils et exige stabilité, discernement et responsabilité."}
-    ]},
-    {"recordId":"book-04-psalm-020","number":20,"title":"Le silence, langage divin","titleSignals":["silence","activité","réceptivité"],"themes":[
-      {"themeId":"silence","label":"Silence","importance":"central","directness":"direct","verseNumbers":[6,7,10,11,13,14,15,16,20,27],"teaching":"Le silence est le temps de réceptivité où l'homme écoute la réponse du monde divin à ce qu'il a créé par son activité."},
-      {"themeId":"activite-et-receptivite","label":"Activité et réceptivité","importance":"central","directness":"direct","verseNumbers":[1,2,3,6,9,13,14,15,17,18],"teaching":"La vie juste alterne activité consciente qui ensemence et repos réceptif relié à la Lumière qui féconde et instruit."},
-      {"themeId":"offrande","label":"Offrande","importance":"important","directness":"direct","verseNumbers":[13,14,16,17,27],"teaching":"Pensées, paroles et gestes doivent devenir des offrandes dont l'écho est écouté dans le silence."},
-      {"themeId":"terre-interieure","label":"Terre intérieure","importance":"important","directness":"symbolic","verseNumbers":[19,21,22,23,25,26],"teaching":"L'homme est une terre à rendre fertile par la paix, le calme, le silence et l'activité créatrice orientée vers le divin."}
-    ]},
-    {"recordId":"book-04-psalm-021","number":21,"title":"Le piège du mensonge","titleSignals":["mensonge","vérité","aura"],"themes":[
-      {"themeId":"mensonge","label":"Mensonge","importance":"central","directness":"direct","verseNumbers":[8,9,10,11,12,13,14,15,16,17,18,19],"teaching":"Le mensonge commence envers soi-même, obscurcit la conscience et coupe l'association avec le monde divin."},
-      {"themeId":"verite","label":"Vérité","importance":"central","directness":"direct","verseNumbers":[8,9,10,11,15,18,19],"teaching":"Être vrai signifie partager seulement ce qui peut l'être honnêtement et ajuster sa vie à sa conviction profonde."},
-      {"themeId":"aura","label":"Aura","importance":"important","directness":"direct","verseNumbers":[2,3,4,5],"teaching":"L'aura relie la vie intérieure au monde subtil et devient ouverte ou enfermée selon les associations cultivées."},
-      {"themeId":"associations-spirituelles","label":"Associations spirituelles","importance":"important","directness":"direct","verseNumbers":[1,2,3,5,7,15,16,19],"teaching":"Pensées, sentiments et désirs associent réellement l'homme à des hiérarchies de Lumière ou à des mondes d'enfermement."}
-    ]},
-    {"recordId":"book-04-psalm-022","number":22,"title":"Stable comme la montagne, vivant comme l’arbre, aimant comme l’animal","titleSignals":["montagne","arbre","animal","règnes"],"themes":[
-      {"themeId":"montagne","label":"Montagne","importance":"central","directness":"symbolic","verseNumbers":[1,2,6,10],"teaching":"La montagne enseigne la stabilité et appartient à la vie universelle que l'homme porte en lui."},
-      {"themeId":"arbre","label":"Arbre","importance":"central","directness":"symbolic","verseNumbers":[1,2,6,10],"teaching":"L'arbre enseigne la vie et fait partie des règnes qui éveillent dans l'homme sa vraie nature."},
-      {"themeId":"animal","label":"Animal","importance":"central","directness":"symbolic","verseNumbers":[1,2,6,10],"teaching":"L'animal enseigne l'amour et participe, avec les autres règnes, à la constitution de l'homme complet."},
-      {"themeId":"regnes","label":"Règnes","importance":"central","directness":"direct","verseNumbers":[1,2,3,4,5,6,7,9,10],"teaching":"L'homme a une vie individuelle et universelle; son harmonie dépend de sa relation consciente avec tous les règnes et hiérarchies."},
-      {"themeId":"microcosme-et-macrocosme","label":"Microcosme et macrocosme","importance":"important","directness":"direct","verseNumbers":[2,3,4,7,9,10],"teaching":"Tout ce qui existe dans l'univers existe potentiellement dans l'homme, qui doit équilibrer en lui les différents niveaux de vie."}
-    ]},
-    {"recordId":"book-04-psalm-023","number":23,"title":"Préserve ton jardin intérieur","titleSignals":["jardin intérieur","protection","semence"],"themes":[
-      {"themeId":"jardin-interieur","label":"Jardin intérieur","importance":"central","directness":"symbolic","verseNumbers":[1,2,3,4,5,6,7,8,9],"teaching":"L'homme doit protéger et cultiver un espace intérieur réservé à Dieu où aucune influence étrangère ne peut planter ses graines."},
-      {"themeId":"protection-interieure","label":"Protection intérieure","importance":"central","directness":"direct","verseNumbers":[3,5,6,7,8,9],"teaching":"Une vision claire de ce que l'on veut et de ses associés protège la vie intérieure contre les modèles imposés."},
-      {"themeId":"semence","label":"Semence","importance":"important","directness":"symbolic","verseNumbers":[3,6],"teaching":"Les idées et influences sont comparées à des semences qui peuvent faire fructifier ou contaminer le jardin intérieur."}
-    ]},
-    {"recordId":"book-04-psalm-024","number":24,"title":"Vous êtes importants","titleSignals":["travail","importance","création"],"themes":[
-      {"themeId":"travail-de-la-lumiere","label":"Travail de la Lumière","importance":"central","directness":"direct","verseNumbers":[2,3,4,5,10,11],"teaching":"Le travail conscient pour la Lumière est présenté comme une force réelle d'équilibre pour l'humanité et la terre."},
-      {"themeId":"engagement","label":"Engagement","importance":"important","directness":"direct","verseNumbers":[6,7,11,13],"teaching":"Détermination, enthousiasme, volonté et présence doivent accompagner un engagement conscient dans la vie."},
-      {"themeId":"puissance-creatrice","label":"Puissance créatrice","importance":"important","directness":"direct","verseNumbers":[5,10],"teaching":"La puissance créatrice humaine est appelée à servir une œuvre reliée au Père, à la Mère et à l'équilibre du monde."}
-    ]}
+    {
+      "recordId": "book-04-psalm-001",
+      "number": 1,
+      "title": "Découvre ta propre histoire",
+      "titleSignals": [
+        "histoire",
+        "Père",
+        "Mère"
+      ],
+      "themes": [
+        {
+          "themeId": "connaissance-directe",
+          "label": "Connaissance directe",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4
+          ],
+          "teaching": "L'homme ne doit pas répéter une histoire reçue mais connaître par lui-même sa relation au Père, à la Mère et au monde."
+        },
+        {
+          "themeId": "pere-et-mere",
+          "label": "Père et Mère",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4
+          ],
+          "teaching": "Père et Mère sont les deux principes fondamentaux que l'homme doit reconnaître dans sa propre expérience."
+        },
+        {
+          "themeId": "clarte",
+          "label": "Clarté",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3
+          ],
+          "teaching": "La clarté est une vision reliée à l'alliance solaire et permet de voir sa propre histoire sans simple répétition."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-002",
+      "number": 2,
+      "title": "Sois léger pour parvenir au but de ta vie",
+      "titleSignals": [
+        "légèreté",
+        "but"
+      ],
+      "themes": [
+        {
+          "themeId": "legerete",
+          "label": "Légèreté",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "La légèreté n'est pas fuite de la difficulté mais souplesse permettant de traverser les épreuves sans perdre son but."
+        },
+        {
+          "themeId": "but-de-la-vie",
+          "label": "But de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "La légèreté sert une cause plus grande et aide l'homme à rester orienté vers son objectif profond."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-003",
+      "number": 3,
+      "title": "Ange ou animal?",
+      "titleSignals": [
+        "Ange",
+        "animal",
+        "homme"
+      ],
+      "themes": [
+        {
+          "themeId": "ange-et-animal",
+          "label": "Ange et animal",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "teaching": "L'homme se tient entre le monde animal et le monde angélique et doit savoir quelle intelligence habite et dirige son comportement."
+        },
+        {
+          "themeId": "animal",
+          "label": "Animal",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4
+          ],
+          "teaching": "L'animal désigne ici la force instinctive, conditionnée et impulsive qui peut habiter l'homme."
+        },
+        {
+          "themeId": "anges",
+          "label": "Anges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "teaching": "La présence angélique se reconnaît à la clarté de la pensée, à la lumière du regard et à une parole douce, guérissante et authentique."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-004",
+      "number": 4,
+      "title": "Trouve la quintessence des choses et mets - la en pratique",
+      "titleSignals": [
+        "quintessence",
+        "essentiel"
+      ],
+      "themes": [
+        {
+          "themeId": "quintessence",
+          "label": "Quintessence",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            7
+          ],
+          "teaching": "L'homme doit aller au noyau vivant de la magie, de la sagesse et de l'amour et les mettre en pratique plutôt que les connaître superficiellement."
+        },
+        {
+          "themeId": "essentiel",
+          "label": "Essentiel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            7
+          ],
+          "teaching": "La vie intérieure doit chercher ce qui est concentré, essentiel et réellement vivant dans une chose."
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            7
+          ],
+          "teaching": "La sagesse n'est pas seulement un savoir appris mais un état d'être vécu intérieurement."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-005",
+      "number": 5,
+      "title": "L’endroit magique en toi",
+      "titleSignals": [
+        "espace sacré",
+        "âme",
+        "pierre précieuse"
+      ],
+      "themes": [
+        {
+          "themeId": "ame",
+          "label": "Âme",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            7,
+            8,
+            9
+          ],
+          "teaching": "L'âme est comparée à une pierre précieuse unique qu'il faut dégager de l'éphémère pour agir en conformité avec sa nature."
+        },
+        {
+          "themeId": "pierre-precieuse",
+          "label": "Pierre précieuse",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            7,
+            8,
+            11
+          ],
+          "teaching": "La pierre précieuse figure l'identité singulière de l'âme portant une vertu universelle."
+        },
+        {
+          "themeId": "espace-sacre",
+          "label": "Espace sacré",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "Une terre ou un espace intérieur stable doit être construit pour permettre à l'âme et au monde divin de s'exprimer sans être repris par l'éphémère."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-006",
+      "number": 6,
+      "title": "Comme une rivière qui coule sur la terre",
+      "titleSignals": [
+        "rivière",
+        "eau",
+        "transformation"
+      ],
+      "themes": [
+        {
+          "themeId": "riviere",
+          "label": "Rivière",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            6
+          ],
+          "teaching": "La rivière représente la Lumière qui transforme la terre de l'homme, parfois au prix d'un inconfort nécessaire."
+        },
+        {
+          "themeId": "eau",
+          "label": "Eau",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            6
+          ],
+          "teaching": "L'eau doit circuler pour emporter les résidus et féconder la vie; la stagnation permet aux impuretés de s'accumuler."
+        },
+        {
+          "themeId": "transformation",
+          "label": "Transformation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            6
+          ],
+          "teaching": "Accueillir de nouvelles visions demande d'accepter que la Lumière modifie les anciennes stabilités."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-007",
+      "number": 7,
+      "title": "Deviens nourriture et réconfort pour les anges",
+      "titleSignals": [
+        "nourriture",
+        "Anges",
+        "règnes"
+      ],
+      "themes": [
+        {
+          "themeId": "regnes",
+          "label": "Règnes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "teaching": "L'homme évolue avec tous les règnes et doit les associer à son élévation au lieu de s'en séparer."
+        },
+        {
+          "themeId": "anges",
+          "label": "Anges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6
+          ],
+          "teaching": "Les vertus humaines peuvent devenir nourriture et réconfort pour les Anges comme les fruits des règnes nourrissent l'homme."
+        },
+        {
+          "themeId": "gratitude",
+          "label": "Gratitude",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            6
+          ],
+          "teaching": "La gratitude véritable s'exprime par une offrande vivante de vertus et non par de simples paroles."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-008",
+      "number": 8,
+      "title": "Une clé pour se libérer de la souffrance",
+      "titleSignals": [
+        "souffrance",
+        "cause",
+        "libération"
+      ],
+      "themes": [
+        {
+          "themeId": "souffrance",
+          "label": "Souffrance",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            7
+          ],
+          "teaching": "La souffrance doit être comprise depuis sa cause intérieure plutôt qu'adoptée à travers les modèles collectifs du monde."
+        },
+        {
+          "themeId": "cause-et-consequence",
+          "label": "Cause et conséquence",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            7
+          ],
+          "teaching": "Comprendre la cause d'un événement permet d'agir pour qu'il ne se reproduise pas et évite l'accumulation de conséquences futures."
+        },
+        {
+          "themeId": "vie-interieure",
+          "label": "Vie intérieure",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            6
+          ],
+          "teaching": "C'est l'être intérieur qui doit modeler le corps et donner le sens juste à l'expérience."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-009",
+      "number": 9,
+      "title": "Les contradictions des hommes",
+      "titleSignals": [
+        "centres",
+        "cohérence",
+        "âme"
+      ],
+      "themes": [
+        {
+          "themeId": "sens-et-centres",
+          "label": "Sens et centres",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "Yeux, bouche, oreilles, respiration et goût reflètent des dimensions précises de l'âme et de la vie intérieure."
+        },
+        {
+          "themeId": "coherence",
+          "label": "Cohérence",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            8
+          ],
+          "teaching": "L'homme doit aligner ses centres, ses choix et ses actes avec ce qu'il dit vouloir profondément."
+        },
+        {
+          "themeId": "instant-present",
+          "label": "Instant présent",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            8
+          ],
+          "teaching": "Le goût est associé à la capacité de vivre consciemment l'instant présent et d'agir selon ce que l'on croit réellement."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-010",
+      "number": 10,
+      "title": "La voie de l’arbre fruitier",
+      "titleSignals": [
+        "arbre",
+        "racines",
+        "fruits"
+      ],
+      "themes": [
+        {
+          "themeId": "arbre",
+          "label": "Arbre",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "teaching": "L'arbre enseigne à tenir ensemble racines, tronc et sommet, profondeur terrestre et capacité de porter des fruits."
+        },
+        {
+          "themeId": "fruit",
+          "label": "Fruit",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            3,
+            4
+          ],
+          "teaching": "L'homme doit devenir un fruit vivant et attirant avant de vouloir imposer une forme particulière de réalisation."
+        },
+        {
+          "themeId": "generations",
+          "label": "Générations",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "Les branches et fruits de l'homme portent des semences destinées aux générations futures."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-011",
+      "number": 11,
+      "title": "Vous êtes l’espoir d’un monde",
+      "titleSignals": [
+        "espoir",
+        "authenticité",
+        "engagement"
+      ],
+      "themes": [
+        {
+          "themeId": "esperance",
+          "label": "Espérance",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            7
+          ],
+          "teaching": "Des êtres conscients peuvent devenir des repères et des lumières pour un monde qui a perdu le sens et les modèles."
+        },
+        {
+          "themeId": "authenticite",
+          "label": "Authenticité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5
+          ],
+          "teaching": "L'espoir n'est crédible que si l'homme est vrai, sincère et ne prétend pas être ce qu'il n'est pas."
+        },
+        {
+          "themeId": "engagement",
+          "label": "Engagement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7
+          ],
+          "teaching": "L'homme doit affirmer son choix de vie sans timidité et montrer concrètement une autre possibilité."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-012",
+      "number": 12,
+      "title": "L’huile d’ouriel et la nouvelle alliance",
+      "titleSignals": [
+        "huile",
+        "alliance",
+        "Ronde des Archanges"
+      ],
+      "notesUsed": [
+        "book-04-psalm-012-note-001",
+        "book-04-psalm-012-note-002",
+        "book-04-psalm-012-note-003"
+      ],
+      "themes": [
+        {
+          "themeId": "huile-douriel",
+          "label": "Huile d’Ouriel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "L'huile ayant alimenté la flamme du temple sert de support concret pour rappeler et réactiver les forces travaillées durant la célébration."
+        },
+        {
+          "themeId": "alliance",
+          "label": "Alliance",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "teaching": "L'alliance entre monde divin et monde humain doit être entretenue quotidiennement et incarnée dans des supports, pensées et œuvres."
+        },
+        {
+          "themeId": "ronde-des-archanges",
+          "label": "Ronde des Archanges",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            6,
+            7
+          ],
+          "teaching": "La note éditoriale situe cette célébration comme clôture du premier cycle de quatre célébrations devenu la Ronde des Archanges."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-013",
+      "number": 13,
+      "title": "Le secret de la plénitude est dans la persévérance",
+      "titleSignals": [
+        "persévérance",
+        "plénitude"
+      ],
+      "themes": [
+        {
+          "themeId": "perseverance",
+          "label": "Persévérance",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            9,
+            10
+          ],
+          "teaching": "La plénitude naît de la capacité à mener les aspirations et œuvres jusqu'à leur réalisation concrète."
+        },
+        {
+          "themeId": "plenitude",
+          "label": "Plénitude",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            6,
+            7,
+            9,
+            10
+          ],
+          "teaching": "La vie devient pleine lorsque l'homme accomplit ce qu'il porte profondément plutôt que de rester dans le souhait passif."
+        },
+        {
+          "themeId": "realisation",
+          "label": "Réalisation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            9,
+            10
+          ],
+          "teaching": "Commencer par de petites réalisations achevées donne progressivement force et capacité pour des objectifs plus vastes."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-014",
+      "number": 14,
+      "title": "Fais de ta vie quotidienne une œuvre d ’art",
+      "titleSignals": [
+        "vie quotidienne",
+        "œuvre",
+        "hauteurs et profondeurs"
+      ],
+      "themes": [
+        {
+          "themeId": "vie-quotidienne",
+          "label": "Vie quotidienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            12,
+            13,
+            16
+          ],
+          "teaching": "La vie quotidienne est le lieu où l'inspiration supérieure doit devenir comportement, corps et œuvre concrète."
+        },
+        {
+          "themeId": "hauteurs-et-profondeurs",
+          "label": "Hauteurs et profondeurs",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            13,
+            14,
+            15
+          ],
+          "teaching": "L'homme doit unir inspiration des hauteurs et réalisation dans la vallée plutôt que vivre dans un seul pôle."
+        },
+        {
+          "themeId": "incarnation",
+          "label": "Incarnation",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            7,
+            10,
+            11,
+            12
+          ],
+          "teaching": "Une perception spirituelle n'accomplit son but que lorsqu'elle devient forme, acte et œuvre sur la terre."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-015",
+      "number": 15,
+      "title": "Réunir les conditions du bonheur",
+      "titleSignals": [
+        "bonheur",
+        "conditions",
+        "monde intérieur"
+      ],
+      "themes": [
+        {
+          "themeId": "bonheur",
+          "label": "Bonheur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "teaching": "Le bonheur doit exister comme germe et qualité intérieure avant de pouvoir être rencontré et organisé à l'extérieur."
+        },
+        {
+          "themeId": "monde-interieur-et-exterieur",
+          "label": "Monde intérieur et extérieur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+          ],
+          "teaching": "Le monde extérieur reflète la vie intérieure; l'esprit doit orienter la matière et lui donner les conditions à réaliser."
+        },
+        {
+          "themeId": "consecration",
+          "label": "Consécration",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8
+          ],
+          "teaching": "Une vie intérieure consacrée au monde divin produit stabilité et détermination pour structurer la vie extérieure."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-016",
+      "number": 16,
+      "title": "Retrouve confiance et accomplis ta destinée",
+      "titleSignals": [
+        "confiance",
+        "destinée",
+        "racines"
+      ],
+      "themes": [
+        {
+          "themeId": "destinee",
+          "label": "Destinée",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            7,
+            9,
+            10,
+            11,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20,
+            21
+          ],
+          "teaching": "Chaque être porte une orientation et une mission de l'âme qui doivent guider la vie extérieure au lieu d'être remplacées par des buts imposés."
+        },
+        {
+          "themeId": "confiance",
+          "label": "Confiance",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "La confiance naît d'un enracinement dans l'âme et devient force pour entreprendre ce qui correspond à sa destinée."
+        },
+        {
+          "themeId": "racines",
+          "label": "Racines",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            8,
+            9,
+            10
+          ],
+          "teaching": "Les racines intérieures parlent des dons, talents et orientations profondes qui permettent de ne plus douter de son chemin."
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14,
+            15,
+            16,
+            18,
+            19,
+            20
+          ],
+          "teaching": "La sagesse est une continuité d'expérience de l'âme qui permet d'accueillir le nouveau sans perdre l'essentiel."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-017",
+      "number": 17,
+      "title": "Cherche la perfection en toute chose",
+      "titleSignals": [
+        "perfection",
+        "lois spirituelles",
+        "œuvre"
+      ],
+      "themes": [
+        {
+          "themeId": "perfection",
+          "label": "Perfection",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16,
+            18,
+            23,
+            24,
+            25,
+            26
+          ],
+          "teaching": "La perfection est l'effort de conduire une œuvre, dans le corps, l'âme et l'esprit, jusqu'à son union avec le principe divin."
+        },
+        {
+          "themeId": "lois-spirituelles",
+          "label": "Lois spirituelles",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            15,
+            16,
+            18,
+            21,
+            22,
+            23,
+            24
+          ],
+          "teaching": "Les œuvres ne peuvent être accomplies pleinement sans connaître et respecter les lois qui gouvernent l'âme et les principes supérieurs."
+        },
+        {
+          "themeId": "responsabilite",
+          "label": "Responsabilité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            10,
+            11
+          ],
+          "teaching": "Mener ce que l'on entreprend jusqu'au bout protège la conscience des forces de laisser-aller et d'abandon."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-018",
+      "number": 18,
+      "title": "De la survie à la vie véritable",
+      "titleSignals": [
+        "vie véritable",
+        "sagesse",
+        "expérience"
+      ],
+      "themes": [
+        {
+          "themeId": "vie-veritable",
+          "label": "Vie véritable",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "teaching": "La vie véritable est une expérience consciente, simple et en mouvement, gouvernée par des lois de sagesse plutôt que par la simple survie."
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            11,
+            14
+          ],
+          "teaching": "La sagesse consiste à comprendre et expérimenter les lois qui expliquent pourquoi les choses réussissent ou échouent."
+        },
+        {
+          "themeId": "stabilite",
+          "label": "Stabilité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            12,
+            13,
+            15
+          ],
+          "teaching": "Une stabilité intérieure permet d'accueillir l'énergie nouvelle et le changement sans perdre son orientation."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-019",
+      "number": 19,
+      "title": "Contemple la nature et deviens inébranlable",
+      "titleSignals": [
+        "nature",
+        "stabilité",
+        "magie"
+      ],
+      "themes": [
+        {
+          "themeId": "stabilite",
+          "label": "Stabilité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            10,
+            15,
+            18,
+            22,
+            25,
+            27,
+            28
+          ],
+          "teaching": "La stabilité du corps et de la nature inférieure est la base permettant à une vie intérieure puissante de recevoir et manifester l'esprit divin."
+        },
+        {
+          "themeId": "nature",
+          "label": "Nature",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            9,
+            18,
+            25,
+            28
+          ],
+          "teaching": "Montagnes, forêts et océans enseignent paix, stabilité et équilibre à la partie terrestre de l'homme."
+        },
+        {
+          "themeId": "activite-creatrice",
+          "label": "Activité créatrice",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            19,
+            20,
+            21,
+            23,
+            29
+          ],
+          "teaching": "Pensées, sentiments et volonté sont des forces créatrices réelles qui façonnent l'invisible puis la vie matérielle."
+        },
+        {
+          "themeId": "magie",
+          "label": "Magie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
+            19,
+            20,
+            21,
+            24
+          ],
+          "teaching": "La magie est la science d'une action consciente dans les mondes subtils et exige stabilité, discernement et responsabilité."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-020",
+      "number": 20,
+      "title": "Le silence, langage divin",
+      "titleSignals": [
+        "silence",
+        "activité",
+        "réceptivité"
+      ],
+      "themes": [
+        {
+          "themeId": "silence",
+          "label": "Silence",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            10,
+            11,
+            13,
+            14,
+            15,
+            16,
+            20,
+            27
+          ],
+          "teaching": "Le silence est le temps de réceptivité où l'homme écoute la réponse du monde divin à ce qu'il a créé par son activité."
+        },
+        {
+          "themeId": "activite-et-receptivite",
+          "label": "Activité et réceptivité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            6,
+            9,
+            13,
+            14,
+            15,
+            17,
+            18
+          ],
+          "teaching": "La vie juste alterne activité consciente qui ensemence et repos réceptif relié à la Lumière qui féconde et instruit."
+        },
+        {
+          "themeId": "offrande",
+          "label": "Offrande",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            16,
+            17,
+            27
+          ],
+          "teaching": "Pensées, paroles et gestes doivent devenir des offrandes dont l'écho est écouté dans le silence."
+        },
+        {
+          "themeId": "terre-interieure",
+          "label": "Terre intérieure",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            19,
+            21,
+            22,
+            23,
+            25,
+            26
+          ],
+          "teaching": "L'homme est une terre à rendre fertile par la paix, le calme, le silence et l'activité créatrice orientée vers le divin."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-021",
+      "number": 21,
+      "title": "Le piège du mensonge",
+      "titleSignals": [
+        "mensonge",
+        "vérité",
+        "aura"
+      ],
+      "themes": [
+        {
+          "themeId": "mensonge",
+          "label": "Mensonge",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "teaching": "Le mensonge commence envers soi-même, obscurcit la conscience et coupe l'association avec le monde divin."
+        },
+        {
+          "themeId": "verite",
+          "label": "Vérité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            11,
+            15,
+            18,
+            19
+          ],
+          "teaching": "Être vrai signifie partager seulement ce qui peut l'être honnêtement et ajuster sa vie à sa conviction profonde."
+        },
+        {
+          "themeId": "aura",
+          "label": "Aura",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "teaching": "L'aura relie la vie intérieure au monde subtil et devient ouverte ou enfermée selon les associations cultivées."
+        },
+        {
+          "themeId": "associations-spirituelles",
+          "label": "Associations spirituelles",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            7,
+            15,
+            16,
+            19
+          ],
+          "teaching": "Pensées, sentiments et désirs associent réellement l'homme à des hiérarchies de Lumière ou à des mondes d'enfermement."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-022",
+      "number": 22,
+      "title": "Stable comme la montagne, vivant comme l’arbre, aimant comme l’animal",
+      "titleSignals": [
+        "montagne",
+        "arbre",
+        "animal",
+        "règnes"
+      ],
+      "themes": [
+        {
+          "themeId": "montagne",
+          "label": "Montagne",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            6,
+            10
+          ],
+          "teaching": "La montagne enseigne la stabilité et appartient à la vie universelle que l'homme porte en lui."
+        },
+        {
+          "themeId": "arbre",
+          "label": "Arbre",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            6,
+            10
+          ],
+          "teaching": "L'arbre enseigne la vie et fait partie des règnes qui éveillent dans l'homme sa vraie nature."
+        },
+        {
+          "themeId": "animal",
+          "label": "Animal",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            6,
+            10
+          ],
+          "teaching": "L'animal enseigne l'amour et participe, avec les autres règnes, à la constitution de l'homme complet."
+        },
+        {
+          "themeId": "regnes",
+          "label": "Règnes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10
+          ],
+          "teaching": "L'homme a une vie individuelle et universelle; son harmonie dépend de sa relation consciente avec tous les règnes et hiérarchies."
+        },
+        {
+          "themeId": "microcosme-et-macrocosme",
+          "label": "Microcosme et macrocosme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            7,
+            9,
+            10
+          ],
+          "teaching": "Tout ce qui existe dans l'univers existe potentiellement dans l'homme, qui doit équilibrer en lui les différents niveaux de vie."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-023",
+      "number": 23,
+      "title": "Préserve ton jardin intérieur",
+      "titleSignals": [
+        "jardin intérieur",
+        "protection",
+        "semence"
+      ],
+      "themes": [
+        {
+          "themeId": "jardin-interieur",
+          "label": "Jardin intérieur",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "L'homme doit protéger et cultiver un espace intérieur réservé à Dieu où aucune influence étrangère ne peut planter ses graines."
+        },
+        {
+          "themeId": "protection-interieure",
+          "label": "Protection intérieure",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Une vision claire de ce que l'on veut et de ses associés protège la vie intérieure contre les modèles imposés."
+        },
+        {
+          "themeId": "semence",
+          "label": "Semence",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            3,
+            6
+          ],
+          "teaching": "Les idées et influences sont comparées à des semences qui peuvent faire fructifier ou contaminer le jardin intérieur."
+        }
+      ]
+    },
+    {
+      "recordId": "book-04-psalm-024",
+      "number": 24,
+      "title": "Vous êtes importants",
+      "titleSignals": [
+        "travail",
+        "importance",
+        "création"
+      ],
+      "themes": [
+        {
+          "themeId": "travail-de-la-lumiere",
+          "label": "Travail de la Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            10,
+            11
+          ],
+          "teaching": "Le travail conscient pour la Lumière est présenté comme une force réelle d'équilibre pour l'humanité et la terre."
+        },
+        {
+          "themeId": "engagement",
+          "label": "Engagement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            11,
+            13
+          ],
+          "teaching": "Détermination, enthousiasme, volonté et présence doivent accompagner un engagement conscient dans la vie."
+        },
+        {
+          "themeId": "puissance-creatrice",
+          "label": "Puissance créatrice",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            10
+          ],
+          "teaching": "La puissance créatrice humaine est appelée à servir une œuvre reliée au Père, à la Mère et à l'équilibre du monde."
+        }
+      ]
+    }
   ]
 }
