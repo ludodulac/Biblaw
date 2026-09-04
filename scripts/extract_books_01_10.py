@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Extract books 1-10 from the source PDF into structured corpus records.
 
-This stage is documentary, not thematic. It preserves book title, detected Archangel,
-psalm titles, verse text, page references and editorial notes. Prayers are deliberately
-not indexed thematically and are not required for this extraction phase.
+Psalm numbering continues by Archangel across successive books. This extractor uses
+that continuity to reject introduction/prose numbers and to recover headings whose
+typography is imperfect in pdftotext. It preserves titles, verses, pages and notes.
+Prayers are deliberately outside the present thematic-indexing scope.
 """
 from __future__ import annotations
 
@@ -28,11 +29,13 @@ def unwrap(value: str) -> str:
 
 def clean_title(value: str) -> str:
     value = re.sub(r"\s+", " ", value).strip()
-    # pdftotext often separates a decorative initial: "V is" -> "Vis".
     value = re.sub(r"^([A-ZÀ-ÖØ-Ý])\s+([a-zà-öø-ÿ])", r"\1\2", value)
+    for a, b in (("M ichaël", "Michaël"), ("R aphaël", "Raphaël"), ("G abriel", "Gabriel"), ("O uriel", "Ouriel")):
+        value = value.replace(a, b)
     value = re.sub(r"\s+([,.;:!?])", r"\1", value)
     value = re.sub(r"([’'])\s+", r"\1", value)
     value = re.sub(r"\s+-\s*", "-", value)
+    value = re.sub(r"\s+d\s+[’']", " d’", value)
     return value.strip()
 
 
@@ -73,21 +76,72 @@ def strip_markers(value: str) -> str:
     return re.sub(r"\[\[PAGE \d+\]\]", "", value)
 
 
-def plausible_heading(line: str):
-    s = re.sub(r"\s+", " ", line).strip()
-    m = re.match(r"^(\d{1,3})\s+(.{3,120})$", s)
-    if not m:
-        return None
-    number = int(m.group(1))
-    title = m.group(2).strip()
-    if not re.match(r"^[A-ZÀ-ÖØ-ÝŒÉÈÊÂÎÔÛÇL’']", title):
-        return None
-    low = title.lower()
-    if "livre " in low or "note des hiérogrammates" in low or title.startswith("-"):
-        return None
-    if len(title.split()) > 18 or title.endswith((".", ";", ":")):
-        return None
-    return number, clean_title(title)
+def heading_candidates(text: str, first_page: int) -> list[dict]:
+    """Return title-like numbered lines, explicitly excluding numbered verses (N.)."""
+    lines = text.splitlines(True)
+    out = []
+    offset = 0
+    for i, raw_line in enumerate(lines):
+        s = re.sub(r"\s+", " ", raw_line).strip()
+        m = re.match(r"^(\d{1,3})\s+(?![.])(.{2,140})$", s)
+        if m:
+            number = int(m.group(1))
+            title = m.group(2).strip()
+            low = title.lower()
+            if (
+                "livre " not in low
+                and "note des hiérogrammates" not in low
+                and not title.startswith("-")
+                and len(title.split()) <= 20
+                and not title.endswith((".", ";", ":", ","))
+            ):
+                out.append({"number": number, "title": clean_title(title), "offset": offset, "page": page_at(text, offset, first_page)})
+        elif re.fullmatch(r"\s*\d{1,3}\s*", raw_line):
+            number = int(raw_line.strip())
+            # Some headings have the number isolated and the title on the following line.
+            for j in range(i + 1, min(i + 4, len(lines))):
+                nxt = re.sub(r"\s+", " ", lines[j]).strip()
+                if not nxt or nxt.startswith("[[PAGE"):
+                    continue
+                if len(nxt.split()) <= 20 and not re.match(r"^\d{1,3}[.]\s", nxt):
+                    out.append({"number": number, "title": clean_title(nxt), "offset": offset, "page": page_at(text, offset, first_page)})
+                break
+        offset += len(raw_line)
+    return out
+
+
+def choose_headings(candidates: list[dict], expected_start: int) -> list[dict]:
+    """Choose the monotonic Archangel psalm sequence, tolerating occasional missing headings."""
+    by_number: dict[int, list[dict]] = {}
+    for h in candidates:
+        if h["number"] < expected_start:
+            continue
+        by_number.setdefault(h["number"], []).append(h)
+    chosen = []
+    prev_offset = -1
+    number = expected_start
+    misses = 0
+    max_candidate = max(by_number, default=expected_start - 1)
+    while number <= max_candidate:
+        options = [h for h in by_number.get(number, []) if h["offset"] > prev_offset]
+        if options:
+            # Prefer a candidate followed later by the next expected number; this rejects prose.
+            viable = []
+            for h in options:
+                future = [x for x in by_number.get(number + 1, []) if x["offset"] > h["offset"]]
+                if future or number == max_candidate:
+                    viable.append(h)
+            h = (viable or options)[0]
+            chosen.append(h)
+            prev_offset = h["offset"]
+            misses = 0
+        else:
+            misses += 1
+            # A long run of absent numbers means we have passed the real psalm sequence.
+            if chosen and misses >= 4:
+                break
+        number += 1
+    return sorted(chosen, key=lambda h: h["offset"])
 
 
 def write_json(path: Path, data) -> None:
@@ -98,64 +152,40 @@ def write_json(path: Path, data) -> None:
 inventory = json.loads(INVENTORY.read_text(encoding="utf-8"))
 selected = [b for b in inventory["books"] if 1 <= b["bookNumber"] <= 10]
 report = []
+next_expected = {"michael": 1, "gabriel": 1, "raphael": 1, "ouriel": 1}
 
 for book in selected:
     book_no = book["bookNumber"]
     first, last = book["pdfPages"]
     raw_pages = page_text(first, last)
     archangel = detect_archangel(raw_pages)
-    cleaned_pages = []
-    for page_no, raw in raw_pages:
-        cleaned_pages.append(f"\n[[PAGE {page_no}]]\n{clean_page(book_no, page_no, raw)}")
+    if archangel not in next_expected:
+        raise RuntimeError(f"Unable to determine Archangel for book {book_no}")
+    expected_start = next_expected[archangel]
+
+    cleaned_pages = [f"\n[[PAGE {page_no}]]\n{clean_page(book_no, page_no, raw)}" for page_no, raw in raw_pages]
     text = "".join(cleaned_pages)
-
-    headings = []
-    offset = 0
-    for line in text.splitlines(True):
-        candidate = plausible_heading(line)
-        if candidate:
-            number, title = candidate
-            headings.append({"number": number, "title": title, "offset": offset, "page": page_at(text, offset, first)})
-        offset += len(line)
-
-    # Keep one plausible heading per psalm number, preferring the first occurrence whose
-    # numbering is compatible with the surrounding sequence. This rejects most prose false positives.
-    by_number = {}
-    for h in headings:
-        by_number.setdefault(h["number"], []).append(h)
-    chosen = []
-    prev_offset = -1
-    max_candidate = max(by_number, default=0)
-    for number in range(1, max_candidate + 1):
-        options = [h for h in by_number.get(number, []) if h["offset"] > prev_offset]
-        if not options:
-            continue
-        h = options[0]
-        chosen.append(h)
-        prev_offset = h["offset"]
-    chosen.sort(key=lambda h: h["offset"])
-
-    # Remove any candidate that lands before the first real numbered teaching block and then
-    # immediately conflicts with a later same-number candidate. This matters in introductions.
-    filtered = []
-    seen_numbers = set()
-    for h in chosen:
-        if h["number"] in seen_numbers:
-            continue
-        seen_numbers.add(h["number"])
-        filtered.append(h)
-    chosen = filtered
+    candidates = heading_candidates(text, first)
+    chosen = choose_headings(candidates, expected_start)
+    if not chosen:
+        raise RuntimeError(f"No psalm headings found for book {book_no} from expected {expected_start}")
 
     book_dir = ROOT / "data/corpus/books" / f"book-{book_no:02d}"
     note_dir = ROOT / "data/notes/books" / f"book-{book_no:02d}"
+    book_dir.mkdir(parents=True, exist_ok=True)
+    note_dir.mkdir(parents=True, exist_ok=True)
+    # Remove stale machine-generated records from previous extraction attempts.
+    for stale in book_dir.glob("psalm-*.json"):
+        stale.unlink()
+    for stale in note_dir.glob("*.json"):
+        stale.unlink()
+
     extracted_psalms = []
     all_notes = []
-
     for i, h in enumerate(chosen):
         start = h["offset"]
         end = chosen[i + 1]["offset"] if i + 1 < len(chosen) else len(text)
         segment = text[start:end]
-        # Remove heading line itself.
         segment_body = segment.split("\n", 1)[1] if "\n" in segment else ""
 
         note_pattern = re.compile(r"(?ms)^\s*(\d+)\s*-\s+(.*?)(?=^\s*\d+\s*-\s+|\Z)")
@@ -170,10 +200,8 @@ for book in selected:
             vnum = int(vm.group(1))
             vend = verse_matches[vi + 1].start() if vi + 1 < len(verse_matches) else len(body)
             vtext = unwrap(strip_markers(body[vm.end():vend]))
-            if not vtext:
-                continue
-            verses.append({"number": vnum, "text": vtext, "sourcePages": [page_at(body, vm.start(), h["page"])]})
-
+            if vtext:
+                verses.append({"number": vnum, "text": vtext, "sourcePages": [page_at(body, vm.start(), h["page"])]})
         if not verses:
             continue
 
@@ -181,51 +209,35 @@ for book in selected:
         for ni, note in enumerate(notes, 1):
             note_id = f"book-{book_no:02d}-psalm-{h['number']:03d}-note-{ni:03d}"
             note_ids.append(note_id)
-            record = {
-                "id": note_id,
-                "recordType": "note",
-                "archangel": archangel,
-                "bookNumber": book_no,
+            write_json(note_dir / f"{note_id}.json", {
+                "id": note_id, "recordType": "note", "archangel": archangel, "bookNumber": book_no,
                 "appliesTo": {"recordId": f"book-{book_no:02d}-psalm-{h['number']:03d}", "marker": note["marker"], "verse": None},
-                "text": note["text"],
-                "source": {"document": PDF.name, "pdfPage": note["page"]},
+                "text": note["text"], "source": {"document": PDF.name, "pdfPage": note["page"]},
                 "validation": {"status": "machine-extracted-needs-review"},
-            }
-            write_json(note_dir / f"{note_id}.json", record)
+            })
             all_notes.append(note_id)
 
         pages_used = sorted({p for v in verses for p in v["sourcePages"]})
         psalm = {
-            "id": f"book-{book_no:02d}-psalm-{h['number']:03d}",
-            "recordType": "psalm",
-            "archangel": archangel,
-            "book": {"number": book_no, "title": book.get("title")},
-            "number": h["number"],
-            "title": h["title"],
-            "source": {"document": PDF.name, "pdfPages": pages_used},
-            "verses": verses,
-            "noteIds": note_ids,
-            "validation": {
-                "status": "machine-extracted-needs-review",
-                "checks": {"verseCount": len(verses), "verseSequenceStartsAtOne": verses[0]["number"] == 1},
-            },
+            "id": f"book-{book_no:02d}-psalm-{h['number']:03d}", "recordType": "psalm", "archangel": archangel,
+            "book": {"number": book_no, "title": book.get("title")}, "number": h["number"], "title": h["title"],
+            "source": {"document": PDF.name, "pdfPages": pages_used}, "verses": verses, "noteIds": note_ids,
+            "validation": {"status": "machine-extracted-needs-review", "checks": {"verseCount": len(verses), "verseSequenceStartsAtOne": verses[0]["number"] == 1}},
         }
         write_json(book_dir / f"psalm-{h['number']:03d}.json", psalm)
         extracted_psalms.append({"number": h["number"], "title": h["title"], "verses": len(verses), "pages": pages_used, "notes": len(note_ids)})
 
+    if extracted_psalms:
+        next_expected[archangel] = max(p["number"] for p in extracted_psalms) + 1
     book_record = {
-        "id": f"book-{book_no:02d}",
-        "recordType": "book",
-        "number": book_no,
-        "title": book.get("title"),
-        "archangel": archangel,
+        "id": f"book-{book_no:02d}", "recordType": "book", "number": book_no, "title": book.get("title"), "archangel": archangel,
         "source": {"document": PDF.name, "pdfPages": [first, last]},
-        "psalmIds": [f"book-{book_no:02d}-psalm-{p['number']:03d}" for p in extracted_psalms],
-        "noteIds": all_notes,
+        "psalmIds": [f"book-{book_no:02d}-psalm-{p['number']:03d}" for p in extracted_psalms], "noteIds": all_notes,
+        "numbering": {"expectedStart": expected_start, "nextExpected": next_expected[archangel]},
         "validation": {"status": "machine-extracted-needs-review"},
     }
     write_json(book_dir / "book.json", book_record)
-    report.append({"bookNumber": book_no, "title": book.get("title"), "archangel": archangel, "pdfPages": [first, last], "psalms": extracted_psalms, "noteCount": len(all_notes)})
+    report.append({"bookNumber": book_no, "title": book.get("title"), "archangel": archangel, "expectedStart": expected_start, "pdfPages": [first, last], "psalms": extracted_psalms, "noteCount": len(all_notes)})
 
 write_json(REPORT, {"source": PDF.name, "scope": "books-01-10", "status": "machine-extracted-needs-review", "books": report})
-print(f"Extracted {len(report)} books -> data/corpus/books/book-01..book-10")
+print(f"Extracted {len(report)} books with Archangel-continuous numbering")
