@@ -24,6 +24,27 @@ La première tranche thématique est Michaël, psaumes 105 à 130, déjà struct
 
 Le psaume 105 met notamment en évidence des ensembles doctrinaux robustes : Lumière, renaissance, monde divin, mensonge et illusion, dévotion, non-savoir, intelligence supérieure. La prière associée renforce plusieurs de ces axes et ajoute des relations au Père, à l’âme, à la filiation et à la libération de l’illusion.
 
+## Travail réalisé sur le psaume 105
+
+Les premiers index éditoriaux généraux ont été créés et enregistrés dans le catalogue :
+
+- `data/themes/lumiere.json`
+- `data/themes/renaissance.json`
+- `data/themes/monde-divin.json`
+- `data/themes/mensonge-et-illusion.json`
+- `data/themes/devotion.json`
+- `data/themes/non-savoir.json`
+- `data/themes/intelligence-superieure.json`
+
+Chaque fichier contient des sens, sous-thèmes et preuves reliées au psaume 105 et, lorsqu’elle apporte un enseignement pertinent, à sa prière associée. Ces thèmes devront être enrichis plutôt que recréés lorsque les psaumes suivants les abordent à nouveau.
+
+Le thème `Chouette` reste le pilote historique antérieur à cette phase générale.
+
+## État d’avancement de la tranche
+
+- Psaume 105 : structure validée et première indexation thématique réalisée.
+- Psaumes 106 à 130 : structure disponible ; indexation thématique à poursuivre séquentiellement.
+
 ## Suite
 
 Une fois 105–130 thématiquement indexés, le bouton `Index` de l’interface devra afficher uniquement ces thèmes éditorialement constitués. Ensuite chaque nouvelle tranche suivra le cycle : extraction → validation → indexation thématique → enrichissement de l’index général.
