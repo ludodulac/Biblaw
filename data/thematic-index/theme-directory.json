@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedFrom": "data/thematic-index/books/book-*.json",
   "manualEditingAllowed": false,
-  "themeCount": 506,
+  "themeCount": 542,
   "themes": [
     {
       "id": "abeille",
@@ -423,9 +423,9 @@
     {
       "id": "actes",
       "label": "Actes",
-      "score": 6,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 2,
+      "score": 9,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "gabriel",
@@ -434,6 +434,11 @@
         },
         {
           "id": "michael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -474,6 +479,28 @@
           ],
           "teaching": "L’accès au monde divin ne repose pas sur les discours mais sur la réalité de ce que l’homme pense, ressent, invite et accomplit.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-053",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 53,
+          "psalmTitle": "Seule l’œuvre que tu réalises détermine ton degré d ’éveil",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            8,
+            9,
+            10,
+            16
+          ],
+          "teaching": "Les actes fournissent la matière sans laquelle pensées, souhaits et aspirations restent dans un monde sans corps.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -511,6 +538,28 @@
             17
           ],
           "teaching": "L’accès au monde divin ne repose pas sur les discours mais sur la réalité de ce que l’homme pense, ressent, invite et accomplit.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-053",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 53,
+          "psalmTitle": "Seule l’œuvre que tu réalises détermine ton degré d ’éveil",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            8,
+            9,
+            10,
+            16
+          ],
+          "teaching": "Les actes fournissent la matière sans laquelle pensées, souhaits et aspirations restent dans un monde sans corps.",
           "score": 3
         }
       ]
@@ -1669,9 +1718,9 @@
     {
       "id": "alliance",
       "label": "Alliance",
-      "score": 18,
-      "occurrenceCount": 7,
-      "centralPsalmCount": 4,
+      "score": 21,
+      "occurrenceCount": 8,
+      "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "gabriel",
@@ -1679,14 +1728,14 @@
           "occurrenceCount": 3
         },
         {
-          "id": "raphael",
-          "score": 5,
+          "id": "ouriel",
+          "score": 6,
           "occurrenceCount": 2
         },
         {
-          "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "raphael",
+          "score": 5,
+          "occurrenceCount": 2
         },
         {
           "id": "michael",
@@ -1776,6 +1825,34 @@
             29
           ],
           "teaching": "Une alliance met réellement plusieurs mondes en relation et engage chacun ; elle ouvre des portes qui doivent être protégées des mélanges et détournements.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-077",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 77,
+          "psalmTitle": "Faites connaître la splendeur de la sagesse essénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            11,
+            12,
+            13,
+            15,
+            18
+          ],
+          "teaching": "La célébration des quatre Archanges est décrite comme une œuvre qui scelle une alliance sur une terre et crée un capital de Lumière appelé à être entretenu par la fidélité.",
           "score": 3
         },
         {
@@ -1914,6 +1991,34 @@
             29
           ],
           "teaching": "Une alliance met réellement plusieurs mondes en relation et engage chacun ; elle ouvre des portes qui doivent être protégées des mélanges et détournements.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-077",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 77,
+          "psalmTitle": "Faites connaître la splendeur de la sagesse essénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            11,
+            12,
+            13,
+            15,
+            18
+          ],
+          "teaching": "La célébration des quatre Archanges est décrite comme une œuvre qui scelle une alliance sur une terre et crée un capital de Lumière appelé à être entretenu par la fidélité.",
           "score": 3
         },
         {
@@ -2042,6 +2147,64 @@
           ],
           "teaching": "Le travail essénien tisse un lien entre la Mère et les mondes supérieurs et donne aux engagés une continuité d’accompagnement au-delà de la seule vie physique.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "allegement",
+      "label": "Allègement",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-062",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 62,
+          "psalmTitle": "Pourquoi les hommes n ’entendent‑ ils pas la réponse à leurs prières?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "teaching": "L'homme est invité à ne pas porter les problèmes qui ne lui appartiennent pas, à régler sa propre vie et à s'associer avec ce qui l'élève plutôt qu'avec ce qui l'enfonce.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-062",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 62,
+          "psalmTitle": "Pourquoi les hommes n ’entendent‑ ils pas la réponse à leurs prières?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "teaching": "L'homme est invité à ne pas porter les problèmes qui ne lui appartiennent pas, à régler sa propre vie et à s'associer avec ce qui l'élève plutôt qu'avec ce qui l'enfonce.",
+          "score": 2
         }
       ]
     },
@@ -3414,6 +3577,72 @@
       ]
     },
     {
+      "id": "animaux-totems",
+      "label": "Animaux totems",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-058",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 58,
+          "psalmTitle": "De quel animal totem es ‑tu le représentant?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            13,
+            14
+          ],
+          "teaching": "Les animaux totems représentent des forces de vie et des alliances qui animent l'homme ; certains expriment grâce et subtilité, d'autres des impulsions instinctives à connaître et à transformer.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-058",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 58,
+          "psalmTitle": "De quel animal totem es ‑tu le représentant?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            13,
+            14
+          ],
+          "teaching": "Les animaux totems représentent des forces de vie et des alliances qui animent l'homme ; certains expriment grâce et subtilité, d'autres des impulsions instinctives à connaître et à transformer.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "apparence-et-verite",
       "label": "Apparence et vérité",
       "score": 2,
@@ -4021,6 +4250,108 @@
             22
           ],
           "teaching": "L’homme doit préparer une terre stable et fertile puis devenir un arbre enraciné capable d’accueillir le messager solaire et de porter une nouvelle vie divine.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "argent",
+      "label": "Argent",
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 6,
+          "occurrenceCount": 2
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-067",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 67,
+          "psalmTitle": "La clé d’Ouriel pour attirer et",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            13,
+            16,
+            22,
+            24
+          ],
+          "teaching": "L'argent est une énergie et un moyen ; il devient voleur de lumière lorsqu'il est pris pour le but de la vie, mais peut servir à donner un corps aux œuvres divines lorsqu'il est consciemment réorienté.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-076",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 76,
+          "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            3,
+            8,
+            9
+          ],
+          "teaching": "L'image de la banque et de l'argent exprime une réserve de forces, mérites et alliances que l'homme peut entretenir ou dépenser selon la qualité de sa vie.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-067",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 67,
+          "psalmTitle": "La clé d’Ouriel pour attirer et",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            13,
+            16,
+            22,
+            24
+          ],
+          "teaching": "L'argent est une énergie et un moyen ; il devient voleur de lumière lorsqu'il est pris pour le but de la vie, mais peut servir à donner un corps aux œuvres divines lorsqu'il est consciemment réorienté.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-076",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 76,
+          "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            3,
+            8,
+            9
+          ],
+          "teaching": "L'image de la banque et de l'argent exprime une réserve de forces, mérites et alliances que l'homme peut entretenir ou dépenser selon la qualité de sa vie.",
           "score": 3
         }
       ]
@@ -5418,8 +5749,8 @@
       ]
     },
     {
-      "id": "bonheur",
-      "label": "Bonheur",
+      "id": "bilan-et-acquis",
+      "label": "Bilan et acquis",
       "score": 3,
       "occurrenceCount": 1,
       "centralPsalmCount": 1,
@@ -5428,6 +5759,116 @@
           "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-064",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 64,
+          "psalmTitle": "Comment se préparer à rencontrer l’A rchange M ichaël",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6,
+            7,
+            16
+          ],
+          "teaching": "La fin d'un cycle demande de regarder les résultats concrets, conduire les expériences vers la sagesse et préserver ce qui a été réellement acquis avant d'ouvrir un nouveau commencement.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-064",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 64,
+          "psalmTitle": "Comment se préparer à rencontrer l’A rchange M ichaël",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6,
+            7,
+            16
+          ],
+          "teaching": "La fin d'un cycle demande de regarder les résultats concrets, conduire les expériences vers la sagesse et préserver ce qui a été réellement acquis avant d'ouvrir un nouveau commencement.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "blanche-neige",
+      "label": "Blanche-Neige",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-055",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 55,
+          "psalmTitle": "Le grand secret caché dans la fable de B lanche ‑N eige",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            6,
+            7,
+            8
+          ],
+          "teaching": "Blanche-Neige figure l'être porteur d'une beauté convoitée par une puissance qui lui présente une apparence séduisante afin de s'emparer de son trésor.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-055",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 55,
+          "psalmTitle": "Le grand secret caché dans la fable de B lanche ‑N eige",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            6,
+            7,
+            8
+          ],
+          "teaching": "Blanche-Neige figure l'être porteur d'une beauté convoitée par une puissance qui lui présente une apparence séduisante afin de s'emparer de son trésor.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "bonheur",
+      "label": "Bonheur",
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 6,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -5452,6 +5893,30 @@
           ],
           "teaching": "Le bonheur doit exister comme germe et qualité intérieure avant de pouvoir être rencontré et organisé à l'extérieur.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-073",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 73,
+          "psalmTitle": "Trouve le lieu du bonheur et n ’en sors plus",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Le bonheur a des lois : il n'est pas interdit par le monde divin mais demande conscience, respect, discernement et une relation vivante avec ce qui donne réellement la vie.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -5475,6 +5940,30 @@
             8
           ],
           "teaching": "Le bonheur doit exister comme germe et qualité intérieure avant de pouvoir être rencontré et organisé à l'extérieur.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-073",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 73,
+          "psalmTitle": "Trouve le lieu du bonheur et n ’en sors plus",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Le bonheur a des lois : il n'est pas interdit par le monde divin mais demande conscience, respect, discernement et une relation vivante avec ce qui donne réellement la vie.",
           "score": 3
         }
       ]
@@ -6117,6 +6606,70 @@
       ]
     },
     {
+      "id": "capital-spirituel",
+      "label": "Capital spirituel",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-076",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 76,
+          "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Une proximité actuelle avec la Lumière peut provenir d'un capital accumulé dans le passé ; une vie incohérente peut l'épuiser jusqu'à la perte de la relation supérieure.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-076",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 76,
+          "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Une proximité actuelle avec la Lumière peut provenir d'un capital accumulé dans le passé ; une vie incohérente peut l'épuiser jusqu'à la perte de la relation supérieure.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "carte-au-tresor",
       "label": "Carte au trésor",
       "score": 3,
@@ -6427,10 +6980,15 @@
     {
       "id": "cerf-volant",
       "label": "Cerf-volant",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "raphael",
           "score": 3,
@@ -6461,6 +7019,26 @@
           ],
           "teaching": "Le cerf-volant figure l'homme global : corps-ficelle, âme multicolore et esprit vaste, reliant la terre au ciel.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-056",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 56,
+          "psalmTitle": "Ne sois pas un cerf ‑volant baladé par le vent du monde",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            10,
+            11,
+            12
+          ],
+          "teaching": "Le cerf-volant représente l'homme dont la direction dépend des tendances, influences et rêves du monde au lieu d'une orientation intérieure stable.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -6486,6 +7064,26 @@
             19
           ],
           "teaching": "Le cerf-volant figure l'homme global : corps-ficelle, âme multicolore et esprit vaste, reliant la terre au ciel.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-056",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 56,
+          "psalmTitle": "Ne sois pas un cerf ‑volant baladé par le vent du monde",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            10,
+            11,
+            12
+          ],
+          "teaching": "Le cerf-volant représente l'homme dont la direction dépend des tendances, influences et rêves du monde au lieu d'une orientation intérieure stable.",
           "score": 3
         }
       ]
@@ -8155,12 +8753,17 @@
     {
       "id": "concentration",
       "label": "Concentration",
-      "score": 5,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 1,
+      "score": 8,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         },
@@ -8193,6 +8796,30 @@
             14
           ],
           "teaching": "La concentration protège le chemin : orienter sens, organes et attention vers un but élevé évite le mélange et permet de rester fidèle à une alliance.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-068",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 68,
+          "psalmTitle": "Unis ta pensée au soleil de la Ronde des A rchanges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            12,
+            13,
+            14,
+            17,
+            20
+          ],
+          "teaching": "La concentration stabilise la pensée et empêche les influences émotionnelles et les doutes de disperser l'énergie avant qu'elle atteigne la réalisation.",
           "score": 3
         },
         {
@@ -8241,6 +8868,30 @@
             14
           ],
           "teaching": "La concentration protège le chemin : orienter sens, organes et attention vers un but élevé évite le mélange et permet de rester fidèle à une alliance.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-068",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 68,
+          "psalmTitle": "Unis ta pensée au soleil de la Ronde des A rchanges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            12,
+            13,
+            14,
+            17,
+            20
+          ],
+          "teaching": "La concentration stabilise la pensée et empêche les influences émotionnelles et les doutes de disperser l'énergie avant qu'elle atteigne la réalisation.",
           "score": 3
         },
         {
@@ -8324,6 +8975,72 @@
           ],
           "teaching": "Une œuvre exige des conditions concrètes : allègement, organisation, environnement porteur, persévérance et fidélité à l’objectif.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "conditions-de-vie",
+      "label": "Conditions de vie",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-062",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 62,
+          "psalmTitle": "Pourquoi les hommes n ’entendent‑ ils pas la réponse à leurs prières?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            15,
+            17
+          ],
+          "teaching": "Les pensées et aspirations ne peuvent être redressées durablement si l'homme demeure dans un environnement qui les empoisonne ; créer des conditions justes fait partie du travail spirituel.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-062",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 62,
+          "psalmTitle": "Pourquoi les hommes n ’entendent‑ ils pas la réponse à leurs prières?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            15,
+            17
+          ],
+          "teaching": "Les pensées et aspirations ne peuvent être redressées durablement si l'homme demeure dans un environnement qui les empoisonne ; créer des conditions justes fait partie du travail spirituel.",
+          "score": 3
         }
       ]
     },
@@ -9067,9 +9784,9 @@
     {
       "id": "corps",
       "label": "Corps",
-      "score": 18,
-      "occurrenceCount": 7,
-      "centralPsalmCount": 4,
+      "score": 21,
+      "occurrenceCount": 8,
+      "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "michael",
@@ -9085,6 +9802,11 @@
           "id": "gabriel",
           "score": 5,
           "occurrenceCount": 2
+        },
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -9171,6 +9893,28 @@
             9
           ],
           "teaching": "Le corps est un instrument sacré inachevé dont les possibilités doivent être cultivées pour unir esprit et matière.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-059",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 59,
+          "psalmTitle": "3 clés du bonheur pour ton corps et ton âme",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Le corps aime servir et réaliser, mais il doit recevoir les conditions physiques et subtiles qui lui permettent de conduire l'œuvre jusqu'au repos de l'achèvement.",
           "score": 3
         },
         {
@@ -9307,6 +10051,28 @@
             9
           ],
           "teaching": "Le corps est un instrument sacré inachevé dont les possibilités doivent être cultivées pour unir esprit et matière.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-059",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 59,
+          "psalmTitle": "3 clés du bonheur pour ton corps et ton âme",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Le corps aime servir et réaliser, mais il doit recevoir les conditions physiques et subtiles qui lui permettent de conduire l'œuvre jusqu'au repos de l'achèvement.",
           "score": 3
         },
         {
@@ -9413,6 +10179,70 @@
           ],
           "teaching": "Les régions du corps sont mises en correspondance avec Mère, homme et mondes supérieurs pour restaurer une circulation harmonieuse.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "corps-de-la-lumiere",
+      "label": "Corps de la Lumière",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-060",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 60,
+          "psalmTitle": "Arrêtez de rêver le monde divin, unissez ‑vous pour lui construire un corps",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            8,
+            11,
+            13,
+            16,
+            17,
+            18,
+            20,
+            24
+          ],
+          "teaching": "Le monde divin doit recevoir un corps concret sur la terre ; les pratiques et idées ne valent que si elles nourrissent une structure réelle où la Lumière peut vivre.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-060",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 60,
+          "psalmTitle": "Arrêtez de rêver le monde divin, unissez ‑vous pour lui construire un corps",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            8,
+            11,
+            13,
+            16,
+            17,
+            18,
+            20,
+            24
+          ],
+          "teaching": "Le monde divin doit recevoir un corps concret sur la terre ; les pratiques et idées ne valent que si elles nourrissent une structure réelle où la Lumière peut vivre.",
+          "score": 3
         }
       ]
     },
@@ -9866,6 +10696,60 @@
           ],
           "teaching": "La vie quotidienne peut former un corps d'immortalité lorsque pensée, volonté et œuvre sont reliées à l'éternité.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "corps-hermetique",
+      "label": "Corps hermétique",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-061",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 61,
+          "psalmTitle": "Ce que tu dois savoir et être pour entrer dans le temple d ’un A rchange",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6
+          ],
+          "teaching": "Le réceptacle de la Lumière doit être vivant mais stable, suffisamment constitué pour ne pas laisser les influences indésirables entrer ou l'énergie sacrée se disperser.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-061",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 61,
+          "psalmTitle": "Ce que tu dois savoir et être pour entrer dans le temple d ’un A rchange",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6
+          ],
+          "teaching": "Le réceptacle de la Lumière doit être vivant mais stable, suffisamment constitué pour ne pas laisser les influences indésirables entrer ou l'énergie sacrée se disperser.",
+          "score": 3
         }
       ]
     },
@@ -11204,8 +12088,8 @@
     {
       "id": "discernement",
       "label": "Discernement",
-      "score": 34,
-      "occurrenceCount": 13,
+      "score": 36,
+      "occurrenceCount": 14,
       "centralPsalmCount": 8,
       "archangels": [
         {
@@ -11219,12 +12103,12 @@
           "occurrenceCount": 5
         },
         {
-          "id": "gabriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "ouriel",
+          "score": 5,
+          "occurrenceCount": 2
         },
         {
-          "id": "ouriel",
+          "id": "gabriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -11725,6 +12609,26 @@
             14
           ],
           "teaching": "La pensée clarifiée devient l’organe qui distingue l’essentiel de l’inutile et permet de choisir consciemment les mondes auxquels l’homme s’associe.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-073",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 73,
+          "psalmTitle": "Trouve le lieu du bonheur et n ’en sors plus",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            11
+          ],
+          "teaching": "Les représentations de souffrance obligatoire ou de spiritualité triste sont des mélanges ; discerner les lois du bonheur évite de confondre exigence juste et malheur.",
           "score": 2
         }
       ]
@@ -13087,9 +13991,9 @@
     {
       "id": "engagement",
       "label": "Engagement",
-      "score": 19,
-      "occurrenceCount": 7,
-      "centralPsalmCount": 5,
+      "score": 24,
+      "occurrenceCount": 9,
+      "centralPsalmCount": 6,
       "archangels": [
         {
           "id": "gabriel",
@@ -13097,13 +14001,13 @@
           "occurrenceCount": 3
         },
         {
-          "id": "michael",
-          "score": 6,
-          "occurrenceCount": 2
+          "id": "ouriel",
+          "score": 9,
+          "occurrenceCount": 4
         },
         {
-          "id": "ouriel",
-          "score": 4,
+          "id": "michael",
+          "score": 6,
           "occurrenceCount": 2
         }
       ],
@@ -13217,6 +14121,27 @@
           "score": 3
         },
         {
+          "recordId": "book-12-psalm-069",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 69,
+          "psalmTitle": "Respecte tes engagements envers la L umière et elle t ’aidera",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "teaching": "Prononcer un engagement crée une relation réelle avec des êtres et des mondes ; le traiter comme une envie passagère détruit la confiance et la capacité d'être soutenu.",
+          "score": 3
+        },
+        {
           "recordId": "book-04-psalm-011",
           "bookNumber": 4,
           "bookTitle": "Vous êtes l’espoir d’un monde",
@@ -13248,6 +14173,30 @@
             13
           ],
           "teaching": "Détermination, enthousiasme, volonté et présence doivent accompagner un engagement conscient dans la vie.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-057",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 57,
+          "psalmTitle": "Prenez soin de l’esprit de vie, car sans lui, vous êtes des lettres mortes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            17,
+            24,
+            26,
+            29,
+            30,
+            31,
+            35,
+            40
+          ],
+          "teaching": "Celui qui reconnaît une lumière est appelé à lui donner des conditions, à tenir son engagement et à porter concrètement la responsabilité du temple vivant.",
           "score": 2
         }
       ],
@@ -13361,6 +14310,27 @@
           "score": 3
         },
         {
+          "recordId": "book-12-psalm-069",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 69,
+          "psalmTitle": "Respecte tes engagements envers la L umière et elle t ’aidera",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "teaching": "Prononcer un engagement crée une relation réelle avec des êtres et des mondes ; le traiter comme une envie passagère détruit la confiance et la capacité d'être soutenu.",
+          "score": 3
+        },
+        {
           "recordId": "book-04-psalm-011",
           "bookNumber": 4,
           "bookTitle": "Vous êtes l’espoir d’un monde",
@@ -13393,6 +14363,84 @@
           ],
           "teaching": "Détermination, enthousiasme, volonté et présence doivent accompagner un engagement conscient dans la vie.",
           "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-057",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 57,
+          "psalmTitle": "Prenez soin de l’esprit de vie, car sans lui, vous êtes des lettres mortes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            17,
+            24,
+            26,
+            29,
+            30,
+            31,
+            35,
+            40
+          ],
+          "teaching": "Celui qui reconnaît une lumière est appelé à lui donner des conditions, à tenir son engagement et à porter concrètement la responsabilité du temple vivant.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "enseignement-vivant",
+      "label": "Enseignement vivant",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-063",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 63,
+          "psalmTitle": "La N ation E ssénienne est la perfection du monde divin sur la terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            7,
+            8
+          ],
+          "teaching": "La perfection attribuée à l'enseignement n'exonère pas de l'expérimentation : il doit être mis en pratique, nourri par la vie et conduit vers une œuvre durable.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-063",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 63,
+          "psalmTitle": "La N ation E ssénienne est la perfection du monde divin sur la terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            7,
+            8
+          ],
+          "teaching": "La perfection attribuée à l'enseignement n'exonère pas de l'expérimentation : il doit être mis en pratique, nourri par la vie et conduit vers une œuvre durable.",
+          "score": 3
         }
       ]
     },
@@ -13796,6 +14844,82 @@
           ],
           "teaching": "La capacité de recevoir dépend de l’espace que l’homme construit en lui ; la note précise que la rencontre est établie par le divin en lui et non par les concepts humains.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "esprit-de-vie",
+      "label": "Esprit de vie",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-057",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 57,
+          "psalmTitle": "Prenez soin de l’esprit de vie, car sans lui, vous êtes des lettres mortes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            18,
+            20,
+            29,
+            32,
+            36,
+            38,
+            39
+          ],
+          "teaching": "Les structures, organisations et formes ne sont vivantes que si elles servent l'esprit ; l'enjeu est de créer les conditions où l'intelligence vivante peut réellement se manifester.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-057",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 57,
+          "psalmTitle": "Prenez soin de l’esprit de vie, car sans lui, vous êtes des lettres mortes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            18,
+            20,
+            29,
+            32,
+            36,
+            38,
+            39
+          ],
+          "teaching": "Les structures, organisations et formes ne sont vivantes que si elles servent l'esprit ; l'enjeu est de créer les conditions où l'intelligence vivante peut réellement se manifester.",
+          "score": 3
         }
       ]
     },
@@ -14930,21 +16054,79 @@
       ]
     },
     {
+      "id": "fiabilite",
+      "label": "Fiabilité et stabilité",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-075",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 75,
+          "psalmTitle": "Cultivez une relation juste avec les règnes de la M ère et le monde divin vous ouvrira ses portes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            9,
+            10,
+            11,
+            13
+          ],
+          "teaching": "Fidélité à la parole, douceur, stabilité et engagement envers les règnes forment une terre fiable sur laquelle le monde divin peut envisager de se poser.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-075",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 75,
+          "psalmTitle": "Cultivez une relation juste avec les règnes de la M ère et le monde divin vous ouvrira ses portes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            9,
+            10,
+            11,
+            13
+          ],
+          "teaching": "Fidélité à la parole, douceur, stabilité et engagement envers les règnes forment une terre fiable sur laquelle le monde divin peut envisager de se poser.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "fidelite",
       "label": "Fidélité",
-      "score": 12,
-      "occurrenceCount": 4,
-      "centralPsalmCount": 4,
+      "score": 17,
+      "occurrenceCount": 6,
+      "centralPsalmCount": 5,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 8,
+          "occurrenceCount": 3
+        },
         {
           "id": "michael",
           "score": 6,
           "occurrenceCount": 2
-        },
-        {
-          "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
         },
         {
           "id": "raphael",
@@ -15061,6 +16243,45 @@
           ],
           "teaching": "La fidélité est une marque de respect et de réciprocité : le monde divin s’engage dans l’Alliance et attend de l’homme une constance correspondante.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-069",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 69,
+          "psalmTitle": "Respecte tes engagements envers la L umière et elle t ’aidera",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7
+          ],
+          "teaching": "Le monde divin est présenté comme fidèle et attend de l'homme une stabilité correspondante : tenir sa parole forme une terre sur laquelle une alliance peut se poser.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-076",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 76,
+          "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Le capital ne devient durable que lorsque l'homme cesse de se justifier, applique les lois qu'il reconnaît et organise sa vie autour d'une fidélité réelle.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -15172,6 +16393,45 @@
           ],
           "teaching": "La fidélité est une marque de respect et de réciprocité : le monde divin s’engage dans l’Alliance et attend de l’homme une constance correspondante.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-069",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 69,
+          "psalmTitle": "Respecte tes engagements envers la L umière et elle t ’aidera",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7
+          ],
+          "teaching": "Le monde divin est présenté comme fidèle et attend de l'homme une stabilité correspondante : tenir sa parole forme une terre sur laquelle une alliance peut se poser.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-076",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 76,
+          "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Le capital ne devient durable que lorsque l'homme cesse de se justifier, applique les lois qu'il reconnaît et organise sa vie autour d'une fidélité réelle.",
+          "score": 2
         }
       ]
     },
@@ -16932,9 +18192,9 @@
     {
       "id": "guerison",
       "label": "Guérison",
-      "score": 17,
-      "occurrenceCount": 7,
-      "centralPsalmCount": 3,
+      "score": 20,
+      "occurrenceCount": 8,
+      "centralPsalmCount": 4,
       "archangels": [
         {
           "id": "gabriel",
@@ -16945,6 +18205,11 @@
           "id": "raphael",
           "score": 7,
           "occurrenceCount": 3
+        },
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
         },
         {
           "id": "michael",
@@ -17011,6 +18276,30 @@
             13
           ],
           "teaching": "La guérison ancestrale demande lucidité, méditation, douceur et relation au présent divin plutôt qu'un simple contrôle disciplinaire.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-071",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 71,
+          "psalmTitle": "La guérison par les 4 éléments, clé de la sagesse essénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            17,
+            18
+          ],
+          "teaching": "La guérison véritable est reliée au retour d'un langage avec les éléments et à la restauration de l'alliance plutôt qu'à la seule manipulation extérieure de la matière.",
           "score": 3
         },
         {
@@ -17136,6 +18425,30 @@
             13
           ],
           "teaching": "La guérison ancestrale demande lucidité, méditation, douceur et relation au présent divin plutôt qu'un simple contrôle disciplinaire.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-071",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 71,
+          "psalmTitle": "La guérison par les 4 éléments, clé de la sagesse essénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            17,
+            18
+          ],
+          "teaching": "La guérison véritable est reliée au retour d'un langage avec les éléments et à la restauration de l'alliance plutôt qu'à la seule manipulation extérieure de la matière.",
           "score": 3
         },
         {
@@ -17730,6 +19043,72 @@
       ]
     },
     {
+      "id": "hierarchie",
+      "label": "Hiérarchie et juste place",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-065",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 65,
+          "psalmTitle": "Deviens un maître authentique par la connaissance et le respect des lois divines",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            10,
+            13,
+            14,
+            15
+          ],
+          "teaching": "Chaque fonction doit occuper sa place juste dans l'organisme ; le mélange des rôles et l'usurpation de maîtrise produisent trouble, faiblesse et désordre.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-065",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 65,
+          "psalmTitle": "Deviens un maître authentique par la connaissance et le respect des lois divines",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            10,
+            13,
+            14,
+            15
+          ],
+          "teaching": "Chaque fonction doit occuper sa place juste dans l'organisme ; le mélange des rôles et l'usurpation de maîtrise produisent trouble, faiblesse et désordre.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "hieroglyphe-vivant",
       "label": "Hiéroglyphe vivant",
       "score": 2,
@@ -18193,6 +19572,68 @@
       ]
     },
     {
+      "id": "humilite",
+      "label": "Humilité",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-075",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 75,
+          "psalmTitle": "Cultivez une relation juste avec les règnes de la M ère et le monde divin vous ouvrira ses portes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            10,
+            11,
+            12
+          ],
+          "teaching": "L'homme doit reconnaître les êtres qui constituent son corps et sa vie au lieu de s'approcher du divin comme s'il était supérieur et autosuffisant.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-075",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 75,
+          "psalmTitle": "Cultivez une relation juste avec les règnes de la M ère et le monde divin vous ouvrira ses portes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            10,
+            11,
+            12
+          ],
+          "teaching": "L'homme doit reconnaître les êtres qui constituent son corps et sa vie au lieu de s'approcher du divin comme s'il était supérieur et autosuffisant.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "heritage-lourd",
       "label": "Héritage lourd",
       "score": 2,
@@ -18463,12 +19904,17 @@
     {
       "id": "illusion",
       "label": "Illusion",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "michael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -18491,6 +19937,25 @@
           ],
           "teaching": "L'illusion consiste notamment à confondre l'invisible fabriqué par les hommes avec le divin et à fuir les conditions réelles de la vie terrestre.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-055",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 55,
+          "psalmTitle": "Le grand secret caché dans la fable de B lanche ‑N eige",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            6,
+            7
+          ],
+          "teaching": "L'émerveillement devant la richesse et la technologie du monde extérieur peut endormir la perception de la richesse intérieure et faire sacrifier l'essentiel à l'apparence.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -18510,6 +19975,25 @@
             5
           ],
           "teaching": "L'illusion consiste notamment à confondre l'invisible fabriqué par les hommes avec le divin et à fuir les conditions réelles de la vie terrestre.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-055",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 55,
+          "psalmTitle": "Le grand secret caché dans la fable de B lanche ‑N eige",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            6,
+            7
+          ],
+          "teaching": "L'émerveillement devant la richesse et la technologie du monde extérieur peut endormir la perception de la richesse intérieure et faire sacrifier l'essentiel à l'apparence.",
           "score": 3
         }
       ]
@@ -19345,6 +20829,72 @@
       ]
     },
     {
+      "id": "incarnation-de-la-pensee",
+      "label": "Incarnation de la pensée",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-068",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 68,
+          "psalmTitle": "Unis ta pensée au soleil de la Ronde des A rchanges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Une pensée supérieure doit descendre dans les sentiments, la volonté et finalement la terre ; sans ce trajet, la semence ne reçoit jamais le corps qui lui permet de porter du fruit.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-068",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 68,
+          "psalmTitle": "Unis ta pensée au soleil de la Ronde des A rchanges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Une pensée supérieure doit descendre dans les sentiments, la volonté et finalement la terre ; sans ce trajet, la semence ne reçoit jamais le corps qui lui permet de porter du fruit.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "incarnation-des-voeux",
       "label": "Incarnation des vœux",
       "score": 2,
@@ -19688,6 +21238,68 @@
             12
           ],
           "teaching": "Des pensées et intelligences extérieures visitent l’homme ; les reconnaître empêche qu’elles utilisent sa pensée comme une porte pour conduire sa vie.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "influences-instinctives",
+      "label": "Influences instinctives",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-058",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 58,
+          "psalmTitle": "De quel animal totem es ‑tu le représentant?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            6,
+            7,
+            8,
+            9,
+            11,
+            13,
+            14
+          ],
+          "teaching": "L'homme inconscient peut devenir le véhicule d'impulsions héréditaires, karmiques ou instinctives ; vigilance et connaissance permettent de les remettre à leur juste place.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-058",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 58,
+          "psalmTitle": "De quel animal totem es ‑tu le représentant?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            6,
+            7,
+            8,
+            9,
+            11,
+            13,
+            14
+          ],
+          "teaching": "L'homme inconscient peut devenir le véhicule d'impulsions héréditaires, karmiques ou instinctives ; vigilance et connaissance permettent de les remettre à leur juste place.",
           "score": 2
         }
       ]
@@ -20409,17 +22021,42 @@
     {
       "id": "jugement",
       "label": "Jugement",
-      "score": 4,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 0,
+      "score": 7,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "michael",
           "score": 4,
           "occurrenceCount": 2
+        },
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-12-psalm-072",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 72,
+          "psalmTitle": "Soutiens l’œuvre de la Lumière à travers la N ation E ssénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            10,
+            11,
+            23
+          ],
+          "teaching": "Juger une œuvre en cours détourne la force intérieure vers la destruction ; la sagesse demande d'attendre le fruit et de ne pas nourrir ce que l'on ne peut redresser.",
+          "score": 3
+        },
         {
           "recordId": "book-01-psalm-013",
           "bookNumber": 1,
@@ -20454,6 +22091,26 @@
         }
       ],
       "occurrences": [
+        {
+          "recordId": "book-12-psalm-072",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 72,
+          "psalmTitle": "Soutiens l’œuvre de la Lumière à travers la N ation E ssénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            10,
+            11,
+            23
+          ],
+          "teaching": "Juger une œuvre en cours détourne la force intérieure vers la destruction ; la sagesse demande d'attendre le fruit et de ne pas nourrir ce que l'on ne peut redresser.",
+          "score": 3
+        },
         {
           "recordId": "book-01-psalm-013",
           "bookNumber": 1,
@@ -20539,6 +22196,68 @@
           ],
           "teaching": "L’Essénien se recentre dans un rayon de justice qui équilibre les mondes et transforme ce qui s’écarte de la droiture.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "karma",
+      "label": "Karma",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-054",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 54,
+          "psalmTitle": "La clé pour se libérer du karma et entrer dans la plénitude",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            9,
+            10,
+            11,
+            12,
+            17,
+            22
+          ],
+          "teaching": "Les promesses, associations et œuvres laissées inachevées restent actives comme des forces qui sollicitent et alourdissent l'homme jusqu'à leur accomplissement.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-054",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 54,
+          "psalmTitle": "La clé pour se libérer du karma et entrer dans la plénitude",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            9,
+            10,
+            11,
+            12,
+            17,
+            22
+          ],
+          "teaching": "Les promesses, associations et œuvres laissées inachevées restent actives comme des forces qui sollicitent et alourdissent l'homme jusqu'à leur accomplissement.",
+          "score": 3
         }
       ]
     },
@@ -20995,6 +22714,74 @@
             12
           ],
           "teaching": "Les aptitudes, tendances, obstacles et imperfections sont les traces d’un travail antérieur et une carte indiquant ce qui doit être transformé aujourd’hui.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "lettre-et-esprit",
+      "label": "Lettre et esprit",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-057",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 57,
+          "psalmTitle": "Prenez soin de l’esprit de vie, car sans lui, vous êtes des lettres mortes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            6,
+            7,
+            10,
+            11,
+            13,
+            20,
+            37,
+            38,
+            39
+          ],
+          "teaching": "La lettre est nécessaire comme corps, mais devient morte lorsqu'elle se substitue à l'esprit qu'elle devait servir et manifester.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-057",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 57,
+          "psalmTitle": "Prenez soin de l’esprit de vie, car sans lui, vous êtes des lettres mortes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            6,
+            7,
+            10,
+            11,
+            13,
+            20,
+            37,
+            38,
+            39
+          ],
+          "teaching": "La lettre est nécessaire comme corps, mais devient morte lorsqu'elle se substitue à l'esprit qu'elle devait servir et manifester.",
           "score": 3
         }
       ]
@@ -21562,6 +23349,80 @@
             7
           ],
           "teaching": "La destinée s’écrit selon l’origine des inspirations auxquelles l’homme confie sa pensée et selon ce qu’il met réellement en action.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "lois-divines",
+      "label": "Lois divines",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-065",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 65,
+          "psalmTitle": "Deviens un maître authentique par la connaissance et le respect des lois divines",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "Tous les mondes sont gouvernés par des lois ; la maîtrise consiste à conformer l'activité, le corps et la destinée à cet ordre plutôt qu'à la ruse ou aux apparences.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-065",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 65,
+          "psalmTitle": "Deviens un maître authentique par la connaissance et le respect des lois divines",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "Tous les mondes sont gouvernés par des lois ; la maîtrise consiste à conformer l'activité, le corps et la destinée à cet ordre plutôt qu'à la ruse ou aux apparences.",
           "score": 3
         }
       ]
@@ -22993,8 +24854,8 @@
     {
       "id": "maitrise",
       "label": "Maîtrise",
-      "score": 11,
-      "occurrenceCount": 4,
+      "score": 13,
+      "occurrenceCount": 5,
       "centralPsalmCount": 3,
       "archangels": [
         {
@@ -23010,6 +24871,11 @@
         {
           "id": "michael",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
+          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -23088,6 +24954,27 @@
           ],
           "teaching": "La maîtrise consiste à se tenir entre les pôles, discerner leurs intelligences et rétablir l'harmonie sans supprimer l'un des deux.",
           "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-065",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 65,
+          "psalmTitle": "Deviens un maître authentique par la connaissance et le respect des lois divines",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            13
+          ],
+          "teaching": "La maîtrise commence dans les petites choses : discipliner le corps, puis les désirs, sentiments et pensées afin de pouvoir conduire des projets jusqu'à la perfection.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -23164,6 +25051,27 @@
             14
           ],
           "teaching": "La maîtrise consiste à se tenir entre les pôles, discerner leurs intelligences et rétablir l'harmonie sans supprimer l'un des deux.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-065",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 65,
+          "psalmTitle": "Deviens un maître authentique par la connaissance et le respect des lois divines",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            13
+          ],
+          "teaching": "La maîtrise commence dans les petites choses : discipliner le corps, puis les désirs, sentiments et pensées afin de pouvoir conduire des projets jusqu'à la perfection.",
           "score": 2
         }
       ]
@@ -23681,10 +25589,15 @@
     {
       "id": "monde-artificiel",
       "label": "Monde artificiel",
-      "score": 4,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 0,
+      "score": 9,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 1,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 5,
+          "occurrenceCount": 2
+        },
         {
           "id": "michael",
           "score": 2,
@@ -23698,6 +25611,26 @@
       ],
       "topPsalms": [
         {
+          "recordId": "book-12-psalm-070",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 70,
+          "psalmTitle": "Si vous n ’aidez pas la Lumière concrètement, vous la perdrez",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            14
+          ],
+          "teaching": "Le monde artificiel menace de remplacer les organes vivants de relation à la nature et aux mondes supérieurs par une existence programmée dans un seul monde humain.",
+          "score": 3
+        },
+        {
           "recordId": "book-01-psalm-002",
           "bookNumber": 1,
           "bookTitle": "Trouve ton propre chemin",
@@ -23728,11 +25661,54 @@
             14
           ],
           "teaching": "Le monde artificiel éduque le regard par vitrines, images et promesses de bonheur matériel, plaçant l’accessoire avant l’essentiel et façonnant ainsi les désirs.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-067",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 67,
+          "psalmTitle": "La clé d’Ouriel pour attirer et",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            7,
+            9,
+            13,
+            15,
+            18,
+            23
+          ],
+          "teaching": "Un monde artificiel capte les sens et ressources humaines en promettant satisfaction et progrès, mais peut tarir la source intérieure et rendre l'homme dépendant d'objectifs sans fin.",
           "score": 2
         }
       ],
       "occurrences": [
         {
+          "recordId": "book-12-psalm-070",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 70,
+          "psalmTitle": "Si vous n ’aidez pas la Lumière concrètement, vous la perdrez",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            14
+          ],
+          "teaching": "Le monde artificiel menace de remplacer les organes vivants de relation à la nature et aux mondes supérieurs par une existence programmée dans un seul monde humain.",
+          "score": 3
+        },
+        {
           "recordId": "book-01-psalm-002",
           "bookNumber": 1,
           "bookTitle": "Trouve ton propre chemin",
@@ -23763,6 +25739,29 @@
             14
           ],
           "teaching": "Le monde artificiel éduque le regard par vitrines, images et promesses de bonheur matériel, plaçant l’accessoire avant l’essentiel et façonnant ainsi les désirs.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-067",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 67,
+          "psalmTitle": "La clé d’Ouriel pour attirer et",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            7,
+            9,
+            13,
+            15,
+            18,
+            23
+          ],
+          "teaching": "Un monde artificiel capte les sens et ressources humaines en promettant satisfaction et progrès, mais peut tarir la source intérieure et rendre l'homme dépendant d'objectifs sans fin.",
           "score": 2
         }
       ]
@@ -24616,8 +26615,8 @@
     {
       "id": "mere",
       "label": "Mère",
-      "score": 19,
-      "occurrenceCount": 8,
+      "score": 21,
+      "occurrenceCount": 9,
       "centralPsalmCount": 3,
       "archangels": [
         {
@@ -24632,8 +26631,8 @@
         },
         {
           "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 5,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -24783,6 +26782,30 @@
           ],
           "teaching": "Les règnes liés à la Mère témoignent de la réalité de l’homme et deviennent ses véritables associés dans l’ascension lorsqu’il vit avec eux dans la vérité.",
           "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-066",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 66,
+          "psalmTitle": "Par votre alliance avec la M ère, montrez au monde la véritable écologie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            6,
+            7,
+            8,
+            14,
+            15,
+            16,
+            17,
+            18,
+            21
+          ],
+          "teaching": "La relation à la Mère sert de vérification concrète de toute prétention spirituelle : connaître les mondes supérieurs suppose d'abord de restaurer le lien avec la vie qui constitue le monde humain.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -24931,6 +26954,30 @@
             15
           ],
           "teaching": "Les règnes liés à la Mère témoignent de la réalité de l’homme et deviennent ses véritables associés dans l’ascension lorsqu’il vit avec eux dans la vérité.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-066",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 66,
+          "psalmTitle": "Par votre alliance avec la M ère, montrez au monde la véritable écologie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            6,
+            7,
+            8,
+            14,
+            15,
+            16,
+            17,
+            18,
+            21
+          ],
+          "teaching": "La relation à la Mère sert de vérification concrète de toute prétention spirituelle : connaître les mondes supérieurs suppose d'abord de restaurer le lien avec la vie qui constitue le monde humain.",
           "score": 2
         }
       ]
@@ -25048,14 +27095,19 @@
     {
       "id": "meditation",
       "label": "Méditation",
-      "score": 15,
-      "occurrenceCount": 6,
-      "centralPsalmCount": 3,
+      "score": 18,
+      "occurrenceCount": 7,
+      "centralPsalmCount": 4,
       "archangels": [
         {
           "id": "raphael",
           "score": 13,
           "occurrenceCount": 5
+        },
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
         },
         {
           "id": "gabriel",
@@ -25119,6 +27171,26 @@
             9
           ],
           "teaching": "La méditation pacifie la nature inférieure et ouvre un regard plus profond sur la magie et les êtres de la nature vivante.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-061",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 61,
+          "psalmTitle": "Ce que tu dois savoir et être pour entrer dans le temple d ’un A rchange",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "La méditation forme stabilité, présence et concentration afin que la vie entière devienne un espace ordonné capable de recevoir une influence supérieure.",
           "score": 3
         },
         {
@@ -25235,6 +27307,26 @@
             9
           ],
           "teaching": "La méditation pacifie la nature inférieure et ouvre un regard plus profond sur la magie et les êtres de la nature vivante.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-061",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 61,
+          "psalmTitle": "Ce que tu dois savoir et être pour entrer dans le temple d ’un A rchange",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "La méditation forme stabilité, présence et concentration afin que la vie entière devienne un espace ordonné capable de recevoir une influence supérieure.",
           "score": 3
         },
         {
@@ -25363,19 +27455,19 @@
     {
       "id": "nation-essenienne",
       "label": "Nation Essénienne",
-      "score": 37,
-      "occurrenceCount": 13,
-      "centralPsalmCount": 11,
+      "score": 40,
+      "occurrenceCount": 14,
+      "centralPsalmCount": 12,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 15,
+          "occurrenceCount": 5
+        },
         {
           "id": "michael",
           "score": 14,
           "occurrenceCount": 5
-        },
-        {
-          "id": "ouriel",
-          "score": 12,
-          "occurrenceCount": 4
         },
         {
           "id": "gabriel",
@@ -25643,22 +27735,27 @@
           "score": 3
         },
         {
-          "recordId": "book-06-psalm-045",
-          "bookNumber": 6,
-          "bookTitle": "Vivre avec son âme",
-          "archangel": "gabriel",
-          "psalmNumber": 45,
-          "psalmTitle": "Naît- on E ssénien ou le devient- on?",
-          "importance": "important",
+          "recordId": "book-12-psalm-063",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 63,
+          "psalmTitle": "La N ation E ssénienne est la perfection du monde divin sur la terre",
+          "importance": "central",
           "directness": "direct",
           "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
             6,
-            12,
-            16,
-            17
+            7,
+            8,
+            9,
+            10
           ],
-          "teaching": "Les temples et la Nation sont présentés comme des milieux de formation où l’être peut être durablement nourri dans une autre orientation.",
-          "score": 2
+          "teaching": "La Nation est présentée comme une structure où la sagesse peut unir monde physique, mondes subtils et monde divin et offrir un chemin d'élévation transmissible.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -25921,6 +28018,29 @@
           "score": 3
         },
         {
+          "recordId": "book-12-psalm-063",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 63,
+          "psalmTitle": "La N ation E ssénienne est la perfection du monde divin sur la terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "La Nation est présentée comme une structure où la sagesse peut unir monde physique, mondes subtils et monde divin et offrir un chemin d'élévation transmissible.",
+          "score": 3
+        },
+        {
           "recordId": "book-06-psalm-045",
           "bookNumber": 6,
           "bookTitle": "Vivre avec son âme",
@@ -25964,14 +28084,19 @@
     {
       "id": "nature",
       "label": "Nature",
-      "score": 18,
-      "occurrenceCount": 7,
-      "centralPsalmCount": 4,
+      "score": 21,
+      "occurrenceCount": 8,
+      "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "michael",
           "score": 6,
           "occurrenceCount": 3
+        },
+        {
+          "id": "ouriel",
+          "score": 6,
+          "occurrenceCount": 2
         },
         {
           "id": "raphael",
@@ -25980,11 +28105,6 @@
         },
         {
           "id": "gabriel",
-          "score": 3,
-          "occurrenceCount": 1
-        },
-        {
-          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -26069,6 +28189,29 @@
             11
           ],
           "teaching": "Sources, arbres, montagnes et êtres de la nature sont des interlocuteurs vivants capables d’enseigner, d’orienter et de reconnecter l’homme à sa véritable nature.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-058",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 58,
+          "psalmTitle": "De quel animal totem es ‑tu le représentant?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            14
+          ],
+          "teaching": "La proximité avec la Mère permet de reconnaître les forces réellement engagées dans une œuvre et de retrouver les racines vivantes de la mission humaine.",
           "score": 3
         },
         {
@@ -26206,6 +28349,29 @@
             11
           ],
           "teaching": "Sources, arbres, montagnes et êtres de la nature sont des interlocuteurs vivants capables d’enseigner, d’orienter et de reconnecter l’homme à sa véritable nature.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-058",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 58,
+          "psalmTitle": "De quel animal totem es ‑tu le représentant?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            14
+          ],
+          "teaching": "La proximité avec la Mère permet de reconnaître les forces réellement engagées dans une œuvre et de retrouver les racines vivantes de la mission humaine.",
           "score": 3
         },
         {
@@ -27989,6 +30155,66 @@
       ]
     },
     {
+      "id": "paradis",
+      "label": "Paradis et lieu du bonheur",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-073",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 73,
+          "psalmTitle": "Trouve le lieu du bonheur et n ’en sors plus",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Le paradis est présenté comme une relation et un lieu d'alliance que l'homme peut habiter ou quitter selon les mondes auxquels il choisit de s'associer.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-073",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 73,
+          "psalmTitle": "Trouve le lieu du bonheur et n ’en sors plus",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Le paradis est présenté comme une relation et un lieu d'alliance que l'homme peut habiter ou quitter selon les mondes auxquels il choisit de s'associer.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "parole",
       "label": "Parole",
       "score": 3,
@@ -28106,6 +30332,60 @@
             10
           ],
           "teaching": "Une part essentielle du pouvoir créateur de la parole réside dans les qualités vibratoires du son.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "parole-donnee",
+      "label": "Parole donnée",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-069",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 69,
+          "psalmTitle": "Respecte tes engagements envers la L umière et elle t ’aidera",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "teaching": "La parole n'est pas sans valeur : promettre puis oublier révèle une terre instable et prive l'engagement de son corps concret.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-069",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 69,
+          "psalmTitle": "Respecte tes engagements envers la L umière et elle t ’aidera",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "teaching": "La parole n'est pas sans valeur : promettre puis oublier révèle une terre instable et prive l'engagement de son corps concret.",
           "score": 2
         }
       ]
@@ -28893,19 +31173,81 @@
       ]
     },
     {
-      "id": "perfection",
-      "label": "Perfection",
-      "score": 8,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 2,
+      "id": "pensee-respiration-nourriture",
+      "label": "Pensée, respiration et nourriture",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
       "archangels": [
         {
-          "id": "michael",
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
-        },
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-059",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 59,
+          "psalmTitle": "3 clés du bonheur pour ton corps et ton âme",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Une pensée claire, une respiration vivante et une nourriture saine constituent trois conditions de base pour qu'un corps dispose de l'énergie nécessaire à l'accomplissement.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-059",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 59,
+          "psalmTitle": "3 clés du bonheur pour ton corps et ton âme",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Une pensée claire, une respiration vivante et une nourriture saine constituent trois conditions de base pour qu'un corps dispose de l'énergie nécessaire à l'accomplissement.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "perfection",
+      "label": "Perfection",
+      "score": 11,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 3,
+      "archangels": [
         {
           "id": "ouriel",
+          "score": 6,
+          "occurrenceCount": 2
+        },
+        {
+          "id": "michael",
           "score": 3,
           "occurrenceCount": 1
         },
@@ -28962,6 +31304,33 @@
             26
           ],
           "teaching": "La perfection est l'effort de conduire une œuvre, dans le corps, l'âme et l'esprit, jusqu'à son union avec le principe divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-054",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 54,
+          "psalmTitle": "La clé pour se libérer du karma et entrer dans la plénitude",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            21,
+            23
+          ],
+          "teaching": "Une œuvre parfaite a reçu un corps stable, touche la terre, devient autonome et nourrit ensuite celui qui l'a conduite à l'accomplissement.",
           "score": 3
         },
         {
@@ -29028,6 +31397,33 @@
             26
           ],
           "teaching": "La perfection est l'effort de conduire une œuvre, dans le corps, l'âme et l'esprit, jusqu'à son union avec le principe divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-054",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 54,
+          "psalmTitle": "La clé pour se libérer du karma et entrer dans la plénitude",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            13,
+            14,
+            15,
+            17,
+            21,
+            23
+          ],
+          "teaching": "Une œuvre parfaite a reçu un corps stable, touche la terre, devient autonome et nourrit ensuite celui qui l'a conduite à l'accomplissement.",
           "score": 3
         },
         {
@@ -30260,6 +32656,68 @@
       ]
     },
     {
+      "id": "pollution",
+      "label": "Pollution intérieure et extérieure",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-071",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 71,
+          "psalmTitle": "La guérison par les 4 éléments, clé de la sagesse essénienne",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            8,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "teaching": "Polluer l'eau, l'air, la terre et le feu correspond aussi à déformer sentiments, souffle, actes et être éternel ; la pollution physique reflète ainsi une rupture intérieure.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-071",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 71,
+          "psalmTitle": "La guérison par les 4 éléments, clé de la sagesse essénienne",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            8,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "teaching": "Polluer l'eau, l'air, la terre et le feu correspond aussi à déformer sentiments, souffle, actes et être éternel ; la pollution physique reflète ainsi une rupture intérieure.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "pollution-subtile",
       "label": "Pollution subtile",
       "score": 2,
@@ -30950,10 +33408,15 @@
     {
       "id": "priere-et-reponse",
       "label": "Prière et réponse",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 9,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 3,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 6,
+          "occurrenceCount": 2
+        },
         {
           "id": "raphael",
           "score": 3,
@@ -30980,6 +33443,55 @@
           ],
           "teaching": "La prière est entendue, mais l’homme ne perçoit pas nécessairement la réponse ; l’enjeu est sa capacité à écouter, accepter et mettre en œuvre ce qui lui est transmis.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-062",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 62,
+          "psalmTitle": "Pourquoi les hommes n ’entendent‑ ils pas la réponse à leurs prières?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            17
+          ],
+          "teaching": "Le monde divin répond, mais l'homme doit faire sa part, reconnaître la porte ouverte et changer réellement les conditions de sa vie pour accueillir la réponse.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-074",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 74,
+          "psalmTitle": "Le monde divin répond à tes prières par 3 fois",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            16,
+            21
+          ],
+          "teaching": "La prière n'est pas seulement émission d'un souhait : l'homme doit reconnaître une réponse qui peut contredire ses plans et la mettre en mouvement dans sa vie.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -31001,6 +33513,55 @@
             6
           ],
           "teaching": "La prière est entendue, mais l’homme ne perçoit pas nécessairement la réponse ; l’enjeu est sa capacité à écouter, accepter et mettre en œuvre ce qui lui est transmis.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-062",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 62,
+          "psalmTitle": "Pourquoi les hommes n ’entendent‑ ils pas la réponse à leurs prières?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            17
+          ],
+          "teaching": "Le monde divin répond, mais l'homme doit faire sa part, reconnaître la porte ouverte et changer réellement les conditions de sa vie pour accueillir la réponse.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-074",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 74,
+          "psalmTitle": "Le monde divin répond à tes prières par 3 fois",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            16,
+            21
+          ],
+          "teaching": "La prière n'est pas seulement émission d'un souhait : l'homme doit reconnaître une réponse qui peut contredire ses plans et la mettre en mouvement dans sa vie.",
           "score": 3
         }
       ]
@@ -32553,6 +35114,64 @@
       ]
     },
     {
+      "id": "quatre-archanges-et-quatre-corps",
+      "label": "Quatre Archanges et quatre corps",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-052",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 52,
+          "psalmTitle": "Les 3 signes qui préviennent de l’épreuve",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            6,
+            7,
+            8,
+            11,
+            12
+          ],
+          "teaching": "Michaël, Raphaël, Gabriel et Ouriel sont reliés à pensée-feu, souffle-air, volonté-échanges-eau et actes-terre ; la même impulsion descend ainsi jusqu'à sa conséquence matérielle.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-052",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 52,
+          "psalmTitle": "Les 3 signes qui préviennent de l’épreuve",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            6,
+            7,
+            8,
+            11,
+            12
+          ],
+          "teaching": "Michaël, Raphaël, Gabriel et Ouriel sont reliés à pensée-feu, souffle-air, volonté-échanges-eau et actes-terre ; la même impulsion descend ainsi jusqu'à sa conséquence matérielle.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "quatre-archanges-et-elements",
       "label": "Quatre Archanges et quatre éléments",
       "score": 3,
@@ -32738,9 +35357,9 @@
     {
       "id": "quatre-elements",
       "label": "Quatre éléments",
-      "score": 7,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 1,
+      "score": 10,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "raphael",
@@ -32749,6 +35368,11 @@
         },
         {
           "id": "michael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -32772,6 +35396,37 @@
             7
           ],
           "teaching": "Les quatre éléments, vécus sur plusieurs plans, constituent une base de purification, d’équilibre et de résistance pour l’être.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-071",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 71,
+          "psalmTitle": "La guérison par les 4 éléments, clé de la sagesse essénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Feu, air, eau et terre sont des mondes vivants capables de parler, refléter et guérir lorsque l'homme restaure avec eux une relation respectueuse.",
           "score": 3
         },
         {
@@ -32826,6 +35481,37 @@
             7
           ],
           "teaching": "Les quatre éléments, vécus sur plusieurs plans, constituent une base de purification, d’équilibre et de résistance pour l’être.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-071",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 71,
+          "psalmTitle": "La guérison par les 4 éléments, clé de la sagesse essénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Feu, air, eau et terre sont des mondes vivants capables de parler, refléter et guérir lorsque l'homme restaure avec eux une relation respectueuse.",
           "score": 3
         },
         {
@@ -32915,6 +35601,62 @@
           ],
           "teaching": "L'homme doit aller au noyau vivant de la magie, de la sagesse et de l'amour et les mettre en pratique plutôt que les connaître superficiellement.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "quebec-et-erable",
+      "label": "Québec et Érable",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-077",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 77,
+          "psalmTitle": "Faites connaître la splendeur de la sagesse essénienne",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            8
+          ],
+          "teaching": "La terre du Québec et l'Érable sont présentés comme un contexte vivant où une œuvre d'alliance a été posée pour transformer la destinée d'un lieu et de ceux qui l'habitent.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-077",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 77,
+          "psalmTitle": "Faites connaître la splendeur de la sagesse essénienne",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            8
+          ],
+          "teaching": "La terre du Québec et l'Érable sont présentés comme un contexte vivant où une œuvre d'alliance a été posée pour transformer la destinée d'un lieu et de ceux qui l'habitent.",
+          "score": 2
         }
       ]
     },
@@ -34313,6 +37055,124 @@
       ]
     },
     {
+      "id": "richesse-interieure",
+      "label": "Richesse intérieure",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-067",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 67,
+          "psalmTitle": "La clé d’Ouriel pour attirer et",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            10,
+            12,
+            14
+          ],
+          "teaching": "La véritable richesse jaillit de la vie intérieure et de la relation au Père ; le luxe extérieur ne peut remplacer cette source créatrice.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-067",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 67,
+          "psalmTitle": "La clé d’Ouriel pour attirer et",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            10,
+            12,
+            14
+          ],
+          "teaching": "La véritable richesse jaillit de la vie intérieure et de la relation au Père ; le luxe extérieur ne peut remplacer cette source créatrice.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "richesse",
+      "label": "Richesse véritable",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-055",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 55,
+          "psalmTitle": "Le grand secret caché dans la fable de B lanche ‑N eige",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            6,
+            8,
+            9
+          ],
+          "teaching": "La richesse réelle est reliée au Père, à la sagesse et aux forces éternelles ; le monde matériel n'en est qu'une apparence ou un moyen.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-055",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 55,
+          "psalmTitle": "Le grand secret caché dans la fable de B lanche ‑N eige",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            6,
+            8,
+            9
+          ],
+          "teaching": "La richesse réelle est reliée au Père, à la sagesse et aux forces éternelles ; le monde matériel n'en est qu'une apparence ou un moyen.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "riviere",
       "label": "Rivière",
       "score": 3,
@@ -34865,19 +37725,19 @@
     {
       "id": "regnes",
       "label": "Règnes",
-      "score": 20,
-      "occurrenceCount": 8,
-      "centralPsalmCount": 4,
+      "score": 28,
+      "occurrenceCount": 11,
+      "centralPsalmCount": 6,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 14,
+          "occurrenceCount": 5
+        },
         {
           "id": "raphael",
           "score": 9,
           "occurrenceCount": 4
-        },
-        {
-          "id": "ouriel",
-          "score": 6,
-          "occurrenceCount": 2
         },
         {
           "id": "michael",
@@ -34974,6 +37834,62 @@
           "score": 3
         },
         {
+          "recordId": "book-12-psalm-066",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 66,
+          "psalmTitle": "Par votre alliance avec la M ère, montrez au monde la véritable écologie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            17,
+            18,
+            20,
+            21
+          ],
+          "teaching": "Fleurs, animaux et pierres attendent de l'homme des qualités différentes — vertu, maîtrise, attention, stabilité — qui permettent de retisser un langage entre les règnes et la Lumière.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-075",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 75,
+          "psalmTitle": "Cultivez une relation juste avec les règnes de la M ère et le monde divin vous ouvrira ses portes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "La relation aux pierres, plantes et animaux constitue l'école préalable de la relation aux mondes supérieurs ; chaque règne enseigne une qualité nécessaire à l'homme.",
+          "score": 3
+        },
+        {
           "recordId": "book-02-psalm-016",
           "bookNumber": 2,
           "bookTitle": "Le secret des 3 mondes",
@@ -35038,6 +37954,25 @@
             10
           ],
           "teaching": "Les règnes dépendent de l’homme pour qu’un passage juste vers l’intelligence supérieure soit possible ; sa grossièreté peut fermer ce passage, sa subtilité l’ouvrir.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-070",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 70,
+          "psalmTitle": "Si vous n ’aidez pas la Lumière concrètement, vous la perdrez",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            6,
+            8,
+            16
+          ],
+          "teaching": "L'homme forme un même organisme terrestre avec minéraux, végétaux et animaux ; son effondrement ou son éveil entraîne les règnes qui dépendent de sa fonction médiatrice.",
           "score": 2
         }
       ],
@@ -35125,6 +38060,62 @@
           "score": 3
         },
         {
+          "recordId": "book-12-psalm-066",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 66,
+          "psalmTitle": "Par votre alliance avec la M ère, montrez au monde la véritable écologie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            17,
+            18,
+            20,
+            21
+          ],
+          "teaching": "Fleurs, animaux et pierres attendent de l'homme des qualités différentes — vertu, maîtrise, attention, stabilité — qui permettent de retisser un langage entre les règnes et la Lumière.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-075",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 75,
+          "psalmTitle": "Cultivez une relation juste avec les règnes de la M ère et le monde divin vous ouvrira ses portes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "La relation aux pierres, plantes et animaux constitue l'école préalable de la relation aux mondes supérieurs ; chaque règne enseigne une qualité nécessaire à l'homme.",
+          "score": 3
+        },
+        {
           "recordId": "book-02-psalm-016",
           "bookNumber": 2,
           "bookTitle": "Le secret des 3 mondes",
@@ -35189,6 +38180,25 @@
             10
           ],
           "teaching": "Les règnes dépendent de l’homme pour qu’un passage juste vers l’intelligence supérieure soit possible ; sa grossièreté peut fermer ce passage, sa subtilité l’ouvrir.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-070",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 70,
+          "psalmTitle": "Si vous n ’aidez pas la Lumière concrètement, vous la perdrez",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            6,
+            8,
+            16
+          ],
+          "teaching": "L'homme forme un même organisme terrestre avec minéraux, végétaux et animaux ; son effondrement ou son éveil entraîne les règnes qui dépendent de sa fonction médiatrice.",
           "score": 2
         }
       ]
@@ -35299,8 +38309,8 @@
     {
       "id": "receptivite",
       "label": "Réceptivité",
-      "score": 9,
-      "occurrenceCount": 3,
+      "score": 11,
+      "occurrenceCount": 4,
       "centralPsalmCount": 3,
       "archangels": [
         {
@@ -35311,6 +38321,11 @@
         {
           "id": "michael",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
+          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -35376,6 +38391,28 @@
           ],
           "teaching": "Recevoir un monde supérieur exige de ne pas remplir d’avance l’espace intérieur avec ses propres images, attentes et interprétations.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-074",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 74,
+          "psalmTitle": "Le monde divin répond à tes prières par 3 fois",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            7,
+            8,
+            9,
+            10,
+            14,
+            16,
+            21
+          ],
+          "teaching": "Entendre exige pureté, ouverture, sens développés et capacité à recevoir autre chose que la confirmation de ses propres conceptions.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -35440,6 +38477,28 @@
           ],
           "teaching": "Recevoir un monde supérieur exige de ne pas remplir d’avance l’espace intérieur avec ses propres images, attentes et interprétations.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-074",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 74,
+          "psalmTitle": "Le monde divin répond à tes prières par 3 fois",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            7,
+            8,
+            9,
+            10,
+            14,
+            16,
+            21
+          ],
+          "teaching": "Entendre exige pureté, ouverture, sens développés et capacité à recevoir autre chose que la confirmation de ses propres conceptions.",
+          "score": 2
         }
       ]
     },
@@ -37173,6 +40232,64 @@
       ]
     },
     {
+      "id": "signes-et-avertissements",
+      "label": "Signes et avertissements",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-052",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 52,
+          "psalmTitle": "Les 3 signes qui préviennent de l’épreuve",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            10
+          ],
+          "teaching": "Le monde divin avertit progressivement avant la dureté finale ; apprendre à reconnaître les signes permet de changer d'orientation avant que le message devienne épreuve.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-052",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 52,
+          "psalmTitle": "Les 3 signes qui préviennent de l’épreuve",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            10
+          ],
+          "teaching": "Le monde divin avertit progressivement avant la dureté finale ; apprendre à reconnaître les signes permet de changer d'orientation avant que le message devienne épreuve.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "silence",
       "label": "Silence",
       "score": 6,
@@ -37610,6 +40727,64 @@
             16
           ],
           "teaching": "La simplicité consiste à se tenir là où l’on est réellement, avec ce que l’on est et ce que l’on possède, sans agitation ni mélange avec des identités imaginées.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "simplicite-efficace",
+      "label": "Simplicité efficace",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-054",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 54,
+          "psalmTitle": "La clé pour se libérer du karma et entrer dans la plénitude",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            17,
+            20,
+            21,
+            23
+          ],
+          "teaching": "Le bonheur vient moins de la multiplication des projets que de la capacité à prendre une chose simple et à la mener pleinement à terme.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-054",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 54,
+          "psalmTitle": "La clé pour se libérer du karma et entrer dans la plénitude",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            17,
+            20,
+            21,
+            23
+          ],
+          "teaching": "Le bonheur vient moins de la multiplication des projets que de la capacité à prendre une chose simple et à la mener pleinement à terme.",
           "score": 2
         }
       ]
@@ -38441,14 +41616,19 @@
     {
       "id": "source",
       "label": "Source",
-      "score": 13,
-      "occurrenceCount": 5,
+      "score": 15,
+      "occurrenceCount": 6,
       "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "gabriel",
           "score": 13,
           "occurrenceCount": 5
+        },
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -38568,6 +41748,23 @@
           ],
           "teaching": "La Source de Gabriel est un point de régénération qui aide l’homme à sortir d’un état d’âme fermé pour retrouver une vie intérieure renouvelée.",
           "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-056",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 56,
+          "psalmTitle": "Ne sois pas un cerf ‑volant baladé par le vent du monde",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            13,
+            14
+          ],
+          "teaching": "Pour sortir des apparences changeantes, l'homme doit aller chercher la Lumière à sa Source et la porter dans sa vie sans détourner son courant.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -38686,6 +41883,23 @@
             19
           ],
           "teaching": "La Source de Gabriel est un point de régénération qui aide l’homme à sortir d’un état d’âme fermé pour retrouver une vie intérieure renouvelée.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-056",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 56,
+          "psalmTitle": "Ne sois pas un cerf ‑volant baladé par le vent du monde",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            13,
+            14
+          ],
+          "teaching": "Pour sortir des apparences changeantes, l'homme doit aller chercher la Lumière à sa Source et la porter dans sa vie sans détourner son courant.",
           "score": 2
         }
       ]
@@ -38811,19 +42025,19 @@
     {
       "id": "soutien-mutuel",
       "label": "Soutien mutuel",
-      "score": 11,
-      "occurrenceCount": 5,
-      "centralPsalmCount": 1,
+      "score": 16,
+      "occurrenceCount": 7,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 9,
+          "occurrenceCount": 4
+        },
         {
           "id": "michael",
           "score": 7,
           "occurrenceCount": 3
-        },
-        {
-          "id": "ouriel",
-          "score": 4,
-          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -38847,6 +42061,34 @@
             12
           ],
           "teaching": "Le soutien mutuel est présenté comme une vertu angélique qui permet à l’individu de s’accomplir dans une force et une œuvre communes.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-072",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 72,
+          "psalmTitle": "Soutiens l’œuvre de la Lumière à travers la N ation E ssénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            18,
+            21,
+            22,
+            23
+          ],
+          "teaching": "Soutenir l'œuvre d'un autre nourrit le même monde de Lumière et ouvre la possibilité de participer au fruit commun plutôt que de l'affaiblir par la critique.",
           "score": 3
         },
         {
@@ -38922,6 +42164,27 @@
             16
           ],
           "teaching": "L’union consciente rend les individus plus forts et permet de structurer une réalisation commune au-delà de l’idéalisme solitaire.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-064",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 64,
+          "psalmTitle": "Comment se préparer à rencontrer l’A rchange M ichaël",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15
+          ],
+          "teaching": "La réalisation supérieure demande union, aide et solidité des fonctions sans domination mutuelle ; chacun renforce le corps commun par sa fidélité à sa place.",
           "score": 2
         }
       ],
@@ -38949,6 +42212,34 @@
           "score": 3
         },
         {
+          "recordId": "book-12-psalm-072",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 72,
+          "psalmTitle": "Soutiens l’œuvre de la Lumière à travers la N ation E ssénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            18,
+            21,
+            22,
+            23
+          ],
+          "teaching": "Soutenir l'œuvre d'un autre nourrit le même monde de Lumière et ouvre la possibilité de participer au fruit commun plutôt que de l'affaiblir par la critique.",
+          "score": 3
+        },
+        {
           "recordId": "book-05-psalm-035",
           "bookNumber": 5,
           "bookTitle": "Homme, redeviens un mage",
@@ -39021,6 +42312,91 @@
             16
           ],
           "teaching": "L’union consciente rend les individus plus forts et permet de structurer une réalisation commune au-delà de l’idéalisme solitaire.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-064",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 64,
+          "psalmTitle": "Comment se préparer à rencontrer l’A rchange M ichaël",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15
+          ],
+          "teaching": "La réalisation supérieure demande union, aide et solidité des fonctions sans domination mutuelle ; chacun renforce le corps commun par sa fidélité à sa place.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "spiritualite-sterile",
+      "label": "Spiritualité stérile",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-060",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 60,
+          "psalmTitle": "Arrêtez de rêver le monde divin, unissez ‑vous pour lui construire un corps",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            7,
+            10,
+            12,
+            15,
+            17,
+            23
+          ],
+          "teaching": "La spiritualité devient stérile lorsqu'elle accumule théories, initiations ou admiration sans transformer ces semences en travail, pain, corps et réalité terrestre.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-060",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 60,
+          "psalmTitle": "Arrêtez de rêver le monde divin, unissez ‑vous pour lui construire un corps",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            7,
+            10,
+            12,
+            15,
+            17,
+            23
+          ],
+          "teaching": "La spiritualité devient stérile lorsqu'elle accumule théories, initiations ou admiration sans transformer ces semences en travail, pain, corps et réalité terrestre.",
           "score": 2
         }
       ]
@@ -39806,8 +43182,8 @@
     {
       "id": "temple",
       "label": "Temple",
-      "score": 6,
-      "occurrenceCount": 3,
+      "score": 8,
+      "occurrenceCount": 4,
       "centralPsalmCount": 0,
       "archangels": [
         {
@@ -39817,6 +43193,11 @@
         },
         {
           "id": "michael",
+          "score": 2,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 2,
           "occurrenceCount": 1
         },
@@ -39877,6 +43258,24 @@
           ],
           "teaching": "Le temple existe extérieurement, dans le maître puis dans l’homme lui-même lorsque la vie et la Lumière peuvent y couler.",
           "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-061",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 61,
+          "psalmTitle": "Ce que tu dois savoir et être pour entrer dans le temple d ’un A rchange",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            6
+          ],
+          "teaching": "Entrer dans un temple engage la qualité du corps et de la conscience : ce que l'homme est dans le moment sacré devient la matière disponible pour la manifestation du monde supérieur.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -39929,6 +43328,24 @@
             24
           ],
           "teaching": "Le temple existe extérieurement, dans le maître puis dans l’homme lui-même lorsque la vie et la Lumière peuvent y couler.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-061",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 61,
+          "psalmTitle": "Ce que tu dois savoir et être pour entrer dans le temple d ’un A rchange",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            6
+          ],
+          "teaching": "Entrer dans un temple engage la qualité du corps et de la conscience : ce que l'homme est dans le moment sacré devient la matière disponible pour la manifestation du monde supérieur.",
           "score": 2
         }
       ]
@@ -40094,14 +43511,14 @@
     {
       "id": "terre",
       "label": "Terre",
-      "score": 3,
-      "occurrenceCount": 1,
+      "score": 5,
+      "occurrenceCount": 2,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 5,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -40128,6 +43545,27 @@
           ],
           "teaching": "L’homme est une terre mise en mouvement et un laboratoire par lequel la terre peut s’élever vers l’esprit subtil de l’univers.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-053",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 53,
+          "psalmTitle": "Seule l’œuvre que tu réalises détermine ton degré d ’éveil",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "La terre vérifie le vrai : le rêve juste doit y être semé, cultivé et réalisé pour devenir chemin et futur corps.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -40154,6 +43592,27 @@
           ],
           "teaching": "L’homme est une terre mise en mouvement et un laboratoire par lequel la terre peut s’élever vers l’esprit subtil de l’univers.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-053",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 53,
+          "psalmTitle": "Seule l’œuvre que tu réalises détermine ton degré d ’éveil",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "La terre vérifie le vrai : le rêve juste doit y être semé, cultivé et réalisé pour devenir chemin et futur corps.",
+          "score": 2
         }
       ]
     },
@@ -41004,6 +44463,110 @@
       ]
     },
     {
+      "id": "transmission",
+      "label": "Transmission aux générations",
+      "score": 4,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 4,
+          "occurrenceCount": 2
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-063",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 63,
+          "psalmTitle": "La N ation E ssénienne est la perfection du monde divin sur la terre",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Construire maintenant préserve un bateau de Lumière pour les enfants et les générations futures et évite que les mondes dépendants de l'homme soient abandonnés.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-077",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 77,
+          "psalmTitle": "Faites connaître la splendeur de la sagesse essénienne",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            17,
+            18
+          ],
+          "teaching": "L'œuvre reçue doit être montrée, partagée et renforcée afin que la sagesse devienne une réalité collective, abondante et transmissible autour de ceux qui l'ont rencontrée.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-063",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 63,
+          "psalmTitle": "La N ation E ssénienne est la perfection du monde divin sur la terre",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Construire maintenant préserve un bateau de Lumière pour les enfants et les générations futures et évite que les mondes dépendants de l'homme soient abandonnés.",
+          "score": 2
+        },
+        {
+          "recordId": "book-12-psalm-077",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 77,
+          "psalmTitle": "Faites connaître la splendeur de la sagesse essénienne",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            17,
+            18
+          ],
+          "teaching": "L'œuvre reçue doit être montrée, partagée et renforcée afin que la sagesse devienne une réalité collective, abondante et transmissible autour de ceux qui l'ont rencontrée.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "travail",
       "label": "Travail",
       "score": 3,
@@ -41564,6 +45127,62 @@
       ]
     },
     {
+      "id": "trois-reponses",
+      "label": "Trois réponses",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-074",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 74,
+          "psalmTitle": "Le monde divin répond à tes prières par 3 fois",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            13
+          ],
+          "teaching": "Ouriel enseigne qu'une même réponse peut être présentée trois fois ; refuser successivement ce qui est offert ferme ensuite la relation de réponse.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-074",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 74,
+          "psalmTitle": "Le monde divin répond à tes prières par 3 fois",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            13
+          ],
+          "teaching": "Ouriel enseigne qu'une même réponse peut être présentée trois fois ; refuser successivement ce qui est offert ferme ensuite la relation de réponse.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "trouver-sa-place",
       "label": "Trouver sa place",
       "score": 5,
@@ -41669,13 +45288,18 @@
     {
       "id": "tresor-interieur",
       "label": "Trésor intérieur",
-      "score": 3,
-      "occurrenceCount": 1,
+      "score": 5,
+      "occurrenceCount": 2,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "gabriel",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
+          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -41698,6 +45322,22 @@
           ],
           "teaching": "Le monde divin reconnaît l’homme à ce qu’il a réellement développé, aux alliances, capacités et semences qu’il peut mettre au service d’une œuvre.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-064",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 64,
+          "psalmTitle": "Comment se préparer à rencontrer l’A rchange M ichaël",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5
+          ],
+          "teaching": "Les acquis purs et vrais doivent être posés dans une terre intérieure protégée comme une réserve de nourriture et de force pour les périodes difficiles.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -41719,16 +45359,37 @@
           ],
           "teaching": "Le monde divin reconnaît l’homme à ce qu’il a réellement développé, aux alliances, capacités et semences qu’il peut mettre au service d’une œuvre.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-064",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 64,
+          "psalmTitle": "Comment se préparer à rencontrer l’A rchange M ichaël",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5
+          ],
+          "teaching": "Les acquis purs et vrais doivent être posés dans une terre intérieure protégée comme une réserve de nourriture et de force pour les périodes difficiles.",
+          "score": 2
         }
       ]
     },
     {
       "id": "union",
       "label": "Union",
-      "score": 5,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 1,
+      "score": 8,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "raphael",
           "score": 3,
@@ -41762,6 +45423,29 @@
             19
           ],
           "teaching": "L'union harmonieuse autour d'un idéal commun transforme l'élan individuel en force créatrice collective.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-060",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 60,
+          "psalmTitle": "Arrêtez de rêver le monde divin, unissez ‑vous pour lui construire un corps",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            6,
+            9,
+            16,
+            20,
+            21,
+            24,
+            25
+          ],
+          "teaching": "L'isolement rend les spiritualistes faibles ; l'union consciente et le soutien mutuel créent la force nécessaire pour bâtir une œuvre qui dépasse l'individu.",
           "score": 3
         },
         {
@@ -41804,6 +45488,29 @@
             19
           ],
           "teaching": "L'union harmonieuse autour d'un idéal commun transforme l'élan individuel en force créatrice collective.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-060",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 60,
+          "psalmTitle": "Arrêtez de rêver le monde divin, unissez ‑vous pour lui construire un corps",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            6,
+            9,
+            16,
+            20,
+            21,
+            24,
+            25
+          ],
+          "teaching": "L'isolement rend les spiritualistes faibles ; l'union consciente et le soutien mutuel créent la force nécessaire pour bâtir une œuvre qui dépasse l'individu.",
           "score": 3
         },
         {
@@ -41942,10 +45649,15 @@
     {
       "id": "unite-interieure",
       "label": "Unité intérieure",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "raphael",
           "score": 3,
@@ -41983,6 +45695,29 @@
           ],
           "teaching": "Le faux crée des vides où d’autres mondes peuvent prendre place ; l’unité de toutes les parties de l’être autour d’une orientation vraie ferme ces espaces et donne la force.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-068",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 68,
+          "psalmTitle": "Unis ta pensée au soleil de la Ronde des A rchanges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            10,
+            15,
+            20
+          ],
+          "teaching": "Le bonheur exige que pensée, sentiments et volonté cessent de tirer dans des directions opposées et conduisent ensemble la même semence jusqu'à l'action.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -42015,6 +45750,29 @@
             31
           ],
           "teaching": "Le faux crée des vides où d’autres mondes peuvent prendre place ; l’unité de toutes les parties de l’être autour d’une orientation vraie ferme ces espaces et donne la force.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-068",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 68,
+          "psalmTitle": "Unis ta pensée au soleil de la Ronde des A rchanges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            10,
+            15,
+            20
+          ],
+          "teaching": "Le bonheur exige que pensée, sentiments et volonté cessent de tirer dans des directions opposées et conduisent ensemble la même semence jusqu'à l'action.",
           "score": 3
         }
       ]
@@ -42467,6 +46225,58 @@
           ],
           "teaching": "La rencontre avec les Anges passe par l’incarnation réelle des vertus plutôt que par des noms, canalisations ou représentations extérieures.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "vertus-angeliques",
+      "label": "Vertus angéliques comme nourriture",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-059",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 59,
+          "psalmTitle": "3 clés du bonheur pour ton corps et ton âme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9
+          ],
+          "teaching": "Dans les corps plus subtils, les vertus angéliques, la respiration archangélique et les pensées reliées aux lois divines jouent le rôle de nourriture et de force structurante.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-059",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 59,
+          "psalmTitle": "3 clés du bonheur pour ton corps et ton âme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9
+          ],
+          "teaching": "Dans les corps plus subtils, les vertus angéliques, la respiration archangélique et les pensées reliées aux lois divines jouent le rôle de nourriture et de force structurante.",
+          "score": 2
         }
       ]
     },
@@ -43210,6 +47020,68 @@
       ]
     },
     {
+      "id": "villages-esseniens",
+      "label": "Villages Esséniens",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-070",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 70,
+          "psalmTitle": "Si vous n ’aidez pas la Lumière concrètement, vous la perdrez",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "Les Villages sont proposés comme des lieux concrets à préserver où l'alliance avec les règnes et la tradition vivante peut continuer malgré l'expansion du monde artificiel.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-070",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 70,
+          "psalmTitle": "Si vous n ’aidez pas la Lumière concrètement, vous la perdrez",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "Les Villages sont proposés comme des lieux concrets à préserver où l'alliance avec les règnes et la tradition vivante peut continuer malgré l'expansion du monde artificiel.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "visage-et-masque",
       "label": "Visage et masque",
       "score": 2,
@@ -43803,9 +47675,9 @@
     {
       "id": "verite",
       "label": "Vérité",
-      "score": 19,
-      "occurrenceCount": 7,
-      "centralPsalmCount": 5,
+      "score": 22,
+      "occurrenceCount": 8,
+      "centralPsalmCount": 6,
       "archangels": [
         {
           "id": "michael",
@@ -43813,14 +47685,14 @@
           "occurrenceCount": 4
         },
         {
-          "id": "gabriel",
-          "score": 4,
+          "id": "ouriel",
+          "score": 6,
           "occurrenceCount": 2
         },
         {
-          "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "gabriel",
+          "score": 4,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -43944,6 +47816,28 @@
             20
           ],
           "teaching": "La vérité est l’être qui relie les mondes et rend possibles des relations stables avec le divin ; elle doit vivre dans pensée, sentiment, acte et orientation.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-056",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 56,
+          "psalmTitle": "Ne sois pas un cerf ‑volant baladé par le vent du monde",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            13,
+            14
+          ],
+          "teaching": "Les lois du monde divin sont présentées comme immuables ; c'est l'homme qui doit ajuster sa perception et sa vie à la vérité plutôt que demander à la vérité de servir ses désirs.",
           "score": 3
         },
         {
@@ -44105,6 +47999,28 @@
             20
           ],
           "teaching": "La vérité est l’être qui relie les mondes et rend possibles des relations stables avec le divin ; elle doit vivre dans pensée, sentiment, acte et orientation.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-056",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 56,
+          "psalmTitle": "Ne sois pas un cerf ‑volant baladé par le vent du monde",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            13,
+            14
+          ],
+          "teaching": "Les lois du monde divin sont présentées comme immuables ; c'est l'homme qui doit ajuster sa perception et sa vie à la vérité plutôt que demander à la vérité de servir ses désirs.",
           "score": 3
         },
         {
@@ -45159,6 +49075,92 @@
       ]
     },
     {
+      "id": "ecologie",
+      "label": "Écologie vivante",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-066",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 66,
+          "psalmTitle": "Par votre alliance avec la M ère, montrez au monde la véritable écologie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ],
+          "teaching": "L'écologie authentique reconnaît terre et nature comme des êtres vivants et relie l'état intérieur de l'homme à la santé des règnes qu'il nourrit ou appauvrit.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-066",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 66,
+          "psalmTitle": "Par votre alliance avec la M ère, montrez au monde la véritable écologie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ],
+          "teaching": "L'écologie authentique reconnaît terre et nature comme des êtres vivants et relie l'état intérieur de l'homme à la santé des règnes qu'il nourrit ou appauvrit.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "ecoute",
       "label": "Écoute",
       "score": 2,
@@ -45333,9 +49335,9 @@
     {
       "id": "epreuve",
       "label": "Épreuve",
-      "score": 9,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 3,
+      "score": 12,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 4,
       "archangels": [
         {
           "id": "raphael",
@@ -45344,6 +49346,11 @@
         },
         {
           "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -45419,6 +49426,26 @@
           ],
           "teaching": "L’épreuve révèle les alliances et chaînes qui retiennent l’homme ; elle devient bénédiction lorsqu’elle sert de passage vers une conscience et une maîtrise plus grandes.",
           "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-052",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 52,
+          "psalmTitle": "Les 3 signes qui préviennent de l’épreuve",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            8,
+            9,
+            10
+          ],
+          "teaching": "L'épreuve est la matérialisation finale d'un message que l'homme n'a pas suffisamment entendu ou mis en pratique dans les niveaux plus subtils de son être.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -45491,6 +49518,26 @@
             13
           ],
           "teaching": "L’épreuve révèle les alliances et chaînes qui retiennent l’homme ; elle devient bénédiction lorsqu’elle sert de passage vers une conscience et une maîtrise plus grandes.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-052",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 52,
+          "psalmTitle": "Les 3 signes qui préviennent de l’épreuve",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            8,
+            9,
+            10
+          ],
+          "teaching": "L'épreuve est la matérialisation finale d'un message que l'homme n'a pas suffisamment entendu ou mis en pratique dans les niveaux plus subtils de son être.",
           "score": 3
         }
       ]
@@ -46460,6 +50507,130 @@
           ],
           "teaching": "L’œil subtil est un miroir créateur : s’il est pur, il révèle les êtres au-delà des apparences ; déformé par les concepts, il projette le monde intérieur et construit une réalité à son image.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "oeuvre",
+      "label": "Œuvre",
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 5,
+          "occurrenceCount": 2
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-12-psalm-053",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 53,
+          "psalmTitle": "Seule l’œuvre que tu réalises détermine ton degré d ’éveil",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            14,
+            16
+          ],
+          "teaching": "Le degré d'éveil se mesure à la capacité de donner un corps concret à ce qui est compris et voulu ; l'œuvre rend visible la réalité de la conscience.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-072",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 72,
+          "psalmTitle": "Soutiens l’œuvre de la Lumière à travers la N ation E ssénienne",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            7,
+            11,
+            12,
+            13,
+            14,
+            16,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "teaching": "L'activité concrète transforme la vie intérieure en contribution réelle ; la passivité laisse au contraire le monde se construire sans la participation consciente de l'homme.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-12-psalm-053",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 53,
+          "psalmTitle": "Seule l’œuvre que tu réalises détermine ton degré d ’éveil",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            14,
+            16
+          ],
+          "teaching": "Le degré d'éveil se mesure à la capacité de donner un corps concret à ce qui est compris et voulu ; l'œuvre rend visible la réalité de la conscience.",
+          "score": 3
+        },
+        {
+          "recordId": "book-12-psalm-072",
+          "bookNumber": 12,
+          "bookTitle": "Les clés du bonheur",
+          "archangel": "ouriel",
+          "psalmNumber": 72,
+          "psalmTitle": "Soutiens l’œuvre de la Lumière à travers la N ation E ssénienne",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            7,
+            11,
+            12,
+            13,
+            14,
+            16,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "teaching": "L'activité concrète transforme la vie intérieure en contribution réelle ; la passivité laisse au contraire le monde se construire sans la participation consciente de l'homme.",
+          "score": 2
         }
       ]
     },
