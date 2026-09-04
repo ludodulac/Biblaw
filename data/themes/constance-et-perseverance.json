@@ -1,0 +1,20 @@
+{
+  "id":"theme-constance-perseverance","recordType":"theme","label":"Constance et persévérance",
+  "searchTerms":["constance","persévérance","aller jusqu’au bout","accomplissement","engagement","fidélité à sa parole","inachevé","stabilité"],
+  "senses":[
+    {"id":"constance-accomplissement","label":"La constance comme conduite jusqu’à l’accomplissement","definition":"Le psaume présente la constance comme la capacité à conduire une pensée, une parole et une œuvre jusqu’à leur réalisation malgré le temps, les difficultés et les changements d’envie."},
+    {"id":"parole-structure","label":"La parole accomplie comme force de structure","definition":"Une parole menée jusqu’à l’acte fortifie l’être, tandis qu’une succession de commencements inachevés produit faiblesse et instabilité."}
+  ],
+  "subthemes":[
+    {"id":"retrouver-constance","label":"Retrouver la constance perdue","summary":"Le texte oppose l’ancienne persévérance aux comportements influençables, changeants et modelés par les tendances.","evidenceIds":["m116-const-v1-v7"]},
+    {"id":"accomplir-parole","label":"Conduire la parole jusqu’à l’accomplissement","summary":"La parole ne doit pas être utilisée en vain mais devenir une force par sa réalisation concrète.","evidenceIds":["m116-const-v8-v12"]},
+    {"id":"organiser-pour-finir","label":"Organiser sa vie pour terminer ce qui est entrepris","summary":"La persévérance devient une discipline consciente permettant d’éviter dépendance, superficialité et dispersion.","evidenceIds":["m116-const-v13-v17"]}
+  ],
+  "evidence":[
+    {"id":"m116-const-v1-v7","recordId":"michael-psalm-116","sourceType":"verse","verseNumbers":[1,2,3,4,5,6,7],"relation":"loss-and-recovery-of-constancy","sourcePages":[1123]},
+    {"id":"m116-const-v8-v12","recordId":"michael-psalm-116","sourceType":"verse","verseNumbers":[8,9,10,11,12],"relation":"word-completion-and-strength-through-accomplishment","sourcePages":[1123,1124]},
+    {"id":"m116-const-v13-v17","recordId":"michael-psalm-116","sourceType":"verse","verseNumbers":[13,14,15,16,17],"relation":"stability-against-dispersive-influences","sourcePages":[1124,1125]},
+    {"id":"m116-prayer-012-constancy","recordId":"michael-book-17-prayer-012","sourceType":"prayer","relation":"vow-to-be-reliable-stable-faithful-and-act-to-perfection","sourcePages":[1127,1128,1129]}
+  ],
+  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-116","michael-book-17-prayer-012"],"reviewNotes":"Thème principal du début du psaume 116 : constance, fidélité à la parole, résistance à la dispersion et accomplissement des œuvres."}
+}
