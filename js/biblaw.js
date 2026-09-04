@@ -20,7 +20,7 @@
       const psalms = state.records.filter(r => r.recordType === 'psalm'), verses = psalms.reduce((n, r) => n + (r.verses || []).length, 0);
       const prayerCount = state.records.filter(r => r.recordType === 'master-prayer').length;
       const noteCount = state.records.filter(r => r.recordType === 'note').length + psalms.reduce((n, r) => n + (r.notes || []).length, 0);
-      $('corpusStats').textContent = `${psalms.length} psaumes pilotes · ${verses} versets · ${prayerCount} prières · ${noteCount} notes reliées · ${state.themes.length} thème${state.themes.length > 1 ? 's' : ''} indexé${state.themes.length > 1 ? 's' : ''}`;
+      $('corpusStats').textContent = `${psalms.length} psaumes · ${verses} versets · ${prayerCount} prières · ${noteCount} notes reliées`;
       themes(); search();
     } catch { $('results').innerHTML = '<div class="empty">Le corpus ne peut pas être chargé. Ouvrez Biblaw depuis son adresse web.</div>'; }
   }
@@ -58,20 +58,32 @@
   }
   function activeText() { const r = state.active; if (!r) return ''; let out = `${r.title || `Prière ${r.number}`}\n\n`; out += r.verses ? r.verses.map(v => `${v.number}. ${v.text}`).join('\n\n') : r.text || r.summary || ''; if (r.attachedPrayer) out += `\n\nPrière ${r.attachedPrayer.number}\n\n${r.attachedPrayer.text}`; return out; }
   function themes() {
-    const entries = [];
+    const byKey = new Map();
+    const add = (label, query = label, kind = 'subject') => {
+      const clean = String(label || '').trim(); if (!clean) return;
+      const key = norm(clean); if (!key || byKey.has(key)) return;
+      byKey.set(key, { label: clean, query, kind });
+    };
     state.themes.forEach(theme => {
-      entries.push({ label: theme.label, query: theme.searchTerms?.[0] || theme.label, kind: 'theme' });
-      (theme.subthemes || []).forEach(sub => entries.push({ label: sub.label, query: sub.label, kind: 'subtheme' }));
+      add(theme.label, theme.searchTerms?.[0] || theme.label, 'theme');
+      (theme.subthemes || []).forEach(sub => add(sub.label, sub.label, 'subtheme'));
     });
-    $('themeDirectory').innerHTML = entries.length ? entries.map(x => `<button class="theme-chip ${x.kind === 'theme' ? 'theme-main' : ''}" data-theme="${esc(x.query)}">${esc(x.label)}</button>`).join('') : '<div class="empty">Aucun thème éditorial n’est encore indexé.</div>';
+    state.records.forEach(record => {
+      (record.conceptIds || []).forEach(concept => add(String(concept).replaceAll('-', ' '), concept, 'concept'));
+      if (record.recordType === 'psalm' && record.title) add(record.title, record.title, 'subject');
+    });
+    const entries = [...byKey.values()].sort((a, b) => a.label.localeCompare(b.label, 'fr', { sensitivity: 'base' }));
+    $('indexCount').textContent = `${entries.length} thèmes et sujets disponibles dans les textes déjà intégrés.`;
+    $('themeDirectory').innerHTML = entries.map(x => `<button class="theme-chip ${x.kind === 'theme' ? 'theme-main' : ''}" data-theme="${esc(x.query)}">${esc(x.label)}</button>`).join('');
     document.querySelectorAll('[data-theme]').forEach(b => b.onclick = () => { $('query').value = b.dataset.theme; closeIndex(); search(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
-  function closeIndex() { $('indexPanel').hidden = true; $('indexToggle').setAttribute('aria-expanded', 'false'); }
+  function openIndex() { $('indexPanel').hidden = false; $('indexBackdrop').hidden = false; $('indexToggle').setAttribute('aria-expanded', 'true'); document.body.classList.add('index-open'); }
+  function closeIndex() { $('indexPanel').hidden = true; $('indexBackdrop').hidden = true; $('indexToggle').setAttribute('aria-expanded', 'false'); document.body.classList.remove('index-open'); }
   function mode(m) { state.mode = m; $('modeThemes').classList.toggle('active', m === 'themes'); $('modeExact').classList.toggle('active', m === 'exact'); $('modeHelp').textContent = m === 'themes' ? 'Retrouve les sens, sous-thèmes et passages déjà reliés éditorialement.' : 'Recherche uniquement les mots ou la phrase dans les textes déjà extraits.'; search(); }
   $('searchButton').onclick = search; $('query').onkeydown = e => { if (e.key === 'Enter') search(); }; $('archangelFilter').onchange = search; document.querySelectorAll('[name=sourceType]').forEach(x => x.onchange = search);
   $('modeThemes').onclick = () => mode('themes'); $('modeExact').onclick = () => mode('exact');
-  $('indexToggle').onclick = () => { const willOpen = $('indexPanel').hidden; $('indexPanel').hidden = !willOpen; $('indexToggle').setAttribute('aria-expanded', String(willOpen)); if (willOpen) $('indexPanel').scrollIntoView({ behavior: 'smooth', block: 'center' }); };
-  $('closeIndex').onclick = closeIndex;
+  $('indexToggle').onclick = () => $('indexPanel').hidden ? openIndex() : closeIndex();
+  $('closeIndex').onclick = closeIndex; $('indexBackdrop').onclick = closeIndex; document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('indexPanel').hidden) closeIndex(); });
   $('closeAmbiguity').onclick = () => { state.sense = ''; $('ambiguityPanel').hidden = true; render(matches($('query').value)); }; $('closeDialog').onclick = () => $('recordDialog').close(); $('printRecord').onclick = () => print();
   $('downloadRecord').onclick = () => { const blob = new Blob([activeText()], { type: 'text/plain;charset=utf-8' }), a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `${state.active?.id || 'biblaw'}.txt`; a.click(); URL.revokeObjectURL(a.href); };
   load();
