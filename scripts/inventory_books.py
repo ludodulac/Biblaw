@@ -3,6 +3,7 @@
 
 This is the first generic extraction stage for Biblaw. It does not guess thematic
 content. It maps the documentary structure so books can then be extracted in order.
+The output is intentionally conservative and is used only to drive later extraction.
 """
 from __future__ import annotations
 import json, re, subprocess
@@ -32,7 +33,6 @@ for pos, number in enumerate(ordered):
         title = re.sub(r"\s+", " ", m.group(2)).strip()
         if title and not title.isdigit():
             headings.append({"number": int(m.group(1)), "titleCandidate": title})
-    # deduplicate conservatively; extraction stage will validate exact headings.
     seen, unique = set(), []
     for h in headings:
         key = (h["number"], h["titleCandidate"])
