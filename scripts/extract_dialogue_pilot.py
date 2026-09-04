@@ -90,6 +90,19 @@ def main() -> None:
             "printedPages": [1071, 1072],
         },
         "verses": verses,
+        "dialogueSegments": [
+            {
+                "id": "michael-psalm-105-dialogue-001",
+                "speakerId": "olivier-manitara",
+                "speechRole": "question",
+                "text": verses[8]["text"],
+                "numbering": "numbered-verse",
+                "verseNumber": 9,
+                "positionAfterVerse": 8,
+                "editorialCue": "Identified by editorial note 1 attached to verse 9.",
+                "sourcePages": [1071],
+            }
+        ],
         "noteIds": ["michael-psalm-105-note-001"],
         "prayerIds": ["michael-book-17-prayer-001"],
         "contextIds": ["michael-book-17-introduction"],
