@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Index thématique éditorial de Biblaw construit livre par livre et psaume par psaume pour permettre une expertise transversale des thèmes du corpus.",
+  "primarySources": ["psalm"],
+  "contextualSources": ["psalm-title", "editorial-note", "book-title", "book-introduction"],
+  "excludedFromCurrentThemeIndex": ["master-prayer"],
+  "principles": [
+    "Un thème est une notion substantielle réellement enseignée, décrite, définie, reliée ou mise en pratique dans un passage ; ce n'est pas une simple occurrence lexicale.",
+    "Les thèmes concrets comme feu, assemblée, pierre ou arbre sont indexables au même titre que les thèmes abstraits lorsqu'ils portent un enseignement significatif.",
+    "Chaque relation thème-psaume conserve les références précises, la portée du passage, les formulations fortes et l'importance du psaume pour ce thème.",
+    "Les titres servent d'indices éditoriaux mais ne remplacent jamais l'analyse du texte intégral.",
+    "Les notes sont prises en compte pour comprendre correctement structure, attribution, contexte ou sens éditorial.",
+    "Les prières restent liées aux psaumes mais ne nourrissent pas l'index thématique pendant cette phase.",
+    "La comparaison entre Archanges sera construite après l'indexation de plusieurs livres à partir des mêmes pages de thèmes enrichies progressivement."
+  ],
+  "importanceScale": {
+    "central": "Le psaume développe ou définit largement le thème et doit être proposé parmi les textes majeurs.",
+    "important": "Le psaume apporte une loi, une distinction ou un développement substantiel du thème.",
+    "supporting": "Le psaume apporte une notion utile mais secondaire pour l'expertise du thème."
+  }
+}
