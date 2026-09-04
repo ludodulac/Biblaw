@@ -1,0 +1,62 @@
+{
+  "id": "theme-lumiere",
+  "recordType": "theme",
+  "label": "Lumière",
+  "searchTerms": ["lumière", "cheminer vers la lumière", "exigence de la lumière", "allumer la lumière"],
+  "senses": [
+    {
+      "id": "lumiere-orientation-divine",
+      "label": "La Lumière comme orientation divine",
+      "definition": "Principe supérieur vers lequel l’être doit cheminer dans la vérité plutôt que se contenter d’en parler."
+    },
+    {
+      "id": "lumiere-eveil",
+      "label": "La Lumière comme éveil et discernement",
+      "definition": "Force qui éclaire, permet de sortir de l’illusion et guide les mondes."
+    }
+  ],
+  "subthemes": [
+    {
+      "id": "cheminer-vers-lumiere",
+      "label": "Cheminer réellement vers la Lumière",
+      "summary": "L’amour déclaré de la Lumière doit être confirmé par les œuvres et la transformation réelle.",
+      "evidenceIds": ["m105-v1-v6"]
+    },
+    {
+      "id": "allumer-lumiere",
+      "label": "Allumer la Lumière pour sortir de l’état d’égarement",
+      "summary": "La Lumière apparaît comme l’étincelle permettant de sortir de l’aveuglement et d’orienter la vie.",
+      "evidenceIds": ["m105-v10-v18"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "m105-v1-v6",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [1, 2, 6],
+      "relation": "orientation-and-demand",
+      "sourcePages": [1071]
+    },
+    {
+      "id": "m105-v10-v18",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [10, 11, 18],
+      "relation": "awakening-and-guidance",
+      "sourcePages": [1072]
+    },
+    {
+      "id": "m105-prayer-001-lumiere",
+      "recordId": "michael-book-17-prayer-001",
+      "sourceType": "prayer",
+      "relation": "michael-as-one-who-enlightens-and-liberates",
+      "sourcePages": [1072, 1073]
+    }
+  ],
+  "validation": {
+    "status": "editorially-indexed",
+    "indexedFrom": ["michael-psalm-105", "michael-book-17-prayer-001"],
+    "reviewNotes": "Premier enrichissement général du thème Lumière à partir du livre 17."
+  }
+}
