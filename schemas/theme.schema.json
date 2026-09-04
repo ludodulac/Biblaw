@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://biblaw.local/schemas/theme.schema.json",
+  "title": "Biblaw curated theme",
+  "type": "object",
+  "required": ["id", "recordType", "label", "senses", "subthemes", "evidence", "validation"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^theme-[a-z0-9-]+$" },
+    "recordType": { "const": "theme" },
+    "label": { "type": "string", "minLength": 1 },
+    "searchTerms": { "type": "array", "items": { "type": "string" } },
+    "ambiguousWith": { "type": "array", "items": { "type": "string" } },
+    "senses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "definition": { "type": "string" }
+        }
+      }
+    },
+    "subthemes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "evidenceIds"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "summary": { "type": "string" },
+          "evidenceIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "answerCards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question", "answer", "evidenceIds"],
+        "properties": {
+          "question": { "type": "string" },
+          "answer": { "type": "string" },
+          "evidenceIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "recordId", "sourceType"],
+        "properties": {
+          "id": { "type": "string" },
+          "recordId": { "type": "string" },
+          "sourceType": { "enum": ["psalm", "verse", "prayer", "note", "introduction", "annex", "other"] },
+          "verseNumbers": { "type": "array", "items": { "type": "integer" } },
+          "relation": { "type": "string" }
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["occurrences-only", "in-review", "curated", "validated"] },
+        "lastReviewedAt": { "type": ["string", "null"] },
+        "reviewNotes": { "type": "string" }
+      }
+    }
+  }
+}
