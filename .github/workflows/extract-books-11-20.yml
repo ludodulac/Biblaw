@@ -9,6 +9,7 @@ on:
       - 'scripts/normalize_notes_resumed_verses.py'
       - 'scripts/normalize_wrapped_psalm_titles.py'
       - 'scripts/normalize_embedded_psalm_headings.py'
+      - 'scripts/normalize_embedded_psalm_structures.py'
       - 'scripts/validate_books_11_20.py'
       - 'scripts/validate_books_01_10.py'
       - 'scripts/build_thematic_source_packs.py'
@@ -34,19 +35,21 @@ jobs:
         run: python scripts/normalize_wrapped_psalm_titles.py
       - name: Normalize embedded psalm headings
         run: python scripts/normalize_embedded_psalm_headings.py
+      - name: Normalize embedded numbered lists and appended prayers
+        run: python scripts/normalize_embedded_psalm_structures.py
       - name: Validate extracted books 11-20
         run: python scripts/validate_books_11_20.py
       - name: Build thematic source packs for all extracted books
         run: python scripts/build_thematic_source_packs.py
-      - name: Commit extracted corpus, reports and source packs
+      - name: Commit extracted corpus, reports, prayers and source packs
         run: |
-          if [ -z "$(git status --porcelain -- data/corpus/books data/notes/books data/pilot/books-11-20-extraction-report.json data/pilot/books-11-20-validation-report.json data/thematic-index/source-packs)" ]; then
+          if [ -z "$(git status --porcelain -- data/corpus/books data/notes/books data/prayers data/pilot/books-11-20-extraction-report.json data/pilot/books-11-20-validation-report.json data/thematic-index/source-packs)" ]; then
             echo 'No extraction changes'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/corpus/books data/notes/books data/pilot/books-11-20-extraction-report.json data/pilot/books-11-20-validation-report.json data/thematic-index/source-packs
+          git add data/corpus/books data/notes/books data/prayers data/pilot/books-11-20-extraction-report.json data/pilot/books-11-20-validation-report.json data/thematic-index/source-packs
           git commit -m 'Extract validate and prepare Bible books 11-20'
           for attempt in 1 2 3; do
             if git pull --rebase origin main && git push origin HEAD:main; then
