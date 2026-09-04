@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Repair psalm titles split across PDF lines.
 
-Only records whose extracted title ends with a connector likely to require a continuation
-(e.g. "de", "des", "du", "et") are candidates. The source PDF page is re-read and the
-continuation is accepted only when it appears immediately after the numbered heading and
-before verse 1. This keeps the correction documentary and reproducible.
+The source PDF page is re-read for every psalm. When a numbered heading is followed by
+one or more title-continuation lines before verse 1, those lines are joined to the title.
+Because the continuation must occur between the numbered heading and verse 1, the rule
+is documentary and reproducible rather than editorial guesswork.
 """
 from __future__ import annotations
 
@@ -16,7 +16,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "Bible essénienne (classée par livres).pdf"
 BOOKS = ROOT / "data/corpus/books"
-CONNECTOR_RE = re.compile(r"(?i)(?:\bde|\bdes|\bdu|\bde la|\bde l[’']|\bet|\bà|\bau|\baux)$")
 
 
 def clean(value: str) -> str:
@@ -36,12 +35,10 @@ def pdf_page(page: int) -> list[str]:
 
 
 def repair(record: dict) -> bool:
-    title = record.get("title", "")
-    if not CONNECTOR_RE.search(title):
-        return False
+    title = clean(record.get("title", ""))
     pages = record.get("source", {}).get("pdfPages", [])
     number = record.get("number")
-    if not pages or not isinstance(number, int):
+    if not title or not pages or not isinstance(number, int):
         return False
 
     for page in pages[:2]:
@@ -52,29 +49,31 @@ def repair(record: dict) -> bool:
             if not m:
                 continue
             first = clean(m.group(1))
-            # Require source first line to agree with the extracted title enough to avoid prose numbers.
-            if not (first.startswith(title[: max(8, min(len(title), 24))]) or title.startswith(first[: max(8, min(len(first), 24))])):
+            common = max(8, min(len(title), len(first), 24))
+            if first[:common].casefold() != title[:common].casefold():
                 continue
+
             continuation = []
-            for nxt in lines[i + 1 : i + 4]:
+            for nxt in lines[i + 1 : i + 5]:
                 c = re.sub(r"\s+", " ", nxt).strip()
                 if not c:
                     continue
-                if re.match(r"^1\.\s+", c):
-                    break
-                if re.match(r"^\d{1,3}[.]\s+", c) or re.match(r"^\d{1,3}\s+", c):
-                    break
                 if "| Évangile de l’Archange" in c:
                     continue
+                if re.match(r"^1\.\s+", c):
+                    break
+                if re.match(r"^\d{1,3}[.]\s+", c) or re.match(r"^\d{1,3}\s+(?![.])", c):
+                    break
+                # Continuation is accepted only in the narrow heading-to-verse-1 zone.
                 continuation.append(c)
-                # One continuation line is the normal case; do not absorb body prose.
-                break
-            if continuation:
-                repaired = clean(first + " " + " ".join(continuation))
-                if repaired != title and len(repaired.split()) <= 24:
-                    record["title"] = repaired
-                    record.setdefault("extraction", {})["wrappedTitleNormalized"] = True
-                    return True
+                if len(continuation) >= 2:
+                    break
+
+            repaired = clean(" ".join([first, *continuation]))
+            if repaired != title and len(repaired.split()) <= 30:
+                record["title"] = repaired
+                record.setdefault("extraction", {})["wrappedTitleNormalized"] = True
+                return True
     return False
 
 
