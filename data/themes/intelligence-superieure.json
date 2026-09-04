@@ -1,0 +1,50 @@
+{
+  "id": "theme-intelligence-superieure",
+  "recordType": "theme",
+  "label": "Intelligence supérieure",
+  "searchTerms": ["intelligence supérieure", "vivre avec une intelligence supérieure", "monde supérieur"],
+  "senses": [
+    {
+      "id": "intelligence-superieure-vie",
+      "label": "Vivre avec une intelligence supérieure",
+      "definition": "Orientation de la vie vers une intelligence qui dépasse l’état conditionné et passif de l’être."
+    }
+  ],
+  "subthemes": [
+    {
+      "id": "renaissance-vers-intelligence-superieure",
+      "label": "Renaître pour vivre avec une intelligence supérieure",
+      "summary": "La renaissance est présentée comme le passage nécessaire vers une autre qualité d’intelligence et de vie.",
+      "evidenceIds": ["m105-v4-v5"]
+    },
+    {
+      "id": "sortir-des-influences-inconscientes",
+      "label": "Sortir des influences inconscientes",
+      "summary": "Le texte oppose l’intelligence supérieure à une vie gouvernée passivement par des mondes et influences non reconnus.",
+      "evidenceIds": ["m105-v4-v8"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "m105-v4-v5",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [4, 5],
+      "relation": "rebirth-to-higher-intelligence",
+      "sourcePages": [1071]
+    },
+    {
+      "id": "m105-v4-v8",
+      "recordId": "michael-psalm-105",
+      "sourceType": "verse",
+      "verseNumbers": [4, 8],
+      "relation": "contrast-with-unconscious-conditioning",
+      "sourcePages": [1071]
+    }
+  ],
+  "validation": {
+    "status": "editorially-indexed",
+    "indexedFrom": ["michael-psalm-105"],
+    "reviewNotes": "Thème créé à partir de l’opposition explicite entre vie conditionnée et intelligence supérieure."
+  }
+}
