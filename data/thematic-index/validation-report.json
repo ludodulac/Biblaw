@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "stats": {
+    "books": 4,
+    "psalmAnalyses": 93,
+    "themeRelations": 384
+  },
+  "errors": [],
+  "warnings": [
+    {
+      "file": "data/thematic-index/books/book-02.json",
+      "recordId": "book-02-psalm-018",
+      "type": "title-out-of-sync",
+      "indexedTitle": "L’homme de hasard et l’homme d’opportunité",
+      "sourceTitle": "L’homme de hasard et l’homme d ’opportunité"
+    },
+    {
+      "file": "data/thematic-index/books/book-03.json",
+      "recordId": "book-03-psalm-010",
+      "type": "title-out-of-sync",
+      "indexedTitle": "Ne restez pas seuls, unissez-vous",
+      "sourceTitle": "Ne restez pas seuls, unissez -vous"
+    },
+    {
+      "file": "data/thematic-index/books/book-03.json",
+      "recordId": "book-03-psalm-020",
+      "themeId": "enthousiasme",
+      "type": "no-verse-reference"
+    },
+    {
+      "file": "data/thematic-index/books/book-03.json",
+      "recordId": "book-03-psalm-020",
+      "themeId": "flamme",
+      "type": "no-verse-reference"
+    },
+    {
+      "file": "data/thematic-index/books/book-04.json",
+      "recordId": "book-04-psalm-004",
+      "type": "title-out-of-sync",
+      "indexedTitle": "Trouve la quintessence des choses",
+      "sourceTitle": "Trouve la quintessence des choses et mets - la en pratique"
+    },
+    {
+      "file": "data/thematic-index/books/book-04.json",
+      "recordId": "book-04-psalm-012",
+      "type": "title-out-of-sync",
+      "indexedTitle": "L’huile d’Ouriel et la nouvelle alliance",
+      "sourceTitle": "L’huile d’ouriel et la nouvelle alliance"
+    },
+    {
+      "file": "data/thematic-index/books/book-04.json",
+      "recordId": "book-04-psalm-014",
+      "type": "title-out-of-sync",
+      "indexedTitle": "Fais de ta vie quotidienne une œuvre d’art",
+      "sourceTitle": "Fais de ta vie quotidienne une œuvre d ’art"
+    }
+  ]
+}
