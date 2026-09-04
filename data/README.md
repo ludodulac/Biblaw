@@ -15,3 +15,7 @@ générés depuis ces JSON et ne devront jamais devenir la source de vérité.
 Le texte source, les résumés et les interprétations restent dans des champs
 distincts. Toute loi, pratique, recommandation ou relation thématique doit
 conserver une référence vers les versets ou notes qui la justifient.
+
+Les conventions éditoriales transversales validées sont conservées dans
+`editorial-rules.json`. Elles doivent être appliquées par les futurs scripts
+d’extraction sans altérer la numérotation imprimée.
