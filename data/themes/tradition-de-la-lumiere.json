@@ -1,8 +1,25 @@
 {
   "id":"theme-tradition-lumiere","recordType":"theme","label":"Tradition de la Lumière",
-  "searchTerms":["tradition de la Lumière","Tradition","grands sages","grands maîtres","mémoire divine","pyramide de Lumière","semence d’éternité"],
-  "senses":[{"id":"tradition-corps-vivant","label":"La Tradition comme corps vivant","definition":"La parole et la sagesse des grands maîtres peuvent devenir une terre, un corps et un ciel dans lesquels la Tradition continue de vivre."},{"id":"tradition-continuite-eternite","label":"La Tradition comme continuité au-delà de la vie mortelle","definition":"S’enraciner dans la Tradition permet de porter une semence d’éternité et de construire une œuvre qui ne s’éteint pas avec le corps terrestre."}],
-  "subthemes":[{"id":"memoire-divine-tradition","label":"Se structurer dans la mémoire divine d’une tradition","summary":"L’absence de tradition laisse l’être soumis aux courants et influences ; sa mémoire donne orientation et continuité.","evidenceIds":["m109-trad-v9-v18"]},{"id":"oeuvre-commune-lumiere","label":"Bâtir ensemble une œuvre durable pour la Lumière","summary":"La tradition se manifeste par des œuvres communes, un soutien mutuel et une construction destinée au bien de tous.","evidenceIds":["m109-trad-v21-v33"]}],
-  "evidence":[{"id":"m109-trad-v9-v18","recordId":"michael-psalm-109","sourceType":"verse","verseNumbers":[9,14,15,16,17,18],"relation":"tradition-as-foundation-and-eternal-seed","sourcePages":[1086,1087]},{"id":"m109-trad-v21-v33","recordId":"michael-psalm-109","sourceType":"verse","verseNumbers":[21,22,23,24,25,26,27,28,29,30,31,32,33],"relation":"collective-works-and-eternal-construction","sourcePages":[1088]},{"id":"m109-prayer-005-tradition","recordId":"michael-book-17-prayer-005","sourceType":"prayer","relation":"become-earth-for-Michael-tradition-and-Light-pyramid","sourcePages":[1089,1090]}],
-  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-109","michael-book-17-prayer-005"],"reviewNotes":"Le psaume 109 fournit une première définition structurante de la Tradition de la Lumière comme fondement, corps vivant et continuité d’œuvre."}
+  "searchTerms":["tradition de la Lumière","Tradition","grands sages","grands maîtres","mémoire divine","pyramide de Lumière","semence d’éternité","ancêtres","racines","terre de la tradition","arbre de la Tradition"],
+  "senses":[
+    {"id":"tradition-corps-vivant","label":"La Tradition comme corps vivant","definition":"La parole et la sagesse des grands maîtres peuvent devenir une terre, un corps et un ciel dans lesquels la Tradition continue de vivre."},
+    {"id":"tradition-continuite-eternite","label":"La Tradition comme continuité au-delà de la vie mortelle","definition":"S’enraciner dans la Tradition permet de porter une semence d’éternité et de construire une œuvre qui ne s’éteint pas avec le corps terrestre."},
+    {"id":"tradition-racines-ancetres","label":"La Tradition comme racines, mémoire et continuité des ancêtres","definition":"Le psaume 113 présente la tradition comme un fil vivant reliant la terre, les ancêtres, le présent et le futur, appelé à être réveillé et conduit vers une forme nouvelle."}
+  ],
+  "subthemes":[
+    {"id":"memoire-divine-tradition","label":"Se structurer dans la mémoire divine d’une tradition","summary":"L’absence de tradition laisse l’être soumis aux courants et influences ; sa mémoire donne orientation et continuité.","evidenceIds":["m109-trad-v9-v18","m113-trad-v1-v10"]},
+    {"id":"oeuvre-commune-lumiere","label":"Bâtir ensemble une œuvre durable pour la Lumière","summary":"La tradition se manifeste par des œuvres communes, un soutien mutuel et une construction destinée au bien de tous.","evidenceIds":["m109-trad-v21-v33","m113-trad-v17-v25"]},
+    {"id":"retrouver-terre-origine","label":"Retrouver la terre et l’origine de sa tradition","summary":"Connaître d’où l’on vient, la terre qui porte et les traditions qui l’ont travaillée permet de retrouver mémoire, orientation et force.","evidenceIds":["m113-trad-v1-v9"]},
+    {"id":"relier-passe-futur","label":"Relier le passé au futur par une tradition vivante","summary":"L’être est présenté comme un lien entre ceux qui ont marché avant lui et les mondes futurs ; la tradition doit être renouvelée plutôt que répétée mécaniquement.","evidenceIds":["m113-trad-v8-v20"]}
+  ],
+  "evidence":[
+    {"id":"m109-trad-v9-v18","recordId":"michael-psalm-109","sourceType":"verse","verseNumbers":[9,14,15,16,17,18],"relation":"tradition-as-foundation-and-eternal-seed","sourcePages":[1086,1087]},
+    {"id":"m109-trad-v21-v33","recordId":"michael-psalm-109","sourceType":"verse","verseNumbers":[21,22,23,24,25,26,27,28,29,30,31,32,33],"relation":"collective-works-and-eternal-construction","sourcePages":[1088]},
+    {"id":"m109-prayer-005-tradition","recordId":"michael-book-17-prayer-005","sourceType":"prayer","relation":"become-earth-for-Michael-tradition-and-Light-pyramid","sourcePages":[1089,1090]},
+    {"id":"m113-trad-v1-v10","recordId":"michael-psalm-113","sourceType":"verse","verseNumbers":[1,2,3,4,5,6,7,8,9,10],"relation":"roots-land-ancestors-and-living-tradition","sourcePages":[1108,1109]},
+    {"id":"m113-trad-v8-v20","recordId":"michael-psalm-113","sourceType":"verse","verseNumbers":[8,9,10,11,12,13,14,15,16,17,18,19,20],"relation":"continuity-past-present-future-and-renewal","sourcePages":[1108,1109,1110]},
+    {"id":"m113-trad-v17-v25","recordId":"michael-psalm-113","sourceType":"verse","verseNumbers":[17,18,19,20,21,22,23,24,25],"relation":"incarnate-tradition-as-visible-living-work","sourcePages":[1109,1110]},
+    {"id":"m113-prayer-009-tradition","recordId":"michael-book-17-prayer-009","sourceType":"prayer","relation":"service-across-traditions-and-cultures-under-Michael-flame","sourcePages":[1111,1112]}
+  ],
+  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-109","michael-book-17-prayer-005","michael-psalm-113","michael-book-17-prayer-009"],"reviewNotes":"Le psaume 113 approfondit la Tradition comme racines, mémoire des ancêtres, terre vivante et lien actif entre passé, présent et futur."}
 }
