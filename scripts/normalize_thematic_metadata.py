@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Keep thematic book metadata synchronized with the corpus and apply explicit evidence repairs.
+"""Keep thematic book metadata synchronized with the corpus and apply explicit repairs.
 
 Titles are documentary metadata and are always copied from the structured psalm corpus.
 Evidence repairs are explicit editorial decisions, never inferred from keywords.
+Legacy enum aliases are normalized mechanically so book files cannot fail validation
+because a semantically equivalent historical value was used.
 """
 from __future__ import annotations
 
@@ -16,6 +18,11 @@ CORPUS = ROOT / "data/corpus/books"
 EVIDENCE_REPAIRS = {
     ("book-03-psalm-020", "enthousiasme"): [2, 4, 6],
     ("book-03-psalm-020", "flamme"): [2, 4, 6],
+}
+
+IMPORTANCE_ALIASES = {
+    "supporting": "related",
+    "secondary": "related",
 }
 
 changed_files = 0
@@ -37,6 +44,10 @@ for path in sorted(BOOKS.glob("book-*.json")):
                     changed = True
         record_id = psalm.get("recordId")
         for rel in psalm.get("themes", []):
+            importance = rel.get("importance")
+            if importance in IMPORTANCE_ALIASES:
+                rel["importance"] = IMPORTANCE_ALIASES[importance]
+                changed = True
             key = (record_id, rel.get("themeId"))
             if key in EVIDENCE_REPAIRS and rel.get("verseNumbers") != EVIDENCE_REPAIRS[key]:
                 rel["verseNumbers"] = EVIDENCE_REPAIRS[key]
