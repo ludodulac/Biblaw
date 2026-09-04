@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'scripts/extract_books_01_10.py'
+      - 'scripts/normalize_embedded_psalm_headings.py'
       - 'data/pilot/book-inventory.json'
       - '.github/workflows/extract-books-01-10.yml'
 
@@ -21,6 +22,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Extract books 1-10
         run: python scripts/extract_books_01_10.py
+      - name: Normalize embedded psalm headings
+        run: python scripts/normalize_embedded_psalm_headings.py
       - name: Commit extracted corpus
         run: |
           if [ -z "$(git status --porcelain -- data/corpus/books data/notes/books data/pilot/books-01-10-extraction-report.json)" ]; then
