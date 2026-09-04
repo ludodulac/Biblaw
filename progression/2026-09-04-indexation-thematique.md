@@ -6,54 +6,77 @@ Le corpus structuré n’est pas encore un index thématique. Chaque texte trait
 
 Chaque psaume est traité avec sa prière associée lorsqu’elle enrichit réellement les thèmes. Les erreurs techniques déterministes sont corrigées directement ; seules les ambiguïtés de sens nécessitant une décision humaine interrompent le travail.
 
-## 105–109 — réalisés
+## Psaumes 105–112 — réalisés
 
-105 : premiers index généraux — Lumière, Renaissance, Monde divin, Mensonge et illusion, Dévotion, Non-savoir, Intelligence supérieure.
+105 : Lumière, Renaissance, Monde divin, Mensonge et illusion, Dévotion, Non-savoir, Intelligence supérieure.
+106 : enrichissements + création de Discernement, Authenticité et vérité, Connaissance de soi, Âme.
+107 : Nature et Mère, Libre arbitre et autonomie ; enrichissements du discernement, de l’âme et de l’illusion.
+108 : Interdépendance et universel, Anges et vertus.
+109 : Stabilité et enracinement, Tradition de la Lumière, Œuvre et soutien mutuel.
+110 : Équilibre des mondes, Responsabilité et conséquences.
+111 : Nutrition et nourriture intérieure, Essentiel et simplicité.
+112 : approfondissement majeur d’Authenticité et vérité et du corps collectif de l’œuvre.
 
-106 : enrichissement de Lumière et Mensonge et illusion ; création de Discernement, Authenticité et vérité, Connaissance de soi, Âme.
+## Psaume 113 + prière 9 — réalisés
 
-107 : enrichissement de Mensonge et illusion, Discernement, Âme, Connaissance de soi, Intelligence supérieure, Lumière ; création de Nature et Mère et Libre arbitre et autonomie.
+Titre : « Retrouve la terre de ta tradition », pages 1108–1112.
 
-108 : enrichissement de Nature et Mère et Lumière ; création d’Interdépendance et universel et Anges et vertus.
+`Tradition de la Lumière` est fortement enrichi : racines, terre, continuité des ancêtres, mémoire historique et lien entre passé, présent et futur.
 
-109 : création de Stabilité et enracinement, Tradition de la Lumière, Œuvre et soutien mutuel.
+Nouveau thème :
+- `Ancêtres et mémoire` : retrouver l’origine, marcher avec ceux qui ont précédé, reprendre consciemment une œuvre déjà commencée et éviter de recommencer indéfiniment les mêmes expériences.
 
-## Psaume 110 + prière 6 — réalisés
+## Psaume 114 + prière 10 — réalisés
 
-Titre : « L’équilibre des mondes », pages 1091–1097.
-
-Nouveaux thèmes :
-- `Équilibre des mondes` : conformité aux lois de la vie, vision juste, unification de la pensée, du cœur et de la volonté avec une intelligence supérieure.
-- `Responsabilité et conséquences` : traces laissées aux autres êtres, loi de la semence et de la récolte, responsabilité étendue aux règnes.
-
-Thèmes enrichis : Interdépendance et universel, Discernement. Le véritable bien commun est explicitement élargi aux sept règnes de l’alliance du Père et de la Mère.
-
-## Psaume 111 + prière 7 — réalisés
-
-Titre : « Dans la nutrition, les plus grands secrets de l’univers », pages 1098–1102.
+Titre : « Les rois de la Lumière », pages 1113–1116.
 
 Nouveaux thèmes :
-- `Nutrition et nourriture intérieure` : nourriture physique et symbolique, maturité des fruits, assimilation des idées et traditions, entretien de la flamme sacrée et des différents étages de l’être.
-- `Essentiel et simplicité` : sortir de la surcharge d’idées et de préoccupations, revenir à ce qui est vrai, utile, bénéfique et assimilable.
+- `Royauté de la Lumière` : dignité, service, accueil, unification des règnes, Père venant régner lorsque les mondes sont harmonisés.
+- `Partage et générosité` : vie comme don, partage de ce qui est sain et réellement travaillé, refus de la séduction et de l’empoisonnement par des contenus faux ou non assimilés.
 
-Thème enrichi : Discernement, avec un nouveau sens lié à la maturité d’une idée ou d’une tradition : ne pas absorber une nouveauté non éprouvée ni conserver une forme ancienne devenue morte.
+Le psaume enrichit aussi les axes Œuvre et soutien mutuel, Stabilité et enracinement, Interdépendance et universel et Lumière.
 
-## Psaume 112 + prière 8 — réalisés
+## Psaume 115 + prière 11 — réalisés
 
-Titre : « N’attendez pas d’être purs, soyez vrais », pages 1103–1107.
+Titre : « Comment former ton corps d’éternité », pages 1117–1122.
 
-Thème majeur enrichi : `Authenticité et vérité`. Le psaume distingue explicitement vérité et perfection : être vrai consiste à reconnaître ce que l’on porte, cesser les masques et justifications et incarner ce que l’on reconnaît comme vrai.
+Nouveaux thèmes :
+- `Corps d’éternité` : formation simultanée du corps terrestre et du corps céleste, formation des organes de perception du monde supérieur, corps de compréhension et corps d’action juste.
+- `Incarnation et réalisation` : puiser l’inspiration dans le supérieur et la conduire jusque dans une forme terrestre, ne pas remplacer l’action par la prière passive, préparer les conditions concrètes permettant l’incarnation correcte d’une œuvre.
 
-`Œuvre et soutien mutuel` est également enrichi : la sagesse doit recevoir un corps collectif et universel, un organisme vivant capable d’agir et de parler dans le monde.
+## Psaume 116 + prière 12 — réalisés
 
-Le psaume confirme aussi les axes Responsabilité et conséquences, Tradition de la Lumière, Anges et vertus et Lumière.
+Titre : « Les dangers de l’intelligence technologique », pages 1123–1129.
+
+Nouveaux thèmes :
+- `Constance et persévérance` : aller jusqu’au bout de la pensée, de la parole et de l’œuvre ; l’accomplissement fortifie, l’inachevé affaiblit.
+- `Technologie et intelligence électrique` : index fidèle à la cosmologie propre du psaume concernant technologie, électricité, influences subtiles et asservissement. Ces formulations sont enregistrées comme doctrine du texte et non comme validation scientifique externe.
+
+## Psaume 117 — réalisé
+
+Titre : « Une œuvre primordiale pour l’humanité », pages 1130–1132. Aucun texte de prière directement associé.
+
+Nouveau thème :
+- `Cultes des quatre Archanges` : cultes du feu, de l’eau, de l’air et de la terre, quatre sceaux, quatre temples, ancrage terrestre de l’alliance et réconciliation des règnes.
+
+Le psaume enrichit également Œuvre et soutien mutuel, Équilibre des mondes, Interdépendance et universel et Incarnation et réalisation.
+
+## Psaume 118 + prière 13 — réalisés
+
+Titre : « 5 questions fondamentales à se poser », pages 1133–1135.
+
+Nouveau thème :
+- `Éveil et présence consciente` : lecture vivifiante des textes sacrés, concentration, attention, présence à la nourriture, à la parole, à la prière et au sommeil, direction de la vie depuis le centre et l’âme plutôt que par automatisme.
+
+Le psaume renforce également Incarnation et réalisation : la Lumière doit toucher le plan physique et recevoir un corps concret dans la vie.
 
 ## État d’avancement
 
-- Psaumes 105 à 112 + prières 1 à 8 : indexés thématiquement.
-- Psaumes 113 à 130 : structurés, à indexer séquentiellement.
-- Aucun cas de sens réellement ambigu nécessitant une décision humaine n’a été rencontré dans 107–112.
+- Psaumes 105 à 118 : indexés thématiquement.
+- Prières associées 1 à 13 : traitées lorsqu’elles s’appliquent ; le psaume 117 n’a pas de prière associée.
+- Psaumes 119 à 130 : structurés, à indexer séquentiellement.
+- Aucun cas de sens réellement ambigu nécessitant une décision humaine n’a été rencontré sur 113–118.
 
 ## Suite
 
-Poursuivre avec le psaume 113 et sa prière puis avancer sans interruption tant qu’aucune ambiguïté éditoriale réelle ne nécessite l’utilisateur. À la fin de 105–130 : revue transversale des synonymes, chevauchements et hiérarchies ; vérification des références ; préparation des données destinées au moteur de recherche et au bouton `Index`, qui doit afficher uniquement les thèmes éditorialement constitués.
+Poursuivre avec le psaume 119 et sa prière, puis avancer sans interruption jusqu’à 130 tant qu’aucune ambiguïté éditoriale réelle n’exige l’utilisateur. À la fin de la tranche 105–130 : revue transversale des synonymes, chevauchements, hiérarchies et relations entre thèmes ; vérification des références ; préparation des données destinées au moteur et au bouton `Index`, qui doit afficher uniquement les thèmes éditorialement constitués.
