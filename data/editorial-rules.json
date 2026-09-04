@@ -1,0 +1,22 @@
+{
+  "recordType": "editorial-rules",
+  "version": 1,
+  "rules": [
+    {
+      "id": "questions-addressed-to-archangel",
+      "title": "Questions adressées à l’Archange",
+      "status": "validated",
+      "rule": "Toute question imprimée avec un numéro de verset reste un verset et conserve ce numéro. Une question sans numéro est indexée comme une intervention non numérotée d’Olivier Manitara, sans modifier la numérotation des versets voisins.",
+      "recognitionHints": [
+        "Présence d’une formule d’adresse telle que « Ô Père… » ou « Père… ».",
+        "Forme interrogative adressée à l’Archange.",
+        "Mention éditoriale telle que « Olivier Manitara demanda à l’Archange… ».",
+        "La forme de la phrase n’est qu’un indice : le contexte et la mise en page du PDF doivent confirmer le locuteur."
+      ],
+      "evidence": [
+        {"recordId": "michael-psalm-105", "verse": 9, "noteId": "michael-psalm-105-note-001"},
+        {"recordId": "gabriel-psalm-182", "positionAfterVerse": 18, "numbering": "unnumbered-interlude"}
+      ]
+    }
+  ]
+}
