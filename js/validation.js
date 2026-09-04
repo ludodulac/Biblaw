@@ -19,13 +19,14 @@
       state.records.set(id, { psalm: docs[0], prayer: docs.find(x => x.recordType === 'master-prayer'), notes: docs.filter(x => x.recordType === 'note') });
     }
     $('recordSelect').innerHTML = [...state.records.values()].map(({ psalm }) => `<option value="${psalm.id}">${angel(psalm.archangel)} · Psaume ${psalm.number} — ${esc(psalm.title)}</option>`).join('');
-    $('recordSelect').onchange = () => render($('recordSelect').value); $('copyReview').onclick = copyReview; render(configs[0][0]);
+    $('recordSelect').onchange = () => render($('recordSelect').value); $('saveReview').onclick = saveReview; $('copyReview').onclick = copyReview; render(configs[0][0]);
   }
   function render(id) {
     state.active = state.records.get(id); const { psalm, prayer, notes } = state.active, pages = psalm.source.printedPages;
     $('recordSelect').value = id; $('sourceLink').href = `${pdf}#page=${pages[0]}`;
     $('validationStats').innerHTML = [[psalm.verses.length, 'versets'], [(psalm.dialogueSegments || []).length, 'question(s)'], [notes.length, 'note(s)'], [prayer ? `N° ${prayer.number}` : '—', 'prière rattachée']].map(([v, l]) => `<div class="stat-card"><strong>${v}</strong><span>${l}</span></div>`).join('');
-    $('recordHeader').innerHTML = `<div class="record-title"><span class="status-pill">À valider humainement</span><h2>${angel(psalm.archangel)} · Psaume ${psalm.number}</h2><p>Livre ${psalm.book.number} — ${esc(psalm.book.title)} · pages ${pages.join('–')}</p><h3>${esc(psalm.title)}</h3></div>`;
+    const corpusValidated = psalm.validation?.status === 'validated';
+    $('recordHeader').innerHTML = `<div class="record-title"><span class="status-pill">${corpusValidated ? 'Validé dans GitHub' : 'À valider humainement'}</span><h2>${angel(psalm.archangel)} · Psaume ${psalm.number}</h2><p>Livre ${psalm.book.number} — ${esc(psalm.book.title)} · pages ${pages.join('–')}</p><h3>${esc(psalm.title)}</h3></div>`;
     const dialogue = psalm.dialogueSegments || [];
     $('dialogueNotice').innerHTML = dialogue.length ? `<div class="dialogue-notice">${dialogue.map(d => d.numbering === 'numbered-verse' ? `Question d’Olivier conservée comme verset ${d.verseNumber}.` : `Question éditoriale non numérotée placée après le verset ${d.positionAfterVerse}.`).join(' ')}</div>` : '';
     $('verses').innerHTML = psalm.verses.map(v => {
@@ -35,9 +36,15 @@
     }).join('');
     $('notes').innerHTML = notes.length ? `<section class="record-section"><h3>Notes rattachées</h3>${notes.map(n => `<div class="note-card"><strong>Verset ${n.appliesTo.verse || '—'} · appel ${n.appliesTo.marker}</strong><p>${esc(n.text || n.summary)}</p>${(n.temporalMentions || []).map(t => `<span class="tag">${esc(t.value)}</span>`).join('')}</div>`).join('')}</section>` : '';
     $('prayer').innerHTML = prayer ? `<section class="record-section"><h3>Prière du Maître n° ${prayer.number}</h3><p class="muted">Rattachement proposé par proximité éditoriale : imprimée immédiatement après le psaume.</p><div class="prayer-text">${esc(prayer.text)}</div></section>` : '';
-    $('checklist').innerHTML = checks.map(([id, label]) => `<label class="check-row"><input type="checkbox" data-check="${id}" ${localStorage.getItem(key(id)) === '1' ? 'checked' : ''}><span>${label}</span></label>`).join('');
-    document.querySelectorAll('[data-check]').forEach(input => input.onchange = () => localStorage.setItem(key(input.dataset.check), input.checked ? '1' : '0'));
-    $('reviewNote').value = localStorage.getItem(key('note')) || ''; $('reviewNote').oninput = () => localStorage.setItem(key('note'), $('reviewNote').value); $('copyStatus').textContent = '';
+    $('checklist').innerHTML = checks.map(([id, label]) => `<label class="check-row"><input type="checkbox" data-check="${id}" ${localStorage.getItem(key(id)) === '1' || (localStorage.getItem(key(id)) === null && corpusValidated) ? 'checked' : ''}><span>${label}</span></label>`).join('');
+    document.querySelectorAll('[data-check]').forEach(input => input.onchange = () => { $('saveStatus').textContent = 'Modifications non enregistrées.'; });
+    $('reviewNote').value = localStorage.getItem(key('note')) ?? psalm.validation?.review?.note ?? ''; $('reviewNote').oninput = () => { $('saveStatus').textContent = 'Modifications non enregistrées.'; }; $('copyStatus').textContent = '';
+    const saved = localStorage.getItem(key('savedAt')); $('saveStatus').textContent = saved ? `Enregistré sur cet appareil le ${new Date(saved).toLocaleString('fr-FR')}.` : (corpusValidated ? 'Cette validation est déjà inscrite dans GitHub.' : 'Pas encore enregistrée.');
+  }
+  function saveReview() {
+    document.querySelectorAll('[data-check]').forEach(input => localStorage.setItem(key(input.dataset.check), input.checked ? '1' : '0'));
+    localStorage.setItem(key('note'), $('reviewNote').value); const savedAt = new Date().toISOString(); localStorage.setItem(key('savedAt'), savedAt);
+    $('saveStatus').textContent = `Enregistré sur cet appareil le ${new Date(savedAt).toLocaleString('fr-FR')}.`;
   }
   async function copyReview() {
     const { psalm } = state.active, done = checks.filter(([id]) => localStorage.getItem(key(id)) === '1').map(([, l]) => `✓ ${l}`), todo = checks.filter(([id]) => localStorage.getItem(key(id)) !== '1').map(([, l]) => `□ ${l}`);
