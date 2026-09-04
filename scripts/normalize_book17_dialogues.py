@@ -2,9 +2,9 @@
 """Apply the validated dialogue rule to machine-extracted Michaël book 17 records.
 
 Numbered Olivier questions are recognized conservatively as direct addresses that
-begin with "Père" or "Ô Père" and contain an interrogative. This avoids treating
-an Archangel verse that merely mentions the Père and ends with a rhetorical
-question as a change of speaker.
+begin with "Père", "Ô Père" or "Ô mon Père" and contain an interrogative. This
+avoids treating an Archangel verse that merely mentions the Père and ends with a
+rhetorical question as a change of speaker.
 """
 from __future__ import annotations
 
@@ -13,8 +13,10 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CORPUS = ROOT / "data" / "corpus" / "michael"
-DIRECT_ADDRESS = re.compile(r"(?i)^(?:ô\s+)?père(?:\s+michaël)?(?:\b|\s*[,!:])")
+DATA = ROOT / "data"
+CORPUS = DATA / "corpus" / "michael"
+REPORT = DATA / "pilot" / "book-17-extraction-report.json"
+DIRECT_ADDRESS = re.compile(r"(?i)^(?:ô\s+)?(?:mon\s+)?père(?:\s+michaël)?(?:\b|\s*[,!:])")
 
 
 def is_olivier_question(text: str) -> bool:
@@ -23,6 +25,8 @@ def is_olivier_question(text: str) -> bool:
 
 
 def main() -> None:
+    normalized_counts: dict[int, int] = {}
+
     for number in range(106, 131):
         path = CORPUS / f"psalm-{number:03d}.json"
         record = json.loads(path.read_text(encoding="utf-8"))
@@ -66,9 +70,18 @@ def main() -> None:
         for index, dialogue in enumerate(dialogues, 1):
             dialogue["id"] = f"michael-psalm-{number:03d}-dialogue-{index:03d}"
         record["dialogueSegments"] = dialogues
+        normalized_counts[number] = len(dialogues)
 
         path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(path.relative_to(ROOT))
+
+    report = json.loads(REPORT.read_text(encoding="utf-8"))
+    for item in report.get("records", []):
+        number = item.get("psalm")
+        if number in normalized_counts:
+            item["questions"] = normalized_counts[number]
+    REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(REPORT.relative_to(ROOT))
 
 
 if __name__ == "__main__":
