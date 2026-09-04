@@ -29,12 +29,18 @@
         "properties": {
           "number": { "type": "integer", "minimum": 1 },
           "text": { "type": "string", "minLength": 1 },
-          "sourcePages": { "type": "array", "items": { "type": "integer" } }
+          "sourcePages": { "type": "array", "items": { "type": "integer" } },
+          "speakerId": { "type": "string" },
+          "speechRole": { "enum": ["teaching", "question", "answer", "invocation", "editorial-unknown"] }
         }
       }
     },
     "notes": { "type": "array" },
+    "noteIds": { "type": "array", "items": { "type": "string" } },
     "masterPrayer": { "type": ["object", "null"] },
+    "prayerIds": { "type": "array", "items": { "type": "string" } },
+    "contextIds": { "type": "array", "items": { "type": "string" } },
+    "temporalMentions": { "type": "array" },
     "conceptIds": { "type": "array", "items": { "type": "string" } },
     "validation": { "type": "object" }
   }
