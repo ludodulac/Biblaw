@@ -2,8 +2,106 @@
   "schemaVersion": 1,
   "generatedFrom": "data/thematic-index/books/book-*.json",
   "manualEditingAllowed": false,
-  "themeCount": 351,
+  "themeCount": 393,
   "themes": [
+    {
+      "id": "abeille",
+      "label": "Abeille",
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 6,
+          "occurrenceCount": 2
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-030",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            5,
+            7,
+            8,
+            10
+          ],
+          "teaching": "L’abeille représente le dévouement au travail collectif et à un centre commun.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-047",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 47,
+          "psalmTitle": "Soyez comme l’abeille, nourrissez le précieux à travers tous vos travaux",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "L’abeille enseigne un travail quotidien orienté vers le meilleur, accompli pour nourrir un centre précieux plutôt que pour l’intérêt immédiat de l’individu.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-030",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            5,
+            7,
+            8,
+            10
+          ],
+          "teaching": "L’abeille représente le dévouement au travail collectif et à un centre commun.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-047",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 47,
+          "psalmTitle": "Soyez comme l’abeille, nourrissez le précieux à travers tous vos travaux",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "L’abeille enseigne un travail quotidien orienté vers le meilleur, accompli pour nourrir un centre précieux plutôt que pour l’intérêt immédiat de l’individu.",
+          "score": 3
+        }
+      ]
+    },
     {
       "id": "abstraction",
       "label": "Abstraction",
@@ -310,10 +408,15 @@
     {
       "id": "activite",
       "label": "Activité",
-      "score": 2,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 0,
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "gabriel",
           "score": 2,
@@ -321,6 +424,29 @@
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-08-psalm-031",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 31,
+          "psalmTitle": "Àtravers toutes les circonstances de ta vie, sois actif et utile au monde divin",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "L’homme doit devenir acteur conscient des circonstances et ouvrir activement ses centres subtils au lieu d’attendre passivement que d’autres œuvrent.",
+          "score": 3
+        },
         {
           "recordId": "book-06-psalm-053",
           "bookNumber": 6,
@@ -342,6 +468,29 @@
         }
       ],
       "occurrences": [
+        {
+          "recordId": "book-08-psalm-031",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 31,
+          "psalmTitle": "Àtravers toutes les circonstances de ta vie, sois actif et utile au monde divin",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "L’homme doit devenir acteur conscient des circonstances et ouvrir activement ses centres subtils au lieu d’attendre passivement que d’autres œuvrent.",
+          "score": 3
+        },
         {
           "recordId": "book-06-psalm-053",
           "bookNumber": 6,
@@ -1004,12 +1153,17 @@
     {
       "id": "alchimie",
       "label": "Alchimie",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -1031,6 +1185,26 @@
           ],
           "teaching": "L’alchimie consiste à transformer les forces inférieures et inconscientes en richesse de conscience au lieu de perdre ou rejeter leur énergie.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-042",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Les 3 étapes de l’alchimie, de la chenille au papillon",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            8,
+            10,
+            11
+          ],
+          "teaching": "L’alchimie est un processus réel de changement d’état ; il n’est pas possible d’obtenir la liberté sans traverser la transformation correspondante.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -1049,6 +1223,26 @@
             8
           ],
           "teaching": "L’alchimie consiste à transformer les forces inférieures et inconscientes en richesse de conscience au lieu de perdre ou rejeter leur énergie.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-042",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Les 3 étapes de l’alchimie, de la chenille au papillon",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            8,
+            10,
+            11
+          ],
+          "teaching": "L’alchimie est un processus réel de changement d’état ; il n’est pas possible d’obtenir la liberté sans traverser la transformation correspondante.",
           "score": 3
         }
       ]
@@ -1848,6 +2042,76 @@
             4
           ],
           "teaching": "L'homme se tient entre le monde animal et le monde angélique et doit savoir quelle intelligence habite et dirige son comportement.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "ange-gardien",
+      "label": "Ange gardien",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-049",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 49,
+          "psalmTitle": "La clé pour tisser un lien conscient avec son A nge gardien",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "teaching": "L’Ange gardien est un guide personnel à choisir et connaître consciemment, relié à la vocation idéale et à la direction profonde de la vie.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-049",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 49,
+          "psalmTitle": "La clé pour tisser un lien conscient avec son A nge gardien",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "teaching": "L’Ange gardien est un guide personnel à choisir et connaître consciemment, relié à la vocation idéale et à la direction profonde de la vie.",
           "score": 3
         }
       ]
@@ -3472,6 +3736,64 @@
       ]
     },
     {
+      "id": "autorite-interieure",
+      "label": "Autorité intérieure",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-027",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment triompher des forces sombres et rétablir l’équilibre dans sa vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "L’homme doit reprendre sa royauté et son pouvoir créateur afin d’imposer une direction juste aux influences qui cherchent à occuper la place laissée vide.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-027",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment triompher des forces sombres et rétablir l’équilibre dans sa vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "L’homme doit reprendre sa royauté et son pouvoir créateur afin d’imposer une direction juste aux influences qui cherchent à occuper la place laissée vide.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "beaute",
       "label": "Beauté",
       "score": 6,
@@ -3579,12 +3901,77 @@
       ]
     },
     {
+      "id": "beaute-et-laideur",
+      "label": "Beauté et laideur",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-048",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 48,
+          "psalmTitle": "Protégez ce qui est beau et affaiblissez la laideur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            7,
+            8,
+            9,
+            13,
+            16,
+            17
+          ],
+          "teaching": "La laideur doit être affaiblie non par destruction mais en faisant grandir ce qui est beau, fertile et capable d’éveiller les êtres.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-048",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 48,
+          "psalmTitle": "Protégez ce qui est beau et affaiblissez la laideur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            7,
+            8,
+            9,
+            13,
+            16,
+            17
+          ],
+          "teaching": "La laideur doit être affaiblie non par destruction mais en faisant grandir ce qui est beau, fertile et capable d’éveiller les êtres.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "bien-commun",
       "label": "Bien commun",
-      "score": 2,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 0,
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "michael",
           "score": 2,
@@ -3592,6 +3979,25 @@
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-08-psalm-051",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 51,
+          "psalmTitle": "La N ation E ssénienne est l’œuvre du B ien commun",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "teaching": "Le Bien commun demande de placer ses capacités et intérêts dans une œuvre qui dépasse l’individu et concerne l’humanité et la terre.",
+          "score": 3
+        },
         {
           "recordId": "book-01-psalm-011",
           "bookNumber": 1,
@@ -3612,6 +4018,25 @@
       ],
       "occurrences": [
         {
+          "recordId": "book-08-psalm-051",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 51,
+          "psalmTitle": "La N ation E ssénienne est l’œuvre du B ien commun",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "teaching": "Le Bien commun demande de placer ses capacités et intérêts dans une œuvre qui dépasse l’individu et concerne l’humanité et la terre.",
+          "score": 3
+        },
+        {
           "recordId": "book-01-psalm-011",
           "bookNumber": 1,
           "bookTitle": "Trouve ton propre chemin",
@@ -3626,6 +4051,60 @@
             9
           ],
           "teaching": "La spiritualité responsable ouvre le chemin pour le tout et le bien de la communauté des êtres vivants.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "bien-partage",
+      "label": "Bien partagé",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-039",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Trouve ton véritable intérêt dans l’œuvre de la L umière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            13,
+            14,
+            16
+          ],
+          "teaching": "Le vrai bien vient du divin et se partage ; le bien qui enferme et se garde pour soi est dénoncé comme un mal déguisé.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-039",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Trouve ton véritable intérêt dans l’œuvre de la L umière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            13,
+            14,
+            16
+          ],
+          "teaching": "Le vrai bien vient du divin et se partage ; le bien qui enferme et se garde pour soi est dénoncé comme un mal déguisé.",
           "score": 2
         }
       ]
@@ -3930,6 +4409,64 @@
           ],
           "teaching": "La bénédiction est l'acte qui ouvre ce qui est humain au monde divin, consacre les passages de la vie et introduit la Lumière dans les êtres et événements.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "caché",
+      "label": "Caché",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-040",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Le secret du haricot magique",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            10
+          ],
+          "teaching": "La sagesse essénienne est associée à la capacité de vivifier ce qui est caché plutôt que de confondre apparence et réalité.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-040",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Le secret du haricot magique",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            10
+          ],
+          "teaching": "La sagesse essénienne est associée à la capacité de vivifier ce qui est caché plutôt que de confondre apparence et réalité.",
+          "score": 2
         }
       ]
     },
@@ -4681,14 +5218,81 @@
       ]
     },
     {
-      "id": "choix",
-      "label": "Choix",
+      "id": "chenille",
+      "label": "Chenille",
       "score": 3,
       "occurrenceCount": 1,
       "centralPsalmCount": 1,
       "archangels": [
         {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-042",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Les 3 étapes de l’alchimie, de la chenille au papillon",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "teaching": "La chenille représente l’état humain limité qui doit accepter sa condition au lieu de réclamer immédiatement l’accès aux mondes supérieurs.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-042",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Les 3 étapes de l’alchimie, de la chenille au papillon",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "teaching": "La chenille représente l’état humain limité qui doit accepter sa condition au lieu de réclamer immédiatement l’accès aux mondes supérieurs.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "choix",
+      "label": "Choix",
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
+      "archangels": [
+        {
           "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -4714,6 +5318,26 @@
           ],
           "teaching": "Vivre avec le divin exige de clarifier ce que l'on veut et d'assumer les choix concrets que cette orientation impose.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-043",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 43,
+          "psalmTitle": "La clé pour ne pas attirer à soi les forces sombres",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "L’homme se tient entre deux mondes et choisit concrètement lequel il promotionne par ce qu’il nourrit au quotidien.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -4736,6 +5360,26 @@
             7
           ],
           "teaching": "Vivre avec le divin exige de clarifier ce que l'on veut et d'assumer les choix concrets que cette orientation impose.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-043",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 43,
+          "psalmTitle": "La clé pour ne pas attirer à soi les forces sombres",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "L’homme se tient entre deux mondes et choisit concrètement lequel il promotionne par ce qu’il nourrit au quotidien.",
           "score": 3
         }
       ]
@@ -5032,6 +5676,62 @@
       ]
     },
     {
+      "id": "cocon",
+      "label": "Cocon",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-042",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Les 3 étapes de l’alchimie, de la chenille au papillon",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            5,
+            6,
+            8,
+            10,
+            11
+          ],
+          "teaching": "Le cocon est la phase de retrait et de transformation où les anciens organes s’éteignent pour qu’un nouveau corps puisse se former.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-042",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Les 3 étapes de l’alchimie, de la chenille au papillon",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            5,
+            6,
+            8,
+            10,
+            11
+          ],
+          "teaching": "Le cocon est la phase de retrait et de transformation où les anciens organes s’éteignent pour qu’un nouveau corps puisse se former.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "coherence",
       "label": "Cohérence",
       "score": 6,
@@ -5129,11 +5829,69 @@
       ]
     },
     {
+      "id": "coherence-pensee-acte",
+      "label": "Cohérence pensée-acte",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-045",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Pourquoi les hommes souffrent‑ ils?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            9,
+            16,
+            18
+          ],
+          "teaching": "Mettre en œuvre ce que l’on pense et ressent dans la Lumière est présenté comme une loi fondamentale de libération.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-045",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Pourquoi les hommes souffrent‑ ils?",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            9,
+            16,
+            18
+          ],
+          "teaching": "Mettre en œuvre ce que l’on pense et ressent dans la Lumière est présenté comme une loi fondamentale de libération.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "communaute",
       "label": "Communauté",
-      "score": 12,
-      "occurrenceCount": 4,
-      "centralPsalmCount": 4,
+      "score": 15,
+      "occurrenceCount": 5,
+      "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "gabriel",
@@ -5142,6 +5900,11 @@
         },
         {
           "id": "michael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         },
@@ -5234,6 +5997,32 @@
           ],
           "teaching": "L’union communautaire forme un organe stable capable de porter la Lumière et d’éviter l’isolement dévitalisant.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-029",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Comprenez et réalisez le secret du corps du christ à travers l’école de dieu",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            15,
+            16
+          ],
+          "teaching": "La communauté multiplie le bien lorsque chacun conserve sa couleur d’âme et met son potentiel individuel au service d’un idéal supérieur.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -5318,6 +6107,32 @@
             18
           ],
           "teaching": "L’union communautaire forme un organe stable capable de porter la Lumière et d’éviter l’isolement dévitalisant.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-029",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Comprenez et réalisez le secret du corps du christ à travers l’école de dieu",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            15,
+            16
+          ],
+          "teaching": "La communauté multiplie le bien lorsque chacun conserve sa couleur d’âme et met son potentiel individuel au service d’un idéal supérieur.",
           "score": 3
         }
       ]
@@ -6541,6 +7356,102 @@
       ]
     },
     {
+      "id": "corps-du-christ",
+      "label": "Corps du Christ",
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 5,
+          "occurrenceCount": 2
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-029",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Comprenez et réalisez le secret du corps du christ à travers l’école de dieu",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            7,
+            9,
+            16
+          ],
+          "teaching": "Le corps divin est un organisme vivant composé d’organes différents qui unissent leurs forces autour d’un maître et d’une conscience supérieure commune.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-033",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Éveille la lumière du discernement à la source du maître",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            16
+          ],
+          "teaching": "Le corps du Christ est défini comme le corps de Lumière formé par les élèves assemblés autour de la flamme vivante dans le maître.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-029",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Comprenez et réalisez le secret du corps du christ à travers l’école de dieu",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            7,
+            9,
+            16
+          ],
+          "teaching": "Le corps divin est un organisme vivant composé d’organes différents qui unissent leurs forces autour d’un maître et d’une conscience supérieure commune.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-033",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Éveille la lumière du discernement à la source du maître",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            16
+          ],
+          "teaching": "Le corps du Christ est défini comme le corps de Lumière formé par les élèves assemblés autour de la flamme vivante dans le maître.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "corps-dimmortalite",
       "label": "Corps d’immortalité",
       "score": 2,
@@ -7308,9 +8219,9 @@
     {
       "id": "discernement",
       "label": "Discernement",
-      "score": 15,
-      "occurrenceCount": 6,
-      "centralPsalmCount": 3,
+      "score": 18,
+      "occurrenceCount": 7,
+      "centralPsalmCount": 4,
       "archangels": [
         {
           "id": "raphael",
@@ -7321,6 +8232,11 @@
           "id": "michael",
           "score": 5,
           "occurrenceCount": 2
+        },
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -7379,6 +8295,26 @@
             17
           ],
           "teaching": "L’ouverture doit être accompagnée d’instruction, de bon sens, d’épreuve des esprits et d’un ancrage dans une tradition et un maître vivant.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-033",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Éveille la lumière du discernement à la source du maître",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            18
+          ],
+          "teaching": "Le discernement subtil permet d’identifier ce qui nourrit réellement l’évolution et de rejeter ce qui rend malade ou détourne de la Lumière.",
           "score": 3
         },
         {
@@ -7489,6 +8425,26 @@
             17
           ],
           "teaching": "L’ouverture doit être accompagnée d’instruction, de bon sens, d’épreuve des esprits et d’un ancrage dans une tradition et un maître vivant.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-033",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Éveille la lumière du discernement à la source du maître",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            18
+          ],
+          "teaching": "Le discernement subtil permet d’identifier ce qui nourrit réellement l’évolution et de rejeter ce qui rend malade ou détourne de la Lumière.",
           "score": 3
         },
         {
@@ -7689,6 +8645,70 @@
       ]
     },
     {
+      "id": "diversite-et-unite",
+      "label": "Diversité et unité",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-029",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Comprenez et réalisez le secret du corps du christ à travers l’école de dieu",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "teaching": "L’unité vivante n’est pas uniformité : elle protège les différences et les harmonise au service d’un corps commun.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-029",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 29,
+          "psalmTitle": "Comprenez et réalisez le secret du corps du christ à travers l’école de dieu",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "teaching": "L’unité vivante n’est pas uniformité : elle protège les différences et les harmonise au service d’un corps commun.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "don",
       "label": "Don",
       "score": 5,
@@ -7837,6 +8857,126 @@
           ],
           "teaching": "La douceur est décrite comme une présence subtile qui protège, guérit, révèle les vertus et peut entourer silencieusement un être qui souffre.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "doute",
+      "label": "Doute",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-025",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 25,
+          "psalmTitle": "La clé pour se libérer du doute et de la peur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14
+          ],
+          "teaching": "Le doute doit être appliqué au mortel et à l’éphémère, non à ce qui est noble et divin ; placé dans les hautes régions, il coupe l’accès à l’inspiration.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-025",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 25,
+          "psalmTitle": "La clé pour se libérer du doute et de la peur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14
+          ],
+          "teaching": "Le doute doit être appliqué au mortel et à l’éphémère, non à ce qui est noble et divin ; placé dans les hautes régions, il coupe l’accès à l’inspiration.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "detachement",
+      "label": "Détachement",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-046",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Libérez ‑vous de l’esclavage du monde des hommes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            10,
+            11,
+            13
+          ],
+          "teaching": "Créer un espace associé au monde divin permet d’utiliser le monde mortel sans s’y faire capturer.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-046",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Libérez ‑vous de l’esclavage du monde des hommes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            10,
+            11,
+            13
+          ],
+          "teaching": "Créer un espace associé au monde divin permet d’utiliser le monde mortel sans s’y faire capturer.",
+          "score": 2
         }
       ]
     },
@@ -8879,13 +10019,18 @@
     {
       "id": "enthousiasme",
       "label": "Enthousiasme",
-      "score": 3,
-      "occurrenceCount": 1,
+      "score": 5,
+      "occurrenceCount": 2,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "raphael",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
+          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -8906,6 +10051,24 @@
           ],
           "teaching": "L'enthousiasme est traité comme une force vivante qui met l'être en mouvement vers la Lumière et soutient la réalisation.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-028",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 28,
+          "psalmTitle": "Les 3 degrés de la joie, du plaisir destructeur à l’extase divine",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            16,
+            18,
+            24
+          ],
+          "teaching": "L’enthousiasme est un feu moteur qui vivifie les paroles, les œuvres et l’Enseignement au lieu de les laisser devenir des formes mortes.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -8924,6 +10087,88 @@
             6
           ],
           "teaching": "L'enthousiasme est traité comme une force vivante qui met l'être en mouvement vers la Lumière et soutient la réalisation.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-028",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 28,
+          "psalmTitle": "Les 3 degrés de la joie, du plaisir destructeur à l’extase divine",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            16,
+            18,
+            24
+          ],
+          "teaching": "L’enthousiasme est un feu moteur qui vivifie les paroles, les œuvres et l’Enseignement au lieu de les laisser devenir des formes mortes.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "esclavage",
+      "label": "Esclavage",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-046",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Libérez ‑vous de l’esclavage du monde des hommes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "L’esclavage apparaît lorsque l’homme donne sa force aux structures qui prolongent ses limites et finit par ne plus pouvoir choisir son orientation intérieure.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-046",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Libérez ‑vous de l’esclavage du monde des hommes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "L’esclavage apparaît lorsque l’homme donne sa force aux structures qui prolongent ses limites et finit par ne plus pouvoir choisir son orientation intérieure.",
           "score": 3
         }
       ]
@@ -9823,12 +11068,17 @@
     {
       "id": "fidelite",
       "label": "Fidélité",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "michael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -9858,6 +11108,32 @@
           ],
           "teaching": "La fidélité consiste à fonder sa vie sur des expériences sacrées authentiquement vécues et à conduire ce que l'on croit jusqu'à l'accomplissement.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-041",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Trouve la force dans la fidélité à ce que tu es, un E nfant de la L umière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15
+          ],
+          "teaching": "La fidélité est mémoire, détermination, persévérance et acte concret conforme à ce que l’âme reconnaît comme vrai.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -9884,6 +11160,96 @@
             11
           ],
           "teaching": "La fidélité consiste à fonder sa vie sur des expériences sacrées authentiquement vécues et à conduire ce que l'on croit jusqu'à l'accomplissement.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-041",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Trouve la force dans la fidélité à ce que tu es, un E nfant de la L umière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15
+          ],
+          "teaching": "La fidélité est mémoire, détermination, persévérance et acte concret conforme à ce que l’âme reconnaît comme vrai.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "fils-incarne",
+      "label": "Fils incarné",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-036",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 36,
+          "psalmTitle": "Qui voit le fils incarné voit le père de tous les pères",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            17,
+            19,
+            20,
+            21
+          ],
+          "teaching": "Le Fils incarné est présenté comme le passage par lequel le divin devient accessible et actif dans le monde des hommes.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-036",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 36,
+          "psalmTitle": "Qui voit le fils incarné voit le père de tous les pères",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            17,
+            19,
+            20,
+            21
+          ],
+          "teaching": "Le Fils incarné est présenté comme le passage par lequel le divin devient accessible et actif dans le monde des hommes.",
           "score": 3
         }
       ]
@@ -10151,6 +11517,116 @@
             9
           ],
           "teaching": "La force juste consiste à ne pas avoir peur de ce que l'on est, à être entier et à avancer sans se disperser.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "forces-sombres",
+      "label": "Forces sombres",
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 6,
+          "occurrenceCount": 2
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-027",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment triompher des forces sombres et rétablir l’équilibre dans sa vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "Certaines forces sombres vivent de l’énergie que l’homme leur donne ; elles doivent être replacées sous une autorité de Lumière plutôt que combattues dans la peur.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-043",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 43,
+          "psalmTitle": "La clé pour ne pas attirer à soi les forces sombres",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Les forces sombres sont attirées et nourries par les pensées, attitudes et comportements de l’homme ; cesser de les appeler est le premier acte de protection.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-027",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment triompher des forces sombres et rétablir l’équilibre dans sa vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "Certaines forces sombres vivent de l’énergie que l’homme leur donne ; elles doivent être replacées sous une autorité de Lumière plutôt que combattues dans la peur.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-043",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 43,
+          "psalmTitle": "La clé pour ne pas attirer à soi les forces sombres",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Les forces sombres sont attirées et nourries par les pensées, attitudes et comportements de l’homme ; cesser de les appeler est le premier acte de protection.",
           "score": 3
         }
       ]
@@ -10689,10 +12165,15 @@
     {
       "id": "germe-divin",
       "label": "Germe divin",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "raphael",
           "score": 3,
@@ -10726,6 +12207,26 @@
           ],
           "teaching": "L’essentiel est le germe immortel ; les relations, disciplines et enveloppes n’ont de sens que si elles l’éveillent et le nourrissent.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-040",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Le secret du haricot magique",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            7,
+            9,
+            11
+          ],
+          "teaching": "Chaque homme porte un germe capable de relier les mondes ; il doit être reconnu, nourri et conduit jusqu’à la floraison.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -10754,6 +12255,26 @@
             28
           ],
           "teaching": "L’essentiel est le germe immortel ; les relations, disciplines et enveloppes n’ont de sens que si elles l’éveillent et le nourrissent.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-040",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Le secret du haricot magique",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            7,
+            9,
+            11
+          ],
+          "teaching": "Chaque homme porte un germe capable de relier les mondes ; il doit être reconnu, nourri et conduit jusqu’à la floraison.",
           "score": 3
         }
       ]
@@ -10806,6 +12327,60 @@
             8
           ],
           "teaching": "L’homme est appelé à devenir une coupe pure et disponible capable d’accueillir et d’incarner le divin.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "graine-et-germination",
+      "label": "Graine et germination",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-038",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Sors de la terre et élance ‑toi vers le grand mystère de ton être",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            3,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Rester enfermé dans la terre revient à demeurer graine ; l’homme doit s’enraciner puis germer vers l’infini.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-038",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Sors de la terre et élance ‑toi vers le grand mystère de ton être",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            3,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Rester enfermé dans la terre revient à demeurer graine ; l’homme doit s’enraciner puis germer vers l’infini.",
           "score": 2
         }
       ]
@@ -11417,6 +12992,72 @@
       ]
     },
     {
+      "id": "haricot-magique",
+      "label": "Haricot magique",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-040",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Le secret du haricot magique",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Le haricot magique symbolise un germe divin caché qui, une fois vivifié, ouvre la communication entre les mondes et fait apparaître une réalité invisible.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-040",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 40,
+          "psalmTitle": "Le secret du haricot magique",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Le haricot magique symbolise un germe divin caché qui, une fois vivifié, ouvre la communication entre les mondes et fait apparaître une réalité invisible.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "harmonie",
       "label": "Harmonie",
       "score": 3,
@@ -11797,6 +13438,64 @@
       ]
     },
     {
+      "id": "homme-veritable",
+      "label": "Homme véritable",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-030",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            10
+          ],
+          "teaching": "L’homme véritable unit verticalement ciel et terre et apprend à reconnaître en lui les différents états pour choisir consciemment celui qu’il manifeste.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-030",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            10
+          ],
+          "teaching": "L’homme véritable unit verticalement ciel et terre et apprend à reconnaître en lui les différents états pour choisir consciemment celui qu’il manifeste.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "homme-arbre",
       "label": "Homme-arbre",
       "score": 6,
@@ -11962,14 +13661,14 @@
     {
       "id": "huile-douriel",
       "label": "Huile d’Ouriel",
-      "score": 3,
-      "occurrenceCount": 1,
+      "score": 5,
+      "occurrenceCount": 2,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 5,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -11987,6 +13686,25 @@
           ],
           "teaching": "L'huile ayant alimenté la flamme du temple sert de support concret pour rappeler et réactiver les forces travaillées durant la célébration.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-037",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Accueillez celui qui vient par la ronde des archanges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "L’huile est présentée comme une condensation de lumière pouvant soutenir un travail de guérison et de nettoyage des influences subtiles.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -12004,6 +13722,25 @@
           ],
           "teaching": "L'huile ayant alimenté la flamme du temple sert de support concret pour rappeler et réactiver les forces travaillées durant la célébration.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-037",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Accueillez celui qui vient par la ronde des archanges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "teaching": "L’huile est présentée comme une condensation de lumière pouvant soutenir un travail de guérison et de nettoyage des influences subtiles.",
+          "score": 2
         }
       ]
     },
@@ -12059,6 +13796,58 @@
             8
           ],
           "teaching": "L'hérédité influence la vie, mais la responsabilité ne vise plus seulement à s'en libérer personnellement: elle doit aussi ennoblir la lignée et préparer la descendance.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "heredite-spirituelle",
+      "label": "Hérédité spirituelle",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-034",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Apprends à lire qui tu es et qui tu n ’es pas à travers le livre de ta vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            8,
+            10
+          ],
+          "teaching": "L’homme arrive avec un bagage de capacités et d’éternité qui se manifeste jusque dans son caractère et sa relation à l’Enseignement.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-034",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Apprends à lire qui tu es et qui tu n ’es pas à travers le livre de ta vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            8,
+            10
+          ],
+          "teaching": "L’homme arrive avec un bagage de capacités et d’éternité qui se manifeste jusque dans son caractère et sa relation à l’Enseignement.",
           "score": 2
         }
       ]
@@ -12474,12 +14263,17 @@
     {
       "id": "imperfection",
       "label": "Imperfection",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "michael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -12505,6 +14299,29 @@
           ],
           "teaching": "L’imperfection appartient à l’incarnation terrestre et doit être vue avec justesse, sans condamnation ni identification.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-032",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 32,
+          "psalmTitle": "Conduis ton imperfection vers la perfection par l’union avec la mère",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11
+          ],
+          "teaching": "L’imperfection doit être regardée comme une matière en devenir et orientée vers ce qui est perfectible plutôt que transformée en identité négative.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -12528,14 +14345,37 @@
           ],
           "teaching": "L’imperfection appartient à l’incarnation terrestre et doit être vue avec justesse, sans condamnation ni identification.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-032",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 32,
+          "psalmTitle": "Conduis ton imperfection vers la perfection par l’union avec la mère",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11
+          ],
+          "teaching": "L’imperfection doit être regardée comme une matière en devenir et orientée vers ce qui est perfectible plutôt que transformée en identité négative.",
+          "score": 3
         }
       ]
     },
     {
       "id": "impersonnalite",
       "label": "Impersonnalité",
-      "score": 5,
-      "occurrenceCount": 2,
+      "score": 7,
+      "occurrenceCount": 3,
       "centralPsalmCount": 1,
       "archangels": [
         {
@@ -12545,6 +14385,11 @@
         },
         {
           "id": "michael",
+          "score": 2,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 2,
           "occurrenceCount": 1
         }
@@ -12585,6 +14430,25 @@
           ],
           "teaching": "L'impersonnalité divine est une condition pour dépasser les sphères du monde humain dans la communication.",
           "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-036",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 36,
+          "psalmTitle": "Qui voit le fils incarné voit le père de tous les pères",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            14,
+            15
+          ],
+          "teaching": "L’action juste ne doit pas être motivée d’abord par les résultats personnels mais par la fidélité à un but de Lumière.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -12622,6 +14486,25 @@
             8
           ],
           "teaching": "L'impersonnalité divine est une condition pour dépasser les sphères du monde humain dans la communication.",
+          "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-036",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 36,
+          "psalmTitle": "Qui voit le fils incarné voit le père de tous les pères",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            14,
+            15
+          ],
+          "teaching": "L’action juste ne doit pas être motivée d’abord par les résultats personnels mais par la fidélité à un but de Lumière.",
           "score": 2
         }
       ]
@@ -12814,6 +14697,60 @@
       ]
     },
     {
+      "id": "incarnation-des-voeux",
+      "label": "Incarnation des vœux",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-041",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Trouve la force dans la fidélité à ce que tu es, un E nfant de la L umière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            11,
+            12,
+            15
+          ],
+          "teaching": "Un vœu n’est réel que lorsqu’il descend dans l’organisation de la vie et l’acte physique.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-041",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Trouve la force dans la fidélité à ce que tu es, un E nfant de la L umière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            11,
+            12,
+            15
+          ],
+          "teaching": "Un vœu n’est réel que lorsqu’il descend dans l’organisation de la vie et l’acte physique.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "individualite-et-collectivite",
       "label": "Individualité et collectivité",
       "score": 2,
@@ -12858,6 +14795,64 @@
           ],
           "teaching": "Le livre distingue le rôle de l'individu qui ouvre le chemin et celui de la collectivité qui réalise.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "influences",
+      "label": "Influences",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-045",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Pourquoi les hommes souffrent‑ ils?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            13,
+            14,
+            15,
+            20
+          ],
+          "teaching": "L’homme est continuellement fécondé par les milieux, structures et ambiances qu’il fréquente ; sans conscience, il adopte un monde contraire à ses aspirations.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-045",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Pourquoi les hommes souffrent‑ ils?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            13,
+            14,
+            15,
+            20
+          ],
+          "teaching": "L’homme est continuellement fécondé par les milieux, structures et ambiances qu’il fréquente ; sans conscience, il adopte un monde contraire à ses aspirations.",
+          "score": 3
         }
       ]
     },
@@ -12976,13 +14971,18 @@
     {
       "id": "intermediaire-des-mondes",
       "label": "Intermédiaire des mondes",
-      "score": 3,
-      "occurrenceCount": 1,
+      "score": 5,
+      "occurrenceCount": 2,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "michael",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
+          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -13004,6 +15004,28 @@
           ],
           "teaching": "L’homme relie royaume divin, humanité, terre et règnes de la nature et peut transmettre la bénédiction jusque dans le monde matériel.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-044",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 44,
+          "psalmTitle": "La N ation E ssénienne est l’échelle de Lumière qui unit le ciel et la terre",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            24
+          ],
+          "teaching": "La mission humaine est d’harmoniser les deux mondes et d’incarner dans la matière les souhaits du monde supérieur.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -13024,6 +15046,28 @@
           ],
           "teaching": "L’homme relie royaume divin, humanité, terre et règnes de la nature et peut transmettre la bénédiction jusque dans le monde matériel.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-044",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 44,
+          "psalmTitle": "La N ation E ssénienne est l’échelle de Lumière qui unit le ciel et la terre",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            24
+          ],
+          "teaching": "La mission humaine est d’harmoniser les deux mondes et d’incarner dans la matière les souhaits du monde supérieur.",
+          "score": 2
         }
       ]
     },
@@ -13079,6 +15123,74 @@
             7
           ],
           "teaching": "L'intimité spirituelle doit être protégée des échanges qui pourraient la disperser ou l'altérer.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "interet-veritable",
+      "label": "Intérêt véritable",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-039",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Trouve ton véritable intérêt dans l’œuvre de la L umière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            6,
+            8,
+            9,
+            10,
+            11,
+            15,
+            20,
+            25,
+            30
+          ],
+          "teaching": "Le véritable intérêt de l’homme n’est pas la satisfaction de la nature mortelle mais la vie avec le monde divin et la participation à une œuvre qui dépasse le corps.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-039",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Trouve ton véritable intérêt dans l’œuvre de la L umière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            6,
+            8,
+            9,
+            10,
+            11,
+            15,
+            20,
+            25,
+            30
+          ],
+          "teaching": "Le véritable intérêt de l’homme n’est pas la satisfaction de la nature mortelle mais la vie avec le monde divin et la participation à une œuvre qui dépasse le corps.",
           "score": 3
         }
       ]
@@ -13200,9 +15312,9 @@
     {
       "id": "joie",
       "label": "Joie",
-      "score": 8,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 2,
+      "score": 11,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "michael",
@@ -13211,6 +15323,11 @@
         },
         {
           "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -13264,6 +15381,34 @@
             20
           ],
           "teaching": "La joie est un jaillissement profond du monde divin qui met la vie en mouvement, fertilise la terre intérieure et relie l’unité individuelle au tout.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-028",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 28,
+          "psalmTitle": "Les 3 degrés de la joie, du plaisir destructeur à l’extase divine",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            16,
+            17,
+            18,
+            22,
+            24
+          ],
+          "teaching": "La joie possède des degrés : plaisir égoïste, joie relationnelle puis joie sacrée qui élève vers le monde divin et nourrit les êtres subtils.",
           "score": 3
         },
         {
@@ -13334,6 +15479,34 @@
             20
           ],
           "teaching": "La joie est un jaillissement profond du monde divin qui met la vie en mouvement, fertilise la terre intérieure et relie l’unité individuelle au tout.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-028",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 28,
+          "psalmTitle": "Les 3 degrés de la joie, du plaisir destructeur à l’extase divine",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            16,
+            17,
+            18,
+            22,
+            24
+          ],
+          "teaching": "La joie possède des degrés : plaisir égoïste, joie relationnelle puis joie sacrée qui élève vers le monde divin et nourrit les êtres subtils.",
           "score": 3
         },
         {
@@ -13599,6 +15772,64 @@
       ]
     },
     {
+      "id": "lecture-de-soi",
+      "label": "Lecture de soi",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-034",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Apprends à lire qui tu es et qui tu n ’es pas à travers le livre de ta vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "Les aptitudes, tendances, obstacles et imperfections sont les traces d’un travail antérieur et une carte indiquant ce qui doit être transformé aujourd’hui.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-034",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Apprends à lire qui tu es et qui tu n ’es pas à travers le livre de ta vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "Les aptitudes, tendances, obstacles et imperfections sont les traces d’un travail antérieur et une carte indiquant ce qui doit être transformé aujourd’hui.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "liberte",
       "label": "Liberté",
       "score": 4,
@@ -13695,14 +15926,19 @@
     {
       "id": "liberation",
       "label": "Libération",
-      "score": 5,
-      "occurrenceCount": 2,
+      "score": 7,
+      "occurrenceCount": 3,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "michael",
           "score": 5,
           "occurrenceCount": 2
+        },
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -13739,6 +15975,25 @@
           ],
           "teaching": "L'être est invité à se diriger vers ce qui le libère plutôt que vers des environnements qui l'enferment dans la misère.",
           "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-038",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Sors de la terre et élance ‑toi vers le grand mystère de ton être",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            9,
+            10
+          ],
+          "teaching": "La libération exige d’utiliser la stabilité terrestre comme appui pour sortir de l’inconscience et s’élancer vers une dimension plus vaste.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -13774,6 +16029,25 @@
             8
           ],
           "teaching": "L'être est invité à se diriger vers ce qui le libère plutôt que vers des environnements qui l'enferment dans la misère.",
+          "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-038",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Sors de la terre et élance ‑toi vers le grand mystère de ton être",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            9,
+            10
+          ],
+          "teaching": "La libération exige d’utiliser la stabilité terrestre comme appui pour sortir de l’inconscience et s’élancer vers une dimension plus vaste.",
           "score": 2
         }
       ]
@@ -13828,6 +16102,68 @@
             4
           ],
           "teaching": "La licorne est le modèle d’un être terrestre relié verticalement à l’esprit, pur dans son intention et harmonisé avec la nature.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "lignee-des-maitres",
+      "label": "Lignée des maîtres",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-036",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 36,
+          "psalmTitle": "Qui voit le fils incarné voit le père de tous les pères",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10,
+            17,
+            19,
+            20,
+            21
+          ],
+          "teaching": "La relation au monde divin passe par une lignée incarnée qui active la lumière de l’âme et maintient la présence divine sur la terre.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-036",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 36,
+          "psalmTitle": "Qui voit le fils incarné voit le père de tous les pères",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10,
+            17,
+            19,
+            20,
+            21
+          ],
+          "teaching": "La relation au monde divin passe par une lignée incarnée qui active la lumière de l’âme et maintient la présence divine sur la terre.",
           "score": 3
         }
       ]
@@ -14667,17 +17003,42 @@
     {
       "id": "magie",
       "label": "Magie",
-      "score": 2,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 0,
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "ouriel",
-          "score": 2,
-          "occurrenceCount": 1
+          "score": 5,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-08-psalm-026",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Toute parole est une signature magique qui te relie à des mondes sombres ou divins",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            15,
+            16
+          ],
+          "teaching": "La magie est la science des influences : pensées, paroles et gestes sont vivants, inscrivent des formes dans le subtil et créent des alliances.",
+          "score": 3
+        },
         {
           "recordId": "book-04-psalm-019",
           "bookNumber": 4,
@@ -14699,6 +17060,31 @@
         }
       ],
       "occurrences": [
+        {
+          "recordId": "book-08-psalm-026",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Toute parole est une signature magique qui te relie à des mondes sombres ou divins",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            15,
+            16
+          ],
+          "teaching": "La magie est la science des influences : pensées, paroles et gestes sont vivants, inscrivent des formes dans le subtil et créent des alliances.",
+          "score": 3
+        },
         {
           "recordId": "book-04-psalm-019",
           "bookNumber": 4,
@@ -14775,9 +17161,9 @@
     {
       "id": "maitre",
       "label": "Maître",
-      "score": 14,
-      "occurrenceCount": 5,
-      "centralPsalmCount": 4,
+      "score": 17,
+      "occurrenceCount": 6,
+      "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "gabriel",
@@ -14786,6 +17172,11 @@
         },
         {
           "id": "michael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         },
@@ -14888,6 +17279,28 @@
             22
           ],
           "teaching": "Le maître est le messager incarné d’un monde supérieur et la continuité de sa lignée constitue un lien vital entre le monde humain et les Archanges.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-033",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Éveille la lumière du discernement à la source du maître",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10,
+            14,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Le maître est présenté comme le foyer incarné autour duquel une communauté peut recevoir, éprouver et consacrer les influences spirituelles.",
           "score": 3
         },
         {
@@ -14999,6 +17412,28 @@
             22
           ],
           "teaching": "Le maître est le messager incarné d’un monde supérieur et la continuité de sa lignée constitue un lien vital entre le monde humain et les Archanges.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-033",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 33,
+          "psalmTitle": "Éveille la lumière du discernement à la source du maître",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10,
+            14,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Le maître est présenté comme le foyer incarné autour duquel une communauté peut recevoir, éprouver et consacrer les influences spirituelles.",
           "score": 3
         },
         {
@@ -16378,9 +18813,9 @@
     {
       "id": "mere",
       "label": "Mère",
-      "score": 9,
-      "occurrenceCount": 4,
-      "centralPsalmCount": 1,
+      "score": 12,
+      "occurrenceCount": 5,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "michael",
@@ -16391,6 +18826,11 @@
           "id": "gabriel",
           "score": 4,
           "occurrenceCount": 2
+        },
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -16407,6 +18847,25 @@
             11
           ],
           "teaching": "La vraie mère est celle dont l'amour ne se limite pas à ses propres enfants mais s'étend à tous les enfants.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-032",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 32,
+          "psalmTitle": "Conduis ton imperfection vers la perfection par l’union avec la mère",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "La Mère est protectrice et purificatrice ; l’homme peut lui confier les forces encore inachevées afin qu’elles soient nettoyées et réorientées.",
           "score": 3
         },
         {
@@ -16472,6 +18931,25 @@
             11
           ],
           "teaching": "La vraie mère est celle dont l'amour ne se limite pas à ses propres enfants mais s'étend à tous les enfants.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-032",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 32,
+          "psalmTitle": "Conduis ton imperfection vers la perfection par l’union avec la mère",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "La Mère est protectrice et purificatrice ; l’homme peut lui confier les forces encore inachevées afin qu’elles soient nettoyées et réorientées.",
           "score": 3
         },
         {
@@ -16842,10 +19320,15 @@
     {
       "id": "nation-essenienne",
       "label": "Nation Essénienne",
-      "score": 11,
-      "occurrenceCount": 4,
-      "centralPsalmCount": 3,
+      "score": 23,
+      "occurrenceCount": 8,
+      "centralPsalmCount": 7,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 12,
+          "occurrenceCount": 4
+        },
         {
           "id": "gabriel",
           "score": 8,
@@ -16925,6 +19408,99 @@
             15
           ],
           "teaching": "Le travail de la Nation est présenté comme un support terrestre permettant à l’alliance de Gabriel d’entrer dans les eaux et de prendre une forme durable.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-039",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Trouve ton véritable intérêt dans l’œuvre de la L umière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            16,
+            17,
+            18,
+            19,
+            21,
+            22,
+            23,
+            24,
+            31,
+            32
+          ],
+          "teaching": "La Nation est présentée comme future maison et corps collectif où chacun doit trouver sa place et devenir un organe de réalisation du monde divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-044",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 44,
+          "psalmTitle": "La N ation E ssénienne est l’échelle de Lumière qui unit le ciel et la terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            19,
+            24
+          ],
+          "teaching": "La Nation est conçue comme un espace concret, enraciné sur la terre, permettant de monter vers les hautes régions sans perdre le contact avec la vie quotidienne.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-050",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Que les E nfants de la Lumière vivent comme un peuple uni sur la terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            15,
+            19
+          ],
+          "teaching": "La Nation est décrite comme un corps déjà vivant dans les éthers qui doit maintenant descendre dans la réalité terrestre par l’union et le travail collectif.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-051",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 51,
+          "psalmTitle": "La N ation E ssénienne est l’œuvre du B ien commun",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "teaching": "La Nation est présentée comme une œuvre d’alliance qui a besoin de mains, d’intelligences, de cœurs et de structures concrètes pour se stabiliser.",
           "score": 3
         },
         {
@@ -17014,6 +19590,99 @@
             15
           ],
           "teaching": "Le travail de la Nation est présenté comme un support terrestre permettant à l’alliance de Gabriel d’entrer dans les eaux et de prendre une forme durable.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-039",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 39,
+          "psalmTitle": "Trouve ton véritable intérêt dans l’œuvre de la L umière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            16,
+            17,
+            18,
+            19,
+            21,
+            22,
+            23,
+            24,
+            31,
+            32
+          ],
+          "teaching": "La Nation est présentée comme future maison et corps collectif où chacun doit trouver sa place et devenir un organe de réalisation du monde divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-044",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 44,
+          "psalmTitle": "La N ation E ssénienne est l’échelle de Lumière qui unit le ciel et la terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            19,
+            24
+          ],
+          "teaching": "La Nation est conçue comme un espace concret, enraciné sur la terre, permettant de monter vers les hautes régions sans perdre le contact avec la vie quotidienne.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-050",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Que les E nfants de la Lumière vivent comme un peuple uni sur la terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            15,
+            19
+          ],
+          "teaching": "La Nation est décrite comme un corps déjà vivant dans les éthers qui doit maintenant descendre dans la réalité terrestre par l’union et le travail collectif.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-051",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 51,
+          "psalmTitle": "La N ation E ssénienne est l’œuvre du B ien commun",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "teaching": "La Nation est présentée comme une œuvre d’alliance qui a besoin de mains, d’intelligences, de cœurs et de structures concrètes pour se stabiliser.",
           "score": 3
         },
         {
@@ -17564,6 +20233,62 @@
       ]
     },
     {
+      "id": "oiseau",
+      "label": "Oiseau",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-030",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            3,
+            5,
+            7,
+            8,
+            10
+          ],
+          "teaching": "L’oiseau représente le recul, la hauteur de vue et la perception anticipatrice des événements.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-030",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            3,
+            5,
+            7,
+            8,
+            10
+          ],
+          "teaching": "L’oiseau représente le recul, la hauteur de vue et la perception anticipatrice des événements.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "oiseau-du-soleil",
       "label": "Oiseau du soleil",
       "score": 3,
@@ -17672,9 +20397,9 @@
     {
       "id": "opportunite",
       "label": "Opportunité",
-      "score": 8,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 2,
+      "score": 11,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "gabriel",
@@ -17683,6 +20408,11 @@
         },
         {
           "id": "michael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         },
@@ -17732,6 +20462,24 @@
             10
           ],
           "teaching": "La vie offre des moments particuliers qu’une conscience éveillée doit reconnaître et utiliser pour grandir et faire grandir la Lumière.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-031",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 31,
+          "psalmTitle": "Àtravers toutes les circonstances de ta vie, sois actif et utile au monde divin",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            6,
+            9
+          ],
+          "teaching": "Les portes de la vie s’ouvrent et se ferment ; l’éveil consiste à reconnaître les moments où une possibilité d’ascension ou de service se présente.",
           "score": 3
         },
         {
@@ -17793,6 +20541,24 @@
             10
           ],
           "teaching": "La vie offre des moments particuliers qu’une conscience éveillée doit reconnaître et utiliser pour grandir et faire grandir la Lumière.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-031",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 31,
+          "psalmTitle": "Àtravers toutes les circonstances de ta vie, sois actif et utile au monde divin",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            6,
+            9
+          ],
+          "teaching": "Les portes de la vie s’ouvrent et se ferment ; l’éveil consiste à reconnaître les moments où une possibilité d’ascension ou de service se présente.",
           "score": 3
         },
         {
@@ -18031,10 +20797,15 @@
     {
       "id": "papillon",
       "label": "Papillon",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "raphael",
           "score": 3,
@@ -18058,6 +20829,26 @@
           ],
           "teaching": "Le papillon enseigne une approche délicate, légère et attentionnée du monde divin et des êtres.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-042",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Les 3 étapes de l’alchimie, de la chenille au papillon",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            5,
+            6,
+            7,
+            8,
+            11
+          ],
+          "teaching": "Le papillon représente l’être transformé, capable de circuler entre plusieurs mondes grâce à des sens et organes nouveaux.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -18076,6 +20867,26 @@
             8
           ],
           "teaching": "Le papillon enseigne une approche délicate, légère et attentionnée du monde divin et des êtres.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-042",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 42,
+          "psalmTitle": "Les 3 étapes de l’alchimie, de la chenille au papillon",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            5,
+            6,
+            7,
+            8,
+            11
+          ],
+          "teaching": "Le papillon représente l’être transformé, capable de circuler entre plusieurs mondes grâce à des sens et organes nouveaux.",
           "score": 3
         }
       ]
@@ -18943,14 +21754,75 @@
       ]
     },
     {
+      "id": "peuple-uni",
+      "label": "Peuple uni",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-050",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Que les E nfants de la Lumière vivent comme un peuple uni sur la terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10,
+            12
+          ],
+          "teaching": "Vivre comme un peuple signifie se rassembler autour d’une œuvre plus grande que chacun et former une famille capable de porter une alliance divine.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-050",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Que les E nfants de la Lumière vivent comme un peuple uni sur la terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10,
+            12
+          ],
+          "teaching": "Vivre comme un peuple signifie se rassembler autour d’une œuvre plus grande que chacun et former une famille capable de porter une alliance divine.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "peur",
       "label": "Peur",
-      "score": 2,
-      "occurrenceCount": 1,
+      "score": 4,
+      "occurrenceCount": 2,
       "centralPsalmCount": 0,
       "archangels": [
         {
           "id": "michael",
+          "score": 2,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 2,
           "occurrenceCount": 1
         }
@@ -18972,6 +21844,24 @@
           ],
           "teaching": "La peur pousse l'Enfant de la Lumière à se cacher; elle doit être dépassée pour rendre le chemin visible.",
           "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-025",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 25,
+          "psalmTitle": "La clé pour se libérer du doute et de la peur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            14,
+            18
+          ],
+          "teaching": "La peur se dissout lorsque l’homme accepte de vivre le présent dans l’alliance avec le divin et place sa confiance dans la Lumière.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -18990,6 +21880,24 @@
             5
           ],
           "teaching": "La peur pousse l'Enfant de la Lumière à se cacher; elle doit être dépassée pour rendre le chemin visible.",
+          "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-025",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 25,
+          "psalmTitle": "La clé pour se libérer du doute et de la peur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            14,
+            18
+          ],
+          "teaching": "La peur se dissout lorsque l’homme accepte de vivre le présent dans l’alliance avec le divin et place sa confiance dans la Lumière.",
           "score": 2
         }
       ]
@@ -20156,13 +23064,18 @@
     {
       "id": "protection",
       "label": "Protection",
-      "score": 9,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 3,
+      "score": 14,
+      "occurrenceCount": 5,
+      "centralPsalmCount": 4,
       "archangels": [
         {
           "id": "michael",
           "score": 6,
+          "occurrenceCount": 2
+        },
+        {
+          "id": "ouriel",
+          "score": 5,
           "occurrenceCount": 2
         },
         {
@@ -20234,6 +23147,52 @@
           ],
           "teaching": "La quête spirituelle exige de savoir ouvrir et fermer les portes de l’être et de reconnaître les influences qui cherchent à détourner ou piller l’ouverture à la Lumière.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-049",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 49,
+          "psalmTitle": "La clé pour tisser un lien conscient avec son A nge gardien",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14
+          ],
+          "teaching": "La protection n’est pas abstraite : elle dépend de l’orientation et du lien réel avec une intelligence capable de guider dans les régions visibles et invisibles.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-037",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Accueillez celui qui vient par la ronde des archanges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14,
+            15,
+            16,
+            19,
+            20,
+            23,
+            24
+          ],
+          "teaching": "La protection résulte de l’alliance, de la stabilité et du soin donné à l’école, à la Lumière et au sacré.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -20299,6 +23258,52 @@
           ],
           "teaching": "La quête spirituelle exige de savoir ouvrir et fermer les portes de l’être et de reconnaître les influences qui cherchent à détourner ou piller l’ouverture à la Lumière.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-049",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 49,
+          "psalmTitle": "La clé pour tisser un lien conscient avec son A nge gardien",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14
+          ],
+          "teaching": "La protection n’est pas abstraite : elle dépend de l’orientation et du lien réel avec une intelligence capable de guider dans les régions visibles et invisibles.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-037",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Accueillez celui qui vient par la ronde des archanges",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14,
+            15,
+            16,
+            19,
+            20,
+            23,
+            24
+          ],
+          "teaching": "La protection résulte de l’alliance, de la stabilité et du soin donné à l’école, à la Lumière et au sacré.",
+          "score": 2
         }
       ]
     },
@@ -20352,6 +23357,76 @@
             6
           ],
           "teaching": "La lumière intérieure ne doit pas être exposée inconsidérément aux forces qui cherchent à l’utiliser ou à la voler.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "protection-du-sacre",
+      "label": "Protection du sacré",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-048",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 48,
+          "psalmTitle": "Protégez ce qui est beau et affaiblissez la laideur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17
+          ],
+          "teaching": "Protéger le sacré exige douceur, fidélité, vigilance et soin concret de tout ce qui porte la Lumière, y compris le corps et la communauté.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-048",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 48,
+          "psalmTitle": "Protégez ce qui est beau et affaiblissez la laideur",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17
+          ],
+          "teaching": "Protéger le sacré exige douceur, fidélité, vigilance et soin concret de tout ce qui porte la Lumière, y compris le corps et la communauté.",
           "score": 3
         }
       ]
@@ -20411,6 +23486,62 @@
           ],
           "teaching": "Une vision claire de ce que l'on veut et de ses associés protège la vie intérieure contre les modèles imposés.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "precieux-cache",
+      "label": "Précieux caché",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-047",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 47,
+          "psalmTitle": "Soyez comme l’abeille, nourrissez le précieux à travers tous vos travaux",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            3,
+            4,
+            6,
+            8,
+            9
+          ],
+          "teaching": "La reine cachée représente le centre sacré que la communauté protège et nourrit avec les fruits les plus nobles de ses activités.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-047",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 47,
+          "psalmTitle": "Soyez comme l’abeille, nourrissez le précieux à travers tous vos travaux",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            3,
+            4,
+            6,
+            8,
+            9
+          ],
+          "teaching": "La reine cachée représente le centre sacré que la communauté protège et nourrit avec les fruits les plus nobles de ses activités.",
+          "score": 2
         }
       ]
     },
@@ -21240,14 +24371,14 @@
     {
       "id": "racines",
       "label": "Racines",
-      "score": 2,
-      "occurrenceCount": 1,
+      "score": 4,
+      "occurrenceCount": 2,
       "centralPsalmCount": 0,
       "archangels": [
         {
           "id": "ouriel",
-          "score": 2,
-          "occurrenceCount": 1
+          "score": 4,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -21267,6 +24398,24 @@
           ],
           "teaching": "Les racines intérieures parlent des dons, talents et orientations profondes qui permettent de ne plus douter de son chemin.",
           "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-048",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 48,
+          "psalmTitle": "Protégez ce qui est beau et affaiblissez la laideur",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            8,
+            9,
+            14,
+            15
+          ],
+          "teaching": "Les racines dans la terre de l’Enseignement donnent la stabilité nécessaire pour porter la vigilance et devenir support de vie pour d’autres êtres.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -21285,6 +24434,24 @@
             10
           ],
           "teaching": "Les racines intérieures parlent des dons, talents et orientations profondes qui permettent de ne plus douter de son chemin.",
+          "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-048",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 48,
+          "psalmTitle": "Protégez ce qui est beau et affaiblissez la laideur",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            8,
+            9,
+            14,
+            15
+          ],
+          "teaching": "Les racines dans la terre de l’Enseignement donnent la stabilité nécessaire pour porter la vigilance et devenir support de vie pour d’autres êtres.",
           "score": 2
         }
       ]
@@ -21528,6 +24695,64 @@
             9
           ],
           "teaching": "Voir avec justesse consiste à accueillir ce qui est sans le remodeler selon l’avidité ou les attentes de la personnalité.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "regard-vers-la-perfection",
+      "label": "Regard vers la perfection",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-032",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 32,
+          "psalmTitle": "Conduis ton imperfection vers la perfection par l’union avec la mère",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            11
+          ],
+          "teaching": "Le regard féconde la destinée ; prendre pour modèle le noble et le lumineux construit une autre matière intérieure.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-032",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 32,
+          "psalmTitle": "Conduis ton imperfection vers la perfection par l’union avec la mère",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            11
+          ],
+          "teaching": "Le regard féconde la destinée ; prendre pour modèle le noble et le lumineux construit une autre matière intérieure.",
           "score": 2
         }
       ]
@@ -22185,6 +25410,62 @@
       ]
     },
     {
+      "id": "responsabilite-de-la-parole",
+      "label": "Responsabilité de la parole",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-026",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Toute parole est une signature magique qui te relie à des mondes sombres ou divins",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            9,
+            11,
+            12,
+            13
+          ],
+          "teaching": "Une parole prononcée crée un lien que l’homme doit assumer ; la liberté créatrice implique donc vigilance et responsabilité.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-026",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Toute parole est une signature magique qui te relie à des mondes sombres ou divins",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            9,
+            11,
+            12,
+            13
+          ],
+          "teaching": "Une parole prononcée crée un lien que l’homme doit assumer ; la liberté créatrice implique donc vigilance et responsabilité.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "riviere",
       "label": "Rivière",
       "score": 3,
@@ -22241,9 +25522,9 @@
     {
       "id": "ronde-des-archanges",
       "label": "Ronde des Archanges",
-      "score": 13,
-      "occurrenceCount": 5,
-      "centralPsalmCount": 3,
+      "score": 16,
+      "occurrenceCount": 6,
+      "centralPsalmCount": 4,
       "archangels": [
         {
           "id": "michael",
@@ -22251,14 +25532,14 @@
           "occurrenceCount": 2
         },
         {
-          "id": "raphael",
+          "id": "ouriel",
           "score": 5,
           "occurrenceCount": 2
         },
         {
-          "id": "ouriel",
-          "score": 2,
-          "occurrenceCount": 1
+          "id": "raphael",
+          "score": 5,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -22320,6 +25601,27 @@
             13
           ],
           "teaching": "La Ronde forme un cercle collectif où l’engagement individuel produit une atmosphère subtile et une continuité de Lumière pour le monde.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-037",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Accueillez celui qui vient par la ronde des archanges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            14,
+            15,
+            16,
+            22,
+            23,
+            24
+          ],
+          "teaching": "La Ronde est un sceau d’alliance qui offre stabilité, protection et base terrestre à la venue du monde divin.",
           "score": 3
         },
         {
@@ -22413,6 +25715,27 @@
             13
           ],
           "teaching": "La Ronde forme un cercle collectif où l’engagement individuel produit une atmosphère subtile et une continuité de Lumière pour le monde.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-037",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 37,
+          "psalmTitle": "Accueillez celui qui vient par la ronde des archanges",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            14,
+            15,
+            16,
+            22,
+            23,
+            24
+          ],
+          "teaching": "La Ronde est un sceau d’alliance qui offre stabilité, protection et base terrestre à la venue du monde divin.",
           "score": 3
         },
         {
@@ -23958,6 +27281,62 @@
       ]
     },
     {
+      "id": "serpent",
+      "label": "Serpent",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-030",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            5,
+            7,
+            8,
+            10
+          ],
+          "teaching": "Le serpent représente un état froid et terrestre, lié à une conscience basse et peu ouverte à la communion.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-030",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 30,
+          "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            5,
+            7,
+            8,
+            10
+          ],
+          "teaching": "Le serpent représente un état froid et terrestre, lié à une conscience basse et peu ouverte à la communion.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "service",
       "label": "Service",
       "score": 5,
@@ -24045,6 +27424,68 @@
           ],
           "teaching": "Être premier signifie être le serviteur le plus disponible pour la Lumière et non occuper une position de domination.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "signature-magique",
+      "label": "Signature magique",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-026",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Toute parole est une signature magique qui te relie à des mondes sombres ou divins",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            15
+          ],
+          "teaching": "Toute émanation humaine agit comme une écriture ou un engagement qui révèle l’être et appelle un accomplissement correspondant.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-026",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 26,
+          "psalmTitle": "Toute parole est une signature magique qui te relie à des mondes sombres ou divins",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            15
+          ],
+          "teaching": "Toute émanation humaine agit comme une écriture ou un engagement qui révèle l’être et appelle un accomplissement correspondant.",
+          "score": 3
         }
       ]
     },
@@ -24792,14 +28233,14 @@
     {
       "id": "souffrance",
       "label": "Souffrance",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 6,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -24821,6 +28262,27 @@
           ],
           "teaching": "La souffrance doit être comprise depuis sa cause intérieure plutôt qu'adoptée à travers les modèles collectifs du monde.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-045",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Pourquoi les hommes souffrent‑ ils?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            13,
+            14
+          ],
+          "teaching": "La souffrance est reliée à l’incohérence entre ce que l’homme reconnaît comme vrai et ce qu’il laisse finalement organiser ses actes.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -24841,6 +28303,27 @@
             7
           ],
           "teaching": "La souffrance doit être comprise depuis sa cause intérieure plutôt qu'adoptée à travers les modèles collectifs du monde.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-045",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 45,
+          "psalmTitle": "Pourquoi les hommes souffrent‑ ils?",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            13,
+            14
+          ],
+          "teaching": "La souffrance est reliée à l’incohérence entre ce que l’homme reconnaît comme vrai et ce qu’il laisse finalement organiser ses actes.",
           "score": 3
         }
       ]
@@ -25114,10 +28597,15 @@
     {
       "id": "soutien-mutuel",
       "label": "Soutien mutuel",
-      "score": 2,
-      "occurrenceCount": 1,
+      "score": 6,
+      "occurrenceCount": 3,
       "centralPsalmCount": 0,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 4,
+          "occurrenceCount": 2
+        },
         {
           "id": "michael",
           "score": 2,
@@ -25140,6 +28628,45 @@
           ],
           "teaching": "Lorsqu’une œuvre est réellement engagée, d’autres forces et êtres peuvent venir soutenir celui qui la porte.",
           "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-041",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Trouve la force dans la fidélité à ce que tu es, un E nfant de la L umière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            10,
+            13,
+            14
+          ],
+          "teaching": "L’union donne la force de créer les conditions matérielles et relationnelles permettant de vivre la fidélité jusque dans le quotidien.",
+          "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-050",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Que les E nfants de la Lumière vivent comme un peuple uni sur la terre",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            7,
+            8,
+            12,
+            13,
+            14,
+            16
+          ],
+          "teaching": "Le soutien mutuel construit une force et une protection dépassant les capacités individuelles.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -25157,6 +28684,45 @@
             9
           ],
           "teaching": "Lorsqu’une œuvre est réellement engagée, d’autres forces et êtres peuvent venir soutenir celui qui la porte.",
+          "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-041",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 41,
+          "psalmTitle": "Trouve la force dans la fidélité à ce que tu es, un E nfant de la L umière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            10,
+            13,
+            14
+          ],
+          "teaching": "L’union donne la force de créer les conditions matérielles et relationnelles permettant de vivre la fidélité jusque dans le quotidien.",
+          "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-050",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 50,
+          "psalmTitle": "Que les E nfants de la Lumière vivent comme un peuple uni sur la terre",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            7,
+            8,
+            12,
+            13,
+            14,
+            16
+          ],
+          "teaching": "Le soutien mutuel construit une force et une protection dépassant les capacités individuelles.",
           "score": 2
         }
       ]
@@ -25362,6 +28928,56 @@
             21
           ],
           "teaching": "L’ouverture aux mondes subtils doit être portée par un enracinement stable dans la tradition et la vie quotidienne.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "sublimation",
+      "label": "Sublimation",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-043",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 43,
+          "psalmTitle": "La clé pour ne pas attirer à soi les forces sombres",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3
+          ],
+          "teaching": "La fonction essénienne n’est pas de détruire le sombre mais de le guérir et de le conduire vers une sublimation par l’esprit.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-043",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 43,
+          "psalmTitle": "La clé pour ne pas attirer à soi les forces sombres",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3
+          ],
+          "teaching": "La fonction essénienne n’est pas de détruire le sombre mais de le guérir et de le conduire vers une sublimation par l’esprit.",
           "score": 2
         }
       ]
@@ -25669,10 +29285,15 @@
     {
       "id": "technologie",
       "label": "Technologie",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "raphael",
           "score": 3,
@@ -25701,6 +29322,26 @@
           ],
           "teaching": "Le monde technologique est présenté comme une matérialisation d’intelligences et de souhaits humains qui peut progressivement former l’intériorité et fermer les organes de l’âme.",
           "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-046",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Libérez ‑vous de l’esclavage du monde des hommes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            8,
+            10,
+            11,
+            12
+          ],
+          "teaching": "La technologie peut être utilisée sans être idolâtrée ; l’enjeu est de conserver une attitude intérieure détachée et de ne pas lui donner l’âme.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -25724,6 +29365,26 @@
             23
           ],
           "teaching": "Le monde technologique est présenté comme une matérialisation d’intelligences et de souhaits humains qui peut progressivement former l’intériorité et fermer les organes de l’âme.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-046",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 46,
+          "psalmTitle": "Libérez ‑vous de l’esclavage du monde des hommes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            8,
+            10,
+            11,
+            12
+          ],
+          "teaching": "La technologie peut être utilisée sans être idolâtrée ; l’enjeu est de conserver une attitude intérieure détachée et de ne pas lui donner l’âme.",
           "score": 3
         }
       ]
@@ -26017,6 +29678,122 @@
       ]
     },
     {
+      "id": "terre",
+      "label": "Terre",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-038",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Sors de la terre et élance ‑toi vers le grand mystère de ton être",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "L’homme est une terre mise en mouvement et un laboratoire par lequel la terre peut s’élever vers l’esprit subtil de l’univers.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-038",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 38,
+          "psalmTitle": "Sors de la terre et élance ‑toi vers le grand mystère de ton être",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "L’homme est une terre mise en mouvement et un laboratoire par lequel la terre peut s’élever vers l’esprit subtil de l’univers.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "terre-des-vivants",
+      "label": "Terre des vivants",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-025",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 25,
+          "psalmTitle": "La clé pour se libérer du doute et de la peur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            15,
+            18
+          ],
+          "teaching": "La terre des vivants est comprise comme la Mère-Terre devenue reflet du monde divin lorsque l’homme entre dans une alliance consciente.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-025",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 25,
+          "psalmTitle": "La clé pour se libérer du doute et de la peur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            15,
+            18
+          ],
+          "teaching": "La terre des vivants est comprise comme la Mère-Terre devenue reflet du monde divin lorsque l’homme entre dans une alliance consciente.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "terre-et-mere",
       "label": "Terre et Mère",
       "score": 5,
@@ -26116,18 +29893,18 @@
     {
       "id": "terre-interieure",
       "label": "Terre intérieure",
-      "score": 5,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 1,
+      "score": 8,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 5,
+          "occurrenceCount": 2
+        },
         {
           "id": "michael",
           "score": 3,
-          "occurrenceCount": 1
-        },
-        {
-          "id": "ouriel",
-          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -26150,6 +29927,26 @@
             19
           ],
           "teaching": "La vie intérieure est figurée comme une terre confiée à l'homme et destinée à recevoir, cultiver et faire fructifier les semences divines.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-035",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Protège ta terre intérieure par l’éveil des 3 centres du soleil en toi",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            9,
+            14
+          ],
+          "teaching": "L’homme est une terre fertile ensemencée par des influences ; sa responsabilité est de choisir les graines qu’il laisse fructifier.",
           "score": 3
         },
         {
@@ -26192,6 +29989,26 @@
             19
           ],
           "teaching": "La vie intérieure est figurée comme une terre confiée à l'homme et destinée à recevoir, cultiver et faire fructifier les semences divines.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-035",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Protège ta terre intérieure par l’éveil des 3 centres du soleil en toi",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            9,
+            14
+          ],
+          "teaching": "L’homme est une terre fertile ensemencée par des influences ; sa responsabilité est de choisir les graines qu’il laisse fructifier.",
           "score": 3
         },
         {
@@ -26530,18 +30347,18 @@
     {
       "id": "transformation",
       "label": "Transformation",
-      "score": 5,
-      "occurrenceCount": 2,
+      "score": 7,
+      "occurrenceCount": 3,
       "centralPsalmCount": 1,
       "archangels": [
         {
-          "id": "michael",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "ouriel",
+          "score": 4,
+          "occurrenceCount": 2
         },
         {
-          "id": "ouriel",
-          "score": 2,
+          "id": "michael",
+          "score": 3,
           "occurrenceCount": 1
         }
       ],
@@ -26581,6 +30398,24 @@
           ],
           "teaching": "Accueillir de nouvelles visions demande d'accepter que la Lumière modifie les anciennes stabilités.",
           "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-034",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Apprends à lire qui tu es et qui tu n ’es pas à travers le livre de ta vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "La transformation consiste à fluidifier les imperfections et à réorienter quelques éléments afin que l’être devienne un calice de Lumière.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -26619,6 +30454,80 @@
           ],
           "teaching": "Accueillir de nouvelles visions demande d'accepter que la Lumière modifie les anciennes stabilités.",
           "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-034",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 34,
+          "psalmTitle": "Apprends à lire qui tu es et qui tu n ’es pas à travers le livre de ta vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "La transformation consiste à fluidifier les imperfections et à réorienter quelques éléments afin que l’être devienne un calice de Lumière.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "travail",
+      "label": "Travail",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-047",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 47,
+          "psalmTitle": "Soyez comme l’abeille, nourrissez le précieux à travers tous vos travaux",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            5,
+            7,
+            8
+          ],
+          "teaching": "Le travail devient accomplissement lorsqu’il est relié à la Lumière et consiste à recueillir le plus beau pour le ramener vers l’essentiel.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-047",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 47,
+          "psalmTitle": "Soyez comme l’abeille, nourrissez le précieux à travers tous vos travaux",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            5,
+            7,
+            8
+          ],
+          "teaching": "Le travail devient accomplissement lorsqu’il est relié à la Lumière et consiste à recueillir le plus beau pour le ramener vers l’essentiel.",
+          "score": 3
         }
       ]
     },
@@ -26745,14 +30654,19 @@
     {
       "id": "trois-centres",
       "label": "Trois centres",
-      "score": 5,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 1,
+      "score": 8,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "michael",
           "score": 5,
           "occurrenceCount": 2
+        },
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -26780,6 +30694,25 @@
             16
           ],
           "teaching": "Pensée, cœur et volonté constituent une triple initiation : chacun doit être dégagé de sa forme mortelle et relié à sa source impersonnelle.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-035",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Protège ta terre intérieure par l’éveil des 3 centres du soleil en toi",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Pensée, sentiments et volonté sont trois fenêtres solaires à développer par étude, méditation, chant, prière, souffle, geste et travail conscient.",
           "score": 3
         },
         {
@@ -26824,6 +30757,25 @@
             16
           ],
           "teaching": "Pensée, cœur et volonté constituent une triple initiation : chacun doit être dégagé de sa forme mortelle et relié à sa source impersonnelle.",
+          "score": 3
+        },
+        {
+          "recordId": "book-08-psalm-035",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Protège ta terre intérieure par l’éveil des 3 centres du soleil en toi",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Pensée, sentiments et volonté sont trois fenêtres solaires à développer par étude, méditation, chant, prière, souffle, geste et travail conscient.",
           "score": 3
         },
         {
@@ -26944,6 +30896,58 @@
           ],
           "teaching": "Terre, monde humain et monde divin sont indissociables et doivent être respectés et unifiés dans chaque réalisation.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "trouver-sa-place",
+      "label": "Trouver sa place",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-051",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 51,
+          "psalmTitle": "La N ation E ssénienne est l’œuvre du B ien commun",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5
+          ],
+          "teaching": "Trouver sa place dans une œuvre plus grande fait circuler la Lumière et relie l’existence personnelle à l’origine commune.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-051",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 51,
+          "psalmTitle": "La N ation E ssénienne est l’œuvre du B ien commun",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5
+          ],
+          "teaching": "Trouver sa place dans une œuvre plus grande fait circuler la Lumière et relie l’existence personnelle à l’origine commune.",
+          "score": 2
         }
       ]
     },
@@ -27154,6 +31158,60 @@
             9
           ],
           "teaching": "L’homme doit unir son aspiration au Père et son corps à la nature afin de devenir une incarnation de la Lumière.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "utilite-au-divin",
+      "label": "Utilité au monde divin",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-031",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 31,
+          "psalmTitle": "Àtravers toutes les circonstances de ta vie, sois actif et utile au monde divin",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            10,
+            11
+          ],
+          "teaching": "Être utile signifie devenir présence, parole, guérison ou soutien pour les êtres qui dépendent de l’action humaine.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-031",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 31,
+          "psalmTitle": "Àtravers toutes les circonstances de ta vie, sois actif et utile au monde divin",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            10,
+            11
+          ],
+          "teaching": "Être utile signifie devenir présence, parole, guérison ou soutien pour les êtres qui dépendent de l’action humaine.",
           "score": 2
         }
       ]
@@ -27599,18 +31657,18 @@
     {
       "id": "vie-interieure",
       "label": "Vie intérieure",
-      "score": 5,
-      "occurrenceCount": 2,
+      "score": 7,
+      "occurrenceCount": 3,
       "centralPsalmCount": 1,
       "archangels": [
         {
-          "id": "gabriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "ouriel",
+          "score": 4,
+          "occurrenceCount": 2
         },
         {
-          "id": "ouriel",
-          "score": 2,
+          "id": "gabriel",
+          "score": 3,
           "occurrenceCount": 1
         }
       ],
@@ -27648,6 +31706,27 @@
           ],
           "teaching": "C'est l'être intérieur qui doit modeler le corps et donner le sens juste à l'expérience.",
           "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-028",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 28,
+          "psalmTitle": "Les 3 degrés de la joie, du plaisir destructeur à l’extase divine",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
+            12,
+            13,
+            15,
+            18,
+            20,
+            23
+          ],
+          "teaching": "Le sacré ne doit jamais être pratiqué mécaniquement : il doit passer par la vie intérieure qui ressuscite la présence divine.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -27683,6 +31762,27 @@
             6
           ],
           "teaching": "C'est l'être intérieur qui doit modeler le corps et donner le sens juste à l'expérience.",
+          "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-028",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 28,
+          "psalmTitle": "Les 3 degrés de la joie, du plaisir destructeur à l’extase divine",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
+            12,
+            13,
+            15,
+            18,
+            20,
+            23
+          ],
+          "teaching": "Le sacré ne doit jamais être pratiqué mécaniquement : il doit passer par la vie intérieure qui ressuscite la présence divine.",
           "score": 2
         }
       ]
@@ -27830,8 +31930,8 @@
     {
       "id": "vigilance",
       "label": "Vigilance",
-      "score": 5,
-      "occurrenceCount": 2,
+      "score": 7,
+      "occurrenceCount": 3,
       "centralPsalmCount": 1,
       "archangels": [
         {
@@ -27841,6 +31941,11 @@
         },
         {
           "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
           "score": 2,
           "occurrenceCount": 1
         }
@@ -27884,6 +31989,26 @@
           ],
           "teaching": "La vigilance et l'attention permettent de reconnaître l'occasion féconde au milieu des circonstances.",
           "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-035",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Protège ta terre intérieure par l’éveil des 3 centres du soleil en toi",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "La vigilance naît du travail régulier et permet d’identifier puis d’orienter les influences avant qu’elles ne colonisent la vie intérieure.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -27924,6 +32049,26 @@
             5
           ],
           "teaching": "La vigilance et l'attention permettent de reconnaître l'occasion féconde au milieu des circonstances.",
+          "score": 2
+        },
+        {
+          "recordId": "book-08-psalm-035",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 35,
+          "psalmTitle": "Protège ta terre intérieure par l’éveil des 3 centres du soleil en toi",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "La vigilance naît du travail régulier et permet d’identifier puis d’orienter les influences avant qu’elles ne colonisent la vie intérieure.",
           "score": 2
         }
       ]
@@ -28148,6 +32293,60 @@
             17
           ],
           "teaching": "Voir vraiment exige de percevoir la vie subtile, les associations et la respiration de l’âme autour de la forme visible.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "vocation",
+      "label": "Vocation",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-049",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 49,
+          "psalmTitle": "La clé pour tisser un lien conscient avec son A nge gardien",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            10,
+            13,
+            14
+          ],
+          "teaching": "Nommer l’Ange selon l’être idéal et la vocation visée donne une direction concrète à la relation intérieure et au chemin de maîtrise.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-049",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 49,
+          "psalmTitle": "La clé pour tisser un lien conscient avec son A nge gardien",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            10,
+            13,
+            14
+          ],
+          "teaching": "Nommer l’Ange selon l’être idéal et la vocation visée donne une direction concrète à la relation intérieure et au chemin de maîtrise.",
           "score": 2
         }
       ]
@@ -29335,6 +33534,62 @@
       ]
     },
     {
+      "id": "echelle-de-lumiere",
+      "label": "Échelle de Lumière",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-044",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 44,
+          "psalmTitle": "La N ation E ssénienne est l’échelle de Lumière qui unit le ciel et la terre",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            12,
+            14,
+            16,
+            17,
+            24
+          ],
+          "teaching": "L’échelle symbolise la circulation consciente entre monde humain et monde divin, avec montée vers l’esprit et redescente dans l’œuvre terrestre.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-044",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 44,
+          "psalmTitle": "La N ation E ssénienne est l’échelle de Lumière qui unit le ciel et la terre",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            12,
+            14,
+            16,
+            17,
+            24
+          ],
+          "teaching": "L’échelle symbolise la circulation consciente entre monde humain et monde divin, avec montée vers l’esprit et redescente dans l’œuvre terrestre.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "ecole-de-dieu",
       "label": "École de Dieu",
       "score": 5,
@@ -29916,6 +34171,66 @@
           ],
           "teaching": "Le juste chemin refuse à la fois l'obsession des forces sombres et l'inconscience qui les nie.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "equilibre-des-forces",
+      "label": "Équilibre des forces",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-08-psalm-027",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment triompher des forces sombres et rétablir l’équilibre dans sa vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Chaque avancée vers la Lumière appelle un rééquilibrage ; l’alliance et le sceau d’une autorité supérieure permettent de transformer les forces contraires en auxiliaires de réalisation.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-08-psalm-027",
+          "bookNumber": 8,
+          "bookTitle": "L’alchimie de la Lumière",
+          "archangel": "ouriel",
+          "psalmNumber": 27,
+          "psalmTitle": "Comment triompher des forces sombres et rétablir l’équilibre dans sa vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Chaque avancée vers la Lumière appelle un rééquilibrage ; l’alliance et le sceau d’une autorité supérieure permettent de transformer les forces contraires en auxiliaires de réalisation.",
+          "score": 3
         }
       ]
     },
