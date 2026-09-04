@@ -1,15 +1,19 @@
 {
   "id":"theme-connaissance-de-soi","recordType":"theme","label":"Connaissance de soi",
-  "searchTerms":["connaissance de soi","s’observer soi-même","se reconnaître soi-même","faux moi"],
+  "searchTerms":["connaissance de soi","s’observer soi-même","se reconnaître soi-même","faux moi","faiblesses et forces"],
   "senses":[{"id":"observation-lucide","label":"S’observer dans la clarté","definition":"Connaissance de soi fondée sur l’observation lucide, la pureté et la capacité de se redresser selon une sagesse supérieure."}],
   "subthemes":[
     {"id":"observer-et-redresser","label":"S’observer et se redresser","summary":"La connaissance de soi est un travail d’observation et de rectification, non une affirmation flatteuse de soi.","evidenceIds":["m106-self-v2-v3"]},
-    {"id":"sortir-faux-moi","label":"Sortir des faux moi","summary":"La prière demande d’être délivré des identités illusoires que l’on croit être sans les être réellement.","evidenceIds":["m106-prayer-002-self"]}
+    {"id":"sortir-faux-moi","label":"Sortir des faux moi","summary":"La prière demande d’être délivré des identités illusoires que l’on croit être sans les être réellement.","evidenceIds":["m106-prayer-002-self"]},
+    {"id":"observer-interieur","label":"S’observer de l’intérieur","summary":"Le psaume 107 relie explicitement connaissance de soi, observation intérieure, vigilance et reconnaissance de ses forces et faiblesses.","evidenceIds":["m107-self-v19-v20"]},
+    {"id":"penser-par-soi-meme","label":"Faire soi-même le travail de conscience","summary":"Personne ne peut penser à la place de l’être : il doit s’éveiller, se connaître et regarder le chemin sur lequel il engage sa vie.","evidenceIds":["m107-self-v24-v26"]}
   ],
   "evidence":[
     {"id":"m106-self-v2-v3","recordId":"michael-psalm-106","sourceType":"verse","verseNumbers":[2,3],"relation":"self-observation-and-correction","sourcePages":[1074]},
     {"id":"m106-self-v10","recordId":"michael-psalm-106","sourceType":"verse","verseNumbers":[10],"relation":"question-of-recognizing-oneself-in-truth","sourcePages":[1074]},
-    {"id":"m106-prayer-002-self","recordId":"michael-book-17-prayer-002","sourceType":"prayer","relation":"deliverance-from-false-selves","sourcePages":[1075,1076]}
+    {"id":"m106-prayer-002-self","recordId":"michael-book-17-prayer-002","sourceType":"prayer","relation":"deliverance-from-false-selves","sourcePages":[1075,1076]},
+    {"id":"m107-self-v19-v20","recordId":"michael-psalm-107","sourceType":"verse","verseNumbers":[19,20],"relation":"inner-observation-strengths-weaknesses-and-discernment","sourcePages":[1078,1079]},
+    {"id":"m107-self-v24-v26","recordId":"michael-psalm-107","sourceType":"verse","verseNumbers":[24,25,26],"relation":"personal-thinking-awakening-and-self-knowledge","sourcePages":[1079]}
   ],
-  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-106","michael-book-17-prayer-002"],"reviewNotes":"Thème explicitement nommé au verset 2 et développé par l’observation de soi, le redressement et la sortie des faux moi."}
+  "validation":{"status":"editorially-indexed","indexedFrom":["michael-psalm-106","michael-book-17-prayer-002","michael-psalm-107"],"reviewNotes":"Le psaume 107 précise une méthode : observation intérieure, forces et faiblesses, vigilance et responsabilité de penser par soi-même."}
 }
