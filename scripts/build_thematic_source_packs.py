@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Build compact reading packs for thematic analysis of books 1-10.
+"""Build compact reading packs for every extracted canonical book.
 
-Packs are derived from the validated psalm corpus and include book metadata, psalm
-titles, verse text and editorial notes. Prayers are intentionally excluded from the
-current thematic-indexing scope. Packs are not editorial conclusions; they are a
-stable input format for semantic analysis.
+Packs are derived from the psalm corpus and include book metadata, Psalm titles,
+verse text and editorial notes. Prayers are intentionally excluded from the current
+thematic-indexing scope. Packs are stable semantic-analysis inputs, not editorial
+conclusions.
 """
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -28,11 +29,31 @@ def write(path: Path, data) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def available_book_numbers() -> list[int]:
+    numbers = []
+    for path in CORPUS.glob("book-*"):
+        match = re.fullmatch(r"book-(\d+)", path.name)
+        if not match or not (path / "book.json").exists():
+            continue
+        numbers.append(int(match.group(1)))
+    return sorted(numbers)
+
+
+book_numbers = available_book_numbers()
+if not book_numbers:
+    raise RuntimeError("No extracted canonical books found")
+
 if OUT.exists():
     shutil.rmtree(OUT)
 
-manifest = {"scope": "books-01-10", "prayersIncluded": False, "books": []}
-for book_no in range(1, 11):
+manifest = {
+    "scope": "all-extracted-canonical-books",
+    "bookNumbers": book_numbers,
+    "prayersIncluded": False,
+    "books": [],
+}
+
+for book_no in book_numbers:
     book_dir = CORPUS / f"book-{book_no:02d}"
     book = read(book_dir / "book.json")
     psalms = []
@@ -92,4 +113,4 @@ for book_no in range(1, 11):
     })
 
 write(OUT / "manifest.json", manifest)
-print(f"Built thematic source packs for {len(manifest['books'])} books")
+print(f"Built thematic source packs for {len(manifest['books'])} books: {book_numbers[0]}-{book_numbers[-1]}")
