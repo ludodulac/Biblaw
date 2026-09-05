@@ -11,6 +11,9 @@ on:
       - 'scripts/complete_books24_26_thematic.py'
       - 'scripts/complete_books27_30_thematic.py'
       - 'scripts/complete_books31_40_thematic.py'
+      - 'scripts/complete_books41_44_thematic.py'
+      - 'scripts/sync_thematic_documentary_status.py'
+      - 'scripts/build_book_contexts.py'
       - 'scripts/normalize_thematic_metadata.py'
       - 'scripts/validate_thematic_index.py'
       - 'scripts/build_thematic_directory.py'
@@ -41,8 +44,14 @@ jobs:
         run: python scripts/complete_books27_30_thematic.py
       - name: Complete canonical books 31 to 40
         run: python scripts/complete_books31_40_thematic.py
+      - name: Complete canonical books 41 to 44
+        run: python scripts/complete_books41_44_thematic.py
+      - name: Gate thematic completion on documentary integrity
+        run: python scripts/sync_thematic_documentary_status.py
       - name: Normalize thematic metadata
         run: python scripts/normalize_thematic_metadata.py
+      - name: Build PDF-only book contexts
+        run: python scripts/build_book_contexts.py
       - name: Validate thematic index
         run: python scripts/validate_thematic_index.py
       - name: Rebuild thematic directory
@@ -50,13 +59,13 @@ jobs:
       - name: Commit normalized index and reports
         if: always()
         run: |
-          if [ -z "$(git status --porcelain -- data/thematic-index/books data/thematic-index/theme-directory.json data/thematic-index/validation-report.json)" ]; then
+          if [ -z "$(git status --porcelain -- data/thematic-index/books data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/validation-report.json)" ]; then
             echo 'No thematic index changes'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/thematic-index/books data/thematic-index/theme-directory.json data/thematic-index/validation-report.json
-          git commit -m 'Normalize and validate thematic index'
+          git add data/thematic-index/books data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/validation-report.json
+          git commit -m 'Normalize validate and contextualize thematic index'
           git pull --rebase origin main
           git push origin HEAD:main
