@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Preserve the editorial and doctrinal context of each book so thematic search can interpret a psalm occurrence inside the teaching movement of its book without replacing verse-level evidence.",
+  "interpretationRule": "A theme occurrence is first grounded in the psalm and verses. Book context is a second interpretive layer used to explain emphasis, sense, relations and ranking. It must never manufacture a theme absent from the psalm.",
+  "fields": {
+    "centralAxis": "Overall movement or question of the book.",
+    "contextThemes": "Themes that structure the book as a whole.",
+    "interpretiveLens": "How belonging to this book can nuance a thematic occurrence.",
+    "archangelContribution": "Specific contribution of the Archangel in this book.",
+    "searchUse": "Instructions for future thematic retrieval/ranking."
+  },
+  "books": [
+    {
+      "bookNumber": 17,
+      "title": "L’heure du choix",
+      "archangel": "michael",
+      "centralAxis": "Le choix doit devenir une œuvre : sortir de l’illusion et de l’inconstance, retrouver l’âme, la vérité et la connaissance de soi, puis équilibrer les mondes sans les mélanger. La Tradition, la Mère, les règnes, les quatre cultes et les œuvres collectives donnent une terre concrète à la Lumière.",
+      "contextThemes": ["choix", "verite", "fidelite", "discernement", "ame", "tradition-de-la-lumiere", "equilibre-des-mondes", "responsabilite", "terre", "bien-commun"],
+      "interpretiveLens": "Une occurrence thématique dans ce livre doit notamment être examinée sous l’angle du choix, de la cohérence entre parole et œuvre, de la fidélité, de la mise en ordre des mondes et de l’incarnation concrète de la Lumière.",
+      "archangelContribution": "Michaël insiste sur le feu de la conscience, la vérité éprouvée par les actes, la stabilité et la responsabilité de protéger et réaliser le sacré.",
+      "searchUse": "Lors d’une recherche thématique, conserver le sens précis du psaume mais exposer ce contexte du livre lorsqu’il éclaire pourquoi le thème est formulé de cette manière ou pourquoi ce passage est particulièrement important."
+    },
+    {
+      "bookNumber": 18,
+      "title": "Quel chercheur de Lumière es-tu ?",
+      "archangel": "gabriel",
+      "centralAxis": "Gabriel interroge la qualité réelle du chercheur de Lumière : la Lumière doit obtenir une terre, un peuple, un corps, une discipline et des relations suffisamment pures pour devenir une intelligence agissante plutôt qu’une aspiration abstraite. L’eau, l’âme, l’intellect, les relations et la vie quotidienne deviennent des critères de fidélité à la Source.",
+      "contextThemes": ["lumiere", "incarnation", "eau", "purete", "ame", "relations", "maitrise", "discernement", "source", "intelligence-divine"],
+      "interpretiveLens": "Une occurrence thématique dans ce livre doit être lue en tenant compte de la question : quelle qualité de chercheur l’homme devient-il réellement, et cette recherche rend-elle sa vie, son eau, ses relations et ses œuvres plus claires, pures, vraies et fécondes ?",
+      "archangelContribution": "Gabriel met particulièrement en évidence l’eau comme milieu de transmission, de relation, de pureté et de vérité, ainsi que la nécessité de faire descendre l’intelligence supérieure jusque dans la vie concrète.",
+      "searchUse": "Pour un thème rencontré dans ce livre, le moteur pourra afficher le contexte Gabriel/livre 18 comme couche explicative et l’utiliser comme signal de classement, sans confondre contexte du livre et preuve thématique du psaume."
+    }
+  ]
+}
