@@ -1,0 +1,62 @@
+name: Extract Bible books 31-40
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/extract_books_31_40.py'
+      - 'scripts/extract_books_01_10.py'
+      - 'scripts/normalize_notes_resumed_verses.py'
+      - 'scripts/repair_audited_inline_note_splits.py'
+      - 'scripts/normalize_wrapped_psalm_titles.py'
+      - 'scripts/normalize_embedded_psalm_headings.py'
+      - 'scripts/normalize_embedded_psalm_structures.py'
+      - 'scripts/validate_books_31_40.py'
+      - 'scripts/validate_books_01_10.py'
+      - 'scripts/build_thematic_source_packs.py'
+      - 'data/pilot/book-inventory.json'
+      - '.github/workflows/extract-books-31-40.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bible-corpus-extraction
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Extract books 31-40
+        run: python scripts/extract_books_31_40.py
+      - name: Normalize verses resumed after footnotes
+        run: python scripts/normalize_notes_resumed_verses.py
+      - name: Reapply audited verse-note boundaries
+        run: python scripts/repair_audited_inline_note_splits.py
+      - name: Normalize wrapped psalm titles
+        run: python scripts/normalize_wrapped_psalm_titles.py
+      - name: Normalize embedded psalm headings
+        run: python scripts/normalize_embedded_psalm_headings.py
+      - name: Normalize embedded numbered lists and appended prayers
+        run: python scripts/normalize_embedded_psalm_structures.py
+      - name: Validate extracted books 31-40
+        run: python scripts/validate_books_31_40.py
+      - name: Build thematic source packs for all extracted books
+        run: python scripts/build_thematic_source_packs.py
+      - name: Commit extracted corpus, reports, prayers and source packs
+        run: |
+          if [ -z "$(git status --porcelain -- data/corpus/books data/notes/books data/prayers data/pilot/books-31-40-extraction-report.json data/pilot/books-31-40-validation-report.json data/thematic-index/source-packs)" ]; then
+            echo 'No extraction changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/corpus/books data/notes/books data/prayers data/pilot/books-31-40-extraction-report.json data/pilot/books-31-40-validation-report.json data/thematic-index/source-packs
+          git commit -m 'Extract validate and prepare Bible books 31-40'
+          git pull --rebase origin main
+          git push origin HEAD:main
