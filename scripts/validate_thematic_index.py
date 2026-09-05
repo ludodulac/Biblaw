@@ -11,7 +11,7 @@ CORPUS = ROOT / "data/corpus/books"
 NOTES = ROOT / "data/notes/books"
 OUT = ROOT / "data/thematic-index/validation-report.json"
 ALLOWED_IMPORTANCE = {"central", "important", "related"}
-ALLOWED_DIRECTNESS = {"direct", "symbolic", "editorial", "indirect"}
+ALLOWED_DIRECTNESS = {"direct", "symbolic", "editorial", "indirect", "contextual"}
 
 errors = []
 warnings = []
