@@ -6,6 +6,7 @@ on:
     paths:
       - 'data/thematic-index/books/**'
       - 'scripts/complete_book17_thematic.py'
+      - 'scripts/complete_books18_20_thematic.py'
       - 'scripts/normalize_thematic_metadata.py'
       - 'scripts/validate_thematic_index.py'
       - 'scripts/build_thematic_directory.py'
@@ -26,6 +27,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Complete canonical Michael book 17
         run: python scripts/complete_book17_thematic.py
+      - name: Complete canonical books 18 to 20
+        run: python scripts/complete_books18_20_thematic.py
       - name: Normalize thematic metadata
         run: python scripts/normalize_thematic_metadata.py
       - name: Validate thematic index
