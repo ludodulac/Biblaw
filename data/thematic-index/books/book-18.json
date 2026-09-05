@@ -1,6 +1,10 @@
 {
   "schemaVersion": 2,
-  "book": {"number": 18, "title": "Quel chercheur de Lumière es-tu ?", "archangel": "gabriel"},
+  "book": {
+    "number": 18,
+    "title": "Quel chercheur de Lumière es-tu ?",
+    "archangel": "gabriel"
+  },
   "method": {
     "status": "editorial-indexing-in-progress",
     "source": "validated-psalm-corpus",
@@ -11,34 +15,154 @@
   },
   "bookSynthesis": {
     "centralAxis": "Première lecture canonique : Gabriel demande quel chercheur de Lumière l’homme devient réellement dans sa manière de vivre. La Lumière doit obtenir une terre, un peuple, un corps, une discipline et des relations suffisamment pures pour devenir une intelligence agissante plutôt qu’une aspiration abstraite. L’eau, l’âme, les relations et les formes de la vie quotidienne deviennent des critères de fidélité à la Source. Cette synthèse sera consolidée après les psaumes 111 à 137.",
-    "majorThemes": ["lumiere", "incarnation", "nation-essenienne", "maitrise", "purete", "ame", "eau", "relations", "alliance", "stabilite", "discernement"]
+    "majorThemes": [
+      "lumiere",
+      "incarnation",
+      "nation-essenienne",
+      "maitrise",
+      "purete",
+      "ame",
+      "eau",
+      "relations",
+      "alliance",
+      "stabilite",
+      "discernement"
+    ]
   },
   "psalmAnalyses": [
     {
       "recordId": "book-18-psalm-111",
       "number": 111,
       "title": "Bâtissez un nouveau monde",
-      "titleSignals": ["nouveau monde", "incarnation", "maîtrise"],
-      "themes": [
-        {"themeId":"lumiere","label":"Lumière","importance":"central","directness":"direct","verseNumbers":[1,2,4,5,7,8],"teaching":"La Lumière est présentée comme un esprit et une intelligence vivants qui ont besoin d’hommes, d’une terre et d’une structure capables de les accueillir et de les manifester."},
-        {"themeId":"nation-essenienne","label":"Nation Essénienne","importance":"central","directness":"direct","verseNumbers":[2,3,4,5,6,7,8,10,18],"teaching":"La Nation Essénienne doit devenir un peuple et un corps collectif où l’alliance avec une intelligence supérieure prend une forme terrestre transmissible."},
-        {"themeId":"maitrise-de-la-vie","label":"Maîtrise de la vie","importance":"central","directness":"direct","verseNumbers":[11,12,14,15,16,17,18],"teaching":"La conquête de l’invisible repose sur la maîtrise du corps et de la vie visible : pensées, parole, nourriture, travail, sommeil, relations et comportements doivent être éduqués."},
-        {"themeId":"cercle","label":"Cercle","importance":"important","directness":"direct","verseNumbers":[10,13],"teaching":"Le cercle de gouvernement peut accueillir une intelligence supérieure, mais il ne doit jamais remplacer l’éveil et le discernement individuels de ceux qui le composent."}
+      "titleSignals": [
+        "nouveau monde",
+        "incarnation",
+        "maîtrise"
       ],
-      "notesUsed": ["book-18-psalm-111-note-001"]
+      "themes": [
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            7,
+            8
+          ],
+          "teaching": "La Lumière est présentée comme un esprit et une intelligence vivants qui ont besoin d’hommes, d’une terre et d’une structure capables de les accueillir et de les manifester."
+        },
+        {
+          "themeId": "nation-essenienne",
+          "label": "Nation Essénienne",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            18
+          ],
+          "teaching": "La Nation Essénienne doit devenir un peuple et un corps collectif où l’alliance avec une intelligence supérieure prend une forme terrestre transmissible."
+        },
+        {
+          "themeId": "maitrise-de-la-vie",
+          "label": "Maîtrise de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "teaching": "La conquête de l’invisible repose sur la maîtrise du corps et de la vie visible : pensées, parole, nourriture, travail, sommeil, relations et comportements doivent être éduqués."
+        },
+        {
+          "themeId": "cercle",
+          "label": "Cercle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            13
+          ],
+          "teaching": "Le cercle de gouvernement peut accueillir une intelligence supérieure, mais il ne doit jamais remplacer l’éveil et le discernement individuels de ceux qui le composent."
+        }
+      ],
+      "notesUsed": [
+        "book-18-psalm-111-note-001"
+      ]
     },
     {
       "recordId": "book-18-psalm-112",
       "number": 112,
-      "title": "Le vêtement blanc des Esséniens",
-      "titleSignals": ["vêtement blanc", "pureté", "eau"],
-      "themes": [
-        {"themeId":"vetement-blanc","label":"Vêtement blanc","importance":"central","directness":"direct","verseNumbers":[1],"teaching":"Le vêtement blanc est un objet d’alliance, de prière et de protection qui représente la pureté de l’âme et la transparence des éléments vivants."},
-        {"themeId":"purete","label":"Pureté","importance":"central","directness":"direct","verseNumbers":[1,2,3],"teaching":"La pureté demande de préserver la clarté de l’âme et des relations sans mélanger l’eau de la vie avec ce qui appartient au recyclage et à la mort."},
-        {"themeId":"eau-des-relations","label":"Eau des relations","importance":"central","directness":"direct","verseNumbers":[2,3],"teaching":"Les relations sont décrites comme une eau qui peut rester claire ou être mélangée et polluée ; leur qualité fait partie du travail spirituel concret."},
-        {"themeId":"monde-artificiel","label":"Monde artificiel","importance":"important","directness":"direct","verseNumbers":[4,5],"teaching":"L’accumulation de préoccupations et de créations mortelles alourdit pensées, sentiments et destinée et éloigne l’homme de la vie authentique."}
+      "title": "Le vêtement blanc des E sséniens",
+      "titleSignals": [
+        "vêtement blanc",
+        "pureté",
+        "eau"
       ],
-      "notesUsed": ["book-18-psalm-112-note-001"]
+      "themes": [
+        {
+          "themeId": "vetement-blanc",
+          "label": "Vêtement blanc",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "Le vêtement blanc est un objet d’alliance, de prière et de protection qui représente la pureté de l’âme et la transparence des éléments vivants."
+        },
+        {
+          "themeId": "purete",
+          "label": "Pureté",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3
+          ],
+          "teaching": "La pureté demande de préserver la clarté de l’âme et des relations sans mélanger l’eau de la vie avec ce qui appartient au recyclage et à la mort."
+        },
+        {
+          "themeId": "eau-des-relations",
+          "label": "Eau des relations",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3
+          ],
+          "teaching": "Les relations sont décrites comme une eau qui peut rester claire ou être mélangée et polluée ; leur qualité fait partie du travail spirituel concret."
+        },
+        {
+          "themeId": "monde-artificiel",
+          "label": "Monde artificiel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5
+          ],
+          "teaching": "L’accumulation de préoccupations et de créations mortelles alourdit pensées, sentiments et destinée et éloigne l’homme de la vie authentique."
+        }
+      ],
+      "notesUsed": [
+        "book-18-psalm-112-note-001"
+      ]
     }
   ]
 }
