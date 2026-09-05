@@ -9,7 +9,7 @@ on:
       - 'scripts/normalize_notes_resumed_verses.py'
       - 'scripts/repair_audited_inline_note_splits.py'
       - 'scripts/repair_known_pdf_psalm_anomalies.py'
-      - 'scripts/normalize_wrapped_psalm_titles.py'
+      - 'scripts/normalize_wrapped_psalm_titles_cached.py'
       - 'scripts/normalize_embedded_psalm_headings.py'
       - 'scripts/normalize_embedded_psalm_structures.py'
       - 'scripts/validate_books_31_40.py'
@@ -40,7 +40,7 @@ jobs:
       - name: Reapply audited verse-note boundaries
         run: python scripts/repair_audited_inline_note_splits.py
       - name: Normalize wrapped psalm titles
-        run: python scripts/normalize_wrapped_psalm_titles.py
+        run: BOOK_MIN=31 BOOK_MAX=40 python scripts/normalize_wrapped_psalm_titles_cached.py
       - name: Normalize embedded psalm headings
         run: python scripts/normalize_embedded_psalm_headings.py
       - name: Normalize embedded numbered lists and appended prayers
