@@ -10,6 +10,7 @@ on:
       - 'scripts/complete_books21_23_thematic.py'
       - 'scripts/complete_books24_26_thematic.py'
       - 'scripts/complete_books27_30_thematic.py'
+      - 'scripts/complete_books31_40_thematic.py'
       - 'scripts/normalize_thematic_metadata.py'
       - 'scripts/validate_thematic_index.py'
       - 'scripts/build_thematic_directory.py'
@@ -38,6 +39,8 @@ jobs:
         run: python scripts/complete_books24_26_thematic.py
       - name: Complete canonical books 27 to 30
         run: python scripts/complete_books27_30_thematic.py
+      - name: Complete canonical books 31 to 40
+        run: python scripts/complete_books31_40_thematic.py
       - name: Normalize thematic metadata
         run: python scripts/normalize_thematic_metadata.py
       - name: Validate thematic index
