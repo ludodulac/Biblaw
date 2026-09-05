@@ -8,6 +8,7 @@ on:
       - 'scripts/extract_books_01_10.py'
       - 'scripts/normalize_notes_resumed_verses.py'
       - 'scripts/repair_audited_inline_note_splits.py'
+      - 'scripts/repair_known_pdf_psalm_anomalies.py'
       - 'scripts/normalize_wrapped_psalm_titles.py'
       - 'scripts/normalize_embedded_psalm_headings.py'
       - 'scripts/normalize_embedded_psalm_structures.py'
@@ -44,6 +45,8 @@ jobs:
         run: python scripts/normalize_embedded_psalm_headings.py
       - name: Normalize embedded numbered lists and appended prayers
         run: python scripts/normalize_embedded_psalm_structures.py
+      - name: Repair audited PDF Psalm anomalies
+        run: python scripts/repair_known_pdf_psalm_anomalies.py
       - name: Validate extracted books 31-40
         run: python scripts/validate_books_31_40.py
       - name: Build thematic source packs for all extracted books
