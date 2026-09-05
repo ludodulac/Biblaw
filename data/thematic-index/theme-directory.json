@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedFrom": "data/thematic-index/books/book-*.json",
   "manualEditingAllowed": false,
-  "themeCount": 587,
+  "themeCount": 613,
   "themes": [
     {
       "id": "abeille",
@@ -233,9 +233,9 @@
     {
       "id": "accomplissement",
       "label": "Accomplissement",
-      "score": 6,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 2,
+      "score": 9,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "gabriel",
@@ -244,6 +244,11 @@
         },
         {
           "id": "michael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -287,6 +292,30 @@
           ],
           "teaching": "Un projet accueilli doit être conduit jusqu'au corps, à l'autonomie et à l'achèvement ; sinon il devient un poids qui épuise son porteur.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-081",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 81,
+          "psalmTitle": "N’appelez pas des êtres pour ensuite les abandonner",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            16,
+            19,
+            23,
+            24
+          ],
+          "teaching": "Toute idée ou œuvre appelée à l'existence doit être conduite jusqu'à sa forme autonome et parfaite ; l'inachevé enchaîne au lieu de libérer.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -327,6 +356,30 @@
             8
           ],
           "teaching": "Un projet accueilli doit être conduit jusqu'au corps, à l'autonomie et à l'achèvement ; sinon il devient un poids qui épuise son porteur.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-081",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 81,
+          "psalmTitle": "N’appelez pas des êtres pour ensuite les abandonner",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            16,
+            19,
+            23,
+            24
+          ],
+          "teaching": "Toute idée ou œuvre appelée à l'existence doit être conduite jusqu'à sa forme autonome et parfaite ; l'inachevé enchaîne au lieu de libérer.",
           "score": 3
         }
       ]
@@ -3964,6 +4017,62 @@
       ]
     },
     {
+      "id": "animisme",
+      "label": "Animisme",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-081",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 81,
+          "psalmTitle": "N’appelez pas des êtres pour ensuite les abandonner",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            18,
+            20,
+            21
+          ],
+          "teaching": "Pensées, projets et activités sont décrits comme vivants et porteurs de conséquences ; ils doivent être traités avec responsabilité et miséricorde.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-081",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 81,
+          "psalmTitle": "N’appelez pas des êtres pour ensuite les abandonner",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            18,
+            20,
+            21
+          ],
+          "teaching": "Pensées, projets et activités sont décrits comme vivants et porteurs de conséquences ; ils doivent être traités avec responsabilité et miséricorde.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "apparence-et-verite",
       "label": "Apparence et vérité",
       "score": 2,
@@ -4291,8 +4400,8 @@
     {
       "id": "arbre",
       "label": "Arbre",
-      "score": 13,
-      "occurrenceCount": 5,
+      "score": 15,
+      "occurrenceCount": 6,
       "centralPsalmCount": 4,
       "archangels": [
         {
@@ -4301,12 +4410,12 @@
           "occurrenceCount": 2
         },
         {
-          "id": "gabriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "raphael",
+          "score": 5,
+          "occurrenceCount": 2
         },
         {
-          "id": "raphael",
+          "id": "gabriel",
           "score": 3,
           "occurrenceCount": 1
         },
@@ -4400,6 +4509,21 @@
           ],
           "teaching": "L’arbre réunit racines, tronc et cime : stabilité de la tradition, activité quotidienne et hautes pensées capables d’accueillir l’esprit.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-083",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 83,
+          "psalmTitle": "L’oiseau du ciel aime l’arbre parce qu ’il peut le porter",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "L'arbre devient l'image de l'homme stable capable de porter sans blesser la pensée supérieure qui vient le visiter.",
+          "score": 2
         },
         {
           "recordId": "book-01-psalm-002",
@@ -4501,6 +4625,21 @@
           ],
           "teaching": "L’arbre réunit racines, tronc et cime : stabilité de la tradition, activité quotidienne et hautes pensées capables d’accueillir l’esprit.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-083",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 83,
+          "psalmTitle": "L’oiseau du ciel aime l’arbre parce qu ’il peut le porter",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "L'arbre devient l'image de l'homme stable capable de porter sans blesser la pensée supérieure qui vient le visiter.",
+          "score": 2
         },
         {
           "recordId": "book-01-psalm-002",
@@ -7241,6 +7380,82 @@
       ]
     },
     {
+      "id": "capacites-superieures",
+      "label": "Capacités supérieures",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-094",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 94,
+          "psalmTitle": "Retrouvez votre mémoire",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            11,
+            15,
+            18,
+            19,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            29,
+            30,
+            31
+          ],
+          "teaching": "Les facultés supérieures doivent être développées uniquement pour bénir, guérir, libérer et servir une intelligence plus grande, jamais pour dominer.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-094",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 94,
+          "psalmTitle": "Retrouvez votre mémoire",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            11,
+            15,
+            18,
+            19,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            29,
+            30,
+            31
+          ],
+          "teaching": "Les facultés supérieures doivent être développées uniquement pour bénir, guérir, libérer et servir une intelligence plus grande, jamais pour dominer.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "capital-spirituel",
       "label": "Capital spirituel",
       "score": 3,
@@ -7522,6 +7737,68 @@
             9
           ],
           "teaching": "La cendre du feu est donnée comme support de lien avec une atmosphère rituelle passée et comme moyen de purification.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "centrage",
+      "label": "Centrage",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-097",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 97,
+          "psalmTitle": "Les 3 clés de la sagesse",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            8,
+            9,
+            13,
+            15,
+            16,
+            17,
+            18
+          ],
+          "teaching": "Rester dans son rayon et son être empêche le paraître, les influences et la recherche d'intégration de décentrer l'homme.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-097",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 97,
+          "psalmTitle": "Les 3 clés de la sagesse",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            8,
+            9,
+            13,
+            15,
+            16,
+            17,
+            18
+          ],
+          "teaching": "Rester dans son rayon et son être empêche le paraître, les influences et la recherche d'intégration de décentrer l'homme.",
           "score": 2
         }
       ]
@@ -8974,13 +9251,18 @@
     {
       "id": "coherence-interieure",
       "label": "Cohérence intérieure",
-      "score": 6,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 2,
+      "score": 11,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "michael",
           "score": 6,
+          "occurrenceCount": 2
+        },
+        {
+          "id": "raphael",
+          "score": 5,
           "occurrenceCount": 2
         }
       ],
@@ -9028,6 +9310,50 @@
           ],
           "teaching": "Pensée, sentiment, volonté et acte forment un seul monde créateur ; demander une chose et en vivre une autre produit la division et l'échec.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-086",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 86,
+          "psalmTitle": "Ta vie est à l’image de ce que tu fais réellement",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            12,
+            14,
+            15,
+            19,
+            20,
+            21
+          ],
+          "teaching": "Le monde supérieur considère l'homme selon ce qu'il vit réellement, non selon l'image spirituelle qu'il souhaite donner de lui-même.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-092",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 92,
+          "psalmTitle": "Le côté négatif n ’a que la force que vous lui donnez",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            22,
+            23,
+            27,
+            28,
+            32
+          ],
+          "teaching": "La plus haute protection est de devenir conforme à ce que l'on sait et de faire de sa vie une réalisation harmonieuse de la Lumière.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -9074,6 +9400,50 @@
           ],
           "teaching": "Pensée, sentiment, volonté et acte forment un seul monde créateur ; demander une chose et en vivre une autre produit la division et l'échec.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-086",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 86,
+          "psalmTitle": "Ta vie est à l’image de ce que tu fais réellement",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            12,
+            14,
+            15,
+            19,
+            20,
+            21
+          ],
+          "teaching": "Le monde supérieur considère l'homme selon ce qu'il vit réellement, non selon l'image spirituelle qu'il souhaite donner de lui-même.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-092",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 92,
+          "psalmTitle": "Le côté négatif n ’a que la force que vous lui donnez",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            22,
+            23,
+            27,
+            28,
+            32
+          ],
+          "teaching": "La plus haute protection est de devenir conforme à ce que l'on sait et de faire de sa vie une réalisation harmonieuse de la Lumière.",
+          "score": 2
         }
       ]
     },
@@ -10185,11 +10555,67 @@
       ]
     },
     {
+      "id": "connaissance-vivante",
+      "label": "Connaissance vivante",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-077",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 77,
+          "psalmTitle": "La vérité libère quand l’homme est éveillé",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            17,
+            18
+          ],
+          "teaching": "Le vrai savoir naît de l'union vécue avec ce qui est connu et devient une force de guérison et de libération.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-077",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 77,
+          "psalmTitle": "La vérité libère quand l’homme est éveillé",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            17,
+            18
+          ],
+          "teaching": "Le vrai savoir naît de l'union vécue avec ce qui est connu et devient une force de guérison et de libération.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "conscience",
       "label": "Conscience",
-      "score": 11,
-      "occurrenceCount": 4,
-      "centralPsalmCount": 3,
+      "score": 14,
+      "occurrenceCount": 5,
+      "centralPsalmCount": 4,
       "archangels": [
         {
           "id": "michael",
@@ -10198,8 +10624,8 @@
         },
         {
           "id": "raphael",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 6,
+          "occurrenceCount": 2
         },
         {
           "id": "gabriel",
@@ -10281,6 +10707,27 @@
             16
           ],
           "teaching": "La conscience est présence, organe de discernement et terre intérieure : elle révèle les influences, le but des actes et la présence divine au centre de l'être.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-082",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 82,
+          "psalmTitle": "L’homme ne garde avec lui que ce qui est devenu conscient",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            6,
+            8,
+            9,
+            15,
+            17,
+            18
+          ],
+          "teaching": "Après la mort, seule demeure la vérité devenue conscience concrète, vécue et associée à une œuvre réelle.",
           "score": 3
         },
         {
@@ -10377,6 +10824,27 @@
             16
           ],
           "teaching": "La conscience est présence, organe de discernement et terre intérieure : elle révèle les influences, le but des actes et la présence divine au centre de l'être.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-082",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 82,
+          "psalmTitle": "L’homme ne garde avec lui que ce qui est devenu conscient",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            6,
+            8,
+            9,
+            15,
+            17,
+            18
+          ],
+          "teaching": "Après la mort, seule demeure la vérité devenue conscience concrète, vécue et associée à une œuvre réelle.",
           "score": 3
         },
         {
@@ -10403,10 +10871,15 @@
     {
       "id": "constance",
       "label": "Constance",
-      "score": 2,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 0,
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
       "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "gabriel",
           "score": 2,
@@ -10414,6 +10887,26 @@
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-15-psalm-081",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 81,
+          "psalmTitle": "N’appelez pas des êtres pour ensuite les abandonner",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            6,
+            7,
+            13,
+            14
+          ],
+          "teaching": "Concentration, stabilité et constance protègent l'homme de la dispersion qui lui fait abandonner ce qu'il a commencé.",
+          "score": 3
+        },
         {
           "recordId": "book-14-psalm-101",
           "bookNumber": 14,
@@ -10434,6 +10927,26 @@
         }
       ],
       "occurrences": [
+        {
+          "recordId": "book-15-psalm-081",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 81,
+          "psalmTitle": "N’appelez pas des êtres pour ensuite les abandonner",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            6,
+            7,
+            13,
+            14
+          ],
+          "teaching": "Concentration, stabilité et constance protègent l'homme de la dispersion qui lui fait abandonner ce qu'il a commencé.",
+          "score": 3
+        },
         {
           "recordId": "book-14-psalm-101",
           "bookNumber": 14,
@@ -10567,10 +11080,15 @@
     {
       "id": "consecration",
       "label": "Consécration",
-      "score": 7,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 1,
+      "score": 10,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "raphael",
+          "score": 5,
+          "occurrenceCount": 2
+        },
         {
           "id": "gabriel",
           "score": 3,
@@ -10578,11 +11096,6 @@
         },
         {
           "id": "ouriel",
-          "score": 2,
-          "occurrenceCount": 1
-        },
-        {
-          "id": "raphael",
           "score": 2,
           "occurrenceCount": 1
         }
@@ -10606,6 +11119,26 @@
             11
           ],
           "teaching": "La consécration établit dans l'homme un signe et une alliance perceptibles par le monde divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-079",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 79,
+          "psalmTitle": "Fais naître en toi une grandeur d ’âme capable de conquérir le ciel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            14,
+            15,
+            17
+          ],
+          "teaching": "La marche vers la Lumière engage progressivement toute l'existence et demande de clarifier ce qui doit être nourri ou abandonné.",
           "score": 3
         },
         {
@@ -10661,6 +11194,26 @@
             11
           ],
           "teaching": "La consécration établit dans l'homme un signe et une alliance perceptibles par le monde divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-079",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 79,
+          "psalmTitle": "Fais naître en toi une grandeur d ’âme capable de conquérir le ciel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            14,
+            15,
+            17
+          ],
+          "teaching": "La marche vers la Lumière engage progressivement toute l'existence et demande de clarifier ce qui doit être nourri ou abandonné.",
           "score": 3
         },
         {
@@ -11357,14 +11910,14 @@
     {
       "id": "corps-de-lumiere",
       "label": "Corps de Lumière",
-      "score": 11,
-      "occurrenceCount": 4,
+      "score": 13,
+      "occurrenceCount": 5,
       "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "raphael",
-          "score": 6,
-          "occurrenceCount": 2
+          "score": 8,
+          "occurrenceCount": 3
         },
         {
           "id": "michael",
@@ -11449,6 +12002,28 @@
           ],
           "teaching": "L’harmonisation des éléments fonde un corps durable permettant la communion avec ce qui est plus grand et plus divin.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-090",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 90,
+          "psalmTitle": "Lorsque l’homme pense, il crée son ciel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            18,
+            19,
+            20,
+            21,
+            24,
+            25,
+            27,
+            29
+          ],
+          "teaching": "Une pensée élevée maintenue jusqu'à devenir sentiment, volonté et matière vécue participe à la construction d'un corps de Lumière.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -11528,6 +12103,28 @@
           ],
           "teaching": "L’harmonisation des éléments fonde un corps durable permettant la communion avec ce qui est plus grand et plus divin.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-090",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 90,
+          "psalmTitle": "Lorsque l’homme pense, il crée son ciel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            18,
+            19,
+            20,
+            21,
+            24,
+            25,
+            27,
+            29
+          ],
+          "teaching": "Une pensée élevée maintenue jusqu'à devenir sentiment, volonté et matière vécue participe à la construction d'un corps de Lumière.",
+          "score": 2
         }
       ]
     },
@@ -11584,6 +12181,68 @@
           ],
           "teaching": "Une pensée ou une vertu invisible doit être organisée en forme complète pour vivre réellement sur la terre.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "corps-de-perfection",
+      "label": "Corps de perfection",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-101",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 101,
+          "psalmTitle": "La perfection pour l’homme, c ’est d ’être une fleur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Le sens de la vie est de construire un corps stable, concentré, libre, authentique et capable de faire naître le monde divin en soi.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-101",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 101,
+          "psalmTitle": "La perfection pour l’homme, c ’est d ’être une fleur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            7,
+            8,
+            9,
+            10
+          ],
+          "teaching": "Le sens de la vie est de construire un corps stable, concentré, libre, authentique et capable de faire naître le monde divin en soi.",
+          "score": 2
         }
       ]
     },
@@ -11751,6 +12410,64 @@
             17
           ],
           "teaching": "Le premier corps subtil autour du physique est décrit comme une eau où circulent influences, forces et intelligences ; l’homme peut apprendre à y devenir conscient et actif.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "corps-d-immortalite",
+      "label": "Corps d’immortalité",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-082",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 82,
+          "psalmTitle": "L’homme ne garde avec lui que ce qui est devenu conscient",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            9,
+            15,
+            16,
+            17,
+            19
+          ],
+          "teaching": "Un corps d'immortalité se forme lorsque conscience, corps et œuvre s'associent réellement au monde divin.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-082",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 82,
+          "psalmTitle": "L’homme ne garde avec lui que ce qui est devenu conscient",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            9,
+            15,
+            16,
+            17,
+            19
+          ],
+          "teaching": "Un corps d'immortalité se forme lorsque conscience, corps et œuvre s'associent réellement au monde divin.",
           "score": 3
         }
       ]
@@ -13514,8 +14231,8 @@
     {
       "id": "discernement",
       "label": "Discernement",
-      "score": 44,
-      "occurrenceCount": 17,
+      "score": 46,
+      "occurrenceCount": 18,
       "centralPsalmCount": 10,
       "archangels": [
         {
@@ -13525,8 +14242,8 @@
         },
         {
           "id": "raphael",
-          "score": 15,
-          "occurrenceCount": 6
+          "score": 17,
+          "occurrenceCount": 7
         },
         {
           "id": "gabriel",
@@ -14113,6 +14830,28 @@
           ],
           "teaching": "Le discernement sépare le savoir vivant de l'accumulation, des théories abstraites et de l'illusion spirituelle.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-090",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 90,
+          "psalmTitle": "Lorsque l’homme pense, il crée son ciel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            23,
+            26
+          ],
+          "teaching": "L'homme doit connaître les pensées qu'il laisse entrer dans son ciel et voir les êtres et influences cachés derrière les apparences.",
+          "score": 2
         }
       ]
     },
@@ -14502,6 +15241,64 @@
       ]
     },
     {
+      "id": "don-de-soi",
+      "label": "Don de soi",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-098",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 98,
+          "psalmTitle": "Le P ère est généreux, I l est la source de toute générosité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            7,
+            10,
+            11,
+            14,
+            17
+          ],
+          "teaching": "Le service du divin demande une offrande intérieure réelle, vécue dans l'impersonnalité et non dans la recherche de reconnaissance.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-098",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 98,
+          "psalmTitle": "Le P ère est généreux, I l est la source de toute générosité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            7,
+            10,
+            11,
+            14,
+            17
+          ],
+          "teaching": "Le service du divin demande une offrande intérieure réelle, vécue dans l'impersonnalité et non dans la recherche de reconnaissance.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "dons-divins",
       "label": "Dons divins",
       "score": 3,
@@ -14748,6 +15545,64 @@
       ]
     },
     {
+      "id": "dualite",
+      "label": "Dualité",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-092",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 92,
+          "psalmTitle": "Le côté négatif n ’a que la force que vous lui donnez",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            7,
+            12,
+            21
+          ],
+          "teaching": "La souffrance vient de la contradiction entre ce que l'homme pense, affirme et accomplit ; la sagesse cherche une vie unifiée plutôt qu'un balancement permanent entre deux pôles.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-092",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 92,
+          "psalmTitle": "Le côté négatif n ’a que la force que vous lui donnez",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            7,
+            12,
+            21
+          ],
+          "teaching": "La souffrance vient de la contradiction entre ce que l'homme pense, affirme et accomplit ; la sagesse cherche une vie unifiée plutôt qu'un balancement permanent entre deux pôles.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "desir",
       "label": "Désir",
       "score": 3,
@@ -14806,10 +15661,15 @@
     {
       "id": "detachement",
       "label": "Détachement",
-      "score": 2,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 0,
+      "score": 7,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 1,
       "archangels": [
+        {
+          "id": "raphael",
+          "score": 5,
+          "occurrenceCount": 2
+        },
         {
           "id": "ouriel",
           "score": 2,
@@ -14817,6 +15677,26 @@
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-15-psalm-099",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 99,
+          "psalmTitle": "Ne porte avec toi que ce qui est essentiel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6,
+            7,
+            9
+          ],
+          "teaching": "La vie devient lourde lorsque l'homme transporte pensées, croyances, souvenirs et préoccupations inutiles ; il doit apprendre à ne garder que l'essentiel.",
+          "score": 3
+        },
         {
           "recordId": "book-08-psalm-046",
           "bookNumber": 8,
@@ -14836,9 +15716,48 @@
           ],
           "teaching": "Créer un espace associé au monde divin permet d’utiliser le monde mortel sans s’y faire capturer.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-091",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 91,
+          "psalmTitle": "Apprenez à changer de monde pour respirer",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            10,
+            11,
+            12
+          ],
+          "teaching": "La peur de perdre ses acquisitions enferme ; le voyage intérieur demande le courage de desserrer les attaches mortelles pour créer des liens dans plusieurs mondes.",
+          "score": 2
         }
       ],
       "occurrences": [
+        {
+          "recordId": "book-15-psalm-099",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 99,
+          "psalmTitle": "Ne porte avec toi que ce qui est essentiel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6,
+            7,
+            9
+          ],
+          "teaching": "La vie devient lourde lorsque l'homme transporte pensées, croyances, souvenirs et préoccupations inutiles ; il doit apprendre à ne garder que l'essentiel.",
+          "score": 3
+        },
         {
           "recordId": "book-08-psalm-046",
           "bookNumber": 8,
@@ -14857,6 +15776,25 @@
             13
           ],
           "teaching": "Créer un espace associé au monde divin permet d’utiliser le monde mortel sans s’y faire capturer.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-091",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 91,
+          "psalmTitle": "Apprenez à changer de monde pour respirer",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            10,
+            11,
+            12
+          ],
+          "teaching": "La peur de perdre ses acquisitions enferme ; le voyage intérieur demande le courage de desserrer les attaches mortelles pour créer des liens dans plusieurs mondes.",
           "score": 2
         }
       ]
@@ -16507,6 +17445,60 @@
           ],
           "teaching": "La première flamme symbolise l'envoyé, premier-né qui transmet le feu ; ceux qui l'accueillent deviennent à leur tour porteurs et transmetteurs.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "escargot",
+      "label": "Escargot",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-099",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 99,
+          "psalmTitle": "Ne porte avec toi que ce qui est essentiel",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            6
+          ],
+          "teaching": "L'escargot sert de modèle paradoxal : il porte sa maison mais seulement ce qui lui est nécessaire, ce qui lui conserve autonomie et liberté.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-099",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 99,
+          "psalmTitle": "Ne porte avec toi que ce qui est essentiel",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            6
+          ],
+          "teaching": "L'escargot sert de modèle paradoxal : il porte sa maison mais seulement ce qui lui est nécessaire, ce qui lui conserve autonomie et liberté.",
+          "score": 2
         }
       ]
     },
@@ -18199,8 +19191,8 @@
     {
       "id": "fidelite",
       "label": "Fidélité",
-      "score": 25,
-      "occurrenceCount": 10,
+      "score": 27,
+      "occurrenceCount": 11,
       "centralPsalmCount": 5,
       "archangels": [
         {
@@ -18220,8 +19212,8 @@
         },
         {
           "id": "raphael",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 5,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -18443,6 +19435,25 @@
           ],
           "teaching": "Seuls stabilité, clarté, ardeur et fidélité permettent de traverser les changements de cycle sans rester prisonnier de l'illusion.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-076",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 76,
+          "psalmTitle": "Sortez des illusions, soyez réalistes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            13,
+            15,
+            17
+          ],
+          "teaching": "Être fidèle signifie mettre en pratique l'idée portée et maintenir une cohérence entre tête, cœur et mains.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -18663,6 +19674,25 @@
             18
           ],
           "teaching": "Seuls stabilité, clarté, ardeur et fidélité permettent de traverser les changements de cycle sans rester prisonnier de l'illusion.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-076",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 76,
+          "psalmTitle": "Sortez des illusions, soyez réalistes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            13,
+            15,
+            17
+          ],
+          "teaching": "Être fidèle signifie mettre en pratique l'idée portée et maintenir une cohérence entre tête, cœur et mains.",
           "score": 2
         }
       ]
@@ -19185,19 +20215,19 @@
     {
       "id": "fleur",
       "label": "Fleur",
-      "score": 8,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 2,
+      "score": 11,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 3,
       "archangels": [
+        {
+          "id": "raphael",
+          "score": 6,
+          "occurrenceCount": 2
+        },
         {
           "id": "gabriel",
           "score": 5,
           "occurrenceCount": 2
-        },
-        {
-          "id": "raphael",
-          "score": 3,
-          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -19245,6 +20275,23 @@
             12
           ],
           "teaching": "La fleur naturelle est un modèle d’authenticité : enracinée, tournée vers le soleil, elle transforme ce qu’elle reçoit en couleur, parfum et nourriture pour plusieurs mondes.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-101",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 101,
+          "psalmTitle": "La perfection pour l’homme, c ’est d ’être une fleur",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            5,
+            6,
+            10
+          ],
+          "teaching": "La fleur devient le modèle de la perfection humaine : une forme où monde divin, Tradition et peuple de la Lumière peuvent s'organiser et fleurir.",
           "score": 3
         },
         {
@@ -19312,6 +20359,23 @@
             12
           ],
           "teaching": "La fleur naturelle est un modèle d’authenticité : enracinée, tournée vers le soleil, elle transforme ce qu’elle reçoit en couleur, parfum et nourriture pour plusieurs mondes.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-101",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 101,
+          "psalmTitle": "La perfection pour l’homme, c ’est d ’être une fleur",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            5,
+            6,
+            10
+          ],
+          "teaching": "La fleur devient le modèle de la perfection humaine : une forme où monde divin, Tradition et peuple de la Lumière peuvent s'organiser et fleurir.",
           "score": 3
         },
         {
@@ -19502,6 +20566,122 @@
       ]
     },
     {
+      "id": "forme-et-essence",
+      "label": "Forme et essence",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-088",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 88,
+          "psalmTitle": "Si vous vous arrêtez aux formes extérieures, l’invisible demeurera inexistant",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            8,
+            10,
+            12,
+            13
+          ],
+          "teaching": "Même une Tradition vivante peut devenir une forme endormissante si l'homme cesse de remonter vers l'intelligence et l'essence qui l'animent.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-088",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 88,
+          "psalmTitle": "Si vous vous arrêtez aux formes extérieures, l’invisible demeurera inexistant",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            8,
+            10,
+            12,
+            13
+          ],
+          "teaching": "Même une Tradition vivante peut devenir une forme endormissante si l'homme cesse de remonter vers l'intelligence et l'essence qui l'animent.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "foret",
+      "label": "Forêt",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-084",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 84,
+          "psalmTitle": "Apprends à te rendre dans les endroits qui te guérissent",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "teaching": "La forêt est décrite comme un milieu thérapeutique où lumière, arbres, vent, air et oiseaux peuvent alléger et régénérer l'homme.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-084",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 84,
+          "psalmTitle": "Apprends à te rendre dans les endroits qui te guérissent",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "teaching": "La forêt est décrite comme un milieu thérapeutique où lumière, arbres, vent, air et oiseaux peuvent alléger et régénérer l'homme.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "fouine",
       "label": "Fouine",
       "score": 3,
@@ -19676,14 +20856,19 @@
     {
       "id": "fraternite",
       "label": "Fraternité",
-      "score": 5,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 1,
+      "score": 8,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "michael",
           "score": 5,
           "occurrenceCount": 2
+        },
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -19704,6 +20889,28 @@
             15
           ],
           "teaching": "La relation aux frères et sœurs est un critère concret de la relation au monde divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-089",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 89,
+          "psalmTitle": "Ne vous séparez pas, unissez -vous",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            17,
+            18,
+            29,
+            30
+          ],
+          "teaching": "Le comportement sectaire et la séparation contredisent la structure même de la vie ; la fraternité cherche le terrain d'entente sans effacer les différences.",
           "score": 3
         },
         {
@@ -19744,6 +20951,28 @@
             15
           ],
           "teaching": "La relation aux frères et sœurs est un critère concret de la relation au monde divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-089",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 89,
+          "psalmTitle": "Ne vous séparez pas, unissez -vous",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            17,
+            18,
+            29,
+            30
+          ],
+          "teaching": "Le comportement sectaire et la séparation contredisent la structure même de la vie ; la fraternité cherche le terrain d'entente sans effacer les différences.",
           "score": 3
         },
         {
@@ -20532,6 +21761,60 @@
       ]
     },
     {
+      "id": "grandeur-d-ame",
+      "label": "Grandeur d’âme",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-079",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 79,
+          "psalmTitle": "Fais naître en toi une grandeur d ’âme capable de conquérir le ciel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            15
+          ],
+          "teaching": "Entrer dans un monde supérieur suppose de développer en soi une vie intérieure et une grandeur d'âme capables de lui correspondre.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-079",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 79,
+          "psalmTitle": "Fais naître en toi une grandeur d ’âme capable de conquérir le ciel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            15
+          ],
+          "teaching": "Entrer dans un monde supérieur suppose de développer en soi une vie intérieure et une grandeur d'âme capables de lui correspondre.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "gratitude",
       "label": "Gratitude",
       "score": 7,
@@ -20662,9 +21945,9 @@
     {
       "id": "guerison",
       "label": "Guérison",
-      "score": 23,
-      "occurrenceCount": 9,
-      "centralPsalmCount": 5,
+      "score": 26,
+      "occurrenceCount": 10,
+      "centralPsalmCount": 6,
       "archangels": [
         {
           "id": "gabriel",
@@ -20673,8 +21956,8 @@
         },
         {
           "id": "raphael",
-          "score": 7,
-          "occurrenceCount": 3
+          "score": 10,
+          "occurrenceCount": 4
         },
         {
           "id": "ouriel",
@@ -20792,6 +22075,27 @@
             28
           ],
           "teaching": "La vocation thérapeutique consiste à guérir les chemins de relation en les reconduisant vers leurs principes supérieurs.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-084",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 84,
+          "psalmTitle": "Apprends à te rendre dans les endroits qui te guérissent",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            6,
+            8,
+            21,
+            22,
+            23
+          ],
+          "teaching": "La guérison se cultive par les pensées, les sentiments, les lieux et les relations que l'on choisit consciemment de fréquenter.",
           "score": 3
         },
         {
@@ -20963,6 +22267,27 @@
             28
           ],
           "teaching": "La vocation thérapeutique consiste à guérir les chemins de relation en les reconduisant vers leurs principes supérieurs.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-084",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 84,
+          "psalmTitle": "Apprends à te rendre dans les endroits qui te guérissent",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            6,
+            8,
+            21,
+            22,
+            23
+          ],
+          "teaching": "La guérison se cultive par les pensées, les sentiments, les lieux et les relations que l'on choisit consciemment de fréquenter.",
           "score": 3
         },
         {
@@ -21137,14 +22462,19 @@
     {
       "id": "generosite",
       "label": "Générosité",
-      "score": 9,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 3,
+      "score": 12,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 4,
       "archangels": [
         {
           "id": "gabriel",
           "score": 9,
           "occurrenceCount": 3
+        },
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -21205,6 +22535,31 @@
           ],
           "teaching": "La générosité n’est pas possession personnelle d’un bien : elle doit circuler comme une qualité vivante reliée au monde supérieur.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-098",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 98,
+          "psalmTitle": "Le P ère est généreux, I l est la source de toute générosité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            10,
+            11,
+            16,
+            17
+          ],
+          "teaching": "La générosité véritable est un don désintéressé de soi et de ses forces au monde supérieur plutôt qu'une transaction destinée à obtenir un retour.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -21264,6 +22619,31 @@
             3
           ],
           "teaching": "La générosité n’est pas possession personnelle d’un bien : elle doit circuler comme une qualité vivante reliée au monde supérieur.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-098",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 98,
+          "psalmTitle": "Le P ère est généreux, I l est la source de toute générosité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            10,
+            11,
+            16,
+            17
+          ],
+          "teaching": "La générosité véritable est un don désintéressé de soi et de ses forces au monde supérieur plutôt qu'une transaction destinée à obtenir un retour.",
           "score": 3
         }
       ]
@@ -21337,14 +22717,19 @@
     {
       "id": "harmonie",
       "label": "Harmonie",
-      "score": 5,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 1,
+      "score": 8,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "gabriel",
           "score": 5,
           "occurrenceCount": 2
+        },
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -21362,6 +22747,32 @@
             4
           ],
           "teaching": "L'harmonie avec le cosmos conserve des forces, la sensibilité et la communion avec le divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-093",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 93,
+          "psalmTitle": "La Lumière ne vient que dans ce qui peut la refléter et l’accueillir",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17
+          ],
+          "teaching": "L'harmonie est la terre intérieure et collective qui donne à chacun sa juste place et rend possible l'accueil du monde divin.",
           "score": 3
         },
         {
@@ -21400,6 +22811,32 @@
             4
           ],
           "teaching": "L'harmonie avec le cosmos conserve des forces, la sensibilité et la communion avec le divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-093",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 93,
+          "psalmTitle": "La Lumière ne vient que dans ce qui peut la refléter et l’accueillir",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17
+          ],
+          "teaching": "L'harmonie est la terre intérieure et collective qui donne à chacun sa juste place et rend possible l'accueil du monde divin.",
           "score": 3
         },
         {
@@ -22598,9 +24035,9 @@
     {
       "id": "illusion",
       "label": "Illusion",
-      "score": 9,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 3,
+      "score": 12,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 4,
       "archangels": [
         {
           "id": "michael",
@@ -22609,6 +24046,11 @@
         },
         {
           "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -22669,6 +24111,25 @@
           ],
           "teaching": "Prendre ses propres conceptions du divin pour le monde divin enferme l'homme dans une projection spirituelle.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-076",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 76,
+          "psalmTitle": "Sortez des illusions, soyez réalistes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            10,
+            11,
+            18
+          ],
+          "teaching": "Imaginer un monde supérieur sans transformer sa vie produit des éthers d'illusion qui enferment au lieu de conduire vers le divin.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -22727,20 +24188,44 @@
           ],
           "teaching": "Prendre ses propres conceptions du divin pour le monde divin enferme l'homme dans une projection spirituelle.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-076",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 76,
+          "psalmTitle": "Sortez des illusions, soyez réalistes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            10,
+            11,
+            18
+          ],
+          "teaching": "Imaginer un monde supérieur sans transformer sa vie produit des éthers d'illusion qui enferment au lieu de conduire vers le divin.",
+          "score": 3
         }
       ]
     },
     {
       "id": "illusion-spirituelle",
       "label": "Illusion spirituelle",
-      "score": 5,
-      "occurrenceCount": 2,
+      "score": 7,
+      "occurrenceCount": 3,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "michael",
           "score": 5,
           "occurrenceCount": 2
+        },
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -22784,6 +24269,26 @@
           ],
           "teaching": "Projeter sur Dieu ou les animaux un réconfort conforme à ses attentes peut servir à éviter l’éveil et la confrontation avec la réalité de son propre monde.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-086",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 86,
+          "psalmTitle": "Ta vie est à l’image de ce que tu fais réellement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            18
+          ],
+          "teaching": "Rites, prières, fonctions et exercices peuvent devenir des supports d'illusion lorsqu'ils sont utilisés à la place d'une transformation vécue.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -22826,6 +24331,26 @@
             12
           ],
           "teaching": "Projeter sur Dieu ou les animaux un réconfort conforme à ses attentes peut servir à éviter l’éveil et la confrontation avec la réalité de son propre monde.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-086",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 86,
+          "psalmTitle": "Ta vie est à l’image de ce que tu fais réellement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            18
+          ],
+          "teaching": "Rites, prières, fonctions et exercices peuvent devenir des supports d'illusion lorsqu'ils sont utilisés à la place d'une transformation vécue.",
           "score": 2
         }
       ]
@@ -23537,10 +25062,15 @@
     {
       "id": "incarnation",
       "label": "Incarnation",
-      "score": 11,
-      "occurrenceCount": 4,
-      "centralPsalmCount": 3,
+      "score": 16,
+      "occurrenceCount": 6,
+      "centralPsalmCount": 4,
       "archangels": [
+        {
+          "id": "raphael",
+          "score": 7,
+          "occurrenceCount": 3
+        },
         {
           "id": "gabriel",
           "score": 3,
@@ -23554,11 +25084,6 @@
         {
           "id": "ouriel",
           "score": 3,
-          "occurrenceCount": 1
-        },
-        {
-          "id": "raphael",
-          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -23622,6 +25147,30 @@
           "score": 3
         },
         {
+          "recordId": "book-15-psalm-086",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 86,
+          "psalmTitle": "Ta vie est à l’image de ce que tu fais réellement",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            7,
+            8,
+            10,
+            11,
+            12,
+            14,
+            16,
+            17,
+            23
+          ],
+          "teaching": "Une vertu ou une prière n'a de valeur que si elle devient acte de vérité, comportement et œuvre dans la réalité terrestre.",
+          "score": 3
+        },
+        {
           "recordId": "book-03-psalm-008",
           "bookNumber": 3,
           "bookTitle": "Respire avec les Anges",
@@ -23638,6 +25187,29 @@
             9
           ],
           "teaching": "L'enseignement devient vivant lorsqu'il prend corps dans les gestes, paroles, attitudes et créations de l'homme.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-100",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 100,
+          "psalmTitle": "Vivez ensemble dans les V illages E sséniens",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ],
+          "teaching": "Une idée lumineuse ne demeure que lorsqu'elle reçoit racine, force, comportement et corps dans la vie concrète.",
           "score": 2
         }
       ],
@@ -23701,6 +25273,30 @@
           "score": 3
         },
         {
+          "recordId": "book-15-psalm-086",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 86,
+          "psalmTitle": "Ta vie est à l’image de ce que tu fais réellement",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            7,
+            8,
+            10,
+            11,
+            12,
+            14,
+            16,
+            17,
+            23
+          ],
+          "teaching": "Une vertu ou une prière n'a de valeur que si elle devient acte de vérité, comportement et œuvre dans la réalité terrestre.",
+          "score": 3
+        },
+        {
           "recordId": "book-03-psalm-008",
           "bookNumber": 3,
           "bookTitle": "Respire avec les Anges",
@@ -23717,6 +25313,29 @@
             9
           ],
           "teaching": "L'enseignement devient vivant lorsqu'il prend corps dans les gestes, paroles, attitudes et créations de l'homme.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-100",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 100,
+          "psalmTitle": "Vivez ensemble dans les V illages E sséniens",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ],
+          "teaching": "Une idée lumineuse ne demeure que lorsqu'elle reçoit racine, force, comportement et corps dans la vie concrète.",
           "score": 2
         }
       ]
@@ -24857,6 +26476,68 @@
             30
           ],
           "teaching": "Le véritable intérêt de l’homme n’est pas la satisfaction de la nature mortelle mais la vie avec le monde divin et la participation à une œuvre qui dépasse le corps.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "invisible",
+      "label": "Invisible",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-088",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 88,
+          "psalmTitle": "Si vous vous arrêtez aux formes extérieures, l’invisible demeurera inexistant",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            8,
+            9,
+            10,
+            11,
+            13
+          ],
+          "teaching": "Derrière toute forme visible doit être recherchée l'essence invisible qui lui donne la vie et la relie à son origine.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-088",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 88,
+          "psalmTitle": "Si vous vous arrêtez aux formes extérieures, l’invisible demeurera inexistant",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            8,
+            9,
+            10,
+            11,
+            13
+          ],
+          "teaching": "Derrière toute forme visible doit être recherchée l'essence invisible qui lui donne la vie et la relie à son origine.",
           "score": 3
         }
       ]
@@ -26652,6 +28333,66 @@
       ]
     },
     {
+      "id": "lois-de-la-pensee",
+      "label": "Lois de la pensée",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-085",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 85,
+          "psalmTitle": "Lois et processus fondamentaux de la pensée",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Le psaume expose des cycles d'action attribués aux pensées, sentiments et nourritures et les présente comme des lois à étudier pour devenir créateur conscient.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-085",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 85,
+          "psalmTitle": "Lois et processus fondamentaux de la pensée",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Le psaume expose des cycles d'action attribués aux pensées, sentiments et nourritures et les présente comme des lois à étudier pour devenir créateur conscient.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "lois-divines",
       "label": "Lois divines",
       "score": 6,
@@ -27371,13 +29112,18 @@
     {
       "id": "legerete",
       "label": "Légèreté",
-      "score": 15,
-      "occurrenceCount": 5,
+      "score": 17,
+      "occurrenceCount": 6,
       "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "michael",
           "score": 6,
+          "occurrenceCount": 2
+        },
+        {
+          "id": "raphael",
+          "score": 5,
           "occurrenceCount": 2
         },
         {
@@ -27387,11 +29133,6 @@
         },
         {
           "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
-        },
-        {
-          "id": "raphael",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -27500,6 +29241,25 @@
           ],
           "teaching": "L'élévation exige une transformation réelle de la structure intérieure : pensées, sentiments, nourriture et destinée doivent cesser d'alourdir l'être.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-099",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 99,
+          "psalmTitle": "Ne porte avec toi que ce qui est essentiel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Les mystères de l'esprit demandent une disponibilité rapide que l'accumulation intérieure empêche ; la légèreté rend l'action et l'œuvre possibles.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -27606,6 +29366,25 @@
           ],
           "teaching": "L'élévation exige une transformation réelle de la structure intérieure : pensées, sentiments, nourriture et destinée doivent cesser d'alourdir l'être.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-099",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 99,
+          "psalmTitle": "Ne porte avec toi que ce qui est essentiel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            6,
+            7,
+            8,
+            9
+          ],
+          "teaching": "Les mystères de l'esprit demandent une disponibilité rapide que l'accumulation intérieure empêche ; la légèreté rend l'action et l'œuvre possibles.",
+          "score": 2
         }
       ]
     },
@@ -28017,16 +29796,69 @@
       ]
     },
     {
+      "id": "marguerite",
+      "label": "Marguerite",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-101",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 101,
+          "psalmTitle": "La perfection pour l’homme, c ’est d ’être une fleur",
+          "importance": "important",
+          "directness": "contextual",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La marguerite est explicitement donnée comme fleur de Raphaël ; son centre, son cœur et sa couronne sont interprétés comme sanctuaire divin, tradition solaire et peuple de la Lumière.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-101",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 101,
+          "psalmTitle": "La perfection pour l’homme, c ’est d ’être une fleur",
+          "importance": "important",
+          "directness": "contextual",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La marguerite est explicitement donnée comme fleur de Raphaël ; son centre, son cœur et sa couronne sont interprétés comme sanctuaire divin, tradition solaire et peuple de la Lumière.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "maitre",
       "label": "Maître",
-      "score": 17,
-      "occurrenceCount": 6,
-      "centralPsalmCount": 5,
+      "score": 20,
+      "occurrenceCount": 7,
+      "centralPsalmCount": 6,
       "archangels": [
         {
           "id": "gabriel",
           "score": 8,
           "occurrenceCount": 3
+        },
+        {
+          "id": "raphael",
+          "score": 6,
+          "occurrenceCount": 2
         },
         {
           "id": "michael",
@@ -28035,11 +29867,6 @@
         },
         {
           "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
-        },
-        {
-          "id": "raphael",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -28159,6 +29986,24 @@
             17
           ],
           "teaching": "Le maître est présenté comme le foyer incarné autour duquel une communauté peut recevoir, éprouver et consacrer les influences spirituelles.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-080",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 80,
+          "psalmTitle": "Prenez soin de votre maître, il vous unit dans le bien",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            13,
+            14
+          ],
+          "teaching": "Le maître est présenté comme un porteur de la Lumière dont la communauté doit prendre soin afin de donner des conditions à l'intelligence supérieure.",
           "score": 3
         },
         {
@@ -28292,6 +30137,24 @@
             17
           ],
           "teaching": "Le maître est présenté comme le foyer incarné autour duquel une communauté peut recevoir, éprouver et consacrer les influences spirituelles.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-080",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 80,
+          "psalmTitle": "Prenez soin de votre maître, il vous unit dans le bien",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            13,
+            14
+          ],
+          "teaching": "Le maître est présenté comme un porteur de la Lumière dont la communauté doit prendre soin afin de donner des conditions à l'intelligence supérieure.",
           "score": 3
         },
         {
@@ -29752,6 +31615,80 @@
       ]
     },
     {
+      "id": "monde-sombre",
+      "label": "Monde sombre",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-092",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 92,
+          "psalmTitle": "Le côté négatif n ’a que la force que vous lui donnez",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            7,
+            8,
+            9,
+            11,
+            13,
+            16,
+            17,
+            18,
+            20,
+            26,
+            29,
+            30,
+            31
+          ],
+          "teaching": "Le négatif reçoit une puissance accrue lorsque l'homme lui donne attention, affinité et force de vie ; il doit être discerné puis laissé à sa juste place.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-092",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 92,
+          "psalmTitle": "Le côté négatif n ’a que la force que vous lui donnez",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            7,
+            8,
+            9,
+            11,
+            13,
+            16,
+            17,
+            18,
+            20,
+            26,
+            29,
+            30,
+            31
+          ],
+          "teaching": "Le négatif reçoit une puissance accrue lorsque l'homme lui donne attention, affinité et force de vie ; il doit être discerné puis laissé à sa juste place.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "monde-subtil",
       "label": "Monde subtil",
       "score": 2,
@@ -29797,6 +31734,66 @@
             8
           ],
           "teaching": "La préparation active le monde subtil et met l'homme en relation avec des intelligences et forces qui soutiennent l'œuvre.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "monde-vegetal",
+      "label": "Monde végétal",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-095",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 95,
+          "psalmTitle": "Apprenez à être prêts à recevoir et, pour cela, façonnez votre être",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            12
+          ],
+          "teaching": "Le végétal enseigne enracinement, droiture, élévation, beauté et capacité à recevoir puis transmettre les fruits de la vie.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-095",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 95,
+          "psalmTitle": "Apprenez à être prêts à recevoir et, pour cela, façonnez votre être",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            12
+          ],
+          "teaching": "Le végétal enseigne enracinement, droiture, élévation, beauté et capacité à recevoir puis transmettre les fruits de la vie.",
           "score": 2
         }
       ]
@@ -31352,6 +33349,100 @@
       ]
     },
     {
+      "id": "memoire",
+      "label": "Mémoire",
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 6,
+          "occurrenceCount": 2
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-078",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 78,
+          "psalmTitle": "La pierre verte, gardienne de la mémoire",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            10,
+            13
+          ],
+          "teaching": "La mémoire d'éternité doit être gardée dans un lieu intérieur inviolable afin de devenir un pont vivant entre les mondes.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-094",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 94,
+          "psalmTitle": "Retrouvez votre mémoire",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6,
+            7,
+            11
+          ],
+          "teaching": "L'homme est décrit comme ayant perdu la mémoire de sa grandeur et de ses existences plus vastes ; la retrouver suppose une relation respectueuse avec les mondes supérieurs.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-078",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 78,
+          "psalmTitle": "La pierre verte, gardienne de la mémoire",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            10,
+            13
+          ],
+          "teaching": "La mémoire d'éternité doit être gardée dans un lieu intérieur inviolable afin de devenir un pont vivant entre les mondes.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-094",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 94,
+          "psalmTitle": "Retrouvez votre mémoire",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6,
+            7,
+            11
+          ],
+          "teaching": "L'homme est décrit comme ayant perdu la mémoire de sa grandeur et de ses existences plus vastes ; la retrouver suppose une relation respectueuse avec les mondes supérieurs.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "memoire-ancestrale",
       "label": "Mémoire ancestrale",
       "score": 3,
@@ -31466,8 +33557,8 @@
     {
       "id": "nation-essenienne",
       "label": "Nation Essénienne",
-      "score": 40,
-      "occurrenceCount": 14,
+      "score": 42,
+      "occurrenceCount": 15,
       "centralPsalmCount": 12,
       "archangels": [
         {
@@ -31484,6 +33575,11 @@
           "id": "gabriel",
           "score": 11,
           "occurrenceCount": 4
+        },
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -32089,14 +34185,40 @@
           ],
           "teaching": "La Nation est proposée comme terre fertile pour poser un premier pas et faire germer des œuvres de Lumière dans une continuité historique.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-087",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 87,
+          "psalmTitle": "Les 3 symboles sacrés des E sséniens",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17,
+            19,
+            20,
+            21,
+            22
+          ],
+          "teaching": "La Nation Essénienne est appelée à devenir une culture et une forme de vie responsable, harmonieuse et concrète plutôt qu'un simple nom ou une apparence.",
+          "score": 2
         }
       ]
     },
     {
       "id": "nature",
       "label": "Nature",
-      "score": 29,
-      "occurrenceCount": 11,
+      "score": 31,
+      "occurrenceCount": 12,
       "centralPsalmCount": 7,
       "archangels": [
         {
@@ -32105,12 +34227,12 @@
           "occurrenceCount": 5
         },
         {
-          "id": "ouriel",
-          "score": 6,
-          "occurrenceCount": 2
+          "id": "raphael",
+          "score": 8,
+          "occurrenceCount": 3
         },
         {
-          "id": "raphael",
+          "id": "ouriel",
           "score": 6,
           "occurrenceCount": 2
         },
@@ -32336,6 +34458,22 @@
           ],
           "teaching": "La nature révèle la Mère et devient un langage vivant quand elle est contemplée sans réduction intellectuelle ni désir de possession.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-079",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 79,
+          "psalmTitle": "Fais naître en toi une grandeur d ’âme capable de conquérir le ciel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            17,
+            18
+          ],
+          "teaching": "Arbre, fleur et pierre transmettent des vertus concrètes — énergie créatrice, beauté, subtilité, stabilité et fidélité — qui ouvrent un lien avec les Anges.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -32553,6 +34691,22 @@
             10
           ],
           "teaching": "La nature révèle la Mère et devient un langage vivant quand elle est contemplée sans réduction intellectuelle ni désir de possession.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-079",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 79,
+          "psalmTitle": "Fais naître en toi une grandeur d ’âme capable de conquérir le ciel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            17,
+            18
+          ],
+          "teaching": "Arbre, fleur et pierre transmettent des vertus concrètes — énergie créatrice, beauté, subtilité, stabilité et fidélité — qui ouvrent un lien avec les Anges.",
           "score": 2
         }
       ]
@@ -33429,8 +35583,8 @@
     {
       "id": "oiseau",
       "label": "Oiseau",
-      "score": 6,
-      "occurrenceCount": 2,
+      "score": 8,
+      "occurrenceCount": 3,
       "centralPsalmCount": 2,
       "archangels": [
         {
@@ -33441,6 +35595,11 @@
         {
           "id": "ouriel",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
+          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -33480,6 +35639,21 @@
           ],
           "teaching": "L'oiseau enseigne que l'envol devient possible lorsque toutes les conditions corporelles et intérieures sont organisées vers le but.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-083",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 83,
+          "psalmTitle": "L’oiseau du ciel aime l’arbre parce qu ’il peut le porter",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "L'oiseau symbolise la haute pensée ou la Lumière qui ne se pose que sur un support vivant, stable et non blessant.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -33518,6 +35692,21 @@
           ],
           "teaching": "L'oiseau enseigne que l'envol devient possible lorsque toutes les conditions corporelles et intérieures sont organisées vers le but.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-083",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 83,
+          "psalmTitle": "L’oiseau du ciel aime l’arbre parce qu ’il peut le porter",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "L'oiseau symbolise la haute pensée ou la Lumière qui ne se pose que sur un support vivant, stable et non blessant.",
+          "score": 2
         }
       ]
     },
@@ -33620,6 +35809,56 @@
           ],
           "teaching": "L’oiseau, le poisson et le papillon figurent des possibilités de mouvement et de sensibilité que l’homme ferme lorsqu’il réduit son identité au seul corps physique opaque.",
           "score": 1
+        }
+      ]
+    },
+    {
+      "id": "oiseaux-migrateurs",
+      "label": "Oiseaux migrateurs",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-091",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 91,
+          "psalmTitle": "Apprenez à changer de monde pour respirer",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            3,
+            8
+          ],
+          "teaching": "Les oiseaux migrateurs enseignent à quitter un milieu devenu impropre et à chercher les conditions qui permettent à la vie et à la lignée de continuer.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-091",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 91,
+          "psalmTitle": "Apprenez à changer de monde pour respirer",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            3,
+            8
+          ],
+          "teaching": "Les oiseaux migrateurs enseignent à quitter un milieu devenu impropre et à chercher les conditions qui permettent à la vie et à la lignée de continuer.",
+          "score": 2
         }
       ]
     },
@@ -34332,6 +36571,62 @@
       ]
     },
     {
+      "id": "panier",
+      "label": "Panier",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-095",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 95,
+          "psalmTitle": "Apprenez à être prêts à recevoir et, pour cela, façonnez votre être",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            9,
+            10
+          ],
+          "teaching": "Le panier symbolise la structure intérieure tissée avec des éléments purs, suffisamment stable pour contenir ce que le monde supérieur transmet.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-095",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 95,
+          "psalmTitle": "Apprenez à être prêts à recevoir et, pour cela, façonnez votre être",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            9,
+            10
+          ],
+          "teaching": "Le panier symbolise la structure intérieure tissée avec des éléments purs, suffisamment stable pour contenir ce que le monde supérieur transmet.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "papillon",
       "label": "Papillon",
       "score": 6,
@@ -34810,6 +37105,64 @@
       ]
     },
     {
+      "id": "parole-sacree",
+      "label": "Parole sacrée",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-098",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 98,
+          "psalmTitle": "Le P ère est généreux, I l est la source de toute générosité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            12,
+            13,
+            14,
+            16
+          ],
+          "teaching": "Prononcer le nom d'une vertu ou d'un Ange engage à porter sa réalité ; une parole sacrée séparée de la vie devient fausse.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-098",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 98,
+          "psalmTitle": "Le P ère est généreux, I l est la source de toute générosité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            12,
+            13,
+            14,
+            16
+          ],
+          "teaching": "Prononcer le nom d'une vertu ou d'un Ange engage à porter sa réalité ; une parole sacrée séparée de la vie devient fausse.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "parole-therapeutique",
       "label": "Parole thérapeutique",
       "score": 2,
@@ -35141,19 +37494,19 @@
     {
       "id": "pensee",
       "label": "Pensée",
-      "score": 16,
-      "occurrenceCount": 6,
-      "centralPsalmCount": 4,
+      "score": 22,
+      "occurrenceCount": 8,
+      "centralPsalmCount": 6,
       "archangels": [
+        {
+          "id": "raphael",
+          "score": 12,
+          "occurrenceCount": 4
+        },
         {
           "id": "michael",
           "score": 10,
           "occurrenceCount": 4
-        },
-        {
-          "id": "raphael",
-          "score": 6,
-          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -35256,6 +37609,57 @@
             21
           ],
           "teaching": "La pensée est un organe vivant et directeur qui doit être nettoyé des influences, intérêts et concepts mortels pour devenir un instrument de compréhension supérieure.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-085",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 85,
+          "psalmTitle": "Lois et processus fondamentaux de la pensée",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            9,
+            10
+          ],
+          "teaching": "Une pensée reliée à un monde devient une influence agissante qui structure ensuite sentiments, corps, environnement et destinée.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-090",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 90,
+          "psalmTitle": "Lorsque l’homme pense, il crée son ciel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            12,
+            13,
+            15,
+            18,
+            19,
+            27,
+            32,
+            33
+          ],
+          "teaching": "La pensée est décrite comme un monde vivant et créateur qui forme autour de l'homme un ciel, appelle des influences et construit un chemin de destinée.",
           "score": 3
         },
         {
@@ -35390,6 +37794,57 @@
             21
           ],
           "teaching": "La pensée est un organe vivant et directeur qui doit être nettoyé des influences, intérêts et concepts mortels pour devenir un instrument de compréhension supérieure.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-085",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 85,
+          "psalmTitle": "Lois et processus fondamentaux de la pensée",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            9,
+            10
+          ],
+          "teaching": "Une pensée reliée à un monde devient une influence agissante qui structure ensuite sentiments, corps, environnement et destinée.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-090",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 90,
+          "psalmTitle": "Lorsque l’homme pense, il crée son ciel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            12,
+            13,
+            15,
+            18,
+            19,
+            27,
+            32,
+            33
+          ],
+          "teaching": "La pensée est décrite comme un monde vivant et créateur qui forme autour de l'homme un ciel, appelle des influences et construit un chemin de destinée.",
           "score": 3
         },
         {
@@ -36739,14 +39194,14 @@
     {
       "id": "pierre-verte",
       "label": "Pierre verte",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "raphael",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 6,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -36764,6 +39219,28 @@
           ],
           "teaching": "La pierre verte symbolise la présence de l'Ange et de l'Archange et sert de support à une alliance incarnée.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-078",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 78,
+          "psalmTitle": "La pierre verte, gardienne de la mémoire",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            7,
+            9,
+            10,
+            13,
+            14
+          ],
+          "teaching": "La pierre verte est présentée comme un être capable de conserver intacte la mémoire du divin et sert de modèle à l'homme pour préserver sa lumière intérieure.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -36780,6 +39257,28 @@
             1
           ],
           "teaching": "La pierre verte symbolise la présence de l'Ange et de l'Archange et sert de support à une alliance incarnée.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-078",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 78,
+          "psalmTitle": "La pierre verte, gardienne de la mémoire",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            7,
+            9,
+            10,
+            13,
+            14
+          ],
+          "teaching": "La pierre verte est présentée comme un être capable de conserver intacte la mémoire du divin et sert de modèle à l'homme pour préserver sa lumière intérieure.",
           "score": 3
         }
       ]
@@ -38552,13 +41051,18 @@
     {
       "id": "protection-du-divin",
       "label": "Protection du divin",
-      "score": 3,
-      "occurrenceCount": 1,
+      "score": 5,
+      "occurrenceCount": 2,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "michael",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
+          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -38601,6 +41105,26 @@
           ],
           "teaching": "L’homme doit protéger ce qui est beau, vrai et éternel afin que la bonté divine ne soit pas détournée vers des œuvres qui renforcent la mort.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-078",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 78,
+          "psalmTitle": "La pierre verte, gardienne de la mémoire",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            12,
+            13
+          ],
+          "teaching": "Le trésor intérieur ne doit pas être dilapidé dans l'éphémère ni exposé à ce qui le dénature ; il doit être protégé pour servir la Lumière.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -38642,6 +41166,26 @@
           ],
           "teaching": "L’homme doit protéger ce qui est beau, vrai et éternel afin que la bonté divine ne soit pas détournée vers des œuvres qui renforcent la mort.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-078",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 78,
+          "psalmTitle": "La pierre verte, gardienne de la mémoire",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            12,
+            13
+          ],
+          "teaching": "Le trésor intérieur ne doit pas être dilapidé dans l'éphémère ni exposé à ce qui le dénature ; il doit être protégé pour servir la Lumière.",
+          "score": 2
         }
       ]
     },
@@ -39852,13 +42396,18 @@
     {
       "id": "pere-et-mere",
       "label": "Père et Mère",
-      "score": 3,
-      "occurrenceCount": 1,
+      "score": 5,
+      "occurrenceCount": 2,
       "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "ouriel",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
+          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -39878,6 +42427,26 @@
           ],
           "teaching": "Père et Mère sont les deux principes fondamentaux que l'homme doit reconnaître dans sa propre expérience.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-087",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 87,
+          "psalmTitle": "Les 3 symboles sacrés des E sséniens",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            18
+          ],
+          "teaching": "Les pieds relient à la Mère, les cheveux au Père, et la vie fraternelle doit harmoniser ces deux pôles dans la Tradition.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -39896,6 +42465,26 @@
           ],
           "teaching": "Père et Mère sont les deux principes fondamentaux que l'homme doit reconnaître dans sa propre expérience.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-087",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 87,
+          "psalmTitle": "Les 3 symboles sacrés des E sséniens",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            18
+          ],
+          "teaching": "Les pieds relient à la Mère, les cheveux au Père, et la vie fraternelle doit harmoniser ces deux pôles dans la Tradition.",
+          "score": 2
         }
       ]
     },
@@ -41724,8 +44313,8 @@
     {
       "id": "responsabilite",
       "label": "Responsabilité",
-      "score": 28,
-      "occurrenceCount": 11,
+      "score": 30,
+      "occurrenceCount": 12,
       "centralPsalmCount": 6,
       "archangels": [
         {
@@ -41740,8 +44329,8 @@
         },
         {
           "id": "raphael",
-          "score": 6,
-          "occurrenceCount": 2
+          "score": 8,
+          "occurrenceCount": 3
         },
         {
           "id": "ouriel",
@@ -41964,6 +44553,23 @@
           ],
           "teaching": "Comprendre une vérité sur la nécessité du monde divin crée la responsabilité de la servir fidèlement et de lui donner un moyen concret de toucher la vie.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-085",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 85,
+          "psalmTitle": "Lois et processus fondamentaux de la pensée",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10
+          ],
+          "teaching": "Tout ce que l'homme fait ou laisse entrer agit sur sa vie ; prendre sa vie en mains exige donc une sélection consciente des nourritures intérieures et extérieures.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -42180,6 +44786,23 @@
             8
           ],
           "teaching": "Comprendre une vérité sur la nécessité du monde divin crée la responsabilité de la servir fidèlement et de lui donner un moyen concret de toucher la vie.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-085",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 85,
+          "psalmTitle": "Lois et processus fondamentaux de la pensée",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10
+          ],
+          "teaching": "Tout ce que l'homme fait ou laisse entrer agit sur sa vie ; prendre sa vie en mains exige donc une sélection consciente des nourritures intérieures et extérieures.",
           "score": 2
         }
       ]
@@ -42473,14 +45096,14 @@
     {
       "id": "ronde-des-archanges",
       "label": "Ronde des Archanges",
-      "score": 21,
-      "occurrenceCount": 8,
+      "score": 23,
+      "occurrenceCount": 9,
       "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "raphael",
-          "score": 8,
-          "occurrenceCount": 3
+          "score": 10,
+          "occurrenceCount": 4
         },
         {
           "id": "michael",
@@ -42670,6 +45293,26 @@
           ],
           "teaching": "La Ronde est présentée comme le chemin ouvert durant le cycle précédent pour maintenir le lien et la protection avec les mondes supérieurs.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-096",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 96,
+          "psalmTitle": "Parler de la Lumière, c ’est faire une œuvre de L umière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            9,
+            12,
+            14,
+            18
+          ],
+          "teaching": "La Ronde est présentée comme une œuvre concrète permettant l'union des règnes et la venue de la Lumière dans le monde humain.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -42843,6 +45486,26 @@
             9
           ],
           "teaching": "La Ronde est présentée comme le chemin ouvert durant le cycle précédent pour maintenir le lien et la protection avec les mondes supérieurs.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-096",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 96,
+          "psalmTitle": "Parler de la Lumière, c ’est faire une œuvre de L umière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            9,
+            12,
+            14,
+            18
+          ],
+          "teaching": "La Ronde est présentée comme une œuvre concrète permettant l'union des règnes et la venue de la Lumière dans le monde humain.",
           "score": 2
         }
       ]
@@ -43669,12 +46332,17 @@
     {
       "id": "realisme",
       "label": "Réalisme",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "gabriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -43697,6 +46365,28 @@
           ],
           "teaching": "Le réalisme unit terre et ciel sans projection idéaliste; même un guide a besoin de conditions, de travail et de collaborateurs pour accomplir sa mission.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-076",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 76,
+          "psalmTitle": "Sortez des illusions, soyez réalistes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            5,
+            8,
+            14,
+            15,
+            16
+          ],
+          "teaching": "Le monde divin ne doit pas être idéalisé comme une abstraction rassurante : la réalité de la relation se mesure dans la vie quotidienne, les actes et leurs conséquences.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -43717,18 +46407,45 @@
           ],
           "teaching": "Le réalisme unit terre et ciel sans projection idéaliste; même un guide a besoin de conditions, de travail et de collaborateurs pour accomplir sa mission.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-076",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 76,
+          "psalmTitle": "Sortez des illusions, soyez réalistes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            5,
+            8,
+            14,
+            15,
+            16
+          ],
+          "teaching": "Le monde divin ne doit pas être idéalisé comme une abstraction rassurante : la réalité de la relation se mesure dans la vie quotidienne, les actes et leurs conséquences.",
+          "score": 3
         }
       ]
     },
     {
       "id": "receptivite",
       "label": "Réceptivité",
-      "score": 11,
-      "occurrenceCount": 4,
-      "centralPsalmCount": 3,
+      "score": 17,
+      "occurrenceCount": 6,
+      "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "gabriel",
+          "score": 6,
+          "occurrenceCount": 2
+        },
+        {
+          "id": "raphael",
           "score": 6,
           "occurrenceCount": 2
         },
@@ -43804,6 +46521,50 @@
             9
           ],
           "teaching": "Recevoir un monde supérieur exige de ne pas remplir d’avance l’espace intérieur avec ses propres images, attentes et interprétations.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-093",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 93,
+          "psalmTitle": "La Lumière ne vient que dans ce qui peut la refléter et l’accueillir",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            10,
+            11,
+            13,
+            17
+          ],
+          "teaching": "La Lumière répond à l'appel mais ne peut être connue que si l'homme prépare une matière, une ouverture et un espace capables de la refléter.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-095",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 95,
+          "psalmTitle": "Apprenez à être prêts à recevoir et, pour cela, façonnez votre être",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "L'homme doit se façonner comme un réceptacle solide, droit et beau capable de recevoir les fruits du monde divin et d'en prendre soin.",
           "score": 3
         },
         {
@@ -43893,6 +46654,50 @@
           "score": 3
         },
         {
+          "recordId": "book-15-psalm-093",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 93,
+          "psalmTitle": "La Lumière ne vient que dans ce qui peut la refléter et l’accueillir",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            10,
+            11,
+            13,
+            17
+          ],
+          "teaching": "La Lumière répond à l'appel mais ne peut être connue que si l'homme prépare une matière, une ouverture et un espace capables de la refléter.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-095",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 95,
+          "psalmTitle": "Apprenez à être prêts à recevoir et, pour cela, façonnez votre être",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            9,
+            10,
+            11,
+            12
+          ],
+          "teaching": "L'homme doit se façonner comme un réceptacle solide, droit et beau capable de recevoir les fruits du monde divin et d'en prendre soin.",
+          "score": 3
+        },
+        {
           "recordId": "book-12-psalm-074",
           "bookNumber": 12,
           "bookTitle": "Les clés du bonheur",
@@ -43912,6 +46717,64 @@
             21
           ],
           "teaching": "Entendre exige pureté, ouverture, sens développés et capacité à recevoir autre chose que la confirmation de ses propres conceptions.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "reconciliation",
+      "label": "Réconciliation",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-093",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 93,
+          "psalmTitle": "La Lumière ne vient que dans ce qui peut la refléter et l’accueillir",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Le temple de l'harmonie se construit en invitant les êtres et les forces à la réconciliation, au respect et à une union ordonnée autour du meilleur.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-093",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 93,
+          "psalmTitle": "La Lumière ne vient que dans ce qui peut la refléter et l’accueillir",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Le temple de l'harmonie se construit en invitant les êtres et les forces à la réconciliation, au respect et à une union ordonnée autour du meilleur.",
           "score": 2
         }
       ]
@@ -44206,9 +47069,9 @@
     {
       "id": "sagesse",
       "label": "Sagesse",
-      "score": 10,
-      "occurrenceCount": 4,
-      "centralPsalmCount": 2,
+      "score": 13,
+      "occurrenceCount": 5,
+      "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "ouriel",
@@ -44217,8 +47080,8 @@
         },
         {
           "id": "raphael",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 6,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -44278,6 +47141,33 @@
             28
           ],
           "teaching": "La sagesse véritable n’est pas enfermée dans les mots humains : elle est participation à l’organisme vivant du Père et capacité d’unifier les êtres sans les réduire à l’homme.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-097",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 97,
+          "psalmTitle": "Les 3 clés de la sagesse",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            6,
+            7,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            18,
+            19
+          ],
+          "teaching": "La sagesse est le lien vivant qui regarde les mondes sans perdre son centre et permet de transmettre une lumière supérieure sans se faire absorber par un pôle.",
           "score": 3
         },
         {
@@ -44374,6 +47264,33 @@
             28
           ],
           "teaching": "La sagesse véritable n’est pas enfermée dans les mots humains : elle est participation à l’organisme vivant du Père et capacité d’unifier les êtres sans les réduire à l’homme.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-097",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 97,
+          "psalmTitle": "Les 3 clés de la sagesse",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            6,
+            7,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            18,
+            19
+          ],
+          "teaching": "La sagesse est le lien vivant qui regarde les mondes sans perdre son centre et permet de transmettre une lumière supérieure sans se faire absorber par un pôle.",
           "score": 3
         },
         {
@@ -45287,14 +48204,14 @@
     {
       "id": "sens-subtils",
       "label": "Sens subtils",
-      "score": 10,
-      "occurrenceCount": 4,
-      "centralPsalmCount": 2,
+      "score": 13,
+      "occurrenceCount": 5,
+      "centralPsalmCount": 3,
       "archangels": [
         {
           "id": "raphael",
-          "score": 5,
-          "occurrenceCount": 2
+          "score": 8,
+          "occurrenceCount": 3
         },
         {
           "id": "gabriel",
@@ -45348,6 +48265,25 @@
             29
           ],
           "teaching": "La plus grande part de l'être appartient aux dimensions subtiles; les sens supérieurs doivent être rendus conscients et orientés vers le monde divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-077",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 77,
+          "psalmTitle": "La vérité libère quand l’homme est éveillé",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            12,
+            16
+          ],
+          "teaching": "Les sens intérieurs permettent de communiquer avec les règnes et les mondes supérieurs et d'élargir l'existence au-delà du monde humain fermé.",
           "score": 3
         },
         {
@@ -45431,6 +48367,25 @@
             29
           ],
           "teaching": "La plus grande part de l'être appartient aux dimensions subtiles; les sens supérieurs doivent être rendus conscients et orientés vers le monde divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-077",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 77,
+          "psalmTitle": "La vérité libère quand l’homme est éveillé",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            12,
+            16
+          ],
+          "teaching": "Les sens intérieurs permettent de communiquer avec les règnes et les mondes supérieurs et d'élargir l'existence au-delà du monde humain fermé.",
           "score": 3
         },
         {
@@ -45977,6 +48932,72 @@
             9
           ],
           "teaching": "Être premier signifie être le serviteur le plus disponible pour la Lumière et non occuper une position de domination.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "service-de-la-lumiere",
+      "label": "Service de la Lumière",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-094",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 94,
+          "psalmTitle": "Retrouvez votre mémoire",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            18,
+            20,
+            21,
+            23,
+            24,
+            26,
+            27,
+            31
+          ],
+          "teaching": "Le retour des facultés dépend d'un déplacement des priorités : de la conquête du monde mortel vers une œuvre offerte au monde divin.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-094",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 94,
+          "psalmTitle": "Retrouvez votre mémoire",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            18,
+            20,
+            21,
+            23,
+            24,
+            26,
+            27,
+            31
+          ],
+          "teaching": "Le retour des facultés dépend d'un déplacement des priorités : de la conquête du monde mortel vers une œuvre offerte au monde divin.",
           "score": 2
         }
       ]
@@ -47874,8 +50895,8 @@
     {
       "id": "soutien-mutuel",
       "label": "Soutien mutuel",
-      "score": 23,
-      "occurrenceCount": 10,
+      "score": 27,
+      "occurrenceCount": 12,
       "centralPsalmCount": 3,
       "archangels": [
         {
@@ -47887,6 +50908,11 @@
           "id": "ouriel",
           "score": 9,
           "occurrenceCount": 4
+        },
+        {
+          "id": "raphael",
+          "score": 4,
+          "occurrenceCount": 2
         },
         {
           "id": "gabriel",
@@ -48097,6 +51123,43 @@
           ],
           "teaching": "L'œuvre étant collective, la faiblesse d'un membre appelle l'entraide plutôt que la compétition ou l'écrasement.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-080",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 80,
+          "psalmTitle": "Prenez soin de votre maître, il vous unit dans le bien",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            14,
+            16,
+            17
+          ],
+          "teaching": "Fraternité et solidarité consistent à donner à chacun une place où ses dons enrichissent l'ensemble plutôt qu'à entrer en compétition.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-096",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 96,
+          "psalmTitle": "Parler de la Lumière, c ’est faire une œuvre de L umière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            15,
+            16,
+            17,
+            18,
+            24
+          ],
+          "teaching": "L'entraide protège de l'illusion individuelle et donne aux hommes la force de réaliser ensemble les œuvres qu'ils ne pourraient porter seuls.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -48302,6 +51365,43 @@
           ],
           "teaching": "L'œuvre étant collective, la faiblesse d'un membre appelle l'entraide plutôt que la compétition ou l'écrasement.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-080",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 80,
+          "psalmTitle": "Prenez soin de votre maître, il vous unit dans le bien",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            14,
+            16,
+            17
+          ],
+          "teaching": "Fraternité et solidarité consistent à donner à chacun une place où ses dons enrichissent l'ensemble plutôt qu'à entrer en compétition.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-096",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 96,
+          "psalmTitle": "Parler de la Lumière, c ’est faire une œuvre de L umière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            15,
+            16,
+            17,
+            18,
+            24
+          ],
+          "teaching": "L'entraide protège de l'illusion individuelle et donne aux hommes la force de réaliser ensemble les œuvres qu'ils ne pourraient porter seuls.",
+          "score": 2
         }
       ]
     },
@@ -48372,14 +51472,19 @@
     {
       "id": "stabilite",
       "label": "Stabilité",
-      "score": 7,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 1,
+      "score": 10,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "ouriel",
           "score": 5,
           "occurrenceCount": 2
+        },
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
         },
         {
           "id": "michael",
@@ -48412,6 +51517,32 @@
             28
           ],
           "teaching": "La stabilité du corps et de la nature inférieure est la base permettant à une vie intérieure puissante de recevoir et manifester l'esprit divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-083",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 83,
+          "psalmTitle": "L’oiseau du ciel aime l’arbre parce qu ’il peut le porter",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            5,
+            6,
+            8,
+            9,
+            15,
+            16,
+            19,
+            22,
+            26,
+            29
+          ],
+          "teaching": "La stabilité est la condition pour recevoir, porter et conserver la Lumière sans que les humeurs ou le doute ne détruisent la relation.",
           "score": 3
         },
         {
@@ -48476,6 +51607,32 @@
             28
           ],
           "teaching": "La stabilité du corps et de la nature inférieure est la base permettant à une vie intérieure puissante de recevoir et manifester l'esprit divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-083",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 83,
+          "psalmTitle": "L’oiseau du ciel aime l’arbre parce qu ’il peut le porter",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            5,
+            6,
+            8,
+            9,
+            15,
+            16,
+            19,
+            22,
+            26,
+            29
+          ],
+          "teaching": "La stabilité est la condition pour recevoir, porter et conserver la Lumière sans que les humeurs ou le doute ne détruisent la relation.",
           "score": 3
         },
         {
@@ -48737,6 +51894,56 @@
       ]
     },
     {
+      "id": "sylphes",
+      "label": "Sylphes",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-084",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 84,
+          "psalmTitle": "Apprends à te rendre dans les endroits qui te guérissent",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            22
+          ],
+          "teaching": "Les sylphes sont associés aux éthers purs de l'air dans la cime des arbres et à une force de nettoyage, régénération et légèreté.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-084",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 84,
+          "psalmTitle": "Apprends à te rendre dans les endroits qui te guérissent",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            22
+          ],
+          "teaching": "Les sylphes sont associés aux éthers purs de l'air dans la cime des arbres et à une force de nettoyage, régénération et légèreté.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "symboles",
       "label": "Symboles",
       "score": 3,
@@ -48780,6 +51987,68 @@
             2
           ],
           "teaching": "Le monde divin est présenté comme laissant des symboles dans les végétaux, pierres, animaux et humains afin d'orienter la vie.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "symboles-esseniens",
+      "label": "Symboles esséniens",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-087",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 87,
+          "psalmTitle": "Les 3 symboles sacrés des E sséniens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "teaching": "Vêtement blanc, pieds nus et cheveux longs sont présentés comme des formes extérieures devant correspondre à des réalités intérieures vivantes.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-087",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 87,
+          "psalmTitle": "Les 3 symboles sacrés des E sséniens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "teaching": "Vêtement blanc, pieds nus et cheveux longs sont présentés comme des formes extérieures devant correspondre à des réalités intérieures vivantes.",
           "score": 3
         }
       ]
@@ -51775,10 +55044,15 @@
     {
       "id": "union",
       "label": "Union",
-      "score": 25,
-      "occurrenceCount": 10,
-      "centralPsalmCount": 5,
+      "score": 34,
+      "occurrenceCount": 13,
+      "centralPsalmCount": 8,
       "archangels": [
+        {
+          "id": "raphael",
+          "score": 12,
+          "occurrenceCount": 4
+        },
         {
           "id": "gabriel",
           "score": 10,
@@ -51791,11 +55065,6 @@
         },
         {
           "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
-        },
-        {
-          "id": "raphael",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -51906,6 +55175,79 @@
           "score": 3
         },
         {
+          "recordId": "book-15-psalm-080",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 80,
+          "psalmTitle": "Prenez soin de votre maître, il vous unit dans le bien",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            16,
+            18
+          ],
+          "teaching": "La Lumière doit devenir le centre de ralliement qui transforme les compétences individuelles en un corps de sagesse et empêche les luttes de pouvoir.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-089",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 89,
+          "psalmTitle": "Ne vous séparez pas, unissez -vous",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6,
+            14,
+            15,
+            17,
+            18,
+            26,
+            27,
+            30,
+            32,
+            34,
+            35,
+            39
+          ],
+          "teaching": "L'union est présentée comme une nécessité vitale et spirituelle : la Lumière humaine ne peut se manifester que par collaboration, respect et œuvre commune.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-100",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 100,
+          "psalmTitle": "Vivez ensemble dans les V illages E sséniens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            8,
+            9,
+            10,
+            13,
+            14,
+            15,
+            19,
+            30
+          ],
+          "teaching": "L'isolement ne permet pas de porter la mission ; l'union doit produire une autonomie, une atmosphère et une structure communes.",
+          "score": 3
+        },
+        {
           "recordId": "book-05-psalm-047",
           "bookNumber": 5,
           "bookTitle": "Homme, redeviens un mage",
@@ -51980,26 +55322,6 @@
             23
           ],
           "teaching": "L'union véritable se construit dans une eau pure, autour d'une œuvre commune et d'une fraternité qui résiste aux forces de séparation.",
-          "score": 2
-        },
-        {
-          "recordId": "book-14-psalm-106",
-          "bookNumber": 14,
-          "bookTitle": "La maîtrise du corps",
-          "archangel": "gabriel",
-          "psalmNumber": 106,
-          "psalmTitle": "La famille, une valeur fondamentale",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            3,
-            5,
-            7,
-            12,
-            13,
-            14
-          ],
-          "teaching": "L'union des êtres autour d'une œuvre commune permet de retrouver une identité plus profonde que l'individualisme séparateur.",
           "score": 2
         }
       ],
@@ -52106,6 +55428,79 @@
             7
           ],
           "teaching": "L'union fournit la créativité, la force et les compétences permettant à une œuvre intérieure et extérieure d'aboutir.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-080",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 80,
+          "psalmTitle": "Prenez soin de votre maître, il vous unit dans le bien",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            16,
+            18
+          ],
+          "teaching": "La Lumière doit devenir le centre de ralliement qui transforme les compétences individuelles en un corps de sagesse et empêche les luttes de pouvoir.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-089",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 89,
+          "psalmTitle": "Ne vous séparez pas, unissez -vous",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            4,
+            6,
+            14,
+            15,
+            17,
+            18,
+            26,
+            27,
+            30,
+            32,
+            34,
+            35,
+            39
+          ],
+          "teaching": "L'union est présentée comme une nécessité vitale et spirituelle : la Lumière humaine ne peut se manifester que par collaboration, respect et œuvre commune.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-100",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 100,
+          "psalmTitle": "Vivez ensemble dans les V illages E sséniens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            8,
+            9,
+            10,
+            13,
+            14,
+            15,
+            19,
+            30
+          ],
+          "teaching": "L'isolement ne permet pas de porter la mission ; l'union doit produire une autonomie, une atmosphère et une structure communes.",
           "score": 3
         },
         {
@@ -53841,12 +57236,17 @@
     {
       "id": "villages-esseniens",
       "label": "Villages Esséniens",
-      "score": 5,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 1,
+      "score": 8,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
           "score": 3,
           "occurrenceCount": 1
         },
@@ -53877,6 +57277,31 @@
             15
           ],
           "teaching": "Les Villages sont proposés comme des lieux concrets à préserver où l'alliance avec les règnes et la tradition vivante peut continuer malgré l'expansion du monde artificiel.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-100",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 100,
+          "psalmTitle": "Vivez ensemble dans les V illages E sséniens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            19,
+            30,
+            31
+          ],
+          "teaching": "Les Villages Esséniens sont conçus comme des lieux concrets de vie, étude, formation, ressourcement et accueil de la Lumière où une atmosphère commune peut être cultivée.",
           "score": 3
         },
         {
@@ -53919,6 +57344,31 @@
             15
           ],
           "teaching": "Les Villages sont proposés comme des lieux concrets à préserver où l'alliance avec les règnes et la tradition vivante peut continuer malgré l'expansion du monde artificiel.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-100",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 100,
+          "psalmTitle": "Vivez ensemble dans les V illages E sséniens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            19,
+            30,
+            31
+          ],
+          "teaching": "Les Villages Esséniens sont conçus comme des lieux concrets de vie, étude, formation, ressourcement et accueil de la Lumière où une atmosphère commune peut être cultivée.",
           "score": 3
         },
         {
@@ -54485,6 +57935,68 @@
       ]
     },
     {
+      "id": "voyage-interieur",
+      "label": "Voyage intérieur",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-15-psalm-091",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 91,
+          "psalmTitle": "Apprenez à changer de monde pour respirer",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12
+          ],
+          "teaching": "L'homme doit apprendre à changer intérieurement de région et de niveau de conscience lorsque son atmosphère ne lui permet plus de grandir.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-15-psalm-091",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 91,
+          "psalmTitle": "Apprenez à changer de monde pour respirer",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12
+          ],
+          "teaching": "L'homme doit apprendre à changer intérieurement de région et de niveau de conscience lorsque son atmosphère ne lui permet plus de grandir.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "vegetaux",
       "label": "Végétaux",
       "score": 2,
@@ -54979,9 +58491,9 @@
     {
       "id": "ame",
       "label": "Âme",
-      "score": 38,
-      "occurrenceCount": 15,
-      "centralPsalmCount": 8,
+      "score": 41,
+      "occurrenceCount": 16,
+      "centralPsalmCount": 9,
       "archangels": [
         {
           "id": "gabriel",
@@ -54994,12 +58506,12 @@
           "occurrenceCount": 4
         },
         {
-          "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "raphael",
+          "score": 6,
+          "occurrenceCount": 2
         },
         {
-          "id": "raphael",
+          "id": "ouriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -55180,6 +58692,23 @@
           "score": 3
         },
         {
+          "recordId": "book-15-psalm-088",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 88,
+          "psalmTitle": "Si vous vous arrêtez aux formes extérieures, l’invisible demeurera inexistant",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7
+          ],
+          "teaching": "La forme corporelle émane de l'âme ; oublier l'âme revient à se couper du royaume de l'éternité et à réduire l'être à la mort.",
+          "score": 3
+        },
+        {
           "recordId": "book-01-psalm-009",
           "bookNumber": 1,
           "bookTitle": "Trouve ton propre chemin",
@@ -55226,22 +58755,6 @@
             11
           ],
           "teaching": "La nuit est présentée comme une condition favorable à l'approche de l'âme et au retour vers une perception plus neuve et légère.",
-          "score": 2
-        },
-        {
-          "recordId": "book-02-psalm-014",
-          "bookNumber": 2,
-          "bookTitle": "Le secret des 3 mondes",
-          "archangel": "gabriel",
-          "psalmNumber": 14,
-          "psalmTitle": "Sache ce que tu veux et organise ta vie",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            5
-          ],
-          "teaching": "Les aspirations de l'âme doivent être distinguées des objectifs du corps et recevoir une priorité réelle.",
           "score": 2
         }
       ],
@@ -55418,6 +58931,23 @@
             22
           ],
           "teaching": "La flamme de l'âme doit être préservée comme un trésor intérieur et partagée dans des conditions de respect et de service du monde divin.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-088",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 88,
+          "psalmTitle": "Si vous vous arrêtez aux formes extérieures, l’invisible demeurera inexistant",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7
+          ],
+          "teaching": "La forme corporelle émane de l'âme ; oublier l'âme revient à se couper du royaume de l'éternité et à réduire l'être à la mort.",
           "score": 3
         },
         {
@@ -56735,10 +60265,15 @@
     {
       "id": "equilibre-des-mondes",
       "label": "Équilibre des mondes",
-      "score": 2,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 0,
+      "score": 5,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 1,
       "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
         {
           "id": "gabriel",
           "score": 2,
@@ -56746,6 +60281,29 @@
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-15-psalm-097",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 97,
+          "psalmTitle": "Les 3 clés de la sagesse",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            6,
+            7,
+            10,
+            11,
+            12,
+            19
+          ],
+          "teaching": "L'homme sage se tient entre monde humain et monde divin comme intermédiaire stable capable de les relier et de les équilibrer.",
+          "score": 3
+        },
         {
           "recordId": "book-14-psalm-104",
           "bookNumber": 14,
@@ -56765,6 +60323,29 @@
         }
       ],
       "occurrences": [
+        {
+          "recordId": "book-15-psalm-097",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 97,
+          "psalmTitle": "Les 3 clés de la sagesse",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            5,
+            6,
+            7,
+            10,
+            11,
+            12,
+            19
+          ],
+          "teaching": "L'homme sage se tient entre monde humain et monde divin comme intermédiaire stable capable de les relier et de les équilibrer.",
+          "score": 3
+        },
         {
           "recordId": "book-14-psalm-104",
           "bookNumber": 14,
@@ -56851,8 +60432,8 @@
     {
       "id": "eternite",
       "label": "Éternité",
-      "score": 11,
-      "occurrenceCount": 4,
+      "score": 13,
+      "occurrenceCount": 5,
       "centralPsalmCount": 3,
       "archangels": [
         {
@@ -56862,8 +60443,8 @@
         },
         {
           "id": "raphael",
-          "score": 2,
-          "occurrenceCount": 1
+          "score": 4,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -56946,6 +60527,27 @@
           ],
           "teaching": "Ce qui est véritablement divin demeure vivant au-delà du monde mortel et ouvre une continuité de perception lorsque les apparences disparaissent.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-082",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 82,
+          "psalmTitle": "L’homme ne garde avec lui que ce qui est devenu conscient",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            6,
+            11,
+            15,
+            16,
+            19
+          ],
+          "teaching": "L'éternité appartient au divin ; l'homme y participe seulement par ce qu'il a incarné consciemment dans cette alliance.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -57027,6 +60629,27 @@
             19
           ],
           "teaching": "Ce qui est véritablement divin demeure vivant au-delà du monde mortel et ouvre une continuité de perception lorsque les apparences disparaissent.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-082",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 82,
+          "psalmTitle": "L’homme ne garde avec lui que ce qui est devenu conscient",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            6,
+            11,
+            15,
+            16,
+            19
+          ],
+          "teaching": "L'éternité appartient au divin ; l'homme y participe seulement par ce qu'il a incarné consciemment dans cette alliance.",
           "score": 2
         }
       ]
@@ -57258,14 +60881,14 @@
     {
       "id": "eveil",
       "label": "Éveil",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "raphael",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 6,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -57290,6 +60913,27 @@
           ],
           "teaching": "L'éveil demande que l'homme cesse la passivité et reprenne responsabilité sur son intelligence et ses choix.",
           "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-077",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 77,
+          "psalmTitle": "La vérité libère quand l’homme est éveillé",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            12,
+            13,
+            16,
+            17,
+            18
+          ],
+          "teaching": "L'homme doit sortir d'une identité réduite à la peur et au doute en réveillant les facultés et vertus endormies.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -57313,6 +60957,27 @@
             11
           ],
           "teaching": "L'éveil demande que l'homme cesse la passivité et reprenne responsabilité sur son intelligence et ses choix.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-077",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 77,
+          "psalmTitle": "La vérité libère quand l’homme est éveillé",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            12,
+            13,
+            16,
+            17,
+            18
+          ],
+          "teaching": "L'homme doit sortir d'une identité réduite à la peur et au doute en réveillant les facultés et vertus endormies.",
           "score": 3
         }
       ]
@@ -57633,9 +61298,9 @@
     {
       "id": "oeuvre",
       "label": "Œuvre",
-      "score": 22,
-      "occurrenceCount": 8,
-      "centralPsalmCount": 6,
+      "score": 25,
+      "occurrenceCount": 9,
+      "centralPsalmCount": 7,
       "archangels": [
         {
           "id": "gabriel",
@@ -57651,6 +61316,11 @@
           "id": "ouriel",
           "score": 5,
           "occurrenceCount": 2
+        },
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
         }
       ],
       "topPsalms": [
@@ -57781,6 +61451,33 @@
             17
           ],
           "teaching": "L'œuvre est un corps vivant destiné à manifester paix, beauté, guérison et vérité; sa qualité dépend autant du résultat que de l'état intérieur du créateur.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-096",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 96,
+          "psalmTitle": "Parler de la Lumière, c ’est faire une œuvre de L umière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            8,
+            9,
+            10,
+            12,
+            13,
+            15,
+            18,
+            19,
+            20,
+            21,
+            23,
+            24
+          ],
+          "teaching": "Parler de la Lumière engage à participer à une œuvre qui lui donne un corps réel ; l'usage de son langage sans cette fidélité est présenté comme une profanation.",
           "score": 3
         },
         {
@@ -57959,6 +61656,33 @@
             17
           ],
           "teaching": "L'œuvre est un corps vivant destiné à manifester paix, beauté, guérison et vérité; sa qualité dépend autant du résultat que de l'état intérieur du créateur.",
+          "score": 3
+        },
+        {
+          "recordId": "book-15-psalm-096",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 96,
+          "psalmTitle": "Parler de la Lumière, c ’est faire une œuvre de L umière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            8,
+            9,
+            10,
+            12,
+            13,
+            15,
+            18,
+            19,
+            20,
+            21,
+            23,
+            24
+          ],
+          "teaching": "Parler de la Lumière engage à participer à une œuvre qui lui donne un corps réel ; l'usage de son langage sans cette fidélité est présenté comme une profanation.",
           "score": 3
         },
         {
@@ -58013,8 +61737,8 @@
     {
       "id": "oeuvre-collective",
       "label": "Œuvre collective",
-      "score": 8,
-      "occurrenceCount": 3,
+      "score": 10,
+      "occurrenceCount": 4,
       "centralPsalmCount": 2,
       "archangels": [
         {
@@ -58024,8 +61748,8 @@
         },
         {
           "id": "raphael",
-          "score": 2,
-          "occurrenceCount": 1
+          "score": 4,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -58086,6 +61810,28 @@
           ],
           "teaching": "La Lumière doit être structurée collectivement sur la terre par des êtres actifs qui unissent leurs forces et prennent les devants.",
           "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-089",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 89,
+          "psalmTitle": "Ne vous séparez pas, unissez -vous",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            26,
+            27,
+            28,
+            29,
+            33,
+            35,
+            36
+          ],
+          "teaching": "La force de l'union doit se condenser dans une œuvre plus grande que les individus, préparant une terre où le monde divin puisse se poser.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -58145,6 +61891,28 @@
             10
           ],
           "teaching": "La Lumière doit être structurée collectivement sur la terre par des êtres actifs qui unissent leurs forces et prennent les devants.",
+          "score": 2
+        },
+        {
+          "recordId": "book-15-psalm-089",
+          "bookNumber": 15,
+          "bookTitle": "Prends ta vie en mains",
+          "archangel": "raphael",
+          "psalmNumber": 89,
+          "psalmTitle": "Ne vous séparez pas, unissez -vous",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            26,
+            27,
+            28,
+            29,
+            33,
+            35,
+            36
+          ],
+          "teaching": "La force de l'union doit se condenser dans une œuvre plus grande que les individus, préparant une terre où le monde divin puisse se poser.",
           "score": 2
         }
       ]
