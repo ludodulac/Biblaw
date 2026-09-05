@@ -1,11 +1,20 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "purpose": "Preserve the context of each book strictly from the Bible essénienne PDF corpus so thematic search can interpret a psalm occurrence inside its book without introducing external information.",
   "sourcePolicy": {
     "authoritativeSource": "Bible essénienne (classée par livres).pdf",
     "externalSourcesAllowed": false,
     "internetSourcesAllowed": false,
-    "rule": "Every book-context statement must be derived only from material present in the authoritative PDF: book title, Archangel attribution, introductions or editorial context present in the PDF, psalm titles, psalm text, editorial notes, order of texts and relevant annex material. No website, secondary Essene source, commentary, memory or external doctrinal material may enrich or correct this layer."
+    "rule": "Every book-context statement and thematic interpretation must be derived only from material present in the authoritative PDF: book title, Archangel attribution, introductions or editorial context present in the PDF, psalm titles, psalm text, editorial notes, order of texts and relevant annex material. No website, secondary Essene source, commentary, memory or external doctrinal material may enrich, confirm or correct this layer."
+  },
+  "analysisPolicy": {
+    "stance": "neutral-corpus-analysis",
+    "rule": "Describe what the text teaches, associates, distinguishes, prescribes, warns against or symbolizes without judging whether its claims are true or false and without importing an external doctrinal framework.",
+    "separateEvidenceFromInference": true,
+    "preferExplicitEvidence": true,
+    "inferenceRule": "Indirect themes and book-level syntheses are allowed only when supported by multiple or sufficiently clear textual signals. Record them as interpretation rather than textual fact when appropriate.",
+    "ambiguityRule": "When two materially different readings remain plausible from the PDF, do not force a conclusion; register the ambiguity in data/incoherences.json for human review.",
+    "languageRule": "Use descriptive formulations such as 'le texte présente', 'le psaume associe' or 'Gabriel enseigne dans ce passage' rather than adopting the claim as an external fact."
   },
   "interpretationRule": "A theme occurrence is first grounded in the psalm and verses. Book context is a second interpretive layer derived only from the PDF and used to explain emphasis, sense, relations and ranking. It must never manufacture a theme absent from the psalm.",
   "fields": {
@@ -21,10 +30,10 @@
       "title": "L’heure du choix",
       "archangel": "michael",
       "sourceBasis": "PDF book 17: title, psalms 105-130, their titles, text and editorial notes.",
-      "centralAxis": "Le choix doit devenir une œuvre : sortir de l’illusion et de l’inconstance, retrouver l’âme, la vérité et la connaissance de soi, puis équilibrer les mondes sans les mélanger. La Tradition, la Mère, les règnes, les quatre cultes et les œuvres collectives donnent une terre concrète à la Lumière.",
+      "centralAxis": "Le livre associe le choix à une mise en œuvre concrète : sortir de l’illusion et de l’inconstance, retrouver l’âme, la vérité et la connaissance de soi, puis équilibrer les mondes sans les mélanger. La Tradition, la Mère, les règnes, les quatre cultes et les œuvres collectives y sont présentés comme des supports terrestres de la Lumière.",
       "contextThemes": ["choix", "verite", "fidelite", "discernement", "ame", "tradition-de-la-lumiere", "equilibre-des-mondes", "responsabilite", "terre", "bien-commun"],
-      "interpretiveLens": "Une occurrence thématique dans ce livre doit notamment être examinée sous l’angle du choix, de la cohérence entre parole et œuvre, de la fidélité, de la mise en ordre des mondes et de l’incarnation concrète de la Lumière.",
-      "archangelContribution": "Dans ce livre précis, Michaël insiste sur le feu de la conscience, la vérité éprouvée par les actes, la stabilité et la responsabilité de protéger et réaliser le sacré.",
+      "interpretiveLens": "Une occurrence thématique dans ce livre peut être examinée sous l’angle du choix, de la cohérence entre parole et œuvre, de la fidélité, de la mise en ordre des mondes et de l’incarnation concrète de la Lumière lorsque les passages concernés soutiennent cette lecture.",
+      "archangelContribution": "Dans ce livre précis, les enseignements attribués à Michaël mettent notamment en relation feu de la conscience, vérité éprouvée par les actes, stabilité et responsabilité de protéger et réaliser le sacré.",
       "searchUse": "Conserver le sens précis du psaume et exposer le contexte du livre seulement lorsqu’il est soutenu par les données du PDF."
     },
     {
@@ -32,10 +41,10 @@
       "title": "Quel chercheur de Lumière es-tu ?",
       "archangel": "gabriel",
       "sourceBasis": "PDF book 18: title, psalms 111-137, their titles, text and editorial notes; context remains provisional until full-book indexing is complete.",
-      "centralAxis": "Gabriel interroge la qualité réelle du chercheur de Lumière : la Lumière doit obtenir une terre, un peuple, un corps, une discipline et des relations suffisamment pures pour devenir une intelligence agissante plutôt qu’une aspiration abstraite. L’eau, l’âme, l’intellect, les relations et la vie quotidienne deviennent des critères de fidélité à la Source.",
+      "centralAxis": "Dans les psaumes déjà analysés, le livre interroge la qualité concrète du chercheur de Lumière et associe cette recherche à une terre, un peuple, un corps, une discipline, des relations, l’eau, l’âme et l’intellect. Cette synthèse reste provisoire jusqu’à l’analyse du livre entier.",
       "contextThemes": ["lumiere", "incarnation", "eau", "purete", "ame", "relations", "maitrise", "discernement", "source", "intelligence-divine"],
-      "interpretiveLens": "Une occurrence thématique dans ce livre doit être lue en tenant compte de la question portée par le livre : quelle qualité de chercheur l’homme devient-il réellement, et cette recherche rend-elle sa vie, son eau, ses relations et ses œuvres plus claires, pures, vraies et fécondes ?",
-      "archangelContribution": "Dans les psaumes déjà analysés de ce livre, Gabriel met en évidence l’eau comme milieu de transmission, de relation, de pureté et de vérité, ainsi que la nécessité de faire descendre l’intelligence supérieure jusque dans la vie concrète.",
+      "interpretiveLens": "Une occurrence thématique dans ce livre peut être rapprochée de la question de la qualité concrète du chercheur lorsque le psaume et les passages voisins soutiennent ce rapprochement ; le contexte ne doit jamais imposer cette lecture à un passage qui ne la porte pas.",
+      "archangelContribution": "Dans les psaumes déjà analysés de ce livre, les enseignements attribués à Gabriel mettent notamment en relation l’eau avec transmission, relation, pureté et vérité, et relient l’intelligence supérieure à la vie concrète.",
       "searchUse": "Afficher ce contexte comme couche explicative uniquement après vérification dans le PDF et ne jamais le confondre avec la preuve thématique locale du psaume."
     }
   ]
