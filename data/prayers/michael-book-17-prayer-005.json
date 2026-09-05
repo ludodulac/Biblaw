@@ -9,15 +9,19 @@
   "source": {
     "document": "Bible essénienne (classée par livres).pdf",
     "printedPages": [
-      1089
+      1089,
+      1090
     ]
   },
-  "appliesToPsalmId": "book-17-psalm-109",
+  "appliesToPsalmId": "michael-psalm-109",
   "attachment": {
-    "basis": "printed-prayer-marker-and-editorial-adjacency",
-    "description": "Prayer 5 is printed immediately after book-17-psalm-109 and begins with marker 'Pr. 5.'\\."
+    "basis": "editorial-adjacency",
+    "description": "La prière 5 est imprimée immédiatement après le psaume 109."
   },
+  "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review"
+    "status": "machine-validated",
+    "validatedOn": "2026-09-05",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

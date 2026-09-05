@@ -9,15 +9,19 @@
   "source": {
     "document": "Bible essénienne (classée par livres).pdf",
     "printedPages": [
-      1139
+      1139,
+      1140
     ]
   },
-  "appliesToPsalmId": "book-17-psalm-119",
+  "appliesToPsalmId": "michael-psalm-119",
   "attachment": {
-    "basis": "printed-prayer-marker-and-editorial-adjacency",
-    "description": "Prayer 14 is printed immediately after book-17-psalm-119 and begins with marker 'Pr. 14.'\\."
+    "basis": "editorial-adjacency",
+    "description": "La prière 14 est imprimée immédiatement après le psaume 119."
   },
+  "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review"
+    "status": "machine-validated",
+    "validatedOn": "2026-09-05",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

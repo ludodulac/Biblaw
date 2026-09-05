@@ -9,15 +9,18 @@
   "source": {
     "document": "Bible essénienne (classée par livres).pdf",
     "printedPages": [
-      1165
+      1166
     ]
   },
-  "appliesToPsalmId": "book-17-psalm-124",
+  "appliesToPsalmId": "michael-psalm-124",
   "attachment": {
-    "basis": "printed-prayer-marker-and-editorial-adjacency",
-    "description": "Prayer 19 is printed immediately after book-17-psalm-124 and begins with marker 'Pr. 19.'\\."
+    "basis": "editorial-adjacency",
+    "description": "La prière 19 est imprimée immédiatement après le psaume 124."
   },
+  "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review"
+    "status": "machine-validated",
+    "validatedOn": "2026-09-05",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

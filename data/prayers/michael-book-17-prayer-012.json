@@ -9,15 +9,20 @@
   "source": {
     "document": "Bible essénienne (classée par livres).pdf",
     "printedPages": [
-      1127
+      1127,
+      1128,
+      1129
     ]
   },
-  "appliesToPsalmId": "book-17-psalm-116",
+  "appliesToPsalmId": "michael-psalm-116",
   "attachment": {
-    "basis": "printed-prayer-marker-and-editorial-adjacency",
-    "description": "Prayer 12 is printed immediately after book-17-psalm-116 and begins with marker 'Pr. 12.'\\."
+    "basis": "editorial-adjacency",
+    "description": "La prière 12 est imprimée immédiatement après le psaume 116."
   },
+  "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review"
+    "status": "machine-validated",
+    "validatedOn": "2026-09-05",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

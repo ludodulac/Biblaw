@@ -9,15 +9,19 @@
   "source": {
     "document": "Bible essénienne (classée par livres).pdf",
     "printedPages": [
-      1084
+      1084,
+      1085
     ]
   },
-  "appliesToPsalmId": "book-17-psalm-108",
+  "appliesToPsalmId": "michael-psalm-108",
   "attachment": {
-    "basis": "printed-prayer-marker-and-editorial-adjacency",
-    "description": "Prayer 4 is printed immediately after book-17-psalm-108 and begins with marker 'Pr. 4.'\\."
+    "basis": "editorial-adjacency",
+    "description": "La prière 4 est imprimée immédiatement après le psaume 108."
   },
+  "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review"
+    "status": "machine-validated",
+    "validatedOn": "2026-09-05",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

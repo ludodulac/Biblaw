@@ -9,15 +9,18 @@
   "source": {
     "document": "Bible essénienne (classée par livres).pdf",
     "printedPages": [
-      1172
+      1173
     ]
   },
-  "appliesToPsalmId": "book-17-psalm-125",
+  "appliesToPsalmId": "michael-psalm-125",
   "attachment": {
-    "basis": "printed-prayer-marker-and-editorial-adjacency",
-    "description": "Prayer 20 is printed immediately after book-17-psalm-125 and begins with marker 'Pr. 20.'\\."
+    "basis": "editorial-adjacency",
+    "description": "La prière 20 est imprimée immédiatement après le psaume 125."
   },
+  "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review"
+    "status": "machine-validated",
+    "validatedOn": "2026-09-05",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }

@@ -9,15 +9,19 @@
   "source": {
     "document": "Bible essénienne (classée par livres).pdf",
     "printedPages": [
-      1101
+      1101,
+      1102
     ]
   },
-  "appliesToPsalmId": "book-17-psalm-111",
+  "appliesToPsalmId": "michael-psalm-111",
   "attachment": {
-    "basis": "printed-prayer-marker-and-editorial-adjacency",
-    "description": "Prayer 7 is printed immediately after book-17-psalm-111 and begins with marker 'Pr. 7.'\\."
+    "basis": "editorial-adjacency",
+    "description": "La prière 7 est imprimée immédiatement après le psaume 111."
   },
+  "temporalMentions": [],
   "validation": {
-    "status": "machine-extracted-needs-human-review"
+    "status": "machine-validated",
+    "validatedOn": "2026-09-05",
+    "method": "automated-structural-and-source-consistency-v1"
   }
 }
