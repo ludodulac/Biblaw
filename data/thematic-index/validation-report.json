@@ -1,33 +1,11 @@
 {
   "schemaVersion": 1,
-  "status": "failed",
+  "status": "passed",
   "stats": {
     "books": 14,
     "psalmAnalyses": 365,
     "themeRelations": 1165
   },
-  "errors": [
-    {
-      "file": "data/thematic-index/books/book-14.json",
-      "recordId": "book-14-psalm-107",
-      "themeId": "canigou",
-      "type": "invalid-directness",
-      "value": "contextual"
-    },
-    {
-      "file": "data/thematic-index/books/book-14.json",
-      "recordId": "book-14-psalm-109",
-      "themeId": "nenuphar",
-      "type": "invalid-directness",
-      "value": "contextual"
-    },
-    {
-      "file": "data/thematic-index/books/book-14.json",
-      "recordId": "book-14-psalm-110",
-      "themeId": "biche",
-      "type": "invalid-directness",
-      "value": "contextual"
-    }
-  ],
+  "errors": [],
   "warnings": []
 }
