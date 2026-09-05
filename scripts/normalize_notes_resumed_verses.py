@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """Recover psalm text around footnotes and keep editorial notes out of verses.
 
-Handles two deterministic pdftotext layout cases:
+Handles deterministic pdftotext layout cases:
 1. main psalm text resumes after a bottom-of-page footnote;
 2. an editorial footnote itself continues at the top of the next PDF page before
    the next numbered verse, while that continuation was accidentally appended to
-   a later psalm verse by the base extractor.
+   a later psalm verse;
+3. known source-backed interrupted verses whose continuation follows an inline
+   footnote and was swallowed by the note extractor.
 
-Repairs are source-backed: the PDF page layout must confirm the expected verse or
-continued note text before corpus JSON is changed.
+Repairs are source-backed: generic repairs require the PDF layout to confirm the
+expected text, while the small explicit repair table below records already-audited
+source splits and makes those fixes idempotent across future re-extractions.
 """
 from __future__ import annotations
 
@@ -22,6 +25,18 @@ PDF = ROOT / "Bible essénienne (classée par livres).pdf"
 CORPUS = ROOT / "data/corpus/books"
 NOTES = ROOT / "data/notes/books"
 VERSE_LIKE = re.compile(r"(?:^|\s)(\d{1,3})\.\s+[A-ZÀ-ÖØ-ÝÉÈÊÎÔÛÇ]")
+
+# These tails were checked against the source layout while indexing book 14.
+# Keeping exact text instead of guessing from punctuation prevents a broad
+# heuristic from moving legitimate editorial prose into a psalm verse.
+SOURCE_BACKED_INLINE_NOTE_REPAIRS = {
+    (14, 86, "book-14-psalm-086-note-001", 6):
+        "pouvez compter, mais plutôt comme un dissipateur détournant les forces à l’œuvre et vous empêchant de toucher l’essentiel.",
+    (14, 87, "book-14-psalm-087-note-001", 7):
+        "œuvre collective divine. La porte est ouverte. Alors, engagez-vous sur le chemin du service de la Lumière. Votre engagement ouvrira la porte pour beaucoup d’autres et c’est ainsi que la fleur d’une nouvelle conscience grandira sur la terre.",
+    (14, 110, "book-14-psalm-110-note-001", 6):
+        "fermé dans votre propre vie. Alors je ne pourrai plus m’approcher de vous, car la résonance ne sera plus là. Ce sera l’avènement du monde des sans-âmes.",
+}
 
 
 def read(path: Path):
@@ -73,13 +88,7 @@ def source_note_text(book_no: int, page_no: int, marker: int) -> str | None:
 
 
 def continued_note_prefix(book_no: int, psalm_no: int, note_page: int) -> str:
-    """Return PDF-confirmed note continuation before the first next-page verse.
-
-    A continued footnote has no new marker on the next page and appears before the
-    next numbered psalm verse. We only accept it when that next numbered verse is
-    exactly one greater than a verse already present in the psalm. This prevents a
-    page header or a new psalm title from being interpreted as note text.
-    """
+    """Return PDF-confirmed note continuation before the first next-page verse."""
     psalm_path = CORPUS / f"book-{book_no:02d}" / f"psalm-{psalm_no:03d}.json"
     if not psalm_path.exists():
         return ""
@@ -96,8 +105,6 @@ def continued_note_prefix(book_no: int, psalm_no: int, note_page: int) -> str:
     if number not in nums or (number - 1) not in nums:
         return ""
     prefix = unwrap(text[:first_verse.start()])
-    # Reject headings / substantial blocks; a footnote continuation is a short
-    # sentence fragment at the top of the immediately following page.
     if not prefix or len(prefix) > 500 or re.search(r"(?i)\b(psaume|livre)\b", prefix):
         return ""
     return prefix
@@ -159,6 +166,35 @@ def source_resume(book_no: int, psalm_no: int, note_page: int, expected: int) ->
 
 repairs = []
 unresolved = []
+
+# Pass 0: exact audited inline-note splits. This protects known documentary
+# corrections from being reintroduced whenever the source PDF is re-extracted.
+for (book_no, psalm_no, note_id, verse_no), tail in SOURCE_BACKED_INLINE_NOTE_REPAIRS.items():
+    psalm_path = CORPUS / f"book-{book_no:02d}" / f"psalm-{psalm_no:03d}.json"
+    note_path = NOTES / f"book-{book_no:02d}" / f"{note_id}.json"
+    if not psalm_path.exists() or not note_path.exists():
+        continue
+    psalm = read(psalm_path)
+    note = read(note_path)
+    verse = next((v for v in psalm.get("verses", []) if v.get("number") == verse_no), None)
+    if not verse:
+        unresolved.append({"recordId": psalm.get("id"), "noteId": note_id, "reason": "audited-verse-missing"})
+        continue
+    changed = False
+    note_text = note.get("text", "").strip()
+    if note_text.endswith(tail):
+        note["text"] = note_text[:-len(tail)].rstrip()
+        changed = True
+    verse_text = verse.get("text", "").rstrip()
+    if not verse_text.endswith(tail):
+        verse["text"] = unwrap(verse_text + " " + tail)
+        changed = True
+    if changed:
+        psalm.setdefault("extraction", {})["sourceBackedInlineNoteSplitNormalized"] = True
+        note.setdefault("validation", {})["sourceBackedInlineNoteSplitNormalized"] = True
+        write(psalm_path, psalm)
+        write(note_path, note)
+        repairs.append({"recordId": psalm.get("id"), "noteId": note_id, "verse": verse_no, "repair": "audited-inline-note-split"})
 
 # Pass 1: recover main text accidentally swallowed by a footnote.
 for note_path in sorted(NOTES.glob("book-*/*.json")):
@@ -251,6 +287,34 @@ for note_path in sorted(NOTES.glob("book-*/*.json")):
         psalm.setdefault("extraction", {})["continuedFootnoteNormalized"] = True
         write(note_path, note); write(psalm_path, psalm)
         repairs.append({"recordId": record_id, "noteId": note.get("id"), "continuedNotePage": note_page + 1, "removedFromVerses": removed_from})
+
+# Pass 3: re-apply audited splits after generic source-note cleanup, because an
+# inline source note can legitimately be followed on the same page by main text.
+for (book_no, psalm_no, note_id, verse_no), tail in SOURCE_BACKED_INLINE_NOTE_REPAIRS.items():
+    psalm_path = CORPUS / f"book-{book_no:02d}" / f"psalm-{psalm_no:03d}.json"
+    note_path = NOTES / f"book-{book_no:02d}" / f"{note_id}.json"
+    if not psalm_path.exists() or not note_path.exists():
+        continue
+    psalm = read(psalm_path)
+    note = read(note_path)
+    verse = next((v for v in psalm.get("verses", []) if v.get("number") == verse_no), None)
+    if not verse:
+        continue
+    changed = False
+    note_text = note.get("text", "").strip()
+    if note_text.endswith(tail):
+        note["text"] = note_text[:-len(tail)].rstrip()
+        changed = True
+    verse_text = verse.get("text", "").rstrip()
+    if not verse_text.endswith(tail):
+        verse["text"] = unwrap(verse_text + " " + tail)
+        changed = True
+    if changed:
+        psalm.setdefault("extraction", {})["sourceBackedInlineNoteSplitNormalized"] = True
+        note.setdefault("validation", {})["sourceBackedInlineNoteSplitNormalized"] = True
+        write(psalm_path, psalm)
+        write(note_path, note)
+        repairs.append({"recordId": psalm.get("id"), "noteId": note_id, "verse": verse_no, "repair": "audited-inline-note-split-final"})
 
 # Guardrail: a note that still contains exactly the next missing verse must not pass.
 remaining = []
