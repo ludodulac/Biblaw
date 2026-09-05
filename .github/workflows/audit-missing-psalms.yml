@@ -26,13 +26,13 @@ jobs:
         run: python scripts/audit_missing_psalm_boundaries.py
       - name: Commit audit report
         run: |
-          if [ -z "$(git status --porcelain -- data/pilot/missing-psalm-boundary-audit.json)" ]; then
+          if [ -z "$(git status --porcelain -- data/pilot/missing-psalm-boundary-audit.json data/pilot/missing-psalm-audits)" ]; then
             echo 'No audit changes'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/pilot/missing-psalm-boundary-audit.json
-          git commit -m 'Audit missing Psalm boundaries from PDF'
+          git add data/pilot/missing-psalm-boundary-audit.json data/pilot/missing-psalm-audits
+          git commit -m 'Audit Psalm extraction anomalies from PDF'
           git pull --rebase origin main
           git push origin HEAD:main
