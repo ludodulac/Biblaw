@@ -19,6 +19,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install PDF tools
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Preserve canonical Book 32 Psalm 182 repair
+        run: python scripts/repair_book32_psalm182.py
       - name: Repair audited PDF boundaries for books 35 and 36
         run: |
           python - <<'PY'
@@ -54,7 +56,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/corpus/books/book-35 data/corpus/books/book-36 data/notes/books/book-35 data/notes/books/book-36 data/thematic-index/books/book-31.json data/thematic-index/books/book-32.json data/thematic-index/books/book-33.json data/thematic-index/books/book-34.json data/thematic-index/books/book-35.json data/thematic-index/books/book-36.json data/thematic-index/books/book-37.json data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/validation-report.json
+          git add data/corpus/books/book-32 data/notes/books/book-32 data/corpus/books/book-35 data/corpus/books/book-36 data/notes/books/book-35 data/notes/books/book-36 data/thematic-index/books/book-31.json data/thematic-index/books/book-32.json data/thematic-index/books/book-33.json data/thematic-index/books/book-34.json data/thematic-index/books/book-35.json data/thematic-index/books/book-36.json data/thematic-index/books/book-37.json data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/validation-report.json
           if git diff --cached --quiet; then echo 'No generated changes'; exit 0; fi
           git commit -m 'Finalize deep semantic books 35 to 37'
           git push origin HEAD:main
