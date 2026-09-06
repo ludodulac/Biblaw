@@ -4,7 +4,7 @@ import json
 from collections import Counter
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; BOOKS=ROOT/'data/thematic-index/books'; CORPUS=ROOT/'data/corpus/books'
-EXPECTED={32:range(183,208),33:range(218,244),34:range(216,244)}
+EXPECTED={32:range(182,208),33:range(218,244),34:range(216,244)}
 GENERIC=('Le psaume développe de façon répétée','Le thème «')
 AXES={
 32:"La Nouvelle Alliance présente l’alliance comme une relation vivante qui doit unir l’être humain, la conscience et l’œuvre à une intelligence supérieure selon l’enseignement propre au corpus. Le livre insiste sur la fidélité, la responsabilité et l’incarnation concrète de cette relation dans la vie, afin que l’engagement ne demeure pas une idée abstraite mais devienne une manière d’être et d’agir.",
