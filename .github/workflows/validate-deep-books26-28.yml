@@ -1,0 +1,53 @@
+name: Validate deep books 26 to 28
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/deepen_books26_28_semantic_evidence.py'
+      - 'scripts/finalize_books26_28_semantic.py'
+      - '.github/workflows/validate-deep-books26-28.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: thematic-index-generated-files
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild canonical books 24 to 26
+        run: python scripts/complete_books24_26_thematic.py
+      - name: Rebuild canonical books 27 to 30
+        run: python scripts/complete_books27_30_thematic.py
+      - name: Ground complete deep evidence for books 26 to 28
+        run: python scripts/deepen_books26_28_semantic_evidence.py
+      - name: Finalize books 26 to 28
+        run: python scripts/finalize_books26_28_semantic.py
+      - name: Gate thematic completion on documentary integrity
+        run: python scripts/sync_thematic_documentary_status.py
+      - name: Normalize thematic metadata
+        run: python scripts/normalize_thematic_metadata.py
+      - name: Build PDF-only book contexts
+        run: python scripts/build_book_contexts.py
+      - name: Validate thematic index
+        run: python scripts/validate_thematic_index.py
+      - name: Rebuild thematic directory
+        run: python scripts/build_thematic_directory.py
+      - name: Commit generated outputs
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/thematic-index/books/book-26.json data/thematic-index/books/book-27.json data/thematic-index/books/book-28.json data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/validation-report.json
+          if git diff --cached --quiet; then
+            echo 'No generated changes'
+            exit 0
+          fi
+          git commit -m 'Finalize deep semantic books 26 to 28'
+          git push origin HEAD:main
