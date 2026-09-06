@@ -6,16 +6,15 @@
     "archangel": "gabriel"
   },
   "method": {
-    "status": "editorial-indexing-in-progress",
+    "status": "editorial-indexing-complete",
     "source": "validated-psalm-corpus",
     "titlesUsedAsContext": true,
     "notesUsedAsContext": true,
     "prayersIndexed": false,
-    "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme.",
-    "completenessIssue": "missing documentary Psalm(s): [260]. Repair from the authoritative PDF before declaring this book complete."
+    "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme."
   },
   "bookSynthesis": {
-    "centralAxis": "Livre 38, « Les 22 étapes de l’Initiation ». Contexte construit exclusivement à partir du PDF, de l’ordre des psaumes, de leurs titres, textes et notes. Les thèmes récurrents les plus visibles sont notamment Vie, Dieux, Vision, Conscience, Corps, Âme, Pensée, Intelligence, Lumière, Terre. Le contexte sert au classement et à l’explication sans remplacer les preuves locales des versets.",
+    "centralAxis": "Livre 38, « Les 22 étapes de l’Initiation ». Contexte construit exclusivement à partir du PDF, de l’ordre des psaumes, de leurs titres, textes et notes. Les thèmes récurrents les plus visibles sont notamment Vie, Dieux, Vision, Conscience, Corps, Âme, Lumière, Pensée, Intelligence, Terre. Le contexte sert au classement et à l’explication sans remplacer les preuves locales des versets.",
     "majorThemes": [
       "vie",
       "dieux",
@@ -23,16 +22,16 @@
       "conscience",
       "corps",
       "ame",
+      "lumiere",
       "pensee",
       "intelligence",
-      "lumiere",
       "terre",
       "mort",
       "oeuvre",
+      "anges",
       "maitrise",
       "sagesse",
       "acte",
-      "anges",
       "archanges",
       "esprit",
       "oeil",
@@ -3182,6 +3181,179 @@
             21
           ],
           "teaching": "Le thème « Mort » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        }
+      ]
+    },
+    {
+      "recordId": "book-38-psalm-260",
+      "number": 260,
+      "title": "Tu n’éduqueras pas des enfants dans l’esclavage",
+      "titleSignals": [
+        "vie",
+        "vision",
+        "âme",
+        "corps",
+        "éducation"
+      ],
+      "themes": [
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            25,
+            27,
+            29,
+            38,
+            41,
+            42,
+            43,
+            47,
+            50,
+            53,
+            54
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vie »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "vision",
+          "label": "Vision",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            24,
+            26,
+            27,
+            28,
+            29,
+            38,
+            53
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vision »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "ame",
+          "label": "Âme",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            36,
+            40,
+            42,
+            54
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Âme »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "corps",
+          "label": "Corps",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            38,
+            48,
+            53,
+            54
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Corps »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "education",
+          "label": "Éducation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            25,
+            27,
+            40,
+            54
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Éducation »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "religion",
+          "label": "Religion",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            29,
+            42,
+            43,
+            54
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Religion »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "respiration",
+          "label": "Respiration",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            40,
+            41,
+            53,
+            54
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Respiration »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "terre",
+          "label": "Terre",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            35,
+            43,
+            45,
+            54
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Terre »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "dieux",
+          "label": "Dieux",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            29,
+            43,
+            54
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Dieux »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "anges",
+          "label": "Anges",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            40,
+            54
+          ],
+          "teaching": "Le thème « Anges » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            26,
+            41
+          ],
+          "teaching": "Le thème « Lumière » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "pere",
+          "label": "Père",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            42,
+            54
+          ],
+          "teaching": "Le thème « Père » est présent de façon significative dans le psaume, sans extrapolation extérieure."
         }
       ]
     },

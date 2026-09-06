@@ -6,13 +6,12 @@
     "archangel": "ouriel"
   },
   "method": {
-    "status": "editorial-indexing-in-progress",
+    "status": "editorial-indexing-complete",
     "source": "validated-psalm-corpus",
     "titlesUsedAsContext": true,
     "notesUsedAsContext": true,
     "prayersIndexed": false,
-    "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme.",
-    "completenessIssue": "missing documentary Psalm(s): [217]. Repair from the authoritative PDF before declaring this book complete."
+    "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme."
   },
   "bookSynthesis": {
     "centralAxis": "Livre 36, « Être un socle pour le monde divin ». Contexte construit exclusivement à partir du PDF, de l’ordre des psaumes, de leurs titres, textes et notes. Les thèmes récurrents les plus visibles sont notamment Dieux, Vie, Vision, Corps, Terre, Conscience, Intelligence, Œuvre, Pensée, Sagesse. Le contexte sert au classement et à l’explication sans remplacer les preuves locales des versets.",
@@ -28,15 +27,15 @@
       "pensee",
       "sagesse",
       "lumiere",
-      "creation",
       "mort",
+      "creation",
       "archanges",
       "alliance",
       "ame",
       "anges",
       "influences",
-      "discernement",
-      "energie"
+      "regard",
+      "verite"
     ]
   },
   "psalmAnalyses": [
@@ -1634,6 +1633,175 @@
             13
           ],
           "teaching": "Le thème « Bien commun » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        }
+      ]
+    },
+    {
+      "recordId": "book-36-psalm-217",
+      "number": 217,
+      "title": "Es-tu prêt à écouter le point de vue de la Lumière ?",
+      "titleSignals": [
+        "vision",
+        "vérité",
+        "dieux",
+        "vie",
+        "lumière"
+      ],
+      "themes": [
+        {
+          "themeId": "vision",
+          "label": "Vision",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            36
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vision »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "verite",
+          "label": "Vérité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            23,
+            24,
+            25,
+            29,
+            31,
+            36
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vérité »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "dieux",
+          "label": "Dieux",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            29,
+            33,
+            34,
+            35,
+            36
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Dieux »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16,
+            25,
+            29,
+            34,
+            36
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vie »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            20,
+            21,
+            34,
+            36
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Lumière »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            21,
+            32,
+            33,
+            36
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Sagesse »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "pere",
+          "label": "Père",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            23,
+            31,
+            36
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Père »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "purete",
+          "label": "Pureté",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            21,
+            29,
+            36
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Pureté »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "regard",
+          "label": "Regard",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            21,
+            33,
+            36
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Regard »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "destinee",
+          "label": "Destinée",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            23,
+            36
+          ],
+          "teaching": "Le thème « Destinée » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "mere",
+          "label": "Mère",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            23,
+            24
+          ],
+          "teaching": "Le thème « Mère » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "mort",
+          "label": "Mort",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            28,
+            36
+          ],
+          "teaching": "Le thème « Mort » est présent de façon significative dans le psaume, sans extrapolation extérieure."
         }
       ]
     },

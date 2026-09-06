@@ -6,27 +6,26 @@
     "archangel": "raphael"
   },
   "method": {
-    "status": "editorial-indexing-in-progress",
+    "status": "editorial-indexing-complete",
     "source": "validated-psalm-corpus",
     "titlesUsedAsContext": true,
     "notesUsedAsContext": true,
     "prayersIndexed": false,
-    "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme.",
-    "completenessIssue": "missing documentary Psalm(s): [215]. Repair from the authoritative PDF before declaring this book complete."
+    "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme."
   },
   "bookSynthesis": {
-    "centralAxis": "Livre 35, « Le chemin du bonheur ». Contexte construit exclusivement à partir du PDF, de l’ordre des psaumes, de leurs titres, textes et notes. Les thèmes récurrents les plus visibles sont notamment Corps, Vie, Dieux, Vision, Conscience, Terre, Pensée, Âme, Œuvre, Intelligence. Le contexte sert au classement et à l’explication sans remplacer les preuves locales des versets.",
+    "centralAxis": "Livre 35, « Le chemin du bonheur ». Contexte construit exclusivement à partir du PDF, de l’ordre des psaumes, de leurs titres, textes et notes. Les thèmes récurrents les plus visibles sont notamment Corps, Vie, Vision, Dieux, Conscience, Terre, Pensée, Âme, Intelligence, Œuvre. Le contexte sert au classement et à l’explication sans remplacer les preuves locales des versets.",
     "majorThemes": [
       "corps",
       "vie",
-      "dieux",
       "vision",
+      "dieux",
       "conscience",
       "terre",
       "pensee",
       "ame",
-      "oeuvre",
       "intelligence",
+      "oeuvre",
       "lumiere",
       "energie",
       "maitrise",
@@ -1496,35 +1495,13 @@
       "number": 214,
       "title": "Conduisez tout ce que vous voyez et entreprenez vers la L umière",
       "titleSignals": [
-        "vie",
         "vision",
+        "vie",
+        "intelligence",
         "pensée",
-        "conscience",
-        "intelligence"
+        "âme"
       ],
       "themes": [
-        {
-          "themeId": "vie",
-          "label": "Vie",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            2,
-            3,
-            10,
-            12,
-            24,
-            26,
-            29,
-            36,
-            40,
-            41,
-            42,
-            43,
-            46
-          ],
-          "teaching": "Le psaume développe de façon répétée le thème « Vie »; les versets indiqués en constituent les points d’appui textuels."
-        },
         {
           "themeId": "vision",
           "label": "Vision",
@@ -1537,58 +1514,49 @@
             5,
             8,
             12,
-            22,
-            30,
-            31,
-            33,
-            35,
-            42,
-            43
+            22
           ],
           "teaching": "Le psaume développe de façon répétée le thème « Vision »; les versets indiqués en constituent les points d’appui textuels."
         },
         {
-          "themeId": "pensee",
-          "label": "Pensée",
+          "themeId": "vie",
+          "label": "Vie",
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
             2,
-            11,
-            16,
-            25,
-            29,
-            31
+            3,
+            10,
+            12,
+            24
           ],
-          "teaching": "Le psaume développe de façon répétée le thème « Pensée »; les versets indiqués en constituent les points d’appui textuels."
-        },
-        {
-          "themeId": "conscience",
-          "label": "Conscience",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            8,
-            17,
-            25,
-            32,
-            42
-          ],
-          "teaching": "Le psaume développe de façon répétée le thème « Conscience »; les versets indiqués en constituent les points d’appui textuels."
+          "teaching": "Le psaume développe de façon répétée le thème « Vie »; les versets indiqués en constituent les points d’appui textuels."
         },
         {
           "themeId": "intelligence",
           "label": "Intelligence",
-          "importance": "important",
+          "importance": "central",
           "directness": "direct",
           "verseNumbers": [
             11,
             19,
             24,
-            25,
-            29
+            25
           ],
           "teaching": "Le psaume développe de façon répétée le thème « Intelligence »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            11,
+            16,
+            25
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Pensée »; les versets indiqués en constituent les points d’appui textuels."
         },
         {
           "themeId": "ame",
@@ -1598,54 +1566,26 @@
           "verseNumbers": [
             7,
             11,
-            25,
-            29
+            25
           ],
           "teaching": "Le psaume développe de façon répétée le thème « Âme »; les versets indiqués en constituent les points d’appui textuels."
         },
         {
-          "themeId": "corps",
-          "label": "Corps",
+          "themeId": "conscience",
+          "label": "Conscience",
           "importance": "important",
           "directness": "direct",
           "verseNumbers": [
-            5,
-            11,
-            33,
-            46
+            8,
+            17,
+            25
           ],
-          "teaching": "Le psaume développe de façon répétée le thème « Corps »; les versets indiqués en constituent les points d’appui textuels."
-        },
-        {
-          "themeId": "loi",
-          "label": "Loi",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            35,
-            36,
-            37,
-            43
-          ],
-          "teaching": "Le psaume développe de façon répétée le thème « Loi »; les versets indiqués en constituent les points d’appui textuels."
-        },
-        {
-          "themeId": "parole",
-          "label": "Parole",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            6,
-            25,
-            27
-          ],
-          "teaching": "Le psaume développe de façon répétée le thème « Parole »; les versets indiqués en constituent les points d’appui textuels."
+          "teaching": "Le psaume développe de façon répétée le thème « Conscience »; les versets indiqués en constituent les points d’appui textuels."
         },
         {
           "themeId": "dieux",
           "label": "Dieux",
-          "importance": "related",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
             20,
@@ -1657,7 +1597,7 @@
         {
           "themeId": "illusion",
           "label": "Illusion",
-          "importance": "related",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
             4,
@@ -1677,11 +1617,198 @@
             24
           ],
           "teaching": "Le psaume développe de façon répétée le thème « Lumière »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "parole",
+          "label": "Parole",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            6,
+            25
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Parole »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "sentiments",
+          "label": "Sentiments",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            8,
+            25
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Sentiments »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "verite",
+          "label": "Vérité",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            25
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vérité »; les versets indiqués en constituent les points d’appui textuels."
         }
       ],
       "notesUsed": [
         "book-35-psalm-214-note-001",
         "book-35-psalm-214-note-002"
+      ]
+    },
+    {
+      "recordId": "book-35-psalm-215",
+      "number": 215,
+      "title": "La clé magique pour attirer à soi ce que l’on souhaite",
+      "titleSignals": [
+        "vie",
+        "vision",
+        "loi",
+        "conscience",
+        "monde visible"
+      ],
+      "themes": [
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            26,
+            29,
+            36,
+            40,
+            41,
+            42
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vie »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "vision",
+          "label": "Vision",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            30,
+            31,
+            33,
+            35,
+            42
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vision »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "loi",
+          "label": "Loi",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            35,
+            36,
+            37
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Loi »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "conscience",
+          "label": "Conscience",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            32,
+            42
+          ],
+          "teaching": "Le thème « Conscience » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "monde-visible",
+          "label": "Monde visible",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            34,
+            37
+          ],
+          "teaching": "Le thème « Monde visible » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            29,
+            31
+          ],
+          "teaching": "Le thème « Pensée » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "acte",
+          "label": "Acte",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            36
+          ],
+          "teaching": "Le thème « Acte » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "ame",
+          "label": "Âme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            29
+          ],
+          "teaching": "Le thème « Âme » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "corps",
+          "label": "Corps",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            33
+          ],
+          "teaching": "Le thème « Corps » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "intelligence",
+          "label": "Intelligence",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            29
+          ],
+          "teaching": "Le thème « Intelligence » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "parole",
+          "label": "Parole",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            27
+          ],
+          "teaching": "Le thème « Parole » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        },
+        {
+          "themeId": "pere",
+          "label": "Père",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            35
+          ],
+          "teaching": "Le thème « Père » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        }
+      ],
+      "notesUsed": [
+        "book-35-psalm-215-note-001"
       ]
     },
     {

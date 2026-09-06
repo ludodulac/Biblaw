@@ -1,11 +1,22 @@
 {
   "schemaVersion": 1,
-  "status": "passed",
+  "status": "failed",
   "stats": {
     "books": 44,
-    "psalmAnalyses": 1151,
-    "themeRelations": 9675
+    "psalmAnalyses": 1156,
+    "themeRelations": 9739
   },
-  "errors": [],
+  "errors": [
+    {
+      "file": "data/thematic-index/books/book-18.json",
+      "recordId": "book-18-psalm-127",
+      "themeId": "eau",
+      "type": "invalid-verse-reference",
+      "verseNumbers": [
+        29,
+        30
+      ]
+    }
+  ],
   "warnings": []
 }

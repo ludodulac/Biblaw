@@ -6,37 +6,36 @@
     "archangel": "gabriel"
   },
   "method": {
-    "status": "editorial-indexing-in-progress",
+    "status": "editorial-indexing-complete",
     "source": "validated-psalm-corpus",
     "titlesUsedAsContext": true,
     "notesUsedAsContext": true,
     "prayersIndexed": false,
-    "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme.",
-    "completenessIssue": "missing documentary Psalm(s): [186]. Repair from the authoritative PDF before declaring this book complete."
+    "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme."
   },
   "bookSynthesis": {
-    "centralAxis": "Livre 26, « L’énergie créatrice ». Contexte construit exclusivement à partir du PDF, de l’ordre des psaumes, de leurs titres, textes et notes. Les thèmes récurrents les plus visibles sont notamment Vie, Lumière, Conscience, Terre, Corps, Intelligence, Monde divin, Pensée, Création, Œuvre. Le contexte sert au classement et à l’explication sans remplacer les preuves locales des versets.",
+    "centralAxis": "Livre 26, « L’énergie créatrice ». Contexte construit exclusivement à partir du PDF, de l’ordre des psaumes, de leurs titres, textes et notes. Les thèmes récurrents les plus visibles sont notamment Vie, Lumière, Conscience, Corps, Terre, Intelligence, Monde divin, Pensée, Création, Œuvre. Le contexte sert au classement et à l’explication sans remplacer les preuves locales des versets.",
     "majorThemes": [
       "vie",
       "lumiere",
       "conscience",
-      "terre",
       "corps",
+      "terre",
       "intelligence",
       "monde-divin",
       "pensee",
       "creation",
       "oeuvre",
-      "eau",
       "sagesse",
+      "eau",
       "ame",
       "dieux",
       "harmonie",
+      "nation-essenienne",
       "purete",
       "alliance",
       "destinee",
-      "nation-essenienne",
-      "apprentissage"
+      "verite"
     ]
   },
   "psalmAnalyses": [
@@ -4274,6 +4273,202 @@
             13
           ],
           "teaching": "Le thème « Pureté » est présent de façon significative dans le psaume, sans extrapolation extérieure."
+        }
+      ]
+    },
+    {
+      "recordId": "book-26-psalm-186",
+      "number": 186,
+      "title": "Que le désir d’apprendre soit plus grand que vos certitudes",
+      "titleSignals": [
+        "vie",
+        "corps",
+        "lumière",
+        "pensée",
+        "vérité"
+      ],
+      "themes": [
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            31,
+            32,
+            34,
+            39,
+            40,
+            43,
+            44,
+            46,
+            47,
+            48
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vie »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "corps",
+          "label": "Corps",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            24,
+            33,
+            38,
+            39,
+            43,
+            44,
+            46,
+            47,
+            50
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Corps »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            26,
+            33,
+            38,
+            39,
+            40,
+            46,
+            49,
+            50
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Lumière »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            23,
+            27,
+            37,
+            38,
+            39,
+            50
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Pensée »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "verite",
+          "label": "Vérité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            24,
+            28,
+            40,
+            45,
+            47,
+            50
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vérité »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "monde-divin",
+          "label": "Monde divin",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            26,
+            27,
+            28,
+            33,
+            50
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Monde divin »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            26,
+            27,
+            33,
+            34,
+            36
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Sagesse »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "feu",
+          "label": "Feu",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            29,
+            41,
+            49,
+            50
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Feu »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "illusion",
+          "label": "Illusion",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            27,
+            29,
+            31,
+            47
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Illusion »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "nation-essenienne",
+          "label": "Nation Essénienne",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            41,
+            42,
+            44,
+            50
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Nation Essénienne »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "travail",
+          "label": "Travail",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            24,
+            30,
+            36,
+            46
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Travail »; les versets indiqués en constituent les points d’appui textuels."
+        },
+        {
+          "themeId": "conscience",
+          "label": "Conscience",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            39,
+            40,
+            50
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Conscience »; les versets indiqués en constituent les points d’appui textuels."
         }
       ]
     },

@@ -6,24 +6,23 @@
     "archangel": "raphael"
   },
   "method": {
-    "status": "editorial-indexing-in-progress",
+    "status": "editorial-indexing-complete",
     "source": "validated-psalm-corpus",
     "titlesUsedAsContext": true,
     "notesUsedAsContext": true,
     "prayersIndexed": false,
-    "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme.",
-    "completenessIssue": "missing documentary Psalm(s): [128]. Repair from the authoritative PDF before declaring this book complete."
+    "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme."
   },
   "bookSynthesis": {
-    "centralAxis": "Livre 23, « La pensée créatrice ». Contexte construit exclusivement à partir du PDF: titre du livre, ordre des psaumes, titres, textes et notes éditoriales. Les thèmes récurrents les plus visibles dans le corpus analysé sont notamment Vie, Terre, Intelligence, Lumière, Conscience, Œuvre, Pensée, Corps, Sagesse, Âme. Cette synthèse sert de contexte au moteur mais ne remplace jamais la preuve locale des versets.",
+    "centralAxis": "Livre 23, « La pensée créatrice ». Contexte construit exclusivement à partir du PDF: titre du livre, ordre des psaumes, titres, textes et notes éditoriales. Les thèmes récurrents les plus visibles dans le corpus analysé sont notamment Vie, Terre, Intelligence, Lumière, Œuvre, Pensée, Conscience, Corps, Sagesse, Âme. Cette synthèse sert de contexte au moteur mais ne remplace jamais la preuve locale des versets.",
     "majorThemes": [
       "vie",
       "terre",
       "intelligence",
       "lumiere",
-      "conscience",
       "oeuvre",
       "pensee",
+      "conscience",
       "corps",
       "sagesse",
       "ame",
@@ -40,6 +39,214 @@
     ]
   },
   "psalmAnalyses": [
+    {
+      "recordId": "book-23-psalm-128",
+      "number": 128,
+      "title": "Ne sois pas un rêveur",
+      "titleSignals": [
+        "terre",
+        "intelligence",
+        "œuvre",
+        "vie",
+        "lumière"
+      ],
+      "themes": [
+        {
+          "themeId": "terre",
+          "label": "Terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            49,
+            53,
+            55,
+            56,
+            61,
+            62,
+            63,
+            64,
+            66,
+            67,
+            68,
+            69,
+            70
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Terre »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "intelligence",
+          "label": "Intelligence",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            49,
+            50,
+            55,
+            56,
+            59,
+            61,
+            64,
+            65,
+            66,
+            67
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Intelligence »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "oeuvre",
+          "label": "Œuvre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            49,
+            50,
+            53,
+            56,
+            57,
+            65,
+            66,
+            68,
+            69
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Œuvre »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            49,
+            50,
+            54,
+            56,
+            63,
+            67,
+            68,
+            70,
+            72
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vie »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            56,
+            61,
+            63,
+            65,
+            69,
+            72,
+            73
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Lumière »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "concentration",
+          "label": "Concentration",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            49,
+            51,
+            53,
+            56,
+            60,
+            64
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Concentration »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "corps",
+          "label": "Corps",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            53,
+            54,
+            65,
+            67,
+            68,
+            69
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Corps »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            55,
+            59,
+            67,
+            72,
+            76
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Pensée »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            51,
+            53,
+            65,
+            67,
+            70
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Sagesse »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "verite",
+          "label": "Vérité",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            56,
+            57,
+            63,
+            70,
+            72
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Vérité »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "illusion",
+          "label": "Illusion",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            56,
+            59,
+            67,
+            68
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Illusion »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        },
+        {
+          "themeId": "maitrise",
+          "label": "Maîtrise",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            49,
+            51,
+            56,
+            58
+          ],
+          "teaching": "Le psaume développe de façon répétée le thème « Maîtrise »; les versets indiqués constituent les points d’appui textuels de cette relation."
+        }
+      ],
+      "notesUsed": [
+        "book-23-psalm-128-note-001"
+      ]
+    },
     {
       "recordId": "book-23-psalm-129",
       "number": 129,
