@@ -6,38 +6,43 @@
     "archangel": "raphael"
   },
   "method": {
-    "status": "editorially-indexed",
+    "status": "editorial-indexing-complete",
     "source": "validated-psalm-corpus",
     "titlesUsedAsContext": true,
     "notesUsedAsContext": true,
     "prayersIndexed": false,
-    "rule": "Index meaningful teachings, beings, symbols, elements, practices and concepts; do not build a word list."
+    "rule": "Index meaningful teachings, beings, symbols, elements, practices and concepts; do not build a word list.",
+    "semanticPass": "deep-content-grounded-complete",
+    "deepPsalmCount": 23,
+    "contentGrounding": "complete",
+    "interpretiveScope": "descriptive-indexing-non-exclusive",
+    "interpretivePolicy": "Theme connections are research aids grounded in corpus verses; they do not claim to exhaust or uniquely determine the Psalm’s possible levels of reading."
   },
   "bookSynthesis": {
-    "centralAxis": "Raphaël présente l'homme comme un être respiratoire reliant corps, âme, esprit, nature et mondes invisibles. La respiration consciente, l'air, l'éther, la méditation et l'éveil des organes subtils permettent de transformer la vie mortelle en support d'immortalité, d'unir esprit et matière et de faire du corps un temple vivant capable d'accueillir la Lumière.",
+    "centralAxis": "Synthèse d’indexation non exclusive : les relations indexées de ce livre font ressortir notamment Règnes, Respiration, Air, Anges, Souffle, Semence, Immortalité, Discernement, Esprit et matière, Méditation. Cette synthèse sert au repérage et à la recherche dans le corpus ; elle ne prétend pas épuiser ni fixer les différents niveaux de lecture possibles.",
     "majorThemes": [
+      "regnes",
       "respiration",
       "air",
-      "souffle",
-      "ame",
-      "corps",
-      "immortalite",
-      "meditation",
-      "esprit-et-matiere",
       "anges",
-      "ether",
-      "lumiere",
+      "souffle",
       "semence",
-      "benediction",
-      "communaute",
-      "nature",
-      "organes",
-      "clarte",
-      "memoire-ancestrale",
-      "legerete",
-      "papillon",
-      "aigle"
-    ]
+      "immortalite",
+      "discernement",
+      "esprit-et-matiere",
+      "meditation",
+      "corps",
+      "guerison",
+      "quatre-elements",
+      "priere",
+      "montagne",
+      "communication-avec-le-divin",
+      "futur",
+      "tradition",
+      "pierre",
+      "pierre-verte"
+    ],
+    "scope": "descriptive-indexing-non-exclusive"
   },
   "psalmAnalyses": [
     {
@@ -138,7 +143,8 @@
           ],
           "teaching": "Le souffle porte le verbe, les pensées et la volonté à travers les mondes et doit être accordé consciemment à l'intelligence supérieure."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-002",
@@ -185,7 +191,8 @@
           ],
           "teaching": "Parler avec le divin suppose de traverser consciemment les mondes intermédiaires et d'adapter son être au langage du sommet."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-003",
@@ -256,7 +263,8 @@
           ],
           "teaching": "L'homme s'inscrit dans une transmission et une hérédité qui influencent ce qu'il fait germer et transmettre aux générations suivantes."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-004",
@@ -310,7 +318,8 @@
           ],
           "teaching": "La valeur spirituelle ne se mesure pas à l'apparence extérieure mais à ce que l'être capte, garde et manifeste intérieurement."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-005",
@@ -390,7 +399,8 @@
           ],
           "teaching": "La vie quotidienne peut former un corps d'immortalité lorsque pensée, volonté et œuvre sont reliées à l'éternité."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-006",
@@ -450,7 +460,8 @@
           ],
           "teaching": "L'homme doit interroger les modes, philosophies et influences au lieu de leur obéir mécaniquement."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-007",
@@ -506,7 +517,8 @@
           ],
           "teaching": "Être premier signifie être le serviteur le plus disponible pour la Lumière et non occuper une position de domination."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-008",
@@ -563,7 +575,8 @@
           ],
           "teaching": "L'enseignement devient vivant lorsqu'il prend corps dans les gestes, paroles, attitudes et créations de l'homme."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-009",
@@ -638,7 +651,8 @@
           ],
           "teaching": "L'homme véritable se définit aussi par le respect conscient de la vie et des mondes qui le constituent."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-010",
@@ -701,7 +715,8 @@
           ],
           "teaching": "La Ronde des Archanges sert de centre d'union pour créer un monde orienté vers la vie."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-011",
@@ -755,7 +770,8 @@
           ],
           "teaching": "Le phénix représente le peuple essénien qui renaît de ses cendres par le souvenir de l'âme et de sa patrie."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-012",
@@ -813,7 +829,8 @@
           ],
           "teaching": "L'ensemencement de Lumière doit ouvrir aussi un chemin aux minéraux, végétaux et animaux."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-013",
@@ -875,7 +892,8 @@
           ],
           "teaching": "La mission humaine est de connaître puis faire connaître la Lumière dans le quotidien en sachant clairement son orientation."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-014",
@@ -953,7 +971,8 @@
           ],
           "teaching": "La Terre-Mère tient et nourrit le corps afin que l'homme puisse accomplir son rôle de lien entre ciel et terre."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-015",
@@ -1030,7 +1049,8 @@
           ],
           "teaching": "Les règnes de la nature participent au mouvement qui conduit progressivement la matière vers l'esprit."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-016",
@@ -1084,7 +1104,8 @@
           ],
           "teaching": "La méditation unit stabilité terrestre, sérénité, pensée élevée et écoute de la voix intérieure."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-017",
@@ -1166,7 +1187,8 @@
           ],
           "teaching": "L'harmonisation intérieure de l'homme lui donne une fonction de guérison pour lui-même, la terre et les mondes qu'il porte."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-018",
@@ -1235,7 +1257,8 @@
           ],
           "teaching": "La création intérieure doit partir de ce que l'on est réellement et rester fidèle au monde divin plutôt qu'imiter une identité extérieure."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-019",
@@ -1302,7 +1325,8 @@
           ],
           "teaching": "La respiration se poursuit aussi dans les mondes subtils à travers pensée, ressenti et volonté."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-020",
@@ -1337,7 +1361,8 @@
           ],
           "teaching": "La flamme sacrée représente l'énergie intérieure qui doit rester vivante, orientée et créatrice."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-021",
@@ -1389,7 +1414,8 @@
           ],
           "teaching": "Le regard juste perçoit le divin en devenir chez l'autre et émane amour, joie et espérance."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-022",
@@ -1464,7 +1490,8 @@
           ],
           "teaching": "La guérison ancestrale demande lucidité, méditation, douceur et relation au présent divin plutôt qu'un simple contrôle disciplinaire."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-03-psalm-023",
@@ -1524,7 +1551,8 @@
           ],
           "teaching": "La respiration légère et l'inspiration divine ouvrent une liberté intérieure au-dessus de ce qui est sombre."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     }
   ]
 }
