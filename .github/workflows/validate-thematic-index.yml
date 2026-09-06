@@ -9,6 +9,7 @@ on:
       - 'scripts/complete_books18_20_thematic.py'
       - 'scripts/deepen_book18_semantic.py'
       - 'scripts/deepen_book18_semantic_part2.py'
+      - 'scripts/finalize_book18_semantic.py'
       - 'scripts/deepen_book19_semantic_part1.py'
       - 'scripts/deepen_book20_semantic_part1.py'
       - 'scripts/ground_books18_20_semantic_evidence.py'
@@ -45,6 +46,8 @@ jobs:
         run: python scripts/deepen_book18_semantic.py
       - name: Apply second deep semantic pass for Gabriel book 18
         run: python scripts/deepen_book18_semantic_part2.py
+      - name: Finalize complete deep semantic pass for Gabriel book 18
+        run: python scripts/finalize_book18_semantic.py
       - name: Apply first deep semantic pass for Raphael book 19
         run: python scripts/deepen_book19_semantic_part1.py
       - name: Apply first deep semantic pass for Ouriel book 20
