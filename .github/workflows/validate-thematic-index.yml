@@ -11,6 +11,12 @@ on:
       - 'scripts/deepen_book18_semantic_part2.py'
       - 'scripts/finalize_book18_semantic.py'
       - 'scripts/deepen_book19_semantic_part1.py'
+      - 'scripts/deepen_book19_semantic_part2.py'
+      - 'scripts/deepen_book19_semantic_part3.py'
+      - 'scripts/deepen_book19_semantic_part4.py'
+      - 'scripts/deepen_book19_semantic_part5.py'
+      - 'scripts/deepen_book19_semantic_part6.py'
+      - 'scripts/finalize_book19_semantic.py'
       - 'scripts/deepen_book20_semantic_part1.py'
       - 'scripts/ground_books18_20_semantic_evidence.py'
       - 'scripts/complete_books21_23_thematic.py'
@@ -50,6 +56,18 @@ jobs:
         run: python scripts/finalize_book18_semantic.py
       - name: Apply first deep semantic pass for Raphael book 19
         run: python scripts/deepen_book19_semantic_part1.py
+      - name: Apply second deep semantic pass for Raphael book 19
+        run: python scripts/deepen_book19_semantic_part2.py
+      - name: Apply third deep semantic pass for Raphael book 19
+        run: python scripts/deepen_book19_semantic_part3.py
+      - name: Apply fourth deep semantic pass for Raphael book 19
+        run: python scripts/deepen_book19_semantic_part4.py
+      - name: Apply fifth deep semantic pass for Raphael book 19
+        run: python scripts/deepen_book19_semantic_part5.py
+      - name: Apply final deep semantic pass for Raphael book 19
+        run: python scripts/deepen_book19_semantic_part6.py
+      - name: Finalize complete deep semantic pass for Raphael book 19
+        run: python scripts/finalize_book19_semantic.py
       - name: Apply first deep semantic pass for Ouriel book 20
         run: python scripts/deepen_book20_semantic_part1.py
       - name: Ground remaining semantic evidence for books 18 to 20
