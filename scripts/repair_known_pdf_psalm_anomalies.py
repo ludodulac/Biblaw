@@ -66,8 +66,6 @@ def extract_case(c):
  if not nums or nums!=expected: raise RuntimeError(f"Unexpected source numbering for book {c['book']} Psalm {c['psalm']}: {nums}")
  if nums[0]!=c['startVerse']: raise RuntimeError(f"Wrong first source verse for {c}")
  book_dir=CORPUS/f"book-{c['book']:02d}"; note_dir=NOTES/f"book-{c['book']:02d}"
- # Some generic extractions swallow the skipped segment into the preceding Psalm; others omit it.
- # Both states are safe to repair because the target segment itself is reconstructed from explicit PDF headings.
  if c['previous'] is not None:
   prev_path=book_dir/f"psalm-{c['previous']:03d}.json"
   if prev_path.exists():
@@ -92,7 +90,12 @@ def extract_case(c):
 def repair_book44_final_psalm():
  path=CORPUS/'book-44'/'psalm-285.json'
  if not path.exists(): return
- data=json.loads(path.read_text(encoding='utf-8')); verses=data.get('verses',[]); v16=next((v for v in verses if v.get('number')==16),None)
+ data=json.loads(path.read_text(encoding='utf-8')); verses=data.get('verses',[])
+ nums=[v.get('number') for v in verses if isinstance(v.get('number'),int)]
+ if nums==list(range(1,17)) and data.get('extraction',{}).get('auditedFinalAnnexDetached'):
+  print('Book 44 Psalm 285 already repaired: annex detached after verse 16')
+  return
+ v16=next((v for v in verses if v.get('number')==16),None)
  if not v16: raise RuntimeError('Book 44 Psalm 285 verse 16 not found')
  marker=re.search(r'\s*T[ÉE]MOIGNAGE\s+DE\s+L[’\']ANGE',v16.get('text',''),re.I)
  if not marker: raise RuntimeError('Audited final annex marker not found in book 44 Psalm 285 verse 16')
