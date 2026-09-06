@@ -1,0 +1,60 @@
+name: Validate deep books 35 to 37
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/deepen_books35_37_semantic_evidence.py'
+      - 'scripts/finalize_books35_37_semantic.py'
+      - '.github/workflows/validate-deep-books35-37.yml'
+permissions:
+  contents: write
+concurrency:
+  group: thematic-index-generated-files
+  cancel-in-progress: false
+jobs:
+  validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Repair audited PDF boundaries for books 35 and 36
+        run: |
+          python - <<'PY'
+          import scripts.repair_known_pdf_psalm_anomalies as r
+          for case in r.CASES:
+              if case['book'] in (35, 36):
+                  r.extract_case(case)
+          PY
+      - name: Rebuild canonical books 31 to 40
+        run: python scripts/complete_books31_40_thematic.py
+      - name: Preserve completed deep books 31 to 34
+        run: |
+          python scripts/deepen_books29_31_semantic_evidence.py
+          python scripts/finalize_books29_31_semantic.py
+          python scripts/deepen_books32_34_semantic_evidence.py
+          python scripts/finalize_books32_34_semantic.py
+      - name: Ground complete deep evidence for books 35 to 37
+        run: python scripts/deepen_books35_37_semantic_evidence.py
+      - name: Finalize books 35 to 37
+        run: python scripts/finalize_books35_37_semantic.py
+      - name: Gate thematic completion on documentary integrity
+        run: python scripts/sync_thematic_documentary_status.py
+      - name: Normalize thematic metadata
+        run: python scripts/normalize_thematic_metadata.py
+      - name: Build PDF-only book contexts
+        run: python scripts/build_book_contexts.py
+      - name: Validate thematic index
+        run: python scripts/validate_thematic_index.py
+      - name: Rebuild thematic directory
+        run: python scripts/build_thematic_directory.py
+      - name: Commit generated outputs
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/corpus/books/book-35 data/corpus/books/book-36 data/notes/books/book-35 data/notes/books/book-36 data/thematic-index/books/book-31.json data/thematic-index/books/book-32.json data/thematic-index/books/book-33.json data/thematic-index/books/book-34.json data/thematic-index/books/book-35.json data/thematic-index/books/book-36.json data/thematic-index/books/book-37.json data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/validation-report.json
+          if git diff --cached --quiet; then echo 'No generated changes'; exit 0; fi
+          git commit -m 'Finalize deep semantic books 35 to 37'
+          git push origin HEAD:main
