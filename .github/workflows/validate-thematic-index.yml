@@ -9,6 +9,8 @@ on:
       - 'scripts/complete_books18_20_thematic.py'
       - 'scripts/deepen_book18_semantic.py'
       - 'scripts/deepen_book18_semantic_part2.py'
+      - 'scripts/deepen_book19_semantic_part1.py'
+      - 'scripts/deepen_book20_semantic_part1.py'
       - 'scripts/ground_books18_20_semantic_evidence.py'
       - 'scripts/complete_books21_23_thematic.py'
       - 'scripts/complete_books24_26_thematic.py'
@@ -43,6 +45,10 @@ jobs:
         run: python scripts/deepen_book18_semantic.py
       - name: Apply second deep semantic pass for Gabriel book 18
         run: python scripts/deepen_book18_semantic_part2.py
+      - name: Apply first deep semantic pass for Raphael book 19
+        run: python scripts/deepen_book19_semantic_part1.py
+      - name: Apply first deep semantic pass for Ouriel book 20
+        run: python scripts/deepen_book20_semantic_part1.py
       - name: Ground remaining semantic evidence for books 18 to 20
         run: python scripts/ground_books18_20_semantic_evidence.py
       - name: Complete canonical books 21 to 23
