@@ -40,6 +40,36 @@ DEEP={
   T('lois','Lois','important','direct',[6],"L'étude, la compréhension et l'application des lois sont posées comme conditions de la manifestation plutôt que comme simple savoir théorique."),
   T('lumiere','Lumière','important','direct',[4,6],"La Lumière doit disposer de conditions concrètes pour se manifester; le manque d'intérêt et d'application des lois est présenté comme pouvant affaiblir cette manifestation."),
  ]},
+125:{
+ 'titleSignals':['préparation','temple','monde divin','pureté','lois'],
+ 'themes':[
+  T('preparation','Préparation','central','direct',[2,3,4,5,6,7,10,17,19,24],"Le psaume présente la préparation comme la condition générale de toute manifestation et l'applique explicitement à l'approche du monde divin : intention claire, travail sur soi, espace adapté et discipline doivent précéder la rencontre."),
+  T('temple','Temple','central','direct',[10,19,26,34,35,36,37,38,39,40],"Le temple est décrit comme un lieu de rencontre et de préparation dont l'espace sacré doit être protégé des préoccupations ordinaires et, selon le texte, organisé en niveaux correspondant au degré de préparation des personnes."),
+  T('monde-divin','Monde divin','central','direct',[7,11,12,13,15,16,17,19,24,25,26,32,35,40],"Le monde divin est présenté comme une réalité qui ne peut être réduite aux concepts ni mise au service des intérêts humains; l'homme doit plutôt préparer les conditions pour l'accueillir sans lui imposer son propre monde."),
+  T('purete','Pureté','central','direct',[8,9,10,13,17,19,22,24,27,31,32],"La pureté désigne ici la disponibilité d'un espace, d'un calice, d'une intention et d'une vie dégagés des concepts et préoccupations qui empêchent de recevoir une inspiration nouvelle."),
+  T('lois','Lois','important','direct',[1,6,7,17,19,22,23,24,25],"L'étude et l'application des lois sont données comme moyens de transformer un désir spirituel en conditions réelles, stables et intelligentes de pratique."),
+  T('espace-sacre','Espace sacré','important','direct',[22,23,24,34,35,37],"Le texte demande de faire vivre un espace sacré à la fois dans la vie, sur la terre et dans la nature afin qu'il serve de milieu de rencontre, d'étude, de ressourcement et de protection."),
+  T('liberation','Libération','important','direct',[20,21,25],"La libération est opposée aux concepts et prisons que l'homme construit lui-même; elle suppose selon le psaume un engagement volontaire à se dégager de ce qui le retient."),
+  T('mere','Mère','important','direct',[28,29,30],"La Mère est présentée comme une réalité vivante de la nature qui forme, instruit et prépare l'homme en lui apprenant à discerner ce qui guérit, régénère ou empoisonne."),
+  T('nature','Nature','important','direct',[29,30,33,34,37],"La nature est donnée comme un espace éducatif et comme modèle de temple parce qu'elle permet, dans le cadre du texte, de rencontrer un monde qui n'a pas été construit par les concepts humains."),
+  T('alliance','Alliance','important','direct',[26],"L'Alliance apparaît comme l'aboutissement d'une préparation réciproque : des hommes créent les conditions d'accueil et le monde divin peut alors, selon le texte, se manifester au milieu d'eux."),
+  T('discipline','Discipline','related','direct',[19,22,23,35],"La discipline est associée au respect des conditions du lieu sacré et à une préparation régulière plutôt qu'à une approche improvisée de la pratique."),
+ ]},
+126:{
+ 'titleSignals':['œil','eau','regard','sagesse','destinée'],
+ 'themes':[
+  T('oeil','Œil','central','direct',[2,3,4,6,7,8,9,10,12,14,15,16,18,21,23,24],"L'œil est présenté comme un instrument qui oriente l'ensemble de la vie : ce qu'il choisit de regarder détermine les milieux auxquels l'homme se relie, influence ses pensées et ses actes et ouvre ou ferme son chemin."),
+  T('eau','Eau','central','direct',[1,2,3,5,8,10,21,23,24],"L'eau représente explicitement l'âme, la conscience, la sensibilité et le milieu de vie; sa clarté dépend notamment de la qualité du regard et conditionne, dans le texte, la capacité à refléter des mondes supérieurs."),
+  T('regard','Regard','central','direct',[2,3,7,9,10,11,17,18,21,23,24],"Le psaume oppose un regard capturé par la laideur ou les apparences à un regard éduqué qui cherche l'intelligence, la beauté et ce qui peut encore croître sans nier les influences nuisibles."),
+  T('destinee','Destinée','important','direct',[3,4,24],"La destinée est reliée à l'orientation du regard : l'œil ouvre le chemin, puis attitudes, actes et êtres associés à cette orientation prolongent ce mouvement dans la vie."),
+  T('sagesse','Sagesse','important','direct',[9,12,13,16,19,20,21,23],"La sagesse doit devenir le guide du regard afin de replacer les choses dans leur contexte, dépasser le jugement immédiat et discerner une possibilité d'évolution au-delà de l'apparence présente."),
+  T('apparences','Apparences','important','direct',[9,10,11],"Le monde physique est décrit comme un tableau inachevé; le texte demande de ne pas figer une réalité à partir de sa forme momentanée ni de limiter la compréhension aux sens physiques."),
+  T('influences','Influences','important','direct',[3,6,7,15,20,23],"Le regard peut être capturé par des mondes ou influences qui enferment; la maîtrise proposée consiste à préserver la capacité de voir le Bien tout en reconnaissant et évitant les influences jugées nuisibles."),
+  T('education-du-regard','Éducation du regard','important','direct',[9,10,12,14,17,18,21],"L'éducation de l'œil consiste à apprendre la patience, la juste place et une vision orientée vers ce qui peut devenir, comparée à l'attitude d'une mère qui accompagne un enfant encore inachevé."),
+  T('mere','Mère','important','symbolic',[17,18,21],"La mère sert de modèle explicite pour un regard qui ne condamne pas une réalité encore en formation mais œuvre dans le présent en fonction d'un avenir possible."),
+  T('bien','Bien','important','direct',[19,20],"Le texte demande de chercher le Bien et l'intelligence en chaque chose sans pour autant s'exposer sans discernement aux influences qu'il qualifie de mauvaises."),
+  T('espoir','Espoir','related','direct',[21,23],"L'espoir apparaît comme l'orientation d'une eau et d'un regard qui refusent de réduire l'inachevé à la déchéance définitive et discernent la possibilité d'une vie nouvelle."),
+ ]},
 127:{
  'titleSignals':['œil','âme','eau','œuvres','regard'],
  'themes':[
