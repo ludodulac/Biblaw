@@ -55,7 +55,7 @@ def extract_case(c):
  nxt=locate_line(text,c['nextHeading'],target[1])
  if not nxt: raise RuntimeError(f"Next heading not found: {c}")
  segment=text[target[1]:nxt[0]]
- note_pattern=re.compile(r'(?ms)^\s*(\d+)\s*-\s+(.*?)(?=^\s*\d+\s*-\s+|\Z)')
+ note_pattern=re.compile(r'(?ms)^\s*(\d+)\s*-\s+(.*?)(?=^\s*\d+\s*-\s+|^\s*\d{1,3}[.]\s+|^\s*\[\[PAGE \d+\]\]|\Z)')
  notes=[{'marker':int(m.group(1)),'text':unwrap(strip_markers(m.group(2))),'page':page_at(segment,m.start(),c['pages'][0])} for m in note_pattern.finditer(segment)]
  body=note_pattern.sub('',segment)
  matches=list(re.finditer(r'(?m)^\s*(\d{1,3})[.]\s+',body)); verses=[]
