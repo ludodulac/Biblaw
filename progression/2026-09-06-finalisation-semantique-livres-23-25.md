@@ -2,7 +2,7 @@
 
 ## Résultat
 
-Trois livres consécutifs sont maintenant fermés par un garde-barrière sémantique strict :
+Trois livres consécutifs sont fermés par un garde-barrière sémantique strict :
 
 - Livre 23 — Raphaël, « La pensée créatrice » : 26/26 analyses `deep-content-grounded`.
 - Livre 24 — Ouriel, « L’androgynie » : 26/26 analyses `deep-content-grounded`.
@@ -12,24 +12,28 @@ Chaque relation thématique résiduelle issue de la couche prototype a été rem
 
 ## Psaume 128 du livre 23
 
-Le contrôle documentaire a montré que la numérotation commençant au verset 49 n’est pas à combler artificiellement : le fichier canonique porte explicitement `sourceNumberingPreserved=true` et une base de titre auditée avec continuation de la numérotation source. La méthode du livre enregistre désormais cette particularité et aucun verset 1–48 n’a été inventé.
+Le contrôle documentaire approfondi a établi que le psaume 128, « Ne sois pas un rêveur », doit être représenté canoniquement en 34 versets numérotés 1 à 34. Le PDF imprime les repères 49 à 82 ; le pipeline applique donc un décalage audité de 48, sans inventer ni supprimer de contenu. La question est intégrée à la fin du verset canonique 22 et la réponse commence au verset 23. Le script `scripts/repair_book23_psalm128_numbering.py` impose et vérifie cette transformation après reconstruction depuis le PDF.
 
 ## Pipeline
 
-Nouveaux éléments reproductibles :
+Éléments reproductibles :
 
+- `scripts/repair_known_pdf_psalm_anomalies.py`
+- `scripts/repair_book23_psalm128_numbering.py`
 - `scripts/deepen_books23_25_semantic_evidence.py`
 - `scripts/finalize_books23_25_semantic.py`
 - `.github/workflows/validate-deep-books23-25.yml`
 
-Un premier run a correctement révélé des enseignements prototypes résiduels dans les analyses déjà approfondies 129–131 du livre 23. Le script a été corrigé pour préserver les relations éditoriales tout en grounded les relations résiduelles du même psaume. Le run suivant, `34028506863`, est entièrement vert : finaliseurs 23–25, intégrité documentaire, normalisation, contextes PDF-only, validation globale, répertoire thématique et commit généré.
+Le run historique `34028506863` avait fermé la passe sémantique initiale. La correction documentaire du psaume 128 a ensuite été validée par le run `34035664802`. Enfin, le workflow canonique global `34052571366` a reconstruit le psaume depuis le PDF, appliqué la renumérotation 49–82 vers 1–34, rejoué la passe profonde 23–25 et validé l’ensemble sans erreur ni avertissement.
 
-## État global après fermeture
+## État global consolidé
+
+Après restauration du psaume 182 du livre 32 et consolidation de tous les blocs ultérieurs :
 
 - 44 livres
-- 1 156 analyses de psaumes
-- 10 388 relations thématiques
+- 1 157 analyses de psaumes
+- 10 400 relations thématiques
 - 0 erreur
 - 0 avertissement
 
-Prochaine reprise recommandée : livre 26 puis bloc suivant, sans rouvrir 23–25 sauf nouvelle anomalie documentaire ou sémantique vérifiable.
+Le livre 23 ne doit plus être décrit comme conservant la numérotation source 49–82 : cette numérotation est désormais explicitement mappée vers la numérotation canonique 1–34.
