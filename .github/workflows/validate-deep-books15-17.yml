@@ -48,7 +48,15 @@ jobs:
       - name: Build PDF-only book contexts
         run: python scripts/build_book_contexts.py
       - name: Validate thematic index
+        id: thematic_validation
+        continue-on-error: true
         run: python scripts/validate_thematic_index.py
+      - name: Show thematic validation errors
+        if: steps.thematic_validation.outcome == 'failure'
+        run: cat data/thematic-index/validation-report.json
+      - name: Stop on thematic validation failure
+        if: steps.thematic_validation.outcome == 'failure'
+        run: exit 1
       - name: Rebuild thematic directory
         run: python scripts/build_thematic_directory.py
       - name: Commit generated outputs
