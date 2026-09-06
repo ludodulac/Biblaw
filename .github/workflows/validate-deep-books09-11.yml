@@ -1,0 +1,52 @@
+name: Validate deep books 9 to 11
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/repair_book23_psalm128_numbering.py'
+      - 'scripts/deepen_books09_11_semantic_evidence.py'
+      - 'scripts/finalize_books09_11_semantic.py'
+      - '.github/workflows/validate-deep-books09-11.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: thematic-index-generated-files
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preserve canonical Psalm 128 numbering
+        run: python scripts/repair_book23_psalm128_numbering.py
+      - name: Apply descriptive deep indexing to books 9 to 11
+        run: python scripts/deepen_books09_11_semantic_evidence.py
+      - name: Finalize books 9 to 11
+        run: python scripts/finalize_books09_11_semantic.py
+      - name: Gate thematic completion on documentary integrity
+        run: python scripts/sync_thematic_documentary_status.py
+      - name: Normalize thematic metadata
+        run: python scripts/normalize_thematic_metadata.py
+      - name: Build PDF-only book contexts
+        run: python scripts/build_book_contexts.py
+      - name: Validate thematic index
+        run: python scripts/validate_thematic_index.py
+      - name: Rebuild thematic directory
+        run: python scripts/build_thematic_directory.py
+      - name: Commit generated outputs
+        run: |
+          if [ -z "$(git status --porcelain -- data/corpus/books/book-23 data/thematic-index/books/book-09.json data/thematic-index/books/book-10.json data/thematic-index/books/book-11.json data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/validation-report.json)" ]; then
+            echo 'No generated changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/corpus/books/book-23 data/thematic-index/books/book-09.json data/thematic-index/books/book-10.json data/thematic-index/books/book-11.json data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/validation-report.json
+          git commit -m 'Finalize deep descriptive indexing books 9 to 11'
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main
