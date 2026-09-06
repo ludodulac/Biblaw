@@ -10,6 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 PDF=ROOT/'Bible essénienne (classée par livres).pdf'
 OUTDIR=ROOT/'data/pilot/missing-psalm-audits'
 CASES=[
+ {'book':15,'psalm':75,'pages':[910,920],'heading':r'75\s+'},
  {'book':23,'psalm':128,'pages':[1922,1932],'heading':r'128\s+.*rêveur'},
  {'book':26,'psalm':186,'pages':[2431,2442],'heading':r'186\s+.*désir.*apprendre'},
  {'book':35,'psalm':215,'pages':[3480,3490],'heading':r'215\s+.*clé magique'},
