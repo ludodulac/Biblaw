@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'scripts/repair_book32_psalm182.py'
+      - 'scripts/finalize_books32_34_semantic.py'
       - '.github/workflows/repair-book32-psalm182.yml'
 permissions:
   contents: write
