@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - 'scripts/repair_known_pdf_psalm_anomalies.py'
       - 'scripts/repair_book23_psalm128_numbering.py'
       - 'scripts/deepen_book23_semantic_part1.py'
       - 'scripts/deepen_books23_25_semantic_evidence.py'
@@ -23,6 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Reconstruct audited PDF anomaly segments
+        run: python scripts/repair_known_pdf_psalm_anomalies.py
       - name: Repair audited Raphael Psalm 128 numbering
         run: python scripts/repair_book23_psalm128_numbering.py
       - name: Rebuild canonical books 21 to 23
