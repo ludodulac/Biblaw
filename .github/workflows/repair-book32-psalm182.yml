@@ -19,6 +19,14 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Repair Psalm 182 from PDF
         run: python scripts/repair_book32_psalm182.py
+      - name: Repair audited PDF boundaries already closed in books 35 and 36
+        run: |
+          python - <<'PY'
+          import scripts.repair_known_pdf_psalm_anomalies as r
+          for case in r.CASES:
+              if case['book'] in (35, 36):
+                  r.extract_case(case)
+          PY
       - name: Rebuild thematic Books 31-40 then preserve completed deep passes
         run: |
           python scripts/complete_books31_40_thematic.py
@@ -26,6 +34,8 @@ jobs:
           python scripts/finalize_books29_31_semantic.py
           python scripts/deepen_books32_34_semantic_evidence.py
           python scripts/finalize_books32_34_semantic.py
+          python scripts/deepen_books35_37_semantic_evidence.py
+          python scripts/finalize_books35_37_semantic.py
       - name: Documentary and global validation
         run: |
           python scripts/sync_thematic_documentary_status.py
@@ -37,7 +47,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/corpus/books/book-32 data/notes/books/book-32 data/thematic-index data/pilot/books-31-40-validation-report.json
-          git commit -m 'Restore Book 32 Psalm 182 from authoritative PDF' || exit 0
+          git add data/corpus/books/book-32 data/notes/books/book-32 data/corpus/books/book-35 data/corpus/books/book-36 data/notes/books/book-35 data/notes/books/book-36 data/thematic-index data/pilot/books-31-40-validation-report.json
+          git commit -m 'Restore Book 32 Psalm 182 and preserve deep books 31 to 37' || exit 0
           git pull --rebase origin main
           git push origin HEAD:main
