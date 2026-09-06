@@ -13,6 +13,7 @@
     "prayersIndexed": false,
     "rule": "Index meaningful teachings, beings, symbols, elements, practices and concepts from the authoritative PDF only. Distinguish explicit textual statements from cautious inference; never import external doctrine.",
     "semanticPass": "content-grounding-complete-deepening-pending",
+    "deepPsalmCount": 4,
     "contentGrounding": "verse-evidence-grounded"
   },
   "bookSynthesis": {
@@ -45,14 +46,15 @@
       "title": "Conduis tes pensées jusqu ’à la réalisation",
       "titleSignals": [
         "pensée",
-        "corps",
-        "esprit",
-        "sentiments"
+        "sentiment",
+        "volonté",
+        "réalisation",
+        "corps concret"
       ],
       "themes": [
         {
-          "themeId": "pensee",
-          "label": "Pensée",
+          "themeId": "unification-pensee-sentiment-volonte",
+          "label": "Unification pensée-sentiment-volonté",
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
@@ -62,12 +64,86 @@
             5,
             6,
             8,
+            10,
+            11,
+            18,
+            21
+          ],
+          "teaching": "Le psaume attribue la faiblesse de l’homme à la séparation de la pensée, du sentiment et de la volonté. Une pensée juste doit être équilibrée dans les sentiments puis conduite dans la volonté jusqu’à une réalisation concrète pour que ces trois intelligences retrouvent leur unité."
+        },
+        {
+          "themeId": "realisation",
+          "label": "Réalisation",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
             9,
+            10,
             11,
             12,
             18
           ],
-          "teaching": "Le psaume relie « Pensée » au passage suivant : Le problème de l’homme est qu’il vit trop dans la sphère de sa tête, au détriment des autres parties de son être. Il a éveillé sa pensée dans un monde, a fait naître une intelligence, une sensibilité Un second appui précise : Vous, les hommes, vous avez réellement créé un monde indépendant dans lequel vous avez placé l’intégralité du monde et l’avez coloré de votre pensée. Vous essayez d’y vivre avec la totalité de votre être."
+          "teaching": "La réalisation est le critère qui empêche la pensée de rester enfermée dans l’abstraction : ce qui est reconnu comme juste et vrai doit recevoir un acte et un corps concret afin de devenir réellement vivant."
+        },
+        {
+          "themeId": "monde-mental-separe",
+          "label": "Monde mental séparé",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6,
+            9
+          ],
+          "teaching": "Le texte décrit un monde mental devenu autonome, construit à partir des concepts et perceptions humaines puis coupé du sentiment et de l’énergie d’action. Cette séparation est associée à l’illusion, au doute et à l’insatisfaction."
+        },
+        {
+          "themeId": "corps-concret",
+          "label": "Corps concret",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            11,
+            14,
+            15,
+            16,
+            18,
+            19
+          ],
+          "teaching": "Le corps concret est présenté comme la condition pour rencontrer l’esprit sans s’égarer dans une spiritualité abstraite. L’homme doit donner une forme terrestre à ce qu’il veut vivre afin de disposer d’un support adapté à cette rencontre."
+        },
+        {
+          "themeId": "terre-comme-chemin-vers-esprit",
+          "label": "Terre comme chemin vers l’esprit",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "teaching": "Le psaume affirme que l’accès à l’esprit passe par la réalité terrestre : harmoniser le monde concret et y constituer un corps est présenté comme le chemin permettant d’approcher l’immortalité et l’éternité."
+        },
+        {
+          "themeId": "verite",
+          "label": "Vérité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            12,
+            19,
+            20
+          ],
+          "teaching": "La vérité est reliée à ce qui peut être conduit jusqu’à l’unité et à la réalisation. Elle ne reste pas une conviction intérieure : elle doit éclairer les différents mondes de l’homme et les accorder dans une même vie."
         },
         {
           "themeId": "corps",
@@ -103,6 +179,62 @@
           "teaching": "Le psaume relie « Esprit » au passage suivant : La création de ce monde mental a divisé l’homme et l’a non seulement privé de sa force créatrice mais a en plus coupé la connexion qui unissait son corps à l’intelligence universelle. Un second appui précise : Les 3 intelligences dans l’homme ‑ la pensée, le sentiment et la volonté ‑ n’étant plus unies, l’homme a perdu le lien qui unissait le grand au petit, l’esprit au corps"
         },
         {
+          "themeId": "eternite",
+          "label": "Éternité",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            18,
+            19
+          ],
+          "teaching": "Le psaume relie « Éternité » au passage suivant : Sois concret. Conduis tes pensées jusqu’à la réalisation. Alors tu pourras vivre avec elles, dans le temps et dans l’éternité. Un second appui précise : C’est le monde concret qui vous ouvrira les portes de l’immortalité et de l’éternité dont voici la clé : la pensée, le sentiment et la volonté doivent être unifiés et"
+        },
+        {
+          "themeId": "intelligence",
+          "label": "Intelligence",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "teaching": "Le psaume relie « Intelligence » au passage suivant : Le problème de l’homme est qu’il vit trop dans la sphère de sa tête, au détriment des autres parties de son être. Il a éveillé sa pensée dans un monde, a fait naître une intelligence, une sensibilité Un second appui précise : La création de ce monde mental a divisé l’homme et l’a non seulement privé de sa force créatrice mais a en plus coupé la connexion qui unissait son corps à l’intelligence universelle."
+        },
+        {
+          "themeId": "oeuvre",
+          "label": "Œuvre",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            8,
+            9
+          ],
+          "teaching": "Le psaume relie « Œuvre » au passage suivant : La perfection n’existe que dans l’œuvre réalisée dans l’alliance avec le Père. Elle ne peut exister dans le monde engendré par l’intellect limité, lui qui n’est jamais rassasié, toujours à la recherche d’une plénitude qui lui échappe sans cesse. Un second appui précise : Si tu dois acquérir une sagesse dans ta vie, comprends qu’à partir du moment où la pensée se manifeste en toi, tu dois l’équilibrer par les sentiments, puis la faire descendre dans la volonté et la mettre en œuvre"
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12,
+            18
+          ],
+          "teaching": "Le psaume relie « Pensée » au passage suivant : Le problème de l’homme est qu’il vit trop dans la sphère de sa tête, au détriment des autres parties de son être. Il a éveillé sa pensée dans un monde, a fait naître une intelligence, une sensibilité Un second appui précise : Vous, les hommes, vous avez réellement créé un monde indépendant dans lequel vous avez placé l’intégralité du monde et l’avez coloré de votre pensée. Vous essayez d’y vivre avec la totalité de votre être."
+        },
+        {
           "themeId": "sentiments",
           "label": "Sentiments",
           "importance": "central",
@@ -116,20 +248,6 @@
             18
           ],
           "teaching": "Le psaume relie « Sentiments » au passage suivant : Vous, les hommes, vous avez réellement créé un monde indépendant dans lequel vous avez placé l’intégralité du monde et l’avez coloré de votre pensée. Vous essayez d’y vivre avec la totalité de votre être. Un second appui précise : Les 3 intelligences dans l’homme ‑ la pensée, le sentiment et la volonté ‑ n’étant plus unies, l’homme a perdu le lien qui unissait le grand au petit, l’esprit au corps"
-        },
-        {
-          "themeId": "realisation",
-          "label": "Réalisation",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            7,
-            8,
-            9,
-            10,
-            12
-          ],
-          "teaching": "Le psaume relie « Réalisation » au passage suivant : La perfection n’existe que dans l’œuvre réalisée dans l’alliance avec le Père. Elle ne peut exister dans le monde engendré par l’intellect limité, lui qui n’est jamais rassasié, toujours à la recherche d’une plénitude qui lui échappe sans cesse. Un second appui précise : Si tu dois acquérir une sagesse dans ta vie, comprends qu’à partir du moment où la pensée se manifeste en toi, tu dois l’équilibrer par les sentiments, puis la faire descendre dans la volonté et la mettre en œuvre"
         },
         {
           "themeId": "vie",
@@ -158,6 +276,155 @@
             18
           ],
           "teaching": "Le psaume relie « Volonté » au passage suivant : Les 3 intelligences dans l’homme ‑ la pensée, le sentiment et la volonté ‑ n’étant plus unies, l’homme a perdu le lien qui unissait le grand au petit, l’esprit au corps Un second appui précise : Le doute est apparu dans la sphère des sentiments. Il a appelé la vision de l’imperfection, et le mécontentement, la faiblesse se sont emparés de l’âme de l’homme et ont dirigé sa vie."
+        }
+      ],
+      "notesUsed": [
+        "book-20-psalm-104-note-001"
+      ],
+      "semanticDepth": "deep-content-grounded"
+    },
+    {
+      "recordId": "book-20-psalm-105",
+      "number": 105,
+      "title": "Chaque épreuve est une chance",
+      "titleSignals": [
+        "épreuve",
+        "deux terres",
+        "lois",
+        "cause à effet",
+        "invisible"
+      ],
+      "themes": [
+        {
+          "themeId": "epreuve",
+          "label": "Épreuve",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            8,
+            11
+          ],
+          "teaching": "L’épreuve est présentée comme une occasion de comprendre et de rectifier plutôt que comme une simple punition. Elle révèle un désaccord avec des lois que l’homme n’a pas étudiées ou appliquées, notamment dans la partie invisible de sa vie."
+        },
+        {
+          "themeId": "deux-terres",
+          "label": "Deux terres",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            9,
+            16,
+            17,
+            24,
+            27,
+            31
+          ],
+          "teaching": "Le psaume distingue une terre visible et une terre invisible qui appartiennent toutes deux à l’existence humaine. Négliger la seconde crée, selon le texte, une dysharmonie qui finit par affecter aussi la vie matérielle."
+        },
+        {
+          "themeId": "lois-du-pere",
+          "label": "Lois du Père",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            7,
+            8,
+            19,
+            20,
+            21,
+            24,
+            25,
+            26,
+            27,
+            31
+          ],
+          "teaching": "Les lois sont présentées comme communes aux mondes visibles et invisibles. La sagesse consiste à les étudier, comprendre leur logique puis organiser les deux dimensions de la vie en conformité avec elles."
+        },
+        {
+          "themeId": "cause-a-effet",
+          "label": "Cause à effet",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            8,
+            28,
+            29,
+            30
+          ],
+          "teaching": "La loi de cause à effet sert de cadre pour interpréter les événements : ce qui est accueilli, engendré ou mis en mouvement appelle des conséquences dont l’homme devra ensuite prendre soin jusqu’à leur aboutissement."
+        },
+        {
+          "themeId": "invisible-gouverne-visible",
+          "label": "Invisible gouverne le visible",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            9,
+            10,
+            16,
+            17,
+            21,
+            22,
+            23,
+            33
+          ],
+          "teaching": "Le psaume affirme que l’invisible gouverne le visible et critique l’abandon de cette dimension. Pensées, sentiments et influences sont décrits comme des réalités agissantes qui finissent par modeler le monde concret."
+        },
+        {
+          "themeId": "responsabilite",
+          "label": "Responsabilité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            6,
+            7,
+            8,
+            17,
+            24,
+            27,
+            31,
+            32,
+            33
+          ],
+          "teaching": "La responsabilité consiste à ne pas remettre sa vie à une intervention extérieure mais à étudier les lois, observer les effets de ses propres émanations et donner une forme concrète à sa nature supérieure dans les actes."
+        },
+        {
+          "themeId": "acte",
+          "label": "Acte",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            16,
+            32,
+            33
+          ],
+          "teaching": "Le psaume relie « Acte » au passage suivant : Imaginez comment feraient les hommes s’il n’y avait pas de monde supérieur. Comment feraient‑ils pour savoir s’ils sont justes ? Ils seraient bien obligés de prendre leur vie en mains et d’étudier les lois qui gouvernent la vie. Un second appui précise : Comprends que tu es vivant dans tes pensées, tes sentiments, ta volonté, tes actes et qu’il y a des mondes subtils autour de toi qui vivent de tes émanations et sont aussi réels que les mondes visibles."
+        },
+        {
+          "themeId": "corps",
+          "label": "Corps",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            15,
+            23,
+            32
+          ],
+          "teaching": "Le psaume relie « Corps » au passage suivant : L’invisible finit toujours par devenir visible, il finit par entrer dans la partie concrète de l’homme. C’est un processus naturel : l’homme commence par penser quelque chose, cette pensée s’associe avec un monde mental puis, progressivement Un second appui précise : Le menteur a dit à l’homme qu’il ne devait s’occuper que d’une seule terre, que du côté visible, de la survie du corps et de son bien‑être. Les hommes ont donc abandonné l’étude des lois qui gouvernent la terre invisible."
         },
         {
           "themeId": "intelligence",
@@ -166,53 +433,11 @@
           "directness": "direct",
           "verseNumbers": [
             2,
-            4,
-            5,
-            6
-          ],
-          "teaching": "Le psaume relie « Intelligence » au passage suivant : Le problème de l’homme est qu’il vit trop dans la sphère de sa tête, au détriment des autres parties de son être. Il a éveillé sa pensée dans un monde, a fait naître une intelligence, une sensibilité Un second appui précise : La création de ce monde mental a divisé l’homme et l’a non seulement privé de sa force créatrice mais a en plus coupé la connexion qui unissait son corps à l’intelligence universelle."
-        },
-        {
-          "themeId": "eternite",
-          "label": "Éternité",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            12,
-            18,
-            19
-          ],
-          "teaching": "Le psaume relie « Éternité » au passage suivant : Sois concret. Conduis tes pensées jusqu’à la réalisation. Alors tu pourras vivre avec elles, dans le temps et dans l’éternité. Un second appui précise : C’est le monde concret qui vous ouvrira les portes de l’immortalité et de l’éternité dont voici la clé : la pensée, le sentiment et la volonté doivent être unifiés et"
-        },
-        {
-          "themeId": "oeuvre",
-          "label": "Œuvre",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            7,
             8,
-            9
+            11
           ],
-          "teaching": "Le psaume relie « Œuvre » au passage suivant : La perfection n’existe que dans l’œuvre réalisée dans l’alliance avec le Père. Elle ne peut exister dans le monde engendré par l’intellect limité, lui qui n’est jamais rassasié, toujours à la recherche d’une plénitude qui lui échappe sans cesse. Un second appui précise : Si tu dois acquérir une sagesse dans ta vie, comprends qu’à partir du moment où la pensée se manifeste en toi, tu dois l’équilibrer par les sentiments, puis la faire descendre dans la volonté et la mettre en œuvre"
-        }
-      ],
-      "notesUsed": [
-        "book-20-psalm-104-note-001"
-      ],
-      "semanticDepth": "content-grounded-extractive"
-    },
-    {
-      "recordId": "book-20-psalm-105",
-      "number": 105,
-      "title": "Chaque épreuve est une chance",
-      "titleSignals": [
-        "loi",
-        "vie",
-        "père",
-        "terre"
-      ],
-      "themes": [
+          "teaching": "Le psaume relie « Intelligence » au passage suivant : Les hommes ne se tournent vers l’intelligence divine que lorsqu’ils sont au pied du mur, qu’ils n’ont plus le choix ou lorsque cela les arrange. Un second appui précise : Celui qui connaît les lois de cause à effet réalisera que bien souvent, lorsque l’épreuve advient, c’est qu’il y a quelque chose à comprendre et à rectifier."
+        },
         {
           "themeId": "loi",
           "label": "Loi",
@@ -235,25 +460,31 @@
           "teaching": "Le thème « Loi » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Imaginez comment feraient les hommes s’il n’y avait pas de monde supérieur. Comment feraient‑ils pour savoir s’ils sont justes ? Ils seraient bien obligés de prendre leur vie en mains et d’étudier les lois qui gouvernent la vie. Un second appui précise : Si une épreuve vient dans la vie de l’homme, c’est parce qu’il ne respecte pas les lois du Père. Dans tous les autres mondes ‑ qu’ils soient négatifs ou positifs ‑, elles sont pourtant respectées."
         },
         {
-          "themeId": "vie",
-          "label": "Vie",
+          "themeId": "monde-invisible",
+          "label": "Monde invisible",
           "importance": "central",
-          "directness": "contextual",
+          "directness": "direct",
           "verseNumbers": [
-            3,
-            4,
-            5,
-            6,
-            7,
-            9,
+            10,
+            11,
             18,
-            27,
-            28,
-            31,
-            32,
+            21,
             33
           ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Imaginez comment feraient les hommes s’il n’y avait pas de monde supérieur. Comment feraient‑ils pour savoir s’ils sont justes ? Ils seraient bien obligés de prendre leur vie en mains et d’étudier les lois qui gouvernent la vie. Un second appui précise : Si une épreuve vient dans la vie de l’homme, c’est parce qu’il ne respecte pas les lois du Père. Dans tous les autres mondes ‑ qu’ils soient négatifs ou positifs ‑, elles sont pourtant respectées."
+          "teaching": "Le psaume relie « Monde invisible » au passage suivant : Dans leur ignorance et leur inconscience, les hommes pensent que le côté invisible n’est pas important. Les philosophes de la spiritualité disent que les pensées sont créatrices, mais c’est encore une croyance abstraite Un second appui précise : Vous devez être heureux lorsque vous connaissez l’épreuve, car cela signifie qu’une intelligence supérieure s’intéresse à vous et ne veut pas vous laisser accumuler tous ces déchets dans les mondes invisibles."
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Le psaume relie « Pensée » au passage suivant : Dans leur ignorance et leur inconscience, les hommes pensent que le côté invisible n’est pas important. Les philosophes de la spiritualité disent que les pensées sont créatrices, mais c’est encore une croyance abstraite Un second appui précise : L’invisible finit toujours par devenir visible, il finit par entrer dans la partie concrète de l’homme. C’est un processus naturel : l’homme commence par penser quelque chose, cette pensée s’associe avec un monde mental puis, progressivement"
         },
         {
           "themeId": "pere",
@@ -289,85 +520,28 @@
           "teaching": "Le psaume relie « Terre » au passage suivant : Qu’il le veuille ou non, c’est une réalité, l’homme a en lui 2 natures et vit dans les 2 terres, l’une visible, l’autre invisible. Dans ces 2 mondes, il doit être conforme aux lois du Père. Ainsi, il connaîtra la belle vie. Un second appui précise : Celui qui connaît les lois de cause à effet réalisera que bien souvent, lorsque l’épreuve advient, c’est qu’il y a quelque chose à comprendre et à rectifier."
         },
         {
-          "themeId": "epreuve",
-          "label": "Épreuve",
+          "themeId": "vie",
+          "label": "Vie",
           "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            4,
-            8,
-            11,
-            14
-          ],
-          "teaching": "Le psaume relie « Épreuve » au passage suivant : C’est bien souvent au moment de l’épreuve que les hommes se tournent vers un monde supérieur. Ils supplient, demandent de l’aide, la bénédiction, le soutien, la protection. Un second appui précise : Si une épreuve vient dans la vie de l’homme, c’est parce qu’il ne respecte pas les lois du Père. Dans tous les autres mondes ‑ qu’ils soient négatifs ou positifs ‑, elles sont pourtant respectées."
-        },
-        {
-          "themeId": "monde-invisible",
-          "label": "Monde invisible",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            10,
-            11,
-            18,
-            21,
-            33
-          ],
-          "teaching": "Le psaume relie « Monde invisible » au passage suivant : Dans leur ignorance et leur inconscience, les hommes pensent que le côté invisible n’est pas important. Les philosophes de la spiritualité disent que les pensées sont créatrices, mais c’est encore une croyance abstraite Un second appui précise : Vous devez être heureux lorsque vous connaissez l’épreuve, car cela signifie qu’une intelligence supérieure s’intéresse à vous et ne veut pas vous laisser accumuler tous ces déchets dans les mondes invisibles."
-        },
-        {
-          "themeId": "acte",
-          "label": "Acte",
-          "importance": "important",
-          "directness": "direct",
+          "directness": "contextual",
           "verseNumbers": [
             3,
-            16,
+            4,
+            5,
+            6,
+            7,
+            9,
+            18,
+            27,
+            28,
+            31,
             32,
             33
           ],
-          "teaching": "Le psaume relie « Acte » au passage suivant : Imaginez comment feraient les hommes s’il n’y avait pas de monde supérieur. Comment feraient‑ils pour savoir s’ils sont justes ? Ils seraient bien obligés de prendre leur vie en mains et d’étudier les lois qui gouvernent la vie. Un second appui précise : Comprends que tu es vivant dans tes pensées, tes sentiments, ta volonté, tes actes et qu’il y a des mondes subtils autour de toi qui vivent de tes émanations et sont aussi réels que les mondes visibles."
-        },
-        {
-          "themeId": "pensee",
-          "label": "Pensée",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            10,
-            15,
-            16,
-            17
-          ],
-          "teaching": "Le psaume relie « Pensée » au passage suivant : Dans leur ignorance et leur inconscience, les hommes pensent que le côté invisible n’est pas important. Les philosophes de la spiritualité disent que les pensées sont créatrices, mais c’est encore une croyance abstraite Un second appui précise : L’invisible finit toujours par devenir visible, il finit par entrer dans la partie concrète de l’homme. C’est un processus naturel : l’homme commence par penser quelque chose, cette pensée s’associe avec un monde mental puis, progressivement"
-        },
-        {
-          "themeId": "corps",
-          "label": "Corps",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            15,
-            23,
-            32
-          ],
-          "teaching": "Le psaume relie « Corps » au passage suivant : L’invisible finit toujours par devenir visible, il finit par entrer dans la partie concrète de l’homme. C’est un processus naturel : l’homme commence par penser quelque chose, cette pensée s’associe avec un monde mental puis, progressivement Un second appui précise : Le menteur a dit à l’homme qu’il ne devait s’occuper que d’une seule terre, que du côté visible, de la survie du corps et de son bien‑être. Les hommes ont donc abandonné l’étude des lois qui gouvernent la terre invisible."
-        },
-        {
-          "themeId": "intelligence",
-          "label": "Intelligence",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            2,
-            8,
-            11
-          ],
-          "teaching": "Le psaume relie « Intelligence » au passage suivant : Les hommes ne se tournent vers l’intelligence divine que lorsqu’ils sont au pied du mur, qu’ils n’ont plus le choix ou lorsque cela les arrange. Un second appui précise : Celui qui connaît les lois de cause à effet réalisera que bien souvent, lorsque l’épreuve advient, c’est qu’il y a quelque chose à comprendre et à rectifier."
+          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Imaginez comment feraient les hommes s’il n’y avait pas de monde supérieur. Comment feraient‑ils pour savoir s’ils sont justes ? Ils seraient bien obligés de prendre leur vie en mains et d’étudier les lois qui gouvernent la vie. Un second appui précise : Si une épreuve vient dans la vie de l’homme, c’est parce qu’il ne respecte pas les lois du Père. Dans tous les autres mondes ‑ qu’ils soient négatifs ou positifs ‑, elles sont pourtant respectées."
         }
       ],
-      "semanticDepth": "content-grounded-extractive"
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-20-psalm-106",
@@ -375,9 +549,10 @@
       "title": "La conscience, clé universelle",
       "titleSignals": [
         "conscience",
-        "vie",
-        "corps",
-        "œil"
+        "portes",
+        "clés",
+        "étude",
+        "préparation"
       ],
       "themes": [
         {
@@ -397,28 +572,95 @@
             17,
             18,
             19,
-            20
-          ],
-          "teaching": "Le psaume relie « Conscience » au passage suivant : L’étude et la juste compréhension permettent de trouver les clés ouvrant ces portes. Malheureusement, les hommes ne comprennent pas ce que sont réellement ces mondes. Un second appui précise : Si la conscience est éveillée et correctement ouverte par une étude adéquate, elle peut pénétrer dans un autre monde et saisir l’image de la clé. La concentration est alors comme un fil qui peut attraper la clé pour ouvrir la porte."
-        },
-        {
-          "themeId": "vie",
-          "label": "Vie",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            1,
-            2,
-            4,
-            14,
-            15,
-            16,
-            19,
+            20,
+            21,
             22,
             23,
-            24
+            24,
+            25
           ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : La vie de l’homme est un mystère. Un second appui précise : L’homme vit dans un monde qui est séparé des autres, mais vers lesquels des portes permettent une communication. Si elles sont ouvertes, l’information passe ; si elles sont fermées, ce qui ne doit pas être vu ou su peut demeurer secret."
+          "teaching": "La conscience est la clé universelle du psaume : elle rend un monde vivant pour l’homme, mobilise pensée, sentiments et volonté, et permet de découvrir les clés particulières qui ouvrent les différentes portes de l’existence."
+        },
+        {
+          "themeId": "portes-et-cles",
+          "label": "Portes et clés",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            9,
+            10,
+            22,
+            23,
+            24,
+            25
+          ],
+          "teaching": "La vie est décrite comme une succession de portes ouvrant sur des mondes distincts. Chaque porte possède une clé, et la compréhension ne suffit que si l’homme est préparé à entrer réellement dans le monde qu’elle révèle."
+        },
+        {
+          "themeId": "etude",
+          "label": "Étude",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            14,
+            20,
+            25
+          ],
+          "teaching": "L’étude doit ouvrir vers ce qui n’est pas encore connu et préparer un corps capable de le recevoir. Lorsqu’elle reste enfermée dans l’intellect et dans le déjà-connu, elle ne permet pas de franchir la porte vers un savoir plus large."
+        },
+        {
+          "themeId": "preparation",
+          "label": "Préparation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            7,
+            8,
+            21,
+            24,
+            25
+          ],
+          "teaching": "Le passage d’une porte demande une préparation, une éducation et un corps adaptés. Les vertus, l’attitude et la compréhension sont présentées comme des conditions de capacité, pas comme de simples décorations morales."
+        },
+        {
+          "themeId": "concentration",
+          "label": "Concentration",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La concentration est comparée à un fil capable d’atteindre la clé aperçue par la conscience ; elle sert donc à maintenir le lien entre une perception intérieure et l’acte qui permet d’ouvrir réellement la porte."
+        },
+        {
+          "themeId": "simple-et-vrai",
+          "label": "Simple et vrai",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            22,
+            23
+          ],
+          "teaching": "Le texte oppose la recherche du merveilleux et du fantastique à une conscience trouvée dans ce qui est simple et vrai. Le réel est présenté comme le lieu où les mondes peuvent finalement être unifiés."
+        },
+        {
+          "themeId": "ame",
+          "label": "Âme",
+          "importance": "important",
+          "directness": "contextual",
+          "verseNumbers": [
+            11,
+            25
+          ],
+          "teaching": "Le thème « Âme » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : La conscience est l’œil de l’âme, le miroir de ce que tu es, non pas dans le monde de l’homme, mais dans un autre monde. Un second appui précise : L’étude n’a pas pour but de t’ouvrir les portes de ce que tu connais et qui est limité à ton monde. Elle doit plutôt te préparer un corps pour t’ouvrir les mondes de la pensée, de ton être caché, de ton âme"
         },
         {
           "themeId": "corps",
@@ -432,6 +674,38 @@
             25
           ],
           "teaching": "Le psaume relie « Corps » au passage suivant : L’homme vit dans un monde qui est séparé des autres, mais vers lesquels des portes permettent une communication. Si elles sont ouvertes, l’information passe ; si elles sont fermées, ce qui ne doit pas être vu ou su peut demeurer secret. Un second appui précise : Les hommes ne comprennent pas qu’ils sont enfermés dans un monde. Ils pensent qu’il n’existe pas d’autres mondes, ni autour d’eux ni en eux."
+        },
+        {
+          "themeId": "destinee",
+          "label": "Destinée",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            17
+          ],
+          "teaching": "Le psaume relie « Destinée » au passage suivant : Lorsque ta conscience apparaît, tout ton être se mobilise ; ta pensée, tes sentiments et ta volonté s’unissent pour se mettre en mouvement, car ils reconnaissent en la conscience la présence du maître"
+        },
+        {
+          "themeId": "intelligence",
+          "label": "Intelligence",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            21
+          ],
+          "teaching": "Le psaume relie « Intelligence » au passage suivant : L’étude et la juste compréhension permettent de trouver les clés ouvrant ces portes. Malheureusement, les hommes ne comprennent pas ce que sont réellement ces mondes. Un second appui précise : Il faut apprendre au corps, aux sens et à l’intelligence à se mobiliser pour que la conscience puisse se manifester."
+        },
+        {
+          "themeId": "monde-de-l-homme",
+          "label": "Monde de l’homme",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            11
+          ],
+          "teaching": "Le psaume relie « Monde de l’homme » au passage suivant : L’étude et la juste compréhension permettent de trouver les clés ouvrant ces portes. Malheureusement, les hommes ne comprennent pas ce que sont réellement ces mondes. Un second appui précise : La conscience est l’œil de l’âme, le miroir de ce que tu es, non pas dans le monde de l’homme, mais dans un autre monde."
         },
         {
           "themeId": "oeil",
@@ -458,39 +732,6 @@
           "teaching": "Le psaume relie « Pensée » au passage suivant : Les hommes ne comprennent pas qu’ils sont enfermés dans un monde. Ils pensent qu’il n’existe pas d’autres mondes, ni autour d’eux ni en eux. Un second appui précise : Lorsque ta conscience apparaît, tout ton être se mobilise ; ta pensée, tes sentiments et ta volonté s’unissent pour se mettre en mouvement, car ils reconnaissent en la conscience la présence du maître"
         },
         {
-          "themeId": "ame",
-          "label": "Âme",
-          "importance": "important",
-          "directness": "contextual",
-          "verseNumbers": [
-            11,
-            25
-          ],
-          "teaching": "Le thème « Âme » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : La conscience est l’œil de l’âme, le miroir de ce que tu es, non pas dans le monde de l’homme, mais dans un autre monde. Un second appui précise : L’étude n’a pas pour but de t’ouvrir les portes de ce que tu connais et qui est limité à ton monde. Elle doit plutôt te préparer un corps pour t’ouvrir les mondes de la pensée, de ton être caché, de ton âme"
-        },
-        {
-          "themeId": "intelligence",
-          "label": "Intelligence",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            5,
-            21
-          ],
-          "teaching": "Le psaume relie « Intelligence » au passage suivant : L’étude et la juste compréhension permettent de trouver les clés ouvrant ces portes. Malheureusement, les hommes ne comprennent pas ce que sont réellement ces mondes. Un second appui précise : Il faut apprendre au corps, aux sens et à l’intelligence à se mobiliser pour que la conscience puisse se manifester."
-        },
-        {
-          "themeId": "monde-de-l-homme",
-          "label": "Monde de l’homme",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            5,
-            11
-          ],
-          "teaching": "Le psaume relie « Monde de l’homme » au passage suivant : L’étude et la juste compréhension permettent de trouver les clés ouvrant ces portes. Malheureusement, les hommes ne comprennent pas ce que sont réellement ces mondes. Un second appui précise : La conscience est l’œil de l’âme, le miroir de ce que tu es, non pas dans le monde de l’homme, mais dans un autre monde."
-        },
-        {
           "themeId": "sentiments",
           "label": "Sentiments",
           "importance": "related",
@@ -502,48 +743,163 @@
           "teaching": "Le psaume relie « Sentiments » au passage suivant : Les hommes ne comprennent pas qu’ils sont enfermés dans un monde. Ils pensent qu’il n’existe pas d’autres mondes, ni autour d’eux ni en eux. Un second appui précise : Lorsque ta conscience apparaît, tout ton être se mobilise ; ta pensée, tes sentiments et ta volonté s’unissent pour se mettre en mouvement, car ils reconnaissent en la conscience la présence du maître"
         },
         {
-          "themeId": "destinee",
-          "label": "Destinée",
-          "importance": "related",
-          "directness": "direct",
+          "themeId": "vie",
+          "label": "Vie",
+          "importance": "central",
+          "directness": "contextual",
           "verseNumbers": [
-            17
+            1,
+            2,
+            4,
+            14,
+            15,
+            16,
+            19,
+            22,
+            23,
+            24
           ],
-          "teaching": "Le psaume relie « Destinée » au passage suivant : Lorsque ta conscience apparaît, tout ton être se mobilise ; ta pensée, tes sentiments et ta volonté s’unissent pour se mettre en mouvement, car ils reconnaissent en la conscience la présence du maître"
+          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : La vie de l’homme est un mystère. Un second appui précise : L’homme vit dans un monde qui est séparé des autres, mais vers lesquels des portes permettent une communication. Si elles sont ouvertes, l’information passe ; si elles sont fermées, ce qui ne doit pas être vu ou su peut demeurer secret."
         }
       ],
-      "semanticDepth": "content-grounded-extractive"
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-20-psalm-107",
       "number": 107,
       "title": "Seule la vérité peut entrer dans la terre d ’O uriel",
       "titleSignals": [
-        "terre",
-        "monde divin",
-        "pensée",
-        "vérité"
+        "vérité",
+        "authenticité",
+        "terre d’Ouriel",
+        "unification",
+        "mensonge"
       ],
       "themes": [
         {
-          "themeId": "terre",
-          "label": "Terre",
+          "themeId": "verite",
+          "label": "Vérité",
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            11,
+            13,
+            15,
+            17,
+            20,
+            25,
+            28,
+            29,
+            30
+          ],
+          "teaching": "La vérité est le critère central d’entrée dans la terre d’Ouriel : elle doit apparaître dans l’ensemble de la vie, jusque dans les pensées, les paroles, les réactions, les relations, les actes et les œuvres, et non seulement dans un moment sacré ou une intention déclarée."
+        },
+        {
+          "themeId": "authenticite",
+          "label": "Authenticité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            6,
             9,
             10,
+            11,
+            13,
+            15,
+            17,
+            29,
+            30
+          ],
+          "teaching": "L’authenticité consiste à ne pas présenter devant les mondes supérieurs une image différente de celle que l’on manifeste dans la vie quotidienne. Le texte demande une continuité entre l’être déclaré et l’être réellement vécu."
+        },
+        {
+          "themeId": "unification-des-mondes",
+          "label": "Unification des mondes",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            7,
+            14,
+            18,
+            20,
+            30
+          ],
+          "teaching": "Le psaume rejette la séparation qui réserverait la pureté à un monde sacré et abandonnerait le monde ordinaire au désordre. L’unification exige de remettre chaque chose à sa place et de construire un langage commun entre les dimensions de la vie."
+        },
+        {
+          "themeId": "realisation-concrete",
+          "label": "Réalisation concrète",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
+            12,
+            13,
+            14,
+            17,
+            20
+          ],
+          "teaching": "Ouriel est explicitement associé au concret : la valeur d’une parole ou d’une intention est vérifiée dans ce qu’elle devient dans la vie quotidienne et dans les œuvres réalisées."
+        },
+        {
+          "themeId": "mensonge",
+          "label": "Mensonge",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            13,
             15,
             16,
-            17,
-            18,
-            19,
-            20,
-            22,
+            21,
+            23,
             24,
-            25
+            25,
+            26,
+            27,
+            28,
+            29
           ],
-          "teaching": "Le psaume relie « Terre » au passage suivant : Seule la vérité peut entrer dans la terre d’Ouriel : ce que tu es, tu l’as. Tu n’es pas ce que tu crois ou désires être. Les hypocrites, les menteurs, les illusionnistes ne sont pas les bienvenus. Un second appui précise : Ceux qui cultivent des apparences mensongères devant les autres ne seront pas accueillis et ne connaîtront pas la terre des vivants."
+          "teaching": "Le mensonge est présenté comme une terre sans stabilité. Son fruit ultime est décrit comme le néant, précédé par la peur, le doute et l’isolement, parce qu’aucune base vraie ne peut soutenir celui qui vit dans une apparence fabriquée."
+        },
+        {
+          "themeId": "relations-comme-revelateur",
+          "label": "Relations comme révélateur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            14,
+            18,
+            30
+          ],
+          "teaching": "La vraie nature de l’homme est observée dans ses rapports avec l’environnement et les autres, pas seulement lorsqu’il est seul. Les relations révèlent donc concrètement la cohérence ou la séparation entre ses différents mondes."
+        },
+        {
+          "themeId": "acte",
+          "label": "Acte",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
+            17,
+            21
+          ],
+          "teaching": "Le psaume relie « Acte » au passage suivant : Il ne suffit pas de se présenter devant le monde divin empli de bonnes intentions, de bons souhaits. Il faut être vrai jusque dans ses actes, dans ses œuvres. Un second appui précise : Approchez‑vous de la terre d’Ouriel en étant simples, humbles, vrais, en portant votre être véritable éternel jusque dans vos pensées, vos paroles, vos actes et vos œuvres."
         },
         {
           "themeId": "monde-divin",
@@ -560,75 +916,6 @@
             11
           ],
           "teaching": "Le psaume relie « Monde divin » au passage suivant : Beaucoup d’hommes pensent qu’il y a des mondes dignes de respect et d’autres qui ne le sont pas. Selon leurs propres critères, ils s’inclinent devant un monde qu’ils considèrent comme supérieur et divin Un second appui précise : Les hommes pensent que l’essentiel est d’être vrai devant leur nature et les mondes supérieurs, et que le reste n’a pas d’intérêt, appartient à la mort, aux déchets."
-        },
-        {
-          "themeId": "pensee",
-          "label": "Pensée",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            2,
-            4,
-            6,
-            15,
-            17,
-            21
-          ],
-          "teaching": "Le psaume relie « Pensée » au passage suivant : Beaucoup d’hommes pensent qu’il y a des mondes dignes de respect et d’autres qui ne le sont pas. Selon leurs propres critères, ils s’inclinent devant un monde qu’ils considèrent comme supérieur et divin Un second appui précise : Les hommes pensent que l’essentiel est d’être vrai devant leur nature et les mondes supérieurs, et que le reste n’a pas d’intérêt, appartient à la mort, aux déchets."
-        },
-        {
-          "themeId": "verite",
-          "label": "Vérité",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            9,
-            16,
-            17,
-            18,
-            20,
-            25
-          ],
-          "teaching": "Le psaume relie « Vérité » au passage suivant : Seule la vérité peut entrer dans la terre d’Ouriel : ce que tu es, tu l’as. Tu n’es pas ce que tu crois ou désires être. Les hypocrites, les menteurs, les illusionnistes ne sont pas les bienvenus. Un second appui précise : Un autre peut te sembler être dans la victoire tout en se tenant en fait sur la terre des mensonges et de l’illusion. Il ne connaîtra pas le bonheur et la plénitude mais sera sans cesse dans la peur, le mécontentement, la faiblesse"
-        },
-        {
-          "themeId": "parole",
-          "label": "Parole",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            13,
-            15,
-            17,
-            21
-          ],
-          "teaching": "Le psaume relie « Parole » au passage suivant : Celui qui prononce une belle parole devant un Dieu tout en agissant à l’opposé ne passera pas la frontière. C’est dans la vie quotidienne que la parole doit être justifiée, car il est trop facile d’être bon devant un monde abstrait, lointain. Un second appui précise : Celui qui se cache derrière les mensonges, les faux‑semblants, celui qui paraît plus grand que ce qu’il est, celui qui se place au‑dessus des autres, alors qu’il n’est pas ce qu’il dit"
-        },
-        {
-          "themeId": "vie",
-          "label": "Vie",
-          "importance": "important",
-          "directness": "contextual",
-          "verseNumbers": [
-            13,
-            16,
-            18,
-            19
-          ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Celui qui prononce une belle parole devant un Dieu tout en agissant à l’opposé ne passera pas la frontière. C’est dans la vie quotidienne que la parole doit être justifiée, car il est trop facile d’être bon devant un monde abstrait, lointain. Un second appui précise : Un autre peut te sembler être dans la victoire tout en se tenant en fait sur la terre des mensonges et de l’illusion. Il ne connaîtra pas le bonheur et la plénitude mais sera sans cesse dans la peur, le mécontentement, la faiblesse"
-        },
-        {
-          "themeId": "acte",
-          "label": "Acte",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            11,
-            17,
-            21
-          ],
-          "teaching": "Le psaume relie « Acte » au passage suivant : Il ne suffit pas de se présenter devant le monde divin empli de bonnes intentions, de bons souhaits. Il faut être vrai jusque dans ses actes, dans ses œuvres. Un second appui précise : Approchez‑vous de la terre d’Ouriel en étant simples, humbles, vrais, en portant votre être véritable éternel jusque dans vos pensées, vos paroles, vos actes et vos œuvres."
         },
         {
           "themeId": "nature",
@@ -655,6 +942,55 @@
           "teaching": "Le psaume relie « Œuvre » au passage suivant : Il ne suffit pas de se présenter devant le monde divin empli de bonnes intentions, de bons souhaits. Il faut être vrai jusque dans ses actes, dans ses œuvres. Un second appui précise : Celui qui se cache derrière les mensonges, les faux‑semblants, celui qui paraît plus grand que ce qu’il est, celui qui se place au‑dessus des autres, alors qu’il n’est pas ce qu’il dit"
         },
         {
+          "themeId": "parole",
+          "label": "Parole",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            15,
+            17,
+            21
+          ],
+          "teaching": "Le psaume relie « Parole » au passage suivant : Celui qui prononce une belle parole devant un Dieu tout en agissant à l’opposé ne passera pas la frontière. C’est dans la vie quotidienne que la parole doit être justifiée, car il est trop facile d’être bon devant un monde abstrait, lointain. Un second appui précise : Celui qui se cache derrière les mensonges, les faux‑semblants, celui qui paraît plus grand que ce qu’il est, celui qui se place au‑dessus des autres, alors qu’il n’est pas ce qu’il dit"
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            6,
+            15,
+            17,
+            21
+          ],
+          "teaching": "Le psaume relie « Pensée » au passage suivant : Beaucoup d’hommes pensent qu’il y a des mondes dignes de respect et d’autres qui ne le sont pas. Selon leurs propres critères, ils s’inclinent devant un monde qu’ils considèrent comme supérieur et divin Un second appui précise : Les hommes pensent que l’essentiel est d’être vrai devant leur nature et les mondes supérieurs, et que le reste n’a pas d’intérêt, appartient à la mort, aux déchets."
+        },
+        {
+          "themeId": "terre",
+          "label": "Terre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            22,
+            24,
+            25
+          ],
+          "teaching": "Le psaume relie « Terre » au passage suivant : Seule la vérité peut entrer dans la terre d’Ouriel : ce que tu es, tu l’as. Tu n’es pas ce que tu crois ou désires être. Les hypocrites, les menteurs, les illusionnistes ne sont pas les bienvenus. Un second appui précise : Ceux qui cultivent des apparences mensongères devant les autres ne seront pas accueillis et ne connaîtront pas la terre des vivants."
+        },
+        {
           "themeId": "union",
           "label": "Union",
           "importance": "related",
@@ -665,9 +1001,22 @@
             20
           ],
           "teaching": "Le psaume relie « Union » au passage suivant : Les hommes pensent que l’essentiel est d’être vrai devant leur nature et les mondes supérieurs, et que le reste n’a pas d’intérêt, appartient à la mort, aux déchets. Un second appui précise : C’est dans l’unification des mondes que l’homme doit montrer qui il est, qu’il doit faire ses preuves."
+        },
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "importance": "important",
+          "directness": "contextual",
+          "verseNumbers": [
+            13,
+            16,
+            18,
+            19
+          ],
+          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Celui qui prononce une belle parole devant un Dieu tout en agissant à l’opposé ne passera pas la frontière. C’est dans la vie quotidienne que la parole doit être justifiée, car il est trop facile d’être bon devant un monde abstrait, lointain. Un second appui précise : Un autre peut te sembler être dans la victoire tout en se tenant en fait sur la terre des mensonges et de l’illusion. Il ne connaîtra pas le bonheur et la plénitude mais sera sans cesse dans la peur, le mécontentement, la faiblesse"
         }
       ],
-      "semanticDepth": "content-grounded-extractive"
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-20-psalm-108",

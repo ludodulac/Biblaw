@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedFrom": "data/thematic-index/books/book-*.json",
   "manualEditingAllowed": false,
-  "themeCount": 734,
+  "themeCount": 773,
   "themes": [
     {
       "id": "22-commandements",
@@ -2715,6 +2715,66 @@
       ]
     },
     {
+      "id": "actes-comme-critere",
+      "label": "Actes comme critère",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            9,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Pour savoir qui l'on est et sur quel chemin on marche, le psaume renvoie aux actes et aux œuvres plutôt qu'aux signes, discours ou consolations recherchées dans l'invisible.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            9,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "teaching": "Pour savoir qui l'on est et sur quel chemin on marche, le psaume renvoie aux actes et aux œuvres plutôt qu'aux signes, discours ou consolations recherchées dans l'invisible.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "action",
       "label": "Action",
       "score": 16,
@@ -3309,6 +3369,60 @@
       ]
     },
     {
+      "id": "adaptation-sans-perte-identite",
+      "label": "Adaptation sans perte d’identité",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-103",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 103,
+          "psalmTitle": "Les lois de la communication universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            11,
+            13
+          ],
+          "teaching": "Le texte distingue l'adaptation du langage de la versatilité: il faut rencontrer l'autre à son niveau sans abandonner la clarté de ce que l'on est ni changer de fond selon la situation.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-103",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 103,
+          "psalmTitle": "Les lois de la communication universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            5,
+            11,
+            13
+          ],
+          "teaching": "Le texte distingue l'adaptation du langage de la versatilité: il faut rencontrer l'autre à son niveau sans abandonner la clarté de ce que l'on est ni changer de fond selon la situation.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "affinite",
       "label": "Affinité",
       "score": 2,
@@ -3363,12 +3477,17 @@
     {
       "id": "affinites",
       "label": "Affinités",
-      "score": 2,
-      "occurrenceCount": 1,
+      "score": 4,
+      "occurrenceCount": 2,
       "centralPsalmCount": 0,
       "archangels": [
         {
           "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
           "score": 2,
           "occurrenceCount": 1
         }
@@ -3389,6 +3508,24 @@
           ],
           "teaching": "Après la mort, le texte dit que l’homme demeure dans les régions correspondant aux affinités cultivées pendant la vie ; ciel, terre, liens et œuvres deviennent ainsi la matière de sa future demeure.",
           "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            10,
+            12,
+            13
+          ],
+          "teaching": "Les affinités expliquent la formation de milieux collectifs de pensée: des atmosphères semblables se rejoignent et peuvent enfermer l'homme dans un seul monde ou, au contraire, l'ouvrir à des pensées plus hautes.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -3406,6 +3543,24 @@
             17
           ],
           "teaching": "Après la mort, le texte dit que l’homme demeure dans les régions correspondant aux affinités cultivées pendant la vie ; ciel, terre, liens et œuvres deviennent ainsi la matière de sa future demeure.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            10,
+            12,
+            13
+          ],
+          "teaching": "Les affinités expliquent la formation de milieux collectifs de pensée: des atmosphères semblables se rejoignent et peuvent enfermer l'homme dans un seul monde ou, au contraire, l'ouvrir à des pensées plus hautes.",
           "score": 2
         }
       ]
@@ -4555,12 +4710,17 @@
     {
       "id": "alchimie-interieure",
       "label": "Alchimie intérieure",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -4587,6 +4747,25 @@
           ],
           "teaching": "L’homme est décrit comme un organisme capable de recevoir les influences, de les transformer et de conduire la matière grossière vers une intelligence lumineuse.",
           "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-106",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 106,
+          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            5,
+            9,
+            14,
+            20,
+            21
+          ],
+          "teaching": "L'alchimie décrit la transformation de l'homme brut et périssable en un être capable de porter une continuité: l'image du plomb devenu métal incorruptible exprime un travail conscient effectué dans la vie terrestre.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -4610,6 +4789,25 @@
             13
           ],
           "teaching": "L’homme est décrit comme un organisme capable de recevoir les influences, de les transformer et de conduire la matière grossière vers une intelligence lumineuse.",
+          "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-106",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 106,
+          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+          "importance": "central",
+          "directness": "symbolic",
+          "verseNumbers": [
+            5,
+            9,
+            14,
+            20,
+            21
+          ],
+          "teaching": "L'alchimie décrit la transformation de l'homme brut et périssable en un être capable de porter une continuité: l'image du plomb devenu métal incorruptible exprime un travail conscient effectué dans la vie terrestre.",
           "score": 3
         }
       ]
@@ -4916,15 +5114,13 @@
           "verseNumbers": [
             5,
             8,
-            17,
             20,
             21,
-            23,
             26,
             27,
             30
           ],
-          "teaching": "Le psaume relie « Alliance » au passage suivant : Si vous voulez cheminer vers le monde divin et le servir dans la vérité et la pureté, vous devez vous unir autour de l’alliance des mondes. Vous n’avez pas le choix, vous devez être un certain nombre pour trouver la force de réaliser. Un second appui précise : Le monde divin ne peut pas s’approcher du monde des hommes, car les 2 mondes sont incompatibles. Il faut un corps permettant de faire la liaison, un médiateur. Tel est le rôle de la tradition et de l’enseignement qui vous unissent.",
+          "teaching": "L'Alliance est le cadre de rencontre entre des mondes décrits comme incompatibles sans médiation; elle doit recevoir un corps concret par des personnes, lieux, pratiques et structures qui la rendent habitable.",
           "score": 3
         },
         {
@@ -5190,15 +5386,13 @@
           "verseNumbers": [
             5,
             8,
-            17,
             20,
             21,
-            23,
             26,
             27,
             30
           ],
-          "teaching": "Le psaume relie « Alliance » au passage suivant : Si vous voulez cheminer vers le monde divin et le servir dans la vérité et la pureté, vous devez vous unir autour de l’alliance des mondes. Vous n’avez pas le choix, vous devez être un certain nombre pour trouver la force de réaliser. Un second appui précise : Le monde divin ne peut pas s’approcher du monde des hommes, car les 2 mondes sont incompatibles. Il faut un corps permettant de faire la liaison, un médiateur. Tel est le rôle de la tradition et de l’enseignement qui vous unissent.",
+          "teaching": "L'Alliance est le cadre de rencontre entre des mondes décrits comme incompatibles sans médiation; elle doit recevoir un corps concret par des personnes, lieux, pratiques et structures qui la rendent habitable.",
           "score": 3
         },
         {
@@ -11888,10 +12082,9 @@
           "verseNumbers": [
             9,
             10,
-            11,
-            23
+            11
           ],
-          "teaching": "Le psaume relie « Animaux » au passage suivant : Lorsque l’homme s’approche des animaux, il n’a pas le même comportement avec tous. Si c’est un serpent, une araignée, il pense que c’est un mauvais présage, quelque chose de négatif ou de dangereux. Un second appui précise : L’animal souhaite simplement vivre avec toi, faire partie de ton environnement, de ta sphère respiratoire, de ton espace et de ta qualité de vie.",
+          "teaching": "L'animal n'est présenté ni comme bon ni comme mauvais en fonction des projections humaines; sa présence rappelle la coexistence des règnes et invite à partager et harmoniser l'espace de vie.",
           "score": 2
         },
         {
@@ -12116,10 +12309,9 @@
           "verseNumbers": [
             9,
             10,
-            11,
-            23
+            11
           ],
-          "teaching": "Le psaume relie « Animaux » au passage suivant : Lorsque l’homme s’approche des animaux, il n’a pas le même comportement avec tous. Si c’est un serpent, une araignée, il pense que c’est un mauvais présage, quelque chose de négatif ou de dangereux. Un second appui précise : L’animal souhaite simplement vivre avec toi, faire partie de ton environnement, de ta sphère respiratoire, de ton espace et de ta qualité de vie.",
+          "teaching": "L'animal n'est présenté ni comme bon ni comme mauvais en fonction des projections humaines; sa présence rappelle la coexistence des règnes et invite à partager et harmoniser l'espace de vie.",
           "score": 2
         },
         {
@@ -17237,9 +17429,9 @@
     {
       "id": "authenticite",
       "label": "Authenticité",
-      "score": 23,
-      "occurrenceCount": 9,
-      "centralPsalmCount": 5,
+      "score": 26,
+      "occurrenceCount": 10,
+      "centralPsalmCount": 6,
       "archangels": [
         {
           "id": "michael",
@@ -17253,8 +17445,8 @@
         },
         {
           "id": "ouriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 6,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
@@ -17358,6 +17550,31 @@
             1
           ],
           "teaching": "Enlever le masque signifie revenir à ce que l’on est réellement afin que la transformation parte d’une vérité reconnue.",
+          "score": 3
+        },
+        {
+          "recordId": "book-20-psalm-107",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 107,
+          "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            6,
+            9,
+            10,
+            11,
+            13,
+            15,
+            17,
+            29,
+            30
+          ],
+          "teaching": "L’authenticité consiste à ne pas présenter devant les mondes supérieurs une image différente de celle que l’on manifeste dans la vie quotidienne. Le texte demande une continuité entre l’être déclaré et l’être réellement vécu.",
           "score": 3
         },
         {
@@ -17531,6 +17748,31 @@
             1
           ],
           "teaching": "Enlever le masque signifie revenir à ce que l’on est réellement afin que la transformation parte d’une vérité reconnue.",
+          "score": 3
+        },
+        {
+          "recordId": "book-20-psalm-107",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 107,
+          "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            6,
+            9,
+            10,
+            11,
+            13,
+            15,
+            17,
+            29,
+            30
+          ],
+          "teaching": "L’authenticité consiste à ne pas présenter devant les mondes supérieurs une image différente de celle que l’on manifeste dans la vie quotidienne. Le texte demande une continuité entre l’être déclaré et l’être réellement vécu.",
           "score": 3
         },
         {
@@ -20373,6 +20615,64 @@
       ]
     },
     {
+      "id": "cause-a-effet",
+      "label": "Cause à effet",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-105",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 105,
+          "psalmTitle": "Chaque épreuve est une chance",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            8,
+            28,
+            29,
+            30
+          ],
+          "teaching": "La loi de cause à effet sert de cadre pour interpréter les événements : ce qui est accueilli, engendré ou mis en mouvement appelle des conséquences dont l’homme devra ensuite prendre soin jusqu’à leur aboutissement.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-105",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 105,
+          "psalmTitle": "Chaque épreuve est une chance",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            8,
+            28,
+            29,
+            30
+          ],
+          "teaching": "La loi de cause à effet sert de cadre pour interpréter les événements : ce qui est accueilli, engendré ou mis en mouvement appelle des conséquences dont l’homme devra ensuite prendre soin jusqu’à leur aboutissement.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "cellules",
       "label": "Cellules",
       "score": 6,
@@ -21805,6 +22105,60 @@
       ]
     },
     {
+      "id": "ciel-de-pensee",
+      "label": "Ciel de pensée",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            12,
+            13
+          ],
+          "teaching": "Chaque homme est décrit comme portant un ciel formé par les pensées et influences qu'il entretient; ce ciel attire par affinité des êtres et atmosphères semblables et tend ensuite à renforcer les mêmes habitudes.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            12,
+            13
+          ],
+          "teaching": "Chaque homme est décrit comme portant un ciel formé par les pensées et influences qu'il entretient; ce ciel attire par affinité des êtres et atmosphères semblables et tend ensuite à renforcer les mêmes habitudes.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "cinq-sens",
       "label": "Cinq sens",
       "score": 3,
@@ -23225,13 +23579,13 @@
     {
       "id": "communication",
       "label": "Communication",
-      "score": 1,
+      "score": 3,
       "occurrenceCount": 1,
-      "centralPsalmCount": 0,
+      "centralPsalmCount": 1,
       "archangels": [
         {
           "id": "raphael",
-          "score": 1,
+          "score": 3,
           "occurrenceCount": 1
         }
       ],
@@ -23243,13 +23597,25 @@
           "archangel": "raphael",
           "psalmNumber": 103,
           "psalmTitle": "Les lois de la communication universelle",
-          "importance": "related",
-          "directness": "contextual",
+          "importance": "central",
+          "directness": "direct",
           "verseNumbers": [
-            1
+            1,
+            2,
+            3,
+            5,
+            8,
+            13,
+            14,
+            16,
+            17,
+            18,
+            20,
+            22,
+            23
           ],
-          "teaching": "Le thème « Communication » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Bien souvent, vous vous sentez seuls, isolés dans le monde des hommes. Vous avez l’impression que les mondes supérieurs et les règnes vivant autour de vous ne vous entendent pas ou ne vous comprennent pas.",
-          "score": 1
+          "teaching": "La communication est définie comme une capacité à entrer en relation sans imposer son propre monde: comprendre son interlocuteur, adapter le langage, écouter clairement et ouvrir un échange permettant une compréhension plus large.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -23260,13 +23626,25 @@
           "archangel": "raphael",
           "psalmNumber": 103,
           "psalmTitle": "Les lois de la communication universelle",
-          "importance": "related",
-          "directness": "contextual",
+          "importance": "central",
+          "directness": "direct",
           "verseNumbers": [
-            1
+            1,
+            2,
+            3,
+            5,
+            8,
+            13,
+            14,
+            16,
+            17,
+            18,
+            20,
+            22,
+            23
           ],
-          "teaching": "Le thème « Communication » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Bien souvent, vous vous sentez seuls, isolés dans le monde des hommes. Vous avez l’impression que les mondes supérieurs et les règnes vivant autour de vous ne vous entendent pas ou ne vous comprennent pas.",
-          "score": 1
+          "teaching": "La communication est définie comme une capacité à entrer en relation sans imposer son propre monde: comprendre son interlocuteur, adapter le langage, écouter clairement et ouvrir un échange permettant une compréhension plus large.",
+          "score": 3
         }
       ]
     },
@@ -23386,14 +23764,14 @@
     {
       "id": "concentration",
       "label": "Concentration",
-      "score": 99,
-      "occurrenceCount": 55,
+      "score": 101,
+      "occurrenceCount": 56,
       "centralPsalmCount": 15,
       "archangels": [
         {
           "id": "ouriel",
-          "score": 32,
-          "occurrenceCount": 20
+          "score": 34,
+          "occurrenceCount": 21
         },
         {
           "id": "michael",
@@ -24090,6 +24468,21 @@
           "score": 2
         },
         {
+          "recordId": "book-20-psalm-106",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 106,
+          "psalmTitle": "La conscience, clé universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La concentration est comparée à un fil capable d’atteindre la clé aperçue par la conscience ; elle sert donc à maintenir le lien entre une perception intérieure et l’acte qui permet d’ouvrir réellement la porte.",
+          "score": 2
+        },
+        {
           "recordId": "book-21-psalm-151",
           "bookNumber": 21,
           "bookTitle": "Homme, retrouve ta dignité",
@@ -24726,6 +25119,64 @@
       ]
     },
     {
+      "id": "concepts-et-conditionnement",
+      "label": "Concepts et conditionnement",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-107",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 107,
+          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            9,
+            26
+          ],
+          "teaching": "Les concepts transmis par la culture peuvent isoler l'homme de ce qu'il rencontre et de lui-même; le texte demande de discerner ce qui relève d'une sagesse durable de ce qui reproduit seulement les projections et rêves hérités.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-107",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 107,
+          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            5,
+            9,
+            26
+          ],
+          "teaching": "Les concepts transmis par la culture peuvent isoler l'homme de ce qu'il rencontre et de lui-même; le texte demande de discerner ce qui relève d'une sagesse durable de ce qui reproduit seulement les projections et rêves hérités.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "conditions-de-manifestation",
       "label": "Conditions de manifestation",
       "score": 3,
@@ -25323,8 +25774,8 @@
     {
       "id": "conscience",
       "label": "Conscience",
-      "score": 851,
-      "occurrenceCount": 410,
+      "score": 853,
+      "occurrenceCount": 411,
       "centralPsalmCount": 152,
       "archangels": [
         {
@@ -25339,8 +25790,8 @@
         },
         {
           "id": "raphael",
-          "score": 203,
-          "occurrenceCount": 99
+          "score": 205,
+          "occurrenceCount": 100
         },
         {
           "id": "ouriel",
@@ -25523,9 +25974,14 @@
             17,
             18,
             19,
-            20
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
           ],
-          "teaching": "Le psaume relie « Conscience » au passage suivant : L’étude et la juste compréhension permettent de trouver les clés ouvrant ces portes. Malheureusement, les hommes ne comprennent pas ce que sont réellement ces mondes. Un second appui précise : Si la conscience est éveillée et correctement ouverte par une étude adéquate, elle peut pénétrer dans un autre monde et saisir l’image de la clé. La concentration est alors comme un fil qui peut attraper la clé pour ouvrir la porte.",
+          "teaching": "La conscience est la clé universelle du psaume : elle rend un monde vivant pour l’homme, mobilise pensée, sentiments et volonté, et permet de découvrir les clés particulières qui ouvrent les différentes portes de l’existence.",
           "score": 3
         },
         {
@@ -25784,9 +26240,14 @@
             17,
             18,
             19,
-            20
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
           ],
-          "teaching": "Le psaume relie « Conscience » au passage suivant : L’étude et la juste compréhension permettent de trouver les clés ouvrant ces portes. Malheureusement, les hommes ne comprennent pas ce que sont réellement ces mondes. Un second appui précise : Si la conscience est éveillée et correctement ouverte par une étude adéquate, elle peut pénétrer dans un autre monde et saisir l’image de la clé. La concentration est alors comme un fil qui peut attraper la clé pour ouvrir la porte.",
+          "teaching": "La conscience est la clé universelle du psaume : elle rend un monde vivant pour l’homme, mobilise pensée, sentiments et volonté, et permet de découvrir les clés particulières qui ouvrent les différentes portes de l’existence.",
           "score": 3
         },
         {
@@ -28977,6 +29438,29 @@
             33
           ],
           "teaching": "La perfection n’est pas exigée à chaque marche, mais la conscience, la juste compréhension et l’intention ne doivent pas manquer ; l’humilité est donnée comme réponse lorsque la force fait défaut.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            9,
+            12,
+            13,
+            16,
+            17,
+            19
+          ],
+          "teaching": "La conscience permet de ne plus être simplement animé par des pensées automatiques ou empruntées; elle doit s'étendre à la pensée et à l'acte pour que l'homme puisse discerner ses associations et construire volontairement sa vie.",
           "score": 2
         },
         {
@@ -44518,6 +45002,66 @@
       ]
     },
     {
+      "id": "corps-concret",
+      "label": "Corps concret",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-104",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 104,
+          "psalmTitle": "Conduis tes pensées jusqu ’à la réalisation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            11,
+            14,
+            15,
+            16,
+            18,
+            19
+          ],
+          "teaching": "Le corps concret est présenté comme la condition pour rencontrer l’esprit sans s’égarer dans une spiritualité abstraite. L’homme doit donner une forme terrestre à ce qu’il veut vivre afin de disposer d’un support adapté à cette rencontre.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-104",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 104,
+          "psalmTitle": "Conduis tes pensées jusqu ’à la réalisation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            11,
+            14,
+            15,
+            16,
+            18,
+            19
+          ],
+          "teaching": "Le corps concret est présenté comme la condition pour rencontrer l’esprit sans s’égarer dans une spiritualité abstraite. L’homme doit donner une forme terrestre à ce qu’il veut vivre afin de disposer d’un support adapté à cette rencontre.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "corps-cosmique",
       "label": "Corps cosmique",
       "score": 2,
@@ -45117,6 +45661,60 @@
       ]
     },
     {
+      "id": "corps-de-sagesse",
+      "label": "Corps de sagesse",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            16,
+            17,
+            19
+          ],
+          "teaching": "L'étude et l'incorporation des paroles de sagesse doivent constituer un corps intérieur capable de stabiliser pensée et agir; ce corps est présenté comme la condition pour traverser les épreuves et s'orienter vers une vie immortelle.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12,
+            16,
+            17,
+            19
+          ],
+          "teaching": "L'étude et l'incorporation des paroles de sagesse doivent constituer un corps intérieur capable de stabiliser pensée et agir; ce corps est présenté comme la condition pour traverser les épreuves et s'orienter vers une vie immortelle.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "corps-du-christ",
       "label": "Corps du Christ",
       "score": 5,
@@ -45287,17 +45885,17 @@
     {
       "id": "corps-d-immortalite",
       "label": "Corps d’immortalité",
-      "score": 6,
-      "occurrenceCount": 2,
+      "score": 8,
+      "occurrenceCount": 3,
       "centralPsalmCount": 2,
       "archangels": [
         {
-          "id": "gabriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "raphael",
+          "score": 5,
+          "occurrenceCount": 2
         },
         {
-          "id": "raphael",
+          "id": "gabriel",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -45344,6 +45942,26 @@
           ],
           "teaching": "Le corps d’immortalité est présenté comme une construction concrète issue de l’usage du corps et de la vie reçus : pensées, sentiments, volonté, œuvres et relations doivent devenir des supports d’une vie plus vaste plutôt qu’une croyance abstraite.",
           "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-106",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 106,
+          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            12,
+            15,
+            16,
+            17,
+            19
+          ],
+          "teaching": "Le corps d'immortalité est la stabilité construite à partir des expériences, de l'étude et des œuvres; il doit permettre de conserver conscience et mémoire au-delà de la disparition du corps physique.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -45388,6 +46006,26 @@
           ],
           "teaching": "Le corps d’immortalité est présenté comme une construction concrète issue de l’usage du corps et de la vie reçus : pensées, sentiments, volonté, œuvres et relations doivent devenir des supports d’une vie plus vaste plutôt qu’une croyance abstraite.",
           "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-106",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 106,
+          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            12,
+            15,
+            16,
+            17,
+            19
+          ],
+          "teaching": "Le corps d'immortalité est la stabilité construite à partir des expériences, de l'étude et des œuvres; il doit permettre de conserver conscience et mémoire au-delà de la disparition du corps physique.",
+          "score": 2
         }
       ]
     },
@@ -49755,9 +50393,9 @@
     {
       "id": "destinee",
       "label": "Destinée",
-      "score": 212,
+      "score": 213,
       "occurrenceCount": 124,
-      "centralPsalmCount": 22,
+      "centralPsalmCount": 23,
       "archangels": [
         {
           "id": "gabriel",
@@ -49770,14 +50408,14 @@
           "occurrenceCount": 32
         },
         {
+          "id": "raphael",
+          "score": 46,
+          "occurrenceCount": 28
+        },
+        {
           "id": "ouriel",
           "score": 45,
           "occurrenceCount": 30
-        },
-        {
-          "id": "raphael",
-          "score": 45,
-          "occurrenceCount": 28
         }
       ],
       "topPsalms": [
@@ -49866,6 +50504,25 @@
             19
           ],
           "teaching": "La destinée est reliée à une tâche ou une œuvre à accomplir et peut être détournée lorsque l’homme se laisse orienter par des influences étrangères au but attribué à son âme.",
+          "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            10,
+            19
+          ],
+          "teaching": "La destinée est décrite comme se construisant avec les pensées auxquelles l'homme s'associe; elles précèdent sentiments et actes et finissent par organiser le futur dans lequel il devra vivre.",
           "score": 3
         },
         {
@@ -50020,26 +50677,6 @@
           ],
           "teaching": "Le psaume développe de façon répétée le thème « Destinée »; les versets indiqués en constituent les points d’appui textuels.",
           "score": 3
-        },
-        {
-          "recordId": "book-28-psalm-162",
-          "bookNumber": 28,
-          "bookTitle": "Le vrai corps du Christ",
-          "archangel": "ouriel",
-          "psalmNumber": 162,
-          "psalmTitle": "Prenez soin de D ieu en prenant soin des âmes qui s ’incarnent",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            5,
-            7,
-            19,
-            21,
-            28,
-            30
-          ],
-          "teaching": "Le psaume développe de façon répétée le thème « Destinée »; les versets indiqués en constituent les points d’appui textuels.",
-          "score": 3
         }
       ],
       "occurrences": [
@@ -50128,6 +50765,25 @@
             19
           ],
           "teaching": "La destinée est reliée à une tâche ou une œuvre à accomplir et peut être détournée lorsque l’homme se laisse orienter par des influences étrangères au but attribué à son âme.",
+          "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            10,
+            19
+          ],
+          "teaching": "La destinée est décrite comme se construisant avec les pensées auxquelles l'homme s'associe; elles précèdent sentiments et actes et finissent par organiser le futur dans lequel il devra vivre.",
           "score": 3
         },
         {
@@ -50596,24 +51252,6 @@
             44
           ],
           "teaching": "La destinée est présentée comme se construisant avec les mêmes matériaux que le corps subtil : les influences et aliments reçus au cours de la journée deviennent le milieu dans lequel l’homme devra ensuite vivre.",
-          "score": 2
-        },
-        {
-          "recordId": "book-19-psalm-102",
-          "bookNumber": 19,
-          "bookTitle": "Le secret de la pensée angélique",
-          "archangel": "raphael",
-          "psalmNumber": 102,
-          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            6,
-            7,
-            8,
-            10
-          ],
-          "teaching": "Le psaume relie « Destinée » au passage suivant : Il y a ensuite le monde de la pensée qui pense, réfléchit, est capable de jugement, cherche ; elle peut être consciente ou semi-consciente. Un second appui précise : Le troisième monde de la pensée est celui de la pensée divine, qui est de toute éternité. Elle est associée à ceux qui ont su endormir le corps et pratiquent la méditation et la discipline sacrée pour construire un corps dans leur corps.",
           "score": 2
         },
         {
@@ -52398,6 +53036,70 @@
             10
           ],
           "teaching": "Les alliances passées engagent l’homme ; mettre de l’ordre et rendre ce qui est dû libère l’énergie nécessaire pour choisir de nouvelles associations.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "deux-terres",
+      "label": "Deux terres",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-105",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 105,
+          "psalmTitle": "Chaque épreuve est une chance",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            9,
+            16,
+            17,
+            24,
+            27,
+            31
+          ],
+          "teaching": "Le psaume distingue une terre visible et une terre invisible qui appartiennent toutes deux à l’existence humaine. Négliger la seconde crée, selon le texte, une dysharmonie qui finit par affecter aussi la vie matérielle.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-105",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 105,
+          "psalmTitle": "Chaque épreuve est une chance",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            9,
+            16,
+            17,
+            24,
+            27,
+            31
+          ],
+          "teaching": "Le psaume distingue une terre visible et une terre invisible qui appartiennent toutes deux à l’existence humaine. Négliger la seconde crée, selon le texte, une dysharmonie qui finit par affecter aussi la vie matérielle.",
           "score": 3
         }
       ]
@@ -69025,6 +69727,64 @@
       ]
     },
     {
+      "id": "enseignement-comme-mediateur",
+      "label": "Enseignement comme médiateur",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-110",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 110,
+          "psalmTitle": "Ne perdez pas de temps, unissez -vous",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            17,
+            30,
+            34
+          ],
+          "teaching": "L'Enseignement est présenté comme le point de compatibilité entre le monde humain et le monde divin: l'incorporer collectivement doit créer le corps de liaison permettant l'ouverture d'un passage.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-110",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 110,
+          "psalmTitle": "Ne perdez pas de temps, unissez -vous",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            17,
+            30,
+            34
+          ],
+          "teaching": "L'Enseignement est présenté comme le point de compatibilité entre le monde humain et le monde divin: l'incorporer collectivement doit créer le corps de liaison permettant l'ouverture d'un passage.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "enseignement-vivant",
       "label": "Enseignement vivant",
       "score": 3,
@@ -76476,13 +77236,13 @@
     {
       "id": "fleur",
       "label": "Fleur",
-      "score": 33,
+      "score": 32,
       "occurrenceCount": 15,
-      "centralPsalmCount": 6,
+      "centralPsalmCount": 5,
       "archangels": [
         {
           "id": "raphael",
-          "score": 19,
+          "score": 18,
           "occurrenceCount": 8
         },
         {
@@ -76580,28 +77340,6 @@
           "score": 3
         },
         {
-          "recordId": "book-19-psalm-107",
-          "bookNumber": 19,
-          "bookTitle": "Le secret de la pensée angélique",
-          "archangel": "raphael",
-          "psalmNumber": 107,
-          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            23
-          ],
-          "teaching": "Le psaume relie « Fleur » au passage suivant : Lorsque vous voyez une fleur, vous vous émerveillez de sa beauté et vous vous réjouissez. Pourtant, vous n’êtes pas en communication avec son être et ne la regardez pas réellement, ne la rencontrez pas vous-mêmes. Un second appui précise : Une fleur souhaite simplement partager un espace respiratoire avec vous afin de vous transmettre son message : tous les êtres sont comme elle, et chacun peut accomplir ce qu’il est en fleurissant, en apparaissant dans un autre monde.",
-          "score": 3
-        },
-        {
           "recordId": "book-39-psalm-249",
           "bookNumber": 39,
           "bookTitle": "Les vertus du coeur",
@@ -76657,6 +77395,25 @@
             22
           ],
           "teaching": "La fleur est présentée comme un autre soi-même, un être réel qui attend de l’homme un lien conscient lui permettant de cheminer vers une intelligence supérieure.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-107",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 107,
+          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            7,
+            8
+          ],
+          "teaching": "La fleur enseigne par sa manière d'être: elle partage un espace, fleurit et donne une forme à ce qu'elle est; le psaume en fait un modèle de croissance et d'apparition dans un monde supérieur sans la réduire à un simple présage.",
           "score": 2
         },
         {
@@ -76812,28 +77569,6 @@
           "score": 3
         },
         {
-          "recordId": "book-19-psalm-107",
-          "bookNumber": 19,
-          "bookTitle": "Le secret de la pensée angélique",
-          "archangel": "raphael",
-          "psalmNumber": 107,
-          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            23
-          ],
-          "teaching": "Le psaume relie « Fleur » au passage suivant : Lorsque vous voyez une fleur, vous vous émerveillez de sa beauté et vous vous réjouissez. Pourtant, vous n’êtes pas en communication avec son être et ne la regardez pas réellement, ne la rencontrez pas vous-mêmes. Un second appui précise : Une fleur souhaite simplement partager un espace respiratoire avec vous afin de vous transmettre son message : tous les êtres sont comme elle, et chacun peut accomplir ce qu’il est en fleurissant, en apparaissant dans un autre monde.",
-          "score": 3
-        },
-        {
           "recordId": "book-39-psalm-249",
           "bookNumber": 39,
           "bookTitle": "Les vertus du coeur",
@@ -76889,6 +77624,25 @@
             22
           ],
           "teaching": "La fleur est présentée comme un autre soi-même, un être réel qui attend de l’homme un lien conscient lui permettant de cheminer vers une intelligence supérieure.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-107",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 107,
+          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            7,
+            8
+          ],
+          "teaching": "La fleur enseigne par sa manière d'être: elle partage un espace, fleurit et donne une forme à ce qu'elle est; le psaume en fait un modèle de croissance et d'apparition dans un monde supérieur sans la réduire à un simple présage.",
           "score": 2
         },
         {
@@ -77793,12 +78547,17 @@
     {
       "id": "fraternite-universelle",
       "label": "Fraternité universelle",
-      "score": 2,
-      "occurrenceCount": 1,
+      "score": 4,
+      "occurrenceCount": 2,
       "centralPsalmCount": 0,
       "archangels": [
         {
           "id": "gabriel",
+          "score": 2,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
           "score": 2,
           "occurrenceCount": 1
         }
@@ -77819,6 +78578,23 @@
           ],
           "teaching": "La marche vers le divin doit inclure le bien de tous les êtres et règnes.",
           "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-107",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 107,
+          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            10,
+            11
+          ],
+          "teaching": "La fraternité s'élargit au-delà des seuls humains: reconnaître les autres règnes comme parties d'une même vie permet d'ouvrir les sentiments et les sens à une famille plus vaste.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -77836,6 +78612,23 @@
             8
           ],
           "teaching": "La marche vers le divin doit inclure le bien de tous les êtres et règnes.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-107",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 107,
+          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            10,
+            11
+          ],
+          "teaching": "La fraternité s'élargit au-delà des seuls humains: reconnaître les autres règnes comme parties d'une même vie permet d'ouvrir les sentiments et les sens à une famille plus vaste.",
           "score": 2
         }
       ]
@@ -85961,13 +86754,13 @@
     {
       "id": "immortalite",
       "label": "Immortalité",
-      "score": 67,
+      "score": 68,
       "occurrenceCount": 42,
       "centralPsalmCount": 9,
       "archangels": [
         {
           "id": "raphael",
-          "score": 29,
+          "score": 30,
           "occurrenceCount": 13
         },
         {
@@ -86219,6 +87012,29 @@
           "score": 2
         },
         {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            17,
+            20,
+            21,
+            22,
+            26,
+            30,
+            31
+          ],
+          "teaching": "L'immortalité est reliée à la continuité consciente du voyage: conserver l'intelligence acquise, constituer un autre corps et pouvoir poursuivre l'évolution sans être enfermé dans l'identité humaine actuelle.",
+          "score": 2
+        },
+        {
           "recordId": "book-19-psalm-116",
           "bookNumber": 19,
           "bookTitle": "Le secret de la pensée angélique",
@@ -86234,23 +87050,6 @@
             26
           ],
           "teaching": "Le psaume relie « Immortalité » au passage suivant : Le sage sait comment son être est constitué. Il se préoccupe de nourrir son corps, son âme et son esprit afin d’être léger, joyeux, ce qui lui permet d’entrer dans l’immortalité. Un second appui précise : L’immortalité est la grande réponse et le chemin de la libération pour tous les êtres.",
-          "score": 2
-        },
-        {
-          "recordId": "book-25-psalm-178",
-          "bookNumber": 25,
-          "bookTitle": "Les clés de la maîtrise",
-          "archangel": "michael",
-          "psalmNumber": 178,
-          "psalmTitle": "Marcher vers la grande sagesse, le secret de la vieillesse",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            4,
-            12,
-            16
-          ],
-          "teaching": "Le psaume développe de façon répétée le thème « Immortalité »; les versets indiqués en constituent les points d’appui textuels.",
           "score": 2
         }
       ],
@@ -86487,6 +87286,29 @@
           "score": 2
         },
         {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            17,
+            20,
+            21,
+            22,
+            26,
+            30,
+            31
+          ],
+          "teaching": "L'immortalité est reliée à la continuité consciente du voyage: conserver l'intelligence acquise, constituer un autre corps et pouvoir poursuivre l'évolution sans être enfermé dans l'identité humaine actuelle.",
+          "score": 2
+        },
+        {
           "recordId": "book-19-psalm-116",
           "bookNumber": 19,
           "bookTitle": "Le secret de la pensée angélique",
@@ -86590,24 +87412,6 @@
           ],
           "teaching": "Le psaume développe de façon répétée le thème « Immortalité »; les versets indiqués en constituent les points d’appui textuels.",
           "score": 2
-        },
-        {
-          "recordId": "book-19-psalm-108",
-          "bookNumber": 19,
-          "bookTitle": "Le secret de la pensée angélique",
-          "archangel": "raphael",
-          "psalmNumber": 108,
-          "psalmTitle": "La théorie essénienne de l’évolution",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            3,
-            20,
-            26
-          ],
-          "teaching": "Le psaume relie « Immortalité » au passage suivant : Les hommes ne connaissent pas l’immortalité. Ils se demandent ce qu’elle peut être, comment ils pourraient vivre dans son monde, comment conserver leur corps éternellement, s’ils pourront vivre dans l’au-delà dans l’éveil Un second appui précise : Dans la conception limitée de l’homme actuel, « immortalité » signifie au mieux « conservation de la mémoire au-delà du temps ». Mais la mémoire actuelle, celle à laquelle l’homme a accès, n’est plus la véritable mémoire, globale",
-          "score": 1
         },
         {
           "recordId": "book-22-psalm-153",
@@ -87566,13 +88370,13 @@
     {
       "id": "incarnation",
       "label": "Incarnation",
-      "score": 25,
+      "score": 26,
       "occurrenceCount": 10,
       "centralPsalmCount": 6,
       "archangels": [
         {
           "id": "raphael",
-          "score": 11,
+          "score": 12,
           "occurrenceCount": 5
         },
         {
@@ -87779,15 +88583,16 @@
           "archangel": "raphael",
           "psalmNumber": 106,
           "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
-          "importance": "related",
-          "directness": "contextual",
+          "importance": "important",
+          "directness": "direct",
           "verseNumbers": [
             4,
             5,
-            16
+            12,
+            13
           ],
-          "teaching": "Le thème « Incarnation » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Ce n’est pas en étant désincarné ou en vivant dans des mondes invisibles que l’homme peut accomplir sa mission, qui est de libérer les âmes enfermées dans la matière et de se construire un corps d’immortalité. Un second appui précise : En s’incarnant, l’homme entre dans le cycle qui va de la naissance à la mort et plus il vieillit, plus il prend conscience de l’éphémère.",
-          "score": 1
+          "teaching": "L'incarnation est présentée comme la condition même du travail: la mission ne s'accomplit pas en s'évadant dans l'invisible mais en transformant la pensée, la parole, l'acte et le corps au sein du monde terrestre.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -87978,15 +88783,16 @@
           "archangel": "raphael",
           "psalmNumber": 106,
           "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
-          "importance": "related",
-          "directness": "contextual",
+          "importance": "important",
+          "directness": "direct",
           "verseNumbers": [
             4,
             5,
-            16
+            12,
+            13
           ],
-          "teaching": "Le thème « Incarnation » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Ce n’est pas en étant désincarné ou en vivant dans des mondes invisibles que l’homme peut accomplir sa mission, qui est de libérer les âmes enfermées dans la matière et de se construire un corps d’immortalité. Un second appui précise : En s’incarnant, l’homme entre dans le cycle qui va de la naissance à la mort et plus il vieillit, plus il prend conscience de l’éphémère.",
-          "score": 1
+          "teaching": "L'incarnation est présentée comme la condition même du travail: la mission ne s'accomplit pas en s'évadant dans l'invisible mais en transformant la pensée, la parole, l'acte et le corps au sein du monde terrestre.",
+          "score": 2
         }
       ]
     },
@@ -99823,6 +100629,70 @@
       ]
     },
     {
+      "id": "invisible-gouverne-visible",
+      "label": "Invisible gouverne le visible",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-105",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 105,
+          "psalmTitle": "Chaque épreuve est une chance",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            9,
+            10,
+            16,
+            17,
+            21,
+            22,
+            23,
+            33
+          ],
+          "teaching": "Le psaume affirme que l’invisible gouverne le visible et critique l’abandon de cette dimension. Pensées, sentiments et influences sont décrits comme des réalités agissantes qui finissent par modeler le monde concret.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-105",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 105,
+          "psalmTitle": "Chaque épreuve est une chance",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            9,
+            10,
+            16,
+            17,
+            21,
+            22,
+            23,
+            33
+          ],
+          "teaching": "Le psaume affirme que l’invisible gouverne le visible et critique l’abandon de cette dimension. Pensées, sentiments et influences sont décrits comme des réalités agissantes qui finissent par modeler le monde concret.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "jardin",
       "label": "Jardin",
       "score": 3,
@@ -100788,10 +101658,15 @@
     {
       "id": "langage-universel",
       "label": "Langage universel",
-      "score": 7,
-      "occurrenceCount": 3,
-      "centralPsalmCount": 1,
+      "score": 10,
+      "occurrenceCount": 4,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "raphael",
+          "score": 5,
+          "occurrenceCount": 2
+        },
         {
           "id": "gabriel",
           "score": 3,
@@ -100799,11 +101674,6 @@
         },
         {
           "id": "ouriel",
-          "score": 2,
-          "occurrenceCount": 1
-        },
-        {
-          "id": "raphael",
           "score": 2,
           "occurrenceCount": 1
         }
@@ -100829,6 +101699,27 @@
             8
           ],
           "teaching": "La Mère donne une substance et un langage capables de traverser les mondes sans perdre leur sens ; l’homme doit apprendre à parler aux règnes dans une conscience vivante.",
+          "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-103",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 103,
+          "psalmTitle": "Les lois de la communication universelle",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            15,
+            17
+          ],
+          "teaching": "Le langage de l'humanité est présenté comme un alphabet de l'univers: apprendre à comprendre les différences humaines devient la première école nécessaire avant de prétendre communiquer avec d'autres règnes ou mondes.",
           "score": 3
         },
         {
@@ -100889,6 +101780,27 @@
             8
           ],
           "teaching": "La Mère donne une substance et un langage capables de traverser les mondes sans perdre leur sens ; l’homme doit apprendre à parler aux règnes dans une conscience vivante.",
+          "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-103",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 103,
+          "psalmTitle": "Les lois de la communication universelle",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            15,
+            17
+          ],
+          "teaching": "Le langage de l'humanité est présenté comme un alphabet de l'univers: apprendre à comprendre les différences humaines devient la première école nécessaire avant de prétendre communiquer avec d'autres règnes ou mondes.",
           "score": 3
         },
         {
@@ -101236,8 +102148,8 @@
     {
       "id": "liberte",
       "label": "Liberté",
-      "score": 23,
-      "occurrenceCount": 11,
+      "score": 25,
+      "occurrenceCount": 12,
       "centralPsalmCount": 4,
       "archangels": [
         {
@@ -101252,8 +102164,8 @@
         },
         {
           "id": "raphael",
-          "score": 5,
-          "occurrenceCount": 3
+          "score": 7,
+          "occurrenceCount": 4
         },
         {
           "id": "ouriel",
@@ -101406,6 +102318,25 @@
             24
           ],
           "teaching": "La liberté originelle se reconquiert par l’éveil, la formation et la conscience précise de ce que l’on sert.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-110",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 110,
+          "psalmTitle": "Ne perdez pas de temps, unissez -vous",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16,
+            17,
+            18,
+            20,
+            21
+          ],
+          "teaching": "La liberté est reliée à l'existence d'un choix réel entre plusieurs façons de vivre; le texte craint qu'une absence de corps collectif de la sagesse laisse l'homme prisonnier d'un seul système et d'influences qu'il ne maîtrise plus.",
           "score": 2
         },
         {
@@ -101620,6 +102551,25 @@
             24
           ],
           "teaching": "La liberté originelle se reconquiert par l’éveil, la formation et la conscience précise de ce que l’on sert.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-110",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 110,
+          "psalmTitle": "Ne perdez pas de temps, unissez -vous",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16,
+            17,
+            18,
+            20,
+            21
+          ],
+          "teaching": "La liberté est reliée à l'existence d'un choix réel entre plusieurs façons de vivre; le texte craint qu'une absence de corps collectif de la sagesse laisse l'homme prisonnier d'un seul système et d'influences qu'il ne maîtrise plus.",
           "score": 2
         },
         {
@@ -101980,6 +102930,62 @@
             25
           ],
           "teaching": "La libération est opposée aux concepts et prisons que l'homme construit lui-même; elle suppose selon le psaume un engagement volontaire à se dégager de ce qui le retient.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "liberation-par-la-pensee",
+      "label": "Libération par la pensée",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            13,
+            26
+          ],
+          "teaching": "Certaines pensées enferment et d'autres libèrent; le passage proposé vers une pensée libératrice associe éveil de la conscience, étude, discipline, repos et pratiques destinées à desserrer l'emprise des habitudes négatives.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            13,
+            26
+          ],
+          "teaching": "Certaines pensées enferment et d'autres libèrent; le passage proposé vers une pensée libératrice associe éveil de la conscience, étude, discipline, repos et pratiques destinées à desserrer l'emprise des habitudes négatives.",
           "score": 2
         }
       ]
@@ -104131,6 +105137,76 @@
           ],
           "teaching": "Le monde divin est structuré par des lois qui existent indépendamment des attentes humaines ; l’harmonie vient de l’accord avec elles.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "lois-du-pere",
+      "label": "Lois du Père",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-105",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 105,
+          "psalmTitle": "Chaque épreuve est une chance",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            7,
+            8,
+            19,
+            20,
+            21,
+            24,
+            25,
+            26,
+            27,
+            31
+          ],
+          "teaching": "Les lois sont présentées comme communes aux mondes visibles et invisibles. La sagesse consiste à les étudier, comprendre leur logique puis organiser les deux dimensions de la vie en conformité avec elles.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-105",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 105,
+          "psalmTitle": "Chaque épreuve est une chance",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            7,
+            8,
+            19,
+            20,
+            21,
+            24,
+            25,
+            26,
+            27,
+            31
+          ],
+          "teaching": "Les lois sont présentées comme communes aux mondes visibles et invisibles. La sagesse consiste à les étudier, comprendre leur logique puis organiser les deux dimensions de la vie en conformité avec elles.",
+          "score": 3
         }
       ]
     },
@@ -114350,6 +115426,64 @@
       ]
     },
     {
+      "id": "mauvaises-pensees",
+      "label": "Mauvaises pensées",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "La mauvaise pensée est décrite comme une association qui peut se déguiser, gagner de la puissance par l'homme et devenir agissante; la réponse proposée est l'éveil, l'étude, la vigilance et la séparation d'avec ce monde plutôt que la simple bonne intention.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "teaching": "La mauvaise pensée est décrite comme une association qui peut se déguiser, gagner de la puissance par l'homme et devenir agissante; la réponse proposée est l'éveil, l'étude, la vigilance et la séparation d'avec ce monde plutôt que la simple bonne intention.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "maitre",
       "label": "Maître",
       "score": 23,
@@ -116945,6 +118079,58 @@
       ]
     },
     {
+      "id": "maitrise-de-la-vie-interieure",
+      "label": "Maîtrise de la vie intérieure",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            20
+          ],
+          "teaching": "Étude et discipline doivent permettre d'observer et de maîtriser pensées, sentiments et attitudes afin de ne plus se cacher derrière des apparences ni dépendre du regard supposé d'un monde supérieur.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            20
+          ],
+          "teaching": "Étude et discipline doivent permettre d'observer et de maîtriser pensées, sentiments et attitudes afin de ne plus se cacher derrière des apparences ni dépendre du regard supposé d'un monde supérieur.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "maitrise-de-soi",
       "label": "Maîtrise de soi",
       "score": 5,
@@ -117109,17 +118295,17 @@
     {
       "id": "mensonge",
       "label": "Mensonge",
-      "score": 6,
-      "occurrenceCount": 2,
+      "score": 8,
+      "occurrenceCount": 3,
       "centralPsalmCount": 2,
       "archangels": [
         {
-          "id": "michael",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "ouriel",
+          "score": 5,
+          "occurrenceCount": 2
         },
         {
-          "id": "ouriel",
+          "id": "michael",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -117171,6 +118357,34 @@
           ],
           "teaching": "Le mensonge ne crée aucun lien durable et conduit l’homme dans les régions correspondant à l’illusion qu’il porte.",
           "score": 3
+        },
+        {
+          "recordId": "book-20-psalm-107",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 107,
+          "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            13,
+            15,
+            16,
+            21,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "teaching": "Le mensonge est présenté comme une terre sans stabilité. Son fruit ultime est décrit comme le néant, précédé par la peur, le doute et l’isolement, parce qu’aucune base vraie ne peut soutenir celui qui vit dans une apparence fabriquée.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -117220,6 +118434,34 @@
           ],
           "teaching": "Le mensonge ne crée aucun lien durable et conduit l’homme dans les régions correspondant à l’illusion qu’il porte.",
           "score": 3
+        },
+        {
+          "recordId": "book-20-psalm-107",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 107,
+          "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            9,
+            10,
+            13,
+            15,
+            16,
+            21,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "teaching": "Le mensonge est présenté comme une terre sans stabilité. Son fruit ultime est décrit comme le néant, précédé par la peur, le doute et l’isolement, parce qu’aucune base vraie ne peut soutenir celui qui vit dans une apparence fabriquée.",
+          "score": 2
         }
       ]
     },
@@ -117532,12 +118774,17 @@
     {
       "id": "mission-de-l-homme",
       "label": "Mission de l’homme",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "michael",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -117560,6 +118807,27 @@
           ],
           "teaching": "La fonction originelle de l'homme est de servir de passage à la Lumière pour les autres règnes ; son oubli a aggravé leur souffrance.",
           "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-106",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 106,
+          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6,
+            11,
+            12,
+            13
+          ],
+          "teaching": "L'homme est présenté comme placé à la frontière du visible et de l'invisible afin d'agir en créateur: son travail consiste à libérer plutôt qu'enfermer et à conduire pensées, paroles, actes et matière vers une évolution supérieure.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -117579,6 +118847,27 @@
             5
           ],
           "teaching": "La fonction originelle de l'homme est de servir de passage à la Lumière pour les autres règnes ; son oubli a aggravé leur souffrance.",
+          "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-106",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 106,
+          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6,
+            11,
+            12,
+            13
+          ],
+          "teaching": "L'homme est présenté comme placé à la frontière du visible et de l'invisible afin d'agir en créateur: son travail consiste à libérer plutôt qu'enfermer et à conduire pensées, paroles, actes et matière vers une évolution supérieure.",
           "score": 3
         }
       ]
@@ -121003,6 +122292,62 @@
           ],
           "teaching": "Le psaume développe de façon répétée le thème « Monde invisible »; les versets indiqués en constituent les points d’appui textuels.",
           "score": 1
+        }
+      ]
+    },
+    {
+      "id": "monde-mental-separe",
+      "label": "Monde mental séparé",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-104",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 104,
+          "psalmTitle": "Conduis tes pensées jusqu ’à la réalisation",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6,
+            9
+          ],
+          "teaching": "Le texte décrit un monde mental devenu autonome, construit à partir des concepts et perceptions humaines puis coupé du sentiment et de l’énergie d’action. Cette séparation est associée à l’illusion, au doute et à l’insatisfaction.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-104",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 104,
+          "psalmTitle": "Conduis tes pensées jusqu ’à la réalisation",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            6,
+            9
+          ],
+          "teaching": "Le texte décrit un monde mental devenu autonome, construit à partir des concepts et perceptions humaines puis coupé du sentiment et de l’énergie d’action. Cette séparation est associée à l’illusion, au doute et à l’insatisfaction.",
+          "score": 3
         }
       ]
     },
@@ -128570,6 +129915,82 @@
             13
           ],
           "teaching": "Le corps et les cellules portent une mémoire de la lignée et de l'âme qui peut être lue, comprise et conduite vers la Lumière.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "memoire-vivante",
+      "label": "Mémoire vivante",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            8,
+            12,
+            13,
+            14,
+            16,
+            20,
+            22,
+            25,
+            28,
+            30,
+            32
+          ],
+          "teaching": "La mémoire est beaucoup plus qu'un souvenir biographique: elle est présentée comme la continuité vivante du voyage à travers les règnes et comme la condition pour connaître son origine, sa tâche et l'étape suivante de l'évolution.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            8,
+            12,
+            13,
+            14,
+            16,
+            20,
+            22,
+            25,
+            28,
+            30,
+            32
+          ],
+          "teaching": "La mémoire est beaucoup plus qu'un souvenir biographique: elle est présentée comme la continuité vivante du voyage à travers les règnes et comme la condition pour connaître son origine, sa tâche et l'étape suivante de l'évolution.",
           "score": 3
         }
       ]
@@ -139094,6 +140515,62 @@
       ]
     },
     {
+      "id": "parole-vraie",
+      "label": "Parole vraie",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-103",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 103,
+          "psalmTitle": "Les lois de la communication universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12,
+            23
+          ],
+          "teaching": "La parole juste demande de ne pas se cacher derrière des mots, masques ou opinions variables; elle part d'une identité intérieure stable tout en sachant se rendre compréhensible à l'autre.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-103",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 103,
+          "psalmTitle": "Les lois de la communication universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            12,
+            23
+          ],
+          "teaching": "La parole juste demande de ne pas se cacher derrière des mots, masques ou opinions variables; elle part d'une identité intérieure stable tout en sachant se rendre compréhensible à l'autre.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "part-du-travail",
       "label": "Part du travail",
       "score": 3,
@@ -146716,6 +148193,74 @@
       ]
     },
     {
+      "id": "pensee-angelique",
+      "label": "Pensée angélique",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            23,
+            24,
+            25,
+            26
+          ],
+          "teaching": "La pensée angélique désigne des pensées élevées et vivantes qui ne peuvent être réduites à des idées abstraites: elles demandent une atmosphère, une étude et une discipline capables de leur donner un corps dans la vie humaine.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            23,
+            24,
+            25,
+            26
+          ],
+          "teaching": "La pensée angélique désigne des pensées élevées et vivantes qui ne peuvent être réduites à des idées abstraites: elles demandent une atmosphère, une étude et une discipline capables de leur donner un corps dans la vie humaine.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "pensee-creatrice",
       "label": "Pensée créatrice",
       "score": 5,
@@ -146941,6 +148486,60 @@
             16
           ],
           "teaching": "La pensée verticale capte impersonnellement une essence supérieure qui féconde ensuite la forme terrestre sans être limitée par elle.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "pensee-vivante",
+      "label": "Pensée vivante",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            8
+          ],
+          "teaching": "Le psaume présente la pensée comme une réalité vivante et agissante dont les paroles, actes et œuvres physiques ne sont que les manifestations visibles; penser engage donc déjà une création et une destinée.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            8
+          ],
+          "teaching": "Le psaume présente la pensée comme une réalité vivante et agissante dont les paroles, actes et œuvres physiques ne sont que les manifestations visibles; penser engage donc déjà une création et une destinée.",
           "score": 3
         }
       ]
@@ -148968,6 +150567,74 @@
       ]
     },
     {
+      "id": "portes-et-cles",
+      "label": "Portes et clés",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-106",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 106,
+          "psalmTitle": "La conscience, clé universelle",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            9,
+            10,
+            22,
+            23,
+            24,
+            25
+          ],
+          "teaching": "La vie est décrite comme une succession de portes ouvrant sur des mondes distincts. Chaque porte possède une clé, et la compréhension ne suffit que si l’homme est préparé à entrer réellement dans le monde qu’elle révèle.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-106",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 106,
+          "psalmTitle": "La conscience, clé universelle",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            9,
+            10,
+            22,
+            23,
+            24,
+            25
+          ],
+          "teaching": "La vie est décrite comme une succession de portes ouvrant sur des mondes distincts. Chaque porte possède une clé, et la compréhension ne suffit que si l’homme est préparé à entrer réellement dans le monde qu’elle révèle.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "portes-et-gardiens",
       "label": "Portes et gardiens",
       "score": 3,
@@ -150129,6 +151796,66 @@
             21
           ],
           "teaching": "La prière n'est pas seulement émission d'un souhait : l'homme doit reconnaître une réponse qui peut contredire ses plans et la mettre en mouvement dans sa vie.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "projection",
+      "label": "Projection",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            10,
+            15,
+            16,
+            18
+          ],
+          "teaching": "La projection consiste à chercher dans le monde extérieur la confirmation de son identité, de sa valeur ou de ses croyances; le texte la présente comme une source d'illusion qui empêche de regarder sa propre vie avec justesse.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            10,
+            15,
+            16,
+            18
+          ],
+          "teaching": "La projection consiste à chercher dans le monde extérieur la confirmation de son identité, de sa valeur ou de ses croyances; le texte la présente comme une source d'illusion qui empêche de regarder sa propre vie avec justesse.",
           "score": 3
         }
       ]
@@ -151429,8 +153156,8 @@
     {
       "id": "preparation",
       "label": "Préparation",
-      "score": 20,
-      "occurrenceCount": 7,
+      "score": 24,
+      "occurrenceCount": 9,
       "centralPsalmCount": 6,
       "archangels": [
         {
@@ -151440,16 +153167,16 @@
         },
         {
           "id": "ouriel",
+          "score": 7,
+          "occurrenceCount": 3
+        },
+        {
+          "id": "raphael",
           "score": 5,
           "occurrenceCount": 2
         },
         {
           "id": "michael",
-          "score": 3,
-          "occurrenceCount": 1
-        },
-        {
-          "id": "raphael",
           "score": 3,
           "occurrenceCount": 1
         }
@@ -151606,6 +153333,47 @@
           ],
           "teaching": "Aucun monde supérieur ne remplace le travail humain : il faut préparer les sens, les organes, la pensée et le corps pour recevoir et porter la sagesse.",
           "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-110",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 110,
+          "psalmTitle": "Ne perdez pas de temps, unissez -vous",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            22,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "teaching": "La préparation consiste à ne pas attendre passivement l'épreuve: vivre déjà dans un monde de sagesse, disposer de repères et de lieux concrets doit permettre de trouver une réponse lorsque les conditions deviennent difficiles.",
+          "score": 2
+        },
+        {
+          "recordId": "book-20-psalm-106",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 106,
+          "psalmTitle": "La conscience, clé universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            7,
+            8,
+            21,
+            24,
+            25
+          ],
+          "teaching": "Le passage d’une porte demande une préparation, une éducation et un corps adaptés. Les vertus, l’attitude et la compréhension sont présentées comme des conditions de capacité, pas comme de simples décorations morales.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -151759,6 +153527,47 @@
             19
           ],
           "teaching": "Aucun monde supérieur ne remplace le travail humain : il faut préparer les sens, les organes, la pensée et le corps pour recevoir et porter la sagesse.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-110",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 110,
+          "psalmTitle": "Ne perdez pas de temps, unissez -vous",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            22,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "teaching": "La préparation consiste à ne pas attendre passivement l'épreuve: vivre déjà dans un monde de sagesse, disposer de repères et de lieux concrets doit permettre de trouver une réponse lorsque les conditions deviennent difficiles.",
+          "score": 2
+        },
+        {
+          "recordId": "book-20-psalm-106",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 106,
+          "psalmTitle": "La conscience, clé universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            7,
+            8,
+            21,
+            24,
+            25
+          ],
+          "teaching": "Le passage d’une porte demande une préparation, une éducation et un corps adaptés. Les vertus, l’attitude et la compréhension sont présentées comme des conditions de capacité, pas comme de simples décorations morales.",
           "score": 2
         }
       ]
@@ -159284,6 +161093,68 @@
       ]
     },
     {
+      "id": "relation-directe-aux-regnes",
+      "label": "Relation directe aux règnes",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-107",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 107,
+          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Le psaume demande de rencontrer fleurs, animaux et autres êtres sans interposer immédiatement les concepts appris; la communication recherchée part d'une présence partagée et d'une relation réelle plutôt que d'une interprétation symbolique automatique.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-107",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 107,
+          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            9,
+            10,
+            11
+          ],
+          "teaching": "Le psaume demande de rencontrer fleurs, animaux et autres êtres sans interposer immédiatement les concepts appris; la communication recherchée part d'une présence partagée et d'une relation réelle plutôt que d'une interprétation symbolique automatique.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "relations",
       "label": "Relations",
       "score": 19,
@@ -159634,6 +161505,62 @@
             12
           ],
           "teaching": "La vérité inclut la purification des relations concrètes avec animaux, plantes, terre et Mère.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "relations-comme-revelateur",
+      "label": "Relations comme révélateur",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-107",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 107,
+          "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            14,
+            18,
+            30
+          ],
+          "teaching": "La vraie nature de l’homme est observée dans ses rapports avec l’environnement et les autres, pas seulement lorsqu’il est seul. Les relations révèlent donc concrètement la cohérence ou la séparation entre ses différents mondes.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-107",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 107,
+          "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            14,
+            18,
+            30
+          ],
+          "teaching": "La vraie nature de l’homme est observée dans ses rapports avec l’environnement et les autres, pas seulement lorsqu’il est seul. Les relations révèlent donc concrètement la cohérence ou la séparation entre ses différents mondes.",
           "score": 2
         }
       ]
@@ -162654,10 +164581,68 @@
       ]
     },
     {
+      "id": "respiration-et-pensee",
+      "label": "Respiration et pensée",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            7,
+            10,
+            11
+          ],
+          "teaching": "Le psaume relie la pensée au souffle, à l'air et au sang: l'atmosphère de pensées entretenue autour de l'homme imprègne son corps et sa destinée comme l'air respiré nourrit et circule dans l'organisme.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            7,
+            10,
+            11
+          ],
+          "teaching": "Le psaume relie la pensée au souffle, à l'air et au sang: l'atmosphère de pensées entretenue autour de l'homme imprègne son corps et sa destinée comme l'air respiré nourrit et circule dans l'organisme.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "responsabilite",
       "label": "Responsabilité",
-      "score": 92,
-      "occurrenceCount": 42,
+      "score": 94,
+      "occurrenceCount": 43,
       "centralPsalmCount": 19,
       "archangels": [
         {
@@ -162672,8 +164657,8 @@
         },
         {
           "id": "ouriel",
-          "score": 15,
-          "occurrenceCount": 9
+          "score": 17,
+          "occurrenceCount": 10
         },
         {
           "id": "raphael",
@@ -163508,6 +165493,30 @@
             34
           ],
           "teaching": "La responsabilité consiste à regarder ce que l’on fait réellement de la vie reçue et à poser des actes qui construisent une continuité ; les croyances ou intentions ne remplacent pas cette réalisation concrète.",
+          "score": 2
+        },
+        {
+          "recordId": "book-20-psalm-105",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 105,
+          "psalmTitle": "Chaque épreuve est une chance",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            6,
+            7,
+            8,
+            17,
+            24,
+            27,
+            31,
+            32,
+            33
+          ],
+          "teaching": "La responsabilité consiste à ne pas remettre sa vie à une intervention extérieure mais à étudier les lois, observer les effets de ses propres émanations et donner une forme concrète à sa nature supérieure dans les actes.",
           "score": 2
         },
         {
@@ -166574,9 +168583,11 @@
             8,
             9,
             10,
-            12
+            11,
+            12,
+            18
           ],
-          "teaching": "Le psaume relie « Réalisation » au passage suivant : La perfection n’existe que dans l’œuvre réalisée dans l’alliance avec le Père. Elle ne peut exister dans le monde engendré par l’intellect limité, lui qui n’est jamais rassasié, toujours à la recherche d’une plénitude qui lui échappe sans cesse. Un second appui précise : Si tu dois acquérir une sagesse dans ta vie, comprends qu’à partir du moment où la pensée se manifeste en toi, tu dois l’équilibrer par les sentiments, puis la faire descendre dans la volonté et la mettre en œuvre",
+          "teaching": "La réalisation est le critère qui empêche la pensée de rester enfermée dans l’abstraction : ce qui est reconnu comme juste et vrai doit recevoir un acte et un corps concret afin de devenir réellement vivant.",
           "score": 3
         },
         {
@@ -166786,9 +168797,11 @@
             8,
             9,
             10,
-            12
+            11,
+            12,
+            18
           ],
-          "teaching": "Le psaume relie « Réalisation » au passage suivant : La perfection n’existe que dans l’œuvre réalisée dans l’alliance avec le Père. Elle ne peut exister dans le monde engendré par l’intellect limité, lui qui n’est jamais rassasié, toujours à la recherche d’une plénitude qui lui échappe sans cesse. Un second appui précise : Si tu dois acquérir une sagesse dans ta vie, comprends qu’à partir du moment où la pensée se manifeste en toi, tu dois l’équilibrer par les sentiments, puis la faire descendre dans la volonté et la mettre en œuvre",
+          "teaching": "La réalisation est le critère qui empêche la pensée de rester enfermée dans l’abstraction : ce qui est reconnu comme juste et vrai doit recevoir un acte et un corps concret afin de devenir réellement vivant.",
           "score": 3
         },
         {
@@ -166946,6 +168959,64 @@
       ]
     },
     {
+      "id": "realisation-concrete",
+      "label": "Réalisation concrète",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-107",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 107,
+          "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
+            12,
+            13,
+            14,
+            17,
+            20
+          ],
+          "teaching": "Ouriel est explicitement associé au concret : la valeur d’une parole ou d’une intention est vérifiée dans ce qu’elle devient dans la vie quotidienne et dans les œuvres réalisées.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-107",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 107,
+          "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
+            12,
+            13,
+            14,
+            17,
+            20
+          ],
+          "teaching": "Ouriel est explicitement associé au concret : la valeur d’une parole ou d’une intention est vérifiée dans ce qu’elle devient dans la vie quotidienne et dans les œuvres réalisées.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "realisme",
       "label": "Réalisme",
       "score": 6,
@@ -167045,6 +169116,66 @@
           ],
           "teaching": "Le monde divin ne doit pas être idéalisé comme une abstraction rassurante : la réalité de la relation se mesure dans la vie quotidienne, les actes et leurs conséquences.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "realite",
+      "label": "Réalité",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            12,
+            17,
+            18,
+            19,
+            21,
+            22
+          ],
+          "teaching": "La sagesse est associée au retour au réel: être concret dans son monde, assumer ce que l'on fait et sortir des récits qui servent seulement à rassurer ou préserver une fausse identité.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            12,
+            17,
+            18,
+            19,
+            21,
+            22
+          ],
+          "teaching": "La sagesse est associée au retour au réel: être concret dans son monde, assumer ce que l'on fait et sortir des récits qui servent seulement à rassurer ou préserver une fausse identité.",
+          "score": 2
         }
       ]
     },
@@ -177571,6 +179702,64 @@
       ]
     },
     {
+      "id": "signes-de-la-vie",
+      "label": "Signes de la vie",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            10,
+            11,
+            16,
+            18
+          ],
+          "teaching": "Le psaume critique la tendance à interpréter automatiquement événements, animaux ou épreuves comme des messages personnels du monde supérieur; il demande de distinguer la vie ordinaire, les conséquences des actes et une véritable approche du monde divin.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            10,
+            11,
+            16,
+            18
+          ],
+          "teaching": "Le psaume critique la tendance à interpréter automatiquement événements, animaux ou épreuves comme des messages personnels du monde supérieur; il demande de distinguer la vie ordinaire, les conséquences des actes et une véritable approche du monde divin.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "signes-et-avertissements",
       "label": "Signes et avertissements",
       "score": 2,
@@ -177797,6 +179986,56 @@
             14
           ],
           "teaching": "La subtilité du monde divin devient perceptible lorsque le bruit et l’agitation grossière ont été calmés.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "simple-et-vrai",
+      "label": "Simple et vrai",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-106",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 106,
+          "psalmTitle": "La conscience, clé universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            22,
+            23
+          ],
+          "teaching": "Le texte oppose la recherche du merveilleux et du fantastique à une conscience trouvée dans ce qui est simple et vrai. Le réel est présenté comme le lieu où les mondes peuvent finalement être unifiés.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-106",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 106,
+          "psalmTitle": "La conscience, clé universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            22,
+            23
+          ],
+          "teaching": "Le texte oppose la recherche du merveilleux et du fantastique à une conscience trouvée dans ce qui est simple et vrai. Le réel est présenté comme le lieu où les mondes peuvent finalement être unifiés.",
           "score": 2
         }
       ]
@@ -181208,6 +183447,58 @@
       ]
     },
     {
+      "id": "subtilite-concrete",
+      "label": "Subtilité concrète",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19,
+            20,
+            21
+          ],
+          "teaching": "Le psaume distingue une subtilité enracinée dans l'harmonie du corps et de la vie d'une spiritualité abstraite; cette subtilité concrète est présentée comme une porte naturelle vers une sagesse plus vaste.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-105",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 105,
+          "psalmTitle": "Bien comprendre les signes de la vie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19,
+            20,
+            21
+          ],
+          "teaching": "Le psaume distingue une subtilité enracinée dans l'harmonie du corps et de la vie d'une spiritualité abstraite; cette subtilité concrète est présentée comme une porte naturelle vers une sagesse plus vaste.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "superstition",
       "label": "Superstition",
       "score": 2,
@@ -183370,9 +185661,9 @@
     {
       "id": "terre",
       "label": "Terre",
-      "score": 1060,
+      "score": 1059,
       "occurrenceCount": 450,
-      "centralPsalmCount": 258,
+      "centralPsalmCount": 257,
       "archangels": [
         {
           "id": "ouriel",
@@ -183381,7 +185672,7 @@
         },
         {
           "id": "raphael",
-          "score": 276,
+          "score": 275,
           "occurrenceCount": 122
         },
         {
@@ -183418,29 +185709,6 @@
             10
           ],
           "teaching": "L’homme est une terre mise en mouvement et un laboratoire par lequel la terre peut s’élever vers l’esprit subtil de l’univers.",
-          "score": 3
-        },
-        {
-          "recordId": "book-19-psalm-106",
-          "bookNumber": 19,
-          "bookTitle": "Le secret de la pensée angélique",
-          "archangel": "raphael",
-          "psalmNumber": 106,
-          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            2,
-            3,
-            6,
-            7,
-            8,
-            12,
-            16,
-            17
-          ],
-          "teaching": "Le psaume relie « Terre » au passage suivant : Beaucoup d’hommes se demandent pourquoi ils sont sur la terre. Un second appui précise : L’homme est avant tout une âme vivante. Il a été envoyé sur la terre pour pouvoir rencontrer les 2 mondes et connaître les 2 lois de l’éphémère et de l’immortalité.",
           "score": 3
         },
         {
@@ -183646,6 +185914,27 @@
           ],
           "teaching": "Le psaume relie « Terre » au passage suivant : Arrêtez-vous et posez-vous sur la sagesse de la Mère. Comprenez les lois et les mystères divins et commencez à les intégrer à votre vie pour que tous les règnes et tous les mondes qui vous entourent trouvent à travers vous l’Essénien Un second appui précise : Le roi véritable est posé sur la terre de Lumière ; il offre à tous les êtres la royauté.",
           "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-126",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 126,
+          "psalmTitle": "Se préparer pour franchir les étapes de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            12,
+            13,
+            14,
+            16,
+            17,
+            29
+          ],
+          "teaching": "Le psaume relie « Terre » au passage suivant : Ma célébration s’achève, et dans quelques semaines vous allez entrer dans la terre d’Ouriel1. Je vous conseille de nettoyer tout le passé qui est en vous Un second appui précise : Votre terre est-elle vierge ? Est-elle correctement préparée ? Portez-vous les semences d’un monde supérieur, des pensées de sagesse, une atmosphère angélique ? Vous seuls le savez.",
+          "score": 3
         }
       ],
       "occurrences": [
@@ -183671,29 +185960,6 @@
             10
           ],
           "teaching": "L’homme est une terre mise en mouvement et un laboratoire par lequel la terre peut s’élever vers l’esprit subtil de l’univers.",
-          "score": 3
-        },
-        {
-          "recordId": "book-19-psalm-106",
-          "bookNumber": 19,
-          "bookTitle": "Le secret de la pensée angélique",
-          "archangel": "raphael",
-          "psalmNumber": 106,
-          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            2,
-            3,
-            6,
-            7,
-            8,
-            12,
-            16,
-            17
-          ],
-          "teaching": "Le psaume relie « Terre » au passage suivant : Beaucoup d’hommes se demandent pourquoi ils sont sur la terre. Un second appui précise : L’homme est avant tout une âme vivante. Il a été envoyé sur la terre pour pouvoir rencontrer les 2 mondes et connaître les 2 lois de l’éphémère et de l’immortalité.",
           "score": 3
         },
         {
@@ -189645,6 +191911,24 @@
           "score": 2
         },
         {
+          "recordId": "book-19-psalm-106",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 106,
+          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            19
+          ],
+          "teaching": "La terre n'est pas un lieu à fuir: l'évolution de l'homme et celle de la terre sont dites indissociables, et l'ascension doit emporter avec elle le monde concret plutôt que l'abandonner.",
+          "score": 2
+        },
+        {
           "recordId": "book-19-psalm-122",
           "bookNumber": 19,
           "bookTitle": "Le secret de la pensée angélique",
@@ -193005,6 +195289,64 @@
       ]
     },
     {
+      "id": "terre-comme-chemin-vers-esprit",
+      "label": "Terre comme chemin vers l’esprit",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-104",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 104,
+          "psalmTitle": "Conduis tes pensées jusqu ’à la réalisation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "teaching": "Le psaume affirme que l’accès à l’esprit passe par la réalité terrestre : harmoniser le monde concret et y constituer un corps est présenté comme le chemin permettant d’approcher l’immortalité et l’éternité.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-104",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 104,
+          "psalmTitle": "Conduis tes pensées jusqu ’à la réalisation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "teaching": "Le psaume affirme que l’accès à l’esprit passe par la réalité terrestre : harmoniser le monde concret et y constituer un corps est présenté comme le chemin permettant d’approcher l’immortalité et l’éternité.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "terre-consacree",
       "label": "Terre consacrée",
       "score": 6,
@@ -195229,6 +197571,66 @@
       ]
     },
     {
+      "id": "tradition-comme-corps-de-memoire",
+      "label": "Tradition comme corps de mémoire",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            15,
+            20,
+            21,
+            24,
+            25
+          ],
+          "teaching": "La Tradition est décrite comme le corps collectif capable de porter le souvenir sacré à travers le temps; étude, rites, dévotion et œuvre doivent y reconstruire une mémoire que l'individu isolé a perdue.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            15,
+            20,
+            21,
+            24,
+            25
+          ],
+          "teaching": "La Tradition est décrite comme le corps collectif capable de porter le souvenir sacré à travers le temps; étude, rites, dévotion et œuvre doivent y reconstruire une mémoire que l'individu isolé a perdue.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "tradition-de-la-lumiere",
       "label": "Tradition de la Lumière",
       "score": 21,
@@ -195755,14 +198157,14 @@
     {
       "id": "transmission",
       "label": "Transmission aux générations",
-      "score": 78,
-      "occurrenceCount": 37,
+      "score": 80,
+      "occurrenceCount": 38,
       "centralPsalmCount": 15,
       "archangels": [
         {
           "id": "raphael",
-          "score": 25,
-          "occurrenceCount": 10
+          "score": 27,
+          "occurrenceCount": 11
         },
         {
           "id": "michael",
@@ -196446,6 +198848,24 @@
             25
           ],
           "teaching": "La pratique est présentée comme une empreinte laissée aux générations suivantes ; transmettre ne signifie donc pas seulement conserver le texte mais stabiliser un chemin praticable et vivant.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-107",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 107,
+          "psalmTitle": "Réapprends à parler avec la fleur, la pierre et l’animal",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            26,
+            27,
+            28,
+            29
+          ],
+          "teaching": "Le psaume demande de ne transmettre des héritages que ce qui rend libre et sage; la libération des mondes commence par se dégager soi-même des conditionnements qui reproduisent la bêtise et l'enfermement.",
           "score": 2
         },
         {
@@ -198160,6 +200580,60 @@
       ]
     },
     {
+      "id": "trois-degres-de-pensee",
+      "label": "Trois degrés de pensée",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "teaching": "Le texte distingue une pensée mécanique et instinctive, une pensée réfléchie qui construit des cycles de cause à effet, puis une pensée dite divine, consciente et constructrice, associée à la méditation et à l'immortalité.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-102",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 102,
+          "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "teaching": "Le texte distingue une pensée mécanique et instinctive, une pensée réfléchie qui construit des cycles de cause à effet, puis une pensée dite divine, consciente et constructrice, associée à la méditation et à l'immortalité.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "trois-intelligences",
       "label": "Trois intelligences",
       "score": 2,
@@ -198625,13 +201099,23 @@
     {
       "id": "unification-des-mondes",
       "label": "Unification des mondes",
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 8,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "michael",
           "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        },
+        {
+          "id": "raphael",
+          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -198654,6 +201138,47 @@
           ],
           "teaching": "La royauté de Lumière consiste à accueillir, harmoniser et conduire ensemble les règnes et les mondes plutôt qu’à vivre isolé pour soi.",
           "score": 3
+        },
+        {
+          "recordId": "book-20-psalm-107",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 107,
+          "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            7,
+            14,
+            18,
+            20,
+            30
+          ],
+          "teaching": "Le psaume rejette la séparation qui réserverait la pureté à un monde sacré et abandonnerait le monde ordinaire au désordre. L’unification exige de remettre chaque chose à sa place et de construire un langage commun entre les dimensions de la vie.",
+          "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-103",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 103,
+          "psalmTitle": "Les lois de la communication universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14,
+            19,
+            20,
+            22,
+            23
+          ],
+          "teaching": "La communication a pour finalité de créer une terre commune et d'unifier des mondes différents; elle est comparée à un instrument capable de faire apparaître un monde plutôt qu'à un moyen d'imposer une opinion.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -198674,6 +201199,113 @@
             22
           ],
           "teaching": "La royauté de Lumière consiste à accueillir, harmoniser et conduire ensemble les règnes et les mondes plutôt qu’à vivre isolé pour soi.",
+          "score": 3
+        },
+        {
+          "recordId": "book-20-psalm-107",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 107,
+          "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            7,
+            14,
+            18,
+            20,
+            30
+          ],
+          "teaching": "Le psaume rejette la séparation qui réserverait la pureté à un monde sacré et abandonnerait le monde ordinaire au désordre. L’unification exige de remettre chaque chose à sa place et de construire un langage commun entre les dimensions de la vie.",
+          "score": 3
+        },
+        {
+          "recordId": "book-19-psalm-103",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 103,
+          "psalmTitle": "Les lois de la communication universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14,
+            19,
+            20,
+            22,
+            23
+          ],
+          "teaching": "La communication a pour finalité de créer une terre commune et d'unifier des mondes différents; elle est comparée à un instrument capable de faire apparaître un monde plutôt qu'à un moyen d'imposer une opinion.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "unification-pensee-sentiment-volonte",
+      "label": "Unification pensée-sentiment-volonté",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-104",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 104,
+          "psalmTitle": "Conduis tes pensées jusqu ’à la réalisation",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            10,
+            11,
+            18,
+            21
+          ],
+          "teaching": "Le psaume attribue la faiblesse de l’homme à la séparation de la pensée, du sentiment et de la volonté. Une pensée juste doit être équilibrée dans les sentiments puis conduite dans la volonté jusqu’à une réalisation concrète pour que ces trois intelligences retrouvent leur unité.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-104",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 104,
+          "psalmTitle": "Conduis tes pensées jusqu ’à la réalisation",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            10,
+            11,
+            18,
+            21
+          ],
+          "teaching": "Le psaume attribue la faiblesse de l’homme à la séparation de la pensée, du sentiment et de la volonté. Une pensée juste doit être équilibrée dans les sentiments puis conduite dans la volonté jusqu’à une réalisation concrète pour que ces trois intelligences retrouvent leur unité.",
           "score": 3
         }
       ]
@@ -198919,13 +201551,22 @@
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
+            1,
             4,
             5,
             6,
+            8,
+            9,
+            16,
+            20,
+            22,
+            30,
             31,
+            32,
+            33,
             34
           ],
-          "teaching": "Le psaume relie « Union » au passage suivant : Si vous voulez faire quoi que ce soit dans la vie, vous devez vous unir. L’union fait la force et permet à ce qui est grand de s’accomplir, d’aboutir réellement. Un second appui précise : Si vous voulez cheminer vers le monde divin et le servir dans la vérité et la pureté, vous devez vous unir autour de l’alliance des mondes. Vous n’avez pas le choix, vous devez être un certain nombre pour trouver la force de réaliser.",
+          "teaching": "Le psaume présente l'union comme une condition de réalisation plutôt qu'un idéal abstrait: les forces, qualités et compétences individuelles doivent être mises en commun pour qu'une œuvre assez forte puisse réellement franchir les limites du monde humain.",
           "score": 3
         },
         {
@@ -199182,13 +201823,22 @@
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
+            1,
             4,
             5,
             6,
+            8,
+            9,
+            16,
+            20,
+            22,
+            30,
             31,
+            32,
+            33,
             34
           ],
-          "teaching": "Le psaume relie « Union » au passage suivant : Si vous voulez faire quoi que ce soit dans la vie, vous devez vous unir. L’union fait la force et permet à ce qui est grand de s’accomplir, d’aboutir réellement. Un second appui précise : Si vous voulez cheminer vers le monde divin et le servir dans la vérité et la pureté, vous devez vous unir autour de l’alliance des mondes. Vous n’avez pas le choix, vous devez être un certain nombre pour trouver la force de réaliser.",
+          "teaching": "Le psaume présente l'union comme une condition de réalisation plutôt qu'un idéal abstrait: les forces, qualités et compétences individuelles doivent être mises en commun pour qu'une œuvre assez forte puisse réellement franchir les limites du monde humain.",
           "score": 3
         },
         {
@@ -199980,6 +202630,62 @@
           ],
           "teaching": "Toute œuvre réelle demande l’union des forces individuelles dans un objectif commun ; la Lumière doit être construite avec la même concrétude que toute œuvre terrestre.",
           "score": 3
+        }
+      ]
+    },
+    {
+      "id": "unite-des-mondes",
+      "label": "Unité des mondes",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            18,
+            22,
+            31
+          ],
+          "teaching": "L'ascension doit réunir ce qui a été traversé: l'homme élève avec lui les formes de vie et leur intelligence plutôt que de s'en séparer, jusqu'à retrouver une unité plus vaste.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            18,
+            22,
+            31
+          ],
+          "teaching": "L'ascension doit réunir ce qui a été traversé: l'homme élève avec lui les formes de vie et leur intelligence plutôt que de s'en séparer, jusqu'à retrouver une unité plus vaste.",
+          "score": 2
         }
       ]
     },
@@ -228270,8 +230976,8 @@
     {
       "id": "verite",
       "label": "Vérité",
-      "score": 303,
-      "occurrenceCount": 141,
+      "score": 305,
+      "occurrenceCount": 142,
       "centralPsalmCount": 68,
       "archangels": [
         {
@@ -228281,8 +230987,8 @@
         },
         {
           "id": "ouriel",
-          "score": 86,
-          "occurrenceCount": 40
+          "score": 88,
+          "occurrenceCount": 41
         },
         {
           "id": "gabriel",
@@ -228866,14 +231572,23 @@
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            8,
             9,
-            16,
+            11,
+            13,
+            15,
             17,
-            18,
             20,
-            25
+            25,
+            28,
+            29,
+            30
           ],
-          "teaching": "Le psaume relie « Vérité » au passage suivant : Seule la vérité peut entrer dans la terre d’Ouriel : ce que tu es, tu l’as. Tu n’es pas ce que tu crois ou désires être. Les hypocrites, les menteurs, les illusionnistes ne sont pas les bienvenus. Un second appui précise : Un autre peut te sembler être dans la victoire tout en se tenant en fait sur la terre des mensonges et de l’illusion. Il ne connaîtra pas le bonheur et la plénitude mais sera sans cesse dans la peur, le mécontentement, la faiblesse",
+          "teaching": "La vérité est le critère central d’entrée dans la terre d’Ouriel : elle doit apparaître dans l’ensemble de la vie, jusque dans les pensées, les paroles, les réactions, les relations, les actes et les œuvres, et non seulement dans un moment sacré ou une intention déclarée.",
           "score": 3
         },
         {
@@ -230147,6 +232862,24 @@
             25
           ],
           "teaching": "La vérité est décrite comme ce qui prend en compte et unit l’ensemble des êtres et des mondes, contrairement au mensonge qui divise et isole.",
+          "score": 2
+        },
+        {
+          "recordId": "book-20-psalm-104",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 104,
+          "psalmTitle": "Conduis tes pensées jusqu ’à la réalisation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            12,
+            19,
+            20
+          ],
+          "teaching": "La vérité est reliée à ce qui peut être conduit jusqu’à l’unité et à la réalisation. Elle ne reste pas une conviction intérieure : elle doit éclairer les différents mondes de l’homme et les accorder dans une même vie.",
           "score": 2
         },
         {
@@ -237518,18 +240251,18 @@
     {
       "id": "ecoute",
       "label": "Écoute",
-      "score": 5,
-      "occurrenceCount": 2,
+      "score": 7,
+      "occurrenceCount": 3,
       "centralPsalmCount": 1,
       "archangels": [
         {
-          "id": "gabriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "id": "raphael",
+          "score": 4,
+          "occurrenceCount": 2
         },
         {
-          "id": "raphael",
-          "score": 2,
+          "id": "gabriel",
+          "score": 3,
           "occurrenceCount": 1
         }
       ],
@@ -237572,6 +240305,24 @@
           ],
           "teaching": "L'écoute subtile demande calme, ouverture des sens et attention à ce que le souffle transmet.",
           "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-103",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 103,
+          "psalmTitle": "Les lois de la communication universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            17,
+            18,
+            22,
+            23
+          ],
+          "teaching": "Écouter consiste à recevoir le message sans y projeter immédiatement ses convictions, son aura ou son besoin de se défendre; la sérénité permet de traverser les apparences pour entendre ce qui est réellement communiqué.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -237612,6 +240363,24 @@
             19
           ],
           "teaching": "L'écoute subtile demande calme, ouverture des sens et attention à ce que le souffle transmet.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-103",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 103,
+          "psalmTitle": "Les lois de la communication universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            17,
+            18,
+            22,
+            23
+          ],
+          "teaching": "Écouter consiste à recevoir le message sans y projeter immédiatement ses convictions, son aura ou son besoin de se défendre; la sérénité permet de traverser les apparences pour entendre ce qui est réellement communiqué.",
           "score": 2
         }
       ]
@@ -240670,6 +243439,68 @@
       ]
     },
     {
+      "id": "ephemere-et-immortel",
+      "label": "Éphémère et immortel",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-106",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 106,
+          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            5,
+            10,
+            14,
+            15,
+            17,
+            20,
+            21
+          ],
+          "teaching": "Le psaume demande de connaître simultanément les lois de l'éphémère et de l'immortalité: l'expérience du temps et de la perte devient le terrain où l'homme peut choisir ce qui mérite d'être transformé en support durable.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-106",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 106,
+          "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            5,
+            10,
+            14,
+            15,
+            17,
+            20,
+            21
+          ],
+          "teaching": "Le psaume demande de connaître simultanément les lois de l'éphémère et de l'immortalité: l'expérience du temps et de la perte devient le terrain où l'homme peut choisir ce qui mérite d'être transformé en support durable.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "epreuve",
       "label": "Épreuve",
       "score": 27,
@@ -240865,12 +243696,13 @@
           "directness": "direct",
           "verseNumbers": [
             1,
+            2,
+            3,
             4,
             8,
-            11,
-            14
+            11
           ],
-          "teaching": "Le psaume relie « Épreuve » au passage suivant : C’est bien souvent au moment de l’épreuve que les hommes se tournent vers un monde supérieur. Ils supplient, demandent de l’aide, la bénédiction, le soutien, la protection. Un second appui précise : Si une épreuve vient dans la vie de l’homme, c’est parce qu’il ne respecte pas les lois du Père. Dans tous les autres mondes ‑ qu’ils soient négatifs ou positifs ‑, elles sont pourtant respectées.",
+          "teaching": "L’épreuve est présentée comme une occasion de comprendre et de rectifier plutôt que comme une simple punition. Elle révèle un désaccord avec des lois que l’homme n’a pas étudiées ou appliquées, notamment dans la partie invisible de sa vie.",
           "score": 3
         },
         {
@@ -241076,12 +243908,13 @@
           "directness": "direct",
           "verseNumbers": [
             1,
+            2,
+            3,
             4,
             8,
-            11,
-            14
+            11
           ],
-          "teaching": "Le psaume relie « Épreuve » au passage suivant : C’est bien souvent au moment de l’épreuve que les hommes se tournent vers un monde supérieur. Ils supplient, demandent de l’aide, la bénédiction, le soutien, la protection. Un second appui précise : Si une épreuve vient dans la vie de l’homme, c’est parce qu’il ne respecte pas les lois du Père. Dans tous les autres mondes ‑ qu’ils soient négatifs ou positifs ‑, elles sont pourtant respectées.",
+          "teaching": "L’épreuve est présentée comme une occasion de comprendre et de rectifier plutôt que comme une simple punition. Elle révèle un désaccord avec des lois que l’homme n’a pas étudiées ou appliquées, notamment dans la partie invisible de sa vie.",
           "score": 3
         },
         {
@@ -243978,6 +246811,122 @@
       ]
     },
     {
+      "id": "etude",
+      "label": "Étude",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "ouriel",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-20-psalm-106",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 106,
+          "psalmTitle": "La conscience, clé universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            14,
+            20,
+            25
+          ],
+          "teaching": "L’étude doit ouvrir vers ce qui n’est pas encore connu et préparer un corps capable de le recevoir. Lorsqu’elle reste enfermée dans l’intellect et dans le déjà-connu, elle ne permet pas de franchir la porte vers un savoir plus large.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-20-psalm-106",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 106,
+          "psalmTitle": "La conscience, clé universelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            14,
+            20,
+            25
+          ],
+          "teaching": "L’étude doit ouvrir vers ce qui n’est pas encore connu et préparer un corps capable de le recevoir. Lorsqu’elle reste enfermée dans l’intellect et dans le déjà-connu, elle ne permet pas de franchir la porte vers un savoir plus large.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "etude-sacree",
+      "label": "Étude sacrée",
+      "score": 2,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 0,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 2,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            23,
+            24,
+            25,
+            26
+          ],
+          "teaching": "L'étude sacrée est présentée comme un service qui renouvelle la pensée et donne un corps au savoir; elle ne vise pas l'accumulation personnelle mais l'accueil conscient d'une intelligence à rendre vivante sur la terre.",
+          "score": 2
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-104",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 104,
+          "psalmTitle": "Le secret de la pensée angélique",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            10,
+            11,
+            23,
+            24,
+            25,
+            26
+          ],
+          "teaching": "L'étude sacrée est présentée comme un service qui renouvelle la pensée et donne un corps au savoir; elle ne vise pas l'accumulation personnelle mais l'accueil conscient d'une intelligence à rendre vivante sur la terre.",
+          "score": 2
+        }
+      ]
+    },
+    {
       "id": "evangiles-esseniens",
       "label": "Évangiles esséniens",
       "score": 3,
@@ -244130,6 +247079,76 @@
       ]
     },
     {
+      "id": "evolution-des-regnes",
+      "label": "Évolution des règnes",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            18,
+            21,
+            23,
+            31,
+            32
+          ],
+          "teaching": "Le psaume expose une évolution où le voyageur traverse minéral, végétal, animal et humain avant de s'orienter vers l'état angélique; l'étape supérieure doit intégrer et élever les expériences des étapes précédentes.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            18,
+            21,
+            23,
+            31,
+            32
+          ],
+          "teaching": "Le psaume expose une évolution où le voyageur traverse minéral, végétal, animal et humain avant de s'orienter vers l'état angélique; l'étape supérieure doit intégrer et élever les expériences des étapes précédentes.",
+          "score": 3
+        }
+      ]
+    },
+    {
       "id": "evenement-et-resonance",
       "label": "Événement et résonance",
       "score": 2,
@@ -244182,6 +247201,58 @@
           ],
           "teaching": "Un événement peut être une résonance avec une cause ancienne et une porte pour résoudre, guérir, transformer ou acquérir une sagesse.",
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": "etre-eternel-et-voyageur",
+      "label": "Être éternel et voyageur",
+      "score": 3,
+      "occurrenceCount": 1,
+      "centralPsalmCount": 1,
+      "archangels": [
+        {
+          "id": "raphael",
+          "score": 3,
+          "occurrenceCount": 1
+        }
+      ],
+      "topPsalms": [
+        {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            9,
+            30
+          ],
+          "teaching": "Deux dimensions sont distinguées: un être éternel, au-delà de la naissance, et un voyageur fragmenté qui traverse les mondes et doit retrouver progressivement l'intelligence du corps total.",
+          "score": 3
+        }
+      ],
+      "occurrences": [
+        {
+          "recordId": "book-19-psalm-108",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 108,
+          "psalmTitle": "La théorie essénienne de l’évolution",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            9,
+            30
+          ],
+          "teaching": "Deux dimensions sont distinguées: un être éternel, au-delà de la naissance, et un voyageur fragmenté qui traverse les mondes et doit retrouver progressivement l'intelligence du corps total.",
+          "score": 3
         }
       ]
     },
@@ -252140,8 +255211,8 @@
     {
       "id": "oeuvre-collective",
       "label": "Œuvre collective",
-      "score": 20,
-      "occurrenceCount": 8,
+      "score": 22,
+      "occurrenceCount": 9,
       "centralPsalmCount": 4,
       "archangels": [
         {
@@ -252151,8 +255222,8 @@
         },
         {
           "id": "raphael",
-          "score": 4,
-          "occurrenceCount": 2
+          "score": 6,
+          "occurrenceCount": 3
         },
         {
           "id": "ouriel",
@@ -252327,6 +255398,30 @@
           ],
           "teaching": "L'organisation et les œuvres communes sont présentées comme des moyens de renforcement mutuel et de construction d'une nouvelle culture.",
           "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-110",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 110,
+          "psalmTitle": "Ne perdez pas de temps, unissez -vous",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            11,
+            16,
+            17,
+            24,
+            32,
+            33,
+            34,
+            35,
+            36
+          ],
+          "teaching": "L'œuvre collective transforme l'union en réalisation: chacun offre talents et moyens pour construire une autre manière de vivre et un chemin qui puisse rester accessible aux êtres venant après.",
+          "score": 2
         }
       ],
       "occurrences": [
@@ -252490,6 +255585,30 @@
             17
           ],
           "teaching": "L'organisation et les œuvres communes sont présentées comme des moyens de renforcement mutuel et de construction d'une nouvelle culture.",
+          "score": 2
+        },
+        {
+          "recordId": "book-19-psalm-110",
+          "bookNumber": 19,
+          "bookTitle": "Le secret de la pensée angélique",
+          "archangel": "raphael",
+          "psalmNumber": 110,
+          "psalmTitle": "Ne perdez pas de temps, unissez -vous",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            11,
+            16,
+            17,
+            24,
+            32,
+            33,
+            34,
+            35,
+            36
+          ],
+          "teaching": "L'œuvre collective transforme l'union en réalisation: chacun offre talents et moyens pour construire une autre manière de vivre et un chemin qui puisse rester accessible aux êtres venant après.",
           "score": 2
         }
       ]
