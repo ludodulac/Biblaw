@@ -39,4 +39,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/corpus/books/book-32 data/notes/books/book-32 data/thematic-index data/pilot/books-31-40-validation-report.json
           git commit -m 'Restore Book 32 Psalm 182 from authoritative PDF' || exit 0
+          git pull --rebase origin main
           git push origin HEAD:main
