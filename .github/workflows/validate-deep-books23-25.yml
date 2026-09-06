@@ -24,6 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install PDF text extraction dependency
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Reconstruct audited PDF anomaly segments
         run: python scripts/repair_known_pdf_psalm_anomalies.py
       - name: Repair audited Raphael Psalm 128 numbering
