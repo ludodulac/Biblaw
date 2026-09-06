@@ -36,6 +36,15 @@ on:
       - 'scripts/deepen_book21_semantic_part8.py'
       - 'scripts/ground_book21_semantic_evidence.py'
       - 'scripts/finalize_book21_semantic.py'
+      - 'scripts/deepen_book22_semantic_part1.py'
+      - 'scripts/deepen_book22_semantic_part2.py'
+      - 'scripts/deepen_book22_semantic_part3.py'
+      - 'scripts/deepen_book22_semantic_part4.py'
+      - 'scripts/deepen_book22_semantic_part5.py'
+      - 'scripts/deepen_book22_semantic_part6.py'
+      - 'scripts/deepen_book22_semantic_part7.py'
+      - 'scripts/ground_book22_semantic_evidence.py'
+      - 'scripts/finalize_book22_semantic.py'
       - 'scripts/complete_books24_26_thematic.py'
       - 'scripts/complete_books27_30_thematic.py'
       - 'scripts/complete_books31_40_thematic.py'
@@ -122,6 +131,24 @@ jobs:
         run: python scripts/ground_book21_semantic_evidence.py
       - name: Finalize complete deep semantic pass for Michael book 21
         run: python scripts/finalize_book21_semantic.py
+      - name: Apply first deep semantic pass for Gabriel book 22
+        run: python scripts/deepen_book22_semantic_part1.py
+      - name: Apply second deep semantic pass for Gabriel book 22
+        run: python scripts/deepen_book22_semantic_part2.py
+      - name: Apply third deep semantic pass for Gabriel book 22
+        run: python scripts/deepen_book22_semantic_part3.py
+      - name: Apply fourth deep semantic pass for Gabriel book 22
+        run: python scripts/deepen_book22_semantic_part4.py
+      - name: Apply fifth deep semantic pass for Gabriel book 22
+        run: python scripts/deepen_book22_semantic_part5.py
+      - name: Apply sixth deep semantic pass for Gabriel book 22
+        run: python scripts/deepen_book22_semantic_part6.py
+      - name: Apply final deep semantic pass for Gabriel book 22
+        run: python scripts/deepen_book22_semantic_part7.py
+      - name: Ground residual semantic evidence for Gabriel book 22
+        run: python scripts/ground_book22_semantic_evidence.py
+      - name: Finalize complete deep semantic pass for Gabriel book 22
+        run: python scripts/finalize_book22_semantic.py
       - name: Complete canonical books 24 to 26
         run: python scripts/complete_books24_26_thematic.py
       - name: Complete canonical books 27 to 30
