@@ -2,14 +2,16 @@
 """Replace remaining prototype/generic teachings in books 18-20 with verse-grounded evidence.
 
 This pass is deliberately conservative:
-- it never overwrites analyses already marked deep-content-grounded;
+- it never replaces a non-generic curated teaching;
+- it preserves semanticDepth=deep-content-grounded when already earned;
 - it uses only the canonical extracted psalm corpus derived from the authoritative PDF;
 - it validates every referenced verse number against the current corpus;
 - title-only signals are downgraded to contextual rather than presented as direct proof;
 - it does not index prayer text.
 
-The result is an intermediate content-grounded layer. It is not a substitute for the later
-close semantic reading that earns semanticDepth=deep-content-grounded.
+For analyses not yet deeply reviewed, the result is an intermediate content-grounded layer.
+For deep analyses, this pass only cleans retained secondary prototype relations and never
+downgrades the analysis.
 """
 import json
 import re
@@ -88,9 +90,7 @@ def upgrade_book(number):
     changed_themes = 0
 
     for analysis in data.get('psalmAnalyses', []):
-        if analysis.get('semanticDepth') == 'deep-content-grounded':
-            continue
-
+        was_deep = analysis.get('semanticDepth') == 'deep-content-grounded'
         num = analysis.get('number')
         corpus_path = CORPUS / f'book-{number:02d}' / f'psalm-{num:03d}.json'
         if not corpus_path.exists():
@@ -114,12 +114,15 @@ def upgrade_book(number):
 
             texts = [verse_by_number[n].get('text', '') for n in refs if n in verse_by_number]
             supported = lexical_support(theme.get('label', ''), texts)
-            if not supported and theme.get('directness') == 'direct':
+            old = clean(theme.get('teaching', ''))
+            is_generic = (not old) or old.startswith(GENERIC_PREFIXES)
+
+            # Do not reinterpret a curated deep relation. Directness correction is only for
+            # prototype/generic relations or analyses that have not yet earned deep status.
+            if not supported and theme.get('directness') == 'direct' and (is_generic or not was_deep):
                 theme['directness'] = 'contextual'
                 analysis_changed = True
 
-            old = clean(theme.get('teaching', ''))
-            is_generic = (not old) or old.startswith(GENERIC_PREFIXES)
             if is_generic:
                 theme['teaching'] = grounded_teaching(
                     theme.get('label', theme.get('themeId', 'thème')),
@@ -130,12 +133,17 @@ def upgrade_book(number):
                 analysis_changed = True
                 changed_themes += 1
 
-        if analysis_changed or analysis.get('semanticDepth') != 'content-grounded-extractive':
-            analysis['semanticDepth'] = 'content-grounded-extractive'
+        if analysis_changed:
             changed_analyses += 1
+        if not was_deep:
+            analysis['semanticDepth'] = 'content-grounded-extractive'
 
     method = data.setdefault('method', {})
-    if number == 18:
+    deep_count = sum(1 for a in data.get('psalmAnalyses', []) if a.get('semanticDepth') == 'deep-content-grounded')
+    if deep_count == len(data.get('psalmAnalyses', [])) and deep_count:
+        # Finalizer owns the definitive semanticPass label; do not downgrade a completed book.
+        method.setdefault('contentGrounding', 'complete')
+    elif number == 18:
         method['semanticPass'] = 'deepening-in-progress'
         method['contentGrounding'] = 'complete-for-non-deep-analyses'
     else:
@@ -143,7 +151,7 @@ def upgrade_book(number):
         method['contentGrounding'] = 'verse-evidence-grounded'
 
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(f'book {number}: grounded analyses={changed_analyses}, generic teachings replaced={changed_themes}')
+    print(f'book {number}: grounded analyses={changed_analyses}, generic teachings replaced={changed_themes}, deep preserved={deep_count}')
 
 
 def main():
