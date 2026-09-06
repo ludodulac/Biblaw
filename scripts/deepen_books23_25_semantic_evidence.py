@@ -40,7 +40,7 @@ def process(book):
             else: curated_count+=1
         a['semanticDepth']='deep-content-grounded'
     m=d.setdefault('method',{}); m['semanticPass']='deepening-in-progress'; m['deepPsalmCount']=sum(a.get('semanticDepth')=='deep-content-grounded' for a in d.get('psalmAnalyses',[])); m['contentGrounding']='complete-evidence-pass'
-    if book==23: m['numberingNote']='Psalm 128 intentionally preserves source numbering beginning at verse 49; corpus extraction marks sourceNumberingPreserved=true. No missing verses are manufactured.'
+    if book==23: m['numberingNote']='Psalm 128 uses audited corrected numbering 1-34, mapped from printed source numbering 49-82 by a verified offset of 48; the question boundary remains embedded after verse 22 before verse 23.'
     path.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); print(f'book {book}: grounded relations={grounded_count}, curated relations preserved={curated_count}, deep={m["deepPsalmCount"]}')
 def main():
     for b in (23,24,25): process(b)
