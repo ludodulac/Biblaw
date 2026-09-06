@@ -1,0 +1,61 @@
+name: Validate deep book 44
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/deepen_book44_semantic_evidence.py'
+      - 'scripts/finalize_book44_semantic.py'
+      - '.github/workflows/validate-deep-book44.yml'
+permissions:
+  contents: write
+concurrency:
+  group: thematic-index-generated-files
+  cancel-in-progress: false
+jobs:
+  validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Preserve audited corpus repairs used by the global index
+        run: |
+          python scripts/repair_book32_psalm182.py
+          python - <<'PY'
+          import scripts.repair_known_pdf_psalm_anomalies as r
+          for case in r.CASES:
+              if case['book'] in (35, 36, 38):
+                  r.extract_case(case)
+          r.repair_book44_final_psalm()
+          PY
+      - name: Rebuild canonical books 41 to 44
+        run: python scripts/complete_books41_44_thematic.py
+      - name: Preserve completed deep books 41 to 43
+        run: |
+          python scripts/deepen_books41_43_semantic_evidence.py
+          python scripts/finalize_books41_43_semantic.py
+      - name: Ground complete deep evidence for book 44
+        run: python scripts/deepen_book44_semantic_evidence.py
+      - name: Finalize book 44
+        run: python scripts/finalize_book44_semantic.py
+      - name: Gate thematic completion on documentary integrity
+        run: python scripts/sync_thematic_documentary_status.py
+      - name: Normalize thematic metadata
+        run: python scripts/normalize_thematic_metadata.py
+      - name: Build PDF-only book contexts
+        run: python scripts/build_book_contexts.py
+      - name: Validate thematic index
+        run: python scripts/validate_thematic_index.py
+      - name: Rebuild thematic directory
+        run: python scripts/build_thematic_directory.py
+      - name: Commit generated outputs
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/corpus/books/book-32 data/notes/books/book-32 data/corpus/books/book-35 data/corpus/books/book-36 data/corpus/books/book-38 data/corpus/books/book-44 data/notes/books/book-35 data/notes/books/book-36 data/notes/books/book-38 data/thematic-index/books/book-41.json data/thematic-index/books/book-42.json data/thematic-index/books/book-43.json data/thematic-index/books/book-44.json data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/validation-report.json
+          if git diff --cached --quiet; then echo 'No generated changes'; exit 0; fi
+          git commit -m 'Finalize deep semantic book 44'
+          git pull --rebase origin main
+          git push origin HEAD:main
