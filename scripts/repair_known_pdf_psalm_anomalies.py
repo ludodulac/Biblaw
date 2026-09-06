@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Repair audited Psalm extraction anomalies using the authoritative PDF only.
 
-Five Psalms have explicit headings in the PDF but their first printed verse does not restart at 1;
+Some Psalms have explicit headings in the PDF but their first printed verse does not restart at 1;
 the numbering continues from preceding editorial numbering. The generic extractor intentionally
 skips such headings. This script reconstructs those exact Psalm segments without renumbering them.
 If a skipped segment was swallowed by the previous Psalm, it trims that duplicate tail only after
@@ -18,6 +18,7 @@ PDF=ROOT/'Bible essénienne (classée par livres).pdf'
 CORPUS=ROOT/'data/corpus/books'
 NOTES=ROOT/'data/notes/books'
 CASES=[
+ {'book':15,'psalm':75,'previous':None,'next':76,'pages':[914,923],'startVerse':15,'title':'On reconnaît un homme à ses œuvres','heading':r'^75\s+O\s*n\s+reconnaît\s+un\s+homme\s+à\s+ses\s+œuvres','nextHeading':r'^76\s+S\s*ortez\s+des\s+illusions.*réalistes'},
  {'book':23,'psalm':128,'previous':None,'next':129,'pages':[1922,1932],'startVerse':49,'title':'Ne sois pas un rêveur','heading':r'128\s+.*rêveur','nextHeading':r'129\s+.*réincarnation'},
  {'book':26,'psalm':186,'previous':185,'next':187,'pages':[2431,2442],'startVerse':23,'title':'Que le désir d’apprendre soit plus grand que vos certitudes','heading':r'186\s+.*désir.*apprendre','nextHeading':r'187\s+.*tradition'},
  {'book':35,'psalm':215,'previous':214,'next':216,'pages':[3480,3490],'startVerse':26,'title':'La clé magique pour attirer à soi ce que l’on souhaite','heading':r'215\s+.*clé magique','nextHeading':r'216\s+.*fidélité'},
