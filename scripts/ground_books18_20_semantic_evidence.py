@@ -64,7 +64,7 @@ def grounded_teaching(label, refs, verse_by_number, directness):
     texts = [clean(verse_by_number[n].get('text', '')) for n in refs if n in verse_by_number]
     texts = [t for t in texts if t]
     if not texts:
-        return f"Le thème « {label} » est conservé comme signal contextuel, mais aucun verset d’appui exploitable n’est actuellement disponible dans le corpus structuré."
+        return f"Relation contextuelle « {label} » : aucun verset d’appui exploitable n’est actuellement disponible dans le corpus structuré."
 
     evidence = []
     for t in texts:
@@ -75,9 +75,9 @@ def grounded_teaching(label, refs, verse_by_number, directness):
             break
 
     if directness == 'contextual':
-        base = f"Le thème « {label} » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : {evidence[0]}"
+        base = f"Relation contextuelle « {label} » : le passage d’ancrage indique : {evidence[0]}"
     else:
-        base = f"Le psaume relie « {label} » au passage suivant : {evidence[0]}"
+        base = f"Relation textuelle « {label} » : le passage d’ancrage indique : {evidence[0]}"
     if len(evidence) > 1:
         base += f" Un second appui précise : {evidence[1]}"
     return base
@@ -117,8 +117,6 @@ def upgrade_book(number):
             old = clean(theme.get('teaching', ''))
             is_generic = (not old) or old.startswith(GENERIC_PREFIXES)
 
-            # Do not reinterpret a curated deep relation. Directness correction is only for
-            # prototype/generic relations or analyses that have not yet earned deep status.
             if not supported and theme.get('directness') == 'direct' and (is_generic or not was_deep):
                 theme['directness'] = 'contextual'
                 analysis_changed = True
@@ -141,7 +139,6 @@ def upgrade_book(number):
     method = data.setdefault('method', {})
     deep_count = sum(1 for a in data.get('psalmAnalyses', []) if a.get('semanticDepth') == 'deep-content-grounded')
     if deep_count == len(data.get('psalmAnalyses', [])) and deep_count:
-        # Finalizer owns the definitive semanticPass label; do not downgrade a completed book.
         method.setdefault('contentGrounding', 'complete')
     elif number == 18:
         method['semanticPass'] = 'deepening-in-progress'
