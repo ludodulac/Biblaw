@@ -6,60 +6,124 @@
     "archangel": "raphael"
   },
   "method": {
-    "status": "editorial-indexing-in-progress",
+    "status": "editorial-indexing-complete",
     "source": "validated-psalm-corpus",
     "titlesUsedAsContext": true,
     "notesUsedAsContext": true,
     "prayersIndexed": false,
     "rule": "Index meaningful teachings, beings, symbols, elements, practices and concepts; do not build a word list.",
-    "completenessIssue": "missing documentary Psalm(s): [75]. Repair from the authoritative PDF before declaring this book complete."
+    "semanticPass": "deep-content-grounded-complete",
+    "deepPsalmCount": 27,
+    "contentGrounding": "complete",
+    "interpretiveScope": "descriptive-indexing-non-exclusive",
+    "interpretivePolicy": "Theme connections are research aids grounded in corpus verses; they do not claim to exhaust or uniquely determine the Psalm’s possible levels of reading."
   },
   "bookSynthesis": {
-    "centralAxis": "Raphaël demande à l'homme de prendre réellement sa vie en mains en sortant des illusions spirituelles et en rendant chaque aspiration vérifiable dans la pensée, le sentiment, l'acte, l'œuvre et les relations. Le livre relie guérison, réalisme, éveil des sens subtils, stabilité, pensée créatrice, harmonie, union, mémoire, générosité et construction d'un corps de Lumière. Une même loi traverse les psaumes : ce qui est seulement pensé, invoqué ou désiré reste fragile ; ce qui est vécu, accompli, protégé et mis au service d'une œuvre supérieure devient un corps, une alliance et une destinée. La nature — pierre, arbre, fleur, oiseau, forêt, escargot, végétal — sert constamment de modèle vivant pour apprendre fidélité, stabilité, légèreté, réceptivité, guérison et union des mondes.",
+    "centralAxis": "Synthèse d’indexation non exclusive : les relations indexées de ce livre font ressortir notamment Union, Œuvre, Maître, Mémoire, Soutien mutuel, Pensée, Incarnation, Cohérence intérieure, Détachement, Réceptivité. Cette synthèse sert au repérage et à la recherche dans le corpus ; elle ne prétend pas épuiser ni fixer les différents niveaux de lecture possibles.",
     "majorThemes": [
+      "union",
+      "oeuvre",
+      "maitre",
+      "memoire",
+      "soutien-mutuel",
+      "pensee",
+      "incarnation",
+      "coherence-interieure",
+      "detachement",
+      "receptivite",
+      "lumiere",
+      "monde-divin",
+      "humilite",
+      "imitation",
       "realisme",
       "illusion",
-      "responsabilite",
       "fidelite",
       "eveil",
       "sens-subtils",
-      "verite",
-      "liberation",
-      "pierre-verte",
-      "memoire",
-      "lumiere",
-      "consecration",
-      "maitre",
-      "union",
-      "fraternite",
-      "accomplissement",
-      "constance",
-      "conscience",
-      "immortalite",
-      "stabilite",
-      "guerison",
-      "pensee",
-      "sylphes",
-      "incarnation",
-      "symboles-esseniens",
-      "invisible",
-      "ame",
-      "harmonie",
-      "voyage-interieur",
-      "dualite",
-      "discernement",
-      "capacites-superieures",
-      "receptivite",
-      "ronde-des-archanges",
-      "sagesse",
-      "generosite",
-      "detachement",
-      "villages-esseniens",
-      "fleur",
-      "corps-de-lumiere"
-    ]
+      "connaissance-vivante"
+    ],
+    "scope": "descriptive-indexing-non-exclusive"
   },
   "psalmAnalyses": [
+    {
+      "recordId": "book-15-psalm-075",
+      "number": 75,
+      "title": "On reconnaît un homme à ses œuvres",
+      "titleSignals": [
+        "œuvre",
+        "actes",
+        "modèles"
+      ],
+      "themes": [
+        {
+          "themeId": "oeuvre",
+          "label": "Œuvre",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            17
+          ],
+          "teaching": "Relation textuelle d’indexation « Œuvre » : v.17 : On reconnaît un homme à ses œuvres et à ses actes, et même dans ce monde de réalisation, il reste beaucoup d’illusions et il faut avoir un véritable discernement.. Ce repérage sert à la recherche et ne prétend pas épuiser les niveaux de lecture du psaume."
+        },
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            16,
+            20,
+            21,
+            23,
+            26
+          ],
+          "teaching": "Relation textuelle d’indexation « Lumière » : v.16 : Ne prenez pas pour modèles ceux qui se sont contentés de parler de la Lumière ou qui ont dit qu’ils étaient ses représentants sans faire ses œuvres. / v.20 : sera la punition pour celui qui aura parlé de la Lumière sans avoir de lien vivant avec elle. Pire encore sera-t-elle pour celui qui aura décidé pour les autres en se réclamant de la… / v.21 : Ceux qui auront enfermé les êtres en invoquant le nom de la Lumière sans être avec elle seront doublement punis.. Ce repérage sert à la recherche et ne prétend pas épuiser les niveaux de lecture du psaume."
+        },
+        {
+          "themeId": "monde-divin",
+          "label": "Monde divin",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19,
+            20,
+            27
+          ],
+          "teaching": "Relation textuelle d’indexation « Monde divin » : v.19 : il doit exister un lien vivant entre vous et le monde divin. Ce lien doit être si vivant que, dans chacune de vos paroles, la sagesse et la lumière de la vérité doivent être… / v.20 : Grande sera la punition pour celui qui aura parlé de la Lumière sans avoir de lien vivant avec elle. Pire encore sera-t-elle pour celui qui aura décidé pour les autres en se réclamant de… / v.27 : Cherchez avant tout le contact avec les mondes véritablement supérieurs, dans la pureté, et tout le reste s’ouvrira devant vous comme une clarté, comme une raison d’être et une vérité éclairant et harmonisant tous…. Ce repérage sert à la recherche et ne prétend pas épuiser les niveaux de lecture du psaume."
+        },
+        {
+          "themeId": "humilite",
+          "label": "Humilité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "Relation textuelle d’indexation « Humilité » : v.24 : Soyez dans l’humilité et la simplicité.. Ce repérage sert à la recherche et ne prétend pas épuiser les niveaux de lecture du psaume."
+        },
+        {
+          "themeId": "maitre",
+          "label": "Maître",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "Relation textuelle d’indexation « Maître » : v.25 : Ne vous identifiez à personne d’autre qu’aux maîtres authentiques, ceux qui ont porté la Lumière dans leur vie et ont incarné la vérité. Eux seuls peuvent vous servir de références et de modèles.. Ce repérage sert à la recherche et ne prétend pas épuiser les niveaux de lecture du psaume."
+        },
+        {
+          "themeId": "imitation",
+          "label": "Imitation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            26
+          ],
+          "teaching": "Relation textuelle d’indexation « Imitation » : v.26 : Surtout, ne prenez jamais comme critères ceux qui se contentent d’imiter la Lumière et qui prennent des décisions pour la limiter, pour freiner l’évolution des êtres et des mondes.. Ce repérage sert à la recherche et ne prétend pas épuiser les niveaux de lecture du psaume."
+        }
+      ],
+      "semanticDepth": "deep-content-grounded"
+    },
     {
       "recordId": "book-15-psalm-076",
       "number": 76,
@@ -115,7 +179,8 @@
           ],
           "teaching": "Être fidèle signifie mettre en pratique l'idée portée et maintenir une cohérence entre tête, cœur et mains."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-077",
@@ -174,7 +239,8 @@
       ],
       "notesUsed": [
         "book-15-psalm-077-note-001"
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-078",
@@ -236,7 +302,8 @@
         "book-15-psalm-078-note-001",
         "book-15-psalm-078-note-002",
         "book-15-psalm-078-note-004"
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-079",
@@ -287,7 +354,8 @@
           ],
           "teaching": "Arbre, fleur et pierre transmettent des vertus concrètes — énergie créatrice, beauté, subtilité, stabilité et fidélité — qui ouvrent un lien avec les Anges."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-080",
@@ -341,7 +409,8 @@
           ],
           "teaching": "Fraternité et solidarité consistent à donner à chacun une place où ses dons enrichissent l'ensemble plutôt qu'à entrer en compétition."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-081",
@@ -401,7 +470,8 @@
           ],
           "teaching": "Pensées, projets et activités sont décrits comme vivants et porteurs de conséquences ; ils doivent être traités avec responsabilité et miséricorde."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-082",
@@ -460,7 +530,8 @@
           ],
           "teaching": "L'éternité appartient au divin ; l'homme y participe seulement par ce qu'il a incarné consciemment dans cette alliance."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-083",
@@ -513,7 +584,8 @@
           ],
           "teaching": "L'arbre devient l'image de l'homme stable capable de porter sans blesser la pensée supérieure qui vient le visiter."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-084",
@@ -565,7 +637,8 @@
           ],
           "teaching": "La forêt est décrite comme un milieu thérapeutique où lumière, arbres, vent, air et oiseaux peuvent alléger et régénérer l'homme."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-085",
@@ -622,7 +695,8 @@
           ],
           "teaching": "Tout ce que l'homme fait ou laisse entrer agit sur sa vie ; prendre sa vie en mains exige donc une sélection consciente des nourritures intérieures et extérieures."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-086",
@@ -686,7 +760,8 @@
           ],
           "teaching": "Rites, prières, fonctions et exercices peuvent devenir des supports d'illusion lorsqu'ils sont utilisés à la place d'une transformation vécue."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-087",
@@ -751,7 +826,8 @@
           ],
           "teaching": "La Nation Essénienne est appelée à devenir une culture et une forme de vie responsable, harmonieuse et concrète plutôt qu'un simple nom ou une apparence."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-088",
@@ -809,7 +885,8 @@
           ],
           "teaching": "Même une Tradition vivante peut devenir une forme endormissante si l'homme cesse de remonter vers l'intelligence et l'essence qui l'animent."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-089",
@@ -879,7 +956,8 @@
           ],
           "teaching": "La force de l'union doit se condenser dans une œuvre plus grande que les individus, préparant une terre où le monde divin puisse se poser."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-090",
@@ -949,7 +1027,8 @@
           ],
           "teaching": "Une pensée élevée maintenue jusqu'à devenir sentiment, volonté et matière vécue participe à la construction d'un corps de Lumière."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-091",
@@ -1003,7 +1082,8 @@
           ],
           "teaching": "La peur de perdre ses acquisitions enferme ; le voyage intérieur demande le courage de desserrer les attaches mortelles pour créer des liens dans plusieurs mondes."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-092",
@@ -1069,7 +1149,8 @@
           ],
           "teaching": "La plus haute protection est de devenir conforme à ce que l'on sait et de faire de sa vie une réalisation harmonieuse de la Lumière."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-093",
@@ -1133,7 +1214,8 @@
           ],
           "teaching": "Le temple de l'harmonie se construit en invitant les êtres et les forces à la réconciliation, au respect et à une union ordonnée autour du meilleur."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-094",
@@ -1203,7 +1285,8 @@
           ],
           "teaching": "Le retour des facultés dépend d'un déplacement des priorités : de la conquête du monde mortel vers une œuvre offerte au monde divin."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-095",
@@ -1263,7 +1346,8 @@
           ],
           "teaching": "Le panier symbolise la structure intérieure tissée avec des éléments purs, suffisamment stable pour contenir ce que le monde supérieur transmet."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-096",
@@ -1329,7 +1413,8 @@
       ],
       "notesUsed": [
         "book-15-psalm-096-note-001"
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-097",
@@ -1398,7 +1483,8 @@
           ],
           "teaching": "Rester dans son rayon et son être empêche le paraître, les influences et la recherche d'intégration de décentrer l'homme."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-098",
@@ -1460,7 +1546,8 @@
           ],
           "teaching": "Prononcer le nom d'une vertu ou d'un Ange engage à porter sa réalité ; une parole sacrée séparée de la vie devient fausse."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-099",
@@ -1514,7 +1601,8 @@
           ],
           "teaching": "Les mystères de l'esprit demandent une disponibilité rapide que l'accumulation intérieure empêche ; la légèreté rend l'action et l'œuvre possibles."
         }
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-100",
@@ -1585,7 +1673,8 @@
       ],
       "notesUsed": [
         "book-15-psalm-100-note-001"
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-15-psalm-101",
@@ -1640,7 +1729,8 @@
       "notesUsed": [
         "book-15-psalm-101-note-001",
         "book-15-psalm-101-note-002"
-      ]
+      ],
+      "semanticDepth": "deep-content-grounded"
     }
   ]
 }
