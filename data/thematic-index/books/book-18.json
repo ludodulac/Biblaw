@@ -13,6 +13,7 @@
     "prayersIndexed": false,
     "rule": "Index meaningful teachings, beings, symbols, elements, practices and concepts from the authoritative PDF only. Distinguish explicit textual statements from cautious inference; never import external doctrine.",
     "semanticPass": "deepening-in-progress",
+    "deepPsalmCount": 15,
     "contentGrounding": "complete-for-non-deep-analyses"
   },
   "bookSynthesis": {
@@ -1979,15 +1980,51 @@
       "number": 129,
       "title": "Nutrition et digestion: les cycles de construction du corps subtil",
       "titleSignals": [
-        "corps",
-        "vie",
-        "création",
-        "nourriture"
+        "nutrition",
+        "digestion",
+        "corps subtil",
+        "sommeil",
+        "destinée"
       ],
       "themes": [
         {
-          "themeId": "corps",
-          "label": "Corps",
+          "themeId": "nutrition-subtile",
+          "label": "Nutrition subtile",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            8,
+            10,
+            11,
+            12,
+            17,
+            21,
+            26,
+            28
+          ],
+          "teaching": "Le psaume élargit la nutrition au-delà de la nourriture physique : pensées, états d’âme, paroles, actes, relations et associations sont présentés comme des aliments qui entrent dans la constitution du corps et de la destinée."
+        },
+        {
+          "themeId": "digestion-subtile",
+          "label": "Digestion subtile",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            16,
+            17,
+            21,
+            22,
+            23,
+            24
+          ],
+          "teaching": "La digestion désigne le processus par lequel les éléments absorbés pendant la journée sont assimilés, répartis ou accumulés ; le sommeil est présenté comme un temps où cette activité change de monde et prépare le corps et la destinée du lendemain."
+        },
+        {
+          "themeId": "construction-du-corps",
+          "label": "Construction du corps",
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
@@ -1996,93 +2033,67 @@
             3,
             5,
             6,
-            7,
             8,
-            9,
             10,
-            12,
             14,
-            16
+            16,
+            17,
+            32,
+            36,
+            37,
+            38,
+            46
           ],
-          "teaching": "Le psaume relie « Corps » au passage suivant : Si, dans ta vie, tu veux recevoir quelque chose - un don, une capacité, une vertu, une intelligence, un pouvoir -, tu dois pouvoir le concevoir, le porter, le contenir et l’incarner afin de ne pas le perdre et le garder avec toi. Un second appui précise : Tu dois être ce que tu veux connaître et pour cela, tu dois avoir un corps qui lui corresponde. Si tu n’as pas ce corps, aucun monde ne te donnera ce que tu demandes, car tu ne pourras pas l’utiliser."
+          "teaching": "Le corps est présenté comme une structure à construire en correspondance avec ce que l’homme veut recevoir et vivre ; la qualité des éléments incorporés détermine la capacité à porter une vertu, une intelligence ou la Lumière."
         },
         {
-          "themeId": "vie",
-          "label": "Vie",
+          "themeId": "activite-creatrice",
+          "label": "Activité créatrice",
           "importance": "central",
-          "directness": "contextual",
+          "directness": "direct",
           "verseNumbers": [
-            1,
-            6,
-            8,
-            12,
             13,
+            14,
             15,
+            27,
+            28
+          ],
+          "teaching": "Le texte décrit l’homme comme créateur en permanence : respirer, penser, parler, regarder, vouloir et agir engendrent des influences et organisent des mondes qui, en retour, participent à sa propre formation."
+        },
+        {
+          "themeId": "sommeil",
+          "label": "Sommeil",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11,
             16,
-            18,
+            22,
+            26,
+            44,
+            45
+          ],
+          "teaching": "Le sommeil n’est pas décrit comme un arrêt, mais comme le déplacement de l’activité dans un autre plan où les productions de la journée sont assimilées et où se prépare la capacité d’accéder ou non à des mondes plus légers."
+        },
+        {
+          "themeId": "dechets-subtils",
+          "label": "Déchets subtils",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            22,
             23,
             24,
-            33,
-            40
+            29,
+            30,
+            44
           ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Si, dans ta vie, tu veux recevoir quelque chose - un don, une capacité, une vertu, une intelligence, un pouvoir -, tu dois pouvoir le concevoir, le porter, le contenir et l’incarner afin de ne pas le perdre et le garder avec toi. Un second appui précise : Le corps, ce n’est pas seulement l’aspect physique, c’est également l’eau dans laquelle il baigne, son environnement, son cadre de vie, sa destinée."
-        },
-        {
-          "themeId": "creation",
-          "label": "Création",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            3,
-            6,
-            13,
-            14,
-            15,
-            26,
-            27,
-            31,
-            32
-          ],
-          "teaching": "Le thème « Création » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Demander est la première étape : cela signifie concevoir. Réaliser est la seconde étape : cela signifie créer le corps pour contenir et incarner, pour être. Un second appui précise : Le corps, ce n’est pas seulement l’aspect physique, c’est également l’eau dans laquelle il baigne, son environnement, son cadre de vie, sa destinée."
-        },
-        {
-          "themeId": "nourriture",
-          "label": "Nourriture",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            12,
-            17,
-            18,
-            26,
-            28,
-            38,
-            44,
-            45,
-            46
-          ],
-          "teaching": "Le psaume relie « Nourriture » au passage suivant : Tu ne manges pas seulement dans le plan physique la nourriture que te préparent la Mère et la tradition des hommes ; tu te nourris également dans le monde de l’eau, de l’aurique, de la magie à travers les pensées, les états d’âme, la volonté Un second appui précise : Tu dois être conscient que tout ce que tu penses, ta façon de penser, les mondes avec lesquels tu es en association lorsque tu penses, tout ce que tu dis"
-        },
-        {
-          "themeId": "lumiere",
-          "label": "Lumière",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            5,
-            25,
-            26,
-            42,
-            44,
-            45,
-            46
-          ],
-          "teaching": "Le psaume relie « Lumière » au passage suivant : L’alimentation est la clé de la constitution d’un corps. Si tu veux aller vers la Lumière, la recevoir et vivre avec elle, être elle, tu dois connaître les éléments auxquels t’associer pour te construire un corps capable de recevoir et de… Un second appui précise : Si tu veux cheminer vers les mondes supérieurs, tu dois t’unir presque corporellement à la Lumière, à une tradition pure et vivante comme celle de la Ronde des Archanges"
+          "teaching": "Le psaume appelle « déchets » les productions de pensée, parole ou action qui ne peuvent être assimilées ; leur accumulation est associée à un alourdissement de la vie et à des obstacles qui ferment l’accès aux mondes supérieurs."
         },
         {
           "themeId": "destinee",
           "label": "Destinée",
-          "importance": "central",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
             6,
@@ -2092,104 +2103,68 @@
             17,
             44
           ],
-          "teaching": "Le psaume relie « Destinée » au passage suivant : Le corps, ce n’est pas seulement l’aspect physique, c’est également l’eau dans laquelle il baigne, son environnement, son cadre de vie, sa destinée. Un second appui précise : Tu ne manges pas seulement dans le plan physique la nourriture que te préparent la Mère et la tradition des hommes ; tu te nourris également dans le monde de l’eau, de l’aurique, de la magie à travers les pensées, les états d’âme, la volonté"
+          "teaching": "La destinée est présentée comme se construisant avec les mêmes matériaux que le corps subtil : les influences et aliments reçus au cours de la journée deviennent le milieu dans lequel l’homme devra ensuite vivre."
         },
         {
-          "themeId": "intelligence",
-          "label": "Intelligence",
-          "importance": "central",
+          "themeId": "nation-essenienne",
+          "label": "Nation Essénienne",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
-            1,
-            13,
-            15,
-            21,
-            28,
-            44
+            18,
+            19,
+            20
           ],
-          "teaching": "Le psaume relie « Intelligence » au passage suivant : Si, dans ta vie, tu veux recevoir quelque chose - un don, une capacité, une vertu, une intelligence, un pouvoir -, tu dois pouvoir le concevoir, le porter, le contenir et l’incarner afin de ne pas le perdre et le garder avec toi. Un second appui précise : Toute la journée, tu es créateur au sein de l’eau qui te baigne et baigne les mondes. Tu respires, tu attires et repousses des intelligences, des influences, tu es dans l’activité, tu bouges, regardes, écoutes, parles"
+          "teaching": "La Nation Essénienne est décrite comme un milieu collectif comparable à une mère ou un placenta, destiné à offrir des éléments, une terre et un ciel permettant de construire un corps orienté vers les mondes supérieurs."
         },
         {
-          "themeId": "pensee",
-          "label": "Pensée",
-          "importance": "central",
+          "themeId": "concentration",
+          "label": "Concentration",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
-            12,
-            17,
-            22,
-            26,
+            33,
+            34,
+            35,
+            41,
             43,
-            44
+            46
           ],
-          "teaching": "Le psaume relie « Pensée » au passage suivant : Tu ne manges pas seulement dans le plan physique la nourriture que te préparent la Mère et la tradition des hommes ; tu te nourris également dans le monde de l’eau, de l’aurique, de la magie à travers les pensées, les états d’âme, la volonté Un second appui précise : Tu dois être conscient que tout ce que tu penses, ta façon de penser, les mondes avec lesquels tu es en association lorsque tu penses, tout ce que tu dis"
+          "teaching": "La concentration consiste à choisir une orientation, avancer concrètement et fidèlement, limiter les besoins et ne pas accumuler ce qui détourne de l’essentiel ; elle est reliée à la maîtrise de la vie."
         },
         {
-          "themeId": "ame",
-          "label": "Âme",
-          "importance": "central",
-          "directness": "contextual",
+          "themeId": "tradition",
+          "label": "Tradition",
+          "importance": "important",
+          "directness": "direct",
           "verseNumbers": [
-            6,
-            12,
-            26,
-            29,
-            44
+            25,
+            34,
+            37,
+            39,
+            42,
+            46
           ],
-          "teaching": "Le thème « Âme » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Le corps, ce n’est pas seulement l’aspect physique, c’est également l’eau dans laquelle il baigne, son environnement, son cadre de vie, sa destinée. Un second appui précise : Tu ne manges pas seulement dans le plan physique la nourriture que te préparent la Mère et la tradition des hommes ; tu te nourris également dans le monde de l’eau, de l’aurique, de la magie à travers les pensées, les états d’âme, la volonté"
-        },
-        {
-          "themeId": "incarnation",
-          "label": "Incarnation",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            1,
-            3,
-            6,
-            15,
-            18
-          ],
-          "teaching": "Le thème « Incarnation » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Si, dans ta vie, tu veux recevoir quelque chose - un don, une capacité, une vertu, une intelligence, un pouvoir -, tu dois pouvoir le concevoir, le porter, le contenir et l’incarner afin de ne pas le perdre et le garder avec toi. Un second appui précise : Demander est la première étape : cela signifie concevoir. Réaliser est la seconde étape : cela signifie créer le corps pour contenir et incarner, pour être."
+          "teaching": "Une tradition pure et vivante est présentée comme un milieu d’orientation et de protection dont les éléments doivent être incorporés et vécus, non simplement connus, afin de former un corps capable de porter la Lumière."
         }
       ],
       "notesUsed": [
         "book-18-psalm-129-note-001"
       ],
-      "semanticDepth": "content-grounded-extractive"
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-18-psalm-130",
       "number": 130,
       "title": "Qu ’est- ce que la mort?",
       "titleSignals": [
-        "vie",
         "mort",
+        "vie",
         "corps",
-        "lumière"
+        "générosité",
+        "immortalité"
       ],
       "themes": [
-        {
-          "themeId": "vie",
-          "label": "Vie",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            1,
-            2,
-            6,
-            9,
-            11,
-            12,
-            16,
-            17,
-            18,
-            20,
-            22,
-            23
-          ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Si vous, les hommes, avez la vie sur terre, c’est parce que, dans leur grande générosité, la Mère et tous les règnes qui l’entourent vous ont donné tous les éléments pour vivre, vous développer et grandir. Un second appui précise : Aujourd’hui, vous avez brisé le contact avec la Mère et vous en êtes arrivés à penser que la vie et tous les éléments qui la constituent sont un dû."
-        },
         {
           "themeId": "mort",
           "label": "Mort",
@@ -2198,22 +2173,47 @@
           "verseNumbers": [
             5,
             6,
+            7,
             8,
-            9,
-            16,
-            22,
             23,
             25,
             26,
-            27,
             29,
-            30
+            30,
+            35,
+            36,
+            45,
+            47
           ],
-          "teaching": "Le psaume relie « Mort » au passage suivant : Vous avez oublié que le corps n’est qu’une partie de votre être : ce qui est mortel en vous. Ainsi, vous avez tout donné à ce qui est la mort en vous. Un second appui précise : En définitive, celui qui possède la mort ne possède rien, et au fond il le sait. Il se ment à lui-même pour ne pas voir ce qu’il a fait de sa vie. Il bâtit un monde d’illusions pour se protéger de la vérité."
+          "teaching": "Le psaume refuse de traiter la mort comme un simple événement final : il la relie à l’identification au corps mortel et aux conséquences de la manière dont l’homme emploie sa vie, ses facultés, ses actes et ses attachements."
         },
         {
-          "themeId": "corps",
-          "label": "Corps",
+          "themeId": "vie",
+          "label": "Vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            11,
+            12,
+            16,
+            17,
+            18,
+            22,
+            23,
+            24,
+            29,
+            31,
+            36,
+            41,
+            45
+          ],
+          "teaching": "La vie est présentée comme un don reçu de la Mère et des règnes, destiné à être développé et transmis ; le texte oppose une vie réduite à la conservation du corps à une vie qui devient génératrice, universelle et porteuse d’une continuité au-delà du corps."
+        },
+        {
+          "themeId": "corps-mortel",
+          "label": "Corps mortel",
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
@@ -2226,120 +2226,124 @@
             17,
             18,
             19,
-            22,
+            23,
             27,
-            32
+            36,
+            37
           ],
-          "teaching": "Le psaume relie « Corps » au passage suivant : Vous avez voulu tout diriger vers votre corps, tout prendre pour lui, créer un monde pour satisfaire tous ses besoins, ses moindres exigences. Un second appui précise : Vous avez oublié que le corps n’est qu’une partie de votre être : ce qui est mortel en vous. Ainsi, vous avez tout donné à ce qui est la mort en vous."
+          "teaching": "Le corps est décrit comme une partie mortelle de l’être et comme un moyen reçu pour construire autre chose ; le problème n’est pas d’en prendre soin, mais de concentrer toute l’existence sur sa conservation et ses intérêts."
         },
         {
-          "themeId": "lumiere",
-          "label": "Lumière",
+          "themeId": "corps-d-immortalite",
+          "label": "Corps d’immortalité",
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
             13,
-            20,
+            17,
+            18,
+            27,
             31,
             32,
-            33,
-            37,
-            40,
-            43,
-            47
+            34,
+            37
           ],
-          "teaching": "Le psaume relie « Lumière » au passage suivant : Votre corps fait partie d’un tout et vous devez vous intégrer dans cette harmonie de façon à vous créer un corps de Lumière et de générosité. Un second appui précise : Si en toi la terre est devenue une intelligence, c’est pour que la Lumière inonde la vie et soit transmise aux générations futures. Si tu as une faculté de penser"
+          "teaching": "Le corps d’immortalité est présenté comme une construction concrète issue de l’usage du corps et de la vie reçus : pensées, sentiments, volonté, œuvres et relations doivent devenir des supports d’une vie plus vaste plutôt qu’une croyance abstraite."
         },
         {
-          "themeId": "terre",
-          "label": "Terre",
+          "themeId": "generosite",
+          "label": "Générosité",
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
             1,
-            16,
-            17,
-            20,
-            32,
-            33,
-            36,
-            37,
-            38
+            3,
+            14,
+            15,
+            19,
+            21,
+            22,
+            24,
+            31,
+            34
           ],
-          "teaching": "Le psaume relie « Terre » au passage suivant : Si vous, les hommes, avez la vie sur terre, c’est parce que, dans leur grande générosité, la Mère et tous les règnes qui l’entourent vous ont donné tous les éléments pour vivre, vous développer et grandir. Un second appui précise : Lorsque tu es né, la Mère t’a donné un corps et une vie. L’eau est venue t’abreuver, l’air t’a habité, le feu t’a animé et la terre t’a porté."
+          "teaching": "La générosité est l’axe proposé pour passer d’une logique d’appropriation à une logique de vie : recevoir implique de faire fructifier et redistribuer, jusqu’à élargir l’existence au-delà des seuls intérêts individuels."
         },
         {
           "themeId": "mere",
           "label": "Mère",
-          "importance": "central",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
             1,
             2,
             3,
             14,
-            16,
-            37
+            16
           ],
-          "teaching": "Le psaume relie « Mère » au passage suivant : Si vous, les hommes, avez la vie sur terre, c’est parce que, dans leur grande générosité, la Mère et tous les règnes qui l’entourent vous ont donné tous les éléments pour vivre, vous développer et grandir. Un second appui précise : Aujourd’hui, vous avez brisé le contact avec la Mère et vous en êtes arrivés à penser que la vie et tous les éléments qui la constituent sont un dû."
+          "teaching": "La Mère et les règnes sont présentés comme les donateurs des conditions mêmes de la vie terrestre ; le texte demande reconnaissance et réciprocité plutôt qu’une appropriation considérée comme allant de soi."
         },
         {
-          "themeId": "esseniens",
-          "label": "Esséniens",
-          "importance": "central",
+          "themeId": "peur",
+          "label": "Peur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            7,
+            9,
+            10
+          ],
+          "teaching": "La peur est associée à l’identification exclusive au corps et au besoin de conserver ce qui est mortel ; le psaume oppose à cette peur un éveil dans le réel et une confrontation lucide avec la vérité."
+        },
+        {
+          "themeId": "responsabilite",
+          "label": "Responsabilité",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
             10,
+            12,
+            20,
+            25,
+            30,
+            31,
+            33,
+            34
+          ],
+          "teaching": "La responsabilité consiste à regarder ce que l’on fait réellement de la vie reçue et à poser des actes qui construisent une continuité ; les croyances ou intentions ne remplacent pas cette réalisation concrète."
+        },
+        {
+          "themeId": "generations-futures",
+          "label": "Générations futures",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            20,
+            40,
+            42,
+            43,
+            44
+          ],
+          "teaching": "Le texte déplace progressivement l’attention de la conservation personnelle vers la transmission : les générations précédentes sont appelées à ouvrir un chemin et soutenir la « jeune pousse » plutôt qu’à retenir leur place."
+        },
+        {
+          "themeId": "nation-essenienne",
+          "label": "Nation Essénienne",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            32,
             33,
             34,
             44,
             46
           ],
-          "teaching": "Le psaume relie « Esséniens » au passage suivant : Vous, les Esséniens, vous devez marcher sur une voie d’éveil dans le réel. Vous devez aimer la vérité qui éclaire et libère et être sans peur devant elle. Un second appui précise : Les abstractions, les rêves et les croyances sont pour le monde de l’homme. Cela le calme, le rassure, l’endort afin qu’il ne soit pas envahi par la frayeur, l’agitation, la démence."
-        },
-        {
-          "themeId": "oeuvre",
-          "label": "Œuvre",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            20,
-            31,
-            33,
-            34,
-            37
-          ],
-          "teaching": "Le psaume relie « Œuvre » au passage suivant : Si en toi la terre est devenue une intelligence, c’est pour que la Lumière inonde la vie et soit transmise aux générations futures. Si tu as une faculté de penser Un second appui précise : Si aujourd’hui l’homme connaît la mort, c’est parce qu’il n’a pas su développer pleinement son intelligence, ses sentiments, sa volonté."
-        },
-        {
-          "themeId": "pensee",
-          "label": "Pensée",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            2,
-            15,
-            20,
-            40,
-            41
-          ],
-          "teaching": "Le thème « Pensée » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Aujourd’hui, vous avez brisé le contact avec la Mère et vous en êtes arrivés à penser que la vie et tous les éléments qui la constituent sont un dû. Un second appui précise : Soyez généreux et pensez aux autres ; ne pensez pas simplement au monde de l’homme, mais bien à tous les mondes."
-        },
-        {
-          "themeId": "creation",
-          "label": "Création",
-          "importance": "related",
-          "directness": "contextual",
-          "verseNumbers": [
-            4,
-            12,
-            13,
-            31
-          ],
-          "teaching": "Le thème « Création » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Vous avez voulu tout diriger vers votre corps, tout prendre pour lui, créer un monde pour satisfaire tous ses besoins, ses moindres exigences. Un second appui précise : Vous devez être des créateurs en prenant votre vie en mains."
+          "teaching": "La Nation Essénienne est présentée comme une œuvre collective qui doit donner un corps concret à la Lumière et comme une nouvelle pousse appelée, dans le texte, à recevoir la place nécessaire pour se développer."
         }
       ],
-      "semanticDepth": "content-grounded-extractive"
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-18-psalm-131",
@@ -2542,52 +2546,46 @@
       "number": 132,
       "title": "Une autre vision de la réussite et de l’échec",
       "titleSignals": [
-        "œuvre",
-        "pensée",
+        "réussite",
+        "échec",
+        "récompense",
         "éternité",
-        "vie"
+        "œuvre"
       ],
       "themes": [
         {
-          "themeId": "oeuvre",
-          "label": "Œuvre",
+          "themeId": "reussite-et-echec",
+          "label": "Réussite et échec",
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
-            7,
-            12,
-            13,
-            14,
-            17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23,
-            24
+            1,
+            2,
+            4,
+            5,
+            6,
+            8,
+            9
           ],
-          "teaching": "Le psaume relie « Œuvre » au passage suivant : Je dis à ceux qui ont été formés dans l’impatience et qui veulent recevoir immédiatement la récompense : faites des œuvres ou participez activement à l’œuvre du monde divin. Un second appui précise : Après la mort, l’homme fera face aux conséquences de tout ce qu’il a mis en œuvre dans sa vie et il continuera à vivre. S’il s’est enrichi dans un monde supérieur sans en avoir reçu totalement la récompense lors de sa vie dans le plan physique"
+          "teaching": "Le psaume relativise les critères immédiats de réussite et d’échec : un résultat favorable dans le présent peut se renverser avec le temps, tandis qu’un échec apparent peut produire guérison, libération ou bénédiction dans une temporalité plus vaste."
         },
         {
-          "themeId": "pensee",
-          "label": "Pensée",
+          "themeId": "recompense",
+          "label": "Récompense",
           "importance": "central",
-          "directness": "contextual",
+          "directness": "direct",
           "verseNumbers": [
             1,
             2,
             6,
-            7,
             8,
+            9,
             10,
-            12,
             13,
             14,
-            15,
             16
           ],
-          "teaching": "Le thème « Pensée » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Les hommes pensent que s’ils accomplissent quelque chose de bien, ils doivent être récompensés, et que s’ils font quelque chose de mal, il est normal qu’ils soient punis. Vous pensez ainsi, car on vous a éduqués dans ce sens. Un second appui précise : Vous êtes programmés à agir pour le résultat. Vous œuvrez dans l’espoir de la récompense, et lorsque vous échouez, vous acceptez la punition."
+          "teaching": "La récompense n’est pas réduite à un avantage physique immédiat ; le texte distingue les résultats relevant des lois matérielles d’une réserve ou d’un fruit placé dans d’autres mondes et rencontré plus tard."
         },
         {
           "themeId": "eternite",
@@ -2601,67 +2599,68 @@
             14,
             19,
             20,
-            21,
+            22,
+            23,
             27,
+            28,
+            29,
             30
           ],
-          "teaching": "Le psaume relie « Éternité » au passage suivant : Votre passage sur terre est court, alors vous voulez rapidement voir le résultat de votre action afin de savoir si vous avez réussi ou non. Un second appui précise : Pour nous, le fruit du travail n’est pas forcément une récompense dans le plan physique. Il peut être la guérison d’un passé, un dénouement heureux dans le futur ou la bénédiction dans l’éternité."
+          "teaching": "L’éternité fournit le changement de perspective central du psaume : une œuvre est évaluée selon ce qu’elle peut faire vivre au-delà du temps individuel, des apparences et de la seule mémoire personnelle."
         },
         {
-          "themeId": "vie",
-          "label": "Vie",
+          "themeId": "oeuvre",
+          "label": "Œuvre",
           "importance": "central",
-          "directness": "contextual",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            18,
+            19,
+            22,
+            23,
+            24,
+            25,
+            27,
+            28,
+            29,
+            30
+          ],
+          "teaching": "L’œuvre est présentée comme le lieu où l’homme constitue un capital de sens qui peut dépasser sa vie physique ; sa valeur tient à sa capacité à ouvrir un chemin, servir d’autres générations et entrer en résonance avec un monde supérieur."
+        },
+        {
+          "themeId": "mort",
+          "label": "Mort",
+          "importance": "important",
+          "directness": "direct",
           "verseNumbers": [
             10,
             11,
             12,
             14,
+            15,
+            16
+          ],
+          "teaching": "La mort est décrite comme une frontière du corps et une étape où l’homme rencontre les conséquences et affinités qu’il a construites ; elle ne clôt donc pas, dans la logique interne du texte, l’évaluation de la réussite."
+        },
+        {
+          "themeId": "affinites",
+          "label": "Affinités",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
             16,
-            20,
-            25,
-            26
+            17
           ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : L’homme attend souvent sa récompense dans le monde dans lequel il vit. Fondamentalement, il ne prend en compte que la vie de son corps physique et croit que la mort est la fin de tout. Un second appui précise : Pour nous, le monde divin, la mort n’est qu’une étape de la vie, un passage marquant la conclusion de ce que l’homme a pu faire de sa vie. Vous pouvez conclure ce cycle de vie ou continuer à vivre la même vie que vous connaissez."
+          "teaching": "Après la mort, le texte dit que l’homme demeure dans les régions correspondant aux affinités cultivées pendant la vie ; ciel, terre, liens et œuvres deviennent ainsi la matière de sa future demeure."
         },
         {
-          "themeId": "monde-divin",
-          "label": "Monde divin",
-          "importance": "central",
+          "themeId": "generations-futures",
+          "label": "Générations futures",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
-            7,
-            9,
-            11,
-            23,
-            27,
-            28,
-            29
-          ],
-          "teaching": "Le psaume relie « Monde divin » au passage suivant : Je dis à ceux qui ont été formés dans l’impatience et qui veulent recevoir immédiatement la récompense : faites des œuvres ou participez activement à l’œuvre du monde divin. Un second appui précise : Le monde divin ne donne pas forcément ce que l’homme s’attend à recevoir parce que l’éternité a un autre point de vue."
-        },
-        {
-          "themeId": "terre",
-          "label": "Terre",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            4,
-            17,
-            22,
-            25,
-            27,
-            28,
-            30
-          ],
-          "teaching": "Le psaume relie « Terre » au passage suivant : Votre passage sur terre est court, alors vous voulez rapidement voir le résultat de votre action afin de savoir si vous avez réussi ou non. Un second appui précise : Ce que l’homme vit, son ciel, sa terre, ses liens d’affinité, ses œuvres forment sa future maison, sa famille, sa terre et son ciel."
-        },
-        {
-          "themeId": "heredite",
-          "label": "Hérédité",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
+            18,
             23,
             25,
             26,
@@ -2669,646 +2668,81 @@
             29,
             30
           ],
-          "teaching": "Le thème « Hérédité » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Seul ce qui est divin demeure éternellement. Vous devez donc être associés au monde divin dans la vérité et la pureté et poser pour lui et en son nom une œuvre qui sera utile pour les générations futures et leur ouvrira les portes d’un monde et… Un second appui précise : Posez la tradition essénienne sur la terre et rendez-la belle aux yeux de tous afin qu’elle apporte son message dans la pureté et que tous les hommes puissent la voir."
+          "teaching": "Une œuvre réussie est notamment celle qui traverse les générations en leur donnant des concepts, une culture, une orientation ou un accès à une conscience plus haute."
         },
         {
-          "themeId": "mort",
-          "label": "Mort",
-          "importance": "central",
-          "directness": "direct",
+          "themeId": "resonance",
+          "label": "Résonance",
+          "importance": "important",
+          "directness": "symbolic",
           "verseNumbers": [
-            4,
-            10,
-            11,
-            12,
-            14,
-            16
+            28,
+            29,
+            30
           ],
-          "teaching": "Le psaume relie « Mort » au passage suivant : Votre passage sur terre est court, alors vous voulez rapidement voir le résultat de votre action afin de savoir si vous avez réussi ou non. Un second appui précise : L’homme attend souvent sa récompense dans le monde dans lequel il vit. Fondamentalement, il ne prend en compte que la vie de son corps physique et croit que la mort est la fin de tout."
+          "teaching": "L’œuvre est comparée à un mot dont l’écho traverse les mondes : la résonance sert d’image pour décrire la continuité d’une action qui demeure active longtemps après son accomplissement initial."
         },
         {
-          "themeId": "corps",
-          "label": "Corps",
+          "themeId": "simplicite",
+          "label": "Simplicité",
           "importance": "related",
           "directness": "direct",
-          "verseNumbers": [
-            10,
-            15,
-            16,
-            24
-          ],
-          "teaching": "Le psaume relie « Corps » au passage suivant : L’homme attend souvent sa récompense dans le monde dans lequel il vit. Fondamentalement, il ne prend en compte que la vie de son corps physique et croit que la mort est la fin de tout. Un second appui précise : Cette idée de récompense a été donnée à l’homme pour le libérer de la limitation du monde physique. Non pas que la matière et le corps ne soient pas importants, mais le corps finit par retourner à la Mère et n’entre pas dans l’immortalité."
-        },
-        {
-          "themeId": "loi",
-          "label": "Loi",
-          "importance": "related",
-          "directness": "contextual",
           "verseNumbers": [
             13,
             14,
-            20,
-            29
+            20
           ],
-          "teaching": "Le thème « Loi » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : N’attendez pas d’avoir toujours dans le plan physique la récompense que vous espérez, car ce que vous souhaitez est très simple à réaliser : une maison, une voiture, une famille, de l’argent, la santé, être heureux. Un second appui précise : Si l’homme ne se laisse pas détourner de son but, s’il sait ce qu’il veut et met en œuvre les lois qui gouvernent son monde, il obtiendra tout ce qu’il veut."
+          "teaching": "Pour le plan physique, le psaume recommande d’appliquer simplement les lois correspondantes et de ne pas confondre confort matériel immédiat avec accomplissement dans l’éternité."
         }
       ],
-      "semanticDepth": "content-grounded-extractive"
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-18-psalm-133",
       "number": 133,
       "title": "Cultivez les vertus, vivez avec les A nges",
       "titleSignals": [
+        "vertus",
+        "Anges",
+        "fleurs",
         "eau",
-        "vie",
-        "lumière",
-        "fleur"
+        "transformation"
       ],
       "themes": [
         {
-          "themeId": "eau",
-          "label": "Eau",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            6,
-            7,
-            13,
-            14,
-            15,
-            18,
-            22,
-            34,
-            43
-          ],
-          "teaching": "Le thème « Eau » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Je suis prêt à vous bénir, vous, les Esséniens et à vous appeler mes « enfants » ; mais si je verse sur vous l’eau de ma fécondation, ma semence, mon énergie, avez-vous une terre Un second appui précise : Structurez-vous et préparez-vous. Cultivez les vertus, vivez avec les Anges, prenez soin de ce qui est sacré, vaste, universel, prenez soin de la fraternité, de la communauté d’amour"
-        },
-        {
-          "themeId": "vie",
-          "label": "Vie",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            3,
-            10,
-            14,
-            15,
-            16,
-            17,
-            18,
-            21,
-            41
-          ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Les fleurs sont les vertus dans de nombreuses traditions et cultures. Dans le pays des pharaons, il était coutume d’offrir des fleurs aux Dieux, à l’autre, au fleuve de la vie, à la source qui apporte la vie, la prospérité Un second appui précise : Vivez avec les vertus pour nettoyer tout ce qu’il y a d’impur et de malade dans votre vie."
-        },
-        {
-          "themeId": "lumiere",
-          "label": "Lumière",
+          "themeId": "vertus",
+          "label": "Vertus",
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
+            1,
+            3,
             7,
+            8,
+            9,
+            10,
             11,
-            19,
-            24,
-            28,
-            34,
-            41
+            12,
+            13,
+            16,
+            17,
+            18
           ],
-          "teaching": "Le psaume relie « Lumière » au passage suivant : Structurez-vous et préparez-vous. Cultivez les vertus, vivez avec les Anges, prenez soin de ce qui est sacré, vaste, universel, prenez soin de la fraternité, de la communauté d’amour Un second appui précise : La grandeur, c’est ce qui est immense, vaste. La fraternité, la communauté, la famille, c’est ce qui réchauffe, réjouit, ce qui est vivant et qui pétille."
+          "teaching": "Les vertus constituent le remède et le milieu de transformation central du psaume : elles doivent être cultivées comme des réalités supérieures capables de purifier l’eau des relations et de transformer progressivement la conscience et le comportement."
         },
         {
           "themeId": "fleur",
           "label": "Fleur",
           "importance": "central",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             1,
             2,
             3,
-            16,
-            43
-          ],
-          "teaching": "Le psaume relie « Fleur » au passage suivant : Dans votre monde, les fleurs sont les plus belles représentations des vertus. Un second appui précise : Vivez avec les fleurs, concentrez-vous sur elles dans vos pensées, vos cœurs, vos paroles ; entourez-vous de leurs parfums, de leurs couleurs."
-        },
-        {
-          "themeId": "purete",
-          "label": "Pureté",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            7,
-            13,
-            15,
-            18,
-            50
-          ],
-          "teaching": "Le psaume relie « Pureté » au passage suivant : Structurez-vous et préparez-vous. Cultivez les vertus, vivez avec les Anges, prenez soin de ce qui est sacré, vaste, universel, prenez soin de la fraternité, de la communauté d’amour Un second appui précise : L’eau qui est en vous, autour de vous, qui circule dans vos relations, qui est vos relations, doit être emplie de vertus afin de redevenir pure, claire, vivante, emplie d’âme et de force positive."
-        },
-        {
-          "themeId": "oeil",
-          "label": "Œil",
-          "importance": "important",
-          "directness": "contextual",
-          "verseNumbers": [
-            27,
-            44,
-            45,
-            46
-          ],
-          "teaching": "Le thème « Œil » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Je ne veux plus voir d’œil malade et possédé. Un second appui précise : Ô mon Père Gabriel, comment faire lorsque nous voyons autour de nous des êtres qui se couvrent du masque de la bonté, mais qui portent en eux la vertu contraire ? Quelle attitude devons-nous cultiver ? Devons-nous les ignorer, les reprendre"
-        },
-        {
-          "themeId": "verite",
-          "label": "Vérité",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            33,
-            34,
-            40,
-            42
-          ],
-          "teaching": "Le psaume relie « Vérité » au passage suivant : Si demain j’apporte la grande vérité aux Esséniens, serez-vous prêts pour l’accueillir et la porter dans la prospérité afin que le monde entier puisse être touché ? Serezvous fidèles et vrais ? Porterez-vous mes enfants sur toute la terre ? Un second appui précise : Seuls des êtres purs, correctement préparés, entourés d’une eau nettoyée et claire peuvent avoir la force d’accueillir le monde de la Lumière dans la vérité et non à travers des masques et des faux-semblants."
-        },
-        {
-          "themeId": "esseniens",
-          "label": "Esséniens",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            6,
-            33,
-            43
-          ],
-          "teaching": "Le psaume relie « Esséniens » au passage suivant : Je suis prêt à vous bénir, vous, les Esséniens et à vous appeler mes « enfants » ; mais si je verse sur vous l’eau de ma fécondation, ma semence, mon énergie, avez-vous une terre Un second appui précise : Si demain j’apporte la grande vérité aux Esséniens, serez-vous prêts pour l’accueillir et la porter dans la prospérité afin que le monde entier puisse être touché ? Serezvous fidèles et vrais ? Porterez-vous mes enfants sur toute la terre ?"
-        },
-        {
-          "themeId": "intelligence",
-          "label": "Intelligence",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            11,
-            17,
-            49
-          ],
-          "teaching": "Le psaume relie « Intelligence » au passage suivant : La grandeur, c’est ce qui est immense, vaste. La fraternité, la communauté, la famille, c’est ce qui réchauffe, réjouit, ce qui est vivant et qui pétille. Un second appui précise : Si un homme prend sa vie en mains et s’associe avec un monde supérieur, en quelques mois il peut entrer dans une grande transformation et faire apparaître en lui un nouveau monde, un nouveau comportement, une nouvelle conscience"
-        },
-        {
-          "themeId": "oeuvre",
-          "label": "Œuvre",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            29,
-            32,
-            40
-          ],
-          "teaching": "Le psaume relie « Œuvre » au passage suivant : Ce n’est pas demain qu’il faut se mettre à l’œuvre, c’est aujourd’hui. Un second appui précise : Ce n’est pas en mettant des masques que l’on parvient à se transformer, mais en accomplissant des œuvres réelles qui fortifient la volonté."
-        }
-      ],
-      "semanticDepth": "content-grounded-extractive"
-    },
-    {
-      "recordId": "book-18-psalm-134",
-      "number": 134,
-      "title": "Je vous donne la clé des 22 portes de la vie",
-      "titleSignals": [
-        "corps",
-        "vie",
-        "sagesse",
-        "intelligence"
-      ],
-      "themes": [
-        {
-          "themeId": "corps",
-          "label": "Corps",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            4,
             5,
-            6,
-            10,
-            13,
-            14,
-            15,
-            16,
-            26,
-            27,
-            29,
-            33
+            16
           ],
-          "teaching": "Le psaume relie « Corps » au passage suivant : Si l’homme n’a pas la réponse à la question du gardien de chaque marche, il ne peut pas passer la porte et son chemin s’arrête là. Il stagne jusqu’à ce qu’il comprenne le sens, qu’il ait l’intelligence Un second appui précise : Pratiquez ces 22 commandements et vous aurez les éléments nécessaires pour façonner le corps et acquérir les sens qui vous permettront de trouver la réponse à l’énigme."
-        },
-        {
-          "themeId": "vie",
-          "label": "Vie",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            3,
-            8,
-            9,
-            10,
-            12,
-            13,
-            15,
-            16,
-            19,
-            25,
-            28,
-            30
-          ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Chacun de mes 22 commandements est une marche que vous devez gravir dans votre vie. À chacune d’elles, vous rencontrerez un gardien ; le commandement est la réponse à la question qu’il vous posera. Un second appui précise : Commencez par le commencement : soutenez-vous dans la pratique, car plus vous appliquerez les commandements de la sagesse, plus l’intelligence subtile se révèlera à vous, plus vous vous développerez."
-        },
-        {
-          "themeId": "sagesse",
-          "label": "Sagesse",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            2,
-            8,
-            9,
-            15,
-            16,
-            20,
-            22,
-            25,
-            28,
-            30,
-            33,
-            34
-          ],
-          "teaching": "Le psaume relie « Sagesse » au passage suivant : Prenez soin de mes 22 commandements, de la sagesse qui vous a été transmise à travers eux. Accueillez-les comme des messagers de la Lumière, soyez hospitaliers envers ces Anges Un second appui précise : Commencez par le commencement : soutenez-vous dans la pratique, car plus vous appliquerez les commandements de la sagesse, plus l’intelligence subtile se révèlera à vous, plus vous vous développerez."
-        },
-        {
-          "themeId": "intelligence",
-          "label": "Intelligence",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            4,
-            7,
-            8,
-            9,
-            10,
-            24,
-            30,
-            36
-          ],
-          "teaching": "Le psaume relie « Intelligence » au passage suivant : Si l’homme n’a pas la réponse à la question du gardien de chaque marche, il ne peut pas passer la porte et son chemin s’arrête là. Il stagne jusqu’à ce qu’il comprenne le sens, qu’il ait l’intelligence Un second appui précise : Ne pratiquez pas ces commandements dans l’obéissance aveugle et l’application bête. Ne cultivez jamais le fanatisme, mais trouvez à travers eux l’intelligence et l’équilibre."
-        },
-        {
-          "themeId": "lumiere",
-          "label": "Lumière",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            2,
-            14,
-            23,
-            24,
-            26,
-            27,
-            29,
-            38
-          ],
-          "teaching": "Le psaume relie « Lumière » au passage suivant : Prenez soin de mes 22 commandements, de la sagesse qui vous a été transmise à travers eux. Accueillez-les comme des messagers de la Lumière, soyez hospitaliers envers ces Anges Un second appui précise : Lorsque l’homme a passé chacune de ces portes, il a 22 organes parfaitement constitués qui lui permettent d’entrer dans l’héritage du corps de la Lumière. Ce corps permet à l’homme de vivre dans le royaume de la Lumière sans aucune opacité."
-        },
-        {
-          "themeId": "terre",
-          "label": "Terre",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            13,
-            20,
-            23,
-            25,
-            28,
-            36,
-            39
-          ],
-          "teaching": "Le psaume relie « Terre » au passage suivant : Mes 22 commandements sont des clés pour les 22 portes que chaque homme rencontre dans sa vie et qui déterminent s’il devra ou non revenir prendre un corps sur terre. Un second appui précise : Mettez l’Enseignement en pratique pour le rendre vivant. Qu’il soit une terre stable et solide pouvant porter la sagesse."
-        },
-        {
-          "themeId": "tradition",
-          "label": "Tradition",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            7,
-            19,
-            24,
-            26,
-            37
-          ],
-          "teaching": "Le psaume relie « Tradition » au passage suivant : Ne pratiquez pas ces commandements dans l’obéissance aveugle et l’application bête. Ne cultivez jamais le fanatisme, mais trouvez à travers eux l’intelligence et l’équilibre. Un second appui précise : Rappelez-vous que les générations futures sont les pères et mères qui feront couler vers vous l’eau de la vie et de la tradition que vous leur aurez transmise, laissée en héritage."
-        },
-        {
-          "themeId": "conscience",
-          "label": "Conscience",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            16,
-            17,
-            30,
-            32
-          ],
-          "teaching": "Le psaume relie « Conscience » au passage suivant : Dans chacun des 22 commandements, vous trouverez les éléments et les points essentiels sur lesquels il vous sera demandé de rendre des comptes. Un second appui précise : Mettez de la pureté, de la conscience, du soutien mutuel dans ce que vous faites."
-        },
-        {
-          "themeId": "creation",
-          "label": "Création",
-          "importance": "related",
-          "directness": "contextual",
-          "verseNumbers": [
-            16,
-            26,
-            28,
-            29
-          ],
-          "teaching": "Le thème « Création » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Dans chacun des 22 commandements, vous trouverez les éléments et les points essentiels sur lesquels il vous sera demandé de rendre des comptes. Un second appui précise : Ô mon Père Gabriel, veux-tu dire que si nous mettons en pratique le chemin de tes 22 commandements dans le cadre de la tradition de la Lumière, nous parviendrons à nous créer un corps supérieur et pouvoir ainsi entrer dans la Lumière"
-        },
-        {
-          "themeId": "esseniens",
-          "label": "Esséniens",
-          "importance": "related",
-          "directness": "direct",
-          "verseNumbers": [
-            22,
-            25,
-            27,
-            34
-          ],
-          "teaching": "Le psaume relie « Esséniens » au passage suivant : La sagesse existe et vit dans l’œuvre de la Nation Essénienne. Un second appui précise : Courage et fidélité. Ne lâchez pas la corde de la Ronde des Archanges, n’abandonnez pas l’étude, ne coupez pas le lien, mais mettez en pratique l’Enseignement dans le soutien mutuel, la magie, la vérité."
-        }
-      ],
-      "semanticDepth": "content-grounded-extractive"
-    },
-    {
-      "recordId": "book-18-psalm-135",
-      "number": 135,
-      "title": "Comme un bout de bois sur l’océan",
-      "titleSignals": [
-        "tradition",
-        "vie",
-        "corps",
-        "sagesse"
-      ],
-      "themes": [
-        {
-          "themeId": "tradition",
-          "label": "Tradition",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            4,
-            5,
-            6,
-            7,
-            8,
-            11,
-            12,
-            13,
-            14,
-            16,
-            17,
-            22
-          ],
-          "teaching": "Le psaume relie « Tradition » au passage suivant : Si tu veux te stabiliser, si tu veux entrer sur un chemin clair et précis qui donnera un sens profond à ta vie, engage-toi et pose tes pas dans ceux posés depuis des millénaires par la tradition de la Lumière. Un second appui précise : En retrouvant le chemin sacré de la grande tradition sur lequel ont marché tous les grands sages et leurs élèves, retrouve le sens de la vie."
-        },
-        {
-          "themeId": "vie",
-          "label": "Vie",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            4,
-            5,
-            6,
-            7,
-            11,
-            12,
-            14,
-            15,
-            16,
-            18,
-            19,
-            22
-          ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Si tu veux te stabiliser, si tu veux entrer sur un chemin clair et précis qui donnera un sens profond à ta vie, engage-toi et pose tes pas dans ceux posés depuis des millénaires par la tradition de la Lumière. Un second appui précise : En retrouvant le chemin sacré de la grande tradition sur lequel ont marché tous les grands sages et leurs élèves, retrouve le sens de la vie."
-        },
-        {
-          "themeId": "corps",
-          "label": "Corps",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            8,
-            9,
-            13,
-            14,
-            21,
-            22,
-            24,
-            32,
-            35
-          ],
-          "teaching": "Le psaume relie « Corps » au passage suivant : Ton corps doit être dans le corps de la Tradition, ton âme avec son souffle et ton esprit baignant dans sa sagesse. Alors tu ne perdras pas ce que tu es et ce que tu fais, mais tu pourras le garder au-delà du temps et des évènements. Un second appui précise : Tu ne pourras jamais être stable si tout autour de toi il y a sans cesse des tempêtes, des raz-de-marée, des influences que tu ne maîtrises pas."
-        },
-        {
-          "themeId": "sagesse",
-          "label": "Sagesse",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            6,
-            7,
-            8,
-            10,
-            11,
-            14,
-            18,
-            24,
-            26
-          ],
-          "teaching": "Le psaume relie « Sagesse » au passage suivant : Les Esséniens ouvrent le chemin de l’immortalité, car ils sont les gardiens de l’Alliance, les gardiens de ce qui est vrai et passe de génération en génération, de la vraie façon de marcher sur la terre Un second appui précise : Tu dois entrer dans la raison d’être de tous tes organes, de toutes tes facultés afin que toutes tes activités soient emplies d’intelligence et reliées à une sagesse universelle."
-        },
-        {
-          "themeId": "esprit",
-          "label": "Esprit",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            8,
-            11,
-            19,
-            21,
-            22,
-            24,
-            32,
-            35
-          ],
-          "teaching": "Le psaume relie « Esprit » au passage suivant : Ton corps doit être dans le corps de la Tradition, ton âme avec son souffle et ton esprit baignant dans sa sagesse. Alors tu ne perdras pas ce que tu es et ce que tu fais, mais tu pourras le garder au-delà du temps et des évènements. Un second appui précise : Si pour une raison ou une autre, tout autour de toi entre dans l’agitation au point que tes pensées et tes sentiments sont troublés parce que cela touche ta vie et tes intérêts, tu ne dois pas te laisser aller."
-        },
-        {
-          "themeId": "ame",
-          "label": "Âme",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            8,
-            21,
-            22,
-            24,
-            26,
-            32,
-            35
-          ],
-          "teaching": "Le thème « Âme » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Ton corps doit être dans le corps de la Tradition, ton âme avec son souffle et ton esprit baignant dans sa sagesse. Alors tu ne perdras pas ce que tu es et ce que tu fais, mais tu pourras le garder au-delà du temps et des évènements. Un second appui précise : Tu es un corps, une âme et un esprit, et tu es doté d’un grand nombre de qualités et de vertus. Ne sois pas inconscient de ce que tu es et de ce que tu portes en toi comme merveilles et grandeurs."
-        },
-        {
-          "themeId": "lumiere",
-          "label": "Lumière",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            4,
-            7,
-            18,
-            24,
-            25,
-            29,
-            32
-          ],
-          "teaching": "Le psaume relie « Lumière » au passage suivant : Si tu veux te stabiliser, si tu veux entrer sur un chemin clair et précis qui donnera un sens profond à ta vie, engage-toi et pose tes pas dans ceux posés depuis des millénaires par la tradition de la Lumière. Un second appui précise : Tu dois entrer dans la raison d’être de tous tes organes, de toutes tes facultés afin que toutes tes activités soient emplies d’intelligence et reliées à une sagesse universelle."
-        },
-        {
-          "themeId": "influences",
-          "label": "Influences",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            3,
-            9,
-            15,
-            18,
-            19,
-            32
-          ],
-          "teaching": "Le psaume relie « Influences » au passage suivant : Tel est devenu l’homme contemporain. Il vit au milieu d’un océan, est influencé chaque jour par des courants, des tempêtes, des raz-de-marée ou demeure immobile sur une mer calme Un second appui précise : Tu ne pourras jamais être stable si tout autour de toi il y a sans cesse des tempêtes, des raz-de-marée, des influences que tu ne maîtrises pas."
-        },
-        {
-          "themeId": "stabilite",
-          "label": "Stabilité",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            4,
-            12,
-            14,
-            18,
-            26,
-            32
-          ],
-          "teaching": "Le psaume relie « Stabilité » au passage suivant : Si tu veux te stabiliser, si tu veux entrer sur un chemin clair et précis qui donnera un sens profond à ta vie, engage-toi et pose tes pas dans ceux posés depuis des millénaires par la tradition de la Lumière. Un second appui précise : Dans la vie, tu dois être posé sur quelque chose de stable que rien ne peut ébranler. C’est pourquoi la tradition des immortels est le véritable fondement, la pierre angulaire de tout l’édifice que doit être la vie de l’homme et du sage."
-        },
-        {
-          "themeId": "esseniens",
-          "label": "Esséniens",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            6,
-            28,
-            29,
-            32,
-            35
-          ],
-          "teaching": "Le psaume relie « Esséniens » au passage suivant : Les Esséniens ouvrent le chemin de l’immortalité, car ils sont les gardiens de l’Alliance, les gardiens de ce qui est vrai et passe de génération en génération, de la vraie façon de marcher sur la terre Un second appui précise : Tu ne peux pas être Essénien aujourd’hui et ne plus l’être demain. Cela montrerait que tu ne l’as jamais été."
-        }
-      ],
-      "semanticDepth": "content-grounded-extractive"
-    },
-    {
-      "recordId": "book-18-psalm-136",
-      "number": 136,
-      "title": "Des poches d’eau polluée à l’eau libre et sacrée",
-      "titleSignals": [
-        "eau",
-        "vie",
-        "pensée",
-        "anges"
-      ],
-      "themes": [
-        {
-          "themeId": "eau",
-          "label": "Eau",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12
-          ],
-          "teaching": "Le thème « Eau » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Efforce-toi de regarder ta vie avec une vision plus subtile, au-delà de la frontière du monde visible et des formes matérielles. Tu t’apercevras alors que l’homme est entouré d’eau. Un second appui précise : Pour celui qui fait l’effort de développer sa perception subtile, il n’y a aucun doute sur la réalité de cette eau, et d’ailleurs elle est déjà une certitude pour presque tous les hommes."
-        },
-        {
-          "themeId": "vie",
-          "label": "Vie",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            1,
-            5,
-            6,
-            8,
-            10,
-            14,
-            16,
-            19,
-            24,
-            27,
-            32,
-            33
-          ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Efforce-toi de regarder ta vie avec une vision plus subtile, au-delà de la frontière du monde visible et des formes matérielles. Tu t’apercevras alors que l’homme est entouré d’eau. Un second appui précise : Celui qui étudie la sagesse doit aller plus loin dans sa perception pour s’apercevoir que l’homme a un pouvoir créateur sur cette eau. Bien souvent, dans cette eau qui l’entoure et l’anime"
-        },
-        {
-          "themeId": "pensee",
-          "label": "Pensée",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            6,
-            13,
-            19,
-            20,
-            21,
-            22,
-            23,
-            24,
-            25,
-            26,
-            27,
-            28
-          ],
-          "teaching": "Le psaume relie « Pensée » au passage suivant : Parfois, l’homme prend conscience de ces eaux stagnantes. Il peut alors décider de percer la poche afin de libérer l’eau et d’alléger sa vie. Un second appui précise : S’il n’y a plus d’eau pure sur la terre, aucun homme ne pourra penser, sentir, vouloir et agir en connexion avec une lumière et une intelligence supérieures."
+          "teaching": "La fleur représente les vertus et sert de modèle d’offrande : beauté, parfum et floraison illustrent une vie qui reçoit une bénédiction puis offre son être pour embellir un monde plus vaste."
         },
         {
           "themeId": "anges",
@@ -3316,275 +2750,735 @@
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
+            7,
+            12,
+            18
+          ],
+          "teaching": "Vivre avec les Anges signifie ici s’orienter vers des vertus plus hautes que les habitudes ordinaires et leur donner un milieu concret où elles puissent agir et purifier la vie."
+        },
+        {
+          "themeId": "eau",
+          "label": "Eau",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            9,
+            13,
+            14,
+            15,
+            18,
+            22
+          ],
+          "teaching": "L’eau désigne le milieu relationnel et vital qui peut être pollué par l’inconscience ou régénéré par les vertus ; le psaume demande d’en préserver un espace pur capable de recevoir la bénédiction de Gabriel."
+        },
+        {
+          "themeId": "relations",
+          "label": "Relations",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            13,
+            14,
+            24,
+            31
+          ],
+          "teaching": "Les relations sont traitées comme une eau commune : jalousie, jugement et tensions la polluent, tandis que fraternité, soutien mutuel, respect et clarté permettent sa régénération."
+        },
+        {
+          "themeId": "transformation",
+          "label": "Transformation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            17,
+            18,
+            20,
+            21,
+            48
+          ],
+          "teaching": "La transformation proposée ne consiste pas à combattre obsessionnellement le sombre ni à transformer l’autre, mais à renforcer ce qui est bon, tirer une sagesse des expériences et réorienter concrètement la vie."
+        },
+        {
+          "themeId": "discernement",
+          "label": "Discernement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19,
+            20,
+            21,
+            47,
+            48,
+            49
+          ],
+          "teaching": "Le discernement demande de voir clairement le mauvais sans lui donner une énergie émotionnelle supplémentaire : constater, mettre des filtres, éviter l’obstacle et revenir à une orientation constructive."
+        },
+        {
+          "themeId": "bien-commun",
+          "label": "Bien commun",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
+            24,
+            31,
+            51,
+            52
+          ],
+          "teaching": "Le texte élargit la culture des vertus à une responsabilité collective : étudier, partager les fruits du travail et rendre vivante l’idée d’un monde meilleur doivent servir le Bien commun."
+        },
+        {
+          "themeId": "purete",
+          "label": "Pureté",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            14,
+            15,
+            18,
+            24,
+            50
+          ],
+          "teaching": "La pureté concerne l’eau intérieure et relationnelle ainsi que les espaces d’étude ; elle est présentée comme une condition pour que les vertus et une influence supérieure puissent être accueillies sans être déformées."
+        }
+      ],
+      "semanticDepth": "deep-content-grounded"
+    },
+    {
+      "recordId": "book-18-psalm-134",
+      "number": 134,
+      "title": "Je vous donne la clé des 22 portes de la vie",
+      "titleSignals": [
+        "22 commandements",
+        "22 portes",
+        "corps de Lumière",
+        "pratique",
+        "gardiens"
+      ],
+      "themes": [
+        {
+          "themeId": "22-commandements",
+          "label": "22 commandements",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            12,
+            13,
+            14,
+            16,
+            21,
+            26,
+            28,
+            29,
+            30,
+            33
+          ],
+          "teaching": "Les 22 commandements sont présentés comme un chemin pratique et progressif : chacun correspond à une étape, une porte, une relation et un apprentissage que l’homme doit incorporer plutôt que simplement réciter."
+        },
+        {
+          "themeId": "pratique",
+          "label": "Pratique",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            12,
+            15,
+            16,
+            18,
+            20,
+            25,
+            29,
+            30
+          ],
+          "teaching": "La pratique transforme le commandement en structure vécue : c’est l’application consciente dans les actes et dans le corps qui constitue la réponse permettant de franchir l’étape suivante."
+        },
+        {
+          "themeId": "corps-de-lumiere",
+          "label": "Corps de Lumière",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            14,
+            15,
+            27,
+            28,
+            29,
+            33
+          ],
+          "teaching": "Le corps de Lumière est décrit comme le résultat progressif de 22 organes ou relations constitués par la pratique ; l’homme acquiert ainsi, selon le texte, une consistance adaptée aux mondes qu’il veut traverser."
+        },
+        {
+          "themeId": "portes-et-gardiens",
+          "label": "Portes et gardiens",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            13,
+            14,
+            15,
+            16,
+            28,
+            30,
+            33
+          ],
+          "teaching": "Chaque étape est figurée par une porte et un gardien : le passage dépend de la compréhension, de la conscience, de l’attitude et du corps que l’homme a réellement formés à cette étape."
+        },
+        {
+          "themeId": "conscience",
+          "label": "Conscience",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16,
+            17,
+            30,
+            31,
+            32,
+            33
+          ],
+          "teaching": "La perfection n’est pas exigée à chaque marche, mais la conscience, la juste compréhension et l’intention ne doivent pas manquer ; l’humilité est donnée comme réponse lorsque la force fait défaut."
+        },
+        {
+          "themeId": "anti-fanatisme",
+          "label": "Refus du fanatisme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "Le psaume interdit explicitement l’obéissance aveugle et le fanatisme : les commandements doivent conduire à l’intelligence et à l’équilibre, non à une application mécanique."
+        },
+        {
+          "themeId": "transmission",
+          "label": "Transmission",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            18,
+            19,
+            20,
+            23,
+            25
+          ],
+          "teaching": "La pratique est présentée comme une empreinte laissée aux générations suivantes ; transmettre ne signifie donc pas seulement conserver le texte mais stabiliser un chemin praticable et vivant."
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            17,
+            25
+          ],
+          "teaching": "Le soutien mutuel accompagne la pratique parce que le chemin est décrit comme collectif autant qu’individuel : pureté, vérité et entraide renforcent la possibilité de maintenir le lien avec la Tradition."
+        },
+        {
+          "themeId": "alliance",
+          "label": "Alliance",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14,
+            21,
+            23,
+            25
+          ],
+          "teaching": "Les 22 portes sont aussi décrites comme 22 alliances ou relations entre mondes ; l’Alliance devient vivante lorsque l’enseignement est mis en pratique et reçoit une forme dans la vie."
+        }
+      ],
+      "semanticDepth": "deep-content-grounded"
+    },
+    {
+      "recordId": "book-18-psalm-135",
+      "number": 135,
+      "title": "Comme un bout de bois sur l’océan",
+      "titleSignals": [
+        "océan",
+        "stabilité",
+        "Tradition",
+        "influences",
+        "immortalité"
+      ],
+      "themes": [
+        {
+          "themeId": "stabilite",
+          "label": "Stabilité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            4,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            16,
+            18,
+            19
+          ],
+          "teaching": "Face à un monde comparé à un océan de courants et de tempêtes, le psaume présente la stabilité comme une capacité à se recentrer sur un fondement durable, retrouver le calme et choisir ensuite une réponse adaptée."
+        },
+        {
+          "themeId": "tradition",
+          "label": "Tradition",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            11,
+            12,
+            13,
+            14,
+            16,
+            17,
+            22,
+            23,
+            24,
+            25,
+            27,
+            29,
+            34,
+            35
+          ],
+          "teaching": "La Tradition est le fondement proposé pour ne plus dériver au gré des influences : elle doit devenir un corps, une pratique et une identité incarnés plutôt qu’un simple ensemble d’idées extérieures."
+        },
+        {
+          "themeId": "influences",
+          "label": "Influences",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            3,
+            8,
+            9,
+            11,
+            14,
+            18,
+            19,
+            20
+          ],
+          "teaching": "Les influences sont comparées à des courants qui peuvent désorienter pensées, sentiments et décisions ; la vigilance consiste à reconnaître leur nature avant d’agir plutôt qu’à nier leur impact."
+        },
+        {
+          "themeId": "ocean",
+          "label": "Océan",
+          "importance": "important",
+          "directness": "symbolic",
+          "verseNumbers": [
+            1,
+            3,
+            8,
+            14
+          ],
+          "teaching": "L’océan symbolise le milieu mouvant du monde humain : courants, tempêtes et vagues donnent une image des conditions changeantes dans lesquelles l’homme doit apprendre à naviguer avec conscience."
+        },
+        {
+          "themeId": "vigilance",
+          "label": "Vigilance",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14,
+            18,
+            19,
+            20
+          ],
+          "teaching": "La vigilance du sage consiste à détecter les perturbations, revenir au calme, observer leur amplitude et préparer une réponse proportionnée qui préserve la liberté de mouvement."
+        },
+        {
+          "themeId": "incorporation",
+          "label": "Incorporation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8,
+            13,
+            14,
+            24,
+            27
+          ],
+          "teaching": "L’incorporation signifie faire entrer gestes, souffle, pensée et activité dans la Tradition jusqu’à ce que la pratique ne soit plus intermittente mais devienne la forme même de la vie."
+        },
+        {
+          "themeId": "immortalite",
+          "label": "Immortalité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            8,
+            12,
+            15,
+            16,
+            24,
+            26,
+            29
+          ],
+          "teaching": "L’immortalité est reliée à ce qui peut demeurer au-delà du temps : une vie concentrée sur des valeurs stables, une lignée et une pratique capables de traverser les changements plutôt que des productions soumises aux courants du moment."
+        },
+        {
+          "themeId": "serenite",
+          "label": "Sérénité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            11,
+            14
+          ],
+          "teaching": "La sérénité est une pratique active : calmer le système intérieur permet de retrouver lucidité et compréhension avant de se repositionner dans une situation agitée."
+        },
+        {
+          "themeId": "identite-essenienne",
+          "label": "Identité essénienne",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            27,
+            28,
+            29
+          ],
+          "teaching": "L’identité essénienne est décrite comme un état incorporé et durable : si elle dépend des circonstances du jour, le texte considère qu’elle n’a pas encore été réellement constituée."
+        }
+      ],
+      "semanticDepth": "deep-content-grounded"
+    },
+    {
+      "recordId": "book-18-psalm-136",
+      "number": 136,
+      "title": "Des poches d’eau polluée à l’eau libre et sacrée",
+      "titleSignals": [
+        "eau subtile",
+        "poches d’eau",
+        "relations",
+        "libération",
+        "pensées"
+      ],
+      "themes": [
+        {
+          "themeId": "eau-subtile",
+          "label": "Eau subtile",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            13,
+            21,
+            22
+          ],
+          "teaching": "Le psaume décrit autour de l’homme une eau subtile, vivante et relationnelle qui sert de milieu aux échanges, pensées et influences ; sa qualité se lit notamment dans la fluidité ou la crispation des relations."
+        },
+        {
+          "themeId": "poches-d-eau-polluee",
+          "label": "Poches d’eau polluée",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            14,
+            15,
+            16,
+            22,
+            34,
+            35,
+            40
+          ],
+          "teaching": "Les « poches » désignent des zones d’eau séparées du courant universel, stagnantes et autoentretenues ; elles sont associées à des blocages personnels ou collectifs qui finissent par alourdir la vie et interrompre la communication."
+        },
+        {
+          "themeId": "relations",
+          "label": "Relations",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            10,
+            16
+          ],
+          "teaching": "Les relations servent de diagnostic concret de l’état de l’eau : clarté, dialogue et échange indiquent une circulation vivante, tandis que tensions et oppositions signalent une stagnation ou une pollution."
+        },
+        {
+          "themeId": "liberation",
+          "label": "Libération",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            8,
+            10,
+            15,
+            26,
+            34,
+            35,
+            40
+          ],
+          "teaching": "Se libérer consiste à percer les poches, laisser leur contenu se diluer et accepter une phase parfois difficile de désagrégation de l’ancien blocage plutôt qu’à maintenir ce qui s’est amalgamé à l’identité."
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
             19,
             20,
             21,
             22,
             23,
             24,
-            27,
-            39
+            25,
+            26,
+            27
           ],
-          "teaching": "Le psaume relie « Anges » au passage suivant : Si tu veux entrer dans ce monde de l’eau pour le purifier, tu dois être sous la protection d’un Ange grâce à la Ronde des Archanges. Tu dois ensuite apprendre à observer ta vie dans son aspect subtil et à percevoir la nature des pensées qui… Un second appui précise : Tes pensées ne viennent pas toutes de ton Ange. Tu dois en être conscient et apprendre à les observer sans jugement, surtout à percevoir de quelle manière elles colorent"
+          "teaching": "Les pensées colorent l’eau qui baigne la vie ; le texte distingue celles qui viennent d’une orientation supérieure, celles issues de l’Enseignement et celles qui restent non résolues, chacune demandant un travail différent."
         },
         {
-          "themeId": "corps",
-          "label": "Corps",
-          "importance": "central",
+          "themeId": "neutralite",
+          "label": "Neutralité",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
-            10,
-            16,
-            21,
-            22,
-            31,
-            33,
-            42
+            20
           ],
-          "teaching": "Le psaume relie « Corps » au passage suivant : Bien souvent, ce sont les épreuves de la vie qui contraignent l’homme à percer une poche, à dénouer un nœud malfaisant. Il n’a alors plus le choix Un second appui précise : Les poches d’eau polluée sont des cellules anarchiques qui s’associent entre elles, finissant par former des corps qui s’opposent à la vie, des barrières infranchissables."
+          "teaching": "L’observation des pensées doit se faire sans jugement ni réaction émotionnelle automatique, afin de ne pas ajouter une nouvelle coloration à l’eau que l’on cherche justement à comprendre et purifier."
         },
         {
-          "themeId": "esseniens",
-          "label": "Esséniens",
-          "importance": "central",
+          "themeId": "sante",
+          "label": "Santé",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            21,
+            22
+          ],
+          "teaching": "La santé est définie comme une circulation libre : une pensée issue d’une intelligence supérieure traverse l’âme, la conscience et l’eau jusqu’aux activités concrètes sans être capturée par une poche stagnante."
+        },
+        {
+          "themeId": "bien-commun",
+          "label": "Bien commun",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
             11,
             12,
+            13,
             14,
-            16,
-            17,
-            31,
-            40
+            17
           ],
-          "teaching": "Le psaume relie « Esséniens » au passage suivant : Certaines poches d’eau polluée sont petites, d’autres sont grosses, d’autres sont énormes. Certaines sont personnelles, d’autres sont familiales, d’autres encore concernent les peuples et l’humanité. Un second appui précise : Le culte de l’eau est le plus haut moyen de préserver une qualité d’eau pour la terre et la sauvegarde de l’humanité. C’est pourquoi les Esséniens doivent accomplir cette tâche comme un devoir sacré et un service rendu pour toutes les formes…"
+          "teaching": "Le savoir de l’eau est étendu aux familles, peuples et à l’humanité ; le culte de l’eau et la pédagogie sont présentés comme un service collectif visant à prévenir l’accumulation de blocages à grande échelle."
         },
         {
-          "themeId": "lumiere",
-          "label": "Lumière",
-          "importance": "central",
+          "themeId": "objectifs",
+          "label": "Objectifs",
+          "importance": "related",
           "directness": "direct",
           "verseNumbers": [
-            13,
-            17,
-            22,
-            28,
-            29,
-            34,
-            39
+            40,
+            41,
+            42
           ],
-          "teaching": "Le psaume relie « Lumière » au passage suivant : S’il n’y a plus d’eau pure sur la terre, aucun homme ne pourra penser, sentir, vouloir et agir en connexion avec une lumière et une intelligence supérieures. Un second appui précise : Devenez suffisamment forts pour apporter des solutions au monde et à l’humanité. Vous le faites déjà et ce psaume en est la preuve, mais vous devez vous structurer afin de montrer votre lumière pour que l’humanité comprenne qu’elle devra…"
-        },
-        {
-          "themeId": "sagesse",
-          "label": "Sagesse",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            5,
-            9,
-            14,
-            27,
-            29,
-            31,
-            40
-          ],
-          "teaching": "Le psaume relie « Sagesse » au passage suivant : Celui qui étudie la sagesse doit aller plus loin dans sa perception pour s’apercevoir que l’homme a un pouvoir créateur sur cette eau. Bien souvent, dans cette eau qui l’entoure et l’anime Un second appui précise : Rares sont les hommes qui sont conscients de cette sagesse de l’eau. Rares sont ceux qui savent percer les poches et libérer les êtres de leurs handicaps, de leurs maladies, de leurs blocages"
-        },
-        {
-          "themeId": "terre",
-          "label": "Terre",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            12,
-            13,
-            23,
-            29,
-            31,
-            32,
-            38
-          ],
-          "teaching": "Le psaume relie « Terre » au passage suivant : Le culte de l’eau est le plus haut moyen de préserver une qualité d’eau pour la terre et la sauvegarde de l’humanité. C’est pourquoi les Esséniens doivent accomplir cette tâche comme un devoir sacré et un service rendu pour toutes les formes… Un second appui précise : S’il n’y a plus d’eau pure sur la terre, aucun homme ne pourra penser, sentir, vouloir et agir en connexion avec une lumière et une intelligence supérieures."
-        },
-        {
-          "themeId": "purete",
-          "label": "Pureté",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            3,
-            13,
-            19,
-            25,
-            29,
-            36
-          ],
-          "teaching": "Le thème « Pureté » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Tous les peuples, les cultures, les traditions ont connu cette eau et lui ont donné différents noms, ont utilisé de nombreuses méthodes pour s’approcher d’elle et la maintenir pure et claire afin de connaître la santé, le bonheur, la prospérité. Un second appui précise : S’il n’y a plus d’eau pure sur la terre, aucun homme ne pourra penser, sentir, vouloir et agir en connexion avec une lumière et une intelligence supérieures."
+          "teaching": "La sortie des anciennes poches suppose un choix : nettoyer la vie, décider ce qui mérite d’être conservé et donner à un objectif clair les conditions nécessaires pour prendre une forme concrète."
         }
       ],
-      "semanticDepth": "content-grounded-extractive"
+      "semanticDepth": "deep-content-grounded"
     },
     {
       "recordId": "book-18-psalm-137",
       "number": 137,
       "title": "Faites votre part du travail",
       "titleSignals": [
-        "esséniens",
-        "œuvre",
-        "eau",
-        "lumière"
+        "travail",
+        "responsabilité",
+        "organisation",
+        "œuvre collective",
+        "Alliance"
       ],
       "themes": [
         {
-          "themeId": "esseniens",
-          "label": "Esséniens",
+          "themeId": "part-du-travail",
+          "label": "Part du travail",
           "importance": "central",
           "directness": "direct",
           "verseNumbers": [
             1,
+            2,
             3,
+            4,
+            5,
+            6,
+            7,
+            11,
+            21
+          ],
+          "teaching": "Le psaume insiste sur une réciprocité de l’Alliance : les autres règnes sont décrits comme ayant leur tâche, mais la manifestation attendue ne peut se poursuivre si les hommes ne réalisent pas concrètement la leur."
+        },
+        {
+          "themeId": "responsabilite",
+          "label": "Responsabilité",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            7,
+            10,
+            11,
+            17,
+            19,
+            21
+          ],
+          "teaching": "La responsabilité est présentée comme le passage de l’attente à l’action : reconnaître les conséquences du désordre, prendre l’avenir en mains et tenir sa fonction sans laisser l’inconscience ou le laisser-aller polluer l’ensemble."
+        },
+        {
+          "themeId": "organisation",
+          "label": "Organisation",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
             8,
+            10,
+            11,
+            14,
+            15,
+            16,
+            17,
+            20,
+            24
+          ],
+          "teaching": "L’organisation n’est pas un thème administratif secondaire : mettre de l’ordre dans les activités terrestres est explicitement relié à la possibilité de dégager le « ciel », stabiliser l’œuvre et créer les conditions d’une approche du monde supérieur."
+        },
+        {
+          "themeId": "oeuvre-collective",
+          "label": "Œuvre collective",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            7,
             9,
             11,
             15,
-            17,
-            18,
-            26
-          ],
-          "teaching": "Le psaume relie « Esséniens » au passage suivant : Les 4 Archanges sont les Pères et les instructeurs de la Nation Essénienne. Le Père de tous les pères les a missionnés et a demandé à tous les règnes de la création d’accomplir une œuvre à travers la Nation Essénienne. Un second appui précise : Aujourd’hui, vous, les hommes, vous n’avez pas dégagé le ciel assez puissamment pour permettre à la Lumière de traverser la pollution de votre monde. Ce n’est pas une fatalité, un jugement ou une condamnation mais une réalité."
-        },
-        {
-          "themeId": "oeuvre",
-          "label": "Œuvre",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            4,
-            5,
-            7,
             16,
+            20,
             21,
             22,
             23,
             24
           ],
-          "teaching": "Le psaume relie « Œuvre » au passage suivant : Les 4 Archanges sont les Pères et les instructeurs de la Nation Essénienne. Le Père de tous les pères les a missionnés et a demandé à tous les règnes de la création d’accomplir une œuvre à travers la Nation Essénienne. Un second appui précise : Dans votre monde, il manque une clarté et une force qui permettraient à la Lumière de devenir réalité, de s’incarner à travers des œuvres lui conférant un corps stable, capable de l’accueillir dans la pureté et de la porter."
+          "teaching": "L’œuvre collective demande que chacun trouve sa place, s’y tienne et apporte une compétence réelle ; le texte oppose cette construction commune à l’isolement et au repli dans les intérêts personnels."
         },
         {
-          "themeId": "eau",
-          "label": "Eau",
-          "importance": "central",
-          "directness": "contextual",
-          "verseNumbers": [
-            6,
-            8,
-            12,
-            18,
-            19
-          ],
-          "teaching": "Le thème « Eau » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Je n’ai pas pu traverser l’eau de votre ciel et venir toucher le centre, le lieu, le siège du lieu qui unit les 7 règnes de l’Alliance. Un second appui précise : Rien n’est encore perdu. Si vous vous éveillez, vous structurez et vous organisez pour réunir les conditions favorables, je pourrai éventuellement ouvrir la porte du culte de l’eau lors de la prochaine célébration de L’Archange Raphaël."
-        },
-        {
-          "themeId": "lumiere",
-          "label": "Lumière",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            3,
-            4,
-            5,
-            26,
-            27
-          ],
-          "teaching": "Le psaume relie « Lumière » au passage suivant : Aujourd’hui, vous, les hommes, vous n’avez pas dégagé le ciel assez puissamment pour permettre à la Lumière de traverser la pollution de votre monde. Ce n’est pas une fatalité, un jugement ou une condamnation mais une réalité. Un second appui précise : Dans votre monde, il manque une clarté et une force qui permettraient à la Lumière de devenir réalité, de s’incarner à travers des œuvres lui conférant un corps stable, capable de l’accueillir dans la pureté et de la porter."
-        },
-        {
-          "themeId": "nation-essenienne",
-          "label": "Nation Essénienne",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            11,
-            15,
-            17,
-            26
-          ],
-          "teaching": "Le psaume relie « Nation Essénienne » au passage suivant : Les 4 Archanges sont les Pères et les instructeurs de la Nation Essénienne. Le Père de tous les pères les a missionnés et a demandé à tous les règnes de la création d’accomplir une œuvre à travers la Nation Essénienne. Un second appui précise : Comprenez que vous n’êtes pas seuls. Vous êtes l’espoir de plusieurs mondes qui sont dans la souffrance et le désespoir. Alors, éveillez-vous et devenez responsables. Faites le peu que l’on vous demande."
-        },
-        {
-          "themeId": "terre",
-          "label": "Terre",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            8,
-            11,
-            14,
-            19,
-            26
-          ],
-          "teaching": "Le psaume relie « Terre » au passage suivant : Rien n’est encore perdu. Si vous vous éveillez, vous structurez et vous organisez pour réunir les conditions favorables, je pourrai éventuellement ouvrir la porte du culte de l’eau lors de la prochaine célébration de L’Archange Raphaël. Un second appui précise : Comprenez que vous n’êtes pas seuls. Vous êtes l’espoir de plusieurs mondes qui sont dans la souffrance et le désespoir. Alors, éveillez-vous et devenez responsables. Faites le peu que l’on vous demande."
-        },
-        {
-          "themeId": "corps",
-          "label": "Corps",
+          "themeId": "alliance",
+          "label": "Alliance",
           "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            4,
-            5,
-            11,
-            27
-          ],
-          "teaching": "Le psaume relie « Corps » au passage suivant : Dans votre monde, il manque une clarté et une force qui permettraient à la Lumière de devenir réalité, de s’incarner à travers des œuvres lui conférant un corps stable, capable de l’accueillir dans la pureté et de la porter. Un second appui précise : Si vous avez rencontré la Lumière, il est important de mettre tout en œuvre pour qu’elle naisse, devienne réelle, prenne un corps dans votre vie et dans la vie."
-        },
-        {
-          "themeId": "pere",
-          "label": "Père",
-          "importance": "related",
           "directness": "direct",
           "verseNumbers": [
             1,
             2,
             6,
-            25
+            7,
+            8
           ],
-          "teaching": "Le psaume relie « Père » au passage suivant : Les 4 Archanges sont les Pères et les instructeurs de la Nation Essénienne. Le Père de tous les pères les a missionnés et a demandé à tous les règnes de la création d’accomplir une œuvre à travers la Nation Essénienne. Un second appui précise : Chacun doit tenir sa place tout en œuvrant dans l’Alliance pour la victoire de l’unité dans le Père et la Mère."
+          "teaching": "L’Alliance est décrite comme une coopération entre plusieurs règnes dans laquelle l’unité n’efface pas les rôles : chaque partie doit accomplir sa fonction pour que l’ensemble puisse se stabiliser."
         },
         {
-          "themeId": "responsabilite",
-          "label": "Responsabilité",
-          "importance": "related",
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "teaching": "La Lumière doit, selon le psaume, recevoir un corps stable par des œuvres et des conditions suffisamment claires ; sa manifestation n’est donc pas présentée comme automatique ou indépendante du travail humain."
+        },
+        {
+          "themeId": "solidarite",
+          "label": "Solidarité",
+          "importance": "important",
           "directness": "direct",
           "verseNumbers": [
             7,
-            11,
-            17,
+            9,
+            16,
+            18,
             19
           ],
-          "teaching": "Le psaume relie « Responsabilité » au passage suivant : Vous devez réellement vous structurer, vous organiser, vous éveiller et prendre votre avenir et celui de l’humanité en mains. Sachez ce que vous voulez, ne soyez pas passifs Un second appui précise : Comprenez que vous n’êtes pas seuls. Vous êtes l’espoir de plusieurs mondes qui sont dans la souffrance et le désespoir. Alors, éveillez-vous et devenez responsables. Faites le peu que l’on vous demande."
+          "teaching": "La solidarité vise à empêcher l’isolement et à faire de chacun une source d’eau claire pour l’ensemble ; elle est reliée à la prospérité commune plutôt qu’à une addition d’intérêts individuels."
         },
         {
-          "themeId": "vie",
-          "label": "Vie",
-          "importance": "related",
-          "directness": "contextual",
+          "themeId": "ordre",
+          "label": "Ordre",
+          "importance": "important",
+          "directness": "direct",
           "verseNumbers": [
-            4,
-            5,
             10,
-            27
+            14,
+            15,
+            20,
+            24
           ],
-          "teaching": "Le thème « Vie » est retenu ici comme contexte éditorial plutôt que comme preuve lexicale directe. Le passage d’ancrage indique : Dans votre monde, il manque une clarté et une force qui permettraient à la Lumière de devenir réalité, de s’incarner à travers des œuvres lui conférant un corps stable, capable de l’accueillir dans la pureté et de la porter. Un second appui précise : Si vous avez rencontré la Lumière, il est important de mettre tout en œuvre pour qu’elle naisse, devienne réelle, prenne un corps dans votre vie et dans la vie."
+          "teaching": "Le psaume relie explicitement l’ordre terrestre et la clarté du ciel : régler les dysfonctionnements, simplifier les activités et trouver rapidement des solutions deviennent des conditions de solidité de l’œuvre."
+        },
+        {
+          "themeId": "prosperite",
+          "label": "Prospérité",
+          "importance": "related",
+          "directness": "direct",
+          "verseNumbers": [
+            18,
+            19
+          ],
+          "teaching": "La prospérité est figurée comme une eau reçue qui doit circuler vers l’ensemble ; elle peut être polluée par irresponsabilité et manque de solidarité ou devenir une bénédiction transmissible lorsque la structure est claire."
         }
       ],
       "notesUsed": [
         "book-18-psalm-137-note-001"
       ],
-      "semanticDepth": "content-grounded-extractive"
+      "semanticDepth": "deep-content-grounded"
     }
   ]
 }
