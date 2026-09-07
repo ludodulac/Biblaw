@@ -8,7 +8,10 @@ on:
       - "scripts/extract_book17.py"
       - "scripts/normalize_book17_dialogues.py"
       - "scripts/validate_book17.py"
-      - "data/**"
+      - "scripts/normalize_book17_production_attachments.py"
+      - "scripts/build_browser_search_catalog.py"
+      - "scripts/audit_corpus_attachments.py"
+      - "scripts/audit_legacy_psalm_references.py"
       - ".github/workflows/validate-book17.yml"
   workflow_dispatch:
 
@@ -21,21 +24,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install PDF extraction tools
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils
 
-      - name: Re-extract book 17 from the source PDF
+      - name: Re-extract Book 17 pilot records from the source PDF
         run: python3 scripts/extract_book17.py
 
-      - name: Normalize dialogue attribution
+      - name: Normalize pilot dialogue attribution
         run: python3 scripts/normalize_book17_dialogues.py
 
-      - name: Apply automated validation
+      - name: Apply pilot structural validation
         run: python3 scripts/validate_book17.py --apply
+
+      - name: Normalize shared attachments at the production boundary
+        run: python3 scripts/normalize_book17_production_attachments.py
+
+      - name: Rebuild browser search catalog from current sources
+        run: python3 scripts/build_browser_search_catalog.py
+
+      - name: Verify production attachment integrity
+        run: python3 scripts/audit_corpus_attachments.py
+
+      - name: Verify canonical production is independent of legacy Psalm ids
+        run: python3 scripts/audit_legacy_psalm_references.py
 
       - name: Commit validated records
         run: |
@@ -47,4 +62,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/
           git commit -m "Validate Michaël book 17 automatically"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
