@@ -9,8 +9,8 @@
     "related": 1,
     "pairContribution": "importanceWeightA * importanceWeightB"
   },
-  "themeCount": 1251,
-  "undirectedEdgeCount": 13144,
+  "themeCount": 1249,
+  "undirectedEdgeCount": 13156,
   "topConnectionsPerTheme": 30,
   "themes": [
     {
@@ -16323,7 +16323,7 @@
       "connectionCount": 1,
       "topConnections": [
         {
-          "themeId": "corps-deau",
+          "themeId": "corps-d-eau",
           "label": "Corps d’eau",
           "score": 9,
           "sharedPsalmCount": 1,
@@ -50218,7 +50218,7 @@
           ]
         },
         {
-          "themeId": "royauté-interieure",
+          "themeId": "royaute-interieure",
           "label": "Royauté intérieure",
           "score": 6,
           "sharedPsalmCount": 1,
@@ -91902,7 +91902,7 @@
     {
       "themeId": "corps-comme-livre",
       "label": "Corps comme livre",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -92032,6 +92032,31 @@
         {
           "themeId": "lumiere",
           "label": "Lumière",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "microcosme-et-macrocosme",
+          "label": "Microcosme et macrocosme",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -92698,8 +92723,33 @@
     {
       "themeId": "corps-d-eau",
       "label": "Corps d’eau",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
+        {
+          "themeId": "algue",
+          "label": "Algue",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-10-psalm-072",
+              "bookNumber": 10,
+              "bookTitle": "S’approcher de la source de Gabriel",
+              "archangel": "gabriel",
+              "psalmNumber": 72,
+              "psalmTitle": "Soyez comme l’algue qui danse et enfante la L umière dans l’océan de la vie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "conscience",
           "label": "Conscience",
@@ -93507,6 +93557,108 @@
           ]
         },
         {
+          "themeId": "immortalite",
+          "label": "Immortalité",
+          "score": 18,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-03-psalm-005",
+              "bookNumber": 3,
+              "bookTitle": "Respire avec les Anges",
+              "archangel": "raphael",
+              "psalmNumber": 5,
+              "psalmTitle": "De la peur de la mort à la vie éternelle",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-113",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 113,
+              "psalmTitle": "Les 3 clés de la terre d ’O uriel",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "mort",
+          "label": "Mort",
+          "score": 17,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-18-psalm-130",
+              "bookNumber": 18,
+              "bookTitle": "Quel chercheur de Lumière es-tu ?",
+              "archangel": "gabriel",
+              "psalmNumber": 130,
+              "psalmTitle": "Qu ’est- ce que la mort?",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-03-psalm-005",
+              "bookNumber": 3,
+              "bookTitle": "Respire avec les Anges",
+              "archangel": "raphael",
+              "psalmNumber": 5,
+              "psalmTitle": "De la peur de la mort à la vie éternelle",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "important",
+              "themeBImportance": "related",
+              "contribution": 2
+            }
+          ]
+        },
+        {
           "themeId": "sagesse",
           "label": "Sagesse",
           "score": 16,
@@ -93624,46 +93776,6 @@
           ]
         },
         {
-          "themeId": "immortalite",
-          "label": "Immortalité",
-          "score": 12,
-          "sharedPsalmCount": 2,
-          "archangels": [
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 1
-            },
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-19-psalm-106",
-              "bookNumber": 19,
-              "bookTitle": "Le secret de la pensée angélique",
-              "archangel": "raphael",
-              "psalmNumber": 106,
-              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
-              "contribution": 6
-            },
-            {
-              "recordId": "book-20-psalm-113",
-              "bookNumber": 20,
-              "bookTitle": "Aux portes de la Terre promise",
-              "archangel": "ouriel",
-              "psalmNumber": 113,
-              "psalmTitle": "Les 3 clés de la terre d ’O uriel",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
-              "contribution": 6
-            }
-          ]
-        },
-        {
           "themeId": "mere",
           "label": "Mère",
           "score": 12,
@@ -93776,6 +93888,46 @@
           ]
         },
         {
+          "themeId": "ame",
+          "label": "Âme",
+          "score": 12,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-03-psalm-005",
+              "bookNumber": 3,
+              "bookTitle": "Respire avec les Anges",
+              "archangel": "raphael",
+              "psalmNumber": 5,
+              "psalmTitle": "De la peur de la mort à la vie éternelle",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-22-psalm-141",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 141,
+              "psalmTitle": "Restaurez la tradition de la Lumière",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "oeuvre",
           "label": "Œuvre",
           "score": 12,
@@ -93812,46 +93964,6 @@
               "themeAImportance": "important",
               "themeBImportance": "central",
               "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "mort",
-          "label": "Mort",
-          "score": 11,
-          "sharedPsalmCount": 2,
-          "archangels": [
-            {
-              "id": "gabriel",
-              "sharedPsalmCount": 1
-            },
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-18-psalm-130",
-              "bookNumber": 18,
-              "bookTitle": "Quel chercheur de Lumière es-tu ?",
-              "archangel": "gabriel",
-              "psalmNumber": 130,
-              "psalmTitle": "Qu ’est- ce que la mort?",
-              "themeAImportance": "central",
-              "themeBImportance": "central",
-              "contribution": 9
-            },
-            {
-              "recordId": "book-19-psalm-106",
-              "bookNumber": 19,
-              "bookTitle": "Le secret de la pensée angélique",
-              "archangel": "raphael",
-              "psalmNumber": 106,
-              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
-              "themeAImportance": "important",
-              "themeBImportance": "related",
-              "contribution": 2
             }
           ]
         },
@@ -94262,31 +94374,6 @@
               "psalmTitle": "Qu ’est- ce que la mort?",
               "themeAImportance": "central",
               "themeBImportance": "important",
-              "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "pere",
-          "label": "Père",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "gabriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-22-psalm-146",
-              "bookNumber": 22,
-              "bookTitle": "Garder sa mémoire après la mort",
-              "archangel": "gabriel",
-              "psalmNumber": 146,
-              "psalmTitle": "Rappelle-toi qui tu es",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
               "contribution": 6
             }
           ]
@@ -100098,120 +100185,6 @@
       ]
     },
     {
-      "themeId": "corps-deau",
-      "label": "Corps d’eau",
-      "connectionCount": 1,
-      "topConnections": [
-        {
-          "themeId": "algue",
-          "label": "Algue",
-          "score": 9,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "gabriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-10-psalm-072",
-              "bookNumber": 10,
-              "bookTitle": "S’approcher de la source de Gabriel",
-              "archangel": "gabriel",
-              "psalmNumber": 72,
-              "psalmTitle": "Soyez comme l’algue qui danse et enfante la L umière dans l’océan de la vie",
-              "themeAImportance": "central",
-              "themeBImportance": "central",
-              "contribution": 9
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "themeId": "corps-dimmortalite",
-      "label": "Corps d’immortalité",
-      "connectionCount": 3,
-      "topConnections": [
-        {
-          "themeId": "immortalite",
-          "label": "Immortalité",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-03-psalm-005",
-              "bookNumber": 3,
-              "bookTitle": "Respire avec les Anges",
-              "archangel": "raphael",
-              "psalmNumber": 5,
-              "psalmTitle": "De la peur de la mort à la vie éternelle",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
-              "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "mort",
-          "label": "Mort",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-03-psalm-005",
-              "bookNumber": 3,
-              "bookTitle": "Respire avec les Anges",
-              "archangel": "raphael",
-              "psalmNumber": 5,
-              "psalmTitle": "De la peur de la mort à la vie éternelle",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
-              "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "ame",
-          "label": "Âme",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-03-psalm-005",
-              "bookNumber": 3,
-              "bookTitle": "Respire avec les Anges",
-              "archangel": "raphael",
-              "psalmNumber": 5,
-              "psalmTitle": "De la peur de la mort à la vie éternelle",
-              "themeAImportance": "central",
-              "themeBImportance": "important",
-              "contribution": 6
-            }
-          ]
-        }
-      ]
-    },
-    {
       "themeId": "corps-du-christ",
       "label": "Corps du Christ",
       "connectionCount": 4,
@@ -101249,7 +101222,7 @@
     {
       "themeId": "corps-instrument-de-service",
       "label": "Corps instrument de service",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -101404,6 +101377,31 @@
         {
           "themeId": "lumiere",
           "label": "Lumière",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "microcosme-et-macrocosme",
+          "label": "Microcosme et macrocosme",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -117350,7 +117348,7 @@
     {
       "themeId": "dieux",
       "label": "Dieux",
-      "connectionCount": 212,
+      "connectionCount": 213,
       "topConnections": [
         {
           "themeId": "vie",
@@ -164675,7 +164673,7 @@
     {
       "themeId": "enracinement",
       "label": "Enracinement",
-      "connectionCount": 30,
+      "connectionCount": 31,
       "topConnections": [
         {
           "themeId": "corps",
@@ -164935,6 +164933,31 @@
         {
           "themeId": "intelligence",
           "label": "Intelligence",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "microcosme-et-macrocosme",
+          "label": "Microcosme et macrocosme",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -165451,31 +165474,6 @@
               "archangel": "ouriel",
               "psalmNumber": 124,
               "psalmTitle": "Les É vangiles esséniens sont une bénédiction",
-              "themeAImportance": "important",
-              "themeBImportance": "important",
-              "contribution": 4
-            }
-          ]
-        },
-        {
-          "themeId": "union",
-          "label": "Union",
-          "score": 4,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "gabriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-14-psalm-106",
-              "bookNumber": 14,
-              "bookTitle": "La maîtrise du corps",
-              "archangel": "gabriel",
-              "psalmNumber": 106,
-              "psalmTitle": "La famille, une valeur fondamentale",
               "themeAImportance": "important",
               "themeBImportance": "important",
               "contribution": 4
@@ -180302,7 +180300,7 @@
     {
       "themeId": "esseniens",
       "label": "Esséniens",
-      "connectionCount": 136,
+      "connectionCount": 137,
       "topConnections": [
         {
           "themeId": "terre",
@@ -235890,7 +235888,7 @@
           ]
         },
         {
-          "themeId": "royauté-interieure",
+          "themeId": "royaute-interieure",
           "label": "Royauté intérieure",
           "score": 4,
           "sharedPsalmCount": 1,
@@ -236233,7 +236231,7 @@
     {
       "themeId": "immortalite",
       "label": "Immortalité",
-      "connectionCount": 128,
+      "connectionCount": 127,
       "topConnections": [
         {
           "themeId": "vie",
@@ -238184,6 +238182,57 @@
           ]
         },
         {
+          "themeId": "corps-d-immortalite",
+          "label": "Corps d’immortalité",
+          "score": 18,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-03-psalm-005",
+              "bookNumber": 3,
+              "bookTitle": "Respire avec les Anges",
+              "archangel": "raphael",
+              "psalmNumber": 5,
+              "psalmTitle": "De la peur de la mort à la vie éternelle",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-113",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 113,
+              "psalmTitle": "Les 3 clés de la terre d ’O uriel",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "anges",
           "label": "Anges",
           "score": 17,
@@ -238700,46 +238749,6 @@
               "themeAImportance": "related",
               "themeBImportance": "related",
               "contribution": 1
-            }
-          ]
-        },
-        {
-          "themeId": "corps-d-immortalite",
-          "label": "Corps d’immortalité",
-          "score": 12,
-          "sharedPsalmCount": 2,
-          "archangels": [
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 1
-            },
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-19-psalm-106",
-              "bookNumber": 19,
-              "bookTitle": "Le secret de la pensée angélique",
-              "archangel": "raphael",
-              "psalmNumber": 106,
-              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
-              "contribution": 6
-            },
-            {
-              "recordId": "book-20-psalm-113",
-              "bookNumber": 20,
-              "bookTitle": "Aux portes de la Terre promise",
-              "archangel": "ouriel",
-              "psalmNumber": 113,
-              "psalmTitle": "Les 3 clés de la terre d ’O uriel",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
-              "contribution": 6
             }
           ]
         },
@@ -250504,7 +250513,7 @@
     {
       "themeId": "intelligence",
       "label": "Intelligence",
-      "connectionCount": 431,
+      "connectionCount": 432,
       "topConnections": [
         {
           "themeId": "vie",
@@ -260489,7 +260498,7 @@
     {
       "themeId": "langage-universel-du-corps",
       "label": "Langage universel du corps",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -260644,6 +260653,31 @@
         {
           "themeId": "lumiere",
           "label": "Lumière",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "microcosme-et-macrocosme",
+          "label": "Microcosme et macrocosme",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -271702,7 +271736,7 @@
     {
       "themeId": "lumiere",
       "label": "Lumière",
-      "connectionCount": 510,
+      "connectionCount": 511,
       "topConnections": [
         {
           "themeId": "vie",
@@ -298775,14 +298809,18 @@
     {
       "themeId": "microcosme-et-macrocosme",
       "label": "Microcosme et macrocosme",
-      "connectionCount": 7,
+      "connectionCount": 22,
       "topConnections": [
         {
           "themeId": "corps",
           "label": "Corps",
-          "score": 9,
-          "sharedPsalmCount": 1,
+          "score": 18,
+          "sharedPsalmCount": 2,
           "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
             {
               "id": "raphael",
               "sharedPsalmCount": 1
@@ -298796,6 +298834,192 @@
               "archangel": "raphael",
               "psalmNumber": 17,
               "psalmTitle": "Ton corps est un don précieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "corps-comme-livre",
+          "label": "Corps comme livre",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "dieux",
+          "label": "Dieux",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "enracinement",
+          "label": "Enracinement",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "esseniens",
+          "label": "Esséniens",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "intelligence",
+          "label": "Intelligence",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "microcosme-macrocosme",
+          "label": "Microcosme et macrocosme",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
               "themeAImportance": "central",
               "themeBImportance": "central",
               "contribution": 9
@@ -298821,6 +299045,131 @@
               "archangel": "raphael",
               "psalmNumber": 17,
               "psalmTitle": "Ton corps est un don précieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "parole",
+          "label": "Parole",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "terre",
+          "label": "Terre",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "ame",
+          "label": "Âme",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
               "themeAImportance": "central",
               "themeBImportance": "central",
               "contribution": 9
@@ -298878,6 +299227,31 @@
           ]
         },
         {
+          "themeId": "corps-instrument-de-service",
+          "label": "Corps instrument de service",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "guerison",
           "label": "Guérison",
           "score": 6,
@@ -298896,6 +299270,31 @@
               "archangel": "raphael",
               "psalmNumber": 17,
               "psalmTitle": "Ton corps est un don précieux",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage-universel-du-corps",
+          "label": "Langage universel du corps",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
               "themeAImportance": "important",
               "themeBImportance": "central",
               "contribution": 6
@@ -298923,6 +299322,31 @@
               "psalmTitle": "Stable comme la montagne, vivant comme l’arbre, aimant comme l’animal",
               "themeAImportance": "important",
               "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "organes-comme-intelligences",
+          "label": "Organes comme intelligences",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
               "contribution": 6
             }
           ]
@@ -298957,7 +299381,7 @@
     {
       "themeId": "microcosme-macrocosme",
       "label": "Microcosme et macrocosme",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -299112,6 +299536,31 @@
         {
           "themeId": "lumiere",
           "label": "Lumière",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "microcosme-et-macrocosme",
+          "label": "Microcosme et macrocosme",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -311471,7 +311920,7 @@
     {
       "themeId": "mort",
       "label": "Mort",
-      "connectionCount": 231,
+      "connectionCount": 230,
       "topConnections": [
         {
           "themeId": "vie",
@@ -349327,7 +349776,7 @@
     {
       "themeId": "organes-comme-intelligences",
       "label": "Organes comme intelligences",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -349482,6 +349931,31 @@
         {
           "themeId": "lumiere",
           "label": "Lumière",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "microcosme-et-macrocosme",
+          "label": "Microcosme et macrocosme",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -355660,7 +356134,7 @@
     {
       "themeId": "parole",
       "label": "Parole",
-      "connectionCount": 143,
+      "connectionCount": 144,
       "topConnections": [
         {
           "themeId": "vie",
@@ -450929,7 +451403,7 @@
       ]
     },
     {
-      "themeId": "royauté-interieure",
+      "themeId": "royaute-interieure",
       "label": "Royauté intérieure",
       "connectionCount": 2,
       "topConnections": [
@@ -451045,7 +451519,7 @@
     {
       "themeId": "sagesse",
       "label": "Sagesse",
-      "connectionCount": 479,
+      "connectionCount": 480,
       "topConnections": [
         {
           "themeId": "vie",
@@ -490788,7 +491262,7 @@
     {
       "themeId": "terre",
       "label": "Terre",
-      "connectionCount": 507,
+      "connectionCount": 508,
       "topConnections": [
         {
           "themeId": "vie",
@@ -542001,7 +542475,7 @@
     {
       "themeId": "vie",
       "label": "Vie",
-      "connectionCount": 643,
+      "connectionCount": 644,
       "topConnections": [
         {
           "themeId": "corps",

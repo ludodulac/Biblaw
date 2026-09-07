@@ -5,9 +5,9 @@
     "data/thematic-index/theme-directory.json"
   ],
   "semanticMerging": false,
-  "themeCount": 1251,
-  "aliasCount": 1343,
-  "ambiguousAliasCount": 9,
+  "themeCount": 1249,
+  "aliasCount": 1341,
+  "ambiguousAliasCount": 7,
   "themes": [
     {
       "themeId": "22-commandements",
@@ -3302,14 +3302,14 @@
       "observedLabels": [
         {
           "label": "Corps d’eau",
-          "count": 1
+          "count": 2
         }
       ],
       "normalizedAliases": [
         "corps d eau"
       ],
-      "occurrenceCount": 1,
-      "score": 3
+      "occurrenceCount": 2,
+      "score": 6
     },
     {
       "themeId": "corps-d-immortalite",
@@ -3317,14 +3317,14 @@
       "observedLabels": [
         {
           "label": "Corps d’immortalité",
-          "count": 7
+          "count": 8
         }
       ],
       "normalizedAliases": [
         "corps d immortalite"
       ],
-      "occurrenceCount": 7,
-      "score": 16
+      "occurrenceCount": 8,
+      "score": 18
     },
     {
       "themeId": "corps-de-conscience",
@@ -3535,38 +3535,6 @@
       ],
       "occurrenceCount": 5,
       "score": 13
-    },
-    {
-      "themeId": "corps-deau",
-      "canonicalLabel": "Corps d’eau",
-      "observedLabels": [
-        {
-          "label": "Corps d’eau",
-          "count": 1
-        }
-      ],
-      "normalizedAliases": [
-        "corps d eau",
-        "corps deau"
-      ],
-      "occurrenceCount": 1,
-      "score": 3
-    },
-    {
-      "themeId": "corps-dimmortalite",
-      "canonicalLabel": "Corps d’immortalité",
-      "observedLabels": [
-        {
-          "label": "Corps d’immortalité",
-          "count": 1
-        }
-      ],
-      "normalizedAliases": [
-        "corps d immortalite",
-        "corps dimmortalite"
-      ],
-      "occurrenceCount": 1,
-      "score": 2
     },
     {
       "themeId": "corps-du-christ",
@@ -10444,14 +10412,14 @@
       "observedLabels": [
         {
           "label": "Microcosme et macrocosme",
-          "count": 2
+          "count": 3
         }
       ],
       "normalizedAliases": [
         "microcosme et macrocosme"
       ],
-      "occurrenceCount": 2,
-      "score": 5
+      "occurrenceCount": 3,
+      "score": 8
     },
     {
       "themeId": "microcosme-macrocosme",
@@ -15481,7 +15449,7 @@
       "score": 4
     },
     {
-      "themeId": "royauté-interieure",
+      "themeId": "royaute-interieure",
       "canonicalLabel": "Royauté intérieure",
       "observedLabels": [
         {
@@ -21299,24 +21267,22 @@
     {
       "queryKey": "corps d eau",
       "themeIds": [
-        "corps-d-eau",
-        "corps-deau"
+        "corps-d-eau"
       ],
       "labels": [
         "Corps d’eau"
       ],
-      "ambiguous": true
+      "ambiguous": false
     },
     {
       "queryKey": "corps d immortalite",
       "themeIds": [
-        "corps-d-immortalite",
-        "corps-dimmortalite"
+        "corps-d-immortalite"
       ],
       "labels": [
         "Corps d’immortalité"
       ],
-      "ambiguous": true
+      "ambiguous": false
     },
     {
       "queryKey": "corps de conscience",
@@ -21456,22 +21422,6 @@
       "labels": [
         "Corps de sagesse"
       ],
-      "ambiguous": false
-    },
-    {
-      "queryKey": "corps deau",
-      "themeIds": [
-        "corps-deau"
-      ],
-      "labels": [],
-      "ambiguous": false
-    },
-    {
-      "queryKey": "corps dimmortalite",
-      "themeIds": [
-        "corps-dimmortalite"
-      ],
-      "labels": [],
       "ambiguous": false
     },
     {
@@ -29805,7 +29755,7 @@
       "queryKey": "royaute interieure",
       "themeIds": [
         "royaut-e-interieure",
-        "royauté-interieure"
+        "royaute-interieure"
       ],
       "labels": [
         "Royauté intérieure"

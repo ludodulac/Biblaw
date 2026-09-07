@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedFrom": "data/thematic-index/books/book-*.json",
   "manualEditingAllowed": false,
-  "themeCount": 1251,
+  "themeCount": 1249,
   "themes": [
     {
       "id": "vingt-deux-arcanas",
@@ -53380,20 +53380,47 @@
       "labelVariants": [
         {
           "label": "Corps d’eau",
-          "occurrenceCount": 1
+          "occurrenceCount": 2
         }
       ],
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
+      "score": 6,
+      "occurrenceCount": 2,
+      "centralPsalmCount": 2,
       "archangels": [
         {
           "id": "gabriel",
-          "score": 3,
-          "occurrenceCount": 1
+          "score": 6,
+          "occurrenceCount": 2
         }
       ],
       "topPsalms": [
+        {
+          "recordId": "book-10-psalm-072",
+          "bookNumber": 10,
+          "bookTitle": "S’approcher de la source de Gabriel",
+          "archangel": "gabriel",
+          "psalmNumber": 72,
+          "psalmTitle": "Soyez comme l’algue qui danse et enfante la L umière dans l’océan de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            17
+          ],
+          "teaching": "Le premier corps subtil autour du physique est décrit comme une eau où circulent influences, forces et intelligences ; l’homme peut apprendre à y devenir conscient et actif.",
+          "score": 3
+        },
         {
           "recordId": "book-22-psalm-149",
           "bookNumber": 22,
@@ -53428,6 +53455,33 @@
       ],
       "occurrences": [
         {
+          "recordId": "book-10-psalm-072",
+          "bookNumber": 10,
+          "bookTitle": "S’approcher de la source de Gabriel",
+          "archangel": "gabriel",
+          "psalmNumber": 72,
+          "psalmTitle": "Soyez comme l’algue qui danse et enfante la L umière dans l’océan de la vie",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            17
+          ],
+          "teaching": "Le premier corps subtil autour du physique est décrit comme une eau où circulent influences, forces et intelligences ; l’homme peut apprendre à y devenir conscient et actif.",
+          "score": 3
+        },
+        {
           "recordId": "book-22-psalm-149",
           "bookNumber": 22,
           "bookTitle": "Garder sa mémoire après la mort",
@@ -53456,85 +53510,6 @@
             24
           ],
           "teaching": "Le corps d’eau désigne le milieu subtil qui entoure et relie pensées, états d’âme, volontés et influences. Le psaume demande de l’aborder comme une dimension à percevoir et maîtriser progressivement, à partir d’un corps physique déjà stabilisé.",
-          "score": 3
-        }
-      ]
-    },
-    {
-      "id": "corps-deau",
-      "label": "Corps d’eau",
-      "labelSelection": "most-frequent-observed-label",
-      "labelVariants": [
-        {
-          "label": "Corps d’eau",
-          "occurrenceCount": 1
-        }
-      ],
-      "score": 3,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 1,
-      "archangels": [
-        {
-          "id": "gabriel",
-          "score": 3,
-          "occurrenceCount": 1
-        }
-      ],
-      "topPsalms": [
-        {
-          "recordId": "book-10-psalm-072",
-          "bookNumber": 10,
-          "bookTitle": "S’approcher de la source de Gabriel",
-          "archangel": "gabriel",
-          "psalmNumber": 72,
-          "psalmTitle": "Soyez comme l’algue qui danse et enfante la L umière dans l’océan de la vie",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            7,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            17
-          ],
-          "teaching": "Le premier corps subtil autour du physique est décrit comme une eau où circulent influences, forces et intelligences ; l’homme peut apprendre à y devenir conscient et actif.",
-          "score": 3
-        }
-      ],
-      "occurrences": [
-        {
-          "recordId": "book-10-psalm-072",
-          "bookNumber": 10,
-          "bookTitle": "S’approcher de la source de Gabriel",
-          "archangel": "gabriel",
-          "psalmNumber": 72,
-          "psalmTitle": "Soyez comme l’algue qui danse et enfante la L umière dans l’océan de la vie",
-          "importance": "central",
-          "directness": "direct",
-          "verseNumbers": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            7,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            17
-          ],
-          "teaching": "Le premier corps subtil autour du physique est décrit comme une eau où circulent influences, forces et intelligences ; l’homme peut apprendre à y devenir conscient et actif.",
           "score": 3
         }
       ]
@@ -53546,20 +53521,20 @@
       "labelVariants": [
         {
           "label": "Corps d’immortalité",
-          "occurrenceCount": 7
+          "occurrenceCount": 8
         }
       ],
-      "score": 16,
-      "occurrenceCount": 7,
+      "score": 18,
+      "occurrenceCount": 8,
       "centralPsalmCount": 2,
       "archangels": [
         {
-          "id": "gabriel",
-          "score": 7,
-          "occurrenceCount": 3
+          "id": "raphael",
+          "score": 9,
+          "occurrenceCount": 4
         },
         {
-          "id": "raphael",
+          "id": "gabriel",
           "score": 7,
           "occurrenceCount": 3
         },
@@ -53613,6 +53588,23 @@
           "score": 3
         },
         {
+          "recordId": "book-03-psalm-005",
+          "bookNumber": 3,
+          "bookTitle": "Respire avec les Anges",
+          "archangel": "raphael",
+          "psalmNumber": 5,
+          "psalmTitle": "De la peur de la mort à la vie éternelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16,
+            17,
+            19
+          ],
+          "teaching": "La vie quotidienne peut former un corps d'immortalité lorsque pensée, volonté et œuvre sont reliées à l'éternité.",
+          "score": 2
+        },
+        {
           "recordId": "book-19-psalm-106",
           "bookNumber": 19,
           "bookTitle": "Le secret de la pensée angélique",
@@ -53754,6 +53746,23 @@
           "score": 3
         },
         {
+          "recordId": "book-03-psalm-005",
+          "bookNumber": 3,
+          "bookTitle": "Respire avec les Anges",
+          "archangel": "raphael",
+          "psalmNumber": 5,
+          "psalmTitle": "De la peur de la mort à la vie éternelle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16,
+            17,
+            19
+          ],
+          "teaching": "La vie quotidienne peut former un corps d'immortalité lorsque pensée, volonté et œuvre sont reliées à l'éternité.",
+          "score": 2
+        },
+        {
           "recordId": "book-19-psalm-106",
           "bookNumber": 19,
           "bookTitle": "Le secret de la pensée angélique",
@@ -53848,65 +53857,6 @@
             27
           ],
           "teaching": "Le cercle d’étude et les quatre pratiques sont reliés à la formation d’un corps destiné à traverser le voile de la mort. Ce corps doit être préparé par l’action, la discipline et l’intégration progressive de l’Enseignement.",
-          "score": 2
-        }
-      ]
-    },
-    {
-      "id": "corps-dimmortalite",
-      "label": "Corps d’immortalité",
-      "labelSelection": "most-frequent-observed-label",
-      "labelVariants": [
-        {
-          "label": "Corps d’immortalité",
-          "occurrenceCount": 1
-        }
-      ],
-      "score": 2,
-      "occurrenceCount": 1,
-      "centralPsalmCount": 0,
-      "archangels": [
-        {
-          "id": "raphael",
-          "score": 2,
-          "occurrenceCount": 1
-        }
-      ],
-      "topPsalms": [
-        {
-          "recordId": "book-03-psalm-005",
-          "bookNumber": 3,
-          "bookTitle": "Respire avec les Anges",
-          "archangel": "raphael",
-          "psalmNumber": 5,
-          "psalmTitle": "De la peur de la mort à la vie éternelle",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            16,
-            17,
-            19
-          ],
-          "teaching": "La vie quotidienne peut former un corps d'immortalité lorsque pensée, volonté et œuvre sont reliées à l'éternité.",
-          "score": 2
-        }
-      ],
-      "occurrences": [
-        {
-          "recordId": "book-03-psalm-005",
-          "bookNumber": 3,
-          "bookTitle": "Respire avec les Anges",
-          "archangel": "raphael",
-          "psalmNumber": 5,
-          "psalmTitle": "De la peur de la mort à la vie éternelle",
-          "importance": "important",
-          "directness": "direct",
-          "verseNumbers": [
-            16,
-            17,
-            19
-          ],
-          "teaching": "La vie quotidienne peut former un corps d'immortalité lorsque pensée, volonté et œuvre sont reliées à l'éternité.",
           "score": 2
         }
       ]
@@ -138152,21 +138102,21 @@
       "labelVariants": [
         {
           "label": "Microcosme et macrocosme",
-          "occurrenceCount": 2
+          "occurrenceCount": 3
         }
       ],
-      "score": 5,
-      "occurrenceCount": 2,
-      "centralPsalmCount": 1,
+      "score": 8,
+      "occurrenceCount": 3,
+      "centralPsalmCount": 2,
       "archangels": [
+        {
+          "id": "ouriel",
+          "score": 5,
+          "occurrenceCount": 2
+        },
         {
           "id": "raphael",
           "score": 3,
-          "occurrenceCount": 1
-        },
-        {
-          "id": "ouriel",
-          "score": 2,
           "occurrenceCount": 1
         }
       ],
@@ -138189,6 +138139,28 @@
             7
           ],
           "teaching": "L'homme fait partie d'un organisme cosmique et porte en lui l'infiniment grand sous forme d'organes et de règnes correspondants.",
+          "score": 3
+        },
+        {
+          "recordId": "book-20-psalm-121",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 121,
+          "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            6,
+            7,
+            11,
+            12,
+            21,
+            32
+          ],
+          "teaching": "L’homme est décrit comme un microcosme du macrocosme : chaque organe correspond à une intelligence ou à une partie de l’univers. La connaissance de soi devient ainsi, dans le texte, un chemin de lecture des relations entre l’homme et les mondes.",
           "score": 3
         },
         {
@@ -138231,6 +138203,28 @@
             7
           ],
           "teaching": "L'homme fait partie d'un organisme cosmique et porte en lui l'infiniment grand sous forme d'organes et de règnes correspondants.",
+          "score": 3
+        },
+        {
+          "recordId": "book-20-psalm-121",
+          "bookNumber": 20,
+          "bookTitle": "Aux portes de la Terre promise",
+          "archangel": "ouriel",
+          "psalmNumber": 121,
+          "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+          "importance": "central",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            5,
+            6,
+            7,
+            11,
+            12,
+            21,
+            32
+          ],
+          "teaching": "L’homme est décrit comme un microcosme du macrocosme : chaque organe correspond à une intelligence ou à une partie de l’univers. La connaissance de soi devient ainsi, dans le texte, un chemin de lecture des relations entre l’homme et les mondes.",
           "score": 3
         },
         {
@@ -198747,7 +198741,7 @@
       ]
     },
     {
-      "id": "royauté-interieure",
+      "id": "royaute-interieure",
       "label": "Royauté intérieure",
       "labelSelection": "most-frequent-observed-label",
       "labelVariants": [
