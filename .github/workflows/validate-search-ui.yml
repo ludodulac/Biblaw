@@ -15,6 +15,7 @@ on:
       - 'scripts/build_browser_search_catalog.py'
       - 'scripts/audit_production_search_queries.py'
       - 'scripts/audit_assembly_theme_context.py'
+      - 'scripts/audit_psalm_number_search.py'
       - '.github/workflows/validate-search-ui.yml'
 
 jobs:
@@ -45,9 +46,10 @@ jobs:
           assert not missing, f'missing DOM ids: {missing}'
           assert 'id="bookFilter"' not in html and 'bookFilter' not in js
           assert 'value="chouette"' not in html and 'id="query" type="search" value=""' in html
+          assert 'numéro de psaume' in html.lower()
           assert 'value="psalm" checked' in html
           for value in ('prayer','note','annex'): assert f'value="{value}" checked' not in html
-          for needle in ('themesByRecord','function contextualVerses','Passage concerné','Thèmes également présents dans ce psaume','Thèmes présents dans ce psaume','dialog-themes','data-related-theme','classés Central, Important, puis Lié','const importanceRank','function exactVerses','const highlighted','const textFragments','const literalIncludes','const literalTextMatch','const stripLeadingArticle','const themeQueryForms','const activateThemeMode','function navigateToTheme(theme)','unresolvedTheme:true','Aucun thème indexé ne correspond à cette recherche','function textualPsalmMatches','Deux lectures de cette recherche','data-show-text-search','const ambiguous=resolvedThemes.length>1','const labelCounts=new Map()','const duplicateLabel='):
+          for needle in ('themesByRecord','function contextualVerses','Passage concerné','Thèmes également présents dans ce psaume','Thèmes présents dans ce psaume','dialog-themes','data-related-theme','classés Central, Important, puis Lié','const importanceRank','function exactVerses','const highlighted','const textFragments','const literalIncludes','const literalTextMatch','const stripLeadingArticle','const themeQueryForms','const activateThemeMode','function navigateToTheme(theme)','unresolvedTheme:true','Aucun thème indexé ne correspond à cette recherche','function textualPsalmMatches','Deux lectures de cette recherche','data-show-text-search','const ambiguous=resolvedThemes.length>1','const labelCounts=new Map()','const duplicateLabel=','const parsePsalmNumberQuery','function psalmNumberMatches(number)'):
               assert needle in js, needle
           assert '.theme-context' in css and '.related-themes' in css and '.search-hit' in css
           assert "{ central: 0, important: 1, related: 2 }" in js
@@ -107,3 +109,5 @@ jobs:
         run: python scripts/audit_production_search_queries.py
       - name: Audit assembly editorial context
         run: python scripts/audit_assembly_theme_context.py
+      - name: Audit psalm number search
+        run: python scripts/audit_psalm_number_search.py
