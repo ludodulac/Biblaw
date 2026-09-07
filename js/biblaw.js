@@ -23,6 +23,12 @@
     return ` ${norm(value)} `.includes(` ${needle} `);
   };
   const literalTextMatch = (r, query) => textFragments(r).some(fragment => literalIncludes(fragment, query));
+  const parsePsalmNumberQuery = value => {
+    const match=norm(value).match(/^(?:psaume\s+)?([0-9]{1,4})$/);
+    if(!match)return null;
+    const number=Number(match[1]);
+    return Number.isInteger(number)&&number>0?number:null;
+  };
   const selectedTypes = () => new Set([...document.querySelectorAll('[name=sourceType]:checked')].map(x => x.value));
   const archangelName = value => ({ michael: 'Michaël', gabriel: 'Gabriel', raphael: 'Raphaël', ouriel: 'Ouriel' }[value] || value || '');
   const label = r => r.recordType === 'psalm' ? `Psaume ${r.number} · ${archangelName(r.archangel)}` : r.recordType === 'master-prayer' ? `Prière ${r.number} · ${archangelName(r.archangel)}` : `Note · ${archangelName(r.archangel)}`;
@@ -67,6 +73,14 @@
   function matches(query) {
     const allowed = selectedTypes(), a = $('archangelFilter').value;
     return state.records.filter(r => allowed.has(type(r)) && (!a || r.archangel === a) && literalTextMatch(r, query)).map(record => ({ record, score: 1 }));
+  }
+  function psalmNumberMatches(number) {
+    if(!selectedTypes().has('psalm'))return [];
+    const a=$('archangelFilter').value;
+    return state.records
+      .filter(r=>r.recordType==='psalm'&&Number(r.number)===number&&(!a||r.archangel===a))
+      .sort((x,y)=>(x.book?.number||9999)-(y.book?.number||9999)||String(x.id).localeCompare(String(y.id),'fr'))
+      .map(record=>({record,score:1,numberLookup:true}));
   }
   function textualPsalmMatches(query) {
     return matches(query).filter(x=>x.record.recordType==='psalm');
@@ -134,6 +148,11 @@
   function search(){
     const query=$('query').value.trim();
     if(!query){$('ambiguityPanel').hidden=true;return render([]);}
+    const psalmNumber=parsePsalmNumberQuery(query);
+    if(psalmNumber!==null){
+      $('ambiguityPanel').hidden=true;
+      return render(psalmNumberMatches(psalmNumber),null,{numberLookup:true,psalmNumber});
+    }
     if(state.mode==='themes'){
       const resolved=resolveIndexedThemes(query);
       if(resolved.length){
@@ -177,15 +196,22 @@
   }
   function render(items,indexedThemes=null,companion=null){
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
-    $('resultCount').textContent=themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:`${items.length} résultat${items.length>1?'s':''}`;
+    $('resultCount').textContent=companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:`${items.length} résultat${items.length>1?'s':''}`;
     const textualNotice=themeLabels.length&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>Deux lectures de cette recherche</strong><span>${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous ce thème · le mot ou l’expression apparaît dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.</span></div><button class="secondary" data-show-text-search>Voir les occurrences textuelles</button></div>`:'';
     const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><div><strong>Aucun thème indexé ne correspond à cette recherche</strong><span>${companion.textualCount>0?`Le mot ou l’expression apparaît néanmoins dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.`:'Aucune occurrence textuelle exacte ne correspond non plus avec les filtres sélectionnés.'}</span></div>${companion.textualCount>0?'<button class="secondary" data-show-text-search>Voir les occurrences textuelles</button>':''}</div>`:'';
-    if(!items.length){$('results').innerHTML=unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return;}
-    $('results').innerHTML=textualNotice+items.map(({record:r,thematic,matchedThemes})=>{
-      const pages=recordPages(r),meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:(pages.length?`Page${pages.length>1?'s ': ' '}${pages.join('–')}`:'Référence structurée'),description=thematic?.teaching||summary(r),related=thematic?relatedThemes(r,matchedThemes):[];
+    if(!items.length){
+      const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:'';
+      $('results').innerHTML=emptyNumber||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return;
+    }
+    $('results').innerHTML=textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup})=>{
+      const pages=recordPages(r);
+      const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'';
+      const pageMeta=pages.length?`Page${pages.length>1?'s ': ' '}${pages.join('–')}`:'Référence structurée';
+      const meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:numberLookup?[bookMeta,pageMeta].filter(Boolean).join(' · '):pageMeta;
+      const description=thematic?.teaching||summary(r),related=thematic?relatedThemes(r,matchedThemes):[];
       const relatedBlock=thematic?`<div class="related-themes"><div class="context-label">Thèmes également présents dans ce psaume</div>${themeTags(related)}</div>`:'';
-      const exactBlock=!thematic?exactVerses(r):'';
-      return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${highlighted(r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'))}</h3></div><strong class="score">${esc(thematic?importanceLabel(thematic.importance):'Texte')}</strong></div><div class="result-meta">${esc(meta)}</div>${thematic?`<div class="context-label theme-found">${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div>`:''}<p class="result-summary">${highlighted(description)}</p>${thematic?contextualVerses(r,thematic):exactBlock}${relatedBlock}<div class="result-actions">${r.recordType==='psalm'?`<a class="secondary" href="Bible%20ess%C3%A9nienne%20(class%C3%A9e%20par%20livres).pdf#page=${pages[0]||1}" target="_blank">Voir dans le PDF</a>`:''}<button class="primary" data-open="${esc(r.id)}">Consulter</button></div></article>`;
+      const exactBlock=!thematic&&!numberLookup?exactVerses(r):'';
+      return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${highlighted(r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'))}</h3></div><strong class="score">${esc(thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':'Texte')}</strong></div><div class="result-meta">${esc(meta)}</div>${thematic?`<div class="context-label theme-found">${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div>`:''}<p class="result-summary">${highlighted(description)}</p>${thematic?contextualVerses(r,thematic):exactBlock}${relatedBlock}<div class="result-actions">${r.recordType==='psalm'?`<a class="secondary" href="Bible%20ess%C3%A9nienne%20(class%C3%A9e%20par%20livres).pdf#page=${pages[0]||1}" target="_blank">Voir dans le PDF</a>`:''}<button class="primary" data-open="${esc(r.id)}">Consulter</button></div></article>`;
     }).join('');
     document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>open(b.dataset.open));
     bindThemeLinks($('results'));
