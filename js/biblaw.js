@@ -3,6 +3,11 @@
   const state = { mode: 'themes', records: [], themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, active: null, resolvedThemes: [] };
   const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[’']/g, ' ').replace(/[^a-z0-9\s-]/g, ' ').replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
   const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  const queryTerms = () => new Set(norm($('query').value).split(' ').filter(Boolean));
+  const highlighted = value => {
+    const terms=queryTerms(); if(!terms.size)return esc(value);
+    return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>terms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join('');
+  };
   const type = r => r.recordType === 'master-prayer' ? 'prayer' : r.recordType;
   const text = r => [r.title, r.summary, r.text, ...(r.verses || []).map(v => v.text), ...(r.conceptIds || [])].filter(Boolean).join(' ');
   const selectedTypes = () => new Set([...document.querySelectorAll('[name=sourceType]:checked')].map(x => x.value));
@@ -84,7 +89,14 @@
     const wanted=new Set(thematic.verseNumbers.map(Number));
     const chosen=r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4);
     if(!chosen.length)return'';
-    return `<div class="theme-context"><div class="context-label">Passage concerné</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${esc(v.text)}</span></div>`).join('')}</div>`;
+    return `<div class="theme-context"><div class="context-label">Passage concerné</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`;
+  }
+  function exactVerses(r){
+    if(r.recordType!=='psalm'||!r.verses?.length)return'';
+    const terms=[...queryTerms()]; if(!terms.length)return'';
+    const chosen=r.verses.filter(v=>terms.some(t=>norm(v.text).includes(t))).slice(0,4);
+    if(!chosen.length)return'';
+    return `<div class="theme-context exact-context"><div class="context-label">Passage${chosen.length>1?'s':''} où la recherche apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`;
   }
   function relatedThemes(r,matchedThemes){
     const matched=new Set((matchedThemes||[]).map(x=>x.id));
@@ -104,7 +116,8 @@
     $('results').innerHTML=items.map(({record:r,thematic,matchedThemes})=>{
       const pages=recordPages(r),meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:(pages.length?`Page${pages.length>1?'s ': ' '}${pages.join('–')}`:'Référence structurée'),description=thematic?.teaching||summary(r),related=thematic?relatedThemes(r,matchedThemes):[];
       const relatedBlock=thematic?`<div class="related-themes"><div class="context-label">Thèmes également présents dans ce psaume</div>${themeTags(related)}</div>`:'';
-      return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${esc(r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'))}</h3></div><strong class="score">${esc(thematic?importanceLabel(thematic.importance):'Texte')}</strong></div><div class="result-meta">${esc(meta)}</div>${thematic?`<div class="context-label theme-found">${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div>`:''}<p class="result-summary">${esc(description)}</p>${contextualVerses(r,thematic)}${relatedBlock}<div class="result-actions">${r.recordType==='psalm'?`<a class="secondary" href="Bible%20ess%C3%A9nienne%20(class%C3%A9e%20par%20livres).pdf#page=${pages[0]||1}" target="_blank">Voir dans le PDF</a>`:''}<button class="primary" data-open="${esc(r.id)}">Consulter</button></div></article>`;
+      const exactBlock=!thematic?exactVerses(r):'';
+      return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${highlighted(r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'))}</h3></div><strong class="score">${esc(thematic?importanceLabel(thematic.importance):'Texte')}</strong></div><div class="result-meta">${esc(meta)}</div>${thematic?`<div class="context-label theme-found">${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div>`:''}<p class="result-summary">${highlighted(description)}</p>${thematic?contextualVerses(r,thematic):exactBlock}${relatedBlock}<div class="result-actions">${r.recordType==='psalm'?`<a class="secondary" href="Bible%20ess%C3%A9nienne%20(class%C3%A9e%20par%20livres).pdf#page=${pages[0]||1}" target="_blank">Voir dans le PDF</a>`:''}<button class="primary" data-open="${esc(r.id)}">Consulter</button></div></article>`;
     }).join('');
     document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>open(b.dataset.open));
     bindThemeLinks($('results'));
@@ -113,11 +126,11 @@
     const r=state.records.find(x=>x.id===id);if(!r)return;state.active=r;
     $('dialogEyebrow').textContent=label(r);$('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
     if(r.recordType==='psalm'){
-      const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${esc(v.text)}</div></div>`).join('');
+      const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${highlighted(v.text)}</div></div>`).join('');
       const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`;
-      $('dialogContent').innerHTML=verses+(r.attachedPrayer?`<section class="prayer-block"><h3>Prière ${r.attachedPrayer.number}</h3>${esc(r.attachedPrayer.text)}</section>`:'')+themesBlock;
+      $('dialogContent').innerHTML=verses+(r.attachedPrayer?`<section class="prayer-block"><h3>Prière ${r.attachedPrayer.number}</h3>${highlighted(r.attachedPrayer.text)}</section>`:'')+themesBlock;
       bindThemeLinks($('dialogContent'));
-    } else $('dialogContent').innerHTML=`<div class="prayer-block">${esc(r.text||r.summary||'')}</div>`;
+    } else $('dialogContent').innerHTML=`<div class="prayer-block">${highlighted(r.text||r.summary||'')}</div>`;
     $('recordDialog').showModal();
   }
   function activeText(){const r=state.active;if(!r)return'';let out=`${r.title||`Prière ${r.number}`}\n\n`;out+=r.verses?r.verses.map(v=>`${v.number}. ${v.text}`).join('\n'):r.text||r.summary||'';return out;}
