@@ -80,9 +80,12 @@ jobs:
           assert 'Deux lectures de cette recherche' in js
           assert 'data-show-text-search' in js
           assert "$('modeExact').click()" in js
-          # Ambiguous aliases must remain explicit choices in the thematic UI, never silently collapse to one theme.
+          # Ambiguous aliases must remain explicit choices and identical labels must be distinguishable.
           assert "const ambiguous=resolvedThemes.length>1" in js
-          assert "if(ambiguous) for(const theme of resolvedThemes) choices.push" in js
+          assert 'const labelCounts=new Map()' in js
+          assert 'const duplicateLabel=' in js
+          assert 'theme.occurrenceCount||theme.occurrences?.length||0' in js
+          assert 'thème ${theme.id}' in js
           assert "ambiguous?'Correspondances multiples':'Navigation transversale'" in js
           def norm(value):
               value=''.join(c for c in unicodedata.normalize('NFD', str(value or '')) if unicodedata.category(c)!='Mn').lower().replace('œ','oe').replace('æ','ae').replace('’',' ').replace("'",' ')
