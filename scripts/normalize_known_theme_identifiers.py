@@ -5,6 +5,8 @@ This script does NOT infer semantic equivalence. Every mapping below was reviewe
 corpus-internal Psalm contexts, verse anchors and teachings. It changes identifiers only;
 labels, importance, directness, verseNumbers and teaching remain untouched.
 
+If normalization makes two relations share one id inside the same Psalm, one is removed only
+when the complete relations are otherwise identical. Any non-identical collision fails loudly.
 Use --check in CI to fail if a reviewed legacy identifier is reintroduced.
 """
 from __future__ import annotations
@@ -33,8 +35,7 @@ EXPECTED_LABEL = {
 }
 
 
-def validate_book(path: Path) -> None:
-    data = json.loads(path.read_text(encoding="utf-8"))
+def validate_data(data: dict, path: Path) -> None:
     for psalm in data.get("psalmAnalyses", []):
         seen: set[str] = set()
         for rel in psalm.get("themes", []):
@@ -51,10 +52,45 @@ def validate_book(path: Path) -> None:
             if theme_id:
                 if theme_id in seen:
                     raise AssertionError(
-                        f"duplicate themeId {theme_id} in one Psalm after normalization: "
+                        f"duplicate themeId {theme_id} in one Psalm: "
                         f"{path.name} / {psalm.get('recordId')}"
                     )
                 seen.add(theme_id)
+
+
+def normalize_data(data: dict, path: Path) -> tuple[int, int]:
+    replacements = 0
+    duplicates_removed = 0
+
+    for psalm in data.get("psalmAnalyses", []):
+        normalized: list[dict] = []
+        by_id: dict[str, dict] = {}
+        for original_rel in psalm.get("themes", []):
+            rel = dict(original_rel)
+            old_id = rel.get("themeId")
+            new_id = LEGACY_TO_CANONICAL.get(old_id, old_id)
+            if new_id != old_id:
+                rel["themeId"] = new_id
+                replacements += 1
+
+            if new_id and new_id in by_id:
+                existing = by_id[new_id]
+                if existing == rel:
+                    duplicates_removed += 1
+                    continue
+                raise AssertionError(
+                    "non-identical relations would collide during reviewed id normalization: "
+                    f"{path.name} / {psalm.get('recordId')} / {new_id}"
+                )
+
+            normalized.append(rel)
+            if new_id:
+                by_id[new_id] = rel
+
+        psalm["themes"] = normalized
+
+    validate_data(data, path)
+    return replacements, duplicates_removed
 
 
 def main() -> None:
@@ -64,40 +100,29 @@ def main() -> None:
 
     changed_files: list[str] = []
     replacements = 0
+    duplicates_removed = 0
 
     for path in sorted(BOOKS.glob("book-*.json")):
-        text = path.read_text(encoding="utf-8")
-        original = text
-        found_legacy: list[str] = []
-        for legacy, canonical in LEGACY_TO_CANONICAL.items():
-            needle = f'"themeId": "{legacy}"'
-            count = text.count(needle)
-            if not count:
-                continue
-            found_legacy.extend([legacy] * count)
-            if not args.check:
-                text = text.replace(needle, f'"themeId": "{canonical}"')
-                replacements += count
+        original = path.read_text(encoding="utf-8")
+        data = json.loads(original)
 
-        if args.check and found_legacy:
-            raise AssertionError(
-                f"reviewed legacy theme ids in {path.name}: {', '.join(found_legacy)}"
-            )
+        if args.check:
+            validate_data(data, path)
+            continue
 
-        if text != original:
-            path.write_text(text, encoding="utf-8")
+        file_replacements, file_duplicates = normalize_data(data, path)
+        replacements += file_replacements
+        duplicates_removed += file_duplicates
+        if file_replacements or file_duplicates:
+            path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             changed_files.append(path.name)
 
-        if not args.check:
-            validate_book(path)
-
     if args.check:
-        for path in sorted(BOOKS.glob("book-*.json")):
-            validate_book(path)
         print("Known theme identifier guard OK: no reviewed legacy identifiers remain")
     else:
         print(
             f"Known theme identifier normalization: replacements={replacements}, "
+            f"identicalDuplicatesRemoved={duplicates_removed}, "
             f"changedFiles={len(changed_files)} {changed_files}"
         )
 
