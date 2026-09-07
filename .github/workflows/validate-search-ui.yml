@@ -1,0 +1,42 @@
+name: Validate thematic search UI
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'index.html'
+      - 'js/biblaw.js'
+      - 'data/thematic-index/theme-directory.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - '.github/workflows/validate-search-ui.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check browser JavaScript syntax
+        run: node --check js/biblaw.js
+      - name: Check thematic runtime contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('.')
+          runtime=json.loads((root/'data/thematic-index/theme-search-runtime.json').read_text(encoding='utf-8'))
+          directory=json.loads((root/'data/thematic-index/theme-directory.json').read_text(encoding='utf-8'))
+          assert runtime['semanticMerging'] is False
+          assert runtime['connectionMeaning']=='psalm-cooccurrence-only'
+          assert runtime['themeCount']==directory['themeCount']
+          assert runtime['aliasCount']==len(runtime['aliases'])
+          canonical={t['id'] for t in directory['themes']}
+          assert set(runtime['neighbors']) <= canonical
+          for alias in runtime['aliases'].values():
+              assert set(alias['themeIds']) <= canonical
+              assert alias['ambiguous'] == (len(alias['themeIds']) > 1)
+          for tid, links in runtime['neighbors'].items():
+              assert tid in canonical
+              assert len(links) <= runtime['topNeighborsPerTheme']
+              assert all(link['themeId'] in canonical and link['themeId'] != tid for link in links)
+          print(f"Search UI contract OK: {runtime['themeCount']} themes, {runtime['aliasCount']} aliases")
+          PY
