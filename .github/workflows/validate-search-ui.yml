@@ -55,6 +55,14 @@ jobs:
           assert '<mark class="search-hit">' in js
           assert 'Passage${chosen.length>1' in js
           assert '.search-hit' in css
+          # Text search is literal: phrases must be contiguous, word-bounded and based on displayed corpus text, not semantic IDs.
+          assert 'const textFragments' in js
+          assert 'const literalIncludes' in js
+          assert 'const literalTextMatch' in js
+          assert 'literalIncludes(v.text,query)' in js
+          assert '...(r.conceptIds || [])' not in js
+          assert 'terms.filter' not in js
+          assert 'Recherche un mot ou une expression dans le texte du corpus.' in js
           # French leading articles are a query convenience only; canonical theme IDs are untouched.
           assert 'const stripLeadingArticle' in js
           assert 'const themeQueryForms' in js
@@ -68,6 +76,9 @@ jobs:
           def norm(value):
               value=''.join(c for c in unicodedata.normalize('NFD', str(value or '')) if unicodedata.category(c)!='Mn').lower().replace('œ','oe').replace('æ','ae').replace('’',' ').replace("'",' ')
               return re.sub(r'\s+',' ',re.sub(r'[^a-z0-9\s-]',' ',value).replace('-',' ')).strip()
+          def literal_contains(value, query):
+              needle=norm(query)
+              return bool(needle) and f' {needle} ' in f' {norm(value)} '
           def forms(value):
               q=norm(value)
               parts=q.split()
@@ -78,20 +89,28 @@ jobs:
           assert forms('la sainte assemblée') == ['la sainte assemblee','sainte assemblee']
           assert forms('sainte assemblée') == ['sainte assemblee']
           assert forms('assemblée')[-1] != forms('sainte assemblée')[-1], 'distinct themes must remain distinct'
+          assert literal_contains('Alliance de lumière.', 'alliance de lumière')
+          assert not literal_contains('Alliance dans la lumière.', 'alliance de lumière')
+          assert literal_contains('Dieu', 'dieu')
+          assert not literal_contains('dieux', 'dieu')
           bundle=json.loads(Path('data/browser-search-catalog.json').read_text(encoding='utf-8'))
           assert bundle['purpose']=='browser-search-corpus-bundle'
           assert bundle['recordCount']==len(bundle['records'])
           assert bundle['recordCount'] > 1000
           psalms=[r for r in bundle['records'] if r.get('recordType')=='psalm']
           assert len(psalms) >= 1150
-          def searchable(r):
-              return norm(' '.join([str(r.get('title','')),str(r.get('summary','')),str(r.get('text',''))]+[str(v.get('text','')) for v in r.get('verses',[])]))
+          def psalm_fragments(r):
+              return [str(r.get('title',''))]+[str(v.get('text','')) for v in r.get('verses',[])]
+          def literal_psalm_match(r, query):
+              return any(literal_contains(fragment, query) for fragment in psalm_fragments(r))
           counts={}
-          for query in ('dieu','lumiere','alliance'):
-              count=sum(query in searchable(r) for r in psalms)
+          audit_queries=('dieu','alliance','alliance de lumière','lumière','assemblée','l’assemblée','sainte assemblée','la sainte assemblée','argent','chouette','abeille','22 commandements')
+          for query in audit_queries:
+              count=sum(literal_psalm_match(r, query) for r in psalms)
               counts[query]=count
-              assert count > 0, f'no textual results for {query}'
-              print(f'Smoke query {query}: {count} psalms')
+              print(f'Literal smoke query {query}: {count} psalms')
+          for query in ('dieu','lumière','alliance'):
+              assert counts[query] > 0, f'no literal results for {query}'
           assert counts['dieu'] > 1, 'Dieu should have multiple literal psalm occurrences; thematic UI must expose the textual route'
           print(f"Browser search bundle OK: {bundle['recordCount']} records, {len(psalms)} psalms")
           PY
