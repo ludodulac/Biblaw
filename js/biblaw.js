@@ -126,6 +126,8 @@
         return render(thematic,resolved,{textualCount:textual.length});
       }
       $('ambiguityPanel').hidden=true;
+      const textual=textualPsalmMatches(query);
+      return render([],[],{textualCount:textual.length,unresolvedTheme:true});
     }
     render(matches(query).sort((a,b)=>b.score-a.score));
   }
@@ -161,7 +163,8 @@
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
     $('resultCount').textContent=themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:`${items.length} résultat${items.length>1?'s':''}`;
     const textualNotice=themeLabels.length&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>Deux lectures de cette recherche</strong><span>${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous ce thème · le mot ou l’expression apparaît dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.</span></div><button class="secondary" data-show-text-search>Voir les occurrences textuelles</button></div>`:'';
-    if(!items.length){$('results').innerHTML=textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>';bindTextSearchLink();return;}
+    const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><div><strong>Aucun thème indexé ne correspond à cette recherche</strong><span>${companion.textualCount>0?`Le mot ou l’expression apparaît néanmoins dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.`:'Aucune occurrence textuelle exacte ne correspond non plus avec les filtres sélectionnés.'}</span></div>${companion.textualCount>0?'<button class="secondary" data-show-text-search>Voir les occurrences textuelles</button>':''}</div>`:'';
+    if(!items.length){$('results').innerHTML=unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return;}
     $('results').innerHTML=textualNotice+items.map(({record:r,thematic,matchedThemes})=>{
       const pages=recordPages(r),meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:(pages.length?`Page${pages.length>1?'s ': ' '}${pages.join('–')}`:'Référence structurée'),description=thematic?.teaching||summary(r),related=thematic?relatedThemes(r,matchedThemes):[];
       const relatedBlock=thematic?`<div class="related-themes"><div class="context-label">Thèmes également présents dans ce psaume</div>${themeTags(related)}</div>`:'';
