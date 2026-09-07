@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the production search contract without changing canonical semantics.
-
-This script mirrors the browser's deterministic query resolution for the passation
-smoke queries. It reports thematic candidates, indexed psalm counts, importance
-levels, support metadata, literal psalm counts and thematic coverage. Ambiguous
-aliases are reported as such and are never collapsed.
-"""
+"""Audit the production search contract without changing canonical semantics."""
 
 from __future__ import annotations
 
@@ -18,30 +12,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "thematic-index"
 BOOKS = INDEX / "books"
+SOURCE_PACKS = INDEX / "source-packs"
 QUERIES = (
-    "Dieu",
-    "alliance",
-    "alliance de lumière",
-    "lumière",
-    "assemblée",
-    "l’assemblée",
-    "sainte assemblée",
-    "la sainte assemblée",
-    "argent",
-    "chouette",
-    "abeille",
-    "22 commandements",
+    "Dieu", "alliance", "alliance de lumière", "lumière",
+    "assemblée", "l’assemblée", "sainte assemblée", "la sainte assemblée",
+    "argent", "chouette", "abeille", "22 commandements",
 )
 ARTICLES = {"l", "le", "la", "les", "un", "une", "des"}
 IMPORTANCE_RANK = {"central": 0, "important": 1, "related": 2}
 
 
 def norm(value: object) -> str:
-    text = "".join(
-        c
-        for c in unicodedata.normalize("NFD", str(value or ""))
-        if unicodedata.category(c) != "Mn"
-    ).lower()
+    text = "".join(c for c in unicodedata.normalize("NFD", str(value or "")) if unicodedata.category(c) != "Mn").lower()
     text = text.replace("œ", "oe").replace("æ", "ae").replace("’", " ").replace("'", " ")
     text = re.sub(r"[^a-z0-9\s-]", " ", text).replace("-", " ")
     return re.sub(r"\s+", " ", text).strip()
@@ -75,28 +57,54 @@ def resolve(query: str, runtime: dict, themes: list[dict], by_id: dict[str, dict
     return ("fuzzy", fuzzy[:1]) if fuzzy else ("none", [])
 
 
-def editorial_theme_matches(term: str) -> list[dict]:
-    needle = norm(term)
-    matches = []
+def load_editorial_analyses() -> tuple[dict[str, dict], Counter]:
+    analyses: dict[str, dict] = {}
+    relation_pairs: Counter = Counter()
     for path in sorted(BOOKS.glob("book-*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         book = data.get("book", {})
         for psalm in data.get("psalmAnalyses", []):
+            rid = psalm.get("recordId")
+            if not rid:
+                continue
+            analyses[rid] = {"file": path.name, "book": book, "analysis": psalm}
             for rel in psalm.get("themes", []):
-                label = rel.get("label", "")
-                theme_id = rel.get("themeId", "")
-                if needle in norm(label) or needle in norm(theme_id):
-                    matches.append({
-                        "file": path.name,
-                        "bookNumber": book.get("number"),
-                        "psalmNumber": psalm.get("number"),
-                        "recordId": psalm.get("recordId"),
-                        "themeId": theme_id,
-                        "label": label,
-                        "importance": rel.get("importance"),
-                        "verseNumbers": rel.get("verseNumbers", []),
-                    })
+                if rel.get("themeId"):
+                    relation_pairs[(rid, rel["themeId"])] += 1
+    return analyses, relation_pairs
+
+
+def editorial_theme_matches(term: str, analyses: dict[str, dict]) -> list[dict]:
+    needle = norm(term)
+    matches = []
+    for rid, entry in analyses.items():
+        psalm = entry["analysis"]
+        for rel in psalm.get("themes", []):
+            label = rel.get("label", "")
+            theme_id = rel.get("themeId", "")
+            if needle in norm(label) or needle in norm(theme_id):
+                matches.append({
+                    "file": entry["file"], "psalmNumber": psalm.get("number"), "recordId": rid,
+                    "themeId": theme_id, "label": label, "importance": rel.get("importance"),
+                    "verseNumbers": rel.get("verseNumbers", []),
+                })
     return matches
+
+
+def source_pack_hits(record_ids: list[str]) -> dict[str, list[str]]:
+    wanted = set(record_ids)
+    hits = {rid: [] for rid in record_ids}
+    for path in SOURCE_PACKS.rglob("*"):
+        if not path.is_file() or path.suffix.lower() not in {".json", ".md", ".txt"}:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        for rid in wanted:
+            if rid in text:
+                hits[rid].append(str(path.relative_to(ROOT)))
+    return hits
 
 
 def main() -> None:
@@ -106,37 +114,42 @@ def main() -> None:
     themes = directory["themes"]
     by_id = {t["id"]: t for t in themes}
     psalms = [r for r in bundle["records"] if r.get("recordType") == "psalm"]
+    analyses, relation_pairs = load_editorial_analyses()
 
-    indexed_record_ids = {
-        occurrence.get("recordId")
-        for theme in themes
-        for occurrence in theme.get("occurrences", [])
-        if occurrence.get("recordId")
-    }
+    duplicate_pairs = sorted((pair, count) for pair, count in relation_pairs.items() if count > 1)
+    print(f"RELATION_UNIQUENESS duplicateThemePsalmPairs={len(duplicate_pairs)}")
+    for (rid, theme_id), count in duplicate_pairs:
+        print(f"DUPLICATE_THEME_PSALM recordId={rid} themeId={theme_id} count={count}")
+
+    indexed_record_ids = {o.get("recordId") for t in themes for o in t.get("occurrences", []) if o.get("recordId")}
     browser_by_id = {r.get("id"): r for r in psalms if r.get("id")}
     browser_record_ids = set(browser_by_id)
-    missing_from_thematic = sorted(
-        browser_record_ids - indexed_record_ids,
-        key=lambda rid: (
-            browser_by_id[rid].get("archangel", ""),
-            browser_by_id[rid].get("number") or 9999,
-            rid,
-        ),
-    )
+    analysis_record_ids = set(analyses)
+    missing_from_thematic = sorted(browser_record_ids - indexed_record_ids, key=lambda rid: (browser_by_id[rid].get("archangel", ""), browser_by_id[rid].get("number") or 9999, rid))
+    missing_analysis = sorted(browser_record_ids - analysis_record_ids)
+    analyses_without_themes = sorted(rid for rid, entry in analyses.items() if not entry["analysis"].get("themes"))
     orphan_thematic = sorted(indexed_record_ids - browser_record_ids)
+    orphan_analysis = sorted(analysis_record_ids - browser_record_ids)
     print(
-        f"COVERAGE browserPsalms={len(browser_record_ids)} indexedPsalms={len(indexed_record_ids)} "
-        f"browserWithoutTheme={len(missing_from_thematic)} thematicWithoutBrowser={len(orphan_thematic)}"
+        f"COVERAGE browserPsalms={len(browser_record_ids)} analyses={len(analysis_record_ids)} indexedPsalms={len(indexed_record_ids)} "
+        f"browserWithoutAnalysis={len(missing_analysis)} analysesWithoutThemes={len(analyses_without_themes)} "
+        f"browserWithoutTheme={len(missing_from_thematic)} thematicWithoutBrowser={len(orphan_thematic)} analysisWithoutBrowser={len(orphan_analysis)}"
     )
+    pack_hits = source_pack_hits(missing_from_thematic)
     for rid in missing_from_thematic:
         r = browser_by_id[rid]
+        status = "no-analysis" if rid not in analyses else "analysis-without-theme"
+        packs = pack_hits.get(rid) or []
         print(
-            f"UNINDEXED_BROWSER_PSALM id={rid} archangel={r.get('archangel')} "
-            f"number={r.get('number')} title={r.get('title')!r}"
+            f"UNINDEXED_BROWSER_PSALM id={rid} status={status} archangel={r.get('archangel')} number={r.get('number')} "
+            f"title={r.get('title')!r} sourcePackHits={len(packs)} sourcePacks={'|'.join(packs) if packs else '-'} source={r.get('source')!r}"
         )
     for rid in orphan_thematic:
         print(f"ORPHAN_THEMATIC_RECORD id={rid}")
+    for rid in orphan_analysis:
+        print(f"ORPHAN_ANALYSIS_RECORD id={rid}")
     assert not orphan_thematic, "the thematic directory must not reference psalms missing from the browser corpus"
+    assert not orphan_analysis, "canonical analyses must not reference psalms missing from the browser corpus"
 
     ambiguous = {k: v for k, v in runtime["aliases"].items() if v.get("ambiguous")}
     print(f"Runtime: {len(themes)} themes; {len(ambiguous)} ambiguous aliases")
@@ -147,52 +160,37 @@ def main() -> None:
     results = {}
     for query in QUERIES:
         source, resolved = resolve(query, runtime, themes, by_id)
-        occurrences = []
+        per_record: dict[str, tuple[dict, dict]] = {}
         for theme in resolved:
             for occurrence in theme.get("occurrences", []):
-                occurrences.append((theme, occurrence))
-        per_record: dict[str, tuple[dict, dict]] = {}
-        for theme, occurrence in occurrences:
-            rid = occurrence.get("recordId")
-            current = per_record.get(rid)
-            candidate_key = (IMPORTANCE_RANK.get(occurrence.get("importance"), 3), -(occurrence.get("score") or 0), theme["id"])
-            if current is None:
-                per_record[rid] = (theme, occurrence)
-            else:
-                old_theme, old = current
-                old_key = (IMPORTANCE_RANK.get(old.get("importance"), 3), -(old.get("score") or 0), old_theme["id"])
-                if candidate_key < old_key:
+                rid = occurrence.get("recordId")
+                current = per_record.get(rid)
+                candidate_key = (IMPORTANCE_RANK.get(occurrence.get("importance"), 3), -(occurrence.get("score") or 0), theme["id"])
+                if current is None:
                     per_record[rid] = (theme, occurrence)
+                else:
+                    old_theme, old = current
+                    old_key = (IMPORTANCE_RANK.get(old.get("importance"), 3), -(old.get("score") or 0), old_theme["id"])
+                    if candidate_key < old_key:
+                        per_record[rid] = (theme, occurrence)
         levels = Counter(o.get("importance", "unknown") for _, o in per_record.values())
         missing_verses = sum(not o.get("verseNumbers") for _, o in per_record.values())
         missing_teaching = sum(not str(o.get("teaching", "")).strip() for _, o in per_record.values())
-        literal = sum(
-            any(literal_contains(fragment, query) for fragment in [r.get("title", ""), *[v.get("text", "") for v in r.get("verses", [])]])
-            for r in psalms
-        )
+        literal = sum(any(literal_contains(fragment, query) for fragment in [r.get("title", ""), *[v.get("text", "") for v in r.get("verses", [])]]) for r in psalms)
         ids = ",".join(t["id"] for t in resolved) or "-"
         results[query] = [t["id"] for t in resolved]
-        print(
-            f"QUERY {query!r}: resolution={source}; themes={ids}; indexed={len(per_record)}; "
-            f"importance={dict(levels)}; missingVerseNumbers={missing_verses}; "
-            f"missingTeaching={missing_teaching}; literal={literal}"
-        )
+        print(f"QUERY {query!r}: resolution={source}; themes={ids}; indexed={len(per_record)}; importance={dict(levels)}; missingVerseNumbers={missing_verses}; missingTeaching={missing_teaching}; literal={literal}")
 
-    # Query-normalization invariants required by the product contract.
     assert results["assemblée"] == results["l’assemblée"]
     assert results["sainte assemblée"] == results["la sainte assemblée"]
     if results["assemblée"] and results["sainte assemblée"]:
-        assert set(results["assemblée"]) != set(results["sainte assemblée"]), "distinct resolved themes must remain distinct"
+        assert set(results["assemblée"]) != set(results["sainte assemblée"])
     else:
         print("UNRESOLVED_CONTRACT assembly queries: tracing canonical editorial relations")
-        editorial = editorial_theme_matches("assembl")
+        editorial = editorial_theme_matches("assembl", analyses)
         if editorial:
             for match in editorial:
-                print(
-                    "EDITORIAL assembly match: "
-                    f"{match['file']} psalm={match['psalmNumber']} themeId={match['themeId']} "
-                    f"label={match['label']!r} importance={match['importance']} verses={match['verseNumbers']}"
-                )
+                print(f"EDITORIAL assembly match: {match['file']} psalm={match['psalmNumber']} themeId={match['themeId']} label={match['label']!r} importance={match['importance']} verses={match['verseNumbers']}")
         else:
             print("EDITORIAL assembly match: none in data/thematic-index/books/book-*.json")
 
