@@ -10,7 +10,7 @@
     const q=norm(value), stripped=stripLeadingArticle(q);
     return [...new Set([q,stripped].filter(Boolean))];
   };
-  const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;/g').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   const queryTerms = () => new Set(norm($('query').value).split(' ').filter(Boolean));
   const highlighted = value => {
     const terms=queryTerms(); if(!terms.size)return esc(value);
