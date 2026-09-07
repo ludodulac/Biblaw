@@ -3,18 +3,18 @@
   "status": "review-candidates-generated",
   "purpose": "search-quality-audit-only; no automatic semantic merging or renaming",
   "stats": {
-    "themeCount": 1249,
-    "themeRelationCount": 10410,
-    "singletonThemeCount": 927,
-    "rareThemeCountOccurrenceLTE2": 1052,
+    "themeCount": 1247,
+    "themeRelationCount": 10409,
+    "singletonThemeCount": 924,
+    "rareThemeCountOccurrenceLTE2": 1050,
     "sameIdMultipleLabelsCount": 31,
-    "sameNormalizedLabelMultipleIdsCount": 7,
-    "normalizedDirectoryCollisionCount": 2,
-    "compositeLabelCandidateCount": 187,
+    "sameNormalizedLabelMultipleIdsCount": 5,
+    "normalizedDirectoryCollisionCount": 0,
+    "compositeLabelCandidateCount": 186,
     "relationsWithoutVerseNumbers": 0,
     "relationsWithoutTeaching": 0,
     "themeCountByArchangelCoverage": {
-      "1": 974,
+      "1": 972,
       "2": 117,
       "3": 62,
       "4": 96
@@ -473,22 +473,6 @@
         ]
       },
       {
-        "normalizedLabel": "microcosme et macrocosme",
-        "labels": [
-          "Microcosme et macrocosme"
-        ],
-        "themeIds": [
-          {
-            "id": "microcosme-et-macrocosme",
-            "count": 3
-          },
-          {
-            "id": "microcosme-macrocosme",
-            "count": 1
-          }
-        ]
-      },
-      {
         "normalizedLabel": "nutrition subtile",
         "labels": [
           "Nutrition",
@@ -501,22 +485,6 @@
           },
           {
             "id": "nutrition-subtile",
-            "count": 1
-          }
-        ]
-      },
-      {
-        "normalizedLabel": "royaute interieure",
-        "labels": [
-          "Royauté intérieure"
-        ],
-        "themeIds": [
-          {
-            "id": "royaute-interieure",
-            "count": 1
-          },
-          {
-            "id": "royaut-e-interieure",
             "count": 1
           }
         ]
@@ -576,170 +544,7 @@
         ]
       }
     ],
-    "normalizedDirectoryCollisions": [
-      {
-        "normalizedLabel": "microcosme et macrocosme",
-        "themes": [
-          {
-            "id": "microcosme-et-macrocosme",
-            "label": "Microcosme et macrocosme",
-            "occurrenceCount": 3,
-            "centralPsalmCount": 2,
-            "archangelCount": 2
-          },
-          {
-            "id": "microcosme-macrocosme",
-            "label": "Microcosme et macrocosme",
-            "occurrenceCount": 1,
-            "centralPsalmCount": 1,
-            "archangelCount": 1
-          }
-        ],
-        "contextualEvidence": {
-          "microcosme-et-macrocosme": [
-            {
-              "bookNumber": 3,
-              "archangel": "raphael",
-              "psalmNumber": 17,
-              "recordId": "book-03-psalm-017",
-              "label": "Microcosme et macrocosme",
-              "importance": "central",
-              "directness": "direct",
-              "verseNumbers": [
-                2,
-                3,
-                4,
-                5,
-                6,
-                7
-              ],
-              "teaching": "L'homme fait partie d'un organisme cosmique et porte en lui l'infiniment grand sous forme d'organes et de règnes correspondants."
-            },
-            {
-              "bookNumber": 4,
-              "archangel": "ouriel",
-              "psalmNumber": 22,
-              "recordId": "book-04-psalm-022",
-              "label": "Microcosme et macrocosme",
-              "importance": "important",
-              "directness": "direct",
-              "verseNumbers": [
-                2,
-                3,
-                4,
-                7,
-                9,
-                10
-              ],
-              "teaching": "Tout ce qui existe dans l'univers existe potentiellement dans l'homme, qui doit équilibrer en lui les différents niveaux de vie."
-            },
-            {
-              "bookNumber": 20,
-              "archangel": "ouriel",
-              "psalmNumber": 121,
-              "recordId": "book-20-psalm-121",
-              "label": "Microcosme et macrocosme",
-              "importance": "central",
-              "directness": "direct",
-              "verseNumbers": [
-                1,
-                5,
-                6,
-                7,
-                11,
-                12,
-                21,
-                32
-              ],
-              "teaching": "L’homme est décrit comme un microcosme du macrocosme : chaque organe correspond à une intelligence ou à une partie de l’univers. La connaissance de soi devient ainsi, dans le texte, un chemin de lecture des relations entre l’homme et les mondes."
-            }
-          ],
-          "microcosme-macrocosme": [
-            {
-              "bookNumber": 20,
-              "archangel": "ouriel",
-              "psalmNumber": 121,
-              "recordId": "book-20-psalm-121",
-              "label": "Microcosme et macrocosme",
-              "importance": "central",
-              "directness": "direct",
-              "verseNumbers": [
-                1,
-                5,
-                6,
-                7,
-                11,
-                12,
-                21,
-                32
-              ],
-              "teaching": "L’homme est décrit comme un microcosme du macrocosme : chaque organe correspond à une intelligence ou à une partie de l’univers. La connaissance de soi devient ainsi, dans le texte, un chemin de lecture des relations entre l’homme et les mondes."
-            }
-          ]
-        },
-        "reviewRule": "Compare the corpus-internal Psalm contexts, supporting verses and teachings before any identifier consolidation; identical labels alone are insufficient evidence."
-      },
-      {
-        "normalizedLabel": "royaute interieure",
-        "themes": [
-          {
-            "id": "royaut-e-interieure",
-            "label": "Royauté intérieure",
-            "occurrenceCount": 1,
-            "centralPsalmCount": 1,
-            "archangelCount": 1
-          },
-          {
-            "id": "royaute-interieure",
-            "label": "Royauté intérieure",
-            "occurrenceCount": 1,
-            "centralPsalmCount": 0,
-            "archangelCount": 1
-          }
-        ],
-        "contextualEvidence": {
-          "royaut-e-interieure": [
-            {
-              "bookNumber": 21,
-              "archangel": "michael",
-              "psalmNumber": 135,
-              "recordId": "book-21-psalm-135",
-              "label": "Royauté intérieure",
-              "importance": "central",
-              "directness": "direct",
-              "verseNumbers": [
-                1,
-                3,
-                11,
-                13,
-                14,
-                20
-              ],
-              "teaching": "La royauté intérieure apparaît lorsque l’homme cesse d’abdiquer son jugement devant les influences et reprend la direction de sa pensée, de ses sentiments et de ses actes. Être royal signifie ici ennoblir ce qui est rencontré plutôt que dominer."
-            }
-          ],
-          "royaute-interieure": [
-            {
-              "bookNumber": 9,
-              "archangel": "michael",
-              "psalmNumber": 55,
-              "recordId": "book-09-psalm-055",
-              "label": "Royauté intérieure",
-              "importance": "important",
-              "directness": "direct",
-              "verseNumbers": [
-                9,
-                10,
-                11,
-                13
-              ],
-              "teaching": "La dignité initiatique consiste à devenir roi de son royaume et à maîtriser le pouvoir créateur dans les mondes subtils."
-            }
-          ]
-        },
-        "reviewRule": "Compare the corpus-internal Psalm contexts, supporting verses and teachings before any identifier consolidation; identical labels alone are insufficient evidence."
-      }
-    ],
+    "normalizedDirectoryCollisions": [],
     "relationsWithoutVerseNumbers": [],
     "relationsWithoutTeaching": []
   },
@@ -1290,13 +1095,6 @@
         "occurrenceCount": 3,
         "centralPsalmCount": 2,
         "archangelCount": 2
-      },
-      {
-        "id": "microcosme-macrocosme",
-        "label": "Microcosme et macrocosme",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
       },
       {
         "id": "mission-et-concentration",
@@ -5116,13 +4914,6 @@
         "archangelCount": 1
       },
       {
-        "id": "microcosme-macrocosme",
-        "label": "Microcosme et macrocosme",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "miroir",
         "label": "Miroir",
         "occurrenceCount": 1,
@@ -6744,20 +6535,6 @@
         "label": "Roue du temps",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "royaut-e-interieure",
-        "label": "Royauté intérieure",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "royaute-interieure",
-        "label": "Royauté intérieure",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
         "archangelCount": 1
       },
       {
@@ -12020,13 +11797,6 @@
         "archangelCount": 1
       },
       {
-        "id": "microcosme-macrocosme",
-        "label": "Microcosme et macrocosme",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "miroir",
         "label": "Miroir",
         "occurrenceCount": 1,
@@ -13847,17 +13617,10 @@
         "archangelCount": 2
       },
       {
-        "id": "royaut-e-interieure",
-        "label": "Royauté intérieure",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "royaute-interieure",
         "label": "Royauté intérieure",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
+        "occurrenceCount": 2,
+        "centralPsalmCount": 1,
         "archangelCount": 1
       },
       {

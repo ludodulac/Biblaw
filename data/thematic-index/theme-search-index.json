@@ -5,9 +5,9 @@
     "data/thematic-index/theme-directory.json"
   ],
   "semanticMerging": false,
-  "themeCount": 1249,
-  "aliasCount": 1341,
-  "ambiguousAliasCount": 7,
+  "themeCount": 1247,
+  "aliasCount": 1339,
+  "ambiguousAliasCount": 5,
   "themes": [
     {
       "themeId": "22-commandements",
@@ -10422,22 +10422,6 @@
       "score": 8
     },
     {
-      "themeId": "microcosme-macrocosme",
-      "canonicalLabel": "Microcosme et macrocosme",
-      "observedLabels": [
-        {
-          "label": "Microcosme et macrocosme",
-          "count": 1
-        }
-      ],
-      "normalizedAliases": [
-        "microcosme et macrocosme",
-        "microcosme macrocosme"
-      ],
-      "occurrenceCount": 1,
-      "score": 3
-    },
-    {
       "themeId": "miroir",
       "canonicalLabel": "Miroir",
       "observedLabels": [
@@ -15418,22 +15402,6 @@
       "score": 3
     },
     {
-      "themeId": "royaut-e-interieure",
-      "canonicalLabel": "Royauté intérieure",
-      "observedLabels": [
-        {
-          "label": "Royauté intérieure",
-          "count": 1
-        }
-      ],
-      "normalizedAliases": [
-        "royaute interieure",
-        "royaut e interieure"
-      ],
-      "occurrenceCount": 1,
-      "score": 3
-    },
-    {
       "themeId": "royaute",
       "canonicalLabel": "Royauté",
       "observedLabels": [
@@ -15454,14 +15422,14 @@
       "observedLabels": [
         {
           "label": "Royauté intérieure",
-          "count": 1
+          "count": 2
         }
       ],
       "normalizedAliases": [
         "royaute interieure"
       ],
-      "occurrenceCount": 1,
-      "score": 2
+      "occurrenceCount": 2,
+      "score": 5
     },
     {
       "themeId": "ruche-et-reine",
@@ -26187,20 +26155,11 @@
     {
       "queryKey": "microcosme et macrocosme",
       "themeIds": [
-        "microcosme-et-macrocosme",
-        "microcosme-macrocosme"
+        "microcosme-et-macrocosme"
       ],
       "labels": [
         "Microcosme et macrocosme"
       ],
-      "ambiguous": true
-    },
-    {
-      "queryKey": "microcosme macrocosme",
-      "themeIds": [
-        "microcosme-macrocosme"
-      ],
-      "labels": [],
       "ambiguous": false
     },
     {
@@ -29734,14 +29693,6 @@
       "ambiguous": false
     },
     {
-      "queryKey": "royaut e interieure",
-      "themeIds": [
-        "royaut-e-interieure"
-      ],
-      "labels": [],
-      "ambiguous": false
-    },
-    {
       "queryKey": "royaute",
       "themeIds": [
         "royaute"
@@ -29754,13 +29705,12 @@
     {
       "queryKey": "royaute interieure",
       "themeIds": [
-        "royaut-e-interieure",
         "royaute-interieure"
       ],
       "labels": [
         "Royauté intérieure"
       ],
-      "ambiguous": true
+      "ambiguous": false
     },
     {
       "queryKey": "ruche et reine",
