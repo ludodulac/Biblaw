@@ -120,6 +120,7 @@ def main() -> None:
     print(f"RELATION_UNIQUENESS duplicateThemePsalmPairs={len(duplicate_pairs)}")
     for (rid, theme_id), count in duplicate_pairs:
         print(f"DUPLICATE_THEME_PSALM recordId={rid} themeId={theme_id} count={count}")
+    assert not duplicate_pairs, "a canonical Psalm must not repeat the same theme relation"
 
     indexed_record_ids = {o.get("recordId") for t in themes for o in t.get("occurrences", []) if o.get("recordId")}
     browser_by_id = {r.get("id"): r for r in psalms if r.get("id")}
@@ -148,8 +149,8 @@ def main() -> None:
         print(f"ORPHAN_THEMATIC_RECORD id={rid}")
     for rid in orphan_analysis:
         print(f"ORPHAN_ANALYSIS_RECORD id={rid}")
-    assert not orphan_thematic, "the thematic directory must not reference psalms missing from the browser corpus"
-    assert not orphan_analysis, "canonical analyses must not reference psalms missing from the browser corpus"
+    assert browser_record_ids == analysis_record_ids == indexed_record_ids, "production Psalms, canonical analyses and thematic directory must cover the same record IDs"
+    assert not analyses_without_themes, "every canonical Psalm analysis must contain at least one thematic relation"
 
     ambiguous = {k: v for k, v in runtime["aliases"].items() if v.get("ambiguous")}
     print(f"Runtime: {len(themes)} themes; {len(ambiguous)} ambiguous aliases")
