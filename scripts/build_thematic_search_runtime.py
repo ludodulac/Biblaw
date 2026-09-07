@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
-"""Build a compact browser payload from validated thematic search/connection data.
+"""Build and validate the compact thematic browser runtime before replacing production.
 
 The full editorial directory and full co-occurrence graph remain the auditable sources. This file
-contains only lookup aliases and a small set of navigational neighbors for the web UI.
+contains only lookup aliases and a small set of navigational neighbors for the web UI. A candidate
+runtime is written first, validated as an exact projection of those sources, and only then atomically
+replaces the production runtime.
 """
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
+
+from validate_thematic_search_runtime import validate
 
 ROOT = Path(__file__).resolve().parents[1]
 SEARCH = ROOT / "data/thematic-index/theme-search-index.json"
 CONNECTIONS = ROOT / "data/thematic-index/theme-connections.json"
 OUT = ROOT / "data/thematic-index/theme-search-runtime.json"
+CANDIDATE = OUT.with_name(OUT.name + ".candidate")
 TOP_NEIGHBORS = 8
 
 
@@ -58,5 +64,18 @@ payload = {
     "aliases": aliases,
     "neighbors": neighbors,
 }
-OUT.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-print(f"Built thematic browser runtime: {payload['themeCount']} themes, {payload['aliasCount']} aliases")
+
+try:
+    CANDIDATE.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    errors = validate(CANDIDATE)
+    if errors:
+        raise SystemExit("Candidate thematic runtime rejected:\n- " + "\n- ".join(errors))
+    os.replace(CANDIDATE, OUT)
+finally:
+    if CANDIDATE.exists():
+        CANDIDATE.unlink()
+
+print(
+    f"Built and validated thematic browser runtime: {payload['themeCount']} themes, "
+    f"{payload['aliasCount']} aliases before atomic replacement"
+)
