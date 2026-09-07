@@ -1,0 +1,21 @@
+name: Validate editorial workshop UI
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'validation.html'
+      - 'js/validation.js'
+      - 'data/browser-search-catalog.json'
+      - 'scripts/audit_validation_workshop.py'
+      - '.github/workflows/validate-validation-ui.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check validation JavaScript syntax
+        run: node --check js/validation.js
+      - name: Audit validation workshop architecture
+        run: python scripts/audit_validation_workshop.py
