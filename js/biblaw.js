@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, active: null, resolvedThemes: [] };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, active: null, resolvedThemes: [] };
   const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[’']/g, ' ').replace(/[^a-z0-9\s-]/g, ' ').replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
   const stripLeadingArticle = value => {
     const q=norm(value), parts=q.split(' ').filter(Boolean);
@@ -52,6 +52,12 @@
       state.themeById = new Map(state.themeDirectory.map(t => [t.id, t]));
       state.runtime = runtime;
       state.records = bundle.records || [];
+      state.recordById = new Map(state.records.map(r => [r.id, r]));
+      state.psalmsByNumber = new Map();
+      for (const r of state.records) if (r.recordType === 'psalm') {
+        const number=Number(r.number), list=state.psalmsByNumber.get(number)||[];
+        list.push(r); state.psalmsByNumber.set(number,list);
+      }
       state.themesByRecord = new Map();
       for (const theme of state.themeDirectory) for (const occurrence of theme.occurrences || []) {
         const list = state.themesByRecord.get(occurrence.recordId) || [];
@@ -77,8 +83,8 @@
   function psalmNumberMatches(number) {
     if(!selectedTypes().has('psalm'))return [];
     const a=$('archangelFilter').value;
-    return state.records
-      .filter(r=>r.recordType==='psalm'&&Number(r.number)===number&&(!a||r.archangel===a))
+    return (state.psalmsByNumber.get(number)||[])
+      .filter(r=>!a||r.archangel===a)
       .sort((x,y)=>(x.book?.number||9999)-(y.book?.number||9999)||String(x.id).localeCompare(String(y.id),'fr'))
       .map(record=>({record,score:1,numberLookup:true}));
   }
@@ -99,10 +105,10 @@
   }
   function thematicItems(themes) {
     if (!selectedTypes().has('psalm')) return [];
-    const a=$('archangelFilter').value,byId=new Map(state.records.filter(r=>r.recordType==='psalm').map(r=>[r.id,r])),merged=new Map();
+    const a=$('archangelFilter').value,merged=new Map();
     for (const theme of themes) for (const o of theme.occurrences||[]) {
       if (a&&o.archangel!==a) continue;
-      const record=byId.get(o.recordId); if(!record) continue;
+      const record=state.recordById.get(o.recordId); if(!record||record.recordType!=='psalm') continue;
       const current=merged.get(record.id)||{record,score:0,thematic:o,matchedThemes:[]};
       const betterImportance=importanceRank(o.importance)<importanceRank(current.thematic?.importance);
       const sameImportance=importanceRank(o.importance)===importanceRank(current.thematic?.importance);
@@ -218,7 +224,7 @@
     if(button)button.onclick=()=>{$('modeExact').click();window.scrollTo({top:$('results').offsetTop-120,behavior:'smooth'});};
   }
   function open(id){
-    const r=state.records.find(x=>x.id===id);if(!r)return;state.active=r;
+    const r=state.recordById.get(id);if(!r)return;state.active=r;
     $('dialogEyebrow').textContent=label(r);$('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
     if(r.recordType==='psalm'){
       const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${highlighted(v.text)}</div></div>`).join('');
