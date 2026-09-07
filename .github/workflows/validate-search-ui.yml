@@ -22,15 +22,18 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           html=Path('index.html').read_text(encoding='utf-8')
+          js=Path('js/biblaw.js').read_text(encoding='utf-8')
           required=(
-              'query','searchButton','archangelFilter','ambiguityPanel','suggestionKicker',
+              'query','searchButton','archangelFilter','bookFilter','ambiguityPanel','suggestionKicker',
               'suggestionTitle','senseChoices','closeAmbiguity','results','resultCount',
               'themeDirectory','indexPanel','recordDialog','dialogContent'
           )
           missing=[item for item in required if f'id="{item}"' not in html]
           assert not missing, f'missing DOM ids: {missing}'
           assert 'js/biblaw.js' in html
-          print('Search UI DOM contract OK')
+          assert "$('bookFilter').onchange = search" in js
+          assert "$('archangelFilter').onchange = search" in js
+          print('Search UI DOM/filter contract OK')
           PY
       - name: Check thematic runtime contract
         run: |
