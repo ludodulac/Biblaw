@@ -7,9 +7,12 @@ on:
       - 'index.html'
       - 'js/biblaw.js'
       - 'css/biblaw.css'
+      - 'data/catalog.json'
+      - 'data/corpus/**'
       - 'data/browser-search-catalog.json'
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-runtime.json'
+      - 'scripts/build_browser_search_catalog.py'
       - 'scripts/audit_production_search_queries.py'
       - '.github/workflows/validate-search-ui.yml'
 
@@ -18,6 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Check browser search catalog freshness
+        run: |
+          cp data/browser-search-catalog.json /tmp/browser-search-catalog.before.json
+          python scripts/build_browser_search_catalog.py
+          cmp --silent /tmp/browser-search-catalog.before.json data/browser-search-catalog.json || {
+            echo 'data/browser-search-catalog.json is stale relative to data/catalog.json and data/corpus'
+            exit 1
+          }
       - name: Check browser JavaScript syntax
         run: node --check js/biblaw.js
       - name: Check search UI DOM, bundle and contextual result contract
@@ -50,22 +61,18 @@ jobs:
           assert 'data-related-theme' in js
           assert 'classés Central, Important, puis Lié' in js
           assert '.theme-context' in css and '.related-themes' in css
-          # The UI ordering contract is explicit and independent from numeric score implementation details.
           assert 'const importanceRank' in js
           assert "{ central: 0, important: 1, related: 2 }" in js
           assert 'importanceRank(a.importance)-importanceRank(b.importance)' in js
           assert 'importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)' in js
           assert 'betterImportance' in js and 'sameImportance' in js
-          # Theme directory uses the generated schema, not removed legacy field names.
           assert 't.occurrenceCount' in js and 't.score' in js
           assert 't.psalmCount' not in js and 't.totalScore' not in js
-          # Search highlighting stays presentational: it marks literal normalized query words only.
           assert 'function exactVerses' in js
           assert 'const highlighted' in js
           assert '<mark class="search-hit">' in js
           assert 'Passage${chosen.length>1' in js
           assert '.search-hit' in css
-          # Text search is literal: phrases must be contiguous, word-bounded and based on displayed corpus text, not semantic IDs.
           assert 'const textFragments' in js
           assert 'const literalIncludes' in js
           assert 'const literalTextMatch' in js
@@ -73,22 +80,18 @@ jobs:
           assert '...(r.conceptIds || [])' not in js
           assert 'terms.filter' not in js
           assert 'Recherche un mot ou une expression dans le texte du corpus.' in js
-          # French leading articles are a query convenience only; canonical theme IDs are untouched.
           assert 'const stripLeadingArticle' in js
           assert 'const themeQueryForms' in js
           assert "['l','le','la','les','un','une','des']" in js
           assert 'for(const q of forms)' in js
-          # Thematic and textual modes stay distinct, including unresolved thematic queries.
           assert 'const activateThemeMode' in js
           assert 'function navigateToTheme(theme)' in js
           assert 'unresolvedTheme:true' in js
           assert 'Aucun thème indexé ne correspond à cette recherche' in js
           assert "$('modeExact').click()" in js
-          # A recognized theme must not hide literal corpus occurrences.
           assert 'function textualPsalmMatches' in js
           assert 'Deux lectures de cette recherche' in js
           assert 'data-show-text-search' in js
-          # Ambiguous aliases remain explicit and direct clicks target canonical IDs.
           assert "const ambiguous=resolvedThemes.length>1" in js
           assert 'const labelCounts=new Map()' in js
           assert 'const duplicateLabel=' in js
@@ -113,7 +116,7 @@ jobs:
           assert forms('assemblée') == ['assemblee']
           assert forms('la sainte assemblée') == ['la sainte assemblee','sainte assemblee']
           assert forms('sainte assemblée') == ['sainte assemblee']
-          assert forms('assemblée')[-1] != forms('sainte assemblée')[-1], 'distinct themes must remain distinct'
+          assert forms('assemblée')[-1] != forms('sainte assemblée')[-1]
           assert literal_contains('Alliance de lumière.', 'alliance de lumière')
           assert not literal_contains('Alliance dans la lumière.', 'alliance de lumière')
           assert literal_contains('Dieu', 'dieu')
@@ -124,19 +127,16 @@ jobs:
           assert bundle['recordCount'] > 1000
           psalms=[r for r in bundle['records'] if r.get('recordType')=='psalm']
           assert len(psalms) >= 1150
-          def psalm_fragments(r):
-              return [str(r.get('title',''))]+[str(v.get('text','')) for v in r.get('verses',[])]
-          def literal_psalm_match(r, query):
-              return any(literal_contains(fragment, query) for fragment in psalm_fragments(r))
+          def psalm_fragments(r): return [str(r.get('title',''))]+[str(v.get('text','')) for v in r.get('verses',[])]
+          def literal_psalm_match(r, query): return any(literal_contains(fragment, query) for fragment in psalm_fragments(r))
           counts={}
           audit_queries=('dieu','alliance','alliance de lumière','lumière','assemblée','l’assemblée','sainte assemblée','la sainte assemblée','argent','chouette','abeille','22 commandements')
           for query in audit_queries:
               count=sum(literal_psalm_match(r, query) for r in psalms)
               counts[query]=count
               print(f'Literal smoke query {query}: {count} psalms')
-          for query in ('dieu','lumière','alliance'):
-              assert counts[query] > 0, f'no literal results for {query}'
-          assert counts['dieu'] > 1, 'Dieu should have multiple literal psalm occurrences; thematic UI must expose the textual route'
+          for query in ('dieu','lumière','alliance'): assert counts[query] > 0
+          assert counts['dieu'] > 1
           print(f"Browser search bundle OK: {bundle['recordCount']} records, {len(psalms)} psalms")
           PY
       - name: Check thematic runtime contract
@@ -157,10 +157,10 @@ jobs:
           for alias in runtime['aliases'].values(): assert set(alias['themeIds']) <= canonical
           ambiguous={key:alias for key,alias in runtime['aliases'].items() if alias.get('ambiguous')}
           assert len(ambiguous)==runtime['ambiguousAliasCount']
-          assert all(len(alias.get('themeIds',[]))>1 for alias in ambiguous.values()), 'ambiguous aliases must expose every candidate id'
+          assert all(len(alias.get('themeIds',[]))>1 for alias in ambiguous.values())
           assert all(set(alias['themeIds']) <= canonical for alias in ambiguous.values())
-          assert 'alliance' in runtime['aliases'], 'expected thematic alias alliance'
-          assert runtime['aliases']['alliance']['themeIds'], 'alliance alias has no theme'
+          assert 'alliance' in runtime['aliases']
+          assert runtime['aliases']['alliance']['themeIds']
           assert runtime['aliases']['alliance de lumiere']['ambiguous'] is True
           assert set(runtime['aliases']['alliance de lumiere']['themeIds'])=={'alliance','alliance-de-lumiere'}
           print(f"Search UI contract OK: {runtime['themeCount']} themes, {runtime['aliasCount']} aliases, {len(ambiguous)} ambiguous aliases preserved")
