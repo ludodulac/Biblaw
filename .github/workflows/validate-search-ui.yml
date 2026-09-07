@@ -17,6 +17,21 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check browser JavaScript syntax
         run: node --check js/biblaw.js
+      - name: Check search UI DOM contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('index.html').read_text(encoding='utf-8')
+          required=(
+              'query','searchButton','archangelFilter','ambiguityPanel','suggestionKicker',
+              'suggestionTitle','senseChoices','closeAmbiguity','results','resultCount',
+              'themeDirectory','indexPanel','recordDialog','dialogContent'
+          )
+          missing=[item for item in required if f'id="{item}"' not in html]
+          assert not missing, f'missing DOM ids: {missing}'
+          assert 'js/biblaw.js' in html
+          print('Search UI DOM contract OK')
+          PY
       - name: Check thematic runtime contract
         run: |
           python - <<'PY'
