@@ -5,6 +5,10 @@ The generic extraction skipped the explicit Psalm 182 heading because its printe
 verse numbering continues at 28. This deterministic repair reconstructs the Psalm
 from its explicit heading through the heading of Psalm 183, preserving source
 verse numbering exactly and updating Book 32 metadata.
+
+Documentary reconstruction preserves reciprocal prayer attachment metadata. A
+missing reciprocal is restored only from a prayer whose `appliesToPsalmId`
+already explicitly targets `book-32-psalm-182`.
 """
 import json,re,subprocess
 from pathlib import Path
@@ -12,6 +16,8 @@ ROOT=Path(__file__).resolve().parents[1]
 PDF=ROOT/'Bible essénienne (classée par livres).pdf'
 BOOK=ROOT/'data/corpus/books/book-32'
 NOTES=ROOT/'data/notes/books/book-32'
+PRAYERS=ROOT/'data/prayers'
+TARGET_ID='book-32-psalm-182'
 
 def unwrap(s):
     s=re.sub(r'-\n\s*','',s); s=re.sub(r'\n\s*',' ',s)
@@ -24,6 +30,14 @@ def page_at(text,offset,default):
 def write(path,obj):
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+def explicit_prayer_ids():
+    ids=[]
+    for path in sorted(PRAYERS.glob('*.json')):
+        prayer=json.loads(path.read_text(encoding='utf-8'))
+        if prayer.get('appliesToPsalmId')==TARGET_ID and prayer.get('id'):
+            ids.append(prayer['id'])
+    return ids
 
 def main():
     raw=subprocess.run(['pdftotext','-layout','-f','3109','-l','3117',str(PDF),'-'],check=True,capture_output=True,text=True).stdout
@@ -43,7 +57,6 @@ def main():
     if not h182 or not h183: raise RuntimeError('Audited Psalm 182/183 boundary not found')
     end=h182.end()+h183.start()
     segment=text[h182.end():end]
-    # Remove footnotes without swallowing following verses/pages.
     note_re=re.compile(r'(?ms)^\s*(\d+)\s*[‑-]\s+(.*?)(?=^\s*\d+\s*[‑-]\s+|^\s*\d{1,3}[.]\s+|^\s*\[\[PAGE \d+\]\]|\Z)')
     notes=[]
     for m in note_re.finditer(segment):
@@ -58,20 +71,22 @@ def main():
     nums=[v['number'] for v in verses]
     if not nums or nums[0]!=28 or nums!=list(range(28,nums[-1]+1)):
         raise RuntimeError(f'Unexpected Psalm 182 source numbering: {nums}')
-    # Guard that Psalm 183 was not included.
     if any('Trouve ta valeur en redonnant' in v['text'] for v in verses): raise RuntimeError('Psalm 183 spillover')
     meta=json.loads((BOOK/'book.json').read_text(encoding='utf-8'))
+    existing_path=BOOK/'psalm-182.json'
+    existing=json.loads(existing_path.read_text(encoding='utf-8')) if existing_path.exists() else {}
+    prayer_ids=sorted(set(existing.get('prayerIds') or []) | set(explicit_prayer_ids()))
     note_ids=[]
     for i,n in enumerate(notes,1):
         nid=f'book-32-psalm-182-note-{i:03d}'; note_ids.append(nid)
-        write(NOTES/f'{nid}.json',{'id':nid,'recordType':'note','archangel':'ouriel','bookNumber':32,'appliesTo':{'recordId':'book-32-psalm-182','marker':n['marker'],'verse':None},'text':n['text'],'source':{'document':PDF.name,'pdfPage':n['page']},'validation':{'status':'machine-extracted-source-boundary-audited'}})
-    rec={'id':'book-32-psalm-182','recordType':'psalm','archangel':'ouriel','book':{'number':32,'title':meta['title']},'number':182,'title':'Nul ne peut aller vers l’esprit sans passer par la matière','source':{'document':PDF.name,'pdfPages':sorted({p for v in verses for p in v['sourcePages']})},'verses':verses,'noteIds':note_ids,'extraction':{'headingBasis':'audited-explicit-heading-with-source-continuing-verse-numbering','sourceNumberingPreserved':True,'sourceFirstVerse':28,'auditedMissingPsalmRepair':True},'validation':{'status':'machine-extracted-source-boundary-audited','checks':{'verseCount':len(verses),'verseSequenceStartsAtOne':False,'verseSequenceContiguousFromSourceFirst':True}}}
-    write(BOOK/'psalm-182.json',rec)
+        write(NOTES/f'{nid}.json',{'id':nid,'recordType':'note','archangel':'ouriel','bookNumber':32,'appliesTo':{'recordId':TARGET_ID,'marker':n['marker'],'verse':None},'text':n['text'],'source':{'document':PDF.name,'pdfPage':n['page']},'validation':{'status':'machine-extracted-source-boundary-audited'}})
+    rec={'id':TARGET_ID,'recordType':'psalm','archangel':'ouriel','book':{'number':32,'title':meta['title']},'number':182,'title':'Nul ne peut aller vers l’esprit sans passer par la matière','source':{'document':PDF.name,'pdfPages':sorted({p for v in verses for p in v['sourcePages']})},'verses':verses,'noteIds':note_ids,'prayerIds':prayer_ids,'extraction':{'headingBasis':'audited-explicit-heading-with-source-continuing-verse-numbering','sourceNumberingPreserved':True,'sourceFirstVerse':28,'auditedMissingPsalmRepair':True},'validation':{'status':'machine-extracted-source-boundary-audited','checks':{'verseCount':len(verses),'verseSequenceStartsAtOne':False,'verseSequenceContiguousFromSourceFirst':True}}}
+    write(existing_path,rec)
     ids=set(meta.get('psalmIds',[])); ids.add(rec['id']); meta['psalmIds']=sorted(ids,key=lambda x:int(x.rsplit('-',1)[1]))
     allnotes=set(meta.get('noteIds',[])); allnotes.update(note_ids); meta['noteIds']=sorted(allnotes)
     meta.setdefault('numbering',{})['expectedStart']=182
     meta['numbering']['nextExpected']=208
     write(BOOK/'book.json',meta)
-    print(f'Repaired Book 32 Psalm 182: source verses {nums[0]}-{nums[-1]}, pages {rec["source"]["pdfPages"]}, notes {len(note_ids)}')
+    print(f'Repaired Book 32 Psalm 182: source verses {nums[0]}-{nums[-1]}, pages {rec["source"]["pdfPages"]}, notes {len(note_ids)}, prayerIds={len(prayer_ids)}')
 
 if __name__=='__main__': main()
