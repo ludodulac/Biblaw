@@ -1,0 +1,20 @@
+name: Audit corpus attachments
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/catalog.json'
+      - 'data/corpus/books/**'
+      - 'data/notes/**'
+      - 'data/prayers/**'
+      - 'scripts/audit_corpus_attachments.py'
+      - '.github/workflows/audit-corpus-attachments.yml'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Audit prayer and note references
+        run: python scripts/audit_corpus_attachments.py
