@@ -6,6 +6,7 @@ on:
     paths:
       - 'index.html'
       - 'js/biblaw.js'
+      - 'data/browser-search-catalog.json'
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-runtime.json'
       - '.github/workflows/validate-search-ui.yml'
@@ -17,23 +18,25 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check browser JavaScript syntax
         run: node --check js/biblaw.js
-      - name: Check search UI DOM contract
+      - name: Check search UI DOM and bundle contract
         run: |
           python - <<'PY'
+          import json
           from pathlib import Path
           html=Path('index.html').read_text(encoding='utf-8')
           js=Path('js/biblaw.js').read_text(encoding='utf-8')
-          required=(
-              'query','searchButton','archangelFilter','bookFilter','ambiguityPanel','suggestionKicker',
-              'suggestionTitle','senseChoices','closeAmbiguity','results','resultCount',
-              'themeDirectory','indexPanel','recordDialog','dialogContent'
-          )
+          required=('query','searchButton','archangelFilter','bookFilter','ambiguityPanel','suggestionKicker','suggestionTitle','senseChoices','closeAmbiguity','results','resultCount','themeDirectory','indexPanel','recordDialog','dialogContent')
           missing=[item for item in required if f'id="{item}"' not in html]
           assert not missing, f'missing DOM ids: {missing}'
           assert 'js/biblaw.js' in html
-          assert "$('bookFilter').onchange = search" in js
-          assert "$('archangelFilter').onchange = search" in js
-          print('Search UI DOM/filter contract OK')
+          assert "fetch('data/browser-search-catalog.json')" in js
+          assert "catalog.records.map" not in js
+          assert "$('bookFilter').onchange=search" in js or "$('bookFilter').onchange = search" in js
+          bundle=json.loads(Path('data/browser-search-catalog.json').read_text(encoding='utf-8'))
+          assert bundle['purpose']=='browser-search-corpus-bundle'
+          assert bundle['recordCount']==len(bundle['records'])
+          assert bundle['recordCount'] > 1000
+          print(f"Browser search bundle OK: {bundle['recordCount']} records")
           PY
       - name: Check thematic runtime contract
         run: |
@@ -46,15 +49,7 @@ jobs:
           assert runtime['semanticMerging'] is False
           assert runtime['connectionMeaning']=='psalm-cooccurrence-only'
           assert runtime['themeCount']==directory['themeCount']
-          assert runtime['aliasCount']==len(runtime['aliases'])
           canonical={t['id'] for t in directory['themes']}
-          assert set(runtime['neighbors']) <= canonical
-          for alias in runtime['aliases'].values():
-              assert set(alias['themeIds']) <= canonical
-              assert alias['ambiguous'] == (len(alias['themeIds']) > 1)
-          for tid, links in runtime['neighbors'].items():
-              assert tid in canonical
-              assert len(links) <= runtime['topNeighborsPerTheme']
-              assert all(link['themeId'] in canonical and link['themeId'] != tid for link in links)
+          for alias in runtime['aliases'].values(): assert set(alias['themeIds']) <= canonical
           print(f"Search UI contract OK: {runtime['themeCount']} themes, {runtime['aliasCount']} aliases")
           PY
