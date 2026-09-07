@@ -2,9 +2,10 @@
 """Keep thematic book metadata synchronized with the corpus and apply explicit repairs.
 
 Titles and note links are documentary metadata and are copied from the structured Psalm corpus.
-Evidence repairs are explicit editorial decisions, never inferred from keywords.
-Legacy enum aliases are normalized mechanically so book files cannot fail validation
-because a semantically equivalent historical value was used.
+Evidence and thematic repairs below are explicit editorial decisions grounded in cited verses,
+never inferred automatically from keyword frequency or lexical similarity. Legacy enum aliases
+are normalized mechanically so book files cannot fail validation because a semantically equivalent
+historical value was used.
 """
 from __future__ import annotations
 
@@ -20,6 +21,36 @@ EVIDENCE_REPAIRS = {
     ("book-03-psalm-020", "flamme"): [2, 4, 6],
 }
 
+# Explicit, corpus-grounded thematic additions. These relations are intentionally narrow:
+# they are anchored only where the expression is itself part of the teaching, rather than
+# being created for every literal occurrence of the words.
+THEME_RELATION_REPAIRS = {
+    "book-29-psalm-197": {
+        "themeId": "sainte-assemblee",
+        "label": "Sainte Assemblée",
+        "importance": "important",
+        "directness": "direct",
+        "verseNumbers": [16, 28],
+        "teaching": "Dans ce psaume, la sainte assemblée est explicitement présentée comme le cadre religieux uni autour de la flamme vivante de l’Alliance, associé aux rites, à la méditation, à l’étude et à la protection contre le feu de la destruction (v.16, 28).",
+    },
+    "book-29-psalm-211": {
+        "themeId": "sainte-assemblee",
+        "label": "Sainte Assemblée",
+        "importance": "important",
+        "directness": "direct",
+        "verseNumbers": [24, 32],
+        "teaching": "Le psaume relie directement l’assemblée à l’espace sacré de l’église et à l’œuvre de créer sur terre la sainte assemblée dans le cadre de la religion de la Lumière (v.24, 32).",
+    },
+    "book-29-psalm-212": {
+        "themeId": "sainte-assemblee",
+        "label": "Sainte Assemblée",
+        "importance": "central",
+        "directness": "direct",
+        "verseNumbers": [4, 9, 16, 20, 25, 26, 27, 28, 31],
+        "teaching": "Ce psaume a pour sujet explicite les fondements de la sainte assemblée. Il la décrit comme un cercle devant être constitué avec clarté, pureté et discernement et, aux v.27-28, comme l’église, la maison et le corps de Dieu sur la terre ouvrant un espace à sa présence.",
+    },
+}
+
 IMPORTANCE_ALIASES = {
     "supporting": "related",
     "secondary": "related",
@@ -33,7 +64,6 @@ for path in sorted(BOOKS.glob("book-*.json")):
     if not isinstance(book_no, int):
         continue
     for psalm in data.get("psalmAnalyses", []):
-        source = None
         number = psalm.get("number")
         if isinstance(number, int):
             source_path = CORPUS / f"book-{book_no:02d}" / f"psalm-{number:03d}.json"
@@ -44,9 +74,7 @@ for path in sorted(BOOKS.glob("book-*.json")):
                     psalm["title"] = source_title
                     changed = True
                 source_notes = list(source.get("noteIds", []))
-                # The indexing method requires every editorial note attached to a Psalm
-                # to be considered as context. Keep that relationship explicit and
-                # mechanically synchronized with the corpus.
+                # Every editorial note attached to a Psalm is contextual evidence.
                 if source_notes:
                     if psalm.get("notesUsed") != source_notes:
                         psalm["notesUsed"] = source_notes
@@ -55,7 +83,8 @@ for path in sorted(BOOKS.glob("book-*.json")):
                     psalm.pop("notesUsed", None)
                     changed = True
         record_id = psalm.get("recordId")
-        for rel in psalm.get("themes", []):
+        themes = psalm.setdefault("themes", [])
+        for rel in themes:
             importance = rel.get("importance")
             if importance in IMPORTANCE_ALIASES:
                 rel["importance"] = IMPORTANCE_ALIASES[importance]
@@ -64,6 +93,17 @@ for path in sorted(BOOKS.glob("book-*.json")):
             if key in EVIDENCE_REPAIRS and rel.get("verseNumbers") != EVIDENCE_REPAIRS[key]:
                 rel["verseNumbers"] = EVIDENCE_REPAIRS[key]
                 changed = True
+
+        repair = THEME_RELATION_REPAIRS.get(record_id)
+        if repair:
+            existing = next((rel for rel in themes if rel.get("themeId") == repair["themeId"]), None)
+            if existing is None:
+                themes.append(dict(repair))
+                changed = True
+            elif any(existing.get(key) != value for key, value in repair.items()):
+                existing.update(repair)
+                changed = True
+
     if changed:
         path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         changed_files += 1
