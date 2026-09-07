@@ -26,11 +26,9 @@ on:
 
 permissions:
   contents: write
-
 concurrency:
   group: thematic-index-generated-files
   cancel-in-progress: false
-
 jobs:
   validate:
     if: github.actor != 'github-actions[bot]'
@@ -46,22 +44,21 @@ jobs:
           WATCHED='data/corpus/books/book-15 data/corpus/books/book-23 data/corpus/books/book-26 data/corpus/books/book-32 data/corpus/books/book-35 data/corpus/books/book-36 data/corpus/books/book-38 data/corpus/books/book-44 data/notes/books/book-15 data/notes/books/book-23 data/notes/books/book-26 data/notes/books/book-32 data/notes/books/book-35 data/notes/books/book-36 data/notes/books/book-38 data/thematic-index/books data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/theme-quality-audit.json data/thematic-index/theme-search-index.json data/thematic-index/theme-search-runtime.json data/thematic-index/theme-connections.json data/thematic-index/validation-report.json data/browser-search-catalog.json'
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-
-          git fetch origin main
-          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
-            if ! git merge-base --is-ancestor HEAD origin/main; then
-              echo 'origin/main is not a descendant of this run; refusing to discard source changes'
-              exit 1
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+              echo "main advanced; regenerating from latest main (attempt $attempt)"
+              git reset --hard origin/main
+              python scripts/run_canonical_thematic_pipeline.py
             fi
-            echo 'main advanced while this job was running; regenerating from latest main'
-            git reset --hard origin/main
-            python scripts/run_canonical_thematic_pipeline.py
-          fi
-
-          if [ -z "$(git status --porcelain -- $WATCHED)" ]; then
-            echo 'No canonical thematic changes'
-            exit 0
-          fi
-          git add $WATCHED
-          git commit -m 'Preserve audited corpus and canonical deep thematic index'
-          git push origin HEAD:main
+            if [ -z "$(git status --porcelain -- $WATCHED)" ]; then
+              echo 'No canonical thematic changes'
+              exit 0
+            fi
+            git add $WATCHED
+            git commit -m 'Preserve audited corpus and canonical deep thematic index'
+            if git push origin HEAD:main; then exit 0; fi
+            echo 'Concurrent push detected; retrying from latest main'
+          done
+          echo 'Could not publish generated outputs after 3 attempts'
+          exit 1
