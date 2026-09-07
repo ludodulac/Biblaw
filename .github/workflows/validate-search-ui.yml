@@ -16,6 +16,7 @@ on:
       - 'scripts/audit_production_search_queries.py'
       - 'scripts/audit_assembly_theme_context.py'
       - 'scripts/audit_psalm_number_search.py'
+      - 'scripts/audit_browser_search_indexes.py'
       - '.github/workflows/validate-search-ui.yml'
 
 jobs:
@@ -111,3 +112,5 @@ jobs:
         run: python scripts/audit_assembly_theme_context.py
       - name: Audit psalm number search
         run: python scripts/audit_psalm_number_search.py
+      - name: Audit browser search indexes
+        run: python scripts/audit_browser_search_indexes.py
