@@ -49,19 +49,15 @@ Le mode **Mots et phrases** recherche une formulation littérale et contiguë da
 
 Lorsqu’une même requête possède une lecture thématique et des occurrences littérales, l’interface garde les deux lectures séparées et permet de passer de l’une à l’autre.
 
-## État canonique
+## État courant
 
-Toujours considérer `data/thematic-index/validation-report.json` comme source courante des compteurs.
+Les nombres courants ne sont volontairement pas recopiés ici :
 
-Au 7 septembre 2026, le pipeline validé contient :
+- `data/thematic-index/validation-report.json` est la source des compteurs canoniques, erreurs et avertissements ;
+- `data/thematic-index/theme-search-runtime.json` porte les compteurs de thèmes, alias et ambiguïtés du runtime ;
+- `data/thematic-index/theme-quality-audit.json` porte les contrôles de fragmentation/qualité de recherche.
 
-- 44 livres ;
-- 1158 analyses de psaumes ;
-- 10409 relations thématiques ;
-- 0 erreur ;
-- 0 avertissement.
-
-Le runtime de recherche contient 1251 thèmes, 1343 alias et 9 alias ambigus conservés explicitement.
+Cela évite qu’une documentation manuelle devienne plus ancienne que les artefacts réellement validés.
 
 ## Architecture principale
 
@@ -69,7 +65,7 @@ Le runtime de recherche contient 1251 thèmes, 1343 alias et 9 alias ambigus con
 
 - `data/corpus/books/` — psaumes canoniques structurés par livre ;
 - `data/catalog.json` — catalogue documentaire ;
-- `data/browser-search-catalog.json` — bundle compact utilisé par le navigateur.
+- `data/browser-search-catalog.json` — bundle utilisé par le navigateur.
 
 Le bundle de production publie uniquement les psaumes canoniques sous `data/corpus/books/`. Les anciens fichiers de psaumes conservés sous `data/corpus/<archange>/` ne doivent pas être réintroduits dans la recherche navigateur.
 
@@ -87,35 +83,40 @@ Le bundle de production publie uniquement les psaumes canoniques sous `data/corp
 
 - `index.html`
 - `css/biblaw.css`
+- `css/theme-index.css`
 - `js/biblaw.js`
 
-### Pipeline et audits
+Les sorties générées doivent être modifiées par leurs sources ou générateurs, pas à la main.
 
-- `scripts/run_canonical_thematic_pipeline.py`
-- `scripts/build_browser_search_catalog.py`
-- `scripts/audit_thematic_search_quality.py`
-- `scripts/audit_production_search_queries.py`
-- `scripts/audit_psalm_number_search.py`
-- `scripts/audit_assembly_theme_context.py`
+## Développement et validation
 
-Les sorties générées doivent être modifiées par leurs générateurs, pas à la main.
+Le point d’entrée rapide pour une nouvelle conversation ou une intervention ciblée est :
 
-## Validation
+`AI_START_HERE.md`
 
-Les workflows GitHub Actions contrôlent notamment :
+Les validations proportionnées sont regroupées sans remplacer les audits existants :
 
-- l’intégrité de l’index canonique ;
-- la reproductibilité du bundle navigateur ;
-- la syntaxe du JavaScript ;
-- le contrat de l’interface de recherche ;
-- la séparation thème / texte ;
-- la conservation des alias ambigus ;
-- la recherche par numéro de psaume ;
-- les requêtes de production de référence.
+```bash
+python scripts/check_biblaw.py FAST --area search
+python scripts/check_biblaw.py TARGETED --area thematic
+python scripts/check_biblaw.py FULL
+```
 
-GitHub Pages publie le contenu de `main` après les mises à jour.
+Pour voir rapidement ce qu’une modification a changé dans les artefacts et les requêtes sentinelles :
 
-## Développement local
+```bash
+python scripts/report_biblaw_diff.py
+```
+
+Après un commit, comparer au parent avec :
+
+```bash
+python scripts/report_biblaw_diff.py --base HEAD~1
+```
+
+Le pipeline canonique complet reste `scripts/run_canonical_thematic_pipeline.py`. Les raccourcis FAST/TARGETED servent uniquement à réduire les recalculs inutiles pendant une modification locale ; ils ne remplacent pas FULL lorsqu’une couche amont ou transversale change.
+
+## Développement local de l’interface
 
 Le site est statique. Pour l’ouvrir localement avec les `fetch()` de données fonctionnels :
 
@@ -129,12 +130,4 @@ Ouvrir directement `index.html` avec le protocole `file://` peut empêcher le ch
 
 ## Reprise du projet
 
-Avant une intervention importante, lire :
-
-1. `progression/PASSATION-NOUVELLE-CONVERSATION.md` ;
-2. les dernières notes dans `progression/` ;
-3. `data/incoherences.json` ;
-4. `data/thematic-index/validation-report.json` ;
-5. `data/thematic-index/SEARCH-CONTRACT.md`.
-
-Puis vérifier le HEAD de `main` et les workflows récents avant toute écriture.
+Commencer par `AI_START_HERE.md`, qui route vers la passation, le contrat et les audits réellement utiles à la zone touchée. Ne relire les notes historiques de `progression/` que lorsqu’elles sont pertinentes pour cette zone ou qu’une décision antérieure doit être retracée.
