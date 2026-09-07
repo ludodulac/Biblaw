@@ -36,13 +36,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      # Reviewed identifier aliases are technical migrations only; contextual teachings stay in source relations.
-      - name: Reject reviewed legacy theme identifiers
+      # Only the explicit, corpus-reviewed technical mappings are auto-normalized here.
+      - name: Normalize reviewed technical theme identifiers
+        run: python scripts/normalize_known_theme_identifiers.py
+      - name: Verify reviewed legacy identifiers are absent
         run: python scripts/normalize_known_theme_identifiers.py --check
       - name: Install PDF text extraction dependency
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Run canonical documentary repair and thematic indexing pipeline
         run: python scripts/run_canonical_thematic_pipeline.py
+      - name: Recheck identifiers after canonical generators
+        run: python scripts/normalize_known_theme_identifiers.py --check
       - name: Publish canonical generated outputs from latest main
         run: |
           WATCHED='data/corpus/books/book-15 data/corpus/books/book-23 data/corpus/books/book-26 data/corpus/books/book-32 data/corpus/books/book-35 data/corpus/books/book-36 data/corpus/books/book-38 data/corpus/books/book-44 data/notes/books/book-15 data/notes/books/book-23 data/notes/books/book-26 data/notes/books/book-32 data/notes/books/book-35 data/notes/books/book-36 data/notes/books/book-38 data/thematic-index/books data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/theme-quality-audit.json data/thematic-index/theme-search-index.json data/thematic-index/theme-search-runtime.json data/thematic-index/theme-connections.json data/thematic-index/validation-report.json data/browser-search-catalog.json'
@@ -53,8 +57,10 @@ jobs:
             if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
               echo "main advanced; regenerating from latest main (attempt $attempt)"
               git reset --hard origin/main
+              python scripts/normalize_known_theme_identifiers.py
               python scripts/normalize_known_theme_identifiers.py --check
               python scripts/run_canonical_thematic_pipeline.py
+              python scripts/normalize_known_theme_identifiers.py --check
             fi
             if [ -z "$(git status --porcelain -- $WATCHED)" ]; then
               echo 'No canonical thematic changes'
