@@ -21,6 +21,7 @@ on:
       - 'scripts/build_thematic_connections.py'
       - 'scripts/validate_thematic_connections.py'
       - 'scripts/build_thematic_search_runtime.py'
+      - 'scripts/build_browser_search_catalog.py'
       - '.github/workflows/validate-thematic-index.yml'
 
 permissions:
@@ -42,7 +43,7 @@ jobs:
         run: python scripts/run_canonical_thematic_pipeline.py
       - name: Publish canonical generated outputs from latest main
         run: |
-          WATCHED='data/corpus/books/book-15 data/corpus/books/book-23 data/corpus/books/book-26 data/corpus/books/book-32 data/corpus/books/book-35 data/corpus/books/book-36 data/corpus/books/book-38 data/corpus/books/book-44 data/notes/books/book-15 data/notes/books/book-23 data/notes/books/book-26 data/notes/books/book-32 data/notes/books/book-35 data/notes/books/book-36 data/notes/books/book-38 data/thematic-index/books data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/theme-quality-audit.json data/thematic-index/theme-search-index.json data/thematic-index/theme-search-runtime.json data/thematic-index/theme-connections.json data/thematic-index/validation-report.json'
+          WATCHED='data/corpus/books/book-15 data/corpus/books/book-23 data/corpus/books/book-26 data/corpus/books/book-32 data/corpus/books/book-35 data/corpus/books/book-36 data/corpus/books/book-38 data/corpus/books/book-44 data/notes/books/book-15 data/notes/books/book-23 data/notes/books/book-26 data/notes/books/book-32 data/notes/books/book-35 data/notes/books/book-36 data/notes/books/book-38 data/thematic-index/books data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/theme-quality-audit.json data/thematic-index/theme-search-index.json data/thematic-index/theme-search-runtime.json data/thematic-index/theme-connections.json data/thematic-index/validation-report.json data/browser-search-catalog.json'
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
