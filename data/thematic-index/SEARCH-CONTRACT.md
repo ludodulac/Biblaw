@@ -1,0 +1,78 @@
+# Contrat de recherche thématique Biblaw
+
+Ce document décrit comment les données de `data/thematic-index/` doivent être utilisées par le moteur de recherche du site. Il ne constitue pas une interprétation doctrinale des Psaumes.
+
+## Principe général
+
+L’indexation sert à repérer, classer et relier des passages pour la recherche. Les Psaumes peuvent porter plusieurs niveaux de lecture. Un thème, un classement ou une connexion ne doit donc jamais être présenté comme une explication exhaustive, exclusive ou définitive du texte.
+
+Les affirmations contenues dans les champs `teaching` décrivent ce qui est relevé dans le corpus pour faciliter la recherche. Elles restent des formulations d’indexation liées aux versets cités.
+
+## Sources dérivées
+
+### `theme-directory.json`
+
+Répertoire global dérivé des analyses livre par livre.
+
+- un `themeId` désigne une entrée thématique éditoriale ;
+- `label` est le libellé d’affichage canonique dérivé de l’usage observé ;
+- `labelVariants` conserve les autres libellés réellement présents pour ce même identifiant ;
+- `topPsalms` classe les occurrences par importance éditoriale (`central`, `important`, `related`) ;
+- les répartitions par Archange sont des facettes de navigation, pas des équivalences d’enseignement.
+
+Le fichier est généré et ne doit pas être modifié à la main.
+
+### `theme-search-index.json`
+
+Couche d’alias destinée à améliorer le rappel de recherche.
+
+- les accents, apostrophes, ponctuations et variantes de libellés sont normalisés pour la recherche ;
+- plusieurs `themeId` peuvent volontairement répondre au même alias ;
+- `ambiguous: true` signifie précisément que le moteur doit conserver plusieurs résultats possibles ;
+- `semanticMerging: false` interdit d’interpréter un alias partagé comme une identité sémantique.
+
+Le moteur ne doit jamais fusionner automatiquement deux thèmes simplement parce que leurs libellés se ressemblent.
+
+### `theme-connections.json`
+
+Graphe de navigation entre thèmes calculé à partir de leur présence commune dans les mêmes Psaumes.
+
+- `relationshipType: psalm-cooccurrence` est la seule signification garantie ;
+- `semanticClaim: false` signifie qu’une arête ne prouve ni synonymie, ni causalité, ni accord doctrinal ;
+- le `score` sert uniquement à classer les cooccurrences répétées ou fortes ;
+- `topSharedPsalms` permet toujours de revenir aux passages qui justifient la connexion de navigation.
+
+Une connexion affichée dans le site devrait être formulée comme « thèmes également présents dans ces Psaumes » ou « thèmes fréquemment associés dans l’index », jamais comme « ce thème signifie » ou « ce thème est équivalent à ».
+
+## Comportement recommandé du moteur
+
+Pour une recherche thématique :
+
+1. normaliser la requête de la même manière que `theme-search-index.json` ;
+2. résoudre la requête vers un ou plusieurs `themeId` sans fusionner les identifiants ambigus ;
+3. classer les Psaumes selon l’importance éditoriale déjà enregistrée ;
+4. permettre le filtrage par Archange et par livre ;
+5. afficher les versets justificatifs et le champ `teaching` avec chaque résultat ;
+6. proposer les thèmes voisins uniquement comme navigation transversale fondée sur la cooccurrence ;
+7. permettre à l’utilisateur d’ouvrir le Psaume complet pour replacer chaque résultat dans son contexte.
+
+Les résultats textuels ou thématiques ne doivent pas être reclassés selon la seule fréquence brute des mots lorsque l’analyse éditoriale fournit déjà un niveau d’importance.
+
+## Ce qui ne doit pas être fait automatiquement
+
+- fusionner des thèmes sur la seule base de la proximité lexicale ;
+- supprimer un thème parce qu’il n’apparaît que dans un seul Psaume ;
+- considérer un thème composite comme une erreur sans relecture du corpus ;
+- transformer une cooccurrence en relation doctrinale ;
+- présenter une synthèse de livre comme le sens unique du livre ;
+- indexer les prières comme source thématique primaire dans cette couche ;
+- utiliser une source externe pour compléter le contenu doctrinal ou symbolique du corpus.
+
+## Contrôles
+
+- `validation-report.json` contrôle l’intégrité de l’index thématique principal ;
+- `theme-quality-audit.json` recense les situations de fragmentation ou de libellés à examiner sans les corriger automatiquement ;
+- `validate_thematic_search_index.py` contrôle la couche d’alias ;
+- `validate_thematic_connections.py` contrôle le graphe de cooccurrence.
+
+Toute consolidation éditoriale ultérieure doit rester traçable vers les Psaumes et versets concernés.
