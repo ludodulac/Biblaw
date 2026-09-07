@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Audit prayer/note attachments against canonical Psalm records.
+"""Audit canonical prayer/note attachments against canonical Psalm records.
 
-The audit is conservative: it never infers a canonical note target from a Psalm number alone.
-Legacy note targets are accepted as migration candidates only when one canonical Psalm matches
-all available internal evidence: archangel + Psalm number, reciprocal canonical noteId,
-source-page overlap, and (when present) the referenced verse.
+This is a permanent integrity contract, not a migration helper. All prayer/note targets must already
+use canonical `book-XX-psalm-NNN` ids. Relationships must be reciprocal and supported by the same
+source document with overlapping or immediately adjacent printed/PDF pages. No semantic inference
+or external source is used.
 """
 from __future__ import annotations
 
@@ -15,6 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data/catalog.json"
 CANONICAL_ROOT = ROOT / "data/corpus/books"
+CANONICAL_PSALM_RE = re.compile(r"^book-\d{2}-psalm-\d+$")
+LEGACY_PSALM_RE = re.compile(r"^(?:michael|gabriel|raphael|ouriel)-psalm-\d+$")
 
 
 def load(path: Path):
@@ -26,110 +28,139 @@ def pages(obj: dict) -> set[int]:
     raw = source.get("pdfPages") or source.get("printedPages") or source.get("printedPage") or []
     if isinstance(raw, int):
         raw = [raw]
-    return {int(value) for value in raw if str(value).isdigit()}
+    result = set()
+    for value in raw:
+        try:
+            result.add(int(value))
+        except (TypeError, ValueError):
+            pass
+    return result
 
 
-canonical_psalms = []
+def same_document(a: dict, b: dict) -> bool:
+    a_doc = (a.get("source") or {}).get("document")
+    b_doc = (b.get("source") or {}).get("document")
+    return bool(a_doc) and a_doc == b_doc
+
+
+def source_connected(child: dict, psalm: dict) -> bool:
+    child_pages, psalm_pages = pages(child), pages(psalm)
+    if not child_pages or not psalm_pages or not same_document(child, psalm):
+        return False
+    return bool(child_pages & psalm_pages) or min(child_pages) - max(psalm_pages) == 1
+
+
+canonical_paths: dict[str, Path] = {}
+canonical_by_id: dict[str, dict] = {}
 for path in sorted(CANONICAL_ROOT.glob("book-*/psalm-*.json")):
     obj = load(path)
-    if obj.get("recordType") == "psalm":
-        canonical_psalms.append(obj)
-
-canonical_by_id = {p["id"]: p for p in canonical_psalms}
-assert len(canonical_by_id) == len(canonical_psalms), "duplicate canonical Psalm ids"
+    if obj.get("recordType") != "psalm":
+        continue
+    psalm_id = str(obj.get("id") or "")
+    if not CANONICAL_PSALM_RE.match(psalm_id):
+        raise SystemExit(f"Non-canonical Psalm id in canonical tree: {path.relative_to(ROOT)} -> {psalm_id}")
+    if psalm_id in canonical_by_id:
+        raise SystemExit(f"Duplicate canonical Psalm id: {psalm_id}")
+    canonical_by_id[psalm_id] = obj
+    canonical_paths[psalm_id] = path
 
 catalog = load(CATALOG)
-record_paths = [ROOT / rel for rel in catalog.get("records", [])]
-prayer_paths = [p for p in record_paths if "/prayers/" in p.as_posix()]
-note_paths = [p for p in record_paths if "/notes/" in p.as_posix()]
+records = list(catalog.get("records", []))
+if len(records) != len(set(records)):
+    raise SystemExit("Duplicate paths in data/catalog.json")
 
-errors = []
-legacy_note_migrations = []
-canonical_note_targets = 0
-prayer_targets = 0
+prayer_rels = [rel for rel in records if rel.startswith("data/prayers/")]
+note_rels = [rel for rel in records if rel.startswith("data/notes/")]
+errors: list[str] = []
+prayer_targets: set[str] = set()
+note_targets: set[str] = set()
 
-for path in prayer_paths:
+for rel in prayer_rels:
+    path = ROOT / rel
+    if not path.exists():
+        errors.append(f"catalog prayer path missing: {rel}")
+        continue
     prayer = load(path)
     if prayer.get("recordType") != "master-prayer":
+        errors.append(f"{rel} is not recordType master-prayer")
         continue
-    target_id = prayer.get("appliesToPsalmId")
+    prayer_id = str(prayer.get("id") or "")
+    if path.stem != prayer_id:
+        errors.append(f"prayer filename/id mismatch: {rel} != {prayer_id}")
+    target_id = str(prayer.get("appliesToPsalmId") or "")
+    if LEGACY_PSALM_RE.match(target_id):
+        errors.append(f"prayer {prayer_id} still targets legacy Psalm {target_id}")
+        continue
     target = canonical_by_id.get(target_id)
     if not target:
-        errors.append(f"prayer {prayer.get('id')} targets non-canonical/missing Psalm {target_id}")
+        errors.append(f"prayer {prayer_id} targets missing/non-canonical Psalm {target_id}")
         continue
-    prayer_targets += 1
-    if prayer.get("id") not in (target.get("prayerIds") or []):
-        errors.append(f"prayer {prayer.get('id')} lacks reciprocal prayerIds entry on {target_id}")
-    if pages(prayer) and pages(target) and not (pages(prayer) & pages(target)):
-        errors.append(f"prayer {prayer.get('id')} has no source-page overlap with {target_id}")
+    prayer_targets.add(target_id)
+    if prayer.get("archangel") != target.get("archangel"):
+        errors.append(f"prayer {prayer_id} archangel differs from {target_id}")
+    if int(prayer.get("bookNumber", -1)) != int((target.get("book") or {}).get("number", -2)):
+        errors.append(f"prayer {prayer_id} bookNumber differs from {target_id}")
+    if prayer_id not in (target.get("prayerIds") or []):
+        errors.append(f"prayer {prayer_id} lacks reciprocal prayerIds entry on {target_id}")
+    if not source_connected(prayer, target):
+        errors.append(f"prayer {prayer_id} source is not overlapping/adjacent to {target_id}")
 
-legacy_re = re.compile(r"^(michael|gabriel|raphael|ouriel)-psalm-(\d+)$")
-note_suffix_re = re.compile(r"-note-(\d+)$")
-
-for path in note_paths:
+for rel in note_rels:
+    path = ROOT / rel
+    if not path.exists():
+        errors.append(f"catalog note path missing: {rel}")
+        continue
     note = load(path)
     if note.get("recordType") != "note":
+        errors.append(f"{rel} is not recordType note")
         continue
+    note_id = str(note.get("id") or "")
+    if path.stem != note_id:
+        errors.append(f"note filename/id mismatch: {rel} != {note_id}")
     applies = note.get("appliesTo") or {}
-    target_id = applies.get("recordId")
+    target_id = str(applies.get("recordId") or "")
+    if LEGACY_PSALM_RE.match(target_id):
+        errors.append(f"note {note_id} still targets legacy Psalm {target_id}")
+        continue
+    target = canonical_by_id.get(target_id)
+    if not target:
+        errors.append(f"note {note_id} targets missing/non-canonical Psalm {target_id}")
+        continue
+    note_targets.add(target_id)
+    if note.get("archangel") != target.get("archangel"):
+        errors.append(f"note {note_id} archangel differs from {target_id}")
+    if note_id not in (target.get("noteIds") or []):
+        errors.append(f"note {note_id} lacks reciprocal noteIds entry on {target_id}")
+    if not source_connected(note, target):
+        errors.append(f"note {note_id} source is not overlapping/adjacent to {target_id}")
     verse = applies.get("verse")
+    if verse is not None:
+        verse_numbers = {int(v["number"]) for v in target.get("verses", []) if v.get("number") is not None}
+        try:
+            verse_number = int(verse)
+        except (TypeError, ValueError):
+            errors.append(f"note {note_id} has invalid verse reference {verse!r}")
+        else:
+            if verse_number not in verse_numbers:
+                errors.append(f"note {note_id} references missing verse {verse_number} on {target_id}")
 
-    if target_id in canonical_by_id:
-        canonical_note_targets += 1
-        target = canonical_by_id[target_id]
-        if verse is not None and int(verse) not in {int(v.get("number")) for v in target.get("verses", []) if v.get("number") is not None}:
-            errors.append(f"note {note.get('id')} references missing verse {verse} on {target_id}")
-        continue
-
-    match = legacy_re.match(str(target_id or ""))
-    suffix_match = note_suffix_re.search(str(note.get("id") or ""))
-    if not match or not suffix_match:
-        errors.append(f"note {note.get('id')} has unsupported non-canonical target {target_id}")
-        continue
-
-    archangel, number_text = match.groups()
-    number = int(number_text)
-    suffix = suffix_match.group(1)
-    candidates = []
-    for psalm in canonical_psalms:
-        if psalm.get("archangel") != archangel or int(psalm.get("number", -1)) != number:
-            continue
-        expected_note_id = f"{psalm['id']}-note-{suffix}"
-        reciprocal = expected_note_id in (psalm.get("noteIds") or [])
-        overlap = bool(pages(note) & pages(psalm)) if pages(note) and pages(psalm) else False
-        verse_ok = verse is None or int(verse) in {int(v.get("number")) for v in psalm.get("verses", []) if v.get("number") is not None}
-        if reciprocal and overlap and verse_ok:
-            candidates.append((psalm, expected_note_id))
-
-    if len(candidates) != 1:
-        errors.append(
-            f"note {note.get('id')} legacy target {target_id} has {len(candidates)} fully evidenced canonical candidates"
-        )
-        continue
-
-    psalm, canonical_note_id = candidates[0]
-    legacy_note_migrations.append({
-        "path": str(path.relative_to(ROOT)),
-        "oldNoteId": note.get("id"),
-        "newNoteId": canonical_note_id,
-        "oldTargetId": target_id,
-        "newTargetId": psalm["id"],
-        "verse": verse,
-        "sourcePageOverlap": sorted(pages(note) & pages(psalm)),
-    })
+# Reciprocal Psalm references must themselves resolve to catalogued canonical prayer/note files.
+prayer_ids = {load(ROOT / rel).get("id") for rel in prayer_rels if (ROOT / rel).exists()}
+note_ids = {load(ROOT / rel).get("id") for rel in note_rels if (ROOT / rel).exists()}
+for psalm_id, psalm in canonical_by_id.items():
+    for prayer_id in psalm.get("prayerIds") or []:
+        if prayer_id not in prayer_ids:
+            errors.append(f"{psalm_id} references missing/catalog-external prayer {prayer_id}")
+    for note_id in psalm.get("noteIds") or []:
+        if note_id not in note_ids:
+            errors.append(f"{psalm_id} references missing/catalog-external note {note_id}")
 
 print(
-    f"ATTACHMENTS canonicalPsalms={len(canonical_psalms)} prayers={len(prayer_paths)} "
-    f"prayerCanonicalTargets={prayer_targets} notes={len(note_paths)} "
-    f"canonicalNoteTargets={canonical_note_targets} legacyNoteMigrations={len(legacy_note_migrations)}"
+    f"ATTACHMENTS canonicalPsalms={len(canonical_by_id)} prayers={len(prayer_rels)} "
+    f"prayerTargets={len(prayer_targets)} notes={len(note_rels)} noteTargets={len(note_targets)}"
 )
-for item in legacy_note_migrations:
-    print(
-        f"NOTE_MIGRATION {item['oldNoteId']} -> {item['newNoteId']} | "
-        f"{item['oldTargetId']} -> {item['newTargetId']} | pages={item['sourcePageOverlap']}"
-    )
 
 if errors:
     raise SystemExit("Attachment audit failed:\n- " + "\n- ".join(errors))
 
-print("Corpus attachment audit OK")
+print("Corpus attachment audit OK: all prayer/note targets canonical and reciprocal")
