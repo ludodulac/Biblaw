@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Audit canonical prayer/note attachments against canonical Psalm records.
 
-This is a permanent integrity contract, not a migration helper. All prayer/note targets must already
-use canonical `book-XX-psalm-NNN` ids. Relationships must be reciprocal and supported by the same
-source document with overlapping or immediately adjacent printed/PDF pages. No semantic inference
-or external source is used.
+This is a permanent integrity contract, not a migration helper. All catalogued prayer/note targets
+must already use canonical `book-XX-psalm-NNN` ids. External relationships must be reciprocal and
+supported by the same source document with overlapping or immediately adjacent printed/PDF pages.
+A Psalm may also carry `noteIds` for embedded/editorial footnotes that have no standalone
+`data/notes/*.json` record; those internal identifiers are not required to exist in the catalog.
+No semantic inference or external source is used.
 """
 from __future__ import annotations
 
@@ -50,7 +52,6 @@ def source_connected(child: dict, psalm: dict) -> bool:
     return bool(child_pages & psalm_pages) or min(child_pages) - max(psalm_pages) == 1
 
 
-canonical_paths: dict[str, Path] = {}
 canonical_by_id: dict[str, dict] = {}
 for path in sorted(CANONICAL_ROOT.glob("book-*/psalm-*.json")):
     obj = load(path)
@@ -62,7 +63,6 @@ for path in sorted(CANONICAL_ROOT.glob("book-*/psalm-*.json")):
     if psalm_id in canonical_by_id:
         raise SystemExit(f"Duplicate canonical Psalm id: {psalm_id}")
     canonical_by_id[psalm_id] = obj
-    canonical_paths[psalm_id] = path
 
 catalog = load(CATALOG)
 records = list(catalog.get("records", []))
@@ -74,6 +74,8 @@ note_rels = [rel for rel in records if rel.startswith("data/notes/")]
 errors: list[str] = []
 prayer_targets: set[str] = set()
 note_targets: set[str] = set()
+prayer_ids: set[str] = set()
+external_note_ids: set[str] = set()
 
 for rel in prayer_rels:
     path = ROOT / rel
@@ -85,6 +87,7 @@ for rel in prayer_rels:
         errors.append(f"{rel} is not recordType master-prayer")
         continue
     prayer_id = str(prayer.get("id") or "")
+    prayer_ids.add(prayer_id)
     if path.stem != prayer_id:
         errors.append(f"prayer filename/id mismatch: {rel} != {prayer_id}")
     target_id = str(prayer.get("appliesToPsalmId") or "")
@@ -115,6 +118,7 @@ for rel in note_rels:
         errors.append(f"{rel} is not recordType note")
         continue
     note_id = str(note.get("id") or "")
+    external_note_ids.add(note_id)
     if path.stem != note_id:
         errors.append(f"note filename/id mismatch: {rel} != {note_id}")
     applies = note.get("appliesTo") or {}
@@ -130,7 +134,7 @@ for rel in note_rels:
     if note.get("archangel") != target.get("archangel"):
         errors.append(f"note {note_id} archangel differs from {target_id}")
     if note_id not in (target.get("noteIds") or []):
-        errors.append(f"note {note_id} lacks reciprocal noteIds entry on {target_id}")
+        errors.append(f"external note {note_id} lacks reciprocal noteIds entry on {target_id}")
     if not source_connected(note, target):
         errors.append(f"note {note_id} source is not overlapping/adjacent to {target_id}")
     verse = applies.get("verse")
@@ -144,23 +148,28 @@ for rel in note_rels:
             if verse_number not in verse_numbers:
                 errors.append(f"note {note_id} references missing verse {verse_number} on {target_id}")
 
-# Reciprocal Psalm references must themselves resolve to catalogued canonical prayer/note files.
-prayer_ids = {load(ROOT / rel).get("id") for rel in prayer_rels if (ROOT / rel).exists()}
-note_ids = {load(ROOT / rel).get("id") for rel in note_rels if (ROOT / rel).exists()}
+# Prayer records are always standalone catalog objects, so every reciprocal Psalm prayerId must resolve.
+# Psalm noteIds are intentionally different: many identify embedded/editorial footnotes and therefore
+# do not need a standalone catalog record. Only external notes are checked in the forward direction above.
 for psalm_id, psalm in canonical_by_id.items():
     for prayer_id in psalm.get("prayerIds") or []:
         if prayer_id not in prayer_ids:
             errors.append(f"{psalm_id} references missing/catalog-external prayer {prayer_id}")
-    for note_id in psalm.get("noteIds") or []:
-        if note_id not in note_ids:
-            errors.append(f"{psalm_id} references missing/catalog-external note {note_id}")
+
+embedded_note_id_count = sum(
+    1
+    for psalm in canonical_by_id.values()
+    for note_id in (psalm.get("noteIds") or [])
+    if note_id not in external_note_ids
+)
 
 print(
     f"ATTACHMENTS canonicalPsalms={len(canonical_by_id)} prayers={len(prayer_rels)} "
-    f"prayerTargets={len(prayer_targets)} notes={len(note_rels)} noteTargets={len(note_targets)}"
+    f"prayerTargets={len(prayer_targets)} externalNotes={len(note_rels)} "
+    f"externalNoteTargets={len(note_targets)} embeddedNoteIds={embedded_note_id_count}"
 )
 
 if errors:
     raise SystemExit("Attachment audit failed:\n- " + "\n- ".join(errors))
 
-print("Corpus attachment audit OK: all prayer/note targets canonical and reciprocal")
+print("Corpus attachment audit OK: catalogued prayer/note targets canonical and reciprocal")
