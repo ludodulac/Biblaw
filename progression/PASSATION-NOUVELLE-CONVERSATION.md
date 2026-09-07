@@ -5,55 +5,51 @@
 
 ## 1. Mission
 
-Construire Biblaw comme une expertise structurée et interrogeable du corpus de la **Bible essénienne (classée par livres).pdf**, en particulier une indexation thématique riche, précise et navigable dans le site.
+Construire Biblaw comme une expertise structurée et interrogeable du corpus de la **Bible essénienne (classée par livres).pdf**, avec une indexation thématique riche, traçable et navigable.
 
-Le but n’est pas de produire une interprétation définitive des psaumes. Le travail consiste à **indexer, répertorier et relier** les thèmes, notions, images, entités, oppositions, répétitions et correspondances présents dans le corpus afin de permettre une recherche utile.
+Le projet n’a pas pour but de produire une interprétation définitive des psaumes. Il doit **indexer, répertorier et relier** les thèmes, notions, images, entités, oppositions, répétitions et correspondances présents dans le corpus afin de permettre une recherche utile.
 
-## 2. Position d’analyse à respecter absolument
+## 2. Position d’analyse à respecter
 
-Le propriétaire du projet a explicitement demandé une position neutre et humble :
+Le travail doit rester neutre et humble :
 
-- ne pas prétendre « comprendre réellement » ou épuiser le sens des psaumes ;
-- accepter qu’ils puissent avoir plusieurs niveaux de lecture ;
-- ne pas écarter un thème parce qu’il paraît inhabituel, symbolique, métaphysique ou étranger à une culture extérieure ;
-- décrire les affirmations du corpus comme des affirmations internes au corpus, pas comme des faits externes vérifiés ;
-- distinguer explicite, contextuel, symbolique, indirect, éditorial ;
-- relier les psaumes pour la recherche sans transformer une cooccurrence en synonymie, causalité ou vérité doctrinale.
+- ne pas prétendre épuiser le sens des psaumes ;
+- accepter plusieurs niveaux de lecture ;
+- décrire les affirmations du corpus comme internes au corpus ;
+- distinguer explicite, contextuel, symbolique, indirect et éditorial ;
+- ne jamais transformer une cooccurrence en synonymie, causalité ou doctrine ;
+- préférer les formulations documentaires : « le texte présente », « le psaume associe », « ce passage relie », « dans ce psaume… ».
 
-Les formulations recommandées sont documentaires : « le texte présente », « le psaume associe », « ce passage relie », « dans ce psaume… ».
-
-## 3. Source absolue
+## 3. Source autoritative
 
 Pour toute donnée doctrinale, contextuelle, éditoriale ou thématique :
 
-- source autoritative unique : `Bible essénienne (classée par livres).pdf` et les source packs dérivés du PDF ;
-- aucune source externe pour enrichir, confirmer ou corriger le contenu sémantique ;
+- source autoritative unique : `Bible essénienne (classée par livres).pdf` et les source packs dérivés ;
+- aucune source externe pour enrichir ou corriger le contenu sémantique ;
 - les prières restent liées aux psaumes mais ne sont pas une source primaire de thèmes ;
-- si une ambiguïté de fond reste réellement indécidable à partir du corpus, la documenter dans `data/incoherences.json`.
+- une ambiguïté de fond réellement indécidable doit être documentée dans `data/incoherences.json`.
 
 ## 4. État canonique validé
 
-Rapport courant : `data/thematic-index/validation-report.json`.
+Toujours relire `data/thematic-index/validation-report.json` avant de citer les nombres.
 
-État validé :
+État courant au 2026-09-07 :
 
 - `status`: `passed`
 - **44 livres**
 - **1158 analyses de psaumes**
-- **10406 relations thématiques**
+- **10409 relations thématiques**
 - **0 erreur**
 - **0 avertissement**
 
-Ne jamais recopier ces nombres aveuglément dans une future conversation : relire le rapport courant avant de les citer.
+Tous les livres 1–44 sont à la profondeur canonique `deep-content-grounded`.
 
-Tous les livres 1–44 ont été amenés à la profondeur canonique `deep-content-grounded`.
+## 5. Anomalies documentaires connues
 
-## 5. Anomalies documentaires connues et déjà intégrées à la méthode
-
-Cas particuliers à préserver :
+Préserver ces cas établis par le PDF :
 
 1. Livre 15 / Psaume 75 : numérotation source 15–27 ; le Psaume 76 repart ensuite à 1.
-2. Livre 23 / Psaume 128 : source imprimée 49–82, canonique 1–34, offset 48 ; question après 22, réponse 23. Toujours renuméroter après extraction brute.
+2. Livre 23 / Psaume 128 : source imprimée 49–82, canonique 1–34, offset 48 ; question après 22, réponse 23.
 3. Livre 26 / Psaume 186 : source 23–50.
 4. Livre 32 / Psaume 182 : source 28–50, restauré depuis le PDF.
 5. Livre 35 / Psaume 215 : source 26–46.
@@ -61,22 +57,22 @@ Cas particuliers à préserver :
 7. Livre 38 / Psaume 260 : source 23–54.
 8. Livre 44 / Psaume 285 : versets 1–16 seulement ; annexe finale détachée.
 
-Ne pas « réparer » ces cas selon une attente conventionnelle si le PDF montre une autre structure.
+Ne pas « réparer » ces structures selon une attente conventionnelle si le PDF montre autre chose.
 
-## 6. Architecture thématique canonique
+## 6. Architecture canonique
 
 Fichiers importants :
 
-- `data/thematic-index/books/book-XX.json` : analyses thématiques canoniques par livre ;
-- `data/thematic-index/theme-directory.json` : annuaire transversal généré ; ne pas éditer à la main ;
-- `data/thematic-index/theme-search-index.json` : alias de recherche ;
-- `data/thematic-index/theme-connections.json` : graphe neutre de cooccurrence dans les psaumes ;
+- `data/thematic-index/books/book-XX.json` : analyses thématiques canoniques ;
+- `data/thematic-index/theme-directory.json` : annuaire transversal généré ;
+- `data/thematic-index/theme-search-index.json` : alias de recherche générés ;
+- `data/thematic-index/theme-connections.json` : graphe neutre de cooccurrence ;
 - `data/thematic-index/theme-search-runtime.json` : runtime compact navigateur ;
-- `data/thematic-index/SEARCH-CONTRACT.md` : contrat sémantique de la recherche ;
-- `data/browser-search-catalog.json` : bundle navigateur unique ;
-- `data/incoherences.json` : ambiguïtés nécessitant éventuellement une décision humaine.
+- `data/thematic-index/SEARCH-CONTRACT.md` : contrat de recherche ;
+- `data/browser-search-catalog.json` : bundle navigateur ;
+- `data/incoherences.json` : registre des ambiguïtés éditoriales.
 
-Scripts associés :
+Scripts structurants :
 
 - `scripts/build_thematic_directory.py`
 - `scripts/build_thematic_search_index.py`
@@ -86,190 +82,242 @@ Scripts associés :
 - `scripts/build_thematic_search_runtime.py`
 - `scripts/build_browser_search_catalog.py`
 - `scripts/audit_thematic_search_quality.py`
+- `scripts/audit_production_search_queries.py`
+- `scripts/audit_assembly_theme_context.py`
+- `scripts/audit_psalm_number_search.py`
 - `scripts/run_canonical_thematic_pipeline.py`
 
-Toujours modifier le générateur plutôt qu’un fichier généré lorsque cela s’applique.
+Toujours modifier un générateur ou une source canonique plutôt qu’une sortie générée lorsque cela s’applique.
 
-## 7. Qualité de l’index de recherche
+## 7. Qualité actuelle de la recherche thématique
 
-Audit courant :
+Runtime courant :
 
-- 1250 thèmes ;
-- 1342 alias normalisés ;
-- 9 alias ambigus ;
+- **1251 thèmes** ;
+- **1343 alias normalisés** ;
+- **9 alias ambigus** ;
 - `semanticMerging: false` ;
-- 13121 arêtes de cooccurrence thème↔thème environ ;
-- aucune relation thématique sans versets ni enseignement dans l’audit de qualité validé.
+- `connectionMeaning: psalm-cooccurrence-only`.
 
-Règles importantes :
+Règles :
 
-- un alias ne vaut pas fusion sémantique ;
-- une cooccurrence ne vaut pas synonymie ;
+- alias ≠ fusion sémantique ;
+- cooccurrence ≠ synonymie ;
 - ne pas fusionner automatiquement les quasi-doublons lexicaux ;
 - ne pas supprimer automatiquement les thèmes singleton ;
-- les thèmes composites ne sont pas des erreurs par principe ;
-- les classements de résultats ne sont pas une hiérarchie de vérité.
+- un thème composite n’est pas une erreur par principe ;
+- un classement n’est pas une hiérarchie de vérité.
 
-## 8. État du site et de la recherche
+## 8. Trois intentions de recherche distinctes
+
+Le moteur distingue désormais explicitement :
+
+1. **numéro de psaume** : accès documentaire ;
+2. **Thèmes** : relations éditoriales canoniques ;
+3. **Mots et phrases** : occurrences littérales.
+
+Une couche ne doit jamais fabriquer les résultats d’une autre.
+
+### Recherche par numéro
+
+Un entier positif seul (`105`) ou précédé de `psaume` (`psaume 105`) cherche exactement le champ `number` des psaumes.
+
+- la résolution intervient avant les modes thème/texte ;
+- le filtre Archange reste actif ;
+- si plusieurs livres portent le même numéro, **toutes** les correspondances sont montrées ;
+- elles sont distinguées par Archange, livre, titre et référence documentaire ;
+- `22 commandements` ou `alliance 22` ne sont pas interprétés comme des recherches de numéro.
+
+Audit : `scripts/audit_psalm_number_search.py`.
+
+État courant : 1158 psaumes canoniques et **295 numéros répétés dans plusieurs livres** ; le moteur ne choisit jamais arbitrairement une occurrence.
+
+## 9. Résolution thématique stricte
+
+La résolution thématique du navigateur suit uniquement :
+
+1. normalisation de requête ;
+2. alias explicite du runtime ;
+3. sinon libellé canonique ou `themeId` exact après normalisation ;
+4. sinon aucun thème.
+
+**Aucun fallback par sous-chaîne ou proximité lexicale.**
+
+Une requête thématique non résolue peut proposer séparément la recherche textuelle lorsqu’une occurrence littérale existe.
+
+## 10. Normalisation française
+
+Articles initiaux neutralisés uniquement comme commodité de requête : `l`, `le`, `la`, `les`, `un`, `une`, `des`.
+
+Exemples :
+
+- `l’assemblée` et `assemblée` ont la même forme de recherche ;
+- `la sainte assemblée` et `sainte assemblée` ont la même forme de recherche ;
+- **`assemblée` et `sainte assemblée` restent deux notions distinctes**.
+
+Cette neutralisation n’est jamais une fusion sémantique.
+
+## 11. Décision éditoriale « Assemblée / Sainte Assemblée »
+
+La revue du corpus est terminée et tracée dans `data/incoherences.json` avec statut `resolved`.
+
+Décision :
+
+- création du thème canonique `sainte-assemblee` / « Sainte Assemblée » ;
+- aucune création d’un thème générique `assemblee` ;
+- seulement trois relations directement sourcées :
+  - `book-29-psalm-197` — Important — versets 16, 28 ;
+  - `book-29-psalm-211` — Important — versets 24, 32 ;
+  - `book-29-psalm-212` — Central — versets 4, 9, 16, 20, 25, 26, 27, 28, 31.
+
+Le psaume 212 est intitulé « Fondements moraux et magiques de la sainte assemblée » et explicite directement cette notion.
+
+Contrat de production :
+
+- `assemblée` → aucun thème, route textuelle disponible ;
+- `l’assemblée` → idem ;
+- `sainte assemblée` → `sainte-assemblee`, 3 psaumes indexés ;
+- `la sainte assemblée` → idem.
+
+Ne jamais élargir le thème aux 58 occurrences littérales par simple présence des mots.
+
+## 12. Distinction thème / texte — cas « Dieu »
+
+Décision produit importante : ne pas élargir automatiquement le thème `Dieu` à tous les psaumes contenant le mot.
+
+En mode Thèmes : afficher uniquement les psaumes réellement indexés sous ce thème. En parallèle, si des occurrences textuelles existent, afficher « Deux lectures de cette recherche » et proposer « Voir les occurrences textuelles ».
+
+Même règle pour toutes les requêtes : thème et occurrence lexicale sont des objets différents.
+
+## 13. Bundle navigateur canonique
+
+`data/catalog.json` contient encore 31 anciens fichiers de psaumes sous `data/corpus/<archange>/...` pour des raisons historiques. Le builder navigateur les ignore explicitement et ne publie que les psaumes canoniques sous `data/corpus/books/...`.
+
+État du bundle :
+
+- **1845 enregistrements** au total ;
+- **1158 psaumes canoniques** ;
+- **31 psaumes legacy ignorés** ;
+- couverture parfaite : 1158 psaumes navigateur = 1158 analyses = 1158 psaumes indexés ;
+- aucun couple `(psaume, thème)` dupliqué.
+
+La CI reconstruit le bundle et échoue s’il n’est pas reproductible depuis les sources. Le workflow `rebuild-browser-search-catalog.yml` garde le bundle synchronisé lors des changements du corpus/catalogue.
+
+Ne jamais réintroduire les fichiers legacy dans la recherche de production.
+
+## 14. État UI voulu
 
 Site : `https://ludodulac.github.io/Biblaw/`
 
-Fichiers principaux :
+Fichiers : `index.html`, `css/biblaw.css`, `js/biblaw.js`, `.github/workflows/validate-search-ui.yml`.
 
-- `index.html`
-- `css/biblaw.css`
-- `js/biblaw.js`
-- `.github/workflows/validate-search-ui.yml`
+Contrat UI :
 
-État UI actuellement voulu :
+- recherche vide au chargement ;
+- Psaumes coché par défaut ; Prières, Notes, Annexes décochés ;
+- filtre Livre supprimé ; filtre Archange conservé ;
+- modes `Thèmes` et `Mots et phrases` ;
+- champ capable de recevoir thème, mot, expression ou numéro de psaume ;
+- résultats thématiques : Central → Important → Lié, puis ordre déterministe ;
+- versets d’appui dans « Passage concerné » ;
+- `teaching` présenté comme repère contextuel ;
+- thèmes secondaires cliquables ;
+- thèmes présents à la fin du psaume ouvert ;
+- surlignage lexical uniquement ;
+- ambiguïtés d’alias montrées explicitement ;
+- un clic sur un thème cible directement son ID canonique et force le mode Thèmes.
 
-- champ de recherche vide au chargement ;
-- plus d’exemple « chouette » prérempli ;
-- **Psaumes** coché par défaut ;
-- Prières, Notes, Annexes décochés par défaut ;
-- filtre Livre supprimé ;
-- filtre Archange conservé ;
-- mode `Thèmes` + mode `Mots et phrases` ;
-- résultats thématiques classés **Central → Important → Lié**, puis ordre déterministe ;
-- versets d’appui affichés dans « Passage concerné » ;
-- `teaching` utilisé comme repère contextuel sans le présenter comme sens définitif ;
-- « Thèmes également présents dans ce psaume » en bas de chaque carte thématique ;
-- « Thèmes présents dans ce psaume » à la fin du psaume ouvert ;
-- thèmes secondaires cliquables pour navigation transversale ;
-- surlignage des mots réellement recherchés dans les extraits et dans le psaume ouvert ;
-- le surlignage reste lexical : il ne fabrique pas une occurrence parce qu’un thème a été indexé.
+## 15. Requêtes de production auditées
 
-## 9. Normalisation française de requête
+`audit_production_search_queries.py` couvre :
 
-La recherche thématique neutralise actuellement les articles initiaux simples :
+- `Dieu`
+- `alliance`
+- `alliance de lumière`
+- `lumière`
+- `assemblée`
+- `l’assemblée`
+- `sainte assemblée`
+- `la sainte assemblée`
+- `argent`
+- `chouette`
+- `abeille`
+- `22 commandements`
 
-- `l’assemblée` ↔ `assemblée`
-- `la sainte assemblée` ↔ `sainte assemblée`
+État validé :
 
-Articles neutralisés au début : `l`, `le`, `la`, `les`, `un`, `une`, `des`.
+- `Dieu` → `dieu`, 1 psaume thématique, 662 psaumes littéraux ;
+- `alliance` → `alliance`, 157 thématiques, 491 littéraux ;
+- `alliance de lumière` → ambiguïté explicite `alliance` + `alliance-de-lumiere`, 158 thématiques, 85 littéraux ;
+- `lumière` → `lumiere`, 425 thématiques, 1048 littéraux ;
+- `assemblée` → aucun thème, 75 littéraux ;
+- `l’assemblée` → aucun thème, 16 littéraux ;
+- `sainte assemblée` → `sainte-assemblee`, 3 thématiques (1 Central, 2 Important), 58 littéraux ;
+- `la sainte assemblée` → même thème, 3 thématiques, 48 littéraux ;
+- `argent` → `argent`, 6 thématiques, 61 littéraux ;
+- `chouette` → `chouette`, 1 thématique, 2 littéraux ;
+- `abeille` → `abeille`, 2 thématiques, 7 littéraux ;
+- `22 commandements` → `22-commandements`, 1 thématique, 9 littéraux.
 
-Cette souplesse est **uniquement une normalisation de requête**. Ne pas transformer cela en fusion sémantique.
+Toutes les occurrences thématiques représentatives de cet audit ont des versets d’appui et un `teaching`.
 
-Exemple important :
+## 16. CI et discipline de modification
 
-- `assemblée` et `l’assemblée` peuvent converger ;
-- `sainte assemblée` et `la sainte assemblée` peuvent converger ;
-- **`assemblée` et `sainte assemblée` ne doivent pas être fusionnés automatiquement.**
+Avant toute modification :
 
-## 10. Distinction recherche thématique / recherche textuelle — cas « Dieu »
+- re-fetch le fichier et utiliser son SHA courant ;
+- corriger les erreurs techniques déterministes automatiquement ;
+- modifier les générateurs plutôt que les sorties générées ;
+- ne pas fabriquer de relation sémantique à partir d’une fréquence ou d’une proximité lexicale ;
+- faire passer les audits de recherche après modification ;
+- vérifier GitHub Pages après les changements de production.
 
-Dernier problème observé par l’utilisateur : en tapant **« Dieu »** en mode Thèmes, un seul psaume pouvait apparaître, alors que le mot « Dieu » apparaît littéralement dans de nombreux psaumes.
+Le pipeline canonique régénère et valide les couches thématiques dans un ordre déterministe. Ne pas revenir à des publications naïves non-fast-forward.
 
-Le comportement a été corrigé côté interface sans modifier artificiellement l’index :
+## 17. Limite de vérification de l’environnement actuel
 
-- si une requête correspond à un thème indexé, le mode Thèmes continue d’afficher les psaumes réellement indexés sous ce thème ;
-- en parallèle, le moteur compte les occurrences littérales dans les psaumes ;
-- si des occurrences textuelles existent, l’interface affiche **« Deux lectures de cette recherche »** et propose **« Voir les occurrences textuelles »** ;
-- ce bouton bascule vers `Mots et phrases` sans perdre la requête ;
-- un test CI exige désormais que `Dieu` ait plus d’une occurrence textuelle dans les psaumes et que cette route soit exposée.
+Les contrôles automatisés, les logs CI et les déploiements GitHub Pages sont vérifiables depuis cet environnement.
 
-C’est une décision produit importante : **ne pas élargir automatiquement le thème « Dieu » à tous les psaumes contenant le mot Dieu**. Le thème indexé et l’occurrence lexicale sont deux objets différents.
+L’interaction visuelle réelle dans un navigateur avec clics et rendu n’a pas été exécutée ici faute d’outil de navigateur interactif exposé. **Ne pas prétendre qu’un audit visuel manuel a été effectué.**
 
-La prochaine conversation doit vérifier visuellement ce comportement sur le site avant d’aller plus loin.
+Lorsqu’un navigateur interactif est disponible, refaire un passage de bout en bout sur les requêtes de la section 15 et sur quelques numéros répétés.
 
-## 11. État Git / CI au moment de cette passation
+## 18. Travail éditorial volontairement différé
 
-HEAD `main` observé :
+Ne pas lancer encore de grandes synthèses automatiques globales de thèmes.
 
-- commit `ce088d8744d9c0322391232c3aa3e43dec5de35b`
-- message : `Validate thematic and textual search distinction`
-
-Workflows associés à ce HEAD :
-
-- `Validate thematic search UI` run `34080396578` : **success** ;
-- `Publier Biblaw sur GitHub Pages` run `34080396605` : **success**.
-
-Toujours re-vérifier le HEAD et les workflows au début d’une nouvelle conversation.
-
-## 12. Pipeline canonique et publication
-
-Le pipeline canonique :
-
-- régénère les couches thématiques ;
-- génère le runtime compact ;
-- génère `data/browser-search-catalog.json` ;
-- valide l’ensemble ;
-- publie les sorties générées de façon race-safe en cas de commits concurrents.
-
-Le bundle navigateur contient actuellement 1876 enregistrements et évite >1000 requêtes HTTP individuelles au chargement du site.
-
-La publication canonique a déjà été rendue tolérante aux courses de push : ne pas revenir à une publication naïve non-fast-forward.
-
-## 13. Travail éditorial volontairement différé
-
-Ne pas générer maintenant de grand résumé général automatique pour chaque thème.
-
-Décision du propriétaire : les **synthèses thématiques globales** seront une phase éditoriale séparée, lorsque l’index et le corpus seront considérés comme suffisamment stabilisés.
-
-À ce moment-là, chaque synthèse devra :
+Cette phase devra être séparée et, pour chaque thème :
 
 - examiner toutes les occurrences ;
 - tenir compte des versets, contextes, niveaux d’importance et connexions ;
-- distinguer les manières différentes dont un même thème apparaît ;
-- employer des formulations contextuelles (« dans tels psaumes… », « ailleurs… ») plutôt qu’une définition définitive (« ce thème signifie… »).
+- distinguer les manières différentes dont le thème apparaît ;
+- employer des formulations contextuelles plutôt qu’une définition définitive.
 
-## 14. Prochaine séquence recommandée
-
-Priorité immédiate : **audit de recherche réel**, pas nouvelle couche sémantique massive.
-
-1. Ouvrir le site déployé et tester de bout en bout :
-   - `Dieu`
-   - `alliance`
-   - `alliance de lumière`
-   - `lumière`
-   - `assemblée`
-   - `l’assemblée`
-   - `sainte assemblée`
-   - `la sainte assemblée`
-   - `argent`
-   - `chouette`
-   - `abeille`
-   - `22 commandements`
-2. Pour chaque requête, vérifier :
-   - résolution du bon thème ;
-   - distinction thème / occurrences textuelles ;
-   - ordre Central → Important → Lié ;
-   - versets d’appui ;
-   - surlignage ;
-   - thèmes secondaires en bas ;
-   - navigation vers un autre thème ;
-   - ouverture du psaume complet.
-3. Corriger uniquement les problèmes techniques ou de présentation déterministes.
-4. Si un problème vient de l’index sémantique lui-même, remonter à la relation canonique/source pack et au PDF ; ne pas corriger par une règle UI arbitraire.
-5. Après cet audit, décider si la couche recherche est assez stable pour lancer la future phase de synthèses thématiques éditoriales.
-
-## 15. Règle d’autonomie
+## 19. Règle d’autonomie
 
 Quand le propriétaire dit « continue », « vas-y », « fais-le » : avancer réellement.
 
 - ne pas demander validation étape par étape ;
 - résoudre les problèmes techniques déterministes automatiquement ;
-- corriger les générateurs/pipelines plutôt que les sorties générées ;
-- ne demander l’avis humain que pour une vraie ambiguïté éditoriale/sémantique ou une décision produit ;
-- si une ambiguïté peut être documentée sans bloquer, utiliser `data/incoherences.json` et continuer.
+- prendre les décisions éditoriales lorsque le corpus permet de les fonder avec une traçabilité suffisante ;
+- demander l’avis humain seulement pour une ambiguïté réellement indécidable ou une décision produit structurante ;
+- documenter les ambiguïtés non bloquantes dans `data/incoherences.json`.
 
-## 16. Procédure de reprise dans une nouvelle conversation
+## 20. Procédure de reprise
 
-Ordre conseillé :
-
-1. lire ce fichier ;
-2. lire les dernières entrées pertinentes de `progression/` ;
+1. lire cette passation ;
+2. lire les dernières notes de `progression/`, en particulier `2026-09-07-recherche-numero-et-sainte-assemblee.md` ;
 3. lire `data/incoherences.json` ;
 4. lire `data/thematic-index/validation-report.json` ;
-5. vérifier HEAD `main` et les workflows GitHub récents ;
-6. re-fetch tout fichier avant modification et utiliser son SHA courant ;
-7. vérifier le site déployé ;
-8. reprendre par l’audit des requêtes de la section 14 ;
-9. ne jamais utiliser de source externe pour une décision thématique ;
-10. écrire toute nouvelle décision méthodologique importante dans `progression/`.
+5. vérifier HEAD `main` et les workflows récents ;
+6. re-fetch avant toute écriture ;
+7. vérifier le déploiement Pages ;
+8. reprendre par des audits de recherche/navigation et des améliorations techniques déterministes ;
+9. ne pas utiliser de source externe pour une décision thématique ;
+10. écrire les décisions méthodologiques importantes dans `progression/`.
 
-## 17. Principe final
+## 21. Principe final
 
-Si cette passation et le dépôt semblent se contredire, **le dépôt courant, les rapports et les générateurs priment**. Ne jamais écraser un état plus récent pour faire correspondre le code à ce document.
+Si cette passation et le dépôt semblent se contredire, **le dépôt courant, les rapports et les générateurs priment**.
 
-Le but de la passation est de permettre à la prochaine conversation de reprendre immédiatement avec les mêmes règles de neutralité, de traçabilité et de prudence, sans perdre les décisions acquises ni casser l’index canonique.
+Le but de cette passation est de permettre une reprise immédiate avec les mêmes règles de neutralité, de traçabilité, de séparation des couches et de prudence sémantique, sans casser l’index canonique ni réintroduire d’anciens comportements approximatifs.
