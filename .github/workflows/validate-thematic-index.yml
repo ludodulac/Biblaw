@@ -13,6 +13,7 @@ on:
       - 'scripts/sync_thematic_documentary_status.py'
       - 'scripts/build_book_contexts.py'
       - 'scripts/normalize_thematic_metadata.py'
+      - 'scripts/normalize_known_theme_identifiers.py'
       - 'scripts/validate_thematic_index.py'
       - 'scripts/build_thematic_directory.py'
       - 'scripts/audit_thematic_search_quality.py'
@@ -35,6 +36,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - name: Reject reviewed legacy theme identifiers
+        run: python scripts/normalize_known_theme_identifiers.py --check
       - name: Install PDF text extraction dependency
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Run canonical documentary repair and thematic indexing pipeline
@@ -49,6 +52,7 @@ jobs:
             if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
               echo "main advanced; regenerating from latest main (attempt $attempt)"
               git reset --hard origin/main
+              python scripts/normalize_known_theme_identifiers.py --check
               python scripts/run_canonical_thematic_pipeline.py
             fi
             if [ -z "$(git status --porcelain -- $WATCHED)" ]; then
