@@ -27,18 +27,27 @@ jobs:
           html=Path('index.html').read_text(encoding='utf-8')
           js=Path('js/biblaw.js').read_text(encoding='utf-8')
           css=Path('css/biblaw.css').read_text(encoding='utf-8')
-          required=('query','searchButton','archangelFilter','bookFilter','ambiguityPanel','suggestionKicker','suggestionTitle','senseChoices','closeAmbiguity','results','resultCount','themeDirectory','indexPanel','recordDialog','dialogContent')
+          required=('query','searchButton','archangelFilter','ambiguityPanel','suggestionKicker','suggestionTitle','senseChoices','closeAmbiguity','results','resultCount','themeDirectory','indexPanel','recordDialog','dialogContent')
           missing=[item for item in required if f'id="{item}"' not in html]
           assert not missing, f'missing DOM ids: {missing}'
+          assert 'id="bookFilter"' not in html
+          assert 'bookFilter' not in js
+          assert 'value="chouette"' not in html
+          assert 'id="query" type="search" value=""' in html
+          assert 'value="psalm" checked' in html
+          for value in ('prayer','note','annex'):
+              marker=f'value="{value}" checked'
+              assert marker not in html, f'{value} must not be checked by default'
           assert 'js/biblaw.js' in html
           assert "fetch('data/browser-search-catalog.json')" in js
           assert "catalog.records.map" not in js
-          assert "$('bookFilter').onchange=search" in js or "$('bookFilter').onchange = search" in js
           # Contextual thematic results: visible evidence first, secondary themes at the end.
           assert 'themesByRecord' in js
           assert 'function contextualVerses' in js
           assert 'Passage concerné' in js
-          assert 'Autres thèmes indexés dans ce psaume' in js
+          assert 'Thèmes également présents dans ce psaume' in js
+          assert 'Thèmes présents dans ce psaume' in js
+          assert 'dialog-themes' in js
           assert 'data-related-theme' in js
           assert 'classés Central, Important, puis Lié' in js
           assert '.theme-context' in css and '.related-themes' in css
