@@ -3,8 +3,8 @@
 
 This script mirrors the browser's deterministic query resolution for the passation
 smoke queries. It reports thematic candidates, indexed psalm counts, importance
-levels, support metadata and literal psalm counts. Ambiguous aliases are reported
-as such and are never collapsed.
+levels, support metadata, literal psalm counts and thematic coverage. Ambiguous
+aliases are reported as such and are never collapsed.
 """
 
 from __future__ import annotations
@@ -106,6 +106,37 @@ def main() -> None:
     themes = directory["themes"]
     by_id = {t["id"]: t for t in themes}
     psalms = [r for r in bundle["records"] if r.get("recordType") == "psalm"]
+
+    indexed_record_ids = {
+        occurrence.get("recordId")
+        for theme in themes
+        for occurrence in theme.get("occurrences", [])
+        if occurrence.get("recordId")
+    }
+    browser_by_id = {r.get("id"): r for r in psalms if r.get("id")}
+    browser_record_ids = set(browser_by_id)
+    missing_from_thematic = sorted(
+        browser_record_ids - indexed_record_ids,
+        key=lambda rid: (
+            browser_by_id[rid].get("archangel", ""),
+            browser_by_id[rid].get("number") or 9999,
+            rid,
+        ),
+    )
+    orphan_thematic = sorted(indexed_record_ids - browser_record_ids)
+    print(
+        f"COVERAGE browserPsalms={len(browser_record_ids)} indexedPsalms={len(indexed_record_ids)} "
+        f"browserWithoutTheme={len(missing_from_thematic)} thematicWithoutBrowser={len(orphan_thematic)}"
+    )
+    for rid in missing_from_thematic:
+        r = browser_by_id[rid]
+        print(
+            f"UNINDEXED_BROWSER_PSALM id={rid} archangel={r.get('archangel')} "
+            f"number={r.get('number')} title={r.get('title')!r}"
+        )
+    for rid in orphan_thematic:
+        print(f"ORPHAN_THEMATIC_RECORD id={rid}")
+    assert not orphan_thematic, "the thematic directory must not reference psalms missing from the browser corpus"
 
     ambiguous = {k: v for k, v in runtime["aliases"].items() if v.get("ambiguous")}
     print(f"Runtime: {len(themes)} themes; {len(ambiguous)} ambiguous aliases")
