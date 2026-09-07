@@ -22,20 +22,6 @@
         "runtimeResolution": "Aucune des quatre requêtes ne résout actuellement un thème canonique."
       },
       "decisionNeeded": "Déterminer, après vérification éditoriale du corpus/source pack, s’il faut créer des thèmes canoniques distincts « Assemblée » et « Sainte Assemblée », ou conserver ces formulations uniquement comme occurrences textuelles. Ne pas créer d’alias thématique sans relations canoniques sourcées."
-    },
-    {
-      "id": "browser-psalms-without-thematic-analysis",
-      "status": "open",
-      "type": "editorial-coverage-gap",
-      "summary": "31 psaumes présents dans le corpus navigateur n’ont actuellement aucune relation dans le répertoire thématique canonique.",
-      "evidence": {
-        "browserPsalmCount": 1189,
-        "indexedPsalmCount": 1158,
-        "browserWithoutThemeCount": 31,
-        "thematicWithoutBrowserCount": 0,
-        "notablePattern": "26 psaumes consécutifs de Michaël 105 à 130 sont concernés, auxquels s’ajoutent Michaël 26, Gabriel 112 et 182, Raphaël 104 et Ouriel 105."
-      },
-      "decisionNeeded": "Vérifier si ces 31 psaumes correspondent à des lots éditoriaux encore non analysés ou à des exclusions intentionnelles. Ne pas générer automatiquement des thèmes à partir du seul texte."
     }
   ]
 }
