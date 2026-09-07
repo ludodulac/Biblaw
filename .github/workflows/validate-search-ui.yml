@@ -49,6 +49,12 @@ jobs:
           assert 'data-related-theme' in js
           assert 'classés Central, Important, puis Lié' in js
           assert '.theme-context' in css and '.related-themes' in css
+          # The UI ordering contract is explicit and independent from numeric score implementation details.
+          assert 'const importanceRank' in js
+          assert "{ central: 0, important: 1, related: 2 }" in js
+          assert 'importanceRank(a.importance)-importanceRank(b.importance)' in js
+          assert 'importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)' in js
+          assert 'betterImportance' in js and 'sameImportance' in js
           # Search highlighting stays presentational: it marks literal normalized query words only.
           assert 'function exactVerses' in js
           assert 'const highlighted' in js
