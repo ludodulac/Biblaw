@@ -17,6 +17,7 @@ on:
       - 'scripts/build_thematic_directory.py'
       - 'scripts/audit_thematic_search_quality.py'
       - 'scripts/build_thematic_search_index.py'
+      - 'scripts/validate_thematic_search_index.py'
       - '.github/workflows/validate-thematic-index.yml'
 
 permissions:
