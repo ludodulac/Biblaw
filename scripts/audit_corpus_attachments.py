@@ -6,6 +6,7 @@ must already use canonical `book-XX-psalm-NNN` ids. External relationships must 
 supported by the same source document with overlapping or immediately adjacent printed/PDF pages.
 A Psalm may also carry `noteIds` for embedded/editorial footnotes that have no standalone
 `data/notes/*.json` record; those internal identifiers are not required to exist in the catalog.
+Psalm-shaped cross-references in attachments must also use an existing canonical Psalm id.
 The browser bundle must contain the current canonical Psalm, prayer and external-note objects exactly,
 so a stale generated bundle cannot pass while source files are correct. No semantic inference or
 external source is used.
@@ -80,6 +81,25 @@ note_targets: set[str] = set()
 prayer_ids: set[str] = set()
 external_note_ids: set[str] = set()
 source_attachment_records: dict[str, dict] = {}
+canonical_cross_reference_count = 0
+
+
+def audit_cross_references(record: dict, record_id: str) -> None:
+    global canonical_cross_reference_count
+    refs = record.get("crossReferences") or []
+    if not isinstance(refs, list):
+        errors.append(f"{record_id} crossReferences is not a list")
+        return
+    for raw_ref in refs:
+        ref = str(raw_ref or "")
+        if LEGACY_PSALM_RE.match(ref):
+            errors.append(f"{record_id} still has legacy Psalm cross-reference {ref}")
+        elif CANONICAL_PSALM_RE.match(ref):
+            if ref not in canonical_by_id:
+                errors.append(f"{record_id} cross-references missing canonical Psalm {ref}")
+            else:
+                canonical_cross_reference_count += 1
+
 
 for rel in prayer_rels:
     path = ROOT / rel
@@ -93,6 +113,7 @@ for rel in prayer_rels:
     prayer_id = str(prayer.get("id") or "")
     prayer_ids.add(prayer_id)
     source_attachment_records[prayer_id] = prayer
+    audit_cross_references(prayer, prayer_id)
     if path.stem != prayer_id:
         errors.append(f"prayer filename/id mismatch: {rel} != {prayer_id}")
     target_id = str(prayer.get("appliesToPsalmId") or "")
@@ -125,6 +146,7 @@ for rel in note_rels:
     note_id = str(note.get("id") or "")
     external_note_ids.add(note_id)
     source_attachment_records[note_id] = note
+    audit_cross_references(note, note_id)
     if path.stem != note_id:
         errors.append(f"note filename/id mismatch: {rel} != {note_id}")
     applies = note.get("appliesTo") or {}
@@ -209,7 +231,7 @@ print(
     f"ATTACHMENTS canonicalPsalms={len(canonical_by_id)} prayers={len(prayer_rels)} "
     f"prayerTargets={len(prayer_targets)} externalNotes={len(note_rels)} "
     f"externalNoteTargets={len(note_targets)} embeddedNoteIds={embedded_note_id_count} "
-    f"browserRecords={len(browser_records)}"
+    f"canonicalCrossReferences={canonical_cross_reference_count} browserRecords={len(browser_records)}"
 )
 
 if errors:
