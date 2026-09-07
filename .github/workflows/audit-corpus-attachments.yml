@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'data/catalog.json'
+      - 'data/browser-search-catalog.json'
       - 'data/corpus/books/**'
       - 'data/notes/**'
       - 'data/prayers/**'
