@@ -70,8 +70,9 @@ changed_prayers = 0
 renamed_notes = 0
 unresolved_notes = []
 
-# 1) Canonicalize legacy prayer targets when the canonical Psalm independently points back to the prayer
-# and source evidence is overlapping or immediately adjacent. Also repair missing reciprocal prayerIds.
+# 1) Canonicalize legacy prayer targets from corpus-internal evidence:
+# explicit book number + archangel + Psalm number + same source document + overlapping/adjacent pages.
+# Then repair reciprocal prayerIds when needed.
 for rel in list(records):
     if not rel.startswith("data/prayers/"):
         continue
@@ -88,10 +89,11 @@ for rel in list(records):
         if not match:
             raise SystemExit(f"Unsupported prayer target: {prayer_id} -> {target_id}")
         archangel, number_text = match.groups()
+        prayer_book = int(prayer.get("bookNumber", -1))
         candidates = []
         for psalm in identity_candidates(archangel, int(number_text)):
-            reciprocal = prayer_id in (psalm.get("prayerIds") or [])
-            if reciprocal and source_connected(prayer, psalm):
+            psalm_book = int((psalm.get("book") or {}).get("number", -2))
+            if psalm_book == prayer_book and source_connected(prayer, psalm):
                 candidates.append(psalm)
         if len(candidates) != 1:
             raise SystemExit(f"Prayer {prayer_id} has {len(candidates)} deterministic canonical candidates")
