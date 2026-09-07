@@ -62,16 +62,22 @@ def main() -> None:
         "function psalmNumberMatches(number)",
         "const psalmNumber=parsePsalmNumberQuery(query)",
         "return render(psalmNumberMatches(psalmNumber),null,{numberLookup:true,psalmNumber})",
-        "Number(r.number)===number",
+        "psalmsByNumber: new Map()",
+        "state.psalmsByNumber = new Map()",
+        "state.psalmsByNumber.get(number)||[]",
         "r.book?.number",
         "numberLookup?'Numéro':'Texte'",
     )
     for needle in required:
         assert needle in js, f"missing browser number-search contract: {needle}"
 
+    assert "Number(r.number)===number" not in js, "number lookup must use the prebuilt number index instead of rescanning records"
+    assert "state.records.find(x=>x.id===id)" not in js, "record opening must use the prebuilt ID index"
+    assert "state.recordById.get(id)" in js
+
     print(
         f"Psalm number search OK: {len(psalms)} canonical psalms, "
-        f"{len(repeated)} repeated numbers, sample={sample_number} matches={len(sample_records)}"
+        f"{len(repeated)} repeated numbers, indexed browser lookup, sample={sample_number} matches={len(sample_records)}"
     )
 
 
