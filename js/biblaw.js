@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, active: null, resolvedThemes: [] };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, active: null, resolvedThemes: [] };
   const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[’']/g, ' ').replace(/[^a-z0-9\s-]/g, ' ').replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
   const stripLeadingArticle = value => {
     const q=norm(value), parts=q.split(' ').filter(Boolean);
@@ -22,7 +22,7 @@
     const needle=norm(query); if(!needle)return false;
     return ` ${norm(value)} `.includes(` ${needle} `);
   };
-  const literalTextMatch = (r, query) => textFragments(r).some(fragment => literalIncludes(fragment, query));
+  const literalTextMatch = (r, needle) => Boolean(needle) && (state.normalizedFragmentsById.get(r.id)||[]).some(fragment => ` ${fragment} `.includes(` ${needle} `));
   const parsePsalmNumberQuery = value => {
     const match=norm(value).match(/^(?:psaume\s+)?([0-9]{1,4})$/);
     if(!match)return null;
@@ -54,9 +54,13 @@
       state.records = bundle.records || [];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
       state.psalmsByNumber = new Map();
-      for (const r of state.records) if (r.recordType === 'psalm') {
-        const number=Number(r.number), list=state.psalmsByNumber.get(number)||[];
-        list.push(r); state.psalmsByNumber.set(number,list);
+      state.normalizedFragmentsById = new Map();
+      for (const r of state.records) {
+        state.normalizedFragmentsById.set(r.id,textFragments(r).map(norm).filter(Boolean));
+        if (r.recordType === 'psalm') {
+          const number=Number(r.number), list=state.psalmsByNumber.get(number)||[];
+          list.push(r); state.psalmsByNumber.set(number,list);
+        }
       }
       state.themesByRecord = new Map();
       for (const theme of state.themeDirectory) for (const occurrence of theme.occurrences || []) {
@@ -77,8 +81,8 @@
   }
 
   function matches(query) {
-    const allowed = selectedTypes(), a = $('archangelFilter').value;
-    return state.records.filter(r => allowed.has(type(r)) && (!a || r.archangel === a) && literalTextMatch(r, query)).map(record => ({ record, score: 1 }));
+    const allowed = selectedTypes(), a = $('archangelFilter').value, needle=norm(query);
+    return state.records.filter(r => allowed.has(type(r)) && (!a || r.archangel === a) && literalTextMatch(r, needle)).map(record => ({ record, score: 1 }));
   }
   function psalmNumberMatches(number) {
     if(!selectedTypes().has('psalm'))return [];
