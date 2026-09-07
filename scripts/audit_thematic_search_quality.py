@@ -4,6 +4,11 @@
 This audit is intentionally conservative. It detects deterministic structural/lexical situations
 that may reduce search quality (label collisions, inconsistent labels for one id, singletons,
 composite labels, weakly grounded relations). It never merges or renames themes automatically.
+
+Important editorial rule: a theme label does not need an external or globally fixed definition.
+Its meaning may be developed contextually by the Archangel across one or several Psalms. Review
+must therefore preserve each relation's Psalm, supporting verses and teaching. External conceptual
+analogies must not be used to normalize, merge, rename or define canonical themes.
 """
 from __future__ import annotations
 
@@ -50,6 +55,7 @@ label_ids = defaultdict(Counter)
 relation_count = 0
 relations_without_verses = []
 relations_without_teaching = []
+relation_contexts = defaultdict(list)
 for path in sorted(BOOKS.glob("book-*.json")):
     data = load(path)
     book = data.get("book", {})
@@ -61,6 +67,17 @@ for path in sorted(BOOKS.glob("book-*.json")):
             if tid and label:
                 id_labels[tid][label] += 1
                 label_ids[norm(label)][tid] += 1
+                relation_contexts[tid].append({
+                    "bookNumber": book.get("number"),
+                    "archangel": book.get("archangel"),
+                    "psalmNumber": psalm.get("number"),
+                    "recordId": psalm.get("recordId"),
+                    "label": label,
+                    "importance": rel.get("importance"),
+                    "directness": rel.get("directness"),
+                    "verseNumbers": rel.get("verseNumbers", []),
+                    "teaching": rel.get("teaching"),
+                })
             ref = {
                 "bookNumber": book.get("number"),
                 "psalmNumber": psalm.get("number"),
@@ -95,7 +112,14 @@ by_norm = defaultdict(list)
 for theme in themes:
     by_norm[norm(theme.get("label", ""))].append(theme)
 normalized_collisions = [
-    {"normalizedLabel": key, "themes": [compact_theme(t) for t in vals]}
+    {
+        "normalizedLabel": key,
+        "themes": [compact_theme(t) for t in vals],
+        "contextualEvidence": {
+            t.get("id"): relation_contexts.get(t.get("id"), []) for t in vals
+        },
+        "reviewRule": "Compare the corpus-internal Psalm contexts, supporting verses and teachings before any identifier consolidation; identical labels alone are insufficient evidence.",
+    }
     for key, vals in sorted(by_norm.items()) if key and len(vals) > 1
 ]
 
@@ -142,7 +166,9 @@ report = {
     "policy": {
         "automaticMergeAllowed": False,
         "automaticRenameAllowed": False,
-        "note": "Rare or composite themes are not errors. They require corpus-grounded review before any editorial consolidation.",
+        "externalDefinitionAllowed": False,
+        "contextualMeaningSource": "canonical Psalm context, supporting verses and corpus-grounded teaching",
+        "note": "Rare, composite or unfamiliar themes are not errors. A term may receive several complementary contextual explanations across Psalms. Review corpus-internal evidence before any editorial consolidation.",
     },
 }
 OUT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
