@@ -5,8 +5,10 @@ Documentary PDF repairs are applied before semantic indexing. Deep indexing pass
 from books 1 through 44. The indexing passes are descriptive research aids; they do not assert an
 exclusive interpretation of the Psalms.
 
-Generated search/catalog artefacts are followed by production-boundary integrity audits so a
-successful canonical rebuild cannot silently publish stale or legacy attachment relationships.
+Historical Book 17 pilot extraction artefacts are normalized at the production boundary before
+browser artefacts are built. Generated search/catalog artefacts are followed by production-boundary
+integrity audits so a successful canonical rebuild cannot silently publish stale or legacy
+attachment relationships.
 """
 from __future__ import annotations
 import subprocess,sys
@@ -28,6 +30,7 @@ def repair_documentary_boundaries():
 
 def main():
     repair_documentary_boundaries()
+    run('normalize_book17_production_attachments.py')
     run('deepen_books01_02_semantic_evidence.py'); run('finalize_books01_02_semantic.py')
     run('deepen_books03_05_semantic_evidence.py'); run('finalize_books03_05_semantic.py')
     run('deepen_books06_08_semantic_evidence.py'); run('finalize_books06_08_semantic.py')
