@@ -2,7 +2,7 @@
 """Run the canonical thematic rebuild in a deterministic, regression-safe order.
 
 Documentary PDF repairs are applied before semantic indexing. Deep indexing passes are then replayed
-from books 9 through 44. The indexing passes are descriptive research aids; they do not assert an
+from books 1 through 44. The indexing passes are descriptive research aids; they do not assert an
 exclusive interpretation of the Psalms.
 """
 from __future__ import annotations
@@ -25,9 +25,14 @@ def repair_documentary_boundaries():
 
 def main():
     repair_documentary_boundaries()
+    # Books 1-17: descriptive, non-exclusive indexing passes.
+    run('deepen_books01_02_semantic_evidence.py'); run('finalize_books01_02_semantic.py')
+    run('deepen_books03_05_semantic_evidence.py'); run('finalize_books03_05_semantic.py')
+    run('deepen_books06_08_semantic_evidence.py'); run('finalize_books06_08_semantic.py')
     run('deepen_books09_11_semantic_evidence.py'); run('finalize_books09_11_semantic.py')
     run('deepen_books12_14_semantic_evidence.py'); run('finalize_books12_14_semantic.py')
     run('complete_book17_thematic.py'); run('deepen_books15_17_semantic_evidence.py'); run('finalize_books15_17_semantic.py')
+    # Books 18-44: preserve established curated deep passes.
     run('complete_books18_20_thematic.py')
     run('deepen_book18_semantic.py'); run('deepen_book18_semantic_part2.py')
     for n in range(1,7): run(f'deepen_book19_semantic_part{n}.py')
