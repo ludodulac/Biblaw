@@ -10,8 +10,9 @@ an exact source-text guard. If it was omitted entirely, no previous Psalm change
 The final Psalm 285 of book 44 is also repaired by detaching the annex text that begins after its
 verse 16. No doctrinal interpretation is performed; these are documentary boundary repairs.
 
-Documentary reconstruction must not erase independently established attachment metadata. In
-particular, existing reciprocal `prayerIds` are preserved when a Psalm record is rebuilt.
+Documentary reconstruction must not erase independently established attachment metadata. Existing
+reciprocal `prayerIds` are preserved, and any missing reciprocal is restored only from a prayer that
+already explicitly targets this exact canonical Psalm through `appliesToPsalmId`.
 """
 from __future__ import annotations
 import json,re,subprocess
@@ -20,6 +21,7 @@ ROOT=Path(__file__).resolve().parents[1]
 PDF=ROOT/'Bible essénienne (classée par livres).pdf'
 CORPUS=ROOT/'data/corpus/books'
 NOTES=ROOT/'data/notes/books'
+PRAYERS=ROOT/'data/prayers'
 CASES=[
  {'book':15,'psalm':75,'previous':None,'next':76,'pages':[914,923],'startVerse':15,'title':'On reconnaît un homme à ses œuvres','heading':r'^75\s+O\s*n\s+reconnaît\s+un\s+homme\s+à\s+ses\s+œuvres','nextHeading':r'^76\s+S\s*ortez\s+des\s+illusions.*réalistes'},
  {'book':23,'psalm':128,'previous':None,'next':129,'pages':[1922,1932],'startVerse':49,'title':'Ne sois pas un rêveur','heading':r'128\s+.*rêveur','nextHeading':r'129\s+.*réincarnation'},
@@ -53,6 +55,13 @@ def locate_line(text,pattern,start=0):
  for m in re.finditer(r'(?m)^.*$',text[start:]):
   if re.search(pattern,re.sub(r'\s+',' ',m.group(0)).strip(),re.I): return start+m.start(),start+m.end()
  return None
+def explicit_prayer_ids(target_id):
+ ids=[]
+ for path in sorted(PRAYERS.glob('*.json')):
+  prayer=json.loads(path.read_text(encoding='utf-8'))
+  if prayer.get('appliesToPsalmId')==target_id and prayer.get('id'):
+   ids.append(prayer['id'])
+ return ids
 def extract_case(c):
  text=page_text(c['book'],*c['pages']); target=locate_line(text,c['heading'])
  if not target: raise RuntimeError(f"Target heading not found: {c}")
@@ -71,8 +80,9 @@ def extract_case(c):
  if nums[0]!=c['startVerse']: raise RuntimeError(f"Wrong first source verse for {c}")
  book_dir=CORPUS/f"book-{c['book']:02d}"; note_dir=NOTES/f"book-{c['book']:02d}"
  target_path=book_dir/f"psalm-{c['psalm']:03d}.json"
+ target_id=f"book-{c['book']:02d}-psalm-{c['psalm']:03d}"
  existing=json.loads(target_path.read_text(encoding='utf-8')) if target_path.exists() else {}
- preserved_prayer_ids=list(existing.get('prayerIds') or [])
+ prayer_ids=sorted(set(existing.get('prayerIds') or []) | set(explicit_prayer_ids(target_id)))
  if c['previous'] is not None:
   prev_path=book_dir/f"psalm-{c['previous']:03d}.json"
   if prev_path.exists():
@@ -87,13 +97,13 @@ def extract_case(c):
  note_ids=[]
  for i,note in enumerate(notes,1):
   nid=f"book-{c['book']:02d}-psalm-{c['psalm']:03d}-note-{i:03d}"; note_ids.append(nid)
-  write(note_dir/f'{nid}.json',{'id':nid,'recordType':'note','archangel':json.loads((book_dir/'book.json').read_text(encoding='utf-8')).get('archangel'),'bookNumber':c['book'],'appliesTo':{'recordId':f"book-{c['book']:02d}-psalm-{c['psalm']:03d}",'marker':note['marker'],'verse':None},'text':note['text'],'source':{'document':PDF.name,'pdfPage':note['page']},'validation':{'status':'machine-extracted-source-boundary-audited'}})
+  write(note_dir/f'{nid}.json',{'id':nid,'recordType':'note','archangel':json.loads((book_dir/'book.json').read_text(encoding='utf-8')).get('archangel'),'bookNumber':c['book'],'appliesTo':{'recordId':target_id,'marker':note['marker'],'verse':None},'text':note['text'],'source':{'document':PDF.name,'pdfPage':note['page']},'validation':{'status':'machine-extracted-source-boundary-audited'}})
  meta=json.loads((book_dir/'book.json').read_text(encoding='utf-8'))
- record={'id':f"book-{c['book']:02d}-psalm-{c['psalm']:03d}",'recordType':'psalm','archangel':meta.get('archangel'),'book':{'number':c['book'],'title':meta.get('title')},'number':c['psalm'],'title':c['title'],'source':{'document':PDF.name,'pdfPages':sorted({p for v in verses for p in v['sourcePages']})},'verses':verses,'noteIds':note_ids,'prayerIds':preserved_prayer_ids,'extraction':{'headingBasis':'audited-explicit-heading-with-source-continuing-verse-numbering','sourceNumberingPreserved':True,'sourceFirstVerse':c['startVerse']},'validation':{'status':'machine-extracted-source-boundary-audited','checks':{'verseCount':len(verses),'verseSequenceStartsAtOne':False,'verseSequenceContiguousFromSourceFirst':True}}}
+ record={'id':target_id,'recordType':'psalm','archangel':meta.get('archangel'),'book':{'number':c['book'],'title':meta.get('title')},'number':c['psalm'],'title':c['title'],'source':{'document':PDF.name,'pdfPages':sorted({p for v in verses for p in v['sourcePages']})},'verses':verses,'noteIds':note_ids,'prayerIds':prayer_ids,'extraction':{'headingBasis':'audited-explicit-heading-with-source-continuing-verse-numbering','sourceNumberingPreserved':True,'sourceFirstVerse':c['startVerse']},'validation':{'status':'machine-extracted-source-boundary-audited','checks':{'verseCount':len(verses),'verseSequenceStartsAtOne':False,'verseSequenceContiguousFromSourceFirst':True}}}
  write(target_path,record)
  ids=set(meta.get('psalmIds',[])); ids.add(record['id']); meta['psalmIds']=sorted(ids,key=lambda x:int(x.rsplit('-',1)[1]))
  bn=set(meta.get('noteIds',[])); bn.update(note_ids); meta['noteIds']=sorted(bn); write(book_dir/'book.json',meta)
- print(f"Repaired book {c['book']} Psalm {c['psalm']}: source verses {nums[0]}-{nums[-1]}; preservedPrayerIds={len(preserved_prayer_ids)}")
+ print(f"Repaired book {c['book']} Psalm {c['psalm']}: source verses {nums[0]}-{nums[-1]}; prayerIds={len(prayer_ids)}")
 def repair_book44_final_psalm():
  path=CORPUS/'book-44'/'psalm-285.json'
  if not path.exists(): return
