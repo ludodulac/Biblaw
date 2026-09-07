@@ -4,6 +4,9 @@
 Documentary PDF repairs are applied before semantic indexing. Deep indexing passes are then replayed
 from books 1 through 44. The indexing passes are descriptive research aids; they do not assert an
 exclusive interpretation of the Psalms.
+
+Generated search/catalog artefacts are followed by production-boundary integrity audits so a
+successful canonical rebuild cannot silently publish stale or legacy attachment relationships.
 """
 from __future__ import annotations
 import subprocess,sys
@@ -46,5 +49,5 @@ def main():
     for lo,hi in ((26,28),(29,31),(32,34),(35,37),(38,40),(41,43)):
         run(f'deepen_books{lo}_{hi}_semantic_evidence.py'); run(f'finalize_books{lo}_{hi}_semantic.py')
     run('deepen_book44_semantic_evidence.py'); run('finalize_book44_semantic.py')
-    run('sync_thematic_documentary_status.py'); run('normalize_thematic_metadata.py'); run('build_book_contexts.py'); run('validate_thematic_index.py'); run('build_thematic_directory.py'); run('audit_thematic_search_quality.py'); run('build_thematic_search_index.py'); run('validate_thematic_search_index.py'); run('build_thematic_connections.py'); run('validate_thematic_connections.py'); run('build_thematic_search_runtime.py'); run('build_browser_search_catalog.py')
+    run('sync_thematic_documentary_status.py'); run('normalize_thematic_metadata.py'); run('build_book_contexts.py'); run('validate_thematic_index.py'); run('build_thematic_directory.py'); run('audit_thematic_search_quality.py'); run('build_thematic_search_index.py'); run('validate_thematic_search_index.py'); run('build_thematic_connections.py'); run('validate_thematic_connections.py'); run('build_thematic_search_runtime.py'); run('build_browser_search_catalog.py'); run('audit_corpus_attachments.py'); run('audit_legacy_psalm_references.py')
 if __name__=='__main__': main()
