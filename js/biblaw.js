@@ -17,7 +17,12 @@
     return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>terms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join('');
   };
   const type = r => r.recordType === 'master-prayer' ? 'prayer' : r.recordType;
-  const text = r => [r.title, r.summary, r.text, ...(r.verses || []).map(v => v.text), ...(r.conceptIds || [])].filter(Boolean).join(' ');
+  const textFragments = r => r.recordType === 'psalm' ? [r.title, ...(r.verses || []).map(v => v.text)].filter(Boolean) : [r.title, r.text, r.summary].filter(Boolean);
+  const literalIncludes = (value, query) => {
+    const needle=norm(query); if(!needle)return false;
+    return ` ${norm(value)} `.includes(` ${needle} `);
+  };
+  const literalTextMatch = (r, query) => textFragments(r).some(fragment => literalIncludes(fragment, query));
   const selectedTypes = () => new Set([...document.querySelectorAll('[name=sourceType]:checked')].map(x => x.value));
   const archangelName = value => ({ michael: 'Michaël', gabriel: 'Gabriel', raphael: 'Raphaël', ouriel: 'Ouriel' }[value] || value || '');
   const label = r => r.recordType === 'psalm' ? `Psaume ${r.number} · ${archangelName(r.archangel)}` : r.recordType === 'master-prayer' ? `Prière ${r.number} · ${archangelName(r.archangel)}` : `Note · ${archangelName(r.archangel)}`;
@@ -53,8 +58,8 @@
   }
 
   function matches(query) {
-    const terms = norm(query).split(' ').filter(Boolean), allowed = selectedTypes(), a = $('archangelFilter').value;
-    return state.records.filter(r => allowed.has(type(r)) && (!a || r.archangel === a)).map(record => ({ record, score: terms.filter(t => norm(text(record)).includes(t)).length / Math.max(1, terms.length) })).filter(x => x.score > 0);
+    const allowed = selectedTypes(), a = $('archangelFilter').value;
+    return state.records.filter(r => allowed.has(type(r)) && (!a || r.archangel === a) && literalTextMatch(r, query)).map(record => ({ record, score: 1 }));
   }
   function textualPsalmMatches(query) {
     return matches(query).filter(x=>x.record.recordType==='psalm');
@@ -123,8 +128,8 @@
   }
   function exactVerses(r){
     if(r.recordType!=='psalm'||!r.verses?.length)return'';
-    const terms=[...queryTerms()]; if(!terms.length)return'';
-    const chosen=r.verses.filter(v=>terms.some(t=>norm(v.text).includes(t))).slice(0,4);
+    const query=$('query').value; if(!norm(query))return'';
+    const chosen=r.verses.filter(v=>literalIncludes(v.text,query)).slice(0,4);
     if(!chosen.length)return'';
     return `<div class="theme-context exact-context"><div class="context-label">Passage${chosen.length>1?'s':''} où la recherche apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`;
   }
@@ -174,7 +179,7 @@
   function closeIndex(){$('indexPanel').hidden=true;$('indexBackdrop').hidden=true;$('indexToggle').setAttribute('aria-expanded','false');}
   $('searchButton').onclick=search;$('query').addEventListener('keydown',e=>{if(e.key==='Enter')search();});document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=search);$('archangelFilter').onchange=search;
   $('modeThemes').onclick=()=>{state.mode='themes';$('modeThemes').classList.add('active');$('modeExact').classList.remove('active');$('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié.';search();};
-  $('modeExact').onclick=()=>{state.mode='exact';$('modeExact').classList.add('active');$('modeThemes').classList.remove('active');$('modeHelp').textContent='Recherche les mots présents dans le texte du corpus.';$('ambiguityPanel').hidden=true;search();};
+  $('modeExact').onclick=()=>{state.mode='exact';$('modeExact').classList.add('active');$('modeThemes').classList.remove('active');$('modeHelp').textContent='Recherche un mot ou une expression dans le texte du corpus.';$('ambiguityPanel').hidden=true;search();};
   $('closeAmbiguity').onclick=()=>{$('ambiguityPanel').hidden=true;};$('indexToggle').onclick=()=>{const open=$('indexPanel').hidden;$('indexPanel').hidden=!open;$('indexBackdrop').hidden=!open;$('indexToggle').setAttribute('aria-expanded',String(open));};$('closeIndex').onclick=closeIndex;$('indexBackdrop').onclick=closeIndex;$('closeDialog').onclick=()=>$('recordDialog').close();$('printRecord').onclick=()=>window.print();$('downloadRecord').onclick=()=>{const blob=new Blob([activeText()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${state.active?.id||'biblaw'}.txt`;a.click();URL.revokeObjectURL(a.href);};
   load();
 })();
