@@ -13,8 +13,10 @@ on:
 permissions:
   contents: write
 
+# The canonical thematic pipeline also publishes data/browser-search-catalog.json.
+# Use the same serialization group so two writers never race on the generated bundle.
 concurrency:
-  group: browser-search-catalog-generated-file
+  group: thematic-index-generated-files
   cancel-in-progress: false
 
 jobs:
