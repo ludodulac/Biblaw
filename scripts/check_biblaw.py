@@ -49,6 +49,8 @@ def fast(area: str) -> None:
         run_script("audit_public_ui_contract.py")
         run_script("audit_theme_directory_ui.py")
     elif area == "corpus":
+        # A corpus edit can invalidate a canonical theme's verse evidence before the UI changes.
+        run_script("validate_thematic_index.py")
         run_script("audit_corpus_attachments.py")
         run_script("audit_legacy_psalm_references.py")
 
@@ -63,12 +65,14 @@ def targeted(area: str) -> None:
         run_script("audit_psalm_number_search.py")
         run_script("audit_browser_search_indexes.py")
     elif area == "corpus":
-        run_script("build_browser_search_catalog.py")
+        # Corpus metadata/evidence can propagate into thematic books and all downstream projections.
+        # Rebuild those deterministic derivatives, but do not replay deep semantic/PDF passes.
+        run_script("rebuild_thematic_derivatives.py")
         generated = True
-        run_script("audit_corpus_attachments.py")
-        run_script("audit_legacy_psalm_references.py")
         run_script("audit_production_search_queries.py")
+        run_script("audit_assembly_theme_context.py")
         run_script("audit_psalm_number_search.py")
+        run_script("audit_browser_search_indexes.py")
     elif area == "search":
         fast("search")
         run_script("audit_public_ui_contract.py")
