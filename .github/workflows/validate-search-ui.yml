@@ -6,6 +6,7 @@ on:
     paths:
       - 'index.html'
       - 'js/biblaw.js'
+      - 'css/biblaw.css'
       - 'data/browser-search-catalog.json'
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-runtime.json'
@@ -18,13 +19,14 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check browser JavaScript syntax
         run: node --check js/biblaw.js
-      - name: Check search UI DOM and bundle contract
+      - name: Check search UI DOM, bundle and contextual result contract
         run: |
           python - <<'PY'
           import json, unicodedata, re
           from pathlib import Path
           html=Path('index.html').read_text(encoding='utf-8')
           js=Path('js/biblaw.js').read_text(encoding='utf-8')
+          css=Path('css/biblaw.css').read_text(encoding='utf-8')
           required=('query','searchButton','archangelFilter','bookFilter','ambiguityPanel','suggestionKicker','suggestionTitle','senseChoices','closeAmbiguity','results','resultCount','themeDirectory','indexPanel','recordDialog','dialogContent')
           missing=[item for item in required if f'id="{item}"' not in html]
           assert not missing, f'missing DOM ids: {missing}'
@@ -32,6 +34,14 @@ jobs:
           assert "fetch('data/browser-search-catalog.json')" in js
           assert "catalog.records.map" not in js
           assert "$('bookFilter').onchange=search" in js or "$('bookFilter').onchange = search" in js
+          # Contextual thematic results: visible evidence first, secondary themes at the end.
+          assert 'themesByRecord' in js
+          assert 'function contextualVerses' in js
+          assert 'Passage concerné' in js
+          assert 'Autres thèmes indexés dans ce psaume' in js
+          assert 'data-related-theme' in js
+          assert 'classés Central, Important, puis Lié' in js
+          assert '.theme-context' in css and '.related-themes' in css
           bundle=json.loads(Path('data/browser-search-catalog.json').read_text(encoding='utf-8'))
           assert bundle['purpose']=='browser-search-corpus-bundle'
           assert bundle['recordCount']==len(bundle['records'])
