@@ -27,6 +27,7 @@
   const archangelName = value => ({ michael: 'Michaël', gabriel: 'Gabriel', raphael: 'Raphaël', ouriel: 'Ouriel' }[value] || value || '');
   const label = r => r.recordType === 'psalm' ? `Psaume ${r.number} · ${archangelName(r.archangel)}` : r.recordType === 'master-prayer' ? `Prière ${r.number} · ${archangelName(r.archangel)}` : `Note · ${archangelName(r.archangel)}`;
   const importanceLabel = value => ({ central: 'Central', important: 'Important', related: 'Lié' }[value] || 'Indexé');
+  const importanceRank = value => ({ central: 0, important: 1, related: 2 }[value] ?? 3);
 
   async function load() {
     try {
@@ -45,7 +46,7 @@
         list.push({ id: theme.id, label: theme.label, importance: occurrence.importance, score: occurrence.score || 0 });
         state.themesByRecord.set(occurrence.recordId, list);
       }
-      for (const list of state.themesByRecord.values()) list.sort((a,b)=>b.score-a.score||a.label.localeCompare(b.label,'fr'));
+      for (const list of state.themesByRecord.values()) list.sort((a,b)=>importanceRank(a.importance)-importanceRank(b.importance)||a.label.localeCompare(b.label,'fr')||a.id.localeCompare(b.id,'fr'));
       const prayers = new Map(state.records.filter(r => r.recordType === 'master-prayer').map(r => [r.appliesToPsalmId, r]));
       state.records.filter(r => r.recordType === 'psalm').forEach(r => { if (prayers.has(r.id)) r.attachedPrayer = prayers.get(r.id); });
       const psalms = state.records.filter(r => r.recordType === 'psalm'), verses = psalms.reduce((n, r) => n + (r.verses || []).length, 0);
@@ -84,10 +85,13 @@
       if (a&&o.archangel!==a) continue;
       const record=byId.get(o.recordId); if(!record) continue;
       const current=merged.get(record.id)||{record,score:0,thematic:o,matchedThemes:[]};
-      current.score=Math.max(current.score,o.score||1); if((o.score||1)>(current.thematic?.score||0)) current.thematic=o;
+      const betterImportance=importanceRank(o.importance)<importanceRank(current.thematic?.importance);
+      const sameImportance=importanceRank(o.importance)===importanceRank(current.thematic?.importance);
+      current.score=Math.max(current.score,o.score||1);
+      if(betterImportance||(sameImportance&&(o.score||1)>(current.thematic?.score||0))) current.thematic=o;
       current.matchedThemes.push({id:theme.id,label:theme.label,thematic:o}); merged.set(record.id,current);
     }
-    return [...merged.values()].sort((x,y)=>y.score-x.score||x.record.number-y.record.number);
+    return [...merged.values()].sort((x,y)=>importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number||String(x.record.id).localeCompare(String(y.record.id),'fr'));
   }
   function showThemeNavigation(resolvedThemes) {
     state.resolvedThemes=resolvedThemes; if(!resolvedThemes.length){$('ambiguityPanel').hidden=true;return;}
