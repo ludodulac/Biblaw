@@ -18,6 +18,9 @@ on:
       - 'scripts/audit_assembly_theme_context.py'
       - 'scripts/audit_psalm_number_search.py'
       - 'scripts/audit_browser_search_indexes.py'
+      - 'scripts/check_biblaw.py'
+      - 'scripts/rebuild_thematic_derivatives.py'
+      - 'scripts/report_biblaw_diff.py'
       - '.github/workflows/validate-search-ui.yml'
 
 jobs:
@@ -25,6 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - name: Check fast-workflow helper syntax
+        run: python -m py_compile scripts/check_biblaw.py scripts/rebuild_thematic_derivatives.py scripts/report_biblaw_diff.py
       - name: Check browser search catalog freshness
         run: |
           cp data/browser-search-catalog.json /tmp/browser-search-catalog.before.json
