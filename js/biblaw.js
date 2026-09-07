@@ -2,6 +2,14 @@
   const $ = id => document.getElementById(id);
   const state = { mode: 'themes', records: [], themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, active: null, resolvedThemes: [] };
   const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[’']/g, ' ').replace(/[^a-z0-9\s-]/g, ' ').replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
+  const stripLeadingArticle = value => {
+    const q=norm(value), parts=q.split(' ').filter(Boolean);
+    return parts.length>1 && ['l','le','la','les','un','une','des'].includes(parts[0]) ? parts.slice(1).join(' ') : q;
+  };
+  const themeQueryForms = value => {
+    const q=norm(value), stripped=stripLeadingArticle(q);
+    return [...new Set([q,stripped].filter(Boolean))];
+  };
   const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   const queryTerms = () => new Set(norm($('query').value).split(' ').filter(Boolean));
   const highlighted = value => {
@@ -49,10 +57,16 @@
     return state.records.filter(r => allowed.has(type(r)) && (!a || r.archangel === a)).map(record => ({ record, score: terms.filter(t => norm(text(record)).includes(t)).length / Math.max(1, terms.length) })).filter(x => x.score > 0);
   }
   function resolveIndexedThemes(query) {
-    const q = norm(query); if (!q) return [];
-    const alias = state.runtime?.aliases?.[q];
-    if (alias?.themeIds?.length) return alias.themeIds.map(id => state.themeById.get(id)).filter(Boolean);
-    const exact = state.themeDirectory.filter(t => q === norm(t.label) || q === norm(t.id)); if (exact.length) return exact;
+    const forms=themeQueryForms(query); if(!forms.length)return [];
+    for(const q of forms){
+      const alias=state.runtime?.aliases?.[q];
+      if(alias?.themeIds?.length)return alias.themeIds.map(id=>state.themeById.get(id)).filter(Boolean);
+    }
+    for(const q of forms){
+      const exact=state.themeDirectory.filter(t=>q===norm(t.label)||q===norm(t.id));
+      if(exact.length)return exact;
+    }
+    const q=forms[forms.length-1];
     return state.themeDirectory.filter(t => norm(t.label).includes(q) || q.includes(norm(t.label))).sort((a,b)=>Math.abs(norm(a.label).length-q.length)-Math.abs(norm(b.label).length-q.length)||(b.score||0)-(a.score||0)).slice(0,1);
   }
   function thematicItems(themes) {
