@@ -56,6 +56,9 @@ jobs:
           assert 'importanceRank(a.importance)-importanceRank(b.importance)' in js
           assert 'importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)' in js
           assert 'betterImportance' in js and 'sameImportance' in js
+          # Theme directory uses the generated schema, not removed legacy field names.
+          assert 't.occurrenceCount' in js and 't.score' in js
+          assert 't.psalmCount' not in js and 't.totalScore' not in js
           # Search highlighting stays presentational: it marks literal normalized query words only.
           assert 'function exactVerses' in js
           assert 'const highlighted' in js
@@ -140,6 +143,9 @@ jobs:
           assert runtime['connectionMeaning']=='psalm-cooccurrence-only'
           assert runtime['themeCount']==directory['themeCount']
           canonical={t['id'] for t in directory['themes']}
+          for theme in directory['themes']:
+              assert isinstance(theme.get('occurrenceCount'), int) and theme['occurrenceCount'] == len(theme.get('occurrences', []))
+              assert isinstance(theme.get('score'), int)
           for alias in runtime['aliases'].values(): assert set(alias['themeIds']) <= canonical
           ambiguous={key:alias for key,alias in runtime['aliases'].items() if alias.get('ambiguous')}
           assert len(ambiguous)==runtime['ambiguousAliasCount']
