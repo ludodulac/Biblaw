@@ -31,6 +31,20 @@ def pages(obj: dict) -> set[int]:
     return {int(v) for v in raw if str(v).isdigit()}
 
 
+def same_document(a: dict, b: dict) -> bool:
+    return bool((a.get("source") or {}).get("document")) and (a.get("source") or {}).get("document") == (b.get("source") or {}).get("document")
+
+
+def source_connected(child: dict, psalm: dict) -> bool:
+    """True for source-page overlap or immediate printed adjacency in the same document."""
+    child_pages, psalm_pages = pages(child), pages(psalm)
+    if not child_pages or not psalm_pages or not same_document(child, psalm):
+        return False
+    if child_pages & psalm_pages:
+        return True
+    return min(child_pages) - max(psalm_pages) == 1
+
+
 psalm_paths: dict[str, Path] = {}
 psalms: dict[str, dict] = {}
 for path in sorted(BOOK_ROOT.glob("book-*/psalm-*.json")):
@@ -57,7 +71,7 @@ renamed_notes = 0
 unresolved_notes = []
 
 # 1) Canonicalize legacy prayer targets when the canonical Psalm independently points back to the prayer
-# and source pages overlap. Also repair missing reciprocal prayerIds for already-canonical targets.
+# and source evidence is overlapping or immediately adjacent. Also repair missing reciprocal prayerIds.
 for rel in list(records):
     if not rel.startswith("data/prayers/"):
         continue
@@ -77,8 +91,7 @@ for rel in list(records):
         candidates = []
         for psalm in identity_candidates(archangel, int(number_text)):
             reciprocal = prayer_id in (psalm.get("prayerIds") or [])
-            overlap = bool(pages(prayer) & pages(psalm)) if pages(prayer) and pages(psalm) else False
-            if reciprocal and overlap:
+            if reciprocal and source_connected(prayer, psalm):
                 candidates.append(psalm)
         if len(candidates) != 1:
             raise SystemExit(f"Prayer {prayer_id} has {len(candidates)} deterministic canonical candidates")
@@ -89,8 +102,8 @@ for rel in list(records):
 
     prayer_ids = list(target.get("prayerIds") or [])
     if prayer_id not in prayer_ids:
-        if pages(prayer) and pages(target) and not (pages(prayer) & pages(target)):
-            raise SystemExit(f"Cannot add reciprocal prayer link without page overlap: {prayer_id} -> {target['id']}")
+        if not source_connected(prayer, target):
+            raise SystemExit(f"Cannot add reciprocal prayer link without overlapping/adjacent source evidence: {prayer_id} -> {target['id']}")
         prayer_ids.append(prayer_id)
         target["prayerIds"] = sorted(set(prayer_ids))
         changed_psalms.add(target["id"])
@@ -122,7 +135,7 @@ for rel in list(records):
     for psalm in identity_candidates(archangel, int(number_text)):
         canonical_note_id = f"{psalm['id']}-note-{suffix}"
         reciprocal = canonical_note_id in (psalm.get("noteIds") or [])
-        overlap = bool(pages(note) & pages(psalm)) if pages(note) and pages(psalm) else False
+        overlap = bool(pages(note) & pages(psalm)) if pages(note) and pages(psalm) and same_document(note, psalm) else False
         verse_ok = verse is None or int(verse) in {int(v.get("number")) for v in psalm.get("verses", []) if v.get("number") is not None}
         if reciprocal and overlap and verse_ok:
             candidates.append((psalm, canonical_note_id))
