@@ -36,6 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      # Reviewed identifier aliases are technical migrations only; contextual teachings stay in source relations.
       - name: Reject reviewed legacy theme identifiers
         run: python scripts/normalize_known_theme_identifiers.py --check
       - name: Install PDF text extraction dependency
