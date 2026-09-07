@@ -10,7 +10,7 @@
     const q=norm(value), stripped=stripLeadingArticle(q);
     return [...new Set([q,stripped].filter(Boolean))];
   };
-  const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;/g').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   const queryTerms = () => new Set(norm($('query').value).split(' ').filter(Boolean));
   const highlighted = value => {
     const terms=queryTerms(); if(!terms.size)return esc(value);
@@ -188,7 +188,7 @@
     $('recordDialog').showModal();
   }
   function activeText(){const r=state.active;if(!r)return'';let out=`${r.title||`Prière ${r.number}`}\n\n`;out+=r.verses?r.verses.map(v=>`${v.number}. ${v.text}`).join('\n'):r.text||r.summary||'';return out;}
-  function themes(){$('themeDirectory').innerHTML=state.themeDirectory.map(t=>`<button class="theme-row" data-directory-theme="${esc(t.id)}"><span><strong>${esc(t.label)}</strong><small>${t.psalmCount} psaume${t.psalmCount>1?'s':''}</small></span><span>${t.totalScore}</span></button>`).join('');$('indexCount').textContent=`${state.themeDirectory.length} thèmes indexés`;document.querySelectorAll('[data-directory-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.directoryTheme);if(t){$('query').value=t.label;closeIndex();search();}});}
+  function themes(){$('themeDirectory').innerHTML=state.themeDirectory.map(t=>`<button class="theme-row" data-directory-theme="${esc(t.id)}"><span><strong>${esc(t.label)}</strong><small>${t.occurrenceCount} psaume${t.occurrenceCount>1?'s':''}</small></span><span>${t.score}</span></button>`).join('');$('indexCount').textContent=`${state.themeDirectory.length} thèmes indexés`;document.querySelectorAll('[data-directory-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.directoryTheme);if(t){$('query').value=t.label;closeIndex();search();}});}
   function closeIndex(){$('indexPanel').hidden=true;$('indexBackdrop').hidden=true;$('indexToggle').setAttribute('aria-expanded','false');}
   $('searchButton').onclick=search;$('query').addEventListener('keydown',e=>{if(e.key==='Enter')search();});document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=search);$('archangelFilter').onchange=search;
   $('modeThemes').onclick=()=>{state.mode='themes';$('modeThemes').classList.add('active');$('modeExact').classList.remove('active');$('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié.';search();};
