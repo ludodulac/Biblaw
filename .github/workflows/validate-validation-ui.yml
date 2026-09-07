@@ -14,7 +14,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Check validation JavaScript syntax
         run: node --check js/validation.js
       - name: Audit validation workshop architecture
