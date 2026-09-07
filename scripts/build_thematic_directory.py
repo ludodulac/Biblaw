@@ -7,7 +7,7 @@ cross-book index that can be regenerated at any time and must never be hand-edit
 from __future__ import annotations
 
 import json
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +25,12 @@ def write(data):
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def canonical_label(counts: Counter) -> str:
+    """Choose a stable display label without rewriting editorial source relations."""
+    ranked = sorted(counts.items(), key=lambda kv: (-kv[1], len(kv[0]), kv[0].casefold(), kv[0]))
+    return ranked[0][0]
+
+
 themes = {}
 for path in sorted(BOOKS.glob("book-*.json")):
     book_data = load(path)
@@ -38,10 +44,11 @@ for path in sorted(BOOKS.glob("book-*.json")):
                 continue
             entry = themes.setdefault(theme_id, {
                 "id": theme_id,
-                "label": label,
+                "labelCounts": Counter(),
                 "occurrences": [],
                 "archangels": defaultdict(lambda: {"score": 0, "occurrenceCount": 0}),
             })
+            entry["labelCounts"][label] += 1
             importance = rel.get("importance", "related")
             score = WEIGHT.get(importance, 1)
             occurrence = {
@@ -72,9 +79,16 @@ for theme_id, entry in themes.items():
         {"id": aid, **stats}
         for aid, stats in sorted(entry["archangels"].items(), key=lambda kv: (-kv[1]["score"], kv[0]))
     ]
+    label = canonical_label(entry["labelCounts"])
+    label_variants = [
+        {"label": variant, "occurrenceCount": count}
+        for variant, count in sorted(entry["labelCounts"].items(), key=lambda kv: (-kv[1], len(kv[0]), kv[0].casefold(), kv[0]))
+    ]
     result.append({
         "id": theme_id,
-        "label": entry["label"],
+        "label": label,
+        "labelSelection": "most-frequent-observed-label",
+        "labelVariants": label_variants,
         "score": sum(x["score"] for x in occurrences),
         "occurrenceCount": len(occurrences),
         "centralPsalmCount": sum(1 for x in occurrences if x["importance"] == "central"),
