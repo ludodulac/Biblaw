@@ -8,20 +8,41 @@
   "entries": [
     {
       "id": "assembly-theme-contract",
-      "status": "open",
+      "status": "resolved",
       "type": "editorial-theme-coverage",
-      "summary": "Les requêtes « assemblée » et « sainte assemblée » ont des occurrences textuelles mais aucun thème canonique correspondant dans les analyses éditoriales.",
+      "summary": "La revue éditoriale distingue désormais « Sainte Assemblée », concept explicitement thématisé dans des passages ciblés, de « assemblée », formulation générique conservée comme recherche textuelle.",
       "evidence": {
-        "literalPsalmCounts": {
-          "assemblée": 76,
-          "l’assemblée": 17,
+        "literalPsalmCountsAfterCanonicalBundleDeduplication": {
+          "assemblée": 75,
+          "l’assemblée": 16,
           "sainte assemblée": 58,
           "la sainte assemblée": 48
         },
-        "canonicalThemeRelationScan": "Aucune relation dont le themeId ou le label normalisé contient « assembl » dans data/thematic-index/books/book-*.json.",
-        "runtimeResolution": "Aucune des quatre requêtes ne résout actuellement un thème canonique."
+        "canonicalTheme": {
+          "themeId": "sainte-assemblee",
+          "label": "Sainte Assemblée",
+          "relations": [
+            {
+              "recordId": "book-29-psalm-197",
+              "importance": "important",
+              "verseNumbers": [16, 28]
+            },
+            {
+              "recordId": "book-29-psalm-211",
+              "importance": "important",
+              "verseNumbers": [24, 32]
+            },
+            {
+              "recordId": "book-29-psalm-212",
+              "importance": "central",
+              "verseNumbers": [4, 9, 16, 20, 25, 26, 27, 28, 31]
+            }
+          ]
+        },
+        "genericAssemblyDecision": "Aucun thème canonique générique « Assemblée » n’est créé. Les emplois d’« assemblée » sont suffisamment larges et contextuels pour ne pas justifier une relation thématique automatique par fréquence lexicale.",
+        "resolverGuard": "La résolution thématique est limitée aux alias explicites puis aux libellés/identifiants exacts. « assemblée » ne peut donc pas être redirigé vers « sainte-assemblee » par inclusion lexicale."
       },
-      "decisionNeeded": "Déterminer, après vérification éditoriale du corpus/source pack, s’il faut créer des thèmes canoniques distincts « Assemblée » et « Sainte Assemblée », ou conserver ces formulations uniquement comme occurrences textuelles. Ne pas créer d’alias thématique sans relations canoniques sourcées."
+      "resolution": "Créer le thème canonique ciblé « Sainte Assemblée » sur trois psaumes explicitement justificatifs, conserver « Assemblée » dans la recherche textuelle et maintenir les deux notions distinctes."
     }
   ]
 }
