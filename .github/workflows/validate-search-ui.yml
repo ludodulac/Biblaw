@@ -60,6 +60,11 @@ jobs:
           assert 'const themeQueryForms' in js
           assert "['l','le','la','les','un','une','des']" in js
           assert 'for(const q of forms)' in js
+          # A recognized theme must not hide literal corpus occurrences.
+          assert 'function textualPsalmMatches' in js
+          assert 'Deux lectures de cette recherche' in js
+          assert 'data-show-text-search' in js
+          assert "$('modeExact').click()" in js
           def norm(value):
               value=''.join(c for c in unicodedata.normalize('NFD', str(value or '')) if unicodedata.category(c)!='Mn').lower().replace('œ','oe').replace('æ','ae').replace('’',' ').replace("'",' ')
               return re.sub(r'\s+',' ',re.sub(r'[^a-z0-9\s-]',' ',value).replace('-',' ')).strip()
@@ -81,10 +86,13 @@ jobs:
           assert len(psalms) >= 1150
           def searchable(r):
               return norm(' '.join([str(r.get('title','')),str(r.get('summary','')),str(r.get('text',''))]+[str(v.get('text','')) for v in r.get('verses',[])]))
+          counts={}
           for query in ('dieu','lumiere','alliance'):
               count=sum(query in searchable(r) for r in psalms)
+              counts[query]=count
               assert count > 0, f'no textual results for {query}'
               print(f'Smoke query {query}: {count} psalms')
+          assert counts['dieu'] > 1, 'Dieu should have multiple literal psalm occurrences; thematic UI must expose the textual route'
           print(f"Browser search bundle OK: {bundle['recordCount']} records, {len(psalms)} psalms")
           PY
       - name: Check thematic runtime contract
