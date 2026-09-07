@@ -38,7 +38,7 @@
     state.mode='themes';
     $('modeThemes').classList.add('active');
     $('modeExact').classList.remove('active');
-    $('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié.';
+    $('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié. Un numéro de psaume peut aussi être saisi directement.';
   };
 
   async function load() {
@@ -95,8 +95,7 @@
       const exact=state.themeDirectory.filter(t=>q===norm(t.label)||q===norm(t.id));
       if(exact.length)return exact;
     }
-    const q=forms[forms.length-1];
-    return state.themeDirectory.filter(t => norm(t.label).includes(q) || q.includes(norm(t.label))).sort((a,b)=>Math.abs(norm(a.label).length-q.length)-Math.abs(norm(b.label).length-q.length)||(b.score||0)-(a.score||0)).slice(0,1);
+    return [];
   }
   function thematicItems(themes) {
     if (!selectedTypes().has('psalm')) return [];
@@ -237,7 +236,7 @@
   function closeIndex(){$('indexPanel').hidden=true;$('indexBackdrop').hidden=true;$('indexToggle').setAttribute('aria-expanded','false');}
   $('searchButton').onclick=search;$('query').addEventListener('keydown',e=>{if(e.key==='Enter')search();});document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=search);$('archangelFilter').onchange=search;
   $('modeThemes').onclick=()=>{activateThemeMode();search();};
-  $('modeExact').onclick=()=>{state.mode='exact';$('modeExact').classList.add('active');$('modeThemes').classList.remove('active');$('modeHelp').textContent='Recherche un mot ou une expression dans le texte du corpus.';$('ambiguityPanel').hidden=true;search();};
+  $('modeExact').onclick=()=>{state.mode='exact';$('modeExact').classList.add('active');$('modeThemes').classList.remove('active');$('modeHelp').textContent='Recherche un mot ou une expression dans le texte du corpus. Un numéro de psaume peut aussi être saisi directement.';$('ambiguityPanel').hidden=true;search();};
   $('closeAmbiguity').onclick=()=>{$('ambiguityPanel').hidden=true;};$('indexToggle').onclick=()=>{const open=$('indexPanel').hidden;$('indexPanel').hidden=!open;$('indexBackdrop').hidden=!open;$('indexToggle').setAttribute('aria-expanded',String(open));};$('closeIndex').onclick=closeIndex;$('indexBackdrop').onclick=closeIndex;$('closeDialog').onclick=()=>$('recordDialog').close();$('printRecord').onclick=()=>window.print();$('downloadRecord').onclick=()=>{const blob=new Blob([activeText()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${state.active?.id||'biblaw'}.txt`;a.click();URL.revokeObjectURL(a.href);};
   load();
 })();
