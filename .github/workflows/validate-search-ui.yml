@@ -36,12 +36,10 @@ jobs:
           assert 'id="query" type="search" value=""' in html
           assert 'value="psalm" checked' in html
           for value in ('prayer','note','annex'):
-              marker=f'value="{value}" checked'
-              assert marker not in html, f'{value} must not be checked by default'
+              assert f'value="{value}" checked' not in html
           assert 'js/biblaw.js' in html
           assert "fetch('data/browser-search-catalog.json')" in js
           assert "catalog.records.map" not in js
-          # Contextual thematic results: visible evidence first, secondary themes at the end.
           assert 'themesByRecord' in js
           assert 'function contextualVerses' in js
           assert 'Passage concerné' in js
@@ -51,6 +49,12 @@ jobs:
           assert 'data-related-theme' in js
           assert 'classés Central, Important, puis Lié' in js
           assert '.theme-context' in css and '.related-themes' in css
+          # Search highlighting stays presentational: it marks literal normalized query words only.
+          assert 'function exactVerses' in js
+          assert 'const highlighted' in js
+          assert '<mark class="search-hit">' in js
+          assert 'Passage${chosen.length>1' in js
+          assert '.search-hit' in css
           bundle=json.loads(Path('data/browser-search-catalog.json').read_text(encoding='utf-8'))
           assert bundle['purpose']=='browser-search-corpus-bundle'
           assert bundle['recordCount']==len(bundle['records'])
