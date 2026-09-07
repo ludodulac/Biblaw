@@ -18,15 +18,9 @@ import subprocess
 from collections import Counter
 from pathlib import Path
 
-from audit_production_search_queries import (
-    IMPORTANCE_RANK,
-    QUERIES,
-    literal_contains,
-    resolve,
-)
+from audit_production_search_queries import IMPORTANCE_RANK, QUERIES, norm, resolve
 
 ROOT = Path(__file__).resolve().parents[1]
-INDEX = ROOT / "data/thematic-index"
 PATHS = {
     "validation": "data/thematic-index/validation-report.json",
     "runtime": "data/thematic-index/theme-search-runtime.json",
@@ -104,6 +98,16 @@ def sentinel_state(runtime: dict, directory: dict, bundle: dict) -> dict[str, di
     by_id = {theme["id"]: theme for theme in themes if theme.get("id")}
     psalms = [r for r in bundle.get("records", []) if r.get("recordType") == "psalm"]
     number_by_id = {r.get("id"): r.get("number", 9999) for r in psalms}
+
+    # Normalize each searchable fragment once. This mirrors the browser's pre-indexing strategy and
+    # keeps the diff report cheap without changing literal matching semantics.
+    normalized_fragments = {
+        r.get("id"): [
+            norm(r.get("title", "")),
+            *[norm(v.get("text", "")) for v in r.get("verses", [])],
+        ]
+        for r in psalms
+    }
     result: dict[str, dict] = {}
 
     for query in QUERIES:
@@ -141,11 +145,10 @@ def sentinel_state(runtime: dict, directory: dict, bundle: dict) -> dict[str, di
             ),
         )
         levels = Counter(occ.get("importance", "unknown") for _, occ in per_record.values())
+        needle = norm(query)
         literal = sum(
-            any(
-                literal_contains(fragment, query)
-                for fragment in [r.get("title", ""), *[v.get("text", "") for v in r.get("verses", [])]]
-            )
+            bool(needle)
+            and any(f" {needle} " in f" {fragment} " for fragment in normalized_fragments.get(r.get("id"), []))
             for r in psalms
         )
         result[query] = {
@@ -166,8 +169,7 @@ def fmt_delta(before, after) -> str:
 
 
 def limited(values) -> list:
-    seq = list(values)
-    return seq[:MAX_ITEMS]
+    return list(values)[:MAX_ITEMS]
 
 
 def main() -> None:
