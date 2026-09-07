@@ -10,6 +10,7 @@ Examples:
 FAST is non-destructive and intended for short edit loops.
 TARGETED may rebuild only the deterministic artefacts belonging to the selected area.
 FULL replays the canonical pipeline and then the production/UI regression audits.
+Generated TARGETED/FULL paths finish with a compact diff against the current git baseline.
 """
 from __future__ import annotations
 
@@ -53,14 +54,17 @@ def fast(area: str) -> None:
 
 
 def targeted(area: str) -> None:
+    generated = False
     if area == "thematic":
         run_script("rebuild_thematic_derivatives.py")
+        generated = True
         run_script("audit_production_search_queries.py")
         run_script("audit_assembly_theme_context.py")
         run_script("audit_psalm_number_search.py")
         run_script("audit_browser_search_indexes.py")
     elif area == "corpus":
         run_script("build_browser_search_catalog.py")
+        generated = True
         run_script("audit_corpus_attachments.py")
         run_script("audit_legacy_psalm_references.py")
         run_script("audit_production_search_queries.py")
@@ -75,6 +79,9 @@ def targeted(area: str) -> None:
         run_script("audit_production_search_queries.py")
         run_script("audit_psalm_number_search.py")
         run_script("audit_browser_search_indexes.py")
+
+    if generated:
+        run_script("report_biblaw_diff.py")
 
 
 def full() -> None:
@@ -94,6 +101,7 @@ def full() -> None:
     run_script("audit_browser_search_indexes.py")
     run_script("audit_corpus_attachments.py")
     run_script("audit_legacy_psalm_references.py")
+    run_script("report_biblaw_diff.py")
     print("\nFULL Biblaw validation OK")
 
 
