@@ -84,6 +84,19 @@ source_attachment_records: dict[str, dict] = {}
 canonical_cross_reference_count = 0
 
 
+def register_attachment(record_id: str, record: dict) -> None:
+    if not record_id:
+        errors.append("catalogued attachment without id")
+        return
+    if record_id in source_attachment_records:
+        errors.append(f"duplicate external attachment id: {record_id}")
+        return
+    if record_id in canonical_by_id:
+        errors.append(f"attachment id collides with canonical Psalm id: {record_id}")
+        return
+    source_attachment_records[record_id] = record
+
+
 def audit_cross_references(record: dict, record_id: str) -> None:
     global canonical_cross_reference_count
     refs = record.get("crossReferences") or []
@@ -112,7 +125,7 @@ for rel in prayer_rels:
         continue
     prayer_id = str(prayer.get("id") or "")
     prayer_ids.add(prayer_id)
-    source_attachment_records[prayer_id] = prayer
+    register_attachment(prayer_id, prayer)
     audit_cross_references(prayer, prayer_id)
     if path.stem != prayer_id:
         errors.append(f"prayer filename/id mismatch: {rel} != {prayer_id}")
@@ -145,7 +158,7 @@ for rel in note_rels:
         continue
     note_id = str(note.get("id") or "")
     external_note_ids.add(note_id)
-    source_attachment_records[note_id] = note
+    register_attachment(note_id, note)
     audit_cross_references(note, note_id)
     if path.stem != note_id:
         errors.append(f"note filename/id mismatch: {rel} != {note_id}")
