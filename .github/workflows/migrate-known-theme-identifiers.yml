@@ -1,0 +1,38 @@
+name: Migrate reviewed theme identifiers
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/normalize_known_theme_identifiers.py'
+      - '.github/workflows/migrate-known-theme-identifiers.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: thematic-index-generated-files
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Normalize reviewed technical theme ids
+        run: python scripts/normalize_known_theme_identifiers.py
+      - name: Verify normalized ids
+        run: python scripts/normalize_known_theme_identifiers.py --check
+      - name: Commit source-only identifier migration
+        run: |
+          if [ -z "$(git status --porcelain -- data/thematic-index/books)" ]; then
+            echo 'No source identifier changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/thematic-index/books
+          git commit -m 'Normalize reviewed thematic identifiers'
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main
