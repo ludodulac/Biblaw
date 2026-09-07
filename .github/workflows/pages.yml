@@ -22,6 +22,14 @@ jobs:
         run: python scripts/audit_public_ui_contract.py
       - name: Vérifier l'index thématique public
         run: python scripts/audit_theme_directory_ui.py
+      - name: Vérifier l'intégrité documentaire publiée
+        run: python scripts/audit_corpus_attachments.py
+      - name: Vérifier l'indépendance des identifiants historiques
+        run: python scripts/audit_legacy_psalm_references.py
+      - name: Vérifier les requêtes de production de référence
+        run: python scripts/audit_production_search_queries.py
+      - name: Vérifier la recherche documentaire par numéro
+        run: python scripts/audit_psalm_number_search.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
