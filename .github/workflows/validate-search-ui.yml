@@ -55,15 +55,30 @@ jobs:
           assert '<mark class="search-hit">' in js
           assert 'Passage${chosen.length>1' in js
           assert '.search-hit' in css
+          # French leading articles are a query convenience only; canonical theme IDs are untouched.
+          assert 'const stripLeadingArticle' in js
+          assert 'const themeQueryForms' in js
+          assert "['l','le','la','les','un','une','des']" in js
+          assert 'for(const q of forms)' in js
+          def norm(value):
+              value=''.join(c for c in unicodedata.normalize('NFD', str(value or '')) if unicodedata.category(c)!='Mn').lower().replace('œ','oe').replace('æ','ae').replace('’',' ').replace("'",' ')
+              return re.sub(r'\s+',' ',re.sub(r'[^a-z0-9\s-]',' ',value).replace('-',' ')).strip()
+          def forms(value):
+              q=norm(value)
+              parts=q.split()
+              stripped=' '.join(parts[1:]) if len(parts)>1 and parts[0] in {'l','le','la','les','un','une','des'} else q
+              return list(dict.fromkeys(x for x in (q,stripped) if x))
+          assert forms("l’assemblée") == ['l assemblee','assemblee']
+          assert forms('assemblée') == ['assemblee']
+          assert forms('la sainte assemblée') == ['la sainte assemblee','sainte assemblee']
+          assert forms('sainte assemblée') == ['sainte assemblee']
+          assert forms('assemblée')[-1] != forms('sainte assemblée')[-1], 'distinct themes must remain distinct'
           bundle=json.loads(Path('data/browser-search-catalog.json').read_text(encoding='utf-8'))
           assert bundle['purpose']=='browser-search-corpus-bundle'
           assert bundle['recordCount']==len(bundle['records'])
           assert bundle['recordCount'] > 1000
           psalms=[r for r in bundle['records'] if r.get('recordType')=='psalm']
           assert len(psalms) >= 1150
-          def norm(value):
-              value=''.join(c for c in unicodedata.normalize('NFD', str(value or '')) if unicodedata.category(c)!='Mn').lower().replace('œ','oe').replace('æ','ae').replace('’',' ').replace("'",' ')
-              return re.sub(r'\s+',' ',re.sub(r'[^a-z0-9\s-]',' ',value).replace('-',' ')).strip()
           def searchable(r):
               return norm(' '.join([str(r.get('title','')),str(r.get('summary','')),str(r.get('text',''))]+[str(v.get('text','')) for v in r.get('verses',[])]))
           for query in ('dieu','lumiere','alliance'):
