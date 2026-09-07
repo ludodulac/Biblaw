@@ -20,7 +20,7 @@ BUNDLE = ROOT / "data" / "browser-search-catalog.json"
 QUERIES = (
     "Dieu", "alliance", "alliance de lumière", "lumière",
     "assemblée", "l’assemblée", "sainte assemblée", "la sainte assemblée",
-    "argent", "chouette", "abeille", "22 commandements",
+    "argent", "argent spirituel", "chouette", "abeille", "22 commandements",
 )
 ARTICLES = {"l", "le", "la", "les", "un", "une", "des"}
 IMPORTANCE_RANK = {"central": 0, "important": 1, "related": 2}
@@ -34,6 +34,7 @@ EXPECTED_THEMES = {
     "sainte assemblée": ["sainte-assemblee"],
     "la sainte assemblée": ["sainte-assemblee"],
     "argent": ["argent"],
+    "argent spirituel": ["argent"],
     "chouette": ["chouette"],
     "abeille": ["abeille"],
     "22 commandements": ["22-commandements"],
@@ -126,6 +127,9 @@ def main() -> None:
     quality_stats = quality["stats"]
     assert len(ambiguous) == runtime["ambiguousAliasCount"]
     assert len(ambiguous) == quality_stats["sameNormalizedLabelMultipleIdsCount"]
+    assert all(len(set(alias.get("themeIds", []))) > 1 for alias in ambiguous.values()), (
+        "every ambiguous alias must preserve multiple distinct canonical theme ids"
+    )
     assert quality_stats["normalizedDirectoryCollisionCount"] == 0
     assert quality_stats["relationsWithoutVerseNumbers"] == 0
     assert quality_stats["relationsWithoutTeaching"] == 0
@@ -135,6 +139,12 @@ def main() -> None:
         f"Runtime: {len(themes)} themes; {runtime['aliasCount']} aliases; "
         f"{len(ambiguous)} explicit semantic ambiguities; 0 technical directory collisions"
     )
+
+    # Literal sentinels protect contiguity and word boundaries independently of thematic resolution.
+    assert literal_contains("Alliance de lumière.", "alliance de lumière")
+    assert not literal_contains("Alliance dans la lumière.", "alliance de lumière")
+    assert literal_contains("Dieu", "dieu")
+    assert not literal_contains("dieux", "dieu")
 
     observed: dict[str, dict] = {}
     number_by_id = {record.get("id"): record.get("number", 9999) for record in psalms}
@@ -207,6 +217,11 @@ def main() -> None:
         assert observed[query]["missingVerseNumbers"] == 0
         assert observed[query]["missingTeaching"] == 0
 
+    # Ranking is presentation after admissibility: this stable broad theme exercises all three levels.
+    assert all(observed["alliance"]["importance"].get(level, 0) > 0 for level in ("central", "important", "related")), (
+        "alliance sentinel must keep Central, Important and Lié results"
+    )
+
     assert observed["assemblée"]["themes"] == observed["l’assemblée"]["themes"] == []
     assert observed["sainte assemblée"]["themes"] == observed["la sainte assemblée"]["themes"] == ["sainte-assemblee"]
     assert observed["sainte assemblée"]["indexed"] == 3
@@ -219,11 +234,15 @@ def main() -> None:
     sacred_alias = runtime["aliases"].get("sainte assemblee")
     assert sacred_alias and sacred_alias.get("themeIds") == ["sainte-assemblee"] and not sacred_alias.get("ambiguous")
 
+    # Historical observed-label alias: this must resolve to the same canonical theme without merging ids.
+    argent_alias = runtime["aliases"].get("argent spirituel")
+    assert argent_alias and argent_alias.get("themeIds") == ["argent"] and not argent_alias.get("ambiguous")
+
     alliance_light = runtime["aliases"].get("alliance de lumiere")
     assert alliance_light and alliance_light.get("ambiguous") is True
     assert set(alliance_light["themeIds"]) == {"alliance", "alliance-de-lumiere"}
 
-    print("Production search contract OK: explicit thematic resolution, literal text separation, canonical coverage complete")
+    print("Production search contract OK: literal, alias, ambiguity, strict thematic resolution and canonical coverage complete")
 
 
 if __name__ == "__main__":
