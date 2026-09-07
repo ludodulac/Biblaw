@@ -6,6 +6,7 @@
   const type = r => r.recordType === 'master-prayer' ? 'prayer' : r.recordType;
   const text = r => [r.title, r.summary, r.text, ...(r.verses || []).map(v => v.text), ...(r.conceptIds || [])].filter(Boolean).join(' ');
   const selectedTypes = () => new Set([...document.querySelectorAll('[name=sourceType]:checked')].map(x => x.value));
+  const recordBookNumber = r => Number(r?.book?.number || r?.bookNumber || r?.source?.bookNumber || 0);
   const archangelName = value => ({ michael: 'Michaël', gabriel: 'Gabriel', raphael: 'Raphaël', ouriel: 'Ouriel' }[value] || value || '');
   const label = r => r.recordType === 'psalm' ? `Psaume ${r.number} · ${archangelName(r.archangel)}` : r.recordType === 'master-prayer' ? `Prière ${r.number} · ${archangelName(r.archangel)}` : `Note · ${archangelName(r.archangel)}`;
   const importanceLabel = value => ({ central: 'Central', important: 'Important', related: 'Lié' }[value] || 'Indexé');
@@ -29,6 +30,9 @@
       const psalms = state.records.filter(r => r.recordType === 'psalm'), verses = psalms.reduce((n, r) => n + (r.verses || []).length, 0);
       const prayerCount = state.records.filter(r => r.recordType === 'master-prayer').length;
       const noteCount = state.records.filter(r => r.recordType === 'note').length + psalms.reduce((n, r) => n + (r.notes || []).length, 0);
+      const books = new Map();
+      psalms.forEach(r => { if (r.book?.number) books.set(Number(r.book.number), r.book.title || `Livre ${r.book.number}`); });
+      $('bookFilter').innerHTML = '<option value="">Tous les livres</option>' + [...books.entries()].sort((a, b) => a[0] - b[0]).map(([number, title]) => `<option value="${number}">Livre ${number} · ${esc(title)}</option>`).join('');
       $('corpusStats').textContent = `${psalms.length} psaumes · ${verses} versets · ${prayerCount} prières · ${noteCount} notes reliées · ${state.themeDirectory.length} thèmes`;
       themes(); search();
     } catch (error) {
@@ -38,9 +42,9 @@
   }
 
   function matches(query) {
-    const terms = norm(query).split(' ').filter(Boolean), allowed = selectedTypes(), a = $('archangelFilter').value;
+    const terms = norm(query).split(' ').filter(Boolean), allowed = selectedTypes(), a = $('archangelFilter').value, b = Number($('bookFilter').value || 0);
     return state.records
-      .filter(r => allowed.has(type(r)) && (!a || r.archangel === a))
+      .filter(r => allowed.has(type(r)) && (!a || r.archangel === a) && (!b || recordBookNumber(r) === b))
       .map(record => ({ record, score: terms.filter(t => norm(text(record)).includes(t)).length / Math.max(1, terms.length) }))
       .filter(x => x.score > 0);
   }
@@ -61,12 +65,13 @@
   function thematicItems(themes) {
     const allowed = selectedTypes();
     if (!allowed.has('psalm')) return [];
-    const a = $('archangelFilter').value;
+    const a = $('archangelFilter').value, b = Number($('bookFilter').value || 0);
     const byId = new Map(state.records.filter(r => r.recordType === 'psalm').map(r => [r.id, r]));
     const merged = new Map();
     for (const theme of themes) {
       for (const o of theme.occurrences || []) {
         if (a && o.archangel !== a) continue;
+        if (b && Number(o.bookNumber) !== b) continue;
         const record = byId.get(o.recordId);
         if (!record) continue;
         const current = merged.get(record.id) || { record, score: 0, thematic: o, matchedThemes: [] };
@@ -76,21 +81,16 @@
         merged.set(record.id, current);
       }
     }
-    return [...merged.values()].sort((x, y) => y.score - x.score || x.record.number - y.record.number);
+    return [...merged.values()].sort((x, y) => y.score - x.score || recordBookNumber(x.record) - recordBookNumber(y.record) || x.record.number - y.record.number);
   }
 
   function showThemeNavigation(resolvedThemes) {
     state.resolvedThemes = resolvedThemes;
-    if (!resolvedThemes.length) {
-      $('ambiguityPanel').hidden = true;
-      return;
-    }
+    if (!resolvedThemes.length) { $('ambiguityPanel').hidden = true; return; }
     const ambiguous = resolvedThemes.length > 1;
     const seen = new Set(resolvedThemes.map(t => t.id));
     const choices = [];
-    if (ambiguous) {
-      for (const theme of resolvedThemes) choices.push({ id: theme.id, label: theme.label, meta: 'Correspondance possible', kind: 'resolved' });
-    }
+    if (ambiguous) for (const theme of resolvedThemes) choices.push({ id: theme.id, label: theme.label, meta: 'Correspondance possible' });
     const neighbors = new Map();
     for (const theme of resolvedThemes) {
       for (const link of state.runtime?.neighbors?.[theme.id] || []) {
@@ -100,18 +100,15 @@
       }
     }
     [...neighbors.values()].sort((a, b) => b.score - a.score || b.sharedPsalmCount - a.sharedPsalmCount).slice(0, ambiguous ? 4 : 8).forEach(link => {
-      choices.push({ id: link.themeId, label: link.label, meta: `${link.sharedPsalmCount} psaume${link.sharedPsalmCount > 1 ? 's' : ''} partagé${link.sharedPsalmCount > 1 ? 's' : ''}`, kind: 'neighbor' });
+      choices.push({ id: link.themeId, label: link.label, meta: `${link.sharedPsalmCount} psaume${link.sharedPsalmCount > 1 ? 's' : ''} partagé${link.sharedPsalmCount > 1 ? 's' : ''}` });
     });
-    if (!choices.length) {
-      $('ambiguityPanel').hidden = true;
-      return;
-    }
+    if (!choices.length) { $('ambiguityPanel').hidden = true; return; }
     $('suggestionKicker').textContent = ambiguous ? 'Correspondances multiples' : 'Navigation transversale';
     $('suggestionTitle').textContent = ambiguous ? 'Plusieurs thèmes correspondent à cette formulation' : 'Thèmes également présents dans ces psaumes';
     $('closeAmbiguity').textContent = 'Masquer';
     $('senseChoices').innerHTML = choices.map(c => `<button class="sense-button" data-theme-id="${esc(c.id)}"><strong>${esc(c.label)}</strong><span>${esc(c.meta)}</span></button>`).join('');
-    document.querySelectorAll('[data-theme-id]').forEach(b => b.onclick = () => {
-      const theme = state.themeById.get(b.dataset.themeId);
+    document.querySelectorAll('[data-theme-id]').forEach(button => button.onclick = () => {
+      const theme = state.themeById.get(button.dataset.themeId);
       if (!theme) return;
       $('query').value = theme.label;
       state.sense = '';
@@ -129,7 +126,8 @@
     if (owl && state.mode === 'themes' && state.theme && state.theme.senses?.length && !state.runtime?.aliases?.[norm(query)]) {
       senses();
       const ids = new Set((state.theme.evidence || []).map(e => e.recordId));
-      let items = state.records.filter(r => ids.has(r.id)).map(record => ({ record, score: 1 }));
+      const a = $('archangelFilter').value, b = Number($('bookFilter').value || 0), allowed = selectedTypes();
+      let items = state.records.filter(r => ids.has(r.id) && allowed.has(type(r)) && (!a || r.archangel === a) && (!b || recordBookNumber(r) === b)).map(record => ({ record, score: 1 }));
       if (['owl-animal', 'owl-symbolic-vision'].includes(state.sense)) items = items.filter(x => x.record.id === 'michael-psalm-026');
       if (state.sense === 'owl-michael-totem') items = items.filter(x => x.record.recordType === 'note');
       return render(items);
@@ -143,7 +141,7 @@
       }
       $('ambiguityPanel').hidden = true;
     }
-    render(matches(query).sort((a, b) => b.score - a.score));
+    render(matches(query).sort((a, b) => b.score - a.score || recordBookNumber(a.record) - recordBookNumber(b.record) || (a.record.number || 0) - (b.record.number || 0)));
   }
 
   function senses() {
@@ -152,7 +150,7 @@
     $('suggestionTitle').textContent = `Que signifie « ${state.theme.label} » ici ?`;
     $('closeAmbiguity').textContent = 'Tout afficher';
     $('senseChoices').innerHTML = state.theme.senses.map(s => `<button class="sense-button ${state.sense === s.id ? 'selected' : ''}" data-sense="${esc(s.id)}"><strong>${esc(s.label)}</strong><span>${esc(s.definition)}</span></button>`).join('');
-    document.querySelectorAll('[data-sense]').forEach(b => b.onclick = () => { state.sense = b.dataset.sense; senses(); search(); });
+    document.querySelectorAll('[data-sense]').forEach(button => button.onclick = () => { state.sense = button.dataset.sense; senses(); search(); });
     $('ambiguityPanel').hidden = false;
   }
 
@@ -162,9 +160,7 @@
       : r.summary || (r.text || '').slice(0, 280);
   }
 
-  function recordPages(r) {
-    return r.source?.pdfPages || r.source?.printedPages || (r.source?.printedPage ? [r.source.printedPage] : []);
-  }
+  function recordPages(r) { return r.source?.pdfPages || r.source?.printedPages || (r.source?.printedPage ? [r.source.printedPage] : []); }
 
   function render(items, indexedThemes = null) {
     const themeLabels = Array.isArray(indexedThemes) ? indexedThemes.map(t => t.label) : indexedThemes ? [indexedThemes.label] : [];
@@ -186,7 +182,7 @@
       const description = thematic?.teaching || summary(r);
       return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${esc(r.title || (r.recordType === 'master-prayer' ? `Prière ${r.number}` : 'Note associée'))}</h3></div><strong class="score">${esc(thematic ? importanceLabel(thematic.importance) : 'Texte')}</strong></div><div class="result-meta">${esc(meta)}</div><p class="result-summary">${esc(description)}</p><div class="tags">${tags.slice(0, 8).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div><div class="result-actions">${r.recordType === 'psalm' ? `<a class="secondary" href="Bible%20ess%C3%A9nienne%20(class%C3%A9e%20par%20livres).pdf#page=${pages[0] || 1}" target="_blank">Voir dans le PDF</a>` : ''}<button class="primary" data-open="${esc(r.id)}">Consulter</button></div></article>`;
     }).join('');
-    document.querySelectorAll('[data-open]').forEach(b => b.onclick = () => open(b.dataset.open));
+    document.querySelectorAll('[data-open]').forEach(button => button.onclick = () => open(button.dataset.open));
   }
 
   function open(id) {
@@ -216,8 +212,8 @@
     const entries = [...state.themeDirectory].sort((a, b) => a.label.localeCompare(b.label, 'fr', { sensitivity: 'base' }));
     $('indexCount').textContent = `${entries.length} thèmes indexés.`;
     $('themeDirectory').innerHTML = entries.map(x => `<button class="theme-chip theme-main" data-theme="${esc(x.label)}" title="${x.occurrenceCount} occurrence${x.occurrenceCount > 1 ? 's' : ''} indexée${x.occurrenceCount > 1 ? 's' : ''}">${esc(x.label)}</button>`).join('');
-    document.querySelectorAll('[data-theme]').forEach(b => b.onclick = () => {
-      $('query').value = b.dataset.theme;
+    document.querySelectorAll('[data-theme]').forEach(button => button.onclick = () => {
+      $('query').value = button.dataset.theme;
       mode('themes');
       closeIndex();
       search();
@@ -238,6 +234,7 @@
   $('searchButton').onclick = search;
   $('query').onkeydown = e => { if (e.key === 'Enter') search(); };
   $('archangelFilter').onchange = search;
+  $('bookFilter').onchange = search;
   document.querySelectorAll('[name=sourceType]').forEach(x => x.onchange = search);
   $('modeThemes').onclick = () => mode('themes');
   $('modeExact').onclick = () => mode('exact');
