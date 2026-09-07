@@ -1,0 +1,31 @@
+name: Migrate corpus attachments
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/migrate_corpus_attachments.py'
+      - '.github/workflows/migrate-corpus-attachments.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Migrate deterministic attachment references
+        run: python scripts/migrate_corpus_attachments.py
+      - name: Commit deterministic migration when needed
+        run: |
+          if [ -z "$(git status --porcelain -- data/catalog.json data/corpus/books data/notes data/prayers)" ]; then
+            echo 'No attachment migration changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/catalog.json data/corpus/books data/notes data/prayers
+          git commit -m 'Canonicalize corpus attachment references'
+          git pull --rebase origin main
+          git push origin HEAD:main
