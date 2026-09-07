@@ -96,7 +96,16 @@
   function showThemeNavigation(resolvedThemes) {
     state.resolvedThemes=resolvedThemes; if(!resolvedThemes.length){$('ambiguityPanel').hidden=true;return;}
     const ambiguous=resolvedThemes.length>1,seen=new Set(resolvedThemes.map(t=>t.id)),choices=[];
-    if(ambiguous) for(const theme of resolvedThemes) choices.push({id:theme.id,label:theme.label,meta:'Correspondance possible'});
+    if(ambiguous){
+      const labelCounts=new Map();
+      for(const theme of resolvedThemes) labelCounts.set(norm(theme.label),(labelCounts.get(norm(theme.label))||0)+1);
+      for(const theme of resolvedThemes){
+        const count=theme.occurrenceCount||theme.occurrences?.length||0;
+        const duplicateLabel=(labelCounts.get(norm(theme.label))||0)>1;
+        const volume=`${count} psaume${count>1?'s':''} indexé${count>1?'s':''}`;
+        choices.push({id:theme.id,label:theme.label,meta:duplicateLabel?`Correspondance possible · ${volume} · thème ${theme.id}`:`Correspondance possible · ${volume}`});
+      }
+    }
     const neighbors=new Map();
     for(const theme of resolvedThemes) for(const link of state.runtime?.neighbors?.[theme.id]||[]){if(seen.has(link.themeId))continue;const old=neighbors.get(link.themeId);if(!old||link.score>old.score)neighbors.set(link.themeId,link);}
     [...neighbors.values()].sort((a,b)=>b.score-a.score||b.sharedPsalmCount-a.sharedPsalmCount).slice(0,ambiguous?4:8).forEach(link=>choices.push({id:link.themeId,label:link.label,meta:`${link.sharedPsalmCount} psaume${link.sharedPsalmCount>1?'s':''} partagé${link.sharedPsalmCount>1?'s':''}`}));
