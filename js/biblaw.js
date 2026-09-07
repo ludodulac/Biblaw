@@ -167,7 +167,6 @@
   }
 
   function summary(r){return r.recordType==='psalm'?(r.verses||[]).slice(0,2).map(v=>v.text).join(' '):r.summary||(r.text||'').slice(0,280);}
-  function recordPages(r){return r.source?.pdfPages||r.source?.printedPages||(r.source?.printedPage?[r.source.printedPage]:[]);}
   function contextualVerses(r,thematic){
     if(!thematic?.verseNumbers?.length||!r.verses?.length)return'';
     const wanted=new Set(thematic.verseNumbers.map(Number));
@@ -203,10 +202,8 @@
       $('results').innerHTML=emptyNumber||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return;
     }
     $('results').innerHTML=textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup})=>{
-      const pages=recordPages(r);
       const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'';
-      const pageMeta=pages.length?`Page${pages.length>1?'s ': ' '}${pages.join('–')}`:'Référence structurée';
-      const meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:numberLookup?[bookMeta,pageMeta].filter(Boolean).join(' · '):pageMeta;
+      const meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:bookMeta||'Corpus structuré';
       const description=thematic?.teaching||summary(r),related=thematic?relatedThemes(r,matchedThemes):[];
       const relatedBlock=thematic?`<div class="related-themes"><div class="context-label">Thèmes également présents dans ce psaume</div>${themeTags(related)}</div>`:'';
       const exactBlock=!thematic&&!numberLookup?exactVerses(r):'';
@@ -231,7 +228,18 @@
     } else $('dialogContent').innerHTML=`<div class="prayer-block">${highlighted(r.text||r.summary||'')}</div>`;
     $('recordDialog').showModal();
   }
-  function activeText(){const r=state.active;if(!r)return'';let out=`${r.title||`Prière ${r.number}`}\n\n`;out+=r.verses?r.verses.map(v=>`${v.number}. ${v.text}`).join('\n'):r.text||r.summary||'';return out;}
+  function activeText(){
+    const r=state.active;if(!r)return'';
+    const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
+    const header=[label(r),title];
+    if(r.book?.number)header.push(`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`);
+    let out=header.join('\n')+'\n\n';
+    if(r.verses){
+      out+=(r.verses||[]).map(v=>`${v.number}. ${v.text}`).join('\n');
+      if(r.attachedPrayer?.text)out+=`\n\nPrière ${r.attachedPrayer.number}\n\n${r.attachedPrayer.text}`;
+    }else out+=r.text||r.summary||'';
+    return out;
+  }
   function themes(){$('themeDirectory').innerHTML=state.themeDirectory.map(t=>`<button class="theme-row" data-directory-theme="${esc(t.id)}"><span><strong>${esc(t.label)}</strong><small>${t.occurrenceCount} psaume${t.occurrenceCount>1?'s':''}</small></span><span>${t.score}</span></button>`).join('');$('indexCount').textContent=`${state.themeDirectory.length} thèmes indexés`;document.querySelectorAll('[data-directory-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.directoryTheme);if(t){closeIndex();navigateToTheme(t);}});}
   function closeIndex(){$('indexPanel').hidden=true;$('indexBackdrop').hidden=true;$('indexToggle').setAttribute('aria-expanded','false');}
   $('searchButton').onclick=search;$('query').addEventListener('keydown',e=>{if(e.key==='Enter')search();});document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=search);$('archangelFilter').onchange=search;
