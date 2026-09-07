@@ -7,6 +7,8 @@ on:
     paths:
       - 'data/catalog.json'
       - 'data/corpus/**'
+      - 'data/notes/**'
+      - 'data/prayers/**'
       - 'scripts/build_browser_search_catalog.py'
       - '.github/workflows/rebuild-browser-search-catalog.yml'
 
