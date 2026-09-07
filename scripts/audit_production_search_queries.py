@@ -95,6 +95,7 @@ def load_analyses() -> tuple[dict[str, dict], Counter]:
 def main() -> None:
     runtime = json.loads((INDEX / "theme-search-runtime.json").read_text(encoding="utf-8"))
     directory = json.loads((INDEX / "theme-directory.json").read_text(encoding="utf-8"))
+    quality = json.loads((INDEX / "theme-quality-audit.json").read_text(encoding="utf-8"))
     bundle = json.loads(BUNDLE.read_text(encoding="utf-8"))
     themes = directory["themes"]
     by_id = {theme["id"]: theme for theme in themes}
@@ -122,12 +123,21 @@ def main() -> None:
     )
 
     ambiguous = {key: alias for key, alias in runtime["aliases"].items() if alias.get("ambiguous")}
-    assert len(ambiguous) == runtime["ambiguousAliasCount"] == 9
+    quality_stats = quality["stats"]
+    assert len(ambiguous) == runtime["ambiguousAliasCount"]
+    assert len(ambiguous) == quality_stats["sameNormalizedLabelMultipleIdsCount"]
+    assert quality_stats["normalizedDirectoryCollisionCount"] == 0
+    assert quality_stats["relationsWithoutVerseNumbers"] == 0
+    assert quality_stats["relationsWithoutTeaching"] == 0
     assert runtime["semanticMerging"] is False
     assert runtime["connectionMeaning"] == "psalm-cooccurrence-only"
-    print(f"Runtime: {len(themes)} themes; {runtime['aliasCount']} aliases; {len(ambiguous)} ambiguous aliases")
+    print(
+        f"Runtime: {len(themes)} themes; {runtime['aliasCount']} aliases; "
+        f"{len(ambiguous)} explicit semantic ambiguities; 0 technical directory collisions"
+    )
 
     observed: dict[str, dict] = {}
+    number_by_id = {record.get("id"): record.get("number", 9999) for record in psalms}
     for query in QUERIES:
         source, resolved = resolve(query, runtime, themes, by_id)
         resolved_ids = [theme["id"] for theme in resolved]
@@ -159,7 +169,7 @@ def main() -> None:
             per_record.items(),
             key=lambda item: (
                 IMPORTANCE_RANK.get(item[1][1].get("importance"), 3),
-                next((record.get("number", 9999) for record in psalms if record.get("id") == item[0]), 9999),
+                number_by_id.get(item[0], 9999),
                 item[0],
             ),
         )
