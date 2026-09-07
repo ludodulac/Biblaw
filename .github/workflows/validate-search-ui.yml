@@ -73,6 +73,10 @@ jobs:
           assert 'Deux lectures de cette recherche' in js
           assert 'data-show-text-search' in js
           assert "$('modeExact').click()" in js
+          # Ambiguous aliases must remain explicit choices in the thematic UI, never silently collapse to one theme.
+          assert "const ambiguous=resolvedThemes.length>1" in js
+          assert "if(ambiguous) for(const theme of resolvedThemes) choices.push" in js
+          assert "ambiguous?'Correspondances multiples':'Navigation transversale'" in js
           def norm(value):
               value=''.join(c for c in unicodedata.normalize('NFD', str(value or '')) if unicodedata.category(c)!='Mn').lower().replace('œ','oe').replace('æ','ae').replace('’',' ').replace("'",' ')
               return re.sub(r'\s+',' ',re.sub(r'[^a-z0-9\s-]',' ',value).replace('-',' ')).strip()
@@ -127,7 +131,13 @@ jobs:
           assert runtime['themeCount']==directory['themeCount']
           canonical={t['id'] for t in directory['themes']}
           for alias in runtime['aliases'].values(): assert set(alias['themeIds']) <= canonical
+          ambiguous={key:alias for key,alias in runtime['aliases'].items() if alias.get('ambiguous')}
+          assert len(ambiguous)==runtime['ambiguousAliasCount']
+          assert all(len(alias.get('themeIds',[]))>1 for alias in ambiguous.values()), 'ambiguous aliases must expose every candidate id'
+          assert all(set(alias['themeIds']) <= canonical for alias in ambiguous.values())
           assert 'alliance' in runtime['aliases'], 'expected thematic alias alliance'
           assert runtime['aliases']['alliance']['themeIds'], 'alliance alias has no theme'
-          print(f"Search UI contract OK: {runtime['themeCount']} themes, {runtime['aliasCount']} aliases")
+          assert runtime['aliases']['alliance de lumiere']['ambiguous'] is True
+          assert set(runtime['aliases']['alliance de lumiere']['themeIds'])=={'alliance','alliance-de-lumiere'}
+          print(f"Search UI contract OK: {runtime['themeCount']} themes, {runtime['aliasCount']} aliases, {len(ambiguous)} ambiguous aliases preserved")
           PY
