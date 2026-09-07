@@ -10,6 +10,7 @@ on:
       - 'data/browser-search-catalog.json'
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-runtime.json'
+      - 'scripts/audit_production_search_queries.py'
       - '.github/workflows/validate-search-ui.yml'
 
 jobs:
@@ -147,3 +148,5 @@ jobs:
           assert set(runtime['aliases']['alliance de lumiere']['themeIds'])=={'alliance','alliance-de-lumiere'}
           print(f"Search UI contract OK: {runtime['themeCount']} themes, {runtime['aliasCount']} aliases, {len(ambiguous)} ambiguous aliases preserved")
           PY
+      - name: Audit production search queries
+        run: python scripts/audit_production_search_queries.py
