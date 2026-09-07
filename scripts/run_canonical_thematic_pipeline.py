@@ -25,14 +25,12 @@ def repair_documentary_boundaries():
 
 def main():
     repair_documentary_boundaries()
-    # Books 1-17: descriptive, non-exclusive indexing passes.
     run('deepen_books01_02_semantic_evidence.py'); run('finalize_books01_02_semantic.py')
     run('deepen_books03_05_semantic_evidence.py'); run('finalize_books03_05_semantic.py')
     run('deepen_books06_08_semantic_evidence.py'); run('finalize_books06_08_semantic.py')
     run('deepen_books09_11_semantic_evidence.py'); run('finalize_books09_11_semantic.py')
     run('deepen_books12_14_semantic_evidence.py'); run('finalize_books12_14_semantic.py')
     run('complete_book17_thematic.py'); run('deepen_books15_17_semantic_evidence.py'); run('finalize_books15_17_semantic.py')
-    # Books 18-44: preserve established curated deep passes.
     run('complete_books18_20_thematic.py')
     run('deepen_book18_semantic.py'); run('deepen_book18_semantic_part2.py')
     for n in range(1,7): run(f'deepen_book19_semantic_part{n}.py')
@@ -48,5 +46,5 @@ def main():
     for lo,hi in ((26,28),(29,31),(32,34),(35,37),(38,40),(41,43)):
         run(f'deepen_books{lo}_{hi}_semantic_evidence.py'); run(f'finalize_books{lo}_{hi}_semantic.py')
     run('deepen_book44_semantic_evidence.py'); run('finalize_book44_semantic.py')
-    run('sync_thematic_documentary_status.py'); run('normalize_thematic_metadata.py'); run('build_book_contexts.py'); run('validate_thematic_index.py'); run('build_thematic_directory.py'); run('audit_thematic_search_quality.py'); run('build_thematic_search_index.py'); run('validate_thematic_search_index.py'); run('build_thematic_connections.py'); run('validate_thematic_connections.py'); run('build_thematic_search_runtime.py')
+    run('sync_thematic_documentary_status.py'); run('normalize_thematic_metadata.py'); run('build_book_contexts.py'); run('validate_thematic_index.py'); run('build_thematic_directory.py'); run('audit_thematic_search_quality.py'); run('build_thematic_search_index.py'); run('validate_thematic_search_index.py'); run('build_thematic_connections.py'); run('validate_thematic_connections.py'); run('build_thematic_search_runtime.py'); run('build_browser_search_catalog.py')
 if __name__=='__main__': main()
