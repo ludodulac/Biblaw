@@ -12,6 +12,7 @@ on:
       - 'data/browser-search-catalog.json'
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-runtime.json'
+      - 'data/thematic-index/theme-quality-audit.json'
       - 'scripts/build_browser_search_catalog.py'
       - 'scripts/audit_production_search_queries.py'
       - 'scripts/audit_assembly_theme_context.py'
@@ -87,24 +88,30 @@ jobs:
           for query,count in counts.items(): print(f'Literal smoke query {query}: {count} psalms')
           for query in ('dieu','lumière','alliance'): assert counts[query] > 0
           PY
-      - name: Check thematic runtime contract
+      - name: Check thematic runtime and quality contract
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           runtime=json.loads(Path('data/thematic-index/theme-search-runtime.json').read_text(encoding='utf-8'))
           directory=json.loads(Path('data/thematic-index/theme-directory.json').read_text(encoding='utf-8'))
+          quality=json.loads(Path('data/thematic-index/theme-quality-audit.json').read_text(encoding='utf-8'))
+          stats=quality['stats']
           assert runtime['semanticMerging'] is False and runtime['connectionMeaning']=='psalm-cooccurrence-only'
-          assert runtime['themeCount']==directory['themeCount']
+          assert runtime['themeCount']==directory['themeCount']==stats['themeCount']
+          assert stats['normalizedDirectoryCollisionCount']==0
+          assert stats['relationsWithoutVerseNumbers']==0 and stats['relationsWithoutTeaching']==0
           canonical={t['id'] for t in directory['themes']}
           for theme in directory['themes']:
               assert theme['occurrenceCount'] == len(theme.get('occurrences', [])) and isinstance(theme.get('score'), int)
           for alias in runtime['aliases'].values(): assert set(alias['themeIds']) <= canonical
           ambiguous={key:alias for key,alias in runtime['aliases'].items() if alias.get('ambiguous')}
-          assert len(ambiguous)==runtime['ambiguousAliasCount'] and all(len(a.get('themeIds',[]))>1 for a in ambiguous.values())
+          assert len(ambiguous)==runtime['ambiguousAliasCount']
+          assert len(ambiguous)==stats['sameNormalizedLabelMultipleIdsCount']
+          assert all(len(a.get('themeIds',[]))>1 for a in ambiguous.values())
           assert runtime['aliases']['alliance de lumiere']['ambiguous'] is True
           assert set(runtime['aliases']['alliance de lumiere']['themeIds'])=={'alliance','alliance-de-lumiere'}
-          print(f"Search UI contract OK: {runtime['themeCount']} themes, {runtime['aliasCount']} aliases, {len(ambiguous)} ambiguous aliases preserved")
+          print(f"Search UI contract OK: {runtime['themeCount']} themes, {runtime['aliasCount']} aliases, {len(ambiguous)} explicit semantic ambiguities, 0 technical directory collisions")
           PY
       - name: Audit production search queries
         run: python scripts/audit_production_search_queries.py
