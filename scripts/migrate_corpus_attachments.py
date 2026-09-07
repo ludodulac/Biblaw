@@ -111,7 +111,7 @@ for rel in list(records):
         changed_psalms.add(target["id"])
 
 # 2) Canonicalize legacy note ids/targets only when the canonical Psalm already contains the reciprocal
-# canonical note id, source pages overlap, and any verse pointer exists on that Psalm.
+# canonical note id, source evidence overlaps or is immediately adjacent, and any verse pointer exists.
 for rel in list(records):
     if not rel.startswith("data/notes/"):
         continue
@@ -137,9 +137,8 @@ for rel in list(records):
     for psalm in identity_candidates(archangel, int(number_text)):
         canonical_note_id = f"{psalm['id']}-note-{suffix}"
         reciprocal = canonical_note_id in (psalm.get("noteIds") or [])
-        overlap = bool(pages(note) & pages(psalm)) if pages(note) and pages(psalm) and same_document(note, psalm) else False
         verse_ok = verse is None or int(verse) in {int(v.get("number")) for v in psalm.get("verses", []) if v.get("number") is not None}
-        if reciprocal and overlap and verse_ok:
+        if reciprocal and source_connected(note, psalm) and verse_ok:
             candidates.append((psalm, canonical_note_id))
 
     if len(candidates) != 1:
