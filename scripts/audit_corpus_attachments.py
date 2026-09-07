@@ -6,7 +6,9 @@ must already use canonical `book-XX-psalm-NNN` ids. External relationships must 
 supported by the same source document with overlapping or immediately adjacent printed/PDF pages.
 A Psalm may also carry `noteIds` for embedded/editorial footnotes that have no standalone
 `data/notes/*.json` record; those internal identifiers are not required to exist in the catalog.
-No semantic inference or external source is used.
+The browser bundle must contain the current canonical Psalm, prayer and external-note objects exactly,
+so a stale generated bundle cannot pass while source files are correct. No semantic inference or
+external source is used.
 """
 from __future__ import annotations
 
@@ -16,6 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data/catalog.json"
+BROWSER_BUNDLE = ROOT / "data/browser-search-catalog.json"
 CANONICAL_ROOT = ROOT / "data/corpus/books"
 CANONICAL_PSALM_RE = re.compile(r"^book-\d{2}-psalm-\d+$")
 LEGACY_PSALM_RE = re.compile(r"^(?:michael|gabriel|raphael|ouriel)-psalm-\d+$")
@@ -76,6 +79,7 @@ prayer_targets: set[str] = set()
 note_targets: set[str] = set()
 prayer_ids: set[str] = set()
 external_note_ids: set[str] = set()
+source_attachment_records: dict[str, dict] = {}
 
 for rel in prayer_rels:
     path = ROOT / rel
@@ -88,6 +92,7 @@ for rel in prayer_rels:
         continue
     prayer_id = str(prayer.get("id") or "")
     prayer_ids.add(prayer_id)
+    source_attachment_records[prayer_id] = prayer
     if path.stem != prayer_id:
         errors.append(f"prayer filename/id mismatch: {rel} != {prayer_id}")
     target_id = str(prayer.get("appliesToPsalmId") or "")
@@ -119,6 +124,7 @@ for rel in note_rels:
         continue
     note_id = str(note.get("id") or "")
     external_note_ids.add(note_id)
+    source_attachment_records[note_id] = note
     if path.stem != note_id:
         errors.append(f"note filename/id mismatch: {rel} != {note_id}")
     applies = note.get("appliesTo") or {}
@@ -163,13 +169,50 @@ embedded_note_id_count = sum(
     if note_id not in external_note_ids
 )
 
+# The browser uses this generated bundle directly. Verify exact object freshness for every canonical
+# Psalm and every catalogued prayer/external note rather than merely checking IDs.
+if not BROWSER_BUNDLE.exists():
+    errors.append("browser-search-catalog.json is missing")
+    browser_records = []
+else:
+    browser_payload = load(BROWSER_BUNDLE)
+    browser_records = browser_payload.get("records") or []
+    if browser_payload.get("recordCount") != len(browser_records):
+        errors.append("browser bundle recordCount does not match records length")
+
+browser_by_id: dict[str, dict] = {}
+for record in browser_records:
+    record_id = str(record.get("id") or "")
+    if not record_id:
+        errors.append("browser bundle contains record without id")
+        continue
+    if record_id in browser_by_id:
+        errors.append(f"browser bundle duplicate id: {record_id}")
+        continue
+    browser_by_id[record_id] = record
+
+for psalm_id, source_psalm in canonical_by_id.items():
+    bundled = browser_by_id.get(psalm_id)
+    if bundled is None:
+        errors.append(f"browser bundle missing canonical Psalm {psalm_id}")
+    elif bundled != source_psalm:
+        errors.append(f"browser bundle stale canonical Psalm {psalm_id}")
+
+for record_id, source_record in source_attachment_records.items():
+    bundled = browser_by_id.get(record_id)
+    if bundled is None:
+        errors.append(f"browser bundle missing attachment {record_id}")
+    elif bundled != source_record:
+        errors.append(f"browser bundle stale attachment {record_id}")
+
 print(
     f"ATTACHMENTS canonicalPsalms={len(canonical_by_id)} prayers={len(prayer_rels)} "
     f"prayerTargets={len(prayer_targets)} externalNotes={len(note_rels)} "
-    f"externalNoteTargets={len(note_targets)} embeddedNoteIds={embedded_note_id_count}"
+    f"externalNoteTargets={len(note_targets)} embeddedNoteIds={embedded_note_id_count} "
+    f"browserRecords={len(browser_records)}"
 )
 
 if errors:
     raise SystemExit("Attachment audit failed:\n- " + "\n- ".join(errors))
 
-print("Corpus attachment audit OK: catalogued prayer/note targets canonical and reciprocal")
+print("Corpus attachment audit OK: sources and browser bundle canonical, reciprocal and fresh")
