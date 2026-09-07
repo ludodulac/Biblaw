@@ -78,17 +78,25 @@ jobs:
           assert 'const themeQueryForms' in js
           assert "['l','le','la','les','un','une','des']" in js
           assert 'for(const q of forms)' in js
+          # Thematic and textual modes stay distinct, including unresolved thematic queries.
+          assert 'const activateThemeMode' in js
+          assert 'function navigateToTheme(theme)' in js
+          assert 'unresolvedTheme:true' in js
+          assert 'Aucun thème indexé ne correspond à cette recherche' in js
+          assert "$('modeExact').click()" in js
           # A recognized theme must not hide literal corpus occurrences.
           assert 'function textualPsalmMatches' in js
           assert 'Deux lectures de cette recherche' in js
           assert 'data-show-text-search' in js
-          assert "$('modeExact').click()" in js
-          # Ambiguous aliases must remain explicit choices and identical labels must be distinguishable.
+          # Ambiguous aliases remain explicit and direct clicks target canonical IDs.
           assert "const ambiguous=resolvedThemes.length>1" in js
           assert 'const labelCounts=new Map()' in js
           assert 'const duplicateLabel=' in js
           assert 'theme.occurrenceCount||theme.occurrences?.length||0' in js
           assert 'thème ${theme.id}' in js
+          assert "navigateToTheme(state.themeById.get(btn.dataset.themeId))" in js
+          assert "navigateToTheme(state.themeById.get(b.dataset.relatedTheme))" in js
+          assert 'closeIndex();navigateToTheme(t)' in js
           assert "ambiguous?'Correspondances multiples':'Navigation transversale'" in js
           def norm(value):
               value=''.join(c for c in unicodedata.normalize('NFD', str(value or '')) if unicodedata.category(c)!='Mn').lower().replace('œ','oe').replace('æ','ae').replace('’',' ').replace("'",' ')
