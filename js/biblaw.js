@@ -56,6 +56,9 @@
     const terms = norm(query).split(' ').filter(Boolean), allowed = selectedTypes(), a = $('archangelFilter').value;
     return state.records.filter(r => allowed.has(type(r)) && (!a || r.archangel === a)).map(record => ({ record, score: terms.filter(t => norm(text(record)).includes(t)).length / Math.max(1, terms.length) })).filter(x => x.score > 0);
   }
+  function textualPsalmMatches(query) {
+    return matches(query).filter(x=>x.record.recordType==='psalm');
+  }
   function resolveIndexedThemes(query) {
     const forms=themeQueryForms(query); if(!forms.length)return [];
     for(const q of forms){
@@ -94,7 +97,20 @@
     $('senseChoices').innerHTML=choices.map(c=>`<button class="sense-button" data-theme-id="${esc(c.id)}"><strong>${esc(c.label)}</strong><span>${esc(c.meta)}</span></button>`).join('');
     document.querySelectorAll('[data-theme-id]').forEach(btn=>btn.onclick=()=>{const theme=state.themeById.get(btn.dataset.themeId);if(theme){$('query').value=theme.label;search();window.scrollTo({top:0,behavior:'smooth'});}}); $('ambiguityPanel').hidden=false;
   }
-  function search(){const query=$('query').value.trim();if(!query){$('ambiguityPanel').hidden=true;return render([]);}if(state.mode==='themes'){const resolved=resolveIndexedThemes(query);if(resolved.length){showThemeNavigation(resolved);return render(thematicItems(resolved),resolved);}$('ambiguityPanel').hidden=true;}render(matches(query).sort((a,b)=>b.score-a.score));}
+  function search(){
+    const query=$('query').value.trim();
+    if(!query){$('ambiguityPanel').hidden=true;return render([]);}
+    if(state.mode==='themes'){
+      const resolved=resolveIndexedThemes(query);
+      if(resolved.length){
+        showThemeNavigation(resolved);
+        const thematic=thematicItems(resolved), textual=textualPsalmMatches(query);
+        return render(thematic,resolved,{textualCount:textual.length});
+      }
+      $('ambiguityPanel').hidden=true;
+    }
+    render(matches(query).sort((a,b)=>b.score-a.score));
+  }
 
   function summary(r){return r.recordType==='psalm'?(r.verses||[]).slice(0,2).map(v=>v.text).join(' '):r.summary||(r.text||'').slice(0,280);}
   function recordPages(r){return r.source?.pdfPages||r.source?.printedPages||(r.source?.printedPage?[r.source.printedPage]:[]);}
@@ -123,11 +139,12 @@
   function bindThemeLinks(root=document){
     root.querySelectorAll('[data-related-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.relatedTheme);if(t){$('query').value=t.label;if($('recordDialog').open)$('recordDialog').close();search();window.scrollTo({top:0,behavior:'smooth'});}});
   }
-  function render(items,indexedThemes=null){
+  function render(items,indexedThemes=null,companion=null){
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
     $('resultCount').textContent=themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:`${items.length} résultat${items.length>1?'s':''}`;
-    if(!items.length){$('results').innerHTML='<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>';return;}
-    $('results').innerHTML=items.map(({record:r,thematic,matchedThemes})=>{
+    const textualNotice=themeLabels.length&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>Deux lectures de cette recherche</strong><span>${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous ce thème · le mot ou l’expression apparaît dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.</span></div><button class="secondary" data-show-text-search>Voir les occurrences textuelles</button></div>`:'';
+    if(!items.length){$('results').innerHTML=textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>';bindTextSearchLink();return;}
+    $('results').innerHTML=textualNotice+items.map(({record:r,thematic,matchedThemes})=>{
       const pages=recordPages(r),meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:(pages.length?`Page${pages.length>1?'s ': ' '}${pages.join('–')}`:'Référence structurée'),description=thematic?.teaching||summary(r),related=thematic?relatedThemes(r,matchedThemes):[];
       const relatedBlock=thematic?`<div class="related-themes"><div class="context-label">Thèmes également présents dans ce psaume</div>${themeTags(related)}</div>`:'';
       const exactBlock=!thematic?exactVerses(r):'';
@@ -135,6 +152,11 @@
     }).join('');
     document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>open(b.dataset.open));
     bindThemeLinks($('results'));
+    bindTextSearchLink();
+  }
+  function bindTextSearchLink(){
+    const button=document.querySelector('[data-show-text-search]');
+    if(button)button.onclick=()=>{$('modeExact').click();window.scrollTo({top:$('results').offsetTop-120,behavior:'smooth'});};
   }
   function open(id){
     const r=state.records.find(x=>x.id===id);if(!r)return;state.active=r;
