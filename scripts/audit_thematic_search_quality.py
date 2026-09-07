@@ -2,7 +2,7 @@
 """Audit the thematic index for search/navigation quality without changing editorial semantics.
 
 This audit is intentionally conservative. It detects deterministic structural/lexical situations
-that may reduce search quality (label collisions, inconsistent labels for one id, singletons,
+that may reduce search quality (label collisions, contextual label variations, singletons,
 composite labels, weakly grounded relations). It never merges or renames themes automatically.
 
 Important editorial rule: a theme label does not need an external or globally fixed definition.
@@ -43,6 +43,20 @@ def compact_theme(theme):
         "occurrenceCount": theme.get("occurrenceCount", 0),
         "centralPsalmCount": theme.get("centralPsalmCount", 0),
         "archangelCount": len(theme.get("archangels", [])),
+    }
+
+
+def compact_context(context: dict) -> dict:
+    return {
+        "bookNumber": context.get("bookNumber"),
+        "archangel": context.get("archangel"),
+        "psalmNumber": context.get("psalmNumber"),
+        "recordId": context.get("recordId"),
+        "label": context.get("label"),
+        "importance": context.get("importance"),
+        "directness": context.get("directness"),
+        "verseNumbers": context.get("verseNumbers", []),
+        "teaching": context.get("teaching"),
     }
 
 
@@ -90,14 +104,21 @@ for path in sorted(BOOKS.glob("book-*.json")):
             if not (rel.get("teaching") or "").strip():
                 relations_without_teaching.append(ref)
 
+# Multiple labels for one canonical id are review candidates, not structural errors by themselves.
+# They can encode legitimate contextual precision (for example a broader canonical theme receiving
+# a more specific label in one Psalm). The evidence is exposed so a later editorial review can decide.
 same_id_multiple_labels = []
 for tid, labels in sorted(id_labels.items()):
     if len(labels) > 1:
         same_id_multiple_labels.append({
             "themeId": tid,
             "labels": [{"label": label, "count": count} for label, count in labels.most_common()],
+            "contextualEvidence": [compact_context(c) for c in relation_contexts.get(tid, [])],
+            "reviewRule": "Preserve contextual wording unless corpus-internal evidence shows a genuine identifier or labeling error; do not force one global definition.",
         })
 
+# One normalized label pointing to multiple ids is an explicit semantic/search ambiguity unless the
+# generated directory itself contains duplicate visible entries. The runtime must preserve it.
 same_label_multiple_ids = []
 for normalized, ids in sorted(label_ids.items()):
     if normalized and len(ids) > 1:
@@ -106,6 +127,11 @@ for normalized, ids in sorted(label_ids.items()):
             "normalizedLabel": normalized,
             "labels": display,
             "themeIds": [{"id": tid, "count": count} for tid, count in ids.most_common()],
+            "contextualEvidence": {
+                tid: [compact_context(c) for c in relation_contexts.get(tid, [])]
+                for tid in sorted(ids)
+            },
+            "reviewRule": "Keep search ambiguity explicit until corpus-internal contexts justify a reviewed consolidation.",
         })
 
 by_norm = defaultdict(list)
@@ -116,7 +142,8 @@ normalized_collisions = [
         "normalizedLabel": key,
         "themes": [compact_theme(t) for t in vals],
         "contextualEvidence": {
-            t.get("id"): relation_contexts.get(t.get("id"), []) for t in vals
+            t.get("id"): [compact_context(c) for c in relation_contexts.get(t.get("id"), [])]
+            for t in vals
         },
         "reviewRule": "Compare the corpus-internal Psalm contexts, supporting verses and teachings before any identifier consolidation; identical labels alone are insufficient evidence.",
     }
@@ -152,13 +179,15 @@ report = {
         "themeCountByArchangelCoverage": {str(k): v for k, v in sorted(archangel_spread.items())},
     },
     "hardStructuralIssues": {
-        "sameIdMultipleLabels": same_id_multiple_labels,
-        "sameNormalizedLabelMultipleIds": same_label_multiple_ids,
         "normalizedDirectoryCollisions": normalized_collisions,
         "relationsWithoutVerseNumbers": relations_without_verses,
         "relationsWithoutTeaching": relations_without_teaching,
     },
+    "explicitSearchAmbiguities": {
+        "sameNormalizedLabelMultipleIds": same_label_multiple_ids,
+    },
     "reviewCandidates": {
+        "contextualLabelVariations": same_id_multiple_labels,
         "compositeLabels": composites,
         "singletons": singletons,
         "rareThemesOccurrenceLTE2": rare,
@@ -168,7 +197,9 @@ report = {
         "automaticRenameAllowed": False,
         "externalDefinitionAllowed": False,
         "contextualMeaningSource": "canonical Psalm context, supporting verses and corpus-grounded teaching",
-        "note": "Rare, composite or unfamiliar themes are not errors. A term may receive several complementary contextual explanations across Psalms. Review corpus-internal evidence before any editorial consolidation.",
+        "sameIdMultipleLabelsMeaning": "review candidate; not an error by itself",
+        "sameNormalizedLabelMultipleIdsMeaning": "explicit search ambiguity unless separately proven to be a technical duplicate",
+        "note": "Rare, composite, unfamiliar or contextually relabeled themes are not errors. A term may receive several complementary explanations across Psalms. Review corpus-internal evidence before any editorial consolidation.",
     },
 }
 OUT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
