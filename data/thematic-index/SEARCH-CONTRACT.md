@@ -16,6 +16,29 @@ L’indexation sert à repérer, classer et relier des passages pour la recherch
 
 Les affirmations contenues dans les champs `teaching` décrivent ce qui est relevé dans le corpus pour faciliter la recherche. Elles restent des formulations d’indexation liées aux versets cités.
 
+## Garanties déjà portées par le modèle
+
+Biblaw n'ajoute pas un champ générique de « confiance » lorsque le statut est déjà exprimé plus précisément par les données existantes. Les garanties utiles restent séparées :
+
+- **preuve littérale** : présence vérifiable dans le texte, utilisée uniquement par la recherche textuelle ;
+- **relation éditorialement indexée** : relation thème–psaume présente dans l’index canonique validé, avec `importance`, `directness`, versets justificatifs et `teaching` ;
+- **identité canonique** : identifiants documentaires `book-XX-psalm-NNN` et identifiants thématiques canoniques ;
+- **alias ambigu** : plusieurs `themeId` explicitement conservés avec `ambiguous: true` ;
+- **connexion de navigation seulement** : cooccurrence de thèmes dans des Psaumes, avec `semanticClaim: false`.
+
+Ces garanties ne sont pas des degrés interchangeables d’une même certitude. Elles décrivent des natures de données différentes et ne doivent pas être utilisées pour fabriquer une relation thématique.
+
+## Admissibilité avant classement
+
+Une relation thème–psaume suit deux étapes conceptuellement distinctes :
+
+1. **admissibilité** : la relation doit déjà exister dans les analyses thématiques canoniques et passer les validateurs de l’index ;
+2. **classement** : une fois admise, son champ `importance` (`central`, `important`, `related`) peut déterminer l’ordre `Central → Important → Lié`, puis les critères déterministes prévus par l’interface.
+
+Le classement ne crée jamais une relation. Aucun score, fréquence de mot, proximité lexicale, inclusion de chaîne, cooccurrence ou rang de navigation ne peut faire entrer un psaume dans les résultats thématiques s’il n’existe pas déjà de relation canonique admissible.
+
+De même, les scores de `theme-connections.json` classent uniquement des cooccurrences déjà calculées entre thèmes indexés. Ils ne valident pas une relation thème–psaume et ne modifient pas son `importance`.
+
 ## Accès documentaire par numéro
 
 Une requête composée uniquement d'un entier positif, avec ou sans le préfixe `psaume` (par exemple `105` ou `psaume 105`), est interprétée comme une recherche documentaire de numéro.
@@ -64,6 +87,17 @@ Graphe de navigation entre thèmes calculé à partir de leur présence commune 
 
 Une connexion affichée dans le site devrait être formulée comme « thèmes également présents dans ces Psaumes » ou « thèmes fréquemment associés dans l’index », jamais comme « ce thème signifie » ou « ce thème est équivalent à ».
 
+### `theme-search-runtime.json`
+
+Projection compacte destinée au navigateur. Le runtime ne constitue aucune nouvelle source sémantique.
+
+- il projette les alias du `theme-search-index.json` sans résoudre les ambiguïtés à leur place ;
+- il projette un nombre limité de voisins du graphe de cooccurrence sans modifier leur signification ;
+- un nouveau runtime est construit comme candidat, validé contre ses sources, puis seulement remplace atomiquement le runtime de production ;
+- le runtime commité est revalidé indépendamment dans le pipeline canonique et avant publication Pages.
+
+Le fichier est généré et ne doit pas être modifié à la main.
+
 ## Résolution d'une recherche thématique
 
 Le moteur applique uniquement la séquence suivante :
@@ -79,7 +113,8 @@ Il n'existe pas de fallback thématique par sous-chaîne, proximité lexicale ou
 Pour les résultats thématiques :
 
 - conserver tous les identifiants lorsqu'un alias est explicitement ambigu ;
-- classer les Psaumes selon l’importance éditoriale `Central → Important → Lié`, puis de manière déterministe ;
+- ne considérer que les relations thème–psaume déjà admises par l’index canonique validé ;
+- classer ensuite les Psaumes selon l’importance éditoriale `Central → Important → Lié`, puis de manière déterministe ;
 - permettre le filtrage par Archange ;
 - afficher les versets justificatifs et le champ `teaching` avec chaque résultat ;
 - proposer les thèmes voisins uniquement comme navigation transversale fondée sur la cooccurrence ;
@@ -100,6 +135,7 @@ La neutralisation de l'article (`la sainte assemblée` → `sainte assemblée`, 
 - fusionner des thèmes sur la seule base de la proximité lexicale ;
 - résoudre un thème par simple inclusion de chaîne ou voisinage de mots ;
 - créer un thème parce qu'un mot apparaît fréquemment dans le corpus ;
+- faire entrer une relation dans l’index à cause de son score ou de son rang ;
 - supprimer un thème parce qu’il n’apparaît que dans un seul Psaume ;
 - considérer un thème composite comme une erreur sans relecture du corpus ;
 - transformer une cooccurrence en relation doctrinale ;
@@ -113,7 +149,10 @@ La neutralisation de l'article (`la sainte assemblée` → `sainte assemblée`, 
 - `theme-quality-audit.json` recense les situations de fragmentation ou de libellés à examiner sans les corriger automatiquement ;
 - `validate_thematic_search_index.py` contrôle la couche d’alias ;
 - `validate_thematic_connections.py` contrôle le graphe de cooccurrence ;
+- `validate_thematic_search_runtime.py` contrôle que le runtime est l’exacte projection compacte des alias et connexions validés ;
 - `audit_production_search_queries.py` vérifie les requêtes de production et la séparation thème/texte ;
-- `audit_psalm_number_search.py` vérifie la recherche documentaire par numéro.
+- `audit_psalm_number_search.py` vérifie la recherche documentaire par numéro ;
+- `audit_corpus_attachments.py` contrôle les rattachements canoniques des prières/notes et la fraîcheur du bundle navigateur ;
+- `audit_legacy_psalm_references.py` vérifie que les données de production ne dépendent pas des identifiants historiques, sans supprimer les artefacts historiques conservés.
 
-Toute consolidation éditoriale ultérieure doit rester traçable vers les Psaumes et versets concernés.
+La publication Pages exécute les contrôles de production pertinents avant tout déploiement. Toute consolidation éditoriale ultérieure doit rester traçable vers les Psaumes et versets concernés.
