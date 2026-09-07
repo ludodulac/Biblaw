@@ -23,7 +23,7 @@ jobs:
   rebuild:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Rebuild browser search catalog
         run: python scripts/build_browser_search_catalog.py
       - name: Commit generated catalog when needed
