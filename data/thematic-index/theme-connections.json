@@ -9,8 +9,8 @@
     "related": 1,
     "pairContribution": "importanceWeightA * importanceWeightB"
   },
-  "themeCount": 1250,
-  "undirectedEdgeCount": 13121,
+  "themeCount": 1251,
+  "undirectedEdgeCount": 13144,
   "topConnectionsPerTheme": 30,
   "themes": [
     {
@@ -4007,7 +4007,7 @@
     {
       "themeId": "acte",
       "label": "Acte",
-      "connectionCount": 154,
+      "connectionCount": 155,
       "topConnections": [
         {
           "themeId": "vie",
@@ -24991,7 +24991,7 @@
     {
       "themeId": "ame",
       "label": "Âme",
-      "connectionCount": 300,
+      "connectionCount": 301,
       "topConnections": [
         {
           "themeId": "vie",
@@ -53017,7 +53017,7 @@
     {
       "themeId": "bien-commun",
       "label": "Bien commun",
-      "connectionCount": 118,
+      "connectionCount": 119,
       "topConnections": [
         {
           "themeId": "vie",
@@ -78549,7 +78549,7 @@
     {
       "themeId": "conscience",
       "label": "Conscience",
-      "connectionCount": 384,
+      "connectionCount": 385,
       "topConnections": [
         {
           "themeId": "vie",
@@ -86449,7 +86449,7 @@
     {
       "themeId": "corps",
       "label": "Corps",
-      "connectionCount": 545,
+      "connectionCount": 546,
       "topConnections": [
         {
           "themeId": "vie",
@@ -117350,7 +117350,7 @@
     {
       "themeId": "dieux",
       "label": "Dieux",
-      "connectionCount": 211,
+      "connectionCount": 212,
       "topConnections": [
         {
           "themeId": "vie",
@@ -176617,7 +176617,7 @@
     {
       "themeId": "esprit",
       "label": "Esprit",
-      "connectionCount": 125,
+      "connectionCount": 126,
       "topConnections": [
         {
           "themeId": "vie",
@@ -195865,7 +195865,7 @@
     {
       "themeId": "feu",
       "label": "Feu",
-      "connectionCount": 136,
+      "connectionCount": 137,
       "topConnections": [
         {
           "themeId": "vie",
@@ -250504,7 +250504,7 @@
     {
       "themeId": "intelligence",
       "label": "Intelligence",
-      "connectionCount": 430,
+      "connectionCount": 431,
       "topConnections": [
         {
           "themeId": "vie",
@@ -271702,7 +271702,7 @@
     {
       "themeId": "lumiere",
       "label": "Lumière",
-      "connectionCount": 509,
+      "connectionCount": 510,
       "topConnections": [
         {
           "themeId": "vie",
@@ -276353,7 +276353,7 @@
     {
       "themeId": "maitrise",
       "label": "Maîtrise",
-      "connectionCount": 168,
+      "connectionCount": 169,
       "topConnections": [
         {
           "themeId": "vie",
@@ -311471,7 +311471,7 @@
     {
       "themeId": "mort",
       "label": "Mort",
-      "connectionCount": 230,
+      "connectionCount": 231,
       "topConnections": [
         {
           "themeId": "vie",
@@ -316600,7 +316600,7 @@
     {
       "themeId": "nation-essenienne",
       "label": "Nation Essénienne",
-      "connectionCount": 200,
+      "connectionCount": 201,
       "topConnections": [
         {
           "themeId": "vie",
@@ -331003,7 +331003,7 @@
     {
       "themeId": "oeil",
       "label": "Œil",
-      "connectionCount": 137,
+      "connectionCount": 138,
       "topConnections": [
         {
           "themeId": "vie",
@@ -334157,7 +334157,7 @@
     {
       "themeId": "oeuvre",
       "label": "Œuvre",
-      "connectionCount": 426,
+      "connectionCount": 427,
       "topConnections": [
         {
           "themeId": "vie",
@@ -355660,7 +355660,7 @@
     {
       "themeId": "parole",
       "label": "Parole",
-      "connectionCount": 142,
+      "connectionCount": 143,
       "topConnections": [
         {
           "themeId": "vie",
@@ -363727,7 +363727,7 @@
     {
       "themeId": "pensee",
       "label": "Pensée",
-      "connectionCount": 404,
+      "connectionCount": 405,
       "topConnections": [
         {
           "themeId": "vie",
@@ -399182,7 +399182,7 @@
     {
       "themeId": "purete",
       "label": "Pureté",
-      "connectionCount": 197,
+      "connectionCount": 198,
       "topConnections": [
         {
           "themeId": "vie",
@@ -456205,6 +456205,731 @@
       ]
     },
     {
+      "themeId": "sainte-assemblee",
+      "label": "Sainte Assemblée",
+      "connectionCount": 23,
+      "topConnections": [
+        {
+          "themeId": "dieux",
+          "label": "Dieux",
+          "score": 19,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 3
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "vision",
+          "label": "Vision",
+          "score": 19,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 3
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "score": 15,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 3
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "oeuvre",
+          "label": "Œuvre",
+          "score": 15,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "corps",
+          "label": "Corps",
+          "score": 13,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "score": 11,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 3
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "related",
+              "themeBImportance": "central",
+              "contribution": 3
+            },
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "related",
+              "themeBImportance": "important",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "verite",
+          "label": "Vérité",
+          "score": 11,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "important",
+              "themeBImportance": "related",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "intelligence",
+          "label": "Intelligence",
+          "score": 9,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "related",
+              "themeBImportance": "central",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "parole",
+          "label": "Parole",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "purete",
+          "label": "Pureté",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "service",
+          "label": "Service",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "feu",
+          "label": "Feu",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "mort",
+          "label": "Mort",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "conscience",
+          "label": "Conscience",
+          "score": 5,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-212",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 212,
+              "psalmTitle": "Fondements moraux et magiques de la sainte assemblée",
+              "themeAImportance": "related",
+              "themeBImportance": "central",
+              "contribution": 3
+            },
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "related",
+              "themeBImportance": "important",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "esprit",
+          "label": "Esprit",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "nation-essenienne",
+          "label": "Nation Essénienne",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "terre",
+          "label": "Terre",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "ame",
+          "label": "Âme",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "acte",
+          "label": "Acte",
+          "score": 2,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "related",
+              "themeBImportance": "important",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "bien-commun",
+          "label": "Bien commun",
+          "score": 2,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "related",
+              "themeBImportance": "important",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "maitrise",
+          "label": "Maîtrise",
+          "score": 2,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "related",
+              "themeBImportance": "important",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "score": 2,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-211",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 211,
+              "psalmTitle": "Soyez unis et ne fermez jamais les portes à qui que ce soit",
+              "themeAImportance": "related",
+              "themeBImportance": "important",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "oeil",
+          "label": "Œil",
+          "score": 2,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-29-psalm-197",
+              "bookNumber": 29,
+              "bookTitle": "La religion du 21ème siècle",
+              "archangel": "michael",
+              "psalmNumber": 197,
+              "psalmTitle": "Calmez le feu destructeur et éveillez le feu divin",
+              "themeAImportance": "related",
+              "themeBImportance": "important",
+              "contribution": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
       "themeId": "saisons",
       "label": "Saisons",
       "connectionCount": 2,
@@ -466427,7 +467152,7 @@
     {
       "themeId": "service",
       "label": "Service",
-      "connectionCount": 66,
+      "connectionCount": 67,
       "topConnections": [
         {
           "themeId": "vie",
@@ -490063,7 +490788,7 @@
     {
       "themeId": "terre",
       "label": "Terre",
-      "connectionCount": 506,
+      "connectionCount": 507,
       "topConnections": [
         {
           "themeId": "vie",
@@ -532159,7 +532884,7 @@
     {
       "themeId": "verite",
       "label": "Vérité",
-      "connectionCount": 253,
+      "connectionCount": 254,
       "topConnections": [
         {
           "themeId": "vie",
@@ -541276,7 +542001,7 @@
     {
       "themeId": "vie",
       "label": "Vie",
-      "connectionCount": 642,
+      "connectionCount": 643,
       "topConnections": [
         {
           "themeId": "corps",
@@ -550773,7 +551498,7 @@
     {
       "themeId": "vision",
       "label": "Vision",
-      "connectionCount": 80,
+      "connectionCount": 81,
       "topConnections": [
         {
           "themeId": "vie",

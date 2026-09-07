@@ -5,8 +5,8 @@
     "data/thematic-index/theme-directory.json"
   ],
   "semanticMerging": false,
-  "themeCount": 1250,
-  "aliasCount": 1342,
+  "themeCount": 1251,
+  "aliasCount": 1343,
   "ambiguousAliasCount": 9,
   "themes": [
     {
@@ -15601,6 +15601,21 @@
       "score": 6
     },
     {
+      "themeId": "sainte-assemblee",
+      "canonicalLabel": "Sainte Assemblée",
+      "observedLabels": [
+        {
+          "label": "Sainte Assemblée",
+          "count": 3
+        }
+      ],
+      "normalizedAliases": [
+        "sainte assemblee"
+      ],
+      "occurrenceCount": 3,
+      "score": 7
+    },
+    {
       "themeId": "saisons",
       "canonicalLabel": "Saisons",
       "observedLabels": [
@@ -29874,6 +29889,16 @@
       ],
       "labels": [
         "Sagesse vécue"
+      ],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "sainte assemblee",
+      "themeIds": [
+        "sainte-assemblee"
+      ],
+      "labels": [
+        "Sainte Assemblée"
       ],
       "ambiguous": false
     },
