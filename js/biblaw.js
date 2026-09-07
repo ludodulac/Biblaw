@@ -28,6 +28,12 @@
   const label = r => r.recordType === 'psalm' ? `Psaume ${r.number} · ${archangelName(r.archangel)}` : r.recordType === 'master-prayer' ? `Prière ${r.number} · ${archangelName(r.archangel)}` : `Note · ${archangelName(r.archangel)}`;
   const importanceLabel = value => ({ central: 'Central', important: 'Important', related: 'Lié' }[value] || 'Indexé');
   const importanceRank = value => ({ central: 0, important: 1, related: 2 }[value] ?? 3);
+  const activateThemeMode = () => {
+    state.mode='themes';
+    $('modeThemes').classList.add('active');
+    $('modeExact').classList.remove('active');
+    $('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié.';
+  };
 
   async function load() {
     try {
@@ -113,7 +119,17 @@
     $('suggestionKicker').textContent=ambiguous?'Correspondances multiples':'Navigation transversale';
     $('suggestionTitle').textContent=ambiguous?'Plusieurs thèmes correspondent à cette formulation':'Thèmes également présents dans ces psaumes';
     $('senseChoices').innerHTML=choices.map(c=>`<button class="sense-button" data-theme-id="${esc(c.id)}"><strong>${esc(c.label)}</strong><span>${esc(c.meta)}</span></button>`).join('');
-    document.querySelectorAll('[data-theme-id]').forEach(btn=>btn.onclick=()=>{const theme=state.themeById.get(btn.dataset.themeId);if(theme){$('query').value=theme.label;search();window.scrollTo({top:0,behavior:'smooth'});}}); $('ambiguityPanel').hidden=false;
+    document.querySelectorAll('[data-theme-id]').forEach(btn=>btn.onclick=()=>navigateToTheme(state.themeById.get(btn.dataset.themeId))); $('ambiguityPanel').hidden=false;
+  }
+  function navigateToTheme(theme) {
+    if(!theme)return;
+    activateThemeMode();
+    $('query').value=theme.label;
+    if($('recordDialog').open)$('recordDialog').close();
+    showThemeNavigation([theme]);
+    const thematic=thematicItems([theme]), textual=textualPsalmMatches(theme.label);
+    render(thematic,[theme],{textualCount:textual.length});
+    window.scrollTo({top:0,behavior:'smooth'});
   }
   function search(){
     const query=$('query').value.trim();
@@ -157,7 +173,7 @@
     return `<div class="tags">${themes.map(t=>`<button class="tag theme-link" data-related-theme="${esc(t.id)}">${esc(t.label)}</button>`).join('')}</div>`;
   }
   function bindThemeLinks(root=document){
-    root.querySelectorAll('[data-related-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.relatedTheme);if(t){$('query').value=t.label;if($('recordDialog').open)$('recordDialog').close();search();window.scrollTo({top:0,behavior:'smooth'});}});
+    root.querySelectorAll('[data-related-theme]').forEach(b=>b.onclick=()=>navigateToTheme(state.themeById.get(b.dataset.relatedTheme)));
   }
   function render(items,indexedThemes=null,companion=null){
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
@@ -191,10 +207,10 @@
     $('recordDialog').showModal();
   }
   function activeText(){const r=state.active;if(!r)return'';let out=`${r.title||`Prière ${r.number}`}\n\n`;out+=r.verses?r.verses.map(v=>`${v.number}. ${v.text}`).join('\n'):r.text||r.summary||'';return out;}
-  function themes(){$('themeDirectory').innerHTML=state.themeDirectory.map(t=>`<button class="theme-row" data-directory-theme="${esc(t.id)}"><span><strong>${esc(t.label)}</strong><small>${t.occurrenceCount} psaume${t.occurrenceCount>1?'s':''}</small></span><span>${t.score}</span></button>`).join('');$('indexCount').textContent=`${state.themeDirectory.length} thèmes indexés`;document.querySelectorAll('[data-directory-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.directoryTheme);if(t){$('query').value=t.label;closeIndex();search();}});}
+  function themes(){$('themeDirectory').innerHTML=state.themeDirectory.map(t=>`<button class="theme-row" data-directory-theme="${esc(t.id)}"><span><strong>${esc(t.label)}</strong><small>${t.occurrenceCount} psaume${t.occurrenceCount>1?'s':''}</small></span><span>${t.score}</span></button>`).join('');$('indexCount').textContent=`${state.themeDirectory.length} thèmes indexés`;document.querySelectorAll('[data-directory-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.directoryTheme);if(t){closeIndex();navigateToTheme(t);}});}
   function closeIndex(){$('indexPanel').hidden=true;$('indexBackdrop').hidden=true;$('indexToggle').setAttribute('aria-expanded','false');}
   $('searchButton').onclick=search;$('query').addEventListener('keydown',e=>{if(e.key==='Enter')search();});document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=search);$('archangelFilter').onchange=search;
-  $('modeThemes').onclick=()=>{state.mode='themes';$('modeThemes').classList.add('active');$('modeExact').classList.remove('active');$('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié.';search();};
+  $('modeThemes').onclick=()=>{activateThemeMode();search();};
   $('modeExact').onclick=()=>{state.mode='exact';$('modeExact').classList.add('active');$('modeThemes').classList.remove('active');$('modeHelp').textContent='Recherche un mot ou une expression dans le texte du corpus.';$('ambiguityPanel').hidden=true;search();};
   $('closeAmbiguity').onclick=()=>{$('ambiguityPanel').hidden=true;};$('indexToggle').onclick=()=>{const open=$('indexPanel').hidden;$('indexPanel').hidden=!open;$('indexBackdrop').hidden=!open;$('indexToggle').setAttribute('aria-expanded',String(open));};$('closeIndex').onclick=closeIndex;$('indexBackdrop').onclick=closeIndex;$('closeDialog').onclick=()=>$('recordDialog').close();$('printRecord').onclick=()=>window.print();$('downloadRecord').onclick=()=>{const blob=new Blob([activeText()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${state.active?.id||'biblaw'}.txt`;a.click();URL.revokeObjectURL(a.href);};
   load();
