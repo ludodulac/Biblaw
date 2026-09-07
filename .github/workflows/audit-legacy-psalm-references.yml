@@ -1,0 +1,20 @@
+name: Audit legacy Psalm references
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/corpus/books/**'
+      - 'data/prayers/**'
+      - 'data/notes/**'
+      - 'data/thematic-index/books/**'
+      - 'scripts/audit_legacy_psalm_references.py'
+      - '.github/workflows/audit-legacy-psalm-references.yml'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Reject legacy Psalm references in canonical data
+        run: python scripts/audit_legacy_psalm_references.py
