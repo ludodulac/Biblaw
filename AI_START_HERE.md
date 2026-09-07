@@ -141,6 +141,22 @@ python scripts/check_biblaw.py FULL
 
 But : changement transversal, modification amont, générateur sémantique/documentaire, ou validation finale d’un lot à risque. Rejoue le pipeline canonique complet puis les contrats de production/recherche/UI. Le FULL nécessite les dépendances du pipeline PDF (`pdftotext`/Poppler dans la CI).
 
+## Rapport différentiel compact
+
+Avant une modification générée, le baseline naturel est `HEAD`. Après la génération ciblée :
+
+```bash
+python scripts/report_biblaw_diff.py
+```
+
+Après avoir commité le lot, comparer au parent :
+
+```bash
+python scripts/report_biblaw_diff.py --base HEAD~1
+```
+
+Le rapport montre uniquement les écarts significatifs : relations, thèmes, alias, ambiguïtés, erreurs/warnings, ajouts/suppressions de thèmes, métriques de classement et changements des requêtes sentinelles. Il ne modifie aucun artefact.
+
 ## Sentinelles
 
 La source exécutable est `scripts/audit_production_search_queries.py`, complétée par :
@@ -150,7 +166,7 @@ La source exécutable est `scripts/audit_production_search_queries.py`, complét
 - `scripts/audit_browser_search_indexes.py` — index navigateur pré-calculés ;
 - `scripts/validate_thematic_search_runtime.py` — ambiguïtés et projection exacte du runtime.
 
-Les sentinelles doivent continuer à couvrir : littéral simple, expression littérale, thème canonique, alias, alias ambigu, double lecture thème/texte, zéro thème attendu, absence de fallback substring/proximité, ordre Central → Important → Lié et numéro présent dans plusieurs livres.
+Les sentinelles couvrent notamment : littéral simple, expression littérale, thème canonique, alias observé (`argent spirituel`), alias ambigu, double lecture thème/texte, zéro thème attendu, absence de fallback substring/proximité, ordre Central → Important → Lié et numéro présent dans plusieurs livres.
 
 Un bug corrigé doit devenir une sentinelle lorsqu’il peut être reproduit de façon déterministe.
 
