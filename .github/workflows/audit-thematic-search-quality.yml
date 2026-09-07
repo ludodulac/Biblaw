@@ -21,7 +21,7 @@ jobs:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Build current thematic directory
         run: python scripts/build_thematic_directory.py
       - name: Audit search quality without semantic mutations
