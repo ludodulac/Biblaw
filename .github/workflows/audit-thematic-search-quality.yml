@@ -2,39 +2,21 @@ name: Audit thematic search quality
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'data/thematic-index/books/**'
-      - 'data/thematic-index/theme-directory.json'
-      - 'scripts/audit_thematic_search_quality.py'
-      - '.github/workflows/audit-thematic-search-quality.yml'
 
+# Diagnostic manual check only. The canonical pipeline already rebuilds and publishes this report
+# for every thematic-source change, so a second push-triggered writer would only duplicate work and
+# compete for the same generated file.
 permissions:
-  contents: write
-
-concurrency:
-  group: thematic-search-quality-audit
-  cancel-in-progress: false
+  contents: read
 
 jobs:
   audit:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Build current thematic directory
-        run: python scripts/build_thematic_directory.py
-      - name: Audit search quality without semantic mutations
-        run: python scripts/audit_thematic_search_quality.py
-      - name: Commit audit report
+      - name: Rebuild directory and quality report locally
         run: |
-          if [ -z "$(git status --porcelain -- data/thematic-index/theme-quality-audit.json)" ]; then
-            echo 'No audit changes'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/thematic-index/theme-quality-audit.json
-          git commit -m 'Refresh thematic search quality audit'
-          git pull --rebase --autostash origin main
-          git push origin HEAD:main
+          python scripts/build_thematic_directory.py
+          python scripts/audit_thematic_search_quality.py
+      - name: Verify committed quality outputs are fresh
+        run: git diff --exit-code -- data/thematic-index/theme-directory.json data/thematic-index/theme-quality-audit.json
