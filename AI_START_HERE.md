@@ -112,7 +112,8 @@ Une vérification automatisée de l’UI n’équivaut pas à un test visuel man
 `data/thematic-index/books/book-XX.json`  
 → synchronisation/normalisation documentaire explicite  
 → `validate_thematic_index.py` (**admissibilité**)  
-→ `theme-directory.json`  
+→ `theme-directory.json` (annuaire éditorial complet)  
+→ `theme-directory-public.json` (projection runtime compacte, auditée)  
 → `theme-quality-audit.json`  
 → `theme-search-index.json`  
 → `theme-connections.json` (`semanticClaim: false`)  
@@ -121,7 +122,9 @@ Une vérification automatisée de l’UI n’équivaut pas à un test visuel man
 → audits de recherche  
 → interface.
 
-Ne jamais corriger durablement `theme-directory.json`, `theme-search-index.json`, `theme-connections.json`, `theme-search-runtime.json`, `theme-quality-audit.json` ou `browser-search-catalog.json` à la main.
+Le navigateur public charge `theme-directory-public.json`, jamais l’annuaire éditorial complet. `scripts/audit_public_theme_directory.py` vérifie que cette projection conserve exactement les champs runtime nécessaires pour les 1247 thèmes et toutes leurs relations, sans modifier versets d’appui, enseignements, importance ou scores.
+
+Ne jamais corriger durablement `theme-directory.json`, `theme-directory-public.json`, `theme-search-index.json`, `theme-connections.json`, `theme-search-runtime.json`, `theme-quality-audit.json` ou `browser-search-catalog.json` à la main.
 
 ## Niveaux de validation
 
@@ -163,7 +166,8 @@ Les régressions de recherche sont bloquées principalement par `scripts/audit_p
 
 - `scripts/audit_psalm_number_search.py` — numéros répétés, `22 commandements` non interprété comme numéro ;
 - `scripts/audit_browser_search_indexes.py` — index navigateur pré-calculés ;
-- `scripts/validate_thematic_search_runtime.py` — ambiguïtés et projection exacte du runtime.
+- `scripts/validate_thematic_search_runtime.py` — ambiguïtés et projection exacte du runtime ;
+- `scripts/audit_public_theme_directory.py` — équivalence de la projection compacte publique avec l’annuaire canonique pour tous les champs runtime.
 
 Le bug réel **Assemblée / Sainte Assemblée** est couvert par des assertions dans `audit_production_search_queries.py`. `scripts/audit_assembly_theme_context.py` reste disponible comme outil **descriptif de revue éditoriale** : il imprime les contextes et co-présences mais n’est pas une barrière de validation et n’est donc pas exécuté automatiquement dans FAST/TARGETED/FULL.
 
