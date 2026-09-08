@@ -59,7 +59,14 @@ jobs:
           for attempt in 1 2 3; do
             git fetch origin main
             if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
-              echo "main advanced; regenerating from latest main (attempt $attempt)"
+              # If this validated run produced no canonical output change, there is nothing to carry
+              # forward. The newer push has its own workflow when it touches canonical inputs, so an
+              # unrelated main advance must not force a second expensive FULL replay here.
+              if [ -z "$(git status --porcelain -- $WATCHED)" ]; then
+                echo 'main advanced but validated canonical outputs are clean; no regeneration needed'
+                exit 0
+              fi
+              echo "main advanced with canonical output changes pending; regenerating from latest main (attempt $attempt)"
               git reset --hard origin/main
               python scripts/normalize_known_theme_identifiers.py
               python scripts/normalize_known_theme_identifiers.py --check
