@@ -63,6 +63,11 @@ def literal_contains(value: object, query: str) -> bool:
     return bool(needle) and f" {needle} " in f" {norm(value)} "
 
 
+def normalized_literal_contains(fragment: str, needle: str) -> bool:
+    """Same word-bounded contiguous contract as literal_contains, for pre-normalized values."""
+    return bool(needle) and f" {needle} " in f" {fragment} "
+
+
 def resolve(query: str, runtime: dict, themes: list[dict], by_id: dict[str, dict]) -> tuple[str, list[dict]]:
     """Mirror js/biblaw.js exactly: alias -> exact -> none. Never fuzzy/sub-string."""
     forms = query_forms(query)
@@ -146,6 +151,16 @@ def main() -> None:
     assert literal_contains("Dieu", "dieu")
     assert not literal_contains("dieux", "dieu")
 
+    # The browser precomputes normalized text fragments once. Do the same in the audit: this changes
+    # only computational cost, not the literal matching contract or the set of searched fragments.
+    normalized_fragments_by_id = {
+        record.get("id"): [
+            norm(record.get("title", "")),
+            *[norm(verse.get("text", "")) for verse in record.get("verses", [])],
+        ]
+        for record in psalms
+    }
+
     observed: dict[str, dict] = {}
     number_by_id = {record.get("id"): record.get("number", 9999) for record in psalms}
     for query in QUERIES:
@@ -189,10 +204,11 @@ def main() -> None:
         levels = Counter(occurrence.get("importance", "unknown") for _, occurrence in per_record.values())
         missing_verses = sum(not occurrence.get("verseNumbers") for _, occurrence in per_record.values())
         missing_teaching = sum(not str(occurrence.get("teaching", "")).strip() for _, occurrence in per_record.values())
+        needle = norm(query)
         literal_count = sum(
             any(
-                literal_contains(fragment, query)
-                for fragment in [record.get("title", ""), *[verse.get("text", "") for verse in record.get("verses", [])]]
+                normalized_literal_contains(fragment, needle)
+                for fragment in normalized_fragments_by_id.get(record.get("id"), [])
             )
             for record in psalms
         )
