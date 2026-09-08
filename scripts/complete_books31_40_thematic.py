@@ -9,9 +9,9 @@ THEMES=[('lumiere','Lumière',r'\blumi[eè]re'),('vie','Vie',r'\bvie\b'),('mort'
 def load(p): return json.loads(p.read_text(encoding='utf-8'))
 def norm(s): return s.lower().replace('’',"'")
 def analyze(p):
- v=p.get('verses',[]); c=[]
+ v=p.get('verses',[]); normalized=[(x['number'],norm(x.get('text',''))) for x in v]; c=[]
  for tid,label,pat in THEMES:
-  hits=[x['number'] for x in v if re.search(pat,norm(x.get('text','')),re.I)]
+  hits=[number for number,text in normalized if re.search(pat,text,re.I)]
   if hits:c.append((tid,label,hits))
  c.sort(key=lambda x:(-len(x[2]),x[0])); c=c[:12]; themes=[]
  for i,(tid,label,hits) in enumerate(c):
