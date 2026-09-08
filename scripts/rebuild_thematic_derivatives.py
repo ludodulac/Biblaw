@@ -40,6 +40,7 @@ def main() -> None:
     # Rebuild the complete downstream projection chain from the validated canonical books.
     run("build_thematic_directory.py")
     run("build_public_theme_directory.py")
+    run("audit_public_theme_directory.py")
     run("audit_thematic_search_quality.py")
     run("build_thematic_search_index.py")
     run("validate_thematic_search_index.py")
