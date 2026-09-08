@@ -57,9 +57,10 @@ def norm(s): return s.lower().replace('’',"'")
 
 def analyze(p):
     verses=p.get('verses',[]); title=p.get('title','')
+    normalized=[(v['number'],norm(v.get('text',''))) for v in verses]
     candidates=[]
     for tid,label,pat in THEMES:
-        hits=[v['number'] for v in verses if re.search(pat,norm(v.get('text','')),re.I)]
+        hits=[number for number,text in normalized if re.search(pat,text,re.I)]
         if hits: candidates.append((tid,label,hits,'direct'))
     for tid,label,pat in TITLE_THEMES:
         if re.search(pat,norm(title),re.I) and not any(x[0]==tid for x in candidates):

@@ -12,9 +12,9 @@ TITLE=[('androgynie','Androgynie',r'androgy'),('maitrise','Maîtrise',r'ma[iî]t
 def load(p): return json.loads(p.read_text(encoding='utf-8'))
 def norm(s): return s.lower().replace('’',"'")
 def analyze(p):
- v=p.get('verses',[]); title=p.get('title',''); c=[]
+ v=p.get('verses',[]); title=p.get('title',''); normalized=[(x['number'],norm(x.get('text',''))) for x in v]; c=[]
  for tid,label,pat in THEMES:
-  hits=[x['number'] for x in v if re.search(pat,norm(x.get('text','')),re.I)]
+  hits=[number for number,text in normalized if re.search(pat,text,re.I)]
   if hits:c.append((tid,label,hits,'direct'))
  for tid,label,pat in TITLE:
   if re.search(pat,norm(title),re.I) and not any(x[0]==tid for x in c): c.append((tid,label,[v[0]['number']] if v else [],'contextual'))
