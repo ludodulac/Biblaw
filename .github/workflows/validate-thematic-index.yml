@@ -34,54 +34,51 @@ permissions:
   contents: write
 concurrency:
   group: thematic-index-generated-files
-  cancel-in-progress: false
+  # A newer canonical-input push makes the older FULL result stale. Cancel it instead of
+  # queueing another hours-long replay behind it.
+  cancel-in-progress: true
 jobs:
   validate:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      BIBLAW_STAGE_TIMEOUT_SECONDS: '900'
+      BIBLAW_SLOW_STEP_SECONDS: '120'
     steps:
       - uses: actions/checkout@v7
       # Only the explicit, corpus-reviewed technical mappings are auto-normalized here.
       - name: Normalize reviewed technical theme identifiers
         run: python scripts/normalize_known_theme_identifiers.py
-      - name: Verify reviewed legacy identifiers are absent
-        run: python scripts/normalize_known_theme_identifiers.py --check
+      - name: FAST thematic preflight
+        run: python scripts/check_biblaw.py FAST --area thematic
       - name: Install PDF text extraction dependency
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Run canonical documentary repair and thematic indexing pipeline
         run: python scripts/run_canonical_thematic_pipeline.py
       - name: Recheck identifiers after canonical generators
         run: python scripts/normalize_known_theme_identifiers.py --check
-      - name: Publish canonical generated outputs from latest main
+      - name: Publish canonical generated outputs only if this run is still current
         run: |
           WATCHED='data/corpus/books/book-15 data/corpus/books/book-23 data/corpus/books/book-26 data/corpus/books/book-32 data/corpus/books/book-35 data/corpus/books/book-36 data/corpus/books/book-38 data/corpus/books/book-44 data/prayers data/notes data/catalog.json data/thematic-index/books data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/theme-directory-public.json data/thematic-index/theme-quality-audit.json data/thematic-index/theme-search-index.json data/thematic-index/theme-search-runtime.json data/thematic-index/theme-connections.json data/thematic-index/validation-report.json data/browser-search-catalog.json'
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          for attempt in 1 2 3; do
-            git fetch origin main
-            if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
-              # If this validated run produced no canonical output change, there is nothing to carry
-              # forward. The newer push has its own workflow when it touches canonical inputs, so an
-              # unrelated main advance must not force a second expensive FULL replay here.
-              if [ -z "$(git status --porcelain -- $WATCHED)" ]; then
-                echo 'main advanced but validated canonical outputs are clean; no regeneration needed'
-                exit 0
-              fi
-              echo "main advanced with canonical output changes pending; regenerating from latest main (attempt $attempt)"
-              git reset --hard origin/main
-              python scripts/normalize_known_theme_identifiers.py
-              python scripts/normalize_known_theme_identifiers.py --check
-              python scripts/run_canonical_thematic_pipeline.py
-              python scripts/normalize_known_theme_identifiers.py --check
-            fi
+          git fetch origin main
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
             if [ -z "$(git status --porcelain -- $WATCHED)" ]; then
-              echo 'No canonical thematic changes'
+              echo 'main advanced but this run has no canonical output to publish; stopping without replay'
               exit 0
             fi
-            git add $WATCHED
-            git commit -m 'Preserve audited corpus and canonical deep thematic index'
-            if git push origin HEAD:main; then exit 0; fi
-            echo 'Concurrent push detected; retrying from latest main'
-          done
-          echo 'Could not publish generated outputs after 3 attempts'
-          exit 1
+            echo '::error::main advanced while this FULL run was executing; result is stale, so it will not be regenerated or published from this job'
+            exit 1
+          fi
+          if [ -z "$(git status --porcelain -- $WATCHED)" ]; then
+            echo 'No canonical thematic changes'
+            exit 0
+          fi
+          git add $WATCHED
+          git commit -m 'Preserve audited corpus and canonical deep thematic index'
+          if ! git push origin HEAD:main; then
+            echo '::error::Concurrent push detected during publication; refusing an automatic FULL replay'
+            exit 1
+          fi
