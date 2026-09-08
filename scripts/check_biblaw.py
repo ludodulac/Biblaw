@@ -11,20 +11,24 @@ FAST is non-destructive and intended for short edit loops.
 TARGETED may rebuild only the deterministic artefacts belonging to the selected area.
 FULL replays the canonical pipeline and then the production/UI regression audits.
 Generated TARGETED/FULL paths finish with a compact diff against the current git baseline.
-Descriptive editorial-review scripts are deliberately kept outside validation paths unless they
-contain deterministic assertions.
+Every child command is time-bounded and reports elapsed time; descriptive editorial-review scripts
+are deliberately kept outside validation paths unless they contain deterministic assertions.
 """
 from __future__ import annotations
 
 import argparse
+import os
 import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
 AREAS = ("corpus", "thematic", "search", "ui")
+CHECK_STEP_TIMEOUT_SECONDS = int(os.environ.get("BIBLAW_CHECK_STEP_TIMEOUT_SECONDS", "1800"))
+SLOW_STEP_SECONDS = float(os.environ.get("BIBLAW_SLOW_STEP_SECONDS", "120"))
 
 
 def require_tools(*tools: str) -> None:
@@ -40,14 +44,36 @@ def require_tools(*tools: str) -> None:
         raise SystemExit(f"Missing validation dependency: {detail}")
 
 
+def execute(parts: list[str], label: str) -> None:
+    print(f"\n=== START {label} (timeout={CHECK_STEP_TIMEOUT_SECONDS}s) ===", flush=True)
+    started = time.perf_counter()
+    try:
+        subprocess.run(parts, cwd=ROOT, check=True, timeout=CHECK_STEP_TIMEOUT_SECONDS)
+    except subprocess.TimeoutExpired:
+        elapsed = time.perf_counter() - started
+        print(
+            f"::error::Biblaw check step timed out: {label} exceeded "
+            f"{CHECK_STEP_TIMEOUT_SECONDS}s after {elapsed:.1f}s",
+            flush=True,
+        )
+        raise
+    elapsed = time.perf_counter() - started
+    print(f"--- DONE {label}: {elapsed:.3f}s", flush=True)
+    if elapsed > SLOW_STEP_SECONDS:
+        print(
+            f"::warning::Slow Biblaw check step: {label} took {elapsed:.1f}s "
+            f"(threshold {SLOW_STEP_SECONDS:.0f}s)",
+            flush=True,
+        )
+
+
 def run_script(script: str, *args: str) -> None:
-    print(f"\n=== {script} {' '.join(args)} ===", flush=True)
-    subprocess.run([sys.executable, str(SCRIPTS / script), *args], cwd=ROOT, check=True)
+    label = f"{script} {' '.join(args)}".strip()
+    execute([sys.executable, str(SCRIPTS / script), *args], label)
 
 
 def run_command(*parts: str) -> None:
-    print(f"\n=== {' '.join(parts)} ===", flush=True)
-    subprocess.run(list(parts), cwd=ROOT, check=True)
+    execute(list(parts), " ".join(parts))
 
 
 def fast(area: str) -> None:
@@ -129,6 +155,12 @@ def main() -> None:
     parser.add_argument("level", choices=("FAST", "TARGETED", "FULL"))
     parser.add_argument("--area", choices=AREAS)
     args = parser.parse_args()
+
+    print(
+        f"Biblaw check guardrails: step_timeout={CHECK_STEP_TIMEOUT_SECONDS}s "
+        f"slow_threshold={SLOW_STEP_SECONDS:.0f}s",
+        flush=True,
+    )
 
     if args.level == "FULL":
         if args.area:
