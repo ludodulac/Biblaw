@@ -17,7 +17,7 @@ Cette passe n’introduit aucune nouvelle architecture de données. Elle orchest
 - graphe de cooccurrence avec `semanticClaim: false` ;
 - runtime construit comme candidat, validé puis remplacé atomiquement ;
 - frontières de production protégeant les anciens psaumes et artefacts historiques ;
-- audits de bugs réels, notamment Assemblée / Sainte Assemblée et recherche par numéro ;
+- régressions de bugs réels, notamment Assemblée / Sainte Assemblée et recherche par numéro ;
 - barrière Pages avant publication.
 
 ### Friction réelle
@@ -26,15 +26,18 @@ Cette passe n’introduit aucune nouvelle architecture de données. Elle orchest
 - les commandes de validation étaient dispersées ;
 - un changement purement aval pouvait conduire à rejouer le pipeline canonique complet : réparations PDF, extraction et passes sémantiques profondes des 44 livres ;
 - les écarts entre deux générations étaient difficiles à lire sans inspecter de gros JSON ;
-- des compteurs runtime étaient recopiés dans le README et pouvaient devenir obsolètes.
+- des compteurs runtime étaient recopiés dans le README et pouvaient devenir obsolètes ;
+- le workflow recherche recalculait les mêmes comptages littéraux à deux endroits ;
+- `audit_assembly_theme_context.py`, descriptif et sans assertion, était exécuté comme s’il constituait une barrière de régression.
 
 ### Automatisable sans risque sémantique
 
 - routage par zone ;
 - commandes composées FAST / TARGETED / FULL ;
 - reconstruction des seuls dérivés thématiques après validation de la source canonique ;
-- diff compact des compteurs, thèmes, ambiguïtés, ranking et sentinelles ;
-- transformation de comportements historiques en sentinelles déterministes.
+- diff compact des compteurs, relations, alias, ambiguïtés, ranking et sentinelles ;
+- transformation de comportements historiques en sentinelles déterministes ;
+- pré-calcul des fragments textuels normalisés dans les audits, sans modifier la règle de correspondance.
 
 ### Inutilement coûteux / non retenu
 
@@ -42,7 +45,8 @@ Cette passe n’introduit aucune nouvelle architecture de données. Elle orchest
 - ne pas ajouter de cache sémantique ou de parallélisation complexe sans profilage ;
 - ne pas créer trois infrastructures CI distinctes pour FAST/TARGETED/FULL ;
 - ne pas recopier les nombres dynamiques dans plusieurs documents ;
-- ne pas ajouter une nouvelle couche de recherche approximative pour accélérer.
+- ne pas ajouter une nouvelle couche de recherche approximative pour accélérer ;
+- ne pas exécuter automatiquement un script descriptif qui ne peut pas faire échouer une régression.
 
 ## Chemin de reprise
 
@@ -140,7 +144,7 @@ Il ne doit être utilisé que lorsque les passes sémantiques profondes et les s
 
 ## Sentinelles renforcées
 
-`audit_production_search_queries.py` protège désormais explicitement :
+`audit_production_search_queries.py` protège explicitement :
 
 - mots et expressions littérales avec frontières de mots ;
 - absence de faux positif d’expression non contiguë ;
@@ -155,20 +159,36 @@ Il ne doit être utilisé que lorsque les passes sémantiques profondes et les s
 
 Les audits séparés continuent à protéger les numéros répétés et les index navigateur pré-calculés.
 
+`audit_assembly_theme_context.py` est conservé comme outil de revue éditoriale : il affiche les co-présences et exemples contextuels sans en tirer de relation sémantique. Comme il ne contient pas d’assertion, il n’est plus exécuté automatiquement comme une validation. La vraie régression Assemblée / Sainte Assemblée reste bloquée dans `audit_production_search_queries.py`.
+
 ## Rapport différentiel
 
-Nouveau script : `scripts/report_biblaw_diff.py`.
-
-Il compare le working tree à un ref Git (`HEAD` par défaut) et montre seulement :
+`scripts/report_biblaw_diff.py` compare le working tree à un ref Git (`HEAD` par défaut) et montre seulement :
 
 - compteurs canoniques ;
 - erreurs/warnings ;
-- thèmes/alias/ambiguïtés ;
-- ajouts et suppressions de thèmes ;
+- thèmes ajoutés/supprimés ;
+- relations thème–psaume ajoutées/supprimées ;
+- reclassifications `importance` ;
+- changements de preuves (`directness`, versets, `teaching`) ;
+- alias ajoutés/supprimés/retargetés ;
+- ambiguïtés ;
 - variations significatives des métriques de ranking ;
 - changements des requêtes sentinelles.
 
-Il normalise les fragments textuels une seule fois par état comparé, sans approximation de la recherche.
+Il normalise les fragments textuels une seule fois par état comparé, sans approximation de la recherche. La CI l’exécute sur un `HEAD` propre afin de vérifier que l’outil lui-même reste exécutable et non divergent.
+
+## Mesure du gain observé
+
+Comparaison de runs GitHub Actions sur le même workflow de recherche, hors temps variable de checkout :
+
+- avant suppression du scan littéral dupliqué et optimisation de l’audit : environ **24 s** de validations ;
+- après : environ **6,6 s** de validations ;
+- `audit_production_search_queries.py` seul : environ **10,4 s → 1,8 s**.
+
+Les sorties sentinelles restent identiques : mêmes comptages littéraux, mêmes thèmes résolus, mêmes ambiguïtés et mêmes rangs. Le gain vient du pré-calcul et de la suppression de travail déterministe dupliqué, pas d’une réduction de couverture.
+
+Ces temps sont des mesures de runs CI observés et peuvent varier selon le runner ; ils servent à vérifier l’ordre de grandeur du gain, pas de SLA.
 
 ## Capacités volontairement inchangées
 
