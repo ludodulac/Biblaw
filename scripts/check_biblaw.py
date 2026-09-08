@@ -11,6 +11,8 @@ FAST is non-destructive and intended for short edit loops.
 TARGETED may rebuild only the deterministic artefacts belonging to the selected area.
 FULL replays the canonical pipeline and then the production/UI regression audits.
 Generated TARGETED/FULL paths finish with a compact diff against the current git baseline.
+Descriptive editorial-review scripts are deliberately kept outside validation paths unless they
+contain deterministic assertions.
 """
 from __future__ import annotations
 
@@ -61,7 +63,6 @@ def targeted(area: str) -> None:
         run_script("rebuild_thematic_derivatives.py")
         generated = True
         run_script("audit_production_search_queries.py")
-        run_script("audit_assembly_theme_context.py")
         run_script("audit_psalm_number_search.py")
         run_script("audit_browser_search_indexes.py")
     elif area == "corpus":
@@ -70,14 +71,12 @@ def targeted(area: str) -> None:
         run_script("rebuild_thematic_derivatives.py")
         generated = True
         run_script("audit_production_search_queries.py")
-        run_script("audit_assembly_theme_context.py")
         run_script("audit_psalm_number_search.py")
         run_script("audit_browser_search_indexes.py")
     elif area == "search":
         fast("search")
         run_script("audit_public_ui_contract.py")
         run_script("audit_theme_directory_ui.py")
-        run_script("audit_assembly_theme_context.py")
     elif area == "ui":
         fast("ui")
         run_script("audit_production_search_queries.py")
@@ -100,7 +99,6 @@ def full() -> None:
     run_script("audit_public_ui_contract.py")
     run_script("audit_theme_directory_ui.py")
     run_script("audit_production_search_queries.py")
-    run_script("audit_assembly_theme_context.py")
     run_script("audit_psalm_number_search.py")
     run_script("audit_browser_search_indexes.py")
     run_script("audit_corpus_attachments.py")
