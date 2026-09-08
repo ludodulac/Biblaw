@@ -32,13 +32,20 @@ def main() -> None:
     if public.get("relationCount") != expected_relations:
         fail("relation count differs from canonical directory")
 
-    for source_theme, public_theme in zip(source_themes, public_themes, strict=True):
+    public_by_id = {theme.get("id"): theme for theme in public_themes}
+    if len(public_by_id) != len(public_themes):
+        fail("duplicate theme id in public directory")
+
+    for source_theme in source_themes:
+        public_theme = public_by_id.get(source_theme.get("id"))
+        if public_theme is None:
+            fail(f"missing public theme {source_theme.get('id')}")
         expected_theme = project(source_theme, THEME_FIELDS)
         expected_occurrences = [project(item, OCCURRENCE_FIELDS) for item in source_theme.get("occurrences", [])]
         if project(public_theme, THEME_FIELDS) != expected_theme:
             fail(f"theme projection differs for {source_theme.get('id')}")
         if public_theme.get("occurrences", []) != expected_occurrences:
-            fail(f"occurrence projection differs for {source_theme.get('id')}")
+            fail(f"occurrence projection differs for {source_theme.get('id')}; regenerate theme-directory-public.json")
         allowed = set(THEME_FIELDS) | {"occurrences"}
         extra = set(public_theme) - allowed
         if extra:
