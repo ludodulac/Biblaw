@@ -155,16 +155,17 @@ Après avoir commité le lot, comparer au parent :
 python scripts/report_biblaw_diff.py --base HEAD~1
 ```
 
-Le rapport montre uniquement les écarts significatifs : relations, thèmes, alias, ambiguïtés, erreurs/warnings, ajouts/suppressions de thèmes, métriques de classement et changements des requêtes sentinelles. Il ne modifie aucun artefact.
+Le rapport montre uniquement les écarts significatifs : compteurs, thèmes, relations thème–psaume ajoutées/supprimées, reclassifications, changements de preuves, alias ajoutés/supprimés/retargetés, ambiguïtés, erreurs/warnings et changements des requêtes sentinelles. Il ne modifie aucun artefact.
 
-## Sentinelles
+## Sentinelles et outils de revue
 
-La source exécutable est `scripts/audit_production_search_queries.py`, complétée par :
+Les régressions de recherche sont bloquées principalement par `scripts/audit_production_search_queries.py`, complété par :
 
 - `scripts/audit_psalm_number_search.py` — numéros répétés, `22 commandements` non interprété comme numéro ;
-- `scripts/audit_assembly_theme_context.py` — bug réel Assemblée / Sainte Assemblée ;
 - `scripts/audit_browser_search_indexes.py` — index navigateur pré-calculés ;
 - `scripts/validate_thematic_search_runtime.py` — ambiguïtés et projection exacte du runtime.
+
+Le bug réel **Assemblée / Sainte Assemblée** est couvert par des assertions dans `audit_production_search_queries.py`. `scripts/audit_assembly_theme_context.py` reste disponible comme outil **descriptif de revue éditoriale** : il imprime les contextes et co-présences mais n’est pas une barrière de validation et n’est donc pas exécuté automatiquement dans FAST/TARGETED/FULL.
 
 Les sentinelles couvrent notamment : littéral simple, expression littérale, thème canonique, alias observé (`argent spirituel`), alias ambigu, double lecture thème/texte, zéro thème attendu, absence de fallback substring/proximité, ordre Central → Important → Lié et numéro présent dans plusieurs livres.
 
