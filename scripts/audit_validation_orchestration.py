@@ -17,8 +17,11 @@ checks = (ROOT / "scripts" / "check_biblaw.py").read_text(encoding="utf-8")
 # Canonical GitHub job: bounded, newest-run-wins and cheap preflight before FULL.
 assert "timeout-minutes: 60" in workflow, "canonical workflow needs an explicit job timeout"
 assert "cancel-in-progress: true" in workflow, "stale canonical runs must be cancelled"
-assert "FAST --area thematic" in workflow, "canonical workflow must run FAST preflight before FULL"
-assert workflow.index("FAST --area thematic") < workflow.index("run_canonical_thematic_pipeline.py")
+fast_command = "run: python scripts/check_biblaw.py FAST --area thematic"
+full_command = "run: python scripts/run_canonical_thematic_pipeline.py"
+assert fast_command in workflow, "canonical workflow must run FAST preflight before FULL"
+assert full_command in workflow, "canonical workflow must expose the bounded FULL command"
+assert workflow.index(fast_command) < workflow.index(full_command), "FAST preflight must precede FULL execution"
 assert "for attempt in 1 2 3" not in workflow, "canonical workflow must not replay FULL in a retry loop"
 assert "refusing an automatic FULL replay" in workflow, "push races must fail instead of replaying FULL"
 assert "result is stale" in workflow, "advanced main must invalidate stale FULL output"
