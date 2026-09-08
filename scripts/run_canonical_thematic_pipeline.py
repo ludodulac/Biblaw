@@ -10,26 +10,45 @@ browser artefacts are built. The compact thematic runtime is built from validate
 its candidate before atomic replacement, and is then independently revalidated as the production
 artifact. Generated search/catalog artefacts are followed by production-boundary integrity audits so
 a successful canonical rebuild cannot silently publish stale or legacy attachment relationships.
+
+Timing output is diagnostic only: it is never persisted into generated artefacts and therefore does
+not affect reproducibility.
 """
 from __future__ import annotations
-import subprocess,sys
+import subprocess,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+TIMINGS=[]
 
 def run(script):
     print(f'\n=== {script} ===',flush=True)
+    started=time.perf_counter()
     subprocess.run([sys.executable,str(ROOT/'scripts'/script)],cwd=ROOT,check=True)
+    elapsed=time.perf_counter()-started
+    TIMINGS.append((script,elapsed))
+    print(f'--- timing {script}: {elapsed:.3f}s',flush=True)
 
 def repair_documentary_boundaries():
     print('\n=== audited PDF documentary repairs ===',flush=True)
+    started=time.perf_counter()
     import repair_known_pdf_psalm_anomalies as repair
     for case in repair.CASES:
         repair.extract_case(case)
     repair.repair_book44_final_psalm()
+    elapsed=time.perf_counter()-started
+    TIMINGS.append(('audited PDF documentary repairs',elapsed))
+    print(f'--- timing audited PDF documentary repairs: {elapsed:.3f}s',flush=True)
     run('repair_book23_psalm128_numbering.py')
     run('repair_book32_psalm182.py')
 
+def print_timing_summary(total):
+    print('\n=== canonical pipeline timings ===',flush=True)
+    for name,elapsed in sorted(TIMINGS,key=lambda item:(-item[1],item[0]))[:12]:
+        print(f'{elapsed:8.3f}s  {name}',flush=True)
+    print(f'{total:8.3f}s  TOTAL canonical pipeline',flush=True)
+
 def main():
+    pipeline_started=time.perf_counter()
     repair_documentary_boundaries()
     run('normalize_book17_production_attachments.py')
     run('deepen_books01_02_semantic_evidence.py'); run('finalize_books01_02_semantic.py')
@@ -54,4 +73,5 @@ def main():
         run(f'deepen_books{lo}_{hi}_semantic_evidence.py'); run(f'finalize_books{lo}_{hi}_semantic.py')
     run('deepen_book44_semantic_evidence.py'); run('finalize_book44_semantic.py')
     run('sync_thematic_documentary_status.py'); run('normalize_thematic_metadata.py'); run('build_book_contexts.py'); run('validate_thematic_index.py'); run('build_thematic_directory.py'); run('audit_thematic_search_quality.py'); run('build_thematic_search_index.py'); run('validate_thematic_search_index.py'); run('build_thematic_connections.py'); run('validate_thematic_connections.py'); run('build_thematic_search_runtime.py'); run('validate_thematic_search_runtime.py'); run('build_browser_search_catalog.py'); run('audit_corpus_attachments.py'); run('audit_legacy_psalm_references.py')
+    print_timing_summary(time.perf_counter()-pipeline_started)
 if __name__=='__main__': main()
