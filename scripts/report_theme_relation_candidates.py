@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Report structural theme-relation candidates without making semantic claims.
 
-This is a FAST, read-only diagnostic. It reads the generated thematic search index and
-suggests only *candidate components* when the meaningful tokens of one theme label are
-a strict subset of another theme label.
+This is a FAST, read-only diagnostic. By default it reuses the composite-theme review
+set already produced by ``theme-quality-audit.json`` and reads the generated thematic
+search index only to propose *candidate components*.
 
 A candidate is never a validated relation, synonym, broader/narrower claim or merge.
 Human review must use Psalm context, verse evidence and teachings before promotion.
@@ -16,6 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data/thematic-index/theme-search-index.json"
+QUALITY_AUDIT = ROOT / "data/thematic-index/theme-quality-audit.json"
 
 # Connective/function words carry expression structure but are not useful as standalone
 # conceptual components. Keep this intentionally small and deterministic.
@@ -31,11 +32,18 @@ def meaningful_tokens(record: dict) -> frozenset[str]:
     return frozenset(token for token in normalized.split() if token not in STOPWORDS)
 
 
+def audited_composite_ids() -> set[str]:
+    audit = json.loads(QUALITY_AUDIT.read_text(encoding="utf-8"))
+    assert audit.get("purpose") == "search-quality-audit-only; no automatic semantic merging or renaming"
+    composites = audit.get("reviewCandidates", {}).get("compositeLabels", [])
+    return {item["id"] for item in composites if item.get("id")}
+
+
 def build_candidates(records: list[dict], target_ids: set[str] | None = None) -> list[dict]:
     by_id = {record["themeId"]: record for record in records if record.get("themeId")}
     targets = [
         record for record in records
-        if record.get("themeId") and (not target_ids or record["themeId"] in target_ids)
+        if record.get("themeId") and (target_ids is None or record["themeId"] in target_ids)
     ]
     output = []
 
@@ -93,7 +101,12 @@ def main() -> None:
         "--theme",
         action="append",
         dest="themes",
-        help="Theme id to inspect; repeat for several. Omit to inspect all composite themes.",
+        help="Theme id to inspect; repeat for several. Omit to use audited composite themes.",
+    )
+    parser.add_argument(
+        "--all-composites",
+        action="store_true",
+        help="Inspect every multi-token theme instead of the existing audited composite set.",
     )
     parser.add_argument(
         "--limit",
@@ -102,21 +115,37 @@ def main() -> None:
         help="Maximum target themes printed when --theme is omitted (default: 20).",
     )
     args = parser.parse_args()
+    if args.themes and args.all_composites:
+        parser.error("--theme and --all-composites are mutually exclusive")
 
     data = json.loads(INDEX.read_text(encoding="utf-8"))
     assert data.get("semanticMerging") is False, "candidate audit requires the non-merging search index"
     records = data.get("themes", [])
-    target_ids = set(args.themes) if args.themes else None
+
+    if args.themes:
+        target_ids: set[str] | None = set(args.themes)
+        scope = "explicit-theme-ids"
+    elif args.all_composites:
+        target_ids = None
+        scope = "all-multi-token-themes"
+    else:
+        target_ids = audited_composite_ids()
+        scope = "theme-quality-audit.reviewCandidates.compositeLabels"
+
     report = build_candidates(records, target_ids)
 
-    if target_ids is None:
+    if not args.themes:
         report.sort(key=lambda item: (-len(item["candidates"]), item["themeId"]))
         report = report[: max(args.limit, 0)]
 
     payload = {
         "schemaVersion": 1,
         "recordType": "theme-relation-candidate-report",
-        "generatedFrom": "data/thematic-index/theme-search-index.json",
+        "generatedFrom": [
+            "data/thematic-index/theme-search-index.json",
+            "data/thematic-index/theme-quality-audit.json",
+        ],
+        "scope": scope,
         "semanticClaim": False,
         "validationPolicy": (
             "Candidates are structural prompts for review only. Validate against Psalm context, "
