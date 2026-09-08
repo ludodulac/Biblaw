@@ -28,7 +28,9 @@ Cette passe n’introduit aucune nouvelle architecture de données. Elle orchest
 - les écarts entre deux générations étaient difficiles à lire sans inspecter de gros JSON ;
 - des compteurs runtime étaient recopiés dans le README et pouvaient devenir obsolètes ;
 - le workflow recherche recalculait les mêmes comptages littéraux à deux endroits ;
-- `audit_assembly_theme_context.py`, descriptif et sans assertion, était exécuté comme s’il constituait une barrière de régression.
+- `audit_assembly_theme_context.py`, descriptif et sans assertion, était exécuté comme s’il constituait une barrière de régression ;
+- plusieurs générateurs thématiques renormalisaient chaque verset pour chaque motif recherché ;
+- l’ordre de variantes d’alias à fréquence égale n’était pas totalement déterministe, ce qui pouvait produire de faux diffs sans changement sémantique.
 
 ### Automatisable sans risque sémantique
 
@@ -37,7 +39,9 @@ Cette passe n’introduit aucune nouvelle architecture de données. Elle orchest
 - reconstruction des seuls dérivés thématiques après validation de la source canonique ;
 - diff compact des compteurs, relations, alias, ambiguïtés, ranking et sentinelles ;
 - transformation de comportements historiques en sentinelles déterministes ;
-- pré-calcul des fragments textuels normalisés dans les audits, sans modifier la règle de correspondance.
+- pré-calcul des fragments textuels normalisés dans les audits et générateurs, sans modifier la règle de correspondance ;
+- ordre total explicite pour les variantes d’alias ;
+- mesure des temps directement dans les logs du pipeline, sans produire de nouvel artefact.
 
 ### Inutilement coûteux / non retenu
 
@@ -46,7 +50,8 @@ Cette passe n’introduit aucune nouvelle architecture de données. Elle orchest
 - ne pas créer trois infrastructures CI distinctes pour FAST/TARGETED/FULL ;
 - ne pas recopier les nombres dynamiques dans plusieurs documents ;
 - ne pas ajouter une nouvelle couche de recherche approximative pour accélérer ;
-- ne pas exécuter automatiquement un script descriptif qui ne peut pas faire échouer une régression.
+- ne pas exécuter automatiquement un script descriptif qui ne peut pas faire échouer une régression ;
+- ne pas supprimer l’installation Poppler du FULL : les réparations documentaires PDF en dépendent réellement.
 
 ## Chemin de reprise
 
@@ -178,6 +183,26 @@ Les audits séparés continuent à protéger les numéros répétés et les inde
 
 Il normalise les fragments textuels une seule fois par état comparé, sans approximation de la recherche. La CI l’exécute sur un `HEAD` propre afin de vérifier que l’outil lui-même reste exécutable et non divergent.
 
+## Reproductibilité des alias
+
+Une passe FULL a révélé un faux diff limité à l’ordre de variantes telles que `Quatre Sceaux` / `Quatre sceaux`. Les cibles, ambiguïtés et relations étaient identiques : le problème venait d’un tri basé seulement sur `casefold()` appliqué à un ensemble, donc insuffisant lorsque deux chaînes avaient la même clé normalisée.
+
+`build_thematic_search_index.py` utilise désormais un ordre total déterministe `(casefold, libellé exact)` et un tri explicite des variantes ayant la même fréquence. Après cette normalisation unique, le FULL suivant a produit **`No canonical thematic changes`**. Le générateur est donc reproductible sans dépendre de l’ordre d’itération d’un `set` ou d’une égalité de fréquence.
+
+## Optimisation des générateurs FULL
+
+Les cinq générateurs `complete_books21_23`, `24_26`, `27_30`, `31_40` et `41_44` recalculaient `norm(verse.text)` pour chaque thème testé. Ils pré-calculent maintenant une seule fois les couples `(numéro, texte normalisé)` par psaume puis réutilisent exactement ces chaînes pour les mêmes regex.
+
+Aucune regex, aucun `themeId`, aucun top-12, aucun niveau `central/important/related`, aucun `directness`, aucun verset d’appui et aucun `teaching` n’a été modifié. Le FULL après optimisation a réussi avec **0 erreur, 0 avertissement** et **aucun changement canonique généré**.
+
+Temps observés sur les cinq blocs :
+
+- avant : environ **10,15 s** cumulées ;
+- après : environ **7,30 s** cumulées ;
+- gain : environ **2,85 s**, soit **~28 %** sur ces générateurs.
+
+Le pipeline canonique complet lui-même est passé d’environ **20,6 s** à **16,9 s**, soit environ **18 %** de réduction sur le calcul interne. `run_canonical_thematic_pipeline.py` imprime désormais automatiquement la durée de chaque étape et un classement des étapes les plus lentes, sans persister ces mesures dans les données générées.
+
 ## Mesure du gain observé
 
 Comparaison de runs GitHub Actions sur le même workflow de recherche, hors temps variable de checkout :
@@ -203,6 +228,8 @@ Ces temps sont des mesures de runs CI observés et peuvent varier selon le runne
 
 ## Coût restant
 
-Le FULL reste volontairement lourd : il réexécute les réparations documentaires et les passes sémantiques profondes sur 44 livres avant de reconstruire les projections et audits. Cette lenteur protège les changements amont. Aucune mise en cache sémantique ni parallélisation n’a été ajoutée sans mesure préalable de déterminisme, dépendances et gain réel.
+Le FULL reste volontairement plus lourd qu’un TARGETED parce qu’il réexécute les réparations documentaires et les passes sémantiques profondes sur 44 livres avant de reconstruire les projections et audits. Ce coût protège les changements amont.
 
-Le principal gain de cette passe vient donc de ne plus utiliser FULL pour les modifications qui sont démontrablement aval et locales, tout en conservant FULL pour les changements qui peuvent affecter le sens ou la source canonique.
+Sur les runners observés, l’installation de Poppler représente encore environ **14–15 s**, parfois davantage que le pipeline Python lui-même. Cette étape reste volontairement inchangée : les réparations documentaires PDF utilisent réellement `pdftotext`/Poppler, et supprimer ou conditionner cette dépendance sans garantie équivalente créerait un risque supérieur au gain.
+
+Aucune mise en cache sémantique ni parallélisation n’a été ajoutée sans preuve préalable de déterminisme, dépendances et gain réel. Le principal gain vient donc toujours de deux principes : ne lancer FULL que lorsque la couche amont l’exige, et éviter à l’intérieur de chaque validation les recalculs strictement identiques.
