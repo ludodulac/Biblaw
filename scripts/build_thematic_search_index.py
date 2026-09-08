@@ -31,6 +31,16 @@ def normalize(text: str) -> str:
     return " ".join(text.split())
 
 
+def label_sort_key(label: str) -> tuple[str, str]:
+    """Stable ordering even when labels differ only by case (set order must never leak to output)."""
+    return (label.casefold(), label)
+
+
+def observed_labels(counter: Counter) -> list[tuple[str, int]]:
+    """Counter.most_common() preserves insertion order on ties; make tie order explicit instead."""
+    return sorted(counter.items(), key=lambda item: (-item[1], *label_sort_key(item[0])))
+
+
 directory = load(DIRECTORY)
 theme_meta = {t["id"]: t for t in directory.get("themes", [])}
 labels_by_id = defaultdict(Counter)
@@ -52,10 +62,11 @@ for tid in sorted(set(theme_meta) | set(labels_by_id)):
     meta = theme_meta.get(tid, {})
     canonical = meta.get("label")
     observed = labels_by_id.get(tid, Counter())
+    ordered_observed = observed_labels(observed)
     labels = []
     if canonical:
         labels.append(canonical)
-    labels.extend(label for label, _ in observed.most_common() if label != canonical)
+    labels.extend(label for label, _ in ordered_observed if label != canonical)
     # Also index the id as a fallback slug-form alias, but never display it as a label.
     normalized_aliases = []
     for label in labels:
@@ -73,7 +84,7 @@ for tid in sorted(set(theme_meta) | set(labels_by_id)):
     records.append({
         "themeId": tid,
         "canonicalLabel": canonical,
-        "observedLabels": [{"label": label, "count": count} for label, count in observed.most_common()],
+        "observedLabels": [{"label": label, "count": count} for label, count in ordered_observed],
         "normalizedAliases": normalized_aliases,
         "occurrenceCount": meta.get("occurrenceCount", 0),
         "score": meta.get("score", 0),
@@ -85,7 +96,7 @@ for key in sorted(alias_to_ids):
     aliases.append({
         "queryKey": key,
         "themeIds": ids,
-        "labels": sorted(alias_display.get(key, set()), key=str.casefold),
+        "labels": sorted(alias_display.get(key, set()), key=label_sort_key),
         "ambiguous": len(ids) > 1,
     })
 
