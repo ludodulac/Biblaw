@@ -17,6 +17,7 @@ on:
       - 'scripts/normalize_known_theme_identifiers.py'
       - 'scripts/validate_thematic_index.py'
       - 'scripts/build_thematic_directory.py'
+      - 'scripts/build_public_theme_directory.py'
       - 'scripts/audit_thematic_search_quality.py'
       - 'scripts/build_thematic_search_index.py'
       - 'scripts/validate_thematic_search_index.py'
@@ -39,7 +40,7 @@ jobs:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       # Only the explicit, corpus-reviewed technical mappings are auto-normalized here.
       - name: Normalize reviewed technical theme identifiers
         run: python scripts/normalize_known_theme_identifiers.py
@@ -53,7 +54,7 @@ jobs:
         run: python scripts/normalize_known_theme_identifiers.py --check
       - name: Publish canonical generated outputs from latest main
         run: |
-          WATCHED='data/corpus/books/book-15 data/corpus/books/book-23 data/corpus/books/book-26 data/corpus/books/book-32 data/corpus/books/book-35 data/corpus/books/book-36 data/corpus/books/book-38 data/corpus/books/book-44 data/prayers data/notes data/catalog.json data/thematic-index/books data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/theme-quality-audit.json data/thematic-index/theme-search-index.json data/thematic-index/theme-search-runtime.json data/thematic-index/theme-connections.json data/thematic-index/validation-report.json data/browser-search-catalog.json'
+          WATCHED='data/corpus/books/book-15 data/corpus/books/book-23 data/corpus/books/book-26 data/corpus/books/book-32 data/corpus/books/book-35 data/corpus/books/book-36 data/corpus/books/book-38 data/corpus/books/book-44 data/prayers data/notes data/catalog.json data/thematic-index/books data/thematic-index/book-contexts.json data/thematic-index/theme-directory.json data/thematic-index/theme-directory-public.json data/thematic-index/theme-quality-audit.json data/thematic-index/theme-search-index.json data/thematic-index/theme-search-runtime.json data/thematic-index/theme-connections.json data/thematic-index/validation-report.json data/browser-search-catalog.json'
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           for attempt in 1 2 3; do
