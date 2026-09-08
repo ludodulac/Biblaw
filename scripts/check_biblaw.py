@@ -56,6 +56,7 @@ def fast(area: str) -> None:
         run_script("validate_thematic_index.py")
     elif area == "search":
         run_command("node", "--check", "js/biblaw.js")
+        run_script("audit_public_theme_directory.py")
         run_script("validate_thematic_search_runtime.py")
         run_script("audit_production_search_queries.py")
         run_script("audit_psalm_number_search.py")
@@ -63,6 +64,7 @@ def fast(area: str) -> None:
     elif area == "ui":
         run_command("node", "--check", "js/biblaw.js")
         run_script("audit_public_ui_contract.py")
+        run_script("audit_public_theme_directory.py")
         run_script("audit_theme_directory_ui.py")
     elif area == "corpus":
         # A corpus edit can invalidate a canonical theme's verse evidence before the UI changes.
@@ -111,6 +113,7 @@ def full() -> None:
     # FULL means canonical generation plus the final production/search/UI contracts.
     run_command("node", "--check", "js/biblaw.js")
     run_script("audit_public_ui_contract.py")
+    run_script("audit_public_theme_directory.py")
     run_script("audit_theme_directory_ui.py")
     run_script("audit_production_search_queries.py")
     run_script("audit_psalm_number_search.py")
