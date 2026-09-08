@@ -17,7 +17,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Vérifier le contrat de l'interface publique
         run: python scripts/audit_public_ui_contract.py
       - name: Vérifier l'index thématique public
@@ -32,9 +32,9 @@ jobs:
         run: python scripts/audit_production_search_queries.py
       - name: Vérifier la recherche documentaire par numéro
         run: python scripts/audit_psalm_number_search.py
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: .
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
