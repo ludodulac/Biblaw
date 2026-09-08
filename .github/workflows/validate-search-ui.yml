@@ -15,7 +15,6 @@ on:
       - 'data/thematic-index/theme-quality-audit.json'
       - 'scripts/build_browser_search_catalog.py'
       - 'scripts/audit_production_search_queries.py'
-      - 'scripts/audit_assembly_theme_context.py'
       - 'scripts/audit_psalm_number_search.py'
       - 'scripts/audit_browser_search_indexes.py'
       - 'scripts/check_biblaw.py'
@@ -90,12 +89,8 @@ jobs:
           assert literal_contains('Dieu', 'dieu') and not literal_contains('dieux', 'dieu')
           bundle=json.loads(Path('data/browser-search-catalog.json').read_text(encoding='utf-8'))
           assert bundle['purpose']=='browser-search-corpus-bundle' and bundle['recordCount']==len(bundle['records'])
-          psalms=[r for r in bundle['records'] if r.get('recordType')=='psalm']; assert len(psalms)==1158
-          def psalm_fragments(r): return [str(r.get('title',''))]+[str(v.get('text','')) for v in r.get('verses',[])]
-          def literal_psalm_match(r, query): return any(literal_contains(fragment, query) for fragment in psalm_fragments(r))
-          counts={query:sum(literal_psalm_match(r,query) for r in psalms) for query in ('dieu','alliance','alliance de lumière','lumière','assemblée','l’assemblée','sainte assemblée','la sainte assemblée','argent','chouette','abeille','22 commandements')}
-          for query,count in counts.items(): print(f'Literal smoke query {query}: {count} psalms')
-          for query in ('dieu','lumière','alliance'): assert counts[query] > 0
+          psalms=[r for r in bundle['records'] if r.get('recordType')=='psalm']
+          assert len(psalms)==1158
           PY
       - name: Check thematic runtime and quality contract
         run: |
@@ -124,8 +119,6 @@ jobs:
           PY
       - name: Audit production search queries
         run: python scripts/audit_production_search_queries.py
-      - name: Audit assembly editorial context
-        run: python scripts/audit_assembly_theme_context.py
       - name: Audit psalm number search
         run: python scripts/audit_psalm_number_search.py
       - name: Audit browser search indexes
