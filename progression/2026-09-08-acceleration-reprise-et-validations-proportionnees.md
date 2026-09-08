@@ -4,7 +4,7 @@
 
 Réduire le temps nécessaire pour comprendre une zone de Biblaw, modifier la bonne couche et vérifier une régression, sans affaiblir la sémantique, la traçabilité, la reproductibilité ni les capacités existantes.
 
-Cette passe n’introduit aucune nouvelle architecture de données. Elle orchestre les sources, générateurs et audits existants et ajoute seulement un rebuild aval ciblé, un routeur de validations et un rapport différentiel compact.
+Cette passe n’introduit aucune nouvelle architecture de données. Elle orchestre les sources, générateurs et audits existants et ajoute seulement un rebuild aval ciblé, un routeur de validations, un rapport différentiel compact et des optimisations mécaniques mesurées.
 
 ## Audit initial
 
@@ -30,7 +30,9 @@ Cette passe n’introduit aucune nouvelle architecture de données. Elle orchest
 - le workflow recherche recalculait les mêmes comptages littéraux à deux endroits ;
 - `audit_assembly_theme_context.py`, descriptif et sans assertion, était exécuté comme s’il constituait une barrière de régression ;
 - plusieurs générateurs thématiques renormalisaient chaque verset pour chaque motif recherché ;
-- l’ordre de variantes d’alias à fréquence égale n’était pas totalement déterministe, ce qui pouvait produire de faux diffs sans changement sémantique.
+- l’ordre de variantes d’alias à fréquence égale n’était pas totalement déterministe, ce qui pouvait produire de faux diffs sans changement sémantique ;
+- un `main` avançant pendant un FULL pouvait provoquer un second pipeline complet alors que le premier n’avait produit aucune sortie canonique à transporter ;
+- quatre gros générateurs de livres indépendants étaient exécutés séquentiellement alors qu’ils écrivent dans des plages disjointes.
 
 ### Automatisable sans risque sémantique
 
@@ -41,17 +43,20 @@ Cette passe n’introduit aucune nouvelle architecture de données. Elle orchest
 - transformation de comportements historiques en sentinelles déterministes ;
 - pré-calcul des fragments textuels normalisés dans les audits et générateurs, sans modifier la règle de correspondance ;
 - ordre total explicite pour les variantes d’alias ;
-- mesure des temps directement dans les logs du pipeline, sans produire de nouvel artefact.
+- mesure des temps directement dans les logs du pipeline, sans produire de nouvel artefact ;
+- parallélisation limitée à des générateurs lisant les mêmes sources mais écrivant des plages de livres strictement disjointes.
 
 ### Inutilement coûteux / non retenu
 
 - ne pas rejouer les 44 passes profondes pour un changement strictement aval ;
-- ne pas ajouter de cache sémantique ou de parallélisation complexe sans profilage ;
+- ne pas ajouter de cache sémantique complexe sans profilage ;
 - ne pas créer trois infrastructures CI distinctes pour FAST/TARGETED/FULL ;
 - ne pas recopier les nombres dynamiques dans plusieurs documents ;
 - ne pas ajouter une nouvelle couche de recherche approximative pour accélérer ;
 - ne pas exécuter automatiquement un script descriptif qui ne peut pas faire échouer une régression ;
-- ne pas supprimer l’installation Poppler du FULL : les réparations documentaires PDF en dépendent réellement.
+- ne pas supprimer l’installation Poppler du FULL : les réparations documentaires PDF en dépendent réellement ;
+- ne pas paralléliser les passes de grounding/finalisation ayant des dépendances éditoriales ou un gain attendu trop faible ;
+- ne pas activer automatiquement TARGETED dans le workflow CI d’écriture tant que la publication concurrente n’est pas prouvée aussi sûre que le défaut FULL.
 
 ## Chemin de reprise
 
@@ -104,8 +109,6 @@ Nouveau routeur : `scripts/check_biblaw.py`.
 ### FAST
 
 Boucle d’édition non destructive : syntaxe, intégrité locale et sentinelles de la zone.
-
-Exemples :
 
 ```bash
 python scripts/check_biblaw.py FAST --area search
@@ -162,6 +165,8 @@ Il ne doit être utilisé que lorsque les passes sémantiques profondes et les s
 - versets et `teaching` obligatoires ;
 - couverture canonique complète.
 
+`validate_thematic_search_index.py` protège également l’ordre déterministe des alias et variantes, y compris les égalités de fréquence ou de `casefold()`.
+
 Les audits séparés continuent à protéger les numéros répétés et les index navigateur pré-calculés.
 
 `audit_assembly_theme_context.py` est conservé comme outil de revue éditoriale : il affiche les co-présences et exemples contextuels sans en tirer de relation sémantique. Comme il ne contient pas d’assertion, il n’est plus exécuté automatiquement comme une validation. La vraie régression Assemblée / Sainte Assemblée reste bloquée dans `audit_production_search_queries.py`.
@@ -187,7 +192,7 @@ Il normalise les fragments textuels une seule fois par état comparé, sans appr
 
 Une passe FULL a révélé un faux diff limité à l’ordre de variantes telles que `Quatre Sceaux` / `Quatre sceaux`. Les cibles, ambiguïtés et relations étaient identiques : le problème venait d’un tri basé seulement sur `casefold()` appliqué à un ensemble, donc insuffisant lorsque deux chaînes avaient la même clé normalisée.
 
-`build_thematic_search_index.py` utilise désormais un ordre total déterministe `(casefold, libellé exact)` et un tri explicite des variantes ayant la même fréquence. Après cette normalisation unique, le FULL suivant a produit **`No canonical thematic changes`**. Le générateur est donc reproductible sans dépendre de l’ordre d’itération d’un `set` ou d’une égalité de fréquence.
+`build_thematic_search_index.py` utilise désormais un ordre total déterministe `(casefold, libellé exact)` et un tri explicite des variantes ayant la même fréquence. Après cette normalisation unique, le FULL suivant a produit **`No canonical thematic changes`**. Le validateur contrôle désormais cette propriété pour empêcher la réintroduction du défaut.
 
 ## Optimisation des générateurs FULL
 
@@ -195,15 +200,39 @@ Les cinq générateurs `complete_books21_23`, `24_26`, `27_30`, `31_40` et `41_4
 
 Aucune regex, aucun `themeId`, aucun top-12, aucun niveau `central/important/related`, aucun `directness`, aucun verset d’appui et aucun `teaching` n’a été modifié. Le FULL après optimisation a réussi avec **0 erreur, 0 avertissement** et **aucun changement canonique généré**.
 
-Temps observés sur les cinq blocs :
+Temps observés sur les cinq blocs avant parallélisation :
 
-- avant : environ **10,15 s** cumulées ;
-- après : environ **7,30 s** cumulées ;
+- avant pré-calcul : environ **10,15 s** cumulées ;
+- après pré-calcul : environ **7,30 s** cumulées ;
 - gain : environ **2,85 s**, soit **~28 %** sur ces générateurs.
 
-Le pipeline canonique complet lui-même est passé d’environ **20,6 s** à **16,9 s**, soit environ **18 %** de réduction sur le calcul interne. `run_canonical_thematic_pipeline.py` imprime désormais automatiquement la durée de chaque étape et un classement des étapes les plus lentes, sans persister ces mesures dans les données générées.
+## Parallélisation bornée des livres 24–44
 
-## Mesure du gain observé
+Les générateurs `complete_books24_26`, `27_30`, `31_40` et `41_44` ont été vérifiés comme indépendants à cette étape : ils lisent le corpus canonique et écrivent uniquement leurs propres plages de `book-XX.json`.
+
+`run_canonical_thematic_pipeline.py` les exécute désormais dans un groupe parallèle borné à ces quatre scripts. Leurs sorties sont capturées puis rejouées dans l’ordre fixe des scripts afin de garder des logs lisibles et déterministes. Une erreur de n’importe quel processus fait échouer le FULL avant les passes de grounding/finalisation.
+
+Mesure observée :
+
+- somme séquentielle comparable des quatre blocs : **~6,45 s** ;
+- groupe parallèle : **~3,65 s murales** ;
+- pipeline canonique instrumenté : **18,41 s → 13,94 s**, soit environ **24 %** de réduction supplémentaire sur ces runs ;
+- résultat : **0 changement canonique**, validation passée, ordre d’alias déterministe, Pages vert.
+
+Le temps individuel d’un processus peut augmenter sous contention CPU ; seul le temps mural du groupe est utilisé pour évaluer le gain.
+
+## Concurrence du workflow de publication canonique
+
+Le workflow d’écriture pouvait auparavant refaire un FULL si `main` avançait pendant le run, même lorsque le premier pipeline n’avait généré aucune modification canonique.
+
+Il vérifie désormais les chemins canoniques surveillés avant de repartir de `origin/main` :
+
+- sorties canoniques propres → aucun second FULL à transporter ;
+- sorties canoniques modifiées → comportement prudent inchangé : reset sur le dernier `main`, normalisation et FULL avant publication.
+
+La sécurité de publication reste donc conservatrice dès qu’un artefact canonique doit réellement être poussé.
+
+## Mesure du gain recherche
 
 Comparaison de runs GitHub Actions sur le même workflow de recherche, hors temps variable de checkout :
 
@@ -215,6 +244,17 @@ Les sorties sentinelles restent identiques : mêmes comptages littéraux, mêmes
 
 Ces temps sont des mesures de runs CI observés et peuvent varier selon le runner ; ils servent à vérifier l’ordre de grandeur du gain, pas de SLA.
 
+## Instrumentation de performance
+
+`run_canonical_thematic_pipeline.py` imprime désormais :
+
+- la durée de chaque étape ;
+- le temps mural du groupe parallèle ;
+- les étapes les plus lentes ;
+- la durée totale du pipeline.
+
+Ces données restent uniquement dans les logs : elles ne sont jamais persistées dans un artefact canonique et ne peuvent donc pas rendre la génération non reproductible.
+
 ## Capacités volontairement inchangées
 
 - aucune relation thématique n’est créée par fréquence, proximité ou cooccurrence ;
@@ -224,12 +264,13 @@ Ces temps sont des mesures de runs CI observés et peuvent varier selon le runne
 - aucun thème n’est supprimé pour améliorer les performances ;
 - les artefacts générés restent reproductibles depuis leurs sources ;
 - Pages reste la barrière finale de production ;
-- le pipeline FULL reste disponible et inchangé dans son rôle.
+- le pipeline FULL reste la référence pour les changements amont ;
+- les validations d’admissibilité, d’alias, de connexions, de runtime, d’attachements et de références historiques restent exécutées.
 
 ## Coût restant
 
 Le FULL reste volontairement plus lourd qu’un TARGETED parce qu’il réexécute les réparations documentaires et les passes sémantiques profondes sur 44 livres avant de reconstruire les projections et audits. Ce coût protège les changements amont.
 
-Sur les runners observés, l’installation de Poppler représente encore environ **14–15 s**, parfois davantage que le pipeline Python lui-même. Cette étape reste volontairement inchangée : les réparations documentaires PDF utilisent réellement `pdftotext`/Poppler, et supprimer ou conditionner cette dépendance sans garantie équivalente créerait un risque supérieur au gain.
+Sur les runners observés, l’installation de Poppler représente encore environ **10–15 s**, souvent autant ou davantage que le pipeline Python optimisé. Cette étape reste volontairement inchangée : les réparations documentaires PDF utilisent réellement `pdftotext`/Poppler, et supprimer ou contourner cette dépendance sans garantie équivalente créerait un risque supérieur au gain.
 
-Aucune mise en cache sémantique ni parallélisation n’a été ajoutée sans preuve préalable de déterminisme, dépendances et gain réel. Le principal gain vient donc toujours de deux principes : ne lancer FULL que lorsque la couche amont l’exige, et éviter à l’intérieur de chaque validation les recalculs strictement identiques.
+Les étapes Python restantes tournent majoritairement sous la seconde. Une parallélisation plus agressive, un cache persistant ou une classification automatique TARGETED dans le workflow d’écriture apporteraient désormais un gain marginal au prix d’un risque ou d’une complexité disproportionnés. À ce stade, le bon défaut reste : **FAST/TARGETED pour travailler, FULL pour prouver les changements amont**.
