@@ -122,7 +122,7 @@ Une vérification automatisée de l’UI n’équivaut pas à un test visuel man
 → audits de recherche  
 → interface.
 
-Le navigateur public charge `theme-directory-public.json`, jamais l’annuaire éditorial complet. `scripts/audit_public_theme_directory.py` vérifie que cette projection conserve exactement les champs runtime nécessaires pour les 1247 thèmes et toutes leurs relations, sans modifier versets d’appui, enseignements, importance ou scores.
+Le navigateur public charge `theme-directory-public.json`, jamais l’annuaire éditorial complet. `scripts/audit_public_theme_directory.py` vérifie que cette projection conserve exactement les champs runtime nécessaires pour tous les thèmes et toutes leurs relations, sans modifier versets d’appui, enseignements, importance ou scores.
 
 Ne jamais corriger durablement `theme-directory.json`, `theme-directory-public.json`, `theme-search-index.json`, `theme-connections.json`, `theme-search-runtime.json`, `theme-quality-audit.json` ou `browser-search-catalog.json` à la main.
 
