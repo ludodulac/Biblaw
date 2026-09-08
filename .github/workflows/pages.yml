@@ -39,9 +39,11 @@ jobs:
         run: python scripts/audit_psalm_number_search.py
       - name: Résumer les ambiguïtés thématiques explicites
         run: python scripts/report_explicit_theme_ambiguities.py
+      - name: Construire la charge utile Pages minimale
+        run: python scripts/build_pages_site.py
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v5
