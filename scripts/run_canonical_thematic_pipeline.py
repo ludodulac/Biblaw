@@ -11,59 +11,88 @@ its candidate before atomic replacement, and is then independently revalidated a
 artifact. Generated search/catalog artefacts are followed by production-boundary integrity audits so
 a successful canonical rebuild cannot silently publish stale or legacy attachment relationships.
 
-Timing output is diagnostic only: it is never persisted into generated artefacts and therefore does
-not affect reproducibility. Only completion scripts proven to read shared inputs and write disjoint
-book ranges are run concurrently; their captured logs are replayed in deterministic script order.
+Every subprocess has a bounded runtime. Timing output is diagnostic only: it is never persisted into
+generated artefacts and therefore does not affect reproducibility. Only completion scripts proven to
+read shared inputs and write disjoint book ranges are run concurrently; their captured logs are
+replayed in deterministic script order.
 """
 from __future__ import annotations
-import subprocess,sys,time
+import os,subprocess,sys,time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 TIMINGS=[]
+STAGE_TIMEOUT_SECONDS=int(os.environ.get('BIBLAW_STAGE_TIMEOUT_SECONDS','900'))
+SLOW_STEP_SECONDS=float(os.environ.get('BIBLAW_SLOW_STEP_SECONDS','120'))
+STEP_NO=0
 
-def run(script):
-    print(f'\n=== {script} ===',flush=True)
-    started=time.perf_counter()
-    subprocess.run([sys.executable,str(ROOT/'scripts'/script)],cwd=ROOT,check=True)
+def _start(script,kind='step'):
+    global STEP_NO
+    STEP_NO+=1
+    print(f'\n=== [{STEP_NO}] START {kind}: {script} (timeout={STAGE_TIMEOUT_SECONDS}s) ===',flush=True)
+    return time.perf_counter()
+
+def _finish(script,started):
     elapsed=time.perf_counter()-started
     TIMINGS.append((script,elapsed))
-    print(f'--- timing {script}: {elapsed:.3f}s',flush=True)
+    print(f'--- DONE {script}: {elapsed:.3f}s',flush=True)
+    if elapsed>SLOW_STEP_SECONDS:
+        print(f'::warning::Slow canonical step: {script} took {elapsed:.1f}s (threshold {SLOW_STEP_SECONDS:.0f}s)',flush=True)
+    return elapsed
+
+def run(script):
+    started=_start(script)
+    try:
+        subprocess.run(
+            [sys.executable,str(ROOT/'scripts'/script)],cwd=ROOT,check=True,
+            timeout=STAGE_TIMEOUT_SECONDS,
+        )
+    except subprocess.TimeoutExpired:
+        elapsed=time.perf_counter()-started
+        print(f'::error::Canonical step timed out: {script} exceeded {STAGE_TIMEOUT_SECONDS}s after {elapsed:.1f}s',flush=True)
+        raise
+    _finish(script,started)
 
 def _run_captured(script):
     started=time.perf_counter()
-    proc=subprocess.run(
-        [sys.executable,str(ROOT/'scripts'/script)],cwd=ROOT,text=True,
-        stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
-    )
-    return script,time.perf_counter()-started,proc.returncode,proc.stdout
+    try:
+        proc=subprocess.run(
+            [sys.executable,str(ROOT/'scripts'/script)],cwd=ROOT,text=True,
+            stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=STAGE_TIMEOUT_SECONDS,
+        )
+        return script,time.perf_counter()-started,proc.returncode,proc.stdout,False
+    except subprocess.TimeoutExpired as exc:
+        output=exc.stdout or ''
+        if isinstance(output,bytes): output=output.decode('utf-8',errors='replace')
+        return script,time.perf_counter()-started,124,output,True
 
 def run_parallel(scripts):
     """Run independent disjoint-output generators concurrently, with deterministic log replay."""
+    global STEP_NO
     scripts=list(scripts)
     group_started=time.perf_counter()
+    print(f'\n=== parallel completion group: {len(scripts)} scripts, timeout={STAGE_TIMEOUT_SECONDS}s each ===',flush=True)
     with ThreadPoolExecutor(max_workers=len(scripts)) as pool:
         results=list(pool.map(_run_captured,scripts))
-    for script,elapsed,returncode,output in results:
-        print(f'\n=== {script} [parallel] ===',flush=True)
+    for script,elapsed,returncode,output,timed_out in results:
+        STEP_NO+=1
+        print(f'\n=== [{STEP_NO}] {script} [parallel] ===',flush=True)
         if output:
             print(output,end='' if output.endswith('\n') else '\n',flush=True)
         TIMINGS.append((script,elapsed))
-        print(f'--- timing {script}: {elapsed:.3f}s',flush=True)
+        print(f'--- DONE {script}: {elapsed:.3f}s',flush=True)
+        if elapsed>SLOW_STEP_SECONDS:
+            print(f'::warning::Slow canonical step: {script} took {elapsed:.1f}s (threshold {SLOW_STEP_SECONDS:.0f}s)',flush=True)
+        if timed_out:
+            print(f'::error::Canonical parallel step timed out: {script} exceeded {STAGE_TIMEOUT_SECONDS}s',flush=True)
+            raise subprocess.TimeoutExpired([sys.executable,str(ROOT/'scripts'/script)],STAGE_TIMEOUT_SECONDS)
         if returncode:
             raise subprocess.CalledProcessError(returncode,[sys.executable,str(ROOT/'scripts'/script)])
-    print(f'--- timing parallel completion group: {time.perf_counter()-group_started:.3f}s',flush=True)
+    print(f'--- DONE parallel completion group: {time.perf_counter()-group_started:.3f}s',flush=True)
 
 def repair_documentary_boundaries():
-    print('\n=== audited PDF documentary repairs ===',flush=True)
-    started=time.perf_counter()
-    import repair_known_pdf_psalm_anomalies as repair
-    for case in repair.CASES:
-        repair.extract_case(case)
-    repair.repair_book44_final_psalm()
-    elapsed=time.perf_counter()-started
-    TIMINGS.append(('audited PDF documentary repairs',elapsed))
-    print(f'--- timing audited PDF documentary repairs: {elapsed:.3f}s',flush=True)
+    # Keep PDF extraction in a subprocess so the same hard timeout protects this formerly unbounded phase.
+    run('repair_known_pdf_psalm_anomalies.py')
     run('repair_book23_psalm128_numbering.py')
     run('repair_book32_psalm182.py')
 
@@ -75,6 +104,7 @@ def print_timing_summary(total):
 
 def main():
     pipeline_started=time.perf_counter()
+    print(f'Canonical pipeline guardrails: stage_timeout={STAGE_TIMEOUT_SECONDS}s slow_threshold={SLOW_STEP_SECONDS:.0f}s',flush=True)
     repair_documentary_boundaries()
     run('normalize_book17_production_attachments.py')
     run('deepen_books01_02_semantic_evidence.py'); run('finalize_books01_02_semantic.py')
