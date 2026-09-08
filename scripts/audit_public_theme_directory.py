@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data/thematic-index/theme-directory.json"
 PUBLIC = ROOT / "data/thematic-index/theme-directory-public.json"
 THEME_FIELDS = ("id", "label", "score", "occurrenceCount")
-OCCURRENCE_FIELDS = ("recordId", "archangel", "importance", "verseNumbers", "teaching", "score")
+OCCURRENCE_FIELDS = ("recordId", "bookNumber", "archangel", "importance", "verseNumbers", "teaching", "score")
 
 
 def project(item: dict, fields: tuple[str, ...]) -> dict:
