@@ -17,6 +17,7 @@ contain deterministic assertions.
 from __future__ import annotations
 
 import argparse
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -24,6 +25,19 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
 AREAS = ("corpus", "thematic", "search", "ui")
+
+
+def require_tools(*tools: str) -> None:
+    """Fail before expensive work when a selected validation path lacks a required executable."""
+    missing = [tool for tool in tools if shutil.which(tool) is None]
+    if missing:
+        hints = {
+            "pdftotext": "install Poppler (package poppler-utils on Ubuntu/Debian)",
+            "node": "install Node.js",
+            "git": "install Git and run the command inside a Git checkout",
+        }
+        detail = "; ".join(f"{tool}: {hints.get(tool, 'install this executable')}" for tool in missing)
+        raise SystemExit(f"Missing validation dependency: {detail}")
 
 
 def run_script(script: str, *args: str) -> None:
@@ -116,11 +130,18 @@ def main() -> None:
     if args.level == "FULL":
         if args.area:
             parser.error("FULL is repository-wide; do not pass --area")
+        require_tools("pdftotext", "node", "git")
         full()
         return
 
     if not args.area:
         parser.error(f"{args.level} requires --area ({', '.join(AREAS)})")
+
+    if args.area in {"search", "ui"}:
+        require_tools("node")
+    if args.level == "TARGETED" and args.area in {"thematic", "corpus"}:
+        require_tools("git")
+
     if args.level == "FAST":
         fast(args.area)
     else:
