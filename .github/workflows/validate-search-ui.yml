@@ -30,6 +30,10 @@ jobs:
       - uses: actions/checkout@v6
       - name: Check fast-workflow helper syntax
         run: python -m py_compile scripts/check_biblaw.py scripts/rebuild_thematic_derivatives.py scripts/report_biblaw_diff.py
+      - name: Check compact differential report on clean HEAD
+        run: |
+          python scripts/report_biblaw_diff.py --base HEAD | tee /tmp/biblaw-diff.txt
+          grep -q 'SUMMARY significantChanges=no' /tmp/biblaw-diff.txt
       - name: Check browser search catalog freshness
         run: |
           cp data/browser-search-catalog.json /tmp/browser-search-catalog.before.json
