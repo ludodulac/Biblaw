@@ -12,10 +12,12 @@ artifact. Generated search/catalog artefacts are followed by production-boundary
 a successful canonical rebuild cannot silently publish stale or legacy attachment relationships.
 
 Timing output is diagnostic only: it is never persisted into generated artefacts and therefore does
-not affect reproducibility.
+not affect reproducibility. Only completion scripts proven to read shared inputs and write disjoint
+book ranges are run concurrently; their captured logs are replayed in deterministic script order.
 """
 from __future__ import annotations
 import subprocess,sys,time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 TIMINGS=[]
@@ -27,6 +29,30 @@ def run(script):
     elapsed=time.perf_counter()-started
     TIMINGS.append((script,elapsed))
     print(f'--- timing {script}: {elapsed:.3f}s',flush=True)
+
+def _run_captured(script):
+    started=time.perf_counter()
+    proc=subprocess.run(
+        [sys.executable,str(ROOT/'scripts'/script)],cwd=ROOT,text=True,
+        stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
+    )
+    return script,time.perf_counter()-started,proc.returncode,proc.stdout
+
+def run_parallel(scripts):
+    """Run independent disjoint-output generators concurrently, with deterministic log replay."""
+    scripts=list(scripts)
+    group_started=time.perf_counter()
+    with ThreadPoolExecutor(max_workers=len(scripts)) as pool:
+        results=list(pool.map(_run_captured,scripts))
+    for script,elapsed,returncode,output in results:
+        print(f'\n=== {script} [parallel] ===',flush=True)
+        if output:
+            print(output,end='' if output.endswith('\n') else '\n',flush=True)
+        TIMINGS.append((script,elapsed))
+        print(f'--- timing {script}: {elapsed:.3f}s',flush=True)
+        if returncode:
+            raise subprocess.CalledProcessError(returncode,[sys.executable,str(ROOT/'scripts'/script)])
+    print(f'--- timing parallel completion group: {time.perf_counter()-group_started:.3f}s',flush=True)
 
 def repair_documentary_boundaries():
     print('\n=== audited PDF documentary repairs ===',flush=True)
@@ -67,7 +93,12 @@ def main():
     run('ground_book21_semantic_evidence.py'); run('finalize_book21_semantic.py')
     for n in range(1,8): run(f'deepen_book22_semantic_part{n}.py')
     run('ground_book22_semantic_evidence.py'); run('finalize_book22_semantic.py')
-    run('complete_books24_26_thematic.py'); run('complete_books27_30_thematic.py'); run('complete_books31_40_thematic.py'); run('complete_books41_44_thematic.py')
+    run_parallel((
+        'complete_books24_26_thematic.py',
+        'complete_books27_30_thematic.py',
+        'complete_books31_40_thematic.py',
+        'complete_books41_44_thematic.py',
+    ))
     run('deepen_book23_semantic_part1.py'); run('deepen_books23_25_semantic_evidence.py'); run('finalize_books23_25_semantic.py')
     for lo,hi in ((26,28),(29,31),(32,34),(35,37),(38,40),(41,43)):
         run(f'deepen_books{lo}_{hi}_semantic_evidence.py'); run(f'finalize_books{lo}_{hi}_semantic.py')
