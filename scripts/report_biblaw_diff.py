@@ -7,8 +7,8 @@ Default usage compares the current working tree with HEAD:
 After committing, compare the commit with its parent:
   python scripts/report_biblaw_diff.py --base HEAD~1
 
-The report is intentionally compact: counters, errors/warnings, theme/ambiguity additions or
-removals, material ranking-metric changes, and production sentinel changes. It does not mutate data.
+The report is intentionally compact: counters, theme/relation/alias/ambiguity changes, material
+ranking changes, validation errors/warnings and production sentinel changes. It does not mutate data.
 """
 from __future__ import annotations
 
@@ -69,16 +69,46 @@ def metrics(data: dict[str, dict]) -> dict:
     }
 
 
+def alias_map(runtime: dict) -> dict[str, tuple[tuple[str, ...], bool]]:
+    return {
+        key: (tuple(item.get("themeIds", [])), bool(item.get("ambiguous")))
+        for key, item in (runtime.get("aliases") or {}).items()
+    }
+
+
 def ambiguity_map(runtime: dict) -> dict[str, tuple[str, ...]]:
     return {
-        key: tuple(item.get("themeIds", []))
-        for key, item in (runtime.get("aliases") or {}).items()
-        if item.get("ambiguous")
+        key: targets
+        for key, (targets, ambiguous) in alias_map(runtime).items()
+        if ambiguous
     }
 
 
 def theme_map(directory: dict) -> dict[str, dict]:
     return {item["id"]: item for item in directory.get("themes", []) if item.get("id")}
+
+
+def relation_map(directory: dict) -> dict[tuple[str, str], dict]:
+    """Index canonical projected theme-Psalm relations for compact before/after review."""
+    relations: dict[tuple[str, str], dict] = {}
+    for theme in directory.get("themes", []):
+        theme_id = theme.get("id")
+        if not theme_id:
+            continue
+        for occurrence in theme.get("occurrences", []):
+            record_id = occurrence.get("recordId")
+            if not record_id:
+                continue
+            key = (theme_id, record_id)
+            if key in relations:
+                raise AssertionError(f"duplicate projected relation in directory: {key}")
+            relations[key] = {
+                "importance": occurrence.get("importance"),
+                "directness": occurrence.get("directness"),
+                "verseNumbers": tuple(occurrence.get("verseNumbers", [])),
+                "teaching": occurrence.get("teaching"),
+            }
+    return relations
 
 
 def theme_ranking_signature(theme: dict) -> tuple:
@@ -172,6 +202,10 @@ def limited(values) -> list:
     return list(values)[:MAX_ITEMS]
 
 
+def relation_name(key: tuple[str, str]) -> str:
+    return f"{key[0]} @ {key[1]}"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base", default="HEAD", help="git ref used as baseline; default: HEAD")
@@ -201,6 +235,30 @@ def main() -> None:
         after_sig = theme_ranking_signature(after_themes[theme_id])
         if before_sig != after_sig:
             ranking_changes.append((theme_id, before_sig, after_sig))
+
+    before_relations = relation_map(baseline["directory"])  # type: ignore[index]
+    after_relations = relation_map(current["directory"])
+    added_relations = sorted(set(after_relations) - set(before_relations))
+    removed_relations = sorted(set(before_relations) - set(after_relations))
+    changed_importance = []
+    changed_evidence = []
+    for key in sorted(set(before_relations) & set(after_relations)):
+        before = before_relations[key]
+        after = after_relations[key]
+        if before["importance"] != after["importance"]:
+            changed_importance.append((key, before["importance"], after["importance"]))
+        evidence_fields = ("directness", "verseNumbers", "teaching")
+        if any(before[field] != after[field] for field in evidence_fields):
+            changed_evidence.append(key)
+
+    before_aliases = alias_map(baseline["runtime"])  # type: ignore[index]
+    after_aliases = alias_map(current["runtime"])
+    added_aliases = sorted(set(after_aliases) - set(before_aliases))
+    removed_aliases = sorted(set(before_aliases) - set(after_aliases))
+    changed_aliases = sorted(
+        key for key in set(before_aliases) & set(after_aliases)
+        if before_aliases[key] != after_aliases[key]
+    )
 
     before_amb = ambiguity_map(baseline["runtime"])  # type: ignore[index]
     after_amb = ambiguity_map(current["runtime"])
@@ -235,6 +293,33 @@ def main() -> None:
         if removed_themes:
             print(f"  removed({len(removed_themes)}): {limited(removed_themes)}")
 
+    if added_relations or removed_relations or changed_importance or changed_evidence:
+        print("\nTHEME-PSALM RELATIONS")
+        if added_relations:
+            print(f"  added({len(added_relations)}): {[relation_name(x) for x in limited(added_relations)]}")
+        if removed_relations:
+            print(f"  removed({len(removed_relations)}): {[relation_name(x) for x in limited(removed_relations)]}")
+        if changed_importance:
+            print(f"  reclassified({len(changed_importance)}):")
+            for key, before, after in changed_importance[:MAX_ITEMS]:
+                print(f"    {relation_name(key)}: {before} -> {after}")
+        if changed_evidence:
+            print(
+                f"  evidenceChanged({len(changed_evidence)}): "
+                f"{[relation_name(x) for x in limited(changed_evidence)]}"
+            )
+
+    if added_aliases or removed_aliases or changed_aliases:
+        print("\nALIASES")
+        if added_aliases:
+            print(f"  added({len(added_aliases)}): {limited(added_aliases)}")
+        if removed_aliases:
+            print(f"  removed({len(removed_aliases)}): {limited(removed_aliases)}")
+        if changed_aliases:
+            print(f"  changed({len(changed_aliases)}):")
+            for key in changed_aliases[:MAX_ITEMS]:
+                print(f"    {key!r}: {before_aliases[key]} -> {after_aliases[key]}")
+
     if added_amb or removed_amb or changed_amb:
         print("\nAMBIGUITIES")
         if added_amb:
@@ -245,7 +330,7 @@ def main() -> None:
             print(f"  changed {key!r}: {before_amb[key]} -> {after_amb[key]}")
 
     if ranking_changes:
-        print(f"\nRANKING METRICS changedThemes={len(ranking_changes)}")
+        print(f"\nTHEME RANKING METRICS changedThemes={len(ranking_changes)}")
         for theme_id, before, after in ranking_changes[:MAX_ITEMS]:
             print(
                 f"  {theme_id}: occurrence/central/score/C/I/L "
@@ -263,6 +348,13 @@ def main() -> None:
         changed_metrics
         or added_themes
         or removed_themes
+        or added_relations
+        or removed_relations
+        or changed_importance
+        or changed_evidence
+        or added_aliases
+        or removed_aliases
+        or changed_aliases
         or added_amb
         or removed_amb
         or changed_amb
