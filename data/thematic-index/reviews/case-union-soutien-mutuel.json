@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "union-et-soutien-mutuel",
+  "anchorLabel": "Union et soutien mutuel",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test component_of on a conjunctive theme where the Psalm explicitly presents two autonomous dimensions as constitutive of one collective structure, contrasting with relational-pole cases such as union-pere-nature.",
+  "anchorEvidence": {
+    "recordId": "book-22-psalm-142",
+    "bookNumber": 22,
+    "psalmNumber": 142,
+    "verseNumbers": [25, 26, 27, 28, 29, 30, 31],
+    "canonicalTeaching": "La force du corps collectif repose explicitement sur l'union et le soutien mutuel : chacun doit trouver sa place dans l'ensemble, se renforcer par les autres et contribuer à une œuvre commune."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-union--union-et-soutien-mutuel",
+      "sourceThemeId": "union",
+      "targetThemeId": "union-et-soutien-mutuel",
+      "proposedRelationType": "component_of",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "union": [{"recordId": "book-03-psalm-010", "verseNumbers": [1, 7, 8, 9, 11, 12, 14, 18, 19]}],
+        "union-et-soutien-mutuel": [{"recordId": "book-22-psalm-142", "verseNumbers": [25, 26, 27, 28, 29, 30, 31]}]
+      },
+      "reviewNote": "Le psaume 142 nomme explicitement l'union avec le soutien mutuel comme source de la force collective. Union possède par ailleurs une autonomie thématique. Elle constitue donc ici une dimension attestée du thème conjoint, sans suffire à définir le tout.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-soutien-mutuel--union-et-soutien-mutuel",
+      "sourceThemeId": "soutien-mutuel",
+      "targetThemeId": "union-et-soutien-mutuel",
+      "proposedRelationType": "component_of",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "soutien-mutuel": [{"recordId": "book-08-psalm-050", "verseNumbers": [4, 7, 8, 12, 13, 14, 16]}],
+        "union-et-soutien-mutuel": [{"recordId": "book-22-psalm-142", "verseNumbers": [25, 26, 27, 28, 29, 30, 31]}]
+      },
+      "reviewNote": "Soutien mutuel est attesté comme force et protection dépassant l'individu. Dans le psaume 142 il est explicitement associé à l'union comme condition constitutive du corps collectif. Il peut donc être proposé comme composante du thème conjoint.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "rejected-for-components", "note": "Ni Union ni Soutien mutuel n'épuise le thème conjoint."},
+    "variant_of": {"status": "not-retained", "note": "Le thème cible articule deux dimensions autonomes plutôt qu'une reformulation du même noyau."},
+    "broader_than": {"status": "not-retained-for-components", "note": "Le texte ne présente pas Union ou Soutien mutuel comme genre conceptuel du thème complet mais comme dimensions coordonnées de sa structure."},
+    "component_of": {"status": "proposed", "themeIds": ["union", "soutien-mutuel"]},
+    "related_to": {"status": "true-but-less-informative-than-component_of"}
+  },
+  "semanticBoundary": {
+    "decisionRule": "component_of est justifié lorsqu'un thème conjoint énonce explicitement plusieurs dimensions autonomes comme constituantes de la même structure ; la simple présence d'un pôle relationnel dans un libellé ne suffit pas.",
+    "contrastCases": ["union-pere-nature", "eau-et-air", "corps-ame-esprit"]
+  },
+  "transversalProfileEvidence": {
+    "reviewedOccurrences": [
+      {"themeId": "union", "bookNumber": 3, "psalmNumber": 10, "recordId": "book-03-psalm-010"},
+      {"themeId": "soutien-mutuel", "bookNumber": 8, "psalmNumber": 50, "recordId": "book-08-psalm-050"},
+      {"themeId": "union-et-soutien-mutuel", "bookNumber": 22, "psalmNumber": 142, "recordId": "book-22-psalm-142"}
+    ],
+    "observedVariationDimensions": [
+      "union around a common ideal",
+      "mutual support as protection and strength beyond the individual",
+      "collective body strengthened by coordinated members",
+      "conjunction of unity and reciprocal support"
+    ],
+    "distributionAssessment": {"status": "not-yet-global", "note": "The reviewed component themes occur at separated corpus positions; complete family membership is not yet established."},
+    "evolutionAssessment": {"status": "not-established", "note": "No evolution claim is justified; corpus order is not historical chronology."}
+  }
+}
