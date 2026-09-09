@@ -8,11 +8,13 @@ on:
       - "scripts/report_theme_relation_candidates.py"
       - "scripts/report_theme_relation_candidate_risks.py"
       - "scripts/report_theme_relation_review_context.py"
+      - "scripts/report_theme_relation_review_queue.py"
       - "scripts/report_theme_layer_coverage.py"
       - "scripts/report_theme_alias_collisions.py"
       - "scripts/audit_theme_relation_candidates.py"
       - "scripts/audit_theme_relation_candidate_risks.py"
       - "scripts/audit_theme_relation_risk_review_coverage.py"
+      - "scripts/audit_theme_relation_review_queue.py"
       - "scripts/audit_theme_relation_review_pilot.py"
       - "scripts/audit_validated_theme_relations.py"
       - "data/thematic-index/theme-search-index.json"
@@ -50,6 +52,9 @@ jobs:
       - name: Audit complete structural-risk review coverage
         run: python scripts/audit_theme_relation_risk_review_coverage.py
 
+      - name: Audit evidence-readiness review queue
+        run: python scripts/audit_theme_relation_review_queue.py
+
       - name: Audit editorial/search theme layer coverage
         run: python scripts/report_theme_layer_coverage.py
 
@@ -64,6 +69,9 @@ jobs:
 
       - name: Report structural candidate risks
         run: python scripts/report_theme_relation_candidate_risks.py
+
+      - name: Report next evidence-ready review candidates
+        run: python scripts/report_theme_relation_review_queue.py
 
       - name: Report bounded semantic review evidence
         run: >-
