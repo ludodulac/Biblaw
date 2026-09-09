@@ -102,7 +102,7 @@ def main() -> None:
     # shape, not semantic validation: every case remains human-approval-only.
     sentinels = {
         "case-pierre--pierre-verte": ("pierre", "pierre-verte", "broader_than"),
-        "case-pensee-vivante--pensee": ("pensee-vivante", "pensee", "variant_of"),
+        "case-pensee--pensee-vivante": ("pensee", "pensee-vivante", "broader_than"),
     }
     found: dict[str, tuple[str, str, str]] = {}
     for path in paths:
