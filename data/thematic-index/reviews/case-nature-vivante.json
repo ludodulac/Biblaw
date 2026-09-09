@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "anchorTheme": {"themeId": "nature-vivante", "label": "Nature vivante"},
+  "purpose": "Test variant_of when a qualifier makes explicit a property already constitutive of the broader corpus formulation rather than creating a distinct subtype.",
+  "evidenceByThemeId": {
+    "nature": [{"recordId": "book-01-psalm-002", "verseNumbers": [1, 3, 4, 5, 6]}],
+    "nature-vivante": [{"recordId": "book-11-psalm-063", "verseNumbers": [2, 3, 8, 11, 12, 18, 21, 24, 25, 26, 27, 28]}]
+  },
+  "relationAssessments": [
+    {
+      "sourceThemeId": "nature-vivante",
+      "targetThemeId": "nature",
+      "proposedRelationType": "variant_of",
+      "confidence": "strong-proposal",
+      "reviewNote": "The general Nature evidence already presents nature as a plurality of living worlds that communicate and participate in divine life. Psalm 63 intensifies the same semantic core by calling nature living, the Father's wisdom, a book and a living organism. The qualifier 'vivante' therefore makes an existing property explicit rather than defining a cleanly separable subtype. variant_of is preferred to broader/narrower or equivalent_to."
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": "Not established: the labels are not proven interchangeable in every corpus context.",
+    "variant_of": "Proposed from nature-vivante to nature because livingness is already constitutive of the general Nature evidence.",
+    "broader_than": "Rejected for this bounded dossier: the qualifier does not introduce a distinct application domain comparable to pensee-verticale.",
+    "component_of": "Rejected: Nature vivante is not assembled from Nature as one autonomous constituent among others.",
+    "related_to": "Too weak for the reviewed evidence because both formulations share the same semantic nucleus."
+  },
+  "semanticBoundary": {
+    "decisionRule": "A qualified formulation can be a variant when the qualifier foregrounds a property already intrinsic to the base theme; it is broader/narrower only when the qualifier delimits a genuinely distinct subtype or application.",
+    "contrastCases": ["pensee-verticale", "soleil-conscience"]
+  },
+  "transversalProfileEvidence": {
+    "reviewedPositions": [{"book": 1, "psalm": 2}, {"book": 11, "psalm": 63}],
+    "variationDimensions": ["nature as plurality of living worlds", "nature as Father's wisdom", "nature as readable living book", "human communication with non-human beings"],
+    "distribution": "not-yet-global",
+    "evolution": "not-established"
+  }
+}
