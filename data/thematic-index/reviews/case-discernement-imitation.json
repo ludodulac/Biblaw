@@ -28,6 +28,13 @@
         "discernement-contre-imitation": [{"recordId": "book-22-psalm-138", "verseNumbers": [5, 6, 7, 9, 17, 18, 25, 26, 27]}]
       },
       "reviewNote": "Discernement est une capacité générale de distinction et de vérification face aux influences et apparences. Dans le psaume 138, cette capacité reçoit une application déterminée : ne pas accepter, répéter ou imiter sans goûter, étudier et expérimenter. Le thème général est donc plus large que cette application particulière.",
+      "lexicalIndependenceTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "capacité à éprouver, distinguer et vérifier par soi-même ce qui mérite d'être suivi",
+        "targetReformulation": "passage de la reproduction mécanique à une appropriation consciente par étude et expérience",
+        "result": "passes",
+        "reason": "La première reformulation demeure une faculté générale ; la seconde demeure une application particulière de cette faculté à la sortie de la répétition inconsciente. La relation ne dépend donc pas du mot discernement présent dans le libellé cible."
+      },
       "semanticClaim": false
     },
     {
@@ -41,6 +48,13 @@
         "discernement-contre-imitation": [{"recordId": "book-22-psalm-138", "verseNumbers": [5, 6, 7, 9, 17, 18, 25, 26, 27]}]
       },
       "reviewNote": "Imitation est le phénomène auquel le discernement est appliqué et que le psaume critique lorsqu'il remplace l'expérience consciente. Il s'agit d'un objet d'opposition, non d'une composante constitutive du thème Discernement contre imitation. related_to conserve la relation réelle sans inventer une structure de partie-tout.",
+      "lexicalIndependenceTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "reproduction d'un modèle sans appropriation personnelle suffisante",
+        "targetReformulation": "éveil d'une compréhension personnelle par étude, expérience et vérification",
+        "result": "passes",
+        "reason": "Les deux concepts restent directement liés par opposition fonctionnelle même lorsque le mot imitation disparaît du second libellé. Aucun rapport de partie-tout ou de général-spécifique n'apparaît sous reformulation."
+      },
       "semanticClaim": false
     }
   ],
@@ -52,6 +66,7 @@
     "related_to": {"status": "proposed", "sourceThemeId": "imitation", "targetThemeId": "discernement-contre-imitation"}
   },
   "semanticBoundary": {
-    "decisionRule": "Un terme après « contre » ou occupant la fonction d'objet d'examen ne devient pas component_of. Le concept opératoire peut être broader_than le thème appliqué, tandis que le phénomène visé reste related_to."
+    "decisionRule": "Un terme après « contre » ou occupant la fonction d'objet d'examen ne devient pas component_of. Le concept opératoire peut être broader_than le thème appliqué, tandis que le phénomène visé reste related_to.",
+    "lexicalGuardrail": "Toute relation proposée doit survivre à une reformulation conceptuelle supprimant le vocabulaire commun entre les thèmes. Pour un thème composite, juger le concept exprimé dans son ensemble et les preuves du psaume, jamais chacun des mots du libellé séparément."
   }
 }
