@@ -7,35 +7,35 @@
   "semanticClaim": false,
   "requiresHumanApproval": true,
   "publicSearchEffect": false,
-  "purpose": "Stress-test component_of against related_to when a conjunctive label names two notions that the Psalm presents both as simultaneous aspects and as a means-to-result relation.",
+  "purpose": "Resolve the former component_of boundary by distinguishing two named aspects from a true part-whole structure when the Psalm explicitly presents practice as a means and consciousness as an arising result.",
   "anchorEvidence": {
     "recordId": "book-19-psalm-115",
     "bookNumber": 19,
     "psalmNumber": 115,
     "psalmTitle": "Les 4 respirations",
     "verseNumbers": [23, 24, 25, 26, 29, 30, 31],
-    "canonicalTeaching": "L'enseignement distingue l'exercice et la conscience née de la pratique et de la discipline, tout en affirmant que ces deux aspects doivent être travaillés simultanément."
+    "canonicalTeaching": "L'enseignement articule l'exercice concret et la conscience qui naît de la pratique et de la discipline ; les deux doivent être travaillés ensemble, mais ils sont reliés dynamiquement plutôt qu'assemblés comme parties indépendantes."
   },
   "relationAssessments": [
     {
       "id": "case-pratique--pratique-et-conscience",
       "sourceThemeId": "pratique",
       "targetThemeId": "pratique-et-conscience",
-      "proposedRelationType": "component_of",
-      "confidence": "borderline-open",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal-needs-human-review",
       "evidenceByThemeId": {
         "pratique": [{"recordId": "book-18-psalm-134", "verseNumbers": [5, 6, 7, 8, 12, 15, 16, 18, 20, 25, 29, 30]}],
         "pratique-et-conscience": [{"recordId": "book-19-psalm-115", "verseNumbers": [23, 24, 25, 26, 29, 30, 31]}]
       },
-      "reviewNote": "Component_of est proposé seulement parce que le psaume 115 parle explicitement de deux aspects simultanés et identifie l'exercice/pratique comme l'un d'eux. Mais la pratique est aussi le moyen dont naît la conscience ; le composite peut donc être compris comme une relation dynamique plutôt que comme un simple assemblage de deux constituants.",
+      "reviewNote": "Le verset 24 nomme bien l'exercice et la conscience comme deux aspects simultanés, mais il donne aussi une direction conceptuelle explicite : la conscience naît de la pratique et de la discipline. La pratique fonctionne donc comme moyen et condition d'éveil dans le thème conjoint ; la traiter comme composante interne autonome effacerait cette structure dynamique.",
       "nonLexicalReformulationTest": {
-        "sourceReformulation": "Exercice répété et discipliné qui engage concrètement l'être.",
-        "targetReformulation": "Chemin où l'entraînement concret et l'éveil perceptif qu'il engendre doivent être développés ensemble.",
-        "result": "fragilizes",
-        "reason": "Le premier concept reste explicitement présent comme un aspect du second, mais la reformulation fait apparaître une structure moyen→éveil et non une simple relation partie-tout.",
-        "competingRelation": "related_to",
-        "whyCompetitorIsPlausible": "Le thème conjoint porte autant sur l'articulation entre entraînement et éveil que sur leur présence conjointe.",
-        "decisiveEvidence": "Le verset 24 parle néanmoins de deux aspects simultanés, ce qui maintient component_of comme hypothèse plus informative sans fermer la frontière."
+        "sourceReformulation": "Entraînement concret, répété et discipliné qui engage le corps et l'être dans une voie.",
+        "targetReformulation": "Chemin où un entraînement réglé fait émerger une perception plus éveillée des forces, mondes et effets de l'action, les deux devant progresser ensemble.",
+        "result": "passes-as-related",
+        "reason": "La relation reste forte après suppression du vocabulaire commun, mais elle apparaît comme moyen, condition et développement conjoint plutôt que comme inclusion partie-tout.",
+        "competingRelation": "component_of",
+        "whyCompetitorIsPlausible": "Le texte appelle explicitement exercice et conscience les deux aspects de l'enseignement.",
+        "decisiveEvidence": "Le même verset précise que la conscience naît de la pratique et de la discipline. Une relation générative entre notions nommées simultanément ne suffit pas à faire de chacune une composante autonome du concept composite."
       },
       "semanticClaim": false
     },
@@ -43,34 +43,35 @@
       "id": "case-conscience--pratique-et-conscience",
       "sourceThemeId": "conscience",
       "targetThemeId": "pratique-et-conscience",
-      "proposedRelationType": "component_of",
-      "confidence": "borderline-open",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal-needs-human-review",
       "evidenceByThemeId": {
         "conscience": [{"recordId": "book-07-psalm-026", "verseNumbers": [4, 5, 6, 7, 8, 9, 10, 11]}],
         "pratique-et-conscience": [{"recordId": "book-19-psalm-115", "verseNumbers": [23, 24, 25, 26, 29, 30, 31]}]
       },
-      "reviewNote": "La conscience est nommée comme second aspect de l'enseignement, mais elle est aussi explicitement décrite comme ce qui naît de la pratique et de la discipline. Le lien n'est donc pas celui de deux morceaux indépendants placés côte à côte.",
+      "reviewNote": "La conscience est le second aspect explicitement nommé, mais elle est surtout décrite comme ce qui naît de la pratique et de la discipline puis permet de percevoir réellement les mondes et influences. Elle est donc résultat transformateur et dimension corrélée, pas morceau indépendant assemblé avec la pratique.",
       "nonLexicalReformulationTest": {
         "sourceReformulation": "État d'éveil permettant de percevoir réellement les forces, les mondes et les effets de l'action.",
-        "targetReformulation": "Chemin où l'entraînement concret et l'éveil perceptif qu'il engendre doivent être développés ensemble.",
-        "result": "fragilizes",
-        "reason": "La reformulation conserve l'éveil comme dimension interne du chemin, mais fait également apparaître qu'il est un résultat transformateur de la discipline.",
-        "competingRelation": "related_to",
-        "whyCompetitorIsPlausible": "Une relation cause/effet ou condition/résultat peut être mieux décrite comme related_to si l'on refuse d'appeler composante tout concept explicitement nommé dans un thème relationnel.",
-        "decisiveEvidence": "Le verset 24 appelle explicitement exercice et conscience les deux aspects concernés simultanément ; la frontière reste toutefois ouverte."
+        "targetReformulation": "Chemin où un entraînement réglé fait émerger une perception plus éveillée des forces, mondes et effets de l'action, les deux devant progresser ensemble.",
+        "result": "passes-as-related",
+        "reason": "L'éveil demeure central au thème conjoint, mais sa fonction de résultat et de transformation empêche de le réduire à une composante statique.",
+        "competingRelation": "component_of",
+        "whyCompetitorIsPlausible": "La conscience est explicitement appelée l'un des deux aspects traités simultanément.",
+        "decisiveEvidence": "Le critère part-whole exige un constituant autonome du concept entier. Ici le texte formule une genèse : l'éveil naît du travail discipliné. related_to conserve ce rapport sans imposer une fausse architecture de composants."
       },
       "semanticClaim": false
     }
   ],
   "explicitDistinctions": {
     "equivalent_to": {"status": "rejected", "note": "Ni pratique ni conscience n'épuise le thème conjoint."},
-    "variant_of": {"status": "rejected", "note": "Le thème conjoint organise une relation entre deux dimensions plutôt qu'une reformulation d'une seule."},
+    "variant_of": {"status": "rejected", "note": "Le thème conjoint organise une relation dynamique entre deux notions plutôt qu'une reformulation d'une seule."},
     "broader_than": {"status": "not-retained"},
-    "component_of": {"status": "proposed-but-open", "themeIds": ["pratique", "conscience"]},
-    "related_to": {"status": "serious-competitor", "note": "La structure moyen→éveil rend related_to conceptuellement défendable malgré la formulation en deux aspects."}
+    "component_of": {"status": "rejected-after-causal-role-review", "note": "Être explicitement nommé comme aspect ne suffit pas lorsque le texte établit une relation moyen→résultat. Les deux notions ne sont pas présentées comme pièces autonomes d'un tout énumératif."},
+    "related_to": {"status": "proposed-for-both-pairs", "themeIds": ["pratique", "conscience"], "note": "related_to préserve la proximité forte, le développement simultané et la relation générative sans transformer cause, moyen ou résultat en composante."}
   },
   "semanticBoundary": {
-    "decisionRule": "Un thème A et B ne justifie component_of que si A et B sont réellement des dimensions constitutives du concept entier ; lorsqu'un terme est moyen, condition ou résultat de l'autre, related_to reste un concurrent sérieux même si le texte les appelle deux aspects.",
-    "status": "open-boundary"
+    "decisionRule": "Un thème A et B ne justifie component_of que si A et B sont réellement des constituants autonomes du concept entier. Si le corpus présente A comme moyen, condition ou cause de B, ou B comme résultat de A, préférer related_to même lorsque les deux sont appelés aspects et doivent être travaillés simultanément.",
+    "status": "resolved-toward-related",
+    "contrastCases": ["corps-ame-esprit", "union-et-soutien-mutuel", "union-et-force-collective", "relations-avec-les-regnes"]
   }
 }
