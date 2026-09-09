@@ -17,12 +17,14 @@ on:
       - "scripts/audit_theme_relation_risk_review_coverage.py"
       - "scripts/audit_theme_relation_review_queue.py"
       - "scripts/audit_theme_relation_review_pilot.py"
+      - "scripts/audit_theme_relation_general_review.py"
       - "scripts/audit_validated_theme_relations.py"
       - "data/thematic-index/theme-search-index.json"
       - "data/thematic-index/theme-quality-audit.json"
       - "data/thematic-index/themes/**"
       - "data/thematic-index/reviews/theme-relations-pilot.json"
       - "data/thematic-index/reviews/theme-relations-risk-review.json"
+      - "data/thematic-index/reviews/theme-relations-general-review.json"
       - "data/thematic-index/theme-relations-validated.json"
       - "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
       - ".github/workflows/audit-theme-relation-candidates.yml"
@@ -62,6 +64,9 @@ jobs:
       - name: Audit semantic review pilot
         run: python scripts/audit_theme_relation_review_pilot.py
 
+      - name: Audit diverse general semantic review
+        run: python scripts/audit_theme_relation_general_review.py
+
       - name: Audit canonical validated relation store
         run: python scripts/audit_validated_theme_relations.py
 
@@ -89,26 +94,6 @@ jobs:
           --theme oeuvres-et-au-dela --theme oeuvres --theme reciprocite-avec-la-mere --theme mere
           --max-occurrences 3
 
-      - name: Probe diverse evidence-ready relations
-        run: >-
-          python scripts/report_theme_relation_review_context.py
-          --theme corps --theme corps-ame-esprit
-          --theme terre --theme terre-eau-air-feu
-          --theme lumiere --theme apparences-et-fausse-lumiere
-          --theme dieux --theme idoles-et-faux-dieux
-          --theme conscience --theme pratique-et-conscience
-          --theme pensee --theme maitrise-pensee-parole
-          --max-occurrences 3
-
-      - name: Probe atomic component evidence
-        run: >-
-          python scripts/report_theme_relation_review_context.py
-          --theme ame --theme esprit
-          --theme eau --theme air --theme feu
-          --theme pratique
-          --theme parole --theme maitrise
-          --max-occurrences 3
-
       - name: Build compact general review evidence
         run: python scripts/report_theme_relation_general_evidence.py > /tmp/general-review-evidence.json
 
@@ -118,13 +103,6 @@ jobs:
           name: general-review-evidence
           path: /tmp/general-review-evidence.json
           retention-days: 1
-
-      - name: Probe diverse candidate structures
-        run: |
-          python scripts/report_theme_relation_candidates.py --theme corps-ame-esprit --limit 10
-          python scripts/report_theme_relation_candidates.py --theme terre-eau-air-feu --limit 10
-          python scripts/report_theme_relation_candidates.py --theme pratique-et-conscience --limit 10
-          python scripts/report_theme_relation_candidates.py --theme maitrise-pensee-parole --limit 10
 
       - name: Diagnose licorne theme candidate structure
         run: python scripts/report_theme_relation_candidates.py --theme union-pere-nature --limit 10
