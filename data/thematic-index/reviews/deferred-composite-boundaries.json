@@ -38,22 +38,24 @@
       "id": "deferred-esprit-et-corps--corps-ame-esprit",
       "sourceThemeId": "esprit-et-corps",
       "targetThemeId": "corps-ame-esprit",
-      "proposedRelationType": "component_of",
-      "confidence": "boundary-proposal-needs-human-review",
+      "proposedRelationType": "related_to",
+      "confidence": "unresolved-boundary-related-is-conservative",
       "evidenceByThemeId": {
         "esprit-et-corps": [{"recordId":"book-03-psalm-023","verseNumbers":[4,5,6,8,10,11]}],
         "corps-ame-esprit": [{"recordId":"book-06-psalm-042","verseNumbers":[4,5,6,7,8,9,10,11,12,13,14,15]}]
       },
-      "reviewNote": "Esprit et corps forme une structure relationnelle autonome où les deux réalités doivent être distinguées puis harmonieusement unies. Le triptyque Corps, âme et esprit articule explicitement ces deux réalités avec une troisième. Le vocabulaire partagé rend component_of tentant, mais le test conceptuel doit porter sur la relation elle-même, pas sur le fait que deux noms du triptyque réapparaissent dans le binôme.",
+      "reviewNote": "La revue adversariale ne permet plus de défendre component_of avec assez de robustesse. Esprit et corps décrit surtout l'unification harmonieuse de deux pôles ; Corps, âme et esprit décrit une architecture tripartite où les trois mondes doivent communiquer sans se confondre. Les deux concepts sont fortement liés, mais le second psaume n'atteste pas explicitement que la relation binaire d'unification constitue une sous-structure interne du triptyque.",
       "nonLexicalReformulationTest": {
-        "sourceReformulation": "Articulation harmonieuse entre le principe supérieur et son support incarné, après distinction de leurs fonctions.",
-        "targetReformulation": "Architecture de l'être humain en trois plans distincts qui doivent communiquer sans être confondus.",
-        "result": "borderline",
-        "reason": "La première reformulation décrit une relation dynamique entre deux pôles ; la seconde une architecture tripartite. La première peut participer à la seconde, mais elle n'est pas simplement l'une de ses trois constituantes. Le statut component_of est donc moins robuste que pour corps, âme ou esprit pris séparément.",
-        "closestCompetingType": "related_to",
-        "whyCompetingTypeRemainsPlausible": "La structure binaire et la structure tripartite organisent les mêmes dimensions humaines mais avec des objets sémantiques différents : relation harmonique d'un côté, architecture des plans de l'autre."
+        "sourceReformulation": "Unification harmonieuse entre un principe supérieur et son support incarné, obtenue après discernement de leurs fonctions.",
+        "targetReformulation": "Architecture humaine de trois plans distincts, chacun dans son monde, appelés à communiquer sans être mélangés.",
+        "result": "fragilizes-component",
+        "reason": "Une fois les noms communs retirés, le premier concept reste une relation dynamique à deux pôles alors que le second reste une architecture à trois plans. La relation partie-tout n'est plus démontrée par le sens seul.",
+        "closestCompetingType": "component_of",
+        "whyCompetingTypeRemainsPlausible": "Deux des trois dimensions de l'architecture sont précisément les pôles de la relation binaire, et une architecture peut contenir des relations entre ses constituants.",
+        "whyItCannotYetWin": "Le psaume du triptyque affirme la communication des trois plans mais ne singularise pas l'unification esprit-corps comme composante constitutive. Il manque donc l'attestation du lien relationnel lui-même, et non celle de ses deux pôles."
       },
       "rejectedRelationTypes": ["equivalent_to"],
+      "stillPlausibleRelationTypes": ["component_of","related_to"],
       "semanticClaim": false
     },
     {
@@ -83,6 +85,7 @@
     "A generic action or relation named inside a qualified theme is not automatically component_of; use broader_than only when the qualified concept remains a genuine specialization under non-lexical reformulation.",
     "A genuine semantic substructure may be component_of a larger composite only when corpus evidence preserves that substructure as part of the larger concept, not merely when its lexical constituents are present.",
     "Sharing several lexical constituents with a composite does not establish component_of when the smaller theme changes their relation or treats their union as the semantic focus.",
-    "A component judgment is stronger for autonomous constituents than for a relation among constituents; relational substructures require explicit evidence that the larger concept actually contains that relation."
+    "A component judgment is stronger for autonomous constituents than for a relation among constituents; relational substructures require explicit evidence that the larger concept actually contains that relation.",
+    "When component_of and related_to remain plausible after reformulation, prefer the conservative related_to proposal unless the larger concept explicitly preserves the smaller relation as an internal structure; record the stronger relation as still plausible rather than manufacturing certainty."
   ]
 }
