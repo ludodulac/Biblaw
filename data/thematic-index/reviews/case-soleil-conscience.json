@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "soleil-conscience",
+  "anchorLabel": "Soleil-conscience",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test symbolic-variant semantics where a qualified theme is explicitly used as an image of a broader concept in the same Psalm.",
+  "anchorEvidence": {
+    "recordId": "book-09-psalm-051",
+    "bookNumber": 9,
+    "psalmNumber": 51,
+    "psalmTitle": "Que la Lumière devienne une conscience réelle dans votre vie",
+    "verseNumbers": [1, 2, 4, 6, 7, 11, 15, 16, 18],
+    "canonicalTeaching": "La conscience est décrite comme lumière active, éveillée et orientante ; le soleil en est l'image rayonnante, féconde et éclairante."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-soleil-conscience--conscience",
+      "sourceThemeId": "soleil-conscience",
+      "targetThemeId": "conscience",
+      "proposedRelationType": "variant_of",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "soleil-conscience": [{"recordId": "book-09-psalm-051", "verseNumbers": [6, 7, 15, 16, 18]}],
+        "conscience": [{"recordId": "book-09-psalm-051", "verseNumbers": [1, 2, 4, 5, 6, 7, 11, 13, 14, 15, 16, 18]}]
+      },
+      "reviewNote": "Le psaume ne présente pas le soleil-conscience comme une réalité indépendante de la conscience : il utilise le soleil pour qualifier une conscience lumineuse, réchauffante, rayonnante et éveillante. La formulation symbolique conserve le même noyau sémantique mais accentue certaines propriétés ; variant_of est donc plus précis qu'equivalent_to et plus informatif que related_to.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "not-established", "note": "Le symbolisme solaire ajoute une modalité descriptive ; l'interchangeabilité globale des deux themeIds n'est pas démontrée."},
+    "variant_of": {"status": "proposed", "sourceThemeId": "soleil-conscience", "targetThemeId": "conscience"},
+    "broader_than": {"status": "not-retained", "note": "Le cas n'est pas présenté comme un sous-domaine autonome de la conscience mais comme sa formulation symbolique."},
+    "component_of": {"status": "rejected-for-this-pair"},
+    "related_to": {"status": "true-but-less-informative-than-variant_of"}
+  },
+  "transversalProfileEvidence": {
+    "reviewedOccurrences": [
+      {"themeId": "soleil-conscience", "bookNumber": 9, "psalmNumber": 51, "recordId": "book-09-psalm-051"},
+      {"themeId": "conscience", "bookNumber": 9, "psalmNumber": 51, "recordId": "book-09-psalm-051"}
+    ],
+    "observedVariationDimensions": [
+      "conscience as active light",
+      "solar imagery of radiance and warmth",
+      "awakening versus unconscious sleep",
+      "conscious orientation of destiny"
+    ],
+    "distributionAssessment": {"status": "not-yet-global", "note": "This study establishes local semantic structure, not the full corpus distribution of Conscience or Soleil-conscience."},
+    "evolutionAssessment": {"status": "not-established", "note": "No evolution claim is justified; corpus order is not historical chronology."}
+  }
+}
