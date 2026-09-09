@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "pensee-verticale",
+  "anchorLabel": "Pensée verticale",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test broader/specific semantics where the Psalm explicitly distinguishes a qualified mode of thought from thought in general.",
+  "anchorEvidence": {
+    "recordId": "book-07-psalm-029",
+    "bookNumber": 7,
+    "psalmNumber": 29,
+    "psalmTitle": "Redonnez à la pensée sa puissance créatrice divine",
+    "verseNumbers": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "canonicalTeaching": "Le psaume présente la pensée comme un monde vaste puis distingue la pensée horizontale d'une pensée verticale qui s'unit à l'univers et à l'essence sacrée."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-pensee--pensee-verticale",
+      "sourceThemeId": "pensee",
+      "targetThemeId": "pensee-verticale",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "pensee": [{"recordId": "book-07-psalm-029", "verseNumbers": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]}],
+        "pensee-verticale": [{"recordId": "book-07-psalm-029", "verseNumbers": [8, 9, 10, 11, 12, 14, 15, 16]}]
+      },
+      "reviewNote": "Le psaume pose d'abord la pensée comme domaine général puis oppose deux orientations internes, horizontale et verticale. Pensée verticale est donc un mode déterminé de la pensée, caractérisé par l'ouverture impersonnelle à l'univers et à l'essence supérieure. Pensée est plus général ; il ne s'agit ni d'une équivalence ni d'une simple variante de formulation.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "rejected-for-this-pair"},
+    "variant_of": {"status": "not-retained", "note": "Le texte distingue explicitement des modes de pensée différents ; le qualificatif vertical réduit l'extension conceptuelle."},
+    "broader_than": {"status": "proposed", "sourceThemeId": "pensee", "targetThemeId": "pensee-verticale"},
+    "component_of": {"status": "not-retained", "note": "La pensée générale n'est pas une composante interne de la pensée verticale ; elle en est le genre conceptuel plus large."},
+    "related_to": {"status": "true-but-less-informative-than-broader_than"}
+  },
+  "transversalProfileEvidence": {
+    "reviewedOccurrences": [
+      {"themeId": "pensee", "bookNumber": 7, "psalmNumber": 29, "recordId": "book-07-psalm-029"},
+      {"themeId": "pensee-verticale", "bookNumber": 7, "psalmNumber": 29, "recordId": "book-07-psalm-029"}
+    ],
+    "observedVariationDimensions": [
+      "thought as general living domain",
+      "horizontal thought oriented to material and superficial aims",
+      "vertical thought opened to the universe and sacred essence",
+      "creative power depending on orientation and content"
+    ],
+    "distributionAssessment": {"status": "not-yet-global", "note": "This study establishes a local hierarchy; the full Pensée family still requires a corpus-wide semantic pass."},
+    "evolutionAssessment": {"status": "not-established", "note": "No evolution claim is justified; corpus order is not historical chronology."}
+  }
+}
