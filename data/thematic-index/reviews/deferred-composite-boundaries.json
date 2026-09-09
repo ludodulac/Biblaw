@@ -5,7 +5,12 @@
   "semanticClaim": false,
   "requiresHumanApproval": true,
   "publicSearchEffect": false,
-  "purpose": "Persist three previously deferred semantic judgments that test different boundaries around lexical composites without modifying canonical relations or the earlier general review batch.",
+  "purpose": "Persist three semantic judgments that test different boundaries around lexical composites. Every judgment is additionally tested under reformulation without shared vocabulary, so lexical overlap cannot carry the proposed relation.",
+  "intellectualGuardrail": {
+    "question": "Would the proposed relation still be true if both themes were reformulated without vocabulary shared with the other theme?",
+    "compositeRule": "Never infer a relation from each word of a composite label. Judge the composite concept as a whole and the Psalm evidence that gives it structure.",
+    "failureMeaning": "If the relation disappears under non-lexical reformulation, lexical attraction is carrying too much of the judgment and the relation must be weakened, rejected or retyped."
+  },
   "decisions": [
     {
       "id": "deferred-maitrise--maitrise-pensee-parole",
@@ -18,6 +23,14 @@
         "maitrise-pensee-parole": [{"recordId":"book-21-psalm-152","verseNumbers":[13,14,15,16,17,18,28]}]
       },
       "reviewNote": "Maîtrise est attestée comme principe général de conscience et de gouvernement des forces. Maîtrise pensée-parole détermine deux objets précis de cette maîtrise. La relation général → spécifique est plus fidèle que component_of : la maîtrise elle-même n'est pas une pièce interne du thème qualifié.",
+      "nonLexicalReformulationTest": {
+        "sourceReformulation": "Gouvernement conscient des forces afin qu'elles accomplissent leur fonction sans envahissement intérieur.",
+        "targetReformulation": "Discipline appliquée à ce qui se forme intérieurement puis à ce qui est exprimé, afin d'en contrôler les effets.",
+        "result": "passes",
+        "reason": "Même sans les mots maîtrise, pensée ou parole, le second concept reste une application déterminée d'un principe général de gouvernement conscient. La relation ne dépend donc pas du mot répété dans les deux libellés.",
+        "closestCompetingType": "component_of",
+        "whyCompetingTypeFails": "Le principe général n'est pas une pièce constitutive du concept appliqué ; il en détermine le mode d'action."
+      },
       "rejectedRelationTypes": ["equivalent_to","component_of"],
       "semanticClaim": false
     },
@@ -26,12 +39,20 @@
       "sourceThemeId": "esprit-et-corps",
       "targetThemeId": "corps-ame-esprit",
       "proposedRelationType": "component_of",
-      "confidence": "strong-proposal-needs-human-review",
+      "confidence": "boundary-proposal-needs-human-review",
       "evidenceByThemeId": {
         "esprit-et-corps": [{"recordId":"book-03-psalm-023","verseNumbers":[4,5,6,8,10,11]}],
         "corps-ame-esprit": [{"recordId":"book-06-psalm-042","verseNumbers":[4,5,6,7,8,9,10,11,12,13,14,15]}]
       },
-      "reviewNote": "Esprit et corps forme une structure relationnelle autonome où les deux réalités doivent être distinguées puis harmonieusement unies. Le triptyque Corps, âme et esprit articule explicitement ces deux réalités avec une troisième, l'âme. Le sous-ensemble relationnel esprit-corps peut donc être proposé comme composante conceptuelle du triptyque, sans être équivalent au tout.",
+      "reviewNote": "Esprit et corps forme une structure relationnelle autonome où les deux réalités doivent être distinguées puis harmonieusement unies. Le triptyque Corps, âme et esprit articule explicitement ces deux réalités avec une troisième. Le vocabulaire partagé rend component_of tentant, mais le test conceptuel doit porter sur la relation elle-même, pas sur le fait que deux noms du triptyque réapparaissent dans le binôme.",
+      "nonLexicalReformulationTest": {
+        "sourceReformulation": "Articulation harmonieuse entre le principe supérieur et son support incarné, après distinction de leurs fonctions.",
+        "targetReformulation": "Architecture de l'être humain en trois plans distincts qui doivent communiquer sans être confondus.",
+        "result": "borderline",
+        "reason": "La première reformulation décrit une relation dynamique entre deux pôles ; la seconde une architecture tripartite. La première peut participer à la seconde, mais elle n'est pas simplement l'une de ses trois constituantes. Le statut component_of est donc moins robuste que pour corps, âme ou esprit pris séparément.",
+        "closestCompetingType": "related_to",
+        "whyCompetingTypeRemainsPlausible": "La structure binaire et la structure tripartite organisent les mêmes dimensions humaines mais avec des objets sémantiques différents : relation harmonique d'un côté, architecture des plans de l'autre."
+      },
       "rejectedRelationTypes": ["equivalent_to"],
       "semanticClaim": false
     },
@@ -46,13 +67,22 @@
         "terre-eau-air-feu": [{"recordId":"book-19-psalm-115","verseNumbers":[20,21,26,27,29,30,31]}]
       },
       "reviewNote": "Eau et air est attesté comme union opératoire de deux éléments, décrite comme un agent magique lié à la créativité et à la régénération. Terre-eau-air-feu traite au contraire les quatre éléments comme étapes ou fonctions distinctes d'un parcours. Le chevauchement des éléments ne suffit donc pas à faire du thème relationnel Eau et air une composante du thème à quatre éléments.",
+      "nonLexicalReformulationTest": {
+        "sourceReformulation": "Alliance opératoire de deux puissances complémentaires produisant créativité et régénération.",
+        "targetReformulation": "Parcours initiatique structuré par quatre fonctions élémentaires distinctes et successives.",
+        "result": "passes-as-related-only",
+        "reason": "Les deux concepts restent voisins par leur cosmologie des forces naturelles, mais aucune inclusion conceptuelle ne survit lorsque les noms des éléments disparaissent.",
+        "closestCompetingType": "component_of",
+        "whyCompetingTypeFails": "Une union opératoire de deux puissances n'est pas une pièce de la séquence à quatre fonctions simplement parce que deux noms matériels se recouvrent."
+      },
       "rejectedRelationTypes": ["equivalent_to","component_of"],
       "semanticClaim": false
     }
   ],
   "boundaryRules": [
-    "A generic action or relation named inside a qualified theme is not automatically component_of; use broader_than when the qualified theme specializes its scope.",
-    "A genuine semantic substructure may be component_of a larger composite when corpus evidence preserves it as an autonomous relation and the larger theme explicitly adds further constituent structure.",
-    "Sharing several lexical constituents with a composite does not establish component_of when the smaller theme changes their relation or treats their union as the semantic focus."
+    "A generic action or relation named inside a qualified theme is not automatically component_of; use broader_than only when the qualified concept remains a genuine specialization under non-lexical reformulation.",
+    "A genuine semantic substructure may be component_of a larger composite only when corpus evidence preserves that substructure as part of the larger concept, not merely when its lexical constituents are present.",
+    "Sharing several lexical constituents with a composite does not establish component_of when the smaller theme changes their relation or treats their union as the semantic focus.",
+    "A component judgment is stronger for autonomous constituents than for a relation among constituents; relational substructures require explicit evidence that the larger concept actually contains that relation."
   ]
 }
