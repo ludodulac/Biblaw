@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "nutrition-subtile",
+  "anchorLabel": "Nutrition subtile",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test the boundary between equivalence, variant and broader/narrower relations when two search themes share the same observed formulation.",
+  "sourcePolicy": [
+    "data/thematic-index/books/book-*.json",
+    "data/corpus/books/book-*/psalm-*.json",
+    "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
+  ],
+  "anchorEvidence": {
+    "recordId": "book-18-psalm-129",
+    "bookNumber": 18,
+    "psalmNumber": 129,
+    "psalmTitle": "Nutrition et digestion: les cycles de construction du corps subtil",
+    "verseNumbers": [5, 8, 10, 11, 12, 17, 21, 26, 28],
+    "canonicalTeaching": "La nutrition ne concerne pas seulement la nourriture physique : pensées, états d'âme, volonté, actes, relations, associations et perceptions nourrissent aussi les corps subtils et la destinée.",
+    "observedStructure": [
+      "non-physical-nourishment",
+      "assimilation-and-digestion",
+      "thoughts-feelings-actions-as-food",
+      "construction-of-subtle-body-and-destiny"
+    ]
+  },
+  "relationAssessments": [
+    {
+      "id": "case-nutrition--nutrition-subtile",
+      "sourceThemeId": "nutrition",
+      "targetThemeId": "nutrition-subtile",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "nutrition": [
+          {"recordId": "book-11-psalm-063", "verseNumbers": [1, 3, 4, 6, 7, 8, 9, 18, 22, 23, 24]},
+          {"recordId": "book-17-psalm-111", "verseNumbers": [4, 5, 6, 7, 17, 21, 23, 25, 32, 39]}
+        ],
+        "nutrition-subtile": [
+          {"recordId": "book-18-psalm-129", "verseNumbers": [5, 8, 10, 11, 12, 17, 21, 26, 28]}
+        ]
+      },
+      "reviewNote": "Nutrition est utilisée comme loi générale qui inclut nourriture physique, expériences, pensées, concepts et nourritures spirituelles. Nutrition subtile isole la partie non physique de cette loi et décrit précisément les pensées, états d'âme, paroles, actes, relations et associations comme aliments. La relation général → spécifique est donc plus précise qu'une équivalence.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {
+      "status": "rejected-for-this-pair",
+      "note": "Le partage de la formulation « Nutrition subtile » dans une occurrence du themeId nutrition ne suffit pas : le champ de nutrition est plus large et comprend aussi explicitement la nourriture physique."
+    },
+    "variant_of": {
+      "status": "not-retained",
+      "note": "La différence n'est pas seulement une reformulation contextuelle ; nutrition-subtile sélectionne un sous-domaine sémantique du thème général."
+    },
+    "broader_than": {
+      "status": "proposed",
+      "sourceThemeId": "nutrition",
+      "targetThemeId": "nutrition-subtile"
+    },
+    "component_of": {
+      "status": "not-retained",
+      "note": "Nutrition subtile n'est pas traitée comme une pièce constitutive de Nutrition, mais comme une spécialisation de son champ."
+    },
+    "related_to": {
+      "status": "true-but-less-informative-than-broader-than"
+    }
+  },
+  "transversalProfileEvidence": {
+    "reviewedOccurrences": [
+      {"themeId": "nutrition", "bookNumber": 11, "psalmNumber": 63, "recordId": "book-11-psalm-063", "observedLabel": "Nutrition subtile"},
+      {"themeId": "nutrition", "bookNumber": 17, "psalmNumber": 111, "recordId": "book-17-psalm-111", "observedLabel": "Nutrition"},
+      {"themeId": "nutrition-subtile", "bookNumber": 18, "psalmNumber": 129, "recordId": "book-18-psalm-129", "observedLabel": "Nutrition subtile"}
+    ],
+    "observedVariationDimensions": [
+      "physical food versus intellectual and spiritual nourishment",
+      "nutrition as general law versus explicit subtle nutrition",
+      "selection of what is absorbed versus digestion and construction of subtle bodies",
+      "individual nourishment versus effects on destiny and worlds"
+    ],
+    "distributionAssessment": {
+      "status": "partial",
+      "note": "Three reviewed attestations occur in separated books 11, 17 and 18, but the complete semantic family has not yet been exhaustively reviewed."
+    },
+    "evolutionAssessment": {
+      "status": "not-established",
+      "note": "The later corpus position develops digestion and subtle-body construction more explicitly, but this is not enough to claim an evolution. Corpus order is not historical chronology."
+    }
+  }
+}
