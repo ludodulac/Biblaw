@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-relation-review-pilot",
+  "status": "proposed-review-decisions",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test whether structural relation candidates can be retyped or rejected from attested Psalm evidence before any relation is promoted to canonical validated data.",
+  "sourcePolicy": [
+    "data/thematic-index/books/book-*.json",
+    "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
+  ],
+  "decisions": [
+    {
+      "id": "pilot-union--union-pere-nature",
+      "candidate": {
+        "sourceThemeId": "union",
+        "targetThemeId": "union-pere-nature",
+        "candidateRelationType": "component_candidate",
+        "candidateBasis": "normalized-meaningful-token-subset"
+      },
+      "candidateDisposition": "retyped",
+      "proposedRelation": {
+        "sourceThemeId": "union",
+        "targetThemeId": "union-pere-nature",
+        "relationType": "broader_than"
+      },
+      "evidence": {
+        "sourceOccurrences": [
+          {"recordId": "book-03-psalm-010", "verseNumbers": [1, 7, 8, 9, 11, 12, 14, 18, 19]}
+        ],
+        "targetOccurrences": [
+          {"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}
+        ]
+      },
+      "reviewNote": "Le thème Union couvre l’union autour d’un idéal commun de façon générale. Dans le psaume 24 du livre 5, l’union est spécifiée par deux orientations précises, vers le Père et vers la nature. La relation proposée est donc plus général → plus spécifique, pas composante → tout.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "pilot-pere--union-pere-nature",
+      "candidate": {
+        "sourceThemeId": "pere",
+        "targetThemeId": "union-pere-nature",
+        "candidateRelationType": "component_candidate",
+        "candidateBasis": "normalized-meaningful-token-subset"
+      },
+      "candidateDisposition": "rejected",
+      "proposedRelation": {
+        "sourceThemeId": "pere",
+        "targetThemeId": "union-pere-nature",
+        "relationType": "related_to"
+      },
+      "evidence": {
+        "sourceOccurrences": [
+          {"recordId": "book-01-psalm-007", "verseNumbers": [1, 2, 3, 7, 11, 12]}
+        ],
+        "targetOccurrences": [
+          {"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}
+        ]
+      },
+      "reviewNote": "Père est un thème autonome dont le champ dépasse très largement cette formulation. Dans Union au Père et à la nature, le Père est un pôle de la relation décrite ; le sous-ensemble lexical ne suffit pas à en faire une composante thématique au sens canonique. Une relation distincte et attestée est plus prudente.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "pilot-nature--union-pere-nature",
+      "candidate": {
+        "sourceThemeId": "nature",
+        "targetThemeId": "union-pere-nature",
+        "candidateRelationType": "component_candidate",
+        "candidateBasis": "normalized-meaningful-token-subset"
+      },
+      "candidateDisposition": "rejected",
+      "proposedRelation": {
+        "sourceThemeId": "nature",
+        "targetThemeId": "union-pere-nature",
+        "relationType": "related_to"
+      },
+      "evidence": {
+        "sourceOccurrences": [
+          {"recordId": "book-01-psalm-002", "verseNumbers": [1, 3, 4, 5, 6]}
+        ],
+        "targetOccurrences": [
+          {"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}
+        ]
+      },
+      "reviewNote": "Nature est un thème autonome décrivant un monde vivant et communicant. Dans le thème composite du psaume 24, elle est l’un des pôles auxquels le corps doit s’unir. Le mot partagé signale une relation réelle, mais ne prouve pas component_of entre les deux entités thématiques.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "pilot-alliance--alliance-de-lumiere",
+      "candidate": {
+        "sourceThemeId": "alliance",
+        "targetThemeId": "alliance-de-lumiere",
+        "candidateRelationType": "component_candidate",
+        "candidateBasis": "normalized-meaningful-token-subset"
+      },
+      "candidateDisposition": "retyped",
+      "proposedRelation": {
+        "sourceThemeId": "alliance",
+        "targetThemeId": "alliance-de-lumiere",
+        "relationType": "broader_than"
+      },
+      "evidence": {
+        "sourceOccurrences": [
+          {"recordId": "book-02-psalm-002", "verseNumbers": [7, 8, 9, 11]}
+        ],
+        "targetOccurrences": [
+          {"recordId": "book-20-psalm-112", "verseNumbers": [1, 9, 17, 22, 53, 57, 58]}
+        ]
+      },
+      "reviewNote": "Alliance désigne dans plusieurs psaumes une relation avec des principes ou êtres divins. Alliance de Lumière en est une formulation plus déterminée, rattachée dans le psaume 112 à la Tradition, aux Sceaux, aux règnes et à une communauté organisée. Le rapport général/spécifique est plus adapté que component_of.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "pilot-lumiere--alliance-de-lumiere",
+      "candidate": {
+        "sourceThemeId": "lumiere",
+        "targetThemeId": "alliance-de-lumiere",
+        "candidateRelationType": "component_candidate",
+        "candidateBasis": "normalized-meaningful-token-subset"
+      },
+      "candidateDisposition": "rejected",
+      "proposedRelation": {
+        "sourceThemeId": "lumiere",
+        "targetThemeId": "alliance-de-lumiere",
+        "relationType": "related_to"
+      },
+      "evidence": {
+        "sourceOccurrences": [
+          {"recordId": "book-05-psalm-037", "verseNumbers": [1, 2, 3, 4, 9, 10, 11, 13, 14]}
+        ],
+        "targetOccurrences": [
+          {"recordId": "book-20-psalm-112", "verseNumbers": [1, 9, 17, 22, 53, 57, 58]}
+        ]
+      },
+      "reviewNote": "Lumière est un thème autonome de vie, acte et responsabilité. Alliance de Lumière décrit une alliance déterminée qui doit garder une place terrestre à la Lumière. La présence du mot Lumière dans le libellé ne transforme pas le thème Lumière en composante sémantique de l’entité Alliance de Lumière.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "pilot-nature--nature-vivante",
+      "candidate": {
+        "sourceThemeId": "nature",
+        "targetThemeId": "nature-vivante",
+        "candidateRelationType": "component_candidate",
+        "candidateBasis": "normalized-meaningful-token-subset"
+      },
+      "candidateDisposition": "retyped",
+      "proposedRelation": {
+        "sourceThemeId": "nature-vivante",
+        "targetThemeId": "nature",
+        "relationType": "variant_of"
+      },
+      "evidence": {
+        "sourceOccurrences": [
+          {"recordId": "book-01-psalm-002", "verseNumbers": [1, 3, 4, 5, 6]}
+        ],
+        "targetOccurrences": [
+          {"recordId": "book-11-psalm-063", "verseNumbers": [1, 2, 3, 8, 11, 12, 13, 14, 15, 18, 19, 20, 21, 24, 25, 26, 27, 28]}
+        ]
+      },
+      "reviewNote": "Les analyses de Nature la décrivent déjà comme monde vivant qui communique ; Nature vivante accentue cette même propriété en présentant la nature comme livre vivant de la sagesse. Une variante contextuelle est proposée plutôt qu’une relation de composante. L’orientation proposée est Nature vivante → Nature.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    }
+  ]
+}
