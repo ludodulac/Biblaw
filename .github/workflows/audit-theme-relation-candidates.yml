@@ -99,5 +99,12 @@ jobs:
           --theme pensee --theme maitrise-pensee-parole
           --max-occurrences 3
 
+      - name: Probe diverse candidate structures
+        run: |
+          python scripts/report_theme_relation_candidates.py --theme corps-ame-esprit --limit 10
+          python scripts/report_theme_relation_candidates.py --theme terre-eau-air-feu --limit 10
+          python scripts/report_theme_relation_candidates.py --theme pratique-et-conscience --limit 10
+          python scripts/report_theme_relation_candidates.py --theme maitrise-pensee-parole --limit 10
+
       - name: Diagnose licorne theme candidate structure
         run: python scripts/report_theme_relation_candidates.py --theme union-pere-nature --limit 10
