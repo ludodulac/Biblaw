@@ -95,6 +95,20 @@ jobs:
           --theme oeuvres-et-au-dela --theme oeuvres --theme reciprocite-avec-la-mere --theme mere
           --max-occurrences 3
 
+      - name: Probe alias-family semantic evidence
+        run: >-
+          python scripts/report_theme_relation_review_context.py
+          --theme nutrition --theme nutrition-subtile
+          --theme service --theme service-du-monde-divin
+          --max-occurrences 5 > /tmp/alias-family-evidence.json
+
+      - name: Upload alias-family semantic evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: alias-family-evidence
+          path: /tmp/alias-family-evidence.json
+          retention-days: 1
+
       - name: Build compact general review evidence
         run: python scripts/report_theme_relation_general_evidence.py > /tmp/general-review-evidence.json
 
