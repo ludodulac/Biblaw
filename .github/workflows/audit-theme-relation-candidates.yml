@@ -6,6 +6,7 @@ on:
       - work/theme-relation-candidates
     paths:
       - "scripts/report_theme_relation_candidates.py"
+      - "scripts/report_theme_relation_candidate_risks.py"
       - "scripts/report_theme_relation_review_context.py"
       - "scripts/report_theme_layer_coverage.py"
       - "scripts/report_theme_alias_collisions.py"
@@ -51,6 +52,9 @@ jobs:
 
       - name: Report exact alias collisions
         run: python scripts/report_theme_alias_collisions.py
+
+      - name: Report structural candidate risks
+        run: python scripts/report_theme_relation_candidate_risks.py
 
       - name: Report bounded semantic review evidence
         run: >-
