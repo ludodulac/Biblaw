@@ -30,11 +30,10 @@
           {"recordId": "book-20-psalm-104", "verseNumbers": [2, 3, 4, 5, 6, 8, 9, 11, 12, 18]}
         ],
         "pensee-vivante": [
-          {"recordId": "book-19-psalm-102", "verseNumbers": [1, 2, 3, 8]},
-          {"recordId": "book-05-psalm-038", "verseNumbers": [3, 4]}
+          {"recordId": "book-19-psalm-102", "verseNumbers": [1, 2, 3, 8]}
         ]
       },
-      "reviewNote": "Le psaume 102 donne localement un noyau très proche entre Pensée et Pensée vivante, mais le passage transversal du psaume 38 tranche la frontière : le centre de la pensée peut accueillir un savoir vivant ou, au contraire, un savoir intellectuel mort et éteint. Le psaume 104 distingue encore pensée réelle, pensée abstraite et formes-pensées limitées. Pensée vivante sélectionne donc un état ou mode qualifié au sein d'un concept de pensée plus étendu.",
+      "reviewNote": "Le psaume 102 donne localement un noyau très proche entre Pensée et Pensée vivante. La revue transversale du thème général tranche cependant la frontière : le psaume 38 montre que le centre de la pensée peut accueillir un savoir vivant ou, au contraire, un savoir intellectuel mort et éteint ; le psaume 104 distingue encore pensée réelle, pensée abstraite et formes-pensées limitées. Ces passages sont des preuves du champ de Pensée et non des attestations supplémentaires du themeId Pensée vivante. La cible sélectionne donc un état ou mode qualifié au sein d'un concept de pensée plus étendu.",
       "lexicalIndependenceTest": {
         "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
         "sourceReformulation": "Activité et centre mental pouvant être mécaniques, abstraits, limités, éveillés, créateurs ou reliés à une intelligence supérieure.",
@@ -45,7 +44,7 @@
       "closestCompetitor": {
         "relationType": "variant_of",
         "whyPlausible": "Dans le psaume 102, la pensée elle-même est décrite comme vivante et agissante, ce qui peut donner l'impression que vivant explicite seulement une propriété intrinsèque.",
-        "decisiveTest": "Chercher des usages du thème général où cette propriété n'est pas constitutive. Le psaume 38 oppose explicitement savoir vivant et savoir intellectuel mort au sein du centre de la pensée, et le psaume 104 distingue plusieurs modes mentaux limités ou abstraits. Cette variation d'état rend variant_of trop large."
+        "decisiveTest": "Chercher des usages attestés du thème général où cette propriété n'est pas constitutive. Le psaume 38 oppose explicitement savoir vivant et savoir intellectuel mort dans le centre de la pensée, et le psaume 104 distingue plusieurs modes mentaux limités ou abstraits. Cette variation d'état rend variant_of trop large sans convertir l'occurrence lexicale du psaume 38 en attestation du thème qualifié."
       },
       "semanticClaim": false
     }
@@ -60,7 +59,6 @@
   "transversalProfileEvidence": {
     "reviewedOccurrences": [
       {"themeId": "pensee", "bookNumber": 5, "psalmNumber": 38, "recordId": "book-05-psalm-038"},
-      {"themeId": "pensee-vivante", "bookNumber": 5, "psalmNumber": 38, "recordId": "book-05-psalm-038"},
       {"themeId": "pensee-vivante", "bookNumber": 19, "psalmNumber": 102, "recordId": "book-19-psalm-102"},
       {"themeId": "pensee", "bookNumber": 19, "psalmNumber": 102, "recordId": "book-19-psalm-102"},
       {"themeId": "pensee", "bookNumber": 20, "psalmNumber": 104, "recordId": "book-20-psalm-104"}
@@ -72,12 +70,12 @@
       "real versus abstract thought",
       "thought as cause of action and destiny"
     ],
-    "distributionAssessment": {"status": "bounded-transversal-evidence-sufficient-for-proposal", "note": "Three distinct psalms show that the general thought concept varies across states while living thought retains a positive qualification."},
+    "distributionAssessment": {"status": "bounded-transversal-evidence-sufficient-for-proposal", "note": "Three distinct psalms show that the attested general thought concept varies across states while the qualified theme retains its canonical anchor in psalm 102."},
     "evolutionAssessment": {"status": "not-established", "note": "No evolution claim is justified; corpus order is not historical chronology."}
   },
   "semanticBoundary": {
     "decisionRule": "Variant_of ne doit pas servir de refuge entre équivalence et spécialisation. Si le thème général admet des états qui ne satisfont pas le qualificatif, et que ce qualificatif définit un mode stable identifiable après reformulation, retenir broader_than du général vers le qualifié.",
     "contrastCases": ["nature-vivante", "soleil-conscience", "pensee-verticale"],
-    "lexicalGuardrail": "Un même adjectif peut avoir des fonctions différentes selon le concept : vivant explicite une propriété constitutive dans Nature vivante mais sélectionne ici un état qualifié parmi plusieurs modes de pensée."
+    "lexicalGuardrail": "Un même adjectif peut avoir des fonctions différentes selon le concept : vivant explicite une propriété constitutive dans Nature vivante mais sélectionne ici un état qualifié parmi plusieurs modes de pensée. Une occurrence textuelle du libellé qualifié ne doit jamais être convertie en attestation de themeId sans preuve dans l'index thématique."
   }
 }
