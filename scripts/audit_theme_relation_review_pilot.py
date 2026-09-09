@@ -2,8 +2,8 @@
 """Audit the noncanonical semantic relation review pilot.
 
 The pilot must stay review-only: no validated relation, no semantic claim and no
-public search effect. It must also prove that structural candidates can be both
-retyped and rejected rather than automatically accepted as components.
+public search effect. It must prove that structural candidates can be accepted,
+retyped or rejected rather than automatically treated as components.
 
 Every evidence reference is checked against the existing per-book thematic analyses.
 """
@@ -22,7 +22,7 @@ ALLOWED_RELATION_TYPES = {
     "component_of",
     "related_to",
 }
-ALLOWED_DISPOSITIONS = {"retyped", "rejected"}
+ALLOWED_DISPOSITIONS = {"accepted", "retyped", "rejected"}
 
 
 def build_attested_occurrences() -> dict[tuple[str, str], set[int]]:
@@ -82,6 +82,10 @@ def main() -> None:
         relation_type = proposed.get("relationType")
         assert relation_type in ALLOWED_RELATION_TYPES, f"invalid relation type in {item_id}: {relation_type}"
         proposed_types.add(relation_type)
+        if disposition == "accepted":
+            assert relation_type == "component_of", (
+                f"accepted structural candidate must remain component_of in this pilot: {item_id}"
+            )
 
         assert set(evidence_by_theme) == candidate_ids, (
             f"evidence keys must match reviewed theme ids in {item_id}: "
@@ -105,17 +109,22 @@ def main() -> None:
         assert item.get("requiresHumanApproval") is True
         assert item.get("relationStatus") != "relation_validated"
 
+    assert "accepted" in dispositions, "pilot must demonstrate a positive component candidate"
     assert "retyped" in dispositions, "pilot must demonstrate candidate retyping"
     assert "rejected" in dispositions, "pilot must demonstrate candidate rejection"
+    assert "component_of" in proposed_types, "pilot should cover an attested component relation"
     assert "broader_than" in proposed_types, "pilot should cover general/specific reasoning"
     assert "related_to" in proposed_types, "pilot should cover distinct-but-related reasoning"
     assert "variant_of" in proposed_types, "pilot should cover contextual variation reasoning"
+    assert "equivalent_to" not in proposed_types, (
+        "pilot must not invent equivalence merely to cover every type; equivalence needs corpus proof"
+    )
 
     print(
         "Theme relation review pilot OK: "
         f"{len(decisions)} proposed decisions; {evidence_reference_count} attested evidence refs; "
         f"dispositions={sorted(dispositions)}; types={sorted(proposed_types)}; "
-        "no validated relation and no public search effect"
+        "equivalence intentionally unclaimed; no validated relation and no public search effect"
     )
 
 
