@@ -29,7 +29,7 @@ Les workflows existants possèdent déjà plusieurs protections : préflight FAS
 
 Aucune modification de ces garde-fous n’a été faite faute de preuve d’un défaut actuel.
 
-Pour le nouveau diagnostic de relations thématiques, un workflow dédié de branche a été ajouté avec un timeout de 2 minutes et deux commandes Python ciblées seulement. Aucun générateur et aucun FULL n’y sont appelés.
+Pour le nouveau diagnostic de relations thématiques, un workflow dédié de branche a été ajouté avec un timeout de 2 minutes. Aucun générateur et aucun FULL n’y sont appelés.
 
 ## Diagnostic réel du cas « licorne »
 
@@ -123,13 +123,9 @@ Workflow : `.github/workflows/audit-theme-relation-candidates.yml`.
 - timeout : 2 minutes ;
 - aucun générateur ;
 - aucun FULL ;
-- audit et diagnostic du cas licorne uniquement.
+- audits et diagnostics bornés uniquement.
 
-Run 1 : succès.
-
-Run 2, après ajout des statistiques de lot : succès.
-
-Le calcul Python du lot est de l’ordre de quelques dixièmes de seconde ; le temps principal du workflow est le checkout/setup GitHub.
+Les premiers runs ont validé le rapporteur, les statistiques de lot et la couverture des couches. Le calcul Python reste très court ; le temps principal du workflow reste le checkout/setup GitHub.
 
 ## Mesure du phénomène sur les 186 composites existants
 
@@ -185,7 +181,40 @@ Les 14 identifiants éditoriaux seuls sont actuellement : `fidelite-et-infidelit
 
 Conséquence : toute future relation persistée devra déclarer explicitement à quelle couche appartient chaque extrémité. Pour le premier graphe exploitable par la recherche, les extrémités doivent rester des `themeId` réellement présents dans l’index issu des analyses par psaume. Les fiches éditoriales peuvent fournir du contexte et des hypothèses, mais ne doivent pas être injectées silencieusement comme thèmes de recherche.
 
-Le probe qui a exposé cette frontière a produit un échec ciblé attendu (`Unknown theme id: fidelite-et-infidelite`) sans affecter l’audit principal. Le workflow a ensuite été corrigé pour mesurer la couverture des couches explicitement ; le run n°4 est terminé avec succès.
+## Lot pilote de revue sémantique
+
+Un outil ciblé, `scripts/report_theme_relation_review_context.py`, parcourt uniquement les 44 analyses thématiques par livre et restitue un nombre borné d’occurrences attestées pour quelques `themeId` : psaume, importance, directness, versets et enseignement. Il ne génère rien et ne valide aucune relation.
+
+Le premier lot est stocké dans `data/thematic-index/reviews/theme-relations-pilot.json`. Il reste volontairement non canonique :
+
+- `status: proposed-review-decisions` ;
+- `semanticClaim: false` ;
+- `requiresHumanApproval: true` ;
+- `publicSearchEffect: false`.
+
+Six décisions proposées servent de sentinelles sémantiques :
+
+- `union` → `union-pere-nature` : la candidature `component_candidate` est retypée en `broader_than` ;
+- `pere` ↔ `union-pere-nature` : la candidature `component_candidate` est rejetée ; `related_to` est proposé ;
+- `nature` ↔ `union-pere-nature` : même rejet prudent de `component_of`, avec `related_to` proposé ;
+- `alliance` → `alliance-de-lumiere` : retypée en `broader_than` ;
+- `lumiere` ↔ `alliance-de-lumiere` : `component_candidate` rejeté, `related_to` proposé ;
+- `nature-vivante` → `nature` : la candidature initiale issue de `nature` / `nature-vivante` est retypée en `variant_of` avec direction explicite.
+
+Ce lot démontre une propriété essentielle : le générateur lexical n’est pas seulement capable de produire des cas plausibles ; la couche de revue peut aussi corriger le type proposé et rejeter la lecture « composante » lorsqu’elle est sémantiquement trompeuse.
+
+Le schéma de preuve a été corrigé avant généralisation : les preuves sont indexées par `themeId` (`evidenceByThemeId`) plutôt que par `source/target`, afin de rester non ambiguës lorsqu’une relation directionnelle proposée inverse l’orientation de la candidature initiale.
+
+`scripts/audit_theme_relation_review_pilot.py` vérifie maintenant :
+
+- que le lot reste non canonique et sans effet recherche ;
+- qu’il contient à la fois des candidatures retypées et rejetées ;
+- que les types proposés appartiennent au contrat ;
+- que chaque paire proposée conserve exactement les deux mêmes thèmes que la candidature examinée ;
+- que chaque référence de preuve correspond réellement au bon `themeId` dans le bon `recordId` des analyses thématiques ;
+- que les versets cités sont réellement présents dans l’occurrence thématique attestée.
+
+Le run TARGETED n°8 (`Verify pilot evidence against thematic analyses`) est terminé avec succès sur toutes les étapes. Aucun FULL n’a été nécessaire.
 
 ## Ce qui n’a volontairement pas été fait
 
@@ -196,19 +225,11 @@ Le probe qui a exposé cette frontière a produit un échec ciblé attendu (`Unk
 - aucune modification de la recherche publique ;
 - aucune modification de l’interface ;
 - aucune introduction transversale générée par IA ;
-- aucune promotion automatique de candidat en relation validée.
+- aucune promotion automatique de candidat en relation validée ;
+- aucune décision du lot pilote n’est encore déclarée `relation_validated`.
 
 ## Prochaine frontière
 
-Avant toute utilisation dans la recherche, il faut constituer un petit lot de relations examinées manuellement à partir de thèmes très différents et vérifier la capacité du modèle à distinguer :
+Le premier verrou sémantique est maintenant explicite : les six décisions du pilote doivent rester des **propositions examinables** tant qu’elles n’ont pas reçu une approbation éditoriale humaine. Une fois un petit sous-ensemble approuvé, l’étape suivante sera de définir le stockage minimal des `relation_validated`, avec preuves par `themeId`, statut de validation et audit de non-régression, toujours sans modifier la recherche publique.
 
-- équivalence réelle ;
-- variante ;
-- relation plus général / plus spécifique ;
-- composante ;
-- thème lié mais distinct ;
-- candidat rejeté.
-
-Ce lot devra utiliser les contextes de psaumes, versets justificatifs et enseignements déjà présents. Les extrémités du premier lot devront être des `themeId` présents dans l’index de recherche ; les fiches éditoriales non recouvrantes serviront de contexte de recherche seulement.
-
-Ce n’est qu’après cette preuve que la représentation persistée des relations validées et son exploitation par la recherche devront être implémentées.
+Après seulement cette étape, on pourra tester une traversée additive de relations validées dans la recherche, d’abord derrière un diagnostic ou une vue séparée, avant toute modification du comportement utilisateur.
