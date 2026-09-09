@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "service-du-monde-divin",
+  "anchorLabel": "Service du monde divin",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test a clear broader/specific relation on a family whose general theme already spans service to others, the Light, the Father and a higher work.",
+  "sourcePolicy": [
+    "data/thematic-index/books/book-*.json",
+    "data/corpus/books/book-*/psalm-*.json",
+    "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
+  ],
+  "anchorEvidence": {
+    "recordId": "book-22-psalm-140",
+    "bookNumber": 22,
+    "psalmNumber": 140,
+    "psalmTitle": "De la servitude au service divin",
+    "verseNumbers": [3, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 23],
+    "canonicalTeaching": "Le service du monde divin est un échange où l'homme reçoit une volonté ou une semence supérieure, lui donne un corps et la fait fructifier pour l'universel au lieu de la détourner vers son intérêt personnel.",
+    "observedStructure": [
+      "service-to-higher-world",
+      "receive-and-give",
+      "embody-higher-will",
+      "universal-work-over-personal-interest",
+      "fruitfulness-through-service"
+    ]
+  },
+  "relationAssessments": [
+    {
+      "id": "case-service--service-du-monde-divin",
+      "sourceThemeId": "service",
+      "targetThemeId": "service-du-monde-divin",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "service": [
+          {"recordId": "book-02-psalm-004", "verseNumbers": [1, 2, 3]},
+          {"recordId": "book-03-psalm-007", "verseNumbers": [2, 3, 9]},
+          {"recordId": "book-11-psalm-060", "verseNumbers": [1, 2, 3, 4, 5, 7, 8, 9, 10]},
+          {"recordId": "book-11-psalm-074", "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 21, 23, 24, 25, 26]},
+          {"recordId": "book-19-psalm-111", "verseNumbers": [7, 14, 15, 16, 17, 19, 22]}
+        ],
+        "service-du-monde-divin": [
+          {"recordId": "book-22-psalm-140", "verseNumbers": [3, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 23]}
+        ]
+      },
+      "reviewNote": "Service est attesté dans plusieurs directions : attention aux besoins d'autrui, disponibilité pour la Lumière, service du monde divin, service du Père et accomplissement d'une œuvre plus grande que la personne. Service du monde divin fixe l'objet et la finalité du service sur la volonté supérieure et l'universel. Il s'agit donc d'une spécialisation du thème Service.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {
+      "status": "rejected-for-this-pair",
+      "note": "Service possède des usages canoniques qui ne se réduisent pas au monde divin, notamment le service concret d'autrui."
+    },
+    "variant_of": {
+      "status": "not-retained",
+      "note": "La différence de portée est sémantique et stable : le thème spécifique détermine explicitement le destinataire et la finalité du service."
+    },
+    "broader_than": {
+      "status": "proposed",
+      "sourceThemeId": "service",
+      "targetThemeId": "service-du-monde-divin"
+    },
+    "component_of": {
+      "status": "not-retained",
+      "note": "Le monde divin est le destinataire/pôle du service, non une composante autonome de l'entité thématique Service du monde divin."
+    },
+    "related_to": {
+      "status": "true-but-less-informative-than-broader-than"
+    }
+  },
+  "transversalProfileEvidence": {
+    "reviewedOccurrences": [
+      {"themeId": "service", "bookNumber": 2, "psalmNumber": 4, "recordId": "book-02-psalm-004", "observedLabel": "Service"},
+      {"themeId": "service", "bookNumber": 3, "psalmNumber": 7, "recordId": "book-03-psalm-007", "observedLabel": "Service"},
+      {"themeId": "service", "bookNumber": 11, "psalmNumber": 60, "recordId": "book-11-psalm-060", "observedLabel": "Service du monde divin"},
+      {"themeId": "service", "bookNumber": 11, "psalmNumber": 74, "recordId": "book-11-psalm-074", "observedLabel": "Service du Père"},
+      {"themeId": "service", "bookNumber": 19, "psalmNumber": 111, "recordId": "book-19-psalm-111", "observedLabel": "Service"},
+      {"themeId": "service-du-monde-divin", "bookNumber": 22, "psalmNumber": 140, "recordId": "book-22-psalm-140", "observedLabel": "Service du monde divin"}
+    ],
+    "observedVariationDimensions": [
+      "service to another person versus service to a higher world",
+      "availability and usefulness versus embodiment of higher will",
+      "service of Light or Father versus explicitly named divine world",
+      "personal usefulness versus universal work"
+    ],
+    "distributionAssessment": {
+      "status": "partial-but-clearly-dispersed-in-reviewed-sample",
+      "note": "Reviewed attestations span books 2, 3, 11, 19 and 22. This supports dispersion for the reviewed service family, but a final corpus-wide label still requires complete family membership."
+    },
+    "evolutionAssessment": {
+      "status": "not-established",
+      "note": "Later reviewed occurrences articulate the universal and divine finality more explicitly, but this pattern is insufficient to claim evolution and corpus order is not historical chronology."
+    }
+  }
+}
