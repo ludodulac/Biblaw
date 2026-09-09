@@ -2,39 +2,53 @@
   "schemaVersion": 1,
   "recordType": "theme-semantic-case-study",
   "status": "proposed-review-decisions",
+  "anchorThemeId": "alliance-de-lumiere",
+  "anchorLabel": "Alliance de Lumière",
   "semanticClaim": false,
   "requiresHumanApproval": true,
   "publicSearchEffect": false,
-  "anchorTheme": {"themeId": "alliance-de-lumiere", "label": "Alliance de Lumière"},
   "purpose": "Test broader_than on a relational concept whose qualified form adds a concrete institutional and cosmological determination rather than merely restating the base meaning.",
-  "evidenceByThemeId": {
-    "alliance": [{"recordId": "book-02-psalm-002", "verseNumbers": [7, 8, 9, 11]}],
-    "alliance-de-lumiere": [{"recordId": "book-20-psalm-112", "verseNumbers": [1, 9, 17, 22, 24, 25, 27, 30]}]
+  "anchorEvidence": {
+    "recordId": "book-20-psalm-112",
+    "bookNumber": 20,
+    "psalmNumber": 112,
+    "psalmTitle": "L’homme pourrait sauver le monde",
+    "verseNumbers": [1, 9, 17, 22, 24, 25, 27, 30],
+    "canonicalTeaching": "L'Alliance de Lumière relie le haut et le bas et prend corps sur la terre à travers la Tradition, les Sceaux et une communauté unie qui œuvre pour la Lumière."
   },
   "relationAssessments": [
     {
+      "id": "case-alliance--alliance-de-lumiere",
       "sourceThemeId": "alliance",
       "targetThemeId": "alliance-de-lumiere",
       "proposedRelationType": "broader_than",
-      "confidence": "strong-proposal",
-      "reviewNote": "Alliance is defined generally as a conscious relation with divine principles or beings that mediates between the human and divine worlds. Psalm 112 specifies an Alliance de Lumiere through the correspondence of above and below, the Essene tradition, the four Seals, a community of souls and the terrestrial incarnation of Light. The qualified theme is therefore a determined form of the general relation, not a mere lexical variant."
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "alliance": [{"recordId": "book-02-psalm-002", "verseNumbers": [7, 8, 9, 11]}],
+        "alliance-de-lumiere": [{"recordId": "book-20-psalm-112", "verseNumbers": [1, 9, 17, 22, 24, 25, 27, 30]}]
+      },
+      "reviewNote": "Alliance est définie de façon générale comme relation consciente avec des principes ou êtres divins jouant un rôle d'intermédiaire entre monde humain et monde divin. Le psaume 112 spécifie une Alliance de Lumière par la correspondance du haut et du bas, la Tradition essénienne, les quatre Sceaux, la communauté d'âmes et l'incarnation terrestre de la Lumière. Le thème qualifié est donc une forme déterminée de la relation générale.",
+      "semanticClaim": false
     }
   ],
   "explicitDistinctions": {
-    "equivalent_to": "Rejected in the bounded dossier: Alliance de Lumiere carries determinations absent from the generic Alliance evidence.",
-    "variant_of": "Rejected: the qualification changes semantic scope and application rather than merely foregrounding an intrinsic property.",
-    "broader_than": "Proposed from alliance to alliance-de-lumiere.",
-    "component_of": "Rejected: Alliance is not one constituent alongside others inside the target; it is the relation type being specialized.",
-    "related_to": "True but less informative than the evidenced general-to-specific relation."
+    "equivalent_to": {"status": "rejected-for-this-pair", "note": "Alliance de Lumière porte des déterminations absentes de l'Alliance générique."},
+    "variant_of": {"status": "not-retained", "note": "Le qualificatif modifie le champ et les conditions d'application, pas seulement la formulation."},
+    "broader_than": {"status": "proposed", "sourceThemeId": "alliance", "targetThemeId": "alliance-de-lumiere"},
+    "component_of": {"status": "rejected-for-this-pair", "note": "Alliance est le genre relationnel spécialisé, pas une composante parmi d'autres."},
+    "related_to": {"status": "true-but-less-informative-than-broader_than"}
   },
   "semanticBoundary": {
-    "decisionRule": "Use broader_than when the base concept remains the relation class and the qualified formulation adds a specific object, framework, actors or operational conditions.",
+    "decisionRule": "Retenir broader_than lorsque le concept de base reste la classe relationnelle et que la formulation qualifiée ajoute un objet, un cadre, des acteurs ou des conditions opératoires spécifiques.",
     "contrastCases": ["nature-vivante", "pensee-verticale"]
   },
   "transversalProfileEvidence": {
-    "reviewedPositions": [{"book": 2, "psalm": 2}, {"book": 20, "psalm": 112}],
-    "variationDimensions": ["generic divine mediation", "Light-specific alliance", "tradition and seals", "community as incarnation body", "correspondence of above and below"],
-    "distribution": "not-yet-global",
-    "evolution": "not-established"
+    "reviewedOccurrences": [
+      {"themeId": "alliance", "bookNumber": 2, "psalmNumber": 2, "recordId": "book-02-psalm-002"},
+      {"themeId": "alliance-de-lumiere", "bookNumber": 20, "psalmNumber": 112, "recordId": "book-20-psalm-112"}
+    ],
+    "observedVariationDimensions": ["generic divine mediation", "Light-specific alliance", "tradition and seals", "community as incarnation body", "correspondence of above and below"],
+    "distributionAssessment": {"status": "not-yet-global"},
+    "evolutionAssessment": {"status": "not-established", "note": "Corpus order is not historical chronology."}
   }
 }
