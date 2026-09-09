@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "temple-interieur",
+  "anchorLabel": "Temple intérieur",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Stress-test equivalent_to and variant_of when two distinct theme IDs share the exact normalized alias ‘Temple intérieur’. The case asks whether the qualified theme remains a stable specialization once shared vocabulary is removed.",
+  "sourcePolicy": [
+    "data/thematic-index/books/book-*.json",
+    "data/corpus/books/book-*/psalm-*.json",
+    "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
+  ],
+  "anchorEvidence": {
+    "recordId": "book-22-psalm-139",
+    "bookNumber": 22,
+    "psalmNumber": 139,
+    "psalmTitle": "Du temple intérieur à la maîtrise de ta destinée",
+    "verseNumbers": [11, 12, 13, 20, 21, 22, 23, 24, 26, 27, 28],
+    "canonicalTeaching": "Construire le temple intérieur signifie former un corps stable par l’étude, la dévotion, le rite et l’œuvre, puis élargir cette maîtrise individuelle au cercle d’étude et à une œuvre collective durable."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-temple--temple-interieur",
+      "sourceThemeId": "temple",
+      "targetThemeId": "temple-interieur",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal-after-exact-alias-test",
+      "evidenceByThemeId": {
+        "temple": [
+          {"recordId": "book-06-psalm-025", "verseNumbers": [8, 18, 19, 20, 21, 23, 24]}
+        ],
+        "temple-interieur": [
+          {"recordId": "book-22-psalm-139", "verseNumbers": [11, 12, 13, 20, 21, 22, 23, 24, 26, 27, 28]}
+        ]
+      },
+      "reviewNote": "Le thème Temple n’est pas limité à l’intériorité : le psaume 25 distingue explicitement le temple extérieur correctement consacré, le maître comme temple, puis l’homme lui-même comme temple véritable. Temple intérieur fixe au contraire un lieu et une construction déterminés : former au-dedans de soi un corps stable par l’étude, la dévotion, le rite et l’œuvre. L’alias exact partagé ne suffit donc pas à rendre les deux thèmes interchangeables ; la cible est une réalisation particulière du concept plus large.",
+      "lexicalIndependenceReview": {
+        "question": "La relation reste-t-elle vraie si les deux thèmes sont reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "Espace ou corps consacré capable d’accueillir et de manifester une présence supérieure, qu’il soit extérieur, porté par un maître ou incarné dans l’être humain.",
+        "targetReformulation": "Structure stable édifiée au-dedans de l’être par étude, dévotion, rite et œuvre afin de porter durablement une présence sacrée et de maîtriser sa vie.",
+        "result": "passes-as-general-specific",
+        "note": "Sans le mot temple, la seconde définition reste une forme déterminée de la première : elle fixe le lieu à l’intériorité de l’être et les moyens de construction, alors que la première admet aussi des manifestations extérieures et incarnées par un maître."
+      },
+      "closestCompetitor": {
+        "relationType": "equivalent_to",
+        "whyPlausible": "Les deux IDs partagent l’alias normalisé exact ‘Temple intérieur’, et certaines occurrences du thème général Temple portent elles-mêmes ce libellé observé.",
+        "decisiveTest": "Chercher des instances attestées du thème source qui ne puissent pas être reformulées comme construction intérieure. Le psaume 25 fournit ce contre-exemple : il distingue un temple extérieur consacré, un maître-temple et enfin le temple en soi. L’extension du thème source dépasse donc réellement celle de la cible."
+      },
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {
+      "status": "rejected-for-this-pair",
+      "note": "L’alias exact n’implique pas l’interchangeabilité : Temple possède des réalisations extérieures et personnelles qui ne sont pas couvertes par Temple intérieur."
+    },
+    "variant_of": {
+      "status": "rejected-for-this-pair",
+      "note": "L’intériorité n’est pas seulement une autre formulation ; elle impose une restriction stable de lieu, de formation et de fonction."
+    },
+    "broader_than": {
+      "status": "proposed",
+      "sourceThemeId": "temple",
+      "targetThemeId": "temple-interieur"
+    },
+    "component_of": {
+      "status": "rejected-for-this-pair",
+      "note": "Temple est la classe générale dont le temple intérieur est une réalisation déterminée ; ce n’est pas une pièce autonome contenue dans la cible."
+    },
+    "related_to": {
+      "status": "true-but-less-informative-than-broader_than",
+      "note": "La proximité est certaine, mais related_to perd l’asymétrie attestée entre le concept général et sa réalisation intérieure."
+    }
+  },
+  "semanticBoundary": {
+    "decisionRule": "Un alias exact partagé par deux IDs ne justifie jamais equivalent_to à lui seul. Si le thème de base possède des réalisations attestées hors du domaine qualifié et que la qualification reste une restriction conceptuelle après reformulation non lexicale, broader_than est préférable à equivalent_to ou variant_of.",
+    "aliasGuardrail": "Une collision d’alias peut révéler une fragmentation d’indexation, une variation contextuelle ou une vraie ambiguïté ; elle doit être tranchée par l’extension conceptuelle attestée dans les psaumes, pas par le libellé."
+  },
+  "transversalProfileEvidence": {
+    "reviewedOccurrences": [
+      {"themeId": "temple", "bookNumber": 6, "psalmNumber": 25, "recordId": "book-06-psalm-025", "observedLabel": "Temple"},
+      {"themeId": "temple-interieur", "bookNumber": 22, "psalmNumber": 139, "recordId": "book-22-psalm-139", "observedLabel": "Temple intérieur"}
+    ],
+    "observedVariationDimensions": [
+      "temple extérieur consacré",
+      "maître comme temple",
+      "homme comme temple véritable",
+      "construction intérieure par étude, dévotion, rite et œuvre"
+    ],
+    "evolutionAssessment": {
+      "status": "not-established",
+      "note": "Les occurrences servent ici à distinguer les extensions conceptuelles ; l’ordre du corpus n’est pas une chronologie historique."
+    }
+  }
+}
