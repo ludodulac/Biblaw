@@ -22,21 +22,28 @@
       "sourceThemeId": "pensee-vivante",
       "targetThemeId": "pensee",
       "proposedRelationType": "variant_of",
-      "confidence": "strong-proposal-needs-human-review",
+      "confidence": "boundary-proposal-needs-human-review",
       "evidenceByThemeId": {
         "pensee-vivante": [{"recordId": "book-19-psalm-102", "verseNumbers": [1, 2, 3, 8]}],
         "pensee": [{"recordId": "book-19-psalm-102", "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13]}]
       },
-      "reviewNote": "Dans le même psaume, Pensée et Pensée vivante recouvrent le même noyau ontologique : la pensée est décrite comme réalité vivante et agissante qui produit actes, œuvres et destinée. Cependant le themeId Pensée possède ailleurs un champ plus large incluant pensée mécanique, réfléchie, créatrice ou orientée de diverses manières. Pensée vivante accentue ici une propriété centrale plutôt qu'elle ne constitue un thème strictement identique dans toute son extension. Variant_of est donc proposé plutôt qu'equivalent_to.",
+      "reviewNote": "Dans le même psaume, Pensée et Pensée vivante recouvrent un noyau ontologique très proche : la pensée est décrite comme réalité vivante et agissante qui produit actes, œuvres et destinée. Mais le themeId Pensée possède aussi un champ plus large incluant pensée mécanique, réfléchie, créatrice ou orientée de diverses manières. Variant_of reste donc une proposition de frontière, non une équivalence et non un type considéré comme définitivement stabilisé.",
+      "lexicalIndependenceTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "réalité intérieure autonome, agissante et susceptible d'être éveillée jusqu'à devenir consciente",
+        "targetReformulation": "activité mentale pouvant fonctionner mécaniquement, réfléchir ou s'élever vers une intelligence supérieure et produire des conséquences",
+        "result": "passes-with-boundary-risk",
+        "reason": "Les reformulations conservent un noyau commun assez fort pour qu'une variante demeure plausible, mais elles rendent aussi visible une différence d'extension : le second concept embrasse plusieurs modes dont le premier accentue surtout la dimension vivante et agissante. Le test interdit donc de promouvoir cette paire en equivalent_to et oblige à conserver variant_of comme hypothèse de frontière à comparer à broader/narrower."
+      },
       "semanticClaim": false
     }
   ],
   "explicitDistinctions": {
-    "equivalent_to": {"status": "not-established", "note": "L'identité locale dans le psaume 102 est très forte, mais l'équivalence globale des deux themeIds dans tout le corpus n'est pas démontrée."},
-    "variant_of": {"status": "proposed", "sourceThemeId": "pensee-vivante", "targetThemeId": "pensee"},
-    "broader_than": {"status": "not-retained-yet", "note": "Pensée est globalement plus étendue, mais l'ancre montre surtout une formulation qualifiée du même noyau plutôt qu'un sous-domaine autonome clairement délimité."},
+    "equivalent_to": {"status": "rejected-at-current-evidence-level", "note": "L'identité locale dans le psaume 102 est forte, mais la reformulation sans vocabulaire commun fait apparaître une différence d'extension globale ; l'équivalence des deux themeIds n'est pas démontrée."},
+    "variant_of": {"status": "proposed-with-boundary-risk", "sourceThemeId": "pensee-vivante", "targetThemeId": "pensee"},
+    "broader_than": {"status": "live-alternative-boundary", "note": "Pensée est globalement plus étendue. Une lecture général-spécifique reste donc une alternative sérieuse si une revue transversale montre que la dimension vivante constitue un sous-domaine stable plutôt qu'une propriété intrinsèque de la pensée."},
     "component_of": {"status": "rejected-for-this-pair"},
-    "related_to": {"status": "true-but-less-informative-than-variant_of"}
+    "related_to": {"status": "true-but-less-informative-if-variant-survives"}
   },
   "transversalProfileEvidence": {
     "reviewedOccurrences": [
@@ -52,5 +59,9 @@
     ],
     "distributionAssessment": {"status": "not-yet-global", "note": "The exact qualified theme has only been bounded here by its anchor; the much broader Pensée family requires a dedicated transversal pass before distribution claims."},
     "evolutionAssessment": {"status": "not-established", "note": "No evolution claim is justified; corpus order is not historical chronology."}
+  },
+  "semanticBoundary": {
+    "decisionRule": "Variant_of ne doit pas servir de refuge entre équivalence et spécialisation. Il n'est retenu que lorsque la reformulation conserve le même noyau conceptuel sans créer un sous-domaine autonome clairement délimité.",
+    "lexicalGuardrail": "La reformulation sans vocabulaire commun est ici volontairement traitée comme un test adversarial : elle confirme la proximité conceptuelle mais expose aussi la frontière possible avec broader/narrower."
   }
 }
