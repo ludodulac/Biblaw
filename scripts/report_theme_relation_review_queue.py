@@ -22,6 +22,7 @@ BOOKS = ROOT / "data/thematic-index/books"
 REVIEW_FILES = [
     ROOT / "data/thematic-index/reviews/theme-relations-pilot.json",
     ROOT / "data/thematic-index/reviews/theme-relations-risk-review.json",
+    ROOT / "data/thematic-index/reviews/theme-relations-general-review.json",
 ]
 
 
