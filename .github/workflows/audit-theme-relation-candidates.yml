@@ -31,5 +31,9 @@ jobs:
       - name: Run relation candidate sentinels
         run: python scripts/audit_theme_relation_candidates.py
 
-      - name: Diagnose licorne theme candidate structure
-        run: python scripts/report_theme_relation_candidates.py --theme union-pere-nature --limit 10
+      - name: Diagnose targeted candidate structures
+        run: >-
+          python scripts/report_theme_relation_candidates.py
+          --theme union-pere-nature
+          --theme fidelite-et-infidelite
+          --limit 10
