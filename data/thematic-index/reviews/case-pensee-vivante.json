@@ -7,61 +7,77 @@
   "semanticClaim": false,
   "requiresHumanApproval": true,
   "publicSearchEffect": false,
-  "purpose": "Test a genuine near-equivalence boundary where generic and qualified theme IDs are simultaneously attested in the same Psalm.",
+  "purpose": "Resolve the former variant_of boundary by testing whether living thought is merely another formulation of thought or a qualified state within a broader thought concept.",
   "anchorEvidence": {
     "recordId": "book-19-psalm-102",
     "bookNumber": 19,
     "psalmNumber": 102,
     "psalmTitle": "La clé pour se libérer des mauvaises pensées",
     "verseNumbers": [1, 2, 3, 8, 12, 19],
-    "canonicalTeaching": "La pensée est une réalité vivante, intelligente et agissante ; elle déclenche création et destinée et doit être éveillée, rendue consciente et unie à la sagesse."
+    "canonicalTeaching": "La pensée peut être décrite comme réalité vivante, intelligente et agissante, mais le corpus distingue aussi plusieurs états et modes de la pensée ; la formulation Pensée vivante met donc l'accent sur un état qualifié du concept général."
   },
   "relationAssessments": [
     {
-      "id": "case-pensee-vivante--pensee",
-      "sourceThemeId": "pensee-vivante",
-      "targetThemeId": "pensee",
-      "proposedRelationType": "variant_of",
-      "confidence": "boundary-proposal-needs-human-review",
+      "id": "case-pensee--pensee-vivante",
+      "sourceThemeId": "pensee",
+      "targetThemeId": "pensee-vivante",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal-needs-human-review",
       "evidenceByThemeId": {
-        "pensee-vivante": [{"recordId": "book-19-psalm-102", "verseNumbers": [1, 2, 3, 8]}],
-        "pensee": [{"recordId": "book-19-psalm-102", "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13]}]
+        "pensee": [
+          {"recordId": "book-05-psalm-038", "verseNumbers": [1, 2, 3, 4, 7]},
+          {"recordId": "book-19-psalm-102", "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13]},
+          {"recordId": "book-20-psalm-104", "verseNumbers": [2, 3, 4, 5, 6, 8, 9, 11, 12, 18]}
+        ],
+        "pensee-vivante": [
+          {"recordId": "book-19-psalm-102", "verseNumbers": [1, 2, 3, 8]},
+          {"recordId": "book-05-psalm-038", "verseNumbers": [3, 4]}
+        ]
       },
-      "reviewNote": "Dans le même psaume, Pensée et Pensée vivante recouvrent un noyau ontologique très proche : la pensée est décrite comme réalité vivante et agissante qui produit actes, œuvres et destinée. Mais le themeId Pensée possède aussi un champ plus large incluant pensée mécanique, réfléchie, créatrice ou orientée de diverses manières. Variant_of reste donc une proposition de frontière, non une équivalence et non un type considéré comme définitivement stabilisé.",
+      "reviewNote": "Le psaume 102 donne localement un noyau très proche entre Pensée et Pensée vivante, mais le passage transversal du psaume 38 tranche la frontière : le centre de la pensée peut accueillir un savoir vivant ou, au contraire, un savoir intellectuel mort et éteint. Le psaume 104 distingue encore pensée réelle, pensée abstraite et formes-pensées limitées. Pensée vivante sélectionne donc un état ou mode qualifié au sein d'un concept de pensée plus étendu.",
       "lexicalIndependenceTest": {
         "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
-        "sourceReformulation": "réalité intérieure autonome, agissante et susceptible d'être éveillée jusqu'à devenir consciente",
-        "targetReformulation": "activité mentale pouvant fonctionner mécaniquement, réfléchir ou s'élever vers une intelligence supérieure et produire des conséquences",
-        "result": "passes-with-boundary-risk",
-        "reason": "Les reformulations conservent un noyau commun assez fort pour qu'une variante demeure plausible, mais elles rendent aussi visible une différence d'extension : le second concept embrasse plusieurs modes dont le premier accentue surtout la dimension vivante et agissante. Le test interdit donc de promouvoir cette paire en equivalent_to et oblige à conserver variant_of comme hypothèse de frontière à comparer à broader/narrower."
+        "sourceReformulation": "Activité et centre mental pouvant être mécaniques, abstraits, limités, éveillés, créateurs ou reliés à une intelligence supérieure.",
+        "targetReformulation": "Mode intérieur éveillé, actif et fécond qui reçoit la lumière, discerne et agit comme une réalité consciente plutôt que comme un mécanisme mort.",
+        "result": "passes-as-specialization",
+        "reason": "La seconde reformulation conserve un critère positif qui n'est pas constitutif de tous les usages du concept général. Elle décrit donc une région qualifiée du champ de la pensée plutôt qu'une simple reformulation du même référent."
+      },
+      "closestCompetitor": {
+        "relationType": "variant_of",
+        "whyPlausible": "Dans le psaume 102, la pensée elle-même est décrite comme vivante et agissante, ce qui peut donner l'impression que vivant explicite seulement une propriété intrinsèque.",
+        "decisiveTest": "Chercher des usages du thème général où cette propriété n'est pas constitutive. Le psaume 38 oppose explicitement savoir vivant et savoir intellectuel mort au sein du centre de la pensée, et le psaume 104 distingue plusieurs modes mentaux limités ou abstraits. Cette variation d'état rend variant_of trop large."
       },
       "semanticClaim": false
     }
   ],
   "explicitDistinctions": {
-    "equivalent_to": {"status": "rejected-at-current-evidence-level", "note": "L'identité locale dans le psaume 102 est forte, mais la reformulation sans vocabulaire commun fait apparaître une différence d'extension globale ; l'équivalence des deux themeIds n'est pas démontrée."},
-    "variant_of": {"status": "proposed-with-boundary-risk", "sourceThemeId": "pensee-vivante", "targetThemeId": "pensee"},
-    "broader_than": {"status": "live-alternative-boundary", "note": "Pensée est globalement plus étendue. Une lecture général-spécifique reste donc une alternative sérieuse si une revue transversale montre que la dimension vivante constitue un sous-domaine stable plutôt qu'une propriété intrinsèque de la pensée."},
+    "equivalent_to": {"status": "rejected", "note": "Le thème général possède des usages et états qui ne satisfont pas la qualification vivante."},
+    "variant_of": {"status": "rejected-after-transversal-review", "note": "Le qualificatif vivant sélectionne un état positif parmi plusieurs états possibles de la pensée ; il ne se contente pas d'expliciter une propriété toujours constitutive."},
+    "broader_than": {"status": "proposed", "sourceThemeId": "pensee", "targetThemeId": "pensee-vivante"},
     "component_of": {"status": "rejected-for-this-pair"},
-    "related_to": {"status": "true-but-less-informative-if-variant-survives"}
+    "related_to": {"status": "true-but-less-informative-than-broader_than"}
   },
   "transversalProfileEvidence": {
     "reviewedOccurrences": [
+      {"themeId": "pensee", "bookNumber": 5, "psalmNumber": 38, "recordId": "book-05-psalm-038"},
+      {"themeId": "pensee-vivante", "bookNumber": 5, "psalmNumber": 38, "recordId": "book-05-psalm-038"},
       {"themeId": "pensee-vivante", "bookNumber": 19, "psalmNumber": 102, "recordId": "book-19-psalm-102"},
       {"themeId": "pensee", "bookNumber": 19, "psalmNumber": 102, "recordId": "book-19-psalm-102"},
       {"themeId": "pensee", "bookNumber": 20, "psalmNumber": 104, "recordId": "book-20-psalm-104"}
     ],
     "observedVariationDimensions": [
       "thought as living autonomous reality",
-      "mechanical versus conscious versus divine thought",
-      "thought as cause of action and destiny",
-      "living thought versus thought integrated with feeling and will"
+      "living versus dead or merely intellectual knowledge in the thought center",
+      "mechanical or limited mental operation",
+      "real versus abstract thought",
+      "thought as cause of action and destiny"
     ],
-    "distributionAssessment": {"status": "not-yet-global", "note": "The exact qualified theme has only been bounded here by its anchor; the much broader Pensée family requires a dedicated transversal pass before distribution claims."},
+    "distributionAssessment": {"status": "bounded-transversal-evidence-sufficient-for-proposal", "note": "Three distinct psalms show that the general thought concept varies across states while living thought retains a positive qualification."},
     "evolutionAssessment": {"status": "not-established", "note": "No evolution claim is justified; corpus order is not historical chronology."}
   },
   "semanticBoundary": {
-    "decisionRule": "Variant_of ne doit pas servir de refuge entre équivalence et spécialisation. Il n'est retenu que lorsque la reformulation conserve le même noyau conceptuel sans créer un sous-domaine autonome clairement délimité.",
-    "lexicalGuardrail": "La reformulation sans vocabulaire commun est ici volontairement traitée comme un test adversarial : elle confirme la proximité conceptuelle mais expose aussi la frontière possible avec broader/narrower."
+    "decisionRule": "Variant_of ne doit pas servir de refuge entre équivalence et spécialisation. Si le thème général admet des états qui ne satisfont pas le qualificatif, et que ce qualificatif définit un mode stable identifiable après reformulation, retenir broader_than du général vers le qualifié.",
+    "contrastCases": ["nature-vivante", "soleil-conscience", "pensee-verticale"],
+    "lexicalGuardrail": "Un même adjectif peut avoir des fonctions différentes selon le concept : vivant explicite une propriété constitutive dans Nature vivante mais sélectionne ici un état qualifié parmi plusieurs modes de pensée."
   }
 }
