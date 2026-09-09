@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "relations-avec-les-regnes",
+  "anchorLabel": "Relations avec les règnes",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Stress-test a relational composite where one source theme names the general operation and another names its partner domain. The case distinguishes broader_than from related_to and rejects automatic component inference from shared words.",
+  "sourcePolicy": [
+    "data/thematic-index/books/book-*.json",
+    "data/corpus/books/book-*/psalm-*.json",
+    "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
+  ],
+  "anchorEvidence": {
+    "recordId": "book-17-psalm-112",
+    "bookNumber": 17,
+    "psalmNumber": 112,
+    "psalmTitle": "N’attendez pas d’être purs, soyez vrais",
+    "verseNumbers": [12],
+    "canonicalTeaching": "La vérité vécue demande de purifier les relations concrètes avec les animaux, les plantes, la terre et la Mère.",
+    "observedStructure": [
+      "relational-operation",
+      "specified-partner-domain",
+      "ethical-quality-of-relation",
+      "no-enumerative-composite",
+      "partner-is-not-component"
+    ]
+  },
+  "relationAssessments": [
+    {
+      "id": "case-relations--relations-avec-les-regnes",
+      "sourceThemeId": "relations",
+      "targetThemeId": "relations-avec-les-regnes",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "relations": [
+          {"recordId": "book-02-psalm-003", "verseNumbers": [1, 2, 4, 5, 6, 7, 8]}
+        ],
+        "relations-avec-les-regnes": [
+          {"recordId": "book-17-psalm-112", "verseNumbers": [12]}
+        ]
+      },
+      "lexicalIndependenceReview": {
+        "question": "La relation reste-t-elle vraie si les deux thèmes sont reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "Qualité des échanges et des liens vivants entre un être et les différents interlocuteurs ou mondes auxquels il est relié.",
+        "targetReformulation": "Justesse du rapport entretenu avec les formes de vie et réalités terrestres non humaines qui entourent l’homme.",
+        "result": "passes",
+        "note": "Même sans le mot relations, la cible reste une application déterminée d’un concept général de lien et d’échange à un domaine de partenaires précis."
+      },
+      "closestCompetitor": {
+        "relationType": "related_to",
+        "whyPlausible": "La cible possède une normativité propre — purification et vérité du rapport aux règnes — qui pourrait être décrite comme un thème relationnel autonome.",
+        "decisiveTest": "Demander si la cible peut être définie sans conserver l’opération générale de mise en relation. Ici non : ce qui est spécialisé est précisément le lien, dont le partenaire est restreint aux règnes. broader_than apporte donc une information asymétrique réelle que related_to perdrait."
+      },
+      "reviewNote": "Le psaume 3 présente les relations de manière générale entre soi, autrui et le divin, avec échange, circulation et qualité du lien. Le psaume 112 restreint ce même champ relationnel aux animaux, plantes, terre et Mère. La cible est donc une spécialisation du concept général de relations plutôt qu’une simple proximité thématique.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-regnes--relations-avec-les-regnes",
+      "sourceThemeId": "regnes",
+      "targetThemeId": "relations-avec-les-regnes",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "regnes": [
+          {"recordId": "book-01-psalm-016", "verseNumbers": [1, 2, 3, 4]}
+        ],
+        "relations-avec-les-regnes": [
+          {"recordId": "book-17-psalm-112", "verseNumbers": [12]}
+        ]
+      },
+      "lexicalIndependenceReview": {
+        "question": "La relation reste-t-elle vraie si les deux thèmes sont reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "Ensemble des formes de vie et domaines de la création — végétal, animal, minéral et autres niveaux — ayant chacun leur fonction et leur chemin.",
+        "targetReformulation": "Justesse du rapport entretenu avec les formes de vie et réalités terrestres non humaines qui entourent l’homme.",
+        "result": "passes-related-rejects-component",
+        "note": "Le domaine partenaire reste clairement lié à la cible, mais il n’est pas une pièce interne du concept de relation ; il est ce avec quoi la relation est entretenue."
+      },
+      "closestCompetitor": {
+        "relationType": "component_of",
+        "whyPlausible": "Le mot règnes figure directement dans le libellé cible et les règnes sont explicitement nommés dans le verset d’ancrage.",
+        "decisiveTest": "Distinguer constituant interne et partenaire de relation. Retirer les partenaires détruit l’objet particulier du rapport, mais cela ne transforme pas ces partenaires en composantes de l’opération relationnelle. Le psaume les présente comme destinataires/partenaires à respecter et purifier dans la relation."
+      },
+      "reviewNote": "Règnes est un thème autonome : plantes, pierres et animaux sont présentés comme réalités de la création ayant des fonctions propres. Dans Relations avec les règnes, ces réalités sont les partenaires ou objets du lien à purifier. Leur présence lexicale ne justifie donc pas component_of.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {
+      "status": "rejected-for-both-pairs",
+      "note": "Ni le concept général de relations ni celui des règnes n’est interchangeable avec le thème relationnel spécialisé."
+    },
+    "variant_of": {
+      "status": "rejected-for-both-pairs",
+      "note": "La cible ajoute une restriction stable du partenaire ; elle n’est pas une simple reformulation du thème général, et les règnes ne sont pas une reformulation de la relation."
+    },
+    "broader_than": {
+      "status": "proposed-for-relations-only",
+      "sourceThemeId": "relations",
+      "targetThemeId": "relations-avec-les-regnes"
+    },
+    "component_of": {
+      "status": "rejected-for-regnes",
+      "note": "Un partenaire ou objet d’une relation n’est pas automatiquement une composante du concept relationnel."
+    },
+    "related_to": {
+      "status": "proposed-for-regnes-and-true-but-less-informative-for-relations",
+      "note": "related_to convient à Règnes ; pour Relations, broader_than exprime mieux l’asymétrie général-vers-application."
+    }
+  },
+  "semanticBoundaryRule": "Dans un thème de forme ‘relation avec X’, distinguer l’opération relationnelle de son partenaire. Le concept général de relation peut être broader_than si la cible conserve cette opération en restreignant son domaine. X doit rester related_to sauf preuve qu’il constitue réellement une partie interne du concept plutôt qu’un partenaire, objet ou destinataire.",
+  "transversalProfileEvidence": {
+    "reviewedOccurrences": [
+      {"themeId": "relations", "bookNumber": 2, "psalmNumber": 3, "recordId": "book-02-psalm-003", "observedLabel": "Relations"},
+      {"themeId": "regnes", "bookNumber": 1, "psalmNumber": 16, "recordId": "book-01-psalm-016", "observedLabel": "Règnes"},
+      {"themeId": "relations-avec-les-regnes", "bookNumber": 17, "psalmNumber": 112, "recordId": "book-17-psalm-112", "observedLabel": "Relations avec les règnes"}
+    ],
+    "evolutionAssessment": {
+      "status": "not-established",
+      "note": "Ces occurrences servent à distinguer les concepts, non à établir une évolution. L’ordre du corpus n’est pas une chronologie historique."
+    }
+  }
+}
