@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "union-pere-nature",
+  "anchorLabel": "Union au Père et à la nature",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test the transversal semantic representation on the licorne case using canonical Psalm analyses and justificatory verses before any broad rollout.",
+  "sourcePolicy": [
+    "data/thematic-index/books/book-*.json",
+    "data/corpus/books/book-*/psalm-*.json",
+    "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
+  ],
+  "anchorEvidence": {
+    "recordId": "book-05-psalm-024",
+    "bookNumber": 5,
+    "psalmNumber": 24,
+    "psalmTitle": "L’enseignement divin de la licorne",
+    "verseNumbers": [3, 7, 9],
+    "canonicalTeaching": "L’homme doit unir son aspiration au Père et son corps à la nature afin de devenir une incarnation de la Lumière.",
+    "observedStructure": [
+      "union-orientation-to-Father",
+      "harmony-or-osmosis-with-nature",
+      "human-as-link-between-upper-and-earthly-realms",
+      "incarnation-of-Light-in-earthly-life"
+    ]
+  },
+  "relationAssessments": [
+    {
+      "id": "case-union--union-pere-nature",
+      "sourceThemeId": "union",
+      "targetThemeId": "union-pere-nature",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "union": [{"recordId": "book-03-psalm-010", "verseNumbers": [1, 7, 8, 9, 11, 12, 14, 18, 19]}],
+        "union-pere-nature": [{"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}]
+      },
+      "reviewNote": "Union est une notion générale. Le psaume 24 la détermine par une double orientation précise : union au Père et harmonie/osmose avec la nature. L'ancre est donc une formulation plus spécifique du thème général Union.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-union-pere-nature--homme-trait-d-union",
+      "sourceThemeId": "union-pere-nature",
+      "targetThemeId": "homme-trait-d-union",
+      "proposedRelationType": "variant_of",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "union-pere-nature": [{"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}],
+        "homme-trait-d-union": [{"recordId": "book-21-psalm-159", "verseNumbers": [7, 8, 10, 11, 14, 15, 17, 18, 19, 20, 21]}]
+      },
+      "reviewNote": "Les deux psaumes décrivent le même schéma central d'un homme reliant le haut et le bas : Père/hauteurs d'un côté, nature ou Mère/terre de l'autre, avec corps/esprit et incarnation terrestre. Le psaume 159 développe ce schéma comme mission universelle de l'homme-trait-d'union, tandis que le psaume 24 l'exprime à travers l'image de la licorne et l'union personnelle au Père et à la nature. La proximité est plus forte qu'une simple relation lexicale, mais l'équivalence stricte n'est pas proposée car les focales et l'étendue diffèrent.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-pere-et-mere--union-pere-nature",
+      "sourceThemeId": "pere-et-mere",
+      "targetThemeId": "union-pere-nature",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "pere-et-mere": [{"recordId": "book-15-psalm-087", "verseNumbers": [2, 3, 4, 5, 6, 18]}],
+        "union-pere-nature": [{"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}]
+      },
+      "reviewNote": "Le psaume 87 relie explicitement les pieds à la Mère, les cheveux au Père, puis appelle à l'harmonie à l'image de la nature. Il partage donc la polarité verticale/terrestre de l'ancre. Cependant Père et Mère constitue un thème bipolaire autonome ; Nature et Mère ne sont pas assimilées automatiquement et l'union personnelle au Père n'est pas la même focalisation.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-harmonie-des-mondes--union-pere-nature",
+      "sourceThemeId": "harmonie-des-mondes",
+      "targetThemeId": "union-pere-nature",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "harmonie-des-mondes": [{"recordId": "book-06-psalm-049", "verseNumbers": [4, 7, 8]}],
+        "union-pere-nature": [{"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}]
+      },
+      "reviewNote": "Le psaume 49 demande un équilibre entre nature vivante, monde humain et monde divin. Il recoupe fortement le motif haut/bas de l'ancre, mais parle d'harmonie entre trois mondes plutôt que d'union au Père et d'incarnation de la Lumière. La proximité est structurelle mais le thème reste distinct.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-nature-vivante--union-pere-nature",
+      "sourceThemeId": "nature-vivante",
+      "targetThemeId": "union-pere-nature",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "nature-vivante": [{"recordId": "book-11-psalm-063", "verseNumbers": [2, 3, 8, 11, 12, 18, 21]}],
+        "union-pere-nature": [{"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}]
+      },
+      "reviewNote": "Le psaume 63 présente la nature vivante comme sagesse et langage du Père et refuse la séparation entre l'homme, la nature et le royaume du Père. Cela éclaire directement l'ancre, mais Nature vivante reste un thème sur la nature comme médiation et manifestation de la sagesse du Père, non une autre formulation complète de l'union au Père et à la nature.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-pere--union-pere-nature",
+      "sourceThemeId": "pere",
+      "targetThemeId": "union-pere-nature",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal",
+      "candidateRelationRejected": "component_of",
+      "evidenceByThemeId": {
+        "pere": [{"recordId": "book-01-psalm-007", "verseNumbers": [1, 2, 3, 7, 11, 12]}],
+        "union-pere-nature": [{"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}]
+      },
+      "reviewNote": "Père est le pôle supérieur de la relation exprimée par l'ancre, mais le thème Père possède un champ autonome beaucoup plus large. La présence du Père dans la formulation ne démontre pas une relation component_of entre les deux entités thématiques.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-nature--union-pere-nature",
+      "sourceThemeId": "nature",
+      "targetThemeId": "union-pere-nature",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal",
+      "candidateRelationRejected": "component_of",
+      "evidenceByThemeId": {
+        "nature": [{"recordId": "book-01-psalm-002", "verseNumbers": [1, 3, 4, 5, 6]}],
+        "union-pere-nature": [{"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}]
+      },
+      "reviewNote": "Nature est le pôle terrestre de l'ancre, mais le thème Nature couvre un domaine autonome beaucoup plus vaste. Le mot partagé et la participation au schéma de l'ancre ne suffisent pas à faire de Nature une composante thématique canonique du thème composite.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {
+      "status": "not-established",
+      "note": "Aucun autre themeId examiné n'est suffisamment identique en sens et portée pour proposer une équivalence."
+    },
+    "variant_of": {
+      "status": "proposed",
+      "themeIds": ["homme-trait-d-union"]
+    },
+    "broader_than": {
+      "status": "proposed",
+      "themeIds": ["union"],
+      "inverseReading": "union-pere-nature is narrower/more specific than union"
+    },
+    "component_of": {
+      "status": "not-retained-for-anchor-neighborhood",
+      "rejectedCandidateThemeIds": ["pere", "nature"],
+      "note": "The reviewed words are relational poles, not demonstrated autonomous subthemes of the anchor."
+    },
+    "related_to": {
+      "status": "proposed",
+      "themeIds": ["pere-et-mere", "harmonie-des-mondes", "nature-vivante", "pere", "nature"]
+    }
+  },
+  "transversalProfileEvidence": {
+    "exactTheme": {
+      "occurrenceCount": 1,
+      "corpusPositions": [{"bookNumber": 5, "psalmNumber": 24, "recordId": "book-05-psalm-024"}],
+      "rarityClass": "singleton",
+      "firstOccurrence": {"bookNumber": 5, "psalmNumber": 24},
+      "lastOccurrence": {"bookNumber": 5, "psalmNumber": 24}
+    },
+    "reviewedSemanticNeighborhoodPositions": [
+      {"themeId": "union-pere-nature", "bookNumber": 5, "psalmNumber": 24},
+      {"themeId": "harmonie-des-mondes", "bookNumber": 6, "psalmNumber": 49},
+      {"themeId": "nature-vivante", "bookNumber": 11, "psalmNumber": 63},
+      {"themeId": "pere-et-mere", "bookNumber": 15, "psalmNumber": 87},
+      {"themeId": "homme-trait-d-union", "bookNumber": 21, "psalmNumber": 159}
+    ],
+    "observedVariationDimensions": [
+      "personal union with Father versus universal intermediary mission",
+      "nature versus Mother/earth as the terrestrial pole",
+      "union versus harmony/balance between worlds",
+      "incarnation of Light versus manifestation of divine wisdom through nature"
+    ],
+    "distributionAssessment": {
+      "status": "not-yet-global",
+      "note": "The exact theme is a singleton. The reviewed conceptual neighborhood appears at separated corpus positions, but this sample is not exhaustive enough to label the semantic family as dispersed or concentrated."
+    },
+    "evolutionAssessment": {
+      "status": "not-established",
+      "note": "No evolution claim is justified yet. Corpus order must be treated as corpus order, not historical chronology, and the reviewed neighborhood is intentionally partial."
+    },
+    "futureNarrativePrerequisites": [
+      "all validated or explicitly reviewed theme variants for the semantic family",
+      "complete ordered occurrence positions for the family",
+      "occurrence importance and directness",
+      "first and last occurrence",
+      "book-level and corpus-segment concentration",
+      "long gaps between occurrences",
+      "attested formulation variants",
+      "per-occurrence particularities grounded in justificatory verses and teachings",
+      "explicit evidence for change across corpus order or an explicit no-clear-change result"
+    ]
+  }
+}
