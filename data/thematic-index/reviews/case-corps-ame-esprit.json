@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "corps-ame-esprit",
+  "anchorLabel": "Corps, âme et esprit",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test the transversal semantic representation on a structurally different case where autonomous themes are explicitly distinguished and integrated in one Psalm.",
+  "sourcePolicy": [
+    "data/thematic-index/books/book-*.json",
+    "data/corpus/books/book-*/psalm-*.json",
+    "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
+  ],
+  "anchorEvidence": {
+    "recordId": "book-06-psalm-042",
+    "bookNumber": 6,
+    "psalmNumber": 42,
+    "psalmTitle": "Es-tu une taupe, un poisson ou un",
+    "verseNumbers": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    "canonicalTeaching": "Corps, âme et esprit appartiennent à des mondes distincts ; ils doivent communiquer sans être confondus, et la vie intérieure doit être orientée vers l'âme, l'esprit et le divin plutôt que soumise aux seuls besoins du corps.",
+    "observedStructure": [
+      "three-distinct-realities",
+      "communication-without-confusion",
+      "body-as-material-incarnation",
+      "soul-as-source-of-inner-life",
+      "spirit-as-divine-orientation",
+      "inner-life-oriented-toward-divine-eternity"
+    ]
+  },
+  "relationAssessments": [
+    {
+      "id": "case-corps--corps-ame-esprit",
+      "sourceThemeId": "corps",
+      "targetThemeId": "corps-ame-esprit",
+      "proposedRelationType": "component_of",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "corps": [{"recordId": "book-01-psalm-005", "verseNumbers": [11, 12, 13, 14]}],
+        "corps-ame-esprit": [{"recordId": "book-06-psalm-042", "verseNumbers": [4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15]}]
+      },
+      "reviewNote": "Le verset 5 distingue explicitement le corps de l'âme et de l'esprit ; les versets suivants lui attribuent son monde, ses besoins et sa fonction d'incarnation. Corps est donc une composante attestée du thème conjoint, sans être équivalent au tout.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-ame--corps-ame-esprit",
+      "sourceThemeId": "ame",
+      "targetThemeId": "corps-ame-esprit",
+      "proposedRelationType": "component_of",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "ame": [{"recordId": "book-01-psalm-022", "verseNumbers": [7]}],
+        "corps-ame-esprit": [{"recordId": "book-06-psalm-042", "verseNumbers": [5, 7, 8, 9, 10, 13, 15]}]
+      },
+      "reviewNote": "L'âme est explicitement placée dans un monde distinct et présentée comme source supérieure de la vie intérieure. Elle constitue l'une des réalités que le thème conjoint articule.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-esprit--corps-ame-esprit",
+      "sourceThemeId": "esprit",
+      "targetThemeId": "corps-ame-esprit",
+      "proposedRelationType": "component_of",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "esprit": [{"recordId": "book-19-psalm-115", "verseNumbers": [10, 12, 13, 15, 16, 21, 25]}],
+        "corps-ame-esprit": [{"recordId": "book-06-psalm-042", "verseNumbers": [5, 10, 15]}]
+      },
+      "reviewNote": "L'esprit est explicitement distingué du corps et de l'âme au verset 5 et reçoit une orientation divine dans la suite. Il est une composante attestée du thème conjoint.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {
+      "status": "not-established",
+      "note": "Aucun thème examiné n'est traité comme équivalent au thème conjoint."
+    },
+    "variant_of": {
+      "status": "not-established",
+      "note": "Aucune variante complète du triptyque n'est établie dans ce dossier borné."
+    },
+    "broader_than": {
+      "status": "not-established",
+      "note": "Les trois thèmes autonomes ne sont pas classés comme plus généraux : le psaume les présente comme dimensions distinctes articulées ensemble."
+    },
+    "component_of": {
+      "status": "proposed",
+      "themeIds": ["corps", "ame", "esprit"]
+    },
+    "related_to": {
+      "status": "not-used-as-substitute-for-components",
+      "note": "Le lien explicite est assez précis pour proposer component_of ; related_to serait ici moins informatif."
+    }
+  },
+  "semanticBoundary": {
+    "note": "Ce cas démontre une structure différente du cas union-pere-nature. Dans le psaume 42, les éléments nommés sont explicitement distingués comme réalités constitutives du thème conjoint. Dans le cas licorne, Père et nature sont des pôles auxquels l'homme se relie ; leur présence dans le libellé ne suffisait donc pas à établir component_of.",
+    "decisionRuleTested": "A token-named concept may be proposed as component_of only when corpus evidence presents it as an autonomous constituent of the composite semantic structure, not merely as an object, pole, qualifier or relation partner."
+  },
+  "transversalProfileEvidence": {
+    "exactTheme": {
+      "corpusPositions": [{"bookNumber": 6, "psalmNumber": 42, "recordId": "book-06-psalm-042"}],
+      "firstObservedOccurrence": {"bookNumber": 6, "psalmNumber": 42},
+      "lastObservedOccurrence": {"bookNumber": 6, "psalmNumber": 42},
+      "completeness": "exact-theme occurrence count must be read from the transversal index before narrative use"
+    },
+    "observedVariationDimensions": [
+      "distinction versus communication among body soul and spirit",
+      "material needs of the body versus nourishment of inner life",
+      "temporary incarnation versus eternity of the soul",
+      "non-confusion of worlds versus union with the divine"
+    ],
+    "distributionAssessment": {
+      "status": "not-yet-global",
+      "note": "This case validates semantic structure, not yet the complete distribution of the family across 1158 Psalms."
+    },
+    "evolutionAssessment": {
+      "status": "not-established",
+      "note": "No evolution claim is justified from one anchor and autonomous component occurrences. Corpus order is not historical chronology."
+    },
+    "futureNarrativePrerequisites": [
+      "complete exact-theme occurrence positions",
+      "reviewed variants and broader/narrower formulations",
+      "ordered occurrences of the semantic family",
+      "importance and directness per occurrence",
+      "book-level concentration and long gaps",
+      "attested differences in the role assigned to body soul and spirit",
+      "explicit evidence for change across corpus order or an explicit no-clear-change result"
+    ]
+  }
+}
