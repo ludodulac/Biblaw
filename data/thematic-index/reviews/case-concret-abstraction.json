@@ -28,6 +28,13 @@
         "concret-contre-abstraction": [{"recordId": "book-21-psalm-139", "verseNumbers": [9, 10, 11, 12, 14, 15, 16, 23, 24, 25, 28]}]
       },
       "reviewNote": "Abstraction est un thème autonome décrivant la mise à distance du divin et de l'expérience vécue. Dans le thème Concret contre abstraction, elle constitue le pôle explicitement combattu. Elle n'est donc ni une composante du thème, ni son genre conceptuel, ni une variante : related_to préserve la relation antagonique sans introduire un type d'opposition absent du contrat actuel.",
+      "lexicalIndependenceTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "éloignement d'une réalité vécue au profit d'une représentation idéale ou désincarnée",
+        "targetReformulation": "retour à l'expérience directe, à l'application et au résultat observable dans la vie",
+        "result": "passes",
+        "reason": "Les concepts restent opposés et donc réellement liés même sans partager le mot abstraction. La reformulation ne révèle ni inclusion de classe ni structure de partie-tout : related_to reste le type prudent."
+      },
       "semanticClaim": false
     }
   ],
@@ -39,6 +46,7 @@
     "related_to": {"status": "proposed", "sourceThemeId": "abstraction", "targetThemeId": "concret-contre-abstraction"}
   },
   "semanticBoundary": {
-    "decisionRule": "Quand un thème est construit par opposition explicite, la présence lexicale du terme opposé signale une relation antagonique mais pas une relation de partie-tout ni de général-spécifique."
+    "decisionRule": "Quand un thème est construit par opposition explicite, la présence lexicale du terme opposé signale une relation antagonique mais pas une relation de partie-tout ni de général-spécifique.",
+    "lexicalGuardrail": "Toute relation proposée doit survivre à une reformulation conceptuelle supprimant le vocabulaire commun entre les thèmes. Pour un thème composite, juger le concept exprimé dans son ensemble et les preuves du psaume, jamais chacun des mots du libellé séparément."
   }
 }
