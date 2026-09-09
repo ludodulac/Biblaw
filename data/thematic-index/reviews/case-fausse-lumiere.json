@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "apparences-et-fausse-lumiere",
+  "anchorLabel": "Apparences et fausse lumière",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test a polarity-reversing modifier: lexical containment of Lumière must not imply component, variant, equivalence or general-specific structure when the target explicitly contrasts deceptive appearance with true Light.",
+  "anchorEvidence": {
+    "recordId": "book-11-psalm-055",
+    "bookNumber": 11,
+    "psalmNumber": 55,
+    "psalmTitle": "Préserve le précieux, car tu peux le perdre",
+    "verseNumbers": [2, 4, 5, 7, 15, 16],
+    "canonicalTeaching": "Le psaume oppose les apparences, la lumière trompeuse et ce qui s'éteint au précieux, au divin et à la véritable Lumière qui demeure vivante à travers les mondes."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-lumiere--apparences-et-fausse-lumiere",
+      "sourceThemeId": "lumiere",
+      "targetThemeId": "apparences-et-fausse-lumiere",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "lumiere": [{"recordId": "book-01-psalm-017", "verseNumbers": [1, 5, 10]}],
+        "apparences-et-fausse-lumiere": [{"recordId": "book-11-psalm-055", "verseNumbers": [2, 4, 5, 7, 15, 16]}]
+      },
+      "reviewNote": "Lumière est attestée comme réalité positive liée à la joie, à la vie et à une conviction qui ouvre l'être. Le psaume 55 ne décrit pas une sous-forme de cette Lumière : il nomme une lumière trompeuse ou éphémère précisément pour la distinguer de la véritable Lumière, identifiée au précieux et au divin. Le thème cible est donc relié à Lumière par contraste critique. related_to préserve cette opposition sans prétendre que la fausse lumière est une composante, une variante ou une espèce de la Lumière.",
+      "lexicalIndependenceTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "réalité vivifiante et positive qui ouvre l'être à la vie et au divin",
+        "targetReformulation": "séduction des apparences éphémères qui détourne de ce qui demeure réellement précieux et divin",
+        "result": "passes",
+        "reason": "Les deux concepts restent directement opposés même sans le mot lumière. La reformulation détruit toute apparence de relation de classe ou de partie-tout et renforce la lecture contrastive."
+      },
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "rejected-for-this-pair", "note": "Le texte oppose explicitement lumière trompeuse et véritable Lumière."},
+    "variant_of": {"status": "rejected-for-this-pair", "note": "Le qualificatif faux inverse la valeur sémantique au lieu de simplement reformuler le concept de base."},
+    "broader_than": {"status": "rejected-for-this-pair", "note": "La fausse lumière n'est pas traitée comme une sous-classe de la Lumière véritable."},
+    "component_of": {"status": "rejected-for-this-pair", "note": "Le thème Lumière n'est pas une partie constitutive du thème critique; il en est le terme positif de contraste."},
+    "related_to": {"status": "proposed", "sourceThemeId": "lumiere", "targetThemeId": "apparences-et-fausse-lumiere"}
+  },
+  "semanticBoundary": {
+    "decisionRule": "Un modificateur explicitement négatif ou trompeur peut inverser la polarité du concept de base. Dans ce cas, le partage lexical ne justifie ni variant_of, ni broader_than, ni component_of; une relation contrastive reste related_to tant qu'aucun type d'opposition canonique n'existe.",
+    "contrastWithCases": [
+      "case-nature-vivante.json: le qualificatif vivant explicite une propriété déjà intrinsèque et permet variant_of.",
+      "case-pensee-verticale.json: le qualificatif verticale délimite un mode réellement distinct et permet broader_than depuis le thème général.",
+      "case-concret-abstraction.json: un pôle explicitement combattu reste related_to, non component_of."
+    ],
+    "lexicalGuardrail": "La présence du mot d'un thème à l'intérieur d'une formulation négative, privative, trompeuse ou antagonique ne doit jamais être interprétée automatiquement comme inclusion sémantique."
+  }
+}
