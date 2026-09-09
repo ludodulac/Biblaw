@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "oeuvres-et-au-dela",
+  "anchorLabel": "Œuvres et au-delà",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Stress-test broader_than against related_to on a composite title whose second term expresses a consequence/continuity domain rather than an autonomous constituent.",
+  "anchorEvidence": {
+    "recordId": "book-19-psalm-124",
+    "bookNumber": 19,
+    "psalmNumber": 124,
+    "psalmTitle": "Sur la terre, vous n’êtes que de passage",
+    "verseNumbers": [4, 5, 6, 7, 8],
+    "canonicalTeaching": "Ce que l'homme accomplit sur la terre devient une base et une matière qu'il retrouve après la mort ; les œuvres terrestres conditionnent ainsi la continuité, la stabilité et la qualité de sa vie dans l'au-delà."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-oeuvres--oeuvres-et-au-dela",
+      "sourceThemeId": "oeuvres",
+      "targetThemeId": "oeuvres-et-au-dela",
+      "proposedRelationType": "broader_than",
+      "confidence": "borderline-broader-preferred",
+      "evidenceByThemeId": {
+        "oeuvres": [{"recordId": "book-18-psalm-127", "verseNumbers": [1, 2, 4, 5, 10, 12, 13, 17, 18]}],
+        "oeuvres-et-au-dela": [{"recordId": "book-19-psalm-124", "verseNumbers": [4, 5, 6, 7, 8]}]
+      },
+      "reviewNote": "Œuvres porte de façon générale sur les réalisations concrètes comme révélateurs et constructeurs de l'être. Œuvres et au-delà isole une question plus déterminée : ce que ces réalisations construisent et rendent possible après la mort. Le titre en « et » ne doit donc pas être lu comme une composition de deux constituants autonomes. Broad­er_than reste proposé parce que le thème cible demeure une focalisation sur une propriété/conséquence particulière des œuvres, mais related_to est un concurrent réel puisque la cible organise aussi une relation entre actes terrestres et condition post-mortem.",
+      "nonLexicalReformulationTest": {
+        "question": "La relation resterait-elle vraie si les deux concepts étaient renommés sans leur vocabulaire commun ?",
+        "sourceReformulation": "Réalisations concrètes par lesquelles l'être manifeste ce qui l'inspire et se construit lui-même.",
+        "targetReformulation": "Continuité post-mortem fondée sur ce qui a été effectivement accompli pendant l'existence incarnée.",
+        "result": "fragilizes-but-preserves-general-specific",
+        "reason": "La reformulation fait disparaître l'impression grammaticale de sous-thème immédiat et révèle une relation de conséquence. Néanmoins la cible reste entièrement déterminée par un aspect particulier des réalisations terrestres : leur capacité à fournir une base après la mort. Elle ne constitue pas un domaine indépendant de l'au-delà pris en général.",
+        "competingRelation": "related_to",
+        "whyCompetitorIsPlausible": "Le concept cible relie deux domaines — accomplissement terrestre et continuité post-mortem — plutôt qu'il ne nomme une simple classe d'œuvres.",
+        "decisiveTest": "Demander si le thème cible pourrait rester intact sans la fonction structurante des œuvres. Ici non : les versets 4 à 8 définissent précisément l'au-delà à partir de ce que l'homme a réalisé sur terre. Cela maintient une dépendance conceptuelle asymétrique compatible avec broader_than."
+      },
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "rejected", "note": "Le thème cible ajoute explicitement la conséquence post-mortem des œuvres."},
+    "variant_of": {"status": "rejected", "note": "Il ne s'agit pas seulement d'une autre formulation du même noyau : une nouvelle dimension de conséquence et de continuité est introduite."},
+    "broader_than": {"status": "proposed-but-borderline", "sourceThemeId": "oeuvres", "targetThemeId": "oeuvres-et-au-dela"},
+    "component_of": {"status": "rejected", "note": "Œuvres n'est pas une pièce assemblée avec un concept autonome Au-delà ; le second terme exprime le domaine de conséquence de ce qui a été réalisé."},
+    "related_to": {"status": "serious-competitor", "note": "La structure actes terrestres → condition post-mortem rend une relation thématique forte défendable si l'on exige de broader_than une inclusion plus stricte."}
+  },
+  "semanticBoundary": {
+    "decisionRule": "Un composite A et B peut encore relever de général→spécifique lorsque B exprime une conséquence, un domaine d'application ou une propriété déterminée de A ; il ne faut cependant retenir broader_than que si la cible dépend conceptuellement de A et ne devient pas un thème relationnel autonome après reformulation.",
+    "status": "borderline-broader-versus-related"
+  }
+}
