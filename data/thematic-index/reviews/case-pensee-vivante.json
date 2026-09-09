@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "pensee-vivante",
+  "anchorLabel": "Pensée vivante",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test a genuine near-equivalence boundary where generic and qualified theme IDs are simultaneously attested in the same Psalm.",
+  "anchorEvidence": {
+    "recordId": "book-19-psalm-102",
+    "bookNumber": 19,
+    "psalmNumber": 102,
+    "psalmTitle": "La clé pour se libérer des mauvaises pensées",
+    "verseNumbers": [1, 2, 3, 8, 12, 19],
+    "canonicalTeaching": "La pensée est une réalité vivante, intelligente et agissante ; elle déclenche création et destinée et doit être éveillée, rendue consciente et unie à la sagesse."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-pensee-vivante--pensee",
+      "sourceThemeId": "pensee-vivante",
+      "targetThemeId": "pensee",
+      "proposedRelationType": "variant_of",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "pensee-vivante": [{"recordId": "book-19-psalm-102", "verseNumbers": [1, 2, 3, 8]}],
+        "pensee": [{"recordId": "book-19-psalm-102", "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13]}]
+      },
+      "reviewNote": "Dans le même psaume, Pensée et Pensée vivante recouvrent le même noyau ontologique : la pensée est décrite comme réalité vivante et agissante qui produit actes, œuvres et destinée. Cependant le themeId Pensée possède ailleurs un champ plus large incluant pensée mécanique, réfléchie, créatrice ou orientée de diverses manières. Pensée vivante accentue ici une propriété centrale plutôt qu'elle ne constitue un thème strictement identique dans toute son extension. Variant_of est donc proposé plutôt qu'equivalent_to.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "not-established", "note": "L'identité locale dans le psaume 102 est très forte, mais l'équivalence globale des deux themeIds dans tout le corpus n'est pas démontrée."},
+    "variant_of": {"status": "proposed", "sourceThemeId": "pensee-vivante", "targetThemeId": "pensee"},
+    "broader_than": {"status": "not-retained-yet", "note": "Pensée est globalement plus étendue, mais l'ancre montre surtout une formulation qualifiée du même noyau plutôt qu'un sous-domaine autonome clairement délimité."},
+    "component_of": {"status": "rejected-for-this-pair"},
+    "related_to": {"status": "true-but-less-informative-than-variant_of"}
+  },
+  "transversalProfileEvidence": {
+    "reviewedOccurrences": [
+      {"themeId": "pensee-vivante", "bookNumber": 19, "psalmNumber": 102, "recordId": "book-19-psalm-102"},
+      {"themeId": "pensee", "bookNumber": 19, "psalmNumber": 102, "recordId": "book-19-psalm-102"},
+      {"themeId": "pensee", "bookNumber": 20, "psalmNumber": 104, "recordId": "book-20-psalm-104"}
+    ],
+    "observedVariationDimensions": [
+      "thought as living autonomous reality",
+      "mechanical versus conscious versus divine thought",
+      "thought as cause of action and destiny",
+      "living thought versus thought integrated with feeling and will"
+    ],
+    "distributionAssessment": {"status": "not-yet-global", "note": "The exact qualified theme has only been bounded here by its anchor; the much broader Pensée family requires a dedicated transversal pass before distribution claims."},
+    "evolutionAssessment": {"status": "not-established", "note": "No evolution claim is justified; corpus order is not historical chronology."}
+  }
+}
