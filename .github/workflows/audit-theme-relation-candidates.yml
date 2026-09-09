@@ -6,6 +6,7 @@ on:
       - work/theme-relation-candidates
     paths:
       - "scripts/report_theme_relation_candidates.py"
+      - "scripts/report_theme_relation_review_context.py"
       - "scripts/report_theme_layer_coverage.py"
       - "scripts/audit_theme_relation_candidates.py"
       - "data/thematic-index/theme-search-index.json"
@@ -35,6 +36,19 @@ jobs:
 
       - name: Audit editorial/search theme layer coverage
         run: python scripts/report_theme_layer_coverage.py
+
+      - name: Report bounded semantic review evidence
+        run: >-
+          python scripts/report_theme_relation_review_context.py
+          --theme union-pere-nature
+          --theme union
+          --theme pere
+          --theme nature
+          --theme alliance-de-lumiere
+          --theme alliance
+          --theme lumiere
+          --theme nature-vivante
+          --max-occurrences 3
 
       - name: Diagnose licorne theme candidate structure
         run: python scripts/report_theme_relation_candidates.py --theme union-pere-nature --limit 10
