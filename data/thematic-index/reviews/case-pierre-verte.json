@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "pierre-verte",
+  "anchorLabel": "Pierre verte",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test broader/specific versus variant semantics on a symbolic theme whose anchor Psalm explicitly distinguishes the generic stone from the green stone.",
+  "anchorEvidence": {
+    "recordId": "book-03-psalm-004",
+    "bookNumber": 3,
+    "psalmNumber": 4,
+    "psalmTitle": "Le secret de la pierre verte",
+    "verseNumbers": [1, 2, 3, 4, 5, 8, 9, 13],
+    "canonicalTeaching": "La pierre verte symbolise la présence de l'Ange et de l'Archange et sert de support à une alliance incarnée ; la pierre générique représente plus largement le corps stable, concret et réceptif capable de garder et rayonner la Lumière."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-pierre--pierre-verte",
+      "sourceThemeId": "pierre",
+      "targetThemeId": "pierre-verte",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal",
+      "evidenceByThemeId": {
+        "pierre": [{"recordId": "book-03-psalm-004", "verseNumbers": [2, 3, 4, 5, 8]}],
+        "pierre-verte": [{"recordId": "book-03-psalm-004", "verseNumbers": [1]}]
+      },
+      "reviewNote": "Le même psaume distingue explicitement la pierre comme modèle générique de stabilité, incarnation et réceptivité, puis la pierre verte comme pierre déterminée portant une fonction symbolique d'alliance avec l'Ange et l'Archange. Pierre est donc plus général que Pierre verte ; le qualificatif ne constitue pas une simple reformulation interchangeable.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "rejected-for-this-pair"},
+    "variant_of": {"status": "not-retained", "note": "La pierre verte ajoute une identité et une fonction symbolique déterminées."},
+    "broader_than": {"status": "proposed", "sourceThemeId": "pierre", "targetThemeId": "pierre-verte"},
+    "component_of": {"status": "not-retained", "note": "Pierre n'est pas une composante interne de Pierre verte ; il s'agit du genre conceptuel plus large."},
+    "related_to": {"status": "true-but-less-informative-than-broader-than"}
+  },
+  "transversalProfileEvidence": {
+    "reviewedOccurrences": [
+      {"themeId": "pierre-verte", "bookNumber": 3, "psalmNumber": 4, "recordId": "book-03-psalm-004"},
+      {"themeId": "pierre-verte", "bookNumber": 15, "psalmNumber": 78, "recordId": "book-15-psalm-078"}
+    ],
+    "observedVariationDimensions": [
+      "stone as stable concrete receptacle versus green stone as alliance symbol",
+      "receptivity and preservation of Light versus preservation of divine memory",
+      "generic mineral symbolism versus a specifically identified sacred stone"
+    ],
+    "distributionAssessment": {"status": "partial", "note": "The reviewed green-stone attestations occur at separated corpus positions, but complete family membership is not yet established."},
+    "evolutionAssessment": {"status": "not-established", "note": "The later reviewed occurrence emphasizes memory, but corpus order is not historical chronology and two attestations do not establish evolution."}
+  }
+}
