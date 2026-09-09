@@ -76,37 +76,27 @@ jobs:
       - name: Report bounded semantic review evidence
         run: >-
           python scripts/report_theme_relation_review_context.py
-          --theme union-pere-nature
-          --theme union
-          --theme pere
-          --theme nature
-          --theme alliance-de-lumiere
-          --theme alliance
-          --theme lumiere
-          --theme nature-vivante
-          --theme union-et-soutien-mutuel
-          --theme soutien-mutuel
-          --theme discernement-contre-imitation
-          --theme discernement
-          --theme imitation
-          --theme concret-contre-abstraction
-          --theme abstraction
-          --theme dialogue-avec-la-nature
-          --theme alliance-angelique
-          --theme anges
-          --theme present-pont-passe-futur
-          --theme passe-present-futur
-          --theme futur
-          --theme present
-          --theme relations-avec-les-regnes
-          --theme regnes
-          --theme relations
-          --theme communication-avec-le-divin
-          --theme communication
-          --theme oeuvres-et-au-dela
-          --theme oeuvres
-          --theme reciprocite-avec-la-mere
-          --theme mere
+          --theme union-pere-nature --theme union --theme pere --theme nature
+          --theme alliance-de-lumiere --theme alliance --theme lumiere --theme nature-vivante
+          --theme union-et-soutien-mutuel --theme soutien-mutuel
+          --theme discernement-contre-imitation --theme discernement --theme imitation
+          --theme concret-contre-abstraction --theme abstraction
+          --theme dialogue-avec-la-nature --theme alliance-angelique --theme anges
+          --theme present-pont-passe-futur --theme passe-present-futur --theme futur --theme present
+          --theme relations-avec-les-regnes --theme regnes --theme relations
+          --theme communication-avec-le-divin --theme communication
+          --theme oeuvres-et-au-dela --theme oeuvres --theme reciprocite-avec-la-mere --theme mere
+          --max-occurrences 3
+
+      - name: Probe diverse evidence-ready relations
+        run: >-
+          python scripts/report_theme_relation_review_context.py
+          --theme corps --theme corps-ame-esprit
+          --theme terre --theme terre-eau-air-feu
+          --theme lumiere --theme apparences-et-fausse-lumiere
+          --theme dieux --theme idoles-et-faux-dieux
+          --theme conscience --theme pratique-et-conscience
+          --theme pensee --theme maitrise-pensee-parole
           --max-occurrences 3
 
       - name: Diagnose licorne theme candidate structure
