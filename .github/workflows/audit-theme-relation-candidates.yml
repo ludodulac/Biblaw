@@ -9,9 +9,11 @@ on:
       - "scripts/report_theme_relation_review_context.py"
       - "scripts/report_theme_layer_coverage.py"
       - "scripts/audit_theme_relation_candidates.py"
+      - "scripts/audit_theme_relation_review_pilot.py"
       - "data/thematic-index/theme-search-index.json"
       - "data/thematic-index/theme-quality-audit.json"
       - "data/thematic-index/themes/**"
+      - "data/thematic-index/reviews/theme-relations-pilot.json"
       - ".github/workflows/audit-theme-relation-candidates.yml"
   workflow_dispatch:
 
@@ -36,6 +38,9 @@ jobs:
 
       - name: Audit editorial/search theme layer coverage
         run: python scripts/report_theme_layer_coverage.py
+
+      - name: Audit semantic review pilot
+        run: python scripts/audit_theme_relation_review_pilot.py
 
       - name: Report bounded semantic review evidence
         run: >-
