@@ -5,7 +5,7 @@
   "semanticClaim": false,
   "requiresHumanApproval": true,
   "publicSearchEffect": false,
-  "purpose": "Test whether structural relation candidates can be retyped or rejected from attested Psalm evidence before any relation is promoted to canonical validated data.",
+  "purpose": "Test whether structural relation candidates can be accepted, retyped or rejected from attested Psalm evidence before any relation is promoted to canonical validated data.",
   "sourcePolicy": [
     "data/thematic-index/books/book-*.json",
     "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
@@ -165,6 +165,58 @@
         ]
       },
       "reviewNote": "Les analyses de Nature la décrivent déjà comme monde vivant qui communique ; Nature vivante accentue cette même propriété en présentant la nature comme livre vivant de la sagesse. Une variante contextuelle est proposée plutôt qu’une relation de composante. L’orientation proposée est Nature vivante → Nature.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "pilot-union--union-et-soutien-mutuel",
+      "candidate": {
+        "sourceThemeId": "union",
+        "targetThemeId": "union-et-soutien-mutuel",
+        "candidateRelationType": "component_candidate",
+        "candidateBasis": "normalized-meaningful-token-subset"
+      },
+      "candidateDisposition": "accepted",
+      "proposedRelation": {
+        "sourceThemeId": "union",
+        "targetThemeId": "union-et-soutien-mutuel",
+        "relationType": "component_of"
+      },
+      "evidenceByThemeId": {
+        "union": [
+          {"recordId": "book-03-psalm-010", "verseNumbers": [1, 7, 8, 9, 11, 12, 14, 18, 19]}
+        ],
+        "union-et-soutien-mutuel": [
+          {"recordId": "book-22-psalm-142", "verseNumbers": [25, 26, 27, 28, 29, 30, 31]}
+        ]
+      },
+      "reviewNote": "Le psaume 142 énonce explicitement au verset 26 que la force collective se trouve « dans l’union et le soutien mutuel ». Le thème cible est ici une conjonction attestée de deux dimensions autonomes, et Union constitue bien l’une de ces dimensions sans épuiser le thème complet.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "pilot-soutien-mutuel--union-et-soutien-mutuel",
+      "candidate": {
+        "sourceThemeId": "soutien-mutuel",
+        "targetThemeId": "union-et-soutien-mutuel",
+        "candidateRelationType": "component_candidate",
+        "candidateBasis": "normalized-meaningful-token-subset"
+      },
+      "candidateDisposition": "accepted",
+      "proposedRelation": {
+        "sourceThemeId": "soutien-mutuel",
+        "targetThemeId": "union-et-soutien-mutuel",
+        "relationType": "component_of"
+      },
+      "evidenceByThemeId": {
+        "soutien-mutuel": [
+          {"recordId": "book-08-psalm-050", "verseNumbers": [4, 7, 8, 12, 13, 14, 16]}
+        ],
+        "union-et-soutien-mutuel": [
+          {"recordId": "book-22-psalm-142", "verseNumbers": [25, 26, 27, 28, 29, 30, 31]}
+        ]
+      },
+      "reviewNote": "Soutien mutuel est attesté ailleurs comme force et protection dépassant l’individu. Dans le psaume 142, il est nommé avec l’union comme condition de la force du corps collectif. Il constitue donc une composante attestée du thème conjoint sans être équivalent au thème complet.",
       "semanticClaim": false,
       "requiresHumanApproval": true
     }
