@@ -11,12 +11,14 @@ def main() -> None:
     assert report.get("semanticClaim") is False
     assert report.get("automaticDisposition") is False
     assert report.get("reviewedPairCount") == len(reviewed_pairs())
+    assert report.get("primaryQueueDiversityPolicy") == "max-one-pair-per-source-theme"
 
     items = report.get("items") or []
     assert items, "review queue must expose unreviewed candidate pairs"
     done = reviewed_pairs()
     order = {"ready-high": 0, "ready-standard": 1, "needs-evidence": 2}
     previous_key = None
+    seen_sources: set[str] = set()
 
     for item in items:
         pair = (item.get("sourceThemeId"), item.get("targetThemeId"))
@@ -25,6 +27,10 @@ def main() -> None:
         assert item.get("semanticClaim") is False
         assert item.get("requiresHumanValidation") is True
         assert item.get("reviewReadiness") in order
+        source_id = item.get("sourceThemeId")
+        assert source_id not in seen_sources, f"source theme monopolizes primary queue: {source_id}"
+        seen_sources.add(source_id)
+
         basis = item.get("readinessBasis") or {}
         if item["reviewReadiness"] == "ready-high":
             assert basis.get("sourceStrongEvidenceCount", 0) > 0
@@ -47,11 +53,12 @@ def main() -> None:
     counts = report.get("readinessCounts") or {}
     assert sum(counts.values()) == report.get("unreviewedCandidatePairCount")
     assert counts.get("ready-high", 0) > 0, "expected evidence-ready unreviewed candidates"
+    assert len(seen_sources) >= 6, "primary queue should expose varied source themes"
 
     print(
         "Theme relation review queue OK: "
         f"reviewed={report['reviewedPairCount']}; unreviewed={report['unreviewedCandidatePairCount']}; "
-        f"readiness={counts}; queue remains non-semantic"
+        f"primarySources={len(seen_sources)}; readiness={counts}; queue remains non-semantic"
     )
 
 
