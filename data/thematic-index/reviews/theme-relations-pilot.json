@@ -10,6 +10,7 @@
     "data/thematic-index/books/book-*.json",
     "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
   ],
+  "evidencePolicy": "Evidence is keyed by theme id so it remains unambiguous when a proposed directional relation reverses the original candidate orientation.",
   "decisions": [
     {
       "id": "pilot-union--union-pere-nature",
@@ -25,11 +26,11 @@
         "targetThemeId": "union-pere-nature",
         "relationType": "broader_than"
       },
-      "evidence": {
-        "sourceOccurrences": [
+      "evidenceByThemeId": {
+        "union": [
           {"recordId": "book-03-psalm-010", "verseNumbers": [1, 7, 8, 9, 11, 12, 14, 18, 19]}
         ],
-        "targetOccurrences": [
+        "union-pere-nature": [
           {"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}
         ]
       },
@@ -51,11 +52,11 @@
         "targetThemeId": "union-pere-nature",
         "relationType": "related_to"
       },
-      "evidence": {
-        "sourceOccurrences": [
+      "evidenceByThemeId": {
+        "pere": [
           {"recordId": "book-01-psalm-007", "verseNumbers": [1, 2, 3, 7, 11, 12]}
         ],
-        "targetOccurrences": [
+        "union-pere-nature": [
           {"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}
         ]
       },
@@ -77,11 +78,11 @@
         "targetThemeId": "union-pere-nature",
         "relationType": "related_to"
       },
-      "evidence": {
-        "sourceOccurrences": [
+      "evidenceByThemeId": {
+        "nature": [
           {"recordId": "book-01-psalm-002", "verseNumbers": [1, 3, 4, 5, 6]}
         ],
-        "targetOccurrences": [
+        "union-pere-nature": [
           {"recordId": "book-05-psalm-024", "verseNumbers": [3, 7, 9]}
         ]
       },
@@ -103,11 +104,11 @@
         "targetThemeId": "alliance-de-lumiere",
         "relationType": "broader_than"
       },
-      "evidence": {
-        "sourceOccurrences": [
+      "evidenceByThemeId": {
+        "alliance": [
           {"recordId": "book-02-psalm-002", "verseNumbers": [7, 8, 9, 11]}
         ],
-        "targetOccurrences": [
+        "alliance-de-lumiere": [
           {"recordId": "book-20-psalm-112", "verseNumbers": [1, 9, 17, 22, 53, 57, 58]}
         ]
       },
@@ -129,11 +130,11 @@
         "targetThemeId": "alliance-de-lumiere",
         "relationType": "related_to"
       },
-      "evidence": {
-        "sourceOccurrences": [
+      "evidenceByThemeId": {
+        "lumiere": [
           {"recordId": "book-05-psalm-037", "verseNumbers": [1, 2, 3, 4, 9, 10, 11, 13, 14]}
         ],
-        "targetOccurrences": [
+        "alliance-de-lumiere": [
           {"recordId": "book-20-psalm-112", "verseNumbers": [1, 9, 17, 22, 53, 57, 58]}
         ]
       },
@@ -155,11 +156,11 @@
         "targetThemeId": "nature",
         "relationType": "variant_of"
       },
-      "evidence": {
-        "sourceOccurrences": [
+      "evidenceByThemeId": {
+        "nature": [
           {"recordId": "book-01-psalm-002", "verseNumbers": [1, 3, 4, 5, 6]}
         ],
-        "targetOccurrences": [
+        "nature-vivante": [
           {"recordId": "book-11-psalm-063", "verseNumbers": [1, 2, 3, 8, 11, 12, 13, 14, 15, 18, 19, 20, 21, 24, 25, 26, 27, 28]}
         ]
       },
