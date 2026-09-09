@@ -8,6 +8,7 @@ on:
       - "scripts/report_theme_relation_candidates.py"
       - "scripts/report_theme_relation_review_context.py"
       - "scripts/report_theme_layer_coverage.py"
+      - "scripts/report_theme_alias_collisions.py"
       - "scripts/audit_theme_relation_candidates.py"
       - "scripts/audit_theme_relation_review_pilot.py"
       - "scripts/audit_validated_theme_relations.py"
@@ -48,6 +49,9 @@ jobs:
       - name: Audit canonical validated relation store
         run: python scripts/audit_validated_theme_relations.py
 
+      - name: Report exact alias collisions
+        run: python scripts/report_theme_alias_collisions.py
+
       - name: Report bounded semantic review evidence
         run: >-
           python scripts/report_theme_relation_review_context.py
@@ -59,6 +63,8 @@ jobs:
           --theme alliance
           --theme lumiere
           --theme nature-vivante
+          --theme union-et-soutien-mutuel
+          --theme soutien-mutuel
           --max-occurrences 3
 
       - name: Diagnose licorne theme candidate structure
