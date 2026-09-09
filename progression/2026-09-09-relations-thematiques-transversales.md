@@ -95,15 +95,9 @@ Garanties :
 - validation humaine obligatoire ;
 - la structure lexicale produit une candidature, jamais une vérité sémantique.
 
-Pour `union-pere-nature`, le rapport réel propose :
+Pour `union-pere-nature`, le rapport réel propose `pere`, `union` et `nature`. Cela signifie uniquement « composante à examiner » et jamais `pere = union-pere-nature`.
 
-- `pere` ;
-- `union` ;
-- `nature`.
-
-Cela signifie uniquement « composante à examiner » et jamais `pere = union-pere-nature`.
-
-### Audit de non-régression
+### Audit de non-régression des candidats
 
 `scripts/audit_theme_relation_candidates.py`
 
@@ -116,20 +110,9 @@ Sentinelles actuelles :
 
 L’audit vérifie également que toutes les relations du lot restent des candidats non sémantiques soumis à validation humaine.
 
-### Validation TARGETED réelle
-
-Workflow : `.github/workflows/audit-theme-relation-candidates.yml`.
-
-- timeout : 2 minutes ;
-- aucun générateur ;
-- aucun FULL ;
-- audits et diagnostics bornés uniquement.
-
-Les premiers runs ont validé le rapporteur, les statistiques de lot et la couverture des couches. Le calcul Python reste très court ; le temps principal du workflow reste le checkout/setup GitHub.
-
 ## Mesure du phénomène sur les 186 composites existants
 
-Résultat du run TARGETED :
+Résultat TARGETED :
 
 - composites audités : 186 ;
 - composites avec au moins une composante candidate : 145 ;
@@ -147,11 +130,11 @@ Distribution du nombre de candidats par thème :
 
 Ces chiffres montrent qu’une fragmentation potentielle existe à une échelle suffisante pour justifier une couche de revue générique, mais ils ne valident aucune relation sémantique.
 
-## Contrat sémantique ajouté
+## Contrat sémantique
 
 `data/thematic-index/THEME-RELATIONS-CONTRACT.md`
 
-Le contrat sépare désormais :
+Le contrat sépare :
 
 - nature de relation : `equivalent_to`, `variant_of`, `broader_than`, `component_of`, `related_to` ;
 - statut : `relation_candidate` ou `relation_validated`.
@@ -161,15 +144,20 @@ Les inverses sont dérivés plutôt que stockés en double :
 - `broader_than` → vue inverse `narrower_than` ;
 - `component_of` → vue inverse `has_component`.
 
-Une relation validée devra retenir les preuves des deux côtés, les versets/enseignements pertinents et une justification du type de relation retenu. Une validation de relation ne déclenche jamais automatiquement une fusion d’identifiants.
+Le contrat a été précisé après le pilote :
 
-## Frontière découverte entre couches thématiques
+- le premier graphe exploitable par la recherche relie uniquement des `themeId` réellement présents dans `theme-search-index.json` ;
+- les preuves sont indexées par `themeId` avec `evidenceByThemeId` afin de rester non ambiguës lorsqu’une candidature est retypée ou change de direction ;
+- une relation validée devra conserver des occurrences réelles des deux thèmes, les versets pertinents, l’enseignement thématique correspondant et une note de validation humaine ;
+- une validation de relation ne déclenche jamais automatiquement une fusion d’identifiants.
+
+## Frontière entre couches thématiques
 
 Un test volontaire sur `fidelite-et-infidelite` a révélé une distinction architecturale à préserver : cette fiche existe dans `data/thematic-index/themes/fidelite-et-infidelite.json`, mais cet identifiant n’existe pas dans `theme-search-index.json`.
 
 L’analyse par psaume correspondante (`book-17-psalm-105`) emploie en revanche le thème `fidelite`, avec un enseignement directement ancré dans les versets. La fiche `fidelite-et-infidelite` est donc une consolidation éditoriale de recherche et ne doit pas être traitée automatiquement comme une entité de recherche canonique.
 
-Un nouveau rapport FAST, `scripts/report_theme_layer_coverage.py`, mesure ce recouvrement sans modifier les données. Résultat du run TARGETED n°4 :
+`scripts/report_theme_layer_coverage.py` mesure ce recouvrement sans modifier les données. Résultat :
 
 - thèmes de l’index de recherche : 1247 ;
 - fiches éditoriales dans `data/thematic-index/themes/` : 38 ;
@@ -179,42 +167,99 @@ Un nouveau rapport FAST, `scripts/report_theme_layer_coverage.py`, mesure ce rec
 
 Les 14 identifiants éditoriaux seuls sont actuellement : `fidelite-et-infidelite`, `hierarchies`, `intelligence-superieure`, `libre-arbitre`, `maitres-et-sages`, `mensonge-et-illusion`, `nature-et-mere`, `non-savoir`, `perception-et-sens`, `pierres`, `plantes`, `purete-et-verite`, `solidarite-et-soutien-mutuel`, `sommeil-et-reve`.
 
-Conséquence : toute future relation persistée devra déclarer explicitement à quelle couche appartient chaque extrémité. Pour le premier graphe exploitable par la recherche, les extrémités doivent rester des `themeId` réellement présents dans l’index issu des analyses par psaume. Les fiches éditoriales peuvent fournir du contexte et des hypothèses, mais ne doivent pas être injectées silencieusement comme thèmes de recherche.
+Conséquence : les fiches éditoriales peuvent fournir du contexte et des hypothèses, mais ne doivent pas être injectées silencieusement comme thèmes de recherche.
 
 ## Lot pilote de revue sémantique
 
-Un outil ciblé, `scripts/report_theme_relation_review_context.py`, parcourt uniquement les 44 analyses thématiques par livre et restitue un nombre borné d’occurrences attestées pour quelques `themeId` : psaume, importance, directness, versets et enseignement. Il ne génère rien et ne valide aucune relation.
+`scripts/report_theme_relation_review_context.py` parcourt uniquement les 44 analyses thématiques par livre et restitue un nombre borné d’occurrences attestées pour quelques `themeId` : psaume, importance, directness, versets et enseignement. Il ne génère rien et ne valide aucune relation.
 
-Le premier lot est stocké dans `data/thematic-index/reviews/theme-relations-pilot.json`. Il reste volontairement non canonique :
+Le lot est stocké dans `data/thematic-index/reviews/theme-relations-pilot.json`. Il reste volontairement non canonique :
 
 - `status: proposed-review-decisions` ;
 - `semanticClaim: false` ;
 - `requiresHumanApproval: true` ;
 - `publicSearchEffect: false`.
 
-Six décisions proposées servent de sentinelles sémantiques :
+Le lot contient maintenant huit décisions proposées :
 
-- `union` → `union-pere-nature` : la candidature `component_candidate` est retypée en `broader_than` ;
-- `pere` ↔ `union-pere-nature` : la candidature `component_candidate` est rejetée ; `related_to` est proposé ;
-- `nature` ↔ `union-pere-nature` : même rejet prudent de `component_of`, avec `related_to` proposé ;
-- `alliance` → `alliance-de-lumiere` : retypée en `broader_than` ;
-- `lumiere` ↔ `alliance-de-lumiere` : `component_candidate` rejeté, `related_to` proposé ;
-- `nature-vivante` → `nature` : la candidature initiale issue de `nature` / `nature-vivante` est retypée en `variant_of` avec direction explicite.
+- `union` → `union-pere-nature` : `component_candidate` retypé en `broader_than` ;
+- `pere` ↔ `union-pere-nature` : candidature `component_of` rejetée, `related_to` proposé ;
+- `nature` ↔ `union-pere-nature` : même rejet prudent, `related_to` proposé ;
+- `alliance` → `alliance-de-lumiere` : retypé en `broader_than` ;
+- `lumiere` ↔ `alliance-de-lumiere` : composante rejetée, `related_to` proposé ;
+- `nature-vivante` → `nature` : retypé en `variant_of` ;
+- `union` → `union-et-soutien-mutuel` : candidature conservée comme `component_of` ;
+- `soutien-mutuel` → `union-et-soutien-mutuel` : candidature conservée comme `component_of`.
 
-Ce lot démontre une propriété essentielle : le générateur lexical n’est pas seulement capable de produire des cas plausibles ; la couche de revue peut aussi corriger le type proposé et rejeter la lecture « composante » lorsqu’elle est sémantiquement trompeuse.
+Les deux cas positifs `component_of` sont ancrés dans `book-22-psalm-142`, notamment le verset 26 qui nomme explicitement « l’union et le soutien mutuel » comme conditions conjointes de la force collective. Le thème cible est donc ici une conjonction attestée de deux dimensions autonomes ; chaque dimension est une composante sans épuiser le thème complet.
 
-Le schéma de preuve a été corrigé avant généralisation : les preuves sont indexées par `themeId` (`evidenceByThemeId`) plutôt que par `source/target`, afin de rester non ambiguës lorsqu’une relation directionnelle proposée inverse l’orientation de la candidature initiale.
+Cette comparaison précise une distinction importante : une structure lexicale composite peut correspondre à une vraie composition (`union` + `soutien-mutuel`), mais aussi à un rapport général/spécifique (`alliance` / `alliance-de-lumiere`), à une variante (`nature-vivante` / `nature`) ou seulement à des thèmes liés (`lumiere` / `alliance-de-lumiere`).
 
-`scripts/audit_theme_relation_review_pilot.py` vérifie maintenant :
+`scripts/audit_theme_relation_review_pilot.py` exige désormais la présence des trois issues `accepted`, `retyped`, `rejected`, vérifie les preuves contre les analyses thématiques et impose que le pilote couvre `component_of`, `broader_than`, `related_to` et `variant_of` sans inventer artificiellement une relation `equivalent_to`.
 
-- que le lot reste non canonique et sans effet recherche ;
-- qu’il contient à la fois des candidatures retypées et rejetées ;
-- que les types proposés appartiennent au contrat ;
-- que chaque paire proposée conserve exactement les deux mêmes thèmes que la candidature examinée ;
-- que chaque référence de preuve correspond réellement au bon `themeId` dans le bon `recordId` des analyses thématiques ;
-- que les versets cités sont réellement présents dans l’occurrence thématique attestée.
+## Test spécifique de l’équivalence et des alias ambigus
 
-Le run TARGETED n°8 (`Verify pilot evidence against thematic analyses`) est terminé avec succès sur toutes les étapes. Aucun FULL n’a été nécessaire.
+`scripts/report_theme_alias_collisions.py` dérive les alias normalisés partagés par plusieurs `themeId` de recherche.
+
+Le rapport retrouve exactement les 5 ambiguïtés déjà déclarées par `theme-search-index.json` et vérifie que le compte dérivé reste égal à `ambiguousAliasCount`.
+
+Collisions actuelles :
+
+- `alliance de lumiere` → `alliance`, `alliance-de-lumiere` ;
+- `nutrition subtile` → `nutrition`, `nutrition-subtile` ;
+- `service du monde divin` → `service`, `service-du-monde-divin` ;
+- `temple interieur` → `temple`, `temple-interieur` ;
+- `transmission aux generations` → `transmission`, `transmission-aux-generations`.
+
+Résultat sémantique : une collision d’alias exacte ne constitue pas une preuve d’équivalence. Le cas `alliance de lumiere` est déjà un contre-exemple direct : l’examen du corpus conduit à proposer `alliance` comme thème plus général que `alliance-de-lumiere`, pas comme équivalent.
+
+Aucune relation `equivalent_to` n’est donc proposée à ce stade. Cette absence est volontaire : le modèle ne doit pas remplir artificiellement tous les types du contrat lorsqu’aucune preuve suffisamment forte n’a été trouvée.
+
+## Stockage canonique des relations validées
+
+Le fichier `data/thematic-index/theme-relations-validated.json` a été ajouté comme source éditoriale canonique dédiée aux relations effectivement approuvées.
+
+État actuel :
+
+- `generated: false` ;
+- `endpointLayer: theme-search-index` ;
+- `publicSearchEffect: false` ;
+- `relations: []`.
+
+Le fichier est donc volontairement vide. Aucune des huit propositions du pilote n’a été promue automatiquement.
+
+`scripts/audit_validated_theme_relations.py` protège cette couche. Pour toute future relation validée, il vérifiera notamment :
+
+- extrémités présentes dans la couche de recherche ;
+- `relationStatus: relation_validated` ;
+- `semanticClaim: true` ;
+- `validation.status: human-approved` et note non vide ;
+- preuves exactement indexées par les deux `themeId` ;
+- occurrence réelle du thème dans le `recordId` cité ;
+- versets réellement attestés ;
+- enseignement identique à celui de l’analyse canonique ;
+- absence de doublons symétriques inversés ;
+- absence de relations directionnelles contradictoires en sens inverse.
+
+Comme le stockage est encore vide, l’audit exécute aussi 5 cas négatifs en mémoire avec le même validateur afin d’éviter un succès vacu : candidat dans le stockage validé, extrémité hors couche, verset non attesté, doublon symétrique inversé, plus un cas positif de contrôle.
+
+## Validation TARGETED réelle
+
+Workflow : `.github/workflows/audit-theme-relation-candidates.yml`.
+
+- timeout : 2 minutes ;
+- aucun générateur ;
+- aucun FULL ;
+- audits et diagnostics bornés uniquement.
+
+Jalons récents :
+
+- run n°8 : preuves du pilote vérifiées contre les analyses thématiques — succès ;
+- run n°9 : stockage canonique validé vide + 5 self-tests du validateur — succès ;
+- run n°12 : ajout des deux cas positifs `component_of` — succès ;
+- run n°13 : contrôle croisé des 5 collisions d’alias + ensemble des audits — succès.
+
+Les étapes Python restent de l’ordre de quelques dixièmes de seconde ; le temps principal du workflow reste le checkout/setup GitHub.
 
 ## Ce qui n’a volontairement pas été fait
 
@@ -226,10 +271,13 @@ Le run TARGETED n°8 (`Verify pilot evidence against thematic analyses`) est ter
 - aucune modification de l’interface ;
 - aucune introduction transversale générée par IA ;
 - aucune promotion automatique de candidat en relation validée ;
-- aucune décision du lot pilote n’est encore déclarée `relation_validated`.
+- aucune décision du lot pilote n’est encore déclarée `relation_validated` ;
+- aucune relation `equivalent_to` n’a été inventée faute de preuve suffisante.
 
 ## Prochaine frontière
 
-Le premier verrou sémantique est maintenant explicite : les six décisions du pilote doivent rester des **propositions examinables** tant qu’elles n’ont pas reçu une approbation éditoriale humaine. Une fois un petit sous-ensemble approuvé, l’étape suivante sera de définir le stockage minimal des `relation_validated`, avec preuves par `themeId`, statut de validation et audit de non-régression, toujours sans modifier la recherche publique.
+La structure technique du stockage validé existe maintenant et son audit est opérationnel. Le verrou restant n’est plus technique mais éditorial : une relation ne peut entrer dans `theme-relations-validated.json` qu’après une approbation humaine explicite de la décision et de ses preuves.
 
-Après seulement cette étape, on pourra tester une traversée additive de relations validées dans la recherche, d’abord derrière un diagnostic ou une vue séparée, avant toute modification du comportement utilisateur.
+Avant toute traversée dans la recherche, il reste utile d’élargir légèrement le lot de revue à quelques formulations très différentes pour vérifier que les distinctions observées restent stables, en particulier les cas où la négation, un qualificatif ou une relation grammaticale produisent une fausse proximité lexicale.
+
+Après approbation d’un petit sous-ensemble seulement, la première intégration produit devra rester additive et séparée : correspondance directe actuelle d’un côté, relations validées traversées de l’autre, sans exposer les candidats ni modifier la canonicalisation.
