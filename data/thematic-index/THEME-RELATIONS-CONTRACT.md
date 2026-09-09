@@ -19,31 +19,53 @@ Elle doit permettre de représenter progressivement des relations entre formulat
 - les analyses canoniques par psaume restent la source primaire de preuve ;
 - les artefacts générés restent reproductibles depuis leurs sources.
 
+## Couches d’entités
+
+Le premier graphe exploitable par la recherche relie uniquement des `themeId` présents dans `data/thematic-index/theme-search-index.json`, lui-même dérivé des analyses par psaume.
+
+Les fiches de `data/thematic-index/themes/` qui n’ont pas d’identifiant homonyme dans cet index sont des consolidations éditoriales utiles comme contexte de recherche, mais elles ne doivent pas être injectées silencieusement comme extrémités du graphe de recherche.
+
+Une relation persistée doit donc déclarer sa couche d’extrémités. La première version canonique utilise `endpointLayer: "theme-search-index"`.
+
 ## Enregistrement minimal d’une relation
 
-Une relation thématique persistée doit séparer sa nature de son statut :
+Une relation thématique persistée doit séparer sa nature de son statut et indexer les preuves par `themeId`, afin que la preuve ne devienne pas ambiguë lorsqu’une candidature est retypée ou change de direction :
 
 ```json
 {
   "schemaVersion": 1,
+  "id": "union--union-pere-nature--broader-than",
   "sourceThemeId": "union",
   "targetThemeId": "union-pere-nature",
-  "relationType": "component_of",
-  "relationStatus": "relation_candidate",
-  "semanticClaim": false,
-  "candidateBasis": ["normalized-meaningful-token-subset"],
-  "evidence": {
-    "sourceOccurrences": [],
-    "targetOccurrences": []
+  "relationType": "broader_than",
+  "relationStatus": "relation_validated",
+  "semanticClaim": true,
+  "evidenceByThemeId": {
+    "union": [
+      {
+        "recordId": "book-03-psalm-010",
+        "verseNumbers": [1, 7, 8],
+        "teaching": "..."
+      }
+    ],
+    "union-pere-nature": [
+      {
+        "recordId": "book-05-psalm-024",
+        "verseNumbers": [3, 7, 9],
+        "teaching": "..."
+      }
+    ]
   },
   "validation": {
-    "status": "needs-human-review",
-    "note": null
+    "status": "human-approved",
+    "note": "..."
   }
 }
 ```
 
 Le couple `relationType` / `relationStatus` est obligatoire. Un type de relation ne doit jamais encoder implicitement son niveau de validation.
+
+Les preuves sont référencées par identifiant de thème et doivent correspondre à des occurrences réelles dans `data/thematic-index/books/book-*.json`. Le `recordId`, les numéros de versets et l’enseignement recopié doivent rester cohérents avec l’analyse canonique correspondante ; un audit doit signaler toute dérive.
 
 ## Types de relation canoniques
 
@@ -85,13 +107,24 @@ Une relation candidate ne doit modifier ni la recherche publique ni la canonical
 
 La relation a été examinée contre le corpus. Elle doit conserver au minimum :
 
-- une ou plusieurs occurrences justificatives du thème source ;
-- une ou plusieurs occurrences justificatives du thème cible ;
-- les versets et enseignements pertinents disponibles dans les analyses ;
+- une ou plusieurs occurrences justificatives pour chacun des deux thèmes ;
+- les numéros de versets pertinents ;
+- l’enseignement thématique correspondant tel qu’il existe dans l’analyse canonique ;
 - une note expliquant pourquoi ce type précis de relation est retenu ;
+- `validation.status: human-approved` ;
 - `semanticClaim: true`.
 
 La validation d’une relation ne justifie jamais automatiquement une fusion d’identifiants.
+
+## Stockage canonique des relations validées
+
+Le fichier `data/thematic-index/theme-relations-validated.json` est la source canonique dédiée aux relations effectivement approuvées.
+
+Il est éditorial et non généré. Les rapports de candidats, les lots de revue et les sorties de diagnostic ne doivent jamais le réécrire automatiquement.
+
+Sa présence ne modifie pas à elle seule la recherche. L’exploitation par la recherche devra faire l’objet d’un lot séparé et de tests de non-régression spécifiques.
+
+Le fichier peut rester vide tant qu’aucune relation n’a reçu l’approbation éditoriale requise. Un stockage vide et audité est préférable à une promotion implicite des propositions du pilote.
 
 ## Inverses et duplication
 
@@ -100,7 +133,10 @@ Pour éviter les contradictions :
 - `equivalent_to` et `related_to` sont symétriques et ne sont stockés qu’une fois ;
 - `broader_than` produit `narrower_than` comme vue inverse ;
 - `component_of` produit `has_component` comme vue inverse ;
+- `variant_of` reste directionnel ;
 - les deux directions ne doivent pas être maintenues manuellement comme deux vérités indépendantes.
+
+Pour les relations symétriques, l’ordre de stockage des deux extrémités n’a pas de sens sémantique. Un audit doit donc détecter un doublon même si source et cible sont inversées.
 
 ## Candidatures automatiques
 
@@ -131,7 +167,7 @@ La structure de sa formulation permet de proposer `union`, `pere` et `nature` co
 - `nature = union-pere-nature` ;
 - que les quatre thèmes doivent être fusionnés.
 
-Une relation `component_of` ne pourra devenir `relation_validated` qu’après examen des occurrences et enseignements correspondants dans le corpus.
+Le lot pilote de revue a déjà montré qu’une candidature `component_candidate` peut devoir être retypée ou rejetée. Aucune sortie de ce pilote n’est automatiquement promue dans le stockage validé.
 
 ## Intégration produit
 
