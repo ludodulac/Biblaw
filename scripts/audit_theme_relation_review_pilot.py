@@ -27,6 +27,11 @@ OPPOSITION_SENTINELS = {
     "pilot-imitation--discernement-contre-imitation": "related_to",
     "pilot-abstraction--concret-contre-abstraction": "related_to",
 }
+RELATIONAL_SENTINELS = {
+    "pilot-alliance--alliance-angelique": ("retyped", "broader_than"),
+    "pilot-anges--alliance-angelique": ("rejected", "related_to"),
+    "pilot-nature--dialogue-avec-la-nature": ("rejected", "related_to"),
+}
 
 
 def build_attested_occurrences() -> dict[tuple[str, str], set[int]]:
@@ -129,6 +134,20 @@ def main() -> None:
             f"opposed concept must not regress to component_of: {sentinel_id}"
         )
 
+    for sentinel_id, (expected_disposition, expected_type) in RELATIONAL_SENTINELS.items():
+        sentinel = decision_by_id.get(sentinel_id)
+        assert sentinel is not None, f"missing relational-word sentinel: {sentinel_id}"
+        assert sentinel.get("candidateDisposition") == expected_disposition, (
+            f"relational-word sentinel disposition changed: {sentinel_id}"
+        )
+        proposed = sentinel.get("proposedRelation") or {}
+        assert proposed.get("relationType") == expected_type, (
+            f"relational-word sentinel must remain {expected_type}: {sentinel_id}"
+        )
+        assert proposed.get("relationType") != "component_of", (
+            f"relational wording must not regress to component_of: {sentinel_id}"
+        )
+
     assert "accepted" in dispositions, "pilot must demonstrate a positive component candidate"
     assert "retyped" in dispositions, "pilot must demonstrate candidate retyping"
     assert "rejected" in dispositions, "pilot must demonstrate candidate rejection"
@@ -144,6 +163,7 @@ def main() -> None:
         "Theme relation review pilot OK: "
         f"{len(decisions)} proposed decisions; {evidence_reference_count} attested evidence refs; "
         f"{len(OPPOSITION_SENTINELS)} opposition rejection sentinels; "
+        f"{len(RELATIONAL_SENTINELS)} relational-word sentinels; "
         f"dispositions={sorted(dispositions)}; types={sorted(proposed_types)}; "
         "equivalence intentionally unclaimed; no validated relation and no public search effect"
     )
