@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "union-et-force-collective",
+  "anchorLabel": "Union et force collective",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Stress-test broader_than, variant_of and related_to across two very close collective-union themes. The case distinguishes a specialization of union from a force that emerges as a consequence of union, and rejects lexical overlap as sufficient evidence of sameness.",
+  "sourcePolicy": [
+    "data/thematic-index/books/book-*.json",
+    "data/corpus/books/book-*/psalm-*.json",
+    "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
+  ],
+  "anchorEvidence": {
+    "recordId": "book-21-psalm-164",
+    "bookNumber": 21,
+    "psalmNumber": 164,
+    "psalmTitle": "Ma bénédiction sur tous les pionniers",
+    "verseNumbers": [9, 10, 12, 13, 15, 16, 17, 18, 19],
+    "canonicalTeaching": "L’union consciente, la fidélité commune et le refus de la division permettent à plusieurs personnes de former un corps collectif fort, stable et capable de porter une œuvre.",
+    "observedStructure": [
+      "union-as-condition",
+      "collective-force-as-emergent-result",
+      "collective-body",
+      "shared-work",
+      "division-weakens-result"
+    ]
+  },
+  "relationAssessments": [
+    {
+      "id": "case-union--union-des-forces",
+      "sourceThemeId": "union",
+      "targetThemeId": "union-des-forces",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "union": [
+          {"recordId": "book-03-psalm-010", "verseNumbers": [1, 7, 8, 9, 11, 12, 14, 18, 19]}
+        ],
+        "union-des-forces": [
+          {"recordId": "book-10-psalm-062", "verseNumbers": [1, 2, 3, 5, 6, 8, 9, 10]}
+        ]
+      },
+      "lexicalIndependenceReview": {
+        "question": "La relation reste-t-elle vraie si les deux thèmes sont reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "Coordination consciente de plusieurs êtres autour d’un idéal ou d’un but commun afin d’agir ensemble.",
+        "targetReformulation": "Mise en commun de capacités, d’énergies et de moyens individuels pour constituer une puissance opératoire unique orientée vers une œuvre déterminée.",
+        "result": "passes",
+        "note": "La cible reste une forme déterminée du rassemblement collectif général : elle restreint l’union à l’agrégation des forces et moyens en vue d’une réalisation concrète."
+      },
+      "closestCompetitor": {
+        "relationType": "related_to",
+        "whyPlausible": "Le psaume 62 insiste tellement sur la force opératoire et l’objectif concret que le thème pourrait être lu comme un mécanisme collectif autonome plutôt que comme une simple spécialisation de l’union.",
+        "decisiveTest": "Demander si la cible peut être définie sans conserver l’acte de rassemblement collectif. Ici non : le texte décrit explicitement des forces individuelles qui s’unissent pour constituer une seule force. broader_than conserve donc une asymétrie réelle que related_to perdrait."
+      },
+      "reviewNote": "Le psaume 10 présente l’union de manière générale comme rassemblement conscient autour d’un idéal commun, source de possibilités et de puissance. Le psaume 62 spécifie ce mécanisme en union de forces, de moyens et d’énergies orientés vers une œuvre concrète. La relation général-vers-spécialisation survit à la reformulation non lexicale.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-union--union-et-force-collective",
+      "sourceThemeId": "union",
+      "targetThemeId": "union-et-force-collective",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "union": [
+          {"recordId": "book-03-psalm-010", "verseNumbers": [1, 7, 8, 9, 11, 12, 14, 18, 19]}
+        ],
+        "union-et-force-collective": [
+          {"recordId": "book-21-psalm-164", "verseNumbers": [9, 10, 12, 13, 15, 16, 17, 18, 19]}
+        ]
+      },
+      "lexicalIndependenceReview": {
+        "question": "La relation reste-t-elle vraie si les deux thèmes sont reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "Coordination consciente de plusieurs êtres autour d’un idéal ou d’un but commun afin d’agir ensemble.",
+        "targetReformulation": "Puissance nouvelle et corps opératoire qui émergent lorsque plusieurs personnes s’accordent, se soutiennent et empêchent la division d’affaiblir leur œuvre.",
+        "result": "passes-related-rejects-broader",
+        "note": "Sans le mot union, la cible apparaît comme un résultat émergent produit par la cohésion collective, et non simplement comme une sous-classe de l’acte général de s’unir."
+      },
+      "closestCompetitor": {
+        "relationType": "broader_than",
+        "whyPlausible": "Le libellé cible contient directement Union et le psaume demande à plusieurs reprises de s’unir ; une lecture superficielle peut donc traiter la cible comme une union qualifiée.",
+        "decisiveTest": "Distinguer le procédé de son effet. Le psaume 164 décrit la cohésion comme condition qui permet de devenir forts, de former un corps et de porter l’œuvre. La force collective est donc un résultat structurant de l’union, pas seulement une restriction du domaine de l’union. related_to est plus honnête que broader_than."
+      },
+      "reviewNote": "Le thème composite ne doit pas être décomposé automatiquement mot par mot. Ici, l’union produit une force et un corps collectifs ; elle n’est pas seulement le genre dont 'force collective' serait un qualificatif. La relation reste étroite mais causale/fonctionnelle, ce qui justifie related_to plutôt que broader_than ou component_of.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-union-des-forces--union-et-force-collective",
+      "sourceThemeId": "union-des-forces",
+      "targetThemeId": "union-et-force-collective",
+      "proposedRelationType": "related_to",
+      "confidence": "boundary-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "union-des-forces": [
+          {"recordId": "book-10-psalm-062", "verseNumbers": [1, 2, 3, 5, 10]}
+        ],
+        "union-et-force-collective": [
+          {"recordId": "book-21-psalm-164", "verseNumbers": [12, 15, 16, 17, 18]}
+        ]
+      },
+      "lexicalIndependenceReview": {
+        "question": "La relation reste-t-elle vraie si les deux thèmes sont reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "Agrégation volontaire des capacités individuelles en une puissance commune destinée à accomplir une tâche.",
+        "targetReformulation": "Capacité collective émergente et corps stable produits par la cohésion, la fidélité et l’absence de division entre les participants.",
+        "result": "passes-but-rejects-variant",
+        "note": "Les deux concepts restent fortement liés après suppression du vocabulaire commun, mais ils ne sont pas interchangeables : le premier met l’accent sur la mise en commun des apports, le second sur la puissance et le corps qui en résultent."
+      },
+      "closestCompetitor": {
+        "relationType": "variant_of",
+        "whyPlausible": "Les deux formulations associent union et force dans un contexte collectif et peuvent sembler désigner la même réalité sous deux angles lexicaux.",
+        "decisiveTest": "Comparer la direction conceptuelle. Dans le psaume 62, les forces sont l’apport que l’on rassemble pour constituer une seule force en vue du but. Dans le psaume 164, l’union et la cohésion font émerger la force collective et un corps capable d’agir. Cette différence moyen/résultat survit à la reformulation et empêche de retenir une simple variante."
+      },
+      "reviewNote": "La proximité lexicale est forte mais la structure n’est pas identique. L’union des forces décrit principalement le processus de mutualisation des capacités ; l’union et force collective décrit principalement la puissance/corps qui naît de la cohésion. related_to conserve ce lien sans effacer la différence de fonction.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {
+      "status": "rejected-for-all-pairs",
+      "note": "Les trois thèmes ne sont pas substituables : union est plus générale, union des forces spécialise le mécanisme, et union et force collective met l’accent sur un résultat émergent."
+    },
+    "variant_of": {
+      "status": "rejected-for-tested-pairs",
+      "note": "La différence entre mise en commun des forces et force produite par la cohésion est conceptuelle et survit à la reformulation non lexicale."
+    },
+    "broader_than": {
+      "status": "proposed-for-union-to-union-des-forces-only",
+      "sourceThemeId": "union",
+      "targetThemeId": "union-des-forces"
+    },
+    "component_of": {
+      "status": "rejected-for-this-family",
+      "note": "Force, union et puissance collective sont ici procédé, apport ou résultat fonctionnel ; le corpus ne les présente pas comme des constituants autonomes d’un système composite énumératif."
+    },
+    "related_to": {
+      "status": "proposed-for-union-to-force-collective-and-between-the-two-qualified-themes",
+      "note": "related_to conserve les rapports étroits de cause, moyen et résultat sans imposer une fausse inclusion ou interchangeabilité."
+    }
+  },
+  "semanticBoundaryRule": "Lorsqu’un thème composite associe une opération à la force qu’elle mobilise ou produit, distinguer spécialisation et conséquence. Si la cible reste une forme déterminée de l’opération générale, broader_than peut convenir. Si le second terme désigne principalement un effet émergent, une capacité produite ou un résultat de l’opération, préférer related_to. Ne pas transformer automatiquement les mots du libellé en composants.",
+  "transversalProfileEvidence": {
+    "reviewedOccurrences": [
+      {"themeId": "union", "bookNumber": 3, "psalmNumber": 10, "recordId": "book-03-psalm-010", "observedLabel": "Union"},
+      {"themeId": "union-des-forces", "bookNumber": 10, "psalmNumber": 62, "recordId": "book-10-psalm-062", "observedLabel": "Union des forces"},
+      {"themeId": "union-et-force-collective", "bookNumber": 21, "psalmNumber": 164, "recordId": "book-21-psalm-164", "observedLabel": "Union et force collective"}
+    ],
+    "evolutionAssessment": {
+      "status": "not-established",
+      "note": "Les occurrences servent à tester la distinction sémantique, non à établir une évolution historique. L’ordre du corpus n’est pas une chronologie."
+    }
+  }
+}
