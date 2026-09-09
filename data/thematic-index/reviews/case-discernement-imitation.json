@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "discernement-contre-imitation",
+  "anchorLabel": "Discernement contre imitation",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test the boundary between general-to-specific and related-opposition semantics when a qualified theme applies a general capacity to a named phenomenon that it resists.",
+  "anchorEvidence": {
+    "recordId": "book-22-psalm-138",
+    "bookNumber": 22,
+    "psalmNumber": 138,
+    "psalmTitle": "Les lois de la digestion et de l’assimilation",
+    "verseNumbers": [5, 6, 7, 9, 17, 18, 25, 26, 27],
+    "canonicalTeaching": "L'homme ne doit pas répéter et imiter inconsciemment : il doit goûter, étudier, expérimenter, discerner et individualiser sa propre lumière afin de comprendre ce qu'il vit et ce qu'il fait."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-discernement--discernement-contre-imitation",
+      "sourceThemeId": "discernement",
+      "targetThemeId": "discernement-contre-imitation",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "discernement": [{"recordId": "book-01-psalm-008", "verseNumbers": [1, 2, 3]}],
+        "discernement-contre-imitation": [{"recordId": "book-22-psalm-138", "verseNumbers": [5, 6, 7, 9, 17, 18, 25, 26, 27]}]
+      },
+      "reviewNote": "Discernement est une capacité générale de distinction et de vérification face aux influences et apparences. Dans le psaume 138, cette capacité reçoit une application déterminée : ne pas accepter, répéter ou imiter sans goûter, étudier et expérimenter. Le thème général est donc plus large que cette application particulière.",
+      "semanticClaim": false
+    },
+    {
+      "id": "case-imitation--discernement-contre-imitation",
+      "sourceThemeId": "imitation",
+      "targetThemeId": "discernement-contre-imitation",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "imitation": [{"recordId": "book-17-psalm-123", "verseNumbers": [1]}],
+        "discernement-contre-imitation": [{"recordId": "book-22-psalm-138", "verseNumbers": [5, 6, 7, 9, 17, 18, 25, 26, 27]}]
+      },
+      "reviewNote": "Imitation est le phénomène auquel le discernement est appliqué et que le psaume critique lorsqu'il remplace l'expérience consciente. Il s'agit d'un objet d'opposition, non d'une composante constitutive du thème Discernement contre imitation. related_to conserve la relation réelle sans inventer une structure de partie-tout.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "rejected-for-this-family"},
+    "variant_of": {"status": "not-retained"},
+    "broader_than": {"status": "proposed", "sourceThemeId": "discernement", "targetThemeId": "discernement-contre-imitation"},
+    "component_of": {"status": "rejected-for-imitation", "note": "Le phénomène combattu n'est pas une composante du concept qui le discerne."},
+    "related_to": {"status": "proposed", "sourceThemeId": "imitation", "targetThemeId": "discernement-contre-imitation"}
+  },
+  "semanticBoundary": {
+    "decisionRule": "Un terme après « contre » ou occupant la fonction d'objet d'examen ne devient pas component_of. Le concept opératoire peut être broader_than le thème appliqué, tandis que le phénomène visé reste related_to."
+  }
+}
