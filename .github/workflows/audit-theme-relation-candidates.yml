@@ -19,10 +19,12 @@ on:
       - "scripts/audit_theme_relation_review_queue.py"
       - "scripts/audit_theme_relation_review_pilot.py"
       - "scripts/audit_theme_relation_general_review.py"
+      - "scripts/audit_theme_semantic_case_studies.py"
       - "scripts/audit_validated_theme_relations.py"
       - "data/thematic-index/theme-search-index.json"
       - "data/thematic-index/theme-quality-audit.json"
       - "data/thematic-index/themes/**"
+      - "data/thematic-index/reviews/case-*.json"
       - "data/thematic-index/reviews/theme-relations-pilot.json"
       - "data/thematic-index/reviews/theme-relations-risk-review.json"
       - "data/thematic-index/reviews/theme-relations-general-review.json"
@@ -67,6 +69,9 @@ jobs:
 
       - name: Audit diverse general semantic review
         run: python scripts/audit_theme_relation_general_review.py
+
+      - name: Audit semantic case studies
+        run: python scripts/audit_theme_semantic_case_studies.py
 
       - name: Audit canonical validated relation store
         run: python scripts/audit_validated_theme_relations.py
