@@ -10,6 +10,7 @@ on:
       - "scripts/report_theme_relation_review_context.py"
       - "scripts/report_theme_relation_review_queue.py"
       - "scripts/report_theme_relation_general_evidence.py"
+      - "scripts/report_union_pere_semantic_neighborhood.py"
       - "scripts/report_theme_layer_coverage.py"
       - "scripts/report_theme_alias_collisions.py"
       - "scripts/audit_theme_relation_candidates.py"
@@ -102,6 +103,16 @@ jobs:
         with:
           name: general-review-evidence
           path: /tmp/general-review-evidence.json
+          retention-days: 1
+
+      - name: Build union-pere semantic neighborhood
+        run: python scripts/report_union_pere_semantic_neighborhood.py > /tmp/union-pere-semantic-neighborhood.json
+
+      - name: Upload union-pere semantic neighborhood
+        uses: actions/upload-artifact@v4
+        with:
+          name: union-pere-semantic-neighborhood
+          path: /tmp/union-pere-semantic-neighborhood.json
           retention-days: 1
 
       - name: Diagnose licorne theme candidate structure
