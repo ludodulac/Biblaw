@@ -21,10 +21,14 @@ on:
       - "scripts/audit_theme_relation_general_review.py"
       - "scripts/audit_theme_semantic_case_studies.py"
       - "scripts/audit_validated_theme_relations.py"
+      - "scripts/build_theme_semantic_graph.py"
+      - "scripts/audit_theme_semantic_graph.py"
       - "data/thematic-index/theme-search-index.json"
       - "data/thematic-index/theme-quality-audit.json"
       - "data/thematic-index/themes/**"
       - "data/thematic-index/reviews/case-*.json"
+      - "data/thematic-index/reviews/deferred-composite-boundaries.json"
+      - "data/thematic-index/reviews/theme-semantic-graph-prototype.json"
       - "data/thematic-index/reviews/theme-relations-pilot.json"
       - "data/thematic-index/reviews/theme-relations-risk-review.json"
       - "data/thematic-index/reviews/theme-relations-general-review.json"
@@ -72,6 +76,19 @@ jobs:
 
       - name: Audit semantic case studies
         run: python scripts/audit_theme_semantic_case_studies.py
+
+      - name: Build deterministic semantic graph candidate
+        run: python scripts/build_theme_semantic_graph.py > /tmp/theme-semantic-graph-prototype.json
+
+      - name: Upload deterministic semantic graph candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: deterministic-semantic-graph
+          path: /tmp/theme-semantic-graph-prototype.json
+          retention-days: 1
+
+      - name: Audit deterministic semantic graph
+        run: python scripts/audit_theme_semantic_graph.py
 
       - name: Audit canonical validated relation store
         run: python scripts/audit_validated_theme_relations.py
