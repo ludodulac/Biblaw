@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Emit one compact attested occurrence for each theme in the next general review batch.
+"""Emit one compact attested occurrence for themes under bounded relation review.
 
 Read-only diagnostic. Selection prefers direct central/important occurrences with
 verse evidence and a teaching, then falls back to any attested occurrence. The
@@ -13,12 +13,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BOOKS = ROOT / "data/thematic-index/books"
 THEME_IDS = [
-    "corps", "ame", "esprit", "corps-ame-esprit",
-    "terre", "eau", "air", "feu", "terre-eau-air-feu",
+    "corps", "ame", "esprit", "esprit-et-corps", "corps-ame-esprit",
+    "terre", "eau", "air", "feu", "eau-et-air", "terre-eau-air-feu",
     "lumiere", "apparences-et-fausse-lumiere",
     "dieux", "idoles-et-faux-dieux",
     "pratique", "conscience", "pratique-et-conscience",
-    "pensee", "parole", "maitrise-pensee-parole",
+    "pensee", "parole", "maitrise", "maitrise-pensee-parole",
 ]
 
 
