@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "present-pont-passe-futur",
+  "anchorLabel": "Présent, pont entre passé et futur",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Stress-test equivalent, variant, broader/narrower, component and related on a family with unusually high lexical overlap but distinct temporal structures.",
+  "anchorEvidence": {
+    "recordId": "book-23-psalm-130",
+    "bookNumber": 23,
+    "psalmNumber": 130,
+    "psalmTitle": "Connaître le présent et y entrer, une science sacrée",
+    "verseNumbers": [5, 6, 13, 15, 16, 18, 20, 23],
+    "canonicalTeaching": "Le présent est comparé au point neutre de la respiration où le mouvement s’inverse. Il relie ce qui a été construit hier à ce qui deviendra demain et devient ainsi un espace de transformation plutôt qu’un instant isolé de toute continuité."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-present--present-pont-passe-futur",
+      "sourceThemeId": "present",
+      "targetThemeId": "present-pont-passe-futur",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "present": [{"recordId": "book-16-psalm-096", "verseNumbers": [1, 2, 3, 9, 10]}],
+        "present-pont-passe-futur": [{"recordId": "book-23-psalm-130", "verseNumbers": [5, 6, 13, 15, 16, 18, 20, 23]}]
+      },
+      "reviewNote": "Le thème Présent couvre le fait d'agir et de choisir dans l'aujourd'hui au lieu de reporter la transformation à un futur idéal. Le thème cible formule une doctrine plus déterminée : l'instant actuel comme point de retournement reliant héritage et devenir. Le second est donc une détermination particulière du premier, non une simple variante de libellé.",
+      "lexicalIndependenceTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "moment actuel comme lieu effectif du choix et de l'action",
+        "targetReformulation": "zone de bascule où l'héritage reçu peut être transformé en devenir",
+        "result": "passes",
+        "reason": "La seconde formulation reste un cas plus déterminé de la première même sans employer les mots présent, passé ou futur."
+      },
+      "semanticClaim": false
+    },
+    {
+      "id": "case-passe-present-futur--present-pont-passe-futur",
+      "sourceThemeId": "passe-present-futur",
+      "targetThemeId": "present-pont-passe-futur",
+      "proposedRelationType": "broader_than",
+      "confidence": "tentative-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "passe-present-futur": [{"recordId": "book-21-psalm-142", "verseNumbers": [16, 17, 19]}],
+        "present-pont-passe-futur": [{"recordId": "book-23-psalm-130", "verseNumbers": [5, 6, 13, 15, 16, 18, 20, 23]}]
+      },
+      "reviewNote": "Passé, présent et futur enseigne une continuité à trois termes nécessaire pour comprendre une situation et sa destinée. Le thème cible ne répète pas simplement ce triptyque : il sélectionne une structure particulière à l'intérieur de cette continuité, celle du présent comme articulation transformatrice entre ce qui a été construit et ce qui adviendra. broader_than est proposé mais reste plus fragile que pour le thème Présent.",
+      "lexicalIndependenceTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "lecture d'une situation par ses causes antérieures, son état actuel et ses conséquences à venir",
+        "targetReformulation": "point de retournement où ce qui est hérité peut changer d'orientation avant de produire ses effets",
+        "result": "passes-with-boundary-risk",
+        "reason": "La seconde proposition reste une articulation particulière du cadre temporel complet, mais la proximité avec related_to doit rester surveillée car le thème cible insiste sur une fonction et non seulement sur un sous-domaine."
+      },
+      "semanticClaim": false
+    },
+    {
+      "id": "case-futur--present-pont-passe-futur",
+      "sourceThemeId": "futur",
+      "targetThemeId": "present-pont-passe-futur",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "futur": [{"recordId": "book-03-psalm-003", "verseNumbers": [6, 8, 11, 12, 13]}],
+        "present-pont-passe-futur": [{"recordId": "book-23-psalm-130", "verseNumbers": [5, 6, 13, 15, 16, 18, 20, 23]}]
+      },
+      "reviewNote": "Le futur est un pôle nécessaire de la relation temporelle décrite par le thème cible, mais il n'en constitue pas à lui seul une partie conceptuelle autonome au sens de component_of. Le thème cible porte sur la fonction transformatrice du point actuel entre héritage et devenir ; Futur y est destination ou conséquence, pas composante suffisante du concept.",
+      "lexicalIndependenceTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "conséquences encore non réalisées produites par les semences et choix actuels",
+        "targetReformulation": "moment de bascule qui transforme un héritage reçu en orientation nouvelle",
+        "result": "passes",
+        "reason": "La relation de destination et de conséquence demeure, alors que toute structure de partie-tout disparaît sous reformulation. related_to est donc plus robuste que component_of."
+      },
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "rejected", "note": "Le fort chevauchement lexical masque des structures différentes : triptyque temporel, moment actuel et fonction de pont ne sont pas des formulations interchangeables."},
+    "variant_of": {"status": "rejected-between-triptyque-and-anchor", "note": "Le thème cible ajoute une fonction structurante du présent ; il ne reformule pas seulement le même concept."},
+    "broader_than": {"status": "proposed", "sources": ["present", "passe-present-futur"]},
+    "component_of": {"status": "rejected-for-isolated-time-terms", "note": "La présence de mots temporels dans le libellé ne suffit pas à transformer chaque temps en composante du concept relationnel global."},
+    "related_to": {"status": "proposed", "sourceThemeId": "futur", "targetThemeId": "present-pont-passe-futur"}
+  },
+  "semanticBoundary": {
+    "decisionRule": "Un thème composite exprimant une relation ou une fonction entre plusieurs termes doit être jugé comme un concept entier. Des termes nommés dans cette relation peuvent être des pôles, des causes ou des destinations sans être automatiquement component_of.",
+    "lexicalGuardrail": "Toute relation proposée doit survivre à une reformulation conceptuelle supprimant le vocabulaire commun. Un chevauchement presque total de mots peut malgré tout cacher des concepts non équivalents."
+  }
+}
