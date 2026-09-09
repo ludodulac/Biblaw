@@ -44,6 +44,13 @@
         ]
       },
       "reviewNote": "Nutrition est utilisée comme loi générale qui inclut nourriture physique, expériences, pensées, concepts et nourritures spirituelles. Nutrition subtile isole la partie non physique de cette loi et décrit précisément les pensées, états d'âme, paroles, actes, relations et associations comme aliments. La relation général → spécifique est donc plus précise qu'une équivalence.",
+      "lexicalIndependenceTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "loi générale selon laquelle ce qu'un être absorbe et assimile contribue à former son corps, son état et sa destinée",
+        "targetReformulation": "formation des corps non physiques par les pensées, états d'âme, paroles, actes, relations et associations incorporés par l'être",
+        "result": "passes",
+        "reason": "Le premier concept conserve un domaine plus large comprenant explicitement le physique, l'intellectuel et le spirituel, tandis que le second sélectionne les apports non physiques et leurs effets sur les corps subtils. La relation général-spécifique subsiste donc même quand le mot nutrition disparaît des deux formulations."
+      },
       "semanticClaim": false
     }
   ],
@@ -66,7 +73,7 @@
       "note": "Nutrition subtile n'est pas traitée comme une pièce constitutive de Nutrition, mais comme une spécialisation de son champ."
     },
     "related_to": {
-      "status": "true-but-less-informative-than-broader-than"
+      "status": "true-but-less-informative-than-broader_than"
     }
   },
   "transversalProfileEvidence": {
@@ -89,5 +96,9 @@
       "status": "not-established",
       "note": "The later corpus position develops digestion and subtle-body construction more explicitly, but this is not enough to claim an evolution. Corpus order is not historical chronology."
     }
+  },
+  "semanticBoundary": {
+    "decisionRule": "Un alias textuel identique entre deux themeIds n'établit jamais leur équivalence. Il faut comparer l'extension conceptuelle attestée par les psaumes.",
+    "lexicalGuardrail": "La relation retenue doit rester vraie après reformulation conceptuelle sans vocabulaire commun ; ici, le test confirme une inclusion de champ et non une simple attraction lexicale."
   }
 }
