@@ -9,6 +9,7 @@ on:
       - "scripts/report_theme_relation_candidate_risks.py"
       - "scripts/report_theme_relation_review_context.py"
       - "scripts/report_theme_relation_review_queue.py"
+      - "scripts/report_theme_relation_general_evidence.py"
       - "scripts/report_theme_layer_coverage.py"
       - "scripts/report_theme_alias_collisions.py"
       - "scripts/audit_theme_relation_candidates.py"
@@ -107,6 +108,16 @@ jobs:
           --theme pratique
           --theme parole --theme maitrise
           --max-occurrences 3
+
+      - name: Build compact general review evidence
+        run: python scripts/report_theme_relation_general_evidence.py > /tmp/general-review-evidence.json
+
+      - name: Upload compact general review evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: general-review-evidence
+          path: /tmp/general-review-evidence.json
+          retention-days: 1
 
       - name: Probe diverse candidate structures
         run: |
