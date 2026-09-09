@@ -99,6 +99,15 @@ jobs:
           --theme pensee --theme maitrise-pensee-parole
           --max-occurrences 3
 
+      - name: Probe atomic component evidence
+        run: >-
+          python scripts/report_theme_relation_review_context.py
+          --theme ame --theme esprit
+          --theme eau --theme air --theme feu
+          --theme pratique
+          --theme parole --theme maitrise
+          --max-occurrences 3
+
       - name: Probe diverse candidate structures
         run: |
           python scripts/report_theme_relation_candidates.py --theme corps-ame-esprit --limit 10
