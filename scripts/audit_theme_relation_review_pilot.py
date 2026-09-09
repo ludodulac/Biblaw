@@ -23,6 +23,10 @@ ALLOWED_RELATION_TYPES = {
     "related_to",
 }
 ALLOWED_DISPOSITIONS = {"accepted", "retyped", "rejected"}
+OPPOSITION_SENTINELS = {
+    "pilot-imitation--discernement-contre-imitation": "related_to",
+    "pilot-abstraction--concret-contre-abstraction": "related_to",
+}
 
 
 def build_attested_occurrences() -> dict[tuple[str, str], set[int]]:
@@ -56,12 +60,14 @@ def main() -> None:
     dispositions: set[str] = set()
     proposed_types: set[str] = set()
     ids: set[str] = set()
+    decision_by_id: dict[str, dict] = {}
     evidence_reference_count = 0
 
     for item in decisions:
         item_id = item.get("id")
         assert item_id and item_id not in ids, f"duplicate or missing decision id: {item_id!r}"
         ids.add(item_id)
+        decision_by_id[item_id] = item
 
         candidate = item.get("candidate") or {}
         proposed = item.get("proposedRelation") or {}
@@ -109,6 +115,20 @@ def main() -> None:
         assert item.get("requiresHumanApproval") is True
         assert item.get("relationStatus") != "relation_validated"
 
+    for sentinel_id, expected_type in OPPOSITION_SENTINELS.items():
+        sentinel = decision_by_id.get(sentinel_id)
+        assert sentinel is not None, f"missing opposition rejection sentinel: {sentinel_id}"
+        assert sentinel.get("candidateDisposition") == "rejected", (
+            f"opposition sentinel must reject component candidate: {sentinel_id}"
+        )
+        proposed = sentinel.get("proposedRelation") or {}
+        assert proposed.get("relationType") == expected_type, (
+            f"opposition sentinel must remain {expected_type}: {sentinel_id}"
+        )
+        assert proposed.get("relationType") != "component_of", (
+            f"opposed concept must not regress to component_of: {sentinel_id}"
+        )
+
     assert "accepted" in dispositions, "pilot must demonstrate a positive component candidate"
     assert "retyped" in dispositions, "pilot must demonstrate candidate retyping"
     assert "rejected" in dispositions, "pilot must demonstrate candidate rejection"
@@ -123,6 +143,7 @@ def main() -> None:
     print(
         "Theme relation review pilot OK: "
         f"{len(decisions)} proposed decisions; {evidence_reference_count} attested evidence refs; "
+        f"{len(OPPOSITION_SENTINELS)} opposition rejection sentinels; "
         f"dispositions={sorted(dispositions)}; types={sorted(proposed_types)}; "
         "equivalence intentionally unclaimed; no validated relation and no public search effect"
     )
