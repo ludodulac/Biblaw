@@ -6,9 +6,11 @@ on:
       - work/theme-relation-candidates
     paths:
       - "scripts/report_theme_relation_candidates.py"
+      - "scripts/report_theme_layer_coverage.py"
       - "scripts/audit_theme_relation_candidates.py"
       - "data/thematic-index/theme-search-index.json"
       - "data/thematic-index/theme-quality-audit.json"
+      - "data/thematic-index/themes/**"
       - ".github/workflows/audit-theme-relation-candidates.yml"
   workflow_dispatch:
 
@@ -31,9 +33,8 @@ jobs:
       - name: Run relation candidate sentinels
         run: python scripts/audit_theme_relation_candidates.py
 
-      - name: Diagnose targeted candidate structures
-        run: >-
-          python scripts/report_theme_relation_candidates.py
-          --theme union-pere-nature
-          --theme fidelite-et-infidelite
-          --limit 10
+      - name: Audit editorial/search theme layer coverage
+        run: python scripts/report_theme_layer_coverage.py
+
+      - name: Diagnose licorne theme candidate structure
+        run: python scripts/report_theme_relation_candidates.py --theme union-pere-nature --limit 10
