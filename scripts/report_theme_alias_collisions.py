@@ -49,12 +49,20 @@ def main() -> None:
             }
         )
 
+    declared_count = data.get("ambiguousAliasCount")
+    if declared_count is not None and declared_count != len(collisions):
+        raise SystemExit(
+            "Alias ambiguity drift: "
+            f"theme-search-index declares {declared_count}, derived collisions={len(collisions)}"
+        )
+
     print(
         json.dumps(
             {
                 "schemaVersion": 1,
                 "recordType": "theme-alias-collision-report",
                 "semanticClaim": False,
+                "declaredAmbiguousAliasCount": declared_count,
                 "collisionCount": len(collisions),
                 "collisions": collisions,
                 "interpretation": (
