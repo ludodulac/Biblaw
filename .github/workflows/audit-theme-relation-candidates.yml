@@ -12,12 +12,14 @@ on:
       - "scripts/report_theme_alias_collisions.py"
       - "scripts/audit_theme_relation_candidates.py"
       - "scripts/audit_theme_relation_candidate_risks.py"
+      - "scripts/audit_theme_relation_risk_review_coverage.py"
       - "scripts/audit_theme_relation_review_pilot.py"
       - "scripts/audit_validated_theme_relations.py"
       - "data/thematic-index/theme-search-index.json"
       - "data/thematic-index/theme-quality-audit.json"
       - "data/thematic-index/themes/**"
       - "data/thematic-index/reviews/theme-relations-pilot.json"
+      - "data/thematic-index/reviews/theme-relations-risk-review.json"
       - "data/thematic-index/theme-relations-validated.json"
       - "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
       - ".github/workflows/audit-theme-relation-candidates.yml"
@@ -44,6 +46,9 @@ jobs:
 
       - name: Audit structural-risk review priority
         run: python scripts/audit_theme_relation_candidate_risks.py
+
+      - name: Audit complete structural-risk review coverage
+        run: python scripts/audit_theme_relation_risk_review_coverage.py
 
       - name: Audit editorial/search theme layer coverage
         run: python scripts/report_theme_layer_coverage.py
