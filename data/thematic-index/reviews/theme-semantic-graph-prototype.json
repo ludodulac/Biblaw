@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-graph-prototype",
+  "status": "proposed-review-decisions",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Prototype the product representation Psalm ↔ themes ↔ semantic relations ↔ other Psalms using only relations already recorded in bounded semantic case studies. This file is review material, not canonical relation data.",
+  "sourcePolicy": {
+    "caseStudiesOnly": true,
+    "canonicalValidatedStore": "data/thematic-index/theme-relations-validated.json",
+    "automaticPromotion": false,
+    "automaticMerge": false,
+    "derivedInversePolicy": "Directional inverses such as narrower-than and has-component are query-time readings and are not duplicated as canonical edges."
+  },
+  "caseStudyFiles": [
+    "case-union-pere-nature.json",
+    "case-corps-ame-esprit.json",
+    "case-nutrition-subtile.json",
+    "case-service-monde-divin.json",
+    "case-pierre-verte.json",
+    "case-pensee-vivante.json",
+    "case-alliance-lumiere.json"
+  ],
+  "nodes": [
+    {"themeId":"union","evidenceRecordIds":["book-03-psalm-010"]},
+    {"themeId":"union-pere-nature","evidenceRecordIds":["book-05-psalm-024"]},
+    {"themeId":"homme-trait-d-union","evidenceRecordIds":["book-21-psalm-159"]},
+    {"themeId":"pere-et-mere","evidenceRecordIds":["book-15-psalm-087"]},
+    {"themeId":"harmonie-des-mondes","evidenceRecordIds":["book-06-psalm-049"]},
+    {"themeId":"nature-vivante","evidenceRecordIds":["book-11-psalm-063"]},
+    {"themeId":"pere","evidenceRecordIds":["book-01-psalm-007"]},
+    {"themeId":"nature","evidenceRecordIds":["book-01-psalm-002"]},
+    {"themeId":"corps","evidenceRecordIds":["book-01-psalm-005"]},
+    {"themeId":"ame","evidenceRecordIds":["book-01-psalm-022"]},
+    {"themeId":"esprit","evidenceRecordIds":["book-19-psalm-115"]},
+    {"themeId":"corps-ame-esprit","evidenceRecordIds":["book-06-psalm-042"]},
+    {"themeId":"nutrition","evidenceRecordIds":["book-11-psalm-063","book-17-psalm-111"]},
+    {"themeId":"nutrition-subtile","evidenceRecordIds":["book-18-psalm-129"]},
+    {"themeId":"service","evidenceRecordIds":["book-02-psalm-004","book-03-psalm-007","book-11-psalm-060","book-11-psalm-074","book-19-psalm-111"]},
+    {"themeId":"service-du-monde-divin","evidenceRecordIds":["book-22-psalm-140"]},
+    {"themeId":"pierre","evidenceRecordIds":["book-03-psalm-004"]},
+    {"themeId":"pierre-verte","evidenceRecordIds":["book-03-psalm-004"]},
+    {"themeId":"pensee-vivante","evidenceRecordIds":["book-19-psalm-102"]},
+    {"themeId":"pensee","evidenceRecordIds":["book-19-psalm-102"]},
+    {"themeId":"alliance","evidenceRecordIds":["book-02-psalm-002"]},
+    {"themeId":"alliance-de-lumiere","evidenceRecordIds":["book-20-psalm-112"]}
+  ],
+  "edges": [
+    {"id":"case-union--union-pere-nature","sourceThemeId":"union","targetThemeId":"union-pere-nature","proposedRelationType":"broader_than","caseStudyFile":"case-union-pere-nature.json","semanticClaim":false},
+    {"id":"case-union-pere-nature--homme-trait-d-union","sourceThemeId":"union-pere-nature","targetThemeId":"homme-trait-d-union","proposedRelationType":"variant_of","caseStudyFile":"case-union-pere-nature.json","semanticClaim":false},
+    {"id":"case-pere-et-mere--union-pere-nature","sourceThemeId":"pere-et-mere","targetThemeId":"union-pere-nature","proposedRelationType":"related_to","caseStudyFile":"case-union-pere-nature.json","semanticClaim":false},
+    {"id":"case-harmonie-des-mondes--union-pere-nature","sourceThemeId":"harmonie-des-mondes","targetThemeId":"union-pere-nature","proposedRelationType":"related_to","caseStudyFile":"case-union-pere-nature.json","semanticClaim":false},
+    {"id":"case-nature-vivante--union-pere-nature","sourceThemeId":"nature-vivante","targetThemeId":"union-pere-nature","proposedRelationType":"related_to","caseStudyFile":"case-union-pere-nature.json","semanticClaim":false},
+    {"id":"case-pere--union-pere-nature","sourceThemeId":"pere","targetThemeId":"union-pere-nature","proposedRelationType":"related_to","caseStudyFile":"case-union-pere-nature.json","semanticClaim":false},
+    {"id":"case-nature--union-pere-nature","sourceThemeId":"nature","targetThemeId":"union-pere-nature","proposedRelationType":"related_to","caseStudyFile":"case-union-pere-nature.json","semanticClaim":false},
+    {"id":"case-corps--corps-ame-esprit","sourceThemeId":"corps","targetThemeId":"corps-ame-esprit","proposedRelationType":"component_of","caseStudyFile":"case-corps-ame-esprit.json","semanticClaim":false},
+    {"id":"case-ame--corps-ame-esprit","sourceThemeId":"ame","targetThemeId":"corps-ame-esprit","proposedRelationType":"component_of","caseStudyFile":"case-corps-ame-esprit.json","semanticClaim":false},
+    {"id":"case-esprit--corps-ame-esprit","sourceThemeId":"esprit","targetThemeId":"corps-ame-esprit","proposedRelationType":"component_of","caseStudyFile":"case-corps-ame-esprit.json","semanticClaim":false},
+    {"id":"case-nutrition--nutrition-subtile","sourceThemeId":"nutrition","targetThemeId":"nutrition-subtile","proposedRelationType":"broader_than","caseStudyFile":"case-nutrition-subtile.json","semanticClaim":false},
+    {"id":"case-service--service-du-monde-divin","sourceThemeId":"service","targetThemeId":"service-du-monde-divin","proposedRelationType":"broader_than","caseStudyFile":"case-service-monde-divin.json","semanticClaim":false},
+    {"id":"case-pierre--pierre-verte","sourceThemeId":"pierre","targetThemeId":"pierre-verte","proposedRelationType":"broader_than","caseStudyFile":"case-pierre-verte.json","semanticClaim":false},
+    {"id":"case-pensee-vivante--pensee","sourceThemeId":"pensee-vivante","targetThemeId":"pensee","proposedRelationType":"variant_of","caseStudyFile":"case-pensee-vivante.json","semanticClaim":false},
+    {"id":"case-alliance--alliance-de-lumiere","sourceThemeId":"alliance","targetThemeId":"alliance-de-lumiere","proposedRelationType":"broader_than","caseStudyFile":"case-alliance-lumiere.json","semanticClaim":false}
+  ],
+  "derivedNavigationExamples": [
+    {"fromThemeId":"union-pere-nature","derivedDirection":"narrower_than_inverse","toThemeId":"union","note":"UI/query reading of union broader_than union-pere-nature; not a stored relation type."},
+    {"fromThemeId":"corps-ame-esprit","derivedDirection":"has_component_inverse","toThemeIds":["corps","ame","esprit"],"note":"UI/query reading of component_of edges; not duplicated as canonical edges."}
+  ],
+  "coverage": {
+    "caseStudyCount": 7,
+    "nodeCount": 22,
+    "edgeCount": 15,
+    "proposedRelationTypes": ["broader_than","component_of","related_to","variant_of"],
+    "equivalentToPositiveCases": 0,
+    "note": "Absence of equivalent_to is retained as evidence of conservative review, not treated as a coverage defect."
+  }
+}
