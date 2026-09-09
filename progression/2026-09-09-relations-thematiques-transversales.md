@@ -167,6 +167,26 @@ Les inverses sont dérivés plutôt que stockés en double :
 
 Une relation validée devra retenir les preuves des deux côtés, les versets/enseignements pertinents et une justification du type de relation retenu. Une validation de relation ne déclenche jamais automatiquement une fusion d’identifiants.
 
+## Frontière découverte entre couches thématiques
+
+Un test volontaire sur `fidelite-et-infidelite` a révélé une distinction architecturale à préserver : cette fiche existe dans `data/thematic-index/themes/fidelite-et-infidelite.json`, mais cet identifiant n’existe pas dans `theme-search-index.json`.
+
+L’analyse par psaume correspondante (`book-17-psalm-105`) emploie en revanche le thème `fidelite`, avec un enseignement directement ancré dans les versets. La fiche `fidelite-et-infidelite` est donc une consolidation éditoriale de recherche et ne doit pas être traitée automatiquement comme une entité de recherche canonique.
+
+Un nouveau rapport FAST, `scripts/report_theme_layer_coverage.py`, mesure ce recouvrement sans modifier les données. Résultat du run TARGETED n°4 :
+
+- thèmes de l’index de recherche : 1247 ;
+- fiches éditoriales dans `data/thematic-index/themes/` : 38 ;
+- identifiants présents dans les deux couches : 24 ;
+- fiches éditoriales sans identifiant homonyme dans l’index de recherche : 14 ;
+- fichier éditorial malformé : 0.
+
+Les 14 identifiants éditoriaux seuls sont actuellement : `fidelite-et-infidelite`, `hierarchies`, `intelligence-superieure`, `libre-arbitre`, `maitres-et-sages`, `mensonge-et-illusion`, `nature-et-mere`, `non-savoir`, `perception-et-sens`, `pierres`, `plantes`, `purete-et-verite`, `solidarite-et-soutien-mutuel`, `sommeil-et-reve`.
+
+Conséquence : toute future relation persistée devra déclarer explicitement à quelle couche appartient chaque extrémité. Pour le premier graphe exploitable par la recherche, les extrémités doivent rester des `themeId` réellement présents dans l’index issu des analyses par psaume. Les fiches éditoriales peuvent fournir du contexte et des hypothèses, mais ne doivent pas être injectées silencieusement comme thèmes de recherche.
+
+Le probe qui a exposé cette frontière a produit un échec ciblé attendu (`Unknown theme id: fidelite-et-infidelite`) sans affecter l’audit principal. Le workflow a ensuite été corrigé pour mesurer la couverture des couches explicitement ; le run n°4 est terminé avec succès.
+
 ## Ce qui n’a volontairement pas été fait
 
 - aucune réanalyse des 1158 psaumes ;
@@ -189,4 +209,6 @@ Avant toute utilisation dans la recherche, il faut constituer un petit lot de re
 - thème lié mais distinct ;
 - candidat rejeté.
 
-Ce lot devra utiliser les contextes de psaumes, versets justificatifs et enseignements déjà présents. Ce n’est qu’après cette preuve que la représentation persistée des relations validées et son exploitation par la recherche devront être implémentées.
+Ce lot devra utiliser les contextes de psaumes, versets justificatifs et enseignements déjà présents. Les extrémités du premier lot devront être des `themeId` présents dans l’index de recherche ; les fiches éditoriales non recouvrantes serviront de contexte de recherche seulement.
+
+Ce n’est qu’après cette preuve que la représentation persistée des relations validées et son exploitation par la recherche devront être implémentées.
