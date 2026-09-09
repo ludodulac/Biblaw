@@ -7,7 +7,7 @@
   "semanticClaim": false,
   "requiresHumanApproval": true,
   "publicSearchEffect": false,
-  "purpose": "Test variant_of when a qualifier makes explicit a property already constitutive of the broader corpus formulation rather than creating a distinct subtype.",
+  "purpose": "Test variant_of when a qualifier makes explicit a property already constitutive of the broader corpus formulation rather than creating a distinct subtype, including a reformulation test that removes shared vocabulary.",
   "anchorEvidence": {
     "recordId": "book-11-psalm-063",
     "bookNumber": 11,
@@ -28,19 +28,28 @@
         "nature-vivante": [{"recordId": "book-11-psalm-063", "verseNumbers": [2, 3, 8, 11, 12, 18, 21, 24, 25, 26, 27, 28]}]
       },
       "reviewNote": "Les preuves du thème Nature présentent déjà la nature comme une pluralité de mondes vivants qui communiquent et participent à la vie. Le psaume 63 intensifie le même noyau en nommant la nature vivante, sagesse du Père et livre vivant. Le qualificatif explicite donc une propriété déjà intrinsèque plutôt qu'un sous-type nettement séparé.",
+      "nonLexicalReformulationTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient exprimés sans vocabulaire commun ?",
+        "sourceReformulation": "Sagesse du Père manifestée comme communauté d'êtres et comme livre avec lequel l'homme peut entrer consciemment en relation.",
+        "targetReformulation": "Ensemble des mondes et des êtres non humains qui communiquent, participent à l'existence et enseignent l'homme.",
+        "result": "passes-with-variant-boundary",
+        "reason": "Les deux reformulations gardent le même référent cosmologique et relationnel ; la première rend explicites l'animation, l'intelligence et la médiation déjà présentes dans la seconde. Elle n'isole pas un sous-domaine comparable à une catégorie particulière de pensée.",
+        "closestCompetingType": "broader_than",
+        "whyCompetingTypeFails": "Aucun critère indépendant ne sépare ici une sous-classe de la nature : le caractère vivant est présenté comme constitutif du référent de base, non comme restriction de son extension."
+      },
       "semanticClaim": false
     }
   ],
   "explicitDistinctions": {
-    "equivalent_to": {"status": "not-established", "note": "L'interchangeabilité globale des deux libellés n'est pas démontrée."},
+    "equivalent_to": {"status": "not-established", "note": "L'interchangeabilité globale des deux formulations dans tout le corpus n'est pas démontrée ; le test de reformulation établit une identité de noyau, pas une identité d'extension prouvée."},
     "variant_of": {"status": "proposed", "sourceThemeId": "nature-vivante", "targetThemeId": "nature"},
     "broader_than": {"status": "not-retained", "note": "Le qualificatif vivant ne délimite pas ici un domaine d'application distinct comparable à Pensée verticale."},
     "component_of": {"status": "rejected-for-this-pair", "note": "Nature n'est pas une composante autonome assemblée avec d'autres dans Nature vivante."},
     "related_to": {"status": "true-but-less-informative-than-variant_of"}
   },
   "semanticBoundary": {
-    "decisionRule": "Une formulation qualifiée peut être une variante lorsque le qualificatif met au premier plan une propriété déjà intrinsèque au thème de base ; elle devient plus spécifique lorsque le qualificatif délimite un véritable sous-type ou domaine d'application.",
-    "contrastCases": ["pensee-verticale", "soleil-conscience"]
+    "decisionRule": "Une formulation qualifiée peut être une variante lorsque le qualificatif met au premier plan une propriété déjà intrinsèque au thème de base ; elle devient plus spécifique lorsque le qualificatif délimite un véritable sous-type ou domaine d'application. Ce diagnostic doit survivre à une reformulation sans vocabulaire commun.",
+    "contrastCases": ["pensee-verticale", "soleil-conscience", "pensee-vivante"]
   },
   "transversalProfileEvidence": {
     "reviewedOccurrences": [
