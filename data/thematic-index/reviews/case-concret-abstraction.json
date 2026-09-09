@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "concret-contre-abstraction",
+  "anchorLabel": "Concret contre abstraction",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test related_to for an explicitly antagonistic family where lexical inclusion must not be mistaken for component or general-specific structure.",
+  "anchorEvidence": {
+    "recordId": "book-21-psalm-139",
+    "bookNumber": 21,
+    "psalmNumber": 139,
+    "psalmTitle": "Les 3 marches de la dignité",
+    "verseNumbers": [9, 10, 11, 12, 14, 15, 16, 23, 24, 25, 28],
+    "canonicalTeaching": "Le psaume oppose les relations abstraites et idéalisées à un travail concret sur soi, à l'expérience, au retour direct et à la mise en pratique dans la vie quotidienne."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-abstraction--concret-contre-abstraction",
+      "sourceThemeId": "abstraction",
+      "targetThemeId": "concret-contre-abstraction",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal-needs-human-review",
+      "evidenceByThemeId": {
+        "abstraction": [{"recordId": "book-02-psalm-023", "verseNumbers": [2, 3, 7, 8, 9, 13]}],
+        "concret-contre-abstraction": [{"recordId": "book-21-psalm-139", "verseNumbers": [9, 10, 11, 12, 14, 15, 16, 23, 24, 25, 28]}]
+      },
+      "reviewNote": "Abstraction est un thème autonome décrivant la mise à distance du divin et de l'expérience vécue. Dans le thème Concret contre abstraction, elle constitue le pôle explicitement combattu. Elle n'est donc ni une composante du thème, ni son genre conceptuel, ni une variante : related_to préserve la relation antagonique sans introduire un type d'opposition absent du contrat actuel.",
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "rejected-for-this-pair"},
+    "variant_of": {"status": "rejected-for-this-pair"},
+    "broader_than": {"status": "not-retained"},
+    "component_of": {"status": "rejected-for-this-pair", "note": "Un pôle combattu par le thème n'est pas une partie constitutive du concept."},
+    "related_to": {"status": "proposed", "sourceThemeId": "abstraction", "targetThemeId": "concret-contre-abstraction"}
+  },
+  "semanticBoundary": {
+    "decisionRule": "Quand un thème est construit par opposition explicite, la présence lexicale du terme opposé signale une relation antagonique mais pas une relation de partie-tout ni de général-spécifique."
+  }
+}
