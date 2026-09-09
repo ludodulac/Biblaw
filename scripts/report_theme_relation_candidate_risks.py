@@ -4,6 +4,9 @@
 This FAST, read-only diagnostic reuses the existing candidate generator. It does
 not decide that a candidate is wrong; it only identifies cases where discarded
 function words, negation or opposition markers can materially change meaning.
+
+Priority is deliberately coarse and procedural: it only controls review order.
+It never predicts or validates a semantic relation type.
 """
 from __future__ import annotations
 
@@ -29,7 +32,7 @@ def alias_tokens(record: dict) -> list[str]:
     return aliases[0].split() if aliases else []
 
 
-def main() -> None:
+def build_risk_report() -> dict:
     data = json.loads(INDEX.read_text(encoding="utf-8"))
     assert data.get("semanticMerging") is False
     records = data.get("themes") or []
@@ -38,6 +41,7 @@ def main() -> None:
     candidate_targets = build_candidates(records, audited_composite_ids())
     risks = []
     marker_counts: Counter[str] = Counter()
+    priority_counts: Counter[str] = Counter()
 
     for target in candidate_targets:
         record = by_id[target["themeId"]]
@@ -55,11 +59,16 @@ def main() -> None:
             risk_markers.append("relational-function-word-dropped-by-component-tokenization")
             marker_counts["relational-function-word-dropped-by-component-tokenization"] += 1
 
+        priority_tier = "review-first" if negation else "review-next"
+        priority_counts[priority_tier] += 1
+
         risks.append(
             {
                 "themeId": target["themeId"],
                 "label": target.get("label"),
                 "occurrenceCount": target.get("occurrenceCount", 0),
+                "reviewPriority": priority_tier,
+                "automaticDisposition": False,
                 "riskMarkers": risk_markers,
                 "structuralTokens": sorted(set(negation + relational)),
                 "candidateCount": len(target.get("candidates") or []),
@@ -71,31 +80,32 @@ def main() -> None:
 
     risks.sort(
         key=lambda item: (
-            0 if "negation-or-opposition-marker" in item["riskMarkers"] else 1,
+            0 if item["reviewPriority"] == "review-first" else 1,
             -item["candidateCount"],
             item["themeId"],
         )
     )
 
-    print(
-        json.dumps(
-            {
-                "schemaVersion": 1,
-                "recordType": "theme-relation-candidate-risk-report",
-                "semanticClaim": False,
-                "auditedCompositeThemeCount": len(audited_composite_ids()),
-                "riskTargetCount": len(risks),
-                "riskMarkerCounts": dict(sorted(marker_counts.items())),
-                "targets": risks[:30],
-                "interpretation": (
-                    "Risk markers identify wording whose grammatical structure may be lost by token-subset candidate generation. "
-                    "They are review priorities, not semantic rejections."
-                ),
-            },
-            ensure_ascii=False,
-            indent=2,
-        )
-    )
+    return {
+        "schemaVersion": 1,
+        "recordType": "theme-relation-candidate-risk-report",
+        "semanticClaim": False,
+        "automaticDisposition": False,
+        "auditedCompositeThemeCount": len(audited_composite_ids()),
+        "riskTargetCount": len(risks),
+        "riskMarkerCounts": dict(sorted(marker_counts.items())),
+        "reviewPriorityCounts": dict(sorted(priority_counts.items())),
+        "targets": risks[:30],
+        "interpretation": (
+            "Risk markers only prioritize human review. review-first means wording contains a negation/opposition marker; "
+            "review-next means another relational function word may have been lost by token-subset candidate generation. "
+            "Neither tier predicts, rejects or validates a semantic relation."
+        ),
+    }
+
+
+def main() -> None:
+    print(json.dumps(build_risk_report(), ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
