@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-relation-review-batch",
+  "status": "proposed-review-decisions",
+  "scope": "diverse-evidence-ready-general-candidates",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Test clear enumerative/integrative component relations and modifier-driven false positives across diverse themes before any canonical validation.",
+  "sourcePolicy": [
+    "data/thematic-index/books/book-*.json",
+    "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
+  ],
+  "decisions": [
+    {
+      "id": "general-corps--corps-ame-esprit",
+      "candidate": {"sourceThemeId": "corps", "targetThemeId": "corps-ame-esprit", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "corps", "targetThemeId": "corps-ame-esprit", "relationType": "component_of"},
+      "evidenceByThemeId": {"corps": [{"recordId": "book-01-psalm-005", "verseNumbers": [11, 12, 13, 14]}], "corps-ame-esprit": [{"recordId": "book-06-psalm-042", "verseNumbers": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]}]},
+      "reviewNote": "Le thème cible distingue explicitement corps, âme et esprit comme trois réalités appartenant à des mondes distincts appelées à communiquer sans se confondre. Corps constitue donc une composante attestée du thème conjoint sans l'épuiser.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-ame--corps-ame-esprit",
+      "candidate": {"sourceThemeId": "ame", "targetThemeId": "corps-ame-esprit", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "ame", "targetThemeId": "corps-ame-esprit", "relationType": "component_of"},
+      "evidenceByThemeId": {"ame": [{"recordId": "book-01-psalm-022", "verseNumbers": [7]}], "corps-ame-esprit": [{"recordId": "book-06-psalm-042", "verseNumbers": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]}]},
+      "reviewNote": "L'âme est attestée comme instance intérieure autonome et elle est explicitement distinguée du corps et de l'esprit dans le psaume 42. Elle constitue l'une des trois dimensions du thème conjoint.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-esprit--corps-ame-esprit",
+      "candidate": {"sourceThemeId": "esprit", "targetThemeId": "corps-ame-esprit", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "esprit", "targetThemeId": "corps-ame-esprit", "relationType": "component_of"},
+      "evidenceByThemeId": {"esprit": [{"recordId": "book-19-psalm-115", "verseNumbers": [10, 12, 13, 15, 16, 21, 25]}], "corps-ame-esprit": [{"recordId": "book-06-psalm-042", "verseNumbers": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]}]},
+      "reviewNote": "Esprit est un thème autonome et le psaume 42 le distingue explicitement du corps et de l'âme. Il constitue donc une composante attestée du thème conjoint.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-terre--terre-eau-air-feu",
+      "candidate": {"sourceThemeId": "terre", "targetThemeId": "terre-eau-air-feu", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "terre", "targetThemeId": "terre-eau-air-feu", "relationType": "component_of"},
+      "evidenceByThemeId": {"terre": [{"recordId": "book-19-psalm-108", "verseNumbers": [5, 17, 22, 25, 31]}], "terre-eau-air-feu": [{"recordId": "book-19-psalm-115", "verseNumbers": [20, 21, 26, 27, 29, 30, 31]}]},
+      "reviewNote": "Le psaume 115 présente explicitement terre, eau, air et feu comme quatre étapes ou fonctions distinctes d'un même parcours. Terre constitue l'une de ces composantes sans être équivalente au thème complet.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-eau--terre-eau-air-feu",
+      "candidate": {"sourceThemeId": "eau", "targetThemeId": "terre-eau-air-feu", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "eau", "targetThemeId": "terre-eau-air-feu", "relationType": "component_of"},
+      "evidenceByThemeId": {"eau": [{"recordId": "book-02-psalm-001", "verseNumbers": [1, 5, 7, 8, 9]}], "terre-eau-air-feu": [{"recordId": "book-19-psalm-115", "verseNumbers": [20, 21, 26, 27, 29, 30, 31]}]},
+      "reviewNote": "Eau possède une fonction thématique autonome et le psaume 115 l'intègre explicitement parmi les quatre éléments structurants. Elle est donc une composante attestée du thème conjoint.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-air--terre-eau-air-feu",
+      "candidate": {"sourceThemeId": "air", "targetThemeId": "terre-eau-air-feu", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "air", "targetThemeId": "terre-eau-air-feu", "relationType": "component_of"},
+      "evidenceByThemeId": {"air": [{"recordId": "book-03-psalm-001", "verseNumbers": [5, 6, 7, 8, 10, 11, 12]}], "terre-eau-air-feu": [{"recordId": "book-19-psalm-115", "verseNumbers": [20, 21, 26, 27, 29, 30, 31]}]},
+      "reviewNote": "Air est un thème autonome et reçoit une fonction distincte dans le parcours des quatre éléments du psaume 115. Il constitue une composante du thème conjoint.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-feu--terre-eau-air-feu",
+      "candidate": {"sourceThemeId": "feu", "targetThemeId": "terre-eau-air-feu", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "feu", "targetThemeId": "terre-eau-air-feu", "relationType": "component_of"},
+      "evidenceByThemeId": {"feu": [{"recordId": "book-01-psalm-004", "verseNumbers": [2, 5]}], "terre-eau-air-feu": [{"recordId": "book-19-psalm-115", "verseNumbers": [20, 21, 26, 27, 29, 30, 31]}]},
+      "reviewNote": "Feu possède une fonction thématique autonome et apparaît explicitement comme quatrième dimension du parcours des éléments. Il constitue une composante attestée du thème conjoint.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-lumiere--apparences-et-fausse-lumiere",
+      "candidate": {"sourceThemeId": "lumiere", "targetThemeId": "apparences-et-fausse-lumiere", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "rejected",
+      "proposedRelation": {"sourceThemeId": "lumiere", "targetThemeId": "apparences-et-fausse-lumiere", "relationType": "related_to"},
+      "evidenceByThemeId": {"lumiere": [{"recordId": "book-01-psalm-017", "verseNumbers": [1, 5, 10]}], "apparences-et-fausse-lumiere": [{"recordId": "book-11-psalm-055", "verseNumbers": [2, 4, 5, 7, 15, 16]}]},
+      "reviewNote": "Le thème cible ne décrit pas la Lumière comme composante : il met en garde contre une lumière seulement apparente et éphémère qui détourne de l'essentiel. Le qualificatif « fausse » inverse la lecture naïve du sous-ensemble lexical ; le lien avec Lumière est réel mais distinct et critique.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-dieux--idoles-et-faux-dieux",
+      "candidate": {"sourceThemeId": "dieux", "targetThemeId": "idoles-et-faux-dieux", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "rejected",
+      "proposedRelation": {"sourceThemeId": "dieux", "targetThemeId": "idoles-et-faux-dieux", "relationType": "related_to"},
+      "evidenceByThemeId": {"dieux": [{"recordId": "book-19-psalm-112", "verseNumbers": [1, 15, 26, 28, 30]}], "idoles-et-faux-dieux": [{"recordId": "book-11-psalm-071", "verseNumbers": [3, 4, 5, 6, 8, 9]}]},
+      "reviewNote": "Dieux est un thème autonome lié au monde divin. Le thème cible décrit au contraire des buts et images fabriqués par l'homme qui prennent la fonction de faux dieux. Le qualificatif « faux » empêche de traiter Dieux comme une composante sémantique du thème ; related_to préserve la relation critique sans équivalence.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-pratique--pratique-et-conscience",
+      "candidate": {"sourceThemeId": "pratique", "targetThemeId": "pratique-et-conscience", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "pratique", "targetThemeId": "pratique-et-conscience", "relationType": "component_of"},
+      "evidenceByThemeId": {"pratique": [{"recordId": "book-18-psalm-134", "verseNumbers": [5, 6, 7, 8, 12, 15, 16, 18, 20, 25, 29, 30]}], "pratique-et-conscience": [{"recordId": "book-19-psalm-115", "verseNumbers": [23, 24, 25, 26, 29, 30, 31]}]},
+      "reviewNote": "Le psaume 115 relie explicitement exercice/pratique et conscience : la discipline prépare la perception et devient complète lorsqu'elle transforme la conscience et l'action. Pratique constitue donc une dimension attestée du thème conjoint.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-conscience--pratique-et-conscience",
+      "candidate": {"sourceThemeId": "conscience", "targetThemeId": "pratique-et-conscience", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "conscience", "targetThemeId": "pratique-et-conscience", "relationType": "component_of"},
+      "evidenceByThemeId": {"conscience": [{"recordId": "book-07-psalm-026", "verseNumbers": [4, 5, 6, 7, 8, 9, 10, 11]}], "pratique-et-conscience": [{"recordId": "book-19-psalm-115", "verseNumbers": [23, 24, 25, 26, 29, 30, 31]}]},
+      "reviewNote": "Conscience est une dimension thématique autonome et le psaume 115 la lie explicitement à la pratique comme résultat et condition de transformation. Elle constitue une composante du thème conjoint, sans être équivalente à celui-ci.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-pensee--maitrise-pensee-parole",
+      "candidate": {"sourceThemeId": "pensee", "targetThemeId": "maitrise-pensee-parole", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "pensee", "targetThemeId": "maitrise-pensee-parole", "relationType": "component_of"},
+      "evidenceByThemeId": {"pensee": [{"recordId": "book-05-psalm-038", "verseNumbers": [1, 2, 3, 4, 7]}], "maitrise-pensee-parole": [{"recordId": "book-21-psalm-152", "verseNumbers": [13, 14, 15, 16, 17, 18, 28]}]},
+      "reviewNote": "Le psaume 152 nomme pensée et parole comme les premiers instruments à maîtriser. Pensée est donc l'un des deux objets explicitement constitutifs du thème de maîtrise, sans suffire à définir le thème complet.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "general-parole--maitrise-pensee-parole",
+      "candidate": {"sourceThemeId": "parole", "targetThemeId": "maitrise-pensee-parole", "candidateRelationType": "component_candidate", "candidateBasis": "normalized-meaningful-token-subset"},
+      "candidateDisposition": "accepted",
+      "proposedRelation": {"sourceThemeId": "parole", "targetThemeId": "maitrise-pensee-parole", "relationType": "component_of"},
+      "evidenceByThemeId": {"parole": [{"recordId": "book-10-psalm-064", "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]}], "maitrise-pensee-parole": [{"recordId": "book-21-psalm-152", "verseNumbers": [13, 14, 15, 16, 17, 18, 28]}]},
+      "reviewNote": "Le psaume 152 nomme pensée et parole comme les premiers instruments à maîtriser. Parole est donc une composante attestée du thème conjoint de maîtrise, sans être équivalente au thème complet.",
+      "semanticClaim": false,
+      "requiresHumanApproval": true
+    }
+  ],
+  "deferredCandidateIds": ["maitrise", "esprit-et-corps", "eau-et-air"],
+  "deferredReason": "These candidates are intentionally left unclassified in this batch because their relation to the composite target is structurally less direct than the selected atomic components and needs separate review."
+}
