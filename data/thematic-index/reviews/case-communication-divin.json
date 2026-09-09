@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "communication-avec-le-divin",
+  "anchorLabel": "Communication avec le divin",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Stress-test broader_than against related_to when a qualified relational theme names a destination or interlocutor. The shared word communication must not carry the judgment by itself.",
+  "sourcePolicy": [
+    "data/thematic-index/books/book-*.json",
+    "data/thematic-index/THEME-RELATIONS-CONTRACT.md"
+  ],
+  "anchorEvidence": {
+    "recordId": "book-01-psalm-005",
+    "bookNumber": 1,
+    "psalmNumber": 5,
+    "psalmTitle": "Lois fondamentales pour communiquer avec le divin",
+    "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    "canonicalTeaching": "La communication avec le divin traverse plusieurs sphères et exige une transformation réelle de l'être plutôt qu'une simple pensée ou aspiration."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-communication--communication-avec-le-divin",
+      "sourceThemeId": "communication",
+      "targetThemeId": "communication-avec-le-divin",
+      "proposedRelationType": "broader_than",
+      "confidence": "strong-proposal-after-destination-test",
+      "evidenceByThemeId": {
+        "communication": [
+          {"recordId": "book-19-psalm-103", "verseNumbers": [1, 2, 3, 5, 8, 13, 14, 16, 17, 18, 20, 22, 23]}
+        ],
+        "communication-avec-le-divin": [
+          {"recordId": "book-01-psalm-005", "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]},
+          {"recordId": "book-03-psalm-002", "verseNumbers": [1, 2, 3]}
+        ]
+      },
+      "reviewNote": "Communication est définie de manière générale comme capacité à entrer en relation sans imposer son propre monde, en comprenant l'interlocuteur, en adaptant le langage et en ouvrant un échange. Communication avec le divin conserve cette structure relationnelle mais fixe l'interlocuteur et ajoute des conditions propres au passage vers les sphères supérieures. Le thème général est donc plus large que cette application déterminée.",
+      "lexicalIndependenceTest": {
+        "question": "La relation resterait-elle vraie si les deux thèmes étaient reformulés sans vocabulaire commun ?",
+        "sourceReformulation": "Capacité d'entrer en échange avec un autre être ou monde en l'écoutant, en comprenant sa perspective et en ajustant son mode d'expression.",
+        "targetReformulation": "Démarche par laquelle l'être se transforme et traverse consciemment des plans intermédiaires afin de pouvoir s'adresser aux réalités supérieures et recevoir leur langage.",
+        "result": "passes-as-general-specific",
+        "reason": "La seconde formulation reste une espèce déterminée de mise en relation : elle conserve l'échange mais restreint son partenaire et ses conditions. La relation ne dépend donc pas de la répétition du mot communication.",
+        "closestCompetingType": "related_to",
+        "whyCompetingTypeIsPlausible": "La cible possède une structure initiatique propre — traversée de sphères et transformation de l'être — qui pourrait être lue comme un processus distinct simplement lié à la communication.",
+        "whyBroaderThanWins": "Malgré ces conditions supplémentaires, le but et l'opération centrale restent explicitement de parler, recevoir et échanger avec un interlocuteur déterminé. La cible ne devient pas un processus autonome dont la communication serait seulement un voisin conceptuel."
+      },
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {
+      "status": "rejected-for-this-pair",
+      "note": "Le thème général couvre l'échange avec des interlocuteurs ou mondes non divins et ne peut être remplacé globalement par la cible spécialisée."
+    },
+    "variant_of": {
+      "status": "rejected-for-this-pair",
+      "note": "Le partenaire divin et les conditions de passage constituent une restriction stable de portée, pas seulement une autre formulation du même concept."
+    },
+    "broader_than": {
+      "status": "proposed",
+      "sourceThemeId": "communication",
+      "targetThemeId": "communication-avec-le-divin"
+    },
+    "component_of": {
+      "status": "rejected-for-this-pair",
+      "note": "Le divin est l'interlocuteur ou la destination de la relation ; ni le mot communication ni son partenaire ne doivent être découpés en composants automatiques du thème."
+    },
+    "related_to": {
+      "status": "true-but-less-informative-than-broader_than",
+      "note": "La proximité est réelle, mais elle ne rend pas compte de la restriction de domaine explicitement attestée."
+    }
+  },
+  "semanticBoundary": {
+    "decisionRule": "Quand un thème relationnel qualifié conserve l'opération générale tout en fixant explicitement son partenaire, sa destination ou son domaine, broader_than est préférable à related_to si cette restriction survit à une reformulation non lexicale.",
+    "antiComponentRule": "Le partenaire ou la destination d'une relation n'est pas automatiquement une composante du concept relationnel."
+  }
+}
