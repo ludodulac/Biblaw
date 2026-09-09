@@ -11,6 +11,7 @@ on:
       - "scripts/report_theme_layer_coverage.py"
       - "scripts/report_theme_alias_collisions.py"
       - "scripts/audit_theme_relation_candidates.py"
+      - "scripts/audit_theme_relation_candidate_risks.py"
       - "scripts/audit_theme_relation_review_pilot.py"
       - "scripts/audit_validated_theme_relations.py"
       - "data/thematic-index/theme-search-index.json"
@@ -40,6 +41,9 @@ jobs:
 
       - name: Run relation candidate sentinels
         run: python scripts/audit_theme_relation_candidates.py
+
+      - name: Audit structural-risk review priority
+        run: python scripts/audit_theme_relation_candidate_risks.py
 
       - name: Audit editorial/search theme layer coverage
         run: python scripts/report_theme_layer_coverage.py
