@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "recordType": "theme-semantic-case-study",
+  "status": "proposed-review-decisions",
+  "anchorThemeId": "maitrise-pensee-parole",
+  "anchorLabel": "Maîtrise de la pensée et de la parole",
+  "semanticClaim": false,
+  "requiresHumanApproval": true,
+  "publicSearchEffect": false,
+  "purpose": "Stress-test component_of against related_to when a composite label names an action plus the objects to which that action is applied. This case intentionally re-examines earlier lexical component candidates.",
+  "anchorEvidence": {
+    "recordId": "book-21-psalm-152",
+    "bookNumber": 21,
+    "psalmNumber": 152,
+    "psalmTitle": "Lois fondamentales sur le temps et la créativité",
+    "verseNumbers": [13, 14, 15, 16, 17, 18, 28],
+    "canonicalTeaching": "L'homme doit maîtriser ses instruments ; la pensée est nommée premier instrument et la parole deuxième instrument, parce que ce qui est pensé ou prononcé engage l'homme envers des mondes qu'il devra porter et conduire."
+  },
+  "relationAssessments": [
+    {
+      "id": "case-pensee--maitrise-pensee-parole",
+      "sourceThemeId": "pensee",
+      "targetThemeId": "maitrise-pensee-parole",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal-after-retype",
+      "evidenceByThemeId": {
+        "pensee": [{"recordId": "book-05-psalm-038", "verseNumbers": [1, 2, 3, 4, 7]}],
+        "maitrise-pensee-parole": [{"recordId": "book-21-psalm-152", "verseNumbers": [13, 14, 15, 16, 17, 18, 28]}]
+      },
+      "reviewNote": "Une revue antérieure avait accepté component_of parce que Pensée apparaît lexicalement dans le composite. Le psaume 152 la qualifie cependant de premier instrument à maîtriser : elle est l'objet d'une opération de gouvernement, non une partie de cette opération. Cette structure est analogue aux pôles Père et nature dans Union au Père et à la nature, pour lesquels component_of a déjà été rejeté.",
+      "nonLexicalReformulationTest": {
+        "sourceReformulation": "Activité intérieure qui engendre des formes vivantes capables d'orienter actes et destinée.",
+        "targetReformulation": "Gouvernement conscient des instruments intérieurs et expressifs afin de ne pas s'engager envers des mondes que l'on ne peut conduire.",
+        "result": "rejects-component",
+        "reason": "Le premier concept demeure un objet central du second, mais il n'en devient pas une partie constitutive une fois le mot commun supprimé.",
+        "competingRelation": "component_of",
+        "whyCompetitorWasPlausible": "Le libellé composite contient directement le nom Pensée et le psaume la présente comme l'un des deux instruments explicitement traités.",
+        "decisiveTest": "Objet d'une action versus partie de la structure conceptuelle : le psaume dit que l'instrument doit être maîtrisé, pas que la maîtrise est composée de cet instrument."
+      },
+      "semanticClaim": false
+    },
+    {
+      "id": "case-parole--maitrise-pensee-parole",
+      "sourceThemeId": "parole",
+      "targetThemeId": "maitrise-pensee-parole",
+      "proposedRelationType": "related_to",
+      "confidence": "strong-proposal-after-retype",
+      "evidenceByThemeId": {
+        "parole": [{"recordId": "book-10-psalm-064", "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]}],
+        "maitrise-pensee-parole": [{"recordId": "book-21-psalm-152", "verseNumbers": [13, 14, 15, 16, 17, 18, 28]}]
+      },
+      "reviewNote": "Parole est explicitement le deuxième instrument que l'homme doit maîtriser. Sa présence dans le titre du thème ne suffit donc pas à en faire une composante conceptuelle : elle est un objet de la maîtrise et le véhicule par lequel l'homme s'associe à des mondes et s'engage à les porter.",
+      "nonLexicalReformulationTest": {
+        "sourceReformulation": "Expression émise qui appelle des forces, crée des engagements et relie celui qui s'exprime à des mondes subtils.",
+        "targetReformulation": "Gouvernement conscient des instruments intérieurs et expressifs afin de ne pas s'engager envers des mondes que l'on ne peut conduire.",
+        "result": "rejects-component",
+        "reason": "Le premier concept reste un objet et un vecteur du second ; la relation partie-tout disparaît dès que le titre n'est plus lu grammaticalement.",
+        "competingRelation": "component_of",
+        "whyCompetitorWasPlausible": "Le thème est éditorialement formulé comme maîtrise de deux éléments nommés et le texte les énumère comme premier et deuxième instruments.",
+        "decisiveTest": "Une énumération des objets auxquels une opération s'applique n'est pas une décomposition de l'opération elle-même."
+      },
+      "semanticClaim": false
+    }
+  ],
+  "explicitDistinctions": {
+    "equivalent_to": {"status": "rejected"},
+    "variant_of": {"status": "rejected"},
+    "broader_than": {"status": "handled-separately", "note": "La relation maîtrise → maîtrise-pensée-parole reste proposée comme broader_than dans la revue de frontière dédiée."},
+    "component_of": {"status": "rejected-after-adversarial-review", "note": "Pensée et parole sont les objets/instruments de la maîtrise, non des parties de l'opération de maîtrise."},
+    "related_to": {"status": "proposed", "themeIds": ["pensee", "parole"]}
+  },
+  "semanticBoundary": {
+    "decisionRule": "Dans un thème de forme action + objets, les objets ne deviennent pas component_of par simple présence lexicale ou énumération. Il faut distinguer la structure de l'opération de ses pôles d'application.",
+    "falsifiedEarlierHeuristic": "normalized token subset plus explicit enumeration is insufficient for component_of when the enumerated notions are grammatical or semantic objects of an action."
+  }
+}
