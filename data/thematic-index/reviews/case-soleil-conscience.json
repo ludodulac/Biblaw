@@ -7,7 +7,7 @@
   "semanticClaim": false,
   "requiresHumanApproval": true,
   "publicSearchEffect": false,
-  "purpose": "Test symbolic-variant semantics where a qualified theme is explicitly used as an image of a broader concept in the same Psalm.",
+  "purpose": "Test symbolic-variant semantics where a qualified theme is explicitly used as an image of a broader concept, including a non-lexical reformulation test against broader_than and related_to.",
   "anchorEvidence": {
     "recordId": "book-09-psalm-051",
     "bookNumber": 9,
@@ -27,29 +27,37 @@
         "soleil-conscience": [{"recordId": "book-09-psalm-051", "verseNumbers": [6, 7, 15, 16, 18]}],
         "conscience": [{"recordId": "book-09-psalm-051", "verseNumbers": [1, 2, 4, 5, 6, 7, 11, 13, 14, 15, 16, 18]}]
       },
-      "reviewNote": "Le psaume ne présente pas le soleil-conscience comme une réalité indépendante de la conscience : il utilise le soleil pour qualifier une conscience lumineuse, réchauffante, rayonnante et éveillante. La formulation symbolique conserve le même noyau sémantique mais accentue certaines propriétés ; variant_of est donc plus précis qu'equivalent_to et plus informatif que related_to.",
+      "reviewNote": "Le psaume ne présente pas le soleil-conscience comme une réalité indépendante de la conscience : il utilise le soleil pour qualifier une conscience lumineuse, réchauffante, rayonnante et éveillante. La formulation symbolique conserve le même noyau sémantique mais accentue certaines propriétés.",
+      "nonLexicalReformulationTest": {
+        "sourceReformulation": "Éveil intérieur qui rayonne, éclaire, réchauffe et féconde la vie autour de lui.",
+        "targetReformulation": "Présence lucide qui oriente l'existence, rend les actes clairs et arrache l'être au sommeil intérieur.",
+        "result": "passes-as-variant",
+        "reason": "Le premier concept demeure une modalité imagée du second : il ne crée ni population distincte ni domaine autonome, mais met en relief le rayonnement et la fécondité d'un même état d'éveil.",
+        "competingRelation": "broader_than",
+        "whyCompetitorIsPlausible": "Une formulation qualifiée peut parfois délimiter un sous-type, comme pensée verticale ou pierre verte.",
+        "decisiveTest": "Le psaume utilise l'image rayonnante pour décrire ce que fait la conscience elle-même ; aucun critère indépendant ne définit une classe séparée de consciences solaires."
+      },
       "semanticClaim": false
     }
   ],
   "explicitDistinctions": {
-    "equivalent_to": {"status": "not-established", "note": "Le symbolisme solaire ajoute une modalité descriptive ; l'interchangeabilité globale des deux themeIds n'est pas démontrée."},
+    "equivalent_to": {"status": "not-established", "note": "Le symbolisme ajoute une modalité descriptive et l'interchangeabilité globale n'est pas démontrée."},
     "variant_of": {"status": "proposed", "sourceThemeId": "soleil-conscience", "targetThemeId": "conscience"},
-    "broader_than": {"status": "not-retained", "note": "Le cas n'est pas présenté comme un sous-domaine autonome de la conscience mais comme sa formulation symbolique."},
+    "broader_than": {"status": "rejected-after-reformulation-test", "note": "Aucune sous-classe indépendante n'apparaît une fois le vocabulaire solaire supprimé."},
     "component_of": {"status": "rejected-for-this-pair"},
     "related_to": {"status": "true-but-less-informative-than-variant_of"}
+  },
+  "semanticBoundary": {
+    "decisionRule": "Une image symbolique peut être variant_of lorsqu'elle reformule les propriétés du même concept sans créer un sous-domaine autonome. La forme grammaticale ou l'ajout d'un qualificatif ne suffit jamais à décider.",
+    "contrastCases": ["pierre-verte", "pensee-verticale", "nature-vivante", "pensee-vivante"]
   },
   "transversalProfileEvidence": {
     "reviewedOccurrences": [
       {"themeId": "soleil-conscience", "bookNumber": 9, "psalmNumber": 51, "recordId": "book-09-psalm-051"},
       {"themeId": "conscience", "bookNumber": 9, "psalmNumber": 51, "recordId": "book-09-psalm-051"}
     ],
-    "observedVariationDimensions": [
-      "conscience as active light",
-      "solar imagery of radiance and warmth",
-      "awakening versus unconscious sleep",
-      "conscious orientation of destiny"
-    ],
-    "distributionAssessment": {"status": "not-yet-global", "note": "This study establishes local semantic structure, not the full corpus distribution of Conscience or Soleil-conscience."},
+    "observedVariationDimensions": ["conscience as active light", "solar imagery of radiance and warmth", "awakening versus unconscious sleep", "conscious orientation of destiny"],
+    "distributionAssessment": {"status": "not-yet-global"},
     "evolutionAssessment": {"status": "not-established", "note": "No evolution claim is justified; corpus order is not historical chronology."}
   }
 }
