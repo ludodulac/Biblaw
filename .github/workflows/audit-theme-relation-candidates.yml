@@ -122,6 +122,8 @@ jobs:
           python scripts/report_theme_relation_review_context.py
           --theme nutrition --theme nutrition-subtile
           --theme service --theme service-du-monde-divin
+          --theme temple --theme temple-interieur
+          --theme transmission --theme transmission-aux-generations
           --max-occurrences 5 > /tmp/alias-family-evidence.json
 
       - name: Upload alias-family semantic evidence
