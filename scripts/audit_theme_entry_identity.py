@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Protect the presentation-only identity of a uniquely resolved canonical theme."""
+"""Protect the explicit presentation contract for canonical theme entry identity."""
 from __future__ import annotations
 
 import json
@@ -12,6 +12,7 @@ INDEX = ROOT / "data" / "thematic-index"
 DIRECTORY = INDEX / "theme-directory-public.json"
 RUNTIME = INDEX / "theme-search-runtime.json"
 BUNDLE = ROOT / "data" / "browser-search-catalog.json"
+BROWSER_JS = ROOT / "js" / "biblaw.js"
 ENTRY_JS = ROOT / "js" / "theme-entry.js"
 INDEX_HTML = ROOT / "index.html"
 ARTICLES = {"l", "le", "la", "les", "un", "une", "des"}
@@ -62,55 +63,65 @@ def literal_psalm_ids(query: str, records: list[dict]) -> list[str]:
     return found
 
 
-def identity_allowed(theme_ids: list[str]) -> bool:
-    return len(theme_ids) == 1
-
-
 def main() -> None:
     runtime = json.loads(RUNTIME.read_text(encoding="utf-8"))
     themes = json.loads(DIRECTORY.read_text(encoding="utf-8"))["themes"]
     records = json.loads(BUNDLE.read_text(encoding="utf-8"))["records"]
+    browser_js = BROWSER_JS.read_text(encoding="utf-8")
     entry_js = ENTRY_JS.read_text(encoding="utf-8")
     index_html = INDEX_HTML.read_text(encoding="utf-8")
 
     canonical = resolve_theme_ids("alliance", runtime, themes)
-    assert len(canonical) == 1 and identity_allowed(canonical), canonical
+    assert len(canonical) == 1, canonical
 
     assembly = resolve_theme_ids("Assemblée", runtime, themes)
     assert assembly == [] and literal_psalm_ids("Assemblée", records), assembly
-    assert not identity_allowed(assembly), "textual fallback must never receive a theme-entry identity"
 
     absent_query = "qzjxv terme volontairement absent"
     absent = resolve_theme_ids(absent_query, runtime, themes)
     assert absent == [] and literal_psalm_ids(absent_query, records) == []
-    assert not identity_allowed(absent), "no-result state must never receive a theme-entry identity"
 
     ambiguous = next(
         ((alias, data.get("themeIds", [])) for alias, data in runtime.get("aliases", {}).items() if len(data.get("themeIds", [])) > 1),
         None,
     )
     assert ambiguous is not None, "runtime must expose at least one ambiguous alias sentinel"
-    assert not identity_allowed(ambiguous[1]), ambiguous
+
+    # The engine owns semantic resolution state and publishes a structured presentation contract.
+    assert "publishPresentationState" in browser_js
+    assert "new CustomEvent('biblaw:presentation-state'" in browser_js
+    assert "kind:'canonical-theme'" in browser_js
+    assert "theme:{id:resolved[0].id,label:resolved[0].label}" in browser_js
+    assert "kind:'ambiguous-themes'" in browser_js
+    assert "kind:textual.length?'textual-fallback':'no-result'" in browser_js
+    assert "publishPresentationState({kind:'no-result'})" in browser_js
+    assert "Voir le psaume source" in browser_js
+
+    # The encyclopedia layer consumes only that explicit state; it must not reconstruct semantics from rendered strings.
+    assert "biblaw:presentation-state" in entry_js
+    assert "detail.kind !== 'canonical-theme'" in entry_js
+    assert "detail.theme?.id" in entry_js and "detail.theme?.label" in entry_js
+    assert "Textes indexés pour ce thème" in entry_js
+    assert "querySelector('.theme-found')" not in entry_js
+    assert "THÈME INDEXÉ ·" not in entry_js
+    assert "Correspondances multiples" not in entry_js
+    assert "MutationObserver" not in entry_js
+    assert "labels.size" not in entry_js
+    assert "themeCards" not in entry_js
+    assert "fetch(" not in entry_js
 
     assert 'id="themeEntryIdentity"' in index_html
     assert 'id="themeEntryName"' in index_html
     assert 'id="themeEntryCount"' in index_html
     assert 'id="documentResultsTitle"' in index_html
-    assert 'js/theme-entry.js' in index_html and 'css/theme-entry.css' in index_html
     assert "THÈME INDEXÉ DU CORPUS" in index_html
-    assert "Textes indexés pour ce thème" in entry_js
-    assert "labels.size === 1" in entry_js
-    assert "themeCards.length === cards.length" in entry_js
-    assert "isCurrentAmbiguousQuery" in entry_js
-    assert "Voir le psaume source" in entry_js
-    assert "fetch(" not in entry_js, "presentation layer must not re-resolve or enrich semantic data"
-    for forbidden in ("themeId", "aliases", "relationType", "equivalent_to", "broader_than", "component_of", "related_to"):
-        assert forbidden not in entry_js, f"presentation layer must not introduce semantic machinery: {forbidden}"
 
     print(
-        "Theme entry identity OK: "
-        f"canonical={canonical[0]}; fallback=no-identity; absent=no-identity; "
-        f"ambiguous={ambiguous[0]}({len(ambiguous[1])} themes)=no-identity; presentation-only"
+        "Theme entry contract OK: "
+        f"canonical={canonical[0]} => canonical-theme; "
+        "Assemblée => textual-fallback; absent => no-result; "
+        f"ambiguous={ambiguous[0]}({len(ambiguous[1])} themes) => ambiguous-themes; "
+        "entry consumes engine state only"
     )
 
 
