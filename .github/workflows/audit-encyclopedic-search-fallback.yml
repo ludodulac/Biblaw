@@ -1,0 +1,34 @@
+name: Audit encyclopedic search fallback
+
+on:
+  push:
+    paths:
+      - 'js/biblaw.js'
+      - 'scripts/audit_encyclopedic_search_fallback.py'
+      - 'data/browser-search-catalog.json'
+      - 'data/thematic-index/theme-directory-public.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - '.github/workflows/audit-encyclopedic-search-fallback.yml'
+  pull_request:
+    paths:
+      - 'js/biblaw.js'
+      - 'scripts/audit_encyclopedic_search_fallback.py'
+      - 'data/browser-search-catalog.json'
+      - 'data/thematic-index/theme-directory-public.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - '.github/workflows/audit-encyclopedic-search-fallback.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Compile fallback audit
+        run: python -m py_compile scripts/audit_encyclopedic_search_fallback.py
+      - name: Audit generic fallback contract
+        run: python scripts/audit_encyclopedic_search_fallback.py
+      - name: Preserve production search semantics
+        run: python scripts/audit_production_search_queries.py

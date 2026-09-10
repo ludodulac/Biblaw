@@ -172,7 +172,7 @@
       }
       $('ambiguityPanel').hidden=true;
       const textual=textualPsalmMatches(query);
-      return render([],[],{textualCount:textual.length,unresolvedTheme:true});
+      return render(textual,[],{textualCount:textual.length,unresolvedTheme:true,textualFallback:true});
     }
     render(matches(query).sort((a,b)=>b.score-a.score));
   }
@@ -205,20 +205,23 @@
   }
   function render(items,indexedThemes=null,companion=null){
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
-    $('resultCount').textContent=companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:`${items.length} résultat${items.length>1?'s':''}`;
-    const textualNotice=themeLabels.length&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>Deux lectures de cette recherche</strong><span>${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous ce thème · le mot ou l’expression apparaît dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.</span></div><button class="secondary" data-show-text-search>Voir les occurrences textuelles</button></div>`:'';
-    const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><div><strong>Aucun thème indexé ne correspond à cette recherche</strong><span>${companion.textualCount>0?`Le mot ou l’expression apparaît néanmoins dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.`:'Aucune occurrence textuelle exacte ne correspond non plus avec les filtres sélectionnés.'}</span></div>${companion.textualCount>0?'<button class="secondary" data-show-text-search>Voir les occurrences textuelles</button>':''}</div>`:'';
+    $('resultCount').textContent=companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:companion?.textualFallback?`${items.length} occurrence${items.length>1?'s':''} du terme dans le corpus`:`${items.length} résultat${items.length>1?'s':''}`;
+    const textualNotice=themeLabels.length&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>THÈME INDEXÉ</strong><span>Deux lectures de cette recherche : ${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous ce thème · le mot ou l’expression apparaît dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.</span></div><button class="secondary" data-show-text-search>Voir les occurrences textuelles</button></div>`:'';
+    const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><div><strong>${companion.textualFallback&&items.length?'OCCURRENCE DU TERME DANS LE CORPUS':'Aucun thème indexé ne correspond à cette recherche'}</strong><span>${companion.textualFallback&&items.length?`Aucun thème canonique ne correspond à cette recherche. ${items.length} psaume${items.length>1?'s':''} ${items.length>1?'contiennent':'contient'} néanmoins exactement le mot ou l’expression recherchée. Ces occurrences ne constituent pas un thème.`:'Aucune occurrence textuelle exacte ne correspond non plus avec les filtres sélectionnés.'}</span></div></div>`:'';
     if(!items.length){
       const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:'';
       $('results').innerHTML=emptyNumber||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return;
     }
-    $('results').innerHTML=textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup})=>{
+    $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup})=>{
       const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'';
       const meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:bookMeta||'Corpus structuré';
       const description=thematic?.teaching||summary(r),related=thematic?relatedThemes(r,matchedThemes):[];
-      const relatedBlock=thematic?`<div class="related-themes"><div class="context-label">Thèmes également présents dans ce psaume</div>${themeTags(related)}</div>`:'';
+      const textualThemes=!thematic&&companion?.textualFallback?(state.themesByRecord.get(r.id)||[]):[];
+      const relatedBlock=thematic?`<div class="related-themes"><div class="context-label">Thèmes également présents dans ce psaume</div>${themeTags(related)}</div>`:textualThemes.length?`<div class="related-themes"><div class="context-label">Thèmes canoniques indexés dans ce psaume</div>${themeTags(textualThemes)}</div>`:'';
       const exactBlock=!thematic&&!numberLookup?exactVerses(r):'';
-      return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${highlighted(r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'))}</h3></div><strong class="score">${esc(thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':'Texte')}</strong></div><div class="result-meta">${esc(meta)}</div>${thematic?`<div class="context-label theme-found">${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div>`:''}<p class="result-summary">${highlighted(description)}</p>${thematic?contextualVerses(r,thematic):exactBlock}${relatedBlock}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">Voir</button></div></article>`;
+      const status=thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
+      const themeStatus=thematic?`<div class="context-label theme-found">THÈME INDEXÉ · ${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div>`:'';
+      return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${highlighted(r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'))}</h3></div><strong class="score">${esc(status)}</strong></div><div class="result-meta">${esc(meta)}</div>${themeStatus}<p class="result-summary">${highlighted(description)}</p>${thematic?contextualVerses(r,thematic):exactBlock}${relatedBlock}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">Voir</button></div></article>`;
     }).join('');
     document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>open(b.dataset.open));
     bindThemeLinks($('results'));
