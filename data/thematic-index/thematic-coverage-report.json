@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "recordType": "thematic-coverage-report",
+  "generated": true,
+  "claims": {
+    "structuralPsalmCoverageComplete": true,
+    "catalogIntegrityComplete": true,
+    "semanticExhaustivenessClaim": false,
+    "semanticExhaustivenessReason": "Every corpus Psalm can be checked for a grounded thematic analysis, but no deterministic audit can prove that every meaningful concept or every semantic reformulation has been identified.",
+    "wholeDocumentCorpusThematicallyIndexed": false,
+    "wholeDocumentCorpusReason": "The current thematic method uses psalms as primary sources and explicitly excludes master-prayers from this thematic phase."
+  },
+  "corpus": {
+    "bookCount": 44,
+    "psalmCount": 1158,
+    "browserRecordTypeCounts": {
+      "master-prayer": 676,
+      "note": 11,
+      "psalm": 1158
+    }
+  },
+  "thematicMethod": {
+    "primarySources": [
+      "psalm"
+    ],
+    "contextualSources": [
+      "psalm-title",
+      "editorial-note",
+      "book-title",
+      "book-introduction"
+    ],
+    "excludedFromCurrentThemeIndex": [
+      "master-prayer"
+    ],
+    "observedImportanceValues": [
+      "central",
+      "important",
+      "related"
+    ],
+    "declaredImportanceScaleValues": [
+      "central",
+      "important",
+      "related"
+    ],
+    "importanceVocabularyAligned": true
+  },
+  "thematicAnalyses": {
+    "bookFileCount": 44,
+    "psalmAnalysisCount": 1158,
+    "themeOccurrenceCount": 10409,
+    "psalmsWithoutThemes": [],
+    "missingPsalmAnalysisIds": [],
+    "extraPsalmAnalysisIds": [],
+    "incompleteBookFiles": [],
+    "importanceCounts": {
+      "central": 4970,
+      "important": 2936,
+      "related": 2503
+    },
+    "directnessCounts": {
+      "contextual": 114,
+      "direct": 10063,
+      "editorial": 1,
+      "symbolic": 231
+    }
+  },
+  "catalog": {
+    "distinctDetectedThemeIdCount": 1247,
+    "directoryThemeCount": 1247,
+    "searchIndexThemeCount": 1247,
+    "searchIndexDeclaredThemeCount": 1247,
+    "aliasCount": 1339,
+    "searchIndexDeclaredAliasCount": 1339,
+    "ambiguousAliasCount": 5,
+    "searchIndexDeclaredAmbiguousAliasCount": 5,
+    "themeIdsWithMultipleObservedLabelsCount": 31,
+    "themeIdsWithMultipleObservedLabels": [
+      "actes",
+      "alliance",
+      "apparences",
+      "argent",
+      "construction-du-corps",
+      "discernement",
+      "engagement",
+      "feu",
+      "fidelite",
+      "illusion",
+      "jugement",
+      "magie",
+      "mere",
+      "monde-artificiel",
+      "nature",
+      "nourriture",
+      "nutrition",
+      "oeuvre",
+      "offrande",
+      "perfection",
+      "purete",
+      "quatre-sceaux",
+      "regnes",
+      "respiration",
+      "semence",
+      "service",
+      "source",
+      "temple",
+      "transmission",
+      "union",
+      "unite-interieure"
+    ],
+    "detectedThemeIdsMissingFromDirectory": [],
+    "directoryThemeIdsNotDetectedInAnalyses": [],
+    "detectedThemeIdsMissingFromSearchIndex": [],
+    "searchIndexThemeIdsNotDetectedInAnalyses": [],
+    "semanticMerging": false
+  },
+  "resolutionSentinels": {
+    "assemblee": {
+      "normalized": "assemblee",
+      "themeIds": [],
+      "resolvesAsTheme": false
+    },
+    "sainteAssemblee": {
+      "normalized": "sainte assemblee",
+      "themeIds": [
+        "sainte-assemblee"
+      ],
+      "resolvesAsTheme": true
+    }
+  },
+  "validatedRelations": {
+    "count": 5,
+    "publicSearchEffect": false,
+    "endpointIdsMissingFromSearchIndex": []
+  }
+}
