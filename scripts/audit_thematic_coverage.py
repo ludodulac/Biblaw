@@ -33,7 +33,6 @@ def main() -> None:
         corpus_book_counts[path.parent.name] += 1
 
     analysis_ids = set()
-    analysis_book_counts = Counter()
     theme_occurrences = 0
     theme_ids = set()
     labels_by_theme = defaultdict(set)
@@ -42,7 +41,8 @@ def main() -> None:
     empty_theme_psalms = []
     incomplete_books = []
 
-    for path in sorted(THEMATIC.glob("book-*.json")):
+    thematic_files = sorted(THEMATIC.glob("book-*.json"))
+    for path in thematic_files:
         data = load(path)
         method = data.get("method") or {}
         if not (
@@ -58,7 +58,6 @@ def main() -> None:
             if rid in analysis_ids:
                 raise AssertionError(f"duplicate thematic analysis id: {rid}")
             analysis_ids.add(rid)
-            analysis_book_counts[path.stem] += 1
             themes = psalm.get("themes", [])
             if not themes:
                 empty_theme_psalms.append(rid)
@@ -78,8 +77,8 @@ def main() -> None:
     directory_ids = {t.get("id") for t in directory.get("themes", []) if t.get("id")}
     search_index = load(SEARCH_INDEX)
     search_ids = {t.get("themeId") for t in search_index.get("themes", []) if t.get("themeId")}
-    aliases = search_index.get("aliases", {})
-    ambiguous_aliases = {a: v for a, v in aliases.items() if len(v.get("themeIds", [])) > 1}
+    aliases = search_index.get("aliases", [])
+    ambiguous_aliases = [alias for alias in aliases if alias.get("ambiguous") or len(alias.get("themeIds", [])) > 1]
     relations = load(RELATIONS)
 
     missing_analysis = sorted(corpus_ids - analysis_ids)
@@ -121,7 +120,7 @@ def main() -> None:
             "psalmCount": len(corpus_ids),
         },
         "thematicAnalyses": {
-            "bookFileCount": len(list(THEMATIC.glob("book-*.json"))),
+            "bookFileCount": len(thematic_files),
             "psalmAnalysisCount": len(analysis_ids),
             "themeOccurrenceCount": theme_occurrences,
             "psalmsWithoutThemes": empty_theme_psalms,
