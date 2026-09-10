@@ -33,3 +33,7 @@ jobs:
         run: python scripts/audit_validated_theme_relations.py
       - name: Prove public search isolation
         run: python scripts/audit_validated_theme_relations_product_isolation.py
+      - name: Prove approved relations stay out of Pages payload
+        run: |
+          python scripts/build_pages_site.py
+          test ! -e _site/data/thematic-index/theme-relations-validated.json
