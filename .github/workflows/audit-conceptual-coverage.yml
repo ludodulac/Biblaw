@@ -1,0 +1,41 @@
+name: Audit conceptual coverage
+
+on:
+  push:
+    paths:
+      - 'scripts/audit_conceptual_coverage.py'
+      - 'data/thematic-index/conceptual-coverage-audit.json'
+      - 'data/thematic-index/validation-report.json'
+      - 'data/thematic-index/theme-quality-audit.json'
+      - 'data/thematic-index/theme-directory.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - '.github/workflows/audit-conceptual-coverage.yml'
+  pull_request:
+    paths:
+      - 'scripts/audit_conceptual_coverage.py'
+      - 'data/thematic-index/conceptual-coverage-audit.json'
+      - 'data/thematic-index/validation-report.json'
+      - 'data/thematic-index/theme-quality-audit.json'
+      - 'data/thematic-index/theme-directory.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - '.github/workflows/audit-conceptual-coverage.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Rebuild conceptual coverage report
+        run: python scripts/audit_conceptual_coverage.py
+      - name: Verify committed report is reproducible
+        run: git diff --exit-code -- data/thematic-index/conceptual-coverage-audit.json
+      - name: Preserve semantic boundaries
+        run: |
+          python scripts/audit_validated_theme_relations.py
+          python scripts/audit_production_search_queries.py
