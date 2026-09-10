@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "status": "measured-not-semantically-exhaustive",
+  "purpose": "reproducible conceptual-coverage diagnosis; no automatic semantic inference",
+  "sources": {
+    "canonicalPsalmAnalyses": "data/thematic-index/books/book-*.json via validation-report.json",
+    "generatedThemeDirectory": "data/thematic-index/theme-directory.json",
+    "generatedQualityAudit": "data/thematic-index/theme-quality-audit.json",
+    "searchRuntime": "data/thematic-index/theme-search-runtime.json",
+    "validatedSemanticRelations": "data/thematic-index/theme-relations-validated.json"
+  },
+  "measurements": {
+    "analyzedBooks": 44,
+    "analyzedPsalms": 1158,
+    "themePsalmRelations": 10409,
+    "indexedThemeIds": 1247,
+    "singletonThemeIds": 924,
+    "rareThemeIdsOccurrenceLTE2": 1050,
+    "contextualLabelVariationCandidates": 31,
+    "explicitNormalizedLabelAmbiguities": 5,
+    "validatedCrossThemeRelations": 5,
+    "validatedRelationTypes": {
+      "component_of": 3,
+      "broader_than": 2
+    }
+  },
+  "measurementMeaning": {
+    "indexedThemeIds": "distinct themeId values observed in canonical Psalm analyses; not a proof of fully normalized concepts",
+    "singletonThemeIds": "themeIds occurring in one Psalm; rarity alone is neither an error nor evidence for merging",
+    "rareThemeIdsOccurrenceLTE2": "themeIds occurring in at most two Psalms; review signal only",
+    "validatedCrossThemeRelations": "human-approved semantic relations; the only cross-id semantic claims counted here",
+    "exhaustiveness": "Psalm-analysis coverage is measured; conceptual exhaustiveness is not currently proven"
+  },
+  "contrastivePanel": [
+    {
+      "case": "mort",
+      "kind": "transversal",
+      "observation": {
+        "themeId": "mort",
+        "indexedPsalms": 161
+      },
+      "diagnosis": "well represented as an indexed theme; this count does not prove all semantic formulations of death are captured"
+    },
+    {
+      "case": "abondance",
+      "kind": "rare-negative-control",
+      "observation": {
+        "themeId": "abondance",
+        "indexedPsalms": 1
+      },
+      "diagnosis": "singleton status alone creates no semantic defect and must not trigger consolidation"
+    },
+    {
+      "case": "corps-ame-esprit",
+      "kind": "composite-positive-control",
+      "observation": {
+        "validatedComponents": [
+          "ame",
+          "corps",
+          "esprit"
+        ]
+      },
+      "diagnosis": "component relations are accepted only because explicit corpus-grounded, human-approved relations exist"
+    },
+    {
+      "case": "alliance-de-lumiere",
+      "kind": "nearby-formulations-unresolved",
+      "observation": {
+        "searchAlias": "alliance de lumiere",
+        "themeIds": [
+          "alliance",
+          "alliance-de-lumiere"
+        ],
+        "ambiguous": true
+      },
+      "diagnosis": "lexical/contextual overlap is preserved as ambiguity because no validated cross-theme relation adjudicates these ids"
+    },
+    {
+      "case": "sainte-assemblee",
+      "kind": "lexical-containment-negative-control",
+      "observation": {
+        "specificAliasThemeIds": [
+          "sainte-assemblee"
+        ],
+        "genericAssemblyRedirectsToSpecific": false
+      },
+      "diagnosis": "the presence of 'assemblée' inside 'Sainte Assemblée' does not create a broader/equivalent relation automatically"
+    }
+  ],
+  "genericDefectClasses": [
+    "concept potentially absent from analyses",
+    "one concept potentially split across multiple themeIds or labels",
+    "missing lexical alias for an already-established concept",
+    "unadjudicated broader/specific relation",
+    "unadjudicated component relation",
+    "mere cooccurrence or lexical proximity that must remain non-semantic",
+    "no defect: rare or specific theme is legitimately distinct"
+  ],
+  "firstResponsibleGap": {
+    "layer": "between canonical Psalm theme analysis and cross-theme concept mapping",
+    "finding": "the repository can prove Psalm coverage and individual theme evidence, but most cross-theme semantic status is intentionally unknown; only explicitly validated relations may bridge distinct themeIds",
+    "nextRuleToProve": "candidate generation may surface possible cross-id fragmentation, but equivalence/generalization/component/related status must be justified from corpus evidence and cannot be inferred from rarity, lexical containment or cooccurrence",
+    "automaticMergeAllowed": false,
+    "publicSearchChange": false
+  }
+}
