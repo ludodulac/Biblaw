@@ -66,7 +66,7 @@ def main() -> None:
         "state.psalmsByNumber = new Map()",
         "state.psalmsByNumber.get(number)||[]",
         "r.book?.number",
-        "numberLookup?'Numéro':'Texte'",
+        "numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte'",
     )
     for needle in required:
         assert needle in js, f"missing browser number-search contract: {needle}"
