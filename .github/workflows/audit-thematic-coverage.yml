@@ -6,6 +6,7 @@ on:
     paths:
       - 'data/corpus/books/**'
       - 'data/thematic-index/books/**'
+      - 'data/thematic-index/method.json'
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-index.json'
       - 'data/thematic-index/theme-relations-validated.json'
@@ -17,6 +18,7 @@ on:
     paths:
       - 'data/corpus/books/**'
       - 'data/thematic-index/books/**'
+      - 'data/thematic-index/method.json'
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-index.json'
       - 'data/thematic-index/theme-relations-validated.json'
@@ -34,6 +36,25 @@ jobs:
         run: python -m py_compile scripts/audit_thematic_coverage.py
       - name: Measure thematic coverage
         run: python scripts/audit_thematic_coverage.py
+      - name: Probe assembly-like detected themes
+        run: |
+          python - <<'PY'
+          import json, unicodedata
+          from pathlib import Path
+          def norm(value):
+              text=unicodedata.normalize('NFD',str(value or ''))
+              text=''.join(ch for ch in text if unicodedata.category(ch)!='Mn')
+              return ' '.join(text.lower().replace('œ','oe').replace('’',' ').replace("'",' ').replace('-',' ').split())
+          directory=json.loads(Path('data/thematic-index/theme-directory.json').read_text(encoding='utf-8'))
+          found=[]
+          for theme in directory['themes']:
+              values=[theme.get('id',''),theme.get('label',''),*(theme.get('labelVariants') or [])]
+              if any('assemblee' in norm(value) for value in values):
+                  found.append((theme.get('id'),theme.get('label'),theme.get('occurrenceCount'),theme.get('labelVariants') or []))
+          print('ASSEMBLY_LEXICAL_THEME_COUNT',len(found))
+          for row in found:
+              print('ASSEMBLY_LEXICAL_THEME',json.dumps(row,ensure_ascii=False))
+          PY
       - name: Probe current mort ordering exactly as browser
         run: |
           python - <<'PY'
@@ -51,6 +72,7 @@ jobs:
           rows.sort(key=lambda pair:(rank.get(pair[0].get('importance'),3), int(pair[1].get('number',999999)), pair[1].get('id','')))
           print('MORT_THEME_LABEL',theme['label'])
           print('MORT_OCCURRENCE_COUNT',len(rows))
+          print('MORT_IMPORTANCE_COUNTS',json.dumps({key:sum(1 for o,_ in rows if o.get('importance')==key) for key in rank},ensure_ascii=False))
           for i,(o,r) in enumerate(rows,1):
               print(f"MORT_ORDER {i:03d} {o.get('importance')} book={r.get('book',{}).get('number')} psalm={r.get('number')} record={r.get('id')} score={o.get('score')}")
           PY
