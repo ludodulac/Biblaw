@@ -10,6 +10,7 @@ on:
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-index.json'
       - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/thematic-index/thematic-coverage-report.json'
       - 'data/browser-search-catalog.json'
       - 'js/biblaw.js'
       - 'scripts/audit_thematic_coverage.py'
@@ -22,6 +23,7 @@ on:
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-index.json'
       - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/thematic-index/thematic-coverage-report.json'
       - 'data/browser-search-catalog.json'
       - 'js/biblaw.js'
       - 'scripts/audit_thematic_coverage.py'
@@ -36,6 +38,8 @@ jobs:
         run: python -m py_compile scripts/audit_thematic_coverage.py
       - name: Measure thematic coverage
         run: python scripts/audit_thematic_coverage.py
+      - name: Prove committed coverage report is current
+        run: git diff --exit-code -- data/thematic-index/thematic-coverage-report.json
       - name: Probe assembly-like detected themes
         run: |
           python - <<'PY'
