@@ -9,6 +9,7 @@ on:
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-index.json'
       - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/browser-search-catalog.json'
       - 'js/biblaw.js'
       - 'scripts/audit_thematic_coverage.py'
       - '.github/workflows/audit-thematic-coverage.yml'
@@ -19,6 +20,7 @@ on:
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-index.json'
       - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/browser-search-catalog.json'
       - 'js/biblaw.js'
       - 'scripts/audit_thematic_coverage.py'
       - '.github/workflows/audit-thematic-coverage.yml'
@@ -32,19 +34,25 @@ jobs:
         run: python -m py_compile scripts/audit_thematic_coverage.py
       - name: Measure thematic coverage
         run: python scripts/audit_thematic_coverage.py
-      - name: Probe current mort ordering data
+      - name: Probe current mort ordering exactly as browser
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          data=json.loads(Path('data/thematic-index/theme-directory.json').read_text(encoding='utf-8'))
-          theme=next(t for t in data['themes'] if t['id']=='mort')
+          directory=json.loads(Path('data/thematic-index/theme-directory.json').read_text(encoding='utf-8'))
+          catalog=json.loads(Path('data/browser-search-catalog.json').read_text(encoding='utf-8'))
+          records={r['id']:r for r in catalog['records']}
+          theme=next(t for t in directory['themes'] if t['id']=='mort')
           rank={'central':0,'important':1,'related':2}
-          rows=sorted(theme['occurrences'], key=lambda o:(rank.get(o.get('importance'),3), int(o.get('number',999999)), o.get('recordId','')))
+          rows=[]
+          for occurrence in theme['occurrences']:
+              record=records[occurrence['recordId']]
+              rows.append((occurrence,record))
+          rows.sort(key=lambda pair:(rank.get(pair[0].get('importance'),3), int(pair[1].get('number',999999)), pair[1].get('id','')))
           print('MORT_THEME_LABEL',theme['label'])
           print('MORT_OCCURRENCE_COUNT',len(rows))
-          for i,o in enumerate(rows,1):
-              print(f"MORT_ORDER {i:02d} {o.get('importance')} book={o.get('bookNumber')} psalm={o.get('number')} record={o.get('recordId')} score={o.get('score')}")
+          for i,(o,r) in enumerate(rows,1):
+              print(f"MORT_ORDER {i:03d} {o.get('importance')} book={r.get('book',{}).get('number')} psalm={r.get('number')} record={r.get('id')} score={o.get('score')}")
           PY
       - name: Assert browser thematic ordering contract remains explicit
         run: |
