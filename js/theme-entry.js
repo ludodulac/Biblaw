@@ -4,10 +4,13 @@
   const name = $('themeEntryName');
   const count = $('themeEntryCount');
   const heading = $('documentResultsTitle');
-  if (!identity || !name || !count || !heading) return;
+  const importanceHelp = $('themeImportanceHelp');
+  if (!identity || !name || !count || !heading || !importanceHelp) return;
 
   const hideIdentity = () => {
     identity.hidden = true;
+    importanceHelp.hidden = true;
+    importanceHelp.open = false;
     heading.textContent = 'Résultats';
   };
 
@@ -23,6 +26,7 @@
     count.textContent = `${psalmCount} psaume${psalmCount > 1 ? 's' : ''} indexé${psalmCount > 1 ? 's' : ''}`;
     heading.textContent = 'Textes indexés pour ce thème';
     identity.hidden = false;
+    importanceHelp.hidden = false;
   });
 
   hideIdentity();

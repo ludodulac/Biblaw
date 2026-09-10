@@ -2,6 +2,7 @@
 """Protect the explicit presentation contract for canonical theme entry identity."""
 from __future__ import annotations
 
+import html
 import json
 import re
 import unicodedata
@@ -11,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "thematic-index"
 DIRECTORY = INDEX / "theme-directory-public.json"
 RUNTIME = INDEX / "theme-search-runtime.json"
+METHOD = INDEX / "method.json"
 BUNDLE = ROOT / "data" / "browser-search-catalog.json"
 BROWSER_JS = ROOT / "js" / "biblaw.js"
 ENTRY_JS = ROOT / "js" / "theme-entry.js"
@@ -63,9 +65,22 @@ def literal_psalm_ids(query: str, records: list[dict]) -> list[str]:
     return found
 
 
+def importance_help_definitions(index_html: str) -> dict[str, str]:
+    definitions = {}
+    for level in ("central", "important", "related"):
+        match = re.search(
+            rf'<p data-importance-level="{level}"><strong>[^<]+</strong> — <span>(.*?)</span></p>',
+            index_html,
+        )
+        assert match, f"missing UI definition for {level}"
+        definitions[level] = html.unescape(match.group(1))
+    return definitions
+
+
 def main() -> None:
     runtime = json.loads(RUNTIME.read_text(encoding="utf-8"))
     themes = json.loads(DIRECTORY.read_text(encoding="utf-8"))["themes"]
+    method = json.loads(METHOD.read_text(encoding="utf-8"))
     records = json.loads(BUNDLE.read_text(encoding="utf-8"))["records"]
     browser_js = BROWSER_JS.read_text(encoding="utf-8")
     entry_js = ENTRY_JS.read_text(encoding="utf-8")
@@ -95,6 +110,7 @@ def main() -> None:
     assert "kind:'ambiguous-themes'" in browser_js
     assert "kind:textual.length?'textual-fallback':'no-result'" in browser_js
     assert "publishPresentationState({kind:'no-result'})" in browser_js
+    assert "publishPresentationState({kind:'other'})" in browser_js
     assert "Voir le psaume source" in browser_js
 
     # The encyclopedia layer consumes only that explicit state; it must not reconstruct semantics from rendered strings.
@@ -116,12 +132,32 @@ def main() -> None:
     assert 'id="documentResultsTitle"' in index_html
     assert "THÈME INDEXÉ DU CORPUS" in index_html
 
+    # Importance help is presentation-only and visible exclusively for a true canonical-theme state.
+    assert 'id="themeImportanceHelp"' in index_html
+    assert "Que signifient Central, Important et Lié ?" in index_html
+    assert "Ces niveaux indiquent l’importance du psaume pour ce thème précis." in index_html
+    assert "importanceHelp.hidden = true" in entry_js
+    assert "importanceHelp.open = false" in entry_js
+    assert "importanceHelp.hidden = false" in entry_js
+    noncanonical_states = ("ambiguous-themes", "textual-fallback", "no-result", "other")
+    assert all(state != "canonical-theme" for state in noncanonical_states)
+    assert "detail.kind !== 'canonical-theme'" in entry_js, "all noncanonical states must hide importance help"
+
+    # method.json remains the documentary source of truth; the static UI copy must match exactly.
+    canonical_definitions = method.get("importanceScale") or {}
+    assert set(canonical_definitions) == {"central", "important", "related"}, canonical_definitions
+    ui_definitions = importance_help_definitions(index_html)
+    assert ui_definitions == canonical_definitions, {
+        "method": canonical_definitions,
+        "ui": ui_definitions,
+    }
+
     print(
         "Theme entry contract OK: "
-        f"canonical={canonical[0]} => canonical-theme; "
-        "Assemblée => textual-fallback; absent => no-result; "
-        f"ambiguous={ambiguous[0]}({len(ambiguous[1])} themes) => ambiguous-themes; "
-        "entry consumes engine state only"
+        f"canonical={canonical[0]} => canonical-theme with importance help; "
+        "Assemblée => textual-fallback without help; absent => no-result without help; "
+        f"ambiguous={ambiguous[0]}({len(ambiguous[1])} themes) => ambiguous-themes without help; "
+        "other => without help; importance definitions match method.json exactly"
     )
 
 
