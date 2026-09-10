@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BOOKS = ROOT / "data/thematic-index/books"
 CORPUS = ROOT / "data/corpus/books"
 NOTES = ROOT / "data/notes/books"
+METHOD = ROOT / "data/thematic-index/method.json"
 OUT = ROOT / "data/thematic-index/validation-report.json"
 ALLOWED_IMPORTANCE = {"central", "important", "related"}
 ALLOWED_DIRECTNESS = {"direct", "symbolic", "editorial", "indirect", "contextual"}
@@ -24,6 +25,24 @@ EXPECTED_METHOD_STATUS = "editorial-indexing-complete"
 errors = []
 warnings = []
 stats = {"books": 0, "psalmAnalyses": 0, "themeRelations": 0}
+
+method_contract = json.loads(METHOD.read_text(encoding="utf-8"))
+importance_scale = method_contract.get("importanceScale") or {}
+if set(importance_scale) != ALLOWED_IMPORTANCE:
+    errors.append({
+        "file": str(METHOD.relative_to(ROOT)),
+        "type": "importance-scale-vocabulary-mismatch",
+        "expected": sorted(ALLOWED_IMPORTANCE),
+        "actual": sorted(importance_scale),
+    })
+for historical_value, canonical_value in (method_contract.get("historicalImportanceAliases") or {}).items():
+    if historical_value in ALLOWED_IMPORTANCE or canonical_value not in ALLOWED_IMPORTANCE:
+        errors.append({
+            "file": str(METHOD.relative_to(ROOT)),
+            "type": "invalid-historical-importance-alias",
+            "historicalValue": historical_value,
+            "canonicalValue": canonical_value,
+        })
 
 actual_entries = {path.name for path in BOOKS.iterdir()} if BOOKS.exists() else set()
 missing_book_files = sorted(EXPECTED_BOOK_FILES - actual_entries)
