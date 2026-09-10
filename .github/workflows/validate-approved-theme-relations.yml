@@ -6,11 +6,17 @@ on:
     paths:
       - 'data/thematic-index/THEME-RELATIONS-CONTRACT.md'
       - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/thematic-index/theme-relations-public.json'
       - 'data/thematic-index/books/**'
       - 'data/thematic-index/theme-search-index.json'
+      - 'data/thematic-index/theme-directory-public.json'
       - 'scripts/audit_validated_theme_relations.py'
       - 'scripts/audit_validated_theme_relations_product_isolation.py'
+      - 'scripts/audit_public_theme_relations.py'
+      - 'scripts/build_public_theme_relations.py'
       - 'js/biblaw.js'
+      - 'js/theme-relations.js'
+      - 'index.html'
       - 'scripts/build_browser_search_catalog.py'
       - 'scripts/build_public_theme_directory.py'
       - 'scripts/build_thematic_directory.py'
@@ -26,11 +32,17 @@ on:
     paths:
       - 'data/thematic-index/THEME-RELATIONS-CONTRACT.md'
       - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/thematic-index/theme-relations-public.json'
       - 'data/thematic-index/books/**'
       - 'data/thematic-index/theme-search-index.json'
+      - 'data/thematic-index/theme-directory-public.json'
       - 'scripts/audit_validated_theme_relations.py'
       - 'scripts/audit_validated_theme_relations_product_isolation.py'
+      - 'scripts/audit_public_theme_relations.py'
+      - 'scripts/build_public_theme_relations.py'
       - 'js/biblaw.js'
+      - 'js/theme-relations.js'
+      - 'index.html'
       - 'scripts/build_browser_search_catalog.py'
       - 'scripts/build_public_theme_directory.py'
       - 'scripts/build_thematic_directory.py'
@@ -48,15 +60,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Check validator syntax
-        run: python -m py_compile scripts/audit_validated_theme_relations.py scripts/audit_validated_theme_relations_product_isolation.py
+      - name: Check validator and builder syntax
+        run: python -m py_compile scripts/audit_validated_theme_relations.py scripts/audit_validated_theme_relations_product_isolation.py scripts/audit_public_theme_relations.py scripts/build_public_theme_relations.py
+      - name: Check presentation JavaScript syntax
+        run: node --check js/theme-relations.js
       - name: Audit canonical approved relations
         run: python scripts/audit_validated_theme_relations.py
-      - name: Prove public search isolation
-        run: python scripts/audit_validated_theme_relations_product_isolation.py
+      - name: Rebuild public relation presentation view
+        run: |
+          python scripts/build_public_theme_relations.py
+          git diff --exit-code -- data/thematic-index/theme-relations-public.json
+      - name: Audit public relation presentation boundary
+        run: python scripts/audit_public_theme_relations.py
       - name: Prove production search contract is unchanged
         run: python scripts/audit_production_search_queries.py
-      - name: Prove approved relations stay out of Pages payload
+      - name: Build Pages payload with presentation-only relations
         run: |
           python scripts/build_pages_site.py
+          test -e _site/data/thematic-index/theme-relations-public.json
+          test -e _site/js/theme-relations.js
           test ! -e _site/data/thematic-index/theme-relations-validated.json
