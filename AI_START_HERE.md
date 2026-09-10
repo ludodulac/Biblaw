@@ -4,9 +4,9 @@ Ce fichier est un routeur, pas une nouvelle source de vérité.
 
 ## Contexte transversal
 
-Biblaw appartient à l'écosystème **`ludodulac/Grand-p-re-`**. Le slug GitHub de Grand Père utilise des tirets à la place des caractères accentués.
+Biblaw appartient à l'écosystème **`ludodulac/Grand-pere`**. Grand Père est documenté dans le dépôt `ludodulac/Grand-pere`.
 
-En nouvelle conversation : lire d'abord `ludodulac/Grand-p-re-/AI_START_HERE.md`, suivre `projects/_INDEX.md` vers Biblaw et utiliser `LOOP_ENGINEERING.md` pour la méthode de progression ; revenir ensuite ici. **Le dépôt Biblaw reste l'autorité sur corpus, données, générateurs, tests, CI et état déployé.**
+En nouvelle conversation : lire d'abord `ludodulac/Grand-pere/AI_START_HERE.md`, suivre `projects/_INDEX.md` vers Biblaw et utiliser `LOOP_ENGINEERING.md` pour la méthode de progression ; revenir ensuite ici. **Le dépôt Biblaw reste l'autorité sur corpus, données, générateurs, tests, CI et état déployé.**
 
 ## Avant toute écriture
 
