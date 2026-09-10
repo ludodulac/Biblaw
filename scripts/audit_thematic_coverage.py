@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -12,11 +13,21 @@ THEMATIC = ROOT / "data/thematic-index/books"
 DIRECTORY = ROOT / "data/thematic-index/theme-directory.json"
 SEARCH_INDEX = ROOT / "data/thematic-index/theme-search-index.json"
 RELATIONS = ROOT / "data/thematic-index/theme-relations-validated.json"
+METHOD = ROOT / "data/thematic-index/method.json"
+BROWSER_CATALOG = ROOT / "data/browser-search-catalog.json"
 OUT = ROOT / "data/thematic-index/thematic-coverage-report.json"
 
 
 def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def norm(value: str) -> str:
+    text = unicodedata.normalize("NFD", str(value or ""))
+    text = "".join(ch for ch in text if unicodedata.category(ch) != "Mn")
+    return " ".join(
+        text.lower().replace("œ", "oe").replace("æ", "ae").replace("’", " ").replace("'", " ").replace("-", " ").split()
+    )
 
 
 def main() -> None:
@@ -78,8 +89,12 @@ def main() -> None:
     search_index = load(SEARCH_INDEX)
     search_ids = {t.get("themeId") for t in search_index.get("themes", []) if t.get("themeId")}
     aliases = search_index.get("aliases", [])
+    alias_by_normalized = {str(alias.get("normalized") or ""): alias for alias in aliases}
     ambiguous_aliases = [alias for alias in aliases if alias.get("ambiguous") or len(alias.get("themeIds", [])) > 1]
     relations = load(RELATIONS)
+    method_contract = load(METHOD)
+    browser_catalog = load(BROWSER_CATALOG)
+    browser_record_type_counts = Counter(str(record.get("recordType")) for record in browser_catalog.get("records", []))
 
     missing_analysis = sorted(corpus_ids - analysis_ids)
     extra_analysis = sorted(analysis_ids - corpus_ids)
@@ -103,6 +118,12 @@ def main() -> None:
         or relation_endpoints_missing_from_search
     )
 
+    observed_importance = sorted(importance_counts)
+    declared_importance = sorted((method_contract.get("importanceScale") or {}).keys())
+    importance_vocabulary_aligned = observed_importance == declared_importance
+    assembly_alias = alias_by_normalized.get(norm("assemblée"))
+    holy_assembly_alias = alias_by_normalized.get(norm("sainte assemblée"))
+
     report = {
         "schemaVersion": 1,
         "recordType": "thematic-coverage-report",
@@ -114,10 +135,23 @@ def main() -> None:
             "semanticExhaustivenessReason": (
                 "Every corpus Psalm can be checked for a grounded thematic analysis, but no deterministic audit can prove that every meaningful concept or every semantic reformulation has been identified."
             ),
+            "wholeDocumentCorpusThematicallyIndexed": False,
+            "wholeDocumentCorpusReason": (
+                "The current thematic method uses psalms as primary sources and explicitly excludes master-prayers from this thematic phase."
+            ),
         },
         "corpus": {
             "bookCount": len(corpus_book_counts),
             "psalmCount": len(corpus_ids),
+            "browserRecordTypeCounts": dict(sorted(browser_record_type_counts.items())),
+        },
+        "thematicMethod": {
+            "primarySources": method_contract.get("primarySources", []),
+            "contextualSources": method_contract.get("contextualSources", []),
+            "excludedFromCurrentThemeIndex": method_contract.get("excludedFromCurrentThemeIndex", []),
+            "observedImportanceValues": observed_importance,
+            "declaredImportanceScaleValues": declared_importance,
+            "importanceVocabularyAligned": importance_vocabulary_aligned,
         },
         "thematicAnalyses": {
             "bookFileCount": len(thematic_files),
@@ -146,6 +180,18 @@ def main() -> None:
             "detectedThemeIdsMissingFromSearchIndex": missing_search_index,
             "searchIndexThemeIdsNotDetectedInAnalyses": extra_search_index,
             "semanticMerging": bool(search_index.get("semanticMerging", False)),
+        },
+        "resolutionSentinels": {
+            "assemblee": {
+                "normalized": norm("assemblée"),
+                "themeIds": (assembly_alias or {}).get("themeIds", []),
+                "resolvesAsTheme": bool((assembly_alias or {}).get("themeIds")),
+            },
+            "sainteAssemblee": {
+                "normalized": norm("sainte assemblée"),
+                "themeIds": (holy_assembly_alias or {}).get("themeIds", []),
+                "resolvesAsTheme": bool((holy_assembly_alias or {}).get("themeIds")),
+            },
         },
         "validatedRelations": {
             "count": len(relations.get("relations", [])),
