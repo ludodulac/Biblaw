@@ -1,0 +1,35 @@
+name: Audit conceptual adjudications
+
+on:
+  push:
+    paths:
+      - 'data/thematic-index/theme-adjudications.json'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/thematic-index/books/**'
+      - 'scripts/audit_conceptual_adjudications.py'
+      - '.github/workflows/audit-conceptual-adjudications.yml'
+  pull_request:
+    paths:
+      - 'data/thematic-index/theme-adjudications.json'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/thematic-index/books/**'
+      - 'scripts/audit_conceptual_adjudications.py'
+      - '.github/workflows/audit-conceptual-adjudications.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Compile adjudication audit
+        run: python -m py_compile scripts/audit_conceptual_adjudications.py
+      - name: Audit traceable adjudications
+        run: python scripts/audit_conceptual_adjudications.py
+      - name: Preserve validated relation contract
+        run: python scripts/audit_validated_theme_relations.py
+      - name: Preserve production search contract
+        run: python scripts/audit_production_search_queries.py
