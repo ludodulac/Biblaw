@@ -23,9 +23,11 @@ PUBLIC_FILES = (
     "css/theme-index.css",
     "css/validation.css",
     "js/biblaw.js",
+    "js/theme-relations.js",
     "js/validation.js",
     "data/browser-search-catalog.json",
     "data/thematic-index/theme-directory-public.json",
+    "data/thematic-index/theme-relations-public.json",
     "data/thematic-index/theme-search-runtime.json",
 )
 
@@ -60,6 +62,7 @@ def main() -> None:
     staged = sorted(str(path.relative_to(OUT)) for path in OUT.rglob("*") if path.is_file())
     assert staged == sorted(PUBLIC_FILES), "Pages staging contains a file outside the explicit allow-list"
     assert not any(path.startswith(FORBIDDEN_PREFIXES) for path in staged), "internal repository data leaked into Pages staging"
+    assert "data/thematic-index/theme-relations-validated.json" not in staged, "canonical relation evidence leaked into Pages staging"
 
     print(f"Pages staging OK: {len(staged)} files, {total / (1024 * 1024):.1f} MiB")
     for path in staged:
