@@ -87,6 +87,23 @@ def theme_summary(theme: dict) -> dict:
     }
 
 
+def corpus_contrast(a: dict, b: dict) -> dict:
+    a_ids = {o.get("recordId") for o in a.get("occurrences", []) if o.get("recordId")}
+    b_ids = {o.get("recordId") for o in b.get("occurrences", []) if o.get("recordId")}
+    shared = sorted(a_ids & b_ids)
+    a_only = sorted(a_ids - b_ids)
+    b_only = sorted(b_ids - a_ids)
+    return {
+        "sharedPsalmCount": len(shared),
+        "sharedRecordIdsSample": shared[:8],
+        "firstThemeOnlyPsalmCount": len(a_only),
+        "firstThemeOnlyRecordIdsSample": a_only[:8],
+        "secondThemeOnlyPsalmCount": len(b_only),
+        "secondThemeOnlyRecordIdsSample": b_only[:8],
+        "interpretationRule": "distribution differences are review evidence only; they do not determine a semantic relation",
+    }
+
+
 def pair_key(a: str, b: str) -> tuple[str, str]:
     return tuple(sorted((a, b)))
 
@@ -97,8 +114,6 @@ def lexical_reason(a: dict, b: dict) -> dict | None:
     ta, tb = tokens(a.get("label")), tokens(b.get("label"))
     if not la or not lb or la == lb:
         return None
-
-    # Exact singular/plural-like surface difference: useful to inspect, not enough to infer VARIANT.
     compact_a, compact_b = la.replace(" ", ""), lb.replace(" ", "")
     if compact_a + "s" == compact_b or compact_b + "s" == compact_a:
         return {
@@ -106,8 +121,6 @@ def lexical_reason(a: dict, b: dict) -> dict | None:
             "detail": "labels differ only by a simple trailing-s surface form; corpus review required",
             "priority": 55,
         }
-
-    # Token containment only when BOTH sides already exist as indexed theme ids.
     sa, sb = set(ta), set(tb)
     if sa and sb and (sa < sb or sb < sa):
         shorter, longer = (ta, tb) if len(ta) < len(tb) else (tb, ta)
@@ -120,59 +133,57 @@ def lexical_reason(a: dict, b: dict) -> dict | None:
     return None
 
 
+def candidate_record(a: dict, b: dict, priority: int, signals: list[dict], instruction: str, prompts: list[str], calibration: dict | None = None) -> dict:
+    key = pair_key(a["id"], b["id"])
+    record = {
+        "candidateId": f"review--{key[0]}--{key[1]}",
+        "status": "question-only",
+        "priority": priority,
+        "discoverySignals": signals,
+        "themes": [theme_summary(a), theme_summary(b)],
+        "corpusContrast": corpus_contrast(a, b),
+        "adjudicationQuestion": {
+            "allowedOutcomes": ALLOWED_DECISIONS,
+            "instruction": instruction,
+        },
+        "counterEvidencePrompts": prompts,
+    }
+    if calibration is not None:
+        record["calibration"] = calibration
+    return record
+
+
 def main() -> None:
     directory = load(DIRECTORY)
     runtime = load(RUNTIME)
     validated = load(VALIDATED)
     themes = directory.get("themes", [])
     by_id = {t["id"]: t for t in themes}
-
-    validated_by_pair = {}
-    for rel in validated.get("relations", []):
-        key = pair_key(rel["sourceThemeId"], rel["targetThemeId"])
-        validated_by_pair[key] = rel
-
     candidates = []
     seen = set()
 
-    # Positive controls: already human-approved relations must remain discoverable as review-worthy.
-    # Their known answer is carried only as calibration metadata; the candidate mechanism itself
-    # does not reproduce or infer that answer.
     for rel in sorted(validated.get("relations", []), key=lambda r: r["id"]):
         a_id, b_id = rel["sourceThemeId"], rel["targetThemeId"]
         if a_id not in by_id or b_id not in by_id:
             continue
         key = pair_key(a_id, b_id)
         seen.add(key)
-        candidates.append({
-            "candidateId": f"review--{key[0]}--{key[1]}",
-            "status": "question-only",
-            "priority": 100,
-            "discoverySignals": [
-                {
-                    "kind": "validated-relation-positive-control",
-                    "detail": "pair is already human-approved and is included only to calibrate candidate discoverability",
-                }
-            ],
-            "themes": [theme_summary(by_id[a_id]), theme_summary(by_id[b_id])],
-            "adjudicationQuestion": {
-                "allowedOutcomes": ALLOWED_DECISIONS,
-                "instruction": "Re-read both corpus contexts before deciding; discovery signals are not semantic evidence.",
-            },
-            "calibration": {
-                "knownValidatedRelationId": rel["id"],
-                "knownValidatedRelationType": rel["relationType"],
-                "mustNotBeReinferred": True,
-            },
-            "counterEvidencePrompts": [
+        candidates.append(candidate_record(
+            by_id[a_id], by_id[b_id], 100,
+            [{"kind": "validated-relation-positive-control", "detail": "pair is already human-approved and is included only to calibrate candidate discoverability"}],
+            "Re-read both corpus contexts before deciding; discovery signals are not semantic evidence.",
+            [
                 "Do the two themes remain independently meaningful in their own Psalm contexts?",
                 "Would replacing one label by the other alter the teaching of any cited passage?",
                 "Does the whole/part or general/specific reading hold across the cited contexts rather than from the label alone?",
             ],
-        })
+            {
+                "knownValidatedRelationId": rel["id"],
+                "knownValidatedRelationType": rel["relationType"],
+                "mustNotBeReinferred": True,
+            },
+        ))
 
-    # Explicit runtime ambiguities are strong review questions because the product already exposes
-    # multiple existing theme ids for the same observed search form.
     for alias, record in sorted(runtime.get("aliases", {}).items()):
         ids = [x for x in record.get("themeIds", []) if x in by_id]
         if not record.get("ambiguous") or len(ids) < 2:
@@ -182,30 +193,17 @@ def main() -> None:
             if key in seen:
                 continue
             seen.add(key)
-            candidates.append({
-                "candidateId": f"review--{key[0]}--{key[1]}",
-                "status": "question-only",
-                "priority": 90,
-                "discoverySignals": [
-                    {
-                        "kind": "explicit-search-ambiguity",
-                        "detail": f"runtime alias {alias!r} maps to both existing theme ids",
-                    }
-                ],
-                "themes": [theme_summary(by_id[a_id]), theme_summary(by_id[b_id])],
-                "adjudicationQuestion": {
-                    "allowedOutcomes": ALLOWED_DECISIONS,
-                    "instruction": "Determine from corpus contexts whether the ids are equivalent, variants, hierarchical, compositional, related, or correctly distinct.",
-                },
-                "counterEvidencePrompts": [
+            candidates.append(candidate_record(
+                by_id[a_id], by_id[b_id], 90,
+                [{"kind": "explicit-search-ambiguity", "detail": f"runtime alias {alias!r} maps to both existing theme ids"}],
+                "Determine from corpus contexts whether the ids are equivalent, variants, hierarchical, compositional, related, or correctly distinct.",
+                [
                     "Do representative passages assign different roles, objects, domains or consequences to the two themes?",
                     "Is the shared wording merely contextual or lexical rather than conceptual?",
                     "Would merging the ids incorrectly add Psalms from one meaning to the other?",
                 ],
-            })
+            ))
 
-    # Conservative lexical discovery among pairs of existing themes. This queue is deliberately
-    # capped: the objective is not recall but a manageable set of corpus-grounded questions.
     lexical = []
     for a, b in itertools.combinations(themes, 2):
         key = pair_key(a["id"], b["id"])
@@ -219,26 +217,18 @@ def main() -> None:
 
     for _, _, key, a, b, signal in sorted(lexical)[:24]:
         seen.add(key)
-        candidates.append({
-            "candidateId": f"review--{key[0]}--{key[1]}",
-            "status": "question-only",
-            "priority": signal["priority"],
-            "discoverySignals": [signal],
-            "themes": [theme_summary(a), theme_summary(b)],
-            "adjudicationQuestion": {
-                "allowedOutcomes": ALLOWED_DECISIONS,
-                "instruction": "Lexical proximity only selected this pair for reading; it provides zero semantic conclusion.",
-            },
-            "counterEvidencePrompts": [
+        candidates.append(candidate_record(
+            a, b, signal["priority"], [signal],
+            "Lexical proximity only selected this pair for reading; it provides zero semantic conclusion.",
+            [
                 "Do the supporting passages teach materially different things despite similar labels?",
                 "Is one label a qualified state or domain rather than a synonym?",
                 "Is apparent inclusion just wording, with no corpus evidence for hierarchy or componenthood?",
             ],
-        })
+        ))
 
     candidates.sort(key=lambda c: (-c["priority"], c["candidateId"]))
 
-    # Negative controls document signals that MUST NOT create a pair or relation.
     abundance = by_id.get("abondance")
     sacred_assembly = by_id.get("sainte-assemblee")
     assembly_alias = runtime.get("aliases", {}).get("assemblee")
