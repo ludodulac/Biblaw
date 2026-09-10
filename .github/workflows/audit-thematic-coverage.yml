@@ -1,0 +1,32 @@
+name: Audit thematic coverage
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/corpus/books/**'
+      - 'data/thematic-index/books/**'
+      - 'data/thematic-index/theme-directory.json'
+      - 'data/thematic-index/theme-search-index.json'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - 'scripts/audit_thematic_coverage.py'
+      - '.github/workflows/audit-thematic-coverage.yml'
+  pull_request:
+    paths:
+      - 'data/corpus/books/**'
+      - 'data/thematic-index/books/**'
+      - 'data/thematic-index/theme-directory.json'
+      - 'data/thematic-index/theme-search-index.json'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - 'scripts/audit_thematic_coverage.py'
+      - '.github/workflows/audit-thematic-coverage.yml'
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check audit syntax
+        run: python -m py_compile scripts/audit_thematic_coverage.py
+      - name: Measure thematic coverage
+        run: python scripts/audit_thematic_coverage.py
