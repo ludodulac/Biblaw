@@ -1,0 +1,35 @@
+name: Validate approved theme relations
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/thematic-index/THEME-RELATIONS-CONTRACT.md'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/thematic-index/books/**'
+      - 'data/thematic-index/theme-search-index.json'
+      - 'scripts/audit_validated_theme_relations.py'
+      - 'scripts/audit_validated_theme_relations_product_isolation.py'
+      - 'js/biblaw.js'
+      - 'scripts/build_browser_search_catalog.py'
+      - 'scripts/build_public_theme_directory.py'
+      - 'scripts/build_thematic_directory.py'
+      - 'scripts/build_thematic_search_index.py'
+      - 'scripts/build_thematic_connections.py'
+      - 'scripts/build_thematic_search_runtime.py'
+      - 'scripts/rebuild_thematic_derivatives.py'
+      - 'scripts/run_canonical_thematic_pipeline.py'
+      - 'scripts/build_pages_site.py'
+      - '.github/workflows/validate-approved-theme-relations.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check validator syntax
+        run: python -m py_compile scripts/audit_validated_theme_relations.py scripts/audit_validated_theme_relations_product_isolation.py
+      - name: Audit canonical approved relations
+        run: python scripts/audit_validated_theme_relations.py
+      - name: Prove public search isolation
+        run: python scripts/audit_validated_theme_relations_product_isolation.py
