@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "recordType": "conceptual-adjudications",
+  "status": "canonical-editorial-review-log",
+  "generated": false,
+  "publicSearchEffect": false,
+  "allowedDecisions": [
+    "SAME",
+    "VARIANT",
+    "MORE_GENERAL_SPECIFIC",
+    "COMPONENT",
+    "RELATED",
+    "NO_RELATION",
+    "UNRESOLVED"
+  ],
+  "records": [
+    {
+      "id": "adjudication--pensee--pensee-vivante--2026-09-09",
+      "candidateId": "review--pensee--pensee-vivante",
+      "themes": [
+        {"themeId": "pensee", "label": "Pensée"},
+        {"themeId": "pensee-vivante", "label": "Pensée vivante"}
+      ],
+      "triggeringQuestion": "Re-read both corpus contexts before deciding; discovery signals are not semantic evidence.",
+      "discoverySignals": [
+        {"kind": "validated-relation-positive-control", "detail": "pair is already human-approved and is included only to calibrate candidate discoverability"}
+      ],
+      "passagesConsulted": {
+        "pensee": [
+          {
+            "recordId": "book-19-psalm-102",
+            "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13],
+            "teaching": "Le psaume relie « Pensée » au passage suivant : N’oubliez jamais que toute pensée, aussi insignifiante qu’elle puisse paraître, est une réalité. Un second appui précise : Sur le plan physique, à travers vos paroles, vos actes et vos œuvres, vous ne voyez que le résultat de la force des pensées, mais dans le monde plus subtil qui est le leur, elles sont des créatures vivantes, intelligentes, agissantes."
+          }
+        ],
+        "pensee-vivante": [
+          {
+            "recordId": "book-19-psalm-102",
+            "verseNumbers": [1, 2, 3, 8],
+            "teaching": "Le psaume présente la pensée comme une réalité vivante et agissante dont les paroles, actes et œuvres physiques ne sont que les manifestations visibles; penser engage donc déjà une création et une destinée."
+          }
+        ]
+      },
+      "corpusForRelation": [
+        "Le même psaume atteste simultanément « Pensée » et « Pensée vivante » avec des enseignements compatibles sur la pensée comme réalité vivante et agissante.",
+        "Le thème « Pensée » est attesté bien au-delà de ces deux occurrences, alors que « Pensée vivante » qualifie un état particulier de la pensée."
+      ],
+      "corpusAgainstOrRefuting": [
+        "La proximité lexicale seule ne suffit pas : si les contextes de « Pensée vivante » enseignaient une réalité autonome distincte, la relation broader_than devrait être rejetée ou retypée.",
+        "Le contraste de distribution (347 occurrences contre 2) est conservé comme fait de corpus mais n’est pas utilisé comme preuve sémantique."
+      ],
+      "decision": "MORE_GENERAL_SPECIFIC",
+      "canonicalMapping": {
+        "relationType": "broader_than",
+        "sourceThemeId": "pensee",
+        "targetThemeId": "pensee-vivante",
+        "validatedRelationId": "pensee--pensee-vivante--broader-than"
+      },
+      "humanJustification": "Approuvé explicitement le 2026-09-09 : Pensée vivante est retenue comme état qualifié du thème plus général Pensée, et non comme simple variante de libellé.",
+      "review": {
+        "status": "human-approved",
+        "date": "2026-09-09",
+        "source": "existing-canonical-validation"
+      },
+      "provenance": {
+        "candidateArtifact": {
+          "workflowRunId": 34484252226,
+          "artifactName": "conceptual-adjudication-candidates",
+          "artifactDigest": "sha256:5373e30a89ca3d907d9ce3f4ff41167ed9e83017162da7ddbd80e2ba3af3cf6c"
+        },
+        "canonicalSources": [
+          "data/thematic-index/theme-relations-validated.json",
+          "data/thematic-index/books/book-19.json"
+        ]
+      }
+    },
+    {
+      "id": "adjudication--alliance--alliance-de-lumiere--pending",
+      "candidateId": "review--alliance--alliance-de-lumiere",
+      "themes": [
+        {"themeId": "alliance", "label": "Alliance"},
+        {"themeId": "alliance-de-lumiere", "label": "Alliance de Lumière"}
+      ],
+      "triggeringQuestion": "Determine from corpus contexts whether the ids are equivalent, variants, hierarchical, compositional, related, or correctly distinct.",
+      "discoverySignals": [
+        {"kind": "explicit-search-ambiguity", "detail": "runtime alias 'alliance de lumiere' maps to both existing theme ids"}
+      ],
+      "passagesConsulted": {
+        "alliance": [
+          {
+            "recordId": "book-02-psalm-002",
+            "verseNumbers": [7, 8, 9, 11],
+            "teaching": "L'alliance avec des principes ou êtres divins sert d'interprète entre le langage humain et le monde divin."
+          },
+          {
+            "recordId": "book-02-psalm-012",
+            "verseNumbers": [1, 2, 3, 4, 7, 9],
+            "teaching": "L'alliance avec Gabriel doit devenir présence durable, nourrie par des actes communautaires et inscrite dans la terre."
+          },
+          {
+            "recordId": "book-04-psalm-012",
+            "verseNumbers": [4, 5, 6, 7, 8],
+            "teaching": "L'alliance entre monde divin et monde humain doit être entretenue quotidiennement et incarnée dans des supports, pensées et œuvres."
+          }
+        ],
+        "alliance-de-lumiere": [
+          {
+            "recordId": "book-20-psalm-112",
+            "verseNumbers": [1, 9, 17, 22, 53, 57, 58],
+            "teaching": "L’Alliance relie la fidélité de la Tradition, les règnes, les Sceaux et la communauté humaine. Sa continuité dépend d’un peuple suffisamment uni et organisé pour garder une place terrestre à la Lumière."
+          }
+        ]
+      },
+      "corpusForRelation": [
+        "Les deux dossiers parlent explicitement d’alliance comme lien entre l’humain et le divin et comme réalité à entretenir/incarner."
+      ],
+      "corpusAgainstOrRefuting": [
+        "« Alliance » possède 157 occurrences couvrant plusieurs objets et formes d’alliance ; « Alliance de Lumière » n’est attestée ici que dans un dossier spécifique.",
+        "Aucun psaume n’est partagé entre les deux themeId dans la file générée ; ce fait n’établit ni distinction doctrinale ni relation hiérarchique.",
+        "L’ambiguïté du runtime est un signal de revue, pas une preuve que les deux themeId sont équivalents ou hiérarchiques."
+      ],
+      "decision": "UNRESOLVED",
+      "canonicalMapping": null,
+      "humanJustification": null,
+      "review": {
+        "status": "needs-human-review",
+        "date": null,
+        "source": "ai-precheck-only"
+      },
+      "provenance": {
+        "candidateArtifact": {
+          "workflowRunId": 34484252226,
+          "artifactName": "conceptual-adjudication-candidates",
+          "artifactDigest": "sha256:5373e30a89ca3d907d9ce3f4ff41167ed9e83017162da7ddbd80e2ba3af3cf6c"
+        },
+        "canonicalSources": [
+          "data/thematic-index/theme-search-runtime.json",
+          "data/thematic-index/books/book-02.json",
+          "data/thematic-index/books/book-04.json",
+          "data/thematic-index/books/book-20.json"
+        ]
+      }
+    }
+  ]
+}
