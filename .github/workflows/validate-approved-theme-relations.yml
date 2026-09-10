@@ -20,6 +20,7 @@ on:
       - 'scripts/rebuild_thematic_derivatives.py'
       - 'scripts/run_canonical_thematic_pipeline.py'
       - 'scripts/build_pages_site.py'
+      - 'scripts/audit_production_search_queries.py'
       - '.github/workflows/validate-approved-theme-relations.yml'
 
 jobs:
@@ -33,6 +34,8 @@ jobs:
         run: python scripts/audit_validated_theme_relations.py
       - name: Prove public search isolation
         run: python scripts/audit_validated_theme_relations_product_isolation.py
+      - name: Prove production search contract is unchanged
+        run: python scripts/audit_production_search_queries.py
       - name: Prove approved relations stay out of Pages payload
         run: |
           python scripts/build_pages_site.py
