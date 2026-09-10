@@ -9,6 +9,7 @@ on:
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-index.json'
       - 'data/thematic-index/theme-relations-validated.json'
+      - 'js/biblaw.js'
       - 'scripts/audit_thematic_coverage.py'
       - '.github/workflows/audit-thematic-coverage.yml'
   pull_request:
@@ -18,6 +19,7 @@ on:
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-index.json'
       - 'data/thematic-index/theme-relations-validated.json'
+      - 'js/biblaw.js'
       - 'scripts/audit_thematic_coverage.py'
       - '.github/workflows/audit-thematic-coverage.yml'
 
@@ -30,3 +32,20 @@ jobs:
         run: python -m py_compile scripts/audit_thematic_coverage.py
       - name: Measure thematic coverage
         run: python scripts/audit_thematic_coverage.py
+      - name: Probe current mort ordering data
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('data/thematic-index/theme-directory.json').read_text(encoding='utf-8'))
+          theme=next(t for t in data['themes'] if t['id']=='mort')
+          rank={'central':0,'important':1,'related':2}
+          rows=sorted(theme['occurrences'], key=lambda o:(rank.get(o.get('importance'),3), int(o.get('number',999999)), o.get('recordId','')))
+          print('MORT_THEME_LABEL',theme['label'])
+          print('MORT_OCCURRENCE_COUNT',len(rows))
+          for i,o in enumerate(rows,1):
+              print(f"MORT_ORDER {i:02d} {o.get('importance')} book={o.get('bookNumber')} psalm={o.get('number')} record={o.get('recordId')} score={o.get('score')}")
+          PY
+      - name: Assert browser thematic ordering contract remains explicit
+        run: |
+          grep -F "importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number" js/biblaw.js
