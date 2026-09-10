@@ -89,7 +89,7 @@ def main() -> None:
     search_index = load(SEARCH_INDEX)
     search_ids = {t.get("themeId") for t in search_index.get("themes", []) if t.get("themeId")}
     aliases = search_index.get("aliases", [])
-    alias_by_normalized = {str(alias.get("normalized") or ""): alias for alias in aliases}
+    alias_by_normalized = {str(alias.get("queryKey") or ""): alias for alias in aliases}
     ambiguous_aliases = [alias for alias in aliases if alias.get("ambiguous") or len(alias.get("themeIds", [])) > 1]
     relations = load(RELATIONS)
     method_contract = load(METHOD)
