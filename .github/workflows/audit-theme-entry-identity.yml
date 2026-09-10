@@ -1,0 +1,44 @@
+name: Audit theme entry identity
+
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'css/theme-entry.css'
+      - 'js/biblaw.js'
+      - 'js/theme-entry.js'
+      - 'scripts/audit_theme_entry_identity.py'
+      - 'data/browser-search-catalog.json'
+      - 'data/thematic-index/theme-directory-public.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - '.github/workflows/audit-theme-entry-identity.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'css/theme-entry.css'
+      - 'js/biblaw.js'
+      - 'js/theme-entry.js'
+      - 'scripts/audit_theme_entry_identity.py'
+      - 'data/browser-search-catalog.json'
+      - 'data/thematic-index/theme-directory-public.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - '.github/workflows/audit-theme-entry-identity.yml'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Compile audit
+        run: python -m py_compile scripts/audit_theme_entry_identity.py
+      - name: Check presentation JavaScript syntax
+        run: node --check js/biblaw.js && node --check js/theme-entry.js
+      - name: Audit theme entry identity
+        run: python scripts/audit_theme_entry_identity.py
+      - name: Audit production search contract
+        run: python scripts/audit_production_search_queries.py
+      - name: Audit encyclopedic fallback contract
+        run: python scripts/audit_encyclopedic_search_fallback.py

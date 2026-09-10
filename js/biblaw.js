@@ -34,6 +34,7 @@
   const label = r => r.recordType === 'psalm' ? `Psaume ${r.number} · ${archangelName(r.archangel)}` : r.recordType === 'master-prayer' ? `Prière ${r.number} · ${archangelName(r.archangel)}` : `Note · ${archangelName(r.archangel)}`;
   const importanceLabel = value => ({ central: 'Central', important: 'Important', related: 'Lié' }[value] || 'Indexé');
   const importanceRank = value => ({ central: 0, important: 1, related: 2 }[value] ?? 3);
+  const publishPresentationState = detail => document.dispatchEvent(new CustomEvent('biblaw:presentation-state', { detail }));
   const activateThemeMode = () => {
     state.mode='themes';
     $('modeThemes').classList.add('active');
@@ -152,15 +153,17 @@
     if($('recordDialog').open)$('recordDialog').close();
     showThemeNavigation([theme]);
     const thematic=thematicItems([theme]), textual=textualPsalmMatches(theme.label);
+    publishPresentationState({kind:'canonical-theme',theme:{id:theme.id,label:theme.label},psalmCount:thematic.length});
     render(thematic,[theme],{textualCount:textual.length});
     window.scrollTo({top:0,behavior:'smooth'});
   }
   function search(){
     const query=$('query').value.trim();
-    if(!query){$('ambiguityPanel').hidden=true;return render([]);}
+    if(!query){$('ambiguityPanel').hidden=true;publishPresentationState({kind:'no-result'});return render([]);}
     const psalmNumber=parsePsalmNumberQuery(query);
     if(psalmNumber!==null){
       $('ambiguityPanel').hidden=true;
+      publishPresentationState({kind:'other'});
       return render(psalmNumberMatches(psalmNumber),null,{numberLookup:true,psalmNumber});
     }
     if(state.mode==='themes'){
@@ -168,12 +171,17 @@
       if(resolved.length){
         showThemeNavigation(resolved);
         const thematic=thematicItems(resolved), textual=textualPsalmMatches(query);
+        publishPresentationState(resolved.length===1
+          ? {kind:'canonical-theme',theme:{id:resolved[0].id,label:resolved[0].label},psalmCount:thematic.length}
+          : {kind:'ambiguous-themes',themes:resolved.map(theme=>({id:theme.id,label:theme.label}))});
         return render(thematic,resolved,{textualCount:textual.length});
       }
       $('ambiguityPanel').hidden=true;
       const textual=textualPsalmMatches(query);
+      publishPresentationState({kind:textual.length?'textual-fallback':'no-result'});
       return render(textual,[],{textualCount:textual.length,unresolvedTheme:true,textualFallback:true});
     }
+    publishPresentationState({kind:'other'});
     render(matches(query).sort((a,b)=>b.score-a.score));
   }
 
@@ -221,7 +229,7 @@
       const exactBlock=!thematic&&!numberLookup?exactVerses(r):'';
       const status=thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
       const themeStatus=thematic?`<div class="context-label theme-found">THÈME INDEXÉ · ${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div>`:'';
-      return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${highlighted(r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'))}</h3></div><strong class="score">${esc(status)}</strong></div><div class="result-meta">${esc(meta)}</div>${themeStatus}<p class="result-summary">${highlighted(description)}</p>${thematic?contextualVerses(r,thematic):exactBlock}${relatedBlock}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">Voir</button></div></article>`;
+      return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${highlighted(r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'))}</h3></div><strong class="score">${esc(status)}</strong></div><div class="result-meta">${esc(meta)}</div>${themeStatus}<p class="result-summary">${highlighted(description)}</p>${thematic?contextualVerses(r,thematic):exactBlock}${relatedBlock}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">${thematic?'Voir le psaume source':'Voir'}</button></div></article>`;
     }).join('');
     document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>open(b.dataset.open));
     bindThemeLinks($('results'));
