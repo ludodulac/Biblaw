@@ -1,0 +1,47 @@
+name: Audit conceptual adjudication candidates
+
+on:
+  push:
+    paths:
+      - 'scripts/build_conceptual_adjudication_candidates.py'
+      - 'scripts/audit_conceptual_adjudication_candidates.py'
+      - 'data/thematic-index/books/**'
+      - 'data/thematic-index/theme-directory.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - '.github/workflows/audit-conceptual-adjudication-candidates.yml'
+  pull_request:
+    paths:
+      - 'scripts/build_conceptual_adjudication_candidates.py'
+      - 'scripts/audit_conceptual_adjudication_candidates.py'
+      - 'data/thematic-index/books/**'
+      - 'data/thematic-index/theme-directory.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - '.github/workflows/audit-conceptual-adjudication-candidates.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Compile candidate tooling
+        run: python -m py_compile scripts/build_conceptual_adjudication_candidates.py scripts/audit_conceptual_adjudication_candidates.py
+      - name: Build corpus-grounded review queue
+        run: python scripts/build_conceptual_adjudication_candidates.py
+      - name: Audit question-only semantic boundary
+        run: python scripts/audit_conceptual_adjudication_candidates.py
+      - name: Preserve validated semantic relation contract
+        run: python scripts/audit_validated_theme_relations.py
+      - name: Preserve production search contract
+        run: python scripts/audit_production_search_queries.py
+      - name: Publish review queue as CI artifact only
+        uses: actions/upload-artifact@v4
+        with:
+          name: conceptual-adjudication-candidates
+          path: data/thematic-index/conceptual-adjudication-candidates.json
+          if-no-files-found: error
