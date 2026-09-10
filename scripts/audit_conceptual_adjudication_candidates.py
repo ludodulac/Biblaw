@@ -41,6 +41,10 @@ for c in queue["candidates"]:
     ids.append(c["candidateId"])
     assert len(c["themes"]) == 2
     pair = tuple(sorted(t["themeId"] for t in c["themes"]))
+    contrast = c.get("corpusContrast") or {}
+    for key in ("sharedPsalmCount", "firstThemeOnlyPsalmCount", "secondThemeOnlyPsalmCount", "interpretationRule"):
+        assert key in contrast, f"missing corpus contrast {key}: {c['candidateId']}"
+    assert "do not determine a semantic relation" in contrast["interpretationRule"]
     for t in c["themes"]:
         assert t["themeId"] in by_id
         assert t["representativeOccurrences"], f"candidate without corpus context: {c['candidateId']}"
