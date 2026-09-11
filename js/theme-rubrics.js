@@ -5,6 +5,7 @@
 
   let activeThemeId = null;
   let rubrics = [];
+  const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 
   const hide = () => {
     panel.hidden = true;
@@ -36,13 +37,13 @@
     if (!rendered.length) return hide();
 
     list.innerHTML = rendered.map(({ rubric, records }) => `
-      <article class="theme-rubric" data-rubric-id="${rubric.rubricId}">
+      <article class="theme-rubric" data-rubric-id="${esc(rubric.rubricId)}">
         <div class="theme-rubric-heading">
-          <h3>${rubric.label}</h3>
+          <h3>${esc(rubric.label)}</h3>
           <span class="muted">${records.length} psaume${records.length > 1 ? 's' : ''}</span>
         </div>
         <div class="theme-rubric-links">
-          ${records.map(record => `<button class="theme-rubric-link" data-rubric-record-id="${record.recordId}">${record.title}</button>`).join('')}
+          ${records.map(record => `<button class="theme-rubric-link" data-rubric-record-id="${esc(record.recordId)}">${esc(record.title)}</button>`).join('')}
         </div>
       </article>
     `).join('');
