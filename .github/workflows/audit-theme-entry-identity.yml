@@ -7,12 +7,23 @@ on:
       - 'css/theme-entry.css'
       - 'js/biblaw.js'
       - 'js/theme-entry.js'
+      - 'js/theme-rubrics.js'
       - 'scripts/audit_theme_entry_identity.py'
       - 'scripts/audit_public_ui_contract.py'
+      - 'scripts/audit_theme_rubric_pilot.py'
+      - 'scripts/validate_theme_rubrics.py'
+      - 'scripts/build_theme_rubrics_public.py'
       - 'data/browser-search-catalog.json'
+      - 'data/thematic-index/books/**'
       - 'data/thematic-index/method.json'
       - 'data/thematic-index/theme-directory-public.json'
+      - 'data/thematic-index/theme-search-index.json'
       - 'data/thematic-index/theme-search-runtime.json'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/thematic-index/theme-relations-public.json'
+      - 'data/thematic-index/theme-connections.json'
+      - 'data/thematic-index/theme-rubrics.json'
+      - 'data/thematic-index/theme-rubrics-public.json'
       - '.github/workflows/audit-theme-entry-identity.yml'
   pull_request:
     paths:
@@ -20,12 +31,23 @@ on:
       - 'css/theme-entry.css'
       - 'js/biblaw.js'
       - 'js/theme-entry.js'
+      - 'js/theme-rubrics.js'
       - 'scripts/audit_theme_entry_identity.py'
       - 'scripts/audit_public_ui_contract.py'
+      - 'scripts/audit_theme_rubric_pilot.py'
+      - 'scripts/validate_theme_rubrics.py'
+      - 'scripts/build_theme_rubrics_public.py'
       - 'data/browser-search-catalog.json'
+      - 'data/thematic-index/books/**'
       - 'data/thematic-index/method.json'
       - 'data/thematic-index/theme-directory-public.json'
+      - 'data/thematic-index/theme-search-index.json'
       - 'data/thematic-index/theme-search-runtime.json'
+      - 'data/thematic-index/theme-relations-validated.json'
+      - 'data/thematic-index/theme-relations-public.json'
+      - 'data/thematic-index/theme-connections.json'
+      - 'data/thematic-index/theme-rubrics.json'
+      - 'data/thematic-index/theme-rubrics-public.json'
       - '.github/workflows/audit-theme-entry-identity.yml'
 
 jobs:
@@ -33,13 +55,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - name: Compile audit
-        run: python -m py_compile scripts/audit_theme_entry_identity.py scripts/audit_public_ui_contract.py
+      - name: Compile audits and rubric build
+        run: python -m py_compile scripts/audit_theme_entry_identity.py scripts/audit_public_ui_contract.py scripts/audit_theme_rubric_pilot.py scripts/validate_theme_rubrics.py scripts/build_theme_rubrics_public.py
       - name: Check presentation JavaScript syntax
-        run: node --check js/biblaw.js && node --check js/theme-entry.js
+        run: node --check js/biblaw.js && node --check js/theme-entry.js && node --check js/theme-rubrics.js
+      - name: Validate editorial theme rubrics
+        run: python scripts/validate_theme_rubrics.py
+      - name: Rebuild public theme rubrics
+        run: python scripts/build_theme_rubrics_public.py
+      - name: Check generated rubric projection is current
+        run: git diff --exit-code -- data/thematic-index/theme-rubrics-public.json
+      - name: Audit documentary rubric pilot
+        run: python scripts/audit_theme_rubric_pilot.py
+      - name: Verify search contract artifacts are untouched
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          else
+            BASE_SHA="${{ github.event.before }}"
+          fi
+          if [ -n "$BASE_SHA" ] && [ "$BASE_SHA" != "0000000000000000000000000000000000000000" ]; then
+            git diff --exit-code "$BASE_SHA" -- \
+              js/biblaw.js \
+              js/theme-relations.js \
+              data/browser-search-catalog.json \
+              data/thematic-index/books \
+              data/thematic-index/theme-directory-public.json \
+              data/thematic-index/theme-search-index.json \
+              data/thematic-index/theme-search-runtime.json \
+              data/thematic-index/theme-relations-validated.json \
+              data/thematic-index/theme-relations-public.json \
+              data/thematic-index/theme-connections.json
+          fi
       - name: Audit theme entry identity
         run: python scripts/audit_theme_entry_identity.py
       - name: Audit public UI contract
