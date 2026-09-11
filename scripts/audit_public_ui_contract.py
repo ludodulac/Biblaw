@@ -17,7 +17,7 @@ assert 'reader.html' not in html, 'obsolete PDF reader must not be linked from p
 assert 'Voir dans le PDF' not in js, 'result cards must open structured text, not the PDF'
 assert '.pdf#page=' not in js, 'public result cards must not contain direct PDF page links'
 assert 'recordPages' not in js and 'pdfPages' not in js, 'public search UI must not expose PDF page metadata'
-assert '>Voir</button>' in js, 'result cards must expose a Voir button'
+assert "thematic?'Voir le psaume source':'Voir'" in js, 'thematic result cards must expose the current source button label'
 assert 'data-open=' in js, 'Voir button must open a structured record'
 assert "bookMeta||'Corpus structuré'" in js, 'non-thematic result metadata must stay inside the structured corpus'
 assert 'id="downloadRecord"' in html and 'Télécharger le texte' in html, 'download must remain inside the opened record dialog'
@@ -37,4 +37,4 @@ assert 'cooccurrenceNotice.hidden = true' in theme_entry_js and 'cooccurrenceNot
 assert 'id="validatedRelationsPanel"' in html and 'id="ambiguityPanel"' in html, 'validated relations and co-occurrence navigation must remain separate panels'
 assert 'theme-relations-public.json' in relations_js, 'validated relations panel must keep its dedicated public relation source'
 
-print('Public UI contract OK: structured metadata, Voir action, complete download, current filter layout and explicit co-occurrence boundary')
+print('Public UI contract OK: structured metadata, source action, complete download, current filter layout and explicit co-occurrence boundary')
