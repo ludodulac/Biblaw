@@ -5,6 +5,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 html = (ROOT / 'index.html').read_text(encoding='utf-8')
 js = (ROOT / 'js' / 'biblaw.js').read_text(encoding='utf-8')
+theme_entry_js = (ROOT / 'js' / 'theme-entry.js').read_text(encoding='utf-8')
+relations_js = (ROOT / 'js' / 'theme-relations.js').read_text(encoding='utf-8')
 css = (ROOT / 'css' / 'biblaw.css').read_text(encoding='utf-8')
 
 for legacy in ('reader.html', 'app.js', 'styles.css'):
@@ -15,7 +17,7 @@ assert 'reader.html' not in html, 'obsolete PDF reader must not be linked from p
 assert 'Voir dans le PDF' not in js, 'result cards must open structured text, not the PDF'
 assert '.pdf#page=' not in js, 'public result cards must not contain direct PDF page links'
 assert 'recordPages' not in js and 'pdfPages' not in js, 'public search UI must not expose PDF page metadata'
-assert '>Voir</button>' in js, 'result cards must expose a Voir button'
+assert "thematic?'Voir le psaume source':'Voir'" in js, 'thematic result cards must expose the current source button label'
 assert 'data-open=' in js, 'Voir button must open a structured record'
 assert "bookMeta||'Corpus structuré'" in js, 'non-thematic result metadata must stay inside the structured corpus'
 assert 'id="downloadRecord"' in html and 'Télécharger le texte' in html, 'download must remain inside the opened record dialog'
@@ -24,4 +26,15 @@ assert 'data-open=' not in html, 'result buttons are generated from the structur
 assert 'grid-template-columns:minmax(0,1.5fr) minmax(14rem,.7fr)' in css, 'desktop filters must use the current two-column layout'
 assert '@media(max-width:760px)' in css and '.filters,.sense-grid{grid-template-columns:1fr}' in css, 'filters must collapse to one column on small screens'
 
-print('Public UI contract OK: structured metadata, Voir action, complete download and current filter layout')
+cooccurrence_notice = 'Ces thèmes apparaissent dans les mêmes psaumes ; cette présence commune ne constitue pas en elle-même une relation thématique validée.'
+assert cooccurrence_notice in html, 'cross-navigation must explicitly distinguish co-occurrence from validated thematic relations'
+assert 'id="cooccurrenceNavigationNotice"' in html, 'cross-navigation notice must have a dedicated presentation hook'
+assert html.index('id="cooccurrenceNavigationNotice"') < html.index('id="senseChoices"'), 'co-occurrence notice must render before cross-navigation choices'
+assert 'state.runtime?.neighbors?.[theme.id]' in js, 'cross-navigation must remain fed by runtime co-occurrence neighbors'
+assert "ambiguous?'Correspondances multiples':'Navigation transversale'" in js, 'cross-navigation and multiple correspondences must remain distinct modes'
+assert "detail.kind !== 'canonical-theme'" in theme_entry_js, 'co-occurrence notice must stay hidden outside canonical theme entries'
+assert 'cooccurrenceNotice.hidden = true' in theme_entry_js and 'cooccurrenceNotice.hidden = false' in theme_entry_js, 'co-occurrence notice visibility must follow canonical theme presentation state'
+assert 'id="validatedRelationsPanel"' in html and 'id="ambiguityPanel"' in html, 'validated relations and co-occurrence navigation must remain separate panels'
+assert 'theme-relations-public.json' in relations_js, 'validated relations panel must keep its dedicated public relation source'
+
+print('Public UI contract OK: structured metadata, source action, complete download, current filter layout and explicit co-occurrence boundary')

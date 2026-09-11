@@ -8,6 +8,7 @@ on:
       - 'js/biblaw.js'
       - 'js/theme-entry.js'
       - 'scripts/audit_theme_entry_identity.py'
+      - 'scripts/audit_public_ui_contract.py'
       - 'data/browser-search-catalog.json'
       - 'data/thematic-index/method.json'
       - 'data/thematic-index/theme-directory-public.json'
@@ -20,6 +21,7 @@ on:
       - 'js/biblaw.js'
       - 'js/theme-entry.js'
       - 'scripts/audit_theme_entry_identity.py'
+      - 'scripts/audit_public_ui_contract.py'
       - 'data/browser-search-catalog.json'
       - 'data/thematic-index/method.json'
       - 'data/thematic-index/theme-directory-public.json'
@@ -35,11 +37,13 @@ jobs:
         with:
           python-version: '3.x'
       - name: Compile audit
-        run: python -m py_compile scripts/audit_theme_entry_identity.py
+        run: python -m py_compile scripts/audit_theme_entry_identity.py scripts/audit_public_ui_contract.py
       - name: Check presentation JavaScript syntax
         run: node --check js/biblaw.js && node --check js/theme-entry.js
       - name: Audit theme entry identity
         run: python scripts/audit_theme_entry_identity.py
+      - name: Audit public UI contract
+        run: python scripts/audit_public_ui_contract.py
       - name: Audit production search contract
         run: python scripts/audit_production_search_queries.py
       - name: Audit encyclopedic fallback contract

@@ -5,12 +5,14 @@
   const count = $('themeEntryCount');
   const heading = $('documentResultsTitle');
   const importanceHelp = $('themeImportanceHelp');
-  if (!identity || !name || !count || !heading || !importanceHelp) return;
+  const cooccurrenceNotice = $('cooccurrenceNavigationNotice');
+  if (!identity || !name || !count || !heading || !importanceHelp || !cooccurrenceNotice) return;
 
   const hideIdentity = () => {
     identity.hidden = true;
     importanceHelp.hidden = true;
     importanceHelp.open = false;
+    cooccurrenceNotice.hidden = true;
     heading.textContent = 'Résultats';
   };
 
@@ -27,6 +29,7 @@
     heading.textContent = 'Textes indexés pour ce thème';
     identity.hidden = false;
     importanceHelp.hidden = false;
+    cooccurrenceNotice.hidden = false;
   });
 
   hideIdentity();
