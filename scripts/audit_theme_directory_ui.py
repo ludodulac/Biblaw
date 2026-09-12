@@ -19,7 +19,8 @@ assert 'function renderThemeDirectory()' in js
 assert 'function openIndex()' in js
 assert "$('themeFilter').oninput=renderThemeDirectory" in js
 assert "$('indexPanel').hidden?openIndex():closeIndex()" in js
-assert "renderThemeDirectory();\n    $('indexPanel').hidden=false" in js, "directory must render on opening"
+open_index = js[js.index('function openIndex()'):js.index('function closeIndex()')]
+assert 'renderThemeDirectory()' in open_index and "$('indexPanel').hidden=false" in open_index, "directory must render on opening"
 assert "themes(); search();" not in js, "theme directory must not eagerly render at corpus load"
 assert "$('themeDirectory').innerHTML=visible.length?" in js
 assert "norm(t.label).includes(needle)||norm(t.id).includes(needle)" in js
