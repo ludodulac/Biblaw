@@ -140,6 +140,80 @@
           "data/thematic-index/books/book-20.json"
         ]
       }
+    },
+    {
+      "id": "adjudication--ange--anges--2026-09-12",
+      "candidateId": "review--ange--anges",
+      "themes": [
+        {"themeId": "ange", "label": "Ange"},
+        {"themeId": "anges", "label": "Anges"}
+      ],
+      "triggeringQuestion": "Determine from corpus evidence whether the singleton themeId ange marks a distinct general concept or fragments the same general concept already indexed as anges.",
+      "discoverySignals": [
+        {"kind": "identifier-fragmentation", "detail": "The canonical themeId anges covers 130 distinct psalms before migration while ange occurs once."},
+        {"kind": "singular-language-under-plural-id", "detail": "3 consulted existing anges teachings explicitly use Ange in the singular."},
+        {"kind": "user-adjudication", "detail": "User approved treating ange as a historical/input variant of the canonical general concept anges after AI-assisted corpus review."}
+      ],
+      "passagesConsulted": {
+        "ange": [
+          {
+            "recordId": "book-07-psalm-035",
+            "verseNumbers": [5, 6, 9, 13],
+            "teaching": "L’Ange est une vertu à faire grandir dans le cœur, l’intelligence, la volonté et les actes afin d’ouvrir concrètement le chemin."
+          }
+        ],
+        "anges": [
+          {
+            "recordId": "book-01-psalm-005",
+            "verseNumbers": [7],
+            "teaching": "L'union à un Ange est fondée sur l'éveil en soi de la vertu qui lui correspond."
+          },
+          {
+            "recordId": "book-01-psalm-006",
+            "verseNumbers": [1, 2, 3],
+            "teaching": "L'Ange est décrit comme une conscience supérieure dont la lumière délivre l'homme de l'obscurité."
+          },
+          {
+            "recordId": "book-06-psalm-054",
+            "verseNumbers": [4, 5, 6, 7, 8, 9, 10, 11],
+            "teaching": "L’Ange devient connaissable intérieurement lorsque la vertu correspondante habite réellement l’être."
+          }
+        ]
+      },
+      "corpusForRelation": [
+        "Before migration, anges is attested in 130 distinct psalms and already covers both plural angelic language and teachings explicitly phrased around a singular Ange.",
+        "The singleton ange relation occurs only in book-07-psalm-035 and does not establish a stable documentary boundary separating an individual general Ange concept from the general anges concept.",
+        "The contextual label Ange on book-07-psalm-035 is preserved so the singular search form remains evidence-based after identifier normalization."
+      ],
+      "corpusAgainstOrRefuting": [
+        "Lexical singular/plural difference alone is not treated as semantic proof; the decision rests on the reviewed corpus distribution and teachings.",
+        "Specialized themes such as ange-gardien, ange-de-la-benediction, ange-de-la-sanctification, ange-comme-orientation, archanges and ronde-des-archanges are explicitly outside this normalization and remain distinct."
+      ],
+      "decision": "VARIANT",
+      "resolution": "identifier-normalization",
+      "legacyThemeId": "ange",
+      "canonicalThemeId": "anges",
+      "canonicalMapping": null,
+      "humanJustification": null,
+      "approvalJustification": "AI-assisted corpus review prepared the evidence; the user explicitly approved normalizing legacy themeId ange into canonical themeId anges. This is not recorded as independent human-only review.",
+      "review": {
+        "status": "ai-assisted-user-approved",
+        "date": "2026-09-12",
+        "source": "user-approved-ai-assisted-adjudication"
+      },
+      "provenance": {
+        "decisionProvenance": {
+          "type": "ai-assisted-user-approved",
+          "preparedBy": "openai-chatgpt",
+          "approvedBy": "user",
+          "approvedOn": "2026-09-12"
+        },
+        "canonicalSources": [
+          "data/thematic-index/books/book-01.json",
+          "data/thematic-index/books/book-06.json",
+          "data/thematic-index/books/book-07.json"
+        ]
+      }
     }
   ]
 }

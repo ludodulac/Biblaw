@@ -20,6 +20,7 @@ BOOKS = ROOT / "data" / "thematic-index" / "books"
 
 # Reviewed technical duplicates only. Do not add entries from lexical similarity alone.
 LEGACY_TO_CANONICAL = {
+    "ange": "anges",
     "corps-deau": "corps-d-eau",
     "corps-dimmortalite": "corps-d-immortalite",
     "microcosme-macrocosme": "microcosme-et-macrocosme",
