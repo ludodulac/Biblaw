@@ -23,6 +23,8 @@ jobs:
         run: python scripts/audit_validation_orchestration.py
       - name: Vérifier le contrat de l'interface publique
         run: python scripts/audit_public_ui_contract.py
+      - name: Vérifier la recherche documentaire à deux thèmes
+        run: python scripts/audit_two_theme_search.py
       - name: Vérifier la projection thématique publique
         run: python scripts/audit_public_theme_directory.py
       - name: Vérifier l'index thématique public
