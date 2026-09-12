@@ -1,0 +1,54 @@
+name: Audit documentary concordance
+on:
+  pull_request:
+    paths:
+      - 'data/documentary-entries.json'
+      - 'data/documentary-occurrence-index.json'
+      - 'data/corpus/books/**'
+      - 'data/thematic-index/books/**'
+      - 'js/biblaw.js'
+      - 'scripts/build_documentary_occurrence_index.py'
+      - 'scripts/audit_documentary_concordance.py'
+      - 'scripts/build_pages_site.py'
+      - '.github/workflows/audit-documentary-concordance.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/documentary-entries.json'
+      - 'data/documentary-occurrence-index.json'
+      - 'data/corpus/books/**'
+      - 'data/thematic-index/books/**'
+      - 'js/biblaw.js'
+      - 'scripts/build_documentary_occurrence_index.py'
+      - 'scripts/audit_documentary_concordance.py'
+      - 'scripts/build_pages_site.py'
+      - '.github/workflows/audit-documentary-concordance.yml'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rebuild documentary occurrence index
+        run: |
+          python scripts/build_documentary_occurrence_index.py
+          git diff --exit-code -- data/documentary-occurrence-index.json
+      - name: Audit documentary contract
+        run: python scripts/audit_documentary_concordance.py
+      - name: Check browser JavaScript syntax
+        run: node --check js/biblaw.js
+      - name: Check Pages staging
+        run: python scripts/build_pages_site.py
+      - name: Protect canonical thematic analyses in this pilot
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch origin main
+          if git diff --name-only origin/main...HEAD -- data/thematic-index/books | grep -q .; then
+            echo 'This concordance pilot must not modify canonical thematic analyses.' >&2
+            exit 1
+          fi
