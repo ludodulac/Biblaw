@@ -12,29 +12,27 @@ css = (ROOT / 'css' / 'biblaw.css').read_text(encoding='utf-8')
 for legacy in ('reader.html', 'app.js', 'styles.css'):
     assert not (ROOT / legacy).exists(), f'obsolete public prototype file still exists: {legacy}'
 
-assert 'validation.html' not in html, 'editorial validation must not be linked from the public search page'
-assert 'reader.html' not in html, 'obsolete PDF reader must not be linked from public search'
-assert 'Voir dans le PDF' not in js, 'result cards must open structured text, not the PDF'
-assert '.pdf#page=' not in js, 'public result cards must not contain direct PDF page links'
-assert 'recordPages' not in js and 'pdfPages' not in js, 'public search UI must not expose PDF page metadata'
-assert "thematic?'Voir le psaume source':'Voir'" in js, 'thematic result cards must expose the current source button label'
-assert 'data-open=' in js, 'Voir button must open a structured record'
-assert "bookMeta||'Corpus structuré'" in js, 'non-thematic result metadata must stay inside the structured corpus'
-assert 'id="downloadRecord"' in html and 'Télécharger le texte' in html, 'download must remain inside the opened record dialog'
-assert 'r.attachedPrayer?.text' in js, 'downloaded Psalm text must include the attached prayer when displayed'
-assert 'data-open=' not in html, 'result buttons are generated from the structured corpus, not hard-coded in HTML'
-assert 'grid-template-columns:minmax(0,1.5fr) minmax(14rem,.7fr)' in css, 'desktop filters must use the current two-column layout'
-assert '@media(max-width:760px)' in css and '.filters,.sense-grid{grid-template-columns:1fr}' in css, 'filters must collapse to one column on small screens'
+assert 'validation.html' not in html
+assert 'reader.html' not in html
+assert 'Voir dans le PDF' not in js and '.pdf#page=' not in js
+assert 'recordPages' not in js and 'pdfPages' not in js
+assert "thematic||themeMatches?'Voir le psaume source':'Voir'" in js
+assert 'data-open=' in js and 'data-open=' not in html
+assert "bookMeta||'Corpus structuré'" in js
+assert 'id="downloadRecord"' in html and 'Télécharger le texte' in html
+assert 'r.attachedPrayer?.text' in js
+assert 'id="query2"' in html and 'Thème 2 facultatif' in html
+assert 'id="secondaryTools"' in html and 'Autres recherches et filtres' in html
+assert html.index('id="results"') < html.index('id="secondaryTools"')
+assert 'id="transversePanel"' in html and html.index('id="results"') < html.index('id="transversePanel"')
+assert 'Ces thèmes apparaissent dans les mêmes psaumes ; cette présence commune ne constitue pas en elle-même une relation thématique validée.' in html
+assert 'state.runtime?.neighbors?.[theme.id]' in js
+assert 'id="validatedRelationsPanel"' in html and 'id="ambiguityPanel"' in html
+assert 'theme-relations-public.json' in relations_js
+assert "norm($('query2')?.value)" in relations_js
+assert "detail.kind === 'dual-theme'" in theme_entry_js
+assert '@media(max-width:760px)' in css and '.search-submit{grid-column:1/-1' in css
+assert '.compact-related{display:flex' in css and '.inline-themes{display:inline-flex;flex-wrap:wrap' in css
+assert 'theme-rubrics.js' in html and 'theme-rubrics-panel' in html
 
-cooccurrence_notice = 'Ces thèmes apparaissent dans les mêmes psaumes ; cette présence commune ne constitue pas en elle-même une relation thématique validée.'
-assert cooccurrence_notice in html, 'cross-navigation must explicitly distinguish co-occurrence from validated thematic relations'
-assert 'id="cooccurrenceNavigationNotice"' in html, 'cross-navigation notice must have a dedicated presentation hook'
-assert html.index('id="cooccurrenceNavigationNotice"') < html.index('id="senseChoices"'), 'co-occurrence notice must render before cross-navigation choices'
-assert 'state.runtime?.neighbors?.[theme.id]' in js, 'cross-navigation must remain fed by runtime co-occurrence neighbors'
-assert "ambiguous?'Correspondances multiples':'Navigation transversale'" in js, 'cross-navigation and multiple correspondences must remain distinct modes'
-assert "detail.kind !== 'canonical-theme'" in theme_entry_js, 'co-occurrence notice must stay hidden outside canonical theme entries'
-assert 'cooccurrenceNotice.hidden = true' in theme_entry_js and 'cooccurrenceNotice.hidden = false' in theme_entry_js, 'co-occurrence notice visibility must follow canonical theme presentation state'
-assert 'id="validatedRelationsPanel"' in html and 'id="ambiguityPanel"' in html, 'validated relations and co-occurrence navigation must remain separate panels'
-assert 'theme-relations-public.json' in relations_js, 'validated relations panel must keep its dedicated public relation source'
-
-print('Public UI contract OK: structured metadata, source action, complete download, current filter layout and explicit co-occurrence boundary')
+print('Public UI contract OK: compact primary search, source traceability, secondary tools, separated relations and navigation')
