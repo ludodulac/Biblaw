@@ -18,25 +18,52 @@
       "id": "adjudication--pensee--pensee-vivante--2026-09-09",
       "candidateId": "review--pensee--pensee-vivante",
       "themes": [
-        {"themeId": "pensee", "label": "Pensée"},
-        {"themeId": "pensee-vivante", "label": "Pensée vivante"}
+        {
+          "themeId": "pensee",
+          "label": "Pensée"
+        },
+        {
+          "themeId": "pensee-vivante",
+          "label": "Pensée vivante"
+        }
       ],
       "triggeringQuestion": "Re-read both corpus contexts before deciding; discovery signals are not semantic evidence.",
       "discoverySignals": [
-        {"kind": "validated-relation-positive-control", "detail": "pair is already human-approved and is included only to calibrate candidate discoverability"}
+        {
+          "kind": "validated-relation-positive-control",
+          "detail": "pair is already human-approved and is included only to calibrate candidate discoverability"
+        }
       ],
       "passagesConsulted": {
         "pensee": [
           {
             "recordId": "book-19-psalm-102",
-            "verseNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13],
+            "verseNumbers": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              13
+            ],
             "teaching": "Le psaume relie « Pensée » au passage suivant : N’oubliez jamais que toute pensée, aussi insignifiante qu’elle puisse paraître, est une réalité. Un second appui précise : Sur le plan physique, à travers vos paroles, vos actes et vos œuvres, vous ne voyez que le résultat de la force des pensées, mais dans le monde plus subtil qui est le leur, elles sont des créatures vivantes, intelligentes, agissantes."
           }
         ],
         "pensee-vivante": [
           {
             "recordId": "book-19-psalm-102",
-            "verseNumbers": [1, 2, 3, 8],
+            "verseNumbers": [
+              1,
+              2,
+              3,
+              8
+            ],
             "teaching": "Le psaume présente la pensée comme une réalité vivante et agissante dont les paroles, actes et œuvres physiques ne sont que les manifestations visibles; penser engage donc déjà une création et une destinée."
           }
         ]
@@ -78,35 +105,70 @@
       "id": "adjudication--alliance--alliance-de-lumiere--pending",
       "candidateId": "review--alliance--alliance-de-lumiere",
       "themes": [
-        {"themeId": "alliance", "label": "Alliance"},
-        {"themeId": "alliance-de-lumiere", "label": "Alliance de Lumière"}
+        {
+          "themeId": "alliance",
+          "label": "Alliance"
+        },
+        {
+          "themeId": "alliance-de-lumiere",
+          "label": "Alliance de Lumière"
+        }
       ],
       "triggeringQuestion": "Determine from corpus contexts whether the ids are equivalent, variants, hierarchical, compositional, related, or correctly distinct.",
       "discoverySignals": [
-        {"kind": "explicit-search-ambiguity", "detail": "runtime alias 'alliance de lumiere' maps to both existing theme ids"}
+        {
+          "kind": "explicit-search-ambiguity",
+          "detail": "runtime alias 'alliance de lumiere' maps to both existing theme ids"
+        }
       ],
       "passagesConsulted": {
         "alliance": [
           {
             "recordId": "book-02-psalm-002",
-            "verseNumbers": [7, 8, 9, 11],
+            "verseNumbers": [
+              7,
+              8,
+              9,
+              11
+            ],
             "teaching": "L'alliance avec des principes ou êtres divins sert d'interprète entre le langage humain et le monde divin."
           },
           {
             "recordId": "book-02-psalm-012",
-            "verseNumbers": [1, 2, 3, 4, 7, 9],
+            "verseNumbers": [
+              1,
+              2,
+              3,
+              4,
+              7,
+              9
+            ],
             "teaching": "L'alliance avec Gabriel doit devenir présence durable, nourrie par des actes communautaires et inscrite dans la terre."
           },
           {
             "recordId": "book-04-psalm-012",
-            "verseNumbers": [4, 5, 6, 7, 8],
+            "verseNumbers": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
             "teaching": "L'alliance entre monde divin et monde humain doit être entretenue quotidiennement et incarnée dans des supports, pensées et œuvres."
           }
         ],
         "alliance-de-lumiere": [
           {
             "recordId": "book-20-psalm-112",
-            "verseNumbers": [1, 9, 17, 22, 53, 57, 58],
+            "verseNumbers": [
+              1,
+              9,
+              17,
+              22,
+              53,
+              57,
+              58
+            ],
             "teaching": "L’Alliance relie la fidélité de la Tradition, les règnes, les Sceaux et la communauté humaine. Sa continuité dépend d’un peuple suffisamment uni et organisé pour garder une place terrestre à la Lumière."
           }
         ]
@@ -138,6 +200,115 @@
           "data/thematic-index/books/book-02.json",
           "data/thematic-index/books/book-04.json",
           "data/thematic-index/books/book-20.json"
+        ]
+      }
+    },
+    {
+      "id": "adjudication--ange--anges--2026-09-12",
+      "candidateId": "review--ange--anges",
+      "themes": [
+        {
+          "themeId": "ange",
+          "label": "Ange"
+        },
+        {
+          "themeId": "anges",
+          "label": "Anges"
+        }
+      ],
+      "triggeringQuestion": "Determine from corpus evidence whether the singleton themeId ange marks a distinct general concept or fragments the same general concept already indexed as anges.",
+      "discoverySignals": [
+        {
+          "kind": "identifier-fragmentation",
+          "detail": "The canonical themeId anges covers 130 distinct psalms before migration while ange occurs once."
+        },
+        {
+          "kind": "singular-language-under-plural-id",
+          "detail": "3 consulted existing anges teachings explicitly use Ange in the singular."
+        },
+        {
+          "kind": "user-adjudication",
+          "detail": "User approved treating ange as a historical/input variant of the canonical general concept anges after AI-assisted corpus review."
+        }
+      ],
+      "passagesConsulted": {
+        "ange": [
+          {
+            "recordId": "book-07-psalm-035",
+            "verseNumbers": [
+              5,
+              6,
+              9,
+              13
+            ],
+            "teaching": "L’Ange est une vertu à faire grandir dans le cœur, l’intelligence, la volonté et les actes afin d’ouvrir concrètement le chemin."
+          }
+        ],
+        "anges": [
+          {
+            "recordId": "book-01-psalm-005",
+            "verseNumbers": [
+              7
+            ],
+            "teaching": "L'union à un Ange est fondée sur l'éveil en soi de la vertu qui lui correspond."
+          },
+          {
+            "recordId": "book-01-psalm-006",
+            "verseNumbers": [
+              1,
+              2,
+              3
+            ],
+            "teaching": "L'Ange est décrit comme une conscience supérieure dont la lumière délivre l'homme de l'obscurité."
+          },
+          {
+            "recordId": "book-06-psalm-054",
+            "verseNumbers": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "teaching": "L’Ange devient connaissable intérieurement lorsque la vertu correspondante habite réellement l’être."
+          }
+        ]
+      },
+      "corpusForRelation": [
+        "Before migration, anges is attested in 130 distinct psalms and already covers both plural angelic language and teachings explicitly phrased around a singular Ange.",
+        "The singleton ange relation occurs only in book-07-psalm-035 and does not establish a stable documentary boundary separating an individual general Ange concept from the general anges concept.",
+        "The contextual label Ange on book-07-psalm-035 is preserved so the singular search form remains evidence-based after identifier normalization."
+      ],
+      "corpusAgainstOrRefuting": [
+        "Lexical singular/plural difference alone is not treated as semantic proof; the decision rests on the reviewed corpus distribution and teachings.",
+        "Specialized themes such as ange-gardien, ange-de-la-benediction, ange-de-la-sanctification, ange-comme-orientation, archanges and ronde-des-archanges are explicitly outside this normalization and remain distinct."
+      ],
+      "decision": "VARIANT",
+      "resolution": "identifier-normalization",
+      "legacyThemeId": "ange",
+      "canonicalThemeId": "anges",
+      "canonicalMapping": null,
+      "humanJustification": null,
+      "approvalJustification": "AI-assisted corpus review prepared the evidence; the user explicitly approved normalizing legacy themeId ange into canonical themeId anges. This is not recorded as independent human-only review.",
+      "review": {
+        "status": "ai-assisted-user-approved",
+        "date": "2026-09-12",
+        "source": "user-approved-ai-assisted-adjudication"
+      },
+      "provenance": {
+        "decisionProvenance": {
+          "type": "ai-assisted-user-approved",
+          "preparedBy": "openai-chatgpt",
+          "approvedBy": "user",
+          "approvedOn": "2026-09-12"
+        },
+        "canonicalSources": [
+          "data/thematic-index/books/book-01.json",
+          "data/thematic-index/books/book-06.json",
+          "data/thematic-index/books/book-07.json"
         ]
       }
     }

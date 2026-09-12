@@ -9,8 +9,8 @@
     "related": 1,
     "pairContribution": "importanceWeightA * importanceWeightB"
   },
-  "themeCount": 1247,
-  "undirectedEdgeCount": 13140,
+  "themeCount": 1246,
+  "undirectedEdgeCount": 13139,
   "topConnectionsPerTheme": 30,
   "themes": [
     {
@@ -30783,63 +30783,6 @@
       ]
     },
     {
-      "themeId": "ange",
-      "label": "Ange",
-      "connectionCount": 2,
-      "topConnections": [
-        {
-          "themeId": "ronde-des-archanges",
-          "label": "Ronde des Archanges",
-          "score": 9,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-07-psalm-035",
-              "bookNumber": 7,
-              "bookTitle": "Les clés de l’immortalité",
-              "archangel": "raphael",
-              "psalmNumber": 35,
-              "psalmTitle": "Marchez avec votre ange et faites grandir la ronde des archanges",
-              "themeAImportance": "central",
-              "themeBImportance": "central",
-              "contribution": 9
-            }
-          ]
-        },
-        {
-          "themeId": "opportunite",
-          "label": "Opportunité",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-07-psalm-035",
-              "bookNumber": 7,
-              "bookTitle": "Les clés de l’immortalité",
-              "archangel": "raphael",
-              "psalmNumber": 35,
-              "psalmTitle": "Marchez avec votre ange et faites grandir la ronde des archanges",
-              "themeAImportance": "central",
-              "themeBImportance": "important",
-              "contribution": 6
-            }
-          ]
-        }
-      ]
-    },
-    {
       "themeId": "ange-comme-orientation",
       "label": "Ange comme orientation",
       "connectionCount": 17,
@@ -31452,7 +31395,7 @@
     {
       "themeId": "anges",
       "label": "Anges",
-      "connectionCount": 162,
+      "connectionCount": 163,
       "topConnections": [
         {
           "themeId": "vie",
@@ -346559,8 +346502,8 @@
           ]
         },
         {
-          "themeId": "ange",
-          "label": "Ange",
+          "themeId": "anges",
+          "label": "Anges",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -447378,7 +447321,7 @@
     {
       "themeId": "ronde-des-archanges",
       "label": "Ronde des Archanges",
-      "connectionCount": 91,
+      "connectionCount": 90,
       "topConnections": [
         {
           "themeId": "vie",
@@ -449178,6 +449121,76 @@
           ]
         },
         {
+          "themeId": "anges",
+          "label": "Anges",
+          "score": 23,
+          "sharedPsalmCount": 4,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-07-psalm-035",
+              "bookNumber": 7,
+              "bookTitle": "Les clés de l’immortalité",
+              "archangel": "raphael",
+              "psalmNumber": 35,
+              "psalmTitle": "Marchez avec votre ange et faites grandir la ronde des archanges",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-37-psalm-266",
+              "bookNumber": 37,
+              "bookTitle": "La maîtrise du serpent",
+              "archangel": "michael",
+              "psalmNumber": 266,
+              "psalmTitle": "Unissez-vous avec les A nges par",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-40-psalm-251",
+              "bookNumber": 40,
+              "bookTitle": "L’Ange de la conscience",
+              "archangel": "ouriel",
+              "psalmNumber": 251,
+              "psalmTitle": "L’éveil et la transformation par la conscience angélique",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            },
+            {
+              "recordId": "book-30-psalm-213",
+              "bookNumber": 30,
+              "bookTitle": "Développer la vision juste",
+              "archangel": "gabriel",
+              "psalmNumber": 213,
+              "psalmTitle": "Faites l’expérience vivante de la clarté qui délivre de tout concept humain",
+              "themeAImportance": "important",
+              "themeBImportance": "related",
+              "contribution": 2
+            }
+          ]
+        },
+        {
           "themeId": "destinee",
           "label": "Destinée",
           "score": 17,
@@ -449298,61 +449311,6 @@
               "themeAImportance": "related",
               "themeBImportance": "related",
               "contribution": 1
-            }
-          ]
-        },
-        {
-          "themeId": "anges",
-          "label": "Anges",
-          "score": 14,
-          "sharedPsalmCount": 3,
-          "archangels": [
-            {
-              "id": "gabriel",
-              "sharedPsalmCount": 1
-            },
-            {
-              "id": "michael",
-              "sharedPsalmCount": 1
-            },
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-37-psalm-266",
-              "bookNumber": 37,
-              "bookTitle": "La maîtrise du serpent",
-              "archangel": "michael",
-              "psalmNumber": 266,
-              "psalmTitle": "Unissez-vous avec les A nges par",
-              "themeAImportance": "central",
-              "themeBImportance": "central",
-              "contribution": 9
-            },
-            {
-              "recordId": "book-40-psalm-251",
-              "bookNumber": 40,
-              "bookTitle": "L’Ange de la conscience",
-              "archangel": "ouriel",
-              "psalmNumber": 251,
-              "psalmTitle": "L’éveil et la transformation par la conscience angélique",
-              "themeAImportance": "central",
-              "themeBImportance": "related",
-              "contribution": 3
-            },
-            {
-              "recordId": "book-30-psalm-213",
-              "bookNumber": 30,
-              "bookTitle": "Développer la vision juste",
-              "archangel": "gabriel",
-              "psalmNumber": 213,
-              "psalmTitle": "Faites l’expérience vivante de la clarté qui délivre de tout concept humain",
-              "themeAImportance": "important",
-              "themeBImportance": "related",
-              "contribution": 2
             }
           ]
         },

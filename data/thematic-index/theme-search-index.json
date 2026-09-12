@@ -5,7 +5,7 @@
     "data/thematic-index/theme-directory.json"
   ],
   "semanticMerging": false,
-  "themeCount": 1247,
+  "themeCount": 1246,
   "aliasCount": 1339,
   "ambiguousAliasCount": 5,
   "themes": [
@@ -937,21 +937,6 @@
       "score": 2
     },
     {
-      "themeId": "ange",
-      "canonicalLabel": "Ange",
-      "observedLabels": [
-        {
-          "label": "Ange",
-          "count": 1
-        }
-      ],
-      "normalizedAliases": [
-        "ange"
-      ],
-      "occurrenceCount": 1,
-      "score": 3
-    },
-    {
       "themeId": "ange-comme-orientation",
       "canonicalLabel": "Ange comme orientation",
       "observedLabels": [
@@ -1033,13 +1018,18 @@
         {
           "label": "Anges",
           "count": 130
+        },
+        {
+          "label": "Ange",
+          "count": 1
         }
       ],
       "normalizedAliases": [
-        "anges"
+        "anges",
+        "ange"
       ],
-      "occurrenceCount": 130,
-      "score": 242
+      "occurrenceCount": 131,
+      "score": 245
     },
     {
       "themeId": "animal",
@@ -19625,7 +19615,7 @@
     {
       "queryKey": "ange",
       "themeIds": [
-        "ange"
+        "anges"
       ],
       "labels": [
         "Ange"
