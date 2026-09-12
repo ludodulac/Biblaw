@@ -1,0 +1,116 @@
+name: Construction temporaire pilote concordance
+on:
+  push:
+    branches: [feature/documentary-concordance-anges]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Générer l'index déterministe
+        run: python scripts/build_documentary_occurrence_index.py
+      - name: Intégrer la présentation documentaire connue
+        shell: python
+        run: |
+          from pathlib import Path
+          path = Path('js/biblaw.js')
+          s = path.read_text(encoding='utf-8')
+
+          def replace_once(old, new):
+              global s
+              count = s.count(old)
+              assert count == 1, f'expected one occurrence, got {count}: {old[:80]}'
+              s = s.replace(old, new, 1)
+
+          replace_once(
+              "const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, active: null, resolvedThemes: [] };",
+              "const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, documentaryIndex: null, documentaryEntries: [], active: null, resolvedThemes: [] };"
+          )
+          replace_once(
+              "const [bundle, directory, runtime] = await Promise.all([",
+              "const [bundle, directory, runtime, documentary] = await Promise.all(["
+          )
+          replace_once(
+              "fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); })",
+              "fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); }),\n        fetch('data/documentary-occurrence-index.json').then(r => { if (!r.ok) throw Error('documentary-occurrence-index'); return r.json(); })"
+          )
+          replace_once(
+              "state.runtime = runtime;\n      state.records = bundle.records || [];",
+              "state.runtime = runtime;\n      state.documentaryIndex = documentary;\n      state.documentaryEntries = documentary.entries || [];\n      state.records = bundle.records || [];"
+          )
+          replace_once(
+              "function textualPsalmMatches(query) { return matches(query).filter(x=>x.record.recordType==='psalm'); }\n  function resolveIndexedThemes(query) {",
+              "function textualPsalmMatches(query) { return matches(query).filter(x=>x.record.recordType==='psalm'); }\n  function resolveDocumentaryEntry(query) { const q=norm(query); if(!q)return null; return state.documentaryEntries.find(entry=>(entry.forms||[]).some(form=>norm(form)===q))||null; }\n  function resolveIndexedThemes(query) {"
+          )
+          needle = """      const resolved=resolveIndexedThemes(query);"""
+          insertion = """      const documentaryEntry=resolveDocumentaryEntry(query);
+                if(documentaryEntry){
+                  const target=state.themeById.get(documentaryEntry.themeTarget?.themeId);
+                  if(target){
+                    hideAmbiguity(); showTransverseNavigation(target);
+                    const thematic=thematicItems([target]);
+                    publishPresentationState({kind:'documentary-entry',entryId:documentaryEntry.entryId,theme:{id:target.id,label:target.label},psalmCount:thematic.length});
+                    return render(thematic,[target],{documentaryEntry});
+                  }
+                }
+                const resolved=resolveIndexedThemes(query);"""
+          replace_once(needle, insertion)
+
+          marker = """  function render(items,indexedThemes=null,companion=null){"""
+          helpers = r'''  function documentaryHighlighted(value,entry){ const forms=new Set((entry?.forms||[]).map(norm)); return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>forms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join(''); }
+            function documentaryOtherRecords(entry,thematicIds){ if(!entry||!selectedTypes().has('psalm'))return[]; const a=$('archangelFilter').value; return (entry.records||[]).filter(o=>(!a||o.archangel===a)&&!thematicIds.has(o.recordId)).map(occurrence=>({occurrence,record:state.recordById.get(occurrence.recordId)})).filter(x=>x.record?.recordType==='psalm'); }
+            function documentaryOtherSection(entry,thematicIds){
+              if(!entry)return'';
+              const others=documentaryOtherRecords(entry,thematicIds);
+              const cards=others.map(({record:r,occurrence:o})=>{
+                const wanted=new Set((o.occurrences||[]).map(v=>Number(v.verseNumber)));
+                const passages=(r.verses||[]).filter(v=>wanted.has(Number(v.number))).slice(0,4);
+                const passageBlock=passages.length?`<div class="theme-context exact-context"><div class="context-label">Versets concernés${o.verseCount>passages.length?` · ${o.verseCount} versets au total`:''}</div>${passages.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${documentaryHighlighted(v.text,entry)}</span></div>`).join('')}</div>`:'';
+                const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'Corpus structuré';
+                return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${esc(r.title||'')}</h3></div><strong class="score">${o.occurrenceCount} occurrence${o.occurrenceCount>1?'s':''}</strong></div><div class="result-meta">${esc(bookMeta)} · ${o.verseCount} verset${o.verseCount>1?'s':''} concerné${o.verseCount>1?'s':''}</div>${passageBlock}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">Voir le psaume source</button></div></article>`;
+              }).join('');
+              return `<section class="documentary-section documentary-other"><div class="search-scope-note"><div><strong>AUTRES OCCURRENCES DANS LE CORPUS</strong><span>${others.length} psaume${others.length>1?'s':''} contenant ${esc(entry.label)} sans relation thématique générale affichée ci-dessus · classé par fréquence du terme dans le texte.</span></div></div>${cards||'<div class="empty">Aucune autre occurrence lexicale avec les filtres sélectionnés.</div>'}</section>`;
+            }
+
+          '''
+          replace_once(marker, helpers + marker)
+          replace_once(
+              "const textualNotice=!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?",
+              "const textualNotice=!companion?.documentaryEntry&&!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?"
+          )
+          replace_once(
+              "$('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches})=>{",
+              "const documentaryIds=new Set(items.map(({record})=>record.id)); const documentaryIntro=companion?.documentaryEntry?`<section class=\"documentary-section documentary-teachings\"><div class=\"search-scope-note\"><div><strong>ENSEIGNEMENTS SUR CE SUJET</strong><span>Psaumes réellement indexés sous le thème canonique ${esc(themeLabels[0]||companion.documentaryEntry.label)} · classés Central, Important, puis Lié.</span></div></div></section>`:''; $('results').innerHTML=unresolvedNotice+textualNotice+documentaryIntro+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches})=>{"
+          )
+          replace_once(
+              "    }).join('');\n    document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>open(b.dataset.open)); bindThemeLinks($('results')); bindTextSearchLink();",
+              "    }).join('')+(companion?.documentaryEntry?documentaryOtherSection(companion.documentaryEntry,documentaryIds):'');\n    document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>open(b.dataset.open)); bindThemeLinks($('results')); bindTextSearchLink();"
+          )
+          path.write_text(s, encoding='utf-8')
+      - name: Vérifier syntaxe et contrat
+        run: |
+          node --check js/biblaw.js
+          python scripts/audit_documentary_concordance.py
+          python scripts/build_pages_site.py >/tmp/pages.txt
+          grep -q 'data/documentary-occurrence-index.json' /tmp/pages.txt
+          if git diff --name-only 715a6db113fba20aa5deebb93385f869b0227a5f...HEAD -- data/thematic-index/books | grep -q .; then
+            echo 'Canonical thematic analyses changed unexpectedly' >&2
+            exit 1
+          fi
+      - name: Committer la projection et la présentation
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/documentary-occurrence-index.json js/biblaw.js
+          git commit -m 'Présenter la concordance pilote Anges'
+          git push
