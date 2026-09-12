@@ -1,0 +1,22 @@
+name: Audit pilote ange
+
+on:
+  push:
+    branches:
+      - audit/ange-pilot
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Auditer ange sans modifier le corpus
+        run: python scripts/audit_ange_pilot.py
+      - name: Publier le dossier d’audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: ange-audit-pilot
+          path: ange-audit-pilot.json
