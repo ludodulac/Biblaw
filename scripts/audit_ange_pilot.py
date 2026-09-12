@@ -7,6 +7,7 @@ import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
+# Reproductible audit only: this script reads canonical data and writes a disposable report.
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "thematic-index"
 CORPUS = ROOT / "data" / "corpus"
@@ -24,7 +25,6 @@ def norm(value: str) -> str:
     value = "".join(ch for ch in value if unicodedata.category(ch) != "Mn")
     return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
 
-# Canonical Psalm analyses, keyed by (book number, psalm number)
 analyses = {}
 all_theme_ids = Counter()
 all_theme_labels = defaultdict(set)
@@ -38,7 +38,6 @@ for path in sorted((INDEX / "books").glob("book-*.json")):
             all_theme_ids[th["themeId"]] += 1
             all_theme_labels[th["themeId"]].add(th.get("label", ""))
 
-# Canonical Psalm text, keyed the same way.
 corpus = {}
 for archangel_dir in sorted(p for p in CORPUS.iterdir() if p.is_dir() and p.name != "books"):
     for path in sorted(archangel_dir.glob("psalm-*.json")):
@@ -49,7 +48,6 @@ for archangel_dir in sorted(p for p in CORPUS.iterdir() if p.is_dir() and p.name
 assert len(analyses) == 1158, len(analyses)
 assert len(corpus) == 1158, len(corpus)
 
-# Exact current target state from canonical analyses.
 current_target = []
 for key, analysis in sorted(analyses.items()):
     for th in analysis.get("themes", []):
@@ -67,7 +65,6 @@ for key, analysis in sorted(analyses.items()):
                 "passages": [v for v in ps.get("verses", []) if v.get("number") in set(th.get("verseNumbers", []))],
             })
 
-# Lexical candidates: exact Unicode word tokens ange / anges only, case-insensitive.
 lexical_candidates = []
 form_counts = Counter()
 for key, ps in sorted(corpus.items()):
@@ -94,7 +91,6 @@ for key, ps in sorted(corpus.items()):
         "fullVerses": ps.get("verses", []),
     })
 
-# Lexically neighboring existing themeIds/labels. Token containment is only a review signal.
 neighbor_ids = []
 for tid, count in sorted(all_theme_ids.items()):
     labels = sorted(x for x in all_theme_labels[tid] if x)
@@ -103,14 +99,12 @@ for tid, count in sorted(all_theme_ids.items()):
     if "ange" in token or any("ange" in x for x in label_tokens):
         neighbor_ids.append({"themeId": tid, "labels": labels, "psalmCount": count})
 
-# Validated semantic relations involving exact target only.
 validated = load(INDEX / "theme-relations-validated.json")
 relations = []
 for rel in validated.get("relations", []):
     if rel.get("sourceThemeId") == TARGET or rel.get("targetThemeId") == TARGET:
         relations.append(rel)
 
-# Attach validated relations to lexically neighboring IDs without inferring equivalence.
 rel_by_neighbor = defaultdict(list)
 for rel in relations:
     other = rel.get("targetThemeId") if rel.get("sourceThemeId") == TARGET else rel.get("sourceThemeId")
