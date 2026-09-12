@@ -10,7 +10,7 @@ from pathlib import Path
 # Reproductible audit only: this script reads canonical data and writes a disposable report.
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "thematic-index"
-CORPUS = ROOT / "data" / "corpus"
+CORPUS = ROOT / "data" / "corpus" / "books"
 OUT = ROOT / "ange-audit-pilot.json"
 TARGET = "ange"
 LEXICAL_RE = re.compile(r"(?<!\w)(ange|anges)(?!\w)", re.IGNORECASE)
@@ -39,11 +39,10 @@ for path in sorted((INDEX / "books").glob("book-*.json")):
             all_theme_labels[th["themeId"]].add(th.get("label", ""))
 
 corpus = {}
-for archangel_dir in sorted(p for p in CORPUS.iterdir() if p.is_dir() and p.name != "books"):
-    for path in sorted(archangel_dir.glob("psalm-*.json")):
-        ps = load(path)
-        key = (int(ps["book"]["number"]), int(ps["number"]))
-        corpus[key] = ps
+for path in sorted(CORPUS.glob("book-*/psalm-*.json")):
+    ps = load(path)
+    key = (int(ps["book"]["number"]), int(ps["number"]))
+    corpus[key] = ps
 
 assert len(analyses) == 1158, len(analyses)
 assert len(corpus) == 1158, len(corpus)
