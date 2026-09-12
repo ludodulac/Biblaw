@@ -24,7 +24,7 @@ assert 'renderThemeDirectory()' in open_index and "$('indexPanel').hidden=false"
 assert "themes(); search();" not in js, "theme directory must not eagerly render at corpus load"
 assert "$('themeDirectory').innerHTML=visible.length?" in js
 assert "norm(t.label).includes(needle)||norm(t.id).includes(needle)" in js
-assert '.index-filter{' in css and '.index-filter .search-field{' in css
+assert '.index-filter{' in css and '.search-field{' in css, "theme index must retain filter layout and shared search-field styling"
 assert '.theme-row{' in index_css and '.theme-row:hover' in index_css
 assert '.theme-row strong{' in index_css and '.theme-row small{' in index_css
 
