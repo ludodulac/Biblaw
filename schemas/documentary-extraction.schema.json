@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://biblaw.local/schemas/documentary-extraction.schema.json",
+  "title": "Biblaw documentary extraction",
+  "type": "object",
+  "required": [
+    "recordType",
+    "protocolVersion",
+    "source",
+    "extractionValidation",
+    "subjects",
+    "titleOnlyMatters"
+  ],
+  "properties": {
+    "recordType": {
+      "const": "documentary-extraction"
+    },
+    "protocolVersion": {
+      "const": "1.5"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "recordId",
+        "canonicalPath",
+        "psalmNumber",
+        "book",
+        "archangel"
+      ],
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "pattern": "^book-[0-9]{2}-psalm-[0-9]{3}$"
+        },
+        "canonicalPath": {
+          "type": "string",
+          "pattern": "^data/corpus/books/book-[0-9]{2}/psalm-[0-9]{3}\\.json$"
+        },
+        "psalmNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "book": {
+          "type": "object",
+          "required": [
+            "number",
+            "title"
+          ],
+          "properties": {
+            "number": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "archangel": {
+          "enum": [
+            "michael",
+            "raphael",
+            "gabriel",
+            "ouriel"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "extractionValidation": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "reviewed",
+            "validated"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "subjects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/subject"
+      }
+    },
+    "titleOnlyMatters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/titleOnlyMatter"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "verseNumbers": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "verseNumbers",
+        "quote"
+      ],
+      "properties": {
+        "verseNumbers": {
+          "$ref": "#/$defs/verseNumbers"
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "subject": {
+      "type": "object",
+      "required": [
+        "localId",
+        "localSubject",
+        "status",
+        "verseNumbers",
+        "evidence"
+      ],
+      "properties": {
+        "localId": {
+          "type": "string",
+          "pattern": "^subject-[0-9]{3}$"
+        },
+        "localSubject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "EXPLOITÉ",
+            "PRÉSENT MAIS NON EXPLOITÉ"
+          ]
+        },
+        "verseNumbers": {
+          "$ref": "#/$defs/verseNumbers"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "documentaryNote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contextualRole": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "EXPLOITÉ"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "required": [
+              "documentaryNote"
+            ],
+            "not": {
+              "required": [
+                "contextualRole"
+              ]
+            }
+          },
+          "else": {
+            "required": [
+              "contextualRole"
+            ],
+            "not": {
+              "required": [
+                "documentaryNote"
+              ]
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "titleOnlyMatter": {
+      "type": "object",
+      "required": [
+        "localId",
+        "localSubject",
+        "titleQuote",
+        "note"
+      ],
+      "properties": {
+        "localId": {
+          "type": "string",
+          "pattern": "^title-[0-9]{3}$"
+        },
+        "localSubject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "titleQuote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
