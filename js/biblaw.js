@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, active: null, resolvedThemes: [] };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, documentaryIndex: null, documentaryEntries: [], active: null, resolvedThemes: [] };
   const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[’']/g, ' ').replace(/[^a-z0-9\s-]/g, ' ').replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
   const stripLeadingArticle = value => { const q=norm(value), parts=q.split(' ').filter(Boolean); return parts.length>1 && ['l','le','la','les','un','une','des'].includes(parts[0]) ? parts.slice(1).join(' ') : q; };
   const themeQueryForms = value => { const q=norm(value), stripped=stripLeadingArticle(q); return [...new Set([q,stripped].filter(Boolean))]; };
@@ -23,14 +23,17 @@
 
   async function load() {
     try {
-      const [bundle, directory, runtime] = await Promise.all([
+      const [bundle, directory, runtime, documentary] = await Promise.all([
         fetch('data/browser-search-catalog.json').then(r => { if (!r.ok) throw Error('browser-search-catalog'); return r.json(); }),
         fetch('data/thematic-index/theme-directory-public.json').then(r => { if (!r.ok) throw Error('theme-directory'); return r.json(); }),
-        fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); })
+        fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); }),
+        fetch('data/documentary-occurrence-index.json').then(r => { if (!r.ok) throw Error('documentary-occurrence-index'); return r.json(); })
       ]);
       state.themeDirectory = directory.themes || [];
       state.themeById = new Map(state.themeDirectory.map(t => [t.id, t]));
       state.runtime = runtime;
+      state.documentaryIndex = documentary;
+      state.documentaryEntries = documentary.entries || [];
       state.records = bundle.records || [];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
       state.psalmsByNumber = new Map();
@@ -58,6 +61,7 @@
   function matches(query) { const allowed = selectedTypes(), a = $('archangelFilter').value, needle=norm(query); return state.records.filter(r => allowed.has(type(r)) && (!a || r.archangel === a) && literalTextMatch(r, needle)).map(record => ({ record, score: 1 })); }
   function psalmNumberMatches(number) { if(!selectedTypes().has('psalm'))return []; const a=$('archangelFilter').value; return (state.psalmsByNumber.get(number)||[]).filter(r=>!a||r.archangel===a).sort((x,y)=>(x.book?.number||9999)-(y.book?.number||9999)||String(x.id).localeCompare(String(y.id),'fr')).map(record=>({record,score:1,numberLookup:true})); }
   function textualPsalmMatches(query) { return matches(query).filter(x=>x.record.recordType==='psalm'); }
+  function resolveDocumentaryEntry(query) { const q=norm(query); if(!q)return null; return state.documentaryEntries.find(entry=>(entry.forms||[]).some(form=>norm(form)===q))||null; }
   function resolveIndexedThemes(query) {
     const forms=themeQueryForms(query); if(!forms.length)return [];
     for(const q of forms){ const alias=state.runtime?.aliases?.[q]; if(alias?.themeIds?.length)return alias.themeIds.map(id=>state.themeById.get(id)).filter(Boolean); }
@@ -142,6 +146,16 @@
         publishPresentationState({kind:'dual-theme',themes:[{id:resolvedA[0].id,label:resolvedA[0].label},{id:resolvedB[0].id,label:resolvedB[0].label}],psalmCount:items.length});
         return render(items,[resolvedA[0],resolvedB[0]],{dualTheme:true});
       }
+      const documentaryEntry=resolveDocumentaryEntry(query);
+      if(documentaryEntry){
+        const target=state.themeById.get(documentaryEntry.themeTarget?.themeId);
+        if(target){
+          hideAmbiguity(); showTransverseNavigation(target);
+          const thematic=thematicItems([target]);
+          publishPresentationState({kind:'documentary-entry',entryId:documentaryEntry.entryId,theme:{id:target.id,label:target.label},psalmCount:thematic.length});
+          return render(thematic,[target],{documentaryEntry});
+        }
+      }
       const resolved=resolveIndexedThemes(query);
       if(resolved.length){
         showSingleThemeAmbiguity(resolved); const thematic=thematicItems(resolved), textual=textualPsalmMatches(query);
@@ -162,13 +176,28 @@
   function bindThemeLinks(root=document){ root.querySelectorAll('[data-related-theme]').forEach(b=>b.onclick=()=>navigateToTheme(state.themeById.get(b.dataset.relatedTheme))); }
   function dualThemeReasons(r, themeMatches){ return `<div class="theme-reasons">${themeMatches.map(({theme,thematic})=>`<section class="theme-reason"><div class="theme-reason-head"><strong>${esc(theme.label)}</strong><span class="score">${esc(importanceLabel(thematic.importance))}</span></div><p class="result-summary">${highlighted(thematic.teaching||'')}</p>${contextualVerses(r,thematic)}</section>`).join('')}</div>`; }
 
+  function documentaryHighlighted(value,entry){ const forms=new Set((entry?.forms||[]).map(norm)); return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>forms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join(''); }
+  function documentaryOtherRecords(entry,thematicIds){ if(!entry||!selectedTypes().has('psalm'))return[]; const a=$('archangelFilter').value; return (entry.records||[]).filter(o=>(!a||o.archangel===a)&&!thematicIds.has(o.recordId)).map(occurrence=>({occurrence,record:state.recordById.get(occurrence.recordId)})).filter(x=>x.record?.recordType==='psalm'); }
+  function documentaryOtherSection(entry,thematicIds){
+    if(!entry)return'';
+    const others=documentaryOtherRecords(entry,thematicIds);
+    const cards=others.map(({record:r,occurrence:o})=>{
+      const wanted=new Set((o.occurrences||[]).map(v=>Number(v.verseNumber)));
+      const passages=(r.verses||[]).filter(v=>wanted.has(Number(v.number))).slice(0,4);
+      const passageBlock=passages.length?`<div class="theme-context exact-context"><div class="context-label">Versets concernés${o.verseCount>passages.length?` · ${o.verseCount} versets au total`:''}</div>${passages.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${documentaryHighlighted(v.text,entry)}</span></div>`).join('')}</div>`:'';
+      const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'Corpus structuré';
+      return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${esc(r.title||'')}</h3></div><strong class="score">${o.occurrenceCount} occurrence${o.occurrenceCount>1?'s':''}</strong></div><div class="result-meta">${esc(bookMeta)} · ${o.verseCount} verset${o.verseCount>1?'s':''} concerné${o.verseCount>1?'s':''}</div>${passageBlock}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">Voir le psaume source</button></div></article>`;
+    }).join('');
+    return `<section class="documentary-section documentary-other"><div class="search-scope-note"><div><strong>AUTRES OCCURRENCES DANS LE CORPUS</strong><span>${others.length} psaume${others.length>1?'s':''} contenant ${esc(entry.label)} sans relation thématique générale affichée ci-dessus · classé par fréquence du terme dans le texte.</span></div></div>${cards||'<div class="empty">Aucune autre occurrence lexicale avec les filtres sélectionnés.</div>'}</section>`;
+  }
+
   function render(items,indexedThemes=null,companion=null){
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
     $('resultCount').textContent=companion?.dualPending?'Intersection en attente':companion?.dualTheme?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous les deux thèmes`:companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:companion?.textualFallback?`${items.length} occurrence${items.length>1?'s':''} du terme dans le corpus`:`${items.length} résultat${items.length>1?'s':''}`;
-    const textualNotice=!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>THÈME INDEXÉ</strong><span>Deux lectures de cette recherche : ${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous ce thème · le mot ou l’expression apparaît dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.</span></div><button class="secondary" data-show-text-search>Voir les occurrences textuelles</button></div>`:'';
+    const textualNotice=!companion?.documentaryEntry&&!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>THÈME INDEXÉ</strong><span>Deux lectures de cette recherche : ${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous ce thème · le mot ou l’expression apparaît dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.</span></div><button class="secondary" data-show-text-search>Voir les occurrences textuelles</button></div>`:'';
     const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><div><strong>${companion.textualFallback&&items.length?'OCCURRENCE DU TERME DANS LE CORPUS':'Aucun thème indexé ne correspond à cette recherche'}</strong><span>${companion.textualFallback&&items.length?`Aucun thème canonique ne correspond à cette recherche. ${items.length} psaume${items.length>1?'s':''} ${items.length>1?'contiennent':'contient'} néanmoins exactement le mot ou l’expression recherchée. Ces occurrences ne constituent pas un thème.`:'Aucune occurrence textuelle exacte ne correspond non plus avec les filtres sélectionnés.'}</span></div></div>`:'';
     if(!items.length){ const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; $('results').innerHTML=emptyNumber||dualEmpty||pending||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return; }
-    $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches})=>{
+    const documentaryIds=new Set(items.map(({record})=>record.id)); const documentaryIntro=companion?.documentaryEntry?`<section class="documentary-section documentary-teachings"><div class="search-scope-note"><div><strong>ENSEIGNEMENTS SUR CE SUJET</strong><span>Psaumes réellement indexés sous le thème canonique ${esc(themeLabels[0]||companion.documentaryEntry.label)} · classés Central, Important, puis Lié.</span></div></div></section>`:''; $('results').innerHTML=unresolvedNotice+textualNotice+documentaryIntro+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches})=>{
       const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'';
       const meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:bookMeta||'Corpus structuré';
       const related=(thematic||themeMatches)?relatedThemes(r,matchedThemes):[]; const textualThemes=!thematic&&!themeMatches&&companion?.textualFallback?(state.themesByRecord.get(r.id)||[]):[];
@@ -179,7 +208,7 @@
       const dualBody=themeMatches?dualThemeReasons(r,themeMatches):'';
       const fallbackBody=!thematic&&!themeMatches?`<p class="result-summary">${highlighted(summary(r))}</p>${exactBlock}`:'';
       return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${highlighted(r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'))}</h3></div><strong class="score">${esc(status)}</strong></div><div class="result-meta">${esc(bookMeta||meta)}</div>${dualBody||singleThemeBody||fallbackBody}${relatedBlock}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">${thematic||themeMatches?'Voir le psaume source':'Voir'}</button></div></article>`;
-    }).join('');
+    }).join('')+(companion?.documentaryEntry?documentaryOtherSection(companion.documentaryEntry,documentaryIds):'');
     document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>open(b.dataset.open)); bindThemeLinks($('results')); bindTextSearchLink();
   }
   function bindTextSearchLink(){ const button=document.querySelector('[data-show-text-search]'); if(button)button.onclick=()=>{ $('secondaryTools').open=true; activateExactMode(); search(); window.scrollTo({top:$('results').offsetTop-90,behavior:'smooth'}); }; }
