@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "status": "experimental-progressive-disclosure-audit",
+  "scope": {"bookNumber":44,"baseCommit":"1fc6f96504b8121b1598767787ff47a5bd9857ec","family":"responsabilité","relationNature":"DIRECT","attachmentCount":12},
+  "purpose": "Comparer D0, D1a et D1b en ne faisant varier que la quantité d'information simultanément développée. ATTACHED-only demeure la référence documentaire; aucun regroupement, tri ou nouvel étage.",
+  "variants": {
+    "D0":"12 cartes complètes: localSubject + fonction + rationale + versets + evidence + documentaryNote + provenance visibles.",
+    "D1a":"12 cartes sœurs compactes: psaume/localId + localSubject + fonction visibles; rationale + versets + evidence + documentaryNote + provenance dans le détail individuel.",
+    "D1b":"12 cartes sœurs compactes: psaume/localId + localSubject + fonction + rationale visibles; versets + evidence + documentaryNote + provenance dans le détail individuel."
+  },
+  "criteria":["COMPACT-SUFFICIENT","RATIONALE-NEEDED","COMPACTION-FAIL"],
+  "auditTupleFields":["recordId","localId","function","D1a","D1b","minimumBeforeOpen","loss"],
+  "audits":[
+    ["book-44-psalm-262","subject-003","incarner paroles et engagements","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-264","subject-004","réalisation collective confiée","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-265","subject-004","responsabilité des choix et de leurs retours","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-273","subject-005","responsabilité des choix et de leurs retours","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-266","subject-003","discernement préalable à la création","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-271","subject-001","porter le changement jusqu’au bout","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-271","subject-005","responsabilité envers les générations futures","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-276","subject-003","responsabilité créatrice envers la Lumière","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-279","subject-003","libération responsable de l’argent","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-281","subject-001","parenté comme engagement durable","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-283","subject-003","responsabilité du créateur envers l’autonomie de l’œuvre","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null],
+    ["book-44-psalm-285","subject-002","responsabilité envers les êtres accompagnants","COMPACT-SUFFICIENT","COMPACT-SUFFICIENT","localSubject + fonction",null]
+  ],
+  "counts":{"audited":12,"D1a":{"COMPACT-SUFFICIENT":12,"RATIONALE-NEEDED":0,"COMPACTION-FAIL":0},"D1b":{"COMPACT-SUFFICIENT":12,"RATIONALE-NEEDED":0,"COMPACTION-FAIL":0}},
+  "hardCases": {
+    "sharedFunctionChoicesReturns":"265/004 et 273/005 restent distinguables avant ouverture: leurs localSubjects exposent respectivement causalité de retour et choix des mondes/associations; la fonction commune n'efface pas cette différence.",
+    "discernment":"266/003 nomme déjà discernement, source, responsabilité préalable et choix entre deux destinées de création; rationale non nécessaire avant ouverture.",
+    "futureGenerations":"271/005 nomme explicitement responsabilité, futur collectif et générations; rationale non nécessaire avant ouverture.",
+    "fourCloseFunctions":"271/001, 276/003, 281/001 et 283/003 restent quatre matières distinctes avant ouverture parce que leurs localSubjects portent respectivement changement/portage, incarnation durable de la Lumière, parenté/soin de l’œuvre confiée, et autonomisation de l’œuvre.",
+    "multiAttached":"266/003, 271/001, 279/003, 281/001 et 283/003 sont aussi rattachés à une autre famille dans le pilote. Sous responsabilité, leur fonction attachée explicite l'angle responsabilité avant ouverture; aucune rationale n'est requise pour distinguer cet angle."
+  },
+  "orderControl":[
+    ["book-44-psalm-262","subject-003"],["book-44-psalm-264","subject-004"],["book-44-psalm-265","subject-004"],["book-44-psalm-273","subject-005"],["book-44-psalm-266","subject-003"],["book-44-psalm-271","subject-001"],["book-44-psalm-271","subject-005"],["book-44-psalm-276","subject-003"],["book-44-psalm-279","subject-003"],["book-44-psalm-281","subject-001"],["book-44-psalm-283","subject-003"],["book-44-psalm-285","subject-002"]
+  ],
+  "conclusion":"D1a suffit informationnellement sur les 12 rattachements: localSubject exact + fonction attachée permettent d'identifier la matière, comprendre son angle sous responsabilité et décider d'ouvrir le détail. D1b reste valide mais n'est pas minimal sur ce corpus. Aucun cas n'oblige à ouvrir toutes les cartes pour comprendre la liste.",
+  "browserObservation":"Non exercé dans un navigateur graphique dans cet audit; aucune conclusion sur hauteur, scroll, vitesse, confort ou densité visuelle.",
+  "nextRecommendation":"Si ce résultat est validé, tester ensuite la même frontière compacte D1a sur les autres compartiments denses du pilote, sans filtre ni réordonnancement, avant toute généralisation au-delà du livre 44."
+}
