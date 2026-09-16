@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "status": "experimental-function-granularity-audit",
+  "scope": {"bookNumber": 44, "baseCommit": "ec6cbade7d9a4aaa312d71d0e46222f4a6979c3e"},
+  "purpose": "Audit ergonomique des fonctions existantes comme intertitres de navigation; aucune modification de C.",
+  "method": "Lecture de la structure réellement rendue par navigation-c.html: famille -> nature -> fonction -> membres. Les appréciations sont des observations produit temporaires, pas une taxonomie documentaire.",
+  "renderedFunctionCounts": {
+    "argent": {"DIRECT":4,"FONCTIONNEL":2,"DIRECT_multiSubject":2,"DIRECT_singleton":2,"FONCTIONNEL_multiSubject":0,"FONCTIONNEL_singleton":2},
+    "œuvre": {"DIRECT":5,"FONCTIONNEL":5,"DIRECT_multiSubject":2,"DIRECT_singleton":3,"FONCTIONNEL_multiSubject":1,"FONCTIONNEL_singleton":4},
+    "vie intérieure": {"DIRECT":5,"FONCTIONNEL":3,"DIRECT_multiSubject":1,"DIRECT_singleton":4,"FONCTIONNEL_multiSubject":0,"FONCTIONNEL_singleton":3},
+    "vertus": {"DIRECT":7,"FONCTIONNEL":2,"DIRECT_multiSubject":0,"DIRECT_singleton":7,"FONCTIONNEL_multiSubject":0,"FONCTIONNEL_singleton":2},
+    "responsabilité": {"DIRECT":11,"FONCTIONNEL":3,"DIRECT_multiSubject":1,"DIRECT_singleton":10,"FONCTIONNEL_multiSubject":0,"FONCTIONNEL_singleton":3},
+    "terre": {"DIRECT":6,"FONCTIONNEL":2,"DIRECT_multiSubject":0,"DIRECT_singleton":6,"FONCTIONNEL_multiSubject":1,"FONCTIONNEL_singleton":1}
+  },
+  "priorityObservations": [
+    {"family":"argent","relationNature":"DIRECT","function":"emprise et dénaturation","observation":"strong-intertitle","reason":"Deux sujets; distingue nettement l'argent comme mécanisme d'asservissement de l'argent comme force créatrice."},
+    {"family":"argent","relationNature":"DIRECT","function":"force ou moyen créateur","observation":"strong-intertitle","reason":"Trois sujets; fournit un tronc commun intelligible avant lecture des sujets."},
+    {"family":"argent","relationNature":"DIRECT","function":"libération et réorientation","observation":"useful-singleton","reason":"Singleton mais opération autonome; la retirer masque la distinction entre nature de l'argent et action de le libérer."},
+    {"family":"argent","relationNature":"DIRECT","function":"argent et paix comme état d’être","observation":"useful-singleton","reason":"Distingue un état intérieur d'une force ou d'une opération économique."},
+    {"family":"argent","relationNature":"FONCTIONNEL","function":"circulation entravée par la peur","observation":"explanation-may-suffice","reason":"Le compartiment FONCTIONNEL explique déjà que la matière principale est autre; l'intertitre singleton répète presque le mécanisme du sujet."},
+    {"family":"argent","relationNature":"FONCTIONNEL","function":"source intérieure de l’argent authentique","observation":"explanation-may-suffice","reason":"Très explicatif mais singleton; utile comme raison de rattachement, moins clairement comme catégorie de navigation."},
+
+    {"family":"œuvre","relationNature":"DIRECT","function":"œuvre durable en alliance avec Dieu","observation":"strong-intertitle","reason":"Deux sujets; contraste documentaire fort avec l'œuvre stérile."},
+    {"family":"œuvre","relationNature":"DIRECT","function":"œuvre stérile ou sans finalité supérieure","observation":"strong-intertitle","reason":"Deux sujets; son retrait efface une opposition structurante sur la finalité de l'œuvre."},
+    {"family":"œuvre","relationNature":"DIRECT","function":"discernement de la source de l’œuvre","observation":"useful-singleton","reason":"Singleton mais phase causale préalable autonome; ne se réduit pas à l'accomplissement de l'œuvre."},
+    {"family":"œuvre","relationNature":"DIRECT","function":"portage, achèvement et autonomie de l’œuvre","observation":"strong-intertitle","reason":"Même si un seul membre est DIRECT dans ce compartiment, la fonction marque la causalité de conduite jusqu'à l'autonomie."},
+    {"family":"œuvre","relationNature":"DIRECT","function":"œuvre collective ou institutionnelle","observation":"useful-singleton","reason":"Le caractère collectif/institutionnel change l'agent documentaire de l'œuvre."},
+    {"family":"œuvre","relationNature":"FONCTIONNEL","function":"réalisation concrète de l’œuvre","observation":"explanation-may-suffice","reason":"Singleton fonctionnel; proche d'une explication précise du rattachement plutôt que d'une catégorie réutilisée."},
+    {"family":"œuvre","relationNature":"FONCTIONNEL","function":"portage, achèvement et autonomie de l’œuvre","observation":"useful-singleton","reason":"La fonction explique immédiatement pourquoi une matière de responsabilité apparaît sous œuvre."},
+    {"family":"œuvre","relationNature":"FONCTIONNEL","function":"œuvre collective ou institutionnelle","observation":"explanation-may-suffice","reason":"Singleton dans FONCTIONNEL; le niveau nature + sujet pourrait porter l'essentiel sans intertitre supplémentaire."},
+    {"family":"œuvre","relationNature":"FONCTIONNEL","function":"responsabilité de protection ou de soin de l’œuvre","observation":"strong-intertitle","reason":"Deux sujets; donne un tronc commun réel à deux matières fonctionnellement reliées à l'œuvre."},
+    {"family":"œuvre","relationNature":"FONCTIONNEL","function":"noblesse créatrice de l’œuvre","observation":"explanation-may-suffice","reason":"Singleton; formulation très proche du mécanisme précis du sujet de noblesse intérieure."},
+
+    {"family":"responsabilité","relationNature":"DIRECT","function":"incarner paroles et engagements","observation":"useful-singleton","reason":"Autonomie claire: responsabilité de rendre vrai ce qui est affirmé ou reçu."},
+    {"family":"responsabilité","relationNature":"DIRECT","function":"réalisation collective confiée","observation":"grouping-test-candidate","reason":"Proche de plusieurs fonctions de portage durable; distinction documentaire réelle mais intertitre produit potentiellement trop spécifique à l'objet."},
+    {"family":"responsabilité","relationNature":"DIRECT","function":"responsabilité des choix et de leurs retours","observation":"strong-intertitle","reason":"Deux sujets; tronc causal commun choix -> conséquences/destinée."},
+    {"family":"responsabilité","relationNature":"DIRECT","function":"discernement préalable à la création","observation":"strong-intertitle","reason":"Distingue nettement la responsabilité avant l'acte de la responsabilité de portage après décision."},
+    {"family":"responsabilité","relationNature":"DIRECT","function":"porter le changement jusqu’au bout","observation":"grouping-test-candidate","reason":"Autonome, mais voisin ergonomique de parenté durable et autonomie de l'œuvre par la logique de portage jusqu'à accomplissement."},
+    {"family":"responsabilité","relationNature":"DIRECT","function":"responsabilité envers les générations futures","observation":"strong-intertitle","reason":"La destination temporelle vers les générations futures est une distinction qui disparaîtrait sans l'intertitre."},
+    {"family":"responsabilité","relationNature":"DIRECT","function":"responsabilité créatrice envers la Lumière","observation":"grouping-test-candidate","reason":"Juste documentairement, mais l'objet Lumière rend le libellé proche d'un résumé de sujet; voisin d'autres responsabilités de portage."},
+    {"family":"responsabilité","relationNature":"DIRECT","function":"libération responsable de l’argent","observation":"useful-singleton","reason":"La responsabilité opératoire envers l'argent est distincte des choix ou du portage d'une œuvre."},
+    {"family":"responsabilité","relationNature":"DIRECT","function":"parenté comme engagement durable","observation":"grouping-test-candidate","reason":"Autonome dans le psaume mais proche, au niveau interface, des fonctions de portage et d'engagement durable."},
+    {"family":"responsabilité","relationNature":"DIRECT","function":"responsabilité du créateur envers l’autonomie de l’œuvre","observation":"grouping-test-candidate","reason":"Distinction causale importante; le libellé est toutefois très précis et voisin du portage jusqu'au bout."},
+    {"family":"responsabilité","relationNature":"DIRECT","function":"responsabilité envers les êtres accompagnants","observation":"useful-singleton","reason":"Objet causal distinct: conséquences envers une multitude d'êtres et mondes accompagnants."},
+    {"family":"responsabilité","relationNature":"FONCTIONNEL","function":"discernement préalable à la création","observation":"explanation-may-suffice","reason":"Singleton fonctionnel; la nature FONCTIONNEL + le sujet primaire rendent déjà le lien intelligible."},
+    {"family":"responsabilité","relationNature":"FONCTIONNEL","function":"portage collectif d’un monde nouveau","observation":"explanation-may-suffice","reason":"Singleton; catégorie exacte mais fortement spécifique à un seul sujet."},
+    {"family":"responsabilité","relationNature":"FONCTIONNEL","function":"protection responsable de l’œuvre","observation":"explanation-may-suffice","reason":"Singleton; fonctionne mieux comme explication du lien fonctionnel que comme niveau de navigation autonome."}
+  ],
+  "counterExamples": [
+    {"family":"vie intérieure","finding":"Les trois fonctions FONCTIONNELLES sont toutes singleton et décrivent chacune un mécanisme distinct (moyens extérieurs, regard, milieu); cela renforce l'hypothèse que FONCTIONNEL peut souvent se lire sans intertitre permanent, tout en conservant la fonction comme explication."},
+    {"family":"vertus","finding":"Les sept fonctions DIRECTES sont toutes singleton mais plusieurs restent substantiellement autonomes (fruits, signes, Anges, matériau, appartenance, discipline). Le singleton seul ne justifie donc aucune suppression."},
+    {"family":"terre","finding":"Les six fonctions DIRECTES sont singleton et pourtant différencient des statuts documentaires incompatibles à aplatir: miroir, lieu d'incarnation, milieu vivant, unité collective, relation homme-Terre, communication cosmique."}
+  ],
+  "proximityTestsWorthTryingLater": [
+    {"family":"responsabilité","functions":["porter le changement jusqu’au bout","responsabilité créatrice envers la Lumière","parenté comme engagement durable","responsabilité du créateur envers l’autonomie de l’œuvre"],"reason":"Même tronc ergonomique possible de portage/engagement durable, mais objets et causalités doivent rester visibles; test seulement, aucune fusion appliquée."},
+    {"family":"œuvre","functions":["portage, achèvement et autonomie de l’œuvre","responsabilité de protection ou de soin de l’œuvre"],"reason":"Proximité autour du soin durable de l'œuvre, sans identité documentaire démontrée; mérite seulement une variante de présentation."}
+  ],
+  "conclusion":"Le problème observé appartient principalement à la présentation, surtout dans FONCTIONNEL et dans la densité de responsabilité. Les fonctions restent documentaires; certaines sont de meilleurs intertitres, d'autres de meilleures explications attachées au résultat. Aucun changement de données n'est justifié par cet audit seul."
+}
