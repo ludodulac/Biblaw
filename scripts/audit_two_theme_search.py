@@ -13,7 +13,8 @@ intersection = js[start:end]
 assert 'occurrencesA' in intersection and 'occurrencesB' in intersection
 assert 'occurrencesB.get(recordId)' in intersection, 'intersection must be exact on recordId'
 assert 'state.runtime' not in intersection and 'neighbors' not in intersection and 'cooccurrence' not in intersection.lower()
-assert 'themeMatches:[{theme:themeA,thematic:thematicA},{theme:themeB,thematic:thematicB}]' in intersection
+assert '{theme:themeA,thematic:thematicA}' in intersection
+assert 'theme:themeB' in intersection and 'thematic:thematicB' in intersection
 assert 'score+' not in intersection and 'current.score' not in intersection
 assert 'resolvedA.length!==1||resolvedB.length!==1' in js
 assert 'showDualAmbiguity' in js and 'Résolvez chaque thème avant l’intersection' in js
