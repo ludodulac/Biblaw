@@ -49,6 +49,7 @@ assert "render(exactItems,null,{exactSearch:true})" in js
 assert '${highlighted(summary(r))}' in js and '${highlighted(v.text)}' in js
 assert "new Blob([activeText()]" in js and '<mark' not in js[js.index('function activeText()'):js.index('function renderThemeDirectory()')]
 assert '@media print' in css and '.search-hit{padding:0;border-radius:0;background:transparent;color:inherit}' in css
+assert 'importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number' in js
 
 
 def norm(value: str) -> str:
