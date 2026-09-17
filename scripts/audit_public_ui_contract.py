@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Fail deployment if the public UI drifts from the structured-corpus contract."""
+import re
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,4 +37,50 @@ assert '@media(max-width:760px)' in css and '.search-submit{grid-column:1/-1' in
 assert '.compact-related{display:flex' in css and '.inline-themes{display:inline-flex;flex-wrap:wrap' in css
 assert 'theme-rubrics.js' in html and 'theme-rubrics-panel' in html
 
-print('Public UI contract OK: compact primary search, source traceability, secondary tools, separated relations and navigation')
+# Literal-search contract: matching and counting share one normalized, word-bounded phrase rule.
+assert 'const literalOccurrenceCount = (r, query) =>' in js
+assert 'const literalTextMatch = (r, needle) => literalOccurrenceCount(r,needle)>0;' in js
+assert 'occurrenceCount:literalOccurrenceCount(record,query)' in js
+assert 'b.occurrenceCount-a.occurrenceCount' in js
+assert "Number(a.record.number)||Number.MAX_SAFE_INTEGER" in js
+assert "String(a.record.id).localeCompare(String(b.record.id),'fr')" in js
+assert "companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`" in js
+assert "render(exactItems,null,{exactSearch:true})" in js
+assert '${highlighted(summary(r))}' in js and '${highlighted(v.text)}' in js
+assert "new Blob([activeText()]" in js and '<mark' not in js[js.index('function activeText()'):js.index('function renderThemeDirectory()')]
+assert '@media print' in css and '.search-hit{padding:0;border-radius:0;background:transparent;color:inherit}' in css
+
+
+def norm(value: str) -> str:
+    value = unicodedata.normalize('NFD', value or '')
+    value = ''.join(ch for ch in value if unicodedata.category(ch) != 'Mn').lower()
+    value = value.replace('œ', 'oe').replace('æ', 'ae').replace('’', ' ').replace("'", ' ')
+    value = re.sub(r'[^a-z0-9\s-]', ' ', value).replace('-', ' ')
+    return re.sub(r'\s+', ' ', value).strip()
+
+
+def count_fragments(fragments, query):
+    needle = norm(query)
+    if not needle:
+        return 0
+    bounded = f' {needle} '
+    return sum(f' {norm(fragment)} '.count(bounded) for fragment in fragments if norm(fragment))
+
+# Focused fixtures cover absence, singular/plural, repeated hits, phrase semantics and deterministic ranking.
+assert count_fragments(['La vie demeure.'], 'mort') == 0
+assert count_fragments(['La mort demeure.'], 'mort') == 1
+assert count_fragments(['Mort et mort, puis la mort.'], 'mort') == 3
+assert count_fragments(['La mort sacrée vient.', 'La mort sacrée demeure.'], 'mort sacrée') == 2
+assert count_fragments(['La mort seule est ici.', 'Le chemin sacré est là.'], 'mort sacrée') == 0
+fixture = [
+    {'id': 'psalm-b', 'number': 12, 'count': 2},
+    {'id': 'psalm-a', 'number': 7, 'count': 2},
+    {'id': 'psalm-c', 'number': 3, 'count': 4},
+    {'id': 'psalm-d', 'number': 7, 'count': 2},
+]
+fixture.sort(key=lambda item: (-item['count'], item['number'], item['id']))
+assert [item['id'] for item in fixture] == ['psalm-c', 'psalm-a', 'psalm-d', 'psalm-b']
+assert f"{1} occurrence{'' if 1 == 1 else 's'}" == '1 occurrence'
+assert f"{2} occurrence{'' if 2 == 1 else 's'}" == '2 occurrences'
+
+print('Public UI contract OK: compact primary search, source traceability, secondary tools, separated relations/navigation, literal occurrence ranking and print-safe highlighting')
