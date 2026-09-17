@@ -10,7 +10,17 @@
   const type = r => r.recordType === 'master-prayer' ? 'prayer' : r.recordType;
   const textFragments = r => r.recordType === 'psalm' ? [r.title, ...(r.verses || []).map(v => v.text)].filter(Boolean) : [r.title, r.text, r.summary].filter(Boolean);
   const literalIncludes = (value, query) => { const needle=norm(query); if(!needle)return false; return ` ${norm(value)} `.includes(` ${needle} `); };
-  const literalTextMatch = (r, needle) => Boolean(needle) && (state.normalizedFragmentsById.get(r.id)||[]).some(fragment => ` ${fragment} `.includes(` ${needle} `));
+  const literalOccurrenceCount = (r, query) => {
+    const needle=norm(query); if(!needle)return 0;
+    const boundedNeedle=` ${needle} `;
+    // Count the same normalized, word-bounded literal phrase used to decide a match, fragment by fragment.
+    return (state.normalizedFragmentsById.get(r.id)||[]).reduce((total, fragment) => {
+      const haystack=` ${fragment} `; let count=0, from=0, index;
+      while((index=haystack.indexOf(boundedNeedle,from))!==-1){count++;from=index+boundedNeedle.length;}
+      return total+count;
+    },0);
+  };
+  const literalTextMatch = (r, needle) => literalOccurrenceCount(r,needle)>0;
   const parsePsalmNumberQuery = value => { const match=norm(value).match(/^(?:psaume\s+)?([0-9]{1,4})$/); if(!match)return null; const number=Number(match[1]); return Number.isInteger(number)&&number>0?number:null; };
   const selectedTypes = () => new Set([...document.querySelectorAll('[name=sourceType]:checked')].map(x => x.value));
   const archangelName = value => ({ michael: 'Michaël', gabriel: 'Gabriel', raphael: 'Raphaël', ouriel: 'Ouriel' }[value] || value || '');
@@ -55,7 +65,7 @@
     } catch (error) { console.error(error); $('results').innerHTML = '<div class="empty">Le corpus ne peut pas être chargé. Ouvrez Biblaw depuis son adresse web.</div>'; }
   }
 
-  function matches(query) { const allowed = selectedTypes(), a = $('archangelFilter').value, needle=norm(query); return state.records.filter(r => allowed.has(type(r)) && (!a || r.archangel === a) && literalTextMatch(r, needle)).map(record => ({ record, score: 1 })); }
+  function matches(query) { const allowed=selectedTypes(),a=$('archangelFilter').value; return state.records.filter(r=>allowed.has(type(r))&&(!a||r.archangel===a)).map(record=>({record,score:1,occurrenceCount:literalOccurrenceCount(record,query)})).filter(item=>item.occurrenceCount>0); }
   function psalmNumberMatches(number) { if(!selectedTypes().has('psalm'))return []; const a=$('archangelFilter').value; return (state.psalmsByNumber.get(number)||[]).filter(r=>!a||r.archangel===a).sort((x,y)=>(x.book?.number||9999)-(y.book?.number||9999)||String(x.id).localeCompare(String(y.id),'fr')).map(record=>({record,score:1,numberLookup:true})); }
   function textualPsalmMatches(query) { return matches(query).filter(x=>x.record.recordType==='psalm'); }
   function resolveIndexedThemes(query) {
@@ -88,7 +98,7 @@
     for (const [recordId, thematicA] of occurrencesA) {
       const thematicB=occurrencesB.get(recordId); if(!thematicB)continue;
       const record=state.recordById.get(recordId); if(!record||record.recordType!=='psalm')continue;
-      items.push({record, thematic:thematicA, matchedThemes:[{id:themeA.id,label:themeA.label,thematic:thematicA},{id:themeB.id,label:themeB.label,thematic:thematicB}], themeMatches:[{theme:themeA,thematic:thematicA},{theme:themeB,thematic:thematicB}]});
+      items.push({record, thematic:thematicA, matchedThemes:[{id:themeA.id,label:themeA.label,thematic:thematicA},{id:themeB.id,label:themeB.label,thematic:thematicB}], themeMatches:[{theme:themeA,thematic:thematicA},{theme:themeB,label:themeB.label,thematic:thematicB}]});
     }
     return items.sort((x,y)=>importanceRank(x.themeMatches[0].thematic.importance)-importanceRank(y.themeMatches[0].thematic.importance)||(y.themeMatches[0].thematic.score||0)-(x.themeMatches[0].thematic.score||0)||x.record.number-y.record.number||String(x.record.id).localeCompare(String(y.record.id),'fr'));
   }
@@ -151,7 +161,9 @@
       }
       hideAmbiguity();hideTransverseNavigation(); const textual=textualPsalmMatches(query); publishPresentationState({kind:textual.length?'textual-fallback':'no-result'}); return render(textual,[],{textualCount:textual.length,unresolvedTheme:true,textualFallback:true});
     }
-    hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'other'});render(matches(query).sort((a,b)=>b.score-a.score));
+    hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'other'});
+    const exactItems=matches(query).sort((a,b)=>b.occurrenceCount-a.occurrenceCount||(Number(a.record.number)||Number.MAX_SAFE_INTEGER)-(Number(b.record.number)||Number.MAX_SAFE_INTEGER)||String(a.record.id).localeCompare(String(b.record.id),'fr'));
+    render(exactItems,null,{exactSearch:true});
   }
 
   function summary(r){return r.recordType==='psalm'?(r.verses||[]).slice(0,2).map(v=>v.text).join(' '):r.summary||(r.text||'').slice(0,280);}
@@ -168,13 +180,13 @@
     const textualNotice=!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>THÈME INDEXÉ</strong><span>Deux lectures de cette recherche : ${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous ce thème · le mot ou l’expression apparaît dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.</span></div><button class="secondary" data-show-text-search>Voir les occurrences textuelles</button></div>`:'';
     const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><div><strong>${companion.textualFallback&&items.length?'OCCURRENCE DU TERME DANS LE CORPUS':'Aucun thème indexé ne correspond à cette recherche'}</strong><span>${companion.textualFallback&&items.length?`Aucun thème canonique ne correspond à cette recherche. ${items.length} psaume${items.length>1?'s':''} ${items.length>1?'contiennent':'contient'} néanmoins exactement le mot ou l’expression recherchée. Ces occurrences ne constituent pas un thème.`:'Aucune occurrence textuelle exacte ne correspond non plus avec les filtres sélectionnés.'}</span></div></div>`:'';
     if(!items.length){ const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; $('results').innerHTML=emptyNumber||dualEmpty||pending||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return; }
-    $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches})=>{
+    $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount})=>{
       const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'';
       const meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:bookMeta||'Corpus structuré';
       const related=(thematic||themeMatches)?relatedThemes(r,matchedThemes):[]; const textualThemes=!thematic&&!themeMatches&&companion?.textualFallback?(state.themesByRecord.get(r.id)||[]):[];
       const relatedBlock=(thematic||themeMatches)?`<div class="related-themes compact-related"><span class="related-label">Autres thèmes dans ce psaume :</span> ${themeTags(related)}</div>`:textualThemes.length?`<div class="related-themes compact-related"><span class="related-label">Thèmes canoniques indexés dans ce psaume :</span> ${themeTags(textualThemes)}</div>`:'';
       const exactBlock=!thematic&&!themeMatches&&!numberLookup?exactVerses(r):'';
-      const status=themeMatches?'Deux thèmes':thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
+      const status=companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`:themeMatches?'Deux thèmes':thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
       const singleThemeBody=thematic&&!themeMatches?`<div class="context-label theme-found">THÈME INDEXÉ · ${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div><p class="result-summary">${highlighted(thematic.teaching||summary(r))}</p>${contextualVerses(r,thematic)}`:'';
       const dualBody=themeMatches?dualThemeReasons(r,themeMatches):'';
       const fallbackBody=!thematic&&!themeMatches?`<p class="result-summary">${highlighted(summary(r))}</p>${exactBlock}`:'';
