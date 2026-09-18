@@ -61,7 +61,7 @@ jobs:
           for value in ('prayer','note','annex'): assert f'value="{value}" checked' not in html
           for needle in ('themesByRecord','function contextualVerses','Passage concerné','Autres thèmes dans ce psaume','Thèmes présents dans ce psaume','dialog-themes','data-related-theme','classés Central, Important, puis Lié','const importanceRank','function exactVerses','const highlighted','const textFragments','const literalIncludes','const literalTextMatch','const stripLeadingArticle','const themeQueryForms','const activateThemeMode','function navigateToTheme(theme)','unresolvedTheme:true','Aucun thème indexé ne correspond à cette recherche','function textualPsalmMatches','Deux lectures de cette recherche','data-show-text-search','function resolveIndexedThemes(query)','if(resolvedThemes.length<=1){hideAmbiguity();return;}','alias?.themeIds?.length','const parsePsalmNumberQuery','function psalmNumberMatches(number)'):
               assert needle in js, needle
-          assert '.theme-context' in css and '.related-themes' in css and '.search-hit' in css
+          assert '.theme-context' in css and '.compact-related' in css and '.search-hit' in css
           assert "{ central: 0, important: 1, related: 2 }" in js
           assert 'importanceRank(a.importance)-importanceRank(b.importance)' in js
           assert 'importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)' in js
