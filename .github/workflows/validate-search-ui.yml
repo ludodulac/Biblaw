@@ -70,8 +70,8 @@ jobs:
           assert 'literalIncludes(v.text,query)' in js and '...(r.conceptIds || [])' not in js and 'terms.filter' not in js
           assert "['l','le','la','les','un','une','des']" in js and 'for(const q of forms)' in js
           assert "const activateExactMode = () =>" in js and "$('modeExact').onclick=()=>{activateExactMode();search();}" in js
-          assert 'theme.occurrenceCount||theme.occurrences?.length||0' in js and 'thème ${theme.id}' in js
-          assert "navigateToTheme(state.themeById.get(btn.dataset.themeId))" in js
+          assert 'theme.occurrenceCount||theme.occurrences?.length||0' in js and "theme.id?` · ${esc(theme.id)}`:''" in js
+          assert "const theme=state.themeById.get(btn.dataset.themeId);if(!theme)return;$('query').value=theme.label;search();" in js
           assert "navigateToTheme(state.themeById.get(b.dataset.relatedTheme))" in js
           assert 'closeIndex();navigateToTheme(t)' in js
           def norm(value):
