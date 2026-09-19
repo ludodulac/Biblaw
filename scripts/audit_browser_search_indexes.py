@@ -18,7 +18,7 @@ required = (
     'state.recordById.get(id)',
     "const allowed=selectedTypes(),a=$('archangelFilter').value;",
     'occurrenceCount:literalOccurrenceCount(record,query)',
-    'literalTextMatch(r, needle)',
+    ').filter(item=>item.occurrenceCount>0);',
 )
 for needle in required:
     assert needle in JS, f'missing prebuilt browser index contract: {needle}'
