@@ -106,7 +106,8 @@ def main() -> None:
     assert "publishPresentationState" in browser_js
     assert "new CustomEvent('biblaw:presentation-state'" in browser_js
     assert "kind:'canonical-theme'" in browser_js
-    assert "theme:{id:resolved[0].id,label:resolved[0].label}" in browser_js
+    assert "theme:{id:theme.id,label:theme.label}" in browser_js
+    assert "theme:{id:selected.id,label:selected.label}" in browser_js
     assert "kind:'ambiguous-themes'" in browser_js
     assert "kind:textual.length?'textual-fallback':'no-result'" in browser_js
     assert "publishPresentationState({kind:'no-result'})" in browser_js
