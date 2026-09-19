@@ -16,7 +16,8 @@ required = (
     'state.psalmsByNumber.get(number)||[]',
     'state.recordById.get(o.recordId)',
     'state.recordById.get(id)',
-    'const allowed = selectedTypes(), a = $(\'archangelFilter\').value, needle=norm(query)',
+    "const allowed=selectedTypes(),a=$('archangelFilter').value;",
+    'occurrenceCount:literalOccurrenceCount(record,query)',
     'literalTextMatch(r, needle)',
 )
 for needle in required:
