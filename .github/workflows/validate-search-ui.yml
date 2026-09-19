@@ -69,7 +69,7 @@ jobs:
           assert 't.occurrenceCount' in js and 't.score' in js and 't.psalmCount' not in js and 't.totalScore' not in js
           assert 'literalIncludes(v.text,query)' in js and '...(r.conceptIds || [])' not in js and 'terms.filter' not in js
           assert "['l','le','la','les','un','une','des']" in js and 'for(const q of forms)' in js
-          assert "$('modeExact').click()" in js
+          assert "const activateExactMode = () =>" in js and "$('modeExact').onclick=()=>{activateExactMode();search();}" in js
           assert 'theme.occurrenceCount||theme.occurrences?.length||0' in js and 'thème ${theme.id}' in js
           assert "navigateToTheme(state.themeById.get(btn.dataset.themeId))" in js
           assert "navigateToTheme(state.themeById.get(b.dataset.relatedTheme))" in js
