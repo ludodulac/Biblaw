@@ -92,6 +92,55 @@ jobs:
           psalms=[r for r in bundle['records'] if r.get('recordType')=='psalm']
           assert len(psalms)==1158
           PY
+      - name: Check thematic theme suggestions
+        run: |
+          python - <<'PY'
+          import json, re, unicodedata
+          from pathlib import Path
+          directory=json.loads(Path('data/thematic-index/theme-directory-public.json').read_text(encoding='utf-8'))
+          runtime=json.loads(Path('data/thematic-index/theme-search-runtime.json').read_text(encoding='utf-8'))
+          js=Path('js/biblaw.js').read_text(encoding='utf-8')
+          themes=directory['themes']; by_id={t['id']:t for t in themes}
+          def norm(value):
+              value=''.join(c for c in unicodedata.normalize('NFD',str(value or '')) if unicodedata.category(c)!='Mn').lower().replace('œ','oe').replace('æ','ae').replace('’',' ').replace("'",' ')
+              return re.sub(r'\\s+',' ',re.sub(r'[^a-z0-9\\s-]',' ',value).replace('-',' ')).strip()
+          def resolve(query):
+              q=norm(query); parts=q.split(); stripped=' '.join(parts[1:]) if len(parts)>1 and parts[0] in {'l','le','la','les','un','une','des'} else q; forms=list(dict.fromkeys(x for x in (q,stripped) if x))
+              for form in forms:
+                  entry=runtime.get('aliases',{}).get(form)
+                  if entry and entry.get('themeIds'): return [by_id[x] for x in entry['themeIds'] if x in by_id]
+              for form in forms:
+                  exact=[t for t in themes if form in (norm(t['label']),norm(t['id']))]
+                  if exact:return exact
+              return []
+          def suggest(query):
+              terms=norm(query).split(); exact={t['id'] for t in resolve(query)}; found={}
+              def consider(theme,source,text):
+                  words=set(norm(text).split())
+                  if not terms or not all(term in words for term in terms):return
+                  rank=0 if theme['id'] in exact else 1 if source=='label' else 2
+                  if theme['id'] not in found or rank<found[theme['id']][0]:found[theme['id']]=(rank,theme)
+              for theme in themes:consider(theme,'label',theme['label'])
+              for alias,entry in runtime.get('aliases',{}).items():
+                  for theme_id in entry.get('themeIds',[]):
+                      if theme_id in by_id:consider(by_id[theme_id],'alias',alias)
+              return [x[1] for x in sorted(found.values(),key=lambda x:(x[0],x[1]['label'],x[1]['id']))]
+          mort=suggest('mort')
+          assert [t['label'] for t in mort]==['Mort','La mort ne résout pas le non-accompli','Préparer la mort en vivant','Vie après la mort comme continuité','Vie et mort']
+          assert mort[0]['id']=='mort' and len({t['id'] for t in mort})==len(mort)
+          assert not any(t['id']=='immortalite' for t in mort)
+          vie_mort=suggest('vie mort')
+          assert vie_mort and all({'vie','mort'} <= set(norm(t['label']).split()) or any(t['id'] in e.get('themeIds',[]) and {'vie','mort'} <= set(norm(a).split()) for a,e in runtime['aliases'].items()) for t in vie_mort)
+          ambiguous=next((a for a,e in runtime['aliases'].items() if e.get('ambiguous') and len(e.get('themeIds',[]))>1),None)
+          assert ambiguous and len(resolve(ambiguous))>1
+          single=next((t['label'] for t in themes if len(suggest(t['label']))==1),None)
+          assert single and len(suggest(single))==1
+          assert "if(state.mode==='themes')" in js and "const suggestions=suggestIndexedThemes(query);" in js
+          assert "const exactItems=matches(query)" in js
+          assert "btn.onclick=()=>navigateToTheme(state.themeById.get(btn.dataset.themeId))" in js
+          assert "terms.every(term=>words.has(term))" in js
+          print('Theme suggestions OK:', [t['label'] for t in mort], 'vie mort:', [t['label'] for t in vie_mort])
+          PY
       - name: Check thematic runtime and quality contract
         run: |
           python - <<'PY'

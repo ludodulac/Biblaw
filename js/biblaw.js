@@ -74,6 +74,14 @@
     for(const q of forms){ const exact=state.themeDirectory.filter(t=>q===norm(t.label)||q===norm(t.id)); if(exact.length)return exact; }
     return [];
   }
+  function suggestIndexedThemes(query) {
+    const terms=norm(query).split(' ').filter(Boolean); if(!terms.length)return [];
+    const exactIds=new Set(resolveIndexedThemes(query).map(theme=>theme.id)), candidates=new Map();
+    const consider=(theme,source,text)=>{ if(!theme)return; const words=new Set(norm(text).split(' ').filter(Boolean)); if(!terms.every(term=>words.has(term)))return; const rank=exactIds.has(theme.id)?0:source==='label'?1:2,current=candidates.get(theme.id); if(!current||rank<current.rank)candidates.set(theme.id,{theme,rank}); };
+    for(const theme of state.themeDirectory)consider(theme,'label',theme.label);
+    for(const [alias,entry] of Object.entries(state.runtime?.aliases||{}))for(const id of entry.themeIds||[])consider(state.themeById.get(id),'alias',alias);
+    return [...candidates.values()].sort((a,b)=>a.rank-b.rank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')).map(item=>item.theme);
+  }
   function thematicItems(themes) {
     if (!selectedTypes().has('psalm')) return [];
     const a=$('archangelFilter').value,merged=new Map();
@@ -122,6 +130,13 @@
     $('senseChoices').querySelectorAll('[data-ambiguity-target]').forEach(btn=>btn.onclick=()=>{const theme=state.themeById.get(btn.dataset.themeId);if(!theme)return;$('query').value=theme.label;search();});
     $('ambiguityPanel').hidden=false;
   }
+  function showThemeSuggestions(themes) {
+    state.resolvedThemes=themes;
+    $('suggestionKicker').textContent='Thèmes proposés'; $('suggestionTitle').textContent='Choisissez le thème recherché';
+    $('senseChoices').innerHTML=themes.map(theme=>ambiguityChoice(theme,'query')).join('');
+    $('senseChoices').querySelectorAll('[data-ambiguity-target]').forEach(btn=>btn.onclick=()=>navigateToTheme(state.themeById.get(btn.dataset.themeId)));
+    $('ambiguityPanel').hidden=false;
+  }
   function hideTransverseNavigation(){ $('transversePanel').hidden=true; $('transversePanel').open=false; $('transverseChoices').innerHTML=''; }
   function showTransverseNavigation(theme) {
     hideTransverseNavigation(); if(!theme)return;
@@ -153,11 +168,18 @@
         return render(items,[resolvedA[0],resolvedB[0]],{dualTheme:true});
       }
       const resolved=resolveIndexedThemes(query);
-      if(resolved.length){
-        showSingleThemeAmbiguity(resolved); const thematic=thematicItems(resolved), textual=textualPsalmMatches(query);
-        if(resolved.length===1)showTransverseNavigation(resolved[0]); else hideTransverseNavigation();
-        publishPresentationState(resolved.length===1 ? {kind:'canonical-theme',theme:{id:resolved[0].id,label:resolved[0].label},psalmCount:thematic.length} : {kind:'ambiguous-themes',themes:resolved.map(theme=>({id:theme.id,label:theme.label}))});
+      if(resolved.length>1){
+        showSingleThemeAmbiguity(resolved); const thematic=thematicItems(resolved), textual=textualPsalmMatches(query); hideTransverseNavigation();
+        publishPresentationState({kind:'ambiguous-themes',themes:resolved.map(theme=>({id:theme.id,label:theme.label}))});
         return render(thematic,resolved,{textualCount:textual.length});
+      }
+      const suggestions=suggestIndexedThemes(query);
+      if(suggestions.length>1){ showThemeSuggestions(suggestions); hideTransverseNavigation(); publishPresentationState({kind:'ambiguous-themes',themes:suggestions.map(theme=>({id:theme.id,label:theme.label}))}); return render([],[],{dualPending:true}); }
+      const selected=resolved[0]||suggestions[0];
+      if(selected){
+        hideAmbiguity(); const thematic=thematicItems([selected]), textual=textualPsalmMatches(query); showTransverseNavigation(selected);
+        publishPresentationState({kind:'canonical-theme',theme:{id:selected.id,label:selected.label},psalmCount:thematic.length});
+        return render(thematic,[selected],{textualCount:textual.length});
       }
       hideAmbiguity();hideTransverseNavigation(); const textual=textualPsalmMatches(query); publishPresentationState({kind:textual.length?'textual-fallback':'no-result'}); return render(textual,[],{textualCount:textual.length,unresolvedTheme:true,textualFallback:true});
     }
