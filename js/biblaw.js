@@ -74,9 +74,9 @@
     for(const q of forms){ const exact=state.themeDirectory.filter(t=>q===norm(t.label)||q===norm(t.id)); if(exact.length)return exact; }
     return [];
   }
-  const THEME_QUERY_STOP_WORDS=new Set(['a','avons','avec','comment','dans','de','des','du','est','et','la','le','les','l','nous','ou','pour','pourquoi','sont','un','une']);
+  const THEME_QUERY_STOP_WORDS=new Set(['a','avons','avec','ce','comment','dans','de','des','du','en','est','et','il','j','la','le','les','l','m','ma','ne','nous','on','ou','par','pas','peut','pour','pourquoi','qu','que','quelle','qui','sans','soit','sont','un','une']);
   const THEME_QUERY_EQUIVALENTS={ '4':['4','quatre'], quatre:['quatre','4'], magique:['magique','magie'], magiques:['magiques','magie'], mourir:['mourir','mort'] };
-  const themeQueryNotions = query => norm(query).split(' ').filter(term=>term&&!THEME_QUERY_STOP_WORDS.has(term)).map(term=>new Set(THEME_QUERY_EQUIVALENTS[term]||[term]));
+  const themeQueryNotions = query => { const seen=new Set(); return norm(query).split(' ').filter(term=>term&&!THEME_QUERY_STOP_WORDS.has(term)).map(term=>new Set(THEME_QUERY_EQUIVALENTS[term]||[term])).filter(variants=>{const key=[...variants].sort().join('|');if(seen.has(key))return false;seen.add(key);return true;}); };
   function suggestIndexedThemes(query) {
     const notions=themeQueryNotions(query); if(!notions.length)return [];
     const exactIds=new Set(resolveIndexedThemes(query).map(theme=>theme.id)), candidates=new Map();
