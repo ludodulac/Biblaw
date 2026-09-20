@@ -74,13 +74,16 @@
     for(const q of forms){ const exact=state.themeDirectory.filter(t=>q===norm(t.label)||q===norm(t.id)); if(exact.length)return exact; }
     return [];
   }
+  const THEME_QUERY_STOP_WORDS=new Set(['a','avons','avec','comment','dans','de','des','du','est','et','la','le','les','l','nous','ou','pour','pourquoi','sont','un','une']);
+  const THEME_QUERY_EQUIVALENTS={ '4':['4','quatre'], quatre:['quatre','4'], mourir:['mourir','mort'] };
+  const themeQueryNotions = query => norm(query).split(' ').filter(term=>term&&!THEME_QUERY_STOP_WORDS.has(term)).map(term=>new Set(THEME_QUERY_EQUIVALENTS[term]||[term]));
   function suggestIndexedThemes(query) {
-    const terms=norm(query).split(' ').filter(Boolean); if(!terms.length)return [];
+    const notions=themeQueryNotions(query); if(!notions.length)return [];
     const exactIds=new Set(resolveIndexedThemes(query).map(theme=>theme.id)), candidates=new Map();
-    const consider=(theme,source,text)=>{ if(!theme)return; const words=new Set(norm(text).split(' ').filter(Boolean)); if(!terms.every(term=>words.has(term)))return; const rank=exactIds.has(theme.id)?0:source==='label'?1:2,current=candidates.get(theme.id); if(!current||rank<current.rank)candidates.set(theme.id,{theme,rank}); };
+    const consider=(theme,source,text)=>{ if(!theme)return; const words=new Set(norm(text).split(' ').filter(Boolean)),hits=notions.reduce((n,variants)=>n+(variants.size&&[...variants].some(term=>words.has(term))?1:0),0); if(!hits)return; const exact=exactIds.has(theme.id)?1:0,sourceRank=source==='label'?0:1,current=candidates.get(theme.id),candidate={theme,exact,hits,sourceRank}; if(!current||exact>current.exact||hits>current.hits||hits===current.hits&&sourceRank<current.sourceRank)candidates.set(theme.id,candidate); };
     for(const theme of state.themeDirectory)consider(theme,'label',theme.label);
     for(const [alias,entry] of Object.entries(state.runtime?.aliases||{}))for(const id of entry.themeIds||[])consider(state.themeById.get(id),'alias',alias);
-    return [...candidates.values()].sort((a,b)=>a.rank-b.rank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')).map(item=>item.theme);
+    return [...candidates.values()].sort((a,b)=>b.exact-a.exact||b.hits-a.hits||a.sourceRank-b.sourceRank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')).slice(0,8).map(item=>item.theme);
   }
   function thematicItems(themes) {
     if (!selectedTypes().has('psalm')) return [];
