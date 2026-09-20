@@ -114,29 +114,42 @@ jobs:
                   if exact:return exact
               return []
           stop={'a','avons','avec','comment','dans','de','des','du','est','et','la','le','les','l','nous','ou','pour','pourquoi','sont','un','une'}
-          equivalents={'4':{'4','quatre'},'quatre':{'quatre','4'},'mourir':{'mourir','mort'}}
+          equivalents={'4':{'4','quatre'},'quatre':{'quatre','4'},'magique':{'magique','magie'},'magiques':{'magiques','magie'},'mourir':{'mourir','mort'}}
           def notions(query):
               return [equivalents.get(term,{term}) for term in norm(query).split() if term and term not in stop]
           def suggest(query):
               query_notions=notions(query); exact={t['id'] for t in resolve(query)}; found={}
               def consider(theme,source,text):
                   words=set(norm(text).split())
-                  hits=sum(any(term in words for term in variants) for variants in query_notions)
+                  matched=[index for index,variants in enumerate(query_notions) if any(term in words for term in variants)]
+                  hits=len(matched)
                   if not hits:return
-                  candidate=(1 if theme['id'] in exact else 0,hits,0 if source=='label' else 1,theme)
+                  candidate=(1 if theme['id'] in exact else 0,hits,0 if source=='label' else 1,theme,matched)
                   current=found.get(theme['id'])
                   if current is None or candidate[:2]>current[:2] or candidate[:2]==current[:2] and candidate[2]<current[2]:found[theme['id']]=candidate
               for theme in themes:consider(theme,'label',theme['label'])
               for alias,entry in runtime.get('aliases',{}).items():
                   for theme_id in entry.get('themeIds',[]):
                       if theme_id in by_id:consider(by_id[theme_id],'alias',alias)
-              return [x[3] for x in sorted(found.values(),key=lambda x:(-x[0],-x[1],x[2],x[3]['label'],x[3]['id']))[:8]]
+              ranked=sorted(found.values(),key=lambda x:(-x[0],-x[1],x[2],x[3]['label'],x[3]['id']))
+              selected=[]; selected_ids=set()
+              def add(item):
+                  if item and item[3]['id'] not in selected_ids and len(selected)<8:selected.append(item);selected_ids.add(item[3]['id'])
+              max_hits=ranked[0][1] if ranked else 0
+              for item in ranked:
+                  if item[1]==max_hits:add(item)
+              for index in range(len(query_notions)):add(next((item for item in ranked if index in item[4]),None))
+              for item in ranked:add(item)
+              return [x[3] for x in selected]
           mort=suggest('mort')
           assert [t['label'] for t in mort]==['Mort','La mort ne résout pas le non-accompli','Préparer la mort en vivant','Vie après la mort comme continuité','Vie et mort']
           assert mort[0]['id']=='mort' and len({t['id'] for t in mort})==len(mort)
           assert not any(t['id']=='immortalite' for t in mort)
           vie_mort=suggest('vie mort')
-          assert vie_mort and all({'vie','mort'} <= set(norm(t['label']).split()) or any(t['id'] in e.get('themeIds',[]) and {'vie','mort'} <= set(norm(a).split()) for a,e in runtime['aliases'].items()) for t in vie_mort)
+          def matches_terms(theme,required):
+              return required <= set(norm(theme['label']).split()) or any(theme['id'] in e.get('themeIds',[]) and required <= set(norm(a).split()) for a,e in runtime['aliases'].items())
+          both=[t for t in vie_mort if matches_terms(t,{'vie','mort'})]
+          assert both and vie_mort[:len(both)]==both and any(t['id']=='vie-et-mort' for t in vie_mort)
           ambiguous=next((a for a,e in runtime['aliases'].items() if e.get('ambiguous') and len(e.get('themeIds',[]))>1),None)
           assert ambiguous and len(resolve(ambiguous))>1
           single=next((t['label'] for t in themes if len(suggest(t['label']))==1),None)
