@@ -113,18 +113,24 @@ jobs:
                   exact=[t for t in themes if form in (norm(t['label']),norm(t['id']))]
                   if exact:return exact
               return []
+          stop={'a','avons','avec','comment','dans','de','des','du','est','et','la','le','les','l','nous','ou','pour','pourquoi','sont','un','une'}
+          equivalents={'4':{'4','quatre'},'quatre':{'quatre','4'},'mourir':{'mourir','mort'}}
+          def notions(query):
+              return [equivalents.get(term,{term}) for term in norm(query).split() if term and term not in stop]
           def suggest(query):
-              terms=norm(query).split(); exact={t['id'] for t in resolve(query)}; found={}
+              query_notions=notions(query); exact={t['id'] for t in resolve(query)}; found={}
               def consider(theme,source,text):
                   words=set(norm(text).split())
-                  if not terms or not all(term in words for term in terms):return
-                  rank=0 if theme['id'] in exact else 1 if source=='label' else 2
-                  if theme['id'] not in found or rank<found[theme['id']][0]:found[theme['id']]=(rank,theme)
+                  hits=sum(any(term in words for term in variants) for variants in query_notions)
+                  if not hits:return
+                  candidate=(1 if theme['id'] in exact else 0,hits,0 if source=='label' else 1,theme)
+                  current=found.get(theme['id'])
+                  if current is None or candidate[:2]>current[:2] or candidate[:2]==current[:2] and candidate[2]<current[2]:found[theme['id']]=candidate
               for theme in themes:consider(theme,'label',theme['label'])
               for alias,entry in runtime.get('aliases',{}).items():
                   for theme_id in entry.get('themeIds',[]):
                       if theme_id in by_id:consider(by_id[theme_id],'alias',alias)
-              return [x[1] for x in sorted(found.values(),key=lambda x:(x[0],x[1]['label'],x[1]['id']))]
+              return [x[3] for x in sorted(found.values(),key=lambda x:(-x[0],-x[1],x[2],x[3]['label'],x[3]['id']))[:8]]
           mort=suggest('mort')
           assert [t['label'] for t in mort]==['Mort','La mort ne résout pas le non-accompli','Préparer la mort en vivant','Vie après la mort comme continuité','Vie et mort']
           assert mort[0]['id']=='mort' and len({t['id'] for t in mort})==len(mort)
@@ -138,7 +144,13 @@ jobs:
           assert "if(state.mode==='themes')" in js and "const suggestions=suggestIndexedThemes(query);" in js
           assert "const exactItems=matches(query)" in js
           assert "btn.onclick=()=>navigateToTheme(state.themeById.get(btn.dataset.themeId))" in js
-          assert "terms.every(term=>words.has(term))" in js
+          assert "const themeQueryNotions = query =>" in js and "THEME_QUERY_STOP_WORDS" in js and "THEME_QUERY_EQUIVALENTS" in js
+          natural_elements=[t['label'] for t in suggest('les 4 éléments magiques')]
+          assert 'Quatre éléments' in natural_elements and 'Magie' in natural_elements, natural_elements
+          natural_mort=[t['label'] for t in suggest('Pourquoi avons-nous peur de mourir ?')]
+          assert 'Peur' in natural_mort and 'Mort' in natural_mort, natural_mort
+          assert all(t['id'] in by_id for t in suggest('les 4 éléments magiques')+suggest('Pourquoi avons-nous peur de mourir ?'))
+          assert "const exactItems=matches(query)" in js and "literalOccurrenceCount(record,query)" in js
           print('Theme suggestions OK:', [t['label'] for t in mort], 'vie mort:', [t['label'] for t in vie_mort])
           PY
       - name: Check thematic runtime and quality contract
