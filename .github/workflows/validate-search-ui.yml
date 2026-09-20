@@ -99,6 +99,7 @@ jobs:
           from pathlib import Path
           directory=json.loads(Path('data/thematic-index/theme-directory-public.json').read_text(encoding='utf-8'))
           runtime=json.loads(Path('data/thematic-index/theme-search-runtime.json').read_text(encoding='utf-8'))
+          html=Path('index.html').read_text(encoding='utf-8')
           js=Path('js/biblaw.js').read_text(encoding='utf-8')
           themes=directory['themes']; by_id={t['id']:t for t in themes}
           def norm(value):
