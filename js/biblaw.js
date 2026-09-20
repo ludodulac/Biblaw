@@ -75,7 +75,7 @@
     return [];
   }
   const THEME_QUERY_STOP_WORDS=new Set(['a','avons','avec','ce','comment','dans','de','des','du','en','est','et','il','j','la','le','les','l','m','ma','ne','nous','on','ou','par','pas','peut','pour','pourquoi','qu','que','quelle','qui','sans','soit','sont','un','une']);
-  const THEME_QUERY_EQUIVALENTS={ '4':['4','quatre'], quatre:['quatre','4'], magique:['magique','magie'], magiques:['magiques','magie'], mourir:['mourir','mort'] };
+  const THEME_QUERY_EQUIVALENTS={ '4':['4','quatre'], quatre:['quatre','4'], magique:['magique','magie'], magiques:['magiques','magie'], mourir:['mourir','mort'], aimer:['aimer','amour'], pardonner:['pardonner','pardon'], utile:['utile','utilite'] };
   const themeQueryNotions = query => { const seen=new Set(); return norm(query).split(' ').filter(term=>term&&!THEME_QUERY_STOP_WORDS.has(term)).map(term=>new Set(THEME_QUERY_EQUIVALENTS[term]||[term])).filter(variants=>{const key=[...variants].sort().join('|');if(seen.has(key))return false;seen.add(key);return true;}); };
   function suggestIndexedThemes(query) {
     const notions=themeQueryNotions(query); if(!notions.length)return [];
