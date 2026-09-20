@@ -114,7 +114,7 @@ jobs:
                   if exact:return exact
               return []
           stop={'a','avons','avec','ce','comment','dans','de','des','du','en','est','et','il','j','la','le','les','l','m','ma','ne','nous','on','ou','par','pas','peut','pour','pourquoi','qu','que','quelle','qui','sans','soit','sont','un','une'}
-          equivalents={'4':{'4','quatre'},'quatre':{'quatre','4'},'magique':{'magique','magie'},'magiques':{'magiques','magie'},'mourir':{'mourir','mort'}}
+          equivalents={'4':{'4','quatre'},'quatre':{'quatre','4'},'magique':{'magique','magie'},'magiques':{'magiques','magie'},'mourir':{'mourir','mort'},'aimer':{'aimer','amour'},'pardonner':{'pardonner','pardon'},'utile':{'utile','utilite'}}
           def notions(query):
               result=[]; seen=set()
               for term in norm(query).split():
@@ -170,6 +170,15 @@ jobs:
           natural_mort=[t['label'] for t in suggest('Pourquoi avons-nous peur de mourir ?')]
           assert 'Peur' in natural_mort and 'Mort' in natural_mort, natural_mort
           assert all(t['id'] in by_id for t in suggest('les 4 éléments magiques')+suggest('Pourquoi avons-nous peur de mourir ?'))
+          v3_cases=[
+              ('Q074', "Comment aimer sans vouloir posséder l'autre ?", 'amour', 'Amour'),
+              ('Q083', "Comment pardonner à quelqu'un qui m'a profondément blessé ?", 'pardon-et-reparation', 'Pardon et réparation'),
+              ('Q100', "Comment trouver un travail qui soit réellement utile ?", 'utilite-au-divin', 'Utilité au monde divin'),
+          ]
+          for case,query,theme_id,label in v3_cases:
+              proposed=suggest(query); ids=[t['id'] for t in proposed]; labels=[t['label'] for t in proposed]
+              assert theme_id in ids, (case,labels)
+              print(case, 'propositions:', labels, 'position:', ids.index(theme_id)+1, label)
           assert "const exactItems=matches(query)" in js and "literalOccurrenceCount(record,query)" in js
           print('Theme suggestions OK:', [t['label'] for t in mort], 'vie mort:', [t['label'] for t in vie_mort])
           PY
