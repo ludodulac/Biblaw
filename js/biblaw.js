@@ -1,6 +1,20 @@
 (() => {
   const $ = id => document.getElementById(id);
   const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, active: null, resolvedThemes: [] };
+  const POPULAR_QUESTION_FAMILIES = [
+    { id:'existence', label:'Existence, sens et raison de vivre', questions:[
+      { id:'Q001', text:'Pourquoi existons-nous ?' },
+      { id:'Q002', text:'Quel est le sens de la vie ?' }
+    ]},
+    { id:'mort', label:'Mort et après-mort', questions:[
+      { id:'Q036', text:'Pourquoi avons-nous peur de mourir ?' },
+      { id:'Q037', text:'Que se passe-t-il lorsque nous mourons ?' }
+    ]},
+    { id:'nature', label:'Nature, animaux, Terre et écologie', questions:[
+      { id:'Q114', text:"Quelle est la place de l'être humain dans la nature ?" },
+      { id:'Q115', text:"La nature a-t-elle une valeur indépendamment de son utilité pour l'être humain ?" }
+    ]}
+  ];
   const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[’']/g, ' ').replace(/[^a-z0-9\s-]/g, ' ').replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
   const stripLeadingArticle = value => { const q=norm(value), parts=q.split(' ').filter(Boolean); return parts.length>1 && ['l','le','la','les','un','une','des'].includes(parts[0]) ? parts.slice(1).join(' ') : q; };
   const themeQueryForms = value => { const q=norm(value), stripped=stripLeadingArticle(q); return [...new Set([q,stripped].filter(Boolean))]; };
@@ -234,8 +248,24 @@
   function openIndex(){ renderThemeDirectory(); $('indexPanel').hidden=false;$('indexBackdrop').hidden=false;$('indexToggle').setAttribute('aria-expanded','true'); requestAnimationFrame(()=>$('themeFilter').focus()); }
   function closeIndex(){$('indexPanel').hidden=true;$('indexBackdrop').hidden=true;$('indexToggle').setAttribute('aria-expanded','false');}
 
+  function renderPopularQuestionFamilies(){
+    $('popularQuestionsTitle').textContent='Choisir une famille'; $('popularQuestionsBack').hidden=true;
+    $('popularQuestionsContent').innerHTML=POPULAR_QUESTION_FAMILIES.map(f=>`<button class="popular-question-row" data-popular-family="${esc(f.id)}"><strong>${esc(f.label)}</strong></button>`).join('');
+    $('popularQuestionsContent').querySelectorAll('[data-popular-family]').forEach(btn=>btn.onclick=()=>openPopularQuestionFamily(btn.dataset.popularFamily));
+  }
+  function openPopularQuestionFamily(id){
+    const family=POPULAR_QUESTION_FAMILIES.find(item=>item.id===id); if(!family)return;
+    $('popularQuestionsTitle').textContent=family.label; $('popularQuestionsBack').hidden=false;
+    $('popularQuestionsContent').innerHTML=family.questions.map(q=>`<button class="popular-question-row" data-popular-question="${esc(q.id)}">${esc(q.text)}</button>`).join('');
+    $('popularQuestionsContent').querySelectorAll('[data-popular-question]').forEach(btn=>btn.onclick=()=>choosePopularQuestion(family.questions.find(q=>q.id===btn.dataset.popularQuestion)));
+  }
+  function openPopularQuestions(){ renderPopularQuestionFamilies(); $('popularQuestionsPanel').hidden=false; $('popularQuestionsBackdrop').hidden=false; $('popularQuestionsToggle').setAttribute('aria-expanded','true'); }
+  function closePopularQuestions(){ $('popularQuestionsPanel').hidden=true; $('popularQuestionsBackdrop').hidden=true; $('popularQuestionsToggle').setAttribute('aria-expanded','false'); }
+  function choosePopularQuestion(question){ if(!question)return; $('query').value=question.text; $('query2').value=''; activateThemeMode(); closePopularQuestions(); search(); }
+
   $('searchButton').onclick=search; $('query').addEventListener('keydown',e=>{if(e.key==='Enter')search();}); $('query2').addEventListener('keydown',e=>{if(e.key==='Enter')search();}); document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=search); $('archangelFilter').onchange=search;
   $('modeThemes').onclick=()=>{activateThemeMode();search();}; $('modeExact').onclick=()=>{activateExactMode();search();}; $('closeAmbiguity').onclick=hideAmbiguity;
+  $('popularQuestionsToggle').onclick=openPopularQuestions; $('closePopularQuestions').onclick=closePopularQuestions; $('popularQuestionsBackdrop').onclick=closePopularQuestions; $('popularQuestionsBack').onclick=renderPopularQuestionFamilies;
   $('indexToggle').onclick=()=>{$('indexPanel').hidden?openIndex():closeIndex();}; $('themeFilter').oninput=renderThemeDirectory; $('closeIndex').onclick=closeIndex; $('indexBackdrop').onclick=closeIndex; $('closeDialog').onclick=()=>$('recordDialog').close(); $('printRecord').onclick=()=>window.print(); $('downloadRecord').onclick=()=>{const blob=new Blob([activeText()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${state.active?.id||'biblaw'}.txt`;a.click();URL.revokeObjectURL(a.href);};
   load();
 })();
