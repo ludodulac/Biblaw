@@ -171,6 +171,19 @@ jobs:
           assert 'Peur' in natural_mort and 'Mort' in natural_mort, natural_mort
           assert all(t['id'] in by_id for t in suggest('les 4 éléments magiques')+suggest('Pourquoi avons-nous peur de mourir ?'))
           assert "const exactItems=matches(query)" in js and "literalOccurrenceCount(record,query)" in js
+          # Popular questions prototype: prepared human queries feed the existing thematic search only.
+          for item in ('popularQuestionsToggle','popularQuestionsPanel','popularQuestionsBackdrop','popularQuestionsBack','popularQuestionsContent'):
+              assert f'id="{item}"' in html, item
+          assert 'Questions populaires' in html
+          for question in ('Pourquoi existons-nous ?','Quel est le sens de la vie ?','Pourquoi avons-nous peur de mourir ?','Que se passe-t-il lorsque nous mourons ?',"Quelle est la place de l'être humain dans la nature ?","La nature a-t-elle une valeur indépendamment de son utilité pour l'être humain ?"):
+              assert question in js, question
+          assert "function openPopularQuestions()" in js
+          assert "function openPopularQuestionFamily(id)" in js
+          assert "$('popularQuestionsBack').onclick=renderPopularQuestionFamilies" in js
+          assert "function choosePopularQuestion(question)" in js
+          assert "$('query').value=question.text; $('query2').value=''; activateThemeMode(); closePopularQuestions(); search();" in js
+          assert 'themeId' not in js[js.index('const POPULAR_QUESTION_FAMILIES'):js.index('  const norm =')]
+          assert "const activateExactMode = () =>" in js and "const exactItems=matches(query)" in js
           print('Theme suggestions OK:', [t['label'] for t in mort], 'vie mort:', [t['label'] for t in vie_mort])
           PY
       - name: Check thematic runtime and quality contract
