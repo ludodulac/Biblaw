@@ -113,10 +113,15 @@ jobs:
                   exact=[t for t in themes if form in (norm(t['label']),norm(t['id']))]
                   if exact:return exact
               return []
-          stop={'a','avons','avec','comment','dans','de','des','du','est','et','la','le','les','l','nous','ou','pour','pourquoi','sont','un','une'}
+          stop={'a','avons','avec','ce','comment','dans','de','des','du','en','est','et','il','j','la','le','les','l','m','ma','ne','nous','on','ou','par','pas','peut','pour','pourquoi','qu','que','quelle','qui','sans','soit','sont','un','une'}
           equivalents={'4':{'4','quatre'},'quatre':{'quatre','4'},'magique':{'magique','magie'},'magiques':{'magiques','magie'},'mourir':{'mourir','mort'}}
           def notions(query):
-              return [equivalents.get(term,{term}) for term in norm(query).split() if term and term not in stop]
+              result=[]; seen=set()
+              for term in norm(query).split():
+                  if not term or term in stop:continue
+                  variants=equivalents.get(term,{term}); key=tuple(sorted(variants))
+                  if key not in seen:seen.add(key);result.append(variants)
+              return result
           def suggest(query):
               query_notions=notions(query); exact={t['id'] for t in resolve(query)}; found={}
               def consider(theme,source,text):
@@ -158,6 +163,8 @@ jobs:
           assert "const exactItems=matches(query)" in js
           assert "btn.onclick=()=>navigateToTheme(state.themeById.get(btn.dataset.themeId))" in js
           assert "const themeQueryNotions = query =>" in js and "THEME_QUERY_STOP_WORDS" in js and "THEME_QUERY_EQUIVALENTS" in js
+          assert notions("ma vie en ce monde")==[{'vie'},{'monde'}]
+          assert notions("faire faire le bien")==[{'faire'},{'bien'}]
           natural_elements=[t['label'] for t in suggest('les 4 éléments magiques')]
           assert 'Quatre éléments' in natural_elements and 'Magie' in natural_elements, natural_elements
           natural_mort=[t['label'] for t in suggest('Pourquoi avons-nous peur de mourir ?')]
