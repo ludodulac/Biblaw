@@ -75,15 +75,19 @@
     return [];
   }
   const THEME_QUERY_STOP_WORDS=new Set(['a','avons','avec','comment','dans','de','des','du','est','et','la','le','les','l','nous','ou','pour','pourquoi','sont','un','une']);
-  const THEME_QUERY_EQUIVALENTS={ '4':['4','quatre'], quatre:['quatre','4'], mourir:['mourir','mort'] };
+  const THEME_QUERY_EQUIVALENTS={ '4':['4','quatre'], quatre:['quatre','4'], magique:['magique','magie'], magiques:['magiques','magie'], mourir:['mourir','mort'] };
   const themeQueryNotions = query => norm(query).split(' ').filter(term=>term&&!THEME_QUERY_STOP_WORDS.has(term)).map(term=>new Set(THEME_QUERY_EQUIVALENTS[term]||[term]));
   function suggestIndexedThemes(query) {
     const notions=themeQueryNotions(query); if(!notions.length)return [];
     const exactIds=new Set(resolveIndexedThemes(query).map(theme=>theme.id)), candidates=new Map();
-    const consider=(theme,source,text)=>{ if(!theme)return; const words=new Set(norm(text).split(' ').filter(Boolean)),hits=notions.reduce((n,variants)=>n+(variants.size&&[...variants].some(term=>words.has(term))?1:0),0); if(!hits)return; const exact=exactIds.has(theme.id)?1:0,sourceRank=source==='label'?0:1,current=candidates.get(theme.id),candidate={theme,exact,hits,sourceRank}; if(!current||exact>current.exact||hits>current.hits||hits===current.hits&&sourceRank<current.sourceRank)candidates.set(theme.id,candidate); };
+    const consider=(theme,source,text)=>{ if(!theme)return; const words=new Set(norm(text).split(' ').filter(Boolean)),matched=notions.map((variants,index)=>[...variants].some(term=>words.has(term))?index:-1).filter(index=>index>=0),hits=matched.length; if(!hits)return; const exact=exactIds.has(theme.id)?1:0,sourceRank=source==='label'?0:1,current=candidates.get(theme.id),candidate={theme,exact,hits,sourceRank,matched}; if(!current||exact>current.exact||hits>current.hits||hits===current.hits&&sourceRank<current.sourceRank)candidates.set(theme.id,candidate); };
     for(const theme of state.themeDirectory)consider(theme,'label',theme.label);
     for(const [alias,entry] of Object.entries(state.runtime?.aliases||{}))for(const id of entry.themeIds||[])consider(state.themeById.get(id),'alias',alias);
-    return [...candidates.values()].sort((a,b)=>b.exact-a.exact||b.hits-a.hits||a.sourceRank-b.sourceRank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')).slice(0,8).map(item=>item.theme);
+    const ranked=[...candidates.values()].sort((a,b)=>b.exact-a.exact||b.hits-a.hits||a.sourceRank-b.sourceRank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')),selected=[],selectedIds=new Set(),add=item=>{if(item&&!selectedIds.has(item.theme.id)&&selected.length<8){selected.push(item);selectedIds.add(item.theme.id);}};
+    const maxHits=ranked[0]?.hits||0; for(const item of ranked)if(item.hits===maxHits)add(item);
+    for(let index=0;index<notions.length;index++)add(ranked.find(item=>item.matched.includes(index)));
+    for(const item of ranked)add(item);
+    return selected.map(item=>item.theme);
   }
   function thematicItems(themes) {
     if (!selectedTypes().has('psalm')) return [];
