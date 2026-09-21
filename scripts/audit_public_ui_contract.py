@@ -46,7 +46,32 @@ assert "Number(a.record.number)||Number.MAX_SAFE_INTEGER" in js
 assert "String(a.record.id).localeCompare(String(b.record.id),'fr')" in js
 assert "companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`" in js
 assert "render(exactItems,null,{exactSearch:true})" in js
-assert '${highlighted(summary(r))}' in js and '${highlighted(v.text)}' in js
+mode_aware = "const modeAwareText = value => state.mode==='exact' ? highlighted(value) : esc(value);"
+assert mode_aware in js
+
+# Shared result/document surfaces must respect the rendering mode: exact search highlights,
+# thematic search escapes normally instead of turning theme-label tokens into visual evidence.
+assert '${modeAwareText(r.title' in js
+assert '${modeAwareText(thematic.teaching||summary(r))}' in js
+assert "${modeAwareText(thematic.teaching||'')}" in js
+assert '${modeAwareText(summary(r))}' in js
+opened = js[js.index('function open(id)'):js.index('function activeText()')]
+assert '${modeAwareText(v.text)}' in opened
+assert '${modeAwareText(r.attachedPrayer.text)}' in opened
+assert "${modeAwareText(r.text||r.summary||'')}" in opened
+
+# Documentary thematic passages remain driven by recorded verse numbers and never by query highlighting.
+contextual = js[js.index('function contextualVerses'):js.index('function exactVerses')]
+assert 'thematic.verseNumbers.map(Number)' in contextual
+assert 'r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4)' in contextual
+assert '${esc(v.text)}' in contextual
+assert 'highlighted(' not in contextual and 'modeAwareText(' not in contextual
+
+# Literal "Mots et phrases" keeps its word-bounded selection and visible highlighting.
+exact = js[js.index('function exactVerses'):js.index('function relatedThemes')]
+assert 'literalIncludes(v.text,query)' in exact
+assert '${highlighted(v.text)}' in exact
+assert '<mark class="search-hit">' in js
 assert "new Blob([activeText()]" in js and '<mark' not in js[js.index('function activeText()'):js.index('function renderThemeDirectory()')]
 assert '@media print' in css and '.search-hit{padding:0;border-radius:0;background:transparent;color:inherit}' in css
 assert 'importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number' in js
