@@ -75,6 +75,19 @@ jobs:
           assert '${esc(v.text)}' in contextual and 'highlighted(v.text)' not in contextual
           assert 'literalIncludes(v.text,query)' in exact and 'highlighted(v.text)' in exact
           assert '<mark class="search-hit">' in js
+          assert "const modeAwareText = value => state.mode==='exact' ? highlighted(value) : esc(value);" in js
+          assert "${modeAwareText(r.title" in js
+          assert "${modeAwareText(thematic.teaching||summary(r))}" in js
+          assert "${modeAwareText(thematic.teaching||'')}" in js
+          assert "${modeAwareText(summary(r))}" in js
+          opened=js[js.index('function open(id)'):js.index('function activeText')]
+          assert '${modeAwareText(v.text)}' in opened
+          assert '${modeAwareText(r.attachedPrayer.text)}' in opened
+          assert "${modeAwareText(r.text||r.summary||'')}" in opened
+          assert 'highlighted(v.text)' not in opened and 'highlighted(r.attachedPrayer.text)' not in opened
+          assert "state.mode='themes'" in js and "state.mode='exact'" in js
+          assert "const exactItems=matches(query)" in js
+          assert 'highlighted(v.text)' in exact
           assert "['l','le','la','les','un','une','des']" in js and 'for(const q of forms)' in js
           assert "const activateExactMode = () =>" in js and "$('modeExact').onclick=()=>{activateExactMode();search();}" in js
           assert 'theme.occurrenceCount||theme.occurrences?.length||0' in js and "theme.id?` · ${esc(theme.id)}`:''" in js
