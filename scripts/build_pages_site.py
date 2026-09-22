@@ -22,6 +22,7 @@ PUBLIC_FILES = (
     "css/biblaw.css",
     "css/theme-index.css",
     "css/validation.css",
+    "js/theme-suggestion-engine.js",
     "js/biblaw.js",
     "js/theme-relations.js",
     "js/validation.js",
