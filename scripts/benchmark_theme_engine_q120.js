@@ -70,6 +70,19 @@ function selfTest(){
   const q116=exactVariants('Pourquoi les humains se croient-ils au-dessus des autres animaux ?').flat();
   if(!q116.includes('dessus')||!q116.includes('animaux'))throw new Error('au-dessus regression: lexical remainder missing');
   if(engineApi.norm('au')!=='au'||engineApi.norm('aux')!=='aux'||engineApi.norm('au-dessus')!=='au dessus')throw new Error('Generic norm changed for literal au/aux path');
+  for(const query of [
+    'Pourquoi Dieu ne se montre-t-il pas ?',
+    'Pourquoi les humains se tuent-ils entre eux ?',
+    "Pourquoi les gens qui s'aiment se font-ils parfois du mal ?",
+    'Comment se pardonner à soi-même ?',
+    'Peut-on se réconcilier après une grande blessure ?',
+    'Pourquoi se sent-on parfois seul même entouré ?',
+    'Pourquoi les humains se croient-ils au-dessus des autres animaux ?'
+  ])if(exactVariants(query).flat().includes('se'))throw new Error('Thematic se survived: '+query);
+  const q083=exactVariants('Comment se pardonner à soi-même ?').flat();
+  if(!q083.includes('soi'))throw new Error('Q083 regression: soi missing after se filter');
+  const q116=exactVariants('Pourquoi les humains se croient-ils au-dessus des autres animaux ?').flat();
+  if(!q116.includes('dessus')||!q116.includes('animaux'))throw new Error('Q116 regression after se filter');
 }
 function validateCorpus(){
   if(corpus.length!==120)throw new Error('Expected 120 questions, got '+corpus.length);
