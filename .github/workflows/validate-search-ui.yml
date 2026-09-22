@@ -117,6 +117,9 @@ jobs:
           assert literal_contains(literal_sample,literal_query)
           assert normalized_sample.count(normalized_query)==2
           assert norm("l'âme")=='l ame'
+          for literal_sample,literal_query in [('au monde','au'),('fidèle aux engagements','aux'),('placé au-dessus du monde','au-dessus')]:
+              assert literal_contains(literal_sample,literal_query)
+              assert f" {norm(literal_query)} " in f" {norm(literal_sample)} "
           assert "const highlighted = value =>" in js and "<mark class=\"search-hit\">" in js
           bundle=json.loads(Path('data/browser-search-catalog.json').read_text(encoding='utf-8'))
           assert bundle['purpose']=='browser-search-corpus-bundle' and bundle['recordCount']==len(bundle['records'])
