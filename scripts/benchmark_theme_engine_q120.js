@@ -83,6 +83,7 @@ function selfTest(){
   if(!q083.includes('soi'))throw new Error('Q083 regression: soi missing after se filter');
   const q116Se=exactVariants('Pourquoi les humains se croient-ils au-dessus des autres animaux ?').flat();
   if(!q116Se.includes('dessus')||!q116Se.includes('animaux'))throw new Error('Q116 regression after se filter');
+  if(engineApi.norm('se')!=='se'||engineApi.norm('il se tait')!=='il se tait')throw new Error('Generic norm changed for literal se path');
 }
 function validateCorpus(){
   if(corpus.length!==120)throw new Error('Expected 120 questions, got '+corpus.length);
