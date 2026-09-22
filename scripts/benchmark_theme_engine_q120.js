@@ -23,6 +23,20 @@ function selfTest(){
   ]){const actual=labels(query);for(const label of required)if(!actual.includes(label))throw new Error('Regression '+query+': missing '+label+' in '+JSON.stringify(actual));}
   const ordinary=labels('acte intention bien');if(ordinary.includes('Intention'))throw new Error('Ordinary-token quota regression');
   if(engine.resolveIndexedThemes('mort')[0]?.id!=='mort')throw new Error('Canonical resolution regression: mort');
+  for(const [query,required] of [
+    ["Pourquoi est-ce qu’on meurt ?",['Mort']],
+    ["Où va-t-on quand on meurt ?",['Mort']],
+    ["Pourquoi souffrons-nous ?",['Souffrance']],
+    ["Pourquoi certaines personnes souffrent-elles alors qu’elles n’ont rien fait ?",['Souffrance']],
+    ["Peut-on aimer quelqu’un et pourtant devoir le quitter ?",['Amour']],
+    ["Pourquoi certaines personnes veulent-elles avoir des enfants ?",['Enfant']],
+  ]){const actual=labels(query);for(const label of required)if(!actual.includes(label))throw new Error('Controlled morphology '+query+': missing '+label+' in '+JSON.stringify(actual));}
+  const exactVariants=query=>engine.themeQueryNotions(query).map(v=>[...v].sort());
+  for(const [query,forbidden] of [
+    ['pardonner','pardon'],['guerres','guerre'],['riches','richesse'],['servir','service'],['vieillir','vieillesse'],['mechant','mal'],['planete','terre'],['sommes','existence'],['cerveau','conscience'],['quittent','quitter']
+  ]){const variants=exactVariants(query).flat();if(variants.includes(forbidden))throw new Error('Unauthorized morphology '+query+' -> '+forbidden);}
+  const enfantVariants=exactVariants('enfants').flat();if(!enfantVariants.includes('enfant'))throw new Error('Controlled plural enfants -> enfant missing');
+  if(exactVariants('maisons').flat().includes('maison'))throw new Error('Unexpected universal singularization');
 }
 function validateCorpus(){
   if(corpus.length!==120)throw new Error('Expected 120 questions, got '+corpus.length);
