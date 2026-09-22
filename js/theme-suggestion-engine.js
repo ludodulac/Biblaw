@@ -6,6 +6,7 @@
   const norm=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/œ/g,'oe').replace(/æ/g,'ae').replace(/[’']/g,' ').replace(/[^a-z0-9\s-]/g,' ').replace(/-/g,' ').replace(/\s+/g,' ').trim();
   const stripLeadingArticle=value=>{const q=norm(value),parts=q.split(' ').filter(Boolean);return parts.length>1&&['l','le','la','les','un','une','des'].includes(parts[0])?parts.slice(1).join(' '):q;};
   const themeQueryForms=value=>{const q=norm(value),stripped=stripLeadingArticle(q);return [...new Set([q,stripped].filter(Boolean))];};
+  // Thematic-only: preserve generic norm/literal search while removing validated French structural fragments.
   const thematicFrenchStructure=value=>String(value||'').replace(/(^|\s)(?:d|c|n|s|j|m|l|qu)[’'](?=[A-Za-zÀ-ÖØ-öø-ÿŒœÆæ])/gi,'$1').replace(/-t-(?=(?:il|elle|on|ils|elles)\b)/gi,'-');
   const THEME_QUERY_STOP_WORDS=new Set(['a','avons','avec','ce','comment','dans','de','des','du','en','est','et','il','j','la','le','les','l','m','ma','ne','nous','on','ou','par','pas','peut','pour','pourquoi','qu','que','quelle','qui','sans','soit','sont','un','une']);
   const THEME_QUERY_EQUIVALENTS={'4':['4','quatre'],quatre:['quatre','4'],magique:['magique','magie'],magiques:['magiques','magie'],mourir:['mourir','mort'],meurt:['meurt','mourir','mort'],meurent:['meurent','mourir','mort'],mourons:['mourons','mourir','mort'],souffrons:['souffrons','souffrir','souffrance'],souffrent:['souffrent','souffrir','souffrance'],aimer:['aimer','amour'],enfants:['enfants','enfant']};
