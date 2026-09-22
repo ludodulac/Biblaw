@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, active: null, resolvedThemes: [] };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), runtime: null, themeEngine: null, active: null, resolvedThemes: [] };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -15,9 +15,7 @@
       { id:'Q115', text:"La nature a-t-elle une valeur indépendamment de son utilité pour l'être humain ?" }
     ]}
   ];
-  const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[’']/g, ' ').replace(/[^a-z0-9\s-]/g, ' ').replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
-  const stripLeadingArticle = value => { const q=norm(value), parts=q.split(' ').filter(Boolean); return parts.length>1 && ['l','le','la','les','un','une','des'].includes(parts[0]) ? parts.slice(1).join(' ') : q; };
-  const themeQueryForms = value => { const q=norm(value), stripped=stripLeadingArticle(q); return [...new Set([q,stripped].filter(Boolean))]; };
+  const norm = value => BiblawThemeEngine.norm(value);
   const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   const queryTerms = () => new Set([$('query')?.value, $('query2')?.value].flatMap(value => norm(value).split(' ')).filter(Boolean));
   const highlighted = value => { const terms=queryTerms(); if(!terms.size)return esc(value); return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>terms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join(''); };
@@ -56,6 +54,7 @@
       state.themeDirectory = directory.themes || [];
       state.themeById = new Map(state.themeDirectory.map(t => [t.id, t]));
       state.runtime = runtime;
+      state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime);
       state.records = bundle.records || [];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
       state.psalmsByNumber = new Map();
@@ -83,28 +82,10 @@
   function matches(query) { const allowed=selectedTypes(),a=$('archangelFilter').value; return state.records.filter(r=>allowed.has(type(r))&&(!a||r.archangel===a)).map(record=>({record,score:1,occurrenceCount:literalOccurrenceCount(record,query)})).filter(item=>item.occurrenceCount>0); }
   function psalmNumberMatches(number) { if(!selectedTypes().has('psalm'))return []; const a=$('archangelFilter').value; return (state.psalmsByNumber.get(number)||[]).filter(r=>!a||r.archangel===a).sort((x,y)=>(x.book?.number||9999)-(y.book?.number||9999)||String(x.id).localeCompare(String(y.id),'fr')).map(record=>({record,score:1,numberLookup:true})); }
   function textualPsalmMatches(query) { return matches(query).filter(x=>x.record.recordType==='psalm'); }
-  function resolveIndexedThemes(query) {
-    const forms=themeQueryForms(query); if(!forms.length)return [];
-    for(const q of forms){ const alias=state.runtime?.aliases?.[q]; if(alias?.themeIds?.length)return alias.themeIds.map(id=>state.themeById.get(id)).filter(Boolean); }
-    for(const q of forms){ const exact=state.themeDirectory.filter(t=>q===norm(t.label)||q===norm(t.id)); if(exact.length)return exact; }
-    return [];
-  }
-  const THEME_QUERY_STOP_WORDS=new Set(['a','avons','avec','ce','comment','dans','de','des','du','en','est','et','il','j','la','le','les','l','m','ma','ne','nous','on','ou','par','pas','peut','pour','pourquoi','qu','que','quelle','qui','sans','soit','sont','un','une']);
-  const THEME_QUERY_EQUIVALENTS={ '4':['4','quatre'], quatre:['quatre','4'], magique:['magique','magie'], magiques:['magiques','magie'], mourir:['mourir','mort'] };
-  const composeThemeQueryNotions = query => { const terms=norm(query).split(' ').filter(Boolean), has=term=>terms.includes(term), hasAny=values=>values.some(has), existence=terms.some(term=>['existe','existent','existons','exister','existence'].includes(term)), why=has('pourquoi'), life=has('vivre')||has('vie'), representation=hasAny(['intention','intentions','croire','croyant','penser','pensant']), action=hasAny(['faire','agir','action','acte','actes']), moralOpposition=hasAny(['bien','bon','bonne','bonnes'])&&hasAny(['mal','mauvais','mauvaise','mauvaises']), questionedJustice=hasAny(['tromper','erreur','suffire','suffit','garantir','garantit','juste','justes']); if(representation&&action&&(moralOpposition||questionedJustice))return [new Set(['intention']),new Set(['acte'])]; if((why&&existence)||(why&&life)||(has('raison')&&existence))return [new Set(['sens','but']),new Set(['vie'])]; if(has('sens')&&existence)return [new Set(['sens']),new Set(['vie'])]; if(has('but')&&existence)return [new Set(['but']),new Set(['vie'])]; return []; };
-  const themeQueryNotions = query => { const seen=new Set(); return [...composeThemeQueryNotions(query),...norm(query).split(' ').filter(term=>term&&!THEME_QUERY_STOP_WORDS.has(term)).map(term=>new Set(THEME_QUERY_EQUIVALENTS[term]||[term]))].filter(variants=>{const key=[...variants].sort().join('|');if(seen.has(key))return false;seen.add(key);return true;}); };
-  function suggestIndexedThemes(query) {
-    const composedNotionCount=composeThemeQueryNotions(query).length, notions=themeQueryNotions(query); if(!notions.length)return [];
-    const exactIds=new Set(resolveIndexedThemes(query).map(theme=>theme.id)), candidates=new Map();
-    const consider=(theme,source,text)=>{ if(!theme)return; const words=new Set(norm(text).split(' ').filter(Boolean)),matched=notions.map((variants,index)=>[...variants].some(term=>words.has(term))?index:-1).filter(index=>index>=0),hits=matched.length; if(!hits)return; const exact=exactIds.has(theme.id)?1:0,sourceRank=source==='label'?0:1,current=candidates.get(theme.id),candidate={theme,exact,hits,sourceRank,matched}; if(!current||exact>current.exact||hits>current.hits||hits===current.hits&&sourceRank<current.sourceRank)candidates.set(theme.id,candidate); };
-    for(const theme of state.themeDirectory)consider(theme,'label',theme.label);
-    for(const [alias,entry] of Object.entries(state.runtime?.aliases||{}))for(const id of entry.themeIds||[])consider(state.themeById.get(id),'alias',alias);
-    const ranked=[...candidates.values()].sort((a,b)=>b.exact-a.exact||b.hits-a.hits||a.sourceRank-b.sourceRank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')),selected=[],selectedIds=new Set(),add=item=>{if(item&&!selectedIds.has(item.theme.id)&&selected.length<8){selected.push(item);selectedIds.add(item.theme.id);}};
-    const maxHits=ranked[0]?.hits||0; if(maxHits>1)for(const item of ranked)if(item.hits===maxHits)add(item);
-    for(let index=0;index<composedNotionCount;index++)add(ranked.find(item=>item.matched.includes(index)));
-    for(const item of ranked)add(item);
-    return selected.map(item=>item.theme);
-  }
+  function resolveIndexedThemes(query) { return state.themeEngine?.resolveIndexedThemes(query) || []; }
+  const composeThemeQueryNotions = query => BiblawThemeEngine.composeThemeQueryNotions(query);
+  const themeQueryNotions = query => BiblawThemeEngine.themeQueryNotions(query);
+  function suggestIndexedThemes(query) { return state.themeEngine?.suggestIndexedThemes(query) || []; }
   function thematicItems(themes) {
     if (!selectedTypes().has('psalm')) return [];
     const a=$('archangelFilter').value,merged=new Map();
