@@ -94,14 +94,14 @@
   const composeThemeQueryNotions = query => { const terms=norm(query).split(' ').filter(Boolean), has=term=>terms.includes(term), hasAny=values=>values.some(has), existence=terms.some(term=>['existe','existent','existons','exister','existence'].includes(term)), why=has('pourquoi'), life=has('vivre')||has('vie'), representation=hasAny(['intention','intentions','croire','croyant','penser','pensant']), action=hasAny(['faire','agir','action','acte','actes']), moralOpposition=hasAny(['bien','bon','bonne','bonnes'])&&hasAny(['mal','mauvais','mauvaise','mauvaises']), questionedJustice=hasAny(['tromper','erreur','suffire','suffit','garantir','garantit','juste','justes']); if(representation&&action&&(moralOpposition||questionedJustice))return [new Set(['intention']),new Set(['acte'])]; if((why&&existence)||(why&&life)||(has('raison')&&existence))return [new Set(['sens','but']),new Set(['vie'])]; if(has('sens')&&existence)return [new Set(['sens']),new Set(['vie'])]; if(has('but')&&existence)return [new Set(['but']),new Set(['vie'])]; return []; };
   const themeQueryNotions = query => { const seen=new Set(); return [...composeThemeQueryNotions(query),...norm(query).split(' ').filter(term=>term&&!THEME_QUERY_STOP_WORDS.has(term)).map(term=>new Set(THEME_QUERY_EQUIVALENTS[term]||[term]))].filter(variants=>{const key=[...variants].sort().join('|');if(seen.has(key))return false;seen.add(key);return true;}); };
   function suggestIndexedThemes(query) {
-    const notions=themeQueryNotions(query); if(!notions.length)return [];
+    const composedNotionCount=composeThemeQueryNotions(query).length, notions=themeQueryNotions(query); if(!notions.length)return [];
     const exactIds=new Set(resolveIndexedThemes(query).map(theme=>theme.id)), candidates=new Map();
     const consider=(theme,source,text)=>{ if(!theme)return; const words=new Set(norm(text).split(' ').filter(Boolean)),matched=notions.map((variants,index)=>[...variants].some(term=>words.has(term))?index:-1).filter(index=>index>=0),hits=matched.length; if(!hits)return; const exact=exactIds.has(theme.id)?1:0,sourceRank=source==='label'?0:1,current=candidates.get(theme.id),candidate={theme,exact,hits,sourceRank,matched}; if(!current||exact>current.exact||hits>current.hits||hits===current.hits&&sourceRank<current.sourceRank)candidates.set(theme.id,candidate); };
     for(const theme of state.themeDirectory)consider(theme,'label',theme.label);
     for(const [alias,entry] of Object.entries(state.runtime?.aliases||{}))for(const id of entry.themeIds||[])consider(state.themeById.get(id),'alias',alias);
     const ranked=[...candidates.values()].sort((a,b)=>b.exact-a.exact||b.hits-a.hits||a.sourceRank-b.sourceRank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')),selected=[],selectedIds=new Set(),add=item=>{if(item&&!selectedIds.has(item.theme.id)&&selected.length<8){selected.push(item);selectedIds.add(item.theme.id);}};
-    const maxHits=ranked[0]?.hits||0; for(const item of ranked)if(item.hits===maxHits)add(item);
-    for(let index=0;index<notions.length;index++)add(ranked.find(item=>item.matched.includes(index)));
+    const maxHits=ranked[0]?.hits||0; if(maxHits>1)for(const item of ranked)if(item.hits===maxHits)add(item);
+    for(let index=0;index<composedNotionCount;index++)add(ranked.find(item=>item.matched.includes(index)));
     for(const item of ranked)add(item);
     return selected.map(item=>item.theme);
   }
