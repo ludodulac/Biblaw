@@ -139,6 +139,11 @@ jobs:
           def compose(query):
               terms=norm(query).split(); has=lambda term: term in terms
               existence=any(term in {'existe','existent','existons','exister','existence'} for term in terms); why=has('pourquoi'); life=has('vivre') or has('vie')
+              representation=any(has(term) for term in {'intention','intentions','croire','croyant','penser','pensant'})
+              action=any(has(term) for term in {'faire','agir','action','acte','actes'})
+              moral_opposition=any(has(term) for term in {'bien','bon','bonne','bonnes'}) and any(has(term) for term in {'mal','mauvais','mauvaise','mauvaises'})
+              questioned_justice=any(has(term) for term in {'tromper','erreur','suffire','suffit','garantir','garantit','juste','justes'})
+              if representation and action and (moral_opposition or questioned_justice):return [{'intention'},{'acte'}]
               if (why and existence) or (why and life) or (has('raison') and existence):return [{'sens','but'},{'vie'}]
               if has('sens') and existence:return [{'sens'},{'vie'}]
               if has('but') and existence:return [{'but'},{'vie'}]
@@ -212,6 +217,29 @@ jobs:
           for query in ('Existe-t-il des anges ?','Est-ce que le mal existe ?','Existe-t-il plusieurs mondes ?'):
               labels=[t['label'] for t in suggest(query)]
               assert not ({'Sens de la vie','But de la vie'} & set(labels)), (query,labels)
+          moral_positive=[
+              'Peut-on faire le mal en croyant faire le bien ?',
+              'Peut-on faire quelque chose de mauvais avec de bonnes intentions ?',
+              'Peut-on avoir de bonnes intentions et mal agir ?',
+              'Croire faire le bien suffit-il pour bien agir ?',
+              'Une bonne intention garantit-elle une bonne action ?',
+              'Peut-on se tromper en pensant agir pour le bien ?',
+              'Nos intentions suffisent-elles pour savoir si nos actes sont justes ?',
+          ]
+          for query in moral_positive:
+              query_notions=notions(query)
+              assert {'intention'} in query_notions and {'acte'} in query_notions, (query,query_notions)
+              labels=[t['label'] for t in suggest(query)]
+              assert 'Intention' in labels and 'Acte' in labels, (query,labels)
+          moral_negative=[
+              "Que faire aujourd'hui ?",'Croire en Dieu est-il nécessaire ?','Pourquoi croire ?','Peut-on croire aux anges ?',
+              'Faire le bien rend-il heureux ?',"Qu'est-ce que le bien ?",'Pourquoi le mal existe-t-il ?',"J'ai l'intention de voyager.",
+              'Comment bien agir ?',"Qu'est-ce qu'un acte ?",'Peut-on se tromper ?','La vérité existe-t-elle ?',
+              "Je crois qu'il faut agir maintenant.",'Je pense faire un gâteau.',"J'ai l'intention de faire le bien.",
+          ]
+          for query in moral_negative:
+              query_notions=notions(query)
+              assert not ({'intention'} in query_notions and {'acte'} in query_notions), (query,query_notions)
           assert notions("faire faire le bien")==[{'faire'},{'bien'}]
           assert 'Peur' in [t['label'] for t in suggest('Pourquoi avons-nous peur de mourir ?')] and 'Mort' in [t['label'] for t in suggest('Pourquoi avons-nous peur de mourir ?')]
           assert 'Quatre éléments' in [t['label'] for t in suggest('les 4 éléments magiques')] and 'Magie' in [t['label'] for t in suggest('les 4 éléments magiques')]
