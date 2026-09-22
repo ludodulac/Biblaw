@@ -155,7 +155,7 @@ jobs:
                   if key not in seen:seen.add(key);result.append(variants)
               return result
           def suggest(query):
-              query_notions=notions(query); exact={t['id'] for t in resolve(query)}; found={}
+              composed_count=len(compose(query)); query_notions=notions(query); exact={t['id'] for t in resolve(query)}; found={}
               def consider(theme,source,text):
                   words=set(norm(text).split())
                   matched=[index for index,variants in enumerate(query_notions) if any(term in words for term in variants)]
@@ -173,9 +173,10 @@ jobs:
               def add(item):
                   if item and item[3]['id'] not in selected_ids and len(selected)<8:selected.append(item);selected_ids.add(item[3]['id'])
               max_hits=ranked[0][1] if ranked else 0
-              for item in ranked:
-                  if item[1]==max_hits:add(item)
-              for index in range(len(query_notions)):add(next((item for item in ranked if index in item[4]),None))
+              if max_hits>1:
+                  for item in ranked:
+                      if item[1]==max_hits:add(item)
+              for index in range(composed_count):add(next((item for item in ranked if index in item[4]),None))
               for item in ranked:add(item)
               return [x[3] for x in selected]
           mort=suggest('mort')
@@ -197,6 +198,11 @@ jobs:
           assert "const themeQueryNotions = query =>" in js and "THEME_QUERY_STOP_WORDS" in js and "THEME_QUERY_EQUIVALENTS" in js
           assert notions("ma vie en ce monde")==[{'vie'},{'monde'}]
           assert notions("faire faire le bien")==[{'faire'},{'bien'}]
+          # Ordinary query tokens do not receive one guaranteed top-8 slot each.
+          ordinary_query='acte intention bien'
+          assert compose(ordinary_query)==[]
+          ordinary_labels=[t['label'] for t in suggest(ordinary_query)]
+          assert 'Intention' not in ordinary_labels, ordinary_labels
           natural_elements=[t['label'] for t in suggest('les 4 éléments magiques')]
           assert 'Quatre éléments' in natural_elements and 'Magie' in natural_elements, natural_elements
           natural_mort=[t['label'] for t in suggest('Pourquoi avons-nous peur de mourir ?')]
