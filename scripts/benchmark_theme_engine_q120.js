@@ -59,6 +59,17 @@ function selfTest(){
   ])if(!exactVariants(query).flat().includes(required))throw new Error('Structural counterexample mutilated: '+query+' missing '+required);
   if(engineApi.norm('peut-on')!=='peut on')throw new Error('Generic norm changed for peut-on');
   if(engineApi.norm("l'âme")!=='l ame')throw new Error('Generic norm changed for literal apostrophe path');
+  for(const query of [
+    'Toutes les religions parlent-elles au fond de la même réalité ?',
+    'Pourquoi les humains se croient-ils au-dessus des autres animaux ?',
+    "Quel monde allons-nous laisser aux enfants qui naissent aujourd'hui ?"
+  ]){
+    const flat=exactVariants(query).flat();
+    if(flat.includes('au')||flat.includes('aux'))throw new Error('Thematic au/aux survived: '+query);
+  }
+  const q116=exactVariants('Pourquoi les humains se croient-ils au-dessus des autres animaux ?').flat();
+  if(!q116.includes('dessus')||!q116.includes('animaux'))throw new Error('au-dessus regression: lexical remainder missing');
+  if(engineApi.norm('au')!=='au'||engineApi.norm('aux')!=='aux'||engineApi.norm('au-dessus')!=='au dessus')throw new Error('Generic norm changed for literal au/aux path');
 }
 function validateCorpus(){
   if(corpus.length!==120)throw new Error('Expected 120 questions, got '+corpus.length);
