@@ -110,6 +110,14 @@ jobs:
           assert forms('assemblée')[-1] != forms('sainte assemblée')[-1]
           assert literal_contains('Alliance de lumière.', 'alliance de lumière') and not literal_contains('Alliance dans la lumière.', 'alliance de lumière')
           assert literal_contains('Dieu', 'dieu') and not literal_contains('dieux', 'dieu')
+          literal_sample="L'âme demeure. L'âme écoute."
+          literal_query="l'âme"
+          normalized_sample=f" {norm(literal_sample)} "
+          normalized_query=f" {norm(literal_query)} "
+          assert literal_contains(literal_sample,literal_query)
+          assert normalized_sample.count(normalized_query)==2
+          assert norm("l'âme")=='l ame'
+          assert "const highlighted = value =>" in js and "<mark class=\"search-hit\">" in js
           bundle=json.loads(Path('data/browser-search-catalog.json').read_text(encoding='utf-8'))
           assert bundle['purpose']=='browser-search-corpus-bundle' and bundle['recordCount']==len(bundle['records'])
           psalms=[r for r in bundle['records'] if r.get('recordType')=='psalm']
