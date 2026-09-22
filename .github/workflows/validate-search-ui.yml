@@ -91,7 +91,7 @@ jobs:
           assert "state.mode='themes'" in js and "state.mode='exact'" in js
           assert "const exactItems=matches(query)" in js
           assert 'highlighted(v.text)' in exact
-          assert "['l','le','la','les','un','une','des']" in js and 'for(const q of forms)' in js
+          assert "['l','le','la','les','un','une','des']" in search_js and 'for(const q of forms)' in search_js
           assert "const activateExactMode = () =>" in js and "$('modeExact').onclick=()=>{activateExactMode();search();}" in js
           assert 'theme.occurrenceCount||theme.occurrences?.length||0' in js and "theme.id?` · ${esc(theme.id)}`:''" in js
           assert "const theme=state.themeById.get(btn.dataset.themeId);if(!theme)return;$('query').value=theme.label;search();" in js
