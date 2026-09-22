@@ -1,0 +1,45 @@
+name: Benchmark real thematic engine Q120
+on:
+  workflow_dispatch:
+  push:
+    branches: [benchmark-real-theme-engine-q120]
+    paths:
+      - 'js/theme-suggestion-engine.js'
+      - 'js/biblaw.js'
+      - 'index.html'
+      - 'scripts/benchmark_theme_engine_q120.js'
+      - 'tests/fixtures/biblaw-benchmark-q001-q120.json'
+      - 'data/thematic-index/theme-directory-public.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - '.github/workflows/benchmark-real-theme-engine-q120.yml'
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check JavaScript syntax
+        run: |
+          node --check js/theme-suggestion-engine.js
+          node --check js/biblaw.js
+          node --check scripts/benchmark_theme_engine_q120.js
+      - name: Run shared-engine regression witnesses
+        run: node scripts/benchmark_theme_engine_q120.js --self-test-only
+      - name: Run Q001-Q120 benchmark
+        run: node scripts/benchmark_theme_engine_q120.js
+      - name: Verify benchmark outputs
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const p='benchmark-output/benchmark-q001-q120.json';
+          const data=JSON.parse(fs.readFileSync(p,'utf8'));
+          if(data.count!==120||data.results.length!==120)throw new Error('benchmark count mismatch');
+          for(const id of ['Q001','Q059','Q120'])if(!data.results.some(r=>r.id===id))throw new Error('missing '+id);
+          console.log('OUTPUT_OK',fs.statSync(p).size,'bytes');
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-q001-q120
+          path: |
+            benchmark-output/benchmark-q001-q120.json
+            benchmark-output/benchmark-q001-q120.csv
+          if-no-files-found: error
