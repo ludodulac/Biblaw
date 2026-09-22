@@ -81,8 +81,8 @@ function selfTest(){
   ])if(exactVariants(query).flat().includes('se'))throw new Error('Thematic se survived: '+query);
   const q083=exactVariants('Comment se pardonner à soi-même ?').flat();
   if(!q083.includes('soi'))throw new Error('Q083 regression: soi missing after se filter');
-  const q116=exactVariants('Pourquoi les humains se croient-ils au-dessus des autres animaux ?').flat();
-  if(!q116.includes('dessus')||!q116.includes('animaux'))throw new Error('Q116 regression after se filter');
+  const q116Se=exactVariants('Pourquoi les humains se croient-ils au-dessus des autres animaux ?').flat();
+  if(!q116Se.includes('dessus')||!q116Se.includes('animaux'))throw new Error('Q116 regression after se filter');
 }
 function validateCorpus(){
   if(corpus.length!==120)throw new Error('Expected 120 questions, got '+corpus.length);
