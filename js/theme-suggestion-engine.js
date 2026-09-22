@@ -32,3 +32,4 @@
   }
   return{norm,composeThemeQueryNotions,themeQueryNotions,create};
 });
+// Shared unchanged algorithm: browser UI and Node benchmark use this same module.\n
