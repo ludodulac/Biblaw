@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+'use strict';
+const fs=require('fs');
+const path=require('path');
+const engineApi=require('../js/theme-suggestion-engine.js');
+const ROOT=path.resolve(__dirname,'..');
+const readJson=relative=>JSON.parse(fs.readFileSync(path.join(ROOT,relative),'utf8'));
+const directory=readJson('data/thematic-index/theme-directory-public.json');
+const runtime=readJson('data/thematic-index/theme-search-runtime.json');
+const corpus=readJson('tests/fixtures/biblaw-benchmark-q001-q120.json');
+const engine=engineApi.create(directory.themes||[],runtime);
+function labels(query){return engine.suggestIndexedThemes(query).map(t=>t.label);}
+function selfTest(){
+  const checks=[
+    ['mort',['Mort','La mort ne résout pas le non-accompli','Préparer la mort en vivant','Vie après la mort comme continuité','Vie et mort']],
+  ];
+  for(const [query,expected] of checks){const actual=labels(query);if(JSON.stringify(actual)!==JSON.stringify(expected))throw new Error('Regression '+query+': '+JSON.stringify(actual));}
+  for(const [query,required] of [
+    ['Pourquoi existons-nous ?',['Sens de la vie','But de la vie']],
+    ['Pourquoi avons-nous peur de mourir ?',['Peur','Mort']],
+    ['les 4 éléments magiques',['Quatre éléments','Magie']],
+    ['Peut-on faire le mal en croyant faire le bien ?',['Intention','Acte']],
+  ]){const actual=labels(query);for(const label of required)if(!actual.includes(label))throw new Error('Regression '+query+': missing '+label+' in '+JSON.stringify(actual));}
+  const ordinary=labels('acte intention bien');if(ordinary.includes('Intention'))throw new Error('Ordinary-token quota regression');
+  if(engine.resolveIndexedThemes('mort')[0]?.id!=='mort')throw new Error('Canonical resolution regression: mort');
+}
+function validateCorpus(){
+  if(corpus.length!==120)throw new Error('Expected 120 questions, got '+corpus.length);
+  const ids=corpus.map(x=>x.id),expected=Array.from({length:120},(_,i)=>'Q'+String(i+1).padStart(3,'0'));
+  if(JSON.stringify(ids)!==JSON.stringify(expected))throw new Error('Corpus IDs are not exactly Q001-Q120');
+  if(new Set(ids).size!==120)throw new Error('Duplicate corpus IDs');
+  if(new Set(corpus.map(x=>x.family)).size!==14)throw new Error('Expected 14 families');
+  const witnesses={Q001:'Pourquoi sommes-nous là ?',Q059:"Est-ce l'intention ou ce que l'on fait réellement qui compte le plus ?",Q120:"Quel monde allons-nous laisser aux enfants qui naissent aujourd'hui ?"};
+  for(const [id,q] of Object.entries(witnesses))if(corpus.find(x=>x.id===id)?.q!==q)throw new Error('Corpus witness mismatch: '+id);
+}
+function benchmark(){
+  validateCorpus();selfTest();
+  const results=corpus.map(item=>{
+    const a=engine.evaluate(item.q),b=engine.evaluate(item.q);
+    const sig=x=>JSON.stringify({normalizedQuery:x.normalizedQuery,recognizedNotions:x.recognizedNotions,composedNotions:x.composedNotions,candidateCountBeforeTop8:x.candidateCountBeforeTop8,top8:x.top8.map(t=>t.id)});
+    if(sig(a)!==sig(b))throw new Error('Non-deterministic result: '+item.id);
+    return{id:item.id,family:item.family,question:item.q,normalizedQuery:a.normalizedQuery,recognizedNotions:a.recognizedNotions,composedNotions:a.composedNotions,candidateCountBeforeTop8:a.candidateCountBeforeTop8,top8:a.top8.map(t=>({id:t.id,label:t.label})),candidateRanking:a.candidateRanking};
+  });
+  if(results.length!==120)throw new Error('Expected 120 benchmark results');
+  fs.mkdirSync(path.join(ROOT,'benchmark-output'),{recursive:true});
+  fs.writeFileSync(path.join(ROOT,'benchmark-output/benchmark-q001-q120.json'),JSON.stringify({engine:'js/theme-suggestion-engine.js',directory:'data/thematic-index/theme-directory-public.json',runtime:'data/thematic-index/theme-search-runtime.json',count:results.length,results},null,2)+'\n');
+  const csv=['id,family,question,normalizedQuery,recognizedNotions,composedNotions,candidateCountBeforeTop8,top8'];
+  const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+  for(const r of results)csv.push([r.id,r.family,r.question,r.normalizedQuery,JSON.stringify(r.recognizedNotions),JSON.stringify(r.composedNotions),r.candidateCountBeforeTop8,r.top8.map(x=>x.label).join(' | ')].map(quote).join(','));
+  fs.writeFileSync(path.join(ROOT,'benchmark-output/benchmark-q001-q120.csv'),csv.join('\n')+'\n');
+  for(const id of ['Q001','Q059','Q120']){const r=results.find(x=>x.id===id);console.log(id,JSON.stringify({question:r.question,normalizedQuery:r.normalizedQuery,recognizedNotions:r.recognizedNotions,composedNotions:r.composedNotions,candidateCountBeforeTop8:r.candidateCountBeforeTop8,top8:r.top8}));}
+  console.log('BENCHMARK_OK count=120 families=14 deterministic=yes');
+}
+selfTest();
+if(!process.argv.includes('--self-test-only'))benchmark();
