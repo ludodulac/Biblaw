@@ -120,6 +120,9 @@ jobs:
           for literal_sample,literal_query in [('au monde','au'),('fidèle aux engagements','aux'),('placé au-dessus du monde','au-dessus')]:
               assert literal_contains(literal_sample,literal_query)
               assert f" {norm(literal_query)} " in f" {norm(literal_sample)} "
+          for literal_sample,literal_query in [('il se tait','se'),('il se tait et se relève','se tait')]:
+              assert literal_contains(literal_sample,literal_query)
+              assert f" {norm(literal_query)} " in f" {norm(literal_sample)} "
           for literal_sample,literal_query in [('il se tait','se'),('il se tait parfois','se tait')]:
               assert literal_contains(literal_sample,literal_query)
               assert f" {norm(literal_query)} " in f" {norm(literal_sample)} "
