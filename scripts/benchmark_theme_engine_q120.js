@@ -37,6 +37,28 @@ function selfTest(){
   ]){const variants=exactVariants(query).flat();if(variants.includes(forbidden))throw new Error('Unauthorized morphology '+query+' -> '+forbidden);}
   const enfantVariants=exactVariants('enfants').flat();if(!enfantVariants.includes('enfant'))throw new Error('Controlled plural enfants -> enfant missing');
   if(exactVariants('maisons').flat().includes('maison'))throw new Error('Unexpected universal singularization');
+  const notionKeys=query=>exactVariants(query).map(v=>v.join('|'));
+  for(const [query,forbidden,required] of [
+    ["d'être",'d','etre'],["c'est",'c',null],["n'ont",'n','ont'],["s'aiment",'s','aiment'],
+    ["j'existe",'j','existe'],["l'âme",'l','ame'],["qu'on",'qu',null]
+  ]){
+    const keys=notionKeys(query),flat=exactVariants(query).flat();
+    if(keys.includes(forbidden)||flat.includes(forbidden))throw new Error('French elision fragment survived: '+query+' -> '+forbidden);
+    if(required&&!flat.includes(required))throw new Error('French elision lexical part missing: '+query+' -> '+required);
+  }
+  for(const [query,forbidden,required] of [
+    ['a-t-il','t',null],['existe-t-il','t','existe'],['va-t-on','t','va'],['tombe-t-il','t','tombe']
+  ]){
+    const flat=exactVariants(query).flat();
+    if(flat.includes(forbidden))throw new Error('Euphonic t survived: '+query);
+    if(required&&!flat.includes(required))throw new Error('Inversion lexical part missing: '+query+' -> '+required);
+  }
+  for(const [query,required] of [
+    ['sommes-nous','sommes'],['meurent-ils','mort'],['souffrons-nous','souffrance'],['soi-même','soi'],['au-dessus','dessus'],
+    ['D','d'],['lettre D','d'],['X','x']
+  ])if(!exactVariants(query).flat().includes(required))throw new Error('Structural counterexample mutilated: '+query+' missing '+required);
+  if(engineApi.norm('peut-on')!=='peut on')throw new Error('Generic norm changed for peut-on');
+  if(engineApi.norm("l'âme")!=='l ame')throw new Error('Generic norm changed for literal apostrophe path');
 }
 function validateCorpus(){
   if(corpus.length!==120)throw new Error('Expected 120 questions, got '+corpus.length);
