@@ -84,6 +84,30 @@ function selfTest(){
   const q116Se=exactVariants('Pourquoi les humains se croient-ils au-dessus des autres animaux ?').flat();
   if(!q116Se.includes('dessus')||!q116Se.includes('animaux'))throw new Error('Q116 regression after se filter');
   if(engineApi.norm('se')!=='se'||engineApi.norm('il se tait')!=='il se tait')throw new Error('Generic norm changed for literal se path');
+  const relationPositive=[
+    'La conscience peut-elle exister sans le corps ?',
+    'Notre conscience peut-elle continuer sans notre corps physique ?',
+    'La conscience peut-elle subsister sans le corps ?'
+  ];
+  for(const query of relationPositive){
+    const e=engine.evaluate(query),composed=e.composedNotions.map(x=>x.join('|'));
+    if(!composed.includes('conscience|continuite'))throw new Error('Relational positive did not compose: '+query);
+    if(!e.candidateRanking.some(x=>x.id==='continuite-de-conscience'))throw new Error('Relational destination missing: '+query);
+  }
+  const relationNegative=[
+    'Quelle est la nature de la conscience ?',
+    'Pourquoi avons-nous un corps ?',
+    'Quel rapport existe entre la conscience et le corps ?',
+    'La conscience agit-elle à travers le corps ?',
+    'Peut-on vivre sans comprendre sa conscience et son corps ?',
+    'Le corps peut-il exister sans la conscience ?',
+    'Sans le corps, que devient la conscience ?',
+    'La conscience et le corps peuvent-ils vivre sans aide ?',
+    'La conscience peut-elle vraiment, malgré beaucoup de questions sur la vie et la mort, exister sans notre corps ?',
+    'Sans comprendre la conscience, peut-on écouter le corps ?',
+    'Le corps, sans doute, influence la conscience.'
+  ];
+  for(const query of relationNegative)if(engine.evaluate(query).composedNotions.some(x=>x.join('|')==='conscience|continuite'))throw new Error('Relational counterexample composed: '+query);
 }
 function validateCorpus(){
   if(corpus.length!==120)throw new Error('Expected 120 questions, got '+corpus.length);
