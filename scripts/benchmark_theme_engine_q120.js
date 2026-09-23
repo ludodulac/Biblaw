@@ -84,6 +84,31 @@ function selfTest(){
   const q116Se=exactVariants('Pourquoi les humains se croient-ils au-dessus des autres animaux ?').flat();
   if(!q116Se.includes('dessus')||!q116Se.includes('animaux'))throw new Error('Q116 regression after se filter');
   if(engineApi.norm('se')!=='se'||engineApi.norm('il se tait')!=='il se tait')throw new Error('Generic norm changed for literal se path');
+  const existentialPositive=[
+    "Pourquoi est-ce que j'existe ?",
+    "Est-ce que l'humanité a une raison d'exister ?",
+    "Pourquoi existons-nous ?",
+    "Pourquoi l'être humain existe-t-il ?",
+    "Avons-nous une raison d'exister ?"
+  ];
+  for(const query of existentialPositive)if(!engine.evaluate(query).composedNotions.some(x=>x.join('|')==='but|sens'))throw new Error('Existential positive did not compose: '+query);
+  const existentialNegative=[
+    "Si Dieu existe, pourquoi y a-t-il autant de souffrance ?",
+    "Pourquoi existe-t-il autant de religions différentes ?",
+    "Pourquoi la vie est-elle parfois si dure ?",
+    "Pourquoi la vie est-elle injuste ?",
+    "Pourquoi est-il si difficile de vivre en paix ?",
+    "Pourquoi faut-il passer autant de notre vie à travailler ?",
+    "Pourquoi la vie est-elle parfois difficile ?",
+    "Pourquoi existe-t-il autant de religions ?",
+    "Pourquoi certaines formes de vie disparaissent-elles ?",
+    "Pourquoi est-il difficile de vivre ensemble ?",
+    "Pourquoi passons-nous notre vie à travailler ?",
+    "Si Dieu existe, pourquoi souffrons-nous ?"
+  ];
+  for(const query of existentialNegative)if(engine.evaluate(query).composedNotions.some(x=>x.join('|')==='but|sens'))throw new Error('Existential counterexample composed: '+query);
+  // Explicitly evaluated boundary case: this needs a separate raison d'être family and is not forced by this experiment.
+  engine.evaluate("L'existence humaine a-t-elle une raison d'être ?");
   const relationPositive=[
     'La conscience peut-elle exister sans le corps ?',
     'Notre conscience peut-elle continuer sans notre corps physique ?',
