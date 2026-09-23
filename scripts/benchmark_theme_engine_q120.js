@@ -33,8 +33,25 @@ function selfTest(){
   ]){const actual=labels(query);for(const label of required)if(!actual.includes(label))throw new Error('Controlled morphology '+query+': missing '+label+' in '+JSON.stringify(actual));}
   const exactVariants=query=>engine.themeQueryNotions(query).map(v=>[...v].sort());
   for(const [query,forbidden] of [
-    ['pardonner','pardon'],['guerres','guerre'],['riches','richesse'],['servir','service'],['vieillir','vieillesse'],['mechant','mal'],['planete','terre'],['sommes','existence'],['cerveau','conscience'],['quittent','quitter']
+    ['guerres','guerre'],['riches','richesse'],['servir','service'],['vieillir','vieillesse'],['mechant','mal'],['planete','terre'],['sommes','existence'],['cerveau','conscience'],['quittent','quitter']
   ]){const variants=exactVariants(query).flat();if(variants.includes(forbidden))throw new Error('Unauthorized morphology '+query+' -> '+forbidden);}
+  for(const [query,required] of [
+    ['pardonner','pardon'],['travailler','travail']
+  ])if(!exactVariants(query).flat().includes(required))throw new Error('Controlled lexical bridge '+query+' -> '+required+' missing');
+  for(const [query,forbidden] of [
+    ['oublier','pardon'],['reconcilier','pardon'],['impardonnable','pardon'],
+    ['travailleurs','travail'],['retravailler','travail'],['ouvrage','travail']
+  ])if(exactVariants(query).flat().includes(forbidden))throw new Error('Unauthorized lexical bridge '+query+' -> '+forbidden);
+  for(const query of [
+    'Peut-on vraiment pardonner ?',
+    "Faut-il pardonner à quelqu'un qui recommence ?",
+    'Comment réussir à pardonner ?'
+  ])if(!engine.themeQueryNotions(query).flatMap(x=>[...x]).includes('pardon'))throw new Error('Pardon bridge positive missing: '+query);
+  for(const query of [
+    'Pourquoi devons-nous travailler ?',
+    'Est-ce important de travailler ?',
+    'Peut-on être heureux sans travailler ?'
+  ])if(!engine.themeQueryNotions(query).flatMap(x=>[...x]).includes('travail'))throw new Error('Travail bridge positive missing: '+query);
   const enfantVariants=exactVariants('enfants').flat();if(!enfantVariants.includes('enfant'))throw new Error('Controlled plural enfants -> enfant missing');
   if(exactVariants('maisons').flat().includes('maison'))throw new Error('Unexpected universal singularization');
   const notionKeys=query=>exactVariants(query).map(v=>v.join('|'));
