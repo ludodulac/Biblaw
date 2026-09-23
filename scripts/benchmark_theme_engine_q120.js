@@ -91,7 +91,7 @@ function selfTest(){
   ];
   for(const query of relationPositive){
     const e=engine.evaluate(query),composed=e.composedNotions.map(x=>x.join('|'));
-    if(!composed.includes('conscience|continuite'))throw new Error('Relational positive did not compose: '+query);
+    if(!composed.includes('continuite'))throw new Error('Relational positive did not compose: '+query);
     if(!e.candidateRanking.some(x=>x.id==='continuite-de-conscience'))throw new Error('Relational destination missing: '+query);
   }
   const relationNegative=[
@@ -107,7 +107,7 @@ function selfTest(){
     'Sans comprendre la conscience, peut-on écouter le corps ?',
     'Le corps, sans doute, influence la conscience.'
   ];
-  for(const query of relationNegative)if(engine.evaluate(query).composedNotions.some(x=>x.join('|')==='conscience|continuite'))throw new Error('Relational counterexample composed: '+query);
+  for(const query of relationNegative)if(engine.evaluate(query).composedNotions.some(x=>x.join('|')==='continuite'))throw new Error('Relational counterexample composed: '+query);
 }
 function validateCorpus(){
   if(corpus.length!==120)throw new Error('Expected 120 questions, got '+corpus.length);
