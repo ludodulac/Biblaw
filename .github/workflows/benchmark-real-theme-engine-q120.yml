@@ -2,7 +2,7 @@ name: Benchmark real thematic engine Q120
 on:
   workflow_dispatch:
   push:
-    branches: [benchmark-real-theme-engine-q120, experiment-controlled-morphology-q120, experiment-thematic-french-elision-filter, experiment-thematic-au-aux-filter, experiment-thematic-se-filter, experiment-relational-consciousness-without-body, experiment-local-existential-composition]
+    branches: [benchmark-real-theme-engine-q120, experiment-controlled-morphology-q120, experiment-thematic-french-elision-filter, experiment-thematic-au-aux-filter, experiment-thematic-se-filter, experiment-relational-consciousness-without-body, experiment-local-existential-composition, experiment-final-lexical-bridges]
     paths:
       - 'js/theme-suggestion-engine.js'
       - 'js/biblaw.js'
