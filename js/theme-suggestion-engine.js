@@ -9,7 +9,7 @@
   // Thematic-only: preserve generic norm/literal search while removing validated French structural fragments.
   const thematicFrenchStructure=value=>String(value||'').replace(/(^|\s)(?:d|c|n|s|j|m|l|qu)[’'](?=[A-Za-zÀ-ÖØ-öø-ÿŒœÆæ])/gi,'$1').replace(/-t-(?=(?:il|elle|on|ils|elles)\b)/gi,'-');
   const THEME_QUERY_STOP_WORDS=new Set(['a','au','aux','avons','avec','ce','comment','dans','de','des','du','en','est','et','il','j','la','le','les','l','m','ma','ne','nous','on','ou','par','pas','peut','pour','pourquoi','qu','que','quelle','qui','sans','se','soit','sont','un','une']);
-  const THEME_QUERY_EQUIVALENTS={'4':['4','quatre'],quatre:['quatre','4'],magique:['magique','magie'],magiques:['magiques','magie'],mourir:['mourir','mort'],meurt:['meurt','mourir','mort'],meurent:['meurent','mourir','mort'],mourons:['mourons','mourir','mort'],souffrons:['souffrons','souffrir','souffrance'],souffrent:['souffrent','souffrir','souffrance'],aimer:['aimer','amour'],enfants:['enfants','enfant']};
+  const THEME_QUERY_EQUIVALENTS={'4':['4','quatre'],quatre:['quatre','4'],magique:['magique','magie'],magiques:['magiques','magie'],mourir:['mourir','mort'],meurt:['meurt','mourir','mort'],meurent:['meurent','mourir','mort'],mourons:['mourons','mourir','mort'],souffrons:['souffrons','souffrir','souffrance'],souffrent:['souffrent','souffrir','souffrance'],aimer:['aimer','amour'],enfants:['enfants','enfant'],pardonner:['pardonner','pardon'],travailler:['travailler','travail']};
   // Experimental relational marker: CONSCIENCE -> SANS -> CORPS.
   // Local window: at most 3 intervening tokens before `sans`, and 2 after it.
   // The marker `sans` is structural only; only the validated `continuite` evidence becomes a documentary notion.
