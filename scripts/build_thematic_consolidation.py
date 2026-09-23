@@ -44,7 +44,6 @@ def documentary_dossier(theme_id: str):
                         "sourceFile": str(path.relative_to(ROOT)),
                         "recordId": psalm["recordId"],
                         "verseNumbers": relation.get("verseNumbers", []),
-                        "notesUsed": psalm.get("notesUsed", []),
                     },
                 })
     return rows
