@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/build_linguistic_occurrence_index.py'
       - 'scripts/audit_linguistic_occurrences.py'
+      - 'scripts/test_linguistic_occurrence_index.py'
       - 'data/linguistic/**'
 jobs:
   porte-pilot:
