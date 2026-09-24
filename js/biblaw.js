@@ -224,10 +224,10 @@
       const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
       return `<article class="result-card result-card-compact">
         <button class="result-summary-toggle" type="button" data-toggle-result aria-expanded="false">
-          <span class="result-identity"><span class="result-doc">${esc(label(r))}</span><span class="result-title">${modeAwareText(title)}</span><span class="result-meta">${esc(bookMeta||'Corpus structuré')}</span></span>
+          <span class="result-identity"><span class="result-doc">${esc(label(r))}</span><span class="result-title">${modeAwareText(r.title)}</span><span class="result-meta">${esc(bookMeta||'Corpus structuré')}</span></span>
           <span class="result-status"><strong class="score">${esc(status)}</strong><span class="result-chevron" aria-hidden="true">⌄</span></span>
         </button>
-        <div class="result-details" hidden>${details}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">Ouvrir le ${r.recordType==='psalm'?'psaume':'texte'} complet</button></div></div>
+        <div class="result-details" hidden>${details}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">Voir le psaume source</button></div></div>
       </article>`;
     }).join('');
     document.querySelectorAll('[data-toggle-result]').forEach(button=>button.onclick=()=>{ const details=button.nextElementSibling; const open=button.getAttribute('aria-expanded')==='true'; button.setAttribute('aria-expanded',String(!open)); details.hidden=open; });
