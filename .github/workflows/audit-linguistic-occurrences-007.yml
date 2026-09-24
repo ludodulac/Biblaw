@@ -1,0 +1,18 @@
+name: Linguistic adversarial audit 007
+on:
+  push:
+    branches: [audit/linguistic-occurrences-007]
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_suis_graphies_007.py
+      - run: python scripts/audit_suis_adversarial_007.py
+      - run: python scripts/test_linguistic_occurrence_index.py
+      - run: python scripts/audit_linguistic_occurrences.py
+      - run: python scripts/audit_linguistic_foundation_004.py
+      - run: python scripts/audit_linguistic_second_pilot_006.py
