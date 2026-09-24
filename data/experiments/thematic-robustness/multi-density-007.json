@@ -1,0 +1,78 @@
+{
+  "experiment": "thematic-robustness-multi-density-007",
+  "baseline": "2bf26a0d2c7543f18df7575b9104117290a4984e",
+  "travail": {
+    "stats": {
+      "relations": 39,
+      "central": 9,
+      "important": 12,
+      "related": 18
+    },
+    "sample": [
+      "book-08-psalm-047",
+      "book-21-psalm-134",
+      "book-22-psalm-141",
+      "book-22-psalm-146",
+      "book-22-psalm-163",
+      "book-24-psalm-134",
+      "book-25-psalm-171",
+      "book-25-psalm-177",
+      "book-37-psalm-244",
+      "book-21-psalm-141",
+      "book-21-psalm-143",
+      "book-22-psalm-155",
+      "book-24-psalm-142",
+      "book-27-psalm-166",
+      "book-29-psalm-217"
+    ],
+    "adjudication": [
+      [
+        "Travail sur soi, éducation et transformation",
+        "KEEP_AXIS"
+      ],
+      [
+        "Travail comme œuvre, participation et service",
+        "KEEP_AXIS"
+      ],
+      [
+        "Faire sa part : personne ne travaille à notre place",
+        "MAKE_SUBAXIS_OF:WORK_AXIS_01"
+      ],
+      [
+        "Transmission du savoir-faire et continuité",
+        "INSUFFICIENT_EVIDENCE"
+      ]
+    ],
+    "essentialPsalms": [
+      "book-24-psalm-134",
+      "book-25-psalm-171",
+      "book-37-psalm-244",
+      "book-25-psalm-177",
+      "book-08-psalm-047",
+      "book-27-psalm-166"
+    ],
+    "relatedThemes": [
+      "vie",
+      "terre",
+      "lumiere",
+      "corps",
+      "dieux",
+      "conscience"
+    ]
+  },
+  "pardon": {
+    "stats": {
+      "relations": 1,
+      "central": 0,
+      "important": 1,
+      "related": 0
+    },
+    "evidenceRef": "book-16-psalm-100",
+    "behavior": "B — NOTICE DOCUMENTAIRE COURTE"
+  },
+  "sufficiency": {
+    "synthesis": "Multiple independent recordIds, coherent supported structure, and multiple proofs for each major claim.",
+    "notice": "One or a few clear canonical sources may support a bounded notice, with documentary scarcity visible.",
+    "insufficient": "Source-only result when evidence is too weak or indirect even for a bounded notice."
+  }
+}
