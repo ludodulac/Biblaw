@@ -2,7 +2,7 @@
 from __future__ import annotations
 import argparse, hashlib, json, re, unicodedata
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]; CATALOG=ROOT/'data/catalog.json'; CANON='data/corpus/books/'
+ROOT=Path(__file__).resolve().parents[1]; CATALOG=ROOT/'data/catalog.json'; CANON='data/corpus/books/'; TOKEN_RE=re.compile(r"[^\\W_]+(?:[’'][^\\W_]+)*",re.UNICODE)
 def norm(s):
  return unicodedata.normalize('NFC',s).casefold()
 def searchable(rel,o):
@@ -28,7 +28,7 @@ def occurrences(form):
   if not searchable(rel,o): continue
   bn,pn=meta(o)
   for field,verse,text in fields(o):
-   for m in token.finditer(text):
+   for m in TOKEN_RE.finditer(text):
     if norm(m.group())!=target: continue
     s,e=m.span(); out.append({'occurrenceId':oid(o['id'],field,verse,s,e),'recordId':o['id'],'recordType':o.get('recordType'),'bookNumber':bn,'psalmNumber':pn,'verseNumber':verse,'field':field,'surfaceForm':m.group(),'normalizedForm':target,'startOffset':s,'endOffset':e,'context':text[max(0,s-90):min(len(text),e+90)]})
  return out
