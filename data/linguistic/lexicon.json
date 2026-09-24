@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "purpose": "linguistic-possible-analyses",
+  "entries": [
+    {
+      "normalizedForm": "porte",
+      "possibleAnalyses": [
+        {
+          "lemma": "porte",
+          "partOfSpeech": "NOUN"
+        },
+        {
+          "lemma": "porter",
+          "partOfSpeech": "VERB"
+        }
+      ],
+      "decisionPolicy": "possible analyses only; never sufficient to classify an occurrence"
+    }
+  ]
+}
