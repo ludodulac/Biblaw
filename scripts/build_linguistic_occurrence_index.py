@@ -4,7 +4,7 @@ import argparse, hashlib, json, re, unicodedata
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; CATALOG=ROOT/'data/catalog.json'; CANON='data/corpus/books/'
 def norm(s):
- s=unicodedata.normalize('NFD',s); s=''.join(c for c in s if unicodedata.category(c)!='Mn').lower(); s=s.replace('œ','oe').replace('æ','ae').replace('’',' ').replace("'",' '); s=re.sub(r'[^a-z0-9\s-]',' ',s); s=s.replace('-',' '); return re.sub(r'\s+',' ',s).strip()
+ return unicodedata.normalize('NFC',s).casefold()
 def searchable(rel,o):
  t=o.get('recordType'); return t not in {'theme','book'} and not (t=='psalm' and not rel.startswith(CANON))
 def fields(o):
