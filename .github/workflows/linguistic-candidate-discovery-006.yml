@@ -1,0 +1,16 @@
+name: Linguistic candidate discovery 006
+on:
+  push:
+    branches: [feat/linguistic-occurrences-006]
+    paths:
+      - 'scripts/discover_linguistic_candidates_006.py'
+      - '.github/workflows/linguistic-candidate-discovery-006.yml'
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/discover_linguistic_candidates_006.py
