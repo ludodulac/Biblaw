@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "normalizedForm": "suis",
+  "outputStem": "suis",
+  "purpose": "suis-second-homograph-pilot-reproducible-adjudication",
+  "analyses": [
+    {
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB"
+    },
+    {
+      "category": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB"
+    }
+  ],
+  "clitics": [
+    "le",
+    "la",
+    "les",
+    "lui",
+    "leur",
+    "en",
+    "y"
+  ],
+  "segmentationAnalyses": {
+    "VERB_CLITIC": "VERB_SUIVRE",
+    "VERB_INVERSION": "VERB_ETRE"
+  },
+  "rules": [
+    {
+      "id": "subject-tu-suivre",
+      "analysis": "VERB_SUIVRE",
+      "beforeRegex": "\\btu\\s+$"
+    },
+    {
+      "id": "reflexive-aux-etre",
+      "analysis": "VERB_ETRE",
+      "beforeRegex": "\\bje\\s+me\\s+$"
+    },
+    {
+      "id": "je-etre-strong-predicate",
+      "analysis": "VERB_ETRE",
+      "beforeRegex": "\\bje\\s+$",
+      "afterRegex": "^\\s+(?:en|dans|avec|à|au|aux|ici|là|présent|présente|heureux|heureuse|satisfait|satisfaite|fier|fière|vivant|vivante|venu|venue|arrivé|arrivée|né|née)\\b"
+    },
+    {
+      "id": "imperative-suivre",
+      "analysis": "VERB_SUIVRE",
+      "beforeRegex": "(?:^|[.!?…:;]\\s*)$",
+      "afterRegex": "^\\s+(?:le|la|les|un|une|ce|cet|cette|ces|ton|ta|tes|votre|vos|leur|leurs|mon|ma|mes|notre|nos)\\b"
+    }
+  ],
+  "policy": "Lexical alternatives and conservative contextual rules for SUIS live in configuration. Structural segmentation remains engine-level; no word-specific branch is permitted."
+}
