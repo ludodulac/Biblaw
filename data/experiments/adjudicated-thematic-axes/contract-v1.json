@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "contract": "adjudicated-thematic-axes",
+  "allowedKinds": [
+    "axis",
+    "subaxis",
+    "complement",
+    "distinction"
+  ],
+  "allowedConfidence": [
+    "FORT",
+    "MOYEN",
+    "FAIBLE"
+  ],
+  "requiredTopLevel": [
+    "schemaVersion",
+    "contract",
+    "theme",
+    "idStrategy",
+    "elements",
+    "distinctions",
+    "provenance"
+  ],
+  "requiredElement": [
+    "id",
+    "kind",
+    "provisionalLabel",
+    "parentId",
+    "confidence",
+    "justification",
+    "evidenceRefs"
+  ],
+  "requiredDistinction": [
+    "id",
+    "kind",
+    "provisionalLabel",
+    "confidence",
+    "justification",
+    "sides",
+    "evidenceRefs"
+  ],
+  "rules": [
+    "theme.themeId must exist in the public thematic index",
+    "IDs must be unique across elements and distinctions",
+    "subaxis parentId must reference an axis or subaxis",
+    "attached complement parentId must reference an axis or subaxis; null is allowed",
+    "every substantive element and distinction must have at least one evidenceRef",
+    "every evidenceRef must resolve to an existing canonical recordId containing the artifact themeId",
+    "canonical source file is derived from recordId book number and must contain that recordId",
+    "distinctions require at least two non-empty sides",
+    "side relatedElementIds must reference existing axes/subaxes",
+    "confidence must use allowedConfidence"
+  ]
+}
