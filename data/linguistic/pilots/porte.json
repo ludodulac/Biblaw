@@ -5,10 +5,10 @@
   "generator": "scripts/build_linguistic_adjudication.py",
   "policy": "Conservative generic morphosyntactic evidence produces PROVISIONAL only; unresolved retained units remain UNKNOWN; compounds are preserved as OTHER and excluded from linguistic retained total.",
   "counts": {
-    "NOUN": 264,
+    "NOUN": 268,
     "VERB_PORTER": 369,
     "OTHER": 27,
-    "UNKNOWN": 524,
+    "UNKNOWN": 520,
     "AMBIGUOUS": 0
   },
   "segmentationCounts": {
@@ -1847,11 +1847,11 @@
     },
     {
       "occurrenceId": "occ-eaecf67aa7480e7112d65a9b",
-      "category": "UNKNOWN",
-      "lemma": null,
-      "partOfSpeech": null,
-      "status": "UNKNOWN",
-      "evidence": "context-insufficient-conservative-v004",
+      "category": "NOUN",
+      "lemma": "porte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:noun-frame-conservative",
       "segmentation": "AUTONOMOUS"
     },
     {
@@ -9416,20 +9416,20 @@
     },
     {
       "occurrenceId": "occ-f64f67ec391d457cd0ec5e68",
-      "category": "UNKNOWN",
-      "lemma": null,
-      "partOfSpeech": null,
-      "status": "UNKNOWN",
-      "evidence": "context-insufficient-conservative-v004",
+      "category": "NOUN",
+      "lemma": "porte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:noun-frame-conservative",
       "segmentation": "AUTONOMOUS"
     },
     {
       "occurrenceId": "occ-868b058544305c10f5555233",
-      "category": "UNKNOWN",
-      "lemma": null,
-      "partOfSpeech": null,
-      "status": "UNKNOWN",
-      "evidence": "context-insufficient-conservative-v004",
+      "category": "NOUN",
+      "lemma": "porte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:noun-frame-conservative",
       "segmentation": "AUTONOMOUS"
     },
     {
@@ -10325,11 +10325,11 @@
     },
     {
       "occurrenceId": "occ-aee6e03eeb94043940c1ed3f",
-      "category": "UNKNOWN",
-      "lemma": null,
-      "partOfSpeech": null,
-      "status": "UNKNOWN",
-      "evidence": "context-insufficient-conservative-v004",
+      "category": "NOUN",
+      "lemma": "porte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:noun-frame-conservative",
       "segmentation": "AUTONOMOUS"
     },
     {
