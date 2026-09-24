@@ -136,7 +136,7 @@
   }
   function showThemeSuggestions(themes) {
     state.resolvedThemes=themes;
-    $('suggestionKicker').textContent='Thèmes proposés'; $('suggestionTitle').textContent='Choisissez le thème recherché';
+    $('suggestionKicker').textContent='Thèmes correspondant à votre recherche'; $('suggestionTitle').textContent='Choisissez le sens qui vous intéresse';
     $('senseChoices').innerHTML=themes.map(theme=>ambiguityChoice(theme,'query')).join('');
     $('senseChoices').querySelectorAll('[data-ambiguity-target]').forEach(btn=>btn.onclick=()=>navigateToTheme(state.themeById.get(btn.dataset.themeId)));
     $('ambiguityPanel').hidden=false;
@@ -178,8 +178,8 @@
         return render(thematic,resolved,{textualCount:textual.length});
       }
       const suggestions=suggestIndexedThemes(query);
-      if(suggestions.length>1){ showThemeSuggestions(suggestions); hideTransverseNavigation(); publishPresentationState({kind:'ambiguous-themes',themes:suggestions.map(theme=>({id:theme.id,label:theme.label}))}); return render([],[],{dualPending:true}); }
-      const selected=resolved[0]||suggestions[0];
+      if(suggestions.length>1){ showThemeSuggestions(suggestions); hideTransverseNavigation(); publishPresentationState({kind:'ambiguous-themes',themes:suggestions.map(theme=>({id:theme.id,label:theme.label}))}); return render([],[],{suggestionPending:true}); }
+      const selected=resolved[0]||(suggestions.length===1?suggestions[0]:null);
       if(selected){
         hideAmbiguity(); const thematic=thematicItems([selected]), textual=textualPsalmMatches(query); showTransverseNavigation(selected);
         publishPresentationState({kind:'canonical-theme',theme:{id:selected.id,label:selected.label},psalmCount:thematic.length});
@@ -200,25 +200,38 @@
   function bindThemeLinks(root=document){ root.querySelectorAll('[data-related-theme]').forEach(b=>b.onclick=()=>navigateToTheme(state.themeById.get(b.dataset.relatedTheme))); }
   function dualThemeReasons(r, themeMatches){ return `<div class="theme-reasons">${themeMatches.map(({theme,thematic})=>`<section class="theme-reason"><div class="theme-reason-head"><strong>${esc(theme.label)}</strong><span class="score">${esc(importanceLabel(thematic.importance))}</span></div><p class="result-summary">${modeAwareText(thematic.teaching||'')}</p>${contextualVerses(r,thematic)}</section>`).join('')}</div>`; }
 
+  function resultDetailsBody(r,{thematic,matchedThemes,numberLookup,themeMatches,companion}) {
+    const related=(thematic||themeMatches)?relatedThemes(r,matchedThemes):[];
+    const textualThemes=!thematic&&!themeMatches&&companion?.textualFallback?(state.themesByRecord.get(r.id)||[]):[];
+    const relatedBlock=(thematic||themeMatches)?`<div class="related-themes compact-related"><span class="related-label">Autres thèmes dans ce psaume :</span> ${themeTags(related)}</div>`:textualThemes.length?`<div class="related-themes compact-related"><span class="related-label">Thèmes canoniques indexés dans ce psaume :</span> ${themeTags(textualThemes)}</div>`:'';
+    const exactBlock=!thematic&&!themeMatches&&!numberLookup?exactVerses(r):'';
+    const singleThemeBody=thematic&&!themeMatches?`<div class="context-label theme-found">THÈME INDEXÉ · ${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div><p class="result-summary">${modeAwareText(thematic.teaching||summary(r))}</p>${contextualVerses(r,thematic)}`:'';
+    const dualBody=themeMatches?dualThemeReasons(r,themeMatches):'';
+    const fallbackBody=!thematic&&!themeMatches?`<p class="result-summary">${modeAwareText(summary(r))}</p>${exactBlock}`:'';
+    return (dualBody||singleThemeBody||fallbackBody)+relatedBlock;
+  }
+
   function render(items,indexedThemes=null,companion=null){
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
-    $('resultCount').textContent=companion?.dualPending?'Intersection en attente':companion?.dualTheme?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous les deux thèmes`:companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:companion?.textualFallback?`${items.length} occurrence${items.length>1?'s':''} du terme dans le corpus`:`${items.length} résultat${items.length>1?'s':''}`;
+    $('resultCount').textContent=companion?.suggestionPending?'Choisissez un thème':companion?.dualPending?'Intersection en attente':companion?.dualTheme?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous les deux thèmes`:companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:companion?.textualFallback?`${items.length} psaume${items.length>1?'s':''} contenant la recherche`:`${items.length} résultat${items.length>1?'s':''}`;
     const textualNotice=!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>THÈME INDEXÉ</strong><span>Deux lectures de cette recherche : ${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous ce thème · le mot ou l’expression apparaît dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.</span></div><button class="secondary" data-show-text-search>Voir les occurrences textuelles</button></div>`:'';
     const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><div><strong>${companion.textualFallback&&items.length?'OCCURRENCE DU TERME DANS LE CORPUS':'Aucun thème indexé ne correspond à cette recherche'}</strong><span>${companion.textualFallback&&items.length?`Aucun thème canonique ne correspond à cette recherche. ${items.length} psaume${items.length>1?'s':''} ${items.length>1?'contiennent':'contient'} néanmoins exactement le mot ou l’expression recherchée. Ces occurrences ne constituent pas un thème.`:'Aucune occurrence textuelle exacte ne correspond non plus avec les filtres sélectionnés.'}</span></div></div>`:'';
-    if(!items.length){ const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; $('results').innerHTML=emptyNumber||dualEmpty||pending||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return; }
+    if(!items.length){ const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const suggestionPending=companion?.suggestionPending?'<div class="empty">Plusieurs thèmes correspondent à votre recherche. Choisissez celui qui vous intéresse ci-dessus.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; $('results').innerHTML=emptyNumber||dualEmpty||suggestionPending||pending||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return; }
     $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount})=>{
       const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'';
-      const meta=thematic?`${thematic.bookTitle||`Livre ${thematic.bookNumber}`} · ${thematic.verseNumbers?.length?`verset${thematic.verseNumbers.length>1?'s':''} ${thematic.verseNumbers.join(', ')}`:'psaume entier'}`:bookMeta||'Corpus structuré';
-      const related=(thematic||themeMatches)?relatedThemes(r,matchedThemes):[]; const textualThemes=!thematic&&!themeMatches&&companion?.textualFallback?(state.themesByRecord.get(r.id)||[]):[];
-      const relatedBlock=(thematic||themeMatches)?`<div class="related-themes compact-related"><span class="related-label">Autres thèmes dans ce psaume :</span> ${themeTags(related)}</div>`:textualThemes.length?`<div class="related-themes compact-related"><span class="related-label">Thèmes canoniques indexés dans ce psaume :</span> ${themeTags(textualThemes)}</div>`:'';
-      const exactBlock=!thematic&&!themeMatches&&!numberLookup?exactVerses(r):'';
       const status=companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`:themeMatches?'Deux thèmes':thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
-      const singleThemeBody=thematic&&!themeMatches?`<div class="context-label theme-found">THÈME INDEXÉ · ${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div><p class="result-summary">${modeAwareText(thematic.teaching||summary(r))}</p>${contextualVerses(r,thematic)}`:'';
-      const dualBody=themeMatches?dualThemeReasons(r,themeMatches):'';
-      const fallbackBody=!thematic&&!themeMatches?`<p class="result-summary">${modeAwareText(summary(r))}</p>${exactBlock}`:'';
-      return `<article class="result-card"><div class="result-topline"><div><div class="result-doc">${esc(label(r))}</div><h3>${modeAwareText(r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'))}</h3></div><strong class="score">${esc(status)}</strong></div><div class="result-meta">${esc(bookMeta||meta)}</div>${dualBody||singleThemeBody||fallbackBody}${relatedBlock}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">${thematic||themeMatches?'Voir le psaume source':'Voir'}</button></div></article>`;
+      const details=resultDetailsBody(r,{thematic,matchedThemes,numberLookup,themeMatches,companion});
+      const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
+      return `<article class="result-card result-card-compact">
+        <button class="result-summary-toggle" type="button" data-toggle-result aria-expanded="false">
+          <span class="result-identity"><span class="result-doc">${esc(label(r))}</span><span class="result-title">${modeAwareText(r.title)}</span><span class="result-meta">${esc(bookMeta||'Corpus structuré')}</span></span>
+          <span class="result-status"><strong class="score">${esc(status)}</strong><span class="result-chevron" aria-hidden="true">⌄</span></span>
+        </button>
+        <div class="result-details" hidden>${details}<div class="result-actions"><button class="primary" data-open="${esc(r.id)}">${thematic||themeMatches?'Voir le psaume source':'Voir'}</button></div></div>
+      </article>`;
     }).join('');
-    document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>open(b.dataset.open)); bindThemeLinks($('results')); bindTextSearchLink();
+    document.querySelectorAll('[data-toggle-result]').forEach(button=>button.onclick=()=>{ const details=button.nextElementSibling; const open=button.getAttribute('aria-expanded')==='true'; button.setAttribute('aria-expanded',String(!open)); details.hidden=open; });
+    document.querySelectorAll('[data-open]').forEach(b=>b.onclick=e=>{e.stopPropagation();open(b.dataset.open);}); bindThemeLinks($('results')); bindTextSearchLink();
   }
   function bindTextSearchLink(){ const button=document.querySelector('[data-show-text-search]'); if(button)button.onclick=()=>{ $('secondaryTools').open=true; activateExactMode(); search(); window.scrollTo({top:$('results').offsetTop-90,behavior:'smooth'}); }; }
   function open(id){
@@ -246,6 +259,8 @@
   function closePopularQuestions(){ $('popularQuestionsPanel').hidden=true; $('popularQuestionsBackdrop').hidden=true; $('popularQuestionsToggle').setAttribute('aria-expanded','false'); }
   function choosePopularQuestion(question){ if(!question)return; $('query').value=question.text; $('query2').value=''; activateThemeMode(); closePopularQuestions(); search(); }
 
+  const setAdvancedSearch = open => { $('primarySearch').classList.toggle('advanced-visible',open); $('advancedSearchToggle').setAttribute('aria-expanded',String(open)); $('advancedSearchToggle').textContent=open?'Ne pas croiser deux thèmes':'Croiser deux thèmes'; if(open)$('secondaryTools').open=true; };
+  $('advancedSearchToggle').onclick=()=>setAdvancedSearch(!$('primarySearch').classList.contains('advanced-visible'));
   $('searchButton').onclick=search; $('query').addEventListener('keydown',e=>{if(e.key==='Enter')search();}); $('query2').addEventListener('keydown',e=>{if(e.key==='Enter')search();}); document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=search); $('archangelFilter').onchange=search;
   $('modeThemes').onclick=()=>{activateThemeMode();search();}; $('modeExact').onclick=()=>{activateExactMode();search();}; $('closeAmbiguity').onclick=hideAmbiguity;
   $('popularQuestionsToggle').onclick=openPopularQuestions; $('closePopularQuestions').onclick=closePopularQuestions; $('popularQuestionsBackdrop').onclick=closePopularQuestions; $('popularQuestionsBack').onclick=renderPopularQuestionFamilies;
