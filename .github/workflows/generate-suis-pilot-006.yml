@@ -5,7 +5,7 @@ on:
     paths:
       - 'scripts/build_linguistic_adjudication.py'
       - 'data/linguistic/pilots/suis-config.json'
-      - 'data/linguistic/lexicon.json'
+      - 'data/linguistic/lexicon.json'\n      - '.github/workflows/generate-suis-pilot-006.yml'
 permissions:
   contents: write
 jobs:
