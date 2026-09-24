@@ -1,0 +1,18 @@
+name: Linguistic PORTE quality audit
+on:
+  push:
+    branches: [fix/linguistic-occurrences-004]
+  pull_request:
+    paths:
+      - 'data/linguistic/**'
+      - 'scripts/build_linguistic_adjudication.py'
+      - 'scripts/audit_linguistic_foundation_004.py'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_linguistic_foundation_004.py
