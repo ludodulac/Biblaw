@@ -1,0 +1,857 @@
+{
+  "schemaVersion": 1,
+  "purpose": "adversarial-quality-audit-selection-and-sentinels",
+  "sourceHead": "64a7a1306abe73885195f95974812d2a0100c27e",
+  "sampleMethod": "stable occurrenceId ordering within each category; greedily cover distinct recordType/bookNumber/field/evidence, then fill to 24",
+  "sampleSize": 72,
+  "sampleCounts": {
+    "NOUN": 24,
+    "VERB_PORTER": 24,
+    "UNKNOWN": 24
+  },
+  "hyphenAdjacentCount": 30,
+  "cliticVerbCount": 3,
+  "compoundSegmentationCount": 27,
+  "compoundCurrentCategories": {
+    "NOUN": 4,
+    "VERB_PORTER": 0,
+    "UNKNOWN": 23
+  },
+  "knownHighCertaintyClassificationErrors": [
+    {
+      "occurrenceId": "occ-4210e70fcbe4e1d65b894181",
+      "context": " le chemin authentique du monde divin. C’est un miracle d’être parvenu à ouvrir une telle porte dans votre époque troublée. C’est le fruit d’un bien long travail et d’une tradition. Les",
+      "current": "VERB_PORTER",
+      "proposed": "NOUN",
+      "reason": "ouvrir une telle porte"
+    },
+    {
+      "occurrenceId": "occ-f5043c17057a47db9e0b5eed",
+      "context": "tiemment prodigués. Voilà une image parfaite d’une œuvre vivante qui, à travers un corps, porte des mondes et leur permet de vivre de génération en génération.",
+      "current": "NOUN",
+      "proposed": "VERB_PORTER",
+      "reason": "qui ... porte des mondes"
+    },
+    {
+      "occurrenceId": "occ-a18d1242395f001f1889f138",
+      "context": "Si la richesse extérieure existe, elle n’est que le prolongement de ce que l’homme porte de vrai en lui et qui le demeurera, même au-delà du voile de la mort.",
+      "current": "NOUN",
+      "proposed": "VERB_PORTER",
+      "reason": "l’homme porte de vrai"
+    },
+    {
+      "occurrenceId": "occ-75cd0c3a829334cbf3d2165c",
+      "context": "Si l’homme porte des vertus et qu’il les met en action en les rendant vivantes dans sa vie, il sera protég",
+      "current": "NOUN",
+      "proposed": "VERB_PORTER",
+      "reason": "l’homme porte des vertus"
+    },
+    {
+      "occurrenceId": "occ-8a55dd99471758e92a13b630",
+      "context": "es, qui réduit à néant ce qui s’oppose à la croissance, tout en augmentant ce que l’homme porte de vrai, de beau, de pur, de sacré en lui.",
+      "current": "NOUN",
+      "proposed": "VERB_PORTER",
+      "reason": "l’homme porte de vrai"
+    }
+  ],
+  "sample": {
+    "NOUN": [
+      {
+        "occurrenceId": "occ-001ad136fea43c40fad12e2f",
+        "recordId": "book-13-psalm-103",
+        "recordType": "psalm",
+        "bookNumber": 13,
+        "psalmNumber": 103,
+        "verseNumber": 5,
+        "context": " descendre le monde divin jusque dans les pierres, jusqu’à toucher la Mère pour ouvrir la porte à tous ces mondes afin qu’ils puissent retrouver le chemin vers la Lumière. Ces mondes ne",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-00a6e9809992e25fcefb7cbf",
+        "recordId": "ouriel-book-20-prayer-008",
+        "recordType": "master-prayer",
+        "bookNumber": 20,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": "t des 2 natures en moi et je m’engage à préserver la Nation Essénienne, car elle ouvre la porte de la juste perception de la Lumière. Que l’intelligence subtile triomphe en moi et que l",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-00cc03b00b21aeb204921d27",
+        "recordId": "book-06-psalm-027",
+        "recordType": "psalm",
+        "bookNumber": 6,
+        "psalmNumber": 27,
+        "verseNumber": 16,
+        "context": " Alors je deviendrai en toi une source d’eau vivante qui réjouira ton âme et t’ouvrira la porte donnant sur l’autre réalité de ton être. Je te donnerai confiance pour accepter ce que tu",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-00df42ee82c504eecffc8292",
+        "recordId": "book-22-psalm-151",
+        "recordType": "psalm",
+        "bookNumber": 22,
+        "psalmNumber": 151,
+        "verseNumber": 21,
+        "context": "es pensées, dans les perceptions d’âme qui remonte jusqu’à la source de la conscience, la porte d’un monde supérieur demeurant caché à l’inconscient.",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-011a2c5009801f8656055cc9",
+        "recordId": "book-20-psalm-120",
+        "recordType": "psalm",
+        "bookNumber": 20,
+        "psalmNumber": 120,
+        "verseNumber": null,
+        "context": "La M ère est la porte des étoiles",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-023663447b483822d77d05b8",
+        "recordId": "book-23-psalm-149",
+        "recordType": "psalm",
+        "bookNumber": 23,
+        "psalmNumber": 149,
+        "verseNumber": 12,
+        "context": "a pureté et la vérité et qu’elle brille, respire et vit dans l’alliance divine, alors une porte demeure ouverte. À partir de ce moment-là, il est impossible pour le monde sombre d’enfer",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-02748740c7c21ca9f1385de4",
+        "recordId": "book-12-psalm-064",
+        "recordType": "psalm",
+        "bookNumber": 12,
+        "psalmNumber": 64,
+        "verseNumber": 3,
+        "context": "L’Archange Michaël est la porte d’entrée de la Ronde des Archanges, du royaume de la vie. Je vous conseille de vous appro",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-02a021a0a45f58c4534879b5",
+        "recordId": "book-39-psalm-236",
+        "recordType": "psalm",
+        "bookNumber": 39,
+        "psalmNumber": 236,
+        "verseNumber": 21,
+        "context": "s êtes entourés de mondes et d’êtres qui attendent eux-mêmes de rencontrer leur père à la porte de la mort du corps. Alors, évidemment, bien des hommes, au moment de la rencontre, procl",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-03283f0fa814b986661501bb",
+        "recordId": "book-43-psalm-265",
+        "recordType": "psalm",
+        "bookNumber": 43,
+        "psalmNumber": 265,
+        "verseNumber": 10,
+        "context": "essager de Dieu, car il est orienté vers ses choix et désirs mortels. Si Dieu frappe à sa porte pour lui apporter le pain de la vie, il sera si occupé par ses propres aspirations qu’il ",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-037672b61dec3bbc37da33a5",
+        "recordId": "book-24-psalm-146",
+        "recordType": "psalm",
+        "bookNumber": 24,
+        "psalmNumber": 146,
+        "verseNumber": 25,
+        "context": "t plus là, il n’y a plus réellement de moyens d’atteindre l’autre rive. Le passeur est la porte, la barque et le chemin. Les plus audacieux peuvent toujours essayer de sauter dans le vi",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-0466bfddadd1e48e2b653665",
+        "recordId": "book-01-psalm-010",
+        "recordType": "psalm",
+        "bookNumber": 1,
+        "psalmNumber": 10,
+        "verseNumber": 10,
+        "context": "ci est mon dernier enseignement1, car après la consécration des prêtres, je refermerai la porte. Non pas que la Lumière ne soit plus dans votre école initiatique, bien au contraire, mai",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-05ecb16adf912af36ef80741",
+        "recordId": "book-29-psalm-199",
+        "recordType": "psalm",
+        "bookNumber": 29,
+        "psalmNumber": 199,
+        "verseNumber": 16,
+        "context": "Pour que la porte s’ouvre, il faut que l’alignement et la résonance soient parfaits. Cela est la clé absolu",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-07cab9461247190717798059",
+        "recordId": "book-07-psalm-039",
+        "recordType": "psalm",
+        "bookNumber": 7,
+        "psalmNumber": 39,
+        "verseNumber": 18,
+        "context": "re, qui remet toujours au lendemain ce qui est éternel. Ils ont vu s’ouvrir devant eux la porte de l’enfer et ils ont connu la chute.",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-07f863b39972aa786d8c0277",
+        "recordId": "book-14-psalm-101",
+        "recordType": "psalm",
+        "bookNumber": 14,
+        "psalmNumber": 101,
+        "verseNumber": 8,
+        "context": "monde divin vienne et lui parle. Si l’homme n’est pas bien préparé, c’est l’offense et la porte se ferme.",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-08e05ba62659c08824faaf7d",
+        "recordId": "book-16-psalm-103",
+        "recordType": "psalm",
+        "bookNumber": 16,
+        "psalmNumber": 103,
+        "verseNumber": 1,
+        "context": "e de manifestation de la Ronde des Archanges et de la Nation Essénienne va commencer. Une porte va s’ouvrir et un nouvel horizon va apparaître devant vous. C’est la conclusion d’un trav",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-0a72a608a67f4d77d7326313",
+        "recordId": "book-44-psalm-280",
+        "recordType": "psalm",
+        "bookNumber": 44,
+        "psalmNumber": 280,
+        "verseNumber": 12,
+        "context": "ue la pauvreté enfante la pauvreté. Cela n’a rien à voir avec ce que vous avez dans votre porte-monnaie, c’est avant tout une façon de percevoir, de penser, d’être et de vivre. C’est un",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-0acf0f9b28cb9741fc6930e7",
+        "recordId": "book-30-psalm-204",
+        "recordType": "psalm",
+        "bookNumber": 30,
+        "psalmNumber": 204,
+        "verseNumber": 21,
+        "context": "En vous concentrant sur les paroles des sages, vous pourrez entrer par la porte qui permet de rencontrer les mondes qui se tiennent derrière les paroles. Ces mondes vous",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-0b065d8678d674d9c4d49d94",
+        "recordId": "book-09-psalm-068",
+        "recordType": "psalm",
+        "bookNumber": 9,
+        "psalmNumber": 68,
+        "verseNumber": 4,
+        "context": "N’offrez pas le meilleur de votre être, n’ouvrez pas la porte de votre trésor au premier venu. Apprenez à éprouver les esprits avant de donner votre co",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-0bb7e5d9e4c881c833c65858",
+        "recordId": "book-31-psalm-197",
+        "recordType": "psalm",
+        "bookNumber": 31,
+        "psalmNumber": 197,
+        "verseNumber": 35,
+        "context": "Poussez la porte de l’école de la sagesse et entrez dans l’étude, la dévotion, les rites et l’œuvre de la ",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-0bcb1eedb3b70b0ceed3b460",
+        "recordId": "book-36-psalm-219",
+        "recordType": "psalm",
+        "bookNumber": 36,
+        "psalmNumber": 219,
+        "verseNumber": 8,
+        "context": "tre de ce monde, car si tu l’as vu, cela veut dire que tu es vivant, que Dieu a ouvert la porte du ciel, a écarté les nuages et t’a montré son visage.",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-0dca554ec907f83ceb5c3916",
+        "recordId": "book-10-psalm-076",
+        "recordType": "psalm",
+        "bookNumber": 10,
+        "psalmNumber": 76,
+        "verseNumber": 4,
+        "context": "onde. Si l’homme est dans la fidélité, la constance et qu’il accomplit un acte ouvrant la porte, la prière est entendue et acceptée.",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-0e08031ae638ab73ab995f04",
+        "recordId": "raphael-book-43-prayer-155",
+        "recordType": "master-prayer",
+        "bookNumber": 43,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": "aume de Dieu et son règne. Si Dieu prend la place, rien d’autre ne pourra me féconder. La porte sera fermée et je n’aurai à m’occuper que de ce qui est en moi. Si je suis un enfant, je ",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-0f212fa442c1144d5d948bee",
+        "recordId": "book-20-psalm-104",
+        "recordType": "psalm",
+        "bookNumber": 20,
+        "psalmNumber": 104,
+        "verseNumber": 11,
+        "context": " tes sentiments et puissant dans ta volonté afin de donner un corps à ta pensée. Alors la porte de la vie s’ouvrira. Tu ne seras plus un rêveur, vivant uniquement dans une sphère intell",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      },
+      {
+        "occurrenceId": "occ-10cb20c6c4f100bd1396de25",
+        "recordId": "book-33-psalm-229",
+        "recordType": "psalm",
+        "bookNumber": 33,
+        "psalmNumber": 229,
+        "verseNumber": 2,
+        "context": "e lieu où la confiance en Dieu s’établit est le trésor de Lumière, la force de la vie, la porte qui s’ouvre vers la splendeur.",
+        "currentCategory": "NOUN",
+        "evidence": "context-rule:noun-frame"
+      }
+    ],
+    "VERB_PORTER": [
+      {
+        "occurrenceId": "occ-0055cb2bd729654626e4be3b",
+        "recordId": "book-35-psalm-229",
+        "recordType": "psalm",
+        "bookNumber": 35,
+        "psalmNumber": 229,
+        "verseNumber": 9,
+        "context": "t comment l’homme doit agir, se tenir, être respectueux de tout ce qui le maintient et le porte dans tous les mondes. Mais l’homme a oublié ce dialogue essentiel, cette alliance, cette ",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0062273d56a11307121687d7",
+        "recordId": "book-27-psalm-163",
+        "recordType": "psalm",
+        "bookNumber": 27,
+        "psalmNumber": 163,
+        "verseNumber": 4,
+        "context": "Chacun veut comprendre d’après ce qu’il est et ce qu’il porte ; c’est là un obstacle au savoir véritable. Non seulement l’homme dénature le savoir, mai",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0178dcd92c3b3ee51b7864e3",
+        "recordId": "book-34-psalm-219",
+        "recordType": "psalm",
+        "bookNumber": 34,
+        "psalmNumber": 219,
+        "verseNumber": 20,
+        "context": "ment est juste intellectuellement, mais l’homme ne voit pas, ne comprend pas que ce qu’il porte en lui au quotidien, ce qui l’anime va devenir une expansion lorsqu’il entrera dans le mo",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-01c67739438ae219b335a047",
+        "recordId": "book-24-psalm-147",
+        "recordType": "psalm",
+        "bookNumber": 24,
+        "psalmNumber": 147,
+        "verseNumber": 12,
+        "context": "ns intérieures, ses souhaits et ses actes, découvrir et réaliser le potentiel divin qu’il porte en lui ?",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-01edd6ccd9488d77e8324e6e",
+        "recordId": "book-26-psalm-179",
+        "recordType": "psalm",
+        "bookNumber": 26,
+        "psalmNumber": 179,
+        "verseNumber": 28,
+        "context": "Fondamentalement, l’homme est une création du monde divin et il porte donc en lui la bonté primordiale, mais il s’est écarté de ce chemin.",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0200e2c60e52cb5f6543d454",
+        "recordId": "gabriel-book-34-prayer-112",
+        "recordType": "master-prayer",
+        "bookNumber": 34,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": " silence, comme je pose mon pas sur la terre. La terre me porte et le silence, lui aussi, porte mon être intérieur et ma parole qui l’exprime. Dieu parle et je parle, un avec Lui. Je ne",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0249f2ef5431b80f2bd681c1",
+        "recordId": "gabriel-book-42-prayer-160",
+        "recordType": "master-prayer",
+        "bookNumber": 42,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": "rre d’Ouriel pour la statue de Dieu. Que mon eau soit l’eau de Gabriel pour la barque qui porte la statue de Dieu. Que l’air soit l’air de Raphaël pour le ciel et le souffle de la statu",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-04bebe446de03b61ac9a67ea",
+        "recordId": "book-11-psalm-056",
+        "recordType": "psalm",
+        "bookNumber": 11,
+        "psalmNumber": 56,
+        "verseNumber": 15,
+        "context": "out en vivant et manifestant l’illusion des mondes de la mort n’est pas fidèle à ce qu’il porte en lui, et en plus, il est en train de perdre tout espoir de rencontrer la Lumière.",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-056146928918da9b41699252",
+        "recordId": "book-08-psalm-039",
+        "recordType": "psalm",
+        "bookNumber": 8,
+        "psalmNumber": 39,
+        "verseNumber": 31,
+        "context": "La Nation Essénienne est bénie, car elle porte l’intérêt du monde divin. Vous devez lui donner le corps parfait, structuré, lumineux afi",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0607d867fb777fabeb878e20",
+        "recordId": "michael-book-21-prayer-045",
+        "recordType": "master-prayer",
+        "bookNumber": 21,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": "aux curieux et aux profanateurs. Pure et inviolée, vierge soit la terre d’Ouriel, qu’elle porte les écritures des Dieux. Que seule la volonté du Père soit l’ordre céleste et le Bien com",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-07b4091a414659024e420421",
+        "recordId": "book-29-psalm-204",
+        "recordType": "psalm",
+        "bookNumber": 29,
+        "psalmNumber": 204,
+        "verseNumber": 4,
+        "context": " finalement vivre avec ce qu’il a engendré, qui est le fruit qu’il devra manger. Ce fruit porte la semence du futur. La terre accueille cette semence, elle la porte en son ventre et en ",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-07d4a1f5e8c3e2ef224ce6f2",
+        "recordId": "book-06-psalm-043",
+        "recordType": "psalm",
+        "bookNumber": 6,
+        "psalmNumber": 43,
+        "verseNumber": 2,
+        "context": "i comme émanations et écritures dans les mondes subtils. Il voit le potentiel que l’homme porte en lui d’après ce qu’il a accumulé de ses vies et expériences passées, ce qu’il a travail",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-07f7c6976f0f964f6306cbf0",
+        "recordId": "book-22-psalm-145",
+        "recordType": "psalm",
+        "bookNumber": 22,
+        "psalmNumber": 145,
+        "verseNumber": 12,
+        "context": "qui s’alourdit montre qu’il s’est fait attraper par des mondes, qu’il a été attelé, qu’il porte des bagages peut-être inutiles, et que maintenant il lui est difficile de se déplacer. Al",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-080edd01c8c71a9518542dd6",
+        "recordId": "gabriel-book-22-prayer-034",
+        "recordType": "master-prayer",
+        "bookNumber": 22,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": " sur la terre. Qu’il accomplisse les œuvres dignes de la belle lumière des origines qu’il porte en lui. Père Gabriel, que les Évangiles esséniens se répandent sur toute la terre, à l’im",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-089f22468c0ad557c2361184",
+        "recordId": "book-16-psalm-092",
+        "recordType": "psalm",
+        "bookNumber": 16,
+        "psalmNumber": 92,
+        "verseNumber": 11,
+        "context": "L’homme a vraiment un grand travail à faire sur lui parce qu’il porte en lui‑même la relation existant entre les pierres, les végétaux, les animaux, les hommes",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0902c404b90975a419ea8b46",
+        "recordId": "book-31-psalm-186",
+        "recordType": "psalm",
+        "bookNumber": 31,
+        "psalmNumber": 186,
+        "verseNumber": 16,
+        "context": "L’Église Essénienne Chrétienne porte en elle-même la synthèse de toutes les religions du monde. Vous y trouverez l’enseignemen",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0949433971d9c473db727bea",
+        "recordId": "book-28-psalm-172",
+        "recordType": "psalm",
+        "bookNumber": 28,
+        "psalmNumber": 172,
+        "verseNumber": 18,
+        "context": "Le bénévole est un envoyé du monde de la Lumière, un messager de Dieu. Il porte en lui l’idée du Bien commun, qui est le Père‑Mère, et aussi l’idée du service le plus ha",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0bf22099823afca7a28e0047",
+        "recordId": "book-10-psalm-065",
+        "recordType": "psalm",
+        "bookNumber": 10,
+        "psalmNumber": 65,
+        "verseNumber": 13,
+        "context": "Porte la Lumière avec force et détermination, car elle t’apportera le réconfort, le bonheur et ",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0c3b7d9b43d897e99293123a",
+        "recordId": "book-43-psalm-259",
+        "recordType": "psalm",
+        "bookNumber": 43,
+        "psalmNumber": 259,
+        "verseNumber": 5,
+        "context": "des pensées, du souffle, de l’inspiration, une vision neuve, différente de ce que l’homme porte en lui.",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0ce0265d43fa25c9b0e7f71f",
+        "recordId": "michael-book-33-prayer-118",
+        "recordType": "master-prayer",
+        "bookNumber": 33,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": "Dieu du feu, universel, je t’honore et je te bénis. La terre porte le corps et le corps porte le ciel qui enfante le devenir. Tels sont le cycle sacré et le mystère grand de la Ronde ",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0e19daddb7255b66ec1a7c1b",
+        "recordId": "book-21-psalm-159",
+        "recordType": "psalm",
+        "bookNumber": 21,
+        "psalmNumber": 159,
+        "verseNumber": 15,
+        "context": "ure. Mais il doit aussi regarder vers le bas pour bénir la Mère et tous les êtres qu’elle porte en son sein, qu’elle nourrit et qu’elle veut conduire vers la sagesse et l’âme immortelle",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-0e2758720f69e3373f6ac649",
+        "recordId": "gabriel-book-18-prayer-004",
+        "recordType": "master-prayer",
+        "bookNumber": 18,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": " la vie. Toi, tu es Gabriel. Moi, je veux être ton enfant, celui qui est né de toi et qui porte ton eau dans la vie. Amin.",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-11c522ac614202c6047816ae",
+        "recordId": "book-30-psalm-203",
+        "recordType": "psalm",
+        "bookNumber": 30,
+        "psalmNumber": 203,
+        "verseNumber": 20,
+        "context": "fluence, il est regardé et orienté, mis dans un cadre et utilisé. En fonction de ce qu’il porte en lui comme dons et capacités, il est classé, répertorié et orienté. Alors sont mis en l",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      },
+      {
+        "occurrenceId": "occ-125462513bfe9604cbdbf7ee",
+        "recordId": "book-15-psalm-080",
+        "recordType": "psalm",
+        "bookNumber": 15,
+        "psalmNumber": 80,
+        "verseNumber": 10,
+        "context": "la Lumière peut grandir et rayonner jusqu’à bénir le monde entier et tous les êtres qu’il porte en son sein. Alors les hommes comprennent qu’ils ne forment qu’un seul corps avec le tout",
+        "currentCategory": "VERB_PORTER",
+        "evidence": "context-rule:verb-frame"
+      }
+    ],
+    "UNKNOWN": [
+      {
+        "occurrenceId": "occ-03c5f53f78f4d45f7384d59c",
+        "recordId": "book-33-psalm-220",
+        "recordType": "psalm",
+        "bookNumber": 33,
+        "psalmNumber": 220,
+        "verseNumber": 9,
+        "context": "é. Le monde divin voit que l’homme se trompe, mais il le laisse libre de ses choix, il ne porte pas de jugement et ne lui ferme pas les portes.",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-044dd35125703a0ec213c0b5",
+        "recordId": "book-30-psalm-196",
+        "recordType": "psalm",
+        "bookNumber": 30,
+        "psalmNumber": 196,
+        "verseNumber": 31,
+        "context": "t l’homme, qui est imparfait, à cause des générations passées, peut-il donner ce qu’il ne porte plus en lui ou qu’il ne sait même pas qu’il porte ? Comment l’homme qui est perdu peut-il",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-04c14c2aa09689678ebe673c",
+        "recordId": "book-18-psalm-136",
+        "recordType": "psalm",
+        "bookNumber": 18,
+        "psalmNumber": 136,
+        "verseNumber": 34,
+        "context": "il faut traverser ces mondes et accoucher de soi-même dans la lumière de tout ce que l’on porte autour de soi.",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-04d6eefe425dddaad3d65b65",
+        "recordId": "book-21-psalm-153",
+        "recordType": "psalm",
+        "bookNumber": 21,
+        "psalmNumber": 153,
+        "verseNumber": 28,
+        "context": "a terre par hasard. Il a un « dessous » et un « dessus », une terre et un ciel. Ce qui le porte, c’est la Mère, non pas qu’elle soit inférieure, mais elle est l’écriture qui l’anime, sa",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-0755cb8ea92be18c60165629",
+        "recordId": "book-26-psalm-182",
+        "recordType": "psalm",
+        "bookNumber": 26,
+        "psalmNumber": 182,
+        "verseNumber": 16,
+        "context": "puissant, fort, divin. Pour cela, il doit pouvoir s’appuyer sur toute la structure qui le porte.",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-08542b49822656852c4551f2",
+        "recordId": "book-08-psalm-034",
+        "recordType": "psalm",
+        "bookNumber": 8,
+        "psalmNumber": 34,
+        "verseNumber": 2,
+        "context": "oi du pied droit et mets l’impulsion de la Lumière dans ce premier pas sur la Mère qui te porte. Bénis ton chemin et ta journée par ce premier pas et je viendrai pour marcher avec toi.",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-09983047f3c7766bd57ce6fe",
+        "recordId": "raphael-book-27-prayer-069",
+        "recordType": "master-prayer",
+        "bookNumber": 27,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": "qui éclaires jusque dans les profondeurs de mes pieds, toi qui illumines le chemin qui me porte et les mondes subtils qui m’entourent, délivre-moi de ce qui est faux. Montre-moi ce qui ",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-0a1bc56903e0178b7dfa1c7f",
+        "recordId": "book-10-psalm-061",
+        "recordType": "psalm",
+        "bookNumber": 10,
+        "psalmNumber": 61,
+        "verseNumber": 6,
+        "context": " divin donne, mais il agit ainsi parce qu’il est lui-même bonté et générosité. L’homme ne porte pas naturellement ces qualités, c’est pourquoi il doit travailler sur lui et se former po",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-0b23a75d45555d8c24d4ca37",
+        "recordId": "book-04-psalm-015",
+        "recordType": "psalm",
+        "bookNumber": 4,
+        "psalmNumber": 15,
+        "verseNumber": 2,
+        "context": "L’homme ne peut rien trouver à l’extérieur de lui s’il ne porte pas en lui au moins un germe de ce qu’il cherche. Le développement de ce germe doit être ",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-11ef29e99048e2ff9f631c87",
+        "recordId": "book-36-psalm-221",
+        "recordType": "psalm",
+        "bookNumber": 36,
+        "psalmNumber": 221,
+        "verseNumber": 39,
+        "context": "ns l’omniprésent, qui renouvelle ta vie à chaque instant, qui ressuscite le monde, qui le porte et qui t’offre l’opportunité de recevoir sa semence et de la mettre au monde. Ainsi, le f",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-1adcb2f2df84505c3c20d86c",
+        "recordId": "book-31-psalm-200",
+        "recordType": "psalm",
+        "bookNumber": 31,
+        "psalmNumber": 200,
+        "verseNumber": 30,
+        "context": "La conscience doit être présente, car la Nation Essénienne porte l’espoir de tout un monde, de plusieurs règnes qui aspirent à voir l’œuvre se poser et se",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-1e2931360f1636278f1a4d02",
+        "recordId": "book-40-psalm-258",
+        "recordType": "psalm",
+        "bookNumber": 40,
+        "psalmNumber": 258,
+        "verseNumber": 26,
+        "context": "Si l’homme ne porte pas en lui la paix de l’Ange, alors, quoi qu’il fasse à l’extérieur, il ne pourra jamais ",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-1f2503379e062049c97bd7aa",
+        "recordId": "ouriel-book-24-prayer-026",
+        "recordType": "master-prayer",
+        "bookNumber": 24,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": " pieds posés sur la Mère et sur le chemin de la Lumière. J’honore la pierre sacrée qui me porte. J’honore ton Évangile gravé sur la pierre. J’honore ton chemin. Que mes pieds soient bén",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-22e4ab54ec83564321e2d964",
+        "recordId": "book-42-psalm-292",
+        "recordType": "psalm",
+        "bookNumber": 42,
+        "psalmNumber": 292,
+        "verseNumber": 23,
+        "context": "C’est l’apparition du corps d’immortalité qui fait que le porte-parole devient un véritable parent de Dieu.",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-2340001687078adadc590b73",
+        "recordId": "book-41-psalm-284",
+        "recordType": "psalm",
+        "bookNumber": 41,
+        "psalmNumber": 284,
+        "verseNumber": 3,
+        "context": "Le cercle des Sages doit être un cercle de Parole et de porte-Parole.",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-248c681faa43c73929eadfad",
+        "recordId": "book-23-psalm-152",
+        "recordType": "psalm",
+        "bookNumber": 23,
+        "psalmNumber": 152,
+        "verseNumber": 15,
+        "context": "; c’est une loi fondamentale. L’homme ne peut transmettre ce qu’il n’est pas, ce qu’il ne porte pas en lui, sinon tout est faux et c’est la confusion, le désordre.",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-2614f6149463c555a77ddc8d",
+        "recordId": "book-34-psalm-235",
+        "recordType": "psalm",
+        "bookNumber": 34,
+        "psalmNumber": 235,
+        "verseNumber": 9,
+        "context": "L’homme sur la terre n’avait qu’une seule fonction : être un porte-parole de Dieu, c’est-à-dire Le représenter et Le manifester à travers toutes les vertus,",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-2b5df2c3a3dc8be84f801f96",
+        "recordId": "ouriel-book-32-prayer-092",
+        "recordType": "master-prayer",
+        "bookNumber": 32,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": "e Lumière, avec confiance, je me pose sur toi et je prends conscience que la terre qui me porte et l’univers qui m’invite à la communion sont saints. Je m’ouvre au grand Dieu omniprésen",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-2fa074c91ac0e9b04b36b59d",
+        "recordId": "ouriel-book-40-prayer-134",
+        "recordType": "master-prayer",
+        "bookNumber": 40,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": "Ô toi, Lumière, toi, le sol qui me porte, toi qui me nourris, toi qui me donnes confiance en moi et me parles de l’intérieur, ô lu",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-2fe918e28332c229f41eef77",
+        "recordId": "book-20-psalm-108",
+        "recordType": "psalm",
+        "bookNumber": 20,
+        "psalmNumber": 108,
+        "verseNumber": 23,
+        "context": "seulement pour lui‑même, mais pour partager son bonheur, sa richesse avec la terre qui le porte et le ciel qui l’inspire.",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-2fff87193a00ff4dec214877",
+        "recordId": "book-28-psalm-166",
+        "recordType": "psalm",
+        "bookNumber": 28,
+        "psalmNumber": 166,
+        "verseNumber": 9,
+        "context": "s utilisent. En fait, il ne maîtrise rien et ne sait pas dans quel monde il vit ni qui le porte et le soutient dans la vie. Il est comme un locataire de tout un monde en lui et autour d",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-3218c25628d9b24cf757639d",
+        "recordId": "book-11-psalm-067",
+        "recordType": "psalm",
+        "bookNumber": 11,
+        "psalmNumber": 67,
+        "verseNumber": 18,
+        "context": "se avec sa propre bouche, sa propre expérience, son être réel, en harmonie avec ce qui le porte et aussi ce qui lui montre le chemin supérieur. Qu’il vive avec la sagesse, la bonté, la ",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-32aefeb8f609d38df2504c8e",
+        "recordId": "michael-book-25-prayer-078",
+        "recordType": "master-prayer",
+        "bookNumber": 25,
+        "psalmNumber": null,
+        "verseNumber": null,
+        "context": "ne un Ange pour tous les êtres que je rencontre, un messager de la Lumière, un soleil, un porte-bonheur, un guérisseur, un libérateur. Mon Ange, tu es le soleil de la vie. Et moi, empli",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      },
+      {
+        "occurrenceId": "occ-3773cbf2b695166619d28c2c",
+        "recordId": "book-38-psalm-248",
+        "recordType": "psalm",
+        "bookNumber": 38,
+        "psalmNumber": 248,
+        "verseNumber": 7,
+        "context": "ans l’orgueil, qu’il se met en avant à outrance, prônant des qualités qu’il n’a pas ou ne porte pas, se plaçant au-dessus des autres, cela a un bon côté, car chacun peut s’en apercevoir",
+        "currentCategory": "UNKNOWN",
+        "evidence": "context-insufficient-for-conservative-pilot"
+      }
+    ]
+  }
+}
