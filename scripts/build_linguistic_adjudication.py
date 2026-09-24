@@ -16,7 +16,7 @@ def segmentation(o,clitics):
   if follower in SUBJECT_PRONOUNS: return 'VERB_INVERSION'
   if follower in {x.casefold() for x in clitics}: return 'VERB_CLITIC'
   return 'COMPOUND_ELEMENT'
- if before[-1:] in HYPHENS: return 'COMPOUND_ELEMENT'
+ if before and before[-1:] in HYPHENS: return 'COMPOUND_ELEMENT'
  return 'AUTONOMOUS'
 def full_compound(o):
  before,after=local_parts(o); left=re.search(rf'[^\s«»“”"(),.;:!?]*$',before); right=re.match(r'^[^\s«»“”"(),.;:!?]*',after)
