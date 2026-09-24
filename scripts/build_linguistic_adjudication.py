@@ -59,6 +59,6 @@ def main():
  ap=argparse.ArgumentParser();ap.add_argument('--config',default='data/linguistic/pilots/porte-config.json');ap.add_argument('--write',action='store_true');a=ap.parse_args(); cfg=json.loads((ROOT/a.config).read_text(encoding='utf-8')); raw,adj,inv=build(cfg)
  if a.write:
   stem=cfg.get('outputStem',cfg['normalizedForm']); targets=[(f'data/linguistic/pilots/{stem}-occurrences.json',raw),(f'data/linguistic/pilots/{stem}.json',adj),(f'data/linguistic/pilots/{stem}-compounds.json',inv)]
-  for rel,obj in targets:(ROOT/rel).write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\\n',encoding='utf-8')
+  for rel,obj in targets:(ROOT/rel).write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  print(json.dumps({'raw':raw['occurrenceCount'],'segmentation':adj['segmentationCounts'],'retained':adj['linguisticRetainedTotal'],'counts':adj['counts'],'compounds':inv['count']},ensure_ascii=False))
 if __name__=='__main__': main()
