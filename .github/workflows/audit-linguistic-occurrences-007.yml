@@ -11,6 +11,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/audit_suis_graphies_007.py
+      - run: python scripts/audit_suis_adversarial_007.py
       - run: python scripts/test_linguistic_occurrence_index.py
       - run: python scripts/audit_linguistic_occurrences.py
       - run: python scripts/audit_linguistic_foundation_004.py
