@@ -24,7 +24,7 @@ def analyse(o,cfg):
  subj=re.search(r"(?:^|[\\s«“\"(])(?:je|tu|il|elle|on|nous|vous|ils|elles|qui|qu['’]il|qu['’]elle|chacun|personne)\\s+(?:ne\\s+|n['’]\\s*)?$",b)
  noun_coll=re.search(r"(?:ouvrir|ouvre|ouvres|ouvrent|ouvert|fermer|ferme|fermes|ferment|fermé|franchir|franchit|franchis)\\s+(?:la|une|cette|sa|ma|ta|notre|votre|leur|telle)\\s+$",b)
  noun_det=re.search(r"(?:^|[\\s«“\"(])(?:une|cette|sa|ma|ta|notre|votre|leur|chaque|aucune|quelle|telle|seule|grande|petite|sainte|même|dernière|première|nouvelle)\\s+$",b)
- noun_pred=re.match(r"^\\s+(?:s['’]ouvre|s['’]ouvrira|est\\s+ouverte|est\\s+fermée|sera\\s+ouverte|sera\\s+fermée)\\b",a)
+ noun_pred=re.match(r"^\\s+(?:ouvrant|s['’]ouvre|s['’]ouvrira|est\\s+ouverte|est\\s+fermée|sera\\s+ouverte|sera\\s+fermée)\\b",a)
  imperative=(o['surfaceForm'][:1].isupper() and (not before.strip() or re.search(r'[.!?…:;]\\s*$',before)) and re.match(r"^\\s+(?:le|la|les|un|une|des|ce|cet|cette|ces|son|sa|ses|mon|ma|mes|ton|ta|tes|notre|votre|leur|leurs|en|sur|dans|à|au|aux|avec)\\b",a))
  if noun_coll or noun_det or noun_pred: return {'category':noun['category'],'lemma':noun['lemma'],'partOfSpeech':noun['partOfSpeech'],'status':'PROVISIONAL','evidence':'morphosyntax:noun-frame-conservative','segmentation':seg}
  if subj or imperative: return {'category':verb['category'],'lemma':verb['lemma'],'partOfSpeech':verb['partOfSpeech'],'status':'PROVISIONAL','evidence':'morphosyntax:verb-frame-conservative','segmentation':seg}
