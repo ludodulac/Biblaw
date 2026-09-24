@@ -1,0 +1,18 @@
+name: Linguistic PORTE quality audit
+on:
+  push:
+    branches: [audit/linguistic-occurrences-003]
+  pull_request:
+    paths:
+      - 'scripts/audit_linguistic_porte_quality.py'
+      - 'data/linguistic/audits/**'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_linguistic_porte_quality.py
+      - run: git diff --exit-code data/linguistic/audits/porte-003-audit.json
