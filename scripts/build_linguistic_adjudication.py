@@ -45,7 +45,9 @@ def analyse_legacy(o,cfg):
  if noun_coll or noun_det or noun_pred: return {'category':noun['category'],'lemma':noun['lemma'],'partOfSpeech':noun['partOfSpeech'],'status':'PROVISIONAL','evidence':'morphosyntax:noun-frame-conservative','segmentation':seg}
  if subj or imperative: return {'category':verb['category'],'lemma':verb['lemma'],'partOfSpeech':verb['partOfSpeech'],'status':'PROVISIONAL','evidence':'morphosyntax:verb-frame-conservative','segmentation':seg}
  return {'category':'UNKNOWN','lemma':None,'partOfSpeech':None,'status':'UNKNOWN','evidence':'context-insufficient-conservative-v004','segmentation':seg}
-def analyse(o,cfg):\n return analyse_configured(o,cfg) if 'analyses' in cfg else analyse_legacy(o,cfg)\ndef build(cfg):
+def analyse(o,cfg):
+ return analyse_configured(o,cfg) if 'analyses' in cfg else analyse_legacy(o,cfg)
+def build(cfg):
  raw=occ.payload(cfg['normalizedForm']); analyses=[]; compounds=[]
  for o in raw['occurrences']:
   a={'occurrenceId':o['occurrenceId'],**analyse(o,cfg)}; analyses.append(a)
