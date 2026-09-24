@@ -9,9 +9,13 @@ HYPHENS='-‑–—'\nSUBJECT_PRONOUNS={'je','tu','il','elle','on','nous','vous'
 def local_parts(o):
  i=min(o['startOffset'],90); return o['context'][:i],o['context'][i+len(o['surfaceForm']):]
 def segmentation(o,clitics):
- before,after=local_parts(o); alt='|'.join(map(re.escape,clitics))
- if re.match(rf'^[{HYPHENS}](?:{alt})\b',after,re.I): return 'VERB_CLITIC'
- if re.search(rf'[{HYPHENS}]$',before) or re.match(rf'^[{HYPHENS}]',after): return 'COMPOUND_ELEMENT'
+ before,after=local_parts(o)
+ if after[:1] in HYPHENS:
+  m=re.match(r"[^\W_]+",after[1:],re.UNICODE); follower=m.group().casefold() if m else ''
+  if follower in SUBJECT_PRONOUNS: return 'VERB_INVERSION'
+  if follower in {x.casefold() for x in clitics}: return 'VERB_CLITIC'
+  return 'COMPOUND_ELEMENT'
+ if before[-1:] in HYPHENS: return 'COMPOUND_ELEMENT'
  return 'AUTONOMOUS'
 def full_compound(o):
  before,after=local_parts(o); left=re.search(rf'[^\s«»“”"(),.;:!?]*$',before); right=re.match(r'^[^\s«»“”"(),.;:!?]*',after)
