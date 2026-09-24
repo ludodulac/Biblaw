@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "purpose": "small-independent-human-gold-set-for-porte-pilot",
+  "method": "Explicit human/adversarial adjudication from original contexts. Selection deliberately covers obvious nouns, obvious verbs, verb+clitic forms, compounds, difficult 003 sentinels and multiple record contexts. It is not generated from the automatic adjudication rules.",
+  "provenance": {
+    "validationType": "human-audited",
+    "mission": "BIBLAW-LINGUISTIC-OCCURRENCES-004",
+    "status": "VALIDATED"
+  },
+  "entries": [
+    {
+      "occurrenceId": "occ-4210e70fcbe4e1d65b894181",
+      "context": " le chemin authentique du monde divin. C’est un miracle d’être parvenu à ouvrir une telle porte dans votre époque troublée. C’est le fruit d’un bien long travail et d’une tradition. Les",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "NOUN",
+      "status": "VALIDATED",
+      "reason": "003 sentinel: ouvrir une telle porte dans..."
+    },
+    {
+      "occurrenceId": "occ-f5043c17057a47db9e0b5eed",
+      "context": "tiemment prodigués. Voilà une image parfaite d’une œuvre vivante qui, à travers un corps, porte des mondes et leur permet de vivre de génération en génération.",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_PORTER",
+      "status": "VALIDATED",
+      "reason": "003 sentinel: qui ... porte des mondes"
+    },
+    {
+      "occurrenceId": "occ-a18d1242395f001f1889f138",
+      "context": "Si la richesse extérieure existe, elle n’est que le prolongement de ce que l’homme porte de vrai en lui et qui le demeurera, même au-delà du voile de la mort.",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_PORTER",
+      "status": "VALIDATED",
+      "reason": "003 sentinel: l’homme porte de vrai"
+    },
+    {
+      "occurrenceId": "occ-75cd0c3a829334cbf3d2165c",
+      "context": "Si l’homme porte des vertus et qu’il les met en action en les rendant vivantes dans sa vie, il sera protég",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_PORTER",
+      "status": "VALIDATED",
+      "reason": "003 sentinel: l’homme porte des vertus"
+    },
+    {
+      "occurrenceId": "occ-8a55dd99471758e92a13b630",
+      "context": "es, qui réduit à néant ce qui s’oppose à la croissance, tout en augmentant ce que l’homme porte de vrai, de beau, de pur, de sacré en lui.",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_PORTER",
+      "status": "VALIDATED",
+      "reason": "003 sentinel: l’homme porte de vrai, de beau"
+    },
+    {
+      "occurrenceId": "occ-4983494979e7c56f1b549b82",
+      "context": "plantées dans celle de Gabriel peuvent germer. Médite l’enseignement que je t’ai donné et porte-le dans ta vie et ta conscience à travers tes générations.",
+      "expectedSegmentation": "VERB_CLITIC",
+      "expectedCategory": "VERB_PORTER",
+      "status": "VALIDATED",
+      "reason": "porte-le"
+    },
+    {
+      "occurrenceId": "occ-edd7c7b083c4e594791be28e",
+      "context": "nsées divines que tu dois cultiver dans ta vie et qui te relient aux royaumes supérieurs. Porte-les en toi comme un talisman magique, à l’image du chevalier qui arbore un blason pour ho",
+      "expectedSegmentation": "VERB_CLITIC",
+      "expectedCategory": "VERB_PORTER",
+      "status": "VALIDATED",
+      "reason": "Porte-les"
+    },
+    {
+      "occurrenceId": "occ-7a91a4374ba8122e98533312",
+      "context": "ique et ne regarde pas autour de toi comment elle apparaît. Va la chercher à la Source et porte‑la dans ta vie.",
+      "expectedSegmentation": "VERB_CLITIC",
+      "expectedCategory": "VERB_PORTER",
+      "status": "VALIDATED",
+      "reason": "porte-la"
+    },
+    {
+      "occurrenceId": "occ-6c97dc56c6079e8edcb8d1a8",
+      "context": "ance avec des principes, des idées, des êtres qui, à travers leur propre être, seront ses porte-paroles.",
+      "expectedSegmentation": "COMPOUND_ELEMENT",
+      "expectedCategory": "OTHER",
+      "status": "VALIDATED",
+      "reason": "porte-paroles"
+    },
+    {
+      "occurrenceId": "occ-e1e6b35a37966b7160bbff34",
+      "context": "au monde ou qui participe à cette naissance grandiose et pure. C’est cela être un mât, un porte-drapeau.",
+      "expectedSegmentation": "COMPOUND_ELEMENT",
+      "expectedCategory": "OTHER",
+      "status": "VALIDATED",
+      "reason": "porte-drapeau"
+    },
+    {
+      "occurrenceId": "occ-32aefeb8f609d38df2504c8e",
+      "context": "ne un Ange pour tous les êtres que je rencontre, un messager de la Lumière, un soleil, un porte-bonheur, un guérisseur, un libérateur. Mon Ange, tu es le soleil de la vie. Et moi, empli",
+      "expectedSegmentation": "COMPOUND_ELEMENT",
+      "expectedCategory": "OTHER",
+      "status": "VALIDATED",
+      "reason": "porte-bonheur"
+    },
+    {
+      "occurrenceId": "occ-0a72a608a67f4d77d7326313",
+      "context": "ue la pauvreté enfante la pauvreté. Cela n’a rien à voir avec ce que vous avez dans votre porte-monnaie, c’est avant tout une façon de percevoir, de penser, d’être et de vivre. C’est un",
+      "expectedSegmentation": "COMPOUND_ELEMENT",
+      "expectedCategory": "OTHER",
+      "status": "VALIDATED",
+      "reason": "porte-monnaie"
+    },
+    {
+      "occurrenceId": "occ-f45da75703f8b39d63a0996c",
+      "context": " êtres cultivés, bien élevés, selon les apparences, finissent par devenir incohérents, en porte-à-faux avec la vie et le bon sens et font n’importe quoi. Ils sont dans des mondes faux, ",
+      "expectedSegmentation": "COMPOUND_ELEMENT",
+      "expectedCategory": "OTHER",
+      "status": "VALIDATED",
+      "reason": "porte-à-faux"
+    },
+    {
+      "occurrenceId": "occ-8586b134b6818ba6cb02f335",
+      "context": "L’amour est une porte qui te permet non seulement de t’ouvrir à ce qui est grand, mais également de purifier be",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "NOUN",
+      "status": "VALIDATED",
+      "reason": "L’amour est une porte"
+    },
+    {
+      "occurrenceId": "occ-27a1f17ae77c361e8b501a32",
+      "context": "L’art de la préparation ouvre la porte d’une vie posée, réfléchie, consciente, subtile, cherchant à atteindre le but en toute ac",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "NOUN",
+      "status": "VALIDATED",
+      "reason": "ouvre la porte"
+    },
+    {
+      "occurrenceId": "occ-f64f67ec391d457cd0ec5e68",
+      "context": "u qui baigne les mondes et les respire, je t’honore. Il n’y a pas d’autre Dieu que l’eau. Porte ouvrant sur moi, sur mon âme, sur le Sans-Nom, porte ouvrant sur l’universel, je te bénis",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "NOUN",
+      "status": "VALIDATED",
+      "reason": "Porte ouvrant sur moi"
+    },
+    {
+      "occurrenceId": "occ-edf4717b03aea239cc8f90de",
+      "context": "ommes, je dis : sachez que je suis la nouvelle année, que je suis le commencement, que je porte le mystère de la naissance.",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_PORTER",
+      "status": "VALIDATED",
+      "reason": "je porte le mystère"
+    },
+    {
+      "occurrenceId": "occ-9e02044e1a473d0d36726d82",
+      "context": "Moi, Gabriel, je porte cette lumière de l’union des hommes et des femmes qui forment des familles, des communaut",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_PORTER",
+      "status": "VALIDATED",
+      "reason": "je porte cette lumière"
+    },
+    {
+      "occurrenceId": "occ-739839f8a313ff04b676a2ab",
+      "context": "Seul un maître dont le souffle est imprégné de sagesse lumineuse et stable et qui porte dans toutes les cellules de son corps le peuple de Dieu pourra entrer dans le monde des A",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_PORTER",
+      "status": "VALIDATED",
+      "reason": "qui porte dans toutes les cellules"
+    }
+  ]
+}
