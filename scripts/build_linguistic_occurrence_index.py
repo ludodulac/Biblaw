@@ -2,7 +2,7 @@
 from __future__ import annotations
 import argparse, hashlib, json, re, unicodedata
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]; CATALOG=ROOT/'data/catalog.json'; CANON='data/corpus/books/'; TOKEN_RE=re.compile(r"[^\\W_]+(?:[’'][^\\W_]+)*",re.UNICODE)
+ROOT=Path(__file__).resolve().parents[1]; CATALOG=ROOT/'data/catalog.json'; CANON='data/corpus/books/'; TOKEN_RE=re.compile(r"[^\W_]+(?:[’'][^\W_]+)*",re.UNICODE)
 def norm(s):
  return unicodedata.normalize('NFC',s).casefold()
 def searchable(rel,o):
