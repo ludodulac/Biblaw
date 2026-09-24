@@ -51,8 +51,11 @@ def analyse(o,cfg):\n return analyse_configured(o,cfg) if 'analyses' in cfg else
   a={'occurrenceId':o['occurrenceId'],**analyse(o,cfg)}; analyses.append(a)
   if a['segmentation']=='COMPOUND_ELEMENT':
    compounds.append({'occurrenceId':o['occurrenceId'],'surfaceForm':full_compound(o),'context':o['context'],'segmentation':'COMPOUND_ELEMENT'})
- counts={k:sum(x['category']==k for x in analyses) for k in ('NOUN','VERB_PORTER','OTHER','UNKNOWN','AMBIGUOUS')}
- segcounts={k:sum(x['segmentation']==k for x in analyses) for k in ('AUTONOMOUS','VERB_CLITIC','COMPOUND_ELEMENT')}
+ categories=[x['category'] for x in cfg.get('analyses',[])]+([] if 'analyses' in cfg else ['NOUN','VERB_PORTER'])+['OTHER','UNKNOWN','AMBIGUOUS']; categories=list(dict.fromkeys(categories))
+ counts={k:sum(x['category']==k for x in analyses) for k in categories}
+ segkeys=['AUTONOMOUS','VERB_CLITIC','COMPOUND_ELEMENT']
+ if any(x['segmentation']=='VERB_INVERSION' for x in analyses): segkeys.append('VERB_INVERSION')
+ segcounts={k:sum(x['segmentation']==k for x in analyses) for k in segkeys}
  adj={'schemaVersion':2,'purpose':cfg.get('purpose','porte-pilot-reproducible-adjudication'),'normalizedForm':cfg['normalizedForm'],'generator':'scripts/build_linguistic_adjudication.py','policy':'Conservative generic morphosyntactic evidence produces PROVISIONAL only; unresolved retained units remain UNKNOWN; compounds are preserved as OTHER and excluded from linguistic retained total.','counts':counts,'segmentationCounts':segcounts,'linguisticRetainedTotal':sum(v for k,v in segcounts.items() if k!='COMPOUND_ELEMENT'),'analyses':analyses}
  inv={'schemaVersion':1,'purpose':'compound-elements-containing-target-surface','normalizedForm':cfg['normalizedForm'],'generator':'scripts/build_linguistic_adjudication.py','count':len(compounds),'occurrences':compounds}
  return raw,adj,inv
