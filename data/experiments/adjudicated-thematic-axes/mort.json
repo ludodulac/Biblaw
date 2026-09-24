@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "contract": "adjudicated-thematic-axes",
+  "theme": {
+    "themeId": "mort"
+  },
+  "idStrategy": "Explicit stable semantic IDs assigned at adjudication time; never derived from display order, evidence count, or verse count.",
+  "elements": [
+    {
+      "id": "AXIS_01",
+      "kind": "axis",
+      "provisionalLabel": "IDENTIFICATION AU MORTEL / ORIENTATION VERS L’IMMORTEL",
+      "parentId": null,
+      "confidence": "FORT",
+      "justification": "Plusieurs analyses indépendantes documentent l’identification au corps, à la nature ou au moi mortel en contraste avec une orientation vers le vivant, l’éternel ou l’immortel.",
+      "evidenceRefs": [
+        "book-03-psalm-005",
+        "book-18-psalm-130",
+        "book-22-psalm-152",
+        "book-25-psalm-167",
+        "book-27-psalm-162",
+        "book-28-psalm-166",
+        "book-29-psalm-198",
+        "book-29-psalm-215",
+        "book-30-psalm-193"
+      ]
+    },
+    {
+      "id": "AXIS_02",
+      "kind": "axis",
+      "provisionalLabel": "MONDE DE LA MORT / MONDE DE LA VIE",
+      "parentId": null,
+      "confidence": "FORT",
+      "justification": "Plusieurs analyses décrivent un monde, royaume ou état de mort opposé à la vie ou à la Lumière; cette relation n’est pas réductible à l’identification personnelle au mortel.",
+      "evidenceRefs": [
+        "book-20-psalm-111",
+        "book-21-psalm-148",
+        "book-25-psalm-173",
+        "book-26-psalm-178",
+        "book-27-psalm-162",
+        "book-27-psalm-163",
+        "book-29-psalm-213",
+        "book-31-psalm-180"
+      ]
+    },
+    {
+      "id": "SUBAXIS_02_01",
+      "kind": "subaxis",
+      "provisionalLabel": "DISCERNER LE VIVANT DU MORT DANS LA PENSÉE ET LA CONNAISSANCE",
+      "parentId": "AXIS_02",
+      "confidence": "FORT",
+      "justification": "Les preuves spécialisent l’opposition vivant/mort dans les facultés de pensée, connaissance et vision, sans constituer un axe pair indépendant.",
+      "evidenceRefs": [
+        "book-25-psalm-173",
+        "book-27-psalm-163",
+        "book-28-psalm-166",
+        "book-29-psalm-198",
+        "book-31-psalm-180"
+      ]
+    },
+    {
+      "id": "AXIS_03",
+      "kind": "axis",
+      "provisionalLabel": "PASSAGE DE LA MORT ET CONTINUITÉ",
+      "parentId": null,
+      "confidence": "FORT",
+      "justification": "Plusieurs analyses traitent explicitement l’après-mort, le voile, le passage et ce qui demeure ou continue.",
+      "evidenceRefs": [
+        "book-19-psalm-112",
+        "book-19-psalm-121",
+        "book-21-psalm-161",
+        "book-22-psalm-155",
+        "book-22-psalm-159",
+        "book-26-psalm-174",
+        "book-30-psalm-193"
+      ]
+    },
+    {
+      "id": "SUBAXIS_03_01",
+      "kind": "subaxis",
+      "provisionalLabel": "PRÉPARER PENDANT LA VIE CE QUI TRAVERSE LA MORT",
+      "parentId": "AXIS_03",
+      "confidence": "FORT",
+      "justification": "Les preuves précisent que ce qui est cultivé ou construit pendant la vie intervient dans ce qui traverse ou demeure au-delà du passage documenté par AXIS_03.",
+      "evidenceRefs": [
+        "book-19-psalm-112",
+        "book-19-psalm-121",
+        "book-22-psalm-155",
+        "book-22-psalm-159",
+        "book-26-psalm-174",
+        "book-30-psalm-193"
+      ]
+    },
+    {
+      "id": "COMPLEMENT_SEPARATION",
+      "kind": "complement",
+      "provisionalLabel": "SÉPARATION",
+      "parentId": "AXIS_02",
+      "confidence": "FORT",
+      "justification": "Une formulation explicite associe séparation et mort, mais la preuve bornée est insuffisante pour promouvoir ce traitement en axe.",
+      "evidenceRefs": [
+        "book-19-psalm-118"
+      ]
+    },
+    {
+      "id": "COMPLEMENT_REINCARNATION",
+      "kind": "complement",
+      "provisionalLabel": "RÉINCARNATION",
+      "parentId": "AXIS_03",
+      "confidence": "FORT",
+      "justification": "La réincarnation est documentée comme traitement particulier de ce qui advient après la mort, sans pluralité suffisante pour un axe.",
+      "evidenceRefs": [
+        "book-19-psalm-121"
+      ]
+    },
+    {
+      "id": "COMPLEMENT_RICHESSE",
+      "kind": "complement",
+      "provisionalLabel": "RICHESSE EXTÉRIEURE / INTÉRIEURE",
+      "parentId": "SUBAXIS_03_01",
+      "confidence": "FORT",
+      "justification": "La preuve distingue ce qui disparaît au passage de ce qui demeure et illustre directement la préparation de ce qui traverse.",
+      "evidenceRefs": [
+        "book-26-psalm-174"
+      ]
+    },
+    {
+      "id": "COMPLEMENT_ELECTRICITE",
+      "kind": "complement",
+      "provisionalLabel": "ÉLECTRICITÉ",
+      "parentId": null,
+      "confidence": "FORT",
+      "justification": "La formulation est explicitement présente mais particulière et non suffisamment corroborée pour être promue ou attachée de force à un axe.",
+      "evidenceRefs": [
+        "book-23-psalm-147"
+      ]
+    }
+  ],
+  "distinctions": [
+    {
+      "id": "DISTINCTION_01",
+      "kind": "distinction",
+      "provisionalLabel": "MORT COMME ÉVÉNEMENT / MORT COMME ÉTAT OU ORIENTATION",
+      "confidence": "FORT",
+      "justification": "Les sources attestent deux traitements qu’une fusion ferait perdre: mort comme passage/événement et mort comme état/orientation.",
+      "sides": [
+        {
+          "id": "MORT_PASSAGE",
+          "relatedElementIds": [
+            "AXIS_03"
+          ]
+        },
+        {
+          "id": "MORT_ETAT_ORIENTATION",
+          "relatedElementIds": [
+            "AXIS_01",
+            "AXIS_02"
+          ]
+        }
+      ],
+      "evidenceRefs": [
+        "book-19-psalm-121",
+        "book-22-psalm-155",
+        "book-22-psalm-159",
+        "book-26-psalm-174",
+        "book-20-psalm-111",
+        "book-25-psalm-173",
+        "book-26-psalm-178",
+        "book-27-psalm-163",
+        "book-31-psalm-180"
+      ]
+    }
+  ],
+  "provenance": {
+    "sourceRoot": "data/thematic-index/books",
+    "projectionOfCanonicalSources": true,
+    "adjudicationMission": "004"
+  }
+}
