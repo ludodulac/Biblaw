@@ -116,7 +116,7 @@
   }
 
   function hideAmbiguity(){ $('ambiguityPanel').hidden=true; $('senseChoices').innerHTML=''; }
-  function ambiguityChoice(theme, target) { const count=theme.occurrenceCount||theme.occurrences?.length||0; return `<button class="sense-button" data-ambiguity-target="${target}" data-theme-id="${esc(theme.id)}"><strong>${esc(theme.label)}</strong><span>${count} psaume${count>1?'s':''} indexé${count>1?'s':''}${theme.id?` · ${esc(theme.id)}`:''}</span></button>`; }
+  function ambiguityChoice(theme, target) { const count=theme.occurrenceCount||theme.occurrences?.length||0; return `<button class="sense-button" data-ambiguity-target="${target}" data-theme-id="${esc(theme.id)}"><strong>${esc(theme.label)}</strong><span>${count} psaume${count>1?'s':''} indexé${count>1?'s':''}</span></button>`; }
   function showDualAmbiguity(queryA, resolvedA, queryB, resolvedB) {
     hideTransverseNavigation();
     const blocks=[];
