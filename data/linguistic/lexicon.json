@@ -15,6 +15,20 @@
         }
       ],
       "decisionPolicy": "possible analyses only; never sufficient to classify an occurrence"
+    },
+    {
+      "normalizedForm": "suis",
+      "possibleAnalyses": [
+        {
+          "lemma": "être",
+          "partOfSpeech": "VERB"
+        },
+        {
+          "lemma": "suivre",
+          "partOfSpeech": "VERB"
+        }
+      ],
+      "decisionPolicy": "Lexicon lists possibilities only and is never sufficient to decide an occurrence."
     }
   ]
 }
