@@ -5,7 +5,7 @@ from pathlib import Path
 import importlib.util
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('occ',ROOT/'scripts/build_linguistic_occurrence_index.py'); occ=importlib.util.module_from_spec(spec); spec.loader.exec_module(occ)
-HYPHENS='-‑–—'
+HYPHENS='-‑–—'\nSUBJECT_PRONOUNS=('je','tu','il','elle','on','nous','vous','ils','elles')
 def local_parts(o):
  i=min(o['startOffset'],90); return o['context'][:i],o['context'][i+len(o['surfaceForm']):]
 def segmentation(o,clitics):
@@ -16,6 +16,21 @@ def segmentation(o,clitics):
 def full_compound(o):
  before,after=local_parts(o); left=re.search(rf'[^\s«»“”"(),.;:!?]*$',before); right=re.match(r'^[^\s«»“”"(),.;:!?]*',after)
  return (left.group(0) if left else '')+o['surfaceForm']+(right.group(0) if right else '')
+def analyse_configured(o,cfg):
+ seg=segmentation(o,cfg.get('clitics',[])); before,after=local_parts(o)
+ by={x['category']:x for x in cfg['analyses']}
+ segmap=cfg.get('segmentationAnalyses',{})
+ if seg=='COMPOUND_ELEMENT':
+  return {'category':'OTHER','lemma':None,'partOfSpeech':None,'status':'PROVISIONAL','evidence':'segmentation:compound-element','segmentation':seg}
+ if seg in segmap:
+  x=by[segmap[seg]]
+  return {'category':x['category'],'lemma':x['lemma'],'partOfSpeech':x['partOfSpeech'],'status':'PROVISIONAL','evidence':'morphosyntax:'+seg.lower().replace('_','-'),'segmentation':seg}
+ for rule in cfg.get('rules',[]):
+  if rule.get('beforeRegex') and not re.search(rule['beforeRegex'],before,re.I): continue
+  if rule.get('afterRegex') and not re.search(rule['afterRegex'],after,re.I): continue
+  x=by[rule['analysis']]
+  return {'category':x['category'],'lemma':x['lemma'],'partOfSpeech':x['partOfSpeech'],'status':'PROVISIONAL','evidence':'config-rule:'+rule['id'],'segmentation':seg}
+ return {'category':'UNKNOWN','lemma':None,'partOfSpeech':None,'status':'UNKNOWN','evidence':'context-insufficient-conservative','segmentation':seg}
 def analyse(o,cfg):
  seg=segmentation(o,cfg['clitics']); before,after=local_parts(o); b=before.casefold(); a=after.casefold()
  noun=cfg['noun']; verb=cfg['verb']
@@ -37,14 +52,14 @@ def build(cfg):
    compounds.append({'occurrenceId':o['occurrenceId'],'surfaceForm':full_compound(o),'context':o['context'],'segmentation':'COMPOUND_ELEMENT'})
  counts={k:sum(x['category']==k for x in analyses) for k in ('NOUN','VERB_PORTER','OTHER','UNKNOWN','AMBIGUOUS')}
  segcounts={k:sum(x['segmentation']==k for x in analyses) for k in ('AUTONOMOUS','VERB_CLITIC','COMPOUND_ELEMENT')}
- adj={'schemaVersion':2,'purpose':'porte-pilot-reproducible-adjudication','normalizedForm':cfg['normalizedForm'],'generator':'scripts/build_linguistic_adjudication.py','policy':'Conservative generic morphosyntactic evidence produces PROVISIONAL only; unresolved retained units remain UNKNOWN; compounds are preserved as OTHER and excluded from linguistic retained total.','counts':counts,'segmentationCounts':segcounts,'linguisticRetainedTotal':segcounts['AUTONOMOUS']+segcounts['VERB_CLITIC'],'analyses':analyses}
+ adj={'schemaVersion':2,'purpose':cfg.get('purpose',cfg['normalizedForm']+'-pilot-reproducible-adjudication'),'normalizedForm':cfg['normalizedForm'],'generator':'scripts/build_linguistic_adjudication.py','policy':'Conservative generic morphosyntactic evidence produces PROVISIONAL only; unresolved retained units remain UNKNOWN; compounds are preserved as OTHER and excluded from linguistic retained total.','counts':counts,'segmentationCounts':segcounts,'linguisticRetainedTotal':sum(v for k,v in segcounts.items() if k!='COMPOUND_ELEMENT'),'analyses':analyses}
  inv={'schemaVersion':1,'purpose':'compound-elements-containing-target-surface','normalizedForm':cfg['normalizedForm'],'generator':'scripts/build_linguistic_adjudication.py','count':len(compounds),'occurrences':compounds}
  return raw,adj,inv
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--config',default='data/linguistic/pilots/porte-config.json');ap.add_argument('--write',action='store_true');a=ap.parse_args()
  cfg=json.loads((ROOT/a.config).read_text(encoding='utf-8')); raw,adj,inv=build(cfg)
  if a.write:
-  targets=[('data/linguistic/pilots/porte-occurrences.json',raw),('data/linguistic/pilots/porte.json',adj),('data/linguistic/pilots/porte-compounds.json',inv)]
+  stem=cfg.get('outputStem',cfg['normalizedForm']); targets=[(f'data/linguistic/pilots/{stem}-occurrences.json',raw),(f'data/linguistic/pilots/{stem}.json',adj),(f'data/linguistic/pilots/{stem}-compounds.json',inv)]
   for rel,obj in targets:(ROOT/rel).write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  print(json.dumps({'raw':raw['occurrenceCount'],'segmentation':adj['segmentationCounts'],'retained':adj['linguisticRetainedTotal'],'counts':adj['counts'],'compounds':inv['count']},ensure_ascii=False))
 if __name__=='__main__':main()
