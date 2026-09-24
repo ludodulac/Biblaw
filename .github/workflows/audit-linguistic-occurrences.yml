@@ -17,5 +17,5 @@ jobs:
           python-version: '3.12'
       - name: Build PORTE pilot slice
         run: python scripts/build_linguistic_occurrence_index.py --form porte --output data/linguistic/pilots/porte-occurrences.json
-      - name: Show deterministic PORTE inventory
-        run: cat data/linguistic/pilots/porte-occurrences.json
+      - name: Audit occurrence identity, offsets and adjudication
+        run: python scripts/audit_linguistic_occurrences.py
