@@ -6,18 +6,18 @@
   "policy": "Conservative generic morphosyntactic evidence produces PROVISIONAL only; unresolved retained units remain UNKNOWN; compounds are preserved as OTHER and excluded from linguistic retained total.",
   "counts": {
     "VERB_ETRE": 116,
-    "VERB_SUIVRE": 3,
-    "OTHER": 11,
+    "VERB_SUIVRE": 4,
+    "OTHER": 10,
     "UNKNOWN": 501,
     "AMBIGUOUS": 0
   },
   "segmentationCounts": {
-    "AUTONOMOUS": 614,
+    "AUTONOMOUS": 615,
     "VERB_CLITIC": 1,
-    "COMPOUND_ELEMENT": 11,
+    "COMPOUND_ELEMENT": 10,
     "VERB_INVERSION": 5
   },
-  "linguisticRetainedTotal": 620,
+  "linguisticRetainedTotal": 621,
   "analyses": [
     {
       "occurrenceId": "occ-bf5ca8fac272990185da3579",
@@ -399,12 +399,12 @@
     },
     {
       "occurrenceId": "occ-a875f03a7841b10bc9c2c7f1",
-      "category": "OTHER",
-      "lemma": null,
-      "partOfSpeech": null,
+      "category": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB",
       "status": "PROVISIONAL",
-      "evidence": "segmentation:compound-element",
-      "segmentation": "COMPOUND_ELEMENT"
+      "evidence": "config-rule:imperative-suivre",
+      "segmentation": "AUTONOMOUS"
     },
     {
       "occurrenceId": "occ-91737d8bef70adf4297235c8",
