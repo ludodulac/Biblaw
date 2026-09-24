@@ -5,7 +5,8 @@ from pathlib import Path
 import importlib.util
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('occ',ROOT/'scripts/build_linguistic_occurrence_index.py'); occ=importlib.util.module_from_spec(spec); spec.loader.exec_module(occ)
-HYPHENS='-‑–—'\nSUBJECT_PRONOUNS={'je','tu','il','elle','on','nous','vous','ils','elles'}
+HYPHENS='-‑–—'
+SUBJECT_PRONOUNS={'je','tu','il','elle','on','nous','vous','ils','elles'}
 def local_parts(o):
  i=min(o['startOffset'],90); return o['context'][:i],o['context'][i+len(o['surfaceForm']):]
 def segmentation(o,clitics):
