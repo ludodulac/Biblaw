@@ -2,6 +2,7 @@
 from __future__ import annotations
 import importlib.util,json
 from pathlib import Path
+# This audit is also the permanent regression sentinel for findings from mission 003.
 ROOT=Path(__file__).resolve().parents[1]
 def loadmod(name,path):
  s=importlib.util.spec_from_file_location(name,ROOT/path);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
