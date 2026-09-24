@@ -3,18 +3,18 @@
   "status": "review-candidates-generated",
   "purpose": "search-quality-audit-only; no automatic semantic merging or renaming",
   "stats": {
-    "themeCount": 1247,
+    "themeCount": 1246,
     "themeRelationCount": 10409,
-    "singletonThemeCount": 924,
-    "rareThemeCountOccurrenceLTE2": 1050,
-    "sameIdMultipleLabelsCount": 31,
+    "singletonThemeCount": 923,
+    "rareThemeCountOccurrenceLTE2": 1049,
+    "sameIdMultipleLabelsCount": 32,
     "sameNormalizedLabelMultipleIdsCount": 5,
     "normalizedDirectoryCollisionCount": 0,
     "compositeLabelCandidateCount": 186,
     "relationsWithoutVerseNumbers": 0,
     "relationsWithoutTeaching": 0,
     "themeCountByArchangelCoverage": {
-      "1": 972,
+      "1": 971,
       "2": 117,
       "3": 62,
       "4": 96
@@ -6788,6 +6788,2154 @@
               14
             ],
             "teaching": "Relation textuelle « Alliance » : v.5 : vous annonce mon départ, bien au contraire. Tant que l’ Alliance demeure, je tiens à vous dire que je serai présent dans les temples et dans les villages de la Nation Essénienne. Vous pourrez… / v.14 : jardin est une nécessité pour l’œuvre entreprise par notre A lliance, car Dieu la Lumière va Se manifester, Il va devenir une évidence au milieu de vous et vous allez pouvoir Le voir, L’entendre,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          }
+        ],
+        "reviewRule": "Preserve contextual wording unless corpus-internal evidence shows a genuine identifier or labeling error; do not force one global definition."
+      },
+      {
+        "themeId": "anges",
+        "labels": [
+          {
+            "label": "Anges",
+            "count": 130
+          },
+          {
+            "label": "Ange",
+            "count": 1
+          }
+        ],
+        "contextualEvidence": [
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 2,
+            "recordId": "book-01-psalm-002",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "teaching": "Les Anges appartiennent aux mondes qui entourent l'homme et sont liés à une perception intérieure qui ne dépend pas seulement d'une émotion agréable."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 4,
+            "recordId": "book-01-psalm-004",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              2,
+              5
+            ],
+            "teaching": "Le travail humain est décrit comme ayant une correspondance dans le monde des Anges, qui soutiennent l'œuvre."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 5,
+            "recordId": "book-01-psalm-005",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              7
+            ],
+            "teaching": "L'union à un Ange est fondée sur l'éveil en soi de la vertu qui lui correspond."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 6,
+            "recordId": "book-01-psalm-006",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              2,
+              3
+            ],
+            "teaching": "L'Ange est décrit comme une conscience supérieure dont la lumière délivre l'homme de l'obscurité."
+          },
+          {
+            "bookNumber": 2,
+            "archangel": "gabriel",
+            "psalmNumber": 15,
+            "recordId": "book-02-psalm-015",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              8
+            ],
+            "teaching": "Les Anges sont dits parler dans le cœur, tandis que l'enseignement divin véritable y est reçu."
+          },
+          {
+            "bookNumber": 3,
+            "archangel": "raphael",
+            "psalmNumber": 1,
+            "recordId": "book-03-psalm-001",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              18,
+              23,
+              24,
+              25
+            ],
+            "teaching": "Respirer avec les Anges exige que l'âme exhale les vertus et que le souffle porte ce qui est pur, beau et grand."
+          },
+          {
+            "bookNumber": 3,
+            "archangel": "raphael",
+            "psalmNumber": 3,
+            "recordId": "book-03-psalm-003",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              5,
+              7,
+              8,
+              11,
+              14
+            ],
+            "teaching": "Les Anges nourrissent la semence de Lumière par les vertus et participent à son développement."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 3,
+            "recordId": "book-04-psalm-003",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "teaching": "La présence angélique se reconnaît à la clarté de la pensée, à la lumière du regard et à une parole douce, guérissante et authentique."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 7,
+            "recordId": "book-04-psalm-007",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              4,
+              5,
+              6
+            ],
+            "teaching": "Les vertus humaines peuvent devenir nourriture et réconfort pour les Anges comme les fruits des règnes nourrissent l'homme."
+          },
+          {
+            "bookNumber": 6,
+            "archangel": "gabriel",
+            "psalmNumber": 50,
+            "recordId": "book-06-psalm-050",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              8,
+              9,
+              10
+            ],
+            "teaching": "L’homme n’a pas à fuir dans le monde angélique mais à nourrir ce qui est angélique en lui et à lui offrir une manifestation adaptée au monde terrestre."
+          },
+          {
+            "bookNumber": 6,
+            "archangel": "gabriel",
+            "psalmNumber": 54,
+            "recordId": "book-06-psalm-054",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "teaching": "L’Ange devient connaissable intérieurement lorsque la vertu correspondante habite réellement l’être."
+          },
+          {
+            "bookNumber": 7,
+            "archangel": "raphael",
+            "psalmNumber": 35,
+            "recordId": "book-07-psalm-035",
+            "label": "Ange",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              5,
+              6,
+              9,
+              13
+            ],
+            "teaching": "L’Ange est une vertu à faire grandir dans le cœur, l’intelligence, la volonté et les actes afin d’ouvrir concrètement le chemin."
+          },
+          {
+            "bookNumber": 13,
+            "archangel": "michael",
+            "psalmNumber": 84,
+            "recordId": "book-13-psalm-084",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              8,
+              9,
+              10,
+              13,
+              14,
+              17,
+              18
+            ],
+            "teaching": "Les Anges sont des êtres vivants qui s'approchent difficilement des hommes et refusent d'être capturés, exploités ou réduits à leurs besoins."
+          },
+          {
+            "bookNumber": 13,
+            "archangel": "michael",
+            "psalmNumber": 87,
+            "recordId": "book-13-psalm-087",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              9,
+              10,
+              17
+            ],
+            "teaching": "Dans l'alliance, les Anges peuvent aider à dénouer et accomplir ce qui appartient à la Lumière, mais l'homme doit devenir un calice stable."
+          },
+          {
+            "bookNumber": 13,
+            "archangel": "michael",
+            "psalmNumber": 93,
+            "recordId": "book-13-psalm-093",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              14,
+              15,
+              16,
+              17,
+              19,
+              20
+            ],
+            "teaching": "Les Anges cherchent chez l'homme stabilité, chaleur, lumière et vie ; l'appel doit devenir hospitalité et partage réels."
+          },
+          {
+            "bookNumber": 14,
+            "archangel": "gabriel",
+            "psalmNumber": 85,
+            "recordId": "book-14-psalm-085",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              9,
+              13,
+              17,
+              20,
+              25
+            ],
+            "teaching": "Une vertu angélique peut être incarnée par l'homme lorsqu'il accorde sa vie à ce qu'il a compris et sert la Lumière dans la pureté."
+          },
+          {
+            "bookNumber": 14,
+            "archangel": "gabriel",
+            "psalmNumber": 95,
+            "recordId": "book-14-psalm-095",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              10,
+              11,
+              12,
+              13
+            ],
+            "teaching": "Approcher un Ange exige respect, écoute et préparation; il ne doit pas être réduit au service des préoccupations matérielles."
+          },
+          {
+            "bookNumber": 18,
+            "archangel": "gabriel",
+            "psalmNumber": 133,
+            "recordId": "book-18-psalm-133",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              7,
+              12,
+              18
+            ],
+            "teaching": "Vivre avec les Anges signifie ici s’orienter vers des vertus plus hautes que les habitudes ordinaires et leur donner un milieu concret où elles puissent agir et purifier la vie."
+          },
+          {
+            "bookNumber": 19,
+            "archangel": "raphael",
+            "psalmNumber": 108,
+            "recordId": "book-19-psalm-108",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              7,
+              12,
+              18,
+              23,
+              29,
+              31,
+              32
+            ],
+            "teaching": "Le psaume relie « Anges » au passage suivant : Lorsque tu te souviendras de ce que peut être la vie d’une pierre, d’une plante, d’un animal, tu sauras ce que doit être la vie d’un homme. Tu seras alors prêt à gravir la marche supplémentaire qui te conduira vers l’état angélique. Un second appui précise : L’ascension, c’est de remonter jusqu’à l’Ange en portant avec soi le minéral. La mémoire doit ainsi redevenir consciente et être animée par le souffle du grand esprit universel."
+          },
+          {
+            "bookNumber": 19,
+            "archangel": "raphael",
+            "psalmNumber": 117,
+            "recordId": "book-19-psalm-117",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              22,
+              23,
+              27,
+              28,
+              29
+            ],
+            "teaching": "Le psaume relie « Anges » au passage suivant : Si vous vous approchez d’un véritable savoir, par exemple celui de l’Ange de la fraternité, et que vous recevez sa lumière, que vous entrez dans ses mystères, tâchez de renforcer ce savoir Un second appui précise : Il ne faut pas être bête et utopiste en croyant qu’il suffit d’appeler l’Ange de la fraternité pour que celle-ci s’instaure parmi les hommes. Il y a pour cela tout un travail à faire, une sagesse à acquérir, un corps à former."
+          },
+          {
+            "bookNumber": 19,
+            "archangel": "raphael",
+            "psalmNumber": 122,
+            "recordId": "book-19-psalm-122",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "contextual",
+            "verseNumbers": [
+              5,
+              25
+            ],
+            "teaching": "Relation contextuelle « Anges » : le passage d’ancrage indique : Dans la vie, tu dois marcher avec l’Ange de la fidélité. Tu dois être fidèle à ce que tu as reçu, développer ton don et le conduire jusqu’à la perfection. Un second appui précise : Un Ange accomplit son rôle ; on sait que l’on peut compter sur lui, il ne décidera pas au dernier moment d’être autre chose que ce qu’il est. Un Archange est fidèle aux lois et commandements divins."
+          },
+          {
+            "bookNumber": 20,
+            "archangel": "ouriel",
+            "psalmNumber": 120,
+            "recordId": "book-20-psalm-120",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              24,
+              36,
+              41,
+              42,
+              43,
+              44
+            ],
+            "teaching": "Le psaume relie « Anges » au passage suivant : Si un être qui porte la bonté agit avec bonté envers un autre, au nom de l’Ange de la bonté, il transmettra la bonté à cet autre. Celui‑ci se redressera et portera à son tour les semences de la bonté qui lui ont été offertes dans la pureté et… Un second appui précise : Un homme peut être toute bonté, la bonté demeurera toujours plus grande que lui, car dans un monde supérieur, elle est un Ange, un Archange et une Divinité."
+          },
+          {
+            "bookNumber": 20,
+            "archangel": "ouriel",
+            "psalmNumber": 125,
+            "recordId": "book-20-psalm-125",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              10
+            ],
+            "teaching": "Le psaume relie « Anges » au passage suivant : Les Anges, les Archanges et les Divinités ne doivent pas être accueillis dans des endroits sales et nauséabonds."
+          },
+          {
+            "bookNumber": 21,
+            "archangel": "michael",
+            "psalmNumber": 136,
+            "recordId": "book-21-psalm-136",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              4,
+              5,
+              6,
+              10,
+              11,
+              12,
+              13,
+              21,
+              23,
+              28,
+              29,
+              30,
+              31,
+              39,
+              41,
+              42
+            ],
+            "teaching": "Le passage d’appui retenu pour « Anges » indique : Vous devez reprendre possession de toutes les composantes de vos corps, du plus subtil au plus matériel, de vos organes, de vos sens, de vos facultés et être respectueux et fidèles devant la présence de votre Ange. Cette relation secondaire est conservée comme ancrage textuel du psaume."
+          },
+          {
+            "bookNumber": 22,
+            "archangel": "gabriel",
+            "psalmNumber": 147,
+            "recordId": "book-22-psalm-147",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              8,
+              17
+            ],
+            "teaching": "Le thème « Anges » est présent de façon significative dans le psaume et reste rattaché aux versets indiqués sans extrapolation extérieure."
+          },
+          {
+            "bookNumber": 22,
+            "archangel": "gabriel",
+            "psalmNumber": 150,
+            "recordId": "book-22-psalm-150",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              29,
+              30,
+              35
+            ],
+            "teaching": "Le passage d’appui retenu pour « Anges » indique : L’humble doit être pardonné, mais l’orgueilleux, celui qui persévère dans le nonrespect de l’enseignement des Anges et du monde divin doit être repoussé. Cette relation secondaire est conservée comme ancrage textuel du psaume."
+          },
+          {
+            "bookNumber": 22,
+            "archangel": "gabriel",
+            "psalmNumber": 159,
+            "recordId": "book-22-psalm-159",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              13,
+              14,
+              16
+            ],
+            "teaching": "Le passage d’appui retenu pour « Anges » indique : Si vous demeurez clairs et parvenez à traverser ces mondes sans vous faire attraper, les grands symboles, les écritures sacrées et les influences bénéfiques qui animaient votre vie vous guideront vers votre Ange. Cette relation secondaire est conservée comme ancrage textuel du psaume."
+          },
+          {
+            "bookNumber": 24,
+            "archangel": "ouriel",
+            "psalmNumber": 145,
+            "recordId": "book-24-psalm-145",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              5,
+              22,
+              23,
+              24,
+              26,
+              29,
+              32
+            ],
+            "teaching": "Relation textuelle « Anges » : v.5 : Rares sont les hommes qui ont réellement compris ce qu’est l’intelligence, son lien avec la discipline sacrée, avec la pratique des vertus angéliques, avec l’éveil de la lumière intérieure et le but de la… / v.22 : Dans la Tradition, l’union de l’intelligence avec la sagesse est appelée l’« alliance avec l’Ange ». / v.23 : L’Ange est le messager du Père, son représentant, sa présence dans la vie de l’homme.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 25,
+            "archangel": "michael",
+            "psalmNumber": 169,
+            "recordId": "book-25-psalm-169",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              8,
+              9,
+              14
+            ],
+            "teaching": "Relation textuelle « Anges » : v.8 : Si la nature te donne un bien, tu dois aussi donner à ton tour. La nature protège ton corps et toi, tu dois donner à l’Ange, c’est-à-dire à ta vie intérieure, à tes pensées,… / v.9 : nourriture donnée par ta vie intérieure et l’offre aux Arch anges et aux Dieux. Ainsi, le lien est parfait et la vie de l’homme tout entière est dans la Lumière, car ce qui est… / v.14 : Tu ne peux pas faire n’importe quoi, car tu cherches à t’unir avec une intelligence angélique. Tu dois donc inscrire ta vie dans les limites et le cadre de cette intelligence, de cette beauté,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 25,
+            "archangel": "michael",
+            "psalmNumber": 170,
+            "recordId": "book-25-psalm-170",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              20,
+              22,
+              27,
+              28,
+              30
+            ],
+            "teaching": "Relation textuelle « Anges » : v.20 : Seul l’homme qui est réellement uni avec un Ange, c’est-à-dire avec un monde supérieur divin, peut prendre sa vie en mains et équilibrer ces 2 intelligences pour faire tourner la roue du destin dans… / v.22 : Si vous êtes associés avec un Ange ou un monde supérieur, vous avez l’autorité pour guider les forces de la dualité vers une intelligence supérieure afin d’engendrer un équilibre. Jamais ces intelligences ne s’inclineront… / v.27 : Être au service de l’intelligence angélique quoi qu’il vous en coûte vous apportera la victoire. Toutes les forces de la dualité s’inclineront devant celui qui, en vérité, s’est incliné devant l’intelligence supérieure de l’Ange.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 25,
+            "archangel": "michael",
+            "psalmNumber": 185,
+            "recordId": "book-25-psalm-185",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              12,
+              16,
+              26,
+              27
+            ],
+            "teaching": "Relation textuelle « Anges » : v.12 : Être fidèle signifie être en accord avec le monde de la fidélité, avec le principe, le Dieu, l’Archange et l’Ange de la fidélité. / v.16 : Il est beau d’appeler un Ange, mais il faut ensuite accepter sa guidance et apprendre à se conduire dans la vie en fonction de sa volonté. / v.26 : Vous, les Esséniens, vous êtes les gardiens de la Tradition et celles et ceux qui sont restés fidèles au monde des Anges.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 25,
+            "archangel": "michael",
+            "psalmNumber": 186,
+            "recordId": "book-25-psalm-186",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              22,
+              23,
+              24,
+              38,
+              43,
+              52,
+              53,
+              57
+            ],
+            "teaching": "Relation textuelle « Anges » : v.22 : Les principes moraux appartiennent au monde des Archanges et les vertus sont la présence des Anges. / v.23 : Ne pas considérer les vertus dans la vie, ne pas les mettre en œuvre et les respecter revient à dénigrer les Anges, les isoler, les rejeter. / v.24 : dans la vie quotidienne et à travers elles, aimer les Anges, les louer, les apprécier.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 25,
+            "archangel": "michael",
+            "psalmNumber": 188,
+            "recordId": "book-25-psalm-188",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              4,
+              5
+            ],
+            "teaching": "Relation textuelle « Anges » : v.4 : Avec l’Ange de la souplesse, vous pourrez réellement entrer dans une créativité, une vie beaucoup plus simple et surtout efficace. / v.5 : Une structure, une discipline et une stabilité sont bien sûr nécessaires pour réaliser l’équilibre des mondes, mais cela n’est réellement possible que par l’Ange de la souplesse.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 26,
+            "archangel": "gabriel",
+            "psalmNumber": 172,
+            "recordId": "book-26-psalm-172",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              23,
+              24,
+              26,
+              29,
+              31,
+              35
+            ],
+            "teaching": "Relation textuelle « Anges » : v.23 : Que chaque Essénien qui tient la corde de la Ronde des Archanges prenne conscience du lien avec l’Ange. / v.24 : L’Ange est le lien avec l’âme, qui est l’individualité éternelle, immortelle se manifestant dans le corps et la vie terrestre. Une fois éveillée par la puissance du corps de la Nation Essénienne, de l’espace… / v.26 : L’homme-Ange porté par les Esséniens doit apparaître dans le monde.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 28,
+            "archangel": "ouriel",
+            "psalmNumber": 156,
+            "recordId": "book-28-psalm-156",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              14,
+              15
+            ],
+            "teaching": "Relation textuelle « Anges » : v.14 : L’homme vient d’un monde qu’il a oublié, il est porteur d’un message et la source est là, à l’intérieur de lui, comme un Ange, afin de le conduire à se rappeler qui il est… / v.15 : Rappelle‑toi, Essénien, cette source est le fondement de tout ; elle est ton origine divine dans la permanence, elle est ton âme, ton Ange qui te gardent et te conduisent… Elle te montre que…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 28,
+            "archangel": "ouriel",
+            "psalmNumber": 159,
+            "recordId": "book-28-psalm-159",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              7
+            ],
+            "teaching": "Relation textuelle « Anges » : v.7 : il est possible de devenir des oiseaux des mystères, des Anges de façon à pouvoir vivre avec les vertus du Soleil, dans la grandeur, la générosité, dans l’abondance et connaître la vie. Ainsi, des…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 28,
+            "archangel": "ouriel",
+            "psalmNumber": 166,
+            "recordId": "book-28-psalm-166",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              10,
+              13,
+              15,
+              17,
+              19,
+              20,
+              27,
+              28,
+              30
+            ],
+            "teaching": "Relation textuelle « Anges » : v.10 : Ce qui peut vous libérer, c’est d’éveiller l’œil de l’Ange par l’étude de l’Enseignement. Ce chemin doit être perçu comme une éducation et un travail sur soi pour reprendre sa destinée en mains. / v.13 : L’œil de l’Ange doit être posé sur un corps conscient, éveillé et structuré, sinon il n’y aura aucune stabilité et la vision sera constamment perturbée par les mondes qui cherchent à accaparer l’homme pour… / v.15 : Ce savoir ne doit pas être considéré à la légère, car si l’homme perd la vision juste, il perd tout ; il perd l’alliance avec l’Ange, le lien avec l’intelligence, la capacité de s’orienter…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 28,
+            "archangel": "ouriel",
+            "psalmNumber": 171,
+            "recordId": "book-28-psalm-171",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              12,
+              17,
+              18
+            ],
+            "teaching": "Relation textuelle « Anges » : v.12 : C’est comme si pour appeler son Ange et s’unir avec lui, l’Essénien se tenait à l’extérieur du talisman au lieu de se tenir dessus, en relation directe avec le centre, dans le rayon impersonnel… / v.17 : Celui qui est en accord avec le centre devient celui qui connaît parce qu’il est. Il est un, parfaitement impersonnel et accordé avec ce qu’il est et ce qu’il doit faire. Son corps est… / v.18 : L’Ange est la volonté de Dieu et l’homme se tient en lui. Celui‑ci ne place pas de concepts humains sur l’Ange, mais il est entièrement concentré, impersonnel et pur. Il est la terre neutre…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 28,
+            "archangel": "ouriel",
+            "psalmNumber": 174,
+            "recordId": "book-28-psalm-174",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              24,
+              27
+            ],
+            "teaching": "Relation textuelle « Anges » : v.24 : clarté, mais dans la clarté véritable, celle qui nourrit les Anges de la pureté et de la vérité à l’intérieur de l’homme.… / v.27 : L’Ange de la clarté vous portera chance.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 29,
+            "archangel": "michael",
+            "psalmNumber": 208,
+            "recordId": "book-29-psalm-208",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              20,
+              27,
+              28
+            ],
+            "teaching": "Relation textuelle « Anges » : v.20 : Approchez-vous de l’Ange de la paix et entrez dans son école. Apprenez à cultiver la paix. Cela vous apportera une ouverture d’esprit et un grand bien. Vous acquerrez une nouvelle vision, un autre regard,… / v.27 : Lorsque l’homme porte en lui la paix, qu’il parvient à demeurer en harmonie avec cet Ange sublime, cela change radicalement sa vie. / v.28 : Beaucoup d’hommes ont connu la paix, mais ils n’ont pas réussi à garder le lien avec cet Ange, qui est alors parti, et les hommes l’ont oublié ; c’est comme une extase, un ravissement,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 29,
+            "archangel": "michael",
+            "psalmNumber": 209,
+            "recordId": "book-29-psalm-209",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              10,
+              32
+            ],
+            "teaching": "Relation textuelle « Anges » : v.10 : La souplesse est un esprit de grandeur d’âme, d’universalité ; c’est un Ange qui est lié à l’Archange Gabriel et aux mystères de l’eau. / v.32 : Comment voulez-vous connaître un Ange en dehors de l’idée que vous vous en faites en votre for intérieur ? Vous ne pouvez connaître un Ange que si vous êtes sur le chemin qui mène…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 29,
+            "archangel": "michael",
+            "psalmNumber": 213,
+            "recordId": "book-29-psalm-213",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              10,
+              29,
+              34
+            ],
+            "teaching": "Relation textuelle « Anges » : v.10 : Éveille l’immortel et donne-toi aux Anges. / v.29 : de se développer, de s’épanouir et de régner par ses Anges, qui sont les grandes vertus.… / v.34 : La Lumière doit être respectée. Alors elle viendra sous la forme d’un Ange et s’unira à l’homme qui vit conformément à elle.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 29,
+            "archangel": "michael",
+            "psalmNumber": 215,
+            "recordId": "book-29-psalm-215",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              7,
+              8,
+              16,
+              18
+            ],
+            "teaching": "Relation textuelle « Anges » : v.7 : Rares sont celles et ceux qui reçoivent en héritage la semence de l’immortalité et qui cherchent à perfectionner les mystères de l’esprit. Dans cette voie particulière qui appartient à la tradition des Fils de… / v.8 : Par l’Ange, l’homme s’unira avec le monde des Archanges et des Dieux et il rencontrera ce qui est plus haut et pourra réellement le sortir de sa condition. / v.16 : Ce que vous êtes appartient au monde de l’homme et non au monde de l’Ange et de ce qui doit naître en vous. Vous ne pouvez pas faire entrer dans les mondes supérieurs ce…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 30,
+            "archangel": "gabriel",
+            "psalmNumber": 194,
+            "recordId": "book-30-psalm-194",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              22,
+              23
+            ],
+            "teaching": "Relation textuelle « Anges » : v.22 : Entrer dans l’école de Gabriel et dans la communion avec la sainte église, c’est porter l’Ange de Gabriel en soi. / v.23 : Tu dois t’approcher de ma source et de mon église jusqu’à ce que mon saint Ange vienne en toi. Il te montrera la source, l’eau du fleuve et l’océan. Alors l’eau jaillira en toi…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 30,
+            "archangel": "gabriel",
+            "psalmNumber": 195,
+            "recordId": "book-30-psalm-195",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              33,
+              36
+            ],
+            "teaching": "Relation textuelle « Anges » : v.33 : parce qu’il ne veut pas accomplir son travail devant les Anges et qu’il en fait porter la responsabilité sur celles et ceux qui sont juste venus aider afin de se préparer et d’ouvrir un… / v.36 : Un vrai responsable tient sa place, il demeure fidèle aux Anges et aux Archanges et il permet à tous les êtres de l’aider, de le soulager et de participer à l’œuvre de la Lumière.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 30,
+            "archangel": "gabriel",
+            "psalmNumber": 198,
+            "recordId": "book-30-psalm-198",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              7,
+              11,
+              17,
+              19,
+              25,
+              26
+            ],
+            "teaching": "Relation textuelle « Anges » : v.7 : et qui l’éclaire de l’intérieur, lui montrant la grandeur des Anges. Un tel homme ne rencontre plus d’obstacles dans sa vie extérieure.… / v.11 : Les Dieux, les Arch anges et les Anges vivent dans l’esprit de Dieu. L’homme doit vivre en compagnie des Anges par sa vie intérieure consacrée et illuminée. Alors… / v.17 : Dieu apporte la sagesse en toutes choses, tu oublieras les Anges, pensant que les mondes t’en veulent… Mais la vérité est simplement que c’est toi qui n’écoutes pas la sagesse des mondes.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 30,
+            "archangel": "gabriel",
+            "psalmNumber": 207,
+            "recordId": "book-30-psalm-207",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              13,
+              22,
+              23,
+              24
+            ],
+            "teaching": "Relation textuelle « Anges » : v.13 : La vérité, c’est ce qui est pur, sans mensonge, sans tache, vrai dans tous les étages de l’être, uni avec les Anges. / v.22 : Allume la flamme de la pureté à l’intérieur de toi afin qu’elle éclaire ta vie des vertus des Anges jusque dans tes actes et tes œuvres. / v.23 : sur le monde qui vit en toi. Va vers les Anges, les Archanges et les Dieux et conduis ton énergie vers la grandeur et la magnificence.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 30,
+            "archangel": "gabriel",
+            "psalmNumber": 210,
+            "recordId": "book-30-psalm-210",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              5,
+              11
+            ],
+            "teaching": "Relation textuelle « Anges » : v.1 : Béni est l’homme qui sur la terre rencontre l’opportunité d’ouvrir un chemin vers la Lumière. Mille fois béni celui qui permet à un homme, à un animal, à un règne de rencontrer un tel… / v.5 : la volonté d’équilibrer le monde par les vertus des A nges et non pas celles que les hommes proclament avoir, il reçoit la bénédiction et la donne. Par contre, celui qui ferme une porte… / v.11 : hommes, femmes, enfants, animaux, plantes, pierres, éléments, esprits, génies, A nges, Archanges, Dieux.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 30,
+            "archangel": "gabriel",
+            "psalmNumber": 213,
+            "recordId": "book-30-psalm-213",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              5,
+              12,
+              22,
+              33
+            ],
+            "teaching": "Relation textuelle « Anges » : v.5 : Cette initiation de l’Ange de la clarté peut être associée au baptême de l’eau de Gabriel. / v.12 : Étudiez le concept de la clarté, mais ne le mélangez pas, ne le confondez pas avec l’être en soi, c’est-à-dire l’Ange de la clarté, qui est supérieur au concept. / v.22 : La clarté est liée à l’eau ; elle n’est pas un concept, mais un état d’être divin, immortel, qui existe en dehors de l’homme, dont l’homme peut s’approcher en tournant son être et ses…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 31,
+            "archangel": "raphael",
+            "psalmNumber": 181,
+            "recordId": "book-31-psalm-181",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              5,
+              10,
+              11,
+              12
+            ],
+            "teaching": "Relation textuelle « Anges » : v.2 : Les hommes s’incarnent, mais finalement, ils ne savent pas pourquoi, ils oublient leur mission et la plupart d’entre eux ne savent pas réellement qui ils sont. Cela est une épreuve, mais l’homme n’est pas… / v.5 : À travers le baptême ou une bénédiction bien faite, vous permettez à des esprits séculiers, à des génies, à des intelligences célestes de s’approcher de l’homme, de tisser des liens afin de venir vivre… / v.10 : Prendre soin de la vie, c’est permettre à des âmes qui s’incarnent de retrouver leur chemin d’immortalité. Pour cela, la vie doit être organisée dans le respect de certaines règles fondamentales et immuables :…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 31,
+            "archangel": "raphael",
+            "psalmNumber": 183,
+            "recordId": "book-31-psalm-183",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              7,
+              10,
+              14
+            ],
+            "teaching": "Relation textuelle « Anges » : v.7 : préoccupations. Même s’il sait que Dieu est l’aboutissement, que les Anges sont la vérité, que les Archanges sont les lois de l’univers et que les Dieux sont les principes éternels, il accepte de modifier… / v.10 : lui, tu perdras tout ; tu n’auras pas rencontré les Anges, tu n’auras pas connu le bonheur d’être du pollen pour les abeilles, de la nourriture pour les papillons. Au mieux, tu auras connu… / v.14 : semence à celui de fleur, qui non seulement rencontrera les Anges mais pourra goûter et apprécier la puissance du soleil lorsque celui-ci la caressera de ses rayons. Ceci n’est pas une expérience extérieure, mais…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 31,
+            "archangel": "raphael",
+            "psalmNumber": 185,
+            "recordId": "book-31-psalm-185",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              23,
+              28,
+              33
+            ],
+            "teaching": "Relation textuelle « Anges » : v.23 : mais au contraire, elle fera entrer la lumière supérieure des Anges dans ta vie et elle te libèrera en chassant de toi la peur d’aller à la rencontre d’autres mondes. Certains diront qu’ils ne… / v.28 : La sagesse, c’est d’apprendre à rencontrer l’autre dans le but d’augmenter la Lumière, de l’enrichir. L’autre est peut-être un démon ou un Ange… Peut-être est-il porteur d’une puissante bénédiction ou d’un poison… Peu importe,… / v.33 : Vous ne devez pas avoir le même langage devant un Ange ou un démon. Par contre, vous ne devez jamais perdre votre délicatesse, votre fluidité, votre subtilité, votre capacité à vous adapter à toutes…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 31,
+            "archangel": "raphael",
+            "psalmNumber": 191,
+            "recordId": "book-31-psalm-191",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              2,
+              3,
+              6,
+              8,
+              9,
+              11,
+              14,
+              15,
+              19,
+              20,
+              23,
+              27,
+              28,
+              29,
+              33
+            ],
+            "teaching": "Relation textuelle « Anges » : v.1 : Vous cherchez le chemin pour converser et vivre avec les Anges. Vous savez que ce monde est juste et qu’il vous apportera la bonne inspiration, car les Anges sont les messagers du Père. / v.2 : Rencontrer un Ange exige toute une sagesse, une éducation, un mode de vie, une discipline. / v.3 : tradition sainte et de faire corps avec elle, car les Anges parlent à travers cette tradition, ses génies et ses esprits. Si vous aidez cette tradition, les Anges s’approcheront de vous.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 31,
+            "archangel": "raphael",
+            "psalmNumber": 192,
+            "recordId": "book-31-psalm-192",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              4,
+              18
+            ],
+            "teaching": "Relation textuelle « Anges » : v.4 : J’offre à cette église le don de l’Ange de la guérison. / v.18 : Acceptez mon offrande et que l’Ange de la guérison trouve un corps à travers l’Église Essénienne Chrétienne.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 31,
+            "archangel": "raphael",
+            "psalmNumber": 196,
+            "recordId": "book-31-psalm-196",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              7,
+              11,
+              20,
+              25,
+              34
+            ],
+            "teaching": "Relation textuelle « Anges » : v.7 : Au-dessus de l’homme, il y a les Anges, les Archanges et les Dieux ; ce ne sont pas des mondes séparés, ils font partie de l’homme même s’ils peuvent vivre sans… / v.11 : Dans sa respiration, il doit voyager dans les mondes des Anges, des Archanges et des Dieux afin de rapporter tous les enseignements, les influences, les trésors jusque dans son corps. L’homme peut alors offrir… / v.20 : Si vous voulez respirer avec les Anges et communier avec eux, vous devez être généreux, apprendre à donner, à rayonner, à ensemencer les mondes pour amener l’expansion, la profusion, la richesse de la Lumière.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 32,
+            "archangel": "ouriel",
+            "psalmNumber": 188,
+            "recordId": "book-32-psalm-188",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              23,
+              24,
+              25,
+              27
+            ],
+            "teaching": "Relation textuelle « Anges » : v.23 : Sachez que pour les Anges, il n’y a pas qu’une seule forme d’existence. Ils ne sont pas uniquement des principes de vertu, ils sont aussi tous les mouvements… / v.24 : Un Ange peut être le porteur d’une vertu particulière et en s’approchant de l’homme, en éveiller une autre, qui est plus proche de cet homme, qui lui correspond. Ainsi, un Ange n’est pas sectaire,… / v.25 : L’Ange veut unifier vers une intelligence supérieure par l’ennoblissement des différences.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 32,
+            "archangel": "ouriel",
+            "psalmNumber": 194,
+            "recordId": "book-32-psalm-194",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              15
+            ],
+            "teaching": "Relation textuelle « Anges » : v.15 : L’Alliance est de nouveau scellée, et Dieu, les Dieux, les Pères, les Anges et les mondes supérieurs continuent à œuvrer avec l’Église Essénienne et à la soutenir.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 32,
+            "archangel": "ouriel",
+            "psalmNumber": 196,
+            "recordId": "book-32-psalm-196",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              23
+            ],
+            "teaching": "Relation textuelle « Anges » : v.23 : dans le bonheur, la joie et toutes les vertus des Anges qui permettent à l’homme d’être heureux et de s’épanouir dans la beauté et la dignité.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 32,
+            "archangel": "ouriel",
+            "psalmNumber": 203,
+            "recordId": "book-32-psalm-203",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              4,
+              12,
+              15
+            ],
+            "teaching": "Relation textuelle « Anges » : v.4 : La clé est simple : une vertu est le corps de manifestation d’une réalité supérieure, d’un Ange, d’un messager de Dieu. / v.12 : Si un Essénien travaille avec la vertu et l’Ange de la paix, il sera la paix dans tous les mondes, visibles et subtils. Dans les mondes conscients comme dans les mondes inconscients, il sera… / v.15 : Maintenant, conduisez cette œuvre plus en avant, consolidez‑la, portez le monde des Anges concrètement, en lui préparant un corps sur la terre, une maison de Dieu.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 32,
+            "archangel": "ouriel",
+            "psalmNumber": 205,
+            "recordId": "book-32-psalm-205",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              19,
+              28,
+              35,
+              36
+            ],
+            "teaching": "Relation textuelle « Anges » : v.19 : la nourriture fondamentale soit la présence et le gouvernement des Anges.… / v.28 : la tyrannie, le mécontentement s’approcher du chantier, mais appelez les Anges et bâtissez avec l’intelligence et l’âme des vertus. Alors vous apporterez les meilleures forces et capacités, vous communierez avec les forces bénéfiques qui… / v.35 : Si vous voulez créer une maison, un temple pour la paix sur la terre, il faut que la paix de Dieu, c’est‑à‑dire l’Ange de la paix, soit invoquée dans la discipline exacte, la pureté…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 33,
+            "archangel": "michael",
+            "psalmNumber": 221,
+            "recordId": "book-33-psalm-221",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              14,
+              15,
+              19,
+              21
+            ],
+            "teaching": "Relation textuelle « Anges » : v.6 : L’homme ne doit pas montrer son pouvoir, mais mettre ce pouvoir au service de l’intelligence divine immortelle représentée par le messager, l’Ange. / v.7 : L’Ange est la hiérarchie supérieure à l’homme, il est le messager de Dieu et le porteur des vertus que Dieu préconise comme indispensables à la vie de l’homme. / v.8 : Dans ta vie, tu seras amené à faire des choix, car tu es habité par 2 mondes : d’un côté, l’instinct, qui te vient de l’animal, et de l’autre, l’élévation et l’ennoblissement, qui te…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 33,
+            "archangel": "michael",
+            "psalmNumber": 228,
+            "recordId": "book-33-psalm-228",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              5,
+              8,
+              9,
+              10,
+              11,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "teaching": "Relation textuelle « Anges » : v.5 : Pour qu’un Archange puisse sceller une alliance avec l’homme, celui-ci doit faire sa part de travail ; il doit sceller l’alliance avec l’Ange. / v.8 : L’initiation essénienne commence par la formation des 4 corps, se poursuit par celle des 5 sens et finit par celle des 6 lunes, qui permet l’alliance avec un Ange. L’Essénien prononce alors le grand… / v.9 : Je demande à celles et ceux qui ont entendu mon appel de se mettre à l’œuvre, d’une façon ou d’une autre, suivant leurs moyens et capacités, pour que des êtres puissent être consacrés par…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 33,
+            "archangel": "michael",
+            "psalmNumber": 237,
+            "recordId": "book-33-psalm-237",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              3,
+              18,
+              19
+            ],
+            "teaching": "Relation textuelle « Anges » : v.2 : Nous, les Archanges, comme les Anges et les Dieux, nous vivons avec Dieu. / v.3 : Vous, les hommes, êtes bien souvent dans des concepts de ce que peut être un Ange, mais vous ne vivez pas avec lui. / v.18 : La tolérance est une vertu qui va de pair avec la compréhension supérieure et la maîtrise. Plus un être s’éveille dans la réalité des mondes sacrés, plus il devient le maître de son outil…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 33,
+            "archangel": "michael",
+            "psalmNumber": 238,
+            "recordId": "book-33-psalm-238",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              25
+            ],
+            "teaching": "Relation textuelle « Anges » : v.25 : Que les Anges vivent dans votre feu.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 33,
+            "archangel": "michael",
+            "psalmNumber": 240,
+            "recordId": "book-33-psalm-240",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              6,
+              17,
+              20,
+              21
+            ],
+            "teaching": "Relation textuelle « Anges » : v.6 : dans son ignorance, se tourne vers Dieu et vers les Anges, leur demandant d’ouvrir les portes de façon à ce que sa vie mortelle soit bénie et qu’il continue à vivre et à faire… / v.17 : apporte le désordre. Ils prononcent des mots sacrés, invoquent les Anges, prient les Archanges sans se rendre compte que c’est en vain, car leurs paroles n’ont pas de valeur, elles ne traversent pas les… / v.20 : Si l’homme ne cultive pas l’un de ces 2 liens, il continuera à vivre sa vie, à appeler des Divinités, à faire des expériences, mais cela sera en vain, car tout sera pris par…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 34,
+            "archangel": "gabriel",
+            "psalmNumber": 222,
+            "recordId": "book-34-psalm-222",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              8,
+              21,
+              39
+            ],
+            "teaching": "Relation textuelle « Anges » : v.8 : Si vous voulez vivre avec la Lumière, ne la chassez pas de votre vie ; faites-lui une place en vous et accueillez la vertu de l’Ange, de L’Archange ou de la Divinité dans les… / v.21 : Portez-vous consciemment le monde des Anges à travers les vertus, qui sont le chemin de la vie ? / v.39 : création, des Dieux jusqu’aux pierres, en passant par les Arch anges, les Anges, les hommes, les animaux, les végétaux. Présentez-vous réellement devant eux et surtout, devant le monde des hommes.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 34,
+            "archangel": "gabriel",
+            "psalmNumber": 234,
+            "recordId": "book-34-psalm-234",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              2,
+              5,
+              8
+            ],
+            "teaching": "Relation textuelle « Anges » : v.1 : moi parce que vous serez inspirés et guidés par les Anges, les Archanges et les Dieux. Seuls ceux qui sont conduits par ces mondes pourront passer les portails de mon royaume et être appelés… / v.2 : de l’homme, vivant dans l’ordre et l’harmonie, un avec les Anges, car ce seront leurs vertus qui animeront vos vies.… / v.5 : Vivre avec les Anges, les Archanges et les Dieux est une expérience sacrée qui viendra pour chaque homme ; ce sera le jour béni où l’homme retrouvera…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 35,
+            "archangel": "raphael",
+            "psalmNumber": 208,
+            "recordId": "book-35-psalm-208",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              11,
+              13,
+              18,
+              36
+            ],
+            "teaching": "Relation textuelle « Anges » : v.11 : L’homme doit savoir vivre avec lui-même, avec ses semblables, mais également avec les Dieux, les Archanges et les Anges, ainsi qu’avec les animaux, les végétaux et les minéraux. / v.13 : sens, qui lui permettront de percevoir les vertus des A nges, l’intelligence des Archanges, la puissance des Dieux à travers les qualités que les autres portent en eux-mêmes. Cela permet de cultiver une vision… / v.18 : de nation de Dieu qui constitue la manifestation concrète des Anges.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 35,
+            "archangel": "raphael",
+            "psalmNumber": 211,
+            "recordId": "book-35-psalm-211",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              28,
+              31
+            ],
+            "teaching": "Relation textuelle « Anges » : v.28 : Celui qui s’individualise sera utile à son Ange et deviendra un instrument de l’envoyé, car il sera centré et dans la maîtrise magique des mondes extérieurs. / v.31 : Vous ne trouverez la stabilité que dans le centre intérieur et dans l’individualisation de votre être profond, dans l’alliance avec votre Ange.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 35,
+            "archangel": "raphael",
+            "psalmNumber": 216,
+            "recordId": "book-35-psalm-216",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              16,
+              20
+            ],
+            "teaching": "Relation textuelle « Anges » : v.16 : Je vous conseille de renforcer la fidélité dans vos vies, l’engagement et le respect et de vous mettre à cette école de l’Ange de la fidélité, car il a beaucoup de trésors à vous… / v.20 : Un Ange a la vertu d’être fidèle à sa fonction et il ne décidera pas de l’abandonner juste pour changer.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 35,
+            "archangel": "raphael",
+            "psalmNumber": 228,
+            "recordId": "book-35-psalm-228",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              13,
+              14,
+              15,
+              16,
+              18,
+              20
+            ],
+            "teaching": "Relation textuelle « Anges » : v.13 : des fruits, les oiseaux du ciel viendront, c’est-à-dire que les Anges s’associeront avec l’homme et que celui-ci entrera dans la réelle conscience de ce qu’il est véritablement, éternellement. Père Raphaël, veux-tu dire que la… / v.14 : Lorsque l’homme rencontre l’Ange, il naît, il apparaît, il devient conscient et il sait ce qu’il doit faire. Il est éveillé et sait que sa destinée, sa future vie sera de devenir un Ange.… / v.15 : Beaucoup d’hommes vivent et demeurent dans le monde des racines et ne parviennent pas à émerger dans leur être conscient. Mais à partir du moment où la rencontre avec l’Ange se produit et qu’il…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 35,
+            "archangel": "raphael",
+            "psalmNumber": 230,
+            "recordId": "book-35-psalm-230",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              16,
+              17
+            ],
+            "teaching": "Relation textuelle « Anges » : v.16 : D’autres encore vont croire aux Anges, mais sans entrer dans la réalité. Ils sont eux aussi sous l’emprise d’un concept, car ils se font une idée et vivent en… / v.17 : Il ne s’agit pas d’aller dans le monde des Anges pour prendre, mais bien pour mettre la vie mortelle à sa juste place et éveiller, servir, renforcer, honorer l’immortel.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 36,
+            "archangel": "ouriel",
+            "psalmNumber": 215,
+            "recordId": "book-36-psalm-215",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              6,
+              14
+            ],
+            "teaching": "Relation textuelle « Anges » : v.6 : Si tu ne cultives pas quotidiennement ta vie, ta flamme, ta lumière intérieures, la présence de ton Ange et ton lien avec l’universel, sache que tu t’affaibliras. Tu seras faible de l’ignorance ou du… / v.14 : la flamme allumée en toi par la Ronde des Arch anges et entrer dans une conversation intime avec ton Ange, ton gardien, ton protecteur. Ce lien de Lumière, matérialisé par la corde de la…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 36,
+            "archangel": "ouriel",
+            "psalmNumber": 216,
+            "recordId": "book-36-psalm-216",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              11
+            ],
+            "teaching": "Relation textuelle « Anges » : v.11 : ne lâche pas la corde de la Ronde des Arch anges et recommence en te préparant.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 36,
+            "archangel": "ouriel",
+            "psalmNumber": 218,
+            "recordId": "book-36-psalm-218",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              3,
+              13
+            ],
+            "teaching": "Relation textuelle « Anges » : v.3 : Le seul fait qu’un homme veuille accomplir une œuvre montre qu’il a une alliance avec un monde supérieur. Ce peut être un Ange, un égrégore, un génie, un esprit ou même des êtres élémentaires… / v.13 : Sachez qu’une fois que l’alliance avec un monde supérieur est scellée, le service doit être intégral et le monde de la Lumière doit pouvoir compter sur l’homme ou la femme qui s’est engagé à…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 36,
+            "archangel": "ouriel",
+            "psalmNumber": 219,
+            "recordId": "book-36-psalm-219",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              13
+            ],
+            "teaching": "Relation textuelle « Anges » : v.13 : Sache que c’est réellement un privilège de pouvoir ne serait‑ce que parler avec Dieu et ses représentants, tels les Anges, les Archanges ou les Dieux.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 36,
+            "archangel": "ouriel",
+            "psalmNumber": 228,
+            "recordId": "book-36-psalm-228",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              11,
+              12,
+              36
+            ],
+            "teaching": "Relation textuelle « Anges » : v.11 : Par l’éducation, l’homme travaille sur lui et se prépare pour atteindre le but de s’unir avec le monde divin à travers la rencontre avec l’Ange de Dieu. / v.12 : L’homme ne rencontrera pas l’Ange de Dieu en étant habité par des mondes ignorants, sectaires, anarchiques. / v.36 : Sache qu’il est bien de maîtriser certains éléments matériels et extérieurs, mais la véritable protection ne se confine pas à cela. Elle n’est pas non plus dans des pratiques superstitieuses d’une foi aveugle. Cela…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 37,
+            "archangel": "michael",
+            "psalmNumber": 246,
+            "recordId": "book-37-psalm-246",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              15,
+              20,
+              23
+            ],
+            "teaching": "Relation textuelle « Anges » : v.5 : Seul celui qui chemine dans l’éveil et la volonté de devenir un homme-Ange pourra entamer un vrai dialogue et une vraie relation avec les mondes supérieurs et les règnes de la nature vivante. Pour… / v.6 : Seul l’homme-Ange, l’homme qui veut être au service d’un Ange en se tenant dans l’alliance, peut réellement élever cette force du serpent dans les mondes supérieurs. / v.7 : Quand je parle d’être au service d’un Ange, je ne dis pas que l’homme doit se prosterner et obéir sans réflexion, sans force, sans maîtrise, en abdiquant ce qu’il est. Non, les mondes supérieurs…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 37,
+            "archangel": "michael",
+            "psalmNumber": 248,
+            "recordId": "book-37-psalm-248",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              4,
+              5,
+              9,
+              15,
+              19,
+              23
+            ],
+            "teaching": "Relation textuelle « Anges » : v.1 : le corps de certaines vertus liées au monde pur des Anges.… / v.4 : qui découle de la pratique de la Ronde des Arch anges et de l’incorporation de ce corps, ainsi que de l’état de conscience qui l’accompagne. Cet état de conscience claire engendre le juste discernement,… / v.5 : pas mort, n’est pas vide. Il est la demeure des Anges au-dessus et tout autour de vous. Il est un monde vivant, intelligent, grand, noble, empli de vertus et surtout, il est impersonnel.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 37,
+            "archangel": "michael",
+            "psalmNumber": 251,
+            "recordId": "book-37-psalm-251",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              8,
+              21
+            ],
+            "teaching": "Relation textuelle « Anges » : v.8 : Tout ce qui apparaît aujourd’hui dans votre monde est la volonté des hommes, des Anges ou des mondes supérieurs. / v.21 : Il est bien évident que pour le règne des Anges, les hommes sont différents. De même, si tu t’élèves dans le monde des Archanges, le règne des Anges te semblera imparfait et tu…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 37,
+            "archangel": "michael",
+            "psalmNumber": 255,
+            "recordId": "book-37-psalm-255",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              34,
+              35,
+              36
+            ],
+            "teaching": "Relation textuelle « Anges » : v.34 : elles sont vraies et justes, dans le monde supérieur des Anges, et ensuite, ouvrir un espace en lui pour s’identifier à elles afin de les attirer dans leurs plus pures manifestations. Pour cela, il… / v.35 : la vie de l’homme deviendra mensonge, illusion, néant, car les Anges ne seront pas avec lui.… / v.36 : Sans la présence d’un Ange dans sa vie, l’homme n’est rien d’autre qu’un semblant, qu’une opacité nourrissant une ombre, un fantôme, un vampire.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 37,
+            "archangel": "michael",
+            "psalmNumber": 259,
+            "recordId": "book-37-psalm-259",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              27,
+              42,
+              48,
+              50,
+              53,
+              54,
+              55,
+              56,
+              58,
+              59,
+              60,
+              61,
+              63,
+              64
+            ],
+            "teaching": "Relation textuelle « Anges » : v.27 : L’étude de la sagesse et la méditation conduisent vers l’état de communion avec l’Ange de l’impersonnalité. / v.42 : Lorsque l’homme se pose une question, le serpent vient et lui répond. Si l’homme réussit à éveiller l’envoyé de Dieu en lui, le saint Ange, et à parler avec lui, il peut entendre une… / v.48 : C’est par l’impersonnalité au sommet de la montagne du feu que la vie intérieure, la sagesse immortelle, la présence vivante de la conscience divine à travers la conversation avec l’Ange s’activent.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 37,
+            "archangel": "michael",
+            "psalmNumber": 260,
+            "recordId": "book-37-psalm-260",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              3,
+              5,
+              8
+            ],
+            "teaching": "Relation textuelle « Anges » : v.3 : Sachez que ce qui vient du monde divin et s’approche du monde de l’homme ne peut pas être compris suivant l’intelligence exacte de l’Archange ou de l’Ange qui le transmet. / v.5 : devenir de plus en plus capables de communiquer avec les Anges et de comprendre leur point de vue.… / v.8 : beauté, de le faire grandir à travers chaque parole des Anges et des Archanges. Ainsi, vous m’honorerez, vous vivrez avec moi, vous développerez un potentiel plus grand qui vous permettra de créer un empire,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 37,
+            "archangel": "michael",
+            "psalmNumber": 266,
+            "recordId": "book-37-psalm-266",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              5,
+              17,
+              21,
+              24,
+              29,
+              31
+            ],
+            "teaching": "Relation textuelle « Anges » : v.2 : Comme la révélation divine de la Ronde des Archanges vous le montre, l’alliance angélique passe par le culte et la culture d’une vertu associée à la présence d’un Ange. / v.5 : En s’individualisant et en devenant de plus en plus conscient des mondes magiques et invisibles, l’homme peut parvenir à s’unir avec un Ange. C’est un chemin de savoir, de pureté et de maîtrise de… / v.17 : vertu d’un Ange, dans l’enceinte de la Ronde des Arch anges. Devant cette sagesse, ce chemin, cette pratique, cette évidence, l’homme comprend qu’il a une responsabilité individuelle et qu’il doit prendre sa vie extérieure…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 38,
+            "archangel": "gabriel",
+            "psalmNumber": 250,
+            "recordId": "book-38-psalm-250",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              31,
+              33,
+              34,
+              48
+            ],
+            "teaching": "Relation textuelle « Anges » : v.31 : Celui qui regarde avec l’œil des Anges voit toute chose du point de vue des vertus immortelles. / v.33 : La liberté est un chemin intérieur qui passe par le culte des Anges, des Archanges, des Dieux et par l’alliance consciente et claire avec le Père et la Mère. / v.34 : « Les Anges » signifie les mondes invisibles qui apparaissent dans la vie intérieure de l’homme éduqué pour percevoir la subtilité de la vie.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 38,
+            "archangel": "gabriel",
+            "psalmNumber": 260,
+            "recordId": "book-38-psalm-260",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              40,
+              54
+            ],
+            "teaching": "Relation textuelle « Anges » : v.40 : Vous êtes sûrement convaincus que votre éducation est la bonne, et peut-être est-ce le cas... Alors elle ne doit pas couper l’enfant de ses racines animistes et ne pas l’enfermer dans un monde où… / v.54 : Le rôle des parents est juste d’offrir une maison, une qualité de vie, une respiration pour que l’enfant puisse réellement rester un enfant et grandir sereinement en développant toutes les capacités, les vertus, tous…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 38,
+            "archangel": "gabriel",
+            "psalmNumber": 262,
+            "recordId": "book-38-psalm-262",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              15
+            ],
+            "teaching": "Relation textuelle « Anges » : v.15 : certains hommes. Il est même allé jusqu’à penser que les Anges, les Archanges, les Dieux et Dieu Lui-même étaient là uniquement pour être à son service. Père Gabriel, cette façon de penser est sombre,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 38,
+            "archangel": "gabriel",
+            "psalmNumber": 263,
+            "recordId": "book-38-psalm-263",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              10,
+              12,
+              29
+            ],
+            "teaching": "Relation textuelle « Anges » : v.10 : Celui que tu critiques est peut-être l’ami des Anges, peut-être est-il dans une phase de transformation ou peut-être marche-t-il vers le néant... Peu importe, car l’homme n’est pas Dieu et ce n’est… / v.12 : la volonté de Dieu et du travail accompli par les Anges enferme les mondes et les condamne définitivement à ne pas sortir de l’épreuve.… / v.29 : sans solution, sans intelligence, sans compassion, sans la présence des Anges de Dieu. Ainsi, comme tu l’as fait vivre aux autres, tu vivras le néant de l’absence de la Lumière ; tu te retrouveras…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 38,
+            "archangel": "gabriel",
+            "psalmNumber": 267,
+            "recordId": "book-38-psalm-267",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              10,
+              15,
+              20,
+              36
+            ],
+            "teaching": "Relation textuelle « Anges » : v.10 : Créateur et à ses envoyés : les Dieux, les Arch anges et les Anges.… / v.15 : Si les Dieux, les Archanges et les Anges ne sont pas honorés, vous pouvez être sûrs que la guerre et la force de destruction apparaîtront, c’est-à-dire le contraire du feu de L’Archange Michaël. / v.20 : enfanter des états d’âme supérieurs en lui jusqu’à enfanter des Anges sur la terre.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 38,
+            "archangel": "gabriel",
+            "psalmNumber": 268,
+            "recordId": "book-38-psalm-268",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              26,
+              34,
+              36
+            ],
+            "teaching": "Relation textuelle « Anges » : v.26 : Tu dois éveiller en toi la confiance par la terre, le ciel et l’Ange de la Ronde des Archanges. / v.34 : Tiens-toi dans le cercle de la Ronde des Arch anges et dans l’atmosphère magique de la Nation Essénienne, animée par les Dieux, les Archanges et les Anges. Prends ta vie en mains à… / v.36 : Donne la victoire aux Anges, à leurs belles vertus, à l’intelligence aimante.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 39,
+            "archangel": "raphael",
+            "psalmNumber": 237,
+            "recordId": "book-39-psalm-237",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              16,
+              21,
+              31
+            ],
+            "teaching": "Relation textuelle « Anges » : v.16 : Vous qui cherchez la communion avec l’esprit et l’âme de la Lumière, sachez que vous devez développer votre vie intérieure, vos sens subtils, sinon vous ne parviendrez pas à capter le langage de votre… / v.21 : dans nos vies ? Comment entendre les messages de nos Anges et communiquer avec nos âmes et avec les intelligences supérieures sacrées ?… / v.31 : divin tel qu’il est révélé et apporté par les Arch anges et les Anges, soit vous vivez avec l’actualité du monde des hommes, leur musique chaotique, leurs pensées nauséabondes… D’après cela, vous saurez qui…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 39,
+            "archangel": "raphael",
+            "psalmNumber": 252,
+            "recordId": "book-39-psalm-252",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              19,
+              21,
+              22,
+              24,
+              25,
+              26,
+              31,
+              38
+            ],
+            "teaching": "Relation textuelle « Anges » : v.19 : cœur est la maison de Dieu et de ses A nges. Père Raphaël, veux-tu nous dire que nous devons nous concentrer essentiellement sur la respiration du cœur pour équilibrer l’activité de la pensée et… / v.21 : C’est par le cœur et la nature de son activité que l’homme tisse un lien avec les Anges au moyen des vertus. Si la souffrance envahit le cœur, le dialogue n’est plus angélique. / v.22 : Les Anges ne parlent que de ce qui est nourri d’affection envers Dieu et toutes ses vertus immortelles.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 39,
+            "archangel": "raphael",
+            "psalmNumber": 256,
+            "recordId": "book-39-psalm-256",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              3,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              27,
+              28,
+              30,
+              31
+            ],
+            "teaching": "Relation textuelle « Anges » : v.3 : devaient faire en sorte que l’harmonie et les vertus des Anges s’incarnent sur la terre, à l’image d’un jardin de fleurs.… / v.12 : Le monde des Anges vit en totale harmonie avec la gouvernance et l’omniprésence des lois et de l’organisation de Dieu. / v.13 : Les Anges sont dans la communion, la communication, le partage et la vie divine. C’est pour cette raison qu’ils ont été associés aux peuples animistes,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 39,
+            "archangel": "raphael",
+            "psalmNumber": 257,
+            "recordId": "book-39-psalm-257",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              15
+            ],
+            "teaching": "Relation textuelle « Anges » : v.15 : Rappelez-vous que chaque être voulu par Dieu est un rayon d’un soleil que vous ne voyez pas, mais qui éclaire et nourrit le monde des Anges.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 40,
+            "archangel": "ouriel",
+            "psalmNumber": 238,
+            "recordId": "book-40-psalm-238",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              34,
+              35,
+              38,
+              40,
+              41,
+              48,
+              51
+            ],
+            "teaching": "Relation textuelle « Anges » : v.34 : Seule la lumière intérieure peut te donner le savoir et la force, car elle est une avec la présence de l’Ange de Dieu. / v.35 : et de fermer la porte de la communication avec les Anges. Tu vas juger, te prononcer, disant : « Moi, je ne ferais pas comme cela, je pense que ce n’est pas bien »,… / v.38 : Tu dois comprendre que tant que tu n’as pas éveillé le serpent de la sagesse et établi la conversation avec l’Ange qui va allumer ta lumière intérieure, tout ce que tu perçois à l’extérieur…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 40,
+            "archangel": "ouriel",
+            "psalmNumber": 239,
+            "recordId": "book-40-psalm-239",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              22,
+              50
+            ],
+            "teaching": "Relation textuelle « Anges » : v.22 : Vivre avec les yeux des Anges, c’est regarder le monde extérieur en étant illuminé de l’intérieur. Ainsi, vous ne serez plus passifs ou fatalistes devant les évènements se déroulant… / v.50 : véritable éternel et de ta vie intérieure illuminée par les Anges..…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 40,
+            "archangel": "ouriel",
+            "psalmNumber": 242,
+            "recordId": "book-40-psalm-242",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              14,
+              18,
+              19,
+              27,
+              29,
+              30,
+              33,
+              41
+            ],
+            "teaching": "Relation textuelle « Anges » : v.14 : Seule la conscience est votre Ange, la grande bénédiction dans votre vie. / v.18 : La conscience de l’âme est le grand culte de la Lumière que vous mettez en place avec les Anges. / v.19 : La statue du culte de la Lumière doit conduire vers la concentration parfaite à la fois sur votre Ange, votre âme, votre conscience et ce qui est plus grand que la mort.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 40,
+            "archangel": "ouriel",
+            "psalmNumber": 243,
+            "recordId": "book-40-psalm-243",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              10,
+              33,
+              41
+            ],
+            "teaching": "Relation textuelle « Anges » : v.10 : et ceux qui aspirent à marcher avec Dieu et ses Anges.… / v.33 : Chaque journée doit être un pas posé sur la terre en conscience, une offrande à Dieu le Père, la Mère et à leurs Anges. / v.41 : la Nation Essénienne, au cercle de la Ronde des Arch anges, à la terre des Villages et demeurez vivants, conscients, agissants dans les mondes subtils et visibles afin d’ensemencer le monde entier dans la…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 40,
+            "archangel": "ouriel",
+            "psalmNumber": 244,
+            "recordId": "book-40-psalm-244",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              18,
+              20,
+              27,
+              43,
+              59
+            ],
+            "teaching": "Relation textuelle « Anges » : v.18 : des incompétents qui veulent vous asservir, mais vivez avec les Anges et les intelligences supérieures.… / v.20 : Ceux qui usurpent la religion de Dieu, ceux qui gouvernent pour conduire les mondes vers la déchéance, l’asservissement et qui luttent contre les Anges et les envoyés de Dieu recevront leur juste salaire. / v.27 : l’amour, la paix, la conscience, la patience... Faites-le avec les Anges et pour le bien de tous les êtres.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 40,
+            "archangel": "ouriel",
+            "psalmNumber": 247,
+            "recordId": "book-40-psalm-247",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              25,
+              28
+            ],
+            "teaching": "Relation textuelle « Anges » : v.25 : Si vous voulez savoir avec quel monde vous vivez, vous n’avez qu’à écouter et regarder ce que ce monde vous murmure à l’oreille ou à l’œil. Ainsi, vous saurez si c’est le serpent de… / v.28 : Retournez votre cœur vers Dieu, et apprenez à vous concentrer sur votre propre source intérieure jusqu’à atteindre l’objectif d’être illuminé et en communion avec l’Ange de Dieu. Ainsi, vous saurez ce qui est vraiment…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 40,
+            "archangel": "ouriel",
+            "psalmNumber": 251,
+            "recordId": "book-40-psalm-251",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              12,
+              13,
+              14,
+              15,
+              18,
+              22,
+              24,
+              26
+            ],
+            "teaching": "Relation textuelle « Anges » : v.12 : L’alliance avec l’Ange, c’est l’apparition de la conscience, c’est le culte de la lumière qui éveille, éclaire, apporte l’illumination et donne la force d’agir avec intelligence et efficacité. / v.13 : La prise en mains de votre futur doit se faire à partir de la conscience et de l’alliance avec l’Ange de Dieu. / v.14 : Étudiez, apprenez à méditer, priez pour vous unir avec l’Ange afin de provoquer l’éveil de la conscience.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 40,
+            "archangel": "ouriel",
+            "psalmNumber": 257,
+            "recordId": "book-40-psalm-257",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              18,
+              19,
+              42,
+              43,
+              44
+            ],
+            "teaching": "Relation textuelle « Anges » : v.18 : L’honnêteté apportera la lumière intérieure et le langage de l’Ange. Alors les choses changeront et votre histoire sera écrite autrement, avec d’autres éléments, ce qui apportera une autre destinée. / v.19 : Pour changer le monde, commencez par vous transformer vous-mêmes : devenez honnêtes, cultivez l’honnêteté intérieure comme la présence de l’Ange de Dieu en vous, dans votre intimité. Commencez par vous-mêmes et par votre relation… / v.42 : dans l’honnêteté, la simplicité, la vérité en compagnie des saints Anges de Dieu. Pour cela, il doit enlever de sa tête, de son cœur, de sa vie intérieure cette idée de plaire au monde…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 40,
+            "archangel": "ouriel",
+            "psalmNumber": 258,
+            "recordId": "book-40-psalm-258",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              5,
+              20,
+              26,
+              28,
+              29
+            ],
+            "teaching": "Relation textuelle « Anges » : v.5 : Les hommes ont perdu le lien avec les Anges parce qu’ils ont délaissé leur vie intérieure. Ils se sont tournés vers l’extérieur, croyant qu’en organisant ce qui n’est pas à eux, ce… / v.20 : Cheminez vers les Anges par votre vie intérieure et cessez de vivre comme des hommes qui portent en eux l’image mentale de l’ombre et de ce qui éteint la vie intérieure. / v.26 : Si l’homme ne porte pas en lui la paix de l’Ange, alors, quoi qu’il fasse à l’extérieur, il ne pourra jamais la connaître, ni la donner, et encore moins la réaliser.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 41,
+            "archangel": "michael",
+            "psalmNumber": 270,
+            "recordId": "book-41-psalm-270",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              15
+            ],
+            "teaching": "Relation textuelle « Anges » : v.15 : se détourner du juste chemin tracé par Dieu et ses Anges. C’est à ce moment-là qu’il doit éveiller son être intérieur et agir dans sa souveraineté en manifestant sa propre décision.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 41,
+            "archangel": "michael",
+            "psalmNumber": 277,
+            "recordId": "book-41-psalm-277",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              10,
+              29,
+              44
+            ],
+            "teaching": "Relation textuelle « Anges » : v.10 : Je veux que tu comprennes que Dieu, les Dieux, les Archanges et les Anges sont omniprésents. / v.29 : intouchable. Les hommes ne vivent pas en obéissant aux A nges, c’est-à-dire en prenant l’amour, la sagesse, l’harmonie comme guides. Toi-même, tu es le grand feu qui détruit ce qui est mortel, alors, comment… / v.44 : l’intelligence divine omniprésente apparaîtra. Ce sera le règne des A nges. L’aile de l’Ange sera votre subtilité.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 41,
+            "archangel": "michael",
+            "psalmNumber": 283,
+            "recordId": "book-41-psalm-283",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              7,
+              18
+            ],
+            "teaching": "Relation textuelle « Anges » : v.2 : corps existe aussi dans les mondes des Dieux, des Arch anges, des Anges, des animaux, des végétaux, des minéraux et de la Mère.… / v.7 : Dans la tête, il y a l’intelligence, qui correspond à l’Initiation et au dialogue avec le saint Ange de Dieu. / v.18 : Développez l’unité et honorez les vertus des Anges de la Lumière.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 41,
+            "archangel": "michael",
+            "psalmNumber": 287,
+            "recordId": "book-41-psalm-287",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              16,
+              27,
+              30,
+              32,
+              35
+            ],
+            "teaching": "Relation textuelle « Anges » : v.9 : Plus le cœur est grand, généreux, ouvert, tolérant, pur, empli d’amour, plus l’Ange peut accompagner l’homme, vivre avec lui, le protéger, le guider et lui éviter les souffrances inutiles. / v.10 : Si tu vis dans des angoisses, des mécontentements, c’est que ton cœur s’est atrophié et qu’il ne peut plus respirer avec ton Ange et ton âme. / v.11 : Le cœur est la passerelle des mondes et c’est lui qui permet la conversation et la communion avec l’Ange et le peuple des Anges.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 41,
+            "archangel": "michael",
+            "psalmNumber": 294,
+            "recordId": "book-41-psalm-294",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              3,
+              5,
+              26,
+              30,
+              32
+            ],
+            "teaching": "Relation textuelle « Anges » : v.3 : Sache que le monde extérieur n’est qu’une forme manifeste d’êtres subtils qui vivent autour de toi dans les mondes invisibles. Ainsi, pour diriger ta vie et la maîtriser, il ne te suffit pas de… / v.5 : gardien de ces portes, et seul le monde divin, ses Anges et les représentants de sa lumière et de ses vertus, qui sont son corps de manifestation, peuvent être autorisés à passer par les… / v.26 : être inviolé. C’est le centre de la Ronde des Arch anges, de l’univers et de l’homme serviteur de Dieu et des Anges. Ce lieu doit être gardé.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 42,
+            "archangel": "gabriel",
+            "psalmNumber": 272,
+            "recordId": "book-42-psalm-272",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              7,
+              14,
+              18,
+              22,
+              31
+            ],
+            "teaching": "Relation textuelle « Anges » : v.7 : Les psaumes sont une merveille, car correctement psalmodiés, ils dégagent une odeur dans les émanations subtiles du corps de l’homme qui, naturellement, attire les Anges, les Archanges et les Dieux. / v.14 : Un homme peut parler de paix, mais si ses émanations ne nourrissent pas l’Ange de la paix, c’est qu’il n’est pas un serviteur de Dieu. Il est dans le double langage : il parle… / v.18 : et le champ de vie qui sont nourriture pour les Anges, bouclier contre les ténèbres et les lumières trompeuses, livre vivant du haut savoir et nouveau corps pour Dieu.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 42,
+            "archangel": "gabriel",
+            "psalmNumber": 277,
+            "recordId": "book-42-psalm-277",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              22,
+              27,
+              30,
+              31
+            ],
+            "teaching": "Relation textuelle « Anges » : v.22 : L’Ange t’invite à regarder le monde sous la forme d’un triangle. Ainsi, les 2 points de vue qui semblent en opposition constituent le fondement d’un troisième point de vue, qui est supérieur et qui… / v.27 : Si l’homme regarde le trouble en y mettant une résonance de contre-vertu, c’est ce monde qui entre en lui et prend possession de ce qui, normalement, appartient à l’Ange. Si ce n’est plus l’Ange… / v.30 : Si un homme fait n’importe quoi de sa vie, il est juste qu’il vive le n’importe quoi. Si ce n’importe quoi lui arrive, cela ne sert à rien de s’offusquer, de s’alarmer, car c’est…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 42,
+            "archangel": "gabriel",
+            "psalmNumber": 278,
+            "recordId": "book-42-psalm-278",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              10,
+              12,
+              13,
+              14,
+              16,
+              22,
+              27,
+              48,
+              49
+            ],
+            "teaching": "Relation textuelle « Anges » : v.10 : véritable sens de ce mot du point de vue des Anges et du monde divin.… / v.12 : artificiel qu’il n’a pas de temps pour communier avec les Anges de Dieu et trouver un espace de calme, de repos, de concentration, d’étude sereine, d’élévation.… / v.13 : Les Anges sont désolés de devoir vivre loin des hommes et de laisser la terre à l’abandon. Ils savent qu’ils sont fondamentaux et que sans…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 42,
+            "archangel": "gabriel",
+            "psalmNumber": 285,
+            "recordId": "book-42-psalm-285",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              34,
+              36
+            ],
+            "teaching": "Relation textuelle « Anges » : v.34 : Demandez à la statue de la Bienveillance de protéger Dieu et aussi aux 2 gardiens du portail de l’Ange. / v.36 : L’homme est imparfait. Devant cette vérité absolue, que celui qui est possédé par le mécontentement trouve la solution pour laisser l’influence à l’extérieur du temple et pour être dans le contentement lorsqu’il monte sur…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 42,
+            "archangel": "gabriel",
+            "psalmNumber": 287,
+            "recordId": "book-42-psalm-287",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              25,
+              34
+            ],
+            "teaching": "Relation textuelle « Anges » : v.25 : votre vie et plus la lumière de Dieu et des Anges, vous ne comprendrez pas la loi de l’éveil et de marcher avec Dieu en conduisant tout vers le corps de l’immortelle sagesse.… / v.34 : L’Ange de la gratitude doit être votre bouclier, votre armure, votre forteresse.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 42,
+            "archangel": "gabriel",
+            "psalmNumber": 288,
+            "recordId": "book-42-psalm-288",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              7,
+              9,
+              15,
+              19
+            ],
+            "teaching": "Relation textuelle « Anges » : v.1 : des mondes invisibles, la pureté et les vertus des A nges, les lois et la grande sagesse des Archanges et l’immortalité et la gouvernance des Dieux.… / v.7 : Ne laissez aucun homme entrer dans l’espace sacré de l’Ange et du tapis de la dévotion. / v.9 : Que seulement ce qui est votre âme pure, celle qui parle avec l’Ange, celle qui fait naître en vous la lumière intérieure puisse monter sur le tapis de la Ronde des Archanges.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 42,
+            "archangel": "gabriel",
+            "psalmNumber": 294,
+            "recordId": "book-42-psalm-294",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              18,
+              40,
+              43,
+              45
+            ],
+            "teaching": "Relation textuelle « Anges » : v.18 : devant les ancêtres, les esprits, les génies, les égrégores, les Anges, les Archanges et les Dieux, au nom de Dieu, le Père et la Mère des mondes, c’est comme si tu posais une pierre… / v.40 : es entouré de négativité, car toi, tu verras les A nges et tu vivras avec eux. Rien de sombre ne pourra entrer en toi pour te féconder, pour t’attraper et te détourner de l’alliance… / v.43 : Regarde le monde avec les Anges de Dieu et non avec les complots des hommes. Ceci est la grande clé de l’Initiation que je t’offre.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 43,
+            "archangel": "raphael",
+            "psalmNumber": 261,
+            "recordId": "book-43-psalm-261",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              21,
+              25,
+              26,
+              29,
+              33,
+              37,
+              38,
+              39
+            ],
+            "teaching": "Relation textuelle « Anges » : v.21 : Le mot « paix » n’aura pas le même sens si c’est un Ange, un sage-initié, un homme avide et rusé, un inconscient qui le prononce. Le résultat ne sera pas le même. / v.25 : la vie intérieure et le chemin de parler avec les Anges de Dieu. Il faut activer une subtilité intérieure qui fera apparaître d’autres organes dans les sens et surtout dans l’intellect angélique.… / v.26 : Sans l’éveil de cette lumière intérieure de l’Ange et de l’intellect de la Lumière, il n’est pas possible d’être dans la perfection de la communication, et donc dans la célébration du culte de la…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 43,
+            "archangel": "raphael",
+            "psalmNumber": 262,
+            "recordId": "book-43-psalm-262",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              34,
+              42,
+              53
+            ],
+            "teaching": "Relation textuelle « Anges » : v.2 : Dieu enseigne sa loi par ses Anges, qui sont les grandes vertus. / v.34 : Vous devez vivre avec les Anges et les honorer, car ils sont les messagers et les protecteurs de Dieu. / v.42 : Soyez dans la communion avec les Anges. Ils ne viennent pas pour se nourrir dans les éthers avec les déchets, mais pour respirer les parfums les plus subtils, les couleurs,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 43,
+            "archangel": "raphael",
+            "psalmNumber": 265,
+            "recordId": "book-43-psalm-265",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              8,
+              27
+            ],
+            "teaching": "Relation textuelle « Anges » : v.8 : l’être de l’avidité, les mondes supérieurs des Dieux, des Arch anges et des Anges fermeront les portes de l’Alliance, car il n’y aura plus d’hommes capables d’être neutres, purs, vierges, silencieux devant Dieu.… / v.27 : elle ne connaît plus la vertu des Dieux et des Anges, c’est que l’avidité s’est emparée d’elle et a volé la part la plus importante de son âme et de son existence. Elle a…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 43,
+            "archangel": "raphael",
+            "psalmNumber": 266,
+            "recordId": "book-43-psalm-266",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              10,
+              12
+            ],
+            "teaching": "Relation textuelle « Anges » : v.2 : L’intellect est en soi un outil merveilleux qui permet à l’homme de parler avec les Anges et de devenir un créateur de beauté. / v.10 : l’a empêché d’entrer en conversation avec les mondes supérieurs des Anges et de l’âme vivante universelle. L’homme a cru à ce savoir illusoire qui est juste une folie, pensant que tout était accessible, qu’il… / v.12 : L’homme utilise l’intellect pour comprendre sa vie d’homme mortel et trouver le moyen de vivre sur la terre en ne manquant de rien et en évitant la souffrance et la pauvreté. Étant vide de…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 43,
+            "archangel": "raphael",
+            "psalmNumber": 271,
+            "recordId": "book-43-psalm-271",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              7,
+              8,
+              9,
+              21,
+              29
+            ],
+            "teaching": "Relation textuelle « Anges » : v.7 : Vous devez vous éveiller et toujours vous rappeler que le respect est avant tout un Ange messager de Dieu, envoyé des mondes supérieurs pour vous guider et vous éduquer. / v.8 : Soyez respectueux de l’Ange du respect, de son être, de sa présence magique, de ses lois et donnez-lui un corps sur la terre afin qu’il puisse vivre avec vous et accomplir la mission reçue… / v.9 : Les gouvernements et les religions du monde des hommes ont profané le respect, l’ont affaibli afin de détourner l’énergie pour voler le pouvoir et l’autorité. L’Église catholique a rendu le peuple faible, peureux, ignorant…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 43,
+            "archangel": "raphael",
+            "psalmNumber": 272,
+            "recordId": "book-43-psalm-272",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              9,
+              11,
+              14,
+              16
+            ],
+            "teaching": "Relation textuelle « Anges » : v.1 : âme, et même avec Dieu et ses représentants, comme les Anges, les Archanges ou les Dieux.… / v.9 : sa sagesse qui gouverne avec l’autorité du cercle de ses Anges : les grandes vertus.… / v.11 : Le culte de la Lumière est une perfection divine jusque dans sa forme extérieure. Il est construit comme un hiéroglyphe qui indique le chemin. Il différencie la vie intérieure de celui qui monte sur…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 43,
+            "archangel": "raphael",
+            "psalmNumber": 274,
+            "recordId": "book-43-psalm-274",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              6,
+              8
+            ],
+            "teaching": "Relation textuelle « Anges » : v.6 : La souplesse est un Ange, une vertu de Dieu qui enseigne à l’homme le monde de l’esprit et l’immortalité. Elle montre qu’il y a un monde plus grand que la densité et que l’homme… / v.8 : plus avec personne : ni avec Dieu, ni avec ses Anges, ni avec les autres, ni avec la nature vivante.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 43,
+            "archangel": "raphael",
+            "psalmNumber": 275,
+            "recordId": "book-43-psalm-275",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              14,
+              15,
+              33,
+              42
+            ],
+            "teaching": "Relation textuelle « Anges » : v.14 : Le culte de la Lumière n’est pas pour les hommes, ni pour les Anges, les Archanges ou les Dieux, mais pour le Parfait, pour notre Père commun. / v.15 : Dieu est le mystère qui nous est commun à tous et qui nous unifie, nous, les pierres, les plantes, les animaux, les humains, les Anges, les Archanges et les Dieux. / v.33 : Il est fondamental que chaque parent puisse se poser sur une terre de paix, de repos, de stabilité afin de communier avec le cœur pur et d’entrer, par l’intellect de la Lumière, dans une…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 43,
+            "archangel": "raphael",
+            "psalmNumber": 279,
+            "recordId": "book-43-psalm-279",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              13,
+              16
+            ],
+            "teaching": "Relation textuelle « Anges » : v.13 : L’homme est un règne inférieur à Dieu, aux Anges et aux Archanges ; il ne peut en aucune façon se permettre cet affront de dire qu’il choisit les ténèbres au lieu de la Lumière. / v.16 : mondes supérieurs savent que l’homme est faible, mais lorsque les Anges, comme l’engagement, s’approchent pour rendre témoignage de l’homme, proclamant sa fidélité, disant qu’il est en chemin, qu’il continue, qu’il fait tous les efforts…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 44,
+            "archangel": "ouriel",
+            "psalmNumber": 274,
+            "recordId": "book-44-psalm-274",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              25,
+              26,
+              29,
+              30
+            ],
+            "teaching": "Relation textuelle « Anges » : v.25 : Comprends que les vertus de Dieu sont des Anges qui œuvrent avant tout pour Dieu. / v.26 : Les Anges ne sont pas au service des hommes, mais de Dieu. / v.29 : espace à Dieu en toi, tu appelleras naturellement tous les Anges de la Ronde des Archanges et du culte de la Lumière. Cet espace ne doit pas venir du monde de l’homme, mais il…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 44,
+            "archangel": "ouriel",
+            "psalmNumber": 275,
+            "recordId": "book-44-psalm-275",
+            "label": "Anges",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              9,
+              12,
+              14,
+              16,
+              26
+            ],
+            "teaching": "Relation textuelle « Anges » : v.9 : est un organe qui a permis aux mondes supérieurs des Anges et des Archanges de toucher la Terre et de la féconder d’un nouveau feu. Cela a été accompli par l’Archange Michaël. Michaël a… / v.12 : Dieu afin de rétablir l’ordre à travers la victoire des Anges et de leurs vertus. La sagesse des vertus sera grande, car elle sera dans la volonté de Dieu et non telle que les… / v.14 : redevienne un serviteur de Dieu dans l’alliance consciente avec les Anges et leurs vertus vivantes.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 44,
+            "archangel": "ouriel",
+            "psalmNumber": 277,
+            "recordId": "book-44-psalm-277",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              11,
+              12,
+              16,
+              25
+            ],
+            "teaching": "Relation textuelle « Anges » : v.11 : L’âme réside dans le monde des Archanges. Elle est au-dessus des Anges. / v.12 : Les Anges sont des gardiens de l’âme. / v.16 : travers les égrégores, les génies, les esprits reliés avec les Anges. Elle fuira les familles des contre-vertus, qui engendrent les conflits, la laideur, la guerre, la politique et tout ce qui fait que l’homme…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 44,
+            "archangel": "ouriel",
+            "psalmNumber": 278,
+            "recordId": "book-44-psalm-278",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              14,
+              35
+            ],
+            "teaching": "Relation textuelle « Anges » : v.14 : afin d’ennoblir ton niveau vibratoire, de l’élever au niveau des Anges. Ainsi, tu pourras comprendre la réelle existence des choses et des mondes. Tu la vivras de l’intérieur, tu seras dans la communion et… / v.35 : Tes besoins et les moyens de les combler doivent être clairs et inspirés par l’Ange de ta vie.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 44,
+            "archangel": "ouriel",
+            "psalmNumber": 280,
+            "recordId": "book-44-psalm-280",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              25,
+              27,
+              28
+            ],
+            "teaching": "Relation textuelle « Anges » : v.25 : Les Anges sont des faits et non pas des croyances, une histoire de foi et de dévotion aveugle. / v.27 : emplie par l’énergie du soleil et par les vertus des Anges, elle était vivante et généreuse, mais n’ayant pas ces êtres de l’immortalité et de la créativité en elle, elle n’a pas pu se… / v.28 : Vous devez reprendre votre destinée en mains par l’éducation essénienne, la Ronde des Archanges et le culte de la Lumière pour redevenir des êtres libres qui marchent sur la terre avec les Anges.. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 44,
+            "archangel": "ouriel",
+            "psalmNumber": 283,
+            "recordId": "book-44-psalm-283",
+            "label": "Anges",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              18,
+              21,
+              24
+            ],
+            "teaching": "Relation textuelle « Anges » : v.18 : Dieu a fait l’homme dans une perfection et Il a voulu que l’homme fasse apparaître des œuvres qui soient parfaitement abouties. Dieu a fait l’homme pour que l’homme Le fasse apparaître dans tout ce… / v.21 : N’obéissez pas aveuglément à des ordres qui ne sont pas compris et validés intérieurement par la noblesse de votre âme et des Anges. / v.24 : la bonté, la sagesse et toutes les vertus des A nges immortels.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          },
+          {
+            "bookNumber": 44,
+            "archangel": "ouriel",
+            "psalmNumber": 284,
+            "recordId": "book-44-psalm-284",
+            "label": "Anges",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              11,
+              19,
+              22,
+              25,
+              27,
+              36
+            ],
+            "teaching": "Relation textuelle « Anges » : v.11 : Il y a la famille des contre-vertus et il y a la famille des Anges. / v.19 : Les Anges ne vivent que pour servir Dieu, c’est leur idéal. / v.22 : votre cœur et votre volonté dans le monde des A nges. Si vous vous nourrissez d’un autre monde qui va atrophier et éteindre l’intelligence dans votre tête, votre cœur et votre volonté, vous n’aurez…. Les autres versets référencés prolongent cette même relation dans le psaume."
           }
         ],
         "reviewRule": "Preserve contextual wording unless corpus-internal evidence shows a genuine identifier or labeling error; do not force one global definition."
@@ -26142,13 +28290,6 @@
         "archangelCount": 1
       },
       {
-        "id": "ange",
-        "label": "Ange",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "ange-comme-orientation",
         "label": "Ange comme orientation",
         "occurrenceCount": 1,
@@ -32658,13 +34799,6 @@
         "label": "Ancrage des quatre Archanges",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
-        "id": "ange",
-        "label": "Ange",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
         "archangelCount": 1
       },
       {
