@@ -31,7 +31,7 @@ for oid,(current,correct,_) in expected.items():
 # then greedy preference for unseen record type/book/evidence before filling quota.
 def sample(category,n=24):
  pool=[x for x in rows if x['category']==category]
- pool.sort(key=lambda x:hashlib.sha256(x['occurrenceId'].encode()).hexdigest())
+ pool.sort(key=lambda x:x['occurrenceId'])
  out=[]; seen=set()
  for x in pool:
   key=(x['recordType'],x.get('bookNumber'),x.get('field'),x.get('evidence'))
@@ -46,7 +46,7 @@ report={
  'schemaVersion':1,
  'purpose':'adversarial-quality-audit-selection-and-sentinels',
  'sourceHead':'64a7a1306abe73885195f95974812d2a0100c27e',
- 'sampleMethod':'stable SHA-256 ordering within each category; greedily cover distinct recordType/bookNumber/field/evidence, then fill to 24',
+ 'sampleMethod':'stable occurrenceId ordering within each category; greedily cover distinct recordType/bookNumber/field/evidence, then fill to 24',
  'sampleSize':sum(map(len,samples.values())),
  'sampleCounts':{k:len(v) for k,v in samples.items()},
  'hyphenAdjacentCount':len(hy),'cliticVerbCount':len(clitic),'compoundSegmentationCount':len(compound),
