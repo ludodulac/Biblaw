@@ -31,3 +31,6 @@
  .dialog-content{padding:.9rem}
  .dialog-actions{padding:.7rem .9rem}
 }
+
+.primary-search-modes{display:flex;gap:.6rem;margin:.9rem 0}.primary-search-modes .mode-button{flex:1;min-height:48px}.result-summary-toggle .status{white-space:normal;text-align:right}
+@media(max-width:640px){.primary-search-modes{display:grid;grid-template-columns:1fr 1fr}.primary-search-modes .mode-button{padding:.7rem .55rem;font-size:.95rem}}
