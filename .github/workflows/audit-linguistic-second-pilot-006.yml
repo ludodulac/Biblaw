@@ -1,0 +1,27 @@
+name: Linguistic second pilot 006
+on:
+  push:
+    branches: [feat/linguistic-occurrences-006]
+  pull_request:
+    paths:
+      - 'data/linguistic/**'
+      - 'scripts/build_linguistic_occurrence_index.py'
+      - 'scripts/build_linguistic_adjudication.py'
+      - 'scripts/audit_linguistic_second_pilot_006.py'
+      - 'scripts/audit_linguistic_foundation_004.py'
+jobs:
+  second-pilot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Occurrence index unit tests
+        run: python scripts/test_linguistic_occurrence_index.py
+      - name: PORTE occurrence regression
+        run: python scripts/audit_linguistic_occurrences.py
+      - name: PORTE foundation regression
+        run: python scripts/audit_linguistic_foundation_004.py
+      - name: SUIS second-pilot audit
+        run: python scripts/audit_linguistic_second_pilot_006.py
