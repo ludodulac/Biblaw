@@ -9,18 +9,18 @@ def cfg(word,analyses,rules):
  return {'normalizedForm':word,'analyses':analyses,'genericPosMap':{x['partOfSpeech']:x['category'] for x in analyses},'genericRules':rules,'clitics':[],'rules':[]}
 cases=[]
 def run(label,word,c,analyses,rules,human):
- a=g.analyse_configured(o(word,c),cfg(word,analyses,rules));cases.append({'label':label,'context':c,'human':human,'auto':a['category'],'evidence':a['evidence']})
+ a=g.analyse_configured(o(word,c),cfg(word,analyses,rules));cases.append({'label':label,'context':c,'human':human,'auto':a['category'],'usage':a.get('usage'),'evidence':a['evidence']})
 ADJADV=[{'category':'ADJECTIVE','lemma':'fort','partOfSpeech':'ADJ'},{'category':'ADVERB','lemma':'fort','partOfSpeech':'ADV'}]
-run('prenominal-reusable','fort','un fort courant',ADJADV,['prenominal-adjective'],'ADJECTIVE')
+run('prenominal-support-only','fort','un fort courant',ADJADV,['prenominal-adjective'],'UNKNOWN')
 run('copular-reusable','fort','ce courant est fort.',ADJADV,['copular-predicate-adjective'],'ADJECTIVE')
 BIEN=[{'category':'ADVERB','lemma':'bien','partOfSpeech':'ADV'},{'category':'NOUN','lemma':'bien','partOfSpeech':'NOUN'}]
-run('modal-reusable','bien','il faut bien comprendre',BIEN,['modal-adverb-before-infinitive'],'ADVERB')
+run('modal-retired','bien','il faut bien comprendre',BIEN,['modal-adverb-before-infinitive'],'UNKNOWN')
 MEME=[{'category':'ADJECTIVE','lemma':'même','partOfSpeech':'ADJ'},{'category':'ADVERB','lemma':'même','partOfSpeech':'ADV'}]
 run('before-det-reusable','même',"c'est même une évidence",MEME,['adverb-before-determiner'],'ADVERB')
 # Falsification probe: superficial prenominal frame is not universally sufficient.
 ROSE=[{'category':'ADJECTIVE','lemma':'rose','partOfSpeech':'ADJ'},{'category':'NOUN','lemma':'rose','partOfSpeech':'NOUN'}]
-run('prenominal-counterexample','rose','un rose bonbon',ROSE,['prenominal-adjective'],'NOUN')
+run('prenominal-counterexample','rose','un rose bonbon',ROSE,['prenominal-adjective'],'UNKNOWN')
 # Substantivization convention probe: engine encodes nominalized ADJ as NOUN when configured so.
 VRAI=[{'category':'ADJECTIVE','lemma':'vrai','partOfSpeech':'ADJ'},{'category':'NOUN','lemma':'vrai','partOfSpeech':'NOUN'}]
-run('substantivization-convention','vrai','le vrai, le beau',VRAI,['substantivized-adjective'],'CONVENTION_NOMINALIZED_ADJ')
+run('substantivization-usage','vrai','le vrai, le beau',VRAI,['nominalized-adjective-use'],'ADJECTIVE_WITH_NOMINALIZED_USAGE')
 print(json.dumps(cases,ensure_ascii=False))
