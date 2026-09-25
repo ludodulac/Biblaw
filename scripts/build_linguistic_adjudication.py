@@ -31,7 +31,8 @@ def full_compound(o):
  before,after=local_parts(o); left=re.search(rf'[^\s«»“”"(),.;:!?]*$',before); right=re.match(r'^[^\s«»“”"(),.;:!?]*',after)
  return (left.group(0) if left else '')+o['surfaceForm']+(right.group(0) if right else '')
 def analyse_configured(o,cfg):
- inversion_capable=any(x.get('partOfSpeech')=='VERB' for x in cfg['analyses'])\n seg=segmentation(o,cfg.get('clitics',[]),inversion_capable); before,after=local_parts(o); by={x['category']:x for x in cfg['analyses']}
+ inversion_capable=any(x.get('partOfSpeech')=='VERB' for x in cfg['analyses'])
+ seg=segmentation(o,cfg.get('clitics',[]),inversion_capable); before,after=local_parts(o); by={x['category']:x for x in cfg['analyses']}
  if seg=='COMPOUND_ELEMENT': return {'category':'OTHER','lemma':None,'partOfSpeech':None,'status':'PROVISIONAL','evidence':'segmentation:compound-element','segmentation':seg}
  mapped=cfg.get('segmentationAnalyses',{}).get(seg)
  if mapped:
