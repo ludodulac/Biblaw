@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 3,
+  "normalizedForm": "juste",
+  "outputStem": "juste",
+  "purpose": "juste-third-disambiguation-pilot",
+  "analyses": [
+    {"category":"ADJECTIVE","lemma":"juste","partOfSpeech":"ADJ"},
+    {"category":"ADVERB","lemma":"juste","partOfSpeech":"ADV"},
+    {"category":"NOUN","lemma":"juste","partOfSpeech":"NOUN"}
+  ],
+  "clitics": [],
+  "genericPosMap": {"ADJ":"ADJECTIVE","ADV":"ADVERB","NOUN":"NOUN"},
+  "genericRules": [
+    "prenominal-adjective",
+    "copular-predicate-adjective",
+    "adverb-before-determiner",
+    "adverb-before-preposition",
+    "substantivized-adjective"
+  ],
+  "rules": [],
+  "policy": "JUSTE supplies only lexical candidate analyses and POS-to-category mapping. Reusable French contextual rules live in the generic engine. Unsupported contexts remain UNKNOWN."
+}
