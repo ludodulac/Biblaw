@@ -36,21 +36,18 @@ def generic_context_analysis(before,after,cfg):
  def pick(pos,evidence):
   cat=posmap.get(pos); x=next((a for a in cfg['analyses'] if a['category']==cat),None)
   return ({'category':x['category'],'lemma':x['lemma'],'partOfSpeech':x['partOfSpeech'],'status':'PROVISIONAL','evidence':'generic:'+evidence} if x else None)
- # A: French determiner + target + lexical word strongly supports attributive adjective.
- if 'prenominal-adjective' in enabled and 'ADJ' in by_pos:
-  if re.search(r"(?:^|\s|[«“(])(?:un|une|le|la|les|des|du|ce|cet|cette|ces|mon|ma|mes|ton|ta|tes|son|sa|ses|notre|nos|votre|vos|leur|leurs|quel|quelle|quels|quelles)\s+$",before,re.I) and re.match(r"^\s+(?!(?:et|ou)\b)[^\W_]+\b",after,re.I): return pick('ADJ','prenominal-adjective')
+ # 011: prenominal position is SUPPORTING_EVIDENCE only, never a standalone POS proof.
  # A: copular predicate; exclude a following determiner because 'est juste une...' is adverbial.
  if 'copular-predicate-adjective' in enabled and 'ADJ' in by_pos:
   if re.search(r"\b(?:est|était|sera|serait|soit|semble|paraît|devient|demeure|reste)\s+$",before,re.I) and re.match(r"^\s*(?:[,.;:!?…]|(?:et|ou|mais|car|que)\b|$)",after,re.I): return pick('ADJ','copular-predicate-adjective')
  # A: restrictive adverb before a determiner phrase, but only after a copular/existential frame.
  if 'adverb-before-determiner' in enabled and 'ADV' in by_pos:
   if re.search(r"(?:c['’]est|ce\s+n['’]est|il\s+y\s+a|il\s+n['’]y\s+a|est|était|sera|serait|devient|reste)\s+$",before,re.I) and re.match(r"^\s+(?:un|une|le|la|les|des|du|de la|de l['’]|ce|cet|cette|ces)\b",after,re.I): return pick('ADV','adverb-before-determiner')
- # A: common finite modal + restrictive adverb + infinitival complement. The modal list is generic French morphology.
- if 'modal-adverb-before-infinitive' in enabled and 'ADV' in by_pos:
-  if re.search(r"\b(?:veux|veut|voulez|voulons|dois|doit|devez|devons|peux|peut|pouvez|pouvons|faut|suffit)\s+$",before,re.I) and re.match(r"^\s+(?:de\s+)?[^\W_]+\b",after,re.I): return pick('ADV','modal-adverb-before-infinitive')
- # A: determiner + adjective used substantivally at a coordination/boundary ('le juste et le bon').
- if 'substantivized-adjective' in enabled and 'NOUN' in by_pos:
-  if re.search(r"(?:^|\s|[«“(])(?:le|un)\s+$",before,re.I) and re.match(r"^\s*(?:et\b|ou\b|[,.;:!?…]|$)",after,re.I): return pick('NOUN','substantivized-adjective')
+ # 011: finite-modal + target + lexical token does not prove that the token is infinitival; retired as standalone ADV proof.
+ # 011: this frame proves nominalized USE, not lexical NOUN POS.
+ if 'nominalized-adjective-use' in enabled and 'ADJ' in by_pos:
+  if re.search(r"(?:^|\s|[«“(])(?:le|un)\s+$",before,re.I) and re.match(r"^\s*(?:et\b|ou\b|[,.;:!?…]|$)",after,re.I):
+   out=pick('ADJ','nominalized-adjective-use'); out['usage']={'nominalized':True}; return out
  return None
 
 def analyse_configured(o,cfg):
