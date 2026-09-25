@@ -2,6 +2,8 @@ name: Linguistic industrialization 012 baseline
 on:
   push:
     branches: [feat/linguistic-occurrences-012-industrialization]
+  pull_request:
+    branches: [main]
 jobs:
   baseline:
     runs-on: ubuntu-latest
