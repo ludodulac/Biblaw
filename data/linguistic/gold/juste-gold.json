@@ -1,11 +1,13 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "purpose": "independent-human-gold-juste-009",
   "normalizedForm": "juste",
   "provenance": {
     "validationType": "human-audited",
     "mission": "BIBLAW-LINGUISTIC-OCCURRENCES-009",
-    "selectionPolicy": "Contexts selected across corpus positions and syntactic phenomena; labels are human judgments, not generated from classifier output."
+    "selectionPolicy": "Contexts selected across corpus positions and syntactic phenomena; labels are human judgments, not generated from classifier output.",
+    "revisionMission": "BIBLAW-LINGUISTIC-OCCURRENCES-011",
+    "revisionPolicy": "Five former NOUN labels are revised because 010 showed the contexts prove nominalized use, not lexical NOUN POS. Human context judgments are unchanged."
   },
   "entries": [
     {
@@ -162,43 +164,83 @@
     },
     {
       "occurrenceId": "occ-e829fcdf16e8e910cf3dec01",
-      "category": "NOUN",
+      "category": "ADJECTIVE",
       "lemma": "juste",
-      "partOfSpeech": "NOUN",
+      "partOfSpeech": "ADJ",
       "status": "VALIDATED",
-      "rationale": "substantivized adjective/noun: le juste"
+      "rationale": "substantivized adjective/noun: le juste",
+      "previousAnalysis": {
+        "category": "NOUN",
+        "partOfSpeech": "NOUN"
+      },
+      "usage": {
+        "nominalized": true
+      },
+      "revisionReason": "011 separates lexical POS from syntactic usage: this context validates nominalized adjective use, not an independent lexical NOUN POS."
     },
     {
       "occurrenceId": "occ-4c429f9c9439e6cb978ea720",
-      "category": "NOUN",
+      "category": "ADJECTIVE",
       "lemma": "juste",
-      "partOfSpeech": "NOUN",
+      "partOfSpeech": "ADJ",
       "status": "VALIDATED",
-      "rationale": "coordinated substantivized quality: le juste"
+      "rationale": "coordinated substantivized quality: le juste",
+      "previousAnalysis": {
+        "category": "NOUN",
+        "partOfSpeech": "NOUN"
+      },
+      "usage": {
+        "nominalized": true
+      },
+      "revisionReason": "011 separates lexical POS from syntactic usage: this context validates nominalized adjective use, not an independent lexical NOUN POS."
     },
     {
       "occurrenceId": "occ-687430a18143c749e91f542d",
-      "category": "NOUN",
+      "category": "ADJECTIVE",
       "lemma": "juste",
-      "partOfSpeech": "NOUN",
+      "partOfSpeech": "ADJ",
       "status": "VALIDATED",
-      "rationale": "agentive/substantivized: par le juste"
+      "rationale": "agentive/substantivized: par le juste",
+      "previousAnalysis": {
+        "category": "NOUN",
+        "partOfSpeech": "NOUN"
+      },
+      "usage": {
+        "nominalized": true
+      },
+      "revisionReason": "011 separates lexical POS from syntactic usage: this context validates nominalized adjective use, not an independent lexical NOUN POS."
     },
     {
       "occurrenceId": "occ-59e4544e1b37e6bee0ea02c5",
-      "category": "NOUN",
+      "category": "ADJECTIVE",
       "lemma": "juste",
-      "partOfSpeech": "NOUN",
+      "partOfSpeech": "ADJ",
       "status": "VALIDATED",
-      "rationale": "series of substantivized adjectives: le juste"
+      "rationale": "series of substantivized adjectives: le juste",
+      "previousAnalysis": {
+        "category": "NOUN",
+        "partOfSpeech": "NOUN"
+      },
+      "usage": {
+        "nominalized": true
+      },
+      "revisionReason": "011 separates lexical POS from syntactic usage: this context validates nominalized adjective use, not an independent lexical NOUN POS."
     },
     {
       "occurrenceId": "occ-35c807aa0ad3ccf6a4e35de4",
-      "category": "NOUN",
+      "category": "ADJECTIVE",
       "lemma": "juste",
-      "partOfSpeech": "NOUN",
+      "partOfSpeech": "ADJ",
       "status": "VALIDATED",
-      "rationale": "dans le juste"
+      "rationale": "dans le juste",
+      "previousAnalysis": {
+        "category": "NOUN",
+        "partOfSpeech": "NOUN"
+      },
+      "usage": {
+        "nominalized": true
+      },
+      "revisionReason": "011 separates lexical POS from syntactic usage: this context validates nominalized adjective use, not an independent lexical NOUN POS."
     }
   ]
 }
