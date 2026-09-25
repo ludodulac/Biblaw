@@ -15,6 +15,8 @@ jobs:
       - run: python scripts/audit_linguistic_second_pilot_006.py
       - run: python scripts/audit_linguistic_inversion_008.py
       - run: python scripts/audit_linguistic_consolidation_011.py
+      - name: COMPTE config-only audit
+        run: python scripts/audit_linguistic_fourth_pilot_012.py
       - name: Candidate inventory
         run: python scripts/audit_linguistic_candidates_009.py
       - name: Candidate deep samples
