@@ -6,11 +6,25 @@ import importlib.util
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('occ',ROOT/'scripts/build_linguistic_occurrence_index.py'); occ=importlib.util.module_from_spec(spec); spec.loader.exec_module(occ)
 HYPHENS='-‑–—'
-SUBJECT_PRONOUNS={'je','tu','il','elle','on','nous','vous','ils','elles'}
+DIRECT_INVERSION_PRONOUNS={'je','tu','il','elle','on','ils','elles'}
+EPHONIC_T_PRONOUNS={'il','elle','on'}
 def local_parts(o):
  i=min(o['startOffset'],90); return o['context'][:i],o['context'][i+len(o['surfaceForm']):]
 def segmentation(o,clitics):
  before,after=local_parts(o)
+ if after[:1] in HYPHENS:
+  tail=after[1:]
+  m=re.match(r"[^\\W_]+",tail,re.UNICODE); follower=m.group().casefold() if m else ''
+  # Conservative: nous/vous are graphically ambiguous with object/reflexive clitics.
+  if follower in DIRECT_INVERSION_PRONOUNS: return 'VERB_INVERSION'
+  # Euphonic -t- is structural: require t + second hyphen + 3sg subject pronoun.
+  if follower=='t' and m:
+   rest=tail[m.end():]
+   if rest[:1] in HYPHENS:
+    pm=re.match(r"[^\\W_]+",rest[1:],re.UNICODE); pron=pm.group().casefold() if pm else ''
+    if pron in EPHONIC_T_PRONOUNS: return 'VERB_INVERSION'
+  if follower in {x.casefold() for x in clitics}: return 'VERB_CLITIC'
+  return 'COMPOUND_ELEMENT'
  if after[:1] in HYPHENS:
   m=re.match(r"[^\W_]+",after[1:],re.UNICODE); follower=m.group().casefold() if m else ''
   if follower in SUBJECT_PRONOUNS: return 'VERB_INVERSION'
