@@ -29,6 +29,20 @@
         }
       ],
       "decisionPolicy": "Lexicon lists possibilities only and is never sufficient to decide an occurrence."
+    },
+    {
+      "normalizedForm": "compte",
+      "possibleAnalyses": [
+        {
+          "lemma": "compte",
+          "partOfSpeech": "NOUN"
+        },
+        {
+          "lemma": "compter",
+          "partOfSpeech": "VERB"
+        }
+      ],
+      "decisionPolicy": "Possible analyses only; COMPTE 012 contextual decisions live in pilot configuration, never in this lexicon entry."
     }
   ]
 }

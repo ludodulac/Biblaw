@@ -1,0 +1,24 @@
+name: Linguistic industrialization 012 baseline
+on:
+  push:
+    branches: [feat/linguistic-occurrences-012-industrialization]
+  pull_request:
+    branches: [main]
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python scripts/audit_linguistic_foundation_004.py
+      - run: python scripts/audit_linguistic_second_pilot_006.py
+      - run: python scripts/audit_linguistic_inversion_008.py
+      - run: python scripts/audit_linguistic_consolidation_011.py
+      - name: COMPTE config-only audit
+        run: python scripts/audit_linguistic_fourth_pilot_012.py
+      - name: Candidate inventory
+        run: python scripts/audit_linguistic_candidates_009.py
+      - name: Candidate deep samples
+        run: python scripts/audit_linguistic_candidates_deep_009.py
+

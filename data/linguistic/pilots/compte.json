@@ -1,0 +1,2020 @@
+{
+  "schemaVersion": 2,
+  "purpose": "compte-fourth-industrialization-pilot",
+  "normalizedForm": "compte",
+  "generator": "scripts/build_linguistic_adjudication.py",
+  "policy": "Conservative generic morphosyntactic evidence produces PROVISIONAL only; unresolved retained units remain UNKNOWN; compounds are preserved as OTHER and excluded from linguistic retained total.",
+  "counts": {
+    "NOUN_COMPTE": 124,
+    "VERB_COMPTER": 26,
+    "OTHER": 0,
+    "UNKNOWN": 72,
+    "AMBIGUOUS": 0
+  },
+  "segmentationCounts": {
+    "AUTONOMOUS": 222,
+    "VERB_CLITIC": 0,
+    "COMPOUND_ELEMENT": 0
+  },
+  "linguisticRetainedTotal": 222,
+  "analyses": [
+    {
+      "occurrenceId": "occ-cd6f54f111b25081a70a930c",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ad4d4ce74fc072b68d4ba476",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0a3d35cede8a5cc64db2eec3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-34f98ce4b498d30e351791ec",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c329307b44924402d2e3c5fd",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4705b77ae28c9a34b0a666b8",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cfffabd5a767ddcf530239f3",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3557af3cbc34ebb362c09b2a",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b5458dbfffe7d8ac0ef73466",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1cbf4705b9a3e4e3cf6f814f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c9f2ba614a976305940b50a2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6d34936e33a9a31e298865cd",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-au-bout-du",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b89f65e2c4552b85ff9d36b4",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-06bf3a29f519b1b862be4512",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-078b70d0029fd8959fbb2912",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d3b58f88f1d34787d1f7d802",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aef79b710670a60b82ffa0a1",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0ddb0e80197169d6258db439",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0e1ee56f1175af4537c25797",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e15abf6d2761336a894a63e0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4cf238104a616b8745aa5cd6",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ce66e87691b25164202e4e00",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-43171dc25a5938a4bc964f09",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3a1c3c05d3bca673ae123ed9",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-29d5c77a8951822935fe3902",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c067bbe57d7e0d403c8290a0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d835c0fa4d7e7241aaf6ba50",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c3665bdee6d7eb1fcd75c024",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d05a9d3bedb76fc6081920c6",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9832dbcde644618a4c4720de",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6f2a9d5f2a358bc26bb385d6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7f6a923f259013caf4c2ad1d",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4be2a75a58a2b20a384c36fa",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8e85743f7ccd757352845955",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-305befe0493b5c655e4b360e",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dcc0c2ecc0f5cac018ea1b57",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a8ee664755bc2ca3054e3937",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-43eed8fc0677a800f059f24b",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-107294629af8e2fdac773748",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0020b39aeeb6ce9207f38800",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4cff7d7ad6aef6c26e2a532f",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9782ad7536c3707a98d4a044",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-564191939effcc28fd8f0f7e",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2e9c0cb0ba46d1cfae7b322e",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f8d8d4e9a120c5fb3c43f2db",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c4030e0365f48d1460a89223",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b4eaf3fda0a3997a5fd194ee",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-095d8d7ad0c3279871f97b88",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-32c495534a5d7d186447e5c3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d947fe257d0621237ccf3d00",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-41c5b32857a945f2e8ca4cc6",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-253702da2a5b5867e0f52fe8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8092073752b156fe4270912c",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-62950fcc8e47ce0226d5e752",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ed0a9742f16e1719eb418e07",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5a3af5e074e8d36095425719",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e9c28337859805606668d6e3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fecc803de1ca93ae694683b8",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2af0ebccdea3a66f3056c865",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fcbdc68e0c1c99d9ef4d2d04",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-621695f1d63839b291359436",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6477866f5073a16fc4bd55b2",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0059bdf9790988227894f2ca",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f63047b92d18424504080d34",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ae17644b607b69b76eeb2377",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9cb23f3268e3ee19ddd61efe",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dbec4cc5aa2e25f91ac41ef5",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-32b8d7f7c37ec4818a5fc63b",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-72c6e0b94781b42acdad2892",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1e26ddd386cbaaf3421b537a",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9bdf251fef954ba766714f50",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3b2c7f7d1bcb4878356cd0e0",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a83b3b39e988ec18a307d401",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ca5c1c47c039b020052b0b20",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1b5dff48c4bd9d9f97564aa3",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-au-bout-du",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f8475c1706dcb906051b2a7a",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a85e900281836146a457e8a7",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8c79037e04fec920e7a1e83c",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7480a755d037ce5d8ebb2c29",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ec137e9b8f3cdc4d1798e334",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-027c3bd43a357ab279424a8f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1eaaedb55f3a9f50324ef248",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b7dc4ef78ee672baf0624570",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a9d7c96684fb28bb77df2f54",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-869bcc7350d33c927072e9b5",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-efa9f015a04ad2b4b58c28ad",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d7ff4eb546cedf4c5ccc25db",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-723b47b89eab1f9f575e9e59",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b97968e40956be3d0ce6df85",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e0b9dfd6cd71a2f2bf6278d6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-be81d5cb8508c42322fdf535",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-328c9761be79a7956fc0f75a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-469ea2aa69e5c965fc34bd7b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f263ae347f2506ba7275898d",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b1777ba70dd16ba192b72a85",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ec0d891393a1e1538a20b25d",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-de5b55c30bc550955fb98307",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2f9315b9a17036ca63a12a81",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0547e917785929408caa6b00",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d23baec64724492a28f46e5e",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aecc0eae4a261a06e3fc2ffd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f638045b9663cc3afe540505",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0791f947bf489620c742e25e",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6c90ffb7cb62c0d715e643ff",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f796c2688cc0b4bfeefa2bee",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2c986ec8fe7765fe752ed76c",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6aed5274c0828010240c4f7e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0dd9867229106a83b3be6303",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-36430517428363eb7efe0e35",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ef246228439d2318bdcc8c78",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e502593b7b53d3787866bb0d",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d768328d553580ac71fbb9b8",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7752befa6a063c90512bba9b",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d4ae5fa813d28219c4789c71",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3723c4c55e300e2bd01b0064",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b021294b9200efe0bf3646e4",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d8962babd0ee2ecd949e18e6",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bca0c84c7399c4bc0595d793",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ce95b8cc2331cf074057c611",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-56fb7b0b7969ce889516dd69",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4e44058180bab81599ec00f4",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-58193d7283febec06e3d3ce5",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0d3768036d15b4e4fac4573d",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b53e64275d4abdbe5ce8b04e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5ee137c50a6829f600b33e19",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e12289c355627587a3247ab1",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bee20b3e4e564b044b727429",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bf07f97f4197f61314ea6fba",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-618cfe95ced7bf5ad2b9c1f0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b1d21f1361aeeeb846ced968",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f579c8cd57886c5bf423bf8b",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c9780cdb85817e5ea14ef22f",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-26558fcea87ad926ded41894",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-61a4e63e06d2945b534be791",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-99de1a5f600f9969e5700766",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-be34246944e3103419523573",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-27ab3d13edbb54ca3c63ffc9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-11cc4cf66e0203a91bbbf7dd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-649aa8ef967b998243dcee62",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3a34a2ead08e33cf5917575c",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3d89593b2ab8671816588e9b",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-79fa31e54549eea02202b41f",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c8bce4ef47a982b7f26f6a16",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fcfd1891d82ddd35b8462d85",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9409ba838823ee68e92d6fee",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-48af09a52c59fd9f759911af",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-044fd9c97992dc263786669b",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1b87c6d176417e67df3824cc",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8bf4e5a59f2260aae80f5c51",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-830c8793488fb73eb7bb23d5",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7765ad3238edffb25fa80985",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e42644d8563561fc1469dce1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fd82d01f8e1b635fe33c437a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f68a88708e660cb000ce9b76",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-05b22c1d3f3521ecdac59d6a",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8f204e10d5cf801737e7078f",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-au-bout-du",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1573549bb527ed3cf4eb2542",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9c65148dd4cabd8b3f9655d7",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d871a417fc57c5d5b8bd0d1a",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c1000e10757678a08dba7187",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d1136fc7276e937531ca84fc",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dc2465b84bf5124fc676d778",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-066b631223c56867c4d2119a",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c4573c185dad1b53355df4e8",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9fe2eac1dabf132bc98865da",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f9aa8e39a3409a6eabe6b320",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-304127c8cd39d5e42adac3e1",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fe46163764606b8285552554",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-340da55848833d7b8c7ba96b",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-91d5e6916ef2ec09c258a4af",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c8c8c558d9a495600af26f02",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-71f8dbd66eb3c4f47bae7ca1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-036faeaf6f9a9f3d6aabf89a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5eba686344bec0f729f9e013",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-24addf549c310e3c7341790a",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-73700d786337de504cada89c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-45b319e0b8cbde4044831ffd",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5fb5c33e8ccbde0f1114f670",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-de0ca01f4fcce27c17f3dcc4",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5ba24b179477fe6e93e85619",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4caf3cd42ca87698019cc871",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4c3951e8bc19cd3a4294ea48",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6871077cf454976732c9486b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7cf977af82dd666c13d5a92e",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aa05324289fa4431d328b502",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-33bf4188628fee2e6a9971e7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2ee154d33db8a48166cab102",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2056b92d39b43369d8f7eae5",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-95f5241830792a4408b11609",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6a2740328d9f9eae5fe5f228",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0d7940cba1490a89860a36be",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-215a0a26dfe69ce2cbbfebd6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-61d5e8ddcec109fa9eb0f12f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-46e9f278cd40523fe0390aac",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-57f1669012553f7e4f8fb513",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aaca68f0f5c7565dc0bb2743",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-90c74c4116a6d76d99a3e80a",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-425890d6b33ccd8d9df57580",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9ffa65bb887d541cf093b02a",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e82d2bb266fad59a77dd3874",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9183cc4e7f5b5d4e36eddc0c",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a7bec7ba0f2154b0a600e491",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3ef3be2e634c01264cabb9e0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aab11b0b6cfc4c4a6574bc9b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8834c3ed2b12fd2d9c25c814",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c19167282f1f58bb4d767ac5",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-73aca829c91ca869d2a36599",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-17f34397c875998653b6057f",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8ac60a6af92949c80df4465b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-53bc8be927246cd3b7a46764",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-efe789ecb015a74ef4a6e204",
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-verb-clear-subject-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-74e50921317c7ed8f23e78b6",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8cb8cd4cc845f981d956fd3b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1c63c8d7456a2813dc6d274b",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c58e2e95974f7e1d0724fa40",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7b4519f742e85a73a7df7944",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5fd6c5de3980510e5051a3e7",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a2e4f2a69cbf596a4c5ef497",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b29ee3a1546dbd69b05e84f0",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bf22d239121c6e835a652552",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-74f11e4890feb248dd1cd899",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2e3718c739e044f5dff814cc",
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:compte-noun-lexicalized-accounting-frames",
+      "segmentation": "AUTONOMOUS"
+    }
+  ]
+}
