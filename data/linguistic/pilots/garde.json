@@ -1,0 +1,913 @@
+{
+  "schemaVersion": 2,
+  "purpose": "garde-fifth-config-only-replication-pilot",
+  "normalizedForm": "garde",
+  "generator": "scripts/build_linguistic_adjudication.py",
+  "policy": "Conservative generic morphosyntactic evidence produces PROVISIONAL only; unresolved retained units remain UNKNOWN; compounds are preserved as OTHER and excluded from linguistic retained total.",
+  "counts": {
+    "NOUN_GARDE": 19,
+    "VERB_GARDER": 50,
+    "OTHER": 7,
+    "UNKNOWN": 23,
+    "AMBIGUOUS": 0
+  },
+  "segmentationCounts": {
+    "AUTONOMOUS": 76,
+    "VERB_CLITIC": 16,
+    "COMPOUND_ELEMENT": 7
+  },
+  "linguisticRetainedTotal": 92,
+  "analyses": [
+    {
+      "occurrenceId": "occ-0ff39c006bc35ef89a830f20",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-41014a816a23e39e72453b8b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6f72e7d9378441a4b1b19209",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-imperative-object",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-14f15c11675ab7feb9f36f3d",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5a714e8b58e00630dd16f9d8",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-imperative-object",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c2652c0050bab2db74cc1bee",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-imperative-object",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c66ad877ef64016a20a97392",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-imperative-object",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-20d5ede783c8432237ce3d6f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9983886fe77edaef59d32093",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-04e1b522f65ba9eae96bdb5f",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8733c506a431d19cb9587bf4",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c872785306e62d56fafc18a3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9b4071ef0e25ddf27fd13cf1",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-possessive",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7a75508ce53e036b3d2476d7",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b508885668505e4d4e4b068d",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2e0d108bba52dac402eb4702",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a8a455135d737928d29efc0f",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dc3bf53628e227d4ac4fa464",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f96125fc0a1903d5968b096e",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b000c8ce65cb14fdcba79902",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c20530fd816745d1851bc412",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ab57e904c6b0c6a9c239a090",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6b5dbfdfb6ad547b9f98c67a",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-prendre-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-04e5266c1b6ce5caf7cbcee5",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fcbbcc6e8a7bfe68069231e7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5a9544ba4160495b82e86596",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e0893f6a7433465305420d68",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8cf84c2058bdf7362ac9a71f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ed9349176be28539b4a4d9b6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d49e8d91c1f8c3fa9e813c14",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0a17712c3f1810bff1edb675",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-0fbc43c2797dfdae6fdd1c81",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7f3f4534c1fe96af4ec9898f",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-00af4cf08b6af70df5be12f9",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6eedc8caca212b507fe7c70e",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d5164a02a3cc361cd851824c",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-933046a3688f86be7f5480fe",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6f8783f6be548f40c957b20c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-01f622fd4f5e2bf579dabf4d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-543c91d5769fcec72ef41616",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2d864b6b6828b2aa6c08bc99",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-a8a5b10c4493393f482a628a",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-a44825f140e791ba7a984f92",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-prendre-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d8fd92cd44b0816059de3f55",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-imperative-object",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-081001fa902c510d7eaa8da8",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-prendre-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c00102a35e0b51748775d601",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-acb9669f411338c7cfa90a5f",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-imperative-object",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bf53bf28026ed5cde5e4f491",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-df8ff328e5b562daf0cabe5e",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c246c76d7c0f50cb85047d4d",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-72150e0a0a98ee18ca64031f",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-96478136ee7bb0e209df4e95",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-379ac00074d11e002f188441",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a92be7a50145f0abde3234eb",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-a63799a7bc4f79f7681b852e",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f7980f7da7efdf60f6571c91",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7e95f289bbe91cf5c0892d83",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ac5106ec6f8ac805446193b7",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-b25d4a3eef78613a842e838c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cbc53ca33930f2b72989040e",
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-noun-mise-en-garde",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5cc79ee36e021e4c74e2bb23",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-de3e6c7a9cd0f664e5e4b8d1",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9a648c90c8ed0ed73a524421",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-d8837321b1065dcde3718d58",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c29a5d3a20c0ce6361a31a2c",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-imperative-object",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0c6e0848987a37bc6d628048",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-7996966282e2fc5ce6555a75",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-imperative-object",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9b2774695fe2cd3375ab526a",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-imperative-object",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-26a8f3bbb1a4ceb053cc47f1",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cbc8d1c1628fecc9458295af",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c3b1ecc9960032c1fb9e23e0",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-38752a393f1078f000768d28",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-f9439bc2ae547eebb41b95ad",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-175039883abacb884798d68b",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-0e6343f87535fda28c980597",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-447f28e261e6265d55d27a42",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-adfcad4ea0c30aad9a73991a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-80d42ea4bc7d724a16c2daf9",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-9fae450d1390c2b1fc991d09",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a06c86bddb98cfbba1ce86b0",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-ee199468de37f9e851392c67",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-65d910cab33b1182b09f8930",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-8d3efb2af792f1b5cfc9adc2",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-51484d06ccf8b49d48657a69",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6b5f700b1f701854c78ac672",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:garde-verb-clear-subject",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-961f4d8ca3592fe957784b28",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-547160107b7cda09d673efc8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dda3e77dafae0f7c057c2450",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bd316b27faa3c84cf90e8ca3",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-fb7781084a8325c835015b8d",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-877d5d3a76f7b0a5ca0a2339",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-22513d35ce11a7df01416528",
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-099049e2ccf6aa013433b4e8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f2b15df3000fc30757efd1e3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-22bb2bbb34efcea2904529a6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8805d94769d024a0b7f5e578",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ba115d14fbc2d2ee3eaa4bda",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-88e4607fcaa6d6ee5e69ca1d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-16e945894e565fee8ed67960",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    }
+  ]
+}
