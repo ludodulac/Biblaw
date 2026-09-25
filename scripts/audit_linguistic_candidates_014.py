@@ -21,7 +21,7 @@ for rel in cat['records']:
    w=m.group().casefold()
    if w in out:
     ctx=text[max(0,m.start()-90):min(len(text),m.end()+90)]
-    out[w].append({'surface':m.group(),'context':ctx})
+    out[w].append({'id':__import__('hashlib').sha256((o['id']+'|'+field+'|'+str(m.start())+'|'+str(m.end())).encode()).hexdigest()[:24],'surface':m.group(),'context':ctx})
 for w,rows in out.items():
  rows=sorted(rows,key=lambda x:hashlib.sha256(x['context'].encode()).hexdigest())
  print(json.dumps({'candidate':w,'count':len(rows),'samples':rows[:35]},ensure_ascii=False))
