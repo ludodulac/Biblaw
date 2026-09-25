@@ -8,13 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: {python-version: '3.12'}
+        with:
+          python-version: '3.12'
       - run: python scripts/build_linguistic_occurrence_index.py --form garde > /tmp/garde.json
-      - run: python - <<'PY'
-          import json,hashlib
-          o=json.load(open('/tmp/garde.json'))
-          rows=sorted(o['occurrences'],key=lambda x:hashlib.sha256(x['occurrenceId'].encode()).hexdigest())
-          for x in rows:
-            print(json.dumps({'id':x['occurrenceId'],'context':x['context']},ensure_ascii=False))
-        PY
-
+      - run: python -c "import json,hashlib; o=json.load(open('/tmp/garde.json')); rows=sorted(o['occurrences'],key=lambda x:hashlib.sha256(x['occurrenceId'].encode()).hexdigest()); [print(json.dumps({'id':x['occurrenceId'],'context':x['context']},ensure_ascii=False)) for x in rows]"
