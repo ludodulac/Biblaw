@@ -16,6 +16,8 @@ jobs:
         with: {python-version: '3.12'}
       - name: Corpus inversion inventory
         run: python scripts/audit_corpus_inversions_008.py
+      - name: Permanent inversion probes
+        run: python scripts/audit_linguistic_inversion_008.py
       - name: Occurrence tests
         run: python scripts/test_linguistic_occurrence_index.py
       - name: PORTE occurrence regression
