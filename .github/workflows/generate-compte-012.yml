@@ -20,3 +20,4 @@ jobs:
           git add data/linguistic/pilots/compte-occurrences.json data/linguistic/pilots/compte.json data/linguistic/pilots/compte-compounds.json
           git diff --cached --quiet || git commit -m "Generate COMPTE raw config-only baseline"
           git push
+
