@@ -24,3 +24,4 @@ jobs:
           git add data/linguistic/pilots/juste-occurrences.json data/linguistic/pilots/juste.json data/linguistic/pilots/juste-compounds.json
           git diff --cached --quiet || git commit -m "Regenerate JUSTE artifacts under 011 proof model"
           git push
+
