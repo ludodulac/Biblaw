@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "purpose": "independent-human-gold-set-for-suis-second-pilot",
+  "method": "Explicit human adjudication from corpus contexts selected independently of classifier output; covers both attested lemmas, autonomous forms, clitic and inversion segmentation, easy and deliberately abstainable cases.",
+  "provenance": {
+    "validationType": "human-audited",
+    "mission": "BIBLAW-LINGUISTIC-OCCURRENCES-006",
+    "status": "VALIDATED"
+  },
+  "entries": [
+    {
+      "occurrenceId": "occ-bf5ca8fac272990185da3579",
+      "context": "Je me suis également servi de votre travail pour apporter des impulsions de guérison vers tous les m",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "auxiliary/reflexive je me suis"
+    },
+    {
+      "occurrenceId": "occ-4d9c469f07759c228932747e",
+      "context": "Je suis venu ce midi pour commencer à effectuer le travail. Je me suis approché de la statuette q",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "auxiliary je suis venu"
+    },
+    {
+      "occurrenceId": "occ-827b124195e40f92250852c6",
+      "context": "Je suis maintenant présent dans le temple. Soyez dans la maîtrise de la méditation. Ayez un corps",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "copular predicate présent"
+    },
+    {
+      "occurrenceId": "occ-bc82ecbf4dd98a2eac4c2d19",
+      "context": "Je suis maintenant autour de vous dans votre éther de vie.",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "location predicate"
+    },
+    {
+      "occurrenceId": "occ-caf87c36c3e0fb414d3a9745",
+      "context": "Je me réjouis ; je suis heureux que des êtres tels que vous soient conscients de l’importance et de la valeur du ",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "copular adjective heureux"
+    },
+    {
+      "occurrenceId": "occ-ca8c2a702fe57a65927da1c2",
+      "context": "Je suis en toi le fleuve de la vie et c’est la façon dont tu t’approches de moi qui détermine ta ",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "copular/location en toi"
+    },
+    {
+      "occurrenceId": "occ-7c1980a09148a8c5c0fc41d7",
+      "context": "Je suis la voix de la vérité.",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "human contextual identity; automatic engine may abstain"
+    },
+    {
+      "occurrenceId": "occ-d8454ca1c4fbd87fa8968ee0",
+      "context": "Si tu suis un chemin qui ne fait pas fleurir ce que tu portes en toi, tu ne pourras être qu’un sembl",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "tu suis selects suivre"
+    },
+    {
+      "occurrenceId": "occ-a83284ee5783be3ead9b98be",
+      "context": "Rien de mal ne peut t’arriver si tu suis le chemin et l’enseignement des serviteurs de Dieu.",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "tu suis selects suivre"
+    },
+    {
+      "occurrenceId": "occ-a875f03a7841b10bc9c2c7f1",
+      "context": "Suis le maître. Trouve à travers lui la plus haute pensée qui t’anime, ce qui est supérieur et",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "imperative suivre"
+    },
+    {
+      "occurrenceId": "occ-591996bd722addd6826ff85a",
+      "context": "Va, suis ton chemin, sois persévérant, accepte toujours d’être déstabilisé. Accepte que le divin t",
+      "expectedSegmentation": "AUTONOMOUS",
+      "expectedCategory": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "imperative suivre after punctuation"
+    },
+    {
+      "occurrenceId": "occ-50f49afe4946617ebb1bda1c",
+      "context": "Trouve ton chemin intérieur et suis-le.",
+      "expectedSegmentation": "VERB_CLITIC",
+      "expectedCategory": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "imperative verb plus object clitic"
+    },
+    {
+      "occurrenceId": "occ-47c84cbf66fab6b4de6b4437",
+      "context": "age du soleil, l’homme se lève et dès le matin se pose des questions : « Suisje parfait ? Suis-je imparfait ? Que dois-je faire et que ne dois-je pas faire ? » Le plus souvent, l’homme",
+      "expectedSegmentation": "VERB_INVERSION",
+      "expectedCategory": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "interrogative inversion suis-je"
+    },
+    {
+      "occurrenceId": "occ-67c4071d0dd4f3265fce5b31",
+      "context": "e poser des questions : Qui pense en moi ? Qui gouverne ma vie ? Qui agit à travers moi ? Suis-je conscient de mon quotidien ? Tant que l’homme n’a pas répondu à toutes ces questions d",
+      "expectedSegmentation": "VERB_INVERSION",
+      "expectedCategory": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "VALIDATED",
+      "reason": "interrogative inversion suis-je"
+    }
+  ]
+}

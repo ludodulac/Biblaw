@@ -1,0 +1,5702 @@
+{
+  "schemaVersion": 2,
+  "purpose": "suis-second-homograph-pilot-reproducible-adjudication",
+  "normalizedForm": "suis",
+  "generator": "scripts/build_linguistic_adjudication.py",
+  "policy": "Conservative generic morphosyntactic evidence produces PROVISIONAL only; unresolved retained units remain UNKNOWN; compounds are preserved as OTHER and excluded from linguistic retained total.",
+  "counts": {
+    "VERB_ETRE": 116,
+    "VERB_SUIVRE": 4,
+    "OTHER": 10,
+    "UNKNOWN": 501,
+    "AMBIGUOUS": 0
+  },
+  "segmentationCounts": {
+    "AUTONOMOUS": 615,
+    "VERB_CLITIC": 1,
+    "COMPOUND_ELEMENT": 10,
+    "VERB_INVERSION": 5
+  },
+  "linguisticRetainedTotal": 621,
+  "analyses": [
+    {
+      "occurrenceId": "occ-bf5ca8fac272990185da3579",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:reflexive-aux-etre",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4d9c469f07759c228932747e",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-17d0bc799b6299aff93f22a1",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:reflexive-aux-etre",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-50f49afe4946617ebb1bda1c",
+      "category": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-clitic",
+      "segmentation": "VERB_CLITIC"
+    },
+    {
+      "occurrenceId": "occ-827b124195e40f92250852c6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bc82ecbf4dd98a2eac4c2d19",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-742186f2a32d26d7fac78a44",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-591996bd722addd6826ff85a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-caf87c36c3e0fb414d3a9745",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9c1f34df1713b930368d3c9f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-79bddfb4512d830b93ac0805",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ca8c2a702fe57a65927da1c2",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-47c84cbf66fab6b4de6b4437",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-inversion",
+      "segmentation": "VERB_INVERSION"
+    },
+    {
+      "occurrenceId": "occ-24e86b744e3c077f43cc8956",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-931979f7dea16fb1d3194993",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-234af2742a60e7bf2ca4af67",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cb240422d74d4f29d4441a92",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-91d2f8a660edc1706790dd1c",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-20dac53b1926dd34d422bbea",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-09b86f6fc0b2a7ede72a7e28",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7c1980a09148a8c5c0fc41d7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c225453a657b565db4d8ca4e",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3285e08b642f0f49bafb006e",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-705cd752a84c4f88ffd80b86",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2bd2ad14e00a26d601a73656",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-38ff3b7e3b72a594b4e61221",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-28e33d65db66db1536eee658",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a72ae15e419cfeabea5b661a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ae12539f27f4c8a775a288eb",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-052b79397c359107de7724eb",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aa3e2f44e2f26c04bafbb328",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9ec02164352408a7f055ca01",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-15f0c8206b6269af016b2ddd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1170437345fd70c8e32dad45",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-734e0861b16dcf568c82e76e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a59ea54c228e3d9400399439",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6ff72c4d350bba7d57547229",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-214b3de770cbc502c3954fde",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9f2f7dc92a6097a50b0af6ac",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-09eb20d511210bc241993734",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b4be45c1249d97c219b51f9a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-97c17924d765d6998a3e27e2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a875f03a7841b10bc9c2c7f1",
+      "category": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:imperative-suivre",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-91737d8bef70adf4297235c8",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-804f0f8d20ef9f91badb20c2",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4584d300398d27d1015ef92d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bd2c83c6e48445fc839551c3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0cd19fdf7d4e2285ce14beb3",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d9dc59316caefa2cc34c31c0",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c61eb40b90904a52abaccb80",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-97bcc60c2abe54f2290604d0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e79aacfb0a10d4fda2545f94",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f17134f9562c794af563cae6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-042c29fd9b36dfca4b137d23",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c46c388f2c1b369146cd1f39",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1efe95cc5d3130c3d417d7ef",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-519e4020fd5e153d22ea98d4",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fb7d101d388c4ce8a34c402b",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-inversion",
+      "segmentation": "VERB_INVERSION"
+    },
+    {
+      "occurrenceId": "occ-290e6d2d632e63ba48e657d2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-599ac94a67466d0a2064d2e9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-536e6ce734548d5088175c8e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-748e54dc978ae7ceb4619718",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b12df4239634f54667a03dbf",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5d71da5a18e69d82b521cbb3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-efc37f1cc4df0987c0c1b4df",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a0b8c9a805944e274a0d5b6c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d6e862d3e4782afb8dc60e38",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7934ffba7b67809da88f1da3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-066d050909641bec398dd52f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-703a5ef01d2d08a429897599",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-df313f083c68e888490b48ad",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-08ab1b67af0f741f9ebc7f8d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f0d8ce637296702430c533ca",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-312e59b88e85bc228ad2012f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-663642a98aee08cccc53f9ee",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1f419d292566408485f986e9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-23415ba929188ea27f562e93",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-46f17054289fd6d337bd4681",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5927de29a290f762343a7363",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-edf4601f144e4d141d8e48ba",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6c27636fadaf500dac8cabd1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-94e96fead960ea2608d09c1e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-410978345b47e590d3a497e8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-26ddb2257592e1e395a42a80",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a45b4dfd675446d925ad8990",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-16497d9446c345359f5f3a13",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fe1a78bece91ca88beda38d2",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-06f6b7e4b254105b6031f414",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1b73958797566aab1e86a192",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e018ded57d0a1db1bc1e84a2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0d1589e30d71f5fd189d9f5f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-40da50bf0bb211fbc53b5b9a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-713004a7bf1cde589a359a0b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7974eeb9afb641bbaed6116b",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-inversion",
+      "segmentation": "VERB_INVERSION"
+    },
+    {
+      "occurrenceId": "occ-97ae428ad8119148480bc9af",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f0f9ba94c1bfc692d85b045d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-67c4071d0dd4f3265fce5b31",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-inversion",
+      "segmentation": "VERB_INVERSION"
+    },
+    {
+      "occurrenceId": "occ-5fe989b9c3e608c6ec4b4546",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3417ec0b28fa0245c95e5e1f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4113fc699bd49e75507f6d61",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-44c3a2c9f35615dd406217f4",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-743ee9036a4ca687fe2fc529",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8a3e5e9b79b22f9679518c90",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ce6bebe4cc6635484a4867d3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1ad51f945ef5f9e0124240ed",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-77016841f2b05a29aabf72b8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-559766f7e6cb7b8c3f9ba65a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-45df52d62cd3b2b774994f4f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f95ef3cbde66a8a2d68a5ee0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-14bfc13d4a310a5c96bf6bce",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e6ea371f44b9d240a74a2d1c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-83caee7f141ad13a5c6a7baf",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a820730d8fb8b86e09d487d2",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a4a84146c42be98990a610cf",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-61c5126613243ba3a7a8f2ee",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-24743b50ae324d22a72ab220",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5068447a1d28c3ec20492a07",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7e0dd3b18fc5038d429e9244",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bd8bb652cfaef60a95eef29e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e5063edf5ee179457c74a6c7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1ff647034812f91cbb0941a8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0bf52e687ed1d28160162e9a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5232723ed8965448cc05d595",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b8666d2dce07244d7e79648c",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-60b2b488d1d1f102680c33f3",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f485c3e20e1538d56ed62980",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e48d4881f65b73fb7f2c808b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6daa6eede7e8d1ea142598b5",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c02b19f5261de4267b974ffd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2bf6d57194348e91ceadb3b3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5a4f6b87e9225eac9445091b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ea0fb3183149ce396afa1d5c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-341c67fd9b02c69a78117cfc",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-514bee0ee651f37191822f46",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d7b384bab524b0aac57ddfc3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cb7fbf3502b57a0b3d6e0a6f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-725259766210810e7fd80357",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b4fc80e60f267a675d9c2eeb",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d9db68a61629c96aed0575e8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8205b31b1e32e4b066c7bf2b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d8f31de96b68b26d16f0f3a7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aaacf26392c5771dd42894fd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6d0b06da2d3b303beff64236",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-586fa8b674814f3855e97481",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d88c1be00849cdfc6bf68d3e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e4455f825fc5a3bd030379c6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-85a36661dc1b0015eab0b9cd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1c70caf6b98e77a8bf7048a6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1e8dc854e85320aab9d22e28",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a5bf98c6a5de4979fb0d30d4",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-162785d733f39cdacf90bf22",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-84ab83ad3dd484f892d29b2f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-31d02eb9e2f389f38a6e67da",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5ca3e15f62b6ea26454b8179",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2227304bc7e3b201bfdacd6c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c560d6453072d4a78d5cca3f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3a1e9154365a346e2cb3fdf8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6477370ea1113fbc251de018",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a1531d06f68bdd7834e3376d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-98334b997fa9a15c91d69e4d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5ccd06838381db1248252c09",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f8fce303422fd057dd7aae9f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c9e8b769b963736fc8105da7",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e17bc84195bea6099a8dec92",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-915fddf07df5209d050d4746",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2a2281ac4a03e366c9905e4a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6885cebf04ce6d46a5ab86c1",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:reflexive-aux-etre",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-abaa17d160284e233d1720ea",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-012851683186f1ad769373c6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f379e778eaa6c66aca8d1ddc",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-499d36ff28716772f8471344",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-08df13b1a5b829ae65473ae1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cce394fdf84e36fe983e65fb",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7a3309fd59ae3aa3dbfb48b0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2afd12dd2331baffdad79183",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a13f240ddf1b7e2caf459b17",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-312442555b0d0e02b93f9da5",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c77ed4214a460ece654ada73",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-05fb2ffff028bf3a9e8b3041",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-45f7acf5c1651aa6470f37d5",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-46b883cc624c88fc902b8d0c",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8bc8c47406cad6885e136111",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cbf03623db67a922554f479b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2c9a7e0307099a8b44b989e7",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-531b70e97303e33d9de8fb55",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7abf5091fbdcc7ef2d032e72",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4cad8265b36816894e441539",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-18e1589675406d7ee295e8b8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-92833fdf9f5c91c074686835",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ad696ef4ec7cb938dc6dd681",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-988be261763b5e95043662c7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c436fca738fb99536c757062",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-96a30667bfca7cd45ae52a7a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d64f6f1e9ad69e19359e5d1c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-169c4a9e342ad6bcb33e72f0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-71b88958c6e164081b291064",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d8454ca1c4fbd87fa8968ee0",
+      "category": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:subject-tu-suivre",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-85b9f8182934ca3ce35e4d37",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aa7f1d97b4a6e2f21a174b12",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-11df3e357f276b7dc1d02727",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a83284ee5783be3ead9b98be",
+      "category": "VERB_SUIVRE",
+      "lemma": "suivre",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:subject-tu-suivre",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2ff83a5f58b65d35cf8aa177",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b193f6bb43b7c1e88894dd11",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0b039aed900e3652c8e61af4",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-70fe53cb68ebec90cb54ed3c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5155891d311599c13a16679c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-30749794e0a93ac14473131d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2aeed8110dcdd6a1b57fa4fe",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b68f6131fcc2c3af9bed185e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-83c3aad3d412e7adb252f35e",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:reflexive-aux-etre",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a87ad7462cced8e6adaa243b",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1c6c047a48c6de12d3b1767e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2979c5be65a8e1d3cd88db3a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-eb015e79e7c8aa564e8e727c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d859937f604e65d088d2267f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1007c848b5f9514efa79430a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8bfc62cd0034e73b6f0c6a84",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5f6142d948ef54d9a0c34cbe",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5d464e2ca429ea2c52a4d053",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-028fa26ea340409470c0b93d",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6f9c39d42fdc56771b076ffa",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5e3ef3f8c6d6891a81dcca6c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4c20248ad0cc4f10232ab648",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-751d954846e06f55a04b4671",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2ce6b5c2748b19618bf2cfad",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-14c1ecf0a7474917a2013325",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a5b500d4772b632be30983ce",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9a8644275789b61485c5ae1f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-77ffa823278bd82c35bbf254",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5fd154283866924240742d5e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-87fe75a5eed4c306f4d075bf",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-daff76a0672c0c810ddb24eb",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-164bfc82b300a48f7e935071",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e013ca8b0024279a73ecc7ce",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3b71fd766546807421426713",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8b3b959ce09a1ad66bd1750f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-56e2e94147cb848d30d6024b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0cff4460721542711cbf9ff9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-63f52ccce98284681efdff20",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e19caac4344e9c9b4e63c843",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a4da5d58afba9f79cb5d27e0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-933e9638a0f26a784a6661fa",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1abc893d5cd4101fd8e5da80",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-721b0f45c21776429c881371",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-78ef66e000fceba0631e2bd1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5fcc19cd485df3a2c65c7825",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1a6e5da72092cdd976324156",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8da3e283779bc2946b7da80e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-275fa98df7d8f29fe462d3f7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-94e60b06ff04f17cc048c05d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bd940a58fc1132d0803bf22f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b2eadc96e64431539579b175",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-066f3c2800714774385b58c0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e7c1e48dc6ef41d944034317",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-10bcafdff28319cf7b0cb7b4",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-81296e95fed0fc73b4d3a538",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-564ae1e4d04e1ddb99cddf21",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c450682e859dd35edbcdfb21",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-09f2bf649f787dda6cade27e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a27de61076ec70b281aa42b2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2508a543023b413c5f6e268e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a81cb865b0cc4b58a374e010",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0f83b5b43882de9a20444765",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dd47daef663039295da13d70",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-29ce3a716349b0d4e3f04975",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4d9629abc20eadf235a3f1b0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1c56beb29bfef840febe8a65",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b268f4d8ff998fd7ce30c034",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f687c26ae945352f73f653c4",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-91cdc3ac106b7cc856196933",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-12d6780db39af15cb075450d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f60c583b1e0155c406ae13b4",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-de47b4b8badfeebd4b1fe741",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d3ea42ee5f37dd9dc4166281",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7a5f9b0ae4d17dea813d0ae8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-14bd13c7e2b4d50e57b043d4",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-afaeb5d70f7cf8334e9dc713",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c06a72d78d5ab31e25a977b1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-76820e3ee77d115e2c2d456a",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d2e38d00d39d09a6d7521e25",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-47279cb80e1acc8b3e154353",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b949855b7374802ec6054d42",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-665045a6816a6115c9a96de3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f409ce38e69243a98b97606f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-980f9382235e21e818f4b9e9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-473e2a1204f3b53d0e6d6535",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8cd96a11a4d4d48bfdf73edf",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0a9b2d5466de5cd2eabb286f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9c3e21c61540971e6deab2be",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d488ecb1ec82a366fbf4e4e7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-36994a243824f0d864d47065",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3400fc3082a5157558e37f14",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7780635c8b7938cbd7fb8912",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6cd1380d0e18519b3c53d513",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2a2e3215ea2b7443969c0a26",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-121c3f244a171e8c604d2968",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-87bcb3a0c19ea4e16a64b2d9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-17ba2a8c03c5bb0233be6ce8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e3566c91c331f9b1462a0679",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5d6172aa4d2a7624a952a572",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b56f2d364160aca0f17d371f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-35c88a96e97fe46c8701e325",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-946cf9f45518a203d2db033f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-eb733b8c8cae4c352179dbbf",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8b3157c7601fe547ca0c0083",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:reflexive-aux-etre",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5a73605bd108444759155669",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8e26fff55ace85c68e78d804",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5d570ccd0d7f73c7c5862d6a",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:reflexive-aux-etre",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f330163d7516ec30a81d0fe0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e00808d6b5cdb6173666a5f7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a8838ce82863894cb4b77ce7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a88724066df6f54a52d10ffd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cab5f4a2ed4a3ab98fc009d9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a2ab4cd1ff77fe3caa4634a3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f315cca050188797997ccbd0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-358099ea6a9c89abf0e1303d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e6a3d739baa302f95dabeccc",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-86a0c4759fa0ca630bb2a699",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0f2f5dda68115355e96ce831",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ad43045d0f6885a9bb0865ee",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-593365024da9e3c5dd2e8f10",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7cef2775a68685c749c7fb58",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-60d3cbe361c1fa3bc8b18e42",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-40b04331c4fdf43d482cdcbf",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d6f8cf4c97db4937c1a3044f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2b62b31616abb520c3939b1f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c90d979d17aa1910a8a50eb9",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aa1db4d6f1ba9b2e362ce844",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2b9fc5942afe22982209e9cb",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6ad590f776d0b8c18756b379",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7ac0ed337870f804da755632",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a5f7a0acaa4e57ba15372a7a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c24e5a070017b4fb7a813fe5",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-27c17ac06d16a7ab12248c1f",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-adfb520df42561d380d74dcc",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ad6175b45d15dd3f82109183",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-03313c729372310a93605089",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9e3d19dba9a1b4d15ca3da2b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d9299e257b2f53ba7033512d",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-240fc16ef423b32195fe4a2d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-18d26bd70358ec3107d0af28",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f8da75178cdc59eed5699fb9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d9307d5dae154d52c00b832d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-098e63d88105aad329e0824e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1fc7f1d04293598e7aae9c8f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8928b689ff8b8e425f64ffd3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c50834d8cfb7d33691653dbb",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7c5b50da89af2806f2171c86",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-285d78b68e7bbdf251ba2a5b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a2cb59ed225ad57f691ee59d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-efcfb7c9a19679350fd0444e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d9c2d7c5710356309c60ca81",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-485c98debbbca0066c1e6b43",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-86763a7ae9a5799d062591e7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f91d359766f7a5598135e5c3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dfea13ffb1cb498798d3aff2",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0df77e4ccd692392b7791560",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-619d1f6e18ae8fb49567deec",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cce089c8d5d73de97579ed93",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c19527f23ab5b07a3279467a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2e1b455b9289f1339e2a84fe",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aec4c3dcfa67f2952faa939f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bcce3ce86b4e985d829859bd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0d290bd387906e988c23a8a0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8b52f6593ce66b2ae1a0c06b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7e8af460a93b9da7278101be",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4bea892f75646e71da0b13d5",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b220e41e4104aa0ae36660fd",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-bc5de4a67e82486292360237",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-57f3a591ca7c5e732c5aceea",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-0879372492c6827c1288e8d0",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-42da002852bf30355f04b300",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-76841b57a164db7cf136ad14",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0f0275695b0b3574c88b5d0b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-66a6ecdd835307b2b7a68dc9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-de95e816ef0df52a09d157ba",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1c577b3ea2f71cc43143d470",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1095f8a34159aa09513bfecb",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e4ddf3e2b96d240b0eacfe1e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-119cdfdf4464cd921a386543",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-34e55a727ade8721c81ddf47",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-573f653bdcbe680d9698a1b8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-26742458aece7a57179719ca",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b62fac879a03cf6c7bc01b16",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-31feb31ceea7905f763ac94b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a740f1ee016c9a441cdd71b8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7ab3d8e4b68fc5761d82c128",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-124e89eb98b97e35cd825bf2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c7aa1fbf69371828cf7cac63",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fb2528e86187c692f95f7f2f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cfa4a4d9c5f6aa7891b39489",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-35e644d5f4d1a1a97902382f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5daaefcbb14b64ace24d4a6e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b4102bce6d5988d48e2f8286",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5b574c2d8b09c2f4369553f5",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6bb5e62e9409a4dd81591d56",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c62a10d008f54e2cda94d646",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-486a4fba5707c68ac4defaaa",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2ebe00cca02cc04b250d6db9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fbd71af843a8c801cb3a56c6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-12d541d0aab86d6bc229f19d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-902966e0e569018ae1fe8483",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9801ed3cb93fd7e2c881f721",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e24f712e1db7c308e7af558b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dedc2b14553b0d4448777503",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4e091001938195113e3c16c6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b325febdadb0f69a6c918122",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2b3795e033406928f92d8c38",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-85983779c1d4553f65b730e5",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-739a904598e98b22fb684667",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6bcb174c07bb257b9b9ccc74",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c08bbc1d9b630453ec661124",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-eb49f780fe739be499ec96c0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b1269d39873d188577c65cc4",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0da4b14378cf7e275ab2d134",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e307fb5f7316c5795d456e72",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8cbc525fcba23b556d01020a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ee8b446a714052ade23dec52",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d41915b0b6b76076aeff6912",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4c819e25e5bd0a1e86572b83",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dc0597416d72597d8a41a5a1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fd3d447a136ea8e7ee049e76",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b0bb6763a4d8bb173aadcc82",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a2ec495f00f3dc55f8c53f93",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-8b050ee2eaf4696da823fd7e",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5453d53a28f41b1f3c67cd1d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-50c1b37ed7f54cbe18376a79",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-632f9d52e6731a5848a48ed0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9e95c0c721c45e8ae4f1407f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a63a2c8c887985b58c4e06d5",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f6f91f85f81deeecbb24d32e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d8c48c8656eecbe2d43601ce",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ecfe0057e7cc43a935941a90",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e49ef1b5280ec11171e54c2e",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a036894e11dfd1ad2ed1ca67",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3909aaa934ac63f1347a678c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9ea4e05a2e41303d976e38e9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7abb5151764603eb3dba19e8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d4d61bf825262ddd047a38dd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1e23a7e6a0c9e46e7abeedc2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c9086a84555d074909aed580",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2285356d6aa76c171613d2fb",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0cb4b24fd2324e18ac85a85c",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-1ee6a3dc4b8a2d665e18609f",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-dc6dc0fb18df73d3eedba880",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-305f7f1a15b39be9e9a0d9cf",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-085a6878e938b39feaa50c16",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-85f9413f5dee4cc55e196750",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-54ef6526322bc007e7981af8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-038c47954da08cfd1e5477ac",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6102b076550af1c79528b217",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5937680d6e0c20fe9df2f3ed",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "morphosyntax:verb-inversion",
+      "segmentation": "VERB_INVERSION"
+    },
+    {
+      "occurrenceId": "occ-3ec3a3c6a952ecf45b3d950a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-06f40152334fe93734d6088a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f6ab676d76cf75917b043b18",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f23c9f1f5a2e46923426c5e2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cc86b474e862dceab23949af",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-637e2e63389e630e5e1579c7",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-e0c1749ee257ed81d2f7469e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bb5e1a851e289509af8994b8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9a3c54055b42249ad09544f2",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d2272a69ddcbf69490c59344",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6ac551849792a5db8cadeb13",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9cf403c0e92dfe107c88da14",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0721d7df45f594aad31eb3cc",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4320aa73253ebc4c010e4aa4",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-df2d0df2dddbda3fc6af769f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b123928de4d67fdd4a9fafca",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-20a7c9d82f3b480f7ad3dca5",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4435fec8ee13d65432dbeee6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d280c35cd5898d2ddb2b34b0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-52a2ed8616904b08b56ffb9b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8065e22bfe91f946ce7c77b1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-451950adcb64bf938ae59dfc",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8b1a8aa7076b0f30174ba639",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-001f4703a699a02e39d883b3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-31040e3867c18a3480adaf2c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c672ab617cb23649317b5fa1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1f58379809a06e23dbe70d5c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9ddc7f74945575aeab69621c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8127fc56c3e9ea15ff19e9f3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9814376f12778317d351423c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cfb04255f15657a40f136287",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cb37cad82bc9a7ed9bed70a3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d8beeea9874d39a695dafc64",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-43e0f9c7f436b7aff3f75cd8",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ef91b32ffd9db0a8cd9d009b",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-e93099b20ce0be2082952e43",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f5c78ccf13adddfbf751407f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c5fbe8781d3a67d27fc1be1b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6fca8b81246f13065aac4400",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c4841e32144e4364272dc802",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fab61855678fb05fccd7074c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ed1241b643ee4089f5a747dd",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-65e0ad551dc8e8ea6db949ef",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9b4080c54061238155b07b5e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9cc0d6fb7e72bde41bfa925b",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fd975161beb8f59af0fdfc2c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e5887050ab8ff3136fdfd674",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7306fcf86c6253b52610afc2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dc5284ad4966ece6ac94de26",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-aafd26a13b7bab39aaa301a6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3aa3a98bf10102e5ee512839",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-72877f593667c17fe99e3791",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3f057ad2177996ed973839bb",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-919c3518941991faf2b1b1a1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d4d3c8056c6fdc3aca7fb4e4",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b8b276102445fe04214cdd49",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ede95772c6ba8c14c11224c9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6f7f76f2cd32235105db8666",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9883d2b072d1a2f593b9d93a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3f2fae32f3ba92dd65597c04",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a1db780e5cb4204fb39179fb",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-eeddaf22ff1efe4c302c57ca",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cd513b7f9c27e812b8d19c12",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fcb823f8250e64bdebb16790",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9e6f43c5ee0a2cddf477ac33",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-94cc7c2c6439df731c327a1b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d9314bfaf35143af366e4a61",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5e039446aee198cf3f0c09de",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a6ef1073d5d9058e9a553e0b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-fc8e430694900ec8578cd14d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3ce7399bffb9f0a904006e6f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6479f4ad335e6ec116c30373",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3acc531b61a28fd0d29bd2ec",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-723381f768e74e40b99fb1a9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e790ae05fd3ed650e3cb423a",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d179451175a0a95b9fcb0b8a",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8d658eebc951c10aa0a7e6d7",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2a1e2a5571b339542ff06c75",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-eb15eb2c905cd24220fa9ad0",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0d51a2fba1636ad4c6720e0f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-55589509d15beb948086f72e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-931a55ebc3201cbd7e183ea1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4f7909dd1be1fe3191116e4f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3e52bd4a33ba6f350c1030cc",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c9d3a2b2e07d9d19d705407f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-638c97c07baebf91fbfb91cd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8c2dffc54101fafc7b24c292",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a45f1d940ce5b60c7ffef45e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-6e42746fb29cdd5e73f009c0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9304aadfc49116177fcf9027",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-655ca36ea89e5be2439b5a80",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f9f1b5053474e26dbc199859",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f82619c5de5195d02cad4124",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b48cf094a38b1f918f776b46",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dc210aed4b9f6dbd24ed7e89",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-473595ecda15c722541298d2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e043fd3a6782abc0731802c6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5cc349b7ed3c5b33aca1e6cb",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1ca11ac7508ab06f18c3066b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7f318fcaf80213d8ca6ab532",
+      "category": "OTHER",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "PROVISIONAL",
+      "evidence": "segmentation:compound-element",
+      "segmentation": "COMPOUND_ELEMENT"
+    },
+    {
+      "occurrenceId": "occ-9c6d5c0d77d4f4bc757c4e77",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-904f76ef1beef44c88556f5c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e848642046ffe6e8b4a41cad",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8e7c0cc8eecd386d62b75de6",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b4adc6ee8f1dcfd0c56bdb9b",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-9cb873b927124df195223996",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d16b4d97a1892650e427c5fa",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dc8d71135c1a82e82147a811",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5011b84e2ab2a1e05d6751de",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3f91bae9fd810fa2e8162775",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ce997f06d0849a410d267a7d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3e9115dc53b847676aa46784",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5fc136c06f1f21efcbf13f5d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-235c0bc036883bc1bcaf23c1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8cad578f20e38446c9e0e15e",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2cdebaf63fcb1a4783065a11",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-343e3fbbefda77aebf842380",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-25d3674c120f8709ae828fb3",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f79517427ae9e3b1bfca883e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f8d1a0f95087b5f3b9848f0f",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e6c3ab3ecd46623381b7dee5",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f4ed86dc22a4fe90be10feb0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-59d181d6741c94cd8697cddd",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-7589b40a489736e8e3c5ea43",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f68a2c95f3ddc5724c1d7b33",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-deb86c7334e0df9d2999315d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-33409731e2378c2e3d0f34a2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0d7898be479adb6f4381affc",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-822b81166684b3093bff16a6",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f8319c0209247f0429799128",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-729dbf7ab1aa6093bf8c29f0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3f9f58562de6f3e7c01cb26e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0130c38c443e6f26ac28c133",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4ab2006d13c7662573390097",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-59f0b1741f5cb80767694d72",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0ab910ae3f53f125f81db851",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f7e3b1aa26b684f3ea1eecee",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-26016e07be190679bf9a0c8b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a3abdd5a233d727b6a73c6d6",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-2a51c1a99e1c83a4f5f9bd25",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c11da73b3214416037d23bad",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-d0fd416ae9caaf1904ede7f3",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c4d3b9858f6eadf6b39801c0",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0b1c5aa836b3af6cfe2d048d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1dda241d08af2dbbc0100b50",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e94c2cbb7cc168dfc38c37ee",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-be9770593f2bb8b87252d2a2",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-702782f9ef9e0b7e56bfe86c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-b5d0336daa3b2e67edff7a47",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-ab50bd4c953e1454acb4e900",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-074fbe323aee459f0656cbdd",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3f29eeb44dd326cdb00082da",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f31030622d739332aa4e406b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-dba7f82f8f6ea8c892e02b4c",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-a94782e704b924ba9413cfa9",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-017304c82a4e208a8bf3b48e",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-24caaa6f608727b58975aa28",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0509d94dcaed7c6ce365b361",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-bf99e8c52b2a7265b8901198",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1d67eed854a755dca044e03f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-3740a72562c160b60116ba4d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1ba6b3e86c2f7f09e789583a",
+      "category": "VERB_ETRE",
+      "lemma": "être",
+      "partOfSpeech": "VERB",
+      "status": "PROVISIONAL",
+      "evidence": "config-rule:je-etre-strong-predicate",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-e8ca172897063c5f9e71b887",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-70be10e616a62b6db5831201",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-540a1cec24c2781d7c0f9078",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-4a612109a42a2a74990189c1",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-c34113d5116f5e975c3aa016",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-1741a10ffc21fccb5c15804e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-8b332141265dda51e762f75f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f5cfe3796a4bd5f4b1d302df",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5dc363edb69e893b8072c13e",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-964a21a315087cdefccc710d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5a61e526435168c919a526bc",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-5b42e3b2f59e15d5419df312",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-f595913e07f37eb5142fc40b",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-0c9e9793dcdf09c82c16f622",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-cb60dd0dbd10cd73872687bb",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-620813b96bb6e7eca5bf9c0d",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    },
+    {
+      "occurrenceId": "occ-26434cda2991e1043677b75f",
+      "category": "UNKNOWN",
+      "lemma": null,
+      "partOfSpeech": null,
+      "status": "UNKNOWN",
+      "evidence": "context-insufficient-conservative",
+      "segmentation": "AUTONOMOUS"
+    }
+  ]
+}
