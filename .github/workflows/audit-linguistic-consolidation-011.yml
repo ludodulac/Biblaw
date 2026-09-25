@@ -1,0 +1,20 @@
+name: Linguistic consolidation 011
+on:
+  push:
+    branches: [feat/linguistic-occurrences-011-consolidated]
+  pull_request:
+    paths:
+      - 'data/linguistic/**'
+      - 'scripts/**linguistic**'
+      - 'docs/linguistic-occurrences-0**'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python scripts/audit_linguistic_consolidation_011.py
+      - run: python scripts/audit_linguistic_foundation_004.py
+      - run: python scripts/audit_linguistic_second_pilot_006.py
+      - run: python scripts/audit_linguistic_inversion_008.py
