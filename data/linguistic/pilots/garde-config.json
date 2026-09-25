@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 2,
+  "normalizedForm": "garde",
+  "outputStem": "garde",
+  "purpose": "garde-fifth-config-only-replication-pilot",
+  "analyses": [
+    {
+      "category": "NOUN_GARDE",
+      "lemma": "garde",
+      "partOfSpeech": "NOUN"
+    },
+    {
+      "category": "VERB_GARDER",
+      "lemma": "garder",
+      "partOfSpeech": "VERB"
+    }
+  ],
+  "clitics": [
+    "moi",
+    "toi",
+    "le",
+    "la",
+    "les",
+    "lui",
+    "leur",
+    "en",
+    "y"
+  ],
+  "genericPosMap": {
+    "NOUN": "NOUN_GARDE",
+    "VERB": "VERB_GARDER"
+  },
+  "genericRules": [],
+  "rules": [],
+  "selectionMission": "BIBLAW-LINGUISTIC-OCCURRENCES-014",
+  "policy": "Pre-classification config: analyses only; gold must be frozen before lexical classification rules are added."
+}
