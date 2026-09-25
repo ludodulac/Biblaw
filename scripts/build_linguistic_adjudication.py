@@ -38,10 +38,10 @@ def generic_context_analysis(before,after,cfg):
   return ({'category':x['category'],'lemma':x['lemma'],'partOfSpeech':x['partOfSpeech'],'status':'PROVISIONAL','evidence':'generic:'+evidence} if x else None)
  # A: French determiner + target + lexical word strongly supports attributive adjective.
  if 'prenominal-adjective' in enabled and 'ADJ' in by_pos:
-  if re.search(r"(?:^|\s|[«“(])(?:un|une|le|la|les|des|du|ce|cet|cette|ces|mon|ma|mes|ton|ta|tes|son|sa|ses|notre|nos|votre|vos|leur|leurs|quel|quelle|quels|quelles)\s+$",before,re.I) and re.match(r"^\s+[^\W_]+\b",after,re.I): return pick('ADJ','prenominal-adjective')
+  if re.search(r"(?:^|\s|[«“(])(?:un|une|le|la|les|des|du|ce|cet|cette|ces|mon|ma|mes|ton|ta|tes|son|sa|ses|notre|nos|votre|vos|leur|leurs|quel|quelle|quels|quelles)\s+$",before,re.I) and re.match(r"^\s+(?!(?:et|ou)\b)[^\W_]+\b",after,re.I): return pick('ADJ','prenominal-adjective')
  # A: copular predicate; exclude a following determiner because 'est juste une...' is adverbial.
  if 'copular-predicate-adjective' in enabled and 'ADJ' in by_pos:
-  if re.search(r"\b(?:est|était|sera|serait|soit|semble|paraît|devient|demeure|reste)\s+$",before,re.I) and not re.match(r"^\s+(?:un|une|le|la|les|des|du|de la|de l['’])\b",after,re.I): return pick('ADJ','copular-predicate-adjective')
+  if re.search(r"\b(?:est|était|sera|serait|soit|semble|paraît|devient|demeure|reste)\s+$",before,re.I) and re.match(r"^\s*(?:[,.;:!?…]|(?:et|ou|mais|car|que)\b|$)",after,re.I): return pick('ADJ','copular-predicate-adjective')
  # A: restrictive adverb before a determiner phrase, but only after a copular/existential frame.
  if 'adverb-before-determiner' in enabled and 'ADV' in by_pos:
   if re.search(r"(?:c['’]est|ce\s+n['’]est|il\s+y\s+a|il\s+n['’]y\s+a|est|était|sera|serait|devient|reste)\s+$",before,re.I) and re.match(r"^\s+(?:un|une|le|la|les|des|du|de la|de l['’]|ce|cet|cette|ces)\b",after,re.I): return pick('ADV','adverb-before-determiner')
