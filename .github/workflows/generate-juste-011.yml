@@ -2,10 +2,8 @@ name: Generate corrected JUSTE 011
 on:
   push:
     branches: [feat/linguistic-occurrences-011-consolidated]
-    paths:
-      - 'scripts/build_linguistic_adjudication.py'
-      - 'data/linguistic/pilots/juste-config.json'
-      - 'data/linguistic/gold/juste-gold.json'
+  pull_request:
+    branches: [main]
 permissions:
   contents: write
 jobs:
