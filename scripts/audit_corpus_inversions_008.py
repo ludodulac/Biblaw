@@ -26,4 +26,15 @@ for rel in catalog['records']:
     if key in spans:continue
     spans.add(key);hits.append({'kind':kind,'surface':m.group(0),'stem':m.group(1),'pronoun':m.group(3),'recordId':o['id'],'field':field,'verseNumber':verse,'context':text[max(0,m.start()-60):min(len(text),m.end()+60)]})
 families=collections.Counter((x['kind'],x['surface'].casefold()) for x in hits)
-print(json.dumps({'total':len(hits),'byKind':collections.Counter(x['kind'] for x in hits),'families':[{'kind':k[0],'surfaceFolded':k[1],'count':n} for k,n in sorted(families.items())],'occurrences':hits},ensure_ascii=False,default=dict))
+summary={
+ 'totalCandidates':len(hits),
+ 'byKind':dict(collections.Counter(x['kind'] for x in hits)),
+ 'byPronoun':dict(collections.Counter((x['kind']+':'+x['pronoun'].casefold()) for x in hits)),
+ 'byHyphen':dict(collections.Counter(next((c for c in x['surface'] if c in H),'?') for x in hits)),
+ 'uniqueFamilies':len(families),
+ 'directConservativeSupported':sum(x['kind']=='DIRECT' and x['pronoun'].casefold() in {'je','tu','il','elle','on','ils','elles'} for x in hits),
+ 'directNousVousAmbiguous':sum(x['kind']=='DIRECT' and x['pronoun'].casefold() in {'nous','vous'} for x in hits),
+ 'euphonicFamilies':sorted([{'surfaceFolded':k[1],'count':n} for k,n in families.items() if k[0]=='EPHONIC_T'],key=lambda x:x['surfaceFolded']),
+ 'examples':hits[:40]
+}
+print(json.dumps(summary,ensure_ascii=False))
