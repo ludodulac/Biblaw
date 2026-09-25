@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "purpose": "independent-third-adversarial-gold-garde-015",
+  "normalizedForm": "garde",
+  "provenance": {
+    "validationType": "human-audited",
+    "mission": "BIBLAW-LINGUISTIC-OCCURRENCES-015",
+    "selectionPolicy": "Selected outside both 014 gold sets to cover risky noun rules, configured verbs, generic verb-clitic segmentation, compounds and difficult UNKNOWN contexts. Human labels are committed before the 015 comparison audit is added."
+  },
+  "entries": [
+    {"occurrenceId":"occ-6b5dbfdfb6ad547b9f98c67a","category":"NOUN_GARDE","lemma":"garde","partOfSpeech":"NOUN","status":"VALIDATED","rationale":"Prends garde à la tradition: locution prendre garde."},
+    {"occurrenceId":"occ-72150e0a0a98ee18ca64031f","category":"NOUN_GARDE","lemma":"garde","partOfSpeech":"NOUN","status":"VALIDATED","rationale":"je vous mets en garde: locution mettre en garde, frontière avec ponctuation après."},
+    {"occurrenceId":"occ-14f15c11675ab7feb9f36f3d","category":"VERB_GARDER","lemma":"garder","partOfSpeech":"VERB","status":"VALIDATED","rationale":"s'il garde vivant son espace intérieur: sujet pronominal explicite."},
+    {"occurrenceId":"occ-c246c76d7c0f50cb85047d4d","category":"VERB_GARDER","lemma":"garder","partOfSpeech":"VERB","status":"VALIDATED","rationale":"Ordre de la Prêtrise ... qui garde la religion: relative verbale."},
+    {"occurrenceId":"occ-0ff39c006bc35ef89a830f20","category":"VERB_GARDER","lemma":"garder","partOfSpeech":"VERB","status":"VALIDATED","segmentation":"VERB_CLITIC","rationale":"garde-le: impératif verbal avec clitique objet."},
+    {"occurrenceId":"occ-c3b1ecc9960032c1fb9e23e0","category":"VERB_GARDER","lemma":"garder","partOfSpeech":"VERB","status":"VALIDATED","segmentation":"VERB_CLITIC","rationale":"Garde-moi: impératif verbal avec clitique objet."},
+    {"occurrenceId":"occ-9a648c90c8ed0ed73a524421","category":"OTHER","lemma":null,"partOfSpeech":null,"status":"VALIDATED","segmentation":"COMPOUND_ELEMENT","rationale":"garde-fou: composé lexical, pas occurrence autonome de garde."},
+    {"occurrenceId":"occ-0a17712c3f1810bff1edb675","category":"OTHER","lemma":null,"partOfSpeech":null,"status":"VALIDATED","segmentation":"COMPOUND_ELEMENT","rationale":"garde-manger: composé lexical, pas occurrence autonome de garde."},
+    {"occurrenceId":"occ-c872785306e62d56fafc18a3","category":"VERB_GARDER","lemma":"garder","partOfSpeech":"VERB","status":"VALIDATED","rationale":"la nature ... garde un lien: verbe humainement clair, choisi comme cas de couverture difficile."},
+    {"occurrenceId":"occ-2e0d108bba52dac402eb4702","category":"VERB_GARDER","lemma":"garder","partOfSpeech":"VERB","status":"VALIDATED","rationale":"garde la distance: impératif verbal humainement clair après une proposition précédente."}
+  ]
+}
