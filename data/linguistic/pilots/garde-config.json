@@ -48,7 +48,9 @@
       "id": "garde-noun-possessive",
       "beforeRegex": "(?:sa|ma|ta|notre|votre|leur)\\s+$",
       "analysis": "NOUN_GARDE",
-      "evidenceClass": "LEXICAL_CONFIG"
+      "evidenceClass": "LEXICAL_CONFIG",
+      "evidenceScope": "SINGLE_CORPUS_TRIGGER",
+      "independentEvidenceStatus": "LIMITED"
     },
     {
       "id": "garde-verb-clear-subject",
@@ -65,8 +67,14 @@
     }
   ],
   "selectionMission": "BIBLAW-LINGUISTIC-OCCURRENCES-014",
-  "policy": "CONFIG_ONLY_BASELINE 014: engine unchanged. GARDE-specific lexicalized noun constructions and conservative subject/imperative parameters live only in declarative configuration; verb-clitic segmentation reuses the existing generic mechanism; unsupported contexts remain UNKNOWN.",
+  "policy": "CONFIG_ONLY_BASELINE 014: engine unchanged. GARDE-specific lexicalized noun constructions and conservative subject/imperative parameters live only in declarative configuration; verb-clitic segmentation reuses the existing generic mechanism; unsupported contexts remain UNKNOWN. 016 consolidation preserves 014 classifications while separating technical config-only success from independent evidence strength.",
   "segmentationAnalyses": {
     "VERB_CLITIC": "VERB_GARDER"
+  },
+  "methodology": {
+    "technicalConfigOnly": "YES",
+    "independentReplicationStrength": "LIMITED",
+    "noDirectOverfitMechanismDetected": true,
+    "independentEvidenceLimitation": "garde-noun-possessive has one corpus trigger and that occurrence belongs to the principal gold frozen before rule creation; this is not a linguistic contradiction and does not elevate PROVISIONAL to VALIDATED."
   }
 }
