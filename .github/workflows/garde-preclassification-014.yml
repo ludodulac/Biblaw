@@ -1,0 +1,14 @@
+name: GARDE preclassification 014
+on:
+  push:
+    branches: [feat/linguistic-occurrences-014-replication]
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/build_linguistic_adjudication.py --config data/linguistic/pilots/garde-config.json
+      - run: python scripts/build_linguistic_occurrence_index.py --form garde
