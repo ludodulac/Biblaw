@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "normalizedForm": "compte",
+  "outputStem": "compte",
+  "purpose": "compte-fourth-industrialization-pilot",
+  "analyses": [
+    {
+      "category": "NOUN_COMPTE",
+      "lemma": "compte",
+      "partOfSpeech": "NOUN"
+    },
+    {
+      "category": "VERB_COMPTER",
+      "lemma": "compter",
+      "partOfSpeech": "VERB"
+    }
+  ],
+  "clitics": [],
+  "genericPosMap": {
+    "NOUN": "NOUN_COMPTE",
+    "VERB": "VERB_COMPTER"
+  },
+  "genericRules": [],
+  "rules": [],
+  "selectionMission": "BIBLAW-LINGUISTIC-OCCURRENCES-012",
+  "policy": "CONFIG_ONLY seed: candidate analyses only; no automatic contextual rule yet. This state precedes gold evaluation and any engine change."
+}
