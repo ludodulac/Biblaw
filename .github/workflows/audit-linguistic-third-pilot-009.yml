@@ -1,0 +1,19 @@
+name: Linguistic third pilot 009
+on:
+  push:
+    branches: [feat/linguistic-occurrences-009]
+  pull_request:
+    paths:
+      - 'data/linguistic/**'
+      - 'scripts/**linguistic**'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python scripts/audit_linguistic_third_pilot_009.py
+      - run: python scripts/audit_linguistic_foundation_004.py
+      - run: python scripts/audit_linguistic_second_pilot_006.py
+      - run: python scripts/audit_linguistic_inversion_008.py

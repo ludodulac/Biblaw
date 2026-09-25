@@ -30,6 +30,26 @@ def segmentation(o,clitics,inversion_capable=True):
 def full_compound(o):
  before,after=local_parts(o); left=re.search(rf'[^\s«»“”"(),.;:!?]*$',before); right=re.match(r'^[^\s«»“”"(),.;:!?]*',after)
  return (left.group(0) if left else '')+o['surfaceForm']+(right.group(0) if right else '')
+def generic_context_analysis(before,after,cfg):
+ by_pos={x['partOfSpeech']:x for x in cfg['analyses']}
+ enabled=set(cfg.get('genericRules',[])); posmap=cfg.get('genericPosMap',{})
+ def pick(pos,evidence):
+  cat=posmap.get(pos); x=next((a for a in cfg['analyses'] if a['category']==cat),None)
+  return ({'category':x['category'],'lemma':x['lemma'],'partOfSpeech':x['partOfSpeech'],'status':'PROVISIONAL','evidence':'generic:'+evidence} if x else None)
+ # 011: prenominal position is SUPPORTING_EVIDENCE only, never a standalone POS proof.
+ # A: copular predicate; exclude a following determiner because 'est juste une...' is adverbial.
+ if 'copular-predicate-adjective' in enabled and 'ADJ' in by_pos:
+  if re.search(r"\b(?:est|était|sera|serait|soit|semble|paraît|devient|demeure|reste)\s+$",before,re.I) and re.match(r"^\s*(?:[,.;:!?…]|(?:et|ou|mais|car|que)\b|$)",after,re.I): return pick('ADJ','copular-predicate-adjective')
+ # A: restrictive adverb before a determiner phrase, but only after a copular/existential frame.
+ if 'adverb-before-determiner' in enabled and 'ADV' in by_pos:
+  if re.search(r"(?:c['’]est|ce\s+n['’]est|il\s+y\s+a|il\s+n['’]y\s+a|est|était|sera|serait|devient|reste)\s+$",before,re.I) and re.match(r"^\s+(?:un|une|le|la|les|des|du|de la|de l['’]|ce|cet|cette|ces)\b",after,re.I): return pick('ADV','adverb-before-determiner')
+ # 011: finite-modal + target + lexical token does not prove that the token is infinitival; retired as standalone ADV proof.
+ # 011: this frame proves nominalized USE, not lexical NOUN POS.
+ if 'nominalized-adjective-use' in enabled and 'ADJ' in by_pos:
+  if re.search(r"(?:^|\s|[«“(])(?:le|un)\s+$",before,re.I) and re.match(r"^\s*(?:et\b|ou\b|[,.;:!?…]|$)",after,re.I):
+   out=pick('ADJ','nominalized-adjective-use'); out['usage']={'nominalized':True}; return out
+ return None
+
 def analyse_configured(o,cfg):
  inversion_capable=any(x.get('partOfSpeech')=='VERB' for x in cfg['analyses'])
  seg=segmentation(o,cfg.get('clitics',[]),inversion_capable); before,after=local_parts(o); by={x['category']:x for x in cfg['analyses']}
@@ -37,6 +57,8 @@ def analyse_configured(o,cfg):
  mapped=cfg.get('segmentationAnalyses',{}).get(seg)
  if mapped:
   x=by[mapped]; return {'category':x['category'],'lemma':x['lemma'],'partOfSpeech':x['partOfSpeech'],'status':'PROVISIONAL','evidence':'morphosyntax:'+seg.lower().replace('_','-'),'segmentation':seg}
+ generic=generic_context_analysis(before,after,cfg)
+ if generic: return {**generic,'segmentation':seg}
  for rule in cfg.get('rules',[]):
   if rule.get('beforeRegex') and not re.search(rule['beforeRegex'],before,re.I): continue
   if rule.get('afterRegex') and not re.search(rule['afterRegex'],after,re.I): continue

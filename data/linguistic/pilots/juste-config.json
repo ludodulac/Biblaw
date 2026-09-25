@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 4,
+  "normalizedForm": "juste",
+  "outputStem": "juste",
+  "purpose": "juste-third-disambiguation-pilot",
+  "analyses": [
+    {
+      "category": "ADJECTIVE",
+      "lemma": "juste",
+      "partOfSpeech": "ADJ"
+    },
+    {
+      "category": "ADVERB",
+      "lemma": "juste",
+      "partOfSpeech": "ADV"
+    }
+  ],
+  "clitics": [],
+  "genericPosMap": {
+    "ADJ": "ADJECTIVE",
+    "ADV": "ADVERB"
+  },
+  "genericRules": [
+    "copular-predicate-adjective",
+    "adverb-before-determiner",
+    "nominalized-adjective-use"
+  ],
+  "rules": [],
+  "selectionMission": "BIBLAW-LINGUISTIC-OCCURRENCES-009",
+  "policy": "011 proof model: lexical POS is emitted only by frames that prove it conservatively. Prenominal position and finite-modal+target+lexical-complement are supporting evidence only and do not classify alone. Nominalization is represented as usage.nominalized=true on lexical ADJ, never silently converted to NOUN.",
+  "supportingEvidence": [
+    "prenominal-adjective-position",
+    "finite-modal-target-lexical-complement"
+  ]
+}
