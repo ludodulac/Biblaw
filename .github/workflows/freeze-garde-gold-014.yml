@@ -17,3 +17,4 @@ jobs:
           for x in rows:
             print(json.dumps({'id':x['occurrenceId'],'context':x['context']},ensure_ascii=False))
         PY
+
