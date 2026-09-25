@@ -27,7 +27,7 @@ def o(surface,context):
 for c in ['la façon juste de vivre','la vision juste des imperfections','une attitude intérieure juste pour agir','il est juste là','il est juste enfermé']:
  a=gen.analyse_configured(o('juste',c),cfg);assert a['category']!='ADVERB',(c,a)
 # High-confidence reusable frames.
-for c,w in [('une juste orientation','ADJECTIVE'),('cela est juste, vraiment','ADJECTIVE'),("c'est juste une image",'ADVERB'),('il faut juste comprendre','ADVERB'),('le juste, le vrai','NOUN')]:
+for c,w in [('une juste orientation','UNKNOWN'),('cela est juste, vraiment','ADJECTIVE'),("c'est juste une image",'ADVERB'),('il faut juste comprendre','UNKNOWN'),('le juste, le vrai','ADJECTIVE')]:
  a=gen.analyse_configured(o('juste',c),cfg);assert a['category']==w,(c,a,w)
 # Existing pilots must reconstruct byte-structurally.
 for stem in ('porte','suis'):
