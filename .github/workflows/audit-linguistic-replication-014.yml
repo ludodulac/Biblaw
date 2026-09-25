@@ -1,0 +1,20 @@
+name: Linguistic replication pilot 014
+on:
+  push:
+    branches: [feat/linguistic-occurrences-014-replication]
+  pull_request:
+    branches: [main]
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_linguistic_replication_014.py
+      - run: python scripts/audit_linguistic_fourth_pilot_012.py
+      - run: python scripts/audit_linguistic_consolidation_011.py
+      - run: python scripts/audit_linguistic_inversion_008.py
+      - run: python scripts/audit_linguistic_second_pilot_006.py
+      - run: python scripts/audit_linguistic_foundation_004.py
