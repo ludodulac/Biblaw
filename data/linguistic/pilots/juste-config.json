@@ -4,18 +4,34 @@
   "outputStem": "juste",
   "purpose": "juste-third-disambiguation-pilot",
   "analyses": [
-    {"category":"ADJECTIVE","lemma":"juste","partOfSpeech":"ADJ"},
-    {"category":"ADVERB","lemma":"juste","partOfSpeech":"ADV"},
-    {"category":"NOUN","lemma":"juste","partOfSpeech":"NOUN"}
+    {
+      "category": "ADJECTIVE",
+      "lemma": "juste",
+      "partOfSpeech": "ADJ"
+    },
+    {
+      "category": "ADVERB",
+      "lemma": "juste",
+      "partOfSpeech": "ADV"
+    },
+    {
+      "category": "NOUN",
+      "lemma": "juste",
+      "partOfSpeech": "NOUN"
+    }
   ],
   "clitics": [],
-  "genericPosMap": {"ADJ":"ADJECTIVE","ADV":"ADVERB","NOUN":"NOUN"},
+  "genericPosMap": {
+    "ADJ": "ADJECTIVE",
+    "ADV": "ADVERB",
+    "NOUN": "NOUN"
+  },
   "genericRules": [
     "prenominal-adjective",
     "copular-predicate-adjective",
     "adverb-before-determiner",
-    "adverb-before-preposition",
-    "substantivized-adjective"
+    "substantivized-adjective",
+    "modal-adverb-before-infinitive"
   ],
   "rules": [],
   "selectionMission": "BIBLAW-LINGUISTIC-OCCURRENCES-009",
