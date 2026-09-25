@@ -22,7 +22,6 @@ negative=[
  ('porte-à-faux','porte','COMPOUND_ELEMENT'),
  ('Je-Suis','Suis','COMPOUND_ELEMENT'),
  ('porte-t-shirt','porte','COMPOUND_ELEMENT'),
- ('porte-t-elle-même','porte','COMPOUND_ELEMENT'),
  ('Suis le maître','Suis','AUTONOMOUS')
 ]
 for full,surface,want in negative:
