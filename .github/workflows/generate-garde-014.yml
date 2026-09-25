@@ -22,3 +22,4 @@ jobs:
           git add data/linguistic/pilots/garde-occurrences.json data/linguistic/pilots/garde.json data/linguistic/pilots/garde-compounds.json
           git diff --cached --quiet || git commit -m "Generate GARDE config-only artifacts"
           git push
+
