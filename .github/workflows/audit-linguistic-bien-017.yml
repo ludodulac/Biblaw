@@ -1,0 +1,29 @@
+name: Linguistic BIEN raw corpus audit 017
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [audit/bien-017-raw-corpus]
+    paths:
+      - 'scripts/audit_linguistic_bien_017.py'
+      - '.github/workflows/audit-linguistic-bien-017.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  raw-corpus-observation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Observe exact BIEN surfaces without classification
+        run: python scripts/audit_linguistic_bien_017.py
+      - name: Upload exhaustive raw observation
+        uses: actions/upload-artifact@v4
+        with:
+          name: bien-017-raw-observation
+          path: bien-017-raw-observation.json
+          if-no-files-found: error
