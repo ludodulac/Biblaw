@@ -18,6 +18,8 @@ jobs:
         run: python scripts/audit_corpus_inversions_008.py
       - name: Permanent inversion probes
         run: python scripts/audit_linguistic_inversion_008.py
+      - name: Contract drift diagnostic
+        run: python scripts/audit_linguistic_diff_008.py
       - name: Occurrence tests
         run: python scripts/test_linguistic_occurrence_index.py
       - name: PORTE occurrence regression
