@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "normalizedForm": "compte",
   "outputStem": "compte",
   "purpose": "compte-fourth-industrialization-pilot",
@@ -21,7 +21,26 @@
     "VERB": "VERB_COMPTER"
   },
   "genericRules": [],
-  "rules": [],
+  "rules": [
+    {
+      "id": "compte-noun-lexicalized-accounting-frames",
+      "beforeRegex": "(?:prendre|prends|prend|prenez|prenons|prennent|pris|prise|prises|rendre|rends|rend|rendez|rendons|rendent|rendu|rendue|rendus|rendues)\\s+(?:en\\s+)?$",
+      "analysis": "NOUN_COMPTE",
+      "evidenceClass": "LEXICAL_CONFIG"
+    },
+    {
+      "id": "compte-noun-au-bout-du",
+      "beforeRegex": "\\bau\\s+bout\\s+du\\s+$",
+      "analysis": "NOUN_COMPTE",
+      "evidenceClass": "LEXICAL_CONFIG"
+    },
+    {
+      "id": "compte-verb-clear-subject-frames",
+      "beforeRegex": "(?:\\bqui|\\brien\\s+ne|\\bce\\s+qui|\\bl’intention|\\bl'œuvre|\\bl’œuvre|\\bla\\s+sagesse)\\s+$",
+      "analysis": "VERB_COMPTER",
+      "evidenceClass": "LEXICAL_CONFIG"
+    }
+  ],
   "selectionMission": "BIBLAW-LINGUISTIC-OCCURRENCES-012",
-  "policy": "CONFIG_ONLY seed: candidate analyses only; no automatic contextual rule yet. This state precedes gold evaluation and any engine change."
+  "policy": "CONFIG_ONLY_BASELINE: engine unchanged. COMPTE-specific lexical/syntactic knowledge is expressed only in configuration; unsupported contexts remain UNKNOWN. Rules are intentionally conservative and must be audited adversarially."
 }
