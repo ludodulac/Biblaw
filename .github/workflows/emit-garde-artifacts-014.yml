@@ -1,0 +1,15 @@
+name: Emit GARDE artifacts 014
+on:
+  push:
+    branches: [feat/linguistic-occurrences-014-replication]
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/build_linguistic_adjudication.py --config data/linguistic/pilots/garde-config.json --write
+      - run: |
+          python -c "import base64,pathlib; [print('ARTIFACT|'+p+'|'+base64.b64encode(pathlib.Path(p).read_bytes()).decode()) for p in ['data/linguistic/pilots/garde-occurrences.json','data/linguistic/pilots/garde.json','data/linguistic/pilots/garde-compounds.json']]"
