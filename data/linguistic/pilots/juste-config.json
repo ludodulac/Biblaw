@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "normalizedForm": "juste",
   "outputStem": "juste",
   "purpose": "juste-third-disambiguation-pilot",
@@ -13,27 +13,23 @@
       "category": "ADVERB",
       "lemma": "juste",
       "partOfSpeech": "ADV"
-    },
-    {
-      "category": "NOUN",
-      "lemma": "juste",
-      "partOfSpeech": "NOUN"
     }
   ],
   "clitics": [],
   "genericPosMap": {
     "ADJ": "ADJECTIVE",
-    "ADV": "ADVERB",
-    "NOUN": "NOUN"
+    "ADV": "ADVERB"
   },
   "genericRules": [
-    "prenominal-adjective",
     "copular-predicate-adjective",
     "adverb-before-determiner",
-    "substantivized-adjective",
-    "modal-adverb-before-infinitive"
+    "nominalized-adjective-use"
   ],
   "rules": [],
   "selectionMission": "BIBLAW-LINGUISTIC-OCCURRENCES-009",
-  "policy": "JUSTE supplies only lexical candidate analyses and POS-to-category mapping. Reusable French contextual rules live in the generic engine. Unsupported contexts remain UNKNOWN."
+  "policy": "011 proof model: lexical POS is emitted only by frames that prove it conservatively. Prenominal position and finite-modal+target+lexical-complement are supporting evidence only and do not classify alone. Nominalization is represented as usage.nominalized=true on lexical ADJ, never silently converted to NOUN.",
+  "supportingEvidence": [
+    "prenominal-adjective-position",
+    "finite-modal-target-lexical-complement"
+  ]
 }
