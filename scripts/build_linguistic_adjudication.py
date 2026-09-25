@@ -38,7 +38,7 @@ def generic_context_analysis(before,after,cfg):
   return ({'category':x['category'],'lemma':x['lemma'],'partOfSpeech':x['partOfSpeech'],'status':'PROVISIONAL','evidence':'generic:'+evidence} if x else None)
  # A: French determiner + target + lexical word strongly supports attributive adjective.
  if 'prenominal-adjective' in enabled and 'ADJ' in by_pos:
-  if re.search(r"(?:^|[\s«“\\"(])(?:un|une|le|la|les|des|du|ce|cet|cette|ces|mon|ma|mes|ton|ta|tes|son|sa|ses|notre|nos|votre|vos|leur|leurs|quel|quelle|quels|quelles)\s+$",before,re.I) and re.match(r"^\s+[^\W_]+\b",after,re.I): return pick('ADJ','prenominal-adjective')
+  if re.search(r"(?:^|\s|[«“(])(?:un|une|le|la|les|des|du|ce|cet|cette|ces|mon|ma|mes|ton|ta|tes|son|sa|ses|notre|nos|votre|vos|leur|leurs|quel|quelle|quels|quelles)\s+$",before,re.I) and re.match(r"^\s+[^\W_]+\b",after,re.I): return pick('ADJ','prenominal-adjective')
  # A: copular predicate; exclude a following determiner because 'est juste une...' is adverbial.
  if 'copular-predicate-adjective' in enabled and 'ADJ' in by_pos:
   if re.search(r"\b(?:est|était|sera|serait|soit|semble|paraît|devient|demeure|reste)\s+$",before,re.I) and not re.match(r"^\s+(?:un|une|le|la|les|des|du|de la|de l['’])\b",after,re.I): return pick('ADJ','copular-predicate-adjective')
@@ -50,7 +50,7 @@ def generic_context_analysis(before,after,cfg):
   if re.match(r"^\s+(?:pour|avant|après|à|de)\b",after,re.I): return pick('ADV','adverb-before-preposition')
  # A: determiner + adjective used substantivally at a coordination/boundary ('le juste et le bon').
  if 'substantivized-adjective' in enabled and 'NOUN' in by_pos:
-  if re.search(r"(?:^|[\s«“\\"(])(?:le|un)\s+$",before,re.I) and re.match(r"^\s*(?:et\b|ou\b|[,.;:!?…]|$)",after,re.I): return pick('NOUN','substantivized-adjective')
+  if re.search(r"(?:^|\s|[«“(])(?:le|un)\s+$",before,re.I) and re.match(r"^\s*(?:et\b|ou\b|[,.;:!?…]|$)",after,re.I): return pick('NOUN','substantivized-adjective')
  return None
 
 def analyse_configured(o,cfg):
