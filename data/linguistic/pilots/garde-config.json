@@ -31,7 +31,42 @@
     "VERB": "VERB_GARDER"
   },
   "genericRules": [],
-  "rules": [],
+  "rules": [
+    {
+      "id": "garde-noun-mise-en-garde",
+      "beforeRegex": "(?:mise|mettre|met|mets|mettez|mettons|mettent|mis|mise|mises)\\s+en\\s+$",
+      "analysis": "NOUN_GARDE",
+      "evidenceClass": "LEXICAL_CONFIG"
+    },
+    {
+      "id": "garde-noun-prendre-garde",
+      "beforeRegex": "(?:prendre|prends|prend|prenez|prenons|prennent|pris|prise|prises)\\s+$",
+      "analysis": "NOUN_GARDE",
+      "evidenceClass": "LEXICAL_CONFIG"
+    },
+    {
+      "id": "garde-noun-possessive",
+      "beforeRegex": "(?:sa|ma|ta|notre|votre|leur)\\s+$",
+      "analysis": "NOUN_GARDE",
+      "evidenceClass": "LEXICAL_CONFIG"
+    },
+    {
+      "id": "garde-verb-clear-subject",
+      "beforeRegex": "(?:\\bje|\\btu|\\bil|\\belle|\\bon|\\bnous|\\bvous|\\bils|\\belles|\\bqui|\\bl’homme|\\bl'homme|\\bdieu|\\bpère|\\bla\\s+lumière|\\bla\\s+tradition|\\ble\\s+cœur|\\ble\\s+coeur)\\s+(?:ne\\s+|n[’']\\s*)?$",
+      "analysis": "VERB_GARDER",
+      "evidenceClass": "LEXICAL_CONFIG"
+    },
+    {
+      "id": "garde-verb-imperative-object",
+      "beforeRegex": "(?:^|[.!?…:;]\\s*)$",
+      "afterRegex": "\\s+(?:le|la|les|un|une|des|ce|cet|cette|ces|ton|ta|tes|mon|ma|mes|notre|votre|leur|leurs|en)\\b",
+      "analysis": "VERB_GARDER",
+      "evidenceClass": "LEXICAL_CONFIG"
+    }
+  ],
   "selectionMission": "BIBLAW-LINGUISTIC-OCCURRENCES-014",
-  "policy": "Pre-classification config: analyses only; gold must be frozen before lexical classification rules are added."
+  "policy": "CONFIG_ONLY_BASELINE 014: engine unchanged. GARDE-specific lexicalized noun constructions and conservative subject/imperative parameters live only in declarative configuration; verb-clitic segmentation reuses the existing generic mechanism; unsupported contexts remain UNKNOWN.",
+  "segmentationAnalyses": {
+    "VERB_CLITIC": "VERB_GARDER"
+  }
 }
