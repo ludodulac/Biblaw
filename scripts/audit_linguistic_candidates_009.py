@@ -10,7 +10,7 @@ for rel in cat['records']:
  p=R/rel
  if not p.exists() or not rel.startswith(('data/corpus/books/','data/prayers/','data/notes/')):continue
  o=json.loads(p.read_text(encoding='utf-8'))
- if o.get('type') in {'theme','book'}:continue
+ if o.get('recordType') in {'theme','book'} or (o.get('recordType')=='psalm' and not rel.startswith('data/corpus/books/')):continue
  fields=[]
  for k in ('title','text','summary'):
   if isinstance(o.get(k),str):fields.append((k,None,o[k]))
