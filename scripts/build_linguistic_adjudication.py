@@ -10,19 +10,19 @@ DIRECT_INVERSION_PRONOUNS={'je','tu','il','elle','on','ils','elles'}
 EPHONIC_T_PRONOUNS={'il','elle','on'}
 def local_parts(o):
  i=min(o['startOffset'],90); return o['context'][:i],o['context'][i+len(o['surfaceForm']):]
-def segmentation(o,clitics):
+def segmentation(o,clitics,inversion_capable=True):
  before,after=local_parts(o)
  if after and after[:1] in HYPHENS:
   tail=after[1:]
   m=re.match(r"[^\W_]+",tail,re.UNICODE); follower=m.group().casefold() if m else ''
   # Conservative: nous/vous are graphically ambiguous with object/reflexive clitics.
-  if follower in DIRECT_INVERSION_PRONOUNS: return 'VERB_INVERSION'
+  if inversion_capable and follower in DIRECT_INVERSION_PRONOUNS: return 'VERB_INVERSION'
   # Euphonic -t- is structural: require t + second hyphen + 3sg subject pronoun.
   if follower=='t' and m:
    rest=tail[m.end():]
    if rest and rest[:1] in HYPHENS:
     pm=re.match(r"[^\W_]+",rest[1:],re.UNICODE); pron=pm.group().casefold() if pm else ''
-    if pron in EPHONIC_T_PRONOUNS: return 'VERB_INVERSION'
+    if inversion_capable and pron in EPHONIC_T_PRONOUNS: return 'VERB_INVERSION'
   if follower in {x.casefold() for x in clitics}: return 'VERB_CLITIC'
   return 'COMPOUND_ELEMENT'
  if before and before[-1:] in HYPHENS: return 'COMPOUND_ELEMENT'
@@ -31,7 +31,7 @@ def full_compound(o):
  before,after=local_parts(o); left=re.search(rf'[^\s«»“”"(),.;:!?]*$',before); right=re.match(r'^[^\s«»“”"(),.;:!?]*',after)
  return (left.group(0) if left else '')+o['surfaceForm']+(right.group(0) if right else '')
 def analyse_configured(o,cfg):
- seg=segmentation(o,cfg.get('clitics',[])); before,after=local_parts(o); by={x['category']:x for x in cfg['analyses']}
+ inversion_capable=any(x.get('partOfSpeech')=='VERB' for x in cfg['analyses'])\n seg=segmentation(o,cfg.get('clitics',[]),inversion_capable); before,after=local_parts(o); by={x['category']:x for x in cfg['analyses']}
  if seg=='COMPOUND_ELEMENT': return {'category':'OTHER','lemma':None,'partOfSpeech':None,'status':'PROVISIONAL','evidence':'segmentation:compound-element','segmentation':seg}
  mapped=cfg.get('segmentationAnalyses',{}).get(seg)
  if mapped:
