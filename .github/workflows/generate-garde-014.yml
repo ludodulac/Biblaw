@@ -1,0 +1,24 @@
+name: Generate GARDE artifacts 014
+on:
+  push:
+    branches: [feat/linguistic-occurrences-014-replication]
+permissions:
+  contents: write
+jobs:
+  generate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/linguistic-occurrences-014-replication
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/build_linguistic_adjudication.py --config data/linguistic/pilots/garde-config.json --write
+      - run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/linguistic/pilots/garde-occurrences.json data/linguistic/pilots/garde.json data/linguistic/pilots/garde-compounds.json
+          git diff --cached --quiet || git commit -m "Generate GARDE config-only artifacts"
+          git push
