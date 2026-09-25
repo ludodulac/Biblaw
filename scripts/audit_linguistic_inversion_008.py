@@ -29,7 +29,7 @@ for full,surface,want in negative:
  assert got==want,(full,got,want)
 # Object clitic remains distinct.
 assert gen.segmentation(o('suis','suis-le'),['le','la','les','lui','leur','en','y'])=='VERB_CLITIC'
-# Segmentation does not decide a lemma/POS without candidate-specific mapping.
+# A non-verbal candidate must not become VERB_INVERSION from graphy alone.\nassert gen.segmentation(o('rayon','rayon-je'),[],False)=='COMPOUND_ELEMENT'\n# Segmentation does not decide a lemma/POS without candidate-specific mapping.
 cfg={'analyses':[{'category':'A','lemma':'alpha','partOfSpeech':'VERB'},{'category':'B','lemma':'beta','partOfSpeech':'NOUN'}],'clitics':[],'rules':[]}
 a=gen.analyse_configured(o('porte','porte-t-il'),cfg)
 assert a['segmentation']=='VERB_INVERSION' and a['category']=='UNKNOWN' and a['lemma'] is None
