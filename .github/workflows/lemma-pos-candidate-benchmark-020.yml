@@ -23,7 +23,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
       - name: Install pinned engines
         run: |
           python -m pip install --upgrade pip
@@ -33,14 +32,7 @@ jobs:
         run: |
           python - <<'PY'
           import stanza
-          stanza.download(
-              "fr",
-              model_dir="/tmp/stanza_resources_020",
-              package="default",
-              processors="tokenize,mwt,pos,lemma",
-              resources_version="1.14.0",
-              verbose=False,
-          )
+          stanza.download("fr",model_dir="/tmp/stanza_resources_020",package="default",processors="tokenize,mwt,pos,lemma",resources_version="1.14.0",verbose=False)
           print("STANZA_RESOURCES_VERSION = 1.14.0")
           PY
       - name: Verify deterministic sample before inference
