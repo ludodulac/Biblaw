@@ -31,7 +31,7 @@ jobs:
 
       - name: Create deterministic source snapshot
         run: |
-          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner             -cf /tmp/biblaw-source-baseline-028r.tar             data/catalog.json data/corpus data/prayers
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner             -cf /tmp/biblaw-source-baseline-028r.tar             data
           sha256sum /tmp/biblaw-source-baseline-028r.tar | tee /tmp/biblaw-source-baseline-028r.tar.sha256
           ls -lh /tmp/biblaw-source-baseline-028r.tar
 
