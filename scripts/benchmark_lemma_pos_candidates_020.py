@@ -33,7 +33,8 @@ def iter_tokens():
         for field,vn,text in occ.fields(obj):
             for m in occ.TOKEN_RE.finditer(text):
                 s=m.group(); n=occ.norm(s); st,en=m.span(); oid=occ.oid(obj['id'],field,vn,st,en)
-                yield {'occurrenceId':oid,'recordId':obj['id'],'recordType':obj.get('recordType'),'bookNumber':bn,'psalmNumber':pn,'verseNumber':vn,'field':field,'surface':s,'normalizedForm':n,'startOffset':st,'endOffset':en,'apostrophe':("'" in s or '’' in s),'hyphenAdjacency':dash(text[st-1] if st else '') or dash(text[en] if en<len(text) else ''),'caseClass':case_class(s),'text':text}
+                left=max(0,st-300); right=min(len(text),en+300)
+                yield {'occurrenceId':oid,'recordId':obj['id'],'recordType':obj.get('recordType'),'bookNumber':bn,'psalmNumber':pn,'verseNumber':vn,'field':field,'surface':s,'normalizedForm':n,'startOffset':st,'endOffset':en,'apostrophe':("'" in s or '’' in s),'hyphenAdjacency':dash(text[st-1] if st else '') or dash(text[en] if en<len(text) else ''),'caseClass':case_class(s),'text':text,'modelText':text[left:right],'modelStart':st-left,'modelEnd':en-left}
 def sample():
     freq=Counter(x['normalizedForm'] for x in iter_tokens()); reservoirs=defaultdict(list); known={}; CAP=32
     for x in iter_tokens():
@@ -66,9 +67,9 @@ def load_repo_gold():
     return out
 def spacy_run(rows):
     import spacy, fr_core_news_sm
-    nlp=fr_core_news_sm.load(disable=['ner']); results={}; texts=[x['text'] for x in rows]
+    nlp=fr_core_news_sm.load(disable=['ner']); results={}; texts=[x['modelText'] for x in rows]
     for x,doc in zip(rows,nlp.pipe(texts,batch_size=64)):
-        matches=[t for t in doc if t.idx==x['startOffset'] and t.idx+len(t.text)==x['endOffset']]
+        matches=[t for t in doc if t.idx==x['modelStart'] and t.idx+len(t.text)==x['modelEnd']]
         if len(matches)!=1: results[x['occurrenceId']]={'alignmentStatus':'ALIGNMENT_FAILURE','externalLemma':None,'externalPOS':None,'externalMorphology':None}
         else:
             t=matches[0]; results[x['occurrenceId']]={'alignmentStatus':'ALIGNED','externalLemma':t.lemma_ or None,'externalPOS':t.pos_ or None,'externalMorphology':str(t.morph) or None}
@@ -80,12 +81,12 @@ def stanza_run(rows):
     BATCH=128
     for start in range(0,len(rows),BATCH):
         chunk=rows[start:start+BATCH]
-        docs=nlp([stanza.Document([],text=x['text']) for x in chunk])
+        docs=nlp([stanza.Document([],text=x['modelText']) for x in chunk])
         for x,doc in zip(chunk,docs):
             matches=[]
             for sent in doc.sentences:
                 for tok in sent.tokens:
-                    if tok.start_char==x['startOffset'] and tok.end_char==x['endOffset'] and len(tok.words)==1: matches.append(tok.words[0])
+                    if tok.start_char==x['modelStart'] and tok.end_char==x['modelEnd'] and len(tok.words)==1: matches.append(tok.words[0])
             if len(matches)!=1: results[x['occurrenceId']]={'alignmentStatus':'ALIGNMENT_FAILURE','externalLemma':None,'externalPOS':None,'externalMorphology':None}
             else:
                 w=matches[0]; results[x['occurrenceId']]={'alignmentStatus':'ALIGNED','externalLemma':w.lemma or None,'externalPOS':w.upos or None,'externalMorphology':w.feats or None}
@@ -122,7 +123,7 @@ def main():
         bench.append(item)
         if not aligned or (aligned and (((a['externalLemma'] or '').casefold()!=(b['externalLemma'] or '').casefold()) or a['externalPOS']!=b['externalPOS'])):
             d=dict(item); d['context']=x['text'][max(0,x['startOffset']-100):min(len(x['text']),x['endOffset']+100)]; disag.append(d)
-    payload={'mission':'BIBLAW-LEXICAL-INDUSTRIALIZATION-020','sourceBaseline':BASELINE,'source019Head':SOURCE_HEAD,'executedHead':os.getenv('GITHUB_SHA','LOCAL'),'sampleAlgorithm':{'size':SAMPLE_N,'frequencyBands':['1-9','10-99','100-999','1000+'],'signature':['frequencyBand','apostrophe','hyphenAdjacency','caseClass','bookNumber','field','recordType'],'withinSignature':'smallest SHA256(occurrenceId), reservoir cap 32','selection':'lexicographically sorted signatures, deterministic round-robin until exactly 10000','modelOutputsUsedForSelection':False},'generalSampleSize':len(general),'knownFormSupplementSize':len(supp),'benchmarkOccurrenceCount':len(ordered),'engines':{'spacy':{'version':sv,'model':'fr_core_news_sm','modelVersion':smv},'stanza':{'version':stv,'model':'fr/default combined','resourcesVersion':'1.14.0'}},'morphalou':{'status':'DEFERRED','reason':'ORTOLANG resource access requires licence acceptance; no automated acceptance or circumvention in 020'},'alignmentMethod':'External native tokenization on exact canonical field text; target accepted only when exactly one external token has start/end chars identical to BIBLAW startOffset/endOffset; Stanza additionally requires exactly one Word inside Token.','metrics':dict(metrics),'agreementByFrequencyBand':{k:dict(v) for k,v in sorted(bands.items())},'specialAgreement':{k:dict(v) for k,v in special.items()},'knownGoldMetrics':dict(gold_metrics),'occurrences':bench}
+    payload={'mission':'BIBLAW-LEXICAL-INDUSTRIALIZATION-020','sourceBaseline':BASELINE,'source019Head':SOURCE_HEAD,'executedHead':os.getenv('GITHUB_SHA','LOCAL'),'sampleAlgorithm':{'size':SAMPLE_N,'frequencyBands':['1-9','10-99','100-999','1000+'],'signature':['frequencyBand','apostrophe','hyphenAdjacency','caseClass','bookNumber','field','recordType'],'withinSignature':'smallest SHA256(occurrenceId), reservoir cap 32','selection':'lexicographically sorted signatures, deterministic round-robin until exactly 10000','modelOutputsUsedForSelection':False},'generalSampleSize':len(general),'knownFormSupplementSize':len(supp),'benchmarkOccurrenceCount':len(ordered),'engines':{'spacy':{'version':sv,'model':'fr_core_news_sm','modelVersion':smv},'stanza':{'version':stv,'model':'fr/default combined','resourcesVersion':'1.14.0'}},'morphalou':{'status':'DEFERRED','reason':'ORTOLANG resource access requires licence acceptance; no automated acceptance or circumvention in 020'},'alignmentMethod':'External native tokenization on deterministic canonical context window [target-300,target+300] characters; external offsets are translated back to the unchanged BIBLAW target span. Target accepted only when exactly one external token matches translated target boundaries; Stanza additionally requires exactly one Word inside Token.','metrics':dict(metrics),'agreementByFrequencyBand':{k:dict(v) for k,v in sorted(bands.items())},'specialAgreement':{k:dict(v) for k,v in special.items()},'knownGoldMetrics':dict(gold_metrics),'occurrences':bench}
     OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); DIS.write_text(json.dumps({'mission':'020','count':len(disag),'disagreements':disag},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print('GENERAL_SAMPLE_SIZE =',len(general)); print('KNOWN_FORM_SUPPLEMENT_SIZE =',len(supp)); print('BENCHMARK_OCCURRENCE_COUNT =',len(ordered))
     for k,v in sorted(metrics.items()): print(k.upper(), '=',v)
