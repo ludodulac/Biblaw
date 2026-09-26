@@ -1,0 +1,46 @@
+name: BIBLAW baseline source snapshot 028R
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/targeted-context-runtime-recovery-028r
+    paths:
+      - .github/workflows/targeted-context-source-snapshot-028r.yml
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 5c755358f5cda20db52a2d748cbb2664a1831dcc
+          fetch-depth: 1
+
+      - name: Verify exact baseline
+        run: |
+          test "$(git rev-parse HEAD)" = "5c755358f5cda20db52a2d748cbb2664a1831dcc"
+          test -f data/catalog.json
+          test -d data/corpus
+          test -d data/prayers
+          echo "SOURCE_BASELINE_VERIFIED = YES"
+
+      - name: Create deterministic source snapshot
+        run: |
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner             -cf /tmp/biblaw-source-baseline-028r.tar             data/catalog.json data/corpus data/prayers
+          sha256sum /tmp/biblaw-source-baseline-028r.tar | tee /tmp/biblaw-source-baseline-028r.tar.sha256
+          ls -lh /tmp/biblaw-source-baseline-028r.tar
+
+      - name: Upload source snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-source-baseline-028r
+          path: |
+            /tmp/biblaw-source-baseline-028r.tar
+            /tmp/biblaw-source-baseline-028r.tar.sha256
+          if-no-files-found: error
+          compression-level: 0
