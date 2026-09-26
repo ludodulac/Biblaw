@@ -218,12 +218,77 @@ jobs:
           sha256sum biblaw-nlp-runtime-028r.tar | tee biblaw-nlp-runtime-028r.tar.sha256
           ls -lh biblaw-nlp-runtime-028r.tar
 
-      - name: Upload offline runtime capsule
+      - name: Verify canonical capsule hash and split for connector-safe transport
+        run: |
+          cd /tmp/biblaw-nlp-runtime-028r
+          echo "96a99e28d370cea360b38035dceb1c07fcf1e5a4fc66c5f9e2a1f11ec57ca0e5  biblaw-nlp-runtime-028r.tar" | sha256sum -c -
+          mkdir -p parts
+          split -b 450M -d -a 2 biblaw-nlp-runtime-028r.tar parts/biblaw-nlp-runtime-028r.tar.part-
+          sha256sum parts/* > parts/SHA256SUMS
+          ls -lh parts
+
+      - name: Upload transport part 00
         uses: actions/upload-artifact@v4
         with:
-          name: biblaw-nlp-runtime-028r
+          name: biblaw-nlp-runtime-028r-part00
+          path: /tmp/biblaw-nlp-runtime-028r/parts/biblaw-nlp-runtime-028r.tar.part-00
+          if-no-files-found: error
+          compression-level: 0
+
+      - name: Upload transport part 01
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-nlp-runtime-028r-part01
+          path: /tmp/biblaw-nlp-runtime-028r/parts/biblaw-nlp-runtime-028r.tar.part-01
+          if-no-files-found: error
+          compression-level: 0
+
+      - name: Upload transport part 02
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-nlp-runtime-028r-part02
+          path: /tmp/biblaw-nlp-runtime-028r/parts/biblaw-nlp-runtime-028r.tar.part-02
+          if-no-files-found: error
+          compression-level: 0
+
+      - name: Upload transport part 03
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-nlp-runtime-028r-part03
+          path: /tmp/biblaw-nlp-runtime-028r/parts/biblaw-nlp-runtime-028r.tar.part-03
+          if-no-files-found: error
+          compression-level: 0
+
+      - name: Upload transport part 04
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-nlp-runtime-028r-part04
+          path: /tmp/biblaw-nlp-runtime-028r/parts/biblaw-nlp-runtime-028r.tar.part-04
+          if-no-files-found: error
+          compression-level: 0
+
+      - name: Upload transport part 05
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-nlp-runtime-028r-part05
+          path: /tmp/biblaw-nlp-runtime-028r/parts/biblaw-nlp-runtime-028r.tar.part-05
+          if-no-files-found: error
+          compression-level: 0
+
+      - name: Upload transport part 06
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-nlp-runtime-028r-part06
+          path: /tmp/biblaw-nlp-runtime-028r/parts/biblaw-nlp-runtime-028r.tar.part-06
+          if-no-files-found: error
+          compression-level: 0
+
+      - name: Upload transport metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-nlp-runtime-028r-transport-metadata
           path: |
-            /tmp/biblaw-nlp-runtime-028r/biblaw-nlp-runtime-028r.tar
+            /tmp/biblaw-nlp-runtime-028r/parts/SHA256SUMS
             /tmp/biblaw-nlp-runtime-028r/biblaw-nlp-runtime-028r.tar.sha256
           if-no-files-found: error
           compression-level: 0
