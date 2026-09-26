@@ -77,15 +77,19 @@ def stanza_run(rows):
     import stanza
     model_dir=os.environ.get('STANZA_RESOURCES_DIR',str(ROOT/'.stanza_resources_020'))
     nlp=stanza.Pipeline('fr',dir=model_dir,processors='tokenize,mwt,pos,lemma',package='default',download_method=None,use_gpu=False,verbose=False); results={}
-    for i,x in enumerate(rows,1):
-        doc=nlp(x['text']); matches=[]
-        for sent in doc.sentences:
-            for tok in sent.tokens:
-                if tok.start_char==x['startOffset'] and tok.end_char==x['endOffset'] and len(tok.words)==1: matches.append(tok.words[0])
-        if len(matches)!=1: results[x['occurrenceId']]={'alignmentStatus':'ALIGNMENT_FAILURE','externalLemma':None,'externalPOS':None,'externalMorphology':None}
-        else:
-            w=matches[0]; results[x['occurrenceId']]={'alignmentStatus':'ALIGNED','externalLemma':w.lemma or None,'externalPOS':w.upos or None,'externalMorphology':w.feats or None}
-        if i%500==0: print(f'STANZA_PROGRESS = {i}/{len(rows)}',flush=True)
+    BATCH=128
+    for start in range(0,len(rows),BATCH):
+        chunk=rows[start:start+BATCH]
+        docs=nlp([stanza.Document([],text=x['text']) for x in chunk])
+        for x,doc in zip(chunk,docs):
+            matches=[]
+            for sent in doc.sentences:
+                for tok in sent.tokens:
+                    if tok.start_char==x['startOffset'] and tok.end_char==x['endOffset'] and len(tok.words)==1: matches.append(tok.words[0])
+            if len(matches)!=1: results[x['occurrenceId']]={'alignmentStatus':'ALIGNMENT_FAILURE','externalLemma':None,'externalPOS':None,'externalMorphology':None}
+            else:
+                w=matches[0]; results[x['occurrenceId']]={'alignmentStatus':'ALIGNED','externalLemma':w.lemma or None,'externalPOS':w.upos or None,'externalMorphology':w.feats or None}
+        print(f'STANZA_PROGRESS = {min(start+BATCH,len(rows))}/{len(rows)}',flush=True)
     return results,stanza.__version__
 def main():
     freq,general,supp=sample(); gold=load_repo_gold(); rows=general+supp; by={}; ordered=[]
