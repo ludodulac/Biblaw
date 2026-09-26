@@ -1,0 +1,229 @@
+name: BIBLAW NLP runtime recovery 028R
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/targeted-context-runtime-recovery-028r
+    paths:
+      - .github/workflows/targeted-context-runtime-recovery-028r.yml
+
+permissions:
+  contents: read
+
+jobs:
+  build-offline-capsule:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    env:
+      TARGET_PYTHON: "3.13.5"
+      EXPECTED_SPACY: "3.8.16"
+      EXPECTED_STANZA: "1.14.0"
+      EXPECTED_FR_MODEL: "3.8.0"
+      EXPECTED_TORCH: "2.14.0"
+      STANZA_RESOURCES_VERSION: "1.14.0"
+      STANZA_PROCESSORS: "tokenize,mwt,pos,lemma"
+      CAPSULE_ROOT: /tmp/biblaw-nlp-runtime-028r/capsule
+      STANZA_DOWNLOAD_DIR: /tmp/biblaw-nlp-runtime-028r/stanza_download
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13.5"
+
+      - name: Verify target runtime
+        run: |
+          python --version
+          python - <<'PY'
+          import json, os, platform, sys, sysconfig
+          observed = {
+              "python": platform.python_version(),
+              "sys_version": sys.version,
+              "machine": platform.machine(),
+              "platform": sysconfig.get_platform(),
+              "os_name": os.name,
+          }
+          print(json.dumps(observed, indent=2, sort_keys=True))
+          assert observed["python"] == "3.13.5"
+          assert observed["machine"] == "x86_64"
+          assert observed["platform"] == "linux-x86_64"
+          assert observed["os_name"] == "posix"
+          PY
+
+      - name: Install exact historical NLP engines for capsule construction
+        run: |
+          python -m venv /tmp/biblaw-nlp-runtime-028r/build-venv
+          source /tmp/biblaw-nlp-runtime-028r/build-venv/bin/activate
+          python -m pip install "pip==26.2.1"
+          python -m pip install             "spacy==3.8.16"             "stanza==1.14.0"             "torch==2.14.0"             "setuptools==84.0.0"
+          python -m pip install             "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.8.0/fr_core_news_sm-3.8.0-py3-none-any.whl"
+          python - <<'PY'
+          import importlib.metadata as md
+          import spacy, stanza, torch
+          assert spacy.__version__ == "3.8.16"
+          assert stanza.__version__ == "1.14.0"
+          assert torch.__version__.split("+",1)[0] == "2.14.0"
+          assert md.version("fr-core-news-sm") == "3.8.0"
+          print("BUILD_ENGINE_VERSION_GATE = PASS")
+          PY
+
+      - name: Download exact Stanza French resources
+        run: |
+          source /tmp/biblaw-nlp-runtime-028r/build-venv/bin/activate
+          rm -rf "$STANZA_DOWNLOAD_DIR"
+          python - <<'PY'
+          import os, stanza
+          stanza.download(
+              "fr",
+              model_dir=os.environ["STANZA_DOWNLOAD_DIR"],
+              package="default",
+              processors=os.environ["STANZA_PROCESSORS"],
+              resources_version=os.environ["STANZA_RESOURCES_VERSION"],
+              verbose=False,
+          )
+          print("STANZA_RESOURCES_VERSION = " + os.environ["STANZA_RESOURCES_VERSION"])
+          PY
+
+      - name: Build resolved lock and complete wheelhouse
+        run: |
+          source /tmp/biblaw-nlp-runtime-028r/build-venv/bin/activate
+          rm -rf "$CAPSULE_ROOT"
+          mkdir -p "$CAPSULE_ROOT/wheelhouse" "$CAPSULE_ROOT/stanza_resources" "$CAPSULE_ROOT/metadata"
+          cp -a "$STANZA_DOWNLOAD_DIR"/. "$CAPSULE_ROOT/stanza_resources/"
+          python - <<'PY'
+          import importlib.metadata as md
+          from pathlib import Path
+
+          root = Path("/tmp/biblaw-nlp-runtime-028r/capsule")
+          rows = []
+          for dist in md.distributions():
+              name = (dist.metadata.get("Name") or "").strip()
+              if not name or name.lower() == "pip":
+                  continue
+              rows.append((name, dist.version))
+          rows = sorted(set(rows), key=lambda x: x[0].casefold())
+          lock = "\n".join(f"{name}=={version}" for name, version in rows) + "\n"
+          (root / "metadata" / "resolved-lock.txt").write_text(lock, encoding="utf-8")
+          download = "\n".join(
+              f"{name}=={version}"
+              for name, version in rows
+              if name.casefold().replace("_","-") != "fr-core-news-sm"
+          ) + "\n"
+          (root / "metadata" / "download-lock.txt").write_text(download, encoding="utf-8")
+          PY
+          python -m pip download             --only-binary=:all:             --dest "$CAPSULE_ROOT/wheelhouse"             -r "$CAPSULE_ROOT/metadata/download-lock.txt"
+          curl -fL             "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.8.0/fr_core_news_sm-3.8.0-py3-none-any.whl"             -o "$CAPSULE_ROOT/wheelhouse/fr_core_news_sm-3.8.0-py3-none-any.whl"
+
+      - name: Write deterministic provenance manifest
+        run: |
+          source /tmp/biblaw-nlp-runtime-028r/build-venv/bin/activate
+          python - <<'PY'
+          import hashlib, json, os, platform, sysconfig
+          from pathlib import Path
+
+          root = Path(os.environ["CAPSULE_ROOT"])
+          reference = {
+              "mission": "BIBLAW-LEXICAL-INDUSTRIALIZATION-028-R",
+              "capsuleName": "biblaw-nlp-runtime-028r",
+              "source020Commit": "c95e6644bd2e154d85a896035fa61a52e5f375ff",
+              "source020Workflow": ".github/workflows/lemma-pos-candidate-benchmark-020.yml",
+              "target": {
+                  "pythonVersion": platform.python_version(),
+                  "machine": platform.machine(),
+                  "platform": sysconfig.get_platform(),
+                  "osName": os.name,
+              },
+              "expectedVersions": {
+                  "spacy": os.environ["EXPECTED_SPACY"],
+                  "fr_core_news_sm": os.environ["EXPECTED_FR_MODEL"],
+                  "stanza": os.environ["EXPECTED_STANZA"],
+                  "torch": os.environ["EXPECTED_TORCH"],
+                  "stanzaResourcesVersion": os.environ["STANZA_RESOURCES_VERSION"],
+                  "stanzaProcessors": os.environ["STANZA_PROCESSORS"],
+                  "stanzaPackage": "default",
+              },
+              "constraints": {
+                  "containsBiblawCorpus": False,
+                  "containsMorphalou": False,
+                  "containsGold": False,
+                  "containsBiblawPredictions": False,
+              },
+          }
+          (root / "metadata" / "runtime-reference.json").write_text(
+              json.dumps(reference, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+
+          files = []
+          for p in sorted(root.rglob("*")):
+              if not p.is_file() or p.name == "manifest.json":
+                  continue
+              data = p.read_bytes()
+              files.append({
+                  "path": p.relative_to(root).as_posix(),
+                  "size": len(data),
+                  "sha256": hashlib.sha256(data).hexdigest(),
+              })
+          manifest = dict(reference)
+          manifest["files"] = files
+          manifest["manifestSelfHashExcluded"] = True
+          (root / "manifest.json").write_text(
+              json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print("MANIFEST_FILE_COUNT =", len(files))
+          PY
+
+      - name: Validate capsule in a clean offline installation
+        env:
+          HF_HUB_OFFLINE: "1"
+          TRANSFORMERS_OFFLINE: "1"
+        run: |
+          rm -rf /tmp/biblaw-nlp-runtime-028r/offline-venv
+          python -m venv /tmp/biblaw-nlp-runtime-028r/offline-venv
+          source /tmp/biblaw-nlp-runtime-028r/offline-venv/bin/activate
+          python -m pip install             --no-index             --find-links="$CAPSULE_ROOT/wheelhouse"             -r "$CAPSULE_ROOT/metadata/resolved-lock.txt"
+          python - <<'PY'
+          import importlib.metadata as md
+          import os, spacy, stanza
+
+          assert spacy.__version__ == "3.8.16"
+          assert stanza.__version__ == "1.14.0"
+          assert md.version("fr-core-news-sm") == "3.8.0"
+
+          nlp = spacy.load("fr_core_news_sm")
+          doc = nlp("Je suis ici.")
+          assert len(doc) > 0
+          print("SPACY_MODEL_LOAD = PASS")
+
+          resources = os.path.join(os.environ["CAPSULE_ROOT"], "stanza_resources")
+          pipe = stanza.Pipeline(
+              "fr",
+              dir=resources,
+              package="default",
+              processors="tokenize,mwt,pos,lemma",
+              use_gpu=False,
+              verbose=False,
+              download_method=None,
+          )
+          sdoc = pipe("Je suis ici.")
+          assert sdoc.sentences and sdoc.sentences[0].words
+          print("STANZA_PIPELINE_LOAD_OFFLINE = PASS")
+          print("OFFLINE_INSTALL_TEST_GITHUB = PASS")
+          PY
+
+      - name: Create deterministic capsule tar
+        run: |
+          cd /tmp/biblaw-nlp-runtime-028r
+          tar             --sort=name             --mtime='UTC 1970-01-01'             --owner=0             --group=0             --numeric-owner             -cf biblaw-nlp-runtime-028r.tar capsule
+          sha256sum biblaw-nlp-runtime-028r.tar | tee biblaw-nlp-runtime-028r.tar.sha256
+          ls -lh biblaw-nlp-runtime-028r.tar
+
+      - name: Upload offline runtime capsule
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-nlp-runtime-028r
+          path: |
+            /tmp/biblaw-nlp-runtime-028r/biblaw-nlp-runtime-028r.tar
+            /tmp/biblaw-nlp-runtime-028r/biblaw-nlp-runtime-028r.tar.sha256
+          if-no-files-found: error
+          compression-level: 0
