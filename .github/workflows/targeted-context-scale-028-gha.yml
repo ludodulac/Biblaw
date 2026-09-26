@@ -52,7 +52,7 @@ jobs:
       - name: Replay historical benchmark 020
         run: |
           test "$(git rev-parse HEAD)" = "c95e6644bd2e154d85a896035fa61a52e5f375ff"
-          python scripts/benchmark_lemma_pos_candidates_020.py
+          GITHUB_SHA=c95e6644bd2e154d85a896035fa61a52e5f375ff python scripts/benchmark_lemma_pos_candidates_020.py
           echo "b975a71cab3f624d1fedbb6c9c8216551ba637cc4fc8eb5e4d603fcf3926d1dc  biblaw-lemma-pos-benchmark-020.json" | sha256sum -c -
           echo "SOURCE_020_RUNTIME_REPLAY = PASS"
 
