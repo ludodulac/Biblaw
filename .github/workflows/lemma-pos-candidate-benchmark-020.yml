@@ -1,0 +1,69 @@
+name: Lemma POS candidate benchmark 020
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/lemma-pos-candidate-benchmark-020
+    paths:
+      - scripts/benchmark_lemma_pos_candidates_020.py
+      - .github/workflows/lemma-pos-candidate-benchmark-020.yml
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      STANZA_RESOURCES_DIR: /tmp/stanza_resources_020
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install pinned engines
+        run: |
+          python -m pip install --upgrade pip
+          pip install "spacy==3.8.16" "stanza==1.14.0"
+          pip install "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.8.0/fr_core_news_sm-3.8.0-py3-none-any.whl"
+      - name: Download pinned Stanza French resources
+        run: |
+          python - <<'PY'
+          import stanza
+          stanza.download(
+              "fr",
+              model_dir="/tmp/stanza_resources_020",
+              package="default",
+              processors="tokenize,mwt,pos,lemma",
+              resources_version="1.14.0",
+              verbose=False,
+          )
+          print("STANZA_RESOURCES_VERSION = 1.14.0")
+          PY
+      - name: Verify deterministic sample before inference
+        run: |
+          python - <<'PY'
+          import importlib.util
+          p="scripts/benchmark_lemma_pos_candidates_020.py"
+          spec=importlib.util.spec_from_file_location("b",p); b=importlib.util.module_from_spec(spec); spec.loader.exec_module(b)
+          _,a,_=b.sample(); _,c,_=b.sample()
+          A=[x["occurrenceId"] for x in a]; C=[x["occurrenceId"] for x in c]
+          assert A==C and len(A)==10000 and len(set(A))==10000
+          print("SAMPLE_DETERMINISM_CHECK = PASS")
+          PY
+      - name: Run benchmark
+        run: |
+          python scripts/benchmark_lemma_pos_candidates_020.py
+          sha256sum biblaw-lemma-pos-benchmark-020.json
+          sha256sum biblaw-lemma-pos-disagreements-020.json
+      - name: Upload benchmark artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-lemma-pos-candidate-benchmark-020
+          path: |
+            biblaw-lemma-pos-benchmark-020.json
+            biblaw-lemma-pos-disagreements-020.json
+          if-no-files-found: error
