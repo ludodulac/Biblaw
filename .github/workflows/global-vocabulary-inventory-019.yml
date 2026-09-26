@@ -1,0 +1,39 @@
+name: Global vocabulary inventory 019
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/global-vocabulary-inventory-019
+    paths:
+      - scripts/build_global_vocabulary_inventory_019.py
+      - .github/workflows/global-vocabulary-inventory-019.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build inventory first pass
+        run: |
+          python scripts/build_global_vocabulary_inventory_019.py
+          cp biblaw-global-vocabulary-inventory-019.json /tmp/inventory-first.json
+      - name: Rebuild and verify deterministic content
+        run: |
+          python scripts/build_global_vocabulary_inventory_019.py
+          cmp /tmp/inventory-first.json biblaw-global-vocabulary-inventory-019.json
+          echo "DETERMINISM_CHECK = PASS"
+          sha256sum biblaw-global-vocabulary-inventory-019.json
+          wc -c biblaw-global-vocabulary-inventory-019.json
+      - name: Upload inventory artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-global-vocabulary-inventory-019
+          path: biblaw-global-vocabulary-inventory-019.json
+          if-no-files-found: error
