@@ -7,6 +7,7 @@ on:
       - audit/targeted-context-runtime-recovery-028r
     paths:
       - .github/workflows/targeted-context-scale-028-gha.yml
+      - scripts/build_target_manifest_028.py
 
 permissions:
   contents: read
