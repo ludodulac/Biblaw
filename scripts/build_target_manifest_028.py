@@ -105,8 +105,12 @@ def parse_morphalou(zip_path: Path, wanted_forms: set[str]):
                 if len(row) < 10:
                     continue
                 if row[0]:
+                    # A new lexical entry starts here. Its source category may
+                    # legitimately be empty; never inherit the previous entry's
+                    # category across this boundary.
                     current_lemma = row[0]
-                if row[2]:
+                    current_category = row[2]
+                elif row[2]:
                     current_category = row[2]
                 lemma = row[0] or current_lemma
                 category = row[2] or current_category
