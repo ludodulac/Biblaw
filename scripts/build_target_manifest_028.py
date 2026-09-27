@@ -166,7 +166,9 @@ def reconstruct_general_safe_025(bench020, raw_count, candidates, unresolved):
         if morphology_status(form, raw_count, candidates, unresolved) != "UNIQUE_RESOLVED":
             continue
         morph_lemma, morph_pos = next(iter(candidates[form]))
-        if la.casefold() != morph_lemma.casefold() or pa != morph_pos:
+        # 025 normalizes only the Morphalou lookup key. The final
+        # context↔morphology lemma confirmation is exact/case-sensitive.
+        if la != morph_lemma or pa != morph_pos:
             continue
         safe.append({
             "occurrenceId": row["occurrenceId"],
