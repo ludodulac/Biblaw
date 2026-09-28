@@ -27,6 +27,7 @@ PUBLIC_FILES = (
     "js/theme-relations.js",
     "js/validation.js",
     "data/browser-search-catalog.json",
+    "data/lexical-expansion-runtime.json",
     "data/thematic-index/theme-directory-public.json",
     "data/thematic-index/theme-relations-public.json",
     "data/thematic-index/theme-search-runtime.json",
