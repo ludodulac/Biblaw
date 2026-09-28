@@ -9,6 +9,8 @@ on:
       - .github/workflows/targeted-context-scale-028-gha.yml
       - scripts/build_target_manifest_028.py
       - scripts/run_target_shard_028.py
+      - scripts/aggregate_target_028.py
+      - scripts/finalize_target_028.py
 
 permissions:
   contents: read
