@@ -11,6 +11,7 @@ on:
       - 'data/catalog.json'
       - 'data/corpus/**'
       - 'data/browser-search-catalog.json'
+      - 'data/lexical-expansion-runtime.json'
       - 'data/thematic-index/theme-directory.json'
       - 'data/thematic-index/theme-search-runtime.json'
       - 'data/thematic-index/theme-quality-audit.json'
@@ -18,6 +19,8 @@ on:
       - 'scripts/audit_production_search_queries.py'
       - 'scripts/audit_psalm_number_search.py'
       - 'scripts/audit_browser_search_indexes.py'
+      - 'scripts/build_lexical_expansion_runtime.py'
+      - 'scripts/audit_lexical_expansion_runtime.py'
       - 'scripts/check_biblaw.py'
       - 'scripts/rebuild_thematic_derivatives.py'
       - 'scripts/report_biblaw_diff.py'
@@ -29,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Check fast-workflow helper syntax
-        run: python -m py_compile scripts/check_biblaw.py scripts/rebuild_thematic_derivatives.py scripts/report_biblaw_diff.py
+        run: python -m py_compile scripts/check_biblaw.py scripts/rebuild_thematic_derivatives.py scripts/report_biblaw_diff.py scripts/build_lexical_expansion_runtime.py scripts/audit_lexical_expansion_runtime.py
       - name: Check compact differential report on clean HEAD
         run: |
           python scripts/report_biblaw_diff.py --base HEAD | tee /tmp/biblaw-diff.txt
@@ -44,6 +47,8 @@ jobs:
           }
       - name: Check browser JavaScript syntax
         run: node --check js/biblaw.js
+      - name: Check lexical expansion safety runtime
+        run: python scripts/audit_lexical_expansion_runtime.py
       - name: Check search UI DOM, bundle and contextual result contract
         run: |
           python - <<'PY'

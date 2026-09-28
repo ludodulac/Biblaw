@@ -1,0 +1,42 @@
+name: Browser smoke - lexical occurrence expansion
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'css/biblaw.css'
+      - 'js/biblaw.js'
+      - 'js/theme-suggestion-engine.js'
+      - 'data/browser-search-catalog.json'
+      - 'data/lexical-expansion-runtime.json'
+      - 'data/thematic-index/theme-directory-public.json'
+      - 'data/thematic-index/theme-search-runtime.json'
+      - 'scripts/build_pages_site.py'
+      - 'scripts/smoke_occurrence_expansion_browser.mjs'
+      - '.github/workflows/browser-smoke-pr36.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  chromium-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - name: Build exact public Pages payload without deploying it
+        run: python scripts/build_pages_site.py
+      - name: Install isolated browser test dependency
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Run Chromium smoke test against local Pages payload
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-smoke-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node scripts/smoke_occurrence_expansion_browser.mjs

@@ -33,6 +33,8 @@ jobs:
         run: python scripts/validate_thematic_search_runtime.py
       - name: Vérifier l'intégrité documentaire publiée
         run: python scripts/audit_corpus_attachments.py
+      - name: Vérifier l'expansion lexicale sûre
+        run: python scripts/audit_lexical_expansion_runtime.py
       - name: Vérifier l'indépendance des identifiants historiques
         run: python scripts/audit_legacy_psalm_references.py
       - name: Vérifier les requêtes de production de référence
