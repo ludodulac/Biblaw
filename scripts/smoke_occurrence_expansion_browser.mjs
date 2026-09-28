@@ -12,7 +12,7 @@ const fixture = {
     expandedOccurrenceCount: 2,
   },
   phrase: { query: 'temps vis', recordCount: 1, occurrenceCount: 1 },
-  theme: { query: '22 arcanas', recordCount: 1 },
+  theme: { query: 'sainte assemblée', recordCount: 3 },
 };
 
 const browser = await chromium.launch({ headless: true });
@@ -89,7 +89,7 @@ try {
   assert.equal(await checkbox.isEnabled(), false, 'travers must not enable expansion');
 
   assert.deepEqual(pageErrors, [], `Browser page errors: ${pageErrors.join(' | ')}`);
-  console.log('PR36 browser smoke PASS: exact=acclame, alternative=acclament, phrase="temps vis", theme="22 arcanas"');
+  console.log('PR36 browser smoke PASS: exact=acclame, alternative=acclament, phrase="temps vis", theme="sainte assemblée"');
 } finally {
   await browser.close();
 }
