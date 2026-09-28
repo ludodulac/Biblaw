@@ -140,7 +140,9 @@ def classify(row, spa, sta):
 
     morph_lemma = row["uniqueMorphologyLemma"]
     morph_pos = row["uniqueMorphologyBiblawPOS"]
-    if sl.casefold() != morph_lemma.casefold() or sp != morph_pos:
+    # 025 only casefolds the contextual spaCy/Stanza agreement. The final
+    # confirmation against Morphalou keeps exact lemma identity.
+    if sl != morph_lemma or sp != morph_pos:
         reasons.append("MORPHOLOGY_CONTEXT_MISMATCH")
         return "REVIEW_QUEUE", sorted(set(reasons))
 
