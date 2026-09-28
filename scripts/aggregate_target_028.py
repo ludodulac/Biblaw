@@ -73,7 +73,18 @@ def main():
     by_id = {r["occurrenceId"]: r for r in all_rows}
     replay_match = 0
     replay_mismatches = []
+    replay_eligible = 0
+    replay_excluded_by_028_gate = 0
     for e in replay["items"]:
+        # 027-C validated 200 positive cases, but 026 later excludes entire
+        # normalized forms whenever ANY corpus occurrence has boundary risk.
+        # Replay only the frozen 027 cases whose form is actually in the 028
+        # target population; excluded forms are intentionally absent.
+        if e["normalizedForm"] not in by_form:
+            assert e["occurrenceId"] not in by_id, e["occurrenceId"]
+            replay_excluded_by_028_gate += 1
+            continue
+        replay_eligible += 1
         r = by_id.get(e["occurrenceId"])
         assert r is not None, e["occurrenceId"]
         ok = (
@@ -92,7 +103,9 @@ def main():
                 "observedLemma":r.get("predictedLemma"),
                 "observedPOS":r.get("predictedBiblawLexicalPOS"),
             })
-    assert replay_match == 200 and not replay_mismatches, replay_mismatches[:10]
+    assert replay_eligible == 142, replay_eligible
+    assert replay_excluded_by_028_gate == 58, replay_excluded_by_028_gate
+    assert replay_match == replay_eligible and not replay_mismatches, replay_mismatches[:10]
 
     shadow_rows = sorted(all_rows, key=lambda r:(shadow_score(r["occurrenceId"]), r["occurrenceId"]))[:2000]
     shadow_selection = {
@@ -123,7 +136,9 @@ def main():
         "machineSafePosCounts":dict(sorted(safe_pos.items())),
         "nonSafeReasonCounts":dict(sorted(reason_counts.items())),
         "replay027":{
-            "count":200,
+            "frozenCount":200,
+            "eligibleIn028":replay_eligible,
+            "excludedBy028Gate":replay_excluded_by_028_gate,
             "match":replay_match,
             "mismatch":0,
         },
