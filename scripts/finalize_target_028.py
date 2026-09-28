@@ -143,6 +143,9 @@ MACHINE_SAFE_POS_COUNTS =
 NON_SAFE_REASON_COUNTS =
 {json.dumps(base["nonSafeReasonCounts"], ensure_ascii=False, sort_keys=True)}
 
+027C_FROZEN_COUNT = {base["replay027"]["frozenCount"]}
+027C_REPLAY_ELIGIBLE_IN_028 = {base["replay027"]["eligibleIn028"]}
+027C_EXCLUDED_BY_026_TARGET_GATE = {base["replay027"]["excludedBy028Gate"]}
 027C_REPLAY_MATCH_COUNT = {base["replay027"]["match"]}
 027C_REPLAY_MISMATCH_COUNT = {base["replay027"]["mismatch"]}
 
