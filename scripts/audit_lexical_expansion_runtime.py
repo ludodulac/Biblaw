@@ -51,7 +51,10 @@ assert "const exactItems=matches(query);" in js
 assert "mergeExpansionMatches(exactItems,query);" in js
 assert "checkbox.disabled=!key||!expansions.length;" in js
 assert "checkbox.checked=false" in js
-assert "state.mode!=='exact'" in js
+assert "state.mode==='exact'||state.fallbackExpansion" in js
+assert "state.fallbackExpansion=Boolean(textual.length&&singleWordQueryKey(query)&&expansionFormsFor(query).length)" in js
+assert "mergeExpansionMatches(textual,query,textualPsalmMatches)" in js
+assert html.index('id="exactExpansionOption"') < html.index('id="results"')
 
 print(
     f"Lexical expansion product contract OK: {len(groups)} groups, {len(forms)} safe single-word anchors, "
