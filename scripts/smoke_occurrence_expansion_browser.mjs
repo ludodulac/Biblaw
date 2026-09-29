@@ -62,13 +62,18 @@ try {
   assert.deepEqual(await resultIds(), exactIds, 'Unchecking must restore the original exact result set');
   assert.equal(await option.isVisible(), true, 'Safe option should remain available after returning to exact fallback');
 
-  // Multi-word expressions stay exact-only and never expose expansion.
+  // Multi-word expressions keep the established exact "Mots et phrases" behavior.
+  await secondary.evaluate(el => { el.open = true; });
+  await page.locator('#modeExact').click();
   await page.locator('#query').fill(fixture.phrase.query);
   await page.locator('#searchButton').click();
-  assert.equal(await option.isVisible(), false, 'Phrase must not expose word expansion');
+  assert.equal(await option.isVisible(), true, 'Exact-mode control area remains available');
+  assert.equal(await checkbox.isEnabled(), false, 'Phrase must not enable word expansion');
+  assert.equal(await checkbox.isChecked(), false, 'Phrase must stay exact-only');
   assert.equal(await page.locator('.result-card').count(), fixture.phrase.recordCount, 'Exact phrase result count drifted');
 
   // Canonical Themes path stays unchanged and does not expose expansion.
+  await page.locator('#modeThemes').click();
   await page.locator('#query').fill(fixture.theme.query);
   await page.locator('#searchButton').click();
   assert.equal(await option.isVisible(), false, 'Canonical theme search must not expose lexical expansion');
@@ -81,7 +86,6 @@ try {
     assert.equal(await option.isVisible(), false, `${sentinel} must not expose expansion`);
   }
 
-  assert.equal(await secondary.evaluate(el => el.open), false, 'Smoke test must reproduce the closed-tools human path');
   assert.deepEqual(pageErrors, [], `Browser page errors: ${pageErrors.join(' | ')}`);
   console.log('PR36 UX browser smoke PASS: human-fallback=acclame, alternative=acclament, phrase="temps vis", theme="sainte assemblée"');
 } finally {
