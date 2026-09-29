@@ -23,7 +23,12 @@ assert "thematic.teaching||''" in js
 assert 'Teaching combiné' not in js and 'combinedTeaching' not in js
 assert 'relatedThemes(r,matchedThemes)' in js
 assert 'Autres thèmes dans ce psaume :' in js
-assert 'textualPsalmMatches(query)' in js and 'textualFallback:true' in js
+assert 'textualPsalmMatches(query)' in js
+assert 'textualAvailable:Boolean(textual.length)' in js
+assert 'return render(textual' not in js, 'textual occurrences must not be rendered silently from theme mode'
+assert 'data-show-text-search' in js and 'Voir les occurrences' in js
+assert 'function bindTextSearchLink()' in js and 'activateExactMode(); search();' in js
+assert 'textualFallback:true' not in js
 assert 'parsePsalmNumberQuery(query)' in js
 assert 'selectedTypes()' in js and "$('archangelFilter').value" in js
 assert 'theme-relations-public.json' not in intersection
