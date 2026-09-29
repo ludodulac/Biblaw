@@ -78,8 +78,8 @@ rubric_js = (ROOT / "js" / "theme-rubrics.js").read_text(encoding="utf-8")
 assert "theme-rubrics" not in engine_js and "Pensée et concret" not in engine_js and rubric_id not in engine_js, (
     "search engine must remain independent from documentary rubrics"
 )
-assert "resolveIndexedThemes" in engine_js and "thematicItems" in engine_js and "textualFallback:true" in engine_js, (
-    "existing thematic and textual-fallback paths must remain present"
+assert "resolveIndexedThemes" in engine_js and "thematicItems" in engine_js and "textualAvailable:Boolean(textual.length)" in engine_js and "data-show-text-search" in engine_js, (
+    "existing thematic path and explicit occurrence-offer path must remain present"
 )
 
 # I + interface states: only canonical theme presentation can expose a validated public rubric.

@@ -49,11 +49,15 @@ assert "function expansionFormsFor" in js
 assert "function mergeExpansionMatches" in js
 assert "const exactItems=matches(query);" in js
 assert "mergeExpansionMatches(exactItems,query);" in js
-assert "checkbox.disabled=!key||!expansions.length;" in js
+assert "const available=Boolean(key&&expansions.length);" in js
 assert "checkbox.checked=false" in js
-assert "state.mode==='exact'||state.fallbackExpansion" in js
-assert "state.fallbackExpansion=Boolean(textual.length&&singleWordQueryKey(query)&&expansionFormsFor(query).length)" in js
-assert "mergeExpansionMatches(textual,query,textualPsalmMatches)" in js
+assert "state.mode==='exact'&&$('includeWordForms')?.checked" in js
+assert "fallbackExpansion" not in js
+assert "return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)})" in js
+assert 'data-show-text-search' in js
+assert '>Par thème</button>' in html and '>Occurrences de mots</button>' in html
+assert html.index('id="modeThemes"') < html.index('id="secondaryTools"')
+assert html.index('id="modeExact"') < html.index('id="secondaryTools"')
 assert html.index('id="exactExpansionOption"') < html.index('id="results"')
 
 print(
