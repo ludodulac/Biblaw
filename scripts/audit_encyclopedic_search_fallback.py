@@ -106,7 +106,9 @@ def main() -> None:
     assert absent == ("no-result", [], []), absent
 
     # Protect the browser implementation as well as the data-level routing model.
-    assert "return render(textual,[],{textualCount:textual.length,unresolvedTheme:true,textualFallback:true});" in browser_js
+    assert "return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)});" in browser_js
+    assert "data-show-text-search" in browser_js
+    assert "Voir les occurrences" in browser_js
     assert "OCCURRENCE DU TERME DANS LE CORPUS" in browser_js
     assert "THÈME INDEXÉ" in browser_js
     assert "Thèmes canoniques indexés dans ce psaume" in browser_js
