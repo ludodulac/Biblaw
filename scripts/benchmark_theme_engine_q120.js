@@ -49,6 +49,17 @@ function selfTest(){
     ["Peut-on aimer quelqu’un et pourtant devoir le quitter ?",['Amour']],
     ["Pourquoi certaines personnes veulent-elles avoir des enfants ?",['Enfant']],
   ]){const actual=labels(query);for(const label of required)if(!actual.includes(label))throw new Error('Controlled morphology '+query+': missing '+label+' in '+JSON.stringify(actual));}
+  const themeIds=query=>engine.suggestIndexedThemes(query).map(t=>t.id);
+  const safeQueryVariantExpectations=[
+    ['humain',['education-du-genre-humain']],
+    ['humains',['education-du-genre-humain']],
+    ['soutien',['soutien-des-fonctions','soutien-et-capital-collectif','soutien-mutuel','union-et-soutien-mutuel','verite-magie-soutien-mutuel']],
+    ['soutiens',['soutien-des-fonctions','soutien-et-capital-collectif','soutien-mutuel','union-et-soutien-mutuel','verite-magie-soutien-mutuel']],
+    ['langage',['langage-de-la-mere','langage-des-evenements','langage-des-mondes','langage-universel','langage-universel-du-corps','langage-vrai']],
+    ['langages',['langages-des-mondes','langage-de-la-mere','langage-des-evenements','langage-des-mondes','langage-universel','langage-universel-du-corps','langage-vrai']],
+  ];
+  for(const [query,expected] of safeQueryVariantExpectations){const actual=themeIds(query);if(JSON.stringify(actual)!==JSON.stringify(expected))throw new Error('Safe query variant regression '+query+': '+JSON.stringify(actual));if(new Set(actual).size!==actual.length)throw new Error('Safe query variant duplicate themeId: '+query);if(actual.length>8)throw new Error('Safe query variant exceeded product limit: '+query);}
+  for(const query of ['humain','humains','soutien','soutiens','langage','langages'])if(engine.resolveIndexedThemes(query).length)throw new Error('Safe query variant became an editorial alias: '+query);
   const exactVariants=query=>engine.themeQueryNotions(query).map(v=>[...v].sort());
   for(const [query,forbidden] of [
     ['guerres','guerre'],['riches','richesse'],['servir','service'],['vieillir','vieillesse'],['mechant','mal'],['planete','terre'],['sommes','existence'],['cerveau','conscience'],['quittent','quitter']
@@ -71,6 +82,7 @@ function selfTest(){
     'Peut-on être heureux sans travailler ?'
   ])if(!engine.themeQueryNotions(query).flatMap(x=>[...x]).includes('travail'))throw new Error('Travail bridge positive missing: '+query);
   const enfantVariants=exactVariants('enfants').flat();if(!enfantVariants.includes('enfant'))throw new Error('Controlled plural enfants -> enfant missing');
+  for(const [plural,singular] of [['humains','humain'],['soutiens','soutien'],['langages','langage']])if(exactVariants(plural).flat().includes(singular))throw new Error('Safe suggestion fallback leaked into query notions: '+plural+' -> '+singular);
   if(exactVariants('maisons').flat().includes('maison'))throw new Error('Unexpected universal singularization');
   const notionKeys=query=>exactVariants(query).map(v=>v.join('|'));
   for(const [query,forbidden,required] of [
