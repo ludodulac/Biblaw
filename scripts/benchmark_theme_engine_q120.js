@@ -10,11 +10,29 @@ const runtime=readJson('data/thematic-index/theme-search-runtime.json');
 const corpus=readJson('tests/fixtures/biblaw-benchmark-q001-q120.json');
 const engine=engineApi.create(directory.themes||[],runtime);
 function labels(query){return engine.suggestIndexedThemes(query).map(t=>t.label);}
+function ids(query){return engine.suggestIndexedThemes(query).map(t=>t.id);}
 function selfTest(){
   const checks=[
     ['mort',['Mort','La mort ne résout pas le non-accompli','Préparer la mort en vivant','Vie après la mort comme continuité','Vie et mort']],
   ];
   for(const [query,expected] of checks){const actual=labels(query);if(JSON.stringify(actual)!==JSON.stringify(expected))throw new Error('Regression '+query+': '+JSON.stringify(actual));}
+  const safeFlexionExpected={
+    humain:['education-du-genre-humain'],
+    humains:['education-du-genre-humain'],
+    soutien:['soutien-des-fonctions','soutien-et-capital-collectif','soutien-mutuel','union-et-soutien-mutuel','verite-magie-soutien-mutuel'],
+    soutiens:['soutien-des-fonctions','soutien-et-capital-collectif','soutien-mutuel','union-et-soutien-mutuel','verite-magie-soutien-mutuel'],
+    langage:['langage-de-la-mere','langage-des-evenements','langage-des-mondes','langage-universel','langage-universel-du-corps','langage-vrai'],
+    langages:['langages-des-mondes','langage-de-la-mere','langage-des-evenements','langage-des-mondes','langage-universel','langage-universel-du-corps','langage-vrai']
+  };
+  for(const [query,expected] of Object.entries(safeFlexionExpected)){
+    const actual=ids(query);
+    if(JSON.stringify(actual)!==JSON.stringify(expected))throw new Error('Safe thematic flexion '+query+': '+JSON.stringify(actual));
+    if(new Set(actual).size!==actual.length)throw new Error('Safe thematic flexion duplicate themeId: '+query);
+    if(actual.length>8)throw new Error('Safe thematic flexion exceeded product limit: '+query);
+  }
+  if(ids('langages')[0]!=='langages-des-mondes')throw new Error('Original langages result lost priority');
+  for(const query of ['humains','soutiens','langages'])if(engine.resolveIndexedThemes(query).length)throw new Error('Safe thematic flexion became editorial alias: '+query);
+  if(engineApi.norm('humains')!=='humains'||engineApi.norm('soutiens')!=='soutiens'||engineApi.norm('langages')!=='langages')throw new Error('Generic/literal normalization changed by thematic flexion');
   for(const [query,required] of [
     ['Pourquoi existons-nous ?',['Sens de la vie','But de la vie']],
     ['Pourquoi avons-nous peur de mourir ?',['Peur','Mort']],
