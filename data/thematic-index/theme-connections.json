@@ -9,8 +9,8 @@
     "related": 1,
     "pairContribution": "importanceWeightA * importanceWeightB"
   },
-  "themeCount": 1247,
-  "undirectedEdgeCount": 13140,
+  "themeCount": 1249,
+  "undirectedEdgeCount": 13185,
   "topConnectionsPerTheme": 30,
   "themes": [
     {
@@ -223,7 +223,7 @@
     {
       "themeId": "abeille",
       "label": "Abeille",
-      "connectionCount": 5,
+      "connectionCount": 6,
       "topConnections": [
         {
           "themeId": "homme-veritable",
@@ -319,6 +319,31 @@
               "archangel": "ouriel",
               "psalmNumber": 47,
               "psalmTitle": "Soyez comme l’abeille, nourrissez le précieux à travers tous vos travaux",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "etre-humain",
+          "label": "Être humain",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-08-psalm-030",
+              "bookNumber": 8,
+              "bookTitle": "L’alchimie de la Lumière",
+              "archangel": "ouriel",
+              "psalmNumber": 30,
+              "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
               "themeAImportance": "central",
               "themeBImportance": "central",
               "contribution": 9
@@ -15938,7 +15963,7 @@
     {
       "themeId": "alchimie-interieure",
       "label": "Alchimie intérieure",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "immortalite",
@@ -16043,6 +16068,31 @@
         {
           "themeId": "ephemere-et-immortel",
           "label": "Éphémère et immortel",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "etre-humain",
+          "label": "Être humain",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -31452,7 +31502,7 @@
     {
       "themeId": "anges",
       "label": "Anges",
-      "connectionCount": 162,
+      "connectionCount": 163,
       "topConnections": [
         {
           "themeId": "vie",
@@ -50190,8 +50240,33 @@
     {
       "themeId": "assumer-son-humanite",
       "label": "Assumer son humanité",
-      "connectionCount": 2,
+      "connectionCount": 3,
       "topConnections": [
+        {
+          "themeId": "etre-humain",
+          "label": "Être humain",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-055",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 55,
+              "psalmTitle": "Les pièges qui empêchent l’homme d ’aller vers la L umière",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "illusion-spirituelle",
           "label": "Illusion spirituelle",
@@ -78549,7 +78624,7 @@
     {
       "themeId": "conscience",
       "label": "Conscience",
-      "connectionCount": 385,
+      "connectionCount": 386,
       "topConnections": [
         {
           "themeId": "vie",
@@ -86449,7 +86524,7 @@
     {
       "themeId": "corps",
       "label": "Corps",
-      "connectionCount": 545,
+      "connectionCount": 547,
       "topConnections": [
         {
           "themeId": "vie",
@@ -93155,7 +93230,7 @@
     {
       "themeId": "corps-d-immortalite",
       "label": "Corps d’immortalité",
-      "connectionCount": 57,
+      "connectionCount": 59,
       "topConnections": [
         {
           "themeId": "vie",
@@ -104670,7 +104745,7 @@
     {
       "themeId": "creation",
       "label": "Création",
-      "connectionCount": 204,
+      "connectionCount": 205,
       "topConnections": [
         {
           "themeId": "vie",
@@ -124659,7 +124734,7 @@
     {
       "themeId": "discernement",
       "label": "Discernement",
-      "connectionCount": 121,
+      "connectionCount": 122,
       "topConnections": [
         {
           "themeId": "vie",
@@ -166541,7 +166616,7 @@
     {
       "themeId": "ephemere-et-immortel",
       "label": "Éphémère et immortel",
-      "connectionCount": 13,
+      "connectionCount": 14,
       "topConnections": [
         {
           "themeId": "alchimie-interieure",
@@ -166621,6 +166696,31 @@
         {
           "themeId": "vie",
           "label": "Vie",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "etre-humain",
+          "label": "Être humain",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -186470,6 +186570,603 @@
       ]
     },
     {
+      "themeId": "etre-humain",
+      "label": "Être humain",
+      "connectionCount": 23,
+      "topConnections": [
+        {
+          "themeId": "mission-de-l-homme",
+          "label": "Mission de l’homme",
+          "score": 18,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-13-psalm-103",
+              "bookNumber": 13,
+              "bookTitle": "Le lien avec les Anges",
+              "archangel": "michael",
+              "psalmNumber": 103,
+              "psalmTitle": "Unissez-vous, soyez sages",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "abeille",
+          "label": "Abeille",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-08-psalm-030",
+              "bookNumber": 8,
+              "bookTitle": "L’alchimie de la Lumière",
+              "archangel": "ouriel",
+              "psalmNumber": 30,
+              "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "alchimie-interieure",
+          "label": "Alchimie intérieure",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "assumer-son-humanite",
+          "label": "Assumer son humanité",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-055",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 55,
+              "psalmTitle": "Les pièges qui empêchent l’homme d ’aller vers la L umière",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "homme-veritable",
+          "label": "Homme véritable",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-08-psalm-030",
+              "bookNumber": 8,
+              "bookTitle": "L’alchimie de la Lumière",
+              "archangel": "ouriel",
+              "psalmNumber": 30,
+              "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "immortalite",
+          "label": "Immortalité",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "oiseau",
+          "label": "Oiseau",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-08-psalm-030",
+              "bookNumber": 8,
+              "bookTitle": "L’alchimie de la Lumière",
+              "archangel": "ouriel",
+              "psalmNumber": 30,
+              "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "regnes",
+          "label": "Règnes",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-13-psalm-103",
+              "bookNumber": 13,
+              "bookTitle": "Le lien avec les Anges",
+              "archangel": "michael",
+              "psalmNumber": 103,
+              "psalmTitle": "Unissez-vous, soyez sages",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "serpent",
+          "label": "Serpent",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-08-psalm-030",
+              "bookNumber": 8,
+              "bookTitle": "L’alchimie de la Lumière",
+              "archangel": "ouriel",
+              "psalmNumber": 30,
+              "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "ephemere-et-immortel",
+          "label": "Éphémère et immortel",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "conscience",
+          "label": "Conscience",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "corps",
+          "label": "Corps",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "corps-d-immortalite",
+          "label": "Corps d’immortalité",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "creation",
+          "label": "Création",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "illusion-spirituelle",
+          "label": "Illusion spirituelle",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-055",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 55,
+              "psalmTitle": "Les pièges qui empêchent l’homme d ’aller vers la L umière",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "incarnation",
+          "label": "Incarnation",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "royaute-interieure",
+          "label": "Royauté intérieure",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-055",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 55,
+              "psalmTitle": "Les pièges qui empêchent l’homme d ’aller vers la L umière",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "terre",
+          "label": "Terre",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "union",
+          "label": "Union",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-13-psalm-103",
+              "bookNumber": 13,
+              "bookTitle": "Le lien avec les Anges",
+              "archangel": "michael",
+              "psalmNumber": 103,
+              "psalmTitle": "Unissez-vous, soyez sages",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "intelligence",
+          "label": "Intelligence",
+          "score": 3,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "mort",
+          "label": "Mort",
+          "score": 3,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
       "themeId": "etude",
       "label": "Étude",
       "connectionCount": 14,
@@ -195267,7 +195964,7 @@
     {
       "themeId": "faux-savoir",
       "label": "Faux savoir",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "anges",
@@ -195422,6 +196119,31 @@
         {
           "themeId": "sagesse",
           "label": "Sagesse",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "savoir",
+          "label": "Savoir",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -229818,7 +230540,7 @@
     {
       "themeId": "homme-veritable",
       "label": "Homme véritable",
-      "connectionCount": 3,
+      "connectionCount": 4,
       "topConnections": [
         {
           "themeId": "abeille",
@@ -229873,6 +230595,31 @@
         {
           "themeId": "serpent",
           "label": "Serpent",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-08-psalm-030",
+              "bookNumber": 8,
+              "bookTitle": "L’alchimie de la Lumière",
+              "archangel": "ouriel",
+              "psalmNumber": 30,
+              "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "etre-humain",
+          "label": "Être humain",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -235670,7 +236417,7 @@
     {
       "themeId": "illusion-spirituelle",
       "label": "Illusion spirituelle",
-      "connectionCount": 7,
+      "connectionCount": 8,
       "topConnections": [
         {
           "themeId": "coherence-interieure",
@@ -235831,6 +236578,31 @@
               "archangel": "ouriel",
               "psalmNumber": 78,
               "psalmTitle": "L’incohérence des adultes",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "etre-humain",
+          "label": "Être humain",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-055",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 55,
+              "psalmTitle": "Les pièges qui empêchent l’homme d ’aller vers la L umière",
               "themeAImportance": "central",
               "themeBImportance": "important",
               "contribution": 6
@@ -236181,7 +236953,7 @@
     {
       "themeId": "immortalite",
       "label": "Immortalité",
-      "connectionCount": 127,
+      "connectionCount": 128,
       "topConnections": [
         {
           "themeId": "vie",
@@ -241124,7 +241896,7 @@
     {
       "themeId": "incarnation",
       "label": "Incarnation",
-      "connectionCount": 41,
+      "connectionCount": 42,
       "topConnections": [
         {
           "themeId": "monde-divin",
@@ -242702,7 +243474,7 @@
     {
       "themeId": "incarnation-du-savoir",
       "label": "Incarnation du savoir",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "anges",
@@ -242857,6 +243629,31 @@
         {
           "themeId": "sagesse",
           "label": "Sagesse",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "savoir",
+          "label": "Savoir",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -250463,7 +251260,7 @@
     {
       "themeId": "intelligence",
       "label": "Intelligence",
-      "connectionCount": 431,
+      "connectionCount": 433,
       "topConnections": [
         {
           "themeId": "vie",
@@ -271661,7 +272458,7 @@
     {
       "themeId": "lumiere",
       "label": "Lumière",
-      "connectionCount": 510,
+      "connectionCount": 511,
       "topConnections": [
         {
           "themeId": "vie",
@@ -299877,8 +300674,48 @@
     {
       "themeId": "mission-de-l-homme",
       "label": "Mission de l’homme",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
+        {
+          "themeId": "etre-humain",
+          "label": "Être humain",
+          "score": 18,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-13-psalm-103",
+              "bookNumber": 13,
+              "bookTitle": "Le lien avec les Anges",
+              "archangel": "michael",
+              "psalmNumber": 103,
+              "psalmTitle": "Unissez-vous, soyez sages",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-19-psalm-106",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 106,
+              "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "alchimie-interieure",
           "label": "Alchimie intérieure",
@@ -311413,7 +312250,7 @@
     {
       "themeId": "mort",
       "label": "Mort",
-      "connectionCount": 230,
+      "connectionCount": 231,
       "topConnections": [
         {
           "themeId": "vie",
@@ -319942,7 +320779,7 @@
     {
       "themeId": "nature",
       "label": "Nature",
-      "connectionCount": 124,
+      "connectionCount": 125,
       "topConnections": [
         {
           "themeId": "vie",
@@ -334099,7 +334936,7 @@
     {
       "themeId": "oeuvre",
       "label": "Œuvre",
-      "connectionCount": 427,
+      "connectionCount": 428,
       "topConnections": [
         {
           "themeId": "vie",
@@ -344850,7 +345687,7 @@
     {
       "themeId": "oiseau",
       "label": "Oiseau",
-      "connectionCount": 7,
+      "connectionCount": 8,
       "topConnections": [
         {
           "themeId": "abeille",
@@ -344930,6 +345767,31 @@
         {
           "themeId": "serpent",
           "label": "Serpent",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-08-psalm-030",
+              "bookNumber": 8,
+              "bookTitle": "L’alchimie de la Lumière",
+              "archangel": "ouriel",
+              "psalmNumber": 30,
+              "psalmTitle": "Par la connaissance du serpent, de l’abeille et de l’oiseau, éveille en toi l’homme véritable",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "etre-humain",
+          "label": "Être humain",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -363669,7 +364531,7 @@
     {
       "themeId": "pensee",
       "label": "Pensée",
-      "connectionCount": 405,
+      "connectionCount": 406,
       "topConnections": [
         {
           "themeId": "vie",
@@ -383532,7 +384394,7 @@
     {
       "themeId": "pratique",
       "label": "Pratique",
-      "connectionCount": 23,
+      "connectionCount": 24,
       "topConnections": [
         {
           "themeId": "22-commandements",
@@ -383862,6 +384724,31 @@
         {
           "themeId": "sagesse",
           "label": "Sagesse",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "savoir",
+          "label": "Savoir",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -422474,7 +423361,7 @@
     {
       "themeId": "regnes",
       "label": "Règnes",
-      "connectionCount": 150,
+      "connectionCount": 151,
       "topConnections": [
         {
           "themeId": "vie",
@@ -450466,7 +451353,7 @@
     {
       "themeId": "royaute-interieure",
       "label": "Royauté intérieure",
-      "connectionCount": 18,
+      "connectionCount": 19,
       "topConnections": [
         {
           "themeId": "dignite",
@@ -450794,6 +451681,31 @@
           ]
         },
         {
+          "themeId": "etre-humain",
+          "label": "Être humain",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-055",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 55,
+              "psalmTitle": "Les pièges qui empêchent l’homme d ’aller vers la L umière",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "illusion-spirituelle",
           "label": "Illusion spirituelle",
           "score": 4,
@@ -450980,7 +451892,7 @@
     {
       "themeId": "sagesse",
       "label": "Sagesse",
-      "connectionCount": 479,
+      "connectionCount": 481,
       "topConnections": [
         {
           "themeId": "vie",
@@ -457568,13 +458480,640 @@
       ]
     },
     {
-      "themeId": "savoir-divin",
-      "label": "Savoir divin",
-      "connectionCount": 2,
+      "themeId": "savoir",
+      "label": "Savoir",
+      "connectionCount": 22,
       "topConnections": [
         {
           "themeId": "pensee",
           "label": "Pensée",
+          "score": 18,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-05-psalm-038",
+              "bookNumber": 5,
+              "bookTitle": "Homme, redeviens un mage",
+              "archangel": "michael",
+              "psalmNumber": 38,
+              "psalmTitle": "Allume dans ta pensée la flamme du savoir divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "savoir-vivant",
+          "label": "Savoir vivant",
+          "score": 18,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-13-psalm-095",
+              "bookNumber": 13,
+              "bookTitle": "Le lien avec les Anges",
+              "archangel": "michael",
+              "psalmNumber": 95,
+              "psalmTitle": "Vis, digère et donne des fruits",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-14-psalm-085",
+              "bookNumber": 14,
+              "bookTitle": "La maîtrise du corps",
+              "archangel": "gabriel",
+              "psalmNumber": 85,
+              "psalmTitle": "L’homme doit devenir lui - même le savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "anges",
+          "label": "Anges",
+          "score": 15,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-14-psalm-085",
+              "bookNumber": 14,
+              "bookTitle": "La maîtrise du corps",
+              "archangel": "gabriel",
+              "psalmNumber": 85,
+              "psalmTitle": "L’homme doit devenir lui - même le savoir",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "corps",
+          "label": "Corps",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "faux-savoir",
+          "label": "Faux savoir",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "incarnation-du-savoir",
+          "label": "Incarnation du savoir",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "intelligence",
+          "label": "Intelligence",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "nature",
+          "label": "Nature",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-13-psalm-095",
+              "bookNumber": 13,
+              "bookTitle": "Le lien avec les Anges",
+              "archangel": "michael",
+              "psalmNumber": 95,
+              "psalmTitle": "Vis, digère et donne des fruits",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "savoir-divin",
+          "label": "Savoir divin",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-05-psalm-038",
+              "bookNumber": 5,
+              "bookTitle": "Homme, redeviens un mage",
+              "archangel": "michael",
+              "psalmNumber": 38,
+              "psalmTitle": "Allume dans ta pensée la flamme du savoir divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "terre",
+          "label": "Terre",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "tradition",
+          "label": "Tradition",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "vrai-savoir",
+          "label": "Vrai savoir",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "verite",
+          "label": "Vérité",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "corps-d-immortalite",
+          "label": "Corps d’immortalité",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "discernement",
+          "label": "Discernement",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-13-psalm-095",
+              "bookNumber": 13,
+              "bookTitle": "Le lien avec les Anges",
+              "archangel": "michael",
+              "psalmNumber": 95,
+              "psalmTitle": "Vis, digère et donne des fruits",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "pratique",
+          "label": "Pratique",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "tradition-comme-corps-du-savoir",
+          "label": "Tradition comme corps du savoir",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "trois-centres",
+          "label": "Trois centres",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-05-psalm-038",
+              "bookNumber": 5,
+              "bookTitle": "Homme, redeviens un mage",
+              "archangel": "michael",
+              "psalmNumber": 38,
+              "psalmTitle": "Allume dans ta pensée la flamme du savoir divin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "oeuvre",
+          "label": "Œuvre",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-14-psalm-085",
+              "bookNumber": 14,
+              "bookTitle": "La maîtrise du corps",
+              "archangel": "gabriel",
+              "psalmNumber": 85,
+              "psalmTitle": "L’homme doit devenir lui - même le savoir",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "savoir-divin",
+      "label": "Savoir divin",
+      "connectionCount": 3,
+      "topConnections": [
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-05-psalm-038",
+              "bookNumber": 5,
+              "bookTitle": "Homme, redeviens un mage",
+              "archangel": "michael",
+              "psalmNumber": 38,
+              "psalmTitle": "Allume dans ta pensée la flamme du savoir divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "savoir",
+          "label": "Savoir",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -457627,8 +459166,48 @@
     {
       "themeId": "savoir-vivant",
       "label": "Savoir vivant",
-      "connectionCount": 4,
+      "connectionCount": 5,
       "topConnections": [
+        {
+          "themeId": "savoir",
+          "label": "Savoir",
+          "score": 18,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-13-psalm-095",
+              "bookNumber": 13,
+              "bookTitle": "Le lien avec les Anges",
+              "archangel": "michael",
+              "psalmNumber": 95,
+              "psalmTitle": "Vis, digère et donne des fruits",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-14-psalm-085",
+              "bookNumber": 14,
+              "bookTitle": "La maîtrise du corps",
+              "archangel": "gabriel",
+              "psalmNumber": 85,
+              "psalmTitle": "L’homme doit devenir lui - même le savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "nature",
           "label": "Nature",
@@ -464921,7 +466500,7 @@
     {
       "themeId": "serpent",
       "label": "Serpent",
-      "connectionCount": 40,
+      "connectionCount": 41,
       "topConnections": [
         {
           "themeId": "vie",
@@ -490723,7 +492302,7 @@
     {
       "themeId": "terre",
       "label": "Terre",
-      "connectionCount": 507,
+      "connectionCount": 509,
       "topConnections": [
         {
           "themeId": "vie",
@@ -498989,7 +500568,7 @@
     {
       "themeId": "tradition",
       "label": "Tradition",
-      "connectionCount": 214,
+      "connectionCount": 215,
       "topConnections": [
         {
           "themeId": "vie",
@@ -503391,7 +504970,7 @@
     {
       "themeId": "tradition-comme-corps-du-savoir",
       "label": "Tradition comme corps du savoir",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "anges",
@@ -503571,6 +505150,31 @@
         {
           "themeId": "sagesse",
           "label": "Sagesse",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "savoir",
+          "label": "Savoir",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -521233,7 +522837,7 @@
     {
       "themeId": "trois-centres",
       "label": "Trois centres",
-      "connectionCount": 6,
+      "connectionCount": 7,
       "topConnections": [
         {
           "themeId": "soleil-verite",
@@ -521313,6 +522917,31 @@
         {
           "themeId": "pensee",
           "label": "Pensée",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-05-psalm-038",
+              "bookNumber": 5,
+              "bookTitle": "Homme, redeviens un mage",
+              "archangel": "michael",
+              "psalmNumber": 38,
+              "psalmTitle": "Allume dans ta pensée la flamme du savoir divin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "savoir",
+          "label": "Savoir",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -526123,7 +527752,7 @@
     {
       "themeId": "union",
       "label": "Union",
-      "connectionCount": 125,
+      "connectionCount": 126,
       "topConnections": [
         {
           "themeId": "vie",
@@ -532819,7 +534448,7 @@
     {
       "themeId": "verite",
       "label": "Vérité",
-      "connectionCount": 254,
+      "connectionCount": 255,
       "topConnections": [
         {
           "themeId": "vie",
@@ -541936,7 +543565,7 @@
     {
       "themeId": "vie",
       "label": "Vie",
-      "connectionCount": 643,
+      "connectionCount": 645,
       "topConnections": [
         {
           "themeId": "corps",
@@ -559404,7 +561033,7 @@
     {
       "themeId": "vrai-savoir",
       "label": "Vrai savoir",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "anges",
@@ -559584,6 +561213,31 @@
         {
           "themeId": "sagesse",
           "label": "Sagesse",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-117",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 117,
+              "psalmTitle": "Le piège du faux savoir",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "savoir",
+          "label": "Savoir",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [

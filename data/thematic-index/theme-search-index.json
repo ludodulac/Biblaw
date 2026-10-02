@@ -5,8 +5,8 @@
     "data/thematic-index/theme-directory.json"
   ],
   "semanticMerging": false,
-  "themeCount": 1247,
-  "aliasCount": 1339,
+  "themeCount": 1249,
+  "aliasCount": 1343,
   "ambiguousAliasCount": 5,
   "themes": [
     {
@@ -6374,6 +6374,31 @@
       ],
       "occurrenceCount": 1,
       "score": 3
+    },
+    {
+      "themeId": "etre-humain",
+      "canonicalLabel": "Être humain",
+      "observedLabels": [
+        {
+          "label": "Être humain",
+          "count": 2
+        },
+        {
+          "label": "Homme",
+          "count": 1
+        },
+        {
+          "label": "Humain",
+          "count": 1
+        }
+      ],
+      "normalizedAliases": [
+        "etre humain",
+        "homme",
+        "humain"
+      ],
+      "occurrenceCount": 4,
+      "score": 12
     },
     {
       "themeId": "etude",
@@ -15612,6 +15637,21 @@
       "score": 2
     },
     {
+      "themeId": "savoir",
+      "canonicalLabel": "Savoir",
+      "observedLabels": [
+        {
+          "label": "Savoir",
+          "count": 4
+        }
+      ],
+      "normalizedAliases": [
+        "savoir"
+      ],
+      "occurrenceCount": 4,
+      "score": 12
+    },
+    {
       "themeId": "savoir-divin",
       "canonicalLabel": "Savoir divin",
       "observedLabels": [
@@ -23355,6 +23395,16 @@
       "ambiguous": false
     },
     {
+      "queryKey": "etre humain",
+      "themeIds": [
+        "etre-humain"
+      ],
+      "labels": [
+        "Être humain"
+      ],
+      "ambiguous": false
+    },
+    {
       "queryKey": "etude",
       "themeIds": [
         "etude"
@@ -24525,6 +24575,16 @@
       "ambiguous": false
     },
     {
+      "queryKey": "homme",
+      "themeIds": [
+        "etre-humain"
+      ],
+      "labels": [
+        "Homme"
+      ],
+      "ambiguous": false
+    },
+    {
       "queryKey": "homme a la frontiere des mondes",
       "themeIds": [
         "homme-a-la-frontiere-des-mondes"
@@ -24648,6 +24708,16 @@
         "huile-douriel"
       ],
       "labels": [],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "humain",
+      "themeIds": [
+        "etre-humain"
+      ],
+      "labels": [
+        "Humain"
+      ],
       "ambiguous": false
     },
     {
@@ -29839,6 +29909,16 @@
       ],
       "labels": [
         "Santé"
+      ],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "savoir",
+      "themeIds": [
+        "savoir"
+      ],
+      "labels": [
+        "Savoir"
       ],
       "ambiguous": false
     },

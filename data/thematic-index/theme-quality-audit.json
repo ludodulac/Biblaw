@@ -3,11 +3,11 @@
   "status": "review-candidates-generated",
   "purpose": "search-quality-audit-only; no automatic semantic merging or renaming",
   "stats": {
-    "themeCount": 1247,
-    "themeRelationCount": 10409,
+    "themeCount": 1249,
+    "themeRelationCount": 10417,
     "singletonThemeCount": 924,
     "rareThemeCountOccurrenceLTE2": 1050,
-    "sameIdMultipleLabelsCount": 31,
+    "sameIdMultipleLabelsCount": 32,
     "sameNormalizedLabelMultipleIdsCount": 5,
     "normalizedDirectoryCollisionCount": 0,
     "compositeLabelCandidateCount": 186,
@@ -16,7 +16,7 @@
     "themeCountByArchangelCoverage": {
       "1": 972,
       "2": 117,
-      "3": 62,
+      "3": 64,
       "4": 96
     }
   },
@@ -8113,6 +8113,101 @@
               34
             ],
             "teaching": "L’engagement doit être précédé d’étude et de comparaison. La fidélité au chemin suppose d’accepter qu’un choix crée une relation réelle et demande ensuite d’aller jusqu’au bout plutôt que de changer impulsivement de direction."
+          }
+        ],
+        "reviewRule": "Preserve contextual wording unless corpus-internal evidence shows a genuine identifier or labeling error; do not force one global definition."
+      },
+      {
+        "themeId": "etre-humain",
+        "labels": [
+          {
+            "label": "Être humain",
+            "count": 2
+          },
+          {
+            "label": "Homme",
+            "count": 1
+          },
+          {
+            "label": "Humain",
+            "count": 1
+          }
+        ],
+        "contextualEvidence": [
+          {
+            "bookNumber": 8,
+            "archangel": "ouriel",
+            "psalmNumber": 30,
+            "recordId": "book-08-psalm-030",
+            "label": "Être humain",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              10
+            ],
+            "teaching": "L’homme véritable unit verticalement ciel et terre et apprend à reconnaître en lui les différents états pour choisir consciemment celui qu’il manifeste."
+          },
+          {
+            "bookNumber": 9,
+            "archangel": "michael",
+            "psalmNumber": 55,
+            "recordId": "book-09-psalm-055",
+            "label": "Être humain",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              4,
+              5,
+              6,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "teaching": "L’homme ne peut accéder aux mondes supérieurs en fuyant sa condition : il doit assumer son règne, son corps, ses associations et sa responsabilité créatrice."
+          },
+          {
+            "bookNumber": 13,
+            "archangel": "michael",
+            "psalmNumber": 103,
+            "recordId": "book-13-psalm-103",
+            "label": "Homme",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "teaching": "La fonction originelle de l'homme est de servir de passage à la Lumière pour les autres règnes ; son oubli a aggravé leur souffrance."
+          },
+          {
+            "bookNumber": 19,
+            "archangel": "raphael",
+            "psalmNumber": 106,
+            "recordId": "book-19-psalm-106",
+            "label": "Humain",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              3,
+              4,
+              6,
+              11,
+              12,
+              13
+            ],
+            "teaching": "L'homme est présenté comme placé à la frontière du visible et de l'invisible afin d'agir en créateur: son travail consiste à libérer plutôt qu'enfermer et à conduire pensées, paroles, actes et matière vers une évolution supérieure."
           }
         ],
         "reviewRule": "Preserve contextual wording unless corpus-internal evidence shows a genuine identifier or labeling error; do not force one global definition."
