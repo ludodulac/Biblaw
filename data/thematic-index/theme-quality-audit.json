@@ -4,7 +4,7 @@
   "purpose": "search-quality-audit-only; no automatic semantic merging or renaming",
   "stats": {
     "themeCount": 1249,
-    "themeRelationCount": 10417,
+    "themeRelationCount": 10420,
     "singletonThemeCount": 924,
     "rareThemeCountOccurrenceLTE2": 1050,
     "sameIdMultipleLabelsCount": 32,
@@ -8131,6 +8131,10 @@
           {
             "label": "Humain",
             "count": 1
+          },
+          {
+            "label": "Humanité",
+            "count": 1
           }
         ],
         "contextualEvidence": [
@@ -8208,6 +8212,27 @@
               13
             ],
             "teaching": "L'homme est présenté comme placé à la frontière du visible et de l'invisible afin d'agir en créateur: son travail consiste à libérer plutôt qu'enfermer et à conduire pensées, paroles, actes et matière vers une évolution supérieure."
+          },
+          {
+            "bookNumber": 21,
+            "archangel": "michael",
+            "psalmNumber": 148,
+            "recordId": "book-21-psalm-148",
+            "label": "Humanité",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              11,
+              12,
+              13,
+              19,
+              20,
+              21,
+              22,
+              29,
+              30
+            ],
+            "teaching": "L’homme est présenté comme un passeur entre les mondes supérieurs et les règnes de la Mère. S’il bloque cette circulation dans son seul intérêt, les règnes situés en dessous de lui ne reçoivent plus, selon le texte, la nourriture et la bénédiction qu’il devait transmettre."
           }
         ],
         "reviewRule": "Preserve contextual wording unless corpus-internal evidence shows a genuine identifier or labeling error; do not force one global definition."

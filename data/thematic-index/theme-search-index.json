@@ -6,7 +6,7 @@
   ],
   "semanticMerging": false,
   "themeCount": 1249,
-  "aliasCount": 1343,
+  "aliasCount": 1344,
   "ambiguousAliasCount": 5,
   "themes": [
     {
@@ -6390,15 +6390,20 @@
         {
           "label": "Humain",
           "count": 1
+        },
+        {
+          "label": "Humanité",
+          "count": 1
         }
       ],
       "normalizedAliases": [
         "etre humain",
         "homme",
-        "humain"
+        "humain",
+        "humanite"
       ],
-      "occurrenceCount": 4,
-      "score": 12
+      "occurrenceCount": 5,
+      "score": 15
     },
     {
       "themeId": "etude",
@@ -15642,14 +15647,14 @@
       "observedLabels": [
         {
           "label": "Savoir",
-          "count": 4
+          "count": 6
         }
       ],
       "normalizedAliases": [
         "savoir"
       ],
-      "occurrenceCount": 4,
-      "score": 12
+      "occurrenceCount": 6,
+      "score": 16
     },
     {
       "themeId": "savoir-divin",
@@ -24717,6 +24722,16 @@
       ],
       "labels": [
         "Humain"
+      ],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "humanite",
+      "themeIds": [
+        "etre-humain"
+      ],
+      "labels": [
+        "Humanité"
       ],
       "ambiguous": false
     },
