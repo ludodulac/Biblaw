@@ -17,8 +17,8 @@ function selfTest(){
   ];
   for(const [query,expected] of checks){const actual=labels(query);if(JSON.stringify(actual)!==JSON.stringify(expected))throw new Error('Regression '+query+': '+JSON.stringify(actual));}
   const safeFlexionExpected={
-    humain:['education-du-genre-humain'],
-    humains:['education-du-genre-humain'],
+    humain:['etre-humain','education-du-genre-humain'],
+    humains:['etre-humain','education-du-genre-humain'],
     soutien:['soutien-des-fonctions','soutien-et-capital-collectif','soutien-mutuel','union-et-soutien-mutuel','verite-magie-soutien-mutuel'],
     soutiens:['soutien-des-fonctions','soutien-et-capital-collectif','soutien-mutuel','union-et-soutien-mutuel','verite-magie-soutien-mutuel'],
     langage:['langage-de-la-mere','langage-des-evenements','langage-des-mondes','langage-universel','langage-universel-du-corps','langage-vrai'],

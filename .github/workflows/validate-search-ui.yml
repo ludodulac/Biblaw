@@ -24,6 +24,7 @@ on:
       - 'scripts/check_biblaw.py'
       - 'scripts/rebuild_thematic_derivatives.py'
       - 'scripts/report_biblaw_diff.py'
+      - 'scripts/benchmark_theme_engine_q120.js'
       - '.github/workflows/validate-search-ui.yml'
 
 jobs:
