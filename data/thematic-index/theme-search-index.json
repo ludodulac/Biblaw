@@ -5,8 +5,8 @@
     "data/thematic-index/theme-directory.json"
   ],
   "semanticMerging": false,
-  "themeCount": 1251,
-  "aliasCount": 1346,
+  "themeCount": 1252,
+  "aliasCount": 1347,
   "ambiguousAliasCount": 5,
   "themes": [
     {
@@ -1924,6 +1924,21 @@
       ],
       "occurrenceCount": 1,
       "score": 3
+    },
+    {
+      "themeId": "capital",
+      "canonicalLabel": "Capital",
+      "observedLabels": [
+        {
+          "label": "Capital",
+          "count": 6
+        }
+      ],
+      "normalizedAliases": [
+        "capital"
+      ],
+      "occurrenceCount": 6,
+      "score": 16
     },
     {
       "themeId": "capital-d-energie",
@@ -20366,6 +20381,16 @@
       ],
       "labels": [
         "Capacités supérieures"
+      ],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "capital",
+      "themeIds": [
+        "capital"
+      ],
+      "labels": [
+        "Capital"
       ],
       "ambiguous": false
     },

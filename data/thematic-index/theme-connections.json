@@ -9,8 +9,8 @@
     "related": 1,
     "pairContribution": "importanceWeightA * importanceWeightB"
   },
-  "themeCount": 1251,
-  "undirectedEdgeCount": 13347,
+  "themeCount": 1252,
+  "undirectedEdgeCount": 13410,
   "topConnectionsPerTheme": 30,
   "themes": [
     {
@@ -1920,7 +1920,7 @@
     {
       "themeId": "accomplissement",
       "label": "Accomplissement",
-      "connectionCount": 31,
+      "connectionCount": 32,
       "topConnections": [
         {
           "themeId": "nation-essenienne",
@@ -2668,6 +2668,31 @@
           ]
         },
         {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
           "themeId": "responsabilite-creatrice",
           "label": "Responsabilité créatrice",
           "score": 4,
@@ -2745,31 +2770,6 @@
         {
           "themeId": "sagesse",
           "label": "Sagesse",
-          "score": 3,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "michael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-21-psalm-156",
-              "bookNumber": 21,
-              "bookTitle": "Homme, retrouve ta dignité",
-              "archangel": "michael",
-              "psalmNumber": 156,
-              "psalmTitle": "Posez des écritures qui ne s ’effaceront pas",
-              "themeAImportance": "central",
-              "themeBImportance": "related",
-              "contribution": 3
-            }
-          ]
-        },
-        {
-          "themeId": "union",
-          "label": "Union",
           "score": 3,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -4032,7 +4032,7 @@
     {
       "themeId": "acte",
       "label": "Acte",
-      "connectionCount": 155,
+      "connectionCount": 156,
       "topConnections": [
         {
           "themeId": "vie",
@@ -16641,7 +16641,7 @@
     {
       "themeId": "alliance",
       "label": "Alliance",
-      "connectionCount": 217,
+      "connectionCount": 218,
       "topConnections": [
         {
           "themeId": "vie",
@@ -25166,7 +25166,7 @@
     {
       "themeId": "ame",
       "label": "Âme",
-      "connectionCount": 303,
+      "connectionCount": 304,
       "topConnections": [
         {
           "themeId": "vie",
@@ -47257,7 +47257,7 @@
     {
       "themeId": "argent",
       "label": "Argent",
-      "connectionCount": 28,
+      "connectionCount": 29,
       "topConnections": [
         {
           "themeId": "dieux",
@@ -47747,6 +47747,31 @@
               "themeAImportance": "central",
               "themeBImportance": "related",
               "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-12-psalm-076",
+              "bookNumber": 12,
+              "bookTitle": "Les clés du bonheur",
+              "archangel": "ouriel",
+              "psalmNumber": 76,
+              "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
             }
           ]
         },
@@ -57924,8 +57949,33 @@
     {
       "themeId": "bonnes-alliances",
       "label": "Bonnes alliances",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "conscience",
           "label": "Conscience",
@@ -58821,10 +58871,1188 @@
       ]
     },
     {
+      "themeId": "capital",
+      "label": "Capital",
+      "connectionCount": 63,
+      "topConnections": [
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "score": 37,
+          "sharedPsalmCount": 5,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "score": 30,
+          "sharedPsalmCount": 4,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "terre",
+          "label": "Terre",
+          "score": 26,
+          "sharedPsalmCount": 4,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "related",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "oeuvre",
+          "label": "Œuvre",
+          "score": 26,
+          "sharedPsalmCount": 4,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "related",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "monde-divin",
+          "label": "Monde divin",
+          "score": 24,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "score": 22,
+          "sharedPsalmCount": 4,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            },
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "conscience",
+          "label": "Conscience",
+          "score": 22,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "mort",
+          "label": "Mort",
+          "score": 18,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "corps",
+          "label": "Corps",
+          "score": 16,
+          "sharedPsalmCount": 4,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            },
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "related",
+              "contribution": 2
+            },
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "related",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "esseniens",
+          "label": "Esséniens",
+          "score": 15,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "intelligence",
+          "label": "Intelligence",
+          "score": 13,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "argent",
+          "label": "Argent",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-12-psalm-076",
+              "bookNumber": 12,
+              "bookTitle": "Les clés du bonheur",
+              "archangel": "ouriel",
+              "psalmNumber": 76,
+              "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "bonnes-alliances",
+          "label": "Bonnes alliances",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "capital-d-energie",
+          "label": "Capital d’énergie",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "capital-d-eternite",
+          "label": "Capital d’éternité",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "capital-spirituel",
+          "label": "Capital spirituel",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-12-psalm-076",
+              "bookNumber": 12,
+              "bookTitle": "Les clés du bonheur",
+              "archangel": "ouriel",
+              "psalmNumber": 76,
+              "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "construire-ciel-et-terre",
+          "label": "Construire ciel et terre",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "continuite",
+          "label": "Continuité",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "continuite-de-conscience",
+          "label": "Continuité de conscience",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "creation",
+          "label": "Création",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "deux-capitaux",
+          "label": "Deux capitaux",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "immortalite",
+          "label": "Immortalité",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "incarnation",
+          "label": "Incarnation",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "protection-comme-capital",
+          "label": "Protection comme capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "protection-divine",
+          "label": "Protection divine",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "energie",
+          "label": "Énergie",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "etapes-comme-epreuves",
+          "label": "Étapes comme épreuves",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "mere",
+          "label": "Mère",
+          "score": 8,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "related",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "concentration",
+          "label": "Concentration",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
       "themeId": "capital-d-energie",
       "label": "Capital d’énergie",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "construire-ciel-et-terre",
           "label": "Construire ciel et terre",
@@ -59255,8 +60483,33 @@
     {
       "themeId": "capital-d-eternite",
       "label": "Capital d’éternité",
-      "connectionCount": 16,
+      "connectionCount": 17,
       "topConnections": [
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "conscience",
           "label": "Conscience",
@@ -59662,7 +60915,7 @@
     {
       "themeId": "capital-divin",
       "label": "Capital divin",
-      "connectionCount": 18,
+      "connectionCount": 19,
       "topConnections": [
         {
           "themeId": "feu",
@@ -59940,6 +61193,31 @@
           ]
         },
         {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
           "themeId": "conscience",
           "label": "Conscience",
           "score": 4,
@@ -60119,11 +61397,36 @@
     {
       "themeId": "capital-spirituel",
       "label": "Capital spirituel",
-      "connectionCount": 2,
+      "connectionCount": 3,
       "topConnections": [
         {
           "themeId": "argent",
           "label": "Argent",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-12-psalm-076",
+              "bookNumber": 12,
+              "bookTitle": "Les clés du bonheur",
+              "archangel": "ouriel",
+              "psalmNumber": 76,
+              "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -72298,7 +73601,7 @@
     {
       "themeId": "concentration",
       "label": "Concentration",
-      "connectionCount": 153,
+      "connectionCount": 154,
       "topConnections": [
         {
           "themeId": "vie",
@@ -78949,7 +80252,7 @@
     {
       "themeId": "conscience",
       "label": "Conscience",
-      "connectionCount": 388,
+      "connectionCount": 389,
       "topConnections": [
         {
           "themeId": "vie",
@@ -85521,8 +86824,33 @@
     {
       "themeId": "construire-ciel-et-terre",
       "label": "Construire ciel et terre",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "capital-d-energie",
           "label": "Capital d’énergie",
@@ -85953,7 +87281,7 @@
     {
       "themeId": "continuite",
       "label": "Continuité",
-      "connectionCount": 61,
+      "connectionCount": 62,
       "topConnections": [
         {
           "themeId": "vie",
@@ -86580,6 +87908,31 @@
           ]
         },
         {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
           "themeId": "capital-d-eternite",
           "label": "Capital d’éternité",
           "score": 9,
@@ -87014,39 +88367,39 @@
               "contribution": 6
             }
           ]
-        },
-        {
-          "themeId": "connaissance-de-soi",
-          "label": "Connaissance de soi",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-20-psalm-115",
-              "bookNumber": 20,
-              "bookTitle": "Aux portes de la Terre promise",
-              "archangel": "ouriel",
-              "psalmNumber": 115,
-              "psalmTitle": "Si tu veux savoir qui tu es",
-              "themeAImportance": "central",
-              "themeBImportance": "important",
-              "contribution": 6
-            }
-          ]
         }
       ]
     },
     {
       "themeId": "continuite-de-conscience",
       "label": "Continuité de conscience",
-      "connectionCount": 16,
+      "connectionCount": 17,
       "topConnections": [
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "capital-d-eternite",
           "label": "Capital d’éternité",
@@ -88016,7 +89369,7 @@
     {
       "themeId": "corps",
       "label": "Corps",
-      "connectionCount": 549,
+      "connectionCount": 550,
       "topConnections": [
         {
           "themeId": "vie",
@@ -100627,7 +101980,7 @@
     {
       "themeId": "corps-de-sagesse",
       "label": "Corps de sagesse",
-      "connectionCount": 54,
+      "connectionCount": 55,
       "topConnections": [
         {
           "themeId": "corps",
@@ -101625,6 +102978,31 @@
           ]
         },
         {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "capital-d-eternite",
           "label": "Capital d’éternité",
           "score": 6,
@@ -101720,31 +103098,6 @@
               "psalmTitle": "Développe ton capital d’éternité",
               "themeAImportance": "central",
               "themeBImportance": "important",
-              "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "destinee",
-          "label": "Destinée",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-19-psalm-102",
-              "bookNumber": 19,
-              "bookTitle": "Le secret de la pensée angélique",
-              "archangel": "raphael",
-              "psalmNumber": 102,
-              "psalmTitle": "La clé pour se libérer des mauvaises pensées",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
               "contribution": 6
             }
           ]
@@ -105855,7 +107208,7 @@
     {
       "themeId": "courage-et-fidelite",
       "label": "Courage et fidélité",
-      "connectionCount": 18,
+      "connectionCount": 19,
       "topConnections": [
         {
           "themeId": "feu",
@@ -106133,6 +107486,31 @@
           ]
         },
         {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
           "themeId": "capital-divin",
           "label": "Capital divin",
           "score": 4,
@@ -106312,7 +107690,7 @@
     {
       "themeId": "creation",
       "label": "Création",
-      "connectionCount": 208,
+      "connectionCount": 209,
       "topConnections": [
         {
           "themeId": "vie",
@@ -112433,7 +113811,7 @@
     {
       "themeId": "destinee",
       "label": "Destinée",
-      "connectionCount": 207,
+      "connectionCount": 208,
       "topConnections": [
         {
           "themeId": "vie",
@@ -116989,8 +118367,33 @@
     {
       "themeId": "deux-capitaux",
       "label": "Deux capitaux",
-      "connectionCount": 16,
+      "connectionCount": 17,
       "topConnections": [
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "capital-d-eternite",
           "label": "Capital d’éternité",
@@ -147210,7 +148613,7 @@
     {
       "themeId": "echange-harmonieux",
       "label": "Échange harmonieux",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "esseniens",
@@ -147365,6 +148768,31 @@
         {
           "themeId": "accomplissement",
           "label": "Accomplissement",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 4,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -158949,7 +160377,7 @@
     {
       "themeId": "energie",
       "label": "Énergie",
-      "connectionCount": 108,
+      "connectionCount": 109,
       "topConnections": [
         {
           "themeId": "vie",
@@ -162689,7 +164117,7 @@
     {
       "themeId": "energie-de-l-argent",
       "label": "Énergie de l’argent",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "esseniens",
@@ -162819,6 +164247,31 @@
         {
           "themeId": "accomplissement",
           "label": "Accomplissement",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -165998,11 +167451,36 @@
     {
       "themeId": "ennoblissement",
       "label": "Ennoblissement",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
         {
           "themeId": "bonnes-alliances",
           "label": "Bonnes alliances",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -182082,7 +183560,7 @@
     {
       "themeId": "esseniens",
       "label": "Esséniens",
-      "connectionCount": 138,
+      "connectionCount": 139,
       "topConnections": [
         {
           "themeId": "terre",
@@ -183797,6 +185275,46 @@
           ]
         },
         {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 15,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "enracinement",
           "label": "Enracinement",
           "score": 15,
@@ -184051,31 +185569,6 @@
               "contribution": 9
             }
           ]
-        },
-        {
-          "themeId": "acte-concret",
-          "label": "Acte concret",
-          "score": 9,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-20-psalm-129",
-              "bookNumber": 20,
-              "bookTitle": "Aux portes de la Terre promise",
-              "archangel": "ouriel",
-              "psalmNumber": 129,
-              "psalmTitle": "Réécrivez le monde dans la sagesse divine",
-              "themeAImportance": "central",
-              "themeBImportance": "central",
-              "contribution": 9
-            }
-          ]
         }
       ]
     },
@@ -184214,8 +185707,33 @@
     {
       "themeId": "etapes-comme-epreuves",
       "label": "Étapes comme épreuves",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "capital-d-energie",
           "label": "Capital d’énergie",
@@ -188304,7 +189822,7 @@
     {
       "themeId": "etre-humain",
       "label": "Être humain",
-      "connectionCount": 34,
+      "connectionCount": 35,
       "topConnections": [
         {
           "themeId": "mission-de-l-homme",
@@ -188998,6 +190516,31 @@
           ]
         },
         {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "capital-divin",
           "label": "Capital divin",
           "score": 6,
@@ -189141,31 +190684,6 @@
               "archangel": "raphael",
               "psalmNumber": 106,
               "psalmTitle": "L’alchimie intérieure: transforme l’éphémère en immortel",
-              "themeAImportance": "central",
-              "themeBImportance": "important",
-              "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "responsabilite-envers-les-regnes",
-          "label": "Responsabilité envers les règnes",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "michael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-21-psalm-148",
-              "bookNumber": 21,
-              "bookTitle": "Homme, retrouve ta dignité",
-              "archangel": "michael",
-              "psalmNumber": 148,
-              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
               "themeAImportance": "central",
               "themeBImportance": "important",
               "contribution": 6
@@ -198543,7 +200061,7 @@
     {
       "themeId": "feu",
       "label": "Feu",
-      "connectionCount": 138,
+      "connectionCount": 139,
       "topConnections": [
         {
           "themeId": "vie",
@@ -202415,7 +203933,7 @@
     {
       "themeId": "fidelite",
       "label": "Fidélité",
-      "connectionCount": 37,
+      "connectionCount": 38,
       "topConnections": [
         {
           "themeId": "engagement",
@@ -202755,6 +204273,31 @@
         {
           "themeId": "argent",
           "label": "Argent",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-12-psalm-076",
+              "bookNumber": 12,
+              "bookTitle": "Les clés du bonheur",
+              "archangel": "ouriel",
+              "psalmNumber": 76,
+              "psalmTitle": "La Lumière et l’argent sont un, prends ‑ en soin si tu ne veux pas les perdre",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -203180,31 +204723,6 @@
         {
           "themeId": "stabilite-et-racines",
           "label": "Stabilité et racines",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-19-psalm-122",
-              "bookNumber": 19,
-              "bookTitle": "Le secret de la pensée angélique",
-              "archangel": "raphael",
-              "psalmNumber": 122,
-              "psalmTitle": "Le don que tu as reçu à ta naissance",
-              "themeAImportance": "central",
-              "themeBImportance": "important",
-              "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "terre",
-          "label": "Terre",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -206666,7 +208184,7 @@
     {
       "themeId": "flamme-de-vie",
       "label": "Flamme de vie",
-      "connectionCount": 20,
+      "connectionCount": 21,
       "topConnections": [
         {
           "themeId": "corps-temple",
@@ -206940,6 +208458,31 @@
               "themeAImportance": "central",
               "themeBImportance": "central",
               "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
             }
           ]
         },
@@ -213600,7 +215143,7 @@
     {
       "themeId": "fructification",
       "label": "Fructification",
-      "connectionCount": 30,
+      "connectionCount": 31,
       "topConnections": [
         {
           "themeId": "terre",
@@ -213890,6 +215433,31 @@
         {
           "themeId": "accomplissement",
           "label": "Accomplissement",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -214365,31 +215933,6 @@
         {
           "themeId": "sagesse",
           "label": "Sagesse",
-          "score": 2,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "gabriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-22-psalm-140",
-              "bookNumber": 22,
-              "bookTitle": "Garder sa mémoire après la mort",
-              "archangel": "gabriel",
-              "psalmNumber": 140,
-              "psalmTitle": "De la servitude au service divin",
-              "themeAImportance": "important",
-              "themeBImportance": "related",
-              "contribution": 2
-            }
-          ]
-        },
-        {
-          "themeId": "travail",
-          "label": "Travail",
           "score": 2,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -230763,11 +232306,36 @@
     {
       "themeId": "homme-canal-de-benediction",
       "label": "Homme comme canal de bénédiction",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
         {
           "themeId": "bonnes-alliances",
           "label": "Bonnes alliances",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -231759,7 +233327,7 @@
     {
       "themeId": "homme-intermediaire-des-mondes",
       "label": "Homme intermédiaire des mondes",
-      "connectionCount": 18,
+      "connectionCount": 19,
       "topConnections": [
         {
           "themeId": "feu",
@@ -232008,6 +233576,31 @@
               "themeAImportance": "central",
               "themeBImportance": "central",
               "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
             }
           ]
         },
@@ -239061,7 +240654,7 @@
     {
       "themeId": "immortalite",
       "label": "Immortalité",
-      "connectionCount": 129,
+      "connectionCount": 130,
       "topConnections": [
         {
           "themeId": "vie",
@@ -244040,7 +245633,7 @@
     {
       "themeId": "incarnation",
       "label": "Incarnation",
-      "connectionCount": 43,
+      "connectionCount": 44,
       "topConnections": [
         {
           "themeId": "monde-divin",
@@ -244357,6 +245950,31 @@
               "archangel": "gabriel",
               "psalmNumber": 120,
               "psalmTitle": "Vivez et bénissez",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
               "themeAImportance": "central",
               "themeBImportance": "central",
               "contribution": 9
@@ -244874,31 +246492,6 @@
               "psalmTitle": "La pensée de sagesse",
               "themeAImportance": "important",
               "themeBImportance": "central",
-              "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "paix",
-          "label": "Paix",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "gabriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-02-psalm-023",
-              "bookNumber": 2,
-              "bookTitle": "Le secret des 3 mondes",
-              "archangel": "gabriel",
-              "psalmNumber": 23,
-              "psalmTitle": "Accueille le divin dans ta vie",
-              "themeAImportance": "central",
-              "themeBImportance": "important",
               "contribution": 6
             }
           ]
@@ -253429,7 +255022,7 @@
     {
       "themeId": "intelligence",
       "label": "Intelligence",
-      "connectionCount": 435,
+      "connectionCount": 436,
       "topConnections": [
         {
           "themeId": "vie",
@@ -258559,8 +260152,33 @@
     {
       "themeId": "investissement-de-l-energie",
       "label": "Investissement de l’énergie",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
         {
           "themeId": "capital-d-energie",
           "label": "Capital d’énergie",
@@ -276000,7 +277618,7 @@
     {
       "themeId": "lumiere",
       "label": "Lumière",
-      "connectionCount": 514,
+      "connectionCount": 515,
       "topConnections": [
         {
           "themeId": "vie",
@@ -280651,7 +282269,7 @@
     {
       "themeId": "maitrise",
       "label": "Maîtrise",
-      "connectionCount": 170,
+      "connectionCount": 171,
       "topConnections": [
         {
           "themeId": "vie",
@@ -298906,7 +300524,7 @@
     {
       "themeId": "mere",
       "label": "Mère",
-      "connectionCount": 201,
+      "connectionCount": 202,
       "topConnections": [
         {
           "themeId": "vie",
@@ -304688,7 +306306,7 @@
     {
       "themeId": "mission-de-vie",
       "label": "Mission de vie",
-      "connectionCount": 18,
+      "connectionCount": 19,
       "topConnections": [
         {
           "themeId": "concentration",
@@ -304727,6 +306345,31 @@
               "themeAImportance": "important",
               "themeBImportance": "important",
               "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
             }
           ]
         },
@@ -307763,7 +309406,7 @@
     {
       "themeId": "monde-divin",
       "label": "Monde divin",
-      "connectionCount": 276,
+      "connectionCount": 277,
       "topConnections": [
         {
           "themeId": "vie",
@@ -315842,7 +317485,7 @@
     {
       "themeId": "mort",
       "label": "Mort",
-      "connectionCount": 233,
+      "connectionCount": 234,
       "topConnections": [
         {
           "themeId": "vie",
@@ -320971,7 +322614,7 @@
     {
       "themeId": "nation-essenienne",
       "label": "Nation Essénienne",
-      "connectionCount": 201,
+      "connectionCount": 202,
       "topConnections": [
         {
           "themeId": "vie",
@@ -338571,7 +340214,7 @@
     {
       "themeId": "oeuvre",
       "label": "Œuvre",
-      "connectionCount": 431,
+      "connectionCount": 432,
       "topConnections": [
         {
           "themeId": "vie",
@@ -343439,8 +345082,33 @@
     {
       "themeId": "oeuvre-d-immortalite",
       "label": "Œuvre d’immortalité",
-      "connectionCount": 16,
+      "connectionCount": 17,
       "topConnections": [
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
         {
           "themeId": "capital-d-eternite",
           "label": "Capital d’éternité",
@@ -368366,7 +370034,7 @@
     {
       "themeId": "pensee",
       "label": "Pensée",
-      "connectionCount": 408,
+      "connectionCount": 409,
       "topConnections": [
         {
           "themeId": "vie",
@@ -390792,7 +392460,7 @@
     {
       "themeId": "prendre-soin-de-la-vie",
       "label": "Prendre soin de la vie",
-      "connectionCount": 18,
+      "connectionCount": 19,
       "topConnections": [
         {
           "themeId": "feu",
@@ -391041,6 +392709,31 @@
               "themeAImportance": "central",
               "themeBImportance": "central",
               "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
             }
           ]
         },
@@ -401783,11 +403476,36 @@
     {
       "themeId": "protection-comme-capital",
       "label": "Protection comme capital",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
         {
           "themeId": "bonnes-alliances",
           "label": "Bonnes alliances",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -402729,11 +404447,36 @@
     {
       "themeId": "protection-divine",
       "label": "Protection divine",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
         {
           "themeId": "bonnes-alliances",
           "label": "Bonnes alliances",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -415760,7 +417503,7 @@
     {
       "themeId": "realisation",
       "label": "Réalisation",
-      "connectionCount": 79,
+      "connectionCount": 80,
       "topConnections": [
         {
           "themeId": "oeuvre",
@@ -427446,7 +429189,7 @@
     {
       "themeId": "regnes",
       "label": "Règnes",
-      "connectionCount": 152,
+      "connectionCount": 153,
       "topConnections": [
         {
           "themeId": "vie",
@@ -430397,8 +432140,33 @@
     {
       "themeId": "reincarnation-et-recyclage",
       "label": "Réincarnation et recyclage",
-      "connectionCount": 16,
+      "connectionCount": 17,
       "topConnections": [
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-121",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 121,
+              "psalmTitle": "Développe ton capital d’éternité",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
         {
           "themeId": "capital-d-eternite",
           "label": "Capital d’éternité",
@@ -432766,11 +434534,36 @@
     {
       "themeId": "relations-et-futur",
       "label": "Relations et futur",
-      "connectionCount": 17,
+      "connectionCount": 18,
       "topConnections": [
         {
           "themeId": "bonnes-alliances",
           "label": "Bonnes alliances",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-22-psalm-143",
+              "bookNumber": 22,
+              "bookTitle": "Garder sa mémoire après la mort",
+              "archangel": "gabriel",
+              "psalmNumber": 143,
+              "psalmTitle": "Attirer la protection du monde divin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -446796,7 +448589,7 @@
     {
       "themeId": "responsabilite-creatrice",
       "label": "Responsabilité créatrice",
-      "connectionCount": 25,
+      "connectionCount": 26,
       "topConnections": [
         {
           "themeId": "nation-essenienne",
@@ -447396,6 +449189,31 @@
         {
           "themeId": "accomplissement",
           "label": "Accomplissement",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 4,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -449690,7 +451508,7 @@
     {
       "themeId": "responsabilite-envers-les-regnes",
       "label": "Responsabilité envers les règnes",
-      "connectionCount": 18,
+      "connectionCount": 19,
       "topConnections": [
         {
           "themeId": "feu",
@@ -449964,6 +451782,31 @@
               "themeAImportance": "central",
               "themeBImportance": "important",
               "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-148",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 148,
+              "psalmTitle": "Ne laissez pas s ’éteindre la flamme de la vie",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
             }
           ]
         },
@@ -456067,7 +457910,7 @@
     {
       "themeId": "sagesse",
       "label": "Sagesse",
-      "connectionCount": 483,
+      "connectionCount": 484,
       "topConnections": [
         {
           "themeId": "vie",
@@ -483838,7 +485681,7 @@
     {
       "themeId": "soutien-et-capital-collectif",
       "label": "Soutien et capital collectif",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "esseniens",
@@ -483993,6 +485836,31 @@
         {
           "themeId": "accomplissement",
           "label": "Accomplissement",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-116",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 116,
+              "psalmTitle": "Guérissez l’énergie de l’argent",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
           "score": 4,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -493257,7 +495125,7 @@
     {
       "themeId": "temps",
       "label": "Temps",
-      "connectionCount": 86,
+      "connectionCount": 87,
       "topConnections": [
         {
           "themeId": "vie",
@@ -496962,7 +498830,7 @@
     {
       "themeId": "terre",
       "label": "Terre",
-      "connectionCount": 511,
+      "connectionCount": 512,
       "topConnections": [
         {
           "themeId": "vie",
@@ -520395,7 +522263,7 @@
     {
       "themeId": "transmission-aux-generations",
       "label": "Transmission aux générations",
-      "connectionCount": 29,
+      "connectionCount": 30,
       "topConnections": [
         {
           "themeId": "vie",
@@ -520578,6 +522446,31 @@
               "psalmTitle": "La perfection des 22 arcanas",
               "themeAImportance": "important",
               "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-21-psalm-151",
+              "bookNumber": 21,
+              "bookTitle": "Homme, retrouve ta dignité",
+              "archangel": "michael",
+              "psalmNumber": 151,
+              "psalmTitle": "Apprends à gérer ton capital d ’énergie",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
               "contribution": 6
             }
           ]
@@ -548375,7 +550268,7 @@
     {
       "themeId": "vie",
       "label": "Vie",
-      "connectionCount": 647,
+      "connectionCount": 648,
       "topConnections": [
         {
           "themeId": "corps",
