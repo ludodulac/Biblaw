@@ -21,8 +21,8 @@ function selfTest(){
     humains:['etre-humain','education-du-genre-humain'],
     soutien:['soutien-des-fonctions','soutien-et-capital-collectif','soutien-mutuel','union-et-soutien-mutuel','verite-magie-soutien-mutuel'],
     soutiens:['soutien-des-fonctions','soutien-et-capital-collectif','soutien-mutuel','union-et-soutien-mutuel','verite-magie-soutien-mutuel'],
-    langage:['langage-de-la-mere','langage-des-evenements','langage-des-mondes','langage-universel','langage-universel-du-corps','langage-vrai'],
-    langages:['langages-des-mondes','langage-de-la-mere','langage-des-evenements','langage-des-mondes','langage-universel','langage-universel-du-corps','langage-vrai']
+    langage:['langage','langage-de-la-mere','langage-des-evenements','langage-des-mondes','langage-universel','langage-universel-du-corps','langage-vrai'],
+    langages:['langages-des-mondes','langage','langage-de-la-mere','langage-des-evenements','langage-des-mondes','langage-universel','langage-universel-du-corps','langage-vrai']
   };
   for(const [query,expected] of Object.entries(safeFlexionExpected)){
     const actual=ids(query);
