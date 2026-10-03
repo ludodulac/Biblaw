@@ -36,6 +36,7 @@ DEEP={
  T('volonte-qui-libere','Volonté qui libère','important','direct',[18,19,20],"Une volonté équilibrée ne cherche pas à occuper toute la place : elle donne aux autres des conditions pour grandir et devenir meilleurs. L’exploitation, l’écrasement et le besoin de contrôle sont au contraire lus comme signes de faiblesse."),
  T('reel-contre-faux-semblant','Réel contre faux-semblant','important','direct',[2,7,21,24,25],"Le chemin vers la vérité passe par le réel et non par le besoin de paraître ou de séduire. Les mondes spirituels peuvent eux-mêmes devenir des illusions s’ils servent à fabriquer une image flatteuse qui n’est pas confirmée par la vie."),
  T('oeuvre-et-continuite','Œuvre et continuité','important','direct',[13,22,26,27,28],"Une œuvre reliée à un monde supérieur est présentée comme pouvant conserver son capital et être reprise jusqu’à la perfection, tandis qu’une œuvre dédiée à la reconnaissance du monde humain reste dépendante de ses intérêts et de ses retournements."),
+ T('continuite','Continuité','important','direct',[13,22,26,27,28],"Une œuvre reliée à un monde supérieur est présentée comme pouvant conserver son capital et être reprise jusqu’à la perfection, tandis qu’une œuvre dédiée à la reconnaissance du monde humain reste dépendante de ses intérêts et de ses retournements."),
 ]}}
 
 def merge(e,n):
