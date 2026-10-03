@@ -9,8 +9,8 @@
     "related": 1,
     "pairContribution": "importanceWeightA * importanceWeightB"
   },
-  "themeCount": 1250,
-  "undirectedEdgeCount": 13281,
+  "themeCount": 1251,
+  "undirectedEdgeCount": 13347,
   "topConnectionsPerTheme": 30,
   "themes": [
     {
@@ -11033,11 +11033,36 @@
     {
       "themeId": "adaptation-sans-perte-identite",
       "label": "Adaptation sans perte d’identité",
-      "connectionCount": 14,
+      "connectionCount": 15,
       "topConnections": [
         {
           "themeId": "communication",
           "label": "Communication",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -12486,7 +12511,7 @@
     {
       "themeId": "affinites-et-correspondances",
       "label": "Affinités et correspondances",
-      "connectionCount": 2,
+      "connectionCount": 3,
       "topConnections": [
         {
           "themeId": "opportunite",
@@ -12510,6 +12535,31 @@
               "themeAImportance": "important",
               "themeBImportance": "central",
               "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-05-psalm-025",
+              "bookNumber": 5,
+              "bookTitle": "Homme, redeviens un mage",
+              "archangel": "michael",
+              "psalmNumber": 25,
+              "psalmTitle": "Saisis l’opportunité de la lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
             }
           ]
         },
@@ -23845,8 +23895,33 @@
     {
       "themeId": "alliances",
       "label": "Alliances",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
         {
           "themeId": "langage-universel",
           "label": "Langage universel",
@@ -25091,7 +25166,7 @@
     {
       "themeId": "ame",
       "label": "Âme",
-      "connectionCount": 302,
+      "connectionCount": 303,
       "topConnections": [
         {
           "themeId": "vie",
@@ -35530,7 +35605,7 @@
     {
       "themeId": "animaux",
       "label": "Animaux",
-      "connectionCount": 72,
+      "connectionCount": 73,
       "topConnections": [
         {
           "themeId": "vie",
@@ -43778,7 +43853,7 @@
     {
       "themeId": "archanges",
       "label": "Archanges",
-      "connectionCount": 152,
+      "connectionCount": 153,
       "topConnections": [
         {
           "themeId": "vie",
@@ -60101,8 +60176,33 @@
     {
       "themeId": "carte-au-tresor",
       "label": "Carte au trésor",
-      "connectionCount": 2,
+      "connectionCount": 3,
       "topConnections": [
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-07-psalm-031",
+              "bookNumber": 7,
+              "bookTitle": "Les clés de l’immortalité",
+              "archangel": "raphael",
+              "psalmNumber": 31,
+              "psalmTitle": "Apprends à déchiffrer la carte qui te conduira vers ton trésor de lumière",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "langages-des-mondes",
           "label": "Langages des mondes",
@@ -68677,7 +68777,7 @@
     {
       "themeId": "coherence",
       "label": "Cohérence",
-      "connectionCount": 6,
+      "connectionCount": 7,
       "topConnections": [
         {
           "themeId": "eau-de-vie",
@@ -68698,6 +68798,31 @@
               "archangel": "gabriel",
               "psalmNumber": 38,
               "psalmTitle": "Laisse l’eau de la vie couler à travers toi",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-073",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 73,
+              "psalmTitle": "Que votre langage soit vrai dans tous les mondes",
               "themeAImportance": "central",
               "themeBImportance": "central",
               "contribution": 9
@@ -71594,8 +71719,33 @@
     {
       "themeId": "communication",
       "label": "Communication",
-      "connectionCount": 14,
+      "connectionCount": 15,
       "topConnections": [
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "langage-universel",
           "label": "Langage universel",
@@ -87866,7 +88016,7 @@
     {
       "themeId": "corps",
       "label": "Corps",
-      "connectionCount": 548,
+      "connectionCount": 549,
       "topConnections": [
         {
           "themeId": "vie",
@@ -93319,7 +93469,7 @@
     {
       "themeId": "corps-comme-livre",
       "label": "Corps comme livre",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -93624,6 +93774,31 @@
         {
           "themeId": "corps-instrument-de-service",
           "label": "Corps instrument de service",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -100452,7 +100627,7 @@
     {
       "themeId": "corps-de-sagesse",
       "label": "Corps de sagesse",
-      "connectionCount": 53,
+      "connectionCount": 54,
       "topConnections": [
         {
           "themeId": "corps",
@@ -102614,7 +102789,7 @@
     {
       "themeId": "corps-instrument-de-service",
       "label": "Corps instrument de service",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -102938,6 +103113,31 @@
               "themeAImportance": "central",
               "themeBImportance": "important",
               "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
             }
           ]
         },
@@ -106112,7 +106312,7 @@
     {
       "themeId": "creation",
       "label": "Création",
-      "connectionCount": 207,
+      "connectionCount": 208,
       "topConnections": [
         {
           "themeId": "vie",
@@ -111341,7 +111541,7 @@
     {
       "themeId": "dauphin",
       "label": "Dauphin",
-      "connectionCount": 2,
+      "connectionCount": 3,
       "topConnections": [
         {
           "themeId": "perfection",
@@ -111365,6 +111565,31 @@
               "themeAImportance": "central",
               "themeBImportance": "central",
               "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-16-psalm-102",
+              "bookNumber": 16,
+              "bookTitle": "Ouvrez les portes d’un autre futur",
+              "archangel": "ouriel",
+              "psalmNumber": 102,
+              "psalmTitle": "Le dauphin",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
             }
           ]
         },
@@ -118765,7 +118990,7 @@
     {
       "themeId": "dieux",
       "label": "Dieux",
-      "connectionCount": 214,
+      "connectionCount": 215,
       "topConnections": [
         {
           "themeId": "vie",
@@ -123884,7 +124109,7 @@
     {
       "themeId": "dignite",
       "label": "Dignité",
-      "connectionCount": 54,
+      "connectionCount": 55,
       "topConnections": [
         {
           "themeId": "vie",
@@ -124823,6 +125048,31 @@
           ]
         },
         {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-073",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 73,
+              "psalmTitle": "Que votre langage soit vrai dans tous les mondes",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "langage-vrai",
           "label": "Langage vrai",
           "score": 6,
@@ -124900,31 +125150,6 @@
         {
           "themeId": "progression-des-relations",
           "label": "Progression des relations",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "michael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-21-psalm-139",
-              "bookNumber": 21,
-              "bookTitle": "Homme, retrouve ta dignité",
-              "archangel": "michael",
-              "psalmNumber": 139,
-              "psalmTitle": "Les 3 marches de la dignité",
-              "themeAImportance": "central",
-              "themeBImportance": "important",
-              "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "pere",
-          "label": "Père",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -149116,8 +149341,48 @@
     {
       "themeId": "ecoute",
       "label": "Écoute",
-      "connectionCount": 30,
+      "connectionCount": 31,
       "topConnections": [
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 12,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
         {
           "themeId": "langage-universel",
           "label": "Langage universel",
@@ -149880,31 +150145,6 @@
               "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
               "themeAImportance": "important",
               "themeBImportance": "related",
-              "contribution": 2
-            }
-          ]
-        },
-        {
-          "themeId": "ame",
-          "label": "Âme",
-          "score": 2,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "raphael",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-19-psalm-103",
-              "bookNumber": 19,
-              "bookTitle": "Le secret de la pensée angélique",
-              "archangel": "raphael",
-              "psalmNumber": 103,
-              "psalmTitle": "Les lois de la communication universelle",
-              "themeAImportance": "related",
-              "themeBImportance": "important",
               "contribution": 2
             }
           ]
@@ -152463,7 +152703,7 @@
     {
       "themeId": "education",
       "label": "Éducation",
-      "connectionCount": 115,
+      "connectionCount": 116,
       "topConnections": [
         {
           "themeId": "vie",
@@ -166190,7 +166430,7 @@
     {
       "themeId": "enracinement",
       "label": "Enracinement",
-      "connectionCount": 30,
+      "connectionCount": 31,
       "topConnections": [
         {
           "themeId": "corps",
@@ -166698,6 +166938,31 @@
           ]
         },
         {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "langage-universel-du-corps",
           "label": "Langage universel du corps",
           "score": 6,
@@ -166966,31 +167231,6 @@
               "archangel": "ouriel",
               "psalmNumber": 124,
               "psalmTitle": "Les É vangiles esséniens sont une bénédiction",
-              "themeAImportance": "important",
-              "themeBImportance": "important",
-              "contribution": 4
-            }
-          ]
-        },
-        {
-          "themeId": "union",
-          "label": "Union",
-          "score": 4,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "gabriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-14-psalm-106",
-              "bookNumber": 14,
-              "bookTitle": "La maîtrise du corps",
-              "archangel": "gabriel",
-              "psalmNumber": 106,
-              "psalmTitle": "La famille, une valeur fondamentale",
               "themeAImportance": "important",
               "themeBImportance": "important",
               "contribution": 4
@@ -181842,7 +182082,7 @@
     {
       "themeId": "esseniens",
       "label": "Esséniens",
-      "connectionCount": 137,
+      "connectionCount": 138,
       "topConnections": [
         {
           "themeId": "terre",
@@ -205216,8 +205456,33 @@
     {
       "themeId": "finesse-et-subtilite",
       "label": "Finesse et subtilité",
-      "connectionCount": 2,
+      "connectionCount": 3,
       "topConnections": [
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-11-psalm-052",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 52,
+              "psalmTitle": "Par la finesse et la subtilité, développez le langage qui unifie tous les mondes",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "langage-des-mondes",
           "label": "Langage des mondes",
@@ -241788,7 +242053,7 @@
     {
       "themeId": "impersonnalite",
       "label": "Impersonnalité",
-      "connectionCount": 66,
+      "connectionCount": 67,
       "topConnections": [
         {
           "themeId": "corps",
@@ -242087,6 +242352,42 @@
               "archangel": "gabriel",
               "psalmNumber": 140,
               "psalmTitle": "De la servitude au service divin",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 13,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 2
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
               "themeAImportance": "important",
               "themeBImportance": "important",
               "contribution": 4
@@ -242839,31 +243140,6 @@
               "archangel": "gabriel",
               "psalmNumber": 140,
               "psalmTitle": "De la servitude au service divin",
-              "themeAImportance": "central",
-              "themeBImportance": "important",
-              "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "corps-de-sagesse",
-          "label": "Corps de sagesse",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-20-psalm-117",
-              "bookNumber": 20,
-              "bookTitle": "Aux portes de la Terre promise",
-              "archangel": "ouriel",
-              "psalmNumber": 117,
-              "psalmTitle": "Ouvrez la porte de la belle lumière",
               "themeAImportance": "central",
               "themeBImportance": "important",
               "contribution": 6
@@ -247173,7 +247449,7 @@
     {
       "themeId": "influences",
       "label": "Influences",
-      "connectionCount": 167,
+      "connectionCount": 168,
       "topConnections": [
         {
           "themeId": "vie",
@@ -253153,7 +253429,7 @@
     {
       "themeId": "intelligence",
       "label": "Intelligence",
-      "connectionCount": 434,
+      "connectionCount": 435,
       "topConnections": [
         {
           "themeId": "vie",
@@ -257012,8 +257288,33 @@
     {
       "themeId": "intelligence-comme-accord",
       "label": "Intelligence comme accord",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
         {
           "themeId": "langage-universel",
           "label": "Langage universel",
@@ -261622,6 +261923,1155 @@
       ]
     },
     {
+      "themeId": "langage",
+      "label": "Langage",
+      "connectionCount": 66,
+      "topConnections": [
+        {
+          "themeId": "langage-universel",
+          "label": "Langage universel",
+          "score": 48,
+          "sharedPsalmCount": 7,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 4
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-10-psalm-058",
+              "bookNumber": 10,
+              "bookTitle": "S’approcher de la source de Gabriel",
+              "archangel": "gabriel",
+              "psalmNumber": 58,
+              "psalmTitle": "Réconciliez-vous avec votre M ère en",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-11-psalm-068",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 68,
+              "psalmTitle": "Trouvez le bonheur dans la simplicité",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            },
+            {
+              "recordId": "book-16-psalm-102",
+              "bookNumber": 16,
+              "bookTitle": "Ouvrez les portes d’un autre futur",
+              "archangel": "ouriel",
+              "psalmNumber": 102,
+              "psalmTitle": "Le dauphin",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            },
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "vie",
+          "label": "Vie",
+          "score": 36,
+          "sharedPsalmCount": 5,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 4
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "lumiere",
+          "label": "Lumière",
+          "score": 21,
+          "sharedPsalmCount": 4,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 4
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "regnes",
+          "label": "Règnes",
+          "score": 21,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-11-psalm-052",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 52,
+              "psalmTitle": "Par la finesse et la subtilité, développez le langage qui unifie tous les mondes",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "sagesse",
+          "label": "Sagesse",
+          "score": 21,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 3
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "intelligence",
+          "label": "Intelligence",
+          "score": 20,
+          "sharedPsalmCount": 4,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 3
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "related",
+              "themeBImportance": "important",
+              "contribution": 2
+            }
+          ]
+        },
+        {
+          "themeId": "corps",
+          "label": "Corps",
+          "score": 15,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 3
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "related",
+              "themeBImportance": "central",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "terre",
+          "label": "Terre",
+          "score": 15,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "nature",
+          "label": "Nature",
+          "score": 15,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-11-psalm-068",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 68,
+              "psalmTitle": "Trouvez le bonheur dans la simplicité",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "parole",
+          "label": "Parole",
+          "score": 15,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "oeuvre",
+          "label": "Œuvre",
+          "score": 15,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 2
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "impersonnalite",
+          "label": "Impersonnalité",
+          "score": 13,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 2
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "ecoute",
+          "label": "Écoute",
+          "score": 12,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "loi",
+          "label": "Loi",
+          "score": 9,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 2
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "pensee",
+          "label": "Pensée",
+          "score": 9,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 2
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "related",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "ame",
+          "label": "Âme",
+          "score": 9,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "related",
+              "themeBImportance": "central",
+              "contribution": 3
+            }
+          ]
+        },
+        {
+          "themeId": "carte-au-tresor",
+          "label": "Carte au trésor",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-07-psalm-031",
+              "bookNumber": 7,
+              "bookTitle": "Les clés de l’immortalité",
+              "archangel": "raphael",
+              "psalmNumber": 31,
+              "psalmTitle": "Apprends à déchiffrer la carte qui te conduira vers ton trésor de lumière",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "coherence",
+          "label": "Cohérence",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-073",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 73,
+              "psalmTitle": "Que votre langage soit vrai dans tous les mondes",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "communication",
+          "label": "Communication",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "finesse-et-subtilite",
+          "label": "Finesse et subtilité",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-11-psalm-052",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 52,
+              "psalmTitle": "Par la finesse et la subtilité, développez le langage qui unifie tous les mondes",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "langage-des-mondes",
+          "label": "Langage des mondes",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-11-psalm-052",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 52,
+              "psalmTitle": "Par la finesse et la subtilité, développez le langage qui unifie tous les mondes",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "langage-vrai",
+          "label": "Langage vrai",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-073",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 73,
+              "psalmTitle": "Que votre langage soit vrai dans tous les mondes",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "langages-des-mondes",
+          "label": "Langages des mondes",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-07-psalm-031",
+              "bookNumber": 7,
+              "bookTitle": "Les clés de l’immortalité",
+              "archangel": "raphael",
+              "psalmNumber": 31,
+              "psalmTitle": "Apprends à déchiffrer la carte qui te conduira vers ton trésor de lumière",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "point-de-vue",
+          "label": "Point de vue",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "pere",
+          "label": "Père",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "realisation",
+          "label": "Réalisation",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "secret-de-la-reussite",
+          "label": "Secret de la réussite",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "structure-et-corps",
+          "label": "Structure et corps",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "volonte",
+          "label": "Volonté",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "adaptation-sans-perte-identite",
+          "label": "Adaptation sans perte d’identité",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
       "themeId": "langage-de-la-mere",
       "label": "Langage de la Mère",
       "connectionCount": 17,
@@ -262056,7 +263506,7 @@
     {
       "themeId": "langage-des-evenements",
       "label": "Langage des événements",
-      "connectionCount": 2,
+      "connectionCount": 3,
       "topConnections": [
         {
           "themeId": "opportunite",
@@ -262107,17 +263557,67 @@
               "contribution": 4
             }
           ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-05-psalm-025",
+              "bookNumber": 5,
+              "bookTitle": "Homme, redeviens un mage",
+              "archangel": "michael",
+              "psalmNumber": 25,
+              "psalmTitle": "Saisis l’opportunité de la lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
         }
       ]
     },
     {
       "themeId": "langage-des-mondes",
       "label": "Langage des mondes",
-      "connectionCount": 2,
+      "connectionCount": 3,
       "topConnections": [
         {
           "themeId": "finesse-et-subtilite",
           "label": "Finesse et subtilité",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-11-psalm-052",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 52,
+              "psalmTitle": "Par la finesse et la subtilité, développez le langage qui unifie tous les mondes",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -262170,8 +263670,107 @@
     {
       "themeId": "langage-universel",
       "label": "Langage universel",
-      "connectionCount": 46,
+      "connectionCount": 47,
       "topConnections": [
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 48,
+          "sharedPsalmCount": 7,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 4
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-10-psalm-058",
+              "bookNumber": 10,
+              "bookTitle": "S’approcher de la source de Gabriel",
+              "archangel": "gabriel",
+              "psalmNumber": 58,
+              "psalmTitle": "Réconciliez-vous avec votre M ère en",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-11-psalm-068",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 68,
+              "psalmTitle": "Trouvez le bonheur dans la simplicité",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            },
+            {
+              "recordId": "book-16-psalm-102",
+              "bookNumber": 16,
+              "bookTitle": "Ouvrez les portes d’un autre futur",
+              "archangel": "ouriel",
+              "psalmNumber": 102,
+              "psalmTitle": "Le dauphin",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            },
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
         {
           "themeId": "vie",
           "label": "Vie",
@@ -263107,38 +264706,13 @@
               "contribution": 6
             }
           ]
-        },
-        {
-          "themeId": "monde-divin",
-          "label": "Monde divin",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-20-psalm-117",
-              "bookNumber": 20,
-              "bookTitle": "Aux portes de la Terre promise",
-              "archangel": "ouriel",
-              "psalmNumber": 117,
-              "psalmTitle": "Ouvrez la porte de la belle lumière",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
-              "contribution": 6
-            }
-          ]
         }
       ]
     },
     {
       "themeId": "langage-universel-du-corps",
       "label": "Langage universel du corps",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -263491,6 +265065,31 @@
           ]
         },
         {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
           "themeId": "organes-comme-intelligences",
           "label": "Organes comme intelligences",
           "score": 4,
@@ -263520,11 +265119,36 @@
     {
       "themeId": "langage-vrai",
       "label": "Langage vrai",
-      "connectionCount": 2,
+      "connectionCount": 3,
       "topConnections": [
         {
           "themeId": "coherence",
           "label": "Cohérence",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-09-psalm-073",
+              "bookNumber": 9,
+              "bookTitle": "L’Initiation des Enfants de la Lumière",
+              "archangel": "michael",
+              "psalmNumber": 73,
+              "psalmTitle": "Que votre langage soit vrai dans tous les mondes",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -263577,11 +265201,36 @@
     {
       "themeId": "langages-des-mondes",
       "label": "Langages des mondes",
-      "connectionCount": 2,
+      "connectionCount": 3,
       "topConnections": [
         {
           "themeId": "carte-au-tresor",
           "label": "Carte au trésor",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-07-psalm-031",
+              "bookNumber": 7,
+              "bookTitle": "Les clés de l’immortalité",
+              "archangel": "raphael",
+              "psalmNumber": 31,
+              "psalmTitle": "Apprends à déchiffrer la carte qui te conduira vers ton trésor de lumière",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -269305,7 +270954,7 @@
     {
       "themeId": "loi",
       "label": "Loi",
-      "connectionCount": 129,
+      "connectionCount": 130,
       "topConnections": [
         {
           "themeId": "vie",
@@ -274351,7 +276000,7 @@
     {
       "themeId": "lumiere",
       "label": "Lumière",
-      "connectionCount": 513,
+      "connectionCount": 514,
       "topConnections": [
         {
           "themeId": "vie",
@@ -286534,7 +288183,7 @@
     {
       "themeId": "meditation",
       "label": "Méditation",
-      "connectionCount": 53,
+      "connectionCount": 54,
       "topConnections": [
         {
           "themeId": "corps",
@@ -287202,6 +288851,31 @@
           ]
         },
         {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-07-psalm-031",
+              "bookNumber": 7,
+              "bookTitle": "Les clés de l’immortalité",
+              "archangel": "raphael",
+              "psalmNumber": 31,
+              "psalmTitle": "Apprends à déchiffrer la carte qui te conduira vers ton trésor de lumière",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "langages-des-mondes",
           "label": "Langages des mondes",
           "score": 6,
@@ -287370,31 +289044,6 @@
               "archangel": "raphael",
               "psalmNumber": 45,
               "psalmTitle": "Par la méditation, éveille en toi l’œil de la sérénité",
-              "themeAImportance": "central",
-              "themeBImportance": "important",
-              "contribution": 6
-            }
-          ]
-        },
-        {
-          "themeId": "temple",
-          "label": "Temple",
-          "score": 6,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-12-psalm-061",
-              "bookNumber": 12,
-              "bookTitle": "Les clés du bonheur",
-              "archangel": "ouriel",
-              "psalmNumber": 61,
-              "psalmTitle": "Ce que tu dois savoir et être pour entrer dans le temple d ’un A rchange",
               "themeAImportance": "central",
               "themeBImportance": "important",
               "contribution": 6
@@ -297257,7 +298906,7 @@
     {
       "themeId": "mere",
       "label": "Mère",
-      "connectionCount": 200,
+      "connectionCount": 201,
       "topConnections": [
         {
           "themeId": "vie",
@@ -301449,7 +303098,7 @@
     {
       "themeId": "microcosme-et-macrocosme",
       "label": "Microcosme et macrocosme",
-      "connectionCount": 21,
+      "connectionCount": 22,
       "topConnections": [
         {
           "themeId": "corps",
@@ -301885,6 +303534,31 @@
               "archangel": "raphael",
               "psalmNumber": 17,
               "psalmTitle": "Ton corps est un don précieux",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
               "themeAImportance": "important",
               "themeBImportance": "central",
               "contribution": 6
@@ -304814,7 +306488,7 @@
     {
       "themeId": "monde-de-l-homme",
       "label": "Monde de l’homme",
-      "connectionCount": 36,
+      "connectionCount": 37,
       "topConnections": [
         {
           "themeId": "vie",
@@ -304991,6 +306665,31 @@
               "archangel": "raphael",
               "psalmNumber": 123,
               "psalmTitle": "Redeviens un enfant pour traverser les épreuves de la vie",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
               "themeAImportance": "central",
               "themeBImportance": "important",
               "contribution": 6
@@ -305626,31 +307325,6 @@
               "contribution": 2
             }
           ]
-        },
-        {
-          "themeId": "pensee",
-          "label": "Pensée",
-          "score": 2,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-20-psalm-106",
-              "bookNumber": 20,
-              "bookTitle": "Aux portes de la Terre promise",
-              "archangel": "ouriel",
-              "psalmNumber": 106,
-              "psalmTitle": "La conscience, clé universelle",
-              "themeAImportance": "related",
-              "themeBImportance": "important",
-              "contribution": 2
-            }
-          ]
         }
       ]
     },
@@ -306089,7 +307763,7 @@
     {
       "themeId": "monde-divin",
       "label": "Monde divin",
-      "connectionCount": 275,
+      "connectionCount": 276,
       "topConnections": [
         {
           "themeId": "vie",
@@ -322697,7 +324371,7 @@
     {
       "themeId": "nature",
       "label": "Nature",
-      "connectionCount": 125,
+      "connectionCount": 126,
       "topConnections": [
         {
           "themeId": "vie",
@@ -325066,6 +326740,46 @@
           ]
         },
         {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 15,
+          "sharedPsalmCount": 2,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            },
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-11-psalm-068",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 68,
+              "psalmTitle": "Trouvez le bonheur dans la simplicité",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "langage-universel",
           "label": "Langage universel",
           "score": 15,
@@ -325406,53 +327120,6 @@
               "themeAImportance": "related",
               "themeBImportance": "related",
               "contribution": 1
-            }
-          ]
-        },
-        {
-          "themeId": "parole",
-          "label": "Parole",
-          "score": 12,
-          "sharedPsalmCount": 3,
-          "archangels": [
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 3
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-32-psalm-201",
-              "bookNumber": 32,
-              "bookTitle": "La Nouvelle Alliance",
-              "archangel": "ouriel",
-              "psalmNumber": 201,
-              "psalmTitle": "Comment voir les mondes cachés à travers le monde visible",
-              "themeAImportance": "central",
-              "themeBImportance": "important",
-              "contribution": 6
-            },
-            {
-              "recordId": "book-20-psalm-125",
-              "bookNumber": 20,
-              "bookTitle": "Aux portes de la Terre promise",
-              "archangel": "ouriel",
-              "psalmNumber": 125,
-              "psalmTitle": "Tous les êtres ont droit au respect et à la dignité",
-              "themeAImportance": "important",
-              "themeBImportance": "important",
-              "contribution": 4
-            },
-            {
-              "recordId": "book-20-psalm-107",
-              "bookNumber": 20,
-              "bookTitle": "Aux portes de la Terre promise",
-              "archangel": "ouriel",
-              "psalmNumber": 107,
-              "psalmTitle": "Seule la vérité peut entrer dans la terre d ’O uriel",
-              "themeAImportance": "related",
-              "themeBImportance": "important",
-              "contribution": 2
             }
           ]
         }
@@ -336904,7 +338571,7 @@
     {
       "themeId": "oeuvre",
       "label": "Œuvre",
-      "connectionCount": 430,
+      "connectionCount": 431,
       "topConnections": [
         {
           "themeId": "vie",
@@ -349411,7 +351078,7 @@
     {
       "themeId": "opportunite",
       "label": "Opportunité",
-      "connectionCount": 9,
+      "connectionCount": 10,
       "topConnections": [
         {
           "themeId": "activite",
@@ -349509,6 +351176,31 @@
               "psalmTitle": "Marchez avec votre ange et faites grandir la ronde des archanges",
               "themeAImportance": "central",
               "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "michael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-05-psalm-025",
+              "bookNumber": 5,
+              "bookTitle": "Homme, redeviens un mage",
+              "archangel": "michael",
+              "psalmNumber": 25,
+              "psalmTitle": "Saisis l’opportunité de la lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
               "contribution": 6
             }
           ]
@@ -352199,7 +353891,7 @@
     {
       "themeId": "organes-comme-intelligences",
       "label": "Organes comme intelligences",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -352529,6 +354221,31 @@
         {
           "themeId": "corps-instrument-de-service",
           "label": "Corps instrument de service",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-121",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 121,
+              "psalmTitle": "L’homme est l’instrument et le livre du haut savoir des D ieux",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 4,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -358532,7 +360249,7 @@
     {
       "themeId": "parole",
       "label": "Parole",
-      "connectionCount": 144,
+      "connectionCount": 145,
       "topConnections": [
         {
           "themeId": "vie",
@@ -363240,11 +364957,36 @@
     {
       "themeId": "parole-vraie",
       "label": "Parole vraie",
-      "connectionCount": 14,
+      "connectionCount": 15,
       "topConnections": [
         {
           "themeId": "communication",
           "label": "Communication",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -366624,7 +368366,7 @@
     {
       "themeId": "pensee",
       "label": "Pensée",
-      "connectionCount": 407,
+      "connectionCount": 408,
       "topConnections": [
         {
           "themeId": "vie",
@@ -373463,7 +375205,7 @@
     {
       "themeId": "pere",
       "label": "Père",
-      "connectionCount": 205,
+      "connectionCount": 206,
       "topConnections": [
         {
           "themeId": "vie",
@@ -376971,7 +378713,7 @@
     {
       "themeId": "perfection",
       "label": "Perfection",
-      "connectionCount": 13,
+      "connectionCount": 14,
       "topConnections": [
         {
           "themeId": "dauphin",
@@ -377169,6 +378911,31 @@
               "psalmTitle": "Quand la créature devient créateur",
               "themeAImportance": "central",
               "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-16-psalm-102",
+              "bookNumber": 16,
+              "bookTitle": "Ouvrez les portes d’un autre futur",
+              "archangel": "ouriel",
+              "psalmNumber": 102,
+              "psalmTitle": "Le dauphin",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
               "contribution": 6
             }
           ]
@@ -383240,11 +385007,36 @@
     {
       "themeId": "point-de-vue",
       "label": "Point de vue",
-      "connectionCount": 14,
+      "connectionCount": 15,
       "topConnections": [
         {
           "themeId": "impersonnalite",
           "label": "Impersonnalité",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 9,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -383654,8 +385446,33 @@
     {
       "themeId": "pollution-subtile",
       "label": "Pollution subtile",
-      "connectionCount": 1,
+      "connectionCount": 2,
       "topConnections": [
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "gabriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-10-psalm-058",
+              "bookNumber": 10,
+              "bookTitle": "S’approcher de la source de Gabriel",
+              "archangel": "gabriel",
+              "psalmNumber": 58,
+              "psalmTitle": "Réconciliez-vous avec votre M ère en",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
         {
           "themeId": "langage-universel",
           "label": "Langage universel",
@@ -383743,7 +385560,7 @@
     {
       "themeId": "porte-de-la-lumiere",
       "label": "Porte de la Lumière",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -383998,6 +385815,31 @@
         {
           "themeId": "impersonnalite",
           "label": "Impersonnalité",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -391973,11 +393815,36 @@
     {
       "themeId": "preparation-interieure",
       "label": "Préparation intérieure",
-      "connectionCount": 14,
+      "connectionCount": 15,
       "topConnections": [
         {
           "themeId": "impersonnalite",
           "label": "Impersonnalité",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-126",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 126,
+              "psalmTitle": "Pour t ’approcher de la sagesse, change de point de vue",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -402154,7 +404021,7 @@
     {
       "themeId": "purete",
       "label": "Pureté",
-      "connectionCount": 199,
+      "connectionCount": 200,
       "topConnections": [
         {
           "themeId": "vie",
@@ -413893,7 +415760,7 @@
     {
       "themeId": "realisation",
       "label": "Réalisation",
-      "connectionCount": 78,
+      "connectionCount": 79,
       "topConnections": [
         {
           "themeId": "oeuvre",
@@ -414945,6 +416812,31 @@
           ]
         },
         {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
+        {
           "themeId": "langage-universel",
           "label": "Langage universel",
           "score": 9,
@@ -415138,31 +417030,6 @@
               "archangel": "ouriel",
               "psalmNumber": 104,
               "psalmTitle": "Conduis tes pensées jusqu ’à la réalisation",
-              "themeAImportance": "central",
-              "themeBImportance": "central",
-              "contribution": 9
-            }
-          ]
-        },
-        {
-          "themeId": "souplesse",
-          "label": "Souplesse",
-          "score": 9,
-          "sharedPsalmCount": 1,
-          "archangels": [
-            {
-              "id": "ouriel",
-              "sharedPsalmCount": 1
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-20-psalm-118",
-              "bookNumber": 20,
-              "bookTitle": "Aux portes de la Terre promise",
-              "archangel": "ouriel",
-              "psalmNumber": 118,
-              "psalmTitle": "Les vertus de la souplesse",
               "themeAImportance": "central",
               "themeBImportance": "central",
               "contribution": 9
@@ -425579,7 +427446,7 @@
     {
       "themeId": "regnes",
       "label": "Règnes",
-      "connectionCount": 151,
+      "connectionCount": 152,
       "topConnections": [
         {
           "themeId": "vie",
@@ -427444,6 +429311,57 @@
           ]
         },
         {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 21,
+          "sharedPsalmCount": 3,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 2
+            },
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            },
+            {
+              "recordId": "book-11-psalm-052",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 52,
+              "psalmTitle": "Par la finesse et la subtilité, développez le langage qui unifie tous les mondes",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
+              "contribution": 6
+            },
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
           "themeId": "tradition",
           "label": "Tradition",
           "score": 19,
@@ -428039,42 +429957,6 @@
               "themeAImportance": "related",
               "themeBImportance": "central",
               "contribution": 3
-            }
-          ]
-        },
-        {
-          "themeId": "travail",
-          "label": "Travail",
-          "score": 12,
-          "sharedPsalmCount": 2,
-          "archangels": [
-            {
-              "id": "michael",
-              "sharedPsalmCount": 2
-            }
-          ],
-          "topSharedPsalms": [
-            {
-              "recordId": "book-25-psalm-171",
-              "bookNumber": 25,
-              "bookTitle": "Les clés de la maîtrise",
-              "archangel": "michael",
-              "psalmNumber": 171,
-              "psalmTitle": "Homme, deviens décisionnaire de ta vie et sois bon",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
-              "contribution": 6
-            },
-            {
-              "recordId": "book-37-psalm-244",
-              "bookNumber": 37,
-              "bookTitle": "La maîtrise du serpent",
-              "archangel": "michael",
-              "psalmNumber": 244,
-              "psalmTitle": "Mettez en valeur tout ce qui vous est donné par D ieu",
-              "themeAImportance": "important",
-              "themeBImportance": "central",
-              "contribution": 6
             }
           ]
         }
@@ -448265,7 +450147,7 @@
     {
       "themeId": "responsabilite-et-libre-creation",
       "label": "Responsabilité et libre création",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -448520,6 +450402,31 @@
         {
           "themeId": "impersonnalite",
           "label": "Impersonnalité",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 6,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -454160,7 +456067,7 @@
     {
       "themeId": "sagesse",
       "label": "Sagesse",
-      "connectionCount": 482,
+      "connectionCount": 483,
       "topConnections": [
         {
           "themeId": "vie",
@@ -462373,8 +464280,33 @@
     {
       "themeId": "secret-de-la-reussite",
       "label": "Secret de la réussite",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "langage-universel",
           "label": "Langage universel",
@@ -476668,7 +478600,7 @@
     {
       "themeId": "simplicite",
       "label": "Simplicité",
-      "connectionCount": 20,
+      "connectionCount": 21,
       "topConnections": [
         {
           "themeId": "nature",
@@ -476881,6 +478813,31 @@
               "psalmTitle": "De l’intellect humain à l’intelligence divine",
               "themeAImportance": "central",
               "themeBImportance": "important",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-11-psalm-068",
+              "bookNumber": 11,
+              "bookTitle": "Sortir de l’illusion",
+              "archangel": "raphael",
+              "psalmNumber": 68,
+              "psalmTitle": "Trouvez le bonheur dans la simplicité",
+              "themeAImportance": "important",
+              "themeBImportance": "central",
               "contribution": 6
             }
           ]
@@ -487791,8 +489748,33 @@
     {
       "themeId": "structure-et-corps",
       "label": "Structure et corps",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 9,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-114",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 114,
+              "psalmTitle": "Le secret de la réussite",
+              "themeAImportance": "central",
+              "themeBImportance": "central",
+              "contribution": 9
+            }
+          ]
+        },
         {
           "themeId": "langage-universel",
           "label": "Langage universel",
@@ -494980,7 +496962,7 @@
     {
       "themeId": "terre",
       "label": "Terre",
-      "connectionCount": 510,
+      "connectionCount": 511,
       "topConnections": [
         {
           "themeId": "vie",
@@ -528592,7 +530574,7 @@
     {
       "themeId": "unification-des-mondes",
       "label": "Unification des mondes",
-      "connectionCount": 26,
+      "connectionCount": 27,
       "topConnections": [
         {
           "themeId": "parole",
@@ -528925,6 +530907,31 @@
               "psalmTitle": "Les rois de la Lumière",
               "themeAImportance": "important",
               "themeBImportance": "central",
+              "contribution": 6
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
+          "score": 6,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "raphael",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-19-psalm-103",
+              "bookNumber": 19,
+              "bookTitle": "Le secret de la pensée angélique",
+              "archangel": "raphael",
+              "psalmNumber": 103,
+              "psalmTitle": "Les lois de la communication universelle",
+              "themeAImportance": "central",
+              "themeBImportance": "important",
               "contribution": 6
             }
           ]
@@ -537226,7 +539233,7 @@
     {
       "themeId": "verite",
       "label": "Vérité",
-      "connectionCount": 256,
+      "connectionCount": 257,
       "topConnections": [
         {
           "themeId": "vie",
@@ -540649,7 +542656,7 @@
     {
       "themeId": "verite-comme-remede",
       "label": "Vérité comme remède",
-      "connectionCount": 15,
+      "connectionCount": 16,
       "topConnections": [
         {
           "themeId": "corps",
@@ -540929,6 +542936,31 @@
         {
           "themeId": "impersonnalite",
           "label": "Impersonnalité",
+          "score": 4,
+          "sharedPsalmCount": 1,
+          "archangels": [
+            {
+              "id": "ouriel",
+              "sharedPsalmCount": 1
+            }
+          ],
+          "topSharedPsalms": [
+            {
+              "recordId": "book-20-psalm-117",
+              "bookNumber": 20,
+              "bookTitle": "Aux portes de la Terre promise",
+              "archangel": "ouriel",
+              "psalmNumber": 117,
+              "psalmTitle": "Ouvrez la porte de la belle lumière",
+              "themeAImportance": "important",
+              "themeBImportance": "important",
+              "contribution": 4
+            }
+          ]
+        },
+        {
+          "themeId": "langage",
+          "label": "Langage",
           "score": 4,
           "sharedPsalmCount": 1,
           "archangels": [
@@ -546343,7 +548375,7 @@
     {
       "themeId": "vie",
       "label": "Vie",
-      "connectionCount": 646,
+      "connectionCount": 647,
       "topConnections": [
         {
           "themeId": "corps",
@@ -559959,7 +561991,7 @@
     {
       "themeId": "volonte",
       "label": "Volonté",
-      "connectionCount": 114,
+      "connectionCount": 115,
       "topConnections": [
         {
           "themeId": "vie",

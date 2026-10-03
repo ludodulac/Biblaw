@@ -5,8 +5,8 @@
     "data/thematic-index/theme-directory.json"
   ],
   "semanticMerging": false,
-  "themeCount": 1250,
-  "aliasCount": 1345,
+  "themeCount": 1251,
+  "aliasCount": 1346,
   "ambiguousAliasCount": 5,
   "themes": [
     {
@@ -9254,6 +9254,21 @@
       ],
       "occurrenceCount": 1,
       "score": 3
+    },
+    {
+      "themeId": "langage",
+      "canonicalLabel": "Langage",
+      "observedLabels": [
+        {
+          "label": "Langage",
+          "count": 12
+        }
+      ],
+      "normalizedAliases": [
+        "langage"
+      ],
+      "occurrenceCount": 12,
+      "score": 31
     },
     {
       "themeId": "langage-de-la-mere",
@@ -25451,6 +25466,16 @@
       ],
       "labels": [
         "Lâcher du lest"
+      ],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "langage",
+      "themeIds": [
+        "langage"
+      ],
+      "labels": [
+        "Langage"
       ],
       "ambiguous": false
     },
