@@ -5,8 +5,8 @@
     "data/thematic-index/theme-directory.json"
   ],
   "semanticMerging": false,
-  "themeCount": 1249,
-  "aliasCount": 1344,
+  "themeCount": 1250,
+  "aliasCount": 1345,
   "ambiguousAliasCount": 5,
   "themes": [
     {
@@ -3114,6 +3114,21 @@
       ],
       "occurrenceCount": 1,
       "score": 3
+    },
+    {
+      "themeId": "continuite",
+      "canonicalLabel": "Continuité",
+      "observedLabels": [
+        {
+          "label": "Continuité",
+          "count": 5
+        }
+      ],
+      "normalizedAliases": [
+        "continuite"
+      ],
+      "occurrenceCount": 5,
+      "score": 13
     },
     {
       "themeId": "continuite-de-conscience",
@@ -21136,6 +21151,16 @@
       ],
       "labels": [
         "Construire ciel et terre"
+      ],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "continuite",
+      "themeIds": [
+        "continuite"
+      ],
+      "labels": [
+        "Continuité"
       ],
       "ambiguous": false
     },
