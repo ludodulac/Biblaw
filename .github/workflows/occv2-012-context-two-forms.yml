@@ -1,0 +1,361 @@
+name: BIBLAW OCCV2-012 context two forms
+
+on:
+  push:
+    branches:
+      - audit/occv2-012-context-two-forms
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout exact pushed branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build exact porte and bien targets and verify 011R counts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import importlib.util
+          import json
+          import unicodedata
+          from collections import Counter
+          from pathlib import Path
+
+          ROOT = Path(".").resolve()
+          contract_path = ROOT / "scripts" / "build_linguistic_occurrence_index.py"
+          spec = importlib.util.spec_from_file_location("occ_contract", contract_path)
+          occ = importlib.util.module_from_spec(spec)
+          assert spec.loader is not None
+          spec.loader.exec_module(occ)
+
+          required = ["searchable", "meta", "fields", "TOKEN_RE", "norm", "oid"]
+          missing = [name for name in required if not hasattr(occ, name)]
+          if missing:
+              raise SystemExit("CONTRACT_MISSING " + ",".join(missing))
+
+          catalog = json.loads((ROOT / "data" / "catalog.json").read_text(encoding="utf-8"))
+          if len(catalog.get("records", [])) != 1962:
+              raise SystemExit(f"TARGET_CORPUS_MISMATCH catalog expected=1962 real={len(catalog.get('records', []))}")
+
+          targets = {"porte": [], "bien": []}
+          counts = {
+              "porte": {"total": 0, "boundaryRisk": 0, "clean": 0},
+              "bien": {"total": 0, "boundaryRisk": 0, "clean": 0},
+          }
+
+          def is_dash(ch):
+              return bool(ch) and unicodedata.category(ch) == "Pd"
+
+          for rel in catalog["records"]:
+              p = ROOT / rel
+              if not p.exists():
+                  raise SystemExit(f"missing catalog record: {rel}")
+              obj = json.loads(p.read_text(encoding="utf-8"))
+              if not occ.searchable(rel, obj):
+                  continue
+              book_number, psalm_number = occ.meta(obj)
+              for field, verse_number, text in occ.fields(obj):
+                  for match in occ.TOKEN_RE.finditer(text):
+                      surface = match.group()
+                      normalized = occ.norm(surface)
+                      if normalized not in targets:
+                          continue
+                      st, en = match.span()
+                      apostrophe_risk = ("'" in surface or "’" in surface)
+                      hyphen_risk = is_dash(text[st-1] if st else "") or is_dash(text[en] if en < len(text) else "")
+                      boundary_risk = apostrophe_risk or hyphen_risk
+                      left = max(0, st - 300)
+                      right = min(len(text), en + 300)
+                      row = {
+                          "occurrenceId": occ.oid(obj["id"], field, verse_number, st, en),
+                          "normalizedForm": normalized,
+                          "surface": surface,
+                          "boundaryRisk": boundary_risk,
+                          "apostropheRisk": apostrophe_risk,
+                          "hyphenRisk": hyphen_risk,
+                          "modelText": text[left:right],
+                          "modelStart": st - left,
+                          "modelEnd": en - left,
+                      }
+                      targets[normalized].append(row)
+                      counts[normalized]["total"] += 1
+                      if boundary_risk:
+                          counts[normalized]["boundaryRisk"] += 1
+                      else:
+                          counts[normalized]["clean"] += 1
+
+          expected = {
+              "porte": {"total": 1184, "boundaryRisk": 30, "clean": 1154},
+              "bien": {"total": 3122, "boundaryRisk": 85, "clean": 3037},
+          }
+          if counts != expected:
+              raise SystemExit("TARGET_CORPUS_MISMATCH expected=" + json.dumps(expected, sort_keys=True) + " real=" + json.dumps(counts, sort_keys=True))
+
+          rows = sorted(targets["porte"] + targets["bien"], key=lambda r: r["occurrenceId"])
+          if len(rows) != 4306:
+              raise SystemExit(f"TARGET_CORPUS_MISMATCH total expected=4306 real={len(rows)}")
+
+          Path(".tmp-occv2-012-targets.json").write_text(
+              json.dumps({"counts": counts, "rows": rows}, ensure_ascii=False, separators=(",", ":"), sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps({"TARGET_COUNTS_MATCH_011R": True, "counts": counts, "total": len(rows)}, sort_keys=True))
+          PY
+
+      - name: Install exact historical engines and resources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install "spacy==3.8.16" "stanza==1.14.0"
+          python -m pip install "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.8.0/fr_core_news_sm-3.8.0-py3-none-any.whl"
+          export STANZA_RESOURCES_DIR="$RUNNER_TEMP/stanza_resources"
+          echo "STANZA_RESOURCES_DIR=$STANZA_RESOURCES_DIR" >> "$GITHUB_ENV"
+          python - <<'PY'
+          import os
+          import stanza
+          stanza.download(
+              "fr",
+              dir=os.environ["STANZA_RESOURCES_DIR"],
+              processors="tokenize,mwt,pos,lemma",
+              package="default",
+              resources_version="1.14.0",
+              verbose=False,
+          )
+          PY
+
+      - name: Run historical contextual engines and classify
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          from collections import Counter
+          from pathlib import Path
+
+          EXT_POS_MAP = {"VERB":"VERB","NOUN":"NOUN","ADJ":"ADJ","ADV":"ADV","AUX":"VERB"}
+          ALLOWED = {
+              "porte": {("porte","NOUN"), ("porte","ADJ"), ("porter","VERB")},
+              "bien": {("bien","NOUN"), ("bien","ADJ"), ("bien","ADV")},
+          }
+
+          payload = json.loads(Path(".tmp-occv2-012-targets.json").read_text(encoding="utf-8"))
+          rows = payload["rows"]
+
+          def spacy_run(rows):
+              import spacy
+              import fr_core_news_sm
+              nlp = fr_core_news_sm.load(disable=["ner"])
+              texts = [x["modelText"] for x in rows]
+              results = {}
+              for x, doc in zip(rows, nlp.pipe(texts, batch_size=64)):
+                  matches = [t for t in doc if t.idx == x["modelStart"] and t.idx + len(t.text) == x["modelEnd"]]
+                  if len(matches) != 1:
+                      results[x["occurrenceId"]] = {
+                          "alignmentStatus": "ALIGNMENT_FAILURE",
+                          "externalLemma": None,
+                          "externalPOS": None,
+                          "projectedPOS": None,
+                      }
+                  else:
+                      t = matches[0]
+                      results[x["occurrenceId"]] = {
+                          "alignmentStatus": "ALIGNED",
+                          "externalLemma": t.lemma_ or None,
+                          "externalPOS": t.pos_ or None,
+                          "projectedPOS": EXT_POS_MAP.get(t.pos_),
+                      }
+              return results, spacy.__version__, fr_core_news_sm.__version__
+
+          def stanza_run(rows):
+              import stanza
+              nlp = stanza.Pipeline(
+                  "fr",
+                  dir=os.environ["STANZA_RESOURCES_DIR"],
+                  processors="tokenize,mwt,pos,lemma",
+                  package="default",
+                  download_method=None,
+                  use_gpu=False,
+                  verbose=False,
+              )
+              results = {}
+              batch = 128
+              for start in range(0, len(rows), batch):
+                  chunk = rows[start:start+batch]
+                  docs = nlp([stanza.Document([], text=x["modelText"]) for x in chunk])
+                  for x, doc in zip(chunk, docs):
+                      matches = []
+                      for sent in doc.sentences:
+                          for tok in sent.tokens:
+                              if tok.start_char == x["modelStart"] and tok.end_char == x["modelEnd"] and len(tok.words) == 1:
+                                  matches.append((tok, tok.words[0]))
+                      if len(matches) != 1:
+                          results[x["occurrenceId"]] = {
+                              "alignmentStatus": "ALIGNMENT_FAILURE",
+                              "externalLemma": None,
+                              "externalPOS": None,
+                              "projectedPOS": None,
+                          }
+                      else:
+                          tok, word = matches[0]
+                          results[x["occurrenceId"]] = {
+                              "alignmentStatus": "ALIGNED",
+                              "externalLemma": word.lemma or None,
+                              "externalPOS": word.upos or None,
+                              "projectedPOS": EXT_POS_MAP.get(word.upos),
+                          }
+                  print(f"STANZA_PROGRESS={min(start+batch,len(rows))}/{len(rows)}", flush=True)
+              return results, stanza.__version__
+
+          spacy_results, spacy_version, spacy_model_version = spacy_run(rows)
+          stanza_results, stanza_version = stanza_run(rows)
+
+          if spacy_version != "3.8.16":
+              raise SystemExit(f"ENGINE_VERSION_MISMATCH spacy expected=3.8.16 real={spacy_version}")
+          if spacy_model_version != "3.8.0":
+              raise SystemExit(f"ENGINE_VERSION_MISMATCH fr_core_news_sm expected=3.8.0 real={spacy_model_version}")
+          if stanza_version != "1.14.0":
+              raise SystemExit(f"ENGINE_VERSION_MISMATCH stanza expected=1.14.0 real={stanza_version}")
+
+          out_rows = []
+          target_metrics = {}
+          for target in ("porte", "bien"):
+              status_counts = Counter()
+              clean_status_counts = Counter()
+              allowed_counts = Counter()
+              clean_allowed_counts = Counter()
+              observed_clean_pos = set()
+
+              for row in rows:
+                  if row["normalizedForm"] != target:
+                      continue
+                  spa = spacy_results[row["occurrenceId"]]
+                  sta = stanza_results[row["occurrenceId"]]
+
+                  both_aligned = spa["alignmentStatus"] == "ALIGNED" and sta["alignmentStatus"] == "ALIGNED"
+                  sp = spa.get("projectedPOS")
+                  tp = sta.get("projectedPOS")
+                  consensus_pair = None
+
+                  if not both_aligned or sp is None or tp is None:
+                      status = "ALIGNMENT_OR_UNPROJECTABLE"
+                  else:
+                      sl = spa.get("externalLemma")
+                      tl = sta.get("externalLemma")
+                      lemma_agree = bool(sl) and bool(tl) and sl.casefold() == tl.casefold()
+                      pos_agree = sp == tp
+                      if not lemma_agree or not pos_agree:
+                          status = "ENGINE_DISAGREEMENT"
+                      else:
+                          consensus_pair = (sl.casefold(), sp)
+                          if consensus_pair in ALLOWED[target]:
+                              status = "CONSENSUS_ALLOWED_PAIR"
+                          else:
+                              status = "CONSENSUS_OUTSIDE_ALLOWED_PAIRS"
+
+                  status_counts[status] += 1
+                  if not row["boundaryRisk"]:
+                      clean_status_counts[status] += 1
+                  if status == "CONSENSUS_ALLOWED_PAIR":
+                      allowed_counts[consensus_pair] += 1
+                      if not row["boundaryRisk"]:
+                          clean_allowed_counts[consensus_pair] += 1
+                          observed_clean_pos.add(consensus_pair[1])
+
+                  out_rows.append({
+                      "occurrenceId": row["occurrenceId"],
+                      "normalizedForm": row["normalizedForm"],
+                      "surface": row["surface"],
+                      "boundaryRisk": row["boundaryRisk"],
+                      "spacy": spa,
+                      "stanza": sta,
+                      "engineConsensusPair": (
+                          {"lemma": consensus_pair[0], "pos": consensus_pair[1]}
+                          if consensus_pair is not None else None
+                      ),
+                      "status": status,
+                  })
+
+              expected_total = 1184 if target == "porte" else 3122
+              expected_clean = 1154 if target == "porte" else 3037
+              total_status = sum(status_counts.values())
+              total_clean_status = sum(clean_status_counts.values())
+              total_allowed = sum(allowed_counts.values())
+              if total_status != expected_total:
+                  raise SystemExit(f"COUNT_INVARIANT_FAIL {target} status sum={total_status} expected={expected_total}")
+              if total_clean_status != expected_clean:
+                  raise SystemExit(f"COUNT_INVARIANT_FAIL {target} clean status sum={total_clean_status} expected={expected_clean}")
+              if total_allowed != status_counts.get("CONSENSUS_ALLOWED_PAIR", 0):
+                  raise SystemExit(
+                      f"COUNT_INVARIANT_FAIL {target} allowed sum={total_allowed} "
+                      f"status={status_counts.get('CONSENSUS_ALLOWED_PAIR',0)}"
+                  )
+
+              def pair_counts(counter):
+                  return [
+                      {"lemma": lemma, "pos": pos, "count": count}
+                      for (lemma, pos), count in sorted(counter.items())
+                  ]
+
+              target_metrics[target] = {
+                  "total": expected_total,
+                  "boundaryRisk": payload["counts"][target]["boundaryRisk"],
+                  "clean": expected_clean,
+                  "statusCounts": dict(sorted(status_counts.items())),
+                  "consensusAllowedPairCounts": pair_counts(allowed_counts),
+                  "consensusOutsideAllowedPairs": status_counts.get("CONSENSUS_OUTSIDE_ALLOWED_PAIRS", 0),
+                  "engineDisagreement": status_counts.get("ENGINE_DISAGREEMENT", 0),
+                  "alignmentOrUnprojectable": status_counts.get("ALIGNMENT_OR_UNPROJECTABLE", 0),
+                  "cleanStatusCounts": dict(sorted(clean_status_counts.items())),
+                  "cleanAllowedPairCounts": pair_counts(clean_allowed_counts),
+                  "observedConsensusPOS": sorted(observed_clean_pos),
+                  "multipleContextualPOSObserved": len(observed_clean_pos) >= 2,
+              }
+
+          result = {
+              "mission": "BIBLAW-OCCV2-012",
+              "engineVersions": {
+                  "spacy": spacy_version,
+                  "fr_core_news_sm": spacy_model_version,
+                  "stanza": stanza_version,
+                  "stanzaResourcesVersion": "1.14.0",
+                  "stanzaPackage": "default",
+                  "processors": "tokenize,mwt,pos,lemma",
+              },
+              "targetCountsMatch011R": True,
+              "targets": target_metrics,
+              "rows": sorted(out_rows, key=lambda r: r["occurrenceId"]),
+          }
+          Path("occv2-012-result.json").write_text(
+              json.dumps(result, ensure_ascii=False, separators=(",", ":"), sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps({
+              "engineVersions": result["engineVersions"],
+              "targetCountsMatch011R": True,
+              "targets": target_metrics,
+              "rowCount": len(out_rows),
+          }, ensure_ascii=False, sort_keys=True))
+          PY
+
+      - name: Upload bounded result only
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-occv2-012-context-two-forms
+          path: occv2-012-result.json
+          if-no-files-found: error
+          retention-days: 7
