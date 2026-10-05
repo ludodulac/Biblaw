@@ -1,0 +1,224 @@
+name: BIBLAW OCCV2-010R Morphalou two forms
+
+on:
+  push:
+    branches:
+      - audit/occv2-010r-morphalou-two-forms
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Download and verify frozen Morphalou
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://huggingface.co/datasets/datasets-CNRS/Morphalou/resolve/2b5dec836bef836a184d157ba3f71755bf55d523/Morphalou3.1_formatCSV_toutEnUn.zip?download=true'
+          EXPECTED_SIZE='38062358'
+          EXPECTED_SHA='4fc815cbf17aecdf1b47f6bbc263489a460fd8d11ae17e6b522336c72bd0e333'
+          curl --fail --location --silent --show-error "$URL" --output Morphalou3.1_formatCSV_toutEnUn.zip
+          REAL_SIZE="$(stat -c%s Morphalou3.1_formatCSV_toutEnUn.zip)"
+          echo "MORPHALOU_SIZE=$REAL_SIZE"
+          if [ "$REAL_SIZE" != "$EXPECTED_SIZE" ]; then
+            echo "MORPHALOU_SIZE_MISMATCH expected=$EXPECTED_SIZE real=$REAL_SIZE"
+            exit 1
+          fi
+          REAL_SHA="$(sha256sum Morphalou3.1_formatCSV_toutEnUn.zip | awk '{print $1}')"
+          echo "MORPHALOU_SHA256=$REAL_SHA"
+          if [ "$REAL_SHA" != "$EXPECTED_SHA" ]; then
+            echo "MORPHALOU_SHA_MISMATCH expected=$EXPECTED_SHA real=$REAL_SHA"
+            exit 1
+          fi
+
+      - name: Audit porte and bien only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import csv
+          import io
+          import json
+          import unicodedata
+          import zipfile
+          from collections import defaultdict
+
+          ZIP_PATH = "Morphalou3.1_formatCSV_toutEnUn.zip"
+          MEMBER = "Morphalou3.1_formatCSV_toutEnUn/Morphalou3.1_CSV.csv"
+          EXPECTED_SIZE = 38062358
+          EXPECTED_SHA = "4fc815cbf17aecdf1b47f6bbc263489a460fd8d11ae17e6b522336c72bd0e333"
+          TARGETS = ("porte", "bien")
+          POS_MAP = {
+              "Nom commun": "NOUN",
+              "Adjectif qualificatif": "ADJ",
+              "Adverbe": "ADV",
+              "Verbe": "VERB",
+          }
+
+          def norm(value):
+              return unicodedata.normalize("NFC", value).casefold()
+
+          def morphology_class(raw_count, pairs, unresolved):
+              if raw_count == 0:
+                  return "MISSING"
+              if not pairs:
+                  return "UNRESOLVED_ONLY"
+              if unresolved:
+                  return "HAS_UNRESOLVED_COMPETITOR"
+              if len(pairs) >= 2:
+                  return "MULTIPLE_RESOLVED"
+              if len(pairs) == 1:
+                  return "UNIQUE_RESOLVED"
+              raise AssertionError("unreachable")
+
+          raw_count = {t: 0 for t in TARGETS}
+          resolved_pairs = {t: set() for t in TARGETS}
+          unresolved = {t: set() for t in TARGETS}
+          source_entries = {t: set() for t in TARGETS}
+          header = None
+
+          with zipfile.ZipFile(ZIP_PATH) as zf:
+              if MEMBER not in zf.namelist():
+                  raise RuntimeError(f"missing expected member: {MEMBER}")
+              with zf.open(MEMBER) as raw, io.TextIOWrapper(raw, encoding="utf-8-sig", newline="") as f:
+                  reader = csv.reader(f, delimiter=";")
+                  for row in reader:
+                      if len(row) >= 3 and row[0] == "GRAPHIE" and row[1] == "ID" and row[2] == "CATÉGORIE":
+                          header = row
+                          break
+                  if header is None:
+                      raise RuntimeError("Morphalou CSV header not found")
+
+                  current_lemma = ""
+                  current_entry_id = ""
+                  current_category = ""
+
+                  for row in reader:
+                      if len(row) < 10:
+                          continue
+                      if row[0]:
+                          current_lemma = row[0]
+                          current_entry_id = row[1]
+                          current_category = row[2]
+                      elif row[2]:
+                          current_category = row[2]
+
+                      lemma = row[0] or current_lemma
+                      category = row[2] or current_category
+                      flexion = row[9]
+                      if not lemma or not flexion:
+                          continue
+
+                      key = norm(flexion)
+                      if key not in TARGETS:
+                          continue
+
+                      raw_count[key] += 1
+                      mapped = POS_MAP.get(category)
+                      if mapped is None:
+                          unresolved[key].add(category)
+                      else:
+                          resolved_pairs[key].add((lemma, mapped))
+                      source_entries[key].add((current_entry_id, lemma, category))
+
+          lower_header = [(name, unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode("ascii").casefold()) for name in header]
+
+          sense_id_fields = [
+              name for name, n in lower_header
+              if (("sense" in n or "sens" in n) and ("id" in n or "ident" in n))
+          ]
+          definition_fields = [
+              name for name, n in lower_header
+              if any(token in n for token in ("definition", "gloss", "glose"))
+          ]
+          semantic_label_fields = [
+              name for name, n in lower_header
+              if any(token in n for token in ("semantic", "semantique", "sense label", "etiquette de sens", "etiquette sens"))
+          ]
+
+          targets = {}
+          for target in TARGETS:
+              entries = sorted(source_entries[target], key=lambda x: (x[0], x[1], x[2]))
+              pair_to_ids = defaultdict(set)
+              for entry_id, lemma, category in entries:
+                  mapped = POS_MAP.get(category)
+                  if mapped is not None:
+                      pair_to_ids[(lemma, mapped)].add(entry_id)
+              collapses = [
+                  {
+                      "pair": {"lemma": lemma, "pos": pos},
+                      "distinctEntryIdCount": len(ids),
+                  }
+                  for (lemma, pos), ids in sorted(pair_to_ids.items())
+                  if len(ids) > 1
+              ]
+              targets[target] = {
+                  "rawMatchCount": raw_count[target],
+                  "resolvedPairs": [
+                      {"lemma": lemma, "pos": pos}
+                      for lemma, pos in sorted(resolved_pairs[target])
+                  ],
+                  "unresolvedCategories": sorted(unresolved[target]),
+                  "morphologyClass": morphology_class(
+                      raw_count[target],
+                      resolved_pairs[target],
+                      unresolved[target],
+                  ),
+                  "sourceLexicalEntryCount": len(entries),
+                  "sourceEntries": [
+                      {
+                          "entryId": entry_id,
+                          "lemma": lemma,
+                          "sourceCategory": category,
+                      }
+                      for entry_id, lemma, category in entries
+                  ],
+                  "multipleEntriesCollapseToSameLemmaPos": bool(collapses),
+                  "collapseDetails": collapses,
+              }
+
+          result = {
+              "morphalouSize": EXPECTED_SIZE,
+              "morphalouSha256": EXPECTED_SHA,
+              "morphalouShaMatch": True,
+              "csvHeader": header,
+              "targets": targets,
+              "explicitSenseIdField": {
+                  "present": bool(sense_id_fields),
+                  "fields": sense_id_fields,
+              },
+              "explicitDefinitionOrGlossField": {
+                  "present": bool(definition_fields),
+                  "fields": definition_fields,
+              },
+              "explicitSemanticLabelField": {
+                  "present": bool(semantic_label_fields),
+                  "fields": semantic_label_fields,
+              },
+              "morphalouAloneExposesExplicitSemanticSenseData": bool(
+                  sense_id_fields or definition_fields or semantic_label_fields
+              ),
+              "morphologyAloneCanProveSamePosDifferentMeaning": False,
+              "targetsExact": list(TARGETS),
+          }
+
+          with open("occv2-010r-result.json", "w", encoding="utf-8") as out:
+              json.dump(result, out, ensure_ascii=False, indent=2, sort_keys=True)
+              out.write("\n")
+          PY
+
+      - name: Remove raw Morphalou
+        if: always()
+        shell: bash
+        run: rm -f Morphalou3.1_formatCSV_toutEnUn.zip
+
+      - name: Upload bounded result
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-occv2-010r-morphalou-two-forms
+          path: occv2-010r-result.json
+          if-no-files-found: error
+          retention-days: 7
