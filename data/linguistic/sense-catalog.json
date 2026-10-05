@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "purpose": "linguistic-possible-senses",
+  "entries": [
+    {
+      "lemma": "bien",
+      "partOfSpeech": "NOUN",
+      "senses": [
+        {
+          "senseId": "BENEFIT_WELFARE",
+          "label": "Intérêt et bénéfice",
+          "definition": "Ce qui profite à une personne, un groupe ou l’ensemble."
+        },
+        {
+          "senseId": "EVALUATIVE_GOOD",
+          "label": "Valeur positive",
+          "definition": "Ce qui est jugé juste, favorable ou préférable, notamment par opposition au mal."
+        },
+        {
+          "senseId": "POSSESSION_RESOURCE",
+          "label": "Possession ou ressource",
+          "definition": "Ce qu’un être possède, reçoit, conserve ou fait fructifier comme ressource ou richesse."
+        }
+      ],
+      "decisionPolicy": "Possible senses only; never sufficient to classify an occurrence."
+    }
+  ]
+}
