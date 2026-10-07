@@ -15,10 +15,10 @@ const lexicalRuntime = await fetch(new URL('data/lexical-expansion-runtime.json'
   return r.json();
 });
 
-const target = semanticRuntime.targets?.[0];
-assert.ok(target, 'Semantic browser smoke requires at least one runtime target');
-const positiveSenses = (target.senses || []).filter(sense => sense.occurrenceCount > 0);
-assert.ok(positiveSenses.length, 'First semantic target must expose at least one validated sense');
+const testTargets = (semanticRuntime.targets || [])
+  .map(target => ({ target, positiveSenses: (target.senses || []).filter(sense => sense.occurrenceCount > 0) }))
+  .filter(item => item.positiveSenses.length);
+assert.ok(testTargets.length, 'Semantic browser smoke requires at least one target with validated senses');
 const semanticForms = new Set((semanticRuntime.targets || []).map(item => item.normalizedForm));
 const recordsById = new Map((browserCatalog.records || []).map(record => [record.id, record]));
 const browserType = record => record?.recordType === 'master-prayer' ? 'prayer' : record?.recordType;
@@ -74,62 +74,37 @@ try {
   });
 
   await page.locator('#modeExact').click();
-  await page.locator('#query').fill(target.normalizedForm);
-  await page.locator('#searchButton').click();
-  assert.ok(await page.locator('.result-card').count() > 0, 'Default exact results must exist for the first semantic target');
-  const initialIds = (await resultIds()).sort();
-  assert.equal(await page.locator('#ambiguityPanel').isVisible(), true, 'Semantic precision panel must be visible');
-  assert.equal(await page.locator('[data-semantic-all]').count(), 1, 'All occurrences choice must exist');
-  assert.equal(await page.locator('[data-semantic-sense-id]').count(), positiveSenses.length, 'Sense choice count must come from runtime');
-  assert.equal(await page.locator('[data-semantic-sense-id="UNCERTAIN"]').count(), 0, 'UNCERTAIN must never be exposed as a sense');
-
-  for (const sense of positiveSenses) {
-    const button = page.locator(`[data-semantic-sense-id="${sense.senseId}"]`);
-    assert.equal(await button.count(), 1, `Missing semantic choice for ${sense.senseId}`);
-    await button.click();
-    await assertSenseResults(sense);
-  }
-
-  const firstSense = positiveSenses[0];
-  await page.locator(`[data-semantic-sense-id="${firstSense.senseId}"]`).click();
-  await page.locator('#secondaryTools').evaluate(el => { el.open = true; });
-  const sourceTypes = [...new Set((firstSense.records || []).map(([recordId]) => browserType(recordsById.get(recordId))).filter(Boolean))];
-  const alternateType = sourceTypes.find(type => type !== 'psalm' && ['prayer','note','annex'].includes(type));
-  if (alternateType) {
-    const boxes = page.locator('[name=sourceType]');
-    for (let i = 0; i < await boxes.count(); i++) {
-      const box = boxes.nth(i);
-      const value = await box.getAttribute('value');
-      if (value === alternateType) {
-        if (!(await box.isChecked())) await box.check();
-      } else if (await box.isChecked()) {
-        await box.uncheck();
-      }
+  for (const { target, positiveSenses } of testTargets) {
+    await page.locator('#query').fill(target.normalizedForm);
+    await page.locator('#searchButton').click();
+    assert.ok(await page.locator('.result-card').count() > 0, `Default exact results must exist for ${target.normalizedForm}`);
+    const initialIds = (await resultIds()).sort();
+    assert.equal(await page.locator('#ambiguityPanel').isVisible(), true, `Semantic precision panel must be visible for ${target.normalizedForm}`);
+    assert.equal(await page.locator('[data-semantic-all]').count(), 1, 'All occurrences choice must exist');
+    assert.equal(await page.locator('[data-semantic-sense-id]').count(), positiveSenses.length, 'Sense choice count must come from runtime');
+    assert.equal(await page.locator('[data-semantic-sense-id="UNCERTAIN"]').count(), 0, 'UNCERTAIN must never be exposed as a sense');
+    for (const sense of positiveSenses) {
+      const button = page.locator(`[data-semantic-sense-id="${sense.senseId}"]`);
+      assert.equal(await button.count(), 1, `Missing semantic choice for ${sense.senseId}`);
+      await button.click(); await assertSenseResults(sense);
     }
-    await assertSenseResults(firstSense);
-    for (let i = 0; i < await boxes.count(); i++) {
-      const box = boxes.nth(i);
-      const value = await box.getAttribute('value');
-      if (value === 'psalm') {
-        if (!(await box.isChecked())) await box.check();
-      } else if (await box.isChecked()) {
-        await box.uncheck();
-      }
+    const firstSense = positiveSenses[0];
+    await page.locator(`[data-semantic-sense-id="${firstSense.senseId}"]`).click();
+    await page.locator('#secondaryTools').evaluate(el => { el.open = true; });
+    const sourceTypes = [...new Set((firstSense.records || []).map(([recordId]) => browserType(recordsById.get(recordId))).filter(Boolean))];
+    const alternateType = sourceTypes.find(type => type !== 'psalm' && ['prayer','note','annex'].includes(type));
+    if (alternateType) {
+      const boxes = page.locator('[name=sourceType]');
+      for (let i=0;i<await boxes.count();i++){const box=boxes.nth(i),value=await box.getAttribute('value'); if(value===alternateType){if(!(await box.isChecked())) await box.check();} else if(await box.isChecked()) await box.uncheck();}
+      await assertSenseResults(firstSense);
+      for (let i=0;i<await boxes.count();i++){const box=boxes.nth(i),value=await box.getAttribute('value'); if(value==='psalm'){if(!(await box.isChecked())) await box.check();} else if(await box.isChecked()) await box.uncheck();}
     }
+    const filters=await currentFilters();
+    const archangel=(firstSense.records||[]).map(([recordId])=>recordsById.get(recordId)).find(record=>record&&filters.types.has(browserType(record))&&record.archangel)?.archangel;
+    if(archangel){await page.locator('#archangelFilter').selectOption(archangel);await assertSenseResults(firstSense);await page.locator('#archangelFilter').selectOption('');}
+    await page.locator('[data-semantic-all]').click();
+    assert.deepEqual((await resultIds()).sort(),initialIds,`All occurrences must restore exact results for ${target.normalizedForm}`);
   }
-
-  const filters = await currentFilters();
-  const archangel = (firstSense.records || [])
-    .map(([recordId]) => recordsById.get(recordId))
-    .find(record => record && filters.types.has(browserType(record)) && record.archangel)?.archangel;
-  if (archangel) {
-    await page.locator('#archangelFilter').selectOption(archangel);
-    await assertSenseResults(firstSense);
-    await page.locator('#archangelFilter').selectOption('');
-  }
-
-  await page.locator('[data-semantic-all]').click();
-  assert.deepEqual((await resultIds()).sort(), initialIds, 'All occurrences must restore the initial exact result set');
 
   const nonTarget = (lexicalRuntime.g || []).flat().find(form => !semanticForms.has(form));
   assert.ok(nonTarget, 'Could not derive a deterministic non-semantic form');
@@ -142,7 +117,7 @@ try {
   assert.equal(await page.locator('#ambiguityPanel').isVisible(), false, 'Theme mode must clear semantic selection');
 
   assert.deepEqual(pageErrors, [], `Browser page errors: ${pageErrors.join(' | ')}`);
-  console.log(`OCCV2 semantic browser smoke PASS: ${positiveSenses.length} sense(s), filters, verses, restore, query/mode reset`);
+  console.log(`OCCV2 semantic browser smoke PASS: ${testTargets.length} target(s), filters, verses, restore, query/mode reset`);
 } finally {
   await browser.close();
 }

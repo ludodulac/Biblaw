@@ -66,8 +66,24 @@ def validate_gold(gold: dict, catalog_index: dict[tuple[str, str], set[str]], so
 
     provenance = gold.get("provenance")
     assert isinstance(provenance, dict)
-    assert provenance.get("validationType") == "human-audited"
+    validation_type = provenance.get("validationType")
+    assert validation_type in {"human-audited", "user-confirmed"}
     assert provenance.get("status") == "VALIDATED"
+
+    if validation_type == "user-confirmed":
+        source_review = provenance.get("sourceReview")
+        assert isinstance(source_review, str) and source_review.strip()
+        review_path = ROOT / source_review
+        assert review_path.exists(), f"{source}: sourceReview missing: {source_review}"
+        review = load_json(review_path)
+        assert review.get("reviewType") == "SUPERVISION_REVIEW"
+        assert review.get("validationStatus") == "USER_CONFIRMED"
+        source_queue = review.get("sourceQueue")
+        assert isinstance(source_queue, str) and source_queue.strip()
+        queue = load_json(ROOT / source_queue)
+        queue_entries = {e["occurrenceId"]: e for e in queue["entries"]}
+        review_entries = {e["occurrenceId"]: e for e in review["entries"]}
+        assert len(review_entries) == len(review["entries"])
 
     target = gold.get("target")
     assert isinstance(target, dict)
@@ -105,6 +121,20 @@ def validate_gold(gold: dict, catalog_index: dict[tuple[str, str], set[str]], so
         else:
             assert sense_id is None
             recalculated["UNCERTAIN"] += 1
+
+    if validation_type == "user-confirmed":
+        gold_entries = {e["occurrenceId"]: e for e in entries}
+        assert set(gold_entries) == set(review_entries), f"{source}: review/gold coverage mismatch"
+        for occurrence_id, entry in gold_entries.items():
+            decision = review_entries[occurrence_id]
+            assert entry["adjudicationStatus"] == "VALIDATED"
+            assert entry["senseId"] == decision["selectedSenseId"]
+            assert occurrence_id in queue_entries
+        queue_rows = [queue_entries[oid] for oid in review_entries]
+        assert all(row["lemma"] == lemma and row["partOfSpeech"] == pos for row in queue_rows)
+        import unicodedata
+        normalize = lambda value: unicodedata.normalize("NFC", value).casefold()
+        assert all(normalize(row["surfaceForm"]) == normalize(target["normalizedForm"]) for row in queue_rows)
 
     assert len(occurrence_ids) == len(set(occurrence_ids)), f"{source}: duplicate occurrenceId"
     assert occurrence_ids == sorted(occurrence_ids), f"{source}: entries are not lexically sorted"
