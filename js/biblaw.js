@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), runtime: null, themeEngine: null, active: null, resolvedThemes: [] };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [] };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -19,8 +19,8 @@
   const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   function singleWordQueryKey(value){ const key=norm(value); return key&&!key.includes(' ')?key:null; }
   function expansionFormsFor(value){ const key=singleWordQueryKey(value); if(!key)return[]; const groupIndex=state.lexicalExpansionByForm.get(key); if(groupIndex===undefined)return[]; return (state.lexicalExpansionGroups[groupIndex]||[]).filter(form=>form!==key); }
-  function activeExpansionForms(){ return state.mode==='exact'&&$('includeWordForms')?.checked?expansionFormsFor($('query')?.value||''):[]; }
-  function updateExpansionControl(){ const option=$('exactExpansionOption'),checkbox=$('includeWordForms'); if(!option||!checkbox)return; const key=state.mode==='exact'?singleWordQueryKey($('query')?.value||''):null,expansions=key?expansionFormsFor(key):[]; const available=Boolean(key&&expansions.length); option.hidden=!available; checkbox.disabled=!available; if(!available)checkbox.checked=false; }
+  function activeExpansionForms(){ const expansionRequested=state.mode==='exact'&&$('includeWordForms')?.checked; return expansionRequested&&!state.semanticSelection?expansionFormsFor($('query')?.value||''):[]; }
+  function updateExpansionControl(){ const option=$('exactExpansionOption'),checkbox=$('includeWordForms'); if(!option||!checkbox)return; const key=state.mode==='exact'?singleWordQueryKey($('query')?.value||''):null,expansions=key?expansionFormsFor(key):[]; const semanticActive=Boolean(state.semanticSelection&&key===state.semanticSelection.normalizedForm); const available=Boolean(key&&expansions.length); const enabled=available&&!semanticActive; option.hidden=!enabled; checkbox.disabled=!enabled; if(!enabled)checkbox.checked=false; }
   const queryTerms = () => { const terms=new Set([$('query')?.value, $('query2')?.value].flatMap(value => norm(value).split(' ')).filter(Boolean)); for(const form of activeExpansionForms())terms.add(form); return terms; };
   const highlighted = value => { const terms=queryTerms(); if(!terms.size)return esc(value); return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>terms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join(''); };
   const modeAwareText = value => state.mode==='exact' ? highlighted(value) : esc(value);
@@ -45,16 +45,17 @@
   const importanceLabel = value => ({ central: 'Central', important: 'Important', related: 'Lié' }[value] || 'Indexé');
   const importanceRank = value => ({ central: 0, important: 1, related: 2 }[value] ?? 3);
   const publishPresentationState = detail => document.dispatchEvent(new CustomEvent('biblaw:presentation-state', { detail }));
-  const activateThemeMode = () => { state.mode='themes'; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Ex. amour, nature, âme, psaume 105'; $('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié. Un numéro de psaume peut aussi être saisi directement.'; updateExpansionControl(); };
+  const activateThemeMode = () => { state.mode='themes'; state.semanticSelection=null; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Ex. amour, nature, âme, psaume 105'; $('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié. Un numéro de psaume peut aussi être saisi directement.'; hideAmbiguity(); updateExpansionControl(); };
   const activateExactMode = () => { state.mode='exact'; $('modeExact').classList.add('active'); $('modeThemes').classList.remove('active'); $('primarySearch').classList.add('exact-mode'); $('primarySearch').classList.remove('advanced-visible'); $('query2').disabled=true; $('query2').value=''; $('advancedSearchToggle').hidden=true; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('advancedSearchToggle').textContent='Croiser deux thèmes'; $('query').placeholder='Ex. acclame, temps vis, psaume 105'; $('modeHelp').textContent='Recherche les occurrences exactes d’un mot ou d’une expression dans le corpus.'; hideAmbiguity(); hideTransverseNavigation(); updateExpansionControl(); };
 
   async function load() {
     try {
-      const [bundle, directory, runtime, lexicalExpansion] = await Promise.all([
+      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime] = await Promise.all([
         fetch('data/browser-search-catalog.json').then(r => { if (!r.ok) throw Error('browser-search-catalog'); return r.json(); }),
         fetch('data/thematic-index/theme-directory-public.json').then(r => { if (!r.ok) throw Error('theme-directory'); return r.json(); }),
         fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); }),
-        fetch('data/lexical-expansion-runtime.json').then(r => { if (!r.ok) throw Error('lexical-expansion-runtime'); return r.json(); })
+        fetch('data/lexical-expansion-runtime.json').then(r => { if (!r.ok) throw Error('lexical-expansion-runtime'); return r.json(); }),
+        fetch('data/linguistic-sense-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-sense-browser-runtime'); return r.json(); })
       ]);
       state.themeDirectory = directory.themes || [];
       state.themeById = new Map(state.themeDirectory.map(t => [t.id, t]));
@@ -62,6 +63,9 @@
       state.lexicalExpansionGroups = lexicalExpansion.g || [];
       state.lexicalExpansionByForm = new Map();
       state.lexicalExpansionGroups.forEach((group,index)=>group.forEach(form=>state.lexicalExpansionByForm.set(form,index)));
+      state.semanticBrowserRuntime = semanticBrowserRuntime;
+      state.semanticTargetsByForm = new Map();
+      for(const target of semanticBrowserRuntime.targets||[]){ const list=state.semanticTargetsByForm.get(target.normalizedForm)||[]; list.push(target); state.semanticTargetsByForm.set(target.normalizedForm,list); }
       state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime);
       state.records = bundle.records || [];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
@@ -126,6 +130,55 @@
   }
 
   function hideAmbiguity(){ $('ambiguityPanel').hidden=true; $('senseChoices').innerHTML=''; }
+  function semanticTargetsFor(value){ const key=state.mode==='exact'?singleWordQueryKey(value):null; return key?(state.semanticTargetsByForm.get(key)||[]):[]; }
+  function semanticSelectionContext(value=$('query')?.value||''){
+    if(!state.semanticSelection)return null;
+    const key=singleWordQueryKey(value);
+    if(!key||key!==state.semanticSelection.normalizedForm)return null;
+    const target=(state.semanticTargetsByForm.get(key)||[]).find(item=>item.lemma===state.semanticSelection.lemma&&item.partOfSpeech===state.semanticSelection.partOfSpeech);
+    const sense=target?.senses?.find(item=>item.senseId===state.semanticSelection.senseId);
+    return target&&sense?{target,sense}:null;
+  }
+  function handleExactQueryInput(){
+    if(state.mode!=='exact'){updateExpansionControl();return;}
+    const key=singleWordQueryKey($('query')?.value||'');
+    if(state.semanticSelection&&key!==state.semanticSelection.normalizedForm)state.semanticSelection=null;
+    if(!key||!semanticTargetsFor(key).length)hideAmbiguity();
+    updateExpansionControl();
+  }
+  function showSemanticChoices(query){
+    const key=singleWordQueryKey(query),targets=semanticTargetsFor(query);
+    if(state.mode!=='exact'||!key||!targets.length){hideAmbiguity();return false;}
+    const choices=['<button class="sense-button" data-semantic-all><strong>Toutes les occurrences</strong><span>Recherche exacte sans filtre de sens</span></button>'];
+    targets.forEach((target,targetIndex)=>(target.senses||[]).filter(sense=>sense.occurrenceCount>0).forEach(sense=>{
+      choices.push(`<button class="sense-button" data-semantic-target-index="${targetIndex}" data-semantic-sense-id="${esc(sense.senseId)}"><strong>${esc(sense.label)}</strong><span>${sense.occurrenceCount} occurrence${sense.occurrenceCount>1?'s':''} validée${sense.occurrenceCount>1?'s':''}</span></button>`);
+    }));
+    const uncertain=targets.reduce((sum,target)=>sum+(target.uncertainOccurrenceCount||0),0);
+    if(uncertain)choices.push(`<div class="muted">${uncertain} occurrence${uncertain>1?'s':''} validée${uncertain>1?'s':''} reste${uncertain>1?'nt':''} indéterminée${uncertain>1?'s':''}.</div>`);
+    $('suggestionKicker').textContent='Préciser la recherche';
+    $('suggestionTitle').textContent=`Quel sens de « ${query} » recherchez-vous ?`;
+    $('senseChoices').innerHTML=choices.join('');
+    $('senseChoices').querySelector('[data-semantic-all]').onclick=()=>{state.semanticSelection=null;updateExpansionControl();search();};
+    $('senseChoices').querySelectorAll('[data-semantic-sense-id]').forEach(btn=>btn.onclick=()=>{
+      const target=targets[Number(btn.dataset.semanticTargetIndex)],sense=target?.senses?.find(item=>item.senseId===btn.dataset.semanticSenseId);
+      if(!target||!sense)return;
+      state.semanticSelection={normalizedForm:key,lemma:target.lemma,partOfSpeech:target.partOfSpeech,senseId:sense.senseId};
+      if($('includeWordForms'))$('includeWordForms').checked=false;
+      updateExpansionControl();
+      search();
+    });
+    $('ambiguityPanel').hidden=false;
+    return true;
+  }
+  function semanticMatches(selection){
+    const allowed=selectedTypes(),a=$('archangelFilter').value,items=[];
+    for(const [recordId,occurrenceCount,verseNumbers] of selection.sense.records||[]){
+      const record=state.recordById.get(recordId);
+      if(!record||!allowed.has(type(record))||(a&&record.archangel!==a))continue;
+      items.push({record,score:1,occurrenceCount,semanticVerseNumbers:verseNumbers||[]});
+    }
+    return items;
+  }
   function ambiguityChoice(theme, target) { const count=theme.occurrenceCount||theme.occurrences?.length||0; return `<button class="sense-button" data-ambiguity-target="${target}" data-theme-id="${esc(theme.id)}"><strong>${esc(theme.label)}</strong><span>${count} psaume${count>1?'s':''} indexé${count>1?'s':''}${theme.id?` · ${esc(theme.id)}`:''}</span></button>`; }
   function showDualAmbiguity(queryA, resolvedA, queryB, resolvedB) {
     hideTransverseNavigation();
@@ -169,6 +222,8 @@
 
   function search(){
     const query=$('query').value.trim(), query2=$('query2').value.trim();
+    const semanticKey=singleWordQueryKey(query);
+    if(state.semanticSelection&&semanticKey!==state.semanticSelection.normalizedForm)state.semanticSelection=null;
     updateExpansionControl();
     if(!query){hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'no-result'});return render([]);}
     const psalmNumber=parsePsalmNumberQuery(query);
@@ -198,16 +253,20 @@
       }
       hideAmbiguity();hideTransverseNavigation(); const textual=textualPsalmMatches(query); publishPresentationState({kind:textual.length?'textual-fallback':'no-result'}); return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)});
     }
-    hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'other'});
+    hideTransverseNavigation();publishPresentationState({kind:'other'});
+    const semanticSelection=semanticSelectionContext(query);
     const exactItems=matches(query);
-    mergeExpansionMatches(exactItems,query);
+    if(semanticSelection) exactItems.splice(0,exactItems.length,...semanticMatches(semanticSelection));
+    else mergeExpansionMatches(exactItems,query);
     exactItems.sort((a,b)=>b.occurrenceCount-a.occurrenceCount||(Number(a.record.number)||Number.MAX_SAFE_INTEGER)-(Number(b.record.number)||Number.MAX_SAFE_INTEGER)||String(a.record.id).localeCompare(String(b.record.id),'fr'));
-    render(exactItems,null,{exactSearch:true});
+    showSemanticChoices(query);
+    if(semanticSelection) render(exactItems,null,{exactSearch:true,semanticSearch:true});
+    else render(exactItems,null,{exactSearch:true});
   }
 
   function summary(r){return r.recordType==='psalm'?(r.verses||[]).slice(0,2).map(v=>v.text).join(' '):r.summary||(r.text||'').slice(0,280);}
   function contextualVerses(r,thematic){ if(!thematic?.verseNumbers?.length||!r.verses?.length)return''; const wanted=new Set(thematic.verseNumbers.map(Number)); const chosen=r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4); if(!chosen.length)return''; return `<div class="theme-context"><div class="context-label">Passage concerné</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${esc(v.text)}</span></div>`).join('')}</div>`; }
-  function exactVerses(r){ if(r.recordType!=='psalm'||!r.verses?.length)return''; const query=$('query').value; if(!norm(query))return''; const expansion=activeExpansionForms(); const chosen=r.verses.filter(v=>literalIncludes(v.text,query)||expansion.some(form=>literalIncludes(v.text,form))).slice(0,4); if(!chosen.length)return''; return `<div class="theme-context exact-context"><div class="context-label">Passage${chosen.length>1?'s':''} où la recherche apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`; }
+  function exactVerses(r){ if(r.recordType!=='psalm'||!r.verses?.length)return''; const query=$('query').value; if(!norm(query))return''; const semantic=semanticSelectionContext(query); let chosen; if(semantic){ const row=(semantic.sense.records||[]).find(item=>item[0]===r.id); const wanted=new Set((row?.[2]||[]).map(Number)); chosen=r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4); } else { const expansion=activeExpansionForms(); chosen=r.verses.filter(v=>literalIncludes(v.text,query)||expansion.some(form=>literalIncludes(v.text,form))).slice(0,4); } if(!chosen.length)return''; return `<div class="theme-context exact-context"><div class="context-label">Passage${chosen.length>1?'s':''} où la recherche apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`; }
   function relatedThemes(r,matchedThemes){ const matched=new Set((matchedThemes||[]).map(x=>x.id)); return (state.themesByRecord.get(r.id)||[]).filter(t=>!matched.has(t.id)).slice(0,12); }
   function themeTags(themes){ if(!themes.length)return '<span class="muted inline-empty">Aucun autre thème indexé.</span>'; return `<span class="inline-themes">${themes.map(t=>`<button class="theme-text-link" data-related-theme="${esc(t.id)}">${esc(t.label)}</button>`).join('<span class="theme-separator">·</span>')}</span>`; }
   function bindThemeLinks(root=document){ root.querySelectorAll('[data-related-theme]').forEach(b=>b.onclick=()=>navigateToTheme(state.themeById.get(b.dataset.relatedTheme))); }
@@ -274,7 +333,7 @@
 
   const setAdvancedSearch = open => { if(state.mode!=='themes')return; $('primarySearch').classList.toggle('advanced-visible',open); $('advancedSearchToggle').setAttribute('aria-expanded',String(open)); $('advancedSearchToggle').textContent=open?'Ne pas croiser deux thèmes':'Croiser deux thèmes'; };
   $('advancedSearchToggle').onclick=()=>setAdvancedSearch(!$('primarySearch').classList.contains('advanced-visible'));
-  $('searchButton').onclick=search; $('query').addEventListener('keydown',e=>{if(e.key==='Enter')search();}); $('query').addEventListener('input',updateExpansionControl); $('query2').addEventListener('keydown',e=>{if(e.key==='Enter')search();}); document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=search); $('archangelFilter').onchange=search; $('includeWordForms').onchange=search;
+  $('searchButton').onclick=search; $('query').addEventListener('keydown',e=>{if(e.key==='Enter')search();}); $('query').addEventListener('input',handleExactQueryInput); $('query2').addEventListener('keydown',e=>{if(e.key==='Enter')search();}); document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=search); $('archangelFilter').onchange=search; $('includeWordForms').onchange=search;
   $('modeThemes').onclick=()=>{activateThemeMode();search();}; $('modeExact').onclick=()=>{activateExactMode();search();}; $('closeAmbiguity').onclick=hideAmbiguity;
   $('popularQuestionsToggle').onclick=openPopularQuestions; $('closePopularQuestions').onclick=closePopularQuestions; $('popularQuestionsBackdrop').onclick=closePopularQuestions; $('popularQuestionsBack').onclick=renderPopularQuestionFamilies;
   $('indexToggle').onclick=()=>{$('indexPanel').hidden?openIndex():closeIndex();}; $('themeFilter').oninput=renderThemeDirectory; $('closeIndex').onclick=closeIndex; $('indexBackdrop').onclick=closeIndex; $('closeDialog').onclick=()=>$('recordDialog').close(); $('printRecord').onclick=()=>window.print(); $('downloadRecord').onclick=()=>{const blob=new Blob([activeText()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${state.active?.id||'biblaw'}.txt`;a.click();URL.revokeObjectURL(a.href);};

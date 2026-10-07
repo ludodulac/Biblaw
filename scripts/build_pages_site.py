@@ -28,6 +28,7 @@ PUBLIC_FILES = (
     "js/validation.js",
     "data/browser-search-catalog.json",
     "data/lexical-expansion-runtime.json",
+    "data/linguistic-sense-browser-runtime.json",
     "data/thematic-index/theme-directory-public.json",
     "data/thematic-index/theme-relations-public.json",
     "data/thematic-index/theme-search-runtime.json",
