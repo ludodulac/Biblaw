@@ -1,0 +1,23 @@
+name: OCCV2 024 nested calibration proof
+on:
+  push:
+    branches: [audit/occv2-024-proof]
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: First calibration
+        run: |
+          python scripts/calibrate_linguistic_sense_threshold.py
+          cp data/linguistic/audits/sense-threshold-calibration-024.json /tmp/report.json
+      - name: Second calibration byte-identical
+        run: |
+          python scripts/calibrate_linguistic_sense_threshold.py
+          cmp /tmp/report.json data/linguistic/audits/sense-threshold-calibration-024.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sense-threshold-calibration-024
+          path: data/linguistic/audits/sense-threshold-calibration-024.json
