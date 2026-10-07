@@ -1,0 +1,27 @@
+name: OCCV2 027 finalize
+on:
+  push:
+    branches: [audit/occv2-027-proof]
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/occv2-027-supervision-review
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Audit decisions
+        run: |
+          python scripts/audit_linguistic_sense_review_decisions.py
+          python -m json.tool data/linguistic/review/sense-review-decisions-027.json >/dev/null
+      - name: Collapse to one commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git reset --soft 41caf01ace4252bf50c7b0b216d6dd850f06f525
+          git commit -m "BIBLAW-OCCV2-027 freeze supervision review decisions"
+          git push --force-with-lease origin HEAD:feat/occv2-027-supervision-review
