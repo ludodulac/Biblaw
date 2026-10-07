@@ -42,7 +42,7 @@ jobs:
           PY
       - name: Browser smoke
         run: |
-          npm ci
+          npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
           python3 -m http.server 4173 >/tmp/http.log 2>&1 &
           node scripts/smoke_occv2_semantic_browser.mjs
