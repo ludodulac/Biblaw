@@ -1,23 +1,30 @@
-name: OCCV2 024 nested calibration proof
+name: OCCV2 024 finalize
 on:
   push:
     branches: [audit/occv2-024-proof]
+permissions:
+  contents: write
 jobs:
-  proof:
+  finalize:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: feat/occv2-024-independent-threshold-calibration
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - name: First calibration
+      - name: Generate twice
         run: |
           python scripts/calibrate_linguistic_sense_threshold.py
           cp data/linguistic/audits/sense-threshold-calibration-024.json /tmp/report.json
-      - name: Second calibration byte-identical
-        run: |
           python scripts/calibrate_linguistic_sense_threshold.py
           cmp /tmp/report.json data/linguistic/audits/sense-threshold-calibration-024.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: sense-threshold-calibration-024
-          path: data/linguistic/audits/sense-threshold-calibration-024.json
+      - name: Commit generated report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/linguistic/audits/sense-threshold-calibration-024.json
+          git diff --cached --quiet && exit 0
+          git commit --amend --no-edit
+          git push --force-with-lease origin HEAD:feat/occv2-024-independent-threshold-calibration
