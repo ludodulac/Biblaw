@@ -1,0 +1,29 @@
+name: OCCV2 023B morphology proof
+on:
+  push:
+    branches: [audit/occv2-023b-morph-proof]
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: First evaluation
+        run: |
+          python scripts/evaluate_linguistic_sense_classifier.py
+          cp data/linguistic/audits/sense-classifier-023a.json /tmp/report.json
+      - name: Second evaluation byte-identical
+        run: |
+          python scripts/evaluate_linguistic_sense_classifier.py
+          cmp /tmp/report.json data/linguistic/audits/sense-classifier-023a.json
+      - name: Verify eligibility and emit report
+        run: |
+          python - <<'PY'
+          import base64,json,pathlib
+          p=pathlib.Path("data/linguistic/audits/sense-classifier-023a.json")
+          r=json.loads(p.read_text())
+          eligible=set(r["morphologicalEligibility"]["eligibleForms"])
+          assert all(x["surfaceForm"].casefold() in eligible for x in r["unseenProposals"])
+          print("REPORT_B64="+base64.b64encode(p.read_bytes()).decode())
+          PY
