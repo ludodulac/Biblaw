@@ -25,5 +25,5 @@ jobs:
           r=json.loads(p.read_text())
           eligible=set(r["morphologicalEligibility"]["eligibleForms"])
           assert all(x["surfaceForm"].casefold() in eligible for x in r["unseenProposals"])
-          print("REPORT_B64="+base64.b64encode(p.read_bytes()).decode())
+          b=base64.b64encode(p.read_bytes()).decode()\n          for i in range(0,len(b),4000): print(f"REPORT_CHUNK_{i//4000:04d}="+b[i:i+4000])
           PY
