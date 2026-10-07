@@ -1,0 +1,252 @@
+{
+  "antiLeak": {
+    "outerTestUsedForThresholdSelection": false,
+    "recordGroupLeak": false
+  },
+  "decision": "PER_SENSE_CALIBRATION_PASS",
+  "folds": [
+    {
+      "outerFold": 0,
+      "outerTestCount": 69,
+      "perSenseId": {
+        "BENEFIT_WELFARE": {
+          "autoAcceptCount": 31,
+          "correctCount": 30,
+          "incorrectCount": 1,
+          "predictedCount": 37
+        },
+        "EVALUATIVE_GOOD": {
+          "autoAcceptCount": 5,
+          "correctCount": 5,
+          "incorrectCount": 0,
+          "predictedCount": 32
+        },
+        "POSSESSION_RESOURCE": {
+          "autoAcceptCount": 0,
+          "correctCount": 0,
+          "incorrectCount": 0,
+          "predictedCount": 0
+        }
+      },
+      "thresholds": {
+        "BENEFIT_WELFARE": {
+          "precision": 0.9502762430939227,
+          "selectedCount": 181,
+          "threshold": 0.9778949909952593
+        },
+        "EVALUATIVE_GOOD": {
+          "precision": 1.0,
+          "selectedCount": 15,
+          "threshold": 0.9999986738392718
+        },
+        "POSSESSION_RESOURCE": {
+          "precision": 1.0,
+          "selectedCount": 2,
+          "threshold": 0.6036180597007204
+        }
+      }
+    },
+    {
+      "outerFold": 1,
+      "outerTestCount": 86,
+      "perSenseId": {
+        "BENEFIT_WELFARE": {
+          "autoAcceptCount": 36,
+          "correctCount": 35,
+          "incorrectCount": 1,
+          "predictedCount": 48
+        },
+        "EVALUATIVE_GOOD": {
+          "autoAcceptCount": 7,
+          "correctCount": 7,
+          "incorrectCount": 0,
+          "predictedCount": 36
+        },
+        "POSSESSION_RESOURCE": {
+          "autoAcceptCount": 0,
+          "correctCount": 0,
+          "incorrectCount": 0,
+          "predictedCount": 2
+        }
+      },
+      "thresholds": {
+        "BENEFIT_WELFARE": {
+          "precision": 0.9515151515151515,
+          "selectedCount": 165,
+          "threshold": 0.9918219809503493
+        },
+        "EVALUATIVE_GOOD": {
+          "precision": 0.9523809523809523,
+          "selectedCount": 21,
+          "threshold": 0.9999969110830005
+        },
+        "POSSESSION_RESOURCE": {
+          "precision": null,
+          "selectedCount": 0,
+          "threshold": null
+        }
+      }
+    },
+    {
+      "outerFold": 2,
+      "outerTestCount": 95,
+      "perSenseId": {
+        "BENEFIT_WELFARE": {
+          "autoAcceptCount": 59,
+          "correctCount": 50,
+          "incorrectCount": 9,
+          "predictedCount": 68
+        },
+        "EVALUATIVE_GOOD": {
+          "autoAcceptCount": 6,
+          "correctCount": 6,
+          "incorrectCount": 0,
+          "predictedCount": 25
+        },
+        "POSSESSION_RESOURCE": {
+          "autoAcceptCount": 0,
+          "correctCount": 0,
+          "incorrectCount": 0,
+          "predictedCount": 2
+        }
+      },
+      "thresholds": {
+        "BENEFIT_WELFARE": {
+          "precision": 0.9512195121951219,
+          "selectedCount": 164,
+          "threshold": 0.9731987638395172
+        },
+        "EVALUATIVE_GOOD": {
+          "precision": 0.9583333333333334,
+          "selectedCount": 24,
+          "threshold": 0.9999881813667343
+        },
+        "POSSESSION_RESOURCE": {
+          "precision": 1.0,
+          "selectedCount": 1,
+          "threshold": 0.987913812517166
+        }
+      }
+    },
+    {
+      "outerFold": 3,
+      "outerTestCount": 95,
+      "perSenseId": {
+        "BENEFIT_WELFARE": {
+          "autoAcceptCount": 47,
+          "correctCount": 46,
+          "incorrectCount": 1,
+          "predictedCount": 56
+        },
+        "EVALUATIVE_GOOD": {
+          "autoAcceptCount": 18,
+          "correctCount": 18,
+          "incorrectCount": 0,
+          "predictedCount": 38
+        },
+        "POSSESSION_RESOURCE": {
+          "autoAcceptCount": 0,
+          "correctCount": 0,
+          "incorrectCount": 0,
+          "predictedCount": 1
+        }
+      },
+      "thresholds": {
+        "BENEFIT_WELFARE": {
+          "precision": 0.9527027027027027,
+          "selectedCount": 148,
+          "threshold": 0.995613053481269
+        },
+        "EVALUATIVE_GOOD": {
+          "precision": 0.96875,
+          "selectedCount": 32,
+          "threshold": 0.9998338384665303
+        },
+        "POSSESSION_RESOURCE": {
+          "precision": null,
+          "selectedCount": 0,
+          "threshold": null
+        }
+      }
+    },
+    {
+      "outerFold": 4,
+      "outerTestCount": 74,
+      "perSenseId": {
+        "BENEFIT_WELFARE": {
+          "autoAcceptCount": 38,
+          "correctCount": 38,
+          "incorrectCount": 0,
+          "predictedCount": 48
+        },
+        "EVALUATIVE_GOOD": {
+          "autoAcceptCount": 2,
+          "correctCount": 2,
+          "incorrectCount": 0,
+          "predictedCount": 26
+        },
+        "POSSESSION_RESOURCE": {
+          "autoAcceptCount": 0,
+          "correctCount": 0,
+          "incorrectCount": 0,
+          "predictedCount": 0
+        }
+      },
+      "thresholds": {
+        "BENEFIT_WELFARE": {
+          "precision": 0.9523809523809523,
+          "selectedCount": 168,
+          "threshold": 0.9872107528531706
+        },
+        "EVALUATIVE_GOOD": {
+          "precision": 0.9583333333333334,
+          "selectedCount": 24,
+          "threshold": 0.9999984719389239
+        },
+        "POSSESSION_RESOURCE": {
+          "precision": 1.0,
+          "selectedCount": 2,
+          "threshold": 0.7979252255455921
+        }
+      }
+    }
+  ],
+  "method": "5-fold deterministic nested CV grouped by recordId; per-sense thresholds selected only from inner OOF predictions grouped by predicted senseId",
+  "outerFoldCount": 5,
+  "perSenseId": {
+    "BENEFIT_WELFARE": {
+      "autoAcceptCount": 211,
+      "candidateThreshold": 0.9949388149926399,
+      "correctCount": 199,
+      "coverageAmongPredictions": 0.8210116731517509,
+      "decision": "REVIEW_ONLY",
+      "incorrectCount": 12,
+      "independentPrecision": 0.943127962085308,
+      "predictedCount": 257
+    },
+    "EVALUATIVE_GOOD": {
+      "autoAcceptCount": 38,
+      "candidateThreshold": 0.9999961114093485,
+      "correctCount": 38,
+      "coverageAmongPredictions": 0.24203821656050956,
+      "decision": "CERTIFIED_AUTO_ACCEPT",
+      "incorrectCount": 0,
+      "independentPrecision": 1.0,
+      "predictedCount": 157
+    },
+    "POSSESSION_RESOURCE": {
+      "autoAcceptCount": 0,
+      "candidateThreshold": 0.6959144465371382,
+      "correctCount": 0,
+      "coverageAmongPredictions": 0.0,
+      "decision": "REVIEW_ONLY",
+      "incorrectCount": 0,
+      "independentPrecision": null,
+      "predictedCount": 5
+    }
+  },
+  "purpose": "independent-per-sense-threshold-calibration",
+  "schemaVersion": 1,
+  "targetPrecision": 0.95,
+  "validatedCount": 419
+}
