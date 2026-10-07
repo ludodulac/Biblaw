@@ -15,6 +15,26 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Inspect certified Morphalou header and bien rows
+        run: |
+          python - <<'PY'
+          import csv, io, urllib.request, zipfile, tempfile
+          from pathlib import Path
+          URL="https://huggingface.co/datasets/datasets-CNRS/Morphalou/resolve/2b5dec836bef836a184d157ba3f71755bf55d523/Morphalou3.1_formatCSV_toutEnUn.zip?download=true"
+          MEMBER="Morphalou3.1_formatCSV_toutEnUn/Morphalou3.1_CSV.csv"
+          p=Path(tempfile.mkstemp(suffix=".zip")[1])
+          urllib.request.urlretrieve(URL,p)
+          with zipfile.ZipFile(p) as z, z.open(MEMBER) as raw:
+              rows=csv.reader(io.TextIOWrapper(raw,encoding="utf-8-sig",newline=""),delimiter=";")
+              for row in rows:
+                  if len(row)>=3 and [x.strip() for x in row[:3]]==["GRAPHIE","ID","CATÉGORIE"]:
+                      print("HEADER",repr(row))
+                      for i,r in zip(range(80),rows):
+                          if any("bien" in x.casefold() for x in r):
+                              print("BIEN_ROW",repr(r))
+                      break
+          p.unlink()
+          PY
       - name: Source-backed build from certified Morphalou
         run: python scripts/build_linguistic_semantic_form_runtime.py
       - name: Generic runtime audit
