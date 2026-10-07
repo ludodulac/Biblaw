@@ -1,31 +1,36 @@
-name: OCCV2 023B morphology proof
+name: OCCV2 023B finalize generated report
 on:
   push:
     branches: [audit/occv2-023b-morph-proof]
+permissions:
+  contents: write
 jobs:
-  proof:
+  finalize:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: feat/occv2-023a-auto-sense-evaluation
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - name: First evaluation
+      - name: Generate twice and verify
         run: |
           python scripts/evaluate_linguistic_sense_classifier.py
           cp data/linguistic/audits/sense-classifier-023a.json /tmp/report.json
-      - name: Second evaluation byte-identical
-        run: |
           python scripts/evaluate_linguistic_sense_classifier.py
           cmp /tmp/report.json data/linguistic/audits/sense-classifier-023a.json
-      - name: Verify eligibility
-        run: |
           python - <<'PY'
           import json,pathlib
           r=json.loads(pathlib.Path("data/linguistic/audits/sense-classifier-023a.json").read_text())
           eligible=set(r["morphologicalEligibility"]["eligibleForms"])
           assert all(x["surfaceForm"].casefold() in eligible for x in r["unseenProposals"])
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: sense-classifier-023b-report
-          path: data/linguistic/audits/sense-classifier-023a.json
+      - name: Commit generated report only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/linguistic/audits/sense-classifier-023a.json
+          git diff --cached --quiet && exit 0
+          git commit -m "BIBLAW-OCCV2-023B regenerate filtered audit report"
+          git push origin HEAD:feat/occv2-023a-auto-sense-evaluation
