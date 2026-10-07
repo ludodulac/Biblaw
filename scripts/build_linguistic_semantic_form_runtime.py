@@ -49,8 +49,15 @@ def morphalou_forms(path,targets,vocabulary):
   if MORPHALOU_MEMBER not in archive.namelist(): raise SystemExit(f"missing Morphalou member: {MORPHALOU_MEMBER}")
   with archive.open(MORPHALOU_MEMBER) as raw:
    text=io.TextIOWrapper(raw,encoding="utf-8-sig",newline="")
-   for _ in range(15): next(text)
-   reader=csv.DictReader(text,delimiter=";"); lemma=category=None
+   rows=csv.reader(text,delimiter=";")
+   header=None
+   for candidate in rows:
+    if len(candidate)>=3 and [cell.strip() for cell in candidate[:3]]==["GRAPHIE","ID","CATÉGORIE"]:
+     header=[cell.strip() for cell in candidate]
+     break
+   if header is None: raise SystemExit("Morphalou CSV header not found")
+   if "GRAPHIE_1" not in header: raise SystemExit("Morphalou GRAPHIE_1 column not found")
+   reader=csv.DictReader(text,fieldnames=header,delimiter=";"); lemma=category=None
    for row in reader:
     if row.get("GRAPHIE"): lemma=row["GRAPHIE"].strip()
     if row.get("CATÉGORIE"): category=row["CATÉGORIE"].strip()
