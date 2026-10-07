@@ -17,13 +17,15 @@ jobs:
         run: |
           python scripts/evaluate_linguistic_sense_classifier.py
           cmp /tmp/report.json data/linguistic/audits/sense-classifier-023a.json
-      - name: Verify eligibility and emit report
+      - name: Verify eligibility
         run: |
           python - <<'PY'
-          import base64,json,pathlib
-          p=pathlib.Path("data/linguistic/audits/sense-classifier-023a.json")
-          r=json.loads(p.read_text())
+          import json,pathlib
+          r=json.loads(pathlib.Path("data/linguistic/audits/sense-classifier-023a.json").read_text())
           eligible=set(r["morphologicalEligibility"]["eligibleForms"])
           assert all(x["surfaceForm"].casefold() in eligible for x in r["unseenProposals"])
-          b=base64.b64encode(p.read_bytes()).decode()\n          for i in range(0,len(b),4000): print(f"REPORT_CHUNK_{i//4000:04d}="+b[i:i+4000])
           PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sense-classifier-023b-report
+          path: data/linguistic/audits/sense-classifier-023a.json
