@@ -1,0 +1,21 @@
+name: OCCV2 025 per-sense proof
+on:
+  push:
+    branches: [audit/occv2-025-proof]
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Run twice byte-identical
+        run: |
+          python scripts/calibrate_linguistic_sense_threshold_per_sense.py
+          cp data/linguistic/audits/sense-threshold-per-sense-025.json /tmp/report.json
+          python scripts/calibrate_linguistic_sense_threshold_per_sense.py
+          cmp /tmp/report.json data/linguistic/audits/sense-threshold-per-sense-025.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sense-threshold-per-sense-025
+          path: data/linguistic/audits/sense-threshold-per-sense-025.json
