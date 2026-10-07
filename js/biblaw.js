@@ -19,8 +19,8 @@
   const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   function singleWordQueryKey(value){ const key=norm(value); return key&&!key.includes(' ')?key:null; }
   function expansionFormsFor(value){ const key=singleWordQueryKey(value); if(!key)return[]; const groupIndex=state.lexicalExpansionByForm.get(key); if(groupIndex===undefined)return[]; return (state.lexicalExpansionGroups[groupIndex]||[]).filter(form=>form!==key); }
-  function activeExpansionForms(){ return state.mode==='exact'&&!state.semanticSelection&&$('includeWordForms')?.checked?expansionFormsFor($('query')?.value||''):[]; }
-  function updateExpansionControl(){ const option=$('exactExpansionOption'),checkbox=$('includeWordForms'); if(!option||!checkbox)return; const key=state.mode==='exact'?singleWordQueryKey($('query')?.value||''):null,expansions=key?expansionFormsFor(key):[]; const semanticActive=Boolean(state.semanticSelection&&key===state.semanticSelection.normalizedForm); const available=Boolean(key&&expansions.length&&!semanticActive); option.hidden=!available; checkbox.disabled=!available; if(!available)checkbox.checked=false; }
+  function activeExpansionForms(){ const expansionRequested=state.mode==='exact'&&$('includeWordForms')?.checked; return expansionRequested&&!state.semanticSelection?expansionFormsFor($('query')?.value||''):[]; }
+  function updateExpansionControl(){ const option=$('exactExpansionOption'),checkbox=$('includeWordForms'); if(!option||!checkbox)return; const key=state.mode==='exact'?singleWordQueryKey($('query')?.value||''):null,expansions=key?expansionFormsFor(key):[]; const semanticActive=Boolean(state.semanticSelection&&key===state.semanticSelection.normalizedForm); const available=Boolean(key&&expansions.length); const enabled=available&&!semanticActive; option.hidden=!enabled; checkbox.disabled=!enabled; if(!enabled)checkbox.checked=false; }
   const queryTerms = () => { const terms=new Set([$('query')?.value, $('query2')?.value].flatMap(value => norm(value).split(' ')).filter(Boolean)); for(const form of activeExpansionForms())terms.add(form); return terms; };
   const highlighted = value => { const terms=queryTerms(); if(!terms.size)return esc(value); return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>terms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join(''); };
   const modeAwareText = value => state.mode==='exact' ? highlighted(value) : esc(value);
@@ -255,11 +255,13 @@
     }
     hideTransverseNavigation();publishPresentationState({kind:'other'});
     const semanticSelection=semanticSelectionContext(query);
-    const exactItems=semanticSelection?semanticMatches(semanticSelection):matches(query);
-    if(!semanticSelection)mergeExpansionMatches(exactItems,query);
+    const exactItems=matches(query);
+    if(semanticSelection) exactItems.splice(0,exactItems.length,...semanticMatches(semanticSelection));
+    else mergeExpansionMatches(exactItems,query);
     exactItems.sort((a,b)=>b.occurrenceCount-a.occurrenceCount||(Number(a.record.number)||Number.MAX_SAFE_INTEGER)-(Number(b.record.number)||Number.MAX_SAFE_INTEGER)||String(a.record.id).localeCompare(String(b.record.id),'fr'));
     showSemanticChoices(query);
-    render(exactItems,null,{exactSearch:true,semanticSearch:Boolean(semanticSelection)});
+    if(semanticSelection) render(exactItems,null,{exactSearch:true,semanticSearch:true});
+    else render(exactItems,null,{exactSearch:true});
   }
 
   function summary(r){return r.recordType==='psalm'?(r.verses||[]).slice(0,2).map(v=>v.text).join(' '):r.summary||(r.text||'').slice(0,280);}
