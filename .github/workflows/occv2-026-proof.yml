@@ -1,0 +1,23 @@
+name: OCCV2 026 review queue proof
+on:
+  push:
+    branches: [audit/occv2-026-proof]
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Build audit JSON reproducibility
+        run: |
+          python scripts/build_linguistic_sense_review_queue.py
+          cp data/linguistic/review/sense-review-queue-026.json /tmp/queue.json
+          python scripts/audit_linguistic_sense_review_queue.py
+          python -m json.tool data/linguistic/review/sense-review-queue-026.json >/dev/null
+          python scripts/build_linguistic_sense_review_queue.py
+          cmp /tmp/queue.json data/linguistic/review/sense-review-queue-026.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sense-review-queue-026
+          path: data/linguistic/review/sense-review-queue-026.json
