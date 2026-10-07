@@ -56,14 +56,18 @@ def morphalou_forms(path,targets,vocabulary):
      header=[cell.strip() for cell in candidate]
      break
    if header is None: raise SystemExit("Morphalou CSV header not found")
-   if "GRAPHIE_1" not in header: raise SystemExit("Morphalou GRAPHIE_1 column not found")
-   reader=csv.DictReader(text,fieldnames=header,delimiter=";"); lemma=category=None
-   for row in reader:
-    if row.get("GRAPHIE"): lemma=row["GRAPHIE"].strip()
-    if row.get("CATÉGORIE"): category=row["CATÉGORIE"].strip()
+   graphie_indexes=[i for i,name in enumerate(header) if name=="GRAPHIE"]
+   if len(graphie_indexes)<2: raise SystemExit("Morphalou inflected GRAPHIE column not found")
+   lemma_index, surface_index=graphie_indexes[:2]
+   category_index=header.index("CATÉGORIE")
+   lemma=category=None
+   for row in rows:
+    if len(row)<=max(lemma_index,category_index,surface_index): continue
+    if row[lemma_index].strip(): lemma=row[lemma_index].strip()
+    if row[category_index].strip(): category=row[category_index].strip()
     pos=POS_MAP.get(category or ""); target=wanted.get((lemma,pos))
     if target is None: continue
-    surface=(row.get("GRAPHIE_1") or "").strip()
+    surface=row[surface_index].strip()
     if not surface: continue
     normalized=norm(surface)
     if normalized in vocabulary:
