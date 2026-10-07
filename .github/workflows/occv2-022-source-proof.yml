@@ -1,0 +1,43 @@
+name: OCCV2 022 Morphalou source proof
+
+on:
+  push:
+    branches:
+      - audit/occv2-022-source-proof
+
+jobs:
+  source-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout proof branch
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-backed build from certified Morphalou
+        run: python scripts/build_linguistic_semantic_form_runtime.py
+      - name: Generic runtime audit
+        run: python scripts/audit_linguistic_semantic_form_runtime.py
+      - name: Committed runtime matches source-backed build
+        run: git diff --exit-code -- data/linguistic-semantic-form-runtime.json
+      - name: Second source-backed build
+        run: python scripts/build_linguistic_semantic_form_runtime.py
+      - name: Second build is byte-reproducible
+        run: git diff --exit-code -- data/linguistic-semantic-form-runtime.json
+      - name: Ad hoc proof biens resolves to bien NOUN
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          runtime = json.loads(Path("data/linguistic-semantic-form-runtime.json").read_text(encoding="utf-8"))
+          matches = [
+              target for target in runtime["targets"]
+              if target["lemma"] == "bien"
+              and target["partOfSpeech"] == "NOUN"
+              and "biens" in target["forms"]
+          ]
+          assert matches, "biens does not resolve to bien / NOUN"
+          print("BIENS_RESOLVES_TO_BIEN_NOUN = YES")
+          PY
