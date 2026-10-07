@@ -18,4 +18,8 @@ jobs:
           python scripts/evaluate_linguistic_sense_classifier.py
           cmp /tmp/report.json data/linguistic/audits/sense-classifier-023a.json
       - name: Emit report
-        run: cat data/linguistic/audits/sense-classifier-023a.json
+        run: |
+          python - <<'PY'
+          import base64, pathlib
+          print("REPORT_B64="+base64.b64encode(pathlib.Path("data/linguistic/audits/sense-classifier-023a.json").read_bytes()).decode())
+          PY
