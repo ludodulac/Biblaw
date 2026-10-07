@@ -3,6 +3,8 @@ import hashlib,json,math
 from collections import Counter
 from pathlib import Path
 from build_linguistic_occurrence_index import ROOT,TOKEN_RE,norm,occurrences
+from build_linguistic_semantic_form_runtime import obtain_morphalou,verify_source,MORPHALOU_MEMBER,POS_MAP
+import csv,io,zipfile
 G=ROOT/"data/linguistic/gold"; C=ROOT/"data/linguistic/sense-catalog.json"; F=ROOT/"data/linguistic-semantic-form-runtime.json"; O=ROOT/"data/linguistic/audits/sense-classifier-023a.json"
 K=5; W=12; MARK="<TARGET>"
 def sources():
@@ -51,6 +53,35 @@ def policy(oof):
    cand=(len(a),-t,pr,t)
    if best is None or cand>best:best=cand
  return {"targetPrecision":.95,"threshold":None,"oofCount":0,"oofPrecision":None} if best is None else {"targetPrecision":.95,"threshold":best[3],"oofCount":best[0],"oofPrecision":best[2]}
+def morphological_eligibility(targets):
+ source=obtain_morphalou()
+ try:
+  verify_source(source); wanted_forms={norm(f) for t in targets.values() for f in t["forms"]}; analyses={f:set() for f in wanted_forms}
+  with zipfile.ZipFile(source) as archive:
+   with archive.open(MORPHALOU_MEMBER) as raw:
+    rows=csv.reader(io.TextIOWrapper(raw,encoding="utf-8-sig",newline=""),delimiter=";"); header=None
+    for candidate in rows:
+     if len(candidate)>=3 and [cell.strip() for cell in candidate[:3]]==["GRAPHIE","ID","CATÉGORIE"]:
+      header=[cell.strip() for cell in candidate]; break
+    if header is None: raise SystemExit("Morphalou CSV header not found")
+    graphie=[i for i,name in enumerate(header) if name=="GRAPHIE"]
+    if len(graphie)<2: raise SystemExit("Morphalou inflected GRAPHIE column not found")
+    lemma_i,surface_i=graphie[:2]; category_i=header.index("CATÉGORIE"); lemma=category=None
+    for row in rows:
+     if len(row)<=max(lemma_i,surface_i,category_i): continue
+     if row[lemma_i].strip(): lemma=row[lemma_i].strip()
+     if row[category_i].strip(): category=row[category_i].strip()
+     surface=norm(row[surface_i].strip()) if row[surface_i].strip() else None; pos=POS_MAP.get(category or "")
+     if surface in analyses and lemma and pos: analyses[surface].add((lemma,pos))
+  result={}
+  for key,t in targets.items():
+   eligible=[]; ambiguous=[]
+   for form in sorted({norm(x) for x in t["forms"]}):
+    (eligible if analyses.get(form)=={key} else ambiguous).append(form)
+   result[key]={"eligibleForms":eligible,"ambiguousForms":ambiguous}
+  return result
+ finally: source.unlink(missing_ok=True)
+
 def main():
  rows,goldids,targets,allowed=sources(); classes=sorted({r[2] for r in rows}); oof=[]
  for k in range(K):
@@ -59,17 +90,22 @@ def main():
   model=train(tr,classes,targets)
   for key,o,y in te:
    p,s=pred(model,classes,feats(o["context"],targets[key]["forms"]));oof.append((y,p,s))
- ev=evalm(oof,classes); pol=policy(oof); full=train(rows,classes,targets); props=[]
+ ev=evalm(oof,classes); pol=policy(oof); pol["thresholdStatus"]="EXPERIMENTAL_OOF_SELECTED"; full=train(rows,classes,targets); eligibility=morphological_eligibility(targets); props=[]; excluded=0
  for key,t in sorted(targets.items()):
   if sorted(allowed.get(key,[]))!=classes:continue
   seen={}
   for form in t["forms"]:
-   for o in occurrences(form):seen[o["occurrenceId"]]=o
+   os=occurrences(form)
+   if norm(form) in eligibility[key]["eligibleForms"]:
+    for o in os: seen[o["occurrenceId"]]=o
+   else:
+    excluded+=sum(o["occurrenceId"] not in goldids for o in os)
   for oid,o in sorted(seen.items()):
    if oid in goldids:continue
    p,s=pred(full,classes,feats(o["context"],t["forms"])); dec="AUTO_ACCEPT" if pol["threshold"] is not None and s>=pol["threshold"] else "REVIEW"
    props.append({"occurrenceId":oid,"surfaceForm":o["surfaceForm"],"proposedSenseId":p,"decision":dec,"score":round(s,6)})
- report={"schemaVersion":1,"purpose":"automatic-sense-classifier-evaluation","evaluation":{"method":"5-fold deterministic grouped cross-validation by recordId","validatedCount":len(rows),"classes":classes,**ev},"acceptancePolicy":pol,"unseenProposals":props}
+ eligible=sorted({f for x in eligibility.values() for f in x["eligibleForms"]}); ambiguous=sorted({f for x in eligibility.values() for f in x["ambiguousForms"]})
+ report={"schemaVersion":1,"purpose":"automatic-sense-classifier-evaluation","evaluation":{"method":"5-fold deterministic grouped cross-validation by recordId","validatedCount":len(rows),"classes":classes,**ev},"acceptancePolicy":pol,"morphologicalEligibility":{"eligibleForms":eligible,"ambiguousForms":ambiguous,"excludedOccurrenceCount":excluded},"unseenProposals":props}
  O.parent.mkdir(parents=True,exist_ok=True);O.write_text(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+"\n")
- print(json.dumps({"validatedCount":len(rows),"classes":classes,"accuracy":ev["accuracy"],"macroPrecision":ev["macroPrecision"],"macroRecall":ev["macroRecall"],"macroF1":ev["macroF1"],"policy":pol,"unseenCount":len(props),"autoAccept":sum(x["decision"]=="AUTO_ACCEPT" for x in props),"review":sum(x["decision"]=="REVIEW" for x in props),"surfaceForms":sorted({x["surfaceForm"] for x in props})},ensure_ascii=False,sort_keys=True))
+ print(json.dumps({"validatedCount":len(rows),"classes":classes,"accuracy":ev["accuracy"],"macroPrecision":ev["macroPrecision"],"macroRecall":ev["macroRecall"],"macroF1":ev["macroF1"],"policy":pol,"unseenCount":len(props),"autoAccept":sum(x["decision"]=="AUTO_ACCEPT" for x in props),"review":sum(x["decision"]=="REVIEW" for x in props),"surfaceForms":sorted({x["surfaceForm"] for x in props}),"morphologicalEligibility":report["morphologicalEligibility"]},ensure_ascii=False,sort_keys=True))
 if __name__=="__main__":main()
