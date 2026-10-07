@@ -1,0 +1,21 @@
+name: OCCV2 023A classifier proof
+on:
+  push:
+    branches: [audit/occv2-023a-evaluation-proof]
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: First evaluation
+        run: |
+          python scripts/evaluate_linguistic_sense_classifier.py
+          cp data/linguistic/audits/sense-classifier-023a.json /tmp/report.json
+      - name: Second evaluation byte-identical
+        run: |
+          python scripts/evaluate_linguistic_sense_classifier.py
+          cmp /tmp/report.json data/linguistic/audits/sense-classifier-023a.json
+      - name: Emit report
+        run: cat data/linguistic/audits/sense-classifier-023a.json
