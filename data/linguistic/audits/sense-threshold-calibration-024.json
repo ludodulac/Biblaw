@@ -1,0 +1,99 @@
+{
+  "aggregate": {
+    "autoAcceptCount": 243,
+    "correctCount": 233,
+    "coverage": 0.5799522673031027,
+    "incorrectCount": 10,
+    "outerTestExampleCount": 419,
+    "precision": 0.9588477366255144
+  },
+  "decision": "CALIBRATION_PASS",
+  "folds": [
+    {
+      "autoAcceptCount": 43,
+      "correctCount": 40,
+      "incorrectCount": 3,
+      "innerOofCount": 350,
+      "innerSelectedCount": 204,
+      "innerSelectedPrecision": 0.9509803921568627,
+      "outerFold": 0,
+      "outerTestCount": 69,
+      "precision": 0.9302325581395349,
+      "threshold": 0.9988875005165679
+    },
+    {
+      "autoAcceptCount": 38,
+      "correctCount": 37,
+      "incorrectCount": 1,
+      "innerOofCount": 333,
+      "innerSelectedCount": 171,
+      "innerSelectedPrecision": 0.9532163742690059,
+      "outerFold": 1,
+      "outerTestCount": 86,
+      "precision": 0.9736842105263158,
+      "threshold": 0.9998964159433114
+    },
+    {
+      "autoAcceptCount": 58,
+      "correctCount": 54,
+      "incorrectCount": 4,
+      "innerOofCount": 324,
+      "innerSelectedCount": 190,
+      "innerSelectedPrecision": 0.9526315789473684,
+      "outerFold": 2,
+      "outerTestCount": 95,
+      "precision": 0.9310344827586207,
+      "threshold": 0.998871538626491
+    },
+    {
+      "autoAcceptCount": 63,
+      "correctCount": 62,
+      "incorrectCount": 1,
+      "innerOofCount": 324,
+      "innerSelectedCount": 173,
+      "innerSelectedPrecision": 0.953757225433526,
+      "outerFold": 3,
+      "outerTestCount": 95,
+      "precision": 0.9841269841269841,
+      "threshold": 0.9993881595650543
+    },
+    {
+      "autoAcceptCount": 41,
+      "correctCount": 40,
+      "incorrectCount": 1,
+      "innerOofCount": 345,
+      "innerSelectedCount": 202,
+      "innerSelectedPrecision": 0.9504950495049505,
+      "outerFold": 4,
+      "outerTestCount": 74,
+      "precision": 0.975609756097561,
+      "threshold": 0.9992408128964365
+    }
+  ],
+  "method": "5-fold deterministic outer CV grouped by recordId; threshold selected only by deterministic 5-fold inner CV grouped by recordId within each outer-train partition",
+  "outerFoldCount": 5,
+  "perSenseId": {
+    "BENEFIT_WELFARE": {
+      "autoAcceptCount": 183,
+      "correctCount": 179,
+      "incorrectCount": 4,
+      "precision": 0.9781420765027322
+    },
+    "EVALUATIVE_GOOD": {
+      "autoAcceptCount": 60,
+      "correctCount": 54,
+      "incorrectCount": 6,
+      "precision": 0.9
+    },
+    "POSSESSION_RESOURCE": {
+      "autoAcceptCount": 0,
+      "correctCount": 0,
+      "incorrectCount": 0,
+      "precision": null
+    }
+  },
+  "purpose": "independent-sense-threshold-calibration",
+  "schemaVersion": 1,
+  "targetPrecision": 0.95,
+  "validatedCount": 419
+}
