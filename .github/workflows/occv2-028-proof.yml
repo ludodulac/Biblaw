@@ -1,0 +1,56 @@
+name: OCCV2 028 finalize
+on:
+  push:
+    branches: [audit/occv2-028-proof]
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/occv2-028-user-confirmed-biens-runtime
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - uses: actions/setup-node@v4
+        with: {node-version: "20"}
+      - name: Audit and build twice
+        run: |
+          sha256sum data/linguistic/gold/bien-noun-sense-gold.json data/linguistic-semantic-form-runtime.json js/biblaw.js > /tmp/protected.before
+          python scripts/audit_linguistic_sense_review_decisions.py
+          python scripts/audit_linguistic_sense_contract.py
+          python scripts/build_linguistic_sense_runtime.py
+          python scripts/audit_linguistic_sense_runtime.py
+          cp data/linguistic-sense-runtime.json /tmp/sense.json
+          python scripts/build_linguistic_sense_browser_runtime.py
+          python scripts/audit_linguistic_sense_browser_runtime.py
+          cp data/linguistic-sense-browser-runtime.json /tmp/browser.json
+          python scripts/build_linguistic_sense_runtime.py
+          cmp /tmp/sense.json data/linguistic-sense-runtime.json
+          python scripts/build_linguistic_sense_browser_runtime.py
+          cmp /tmp/browser.json data/linguistic-sense-browser-runtime.json
+          sha256sum data/linguistic/gold/bien-noun-sense-gold.json data/linguistic-semantic-form-runtime.json js/biblaw.js > /tmp/protected.after
+          cmp /tmp/protected.before /tmp/protected.after
+          python - <<'PY'
+          import json
+          s=json.load(open('data/linguistic-sense-runtime.json')); b=json.load(open('data/linguistic-sense-browser-runtime.json'))
+          print('SEMANTIC',len(s['targets']),sum(len(t['validated']) for t in s['targets']),sum(len(t['uncertain']) for t in s['targets']))
+          for t in b['targets']:
+            print('BROWSER',t['normalizedForm'],{x['senseId']:x['occurrenceCount'] for x in t['senses']},t['uncertainOccurrenceCount'])
+          PY
+      - name: Browser smoke
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          python3 -m http.server 4173 >/tmp/http.log 2>&1 &
+          node scripts/smoke_occv2_semantic_browser.mjs
+      - name: Collapse to one commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/linguistic/review/sense-review-decisions-027.json scripts/audit_linguistic_sense_review_decisions.py data/linguistic/gold/biens-noun-sense-gold.json scripts/audit_linguistic_sense_contract.py data/linguistic-sense-runtime.json data/linguistic-sense-browser-runtime.json scripts/smoke_occv2_semantic_browser.mjs
+          git reset --soft f4bb0b1ff91c3b09a185175262b8a0305d95c33a
+          git commit -m "BIBLAW-OCCV2-028 promote user-confirmed biens semantics"
+          git push --force-with-lease origin HEAD:feat/occv2-028-user-confirmed-biens-runtime
