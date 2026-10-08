@@ -1,0 +1,45 @@
+name: OCCV2 033 proof
+on:
+  push:
+    branches: [audit/occv2-033-proof]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: feat/occv2-033-target-scoped-per-sense-calibration, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Verify target-scoped calibration
+        run: |
+          set -e
+          python scripts/calibrate_linguistic_sense_threshold_per_sense.py --lemma bien --pos NOUN --output /tmp/per-sense-explicit.json > /tmp/033-explicit.log
+          python scripts/calibrate_linguistic_sense_threshold_per_sense.py --output /tmp/per-sense-auto.json > /tmp/033-auto.log
+          cmp /tmp/per-sense-explicit.json /tmp/per-sense-auto.json
+          python scripts/calibrate_linguistic_sense_threshold_per_sense.py --lemma bien --pos NOUN --output /tmp/per-sense-explicit-2.json > /tmp/033-explicit-2.log
+          cmp /tmp/per-sense-explicit.json /tmp/per-sense-explicit-2.json
+          python - <<'PY'
+          import json,sys
+          sys.path.insert(0,"scripts")
+          from evaluate_linguistic_sense_classifier import sources
+          from calibrate_linguistic_sense_threshold_per_sense import K,TARGET,grouped_oof
+          r=json.load(open("/tmp/per-sense-explicit.json"))
+          rows,_,targets,classes,key=sources("bien","NOUN")
+          assert r["target"]=={"lemma":"bien","partOfSpeech":"NOUN"}
+          assert r["validatedCount"]==len(rows)==445
+          assert r["outerFoldCount"]==K==5 and r["targetPrecision"]==TARGET==.95
+          assert r["antiLeak"]=={"outerTestUsedForThresholdSelection":False,"recordGroupLeak":False}
+          assert set(r["perSenseId"])==set(classes)
+          assert all(row[0]==key for row in rows)
+          assert list(targets)==[key]
+          assert all((v["decision"]!="CERTIFIED_AUTO_ACCEPT" or v["autoAcceptCount"]>=20 and v["independentPrecision"]>=TARGET) for v in r["perSenseId"].values())
+          print("EXPLICIT_AUTO_BYTE_IDENTICAL=YES SECOND_EXPLICIT_BYTE_IDENTICAL=YES")
+          print("TARGET_SEPARATION_TEST=PASS PER_SENSE_CLASS_SET_MATCH=YES VALIDATED_COUNT=",len(rows))
+          PY
+          if python scripts/calibrate_linguistic_sense_threshold_per_sense.py --lemma bien --output /tmp/033-bad.json > /tmp/033-bad.log 2>&1; then exit 1; fi
+          grep -q INCOMPLETE_TARGET_SELECTOR /tmp/033-bad.log
+          if python scripts/calibrate_linguistic_sense_threshold_per_sense.py --lemma nonexistent --pos NOUN --output /tmp/033-bad2.json > /tmp/033-bad2.log 2>&1; then exit 1; fi
+          grep -q TARGET_NOT_AVAILABLE /tmp/033-bad2.log
+          echo 'INCOMPLETE_SELECTOR_REJECTION=PASS TARGET_NOT_AVAILABLE_REJECTION=PASS'
+          git diff --exit-code -- data/
+          test "$(git diff --name-only 287436cf77177a075eb89775c6cf30c351c1ae33)" = "scripts/calibrate_linguistic_sense_threshold_per_sense.py"
