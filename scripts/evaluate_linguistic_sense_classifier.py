@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import hashlib,json,math
+import argparse,hashlib,json,math
 from collections import Counter
 from pathlib import Path
 from build_linguistic_occurrence_index import ROOT,TOKEN_RE,norm,occurrences
@@ -7,17 +7,32 @@ from build_linguistic_semantic_form_runtime import obtain_morphalou,verify_sourc
 import csv,io,zipfile
 G=ROOT/"data/linguistic/gold"; C=ROOT/"data/linguistic/sense-catalog.json"; F=ROOT/"data/linguistic-semantic-form-runtime.json"; O=ROOT/"data/linguistic/audits/sense-classifier-023a.json"
 K=5; W=12; MARK="<TARGET>"
-def sources():
+def choose_target(keys,lemma=None,pos=None):
+ if (lemma is None)!=(pos is None):raise SystemExit("INCOMPLETE_TARGET_SELECTOR")
+ if lemma is not None:
+  if (lemma,pos) not in keys:raise SystemExit("TARGET_NOT_AVAILABLE")
+  return (lemma,pos)
+ if not keys:raise SystemExit("NO_ELIGIBLE_SEMANTIC_TARGET")
+ if len(keys)!=1:raise SystemExit("AMBIGUOUS_SEMANTIC_TARGET")
+ return next(iter(keys))
+def gold_for_target(golds,key):
+ return [g for g in golds if (g["target"].get("lemma"),g["target"].get("partOfSpeech"))==key]
+def sources(lemma=None,pos=None):
  c=json.loads(C.read_text()); allowed={(e["lemma"],e["partOfSpeech"]):sorted(x["senseId"] for x in e["senses"]) for e in c["entries"]}
- f=json.loads(F.read_text()); targets={(x["lemma"],x["partOfSpeech"]):x for x in f["targets"]}; rows=[]; goldids=set()
- for p in sorted(G.glob("*-sense-gold.json")):
-  x=json.loads(p.read_text()); t=x.get("target",{}); key=(t.get("lemma"),t.get("partOfSpeech"))
-  if key not in targets or key not in allowed: continue
-  byid={o["occurrenceId"]:o for o in occurrences(targets[key]["normalizedForm"])}
-  for e in x.get("entries",[]):
-   oid=e.get("occurrenceId"); goldids.add(oid)
-   if e.get("adjudicationStatus")=="VALIDATED" and e.get("senseId") in allowed[key] and oid in byid: rows.append((key,byid[oid],e["senseId"]))
- return sorted(rows,key=lambda r:r[1]["occurrenceId"]),goldids,targets,allowed
+ f=json.loads(F.read_text()); targets={(x["lemma"],x["partOfSpeech"]):x for x in f["targets"]}
+ golds=[json.loads(p.read_text()) for p in sorted(G.glob("*-sense-gold.json"))]
+ eligible={key for key in allowed.keys()&targets.keys() if any(e.get("adjudicationStatus")=="VALIDATED" and e.get("senseId") in allowed[key] for g in gold_for_target(golds,key) for e in g.get("entries",[]))}
+ key=choose_target(eligible,lemma,pos)
+ rows=[];goldids=set();classes=allowed[key]
+ for g in gold_for_target(golds,key):
+  byid={o["occurrenceId"]:o for o in occurrences(g["target"]["normalizedForm"])}
+  for e in g.get("entries",[]):
+   oid=e.get("occurrenceId");goldids.add(oid)
+   if e.get("adjudicationStatus")=="VALIDATED":
+    if e.get("senseId") not in classes:raise SystemExit("INVALID_GOLD_SENSE_ID")
+    if oid not in byid:raise SystemExit("GOLD_OCCURRENCE_NOT_FOUND")
+    rows.append((key,byid[oid],e["senseId"]))
+ return sorted(rows,key=lambda r:r[1]["occurrenceId"]),goldids,{key:targets[key]},classes,key
 def feats(context,forms):
  ts=[norm(m.group()) for m in TOKEN_RE.finditer(context)]; fs={norm(x) for x in forms}; ts=[MARK if t in fs else t for t in ts]
  try:i=ts.index(MARK)
@@ -83,7 +98,12 @@ def morphological_eligibility(targets):
  finally: source.unlink(missing_ok=True)
 
 def main():
- rows,goldids,targets,allowed=sources(); classes=sorted({r[2] for r in rows}); oof=[]
+ parser=argparse.ArgumentParser()
+ parser.add_argument("--lemma",default=None)
+ parser.add_argument("--pos",default=None)
+ parser.add_argument("--output",type=Path,default=O)
+ args=parser.parse_args()
+ rows,goldids,targets,classes,selected_key=sources(args.lemma,args.pos); oof=[]
  for k in range(K):
   te=[r for r in rows if fold(r[1]["recordId"])==k]; tr=[r for r in rows if fold(r[1]["recordId"])!=k]
   if not te or set(r[2] for r in tr)!=set(classes):raise SystemExit("invalid grouped fold")
@@ -92,7 +112,6 @@ def main():
    p,s=pred(model,classes,feats(o["context"],targets[key]["forms"]));oof.append((y,p,s))
  ev=evalm(oof,classes); pol=policy(oof); pol["thresholdStatus"]="EXPERIMENTAL_OOF_SELECTED"; full=train(rows,classes,targets); eligibility=morphological_eligibility(targets); props=[]; excluded=0
  for key,t in sorted(targets.items()):
-  if sorted(allowed.get(key,[]))!=classes:continue
   seen={}
   for form in t["forms"]:
    os=occurrences(form)
@@ -105,7 +124,7 @@ def main():
    p,s=pred(full,classes,feats(o["context"],t["forms"])); dec="AUTO_ACCEPT" if pol["threshold"] is not None and s>=pol["threshold"] else "REVIEW"
    props.append({"occurrenceId":oid,"surfaceForm":o["surfaceForm"],"proposedSenseId":p,"decision":dec,"score":round(s,6)})
  eligible=sorted({f for x in eligibility.values() for f in x["eligibleForms"]}); ambiguous=sorted({f for x in eligibility.values() for f in x["ambiguousForms"]})
- report={"schemaVersion":1,"purpose":"automatic-sense-classifier-evaluation","evaluation":{"method":"5-fold deterministic grouped cross-validation by recordId","validatedCount":len(rows),"classes":classes,**ev},"acceptancePolicy":pol,"morphologicalEligibility":{"eligibleForms":eligible,"ambiguousForms":ambiguous,"excludedOccurrenceCount":excluded},"unseenProposals":props}
- O.parent.mkdir(parents=True,exist_ok=True);O.write_text(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+"\n")
+ report={"schemaVersion":1,"purpose":"automatic-sense-classifier-evaluation","target":{"lemma":selected_key[0],"partOfSpeech":selected_key[1]},"evaluation":{"method":"5-fold deterministic grouped cross-validation by recordId","validatedCount":len(rows),"classes":classes,**ev},"acceptancePolicy":pol,"morphologicalEligibility":{"eligibleForms":eligible,"ambiguousForms":ambiguous,"excludedOccurrenceCount":excluded},"unseenProposals":props}
+ args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+"\n")
  print(json.dumps({"validatedCount":len(rows),"classes":classes,"accuracy":ev["accuracy"],"macroPrecision":ev["macroPrecision"],"macroRecall":ev["macroRecall"],"macroF1":ev["macroF1"],"policy":pol,"unseenCount":len(props),"autoAccept":sum(x["decision"]=="AUTO_ACCEPT" for x in props),"review":sum(x["decision"]=="REVIEW" for x in props),"surfaceForms":sorted({x["surfaceForm"] for x in props}),"morphologicalEligibility":report["morphologicalEligibility"]},ensure_ascii=False,sort_keys=True))
 if __name__=="__main__":main()
