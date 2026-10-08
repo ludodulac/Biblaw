@@ -1,27 +1,38 @@
 #!/usr/bin/env python3
-import json
-from build_linguistic_occurrence_index import ROOT
-Q=ROOT/"data/linguistic/review/sense-review-queue-026.json"; P23=ROOT/"data/linguistic/audits/sense-classifier-023a.json"; P25=ROOT/"data/linguistic/audits/sense-threshold-per-sense-025.json"; CAT=ROOT/"data/linguistic/sense-catalog.json"; GOLD=ROOT/"data/linguistic/gold"
+import argparse,json
+from pathlib import Path
+from build_linguistic_occurrence_index import ROOT,occurrences,norm
+from build_linguistic_sense_review_queue import DEFAULT_PROPOSALS,DEFAULT_CALIBRATION,DEFAULT_OUTPUT,CAT,FORM,load,validate_sources,form_target_map,resolve_target
+GOLD=ROOT/"data/linguistic/gold"
 def main():
- q=json.loads(Q.read_text()); p23=json.loads(P23.read_text()); p25=json.loads(P25.read_text()); cat=json.loads(CAT.read_text())
- assert q["schemaVersion"]==1 and q["purpose"]=="linguistic-sense-human-review-queue"
- ids=[e["occurrenceId"] for e in q["entries"]]; assert len(ids)==len(set(ids))==q["reviewCount"]; assert ids==sorted(ids)
- proposals={p["occurrenceId"]:p for p in p23["unseenProposals"]}; assert set(ids)<=set(proposals)
+ p=argparse.ArgumentParser();p.add_argument("--queue",type=Path,default=DEFAULT_OUTPUT);p.add_argument("--proposals",type=Path,default=DEFAULT_PROPOSALS);p.add_argument("--calibration",type=Path,default=DEFAULT_CALIBRATION);a=p.parse_args()
+ q=load(a.queue);props=load(a.proposals);calib=load(a.calibration);validate_sources(props,calib)
+ assert q.get("schemaVersion")==1 and q.get("purpose")=="linguistic-sense-human-review-queue" and q.get("generator")=="scripts/build_linguistic_sense_review_queue.py"
+ ids=[e["occurrenceId"] for e in q["entries"]];assert len(ids)==len(set(ids))==q["reviewCount"];assert ids==sorted(ids)
+ plist=props["unseenProposals"];pids=[x["occurrenceId"] for x in plist];assert len(pids)==len(set(pids));proposals={x["occurrenceId"]:x for x in plist};assert set(ids)<=set(proposals)
  goldids=set()
- for p in sorted(GOLD.glob("*-sense-gold.json")):
-  x=json.loads(p.read_text()); goldids.update(e.get("occurrenceId") for e in x.get("entries",[]))
- assert not (set(ids)&goldids)
- catalogs={(e["lemma"],e["partOfSpeech"]):{s["senseId"]:s["label"] for s in e["senses"]} for e in cat["entries"]}
+ for path in sorted(GOLD.glob("*-sense-gold.json")):
+  x=load(path);source=x.get("provenance",{}).get("sourceReview");same_queue=False
+  if source:
+   review=load(ROOT/source);review_queue=review.get("sourceQueue")
+   same_queue=bool(review_queue) and load(ROOT/review_queue)==q
+  if not same_queue: goldids.update(e.get("occurrenceId") for e in x.get("entries",[]))
+ assert not(set(ids)&goldids)
+ cat=load(CAT);catalog={(e["lemma"],e["partOfSpeech"]):e for e in cat["entries"]};targets=form_target_map(load(FORM))
  for e in q["entries"]:
-  senses=catalogs[(e["lemma"],e["partOfSpeech"])]; assert e["context"].strip(); assert e["proposedSenseId"] in senses; assert e["proposedSenseLabel"]==senses[e["proposedSenseId"]]
-  assert e["availableSenses"]==[{"senseId":sid,"label":label} for sid,label in senses.items()]
-  p=proposals[e["occurrenceId"]]; assert e["surfaceForm"]==p["surfaceForm"] and e["score"]==p["score"]
-  cal=p25["perSenseId"].get(e["proposedSenseId"],{}); threshold=cal.get("candidateThreshold")
-  assert not (cal.get("decision")=="CERTIFIED_AUTO_ACCEPT" and threshold is not None and e["score"]>=threshold)
+  p0=proposals[e["occurrenceId"]];key=resolve_target(p0["surfaceForm"],targets);assert key==(e["lemma"],e["partOfSpeech"]) and key in catalog
+  matches=[o for o in occurrences(p0["surfaceForm"]) if o["occurrenceId"]==e["occurrenceId"]];assert len(matches)==1;assert e["recordId"]==matches[0]["recordId"] and e["context"]==matches[0]["context"] and e["context"].strip()
+  senses=catalog[key]["senses"];byid={s["senseId"]:s["label"] for s in senses};assert e["proposedSenseId"]==p0["proposedSenseId"] in byid;assert e["proposedSenseLabel"]==byid[e["proposedSenseId"]]
+  assert e["availableSenses"]==[{"senseId":s["senseId"],"label":s["label"]} for s in senses];assert e["surfaceForm"]==p0["surfaceForm"] and e["score"]==p0["score"]
+  c=calib["perSenseId"].get(e["proposedSenseId"]);assert isinstance(c,dict) and "decision" in c and "candidateThreshold" in c;t=c["candidateThreshold"]
+  assert not(c["decision"]=="CERTIFIED_AUTO_ACCEPT" and t is not None and e["score"]>=t)
  excluded=set(proposals)-set(ids)
  for oid in excluded:
-  p=proposals[oid]; cal=p25["perSenseId"].get(p["proposedSenseId"],{}); threshold=cal.get("candidateThreshold")
-  assert cal.get("decision")=="CERTIFIED_AUTO_ACCEPT" and threshold is not None and p["score"]>=threshold
+  p0=proposals[oid];resolve_target(p0["surfaceForm"],targets);c=calib["perSenseId"].get(p0["proposedSenseId"]);assert isinstance(c,dict);t=c.get("candidateThreshold")
+  assert c.get("decision")=="CERTIFIED_AUTO_ACCEPT" and t is not None and p0["score"]>=t
  assert q["autoAcceptEligibleCount"]==len(excluded)
- print("PASS reviewCount=%d autoAcceptEligible=%d goldInReview=0"%(q["reviewCount"],len(excluded)))
-if __name__=="__main__": main()
+ try: resolve_target("x",{"x":{("a","A"),("b","B")}})
+ except SystemExit as e: assert str(e)=="AMBIGUOUS_PROPOSAL_TARGET"
+ else: raise AssertionError("ambiguous target was not rejected")
+ print("PASS reviewCount=%d autoAcceptEligible=%d goldInReview=0 ambiguousTargetRejected=1"%(q["reviewCount"],len(excluded)))
+if __name__=="__main__":main()
