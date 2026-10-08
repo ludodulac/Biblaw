@@ -40,3 +40,5 @@ jobs:
           git reset --soft fb7b568726cd89f374509fe521358f738280f25b
           git commit -m "BIBLAW-OCCV2-031 generalize semantic review queue"
           git push --force-with-lease origin HEAD:feat/occv2-031-generic-review-queue
+
+# rerun after promoted-queue audit fix
