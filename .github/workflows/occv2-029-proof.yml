@@ -1,0 +1,41 @@
+name: OCCV2 029 proof
+on:
+  push:
+    branches: [audit/occv2-029-proof]
+permissions:
+  contents: write
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/occv2-029-user-confirmed-gold-builder
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Prove generic builder
+        run: |
+          git diff --exit-code c57b37a1d54f8861de539ae334505e6859bd7d72 -- data
+          python scripts/build_linguistic_user_confirmed_gold.py --review data/linguistic/review/sense-review-decisions-027.json --output /tmp/gold1.json --review-mission BIBLAW-OCCV2-027 --confirmation-mission BIBLAW-OCCV2-028
+          cmp /tmp/gold1.json data/linguistic/gold/biens-noun-sense-gold.json
+          python scripts/audit_linguistic_user_confirmed_gold_builder.py
+          python scripts/audit_linguistic_sense_contract.py
+          python scripts/build_linguistic_user_confirmed_gold.py --review data/linguistic/review/sense-review-decisions-027.json --output /tmp/gold2.json --review-mission BIBLAW-OCCV2-027 --confirmation-mission BIBLAW-OCCV2-028
+          cmp /tmp/gold1.json /tmp/gold2.json
+          python - <<'PY'
+          import json
+          g=json.load(open('/tmp/gold1.json'))
+          print('TARGET',g['target'])
+          print('ENTRY_COUNT',len(g['entries']))
+          print('COUNTS',g['counts'])
+          PY
+          ! grep -Eiq '\b(bien|biens|BENEFIT_WELFARE|EVALUATIVE_GOOD|POSSESSION_RESOURCE|occ-[0-9a-f]{24})\b' scripts/build_linguistic_user_confirmed_gold.py scripts/audit_linguistic_user_confirmed_gold_builder.py
+          ! grep -Eq 'biens-noun-sense-gold\.json' scripts/build_linguistic_user_confirmed_gold.py scripts/audit_linguistic_user_confirmed_gold_builder.py
+      - name: Collapse to one commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git reset --soft c57b37a1d54f8861de539ae334505e6859bd7d72
+          git commit -m "BIBLAW-OCCV2-029 industrialize user-confirmed gold"
+          git push --force-with-lease origin HEAD:feat/occv2-029-user-confirmed-gold-builder
