@@ -98,7 +98,12 @@ def morphological_eligibility(targets):
  finally: source.unlink(missing_ok=True)
 
 def main():
- rows,goldids,targets,allowed=sources(); classes=sorted({r[2] for r in rows}); oof=[]
+ parser=argparse.ArgumentParser()
+ parser.add_argument("--lemma",default=None)
+ parser.add_argument("--pos",default=None)
+ parser.add_argument("--output",type=Path,default=O)
+ args=parser.parse_args()
+ rows,goldids,targets,classes,selected_key=sources(args.lemma,args.pos); oof=[]
  for k in range(K):
   te=[r for r in rows if fold(r[1]["recordId"])==k]; tr=[r for r in rows if fold(r[1]["recordId"])!=k]
   if not te or set(r[2] for r in tr)!=set(classes):raise SystemExit("invalid grouped fold")
@@ -107,7 +112,6 @@ def main():
    p,s=pred(model,classes,feats(o["context"],targets[key]["forms"]));oof.append((y,p,s))
  ev=evalm(oof,classes); pol=policy(oof); pol["thresholdStatus"]="EXPERIMENTAL_OOF_SELECTED"; full=train(rows,classes,targets); eligibility=morphological_eligibility(targets); props=[]; excluded=0
  for key,t in sorted(targets.items()):
-  if sorted(allowed.get(key,[]))!=classes:continue
   seen={}
   for form in t["forms"]:
    os=occurrences(form)
@@ -120,7 +124,7 @@ def main():
    p,s=pred(full,classes,feats(o["context"],t["forms"])); dec="AUTO_ACCEPT" if pol["threshold"] is not None and s>=pol["threshold"] else "REVIEW"
    props.append({"occurrenceId":oid,"surfaceForm":o["surfaceForm"],"proposedSenseId":p,"decision":dec,"score":round(s,6)})
  eligible=sorted({f for x in eligibility.values() for f in x["eligibleForms"]}); ambiguous=sorted({f for x in eligibility.values() for f in x["ambiguousForms"]})
- report={"schemaVersion":1,"purpose":"automatic-sense-classifier-evaluation","target":{"lemma":key[0],"partOfSpeech":key[1]},"evaluation":{"method":"5-fold deterministic grouped cross-validation by recordId","validatedCount":len(rows),"classes":classes,**ev},"acceptancePolicy":pol,"morphologicalEligibility":{"eligibleForms":eligible,"ambiguousForms":ambiguous,"excludedOccurrenceCount":excluded},"unseenProposals":props}
+ report={"schemaVersion":1,"purpose":"automatic-sense-classifier-evaluation","target":{"lemma":selected_key[0],"partOfSpeech":selected_key[1]},"evaluation":{"method":"5-fold deterministic grouped cross-validation by recordId","validatedCount":len(rows),"classes":classes,**ev},"acceptancePolicy":pol,"morphologicalEligibility":{"eligibleForms":eligible,"ambiguousForms":ambiguous,"excludedOccurrenceCount":excluded},"unseenProposals":props}
  args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+"\n")
  print(json.dumps({"validatedCount":len(rows),"classes":classes,"accuracy":ev["accuracy"],"macroPrecision":ev["macroPrecision"],"macroRecall":ev["macroRecall"],"macroF1":ev["macroF1"],"policy":pol,"unseenCount":len(props),"autoAccept":sum(x["decision"]=="AUTO_ACCEPT" for x in props),"review":sum(x["decision"]=="REVIEW" for x in props),"surfaceForms":sorted({x["surfaceForm"] for x in props}),"morphologicalEligibility":report["morphologicalEligibility"]},ensure_ascii=False,sort_keys=True))
 if __name__=="__main__":main()
