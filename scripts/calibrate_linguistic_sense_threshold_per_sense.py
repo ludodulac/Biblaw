@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-import json
+import argparse,json
+from pathlib import Path
 from evaluate_linguistic_sense_classifier import ROOT,K,sources,feats,train,pred,fold
 from calibrate_linguistic_sense_threshold import inner_fold
 O=ROOT/"data/linguistic/audits/sense-threshold-per-sense-025.json"
@@ -26,7 +27,12 @@ def grouped_oof(rows,classes,targets,splitter):
    p,score=pred(model,classes,feats(o["context"],targets[key]["forms"])); out.append((y,p,score))
  return out
 def main():
- rows,_goldids,targets,_allowed=sources(); classes=sorted({r[2] for r in rows}); folds=[]; outer_predictions=[]
+ parser=argparse.ArgumentParser()
+ parser.add_argument("--lemma")
+ parser.add_argument("--pos")
+ parser.add_argument("--output",type=Path,default=O)
+ args=parser.parse_args()
+ rows,_goldids,targets,classes,selected_key=sources(args.lemma,args.pos); folds=[]; outer_predictions=[]
  for outer in range(K):
   outer_test=[r for r in rows if fold(r[1]["recordId"])==outer]; outer_train=[r for r in rows if fold(r[1]["recordId"])!=outer]
   test_groups={r[1]["recordId"] for r in outer_test}; train_groups={r[1]["recordId"] for r in outer_train}
@@ -45,6 +51,6 @@ def main():
   predicted=sum(p==c for y,p,s,a in outer_predictions); selected=[x for x in outer_predictions if x[1]==c and x[3]]; correct=sum(y==p for y,p,s,a in selected); n=len(selected); precision=correct/n if n else None
   summary[c]={"predictedCount":predicted,"autoAcceptCount":n,"correctCount":correct,"incorrectCount":n-correct,"independentPrecision":precision,"coverageAmongPredictions":n/predicted if predicted else 0,"decision":"CERTIFIED_AUTO_ACCEPT" if n>=20 and precision is not None and precision>=TARGET else "REVIEW_ONLY","candidateThreshold":final_candidates[c]["threshold"]}
  certified=[v for v in summary.values() if v["decision"]=="CERTIFIED_AUTO_ACCEPT"]; decision="PER_SENSE_CALIBRATION_PASS" if certified and all(v["independentPrecision"]>=TARGET for v in certified) else "PER_SENSE_CALIBRATION_FAIL"
- report={"schemaVersion":1,"purpose":"independent-per-sense-threshold-calibration","validatedCount":len(rows),"targetPrecision":TARGET,"outerFoldCount":K,"method":"5-fold deterministic nested CV grouped by recordId; per-sense thresholds selected only from inner OOF predictions grouped by predicted senseId","antiLeak":{"outerTestUsedForThresholdSelection":False,"recordGroupLeak":False},"folds":folds,"perSenseId":summary,"decision":decision}
- O.parent.mkdir(parents=True,exist_ok=True); O.write_text(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+"\n"); print(json.dumps(report,ensure_ascii=False,sort_keys=True))
+ report={"schemaVersion":1,"purpose":"independent-per-sense-threshold-calibration","target":{"lemma":selected_key[0],"partOfSpeech":selected_key[1]},"validatedCount":len(rows),"targetPrecision":TARGET,"outerFoldCount":K,"method":"5-fold deterministic nested CV grouped by recordId; per-sense thresholds selected only from inner OOF predictions grouped by predicted senseId","antiLeak":{"outerTestUsedForThresholdSelection":False,"recordGroupLeak":False},"folds":folds,"perSenseId":summary,"decision":decision}
+ args.output.parent.mkdir(parents=True,exist_ok=True); args.output.write_text(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+"\n"); print(json.dumps(report,ensure_ascii=False,sort_keys=True))
 if __name__=="__main__": main()
