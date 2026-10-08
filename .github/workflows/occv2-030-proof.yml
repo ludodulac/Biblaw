@@ -1,0 +1,35 @@
+name: OCCV2 030 proof
+on:
+  push:
+    branches: [audit/occv2-030-proof]
+permissions:
+  contents: write
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: feat/occv2-030-user-confirmed-promotion, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Promotion proof twice
+        run: |
+          python scripts/promote_linguistic_user_confirmed_review.py --review data/linguistic/review/sense-review-decisions-027.json --gold-output data/linguistic/gold/biens-noun-sense-gold.json --review-mission BIBLAW-OCCV2-027 --confirmation-mission BIBLAW-OCCV2-028
+          git diff --exit-code -- data/linguistic/gold/biens-noun-sense-gold.json data/linguistic-sense-runtime.json data/linguistic-sense-browser-runtime.json
+          python scripts/audit_linguistic_user_confirmed_promotion.py
+          python scripts/audit_linguistic_user_confirmed_gold_builder.py
+          python scripts/audit_linguistic_sense_contract.py
+          python scripts/audit_linguistic_sense_runtime.py
+          python scripts/audit_linguistic_sense_browser_runtime.py
+          python scripts/promote_linguistic_user_confirmed_review.py --review data/linguistic/review/sense-review-decisions-027.json --gold-output data/linguistic/gold/biens-noun-sense-gold.json --review-mission BIBLAW-OCCV2-027 --confirmation-mission BIBLAW-OCCV2-028
+          git diff --exit-code -- data/linguistic/gold/biens-noun-sense-gold.json data/linguistic-sense-runtime.json data/linguistic-sense-browser-runtime.json
+          ! grep -Eiq '\b(bien|biens|BENEFIT_WELFARE|EVALUATIVE_GOOD|POSSESSION_RESOURCE|occ-[0-9a-f]{24})\b' scripts/promote_linguistic_user_confirmed_review.py scripts/audit_linguistic_user_confirmed_promotion.py
+          ! grep -Eq 'biens-noun-sense-gold\.json' scripts/promote_linguistic_user_confirmed_review.py scripts/audit_linguistic_user_confirmed_promotion.py
+          test "$(git diff --name-only c2f4587b09dc8eef27420ec9720bbbc8404aa609 | sort)" = "$(printf '%s\n' scripts/audit_linguistic_user_confirmed_promotion.py scripts/promote_linguistic_user_confirmed_review.py | sort)"
+      - name: Collapse to one commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git reset --soft c2f4587b09dc8eef27420ec9720bbbc8404aa609
+          git commit -m "BIBLAW-OCCV2-030 orchestrate user-confirmed promotion"
+          git push --force-with-lease origin HEAD:feat/occv2-030-user-confirmed-promotion
