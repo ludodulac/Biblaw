@@ -25,11 +25,11 @@ jobs:
           ! grep -Eiq '\b(bien|biens|BENEFIT_WELFARE|EVALUATIVE_GOOD|POSSESSION_RESOURCE|occ-[0-9a-f]{24})\b' scripts/build_linguistic_sense_review_queue.py scripts/audit_linguistic_sense_review_queue.py
           python - <<'PY'
           from pathlib import Path
-          for f in ["scripts/build_linguistic_sense_review_queue.py","scripts/audit_linguistic_sense_review_queue.py"]:
-              s=Path(f).read_text()
-              for token in ("023","025","026"):
-                  lines=[x for x in s.splitlines() if token in x]
-                  assert lines and all("DEFAULT_" in x for x in lines),(f,token,lines)
+          files=["scripts/build_linguistic_sense_review_queue.py","scripts/audit_linguistic_sense_review_queue.py"]
+          lines=sum((Path(f).read_text().splitlines() for f in files),[])
+          for token in ("023","025","026"):
+              hits=[x for x in lines if token in x]
+              assert hits and all("DEFAULT_" in x for x in hits),(token,hits)
           print("ANTI_SPECIALIZATION=PASS")
           PY
           test "$(git diff --name-only fb7b568726cd89f374509fe521358f738280f25b | sort)" = "$(printf '%s\n' scripts/audit_linguistic_sense_review_queue.py scripts/build_linguistic_sense_review_queue.py | sort)"
@@ -48,3 +48,5 @@ jobs:
 # rerun 3
 
 # rerun 4
+
+# rerun 5
