@@ -1,0 +1,39 @@
+name: OCCV2 032R proof
+on:
+  push:
+    branches: [audit/occv2-032r-proof]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: feat/occv2-032-target-scoped-classifier, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Verify classifier
+        run: |
+          python scripts/evaluate_linguistic_sense_classifier.py --lemma bien --pos NOUN --output /tmp/classifier-explicit.json
+          python scripts/evaluate_linguistic_sense_classifier.py --output /tmp/classifier-auto.json
+          cmp /tmp/classifier-explicit.json /tmp/classifier-auto.json
+          python scripts/evaluate_linguistic_sense_classifier.py --lemma bien --pos NOUN --output /tmp/classifier-explicit-2.json
+          cmp /tmp/classifier-explicit.json /tmp/classifier-explicit-2.json
+          python - <<'PY'
+          import json,sys
+          sys.path.insert(0,"scripts")
+          from evaluate_linguistic_sense_classifier import choose_target,gold_for_target,sources,K,W,MARK
+          a=("lemmaA","POS_A");b=("lemmaB","POS_B")
+          assert gold_for_target([{"target":{"lemma":a[0],"partOfSpeech":a[1]}},{"target":{"lemma":b[0],"partOfSpeech":b[1]}}],a)==[{"target":{"lemma":a[0],"partOfSpeech":a[1]}}]
+          for args,expected in [(({a,b},),"AMBIGUOUS_SEMANTIC_TARGET"),(({a},"lemmaA",None),"INCOMPLETE_TARGET_SELECTOR"),(({a},"other","POS_X"),"TARGET_NOT_AVAILABLE")]:
+              try:choose_target(*args)
+              except SystemExit as e:assert str(e)==expected,(str(e),expected)
+              else:raise AssertionError(expected)
+          r=json.load(open("/tmp/classifier-explicit.json"));rows,goldids,targets,classes,key=sources("bien","NOUN")
+          assert r["target"]=={"lemma":"bien","partOfSpeech":"NOUN"}
+          assert r["evaluation"]["validatedCount"]==len(rows)==445
+          assert not (goldids & {x["occurrenceId"] for x in r["unseenProposals"]})
+          assert K==5 and W==12 and MARK=="<TARGET>"
+          print("TARGET_SEPARATION=PASS AMBIGUITY=PASS INCOMPLETE=PASS UNAVAILABLE=PASS")
+          print("VALIDATED_TRAINING_COUNT=",len(rows),"UNSEEN_COUNT=",len(r["unseenProposals"]),"GOLD_OCCURRENCES_IN_UNSEEN=0")
+          PY
+          git diff --exit-code -- data/
+          test "$(git diff --name-only 3b436698c32601b0755e77a938d258db108249ea | sort)" = "scripts/evaluate_linguistic_sense_classifier.py"
