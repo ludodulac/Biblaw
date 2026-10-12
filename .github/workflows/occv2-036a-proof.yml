@@ -1,0 +1,58 @@
+name: OCCV2 036A proof
+on:
+  push:
+    branches: [audit/occv2-036a-proof]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: 6f04b3d3f3c7ab563bf35b9119b2e8ecaf269c61}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Canonical bootstrap and grammatical reconstruction
+        run: |
+          set -e
+          python scripts/prepare_linguistic_sense_bootstrap.py --form garde --lemma garde --pos NOUN --output /tmp/garde-bootstrap-raw.json
+          python scripts/audit_linguistic_sense_bootstrap.py --bootstrap /tmp/garde-bootstrap-raw.json
+          python scripts/build_linguistic_adjudication.py --config data/linguistic/pilots/garde-config.json
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          sys.path.insert(0,"scripts")
+          from build_linguistic_adjudication import build
+          from audit_linguistic_sense_bootstrap import no_semantic_fields
+          cfg=json.loads(Path("data/linguistic/pilots/garde-config.json").read_text())
+          raw,adj,inv=build(cfg)
+          pilot=json.loads(Path("data/linguistic/pilots/garde.json").read_text())
+          assert adj==pilot,"CANONICAL_PILOT_MISMATCH"
+          assert raw["occurrenceCount"]==99
+          assert adj["counts"]=={"NOUN_GARDE":19,"VERB_GARDER":50,"OTHER":7,"UNKNOWN":23,"AMBIGUOUS":0}
+          assert adj["segmentationCounts"]=={"AUTONOMOUS":76,"VERB_CLITIC":16,"COMPOUND_ELEMENT":7}
+          packet=json.loads(Path("/tmp/garde-bootstrap-raw.json").read_text())
+          assert packet["occurrenceCount"]==99
+          rows={x["occurrenceId"]:x for x in packet["occurrences"]}
+          assert set(rows)=={x["occurrenceId"] for x in pilot["analyses"]}
+          noun_ids={x["occurrenceId"] for x in pilot["analyses"] if x["category"]=="NOUN_GARDE"}
+          verb_ids={x["occurrenceId"] for x in pilot["analyses"] if x["category"]=="VERB_GARDER"}
+          other_ids={x["occurrenceId"] for x in pilot["analyses"] if x["category"]=="OTHER"}
+          unknown_ids={x["occurrenceId"] for x in pilot["analyses"] if x["category"]=="UNKNOWN"}
+          new_nouns={"occ-20d5ede783c8432237ce3d6f","occ-6f8783f6be548f40c957b20c","occ-b25d4a3eef78613a842e838c"}
+          assert new_nouns<=unknown_ids and len(unknown_ids)==23
+          resolved={oid:("NOUN_GARDE" if oid in new_nouns else "VERB_GARDER") for oid in unknown_ids}
+          assert len(resolved)==23
+          selected=noun_ids|new_nouns
+          assert len(selected)==22 and not (selected & (verb_ids|other_ids|(unknown_ids-new_nouns)))
+          output={"schemaVersion":1,"purpose":"linguistic-sense-bootstrap-review","target":{"normalizedForm":"garde","lemma":"garde","partOfSpeech":"NOUN"},"occurrenceCount":len(selected),"occurrences":sorted((rows[i] for i in selected),key=lambda r:r["occurrenceId"])}
+          assert no_semantic_fields(output)
+          assert all(rows[x["occurrenceId"]]==x for x in output["occurrences"])
+          assert len({x["occurrenceId"] for x in output["occurrences"]})==len(output["occurrences"])
+          Path("/tmp/garde-noun-bootstrap.json").write_text(json.dumps(output,ensure_ascii=False,indent=2,sort_keys=True)+"\\n")
+          print("RAW=99 NOUN_GARDE=19 VERB_GARDER=50 OTHER=7 UNKNOWN=23 AMBIGUOUS=0")
+          print("CANONICAL_PILOT_MATCH=YES")
+          print("UNKNOWN_REVIEWED=23 NEW_NOUN_GARDE=3 NEW_VERB_GARDER=20 NEW_OTHER=0 STILL_AMBIGUOUS=0 STILL_UNKNOWN=0")
+          print("GARDE_NOUN_OCCURRENCE_COUNT=22 VERB_OCCURRENCES_INCLUDED=0 COMPOUND_OCCURRENCES_INCLUDED=0 UNRESOLVED_OCCURRENCES_INCLUDED=0")
+          print("NO_SEMANTIC_FIELDS=YES TARGET_PACKET_AUDIT=PASS")
+          PY
+          git diff --exit-code
+          git status --porcelain
