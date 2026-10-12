@@ -181,6 +181,8 @@
       const analysis=analyses[Number(btn.dataset.grammarIndex)];
       if(!analysis)return;
       state.grammarSelection={normalizedForm:key,lemma:analysis.lemma,partOfSpeech:analysis.partOfSpeech};
+      const sourceTypes=new Set((analysis.records||[]).map(([id])=>state.recordById.get(id)).filter(Boolean).map(type));
+      document.querySelectorAll('[name=sourceType]').forEach(input=>{if(sourceTypes.has(input.value))input.checked=true;});
       state.semanticSelection=null;
       if($('includeWordForms'))$('includeWordForms').checked=false;
       search();
