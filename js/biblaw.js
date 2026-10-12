@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [] };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [] };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -45,17 +45,18 @@
   const importanceLabel = value => ({ central: 'Central', important: 'Important', related: 'Lié' }[value] || 'Indexé');
   const importanceRank = value => ({ central: 0, important: 1, related: 2 }[value] ?? 3);
   const publishPresentationState = detail => document.dispatchEvent(new CustomEvent('biblaw:presentation-state', { detail }));
-  const activateThemeMode = () => { state.mode='themes'; state.semanticSelection=null; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Ex. amour, nature, âme, psaume 105'; $('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié. Un numéro de psaume peut aussi être saisi directement.'; hideAmbiguity(); updateExpansionControl(); };
+  const activateThemeMode = () => { state.mode='themes'; state.semanticSelection=null; state.grammarSelection=null; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Ex. amour, nature, âme, psaume 105'; $('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié. Un numéro de psaume peut aussi être saisi directement.'; hideAmbiguity(); updateExpansionControl(); };
   const activateExactMode = () => { state.mode='exact'; $('modeExact').classList.add('active'); $('modeThemes').classList.remove('active'); $('primarySearch').classList.add('exact-mode'); $('primarySearch').classList.remove('advanced-visible'); $('query2').disabled=true; $('query2').value=''; $('advancedSearchToggle').hidden=true; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('advancedSearchToggle').textContent='Croiser deux thèmes'; $('query').placeholder='Ex. acclame, temps vis, psaume 105'; $('modeHelp').textContent='Recherche les occurrences exactes d’un mot ou d’une expression dans le corpus.'; hideAmbiguity(); hideTransverseNavigation(); updateExpansionControl(); };
 
   async function load() {
     try {
-      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime] = await Promise.all([
+      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime] = await Promise.all([
         fetch('data/browser-search-catalog.json').then(r => { if (!r.ok) throw Error('browser-search-catalog'); return r.json(); }),
         fetch('data/thematic-index/theme-directory-public.json').then(r => { if (!r.ok) throw Error('theme-directory'); return r.json(); }),
         fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); }),
         fetch('data/lexical-expansion-runtime.json').then(r => { if (!r.ok) throw Error('lexical-expansion-runtime'); return r.json(); }),
-        fetch('data/linguistic-sense-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-sense-browser-runtime'); return r.json(); })
+        fetch('data/linguistic-sense-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-sense-browser-runtime'); return r.json(); }),
+        fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); })
       ]);
       state.themeDirectory = directory.themes || [];
       state.themeById = new Map(state.themeDirectory.map(t => [t.id, t]));
@@ -64,6 +65,7 @@
       state.lexicalExpansionByForm = new Map();
       state.lexicalExpansionGroups.forEach((group,index)=>group.forEach(form=>state.lexicalExpansionByForm.set(form,index)));
       state.semanticBrowserRuntime = semanticBrowserRuntime;
+      state.grammarByForm = new Map((grammarBrowserRuntime.forms||[]).map(form=>[form.normalizedForm,form.analyses]));
       state.semanticTargetsByForm = new Map();
       for(const target of semanticBrowserRuntime.targets||[]){ const list=state.semanticTargetsByForm.get(target.normalizedForm)||[]; list.push(target); state.semanticTargetsByForm.set(target.normalizedForm,list); }
       state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime);
@@ -143,12 +145,59 @@
     if(state.mode!=='exact'){updateExpansionControl();return;}
     const key=singleWordQueryKey($('query')?.value||'');
     if(state.semanticSelection&&key!==state.semanticSelection.normalizedForm)state.semanticSelection=null;
-    if(!key||!semanticTargetsFor(key).length)hideAmbiguity();
+    if(state.grammarSelection&&key!==state.grammarSelection.normalizedForm)state.grammarSelection=null;
+    if(!key||(!semanticTargetsFor(key).length&&!state.grammarByForm.has(key)))hideAmbiguity();
     updateExpansionControl();
   }
+
+  function grammarAnalysesFor(value){
+    const key=state.mode==='exact'?singleWordQueryKey(value):null;
+    return key?(state.grammarByForm.get(key)||[]):[];
+  }
+  function grammarSelectionContext(value){
+    const key=singleWordQueryKey(value),selection=state.grammarSelection;
+    if(!selection||selection.normalizedForm!==key)return null;
+    return grammarAnalysesFor(value).find(a=>a.lemma===selection.lemma&&a.partOfSpeech===selection.partOfSpeech)||null;
+  }
+  function grammarMatches(analysis){
+    const allowed=selectedTypes(),archangel=$('archangelFilter').value,items=[];
+    for(const [recordId,occurrenceCount,verseNumbers] of analysis.records||[]){
+      const record=state.recordById.get(recordId);
+      if(!record||!allowed.has(type(record))||(archangel&&record.archangel!==archangel))continue;
+      items.push({record,score:1,occurrenceCount,semanticVerseNumbers:verseNumbers});
+    }
+    return items;
+  }
+  function showGrammarChoices(query){
+    const key=singleWordQueryKey(query),analyses=grammarAnalysesFor(query);
+    if(state.mode!=='exact'||analyses.length<=1){return false;}
+    const choices=['<button class="sense-button" data-grammar-all><strong>Toutes les occurrences</strong><span>Recherche exacte sans filtre grammatical</span></button>'];
+    analyses.forEach((a,i)=>choices.push(`<button class="sense-button" data-grammar-index="${i}"><strong>${esc(a.lemma.toUpperCase())} — ${a.partOfSpeech==='NOUN'?'nom':a.partOfSpeech==='VERB'?'verbe':a.partOfSpeech}</strong><span>${a.occurrenceCount} occurrences</span></button>`));
+    $('suggestionKicker').textContent='Préciser la recherche';
+    $('suggestionTitle').textContent=`Que recherchez-vous pour « ${query} » ?`;
+    $('senseChoices').innerHTML=choices.join('');
+    $('senseChoices').querySelector('[data-grammar-all]').onclick=()=>{state.grammarSelection=null;state.semanticSelection=null;search();};
+    $('senseChoices').querySelectorAll('[data-grammar-index]').forEach(btn=>btn.onclick=()=>{
+      const analysis=analyses[Number(btn.dataset.grammarIndex)];
+      if(!analysis)return;
+      state.grammarSelection={normalizedForm:key,lemma:analysis.lemma,partOfSpeech:analysis.partOfSpeech};
+      state.semanticSelection=null;
+      if($('includeWordForms'))$('includeWordForms').checked=false;
+      search();
+    });
+    $('ambiguityPanel').hidden=false;
+    return true;
+  }
+  function semanticChoicesAllowed(query){
+    const analyses=grammarAnalysesFor(query);
+    if(analyses.length<=1)return true;
+    const chosen=grammarSelectionContext(query);
+    if(!chosen)return false;
+    return semanticTargetsFor(query).some(t=>t.lemma===chosen.lemma&&t.partOfSpeech===chosen.partOfSpeech&&(t.senses||[]).length>1);
+  }
   function showSemanticChoices(query){
-    const key=singleWordQueryKey(query),targets=semanticTargetsFor(query);
-    if(state.mode!=='exact'||!key||!targets.length){hideAmbiguity();return false;}
+    const key=singleWordQueryKey(query),chosen=grammarSelectionContext(query),targets=semanticTargetsFor(query).filter(t=>!chosen||(t.lemma===chosen.lemma&&t.partOfSpeech===chosen.partOfSpeech));
+    if(!semanticChoicesAllowed(query)||state.mode!=='exact'||!key||!targets.length){hideAmbiguity();return false;}
     const choices=['<button class="sense-button" data-semantic-all><strong>Toutes les occurrences</strong><span>Recherche exacte sans filtre de sens</span></button>'];
     targets.forEach((target,targetIndex)=>(target.senses||[]).filter(sense=>sense.occurrenceCount>0).forEach(sense=>{
       choices.push(`<button class="sense-button" data-semantic-target-index="${targetIndex}" data-semantic-sense-id="${esc(sense.senseId)}"><strong>${esc(sense.label)}</strong><span>${sense.occurrenceCount} occurrence${sense.occurrenceCount>1?'s':''} validée${sense.occurrenceCount>1?'s':''}</span></button>`);
@@ -255,11 +304,14 @@
     }
     hideTransverseNavigation();publishPresentationState({kind:'other'});
     const semanticSelection=semanticSelectionContext(query);
+    const grammaticalSelection=grammarSelectionContext(query);
     const exactItems=matches(query);
+    if(grammaticalSelection) exactItems.splice(0,exactItems.length,...grammarMatches(grammaticalSelection));
     if(semanticSelection) exactItems.splice(0,exactItems.length,...semanticMatches(semanticSelection));
-    else mergeExpansionMatches(exactItems,query);
+    else if(!grammaticalSelection) mergeExpansionMatches(exactItems,query);
     exactItems.sort((a,b)=>b.occurrenceCount-a.occurrenceCount||(Number(a.record.number)||Number.MAX_SAFE_INTEGER)-(Number(b.record.number)||Number.MAX_SAFE_INTEGER)||String(a.record.id).localeCompare(String(b.record.id),'fr'));
-    showSemanticChoices(query);
+    if(!showGrammarChoices(query))showSemanticChoices(query);
+    else if(grammaticalSelection&&semanticChoicesAllowed(query))showSemanticChoices(query);
     if(semanticSelection) render(exactItems,null,{exactSearch:true,semanticSearch:true});
     else render(exactItems,null,{exactSearch:true});
   }
