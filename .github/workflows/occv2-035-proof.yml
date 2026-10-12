@@ -1,0 +1,38 @@
+name: OCCV2 035 proof
+on:
+  push:
+    branches: [audit/occv2-035-proof]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: feat/occv2-035-semantic-bootstrap, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Bootstrap, audit, determinism and zero occurrences
+        run: |
+          set -e
+          python scripts/prepare_linguistic_sense_bootstrap.py --form bien --lemma bien --pos NOUN --output /tmp/bootstrap-035.json
+          python scripts/audit_linguistic_sense_bootstrap.py --bootstrap /tmp/bootstrap-035.json
+          python scripts/prepare_linguistic_sense_bootstrap.py --form bien --lemma bien --pos NOUN --output /tmp/bootstrap-035-2.json
+          cmp /tmp/bootstrap-035.json /tmp/bootstrap-035-2.json
+          python - <<'PY'
+          import json,sys
+          sys.path.insert(0,"scripts")
+          from audit_linguistic_sense_bootstrap import audit,no_semantic_fields
+          from build_linguistic_occurrence_index import occurrences
+          p=json.load(open("/tmp/bootstrap-035.json"))
+          assert p["target"]=={"normalizedForm":"bien","lemma":"bien","partOfSpeech":"NOUN"}
+          assert p["occurrenceCount"]==len(p["occurrences"])==len(occurrences("bien"))
+          assert no_semantic_fields(p)
+          audit(p)
+          print("OCCURRENCE_COUNT =",p["occurrenceCount"])
+          print("SECOND_RUN_BYTE_IDENTICAL=YES NO_SEMANTIC_DECISION_FIELDS=YES CANONICAL_OCCURRENCE_MATCH=PASS")
+          PY
+          if python scripts/prepare_linguistic_sense_bootstrap.py --form nonexistent-035-zzzz --lemma nonexistent --pos NOUN --output /tmp/bootstrap-035-missing.json > /tmp/035-missing.log 2>&1; then exit 1; fi
+          grep -q NO_OCCURRENCES /tmp/035-missing.log
+          test ! -e /tmp/bootstrap-035-missing.json
+          echo 'ZERO_OCCURRENCE_REJECTION=PASS'
+          git diff --exit-code -- data/
+          test "$(git diff --name-only 9d30cc2910ba81705a80ce17f8bb3733b0f593e1 | sort)" = "$(printf 'scripts/audit_linguistic_sense_bootstrap.py\nscripts/prepare_linguistic_sense_bootstrap.py')"
