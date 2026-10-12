@@ -25,7 +25,7 @@ with sync_playwright() as p:
     assert "22 occurrences" in page.locator("#resultCount").inner_text()
     assert page.locator("[data-semantic-sense-id]").count() == 0
     assert page.locator("#ambiguityPanel").is_hidden()
-    page.locator("#query").fill("garde ")
+    page.locator("#query").fill("autre")
     page.locator("#query").fill("garde")
     page.locator("#searchButton").click()
     page.locator("[data-grammar-index]").last.click()
