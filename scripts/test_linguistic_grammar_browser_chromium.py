@@ -29,7 +29,7 @@ with sync_playwright() as p:
     page.locator("#query").fill("garde")
     page.locator("#searchButton").click()
     page.locator("[data-grammar-index]").last.click()
-    assert "70 occurrences" in page.locator("#resultCount").inner_text()
+    assert "70 occurrences" in page.locator("#resultCount").inner_text(), (page.locator("#resultCount").inner_text(), page.locator("#senseChoices").inner_text(), page.locator("#ambiguityPanel").is_hidden())
     assert page.locator("[data-semantic-sense-id]").count() == 0
     page.locator("#query").fill("bien")
     page.locator("#searchButton").click()
