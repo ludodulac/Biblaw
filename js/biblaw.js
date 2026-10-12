@@ -170,7 +170,7 @@
   }
   function showGrammarChoices(query){
     const key=singleWordQueryKey(query),analyses=grammarAnalysesFor(query);
-    if(state.mode!=='exact'||analyses.length<=1){return false;}
+    if(state.mode!=='exact'||analyses.length<=1||grammarSelectionContext(query)){return false;}
     const choices=['<button class="sense-button" data-grammar-all><strong>Toutes les occurrences</strong><span>Recherche exacte sans filtre grammatical</span></button>'];
     analyses.forEach((a,i)=>choices.push(`<button class="sense-button" data-grammar-index="${i}"><strong>${esc(a.lemma.toUpperCase())} — ${a.partOfSpeech==='NOUN'?'nom':a.partOfSpeech==='VERB'?'verbe':a.partOfSpeech}</strong><span>${a.occurrenceCount} occurrences</span></button>`));
     $('suggestionKicker').textContent='Préciser la recherche';
@@ -311,7 +311,6 @@
     else if(!grammaticalSelection) mergeExpansionMatches(exactItems,query);
     exactItems.sort((a,b)=>b.occurrenceCount-a.occurrenceCount||(Number(a.record.number)||Number.MAX_SAFE_INTEGER)-(Number(b.record.number)||Number.MAX_SAFE_INTEGER)||String(a.record.id).localeCompare(String(b.record.id),'fr'));
     if(!showGrammarChoices(query))showSemanticChoices(query);
-    else if(grammaticalSelection&&semanticChoicesAllowed(query))showSemanticChoices(query);
     if(semanticSelection) render(exactItems,null,{exactSearch:true,semanticSearch:true});
     else render(exactItems,null,{exactSearch:true});
   }
