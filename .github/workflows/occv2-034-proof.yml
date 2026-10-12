@@ -1,0 +1,46 @@
+name: OCCV2 034 proof
+on:
+  push:
+    branches: [audit/occv2-034-proof]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: feat/occv2-034-semantic-review-pipeline, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: End to end, determinism and fail-fast
+        run: |
+          set -e
+          python scripts/prepare_linguistic_sense_review.py --lemma bien --pos NOUN --proposals-output /tmp/034-proposals.json --calibration-output /tmp/034-calibration.json --queue-output /tmp/034-queue.json > /tmp/034-result.log
+          cat /tmp/034-result.log | tail -n 12
+          python scripts/audit_linguistic_sense_review_pipeline.py --lemma bien --pos NOUN --proposals /tmp/034-proposals.json --calibration /tmp/034-calibration.json --queue /tmp/034-queue.json
+          python scripts/prepare_linguistic_sense_review.py --lemma bien --pos NOUN --proposals-output /tmp/034-proposals-2.json --calibration-output /tmp/034-calibration-2.json --queue-output /tmp/034-queue-2.json > /tmp/034-result2.log
+          cmp /tmp/034-proposals.json /tmp/034-proposals-2.json
+          cmp /tmp/034-calibration.json /tmp/034-calibration-2.json
+          cmp /tmp/034-queue.json /tmp/034-queue-2.json
+          python - <<'PY'
+          import json,sys
+          sys.path.insert(0,"scripts")
+          from prepare_linguistic_sense_review import verify_targets
+          from audit_linguistic_sense_review_pipeline import validate
+          p=json.load(open("/tmp/034-proposals.json")); c=json.load(open("/tmp/034-calibration.json")); q=json.load(open("/tmp/034-queue.json"))
+          assert p["target"]==c["target"]=={"lemma":"bien","partOfSpeech":"NOUN"}
+          assert p["evaluation"]["validatedCount"]==c["validatedCount"]==445
+          assert set(p["evaluation"]["classes"])==set(c["perSenseId"])
+          assert q["reviewCount"]==len(q["entries"])
+          assert q["autoAcceptEligibleCount"]==len(p["unseenProposals"])-len(q["entries"])
+          validate(p,c,q,"bien","NOUN")
+          try: verify_targets({"target":{"lemma":"a","partOfSpeech":"NOUN"}},{"target":{"lemma":"b","partOfSpeech":"NOUN"}},"a","NOUN")
+          except SystemExit as e: assert str(e)=="TARGET_MISMATCH"
+          else: raise AssertionError("TARGET_MISMATCH not raised")
+          print("TARGET_MATCH=PASS CLASS_SET_MATCH=PASS VALIDATED_COUNT_MATCH=PASS TARGET_MISMATCH_REJECTION=PASS")
+          print("VALIDATED_TRAINING_COUNT=",c["validatedCount"],"UNSEEN_PROPOSAL_COUNT=",len(p["unseenProposals"]),"REVIEW_COUNT=",q["reviewCount"],"AUTO_ACCEPT_ELIGIBLE_COUNT=",q["autoAcceptEligibleCount"])
+          PY
+          if python scripts/prepare_linguistic_sense_review.py --lemma bien --proposals-output /tmp/a --calibration-output /tmp/b --queue-output /tmp/c > /tmp/034-bad.log 2>&1; then exit 1; fi
+          if python scripts/prepare_linguistic_sense_review.py --lemma nonexistent --pos NOUN --proposals-output /tmp/a --calibration-output /tmp/b --queue-output /tmp/c > /tmp/034-bad2.log 2>&1; then exit 1; fi
+          grep -q TARGET_NOT_AVAILABLE /tmp/034-bad2.log
+          echo 'INCOMPLETE_SELECTOR_REJECTION=PASS TARGET_NOT_AVAILABLE_REJECTION=PASS FAIL_FAST=PASS'
+          git diff --exit-code -- data/
+          test "$(git diff --name-only ea30ac97078055fd702a47888f8fbd44f969fa90 | sort)" = "$(printf 'scripts/audit_linguistic_sense_review_pipeline.py\nscripts/prepare_linguistic_sense_review.py')"
