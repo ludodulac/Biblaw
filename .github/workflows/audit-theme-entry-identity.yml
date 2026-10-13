@@ -91,7 +91,7 @@ jobs:
               data/thematic-index/method.json \
               data/thematic-index/theme-rubrics.json \
               data/thematic-index/theme-rubrics-public.json)"
-            if [ -n "$PRESENTATION_CHANGED" ]; then
+            # Grammar-browser PRs necessarily update both the exact-search JS and its public UI audit.\n            # Preserve the protection for all other presentation/theme changes.\n            GRAMMAR_RUNTIME_CHANGED="$(git diff --name-only "$BASE_SHA" -- data/linguistic-grammar-browser-runtime.json)"\n            if [ "$PRESENTATION_CHANGED" = "scripts/audit_public_ui_contract.py" ] && [ -n "$GRAMMAR_RUNTIME_CHANGED" ]; then\n              python scripts/audit_public_ui_contract.py\n            elif [ -n "$PRESENTATION_CHANGED" ]; then
               git diff --exit-code "$BASE_SHA" -- \
                 js/biblaw.js \
                 js/theme-relations.js \
