@@ -1,0 +1,47 @@
+name: OCCV2-037B grammar browser proof
+on:
+  push:
+    branches:
+      - feat/occv2-037-grammar-browser-runtime
+  workflow_dispatch:
+jobs:
+  grammar-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Review and runtime audits
+        run: |
+          python scripts/audit_linguistic_grammar_review.py
+          python scripts/audit_linguistic_grammar_browser_runtime.py
+          sha256sum data/linguistic-grammar-browser-runtime.json > /tmp/grammar-original.sha
+          python scripts/build_linguistic_grammar_browser_runtime.py
+          sha256sum -c /tmp/grammar-original.sha
+          cp data/linguistic-grammar-browser-runtime.json /tmp/grammar-first.json
+          python scripts/build_linguistic_grammar_browser_runtime.py
+          cmp /tmp/grammar-first.json data/linguistic-grammar-browser-runtime.json
+          python scripts/audit_linguistic_grammar_browser_runtime.py
+          git diff --exit-code -- data/linguistic-grammar-browser-runtime.json
+      - name: JavaScript syntax and no hardcoding
+        run: |
+          node --check js/biblaw.js
+          python - <<'PY'
+          from pathlib import Path
+          js=Path('js/biblaw.js').read_text()
+          assert 'linguistic-grammar-browser-runtime.json' in js
+          assert 'grammarSelectionContext' in js
+          assert 'showGrammarChoices' in js
+          assert 'semanticChoicesAllowed' in js
+          assert 'if(query === "garde")' not in js
+          assert 'occ-20d5ede783c8432237ce3d6f' not in js
+          assert 'occ-' not in js
+          print('GRAMMAR_BROWSER_STRUCTURE=PASS')
+          PY
+      - name: Real Chromium browser regression
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/biblaw-server.log 2>&1 &
+          python scripts/test_linguistic_grammar_browser_chromium.py
