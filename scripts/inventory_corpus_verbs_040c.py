@@ -10,7 +10,7 @@ OUT=Path(sys.argv[1]) if len(sys.argv)>1 else Path("040c-output")
 OUT.mkdir(parents=True,exist_ok=True)
 nlp=spacy.load("fr_core_news_sm",disable=["ner"])
 catalog=json.loads(CATALOG.read_text(encoding="utf-8"))
-psalms=[p for p in catalog["records"] if re.fullmatch(r"data/corpus/books/book-\\d+/psalm-\\d+\\.json",p)]
+psalms=[p for p in catalog["records"] if re.fullmatch(r"data/corpus/books/book-\d+/psalm-\d+\.json",p)]
 assert psalms, "No canonical psalms"
 sources=[]
 for rel in psalms:
