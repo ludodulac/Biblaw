@@ -1,14 +1,23 @@
 name: BIBLAW 039F Wiktionary isolated experiment
 on:
-  workflow_dispatch:
+  pull_request:
+    types: [synchronize]
+    branches: [main]
+    paths:
+      - '.github/workflows/occv2-039f-real-semantic.yml'
+      - 'scripts/experiment_039f_wiktionary.py'
 permissions:
   contents: read
 jobs:
   experiment:
+    if: github.event.pull_request.number == 66 && github.event.pull_request.head.repo.full_name == 'ludodulac/Biblaw' && github.event.pull_request.head.ref == 'exp/occv2-039f-real-semantic-actions'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - name: Verify expected base ancestry
         shell: bash
         run: |
@@ -17,6 +26,7 @@ jobs:
       - name: Probe Wiktionary and run bounded real-corpus experiment
         run: python3 scripts/experiment_039f_wiktionary.py --out "$RUNNER_TEMP/biblaw-039f"
       - name: Verify production files unchanged
+        if: always()
         run: |
           test -z "$(git status --porcelain -- data/corpus data/linguistic/gold data/linguistic-sense-runtime.json data/linguistic-sense-browser-runtime.json js)"
       - name: Upload isolated experiment artifacts
