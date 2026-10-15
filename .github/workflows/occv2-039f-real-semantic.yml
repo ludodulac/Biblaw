@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/occv2-039f-real-semantic.yml'
       - 'scripts/experiment_039f_wiktionary.py'
+      - 'scripts/experiment_039h_bien_quality.py'
 permissions:
   contents: read
 jobs:
@@ -25,10 +26,20 @@ jobs:
           git merge-base --is-ancestor be0fcd545fb7ec522c22305d0159f566d151dda0 HEAD
       - name: Probe Wiktionary and run bounded real-corpus experiment
         run: python3 scripts/experiment_039f_wiktionary.py --out "$RUNNER_TEMP/biblaw-039f"
+      - name: Blind BIEN matching quality diagnostic
+        run: python3 scripts/experiment_039h_bien_quality.py "$RUNNER_TEMP/biblaw-039h"
       - name: Verify production files unchanged
         if: always()
         run: |
           test -z "$(git status --porcelain -- data/corpus data/linguistic/gold data/linguistic-sense-runtime.json data/linguistic-sense-browser-runtime.json js)"
+      - name: Upload 039H BIEN diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-039h-bien-quality
+          path: ${{ runner.temp }}/biblaw-039h/
+          if-no-files-found: warn
+          retention-days: 14
       - name: Upload isolated experiment artifacts
         if: always()
         uses: actions/upload-artifact@v4
