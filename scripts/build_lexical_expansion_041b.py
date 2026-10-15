@@ -38,6 +38,8 @@ def generate(morph):
                 for raw_form in candidates:
                     fkey=browser_key(raw_form)
                     if fkey not in vocab:continue
+                    # Frozen human-audit exclusions from the previous lexical runtime.
+                    if fkey in ("empli","dote","travers"):continue
                     if category=="Verbe":
                         # Conservative initial stem: never prefix-only membership.
                         if not key.endswith(("er","ir","re")) or len(key)<5:continue
