@@ -1,0 +1,42 @@
+name: BIBLAW 042B2 canonical bread evidence extraction
+on:
+  push:
+    branches:
+      - feat/042b-pain-thematic-editorial-repair
+    paths:
+      - scripts/extract_pain_evidence_042b2.py
+      - .github/workflows/042b2-pain-corpus-evidence.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Extract exact bread occurrences and contextual related candidates
+        run: |
+          python scripts/extract_pain_evidence_042b2.py --output evidence-042b2.json | tee extraction-summary.log
+      - name: Assert evidence matches canonical files and is not misrepresented as reviewed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('evidence-042b2.json').read_text())
+          assert d['psalms_scanned']==1158
+          assert d['pain_occurrences']+d['pains_occurrences']>0
+          assert all(x['editorial_classification']=='UNREVIEWED' for x in d['passages'])
+          assert len({(x['record_id'],x['verse']) for x in d['passages']})==len(d['passages'])
+          print('042B2 EXTRACTION VERIFIED',d['pain_occurrences'],d['pains_occurrences'],d['unique_psalms'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-042b2-canonical-pain-evidence
+          path: |
+            evidence-042b2.json
+            extraction-summary.log
+          retention-days: 30
