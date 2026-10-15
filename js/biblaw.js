@@ -19,14 +19,14 @@
   const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   function singleWordQueryKey(value){ const key=norm(value); return key&&!key.includes(' ')?key:null; }
   function expansionFormsFor(value){ const key=singleWordQueryKey(value); if(!key)return[]; const groupIndex=state.lexicalExpansionByForm.get(key); if(groupIndex===undefined)return[]; return (state.lexicalExpansionGroups[groupIndex]||[]).filter(form=>form!==key); }
-  function activeExpansionForms(){ const expansionRequested=state.mode==='exact'&&$('includeWordForms')?.checked; return expansionRequested&&!state.semanticSelection?expansionFormsFor($('query')?.value||''):[]; }
-  function updateExpansionControl(){ const option=$('exactExpansionOption'),checkbox=$('includeWordForms'); if(!option||!checkbox)return; const key=state.mode==='exact'?singleWordQueryKey($('query')?.value||''):null,expansions=key?expansionFormsFor(key):[]; const semanticActive=Boolean(state.semanticSelection&&key===state.semanticSelection.normalizedForm); const available=Boolean(key&&expansions.length); const enabled=available&&!semanticActive; option.hidden=!enabled; checkbox.disabled=!enabled; if(!enabled)checkbox.checked=false; }
+  function activeExpansionForms(){ const expansionRequested=state.mode==='exact'&&$('includeWordForms')?.checked; return expansionRequested?expansionFormsFor($('query')?.value||''):[]; }
+  function updateExpansionControl(){ const option=$('exactExpansionOption'),checkbox=$('includeWordForms'); if(!option||!checkbox)return; const key=state.mode==='exact'?singleWordQueryKey($('query')?.value||''):null,expansions=key?expansionFormsFor(key):[]; const analyses=state.grammarByForm.get(key)||[]; const unambiguous=analyses.length<=1; const available=Boolean(key&&expansions.length&&unambiguous); const enabled=available; option.hidden=!enabled; checkbox.disabled=!enabled; if(!enabled)checkbox.checked=false; }
   const queryTerms = () => { const terms=new Set([$('query')?.value, $('query2')?.value].flatMap(value => norm(value).split(' ')).filter(Boolean)); for(const form of activeExpansionForms())terms.add(form); return terms; };
   const highlighted = value => { const terms=queryTerms(); if(!terms.size)return esc(value); return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>terms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join(''); };
   const modeAwareText = value => state.mode==='exact' ? highlighted(value) : esc(value);
   const type = r => r.recordType === 'master-prayer' ? 'prayer' : r.recordType;
   const textFragments = r => r.recordType === 'psalm' ? [r.title, ...(r.verses || []).map(v => v.text)].filter(Boolean) : [r.title, r.text, r.summary].filter(Boolean);
-  const literalIncludes = (value, query) => { const needle=norm(query); if(!needle)return false; return ` ${norm(value)} `.includes(` ${needle} `); };
+  const literalIncludes = (value, query) => { const needle=norm(query); if(!needle)return false; return new RegExp('(?:^|[^\\p{L}\\p{N}])'+needle.replace(/[.*+?^\${}()|[\\]\\]/g,'\\  const literalIncludes = (value, query) => { const needle=norm(query); if(!needle)return false; return ` ${norm(value)} `.includes(` ${needle} `); };')+'(?=$|[^\\p{L}\\p{N}])','u').test(norm(value)); };
   const literalOccurrenceCount = (r, query) => {
     const needle=norm(query); if(!needle)return 0;
     const boundedNeedle=` ${needle} `;
@@ -55,7 +55,7 @@
         fetch('data/thematic-index/theme-directory-public.json').then(r => { if (!r.ok) throw Error('theme-directory'); return r.json(); }),
         fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); }),
         fetch('data/lexical-expansion-runtime.json').then(r => { if (!r.ok) throw Error('lexical-expansion-runtime'); return r.json(); }),
-        fetch('data/linguistic-sense-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-sense-browser-runtime'); return r.json(); }),
+        Promise.resolve({targets:[]}),
         fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); })
       ]);
       state.themeDirectory = directory.themes || [];
@@ -64,10 +64,10 @@
       state.lexicalExpansionGroups = lexicalExpansion.g || [];
       state.lexicalExpansionByForm = new Map();
       state.lexicalExpansionGroups.forEach((group,index)=>group.forEach(form=>state.lexicalExpansionByForm.set(form,index)));
-      state.semanticBrowserRuntime = semanticBrowserRuntime;
+      state.semanticBrowserRuntime = null;
       state.grammarByForm = new Map((grammarBrowserRuntime.forms||[]).map(form=>[form.normalizedForm,form.analyses]));
       state.semanticTargetsByForm = new Map();
-      for(const target of semanticBrowserRuntime.targets||[]){ const list=state.semanticTargetsByForm.get(target.normalizedForm)||[]; list.push(target); state.semanticTargetsByForm.set(target.normalizedForm,list); }
+      for(const target of [] ){ const list=state.semanticTargetsByForm.get(target.normalizedForm)||[]; list.push(target); state.semanticTargetsByForm.set(target.normalizedForm,list); }
       state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime);
       state.records = bundle.records || [];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
@@ -308,13 +308,12 @@
     const semanticSelection=semanticSelectionContext(query);
     const grammaticalSelection=grammarSelectionContext(query);
     const exactItems=matches(query);
-    if(grammaticalSelection) exactItems.splice(0,exactItems.length,...grammarMatches(grammaticalSelection));
-    if(semanticSelection) exactItems.splice(0,exactItems.length,...semanticMatches(semanticSelection));
-    else if(!grammaticalSelection) mergeExpansionMatches(exactItems,query);
+    // 040A: grammatical analyses inform expansion safety, never filter exact matches.
+    // 040A: no semantic filtering of exact occurrences.
+    mergeExpansionMatches(exactItems,query);
     exactItems.sort((a,b)=>b.occurrenceCount-a.occurrenceCount||(Number(a.record.number)||Number.MAX_SAFE_INTEGER)-(Number(b.record.number)||Number.MAX_SAFE_INTEGER)||String(a.record.id).localeCompare(String(b.record.id),'fr'));
-    if(!showGrammarChoices(query))showSemanticChoices(query);
-    if(semanticSelection) render(exactItems,null,{exactSearch:true,semanticSearch:true});
-    else render(exactItems,null,{exactSearch:true,grammarSearch:Boolean(grammaticalSelection)});
+    hideAmbiguity(); // 040A: exact results never require sense or grammar choice.
+    render(exactItems,null,{exactSearch:true});
   }
 
   function summary(r){return r.recordType==='psalm'?(r.verses||[]).slice(0,2).map(v=>v.text).join(' '):r.summary||(r.text||'').slice(0,280);}
