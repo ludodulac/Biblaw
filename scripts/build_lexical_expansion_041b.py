@@ -29,7 +29,7 @@ def generate(morph):
                 if len(row)<18:continue
                 if row[0]:lemma,category=row[0],row[2]
                 elif row[2]:category=row[2]
-                if category not in ("Verbe","Nom"):continue
+                if category!="Verbe" and not category.startswith("Nom"):continue
                 key=browser_key(lemma)
                 if not key or " " in key or (category=="Verbe" and key in ("etre","avoir")):continue
                 form=row[9]
@@ -45,7 +45,7 @@ def generate(morph):
                     elif category=="Nom":
                         # Require independent dictionary confirmation of each form.
                         if not (fkey==key or fkey.startswith(key)):continue
-                    membership[fkey].add((category,key))
+                    membership[fkey].add(("Verbe" if category=="Verbe" else "Nom",key))
                     category_by_pair[(category,key)].add(fkey)
     # No form can anchor competing morphological families, even across POS.
     unique={form:next(iter(groups)) for form,groups in membership.items() if len(groups)==1}
