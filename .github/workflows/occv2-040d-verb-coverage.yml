@@ -1,0 +1,53 @@
+name: BIBLAW 040D verb inventory alignment coverage
+on:
+  pull_request:
+    types: [synchronize]
+    branches: [main]
+    paths:
+      - 'scripts/inventory_corpus_verbs_040d.py'
+      - '.github/workflows/occv2-040d-verb-coverage.yml'
+permissions:
+  contents: read
+jobs:
+  inventory:
+    if: github.event.pull_request.number == 67
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install same model as 040C
+        run: |
+          python -m pip install --disable-pip-version-check 'spacy>=3.8,<3.9'
+          python -m pip install --disable-pip-version-check 'https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.8.0/fr_core_news_sm-3.8.0-py3-none-any.whl'
+      - name: Run full 040D diagnostic and conservative inventory
+        run: python scripts/inventory_corpus_verbs_040d.py "$RUNNER_TEMP/biblaw-040d"
+      - name: Verify corpus counts and token accounting
+        run: |
+          python - "$RUNNER_TEMP/biblaw-040d" <<'PY'
+          import csv,json,sys
+          from pathlib import Path
+          p=Path(sys.argv[1]);r=json.loads((p/'rapport-040d.json').read_text())
+          rows=list(csv.DictReader((p/'verbes-corpus-040d.csv').open(encoding='utf-8-sig')))
+          assert r['psalms']==1158
+          assert r['total_analyzed_tokens']==r['aligned_tokens_before']+r['unaligned_tokens_before']
+          assert r['total_analyzed_tokens']==r['aligned_tokens_after']+r['unaligned_tokens_after']
+          assert r['aligned_tokens_after']>=r['aligned_tokens_before']
+          assert sum(int(x['nombre_total_occurrences']) for x in rows)==r['total_verb_occurrences']
+          assert [int(x['nombre_total_occurrences']) for x in rows]==sorted((int(x['nombre_total_occurrences']) for x in rows),reverse=True)
+          assert r['verification']=='AUTOMATIC_PROVISIONAL_NOT_HUMAN_VERIFIED'
+          assert len(list(p.glob('*.csv')))==3
+          print('040D TOKEN ACCOUNTING AND CSV CHECKS PASS')
+          PY
+      - name: Upload inventory and alignment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-040d-verb-coverage
+          path: ${{ runner.temp }}/biblaw-040d/
+          if-no-files-found: warn
+          retention-days: 30
