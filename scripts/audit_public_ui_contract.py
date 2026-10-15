@@ -45,16 +45,15 @@ assert 'b.occurrenceCount-a.occurrenceCount' in js
 assert "Number(a.record.number)||Number.MAX_SAFE_INTEGER" in js
 assert "String(a.record.id).localeCompare(String(b.record.id),'fr')" in js
 assert "companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`" in js
-# Exact search must retain its ordinary, grammatical and semantic rendering paths.
-# Inspect the search function rather than depending on the obsolete one-argument literal.
+# 040B: exact search is always unfiltered by grammatical or semantic senses.
 search_body = js[js.index('function search('):js.index('function renderThemeDirectory()')] if js.index('function search(') < js.index('function renderThemeDirectory()') else js[js.index('function search('):]
 assert 'const exactItems=matches(query);' in search_body
-assert 'if(grammaticalSelection)' in search_body
-assert 'if(semanticSelection)' in search_body
-assert 'render(exactItems,null,{exactSearch:true,semanticSearch:true})' in search_body
-assert 'render(exactItems,null,{exactSearch:true,grammarSearch:Boolean(grammaticalSelection)})' in search_body
-assert 'grammarSearch:Boolean(grammaticalSelection)' in search_body
-assert 'else if(!grammaticalSelection) mergeExpansionMatches(exactItems,query)' in search_body
+assert 'mergeExpansionMatches(exactItems,query);' in search_body
+assert 'render(exactItems,null,{exactSearch:true});' in search_body
+assert 'showSemanticChoices(query)' not in search_body
+assert 'showGrammarChoices(query)' not in search_body
+assert 'semanticMatches(semanticSelection)' not in search_body
+assert 'grammarMatches(grammaticalSelection)' not in search_body
 mode_aware = "const modeAwareText = value => state.mode==='exact' ? highlighted(value) : esc(value);"
 assert mode_aware in js
 
