@@ -40,9 +40,9 @@ def generate(morph):
                     if fkey not in vocab:continue
                     if category=="Verbe":
                         # Conservative initial stem: never prefix-only membership.
-                        if not key.endswith(("er","ir","re")) or len(key)<=5:continue
+                        if not key.endswith(("er","ir","re")) or len(key)<5:continue
                         if not fkey.startswith(key[:-2]):continue
-                    elif category=="Nom":
+                    elif category.startswith("Nom"):
                         # Require independent dictionary confirmation of each form.
                         if not (fkey==key or fkey.startswith(key)):continue
                     membership[fkey].add(("Verbe" if category=="Verbe" else "Nom",key))
