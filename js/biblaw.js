@@ -26,16 +26,19 @@
   const modeAwareText = value => state.mode==='exact' ? highlighted(value) : esc(value);
   const type = r => r.recordType === 'master-prayer' ? 'prayer' : r.recordType;
   const textFragments = r => r.recordType === 'psalm' ? [r.title, ...(r.verses || []).map(v => v.text)].filter(Boolean) : [r.title, r.text, r.summary].filter(Boolean);
-  const literalIncludes = (value, query) => { const needle=norm(query); if(!needle)return false; return new RegExp('(?:^|[^\\p{L}\\p{N}])'+needle.replace(/[.*+?^\${}()|[\\]\\]/g,'\\  const literalIncludes = (value, query) => { const needle=norm(query); if(!needle)return false; return ` ${norm(value)} `.includes(` ${needle} `); };')+'(?=$|[^\\p{L}\\p{N}])','u').test(norm(value)); };
+  const literalIncludes = (value, query) => literalOccurrenceCount({id:'__temporary',_literal:value},query)>0;
   const literalOccurrenceCount = (r, query) => {
     const needle=norm(query); if(!needle)return 0;
-    const boundedNeedle=` ${needle} `;
-    // Count the same normalized, word-bounded literal phrase used to decide a match, fragment by fragment.
-    return (state.normalizedFragmentsById.get(r.id)||[]).reduce((total, fragment) => {
-      const haystack=` ${fragment} `; let count=0, from=0, index;
-      while((index=haystack.indexOf(boundedNeedle,from))!==-1){count++;from=index+boundedNeedle.length;}
-      return total+count;
-    },0);
+    const fragments=r._literal!==undefined?[norm(r._literal)]:(state.normalizedFragmentsById.get(r.id)||[]);
+    if(!singleWordQueryKey(query)){
+      const boundedNeedle=' '+needle+' ';
+      return fragments.reduce((total,fragment)=>{
+        const haystack=' '+fragment+' ';let count=0,from=0,index;
+        while((index=haystack.indexOf(boundedNeedle,from))!==-1){count++;from=index+boundedNeedle.length;}
+        return total+count;
+      },0);
+    }
+    return fragments.reduce((total,fragment)=>total+[...fragment.matchAll(/[\\p{L}\\p{N}]+(?:[’'][\\p{L}\\p{N}]+)*/gu)].filter(m=>m[0]===needle).length,0);
   };
   const literalTextMatch = (r, needle) => literalOccurrenceCount(r,needle)>0;
   const parsePsalmNumberQuery = value => { const match=norm(value).match(/^(?:psaume\s+)?([0-9]{1,4})$/); if(!match)return null; const number=Number(match[1]); return Number.isInteger(number)&&number>0?number:null; };
