@@ -48,7 +48,15 @@ def generate(morph):
                     membership[fkey].add(("Verbe" if category=="Verbe" else "Nom",key))
                     category_by_pair[(category,key)].add(fkey)
     # No form can anchor competing morphological families, even across POS.
-    unique={form:next(iter(groups)) for form,groups in membership.items() if len(groups)==1}
+    unique={}
+    for form,groups in membership.items():
+        verbs={g for g in groups if g[0]=="Verbe"}
+        nouns={g for g in groups if g[0]=="Nom"}
+        # Prefer a unique verb-family analysis over a noun homograph:
+        # search remains textual and never claims token-level grammatical certainty.
+        # Multiple verb lemmas remain excluded rather than arbitrarily combined.
+        if len(verbs)==1:unique[form]=next(iter(verbs))
+        elif not verbs and len(nouns)==1:unique[form]=next(iter(nouns))
     grouped=defaultdict(list)
     for form,group in unique.items():grouped[group].append(form)
     groups=[sorted(set(forms)) for _,forms in sorted(grouped.items()) if len(set(forms))>=2]
