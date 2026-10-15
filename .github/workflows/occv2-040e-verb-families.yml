@@ -1,0 +1,60 @@
+name: BIBLAW 040E verified-source verb family candidates
+on:
+  pull_request:
+    types: [synchronize]
+    branches: [main]
+    paths:
+      - 'scripts/validate_verb_families_040e.py'
+      - '.github/workflows/occv2-040e-verb-families.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  families:
+    if: github.event.pull_request.number == 67
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve existing 040D artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/040d"
+          gh api repos/ludodulac/Biblaw/actions/artifacts/11962811236/zip > "$RUNNER_TEMP/040d.zip"
+          unzip -q "$RUNNER_TEMP/040d.zip" -d "$RUNNER_TEMP/040d"
+          test -s "$RUNNER_TEMP/040d/verbes-corpus-040d.csv"
+      - name: Download provenance-verified ATILF Morphalou 3.1 from CNRS dataset mirror
+        run: |
+          curl -fL --retry 3 --connect-timeout 30 --max-time 300 -o "$RUNNER_TEMP/morphalou.zip" 'https://huggingface.co/datasets/datasets-CNRS/Morphalou/resolve/2b5dec836bef836a184d157ba3f71755bf55d523/Morphalou3.1_formatCSV_toutEnUn.zip?download=true'
+          echo '4fc815cbf17aecdf1b47f6bbc263489a460fd8d11ae17e6b522336c72bd0e333  '"$RUNNER_TEMP/morphalou.zip" | sha256sum -c -
+      - name: Cross-check 040D with Morphalou
+        run: python scripts/validate_verb_families_040e.py "$RUNNER_TEMP/040d" "$RUNNER_TEMP/morphalou.zip" "$RUNNER_TEMP/040e"
+      - name: Validate generated outputs
+        run: |
+          python - "$RUNNER_TEMP/040e" <<'PY'
+          import csv,json,sys
+          from pathlib import Path
+          p=Path(sys.argv[1]);r=json.loads((p/'rapport-040e.json').read_text())
+          rows=list(csv.DictReader((p/'familles-verbales-040e.csv').open(encoding='utf-8-sig')))
+          assert len(rows)==r['total_verbs_examined']
+          assert sum(int(x['occurrences_couvertes']) for x in rows)==r['covered_occurrences']
+          assert r['validated_families']+r['ambiguous_families']+r['unsupported_families']==len(rows)
+          assert all(x['infinitif'] not in ('être','avoir') for x in rows)
+          assert all(x['statut_validation'] in ('VALIDATED_CANDIDATE','AMBIGUOUS','UNSUPPORTED') for x in rows)
+          assert r['verification']=='AUTOMATIC_CROSS_RESOURCE_CANDIDATE_NOT_HUMAN_VERIFIED'
+          print('040E SOURCE CROSS-CHECK AND CSV VALIDATION PASS')
+          PY
+      - name: Publish CSV and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-040e-verb-families
+          path: ${{ runner.temp }}/040e/
+          if-no-files-found: warn
+          retention-days: 30
