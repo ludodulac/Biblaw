@@ -38,7 +38,7 @@
         return total+count;
       },0);
     }
-    return fragments.reduce((total,fragment)=>total+[...fragment.matchAll(/[\\p{L}\\p{N}]+(?:[’'][\\p{L}\\p{N}]+)*/gu)].filter(m=>m[0]===needle).length,0);
+    return fragments.reduce((total,fragment)=>total+[...fragment.matchAll(/[\p{L}\p{N}]+(?:[’'][\p{L}\p{N}]+)*/gu)].filter(m=>m[0]===needle).length,0);
   };
   const literalTextMatch = (r, needle) => literalOccurrenceCount(r,needle)>0;
   const parsePsalmNumberQuery = value => { const match=norm(value).match(/^(?:psaume\s+)?([0-9]{1,4})$/); if(!match)return null; const number=Number(match[1]); return Number.isInteger(number)&&number>0?number:null; };
