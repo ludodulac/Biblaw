@@ -265,7 +265,8 @@
     $('transverseChoices').querySelectorAll('[data-transverse-theme]').forEach(btn=>btn.onclick=()=>navigateToTheme(state.themeById.get(btn.dataset.transverseTheme)));
     $('transversePanel').hidden=false;
   }
-  function navigateToTheme(theme, question=null) {
+  function navigateToTheme(theme) {
+    const question=arguments.length>1?arguments[1]:null;
     if(!theme)return; activateThemeMode(); $('query').value=theme.label; $('query2').value=''; if($('recordDialog').open)$('recordDialog').close();
     const thematic=thematicItems([theme],question), textual=textualPsalmMatches(theme.label); hideAmbiguity(); showTransverseNavigation(theme);
     publishPresentationState({kind:'canonical-theme',theme:{id:theme.id,label:theme.label},psalmCount:thematic.length});
