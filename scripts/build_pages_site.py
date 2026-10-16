@@ -23,6 +23,7 @@ PUBLIC_FILES = (
     "css/theme-index.css",
     "css/validation.css",
     "js/theme-suggestion-engine.js",
+    "js/question-psalm-ranker.js",
     "js/biblaw.js",
     "js/theme-relations.js",
     "js/validation.js",
