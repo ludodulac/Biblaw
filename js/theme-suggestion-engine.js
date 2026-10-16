@@ -32,6 +32,13 @@
       const ranked=[...candidates.values()].sort((a,b)=>b.exact-a.exact||b.hits-a.hits||a.sourceRank-b.sourceRank||(norm(a.theme.label)===norm(query)?-1:norm(b.theme.label)===norm(query)?1:0)||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')),selected=[],selectedIds=new Set(),add=item=>{if(item&&!selectedIds.has(item.theme.id)&&selected.length<8){selected.push(item);selectedIds.add(item.theme.id);}};
       const maxHits=ranked[0]?.hits||0;if(maxHits>1)for(const item of ranked)if(item.hits===maxHits)add(item);
       for(let index=0;index<composedNotionCount;index++)add(ranked.find(item=>item.matched.includes(index)));
+      // Reserve one representative for each lexical notion before filling the top eight.
+      // Prefer an exact canonical label (e.g. Mort) to compounds sharing a token.
+      for(let index=composedNotionCount;index<notions.length;index++){
+        const matching=ranked.filter(item=>item.matched.includes(index));
+        const canonical=matching.find(item=>notions[index].has(norm(item.theme.label)));
+        add(canonical||matching[0]);
+      }
       for(const item of ranked)add(item);
       const serializeNotion=variants=>[...variants].sort();
       const serializeCandidate=item=>({id:item.theme.id,label:item.theme.label,exact:Boolean(item.exact),hits:item.hits,sourceRank:item.sourceRank,provenance:item.source,matchedNotionIndexes:item.matched});
