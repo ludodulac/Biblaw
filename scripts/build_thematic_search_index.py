@@ -90,6 +90,23 @@ for tid in sorted(set(theme_meta) | set(labels_by_id)):
         "score": meta.get("score", 0),
     })
 
+# 042B3: editorially approved search synonyms; never merge canonical theme IDs.
+editorial_alias_path = ROOT / "data/thematic-index/editorial-pain-de-vie.json"
+if editorial_alias_path.exists():
+    editorial = load(editorial_alias_path)
+    tid = editorial["themeId"]
+    if tid not in theme_meta:
+        raise SystemExit(f"Editorial theme absent from generated directory: {tid}")
+    for label in editorial["aliases"]:
+        key = normalize(label)
+        if key in alias_to_ids and alias_to_ids[key] != {tid}:
+            raise SystemExit(f"Editorial alias collision: {label} -> {alias_to_ids[key]}")
+        alias_to_ids[key].add(tid)
+        alias_display[key].add(label)
+        rec = next(x for x in records if x["themeId"] == tid)
+        if key not in rec["normalizedAliases"]:
+            rec["normalizedAliases"].append(key)
+
 aliases = []
 for key in sorted(alias_to_ids):
     ids = sorted(alias_to_ids[key], key=lambda tid: (-theme_meta.get(tid, {}).get("score", 0), tid))
