@@ -34,7 +34,7 @@
       for(let index=0;index<composedNotionCount;index++)add(ranked.find(item=>item.matched.includes(index)));
       // Reserve one representative for each lexical notion before filling the top eight.
       // Prefer an exact canonical label (e.g. Mort) to compounds sharing a token.
-      for(let index=composedNotionCount;index<notions.length;index++){
+      if(/[?？]/.test(String(query)))for(let index=composedNotionCount;index<notions.length;index++){
         const canonical=ranked.find(item=>item.matched.includes(index)&&notions[index].has(norm(item.theme.label)));
         add(canonical);
       }
