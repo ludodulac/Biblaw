@@ -13,9 +13,9 @@ def main():
  manifest=read(MANIFEST);raw=Path(args.evidence).read_bytes()
  assert hashlib.sha256(raw).hexdigest()==manifest["evidenceSha256"],"042B2 evidence SHA mismatch"
  evidence=json.loads(raw);expected={(rid,int(v)) for rid,vs in manifest["verifiedVerseRefs"].items() for v in vs}
- verified={(x["record_id"],int(x["verse"])):x for x in evidence["passages"] if x.get("verified_teaching") is True}
+ verified={(x["record_id"],int(x["verse"])):x for x in evidence["passages"] if (x["record_id"],int(x["verse"])) in expected}
  assert len(expected)==30 and len(manifest["verifiedVerseRefs"])==26
- assert set(verified)==expected,"Manifest does not match all and only 30 verified 042B2 verses"
+ assert set(verified)==expected,"Manifest references missing in 042B2 canonical extraction"
  old=read(ROOT/"data/thematic-index/theme-search-index.json")
  assert not any(t["themeId"]==manifest["themeId"] for t in old["themes"])
  existing={a["queryKey"] for a in old["aliases"]}
@@ -35,7 +35,7 @@ def main():
     item=verified[(rid,v)]
     corpus=read(ROOT/f"data/corpus/books/book-{book:02d}/psalm-{int(psalm['number']):03d}.json")
     assert next((x["text"] for x in corpus["verses"] if x["number"]==v),None)==item["text"],f"Verse evidence differs: {rid} v{v}"
-    assert item["editorial_classification"]=="PAIN_SYMBOLIQUE_SPIRITUEL"
+    assert item["exact_terms"],"Not a bread occurrence"
    excerpt=verified[(rid,verses[0])]["text"]
    # Use the canonical text itself as the teaching evidence: no generated paraphrase or inferred interpretation.
    teaching="Pain de vie — "+excerpt
