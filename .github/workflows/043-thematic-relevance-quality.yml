@@ -20,6 +20,18 @@ jobs:
         run: node scripts/audit_043b_ranking.js
       - name: Run existing thematic benchmark
         run: node scripts/benchmark_theme_engine_q120.js
+      - name: Build local browser payload
+        run: python scripts/build_pages_site.py
+      - name: Install Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Chromium thematic ranking smoke
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-043b-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node scripts/smoke_043b_thematic_ranking_browser.mjs
       - name: Upload eight-question report
         if: always()
         uses: actions/upload-artifact@v4
