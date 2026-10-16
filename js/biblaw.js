@@ -246,7 +246,7 @@
     if(resolvedThemes.length<=1){hideAmbiguity();return;}
     $('suggestionKicker').textContent='Correspondances multiples'; $('suggestionTitle').textContent='Plusieurs thèmes correspondent à cette formulation';
     $('senseChoices').innerHTML=resolvedThemes.map(theme=>ambiguityChoice(theme,'query')).join('');
-    $('senseChoices').querySelectorAll('[data-ambiguity-target]').forEach(btn=>btn.onclick=()=>{const theme=state.themeById.get(btn.dataset.themeId);if(!theme)return;$('query').value=theme.label;search();});
+    $('senseChoices').querySelectorAll('[data-ambiguity-target]').forEach(btn=>btn.onclick=()=>{const theme=state.themeById.get(btn.dataset.themeId);if(!theme)return;const original=$('query').value.trim();if(window.BiblawQuestionPsalmRanker?.isSpecific(original)){navigateToTheme(theme,original);return;}$('query').value=theme.label;search();});
     $('ambiguityPanel').hidden=false;
   }
   function showThemeSuggestions(themes) {
