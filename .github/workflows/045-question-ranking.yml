@@ -8,6 +8,7 @@ on:
       - scripts/smoke_045_question_ranking_browser.mjs
       - js/biblaw.js
       - index.html
+      - scripts/build_pages_site.py
       - .github/workflows/045-question-ranking.yml
   workflow_dispatch:
 permissions:
