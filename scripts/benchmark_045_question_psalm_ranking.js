@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+'use strict';
+const fs=require('fs'),path=require('path'),ranker=require('../js/question-psalm-ranker.js');
+const root=path.resolve(__dirname,'..');
+const load=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
+const directory=load('data/thematic-index/theme-directory-public.json');
+const corpus=load('data/browser-search-catalog.json');
+const records=new Map(corpus.records.map(r=>[r.id,r]));
+const theme=directory.themes.find(t=>t.id==='mort');
+if(!theme)throw Error('mort theme missing');
+const importance={central:0,important:1,related:2};
+const base=theme.occurrences.filter(o=>records.has(o.recordId)).map(o=>({record:records.get(o.recordId),thematic:o})).sort((a,b)=>(importance[a.thematic.importance]??3)-(importance[b.thematic.importance]??3)||a.record.number-b.record.number||a.record.id.localeCompare(b.record.id));
+const q="Que devient l'homme après la mort ?";
+const after=ranker.rerank(base,q,'Mort');
+const direct=['book-03-psalm-005','book-19-psalm-121','book-22-psalm-155','book-22-psalm-159','book-21-psalm-161'];
+const ids=xs=>xs.map(x=>x.record.id);
+const metrics=xs=>({top5:ids(xs.slice(0,5)).filter(x=>direct.includes(x)).length,top10:ids(xs.slice(0,10)).filter(x=>direct.includes(x)).length,positions:direct.map(id=>ids(xs).indexOf(id)+1)});
+const before=metrics(base),post=metrics(after);
+const general=ranker.rerank(base,'Mort','Mort');
+if(JSON.stringify(ids(general))!==JSON.stringify(ids(base)))throw Error('General search ordering changed');
+console.log(JSON.stringify({question:q,before,after:post,top20Before:ids(base.slice(0,20)),top20After:ids(after.slice(0,20))},null,2));
+if(post.top5<before.top5||post.top10<before.top10)process.exitCode=1;

@@ -1,0 +1,48 @@
+name: BIBLAW 045 question-aware ranking benchmark
+on:
+  push:
+    branches: [feat/045-question-aware-psalm-ranking]
+    paths:
+      - js/question-psalm-ranker.js
+      - scripts/benchmark_045_question_psalm_ranking.js
+      - scripts/smoke_045_question_ranking_browser.mjs
+      - js/biblaw.js
+      - index.html
+      - scripts/build_pages_site.py
+      - .github/workflows/045-question-ranking.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Question ranking before and after
+        run: node scripts/benchmark_045_question_psalm_ranking.js | tee ranking-045.json
+      - name: Existing Q120 benchmark
+        run: node scripts/benchmark_theme_engine_q120.js
+      - name: Existing eight-question audit
+        run: |
+          node scripts/audit_043_eight_questions.js --require-liberation
+          node scripts/audit_043b_ranking.js
+      - name: Build browser site
+        run: python scripts/build_pages_site.py
+      - name: Install Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Chromium question-aware ranking and general regression
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-045-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node scripts/smoke_045_question_ranking_browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: biblaw-045-ranking-benchmark
+          path: ranking-045.json
