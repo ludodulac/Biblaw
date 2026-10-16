@@ -7,6 +7,7 @@ on:
       - scripts/apply_pain_de_vie_042b3.py
       - scripts/build_thematic_search_index.py
       - scripts/smoke_pain_theme_042b3.mjs
+      - js/biblaw.js
       - .github/workflows/042b3-pain-theme-integration.yml
 permissions:
   contents: write
