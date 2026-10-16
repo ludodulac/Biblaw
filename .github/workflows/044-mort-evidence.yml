@@ -1,0 +1,25 @@
+name: BIBLAW 044 teaching relevance evidence
+on:
+  push:
+    branches: [feat/044-teaching-relevance-proof]
+    paths:
+      - scripts/audit_mort_teaching_044.py
+      - .github/workflows/044-mort-evidence.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/audit_mort_teaching_044.py > evidence-044-summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-044-mort-top20-canonical-evidence
+          path: |
+            evidence-044-mort-top20.json
+            evidence-044-summary.json
