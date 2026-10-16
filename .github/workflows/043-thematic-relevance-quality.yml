@@ -16,6 +16,8 @@ jobs:
           node-version: '22'
       - name: Audit eight real user questions
         run: node scripts/audit_043_eight_questions.js --require-liberation
+      - name: Assert thematic ranking across eight questions
+        run: node scripts/audit_043b_ranking.js
       - name: Run existing thematic benchmark
         run: node scripts/benchmark_theme_engine_q120.js
       - name: Upload eight-question report
@@ -23,4 +25,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: biblaw-043-eight-question-report
-          path: audit-043-eight-questions.json
+          path: |
+            audit-043-eight-questions.json
+            audit-043b-ranking.json
