@@ -5,8 +5,8 @@
     "data/thematic-index/theme-directory.json"
   ],
   "semanticMerging": false,
-  "themeCount": 1252,
-  "aliasCount": 1347,
+  "themeCount": 1253,
+  "aliasCount": 1351,
   "ambiguousAliasCount": 5,
   "themes": [
     {
@@ -12199,6 +12199,24 @@
       ],
       "occurrenceCount": 1,
       "score": 3
+    },
+    {
+      "themeId": "pain-de-vie",
+      "canonicalLabel": "Pain de vie",
+      "observedLabels": [
+        {
+          "label": "Pain de vie",
+          "count": 26
+        }
+      ],
+      "normalizedAliases": [
+        "pain de vie",
+        "pain",
+        "pains",
+        "pain spirituel"
+      ],
+      "occurrenceCount": 26,
+      "score": 52
     },
     {
       "themeId": "paix",
@@ -27512,6 +27530,46 @@
       ],
       "labels": [
         "Orientation vers le divin"
+      ],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "pain",
+      "themeIds": [
+        "pain-de-vie"
+      ],
+      "labels": [
+        "pain"
+      ],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "pain de vie",
+      "themeIds": [
+        "pain-de-vie"
+      ],
+      "labels": [
+        "Pain de vie"
+      ],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "pain spirituel",
+      "themeIds": [
+        "pain-de-vie"
+      ],
+      "labels": [
+        "pain spirituel"
+      ],
+      "ambiguous": false
+    },
+    {
+      "queryKey": "pains",
+      "themeIds": [
+        "pain-de-vie"
+      ],
+      "labels": [
+        "pains"
       ],
       "ambiguous": false
     },
