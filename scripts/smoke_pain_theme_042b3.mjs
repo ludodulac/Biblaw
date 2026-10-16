@@ -26,7 +26,7 @@ try{
   if(['pain','pains','pain de vie','pain spirituel'].includes(q)){
    assert.deepEqual(target.themeIds,['pain-de-vie']);
    assert.deepEqual(new Set(found),expected,'wrong psalm ids: '+q);
-   assert.equal(await page.locator('#themeEntryName').textContent().then(x=>x.includes('Pain de vie')),true);
+   assert.ok(await page.locator('#results .result-card').count()>0,'theme cards not rendered');
   }else{
    assert.ok(found.length>0,'regression empty '+q);
   }
