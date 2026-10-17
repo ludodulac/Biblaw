@@ -102,7 +102,40 @@
   const composeThemeQueryNotions = query => BiblawThemeEngine.composeThemeQueryNotions(query);
   const themeQueryNotions = query => BiblawThemeEngine.themeQueryNotions(query);
   function suggestIndexedThemes(query) { return state.themeEngine?.suggestIndexedThemes(query) || []; }
-  function thematicItems(themes) {
+  // Question-aware secondary ranking: only explicit, multi-word questions opt in.
+  // Phrase proximity in canonical evidence verses and indexed teaching outweighs
+  // isolated keyword matches. General theme browsing retains its original order.
+  function thematicQuestionTokens(value) {
+    return String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase()
+      .replace(/[^a-z0-9]+/g,' ').trim().split(/\\s+/).filter(Boolean)
+      .filter(word=>word.length>3&&!new Set(['comment','quels','quelles','apres','avant','dans','pour','avec','devient','devenir','homme','archanges','disent','faire','sont','cette','celui','celle']).has(word));
+  }
+  function thematicQuestionScore(item,question) {
+    const words=thematicQuestionTokens(question);
+    if(words.length<1)return 0;
+    const normalize=text=>String(text||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+    const evidences=item.matchedThemes||[];
+    const selected=new Set(evidences.flatMap(e=>e.thematic?.verseNumbers||[]));
+    const verses=(item.record.verses||[]).filter(v=>selected.has(v.number));
+    const passages=[...verses.map(v=>v.text),...evidences.map(e=>e.thematic?.teaching||'')].map(normalize);
+    const phrase=normalize(question).replace(/[^a-z0-9]+/g,' ').trim();
+    const significant=phrase.split(/\\s+/).filter(w=>w.length>3);
+    const pair=significant.filter(w=>!new Set(['comment','quels','quelles','devient','devenir','homme']).has(w));
+    let score=0;
+    for(const passage of passages){
+      const tokens=passage.match(/[a-z0-9]+/g)||[];
+      const matched=words.filter(w=>tokens.some(t=>t===w||t.startsWith(w)&&w.length>=5));
+      score+=matched.length*2;
+      if(matched.length>=2)score+=6;
+      for(let i=0;i<pair.length-1;i++){
+        const a=tokens.indexOf(pair[i]),b=tokens.indexOf(pair[i+1]);
+        if(a>=0&&b>a&&b-a<=5)score+=14;
+      }
+      if(phrase&&passage.includes(phrase))score+=20;
+    }
+    return score;
+  }
+  function thematicItems(themes,question='') {
     if (!selectedTypes().has('psalm')) return [];
     const a=$('archangelFilter').value,merged=new Map();
     for (const theme of themes) for (const o of theme.occurrences||[]) {
@@ -115,7 +148,13 @@
       if(betterImportance||(sameImportance&&(o.score||1)>(current.thematic?.score||0))) current.thematic=o;
       current.matchedThemes.push({id:theme.id,label:theme.label,thematic:o}); merged.set(record.id,current);
     }
-    return [...merged.values()].sort((x,y)=>importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number||String(x.record.id).localeCompare(String(y.record.id),'fr'));
+    return [...merged.values()].sort((x,y)=>{
+      if(question&&/\\?/.test(question)){
+        const delta=thematicQuestionScore(y,question)-thematicQuestionScore(x,question);
+        if(delta)return delta;
+      }
+      return importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number||String(x.record.id).localeCompare(String(y.record.id),'fr');
+    });
   }
   function intersectionItems(themeA, themeB) {
     if (!selectedTypes().has('psalm')) return [];
@@ -290,7 +329,7 @@
       }
       const resolved=resolveIndexedThemes(query);
       if(resolved.length>1){
-        showSingleThemeAmbiguity(resolved); const thematic=thematicItems(resolved), textual=textualPsalmMatches(query); hideTransverseNavigation();
+        showSingleThemeAmbiguity(resolved); const thematic=thematicItems(resolved,query), textual=textualPsalmMatches(query); hideTransverseNavigation();
         publishPresentationState({kind:'ambiguous-themes',themes:resolved.map(theme=>({id:theme.id,label:theme.label}))});
         return render(thematic,resolved,{textualCount:textual.length});
       }
@@ -298,7 +337,7 @@
       if(suggestions.length>1){ showThemeSuggestions(suggestions); hideTransverseNavigation(); publishPresentationState({kind:'ambiguous-themes',themes:suggestions.map(theme=>({id:theme.id,label:theme.label}))}); return render([],[],{suggestionPending:true}); }
       const selected=resolved[0]||(suggestions.length===1?suggestions[0]:null);
       if(selected){
-        hideAmbiguity(); const thematic=thematicItems([selected]), textual=textualPsalmMatches(query); showTransverseNavigation(selected);
+        hideAmbiguity(); const thematic=thematicItems([selected],query), textual=textualPsalmMatches(query); showTransverseNavigation(selected);
         publishPresentationState({kind:'canonical-theme',theme:{id:selected.id,label:selected.label},psalmCount:thematic.length});
         return render(thematic,[selected],{textualCount:textual.length});
       }
