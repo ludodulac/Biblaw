@@ -57,9 +57,9 @@ try {
   assert.equal(await themesMode.evaluate(el => el.classList.contains('active')), true, 'Theme mode must remain active');
   assert.equal(await page.locator('.result-card').count(), 0, 'Theme mode must not render silent textual occurrence cards');
   assert.match(await page.locator('#results').innerText(), /Aucun thème trouvé/i);
-  const seeOccurrences = page.locator('[data-show-text-search]');
+  const seeOccurrences = page.locator('[data-search-in-words]');
   assert.equal(await seeOccurrences.isVisible(), true, 'Theme fallback must offer an explicit occurrence switch');
-  assert.match(await seeOccurrences.textContent(), /Voir les occurrences/i);
+  assert.match(await seeOccurrences.textContent(), /Rechercher en mots/i);
   assert.equal(await option.isVisible(), false, 'Expansion must stay hidden until occurrence mode is explicitly selected');
 
   // Explicit switch to Occurrences must launch the same query.
