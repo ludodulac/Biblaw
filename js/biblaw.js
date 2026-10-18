@@ -571,7 +571,9 @@
     if(event.key==='Escape')hideThemeAutocomplete();
     if(event.key==='ArrowDown'&&!$('themeAutocomplete').hidden){event.preventDefault();$('themeAutocomplete').querySelector('[role="option"]')?.focus();}
   });
-  document.addEventListener('pointerdown',event=>{if(!event.target.closest('.query-stack'))hideThemeAutocomplete();});
+  // 053: close after the destination has received its click; pointerdown would collapse
+  // the scrollable suggestion panel before mobile mode buttons can be activated.
+  document.addEventListener('click',event=>{if(!event.target.closest('.query-stack'))hideThemeAutocomplete();});
   $('query2').addEventListener('input',hideThemeAutocomplete);
   $('results').addEventListener('click',event=>{if(event.target.closest('[data-search-in-words]')){activateExactMode();search();}});
   document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=()=>{if(state.hasSearched)search();});
