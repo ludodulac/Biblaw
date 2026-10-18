@@ -13,6 +13,7 @@ on:
       - 'data/thematic-index/theme-search-runtime.json'
       - 'scripts/build_pages_site.py'
       - 'scripts/smoke_occurrence_expansion_browser.mjs'
+      - 'scripts/smoke_occurrences_041c.mjs'
       - '.github/workflows/browser-smoke-pr36.yml'
   workflow_dispatch:
 
@@ -40,3 +41,4 @@ jobs:
           SERVER_PID=$!
           trap 'kill "$SERVER_PID"' EXIT
           node scripts/smoke_occurrence_expansion_browser.mjs
+          node scripts/smoke_occurrences_041c.mjs
