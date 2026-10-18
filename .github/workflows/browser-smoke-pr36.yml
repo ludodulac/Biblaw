@@ -48,3 +48,10 @@ jobs:
           node scripts/smoke_occurrence_expansion_browser.mjs
           node scripts/smoke_search_ui_052.mjs
           node scripts/smoke_occurrences_041c.mjs
+      - name: Enregistrer les aperçus mobiles de la PR (sans déploiement)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-052-mobile-previews
+          path: screenshots-052/*.png
+          if-no-files-found: ignore
