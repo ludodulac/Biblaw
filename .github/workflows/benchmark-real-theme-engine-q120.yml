@@ -43,3 +43,13 @@ jobs:
             benchmark-output/benchmark-q001-q120.json
             benchmark-output/benchmark-q001-q120.csv
           if-no-files-found: error
+
+  historical_045d_ten_scores:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/feat/045b-question-aware-ranking'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - name: Report ten exact historical 045D secondary scores
+        run: node scripts/report_045d_ten_scores.cjs
