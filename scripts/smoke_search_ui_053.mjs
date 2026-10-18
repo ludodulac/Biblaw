@@ -40,6 +40,7 @@ try{
   await page.locator('#query').fill('ma');
   const words=page.locator('[data-autocomplete-word]');
   const wordCount=await words.count();
+  console.log('053 DEBUG words='+wordCount+' mode='+await page.locator('#modeExact').getAttribute('aria-pressed')+' input='+await page.locator('#query').inputValue()+' autocomplete='+await page.locator('#themeAutocomplete').getAttribute('aria-label')+' samples='+JSON.stringify((await words.allTextContents()).slice(0,10)));
   assert.ok(wordCount>5,'All matching words (>5)');
   await scrollCheck('words');
   await page.locator('#query').fill('mé');
