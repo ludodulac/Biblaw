@@ -39,8 +39,8 @@ assert 'function expansionFormsFor' in js
 assert 'function mergeExpansionMatches' in js
 assert "return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)})" in js
 assert 'data-show-text-search' in js
-assert '>Par thème</button>' in html and '>Occurrences de mots</button>' in html
+assert '>THÈME</button>' in html and '>MOTS</button>' in html
 assert html.index('id="modeThemes"') < html.index('id="secondaryTools"')
 assert html.index('id="modeExact"') < html.index('id="secondaryTools"')
-assert html.index('id="exactExpansionOption"') < html.index('id="results"')
+assert html.index('id="results"') < html.index('id="exactExpansionOption"'), "morphology moved into advanced options after results"
 print("041C lexical runtime contract PASS",len(groups),"groups",len(forms),"anchors")
