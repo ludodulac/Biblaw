@@ -67,7 +67,7 @@ try{
   await page.locator('#query').fill('acclame');
   await page.locator('#query').press('Enter');
   assert.equal(await page.locator('.result-card').count(),1,'Exact search count unchanged');
-  assert.equal(await page.locator('#themeAutocomplete').isVisible(),false,'No thematic autocomplete in MOTS');
+  assert.equal(await page.locator('#themeAutocomplete').isVisible(),false,'No autocomplete remains after submitting a word query');
   await page.locator('#secondaryTools summary').click();
   assert.equal(await page.locator('#exactExpansionOption').isVisible(),true,'Optional morphology in advanced options');
   assert.equal(await page.locator('#includeWordForms').isChecked(),false,'Morphology defaults off');
@@ -108,7 +108,7 @@ try{
     assert.ok(viewport.scroll<=viewport.client+1,`No horizontal overflow at ${width}px: ${JSON.stringify(viewport)}`);
   }
   assert.deepEqual(errors,[],'No Chromium JS page errors');
-  console.log('BIBLAW-052 Chromium mobile smoke PASS — blank start, 2-letter canonical/alias autocomplete, accent folding, selection, Enter, psalm, exact/optional morphology, themes, advanced tools, 390/320px');
+  console.log('BIBLAW-052 Chromium mobile smoke PASS — blank start, 2-letter canonical/alias autocomplete, accent folding, selection, Enter, psalm, words two-letter suggestions, optional plurals, exact/optional morphology, themes, advanced tools, 390/320px');
 } finally{
   await browser.close();
 }
