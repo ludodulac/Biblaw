@@ -294,35 +294,66 @@
   }
 
 
-  // 052B: suggest real words attested in the corpus, without inventing variants.
+  // 053: index only expressions copied verbatim from documentary fragments.
+  // No generated/plausible language combinations; the existing consecutive-phrase search is unchanged.
   function buildWordSuggestionLookup(){
-    const words=new Map();
+    const words=new Map(),expressions=new Map();
+    const connectors=new Set(['de','du','des','au','aux','a','en','et','avec','pour','sans','sur','sous','entre','par']);
+    const articles=new Set(['le','la','les','l','un','une','des']);
+    const numberWords=new Set(['deux','trois','quatre','cinq','six','sept','huit','neuf','dix','douze']);
+    const add=(map,value)=>{
+      const key=norm(value);
+      if(key.length<2||!key.includes(' ')&&/^\d+$/.test(key))return;
+      const display=String(value).trim(),identity=display.toLocaleLowerCase('fr');
+      const old=map.get(identity);
+      if(old){old.count++;return;}
+      map.set(identity,{key,word:display,count:1,expression:map===expressions});
+    };
     for(const record of state.records)for(const fragment of textFragments(record)){
-      for(const token of (String(fragment).match(/[\p{L}\p{N}]+/gu)||[])){
-        const key=norm(token);
-        if(key.length<2||key.includes(' ')||/^\d+$/.test(key))continue;
-        const word=token.toLocaleLowerCase('fr');
-        const previous=words.get(key);
-        if(previous){
-          previous.count++;
-          if(previous.word===key&&word!==key)previous.word=word;
-        }else words.set(key,{key,word,count:1});
+      const source=String(fragment);
+      // Apostrophes remain attached to their word, hyphens remain exact source separators.
+      const tokens=[...source.matchAll(/[\p{L}\p{N}]+(?:[’'][\p{L}\p{N}]+)*/gu)].map(match=>({
+        word:match[0],start:match.index,end:match.index+match[0].length,key:norm(match[0])
+      }));
+      for(let i=0;i<tokens.length;i++){
+        // Single words continue to behave exactly as in 052B (including apostrophe components).
+        for(const word of (tokens[i].word.match(/[\p{L}\p{N}]+/gu)||[])){
+          const key=norm(word);
+          if(key.length>=2&&!/^\d+$/.test(key))add(words,word.toLocaleLowerCase('fr'));
+        }
+        const first=tokens[i];
+        if(first.key.length<2||articles.has(first.key)||connectors.has(first.key))continue;
+        let hasHyphen=false;
+        for(let j=i+1;j<tokens.length&&j<=i+3;j++){
+          const separator=source.slice(tokens[j-1].end,tokens[j].start);
+          if(!/^(?:\s+|[-‐‑–])$/u.test(separator))break; // never cross punctuation/sentences
+          if(/[-‐‑–]/u.test(separator))hasHyphen=true;
+          const last=tokens[j],count=j-i+1;
+          if(last.key.length<2||articles.has(last.key)||connectors.has(last.key))continue;
+          const numberStart=/^\d+$/u.test(first.word)||numberWords.has(first.key);
+          const inner=tokens.slice(i+1,j).map(token=>token.key);
+          const prepositional=count===3&&connectors.has(inner[0])||count===4&&connectors.has(inner[0])&&articles.has(inner[1]);
+          // Recognizable attested compounds: hyphens, numbers, and connected noun phrases.
+          if(!hasHyphen&&!numberStart&&!prepositional)continue;
+          const phrase=source.slice(first.start,last.end);
+          if(phrase.length<=80)add(expressions,phrase);
+        }
       }
     }
-    state.wordEntries=[...words.values()];
-    state.wordKeys=new Set(words.keys());
+    state.wordEntries=[...words.values(),...expressions.values()];
+    state.wordKeys=new Set([...words.values()].map(entry=>entry.key));
   }
   function findAutocompleteWords(input){
     const query=norm(input);
-    if(query.length<2||query.includes(' '))return[];
+    if(query.length<2)return[];
     return state.wordEntries.filter(entry=>entry.key.includes(query))
-      .sort((a,b)=>(a.key.startsWith(query)?0:1)-(b.key.startsWith(query)?0:1)||b.count-a.count||a.word.localeCompare(b.word,'fr'))
-      .slice(0,5);
+      .sort((a,b)=>(a.key.startsWith(query)?0:1)-(b.key.startsWith(query)?0:1)
+        ||(a.expression?1:0)-(b.expression?1:0)||b.count-a.count||a.word.localeCompare(b.word,'fr'));
   }
   function renderWordAutocomplete(){
     const box=$('themeAutocomplete'),words=findAutocompleteWords($('query').value);
     if(!words.length){hideThemeAutocomplete();return;}
-    box.setAttribute('aria-label','Mots du corpus suggérés');
+    box.setAttribute('aria-label','Mots et expressions du corpus suggérés');
     box.innerHTML=words.map(entry=>'<button type="button" role="option" data-autocomplete-word="'+esc(entry.word)+'" aria-selected="false">'+esc(entry.word)+'</button>').join('');
     const buttons=[...box.querySelectorAll('[data-autocomplete-word]')];
     for(const button of buttons){
@@ -359,7 +390,7 @@
       const rank=(position===0?0:2)+(entry.alias?1:0);
       if(!matches.has(entry.id)||rank<matches.get(entry.id).rank)matches.set(entry.id,{theme,rank});
     }
-    return [...matches.values()].sort((a,b)=>a.rank-b.rank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')).slice(0,5).map(item=>item.theme);
+    return [...matches.values()].sort((a,b)=>a.rank-b.rank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')).map(item=>item.theme);
   }
   function hideThemeAutocomplete(){
     $('themeAutocomplete').hidden=true;
