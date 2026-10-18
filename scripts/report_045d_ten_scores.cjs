@@ -1,6 +1,6 @@
 'use strict';
 // BIBLAW-045F4 - stand-alone read-only measurement of historical 045D ranking.
-// Historical functions below are copied verbatim from js/biblaw.js at 82c8d30c9e3e1321fe5013a4bc406461df1181f3.
+// Historical scoring rules are from js/biblaw.js at 82c8d30c9e3e1321fe5013a4bc406461df1181f3; only regex escaping was repaired.
 // Data blobs are checked against the identical Git objects present at that commit.
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -30,22 +30,22 @@ const selectedTypes = () => new Set(['psalm']);
 const $ = () => ({value: ''});
 const importanceRank = v => ({central: 0, important: 1, related: 2})[v] ?? 3;
 
-// BEGIN VERBATIM HISTORICAL FUNCTIONS (82c8d30c9e3e1321fe5013a4bc406461df1181f3)
+// BEGIN HISTORICAL FUNCTIONS WITH REGEX REPAIR (82c8d30c9e3e1321fe5013a4bc406461df1181f3)
   function thematicQuestionTokens(value) {
-    return String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase()
-      .replace(/[^a-z0-9]+/g,' ').trim().split(/\\s+/).filter(Boolean)
+    return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
+      .replace(/[^a-z0-9]+/g,' ').trim().split(/\s+/).filter(Boolean)
       .filter(word=>word.length>3&&!new Set(['comment','quels','quelles','apres','avant','dans','pour','avec','devient','devenir','homme','archanges','disent','faire','sont','cette','celui','celle']).has(word));
   }
   function thematicQuestionScore(item,question) {
     const words=thematicQuestionTokens(question);
     if(words.length<1)return 0;
-    const normalize=text=>String(text||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+    const normalize=text=>String(text||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
     const evidences=item.matchedThemes||[];
     const selected=new Set(evidences.flatMap(e=>e.thematic?.verseNumbers||[]));
     const verses=(item.record.verses||[]).filter(v=>selected.has(v.number));
     const passages=[...verses.map(v=>v.text),...evidences.map(e=>e.thematic?.teaching||'')].map(normalize);
     const phrase=normalize(question).replace(/[^a-z0-9]+/g,' ').trim();
-    const significant=phrase.split(/\\s+/).filter(w=>w.length>3);
+    const significant=phrase.split(/\s+/).filter(w=>w.length>3);
     const pair=significant.filter(w=>!new Set(['comment','quels','quelles','devient','devenir','homme']).has(w));
     let score=0;
     for(const passage of passages){
@@ -82,7 +82,7 @@ const importanceRank = v => ({central: 0, important: 1, related: 2})[v] ?? 3;
       return importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number||String(x.record.id).localeCompare(String(y.record.id),'fr');
     });
   }
-// END VERBATIM HISTORICAL FUNCTIONS
+// END HISTORICAL FUNCTIONS WITH REGEX REPAIR
 
 const question = "Que devient l'homme après la mort ?";
 const targets = [
@@ -98,15 +98,48 @@ const targets = [
   [15, '21/161', 'A', 'book-21-psalm-161'],
 ];
 const baseline = thematicItems([theme]); // Same baseline construction as the 045D diagnostic.
-const lines = [];
-for (const [rank, psalm, category, id] of targets) {
+// This instrumentation does not modify the historical scoring weights or ranking.
+const separatedWords = question.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+  .replace(/[^a-z0-9]+/g, ' ').trim().split(/\s+/).filter(Boolean);
+const extractedTokens = thematicQuestionTokens(question);
+assert.deepEqual(separatedWords, ['que', 'devient', 'l', 'homme', 'apres', 'la', 'mort'], 'Question word separation failed');
+assert.deepEqual(extractedTokens, ['mort'], 'Historical filtered-token extraction failed');
+
+// Inspect exactly the canonical passages that thematicQuestionScore() receives.
+const rows = targets.map(([rank, psalm, category, id]) => {
   const item = baseline[rank - 1];
   assert(item && item.record && item.record.id === id,
     'Historical Mort baseline rank mismatch: rank ' + rank + ', expected ' + id +
     ', found ' + (item && item.record && item.record.id));
-  const score = thematicQuestionScore(item, question); // Exact, unmodified historical scoring function.
-  assert(Number.isSafeInteger(score) && score >= 0, 'Invalid score for ' + id);
-  lines.push(rank + ' | ' + psalm + ' | ' + category + ' | ' + score);
+  const evidences = item.matchedThemes || [];
+  const selected = new Set(evidences.flatMap(e => e.thematic?.verseNumbers || []));
+  const verses = (item.record.verses || []).filter(v => selected.has(v.number));
+  const verseTexts = verses.filter(v => typeof v.text === 'string' && v.text.trim().length > 0);
+  const teachings = evidences.map(e => e.thematic?.teaching)
+    .filter(t => typeof t === 'string' && t.trim().length > 0);
+  return { rank, psalm, category, id, item, verseCount: verseTexts.length, teachingCount: teachings.length };
+});
+const totalVerseTexts = rows.reduce((n, r) => n + r.verseCount, 0);
+const totalTeachings = rows.reduce((n, r) => n + r.teachingCount, 0);
+process.stdout.write('WORDS_SEPARATED: ' + JSON.stringify(separatedWords) + '\n');
+process.stdout.write('TOKENS_EXTRACTED: ' + JSON.stringify(extractedTokens) + '\n');
+for (const r of rows) process.stdout.write(
+  'DATA: ' + r.rank + ' | ' + r.psalm + ' | VERSE_TEXTS=' + r.verseCount +
+  ' | TEACHING_TEXTS=' + r.teachingCount + '\n');
+process.stdout.write('VERSES_PRESENT: ' + (totalVerseTexts > 0) +
+  ' | TOTAL_VERSE_TEXTS=' + totalVerseTexts + '\n');
+process.stdout.write('TEACHINGS_PRESENT: ' + (totalTeachings > 0) +
+  ' | TOTAL_TEACHING_TEXTS=' + totalTeachings + '\n');
+// Never publish numeric scores when either entire evidence source is absent,
+// or when a target has no actual passage for the historical scorer.
+assert(totalVerseTexts > 0 && totalTeachings > 0, 'Missing verse texts or teachings in historical data');
+for (const r of rows) assert(r.verseCount + r.teachingCount > 0,
+  'Missing all scoring evidence for ' + r.psalm);
+const lines = [];
+for (const r of rows) {
+  const score = thematicQuestionScore(r.item, question); // Original scoring weights unchanged.
+  assert(Number.isSafeInteger(score) && score >= 0, 'Invalid score for ' + r.id);
+  lines.push(r.rank + ' | ' + r.psalm + ' | ' + r.category + ' | ' + score);
 }
 process.stdout.write([
   'FUNCTION_SOURCE_COMMIT: ' + HISTORICAL_COMMIT,
