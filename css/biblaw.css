@@ -88,3 +88,6 @@
  .result-status{max-width:40%;align-items:flex-end;text-align:right}
  .score{overflow-wrap:anywhere}
 }
+
+/* 052B: explicit singular/plural option in MOTS mode. */
+.simple-plural-option{display:flex;align-items:center;gap:.55rem;margin:.15rem 0 .75rem;color:var(--soft);font-size:.88rem;cursor:pointer}.simple-plural-option input{width:1.12rem;height:1.12rem;accent-color:var(--accent)}.simple-plural-option[hidden],.popular-themes[hidden]{display:none}
