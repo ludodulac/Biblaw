@@ -322,7 +322,7 @@
           if(key.length>=2&&!/^\d+$/.test(key))add(words,word.toLocaleLowerCase('fr'));
         }
         const first=tokens[i];
-        if(first.key.length<2||articles.has(first.key)||connectors.has(first.key))continue;
+        if(first.key.length<2&&!/^\d+$/u.test(first.word)||articles.has(first.key)||connectors.has(first.key))continue;
         let hasHyphen=false;
         for(let j=i+1;j<tokens.length&&j<=i+3;j++){
           const separator=source.slice(tokens[j-1].end,tokens[j].start);
