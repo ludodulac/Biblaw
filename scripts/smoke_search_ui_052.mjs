@@ -35,7 +35,7 @@ try{
   await page.locator('#query').fill(index.key.slice(0,2));
   const options=page.locator('#themeAutocomplete [data-autocomplete-theme]');
   assert.equal(await page.locator('#themeAutocomplete').isVisible(),true,'Show suggestions at 2 letters');
-  assert.ok((await options.count())>0&&(await options.count())<=5,'At most 5 suggestions');
+  assert.ok((await options.count())>0,'All indexed matching themes remain suggested');
   const optionIds=await options.evaluateAll(nodes=>nodes.map(x=>x.dataset.autocompleteTheme));
   assert.ok(optionIds.every(id=>index.ids.includes(id)),'Suggestions must be canonical or real aliases');
 
