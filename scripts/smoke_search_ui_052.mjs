@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
+import { mkdir } from 'node:fs/promises';
 
 const pageUrl=process.env.BIBLAW_SMOKE_URL||'http://127.0.0.1:4173/index.html';
 const browser=await chromium.launch({headless:true});
@@ -18,6 +19,8 @@ try{
     if(!target)throw Error('No indexed theme to test');
     return {id:target.id,label:target.label,key:norm(target.label),ids:themes.map(t=>t.id),labels:themes.map(t=>t.label),count:themes.length};
   });
+  await mkdir('screenshots-052',{recursive:true});
+  await page.screenshot({path:'screenshots-052/01-accueil-mobile.png',fullPage:true});
   assert.equal(await page.locator('#resultsSection').isVisible(),false,'No initial results');
   assert.equal((await page.locator('#resultCount').textContent()).trim(),'','No initial 0 counter');
   assert.equal(await page.locator('.result-card').count(),0);
@@ -77,6 +80,7 @@ try{
   await page.locator('#query').fill('sainte assemblée');
   await page.locator('#query').press('Enter');
   assert.equal(await page.locator('.result-card').count(),3,'Canonical thematic ranking/results unchanged');
+  await page.screenshot({path:'screenshots-052/02-resultats-mobile.png',fullPage:true});
   const statuses=await page.locator('.result-card .score').allTextContents();
   assert.ok(statuses.every(x=>['Central','Important','Lié'].includes(x.trim())));
   await page.locator('#popularQuestionsToggle').click();
