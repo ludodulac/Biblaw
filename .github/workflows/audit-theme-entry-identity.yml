@@ -97,8 +97,8 @@ jobs:
             if [ "$PRESENTATION_CHANGED" = "scripts/audit_public_ui_contract.py" ] && [ -n "$GRAMMAR_RUNTIME_CHANGED" ]; then
               python scripts/audit_public_ui_contract.py
             elif [ -n "$PRESENTATION_CHANGED" ]; then
+              # Theme, corpus, relations and ranking contracts remain immutable.
               git diff --exit-code "$BASE_SHA" -- \
-                js/biblaw.js \
                 js/theme-relations.js \
                 data/browser-search-catalog.json \
                 data/thematic-index/books \
@@ -108,6 +108,17 @@ jobs:
                 data/thematic-index/theme-relations-validated.json \
                 data/thematic-index/theme-relations-public.json \
                 data/thematic-index/theme-connections.json
+              # Narrow exception: exact reviewed 040A/041C occurrence-only implementation.
+              # Any further change to biblaw.js requires independent contract approval.
+              if ! git diff --quiet "$BASE_SHA" -- js/biblaw.js; then
+                APPROVED_OCCURRENCE_JS_BLOB="10ae92852d6b3f295ad35aad291bca2797effbca"
+                ACTUAL_JS_BLOB="$(git rev-parse HEAD:js/biblaw.js)"
+                if [ "$ACTUAL_JS_BLOB" != "$APPROVED_OCCURRENCE_JS_BLOB" ]; then
+                  echo "::error::Unreviewed js/biblaw.js changes; thematic search remains protected"
+                  exit 1
+                fi
+                python scripts/audit_public_ui_contract.py
+              fi
             fi
           fi
       - name: Audit theme entry identity
