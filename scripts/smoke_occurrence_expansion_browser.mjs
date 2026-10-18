@@ -43,10 +43,10 @@ try {
   assert.equal(await primary.locator('#modeExact').count(), 1, 'Occurrence selector must live in primary search');
   assert.equal(await secondary.locator('#modeThemes').count(), 0, 'Secondary tools must not duplicate the mode selector');
   assert.equal(await secondary.locator('#modeExact').count(), 0, 'Secondary tools must not duplicate the mode selector');
-  assert.equal(await themesMode.isVisible(), true, 'Par thème must be visible');
-  assert.equal(await exactMode.isVisible(), true, 'Occurrences de mots must be visible');
-  assert.equal((await themesMode.textContent()).trim(), 'Par thème');
-  assert.equal((await exactMode.textContent()).trim(), 'Occurrences de mots');
+  assert.equal(await themesMode.isVisible(), true, 'THÈME must be visible');
+  assert.equal(await exactMode.isVisible(), true, 'MOTS must be visible');
+  assert.equal((await themesMode.textContent()).trim(), 'THÈME');
+  assert.equal((await exactMode.textContent()).trim(), 'MOTS');
   assert.equal(await themesMode.evaluate(el => el.classList.contains('active')), true, 'Theme mode must be selected by default');
   assert.equal(await exactMode.evaluate(el => el.classList.contains('active')), false, 'Occurrence mode must not be default');
   assert.equal(await option.isVisible(), false, 'Lexical expansion must never appear in Theme mode by default');
@@ -56,7 +56,7 @@ try {
   await page.locator('#searchButton').click();
   assert.equal(await themesMode.evaluate(el => el.classList.contains('active')), true, 'Theme mode must remain active');
   assert.equal(await page.locator('.result-card').count(), 0, 'Theme mode must not render silent textual occurrence cards');
-  assert.match(await page.locator('#results').innerText(), /Aucun thème indexé ne correspond à cette recherche/i);
+  assert.match(await page.locator('#results').innerText(), /Aucun thème trouvé/i);
   const seeOccurrences = page.locator('[data-show-text-search]');
   assert.equal(await seeOccurrences.isVisible(), true, 'Theme fallback must offer an explicit occurrence switch');
   assert.match(await seeOccurrences.textContent(), /Voir les occurrences/i);
@@ -71,6 +71,7 @@ try {
   const exactIds = await resultIds();
 
   // C — Safe lexical expansion remains opt-in and duplicate-free.
+  await secondary.evaluate(el => { el.open = true; });
   assert.equal(await option.isVisible(), true, 'Safe word expansion must be visible in occurrence mode');
   assert.equal(await checkbox.isChecked(), false, 'Expansion must be opt-in');
   assert.equal(await checkbox.isEnabled(), true, 'acclame must have a safe expansion');
