@@ -11,12 +11,13 @@
           <input id="query" type="search" value="" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Recherche" aria-autocomplete="list" aria-expanded="false" aria-controls="themeAutocomplete" placeholder="Rechercher…">
           <button id="searchButton" class="search-submit" type="submit" aria-label="Lancer la recherche" title="Lancer la recherche">↵</button>
         </div>
-        <div id="themeAutocomplete" class="theme-autocomplete" role="listbox" aria-label="Thèmes suggérés" hidden></div>
+        <div id="themeAutocomplete" class="theme-autocomplete" role="listbox" aria-label="Suggestions de recherche" hidden></div>
       </div>
       <div class="cross-search advanced-query"><span class="theme-plus" aria-hidden="true">+</span><div class="search-field compact-search theme2-slot"><input id="query2" type="search" value="" autocomplete="off" aria-label="Thème 2 facultatif" placeholder="Deuxième thème"></div></div>
     </div>
   </form>
   <div class="mode primary-mode-selector" role="group" aria-label="Type de recherche"><button class="mode-button active" id="modeThemes" type="button" aria-pressed="true">THÈME</button><button class="mode-button" id="modeExact" type="button" aria-pressed="false">MOTS</button></div>
+  <label id="simplePluralOption" class="simple-plural-option" hidden><input id="includeSimplePlurals" type="checkbox" checked><span>Inclure singulier et pluriel</span></label>
   <div id="popularThemes" class="popular-themes" aria-label="Thèmes populaires"></div>
 </section>
 <section id="ambiguityPanel" class="panel ambiguity-panel" hidden><div class="panel-heading"><div><div class="kicker" id="suggestionKicker">Préciser la recherche</div><h2 id="suggestionTitle">Plusieurs thèmes correspondent</h2></div><button id="closeAmbiguity" class="secondary">Masquer</button></div><div id="senseChoices" class="sense-grid"></div></section>
