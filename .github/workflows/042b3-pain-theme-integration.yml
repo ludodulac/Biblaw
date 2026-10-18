@@ -1,0 +1,100 @@
+name: BIBLAW 042B3 pain de vie editorial integration and Chromium
+on:
+  push:
+    branches: [feat/042b-pain-thematic-editorial-repair]
+    paths:
+      - data/thematic-index/editorial-pain-de-vie.json
+      - scripts/apply_pain_de_vie_042b3.py
+      - scripts/build_thematic_search_index.py
+      - scripts/smoke_pain_theme_042b3.mjs
+      - js/biblaw.js
+      - .github/workflows/042b3-pain-theme-integration.yml
+permissions:
+  contents: write
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/042b-pain-thematic-editorial-repair
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Retrieve SHA-pinned 042B2 editorial evidence artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/ludodulac/Biblaw/actions/artifacts/12003576137/zip > /tmp/042b2.zip
+          unzip -p /tmp/042b2.zip evidence-042b2.json > /tmp/evidence-042b2.json
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          d=json.loads(Path('/tmp/evidence-042b2.json').read_text())
+          print('042B2 source:',d['psalms_scanned'],d['pain_occurrences'],d['pains_occurrences'])
+          assert d['psalms_scanned']==1158
+          PY
+      - name: Apply only 30 verified verses to 26 canonical editorial book analyses
+        run: python scripts/apply_pain_de_vie_042b3.py --evidence /tmp/evidence-042b2.json
+      - name: Rebuild existing thematic derivatives in dependency order
+        run: |
+          python scripts/build_thematic_directory.py
+          python scripts/build_thematic_search_index.py
+          python scripts/build_thematic_connections.py
+          python scripts/build_thematic_search_runtime.py
+          python scripts/build_public_theme_directory.py
+      - name: Validate exact evidence and preserve all previous themes and aliases
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('data/thematic-index')
+          m=json.loads((base/'editorial-pain-de-vie.json').read_text())
+          d=json.loads((base/'theme-directory.json').read_text())
+          i=json.loads((base/'theme-search-index.json').read_text())
+          r=json.loads((base/'theme-search-runtime.json').read_text())
+          p=json.loads((base/'theme-directory-public.json').read_text())
+          t=[x for x in d['themes'] if x['id']=='pain-de-vie']
+          assert len(t)==1 and len(t[0]['occurrences'])==26
+          assert len({x['recordId'] for x in t[0]['occurrences']})==26
+          assert {(x['recordId'],v) for x in t[0]['occurrences'] for v in x['verseNumbers']}=={(k,v) for k,vs in m['verifiedVerseRefs'].items() for v in vs}
+          assert i['themeCount']==1253 and r['themeCount']==1253 and p['themeCount']==1253
+          assert i['aliasCount']>=1350
+          assert all(r['aliases'][a]['themeIds']==['pain-de-vie'] for a in ['pain','pains','pain de vie','pain spirituel'])
+          assert next(x for x in p['themes'] if x['id']=='pain-de-vie')['occurrences']==[
+              {k:v for k,v in x.items() if k in ('recordId','bookNumber','archangel','importance','verseNumbers','teaching','score')} for x in t[0]['occurrences']
+          ]
+          print('042B3 DATA VALIDATION PASS',i['themeCount'],i['aliasCount'])
+          PY
+      - name: Stage local browser without deployment
+        run: python scripts/build_pages_site.py
+      - name: Install isolated Playwright Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Test seven thematic queries and unchanged occurrences in Chromium
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/042b3-server.log 2>&1 &
+          PID=$!
+          trap 'kill "$PID"' EXIT
+          node scripts/smoke_pain_theme_042b3.mjs
+      - name: Commit generated editorial sources and derived indices after PASS
+        run: |
+          git add data/thematic-index/books/ data/thematic-index/theme-directory.json data/thematic-index/theme-directory-public.json data/thematic-index/theme-search-index.json data/thematic-index/theme-search-runtime.json data/thematic-index/theme-connections.json
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'build(042B3): integrate 26 verified pain de vie psalms and regenerate thematic indices'
+            git fetch origin feat/042b-pain-thematic-editorial-repair
+            git rebase origin/feat/042b-pain-thematic-editorial-repair
+            git push origin HEAD:feat/042b-pain-thematic-editorial-repair
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: biblaw-042b3-integration-check
+          path: /tmp/042b3-browser.json
+          if-no-files-found: warn

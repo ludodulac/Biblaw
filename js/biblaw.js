@@ -298,7 +298,7 @@
         return render(thematic,resolved,{textualCount:textual.length});
       }
       const suggestions=suggestIndexedThemes(query);
-      if(suggestions.length>1){ showThemeSuggestions(suggestions); hideTransverseNavigation(); publishPresentationState({kind:'ambiguous-themes',themes:suggestions.map(theme=>({id:theme.id,label:theme.label}))}); return render([],[],{suggestionPending:true}); }
+      if(!resolved.length&&suggestions.length>1){ showThemeSuggestions(suggestions); hideTransverseNavigation(); publishPresentationState({kind:'ambiguous-themes',themes:suggestions.map(theme=>({id:theme.id,label:theme.label}))}); return render([],[],{suggestionPending:true}); }
       const selected=resolved[0]||(suggestions.length===1?suggestions[0]:null);
       if(selected){
         hideAmbiguity(); const thematic=thematicItems([selected]), textual=textualPsalmMatches(query); showTransverseNavigation(selected);
