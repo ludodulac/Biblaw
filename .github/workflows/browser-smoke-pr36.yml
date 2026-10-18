@@ -14,6 +14,8 @@ on:
       - 'scripts/build_pages_site.py'
       - 'scripts/smoke_occurrence_expansion_browser.mjs'
       - 'scripts/smoke_occurrences_041c.mjs'
+      - 'scripts/audit_lexical_expansion_041c.py'
+      - 'scripts/audit_lexical_expansion_runtime.py'
       - '.github/workflows/browser-smoke-pr36.yml'
   workflow_dispatch:
 
@@ -29,6 +31,8 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '22'
+      - name: Validate legacy and 041C lexical safety contracts
+        run: python scripts/audit_lexical_expansion_runtime.py
       - name: Build exact public Pages payload without deploying it
         run: python scripts/build_pages_site.py
       - name: Install isolated browser test dependency
