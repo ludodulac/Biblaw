@@ -21,7 +21,11 @@ assert "const available=Boolean(key&&expansions.length);" in js
 assert "const exactItems=matches(query);" in js
 assert "mergeExpansionMatches(exactItems,query);" in js
 assert "checkbox.checked=false" in js
-assert "state.mode==='exact'&&$('includeWordForms')?.checked" in js
+assert "if(state.mode!=='exact')return[];" in js
+assert "$('includeWordForms')?.checked?expansionFormsFor(query):[]" in js
+assert "$('includeSimplePlurals')?.checked?simplePluralFormsFor(query):[]" in js
+assert 'id="includeSimplePlurals"' in html and 'id="simplePluralOption"' in html
+assert 'function buildWordSuggestionLookup()' in js and 'function renderWordAutocomplete()' in js
 assert "fallbackExpansion" not in js
 # Historical production safeguards preserved for the 041C runtime format.
 # The old s/i/n/pf fields described the superseded 028/019 generator and have
