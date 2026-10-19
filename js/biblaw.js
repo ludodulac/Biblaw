@@ -465,7 +465,8 @@
         // Single attested words are published immediately. Compound candidates
         // are published only after collecting corpus-wide nominal evidence.
         if(state.mode==='exact'&&(/^\d$/u.test(norm($('query').value))||norm($('query').value).length>=2)&&performance.now()-lastPublishedAt>90){
-          state.wordEntries=[...words.values()];
+          state.wordEntries=[...words.values(),...[...candidates.values()].filter(entry=>
+            entry.kind==='number'&&nounEvidence.has(entry.lastHead))];
           renderWordAutocomplete();
           lastPublishedAt=performance.now();
         }
@@ -487,7 +488,14 @@
   function findAutocompleteWords(input){
     const query=norm(input);
     if(query.length<2&&!/^\d$/u.test(query))return[];
-    const direct=entry=>entry.key.startsWith(query);
+    const direct=entry=>{
+      if(/^\d+$/u.test(query)&&/^\d/u.test(entry.key)){
+        // Numeric input targets the complete leading number, never the start
+        // of a different number: 4 is not 40 or 144.
+        return entry.key.match(/^\d+/u)?.[0]===query;
+      }
+      return entry.key.startsWith(query);
+    };
     return state.wordEntries.filter(entry=>direct(entry)||numericExpressionMatches(entry,query))
       .sort((a,b)=>{
         // Show source-attested numeric equivalences promptly on letter input.
