@@ -63,6 +63,12 @@ jobs:
         env:
           BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/0205b35b91960e89a81194251f770163e20cc5d4/index.html
         run: node scripts/smoke_public_suggestions_053c.mjs
+      - name: Verify 053C six word inputs on fixed public mobile preview
+        if: github.event_name == 'pull_request'
+        env:
+          BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
+          BIBLAW_REQUIRE_EARLY: '1'
+        run: node scripts/smoke_public_suggestions_053c.mjs
       - name: Run Chromium smoke test against local Pages payload
         run: |
           python -m http.server 4173 --directory _site >/tmp/biblaw-smoke-http.log 2>&1 &
