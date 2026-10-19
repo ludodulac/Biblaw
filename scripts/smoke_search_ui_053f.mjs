@@ -56,7 +56,7 @@ try{
   const checks=['qu','qua','quat','quatre','4','dou','douze','12','quarante','40','cent','100','144','cent quarante-quatre','elem','ÉLÉMENT','monde','père'];
   const results={};
   for(const entry of checks){
-    const answer=await contents(page,entry,{exhaustive:!['qu','dou','cent','monde','père'].includes(entry)});
+    const answer=await contents(page,entry,{exhaustive:!['monde','père'].includes(entry)});
     results[entry]=answer;
     if(answer.total===0)console.log('053F_NOT_ATTESTED',entry);
     else console.log('053F_SUGGEST',JSON.stringify({query:entry,total:answer.total,examples:answer.rows.slice(0,6).map(r=>r.display)}));
@@ -100,6 +100,10 @@ try{
   // Select exactly the source spelling, not the spelled-out number alias.
   await page.locator('#modeExact').click();
   await page.locator('#query').fill('quatre');
+  const index=results['quatre'].rows.find(r=>r.label==='4 éléments')?.i;
+  assert.ok(Number.isInteger(index),'Source spelling must be present for quatre');
+  await page.locator('#themeAutocomplete').evaluate((box,i)=>{box.scrollTop=Math.max(0,32+64*(i-3));},index);
+  await page.waitForTimeout(40);
   const row=page.locator('#themeAutocomplete [data-autocomplete-word="4 éléments"]').first();
   assert.ok(await row.count(),'4 éléments selectable');
   await row.evaluate(button=>button.click());
