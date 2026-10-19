@@ -18,6 +18,7 @@ on:
       - 'scripts/smoke_public_preview_054.mjs'
       - 'scripts/smoke_public_suggestions_053c.mjs'
       - 'scripts/smoke_search_ui_053d.mjs'
+      - 'scripts/smoke_search_ui_053e.mjs'
       - 'scripts/smoke_occurrences_041c.mjs'
       - 'scripts/audit_lexical_expansion_041c.py'
       - 'scripts/audit_lexical_expansion_runtime.py'
@@ -75,6 +76,11 @@ jobs:
         env:
           BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
         run: node scripts/smoke_search_ui_053d.mjs
+      - name: Verify 053E automatic autonomous compounds on public mobile preview
+        if: github.event_name == 'pull_request'
+        env:
+          BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
+        run: node scripts/smoke_search_ui_053e.mjs
       - name: Run Chromium smoke test against local Pages payload
         run: |
           python -m http.server 4173 --directory _site >/tmp/biblaw-smoke-http.log 2>&1 &
