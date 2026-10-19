@@ -53,7 +53,7 @@ try{
   await page.waitForFunction(()=>document.querySelector('#query')?.dataset.wordSuggestionsReady==='true',null,{timeout:90000});
   const elapsed=Date.now()-start;
   assert.ok(elapsed<45000,'Mobile index ready before 45 sec; observed '+elapsed+'ms');
-  const checks=['qu','qua','quat','quatre','4','dou','douze','12','quarante','40','cent','100','144','cent quarante-quatre','elem','ÉLÉMENT','monde','père'];
+  const checks=['qu','qua','quat','quatre','4','dou','douze','12','quarante','40','cent','100','150','cent cinquante','21','vingt et un','80','quatre-vingts','90','quatre-vingt-dix','200','deux cents','144','cent quarante-quatre','elem','ÉLÉMENT','monde','père'];
   const results={};
   for(const entry of checks){
     const answer=await contents(page,entry,{exhaustive:!['monde','père'].includes(entry)});
@@ -75,7 +75,7 @@ try{
   assert.deepEqual(accented.rows.map(r=>r.label),accent.rows.map(r=>r.label),'accents optional');
   const upper=await contents(page,'QUATRE',{exhaustive:true});
   assert.ok(upper.rows.some(r=>r.label==='4 éléments'),'uppercase numbers work');
-  for(const [digit,spoken,fragment] of [['12','douze','dou'],['40','quarante','quarante'],['100','cent','cent'],['144','cent quarante-quatre','cent quarante-quatre']]){
+  for(const [digit,spoken,fragment] of [['12','douze','dou'],['40','quarante','quarante'],['100','cent','cent'],['150','cent cinquante','cent cinquante'],['21','vingt et un','vingt et un'],['80','quatre-vingts','quatre-vingts'],['90','quatre-vingt-dix','quatre-vingt-dix'],['200','deux cents','deux cents'],['144','cent quarante-quatre','cent quarante-quatre']]){
     const direct=results[digit].rows.filter(r=>new RegExp('^'+digit+'\\s').test(r.label)).map(r=>r.label);
     const words=results[spoken].rows.map(r=>r.label);
     for(const label of direct)assert.ok(words.includes(label),'Attested '+digit+' entry must also match '+spoken+': '+label);
@@ -85,6 +85,8 @@ try{
     }
     console.log('053F_ATTESTED_NUMBER',JSON.stringify({digit,spoken,direct}));
   }
+  assert.ok(results['150'].rows.some(r=>r.label==='150 ans'),'Attested compound 150 ans remains present');
+  assert.ok(results['cent cinquante'].rows.some(r=>r.label==='150 ans'),'Written compound cent cinquante finds original 150 ans');
   const old=await open(base);
   await old.locator('#modeExact').click();
   await old.waitForFunction(()=>document.querySelector('#query')?.dataset.wordSuggestionsReady==='true',null,{timeout:90000});
