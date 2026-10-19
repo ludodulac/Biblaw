@@ -107,7 +107,10 @@ try{
     for(const item of value.entries){
       const word=item.display;
       if(word.includes(' ')&&!/^\d+\s/u.test(word)&&!/(?:[-‐‑‒–])/u.test(word)){
-        assert.ok(acceptedGrammar.test(word),'Unstructured multiword candidate '+word+' from '+query);
+        // 053I: autonomous spelled-out numerals can contain spaces.
+        const numericParts=/^(?:zéro|un|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze|treize|quatorze|quinze|seize|vingt|vingts|trente|quarante|cinquante|soixante|cent|cents|mille|million|millions|milliard|milliards|et)(?:\s+(?:zéro|un|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze|treize|quatorze|quinze|seize|vingt|vingts|trente|quarante|cinquante|soixante|cent|cents|mille|million|millions|milliard|milliards|et))+$/iu;
+        assert.ok(acceptedGrammar.test(word)||numericParts.test(word),
+          'Unstructured multiword candidate '+word+' from '+query);
       }
     }
   }

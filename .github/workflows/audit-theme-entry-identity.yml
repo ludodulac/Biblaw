@@ -118,7 +118,9 @@ jobs:
                 APPROVED_052_UI_JS_BLOB="8bcba33edae1fe00493e4f853cb238b4777adc75"
                 # 053H: reviewed suggestions-only tightening; search, theme index, and rankings unchanged.
                 APPROVED_053H_SUGGESTIONS_JS_BLOB="b2bd723fe1502f018663a8ef725adabdd3997c9a"
-                if [ "$ACTUAL_JS_BLOB" != "$APPROVED_OCCURRENCE_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_052_UI_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_053H_SUGGESTIONS_JS_BLOB" ]; then
+                # 053I: exactly reviewed bidirectional number suggestions; thematic engine remains protected.
+                APPROVED_053I_NUMERIC_JS_BLOB="fe0c9529d372e377a46b1cab527d33f98f649906"
+                if [ "$ACTUAL_JS_BLOB" != "$APPROVED_OCCURRENCE_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_052_UI_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_053H_SUGGESTIONS_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_053I_NUMERIC_JS_BLOB" ]; then
                   echo "::error::Unreviewed js/biblaw.js changes; thematic search remains protected"
                   exit 1
                 fi

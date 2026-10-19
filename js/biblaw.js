@@ -338,9 +338,29 @@
   const FR_NUMERIC_SPELLINGS=new Map();
   function parsedFrenchNumber(value){
     const cleaned=norm(value);
-    // Keep this bounded. Already attested *digit* expressions outside this
-    // range are enrolled separately, so large numbers are supported on demand.
-    return FR_NUMERIC_SPELLINGS.get(cleaned)??null;
+    if(FR_NUMERIC_SPELLINGS.has(cleaned))return FR_NUMERIC_SPELLINGS.get(cleaned);
+    // Numerals above 9,999: parse only well-formed French scale groups.
+    // This resolves e.g. 10 000 / dix mille without enumerating all integers.
+    const tokens=cleaned.split(' ').filter(Boolean);
+    const scales=new Map([['milliard',1e9],['milliards',1e9],
+      ['million',1e6],['millions',1e6],['mille',1e3]]);
+    let total=0,chunk=[],previousScale=Infinity,seenScale=false;
+    for(const token of tokens){
+      const scale=scales.get(token);
+      if(!scale){chunk.push(token);continue;}
+      if(scale>=previousScale)return null;
+      const written=chunk.join(' ');
+      const group=written?FR_NUMERIC_SPELLINGS.get(written):1;
+      if(!Number.isSafeInteger(group)||group<1||group>999)return null;
+      total+=group*scale;
+      if(!Number.isSafeInteger(total)||total>999999999999)return null;
+      previousScale=scale;seenScale=true;chunk=[];
+    }
+    if(!seenScale)return null;
+    const tail=chunk.length?FR_NUMERIC_SPELLINGS.get(chunk.join(' ')):0;
+    if(!Number.isSafeInteger(tail)||tail<0||tail>=previousScale)return null;
+    total+=tail;
+    return total<=999999999999?total:null;
   }
   function numericValueOf(value){
     const raw=String(value);
@@ -357,16 +377,21 @@
     for(let n=0;n<=9999;n++){
       const value=frenchNumberName(n);
       FR_NUMERIC_SPELLINGS.set(norm(value),n);
+      // Historical hyphens/spaces normalize identically; final -s is
+      // optional only where French typography permits it.
       if(n===80)FR_NUMERIC_SPELLINGS.set('quatre vingt',n);
-      if(n===200)FR_NUMERIC_SPELLINGS.set('deux cent',n);
+      if(n>=200&&n<=900&&n%100===0)
+        FR_NUMERIC_SPELLINGS.set(norm(frenchNumberName(n).replace(/cents$/u,'cent')),n);
     }
   }
   function numericExpressionMatches(entry,query){
-    if(!entry.expression||entry.kind!=='number'||!Number.isSafeInteger(entry.numericValue))return false;
-    const head=String(entry.numericValue);
-    if(/^\d+$/u.test(query))return query===head; // "4" must never match 40.
-    const spoken=entry.numericSpokenKey||norm(frenchNumberName(entry.numericValue));
-    return spoken.startsWith(query);
+    // Whole numeric identity is mandatory for DIGITS. A textual prefix such
+    // as "quatre-vingts" is 80, never 4, even though it starts with quatre.
+    if(entry.kind==='genitive')return false;
+    const value=entry.numericValue??numericValueOf(entry.word);
+    if(!Number.isSafeInteger(value))return false;
+    if(/^\d+$/u.test(query))return String(value)===query;
+    return norm(frenchNumberName(value)).startsWith(query);
   }
 
   // 053E: source-attested, grammatically closed suggestions, not arbitrary n-grams.
@@ -380,7 +405,7 @@
       ...determiners,'je','tu','il','elle','on','ils','elles','nous','vous','moi','toi','lui','eux','soi','se','en','y','qui','que','quoi','dont','ou','où','ne','pas','plus','moins','tres','bien','si','ceci','cela','celui','celle','celles','ceux','leurs','me','te','l','d','s','j','c','qu','n',
       'de','du','des','d','a','au','aux','avec','pour','sans','sur','sous','entre','par','dans','vers','chez','contre','et','ou','mais','donc','car','puis','alors','comme','quand','lorsque','afin','ainsi','est','sont','etre','être','ete','été','avait','ont','a','fait','font','peut','peuvent','faut','tous','toutes','tout','toute','autre','autres'
     ]);
-    const numberWords=new Set(['deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','vingt','trente','quarante','cinquante','soixante','cent','mille']);
+    const numberWords=new Set(['zéro','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','vingt','trente','quarante','cinquante','soixante','cent','mille']);
     // 053H: a corpus attestation is not sufficient to prove a standalone noun
     // phrase. These are grammatical categories, NOT a list of banned strings.
     // Closed-class auxiliaries, conjugations, adverbs and determiners cannot
@@ -437,7 +462,9 @@
     const isNominalKey=key=>key.length>=3&&!key.includes(' ')&&!/^\d+$/u.test(key)&&!functionWords.has(key);
     const addWord=value=>{
       const key=norm(value),display=String(value).trim(),identity=display.toLocaleLowerCase('fr');
-      if(key.length<2||/^\d+$/u.test(key))return;
+      // Digit-only tokens really occurring in the source are suggestions too.
+      // Numeric aliases are lookup routes, never synthesized display labels.
+      if(key.length<2&&!/^\d$/u.test(key))return;
       const previous=words.get(identity);
       if(previous){previous.count++;return;}
       words.set(identity,{key,word:display,count:1,expression:false});
@@ -447,7 +474,8 @@
       if(key.length<3||display.length>80)return;
       const previous=candidates.get(identity);
       if(previous){previous.count++;return;}
-      const numericValue=kind==='number'?numericValueOf(firstHead):null;
+      const numericValue=kind==='number'?numericValueOf(firstHead):
+        kind==='numeral'?numericValueOf(display):null;
       candidates.set(identity,{key,word:display,count:1,expression:true,kind,firstHead,lastHead,
         numericValue,numericSpokenKey:numericValue===null?null:norm(frenchNumberName(numericValue))});
     };
@@ -476,24 +504,39 @@
             addCandidate(source.slice(first.start,tokens[final].end),'hyphen',first.head,tokens[final].head);
           }
         }
-        if(!isNominalKey(first.head)&&!/^\d+$/u.test(first.word)&&!numberWords.has(first.head))continue;
+        if(!isNominalKey(first.head)&&!/^\d+$/u.test(first.word)&&
+          !numberWords.has(first.head))continue;
         const second=tokens[i+1];
         if(!second)continue;
         const sep=source.slice(first.end,second.start);
-        // Numbers can precede an attested nominal head: quatre éléments, 4 éléments.
-        if(/^\s+$/u.test(sep)&&(/^\d+$/u.test(first.word)||numberWords.has(first.head))&&isNominalKey(second.head))
-          addCandidate(source.slice(first.start,second.end),'number',first.head,second.head);
-        // Written multiword numbers (e.g. cent quarante-quatre) are only
-        // suggestions if the ENTIRE original phrase is attested in the source.
-        // Validity is round-tripped through the standard French renderer.
-        if(/^\s+$/u.test(sep)){
-          for(let j=i+2;j<tokens.length&&j<=i+7;j++){
-            const last=tokens[j];
-            if(!isNominalKey(last.head))continue;
-            const numberText=source.slice(first.start,tokens[j-1].end);
-            const number=numericValueOf(numberText);
-            if(number===null||!(/^(\s+|[-‐‑–])$/u.test(source.slice(tokens[j-1].end,last.start))))continue;
-            addCandidate(source.slice(first.start,last.end),'number',numberText,last.head);
+        // 053I: keep the LONGEST complete attested numeral; not a slice of
+        // a larger number (e.g. 44 accidentally extracted from 144).
+        // Preserve source hyphens, spaces, and original spelling.
+        if(/^\d+$/u.test(first.word)||numberWords.has(first.head)){
+          const preceding=tokens[i-1];
+          const joinedPrev=preceding&&/^[\s\-‐‑‒–]+$/u.test(
+            source.slice(preceding.end,first.start));
+          // A number may start after another word; ignore a tail of a
+          // longer numeral, including "et un" in "vingt et un".
+          const precedingNumber=joinedPrev&&numericValueOf(
+            source.slice(preceding.start,first.end))!==null;
+          if(!precedingNumber){
+            let best=i,bestValue=numericValueOf(first.word);
+            for(let j=i+1;j<tokens.length&&j<=i+8;j++){
+              if(!/^[\s\-‐‑‒–]+$/u.test(source.slice(tokens[j-1].end,tokens[j].start)))break;
+              const value=numericValueOf(source.slice(first.start,tokens[j].end));
+              if(value!==null){best=j;bestValue=value;}
+            }
+            if(bestValue!==null){
+              if(best>i)addCandidate(source.slice(first.start,tokens[best].end),
+                'numeral',first.head,tokens[best].head);
+              const noun=tokens[best+1];
+              if(noun&&/^\s+$/u.test(source.slice(tokens[best].end,noun.start))&&
+                isNominalKey(noun.head)){
+                addCandidate(source.slice(first.start,noun.end),'number',
+                  source.slice(first.start,tokens[best].end),noun.head);
+              }
+            }
           }
         }
         // Closed nominal complements only: NOM de NOM, NOM de la NOM,
@@ -526,7 +569,7 @@
       }
     }
     const expressions=[...candidates.values()].filter(entry=>
-      entry.kind==='hyphen'||
+      entry.kind==='hyphen'||entry.kind==='numeral'||
       entry.kind==='number'&&nounEvidence.has(entry.lastHead)||
       isReliableNominalExpression(entry)
     );
@@ -546,10 +589,9 @@
     const query=norm(input);
     if(query.length<2&&!/^\d$/u.test(query))return[];
     const direct=entry=>{
-      if(/^\d+$/u.test(query)&&/^\d/u.test(entry.key)){
-        // Numeric input targets the complete leading number, never the start
-        // of a different number: 4 is not 40 or 144.
-        return entry.key.match(/^\d+/u)?.[0]===query;
+      if(/^\d+$/u.test(query)){
+        // Never suggest "40" or "4th" for a typed "4".
+        return /^\d+(?:\s|$)/u.test(entry.key)&&entry.key.match(/^\d+/u)?.[0]===query;
       }
       return entry.key.startsWith(query);
     };

@@ -69,7 +69,7 @@ try{
   assert.ok(!results.elem.rows.some(r=>r.display===expectedLabel),'elem must not suggest 4 éléments');
   assert.ok(!results['4'].rows.some(r=>/^(40|400|41|44|144)\b/.test(r.label)),'4 must not match 40 or other numbers');
   assert.ok(!results['4'].rows.some(r=>r.label.startsWith('4')&&!/^4(?:\s|$)/.test(r.label)),'4 must only match complete leading integer token');
-  assert.ok(results['4'].rows.every(r=>r.label==='4 éléments'||!r.label.startsWith('4')||/^4\s/.test(r.label)),'numeric token exact');
+  assert.ok(results['4'].rows.every(r=>r.label==='4'||r.label==='4 éléments'||!r.label.startsWith('4')||/^4\s/.test(r.label)),'numeric token exact');
   const accent=await contents(page,'element',{exhaustive:true});
   const accented=await contents(page,'élément',{exhaustive:true});
   assert.deepEqual(accented.rows.map(r=>r.label),accent.rows.map(r=>r.label),'accents optional');
