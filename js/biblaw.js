@@ -406,7 +406,7 @@
       (entry.count>=2||/\bde\s+(?:la|le|les|l[’'])/iu.test(entry.word))&&
       nounEvidence.has(entry.firstHead)&&nounEvidence.has(entry.lastHead)&&
       isStandaloneNominalHead(entry.firstHead)&&isStandaloneNominalHead(entry.lastHead)&&
-      !/(?:er|ir|re|ez|eront|erait|eraient|aient)$/u.test(entry.lastHead);
+      !/(?:er|ir|ez|eront|erait|eraient|aient)$/u.test(entry.lastHead);
 
     // 053G: lexical compounds are contiguous hyphen groups, never windows
     // spanning whitespace, sentences or surrounding independent words.
