@@ -294,57 +294,87 @@
   }
 
 
-  // 053: index only expressions copied verbatim from documentary fragments.
-  // No generated/plausible language combinations; the existing consecutive-phrase search is unchanged.
+  // 053E: source-attested, grammatically closed suggestions, not arbitrary n-grams.
+  // This is automatic heuristic selection, NOT a manually validated dictionary.
   async function buildWordSuggestionLookup(){
     let chunkStart=performance.now(),lastPublishedAt=0;
-    const words=new Map(),expressions=new Map();
-    const connectors=new Set(['de','du','des','au','aux','a','en','et','avec','pour','sans','sur','sous','entre','par']);
-    const articles=new Set(['le','la','les','l','un','une','des']);
-    const numberWords=new Set(['deux','trois','quatre','cinq','six','sept','huit','neuf','dix','douze']);
-    const add=(map,value)=>{
-      const key=norm(value);
-      if(key.length<2||!key.includes(' ')&&/^\d+$/.test(key))return;
-      const display=String(value).trim(),identity=display.toLocaleLowerCase('fr');
-      const old=map.get(identity);
-      if(old){old.count++;return;}
-      map.set(identity,{key,word:display,count:1,expression:map===expressions});
+    const words=new Map(),candidates=new Map(),nounEvidence=new Set();
+    const determiners=new Set(['le','la','les','un','une','des','ce','cet','cette','ces','mon','ma','mes','ton','ta','tes','son','sa','ses','notre','nos','votre','vos','leur','leurs','quel','quelle','quelques','du','au']);
+    const functionWords=new Set([
+      ...determiners,'je','tu','il','elle','on','ils','elles','nous','vous','moi','toi','lui','eux','soi','se','en','y','qui','que','quoi','dont','ou','où','ne','pas','plus','moins','tres','bien','si','ceci','cela','celui','celle','celles','ceux','leurs','me','te','l','d','s','j','c','qu','n',
+      'de','du','des','d','a','au','aux','avec','pour','sans','sur','sous','entre','par','dans','vers','chez','contre','et','ou','mais','donc','car','puis','alors','comme','quand','lorsque','afin','ainsi','est','sont','etre','être','ete','été','avait','ont','a','fait','font','peut','peuvent','faut','tous','toutes','tout','toute','autre','autres'
+    ]);
+    const numberWords=new Set(['deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','vingt','trente','quarante','cinquante','soixante','cent','mille']);
+    const wordHead=value=>{
+      const raw=String(value).toLocaleLowerCase('fr').replace(/^l[’']/u,'');
+      return norm(raw);
+    };
+    const isNominalKey=key=>key.length>=3&&!key.includes(' ')&&!/^\d+$/u.test(key)&&!functionWords.has(key);
+    const addWord=value=>{
+      const key=norm(value),display=String(value).trim(),identity=display.toLocaleLowerCase('fr');
+      if(key.length<2||/^\d+$/u.test(key))return;
+      const previous=words.get(identity);
+      if(previous){previous.count++;return;}
+      words.set(identity,{key,word:display,count:1,expression:false});
+    };
+    const addCandidate=(value,kind,firstHead,lastHead)=>{
+      const display=String(value).trim(),key=norm(display),identity=display.toLocaleLowerCase('fr');
+      if(key.length<3||display.length>80)return;
+      const previous=candidates.get(identity);
+      if(previous){previous.count++;return;}
+      candidates.set(identity,{key,word:display,count:1,expression:true,kind,firstHead,lastHead});
     };
     for(const record of state.records)for(const fragment of textFragments(record)){
       const source=String(fragment);
-      // Apostrophes remain attached to their word, hyphens remain exact source separators.
       const tokens=[...source.matchAll(/[\p{L}\p{N}]+(?:[’'][\p{L}\p{N}]+)*/gu)].map(match=>({
-        word:match[0],start:match.index,end:match.index+match[0].length,key:norm(match[0])
+        word:match[0],start:match.index,end:match.index+match[0].length,key:norm(match[0]),head:wordHead(match[0])
       }));
       for(let i=0;i<tokens.length;i++){
-        // Single words continue to behave exactly as in 052B (including apostrophe components).
-        for(const word of (tokens[i].word.match(/[\p{L}\p{N}]+/gu)||[])){
-          const key=norm(word);
-          if(key.length>=2&&!/^\d+$/.test(key))add(words,word.toLocaleLowerCase('fr'));
-        }
         const first=tokens[i];
-        if(first.key.length<2&&!/^\d+$/u.test(first.word)||articles.has(first.key)||connectors.has(first.key))continue;
-        let hasHyphen=false;
-        for(let j=i+1;j<tokens.length&&j<=i+3;j++){
-          const separator=source.slice(tokens[j-1].end,tokens[j].start);
-          if(!/^(?:\s+|[-‐‑–])$/u.test(separator))break; // never cross punctuation/sentences
-          if(/[-‐‑–]/u.test(separator))hasHyphen=true;
-          const last=tokens[j],count=j-i+1;
-          if(last.key.length<2||articles.has(last.key)||connectors.has(last.key))continue;
-          const numberStart=/^\d+$/u.test(first.word)||numberWords.has(first.key);
-          const inner=tokens.slice(i+1,j).map(token=>token.key);
-          const prepositional=count===3&&connectors.has(inner[0])||count===4&&connectors.has(inner[0])&&articles.has(inner[1]);
-          // Recognizable attested compounds: hyphens, numbers, and connected noun phrases.
-          if(!hasHyphen&&!numberStart&&!prepositional)continue;
-          const phrase=source.slice(first.start,last.end);
-          if(phrase.length<=80)add(expressions,phrase);
+        // A nominal observed with an article in the canonical text is a
+        // corpus-based witness, not a generated word or a hand-approved phrase.
+        if(isNominalKey(first.head)&&(
+          (i>0&&determiners.has(tokens[i-1].key)&&/^\s+$/u.test(source.slice(tokens[i-1].end,first.start))) ||
+          /^l[’']/iu.test(first.word)
+        ))nounEvidence.add(first.head);
+        for(const word of (first.word.match(/[\p{L}\p{N}]+/gu)||[]))addWord(word.toLocaleLowerCase('fr'));
+        if(!isNominalKey(first.head)&&!/^\d+$/u.test(first.word)&&!numberWords.has(first.head))continue;
+        const second=tokens[i+1];
+        if(!second)continue;
+        const sep=source.slice(first.end,second.start);
+        // Exact connected hyphenated compounds: e.g. Père-Mère.
+        // Do not expand them into neighboring sentence fragments.
+        if(/^[-‐‑–]$/u.test(sep)&&isNominalKey(first.head)&&isNominalKey(second.head)){
+          let end=second,position=i+1;
+          while(position<i+3&&tokens[position+1]&&
+            /^[-‐‑–]$/u.test(source.slice(end.end,tokens[position+1].start))&&
+            isNominalKey(tokens[position+1].head)){position++;end=tokens[position];}
+          addCandidate(source.slice(first.start,end.end),'hyphen',first.head,end.head);
         }
+        // Numbers can precede an attested nominal head: quatre éléments, 4 éléments.
+        if(/^\s+$/u.test(sep)&&(/^\d+$/u.test(first.word)||numberWords.has(first.head))&&isNominalKey(second.head))
+          addCandidate(source.slice(first.start,second.end),'number',first.head,second.head);
+        // Closed nominal complements only: NOM de NOM, NOM de la NOM,
+        // NOM du NOM, NOM de l'homme. Never "élément à sa",
+        // "éléments pour que", or a coordinate clause containing "et".
+        if(!isNominalKey(first.head))continue;
+        const prep=second.key;
+        if(!/^\s+$/u.test(sep)||!new Set(['de','du','des']).has(prep))continue;
+        let last=tokens[i+2];
+        if(!last||!/^\s+$/u.test(source.slice(second.end,last.start)))continue;
+        if(prep==='de'&&new Set(['le','la','les','l']).has(last.key)){
+          const tail=tokens[i+3];
+          if(!tail||!/^\s+$/u.test(source.slice(last.end,tail.start)))continue;
+          last=tail;
+        }
+        if(!isNominalKey(last.head))continue;
+        addCandidate(source.slice(first.start,last.end),'genitive',first.head,last.head);
       }
       if(performance.now()-chunkStart>12){
-        // Publish real attested words progressively so typing works before the
-        // entire corpus and all compound expressions have been indexed.
-        if(state.mode==='exact'&&norm($('query').value).length>=2&&performance.now()-lastPublishedAt>90){
-          state.wordEntries=[...words.values(),...expressions.values()];
+        // Single attested words are published immediately. Compound candidates
+        // are published only after collecting corpus-wide nominal evidence.
+        if(state.mode==='exact'&&(/^\d$/u.test(norm($('query').value))||norm($('query').value).length>=2)&&performance.now()-lastPublishedAt>90){
+          state.wordEntries=[...words.values()];
           renderWordAutocomplete();
           lastPublishedAt=performance.now();
         }
@@ -352,15 +382,20 @@
         chunkStart=performance.now();
       }
     }
-    state.wordEntries=[...words.values(),...expressions.values()];
+    const expressions=[...candidates.values()].filter(entry=>
+      entry.kind==='hyphen'||
+      entry.kind==='number'&&nounEvidence.has(entry.lastHead)||
+      entry.kind==='genitive'&&nounEvidence.has(entry.firstHead)&&nounEvidence.has(entry.lastHead)
+    );
+    state.wordEntries=[...words.values(),...expressions];
     state.wordKeys=new Set([...words.values()].map(entry=>entry.key));
     state.wordIndexReady=true;
     $('query').dataset.wordSuggestionsReady='true';
-    if(state.mode==='exact'&&norm($('query').value).length>=2)renderThemeAutocomplete();
+    if(state.mode==='exact'&&norm($('query').value).length>=1)renderThemeAutocomplete();
   }
   function findAutocompleteWords(input){
     const query=norm(input);
-    if(query.length<2)return[];
+    if(query.length<2&&!/^\d$/u.test(query))return[];
     return state.wordEntries.filter(entry=>entry.key.startsWith(query))
       .sort((a,b)=>(a.key.startsWith(query)?0:1)-(b.key.startsWith(query)?0:1)
         ||(a.expression?1:0)-(b.expression?1:0)||b.count-a.count||a.word.localeCompare(b.word,'fr'));
@@ -368,7 +403,7 @@
   function renderWordAutocomplete(){
     if(state.wordAutocompleteSuppressed){hideThemeAutocomplete();return;}
     const query=norm($('query').value);
-    if(query.length<2){hideThemeAutocomplete();return;}
+    if(query.length<2&&!/^\d$/u.test(query)){hideThemeAutocomplete();return;}
     const words=findAutocompleteWords($('query').value);
     if(!state.wordIndexReady&&!words.length){
       // 053C: do not silently suppress the dropdown during progressive indexing.
