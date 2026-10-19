@@ -41,28 +41,46 @@
   const queryTerms = () => { const terms=new Set([$('query')?.value, $('query2')?.value].flatMap(value => norm(value).split(' ')).filter(Boolean)); for(const form of activeExpansionForms())terms.add(form); return terms; };
   const highlighted = value => {
     const source=String(value||'');
-    // Highlight complete phrases only. "au-delà" must not highlight "au"
-    // in an unrelated prayer or elsewhere in the text.
-    const queries=[$('query')?.value,...activeExpansionForms()]
-      .map(norm).filter(Boolean).sort((a,b)=>b.length-a.length);
+    // Map each normalized search character to its ORIGINAL source span.
+    // This safely matches au-delà inside l’au-delà and never highlights
+    // unrelated occurrences of the standalone word "au".
+    const queries=[...new Set([$('query')?.value,...activeExpansionForms()]
+      .map(norm).filter(Boolean))].sort((a,b)=>b.length-a.length);
     if(!queries.length)return esc(source);
-    const tokens=[...source.matchAll(/[\p{L}\p{N}]+(?:[’'][\p{L}\p{N}]+)*/gu)]
-      .map(m=>({start:m.index,end:m.index+m[0].length}));
-    const ranges=[];
-    for(let i=0;i<tokens.length;){
-      let found=null;
-      for(const needle of queries){
-        for(let j=i;j<Math.min(tokens.length,i+14);j++){
-          const raw=source.slice(tokens[i].start,tokens[j].end);
-          const candidate=norm(raw);
-          if(candidate===needle){found={end:tokens[j].end,next:j+1};break;}
-          if(candidate.length>needle.length)break;
+    const chars=[],begins=[],ends=[];
+    let position=0;
+    for(const raw of source){
+      const start=position;
+      position+=raw.length;
+      const folded=raw.normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+        .toLowerCase().replace(/œ/g,'oe').replace(/æ/g,'ae')
+        .replace(/[’']/g,' ').replace(/[^a-z0-9\s-]/g,' ')
+        .replace(/-/g,' ');
+      for(const part of folded){
+        const token=/\s/u.test(part)?' ':part;
+        if(token===' '){
+          if(!chars.length)continue;
+          if(chars[chars.length-1]===' '){ends[ends.length-1]=position;continue;}
         }
-        if(found)break;
+        chars.push(token);begins.push(start);ends.push(position);
       }
-      if(found){ranges.push({start:tokens[i].start,end:found.end});i=found.next;}
-      else i++;
     }
+    if(chars[chars.length-1]===' '){chars.pop();begins.pop();ends.pop();}
+    const normalized=chars.join(''),ranges=[];
+    for(const needle of queries){
+      let index=0;
+      while((index=normalized.indexOf(needle,index))!==-1){
+        const finish=index+needle.length;
+        if((index===0||normalized[index-1]===' ')&&
+           (finish===normalized.length||normalized[finish]===' ')){
+          const start=begins[index],end=ends[finish-1];
+          if(!ranges.some(r=>start<r.end&&end>r.start))
+            ranges.push({start,end});
+        }
+        index++;
+      }
+    }
+    ranges.sort((a,b)=>a.start-b.start);
     if(!ranges.length)return esc(source);
     let at=0,html='';
     for(const range of ranges){

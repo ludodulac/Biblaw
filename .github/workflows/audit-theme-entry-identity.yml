@@ -121,7 +121,7 @@ jobs:
                 # 053I: exactly reviewed bidirectional number suggestions; thematic engine remains protected.
                 APPROVED_053I_NUMERIC_JS_BLOB="fe0c9529d372e377a46b1cab527d33f98f649906"
                 # 055: reviewed presentation-level fixes for autocomplete, whole-phrase highlighting and prayer visibility.
-                APPROVED_055_UI_JS_BLOB="5a9b1bb652a431752be8c7a5e57701a05c8dd2d9"
+                APPROVED_055_UI_JS_BLOB="85deeceb991f155b94ac2a07da7b4fcc5bb6d4df"
                 if [ "$ACTUAL_JS_BLOB" != "$APPROVED_OCCURRENCE_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_052_UI_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_053H_SUGGESTIONS_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_053I_NUMERIC_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_055_UI_JS_BLOB" ]; then
                   echo "::error::Unreviewed js/biblaw.js changes; thematic search remains protected"
                   exit 1

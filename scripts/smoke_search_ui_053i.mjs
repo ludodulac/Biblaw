@@ -76,10 +76,9 @@ try{
         .toLowerCase().replace(/[’']/g,' ').replace(/[-‐‑‒–]/g,' ')
         .replace(/\s+/g,' '));
   });
-  const sourceContains=label=>source.some(fragment=>fragment.includes(
-    String(label).normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-      .toLowerCase().replace(/[’']/g,' ').replace(/[-‐‑‒–]/g,' ')
-      .replace(/\s+/g,' ')));
+  // Whole lexical/numeric phrases only: "cent" is not the start of "centre".
+  const sourceContains=label=>source.some(fragment=>
+    (' '+norm(fragment)+' ').includes(' '+norm(label)+' '));
   const pairs=[['12','douze'],['21','vingt et un'],['80','quatre-vingts'],
     ['100','cent'],['144','cent quarante-quatre'],['200','deux cents']];
   for(const [digit,spoken] of pairs){
