@@ -294,9 +294,85 @@
   }
 
 
+  // 053F: French number equivalence is used ONLY to look up source-attested
+  // suggestion labels; it never rewrites displayed expressions or search text.
+  // Standard French (France), including 70/90, et-un, plurals cents/vingts.
+  const FR_NUMBER_UNDER_20=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf'];
+  const FR_NUMBER_TENS={20:'vingt',30:'trente',40:'quarante',50:'cinquante',60:'soixante'};
+  function frenchNumberUnder100(n){
+    if(n<20)return FR_NUMBER_UNDER_20[n];
+    if(n<70){
+      const tens=Math.floor(n/10)*10,unit=n%10;
+      return FR_NUMBER_TENS[tens]+(unit===0?'':unit===1?' et un':'-'+FR_NUMBER_UNDER_20[unit]);
+    }
+    if(n<80)return 'soixante'+(n===71?' et onze':'-'+FR_NUMBER_UNDER_20[n-60]);
+    if(n===80)return 'quatre-vingts';
+    if(n<100)return 'quatre-vingt-'+(n<90?FR_NUMBER_UNDER_20[n-80]:
+      n===91?'onze':FR_NUMBER_UNDER_20[n-90]); // 90/92..99 below corrected separately
+    return null;
+  }
+  function frenchNumberUnder100Correct(n){
+    if(n>=90)return 'quatre-vingt-'+FR_NUMBER_UNDER_20[n-80];
+    return frenchNumberUnder100(n);
+  }
+  function frenchNumberUnder1000(n,nonTerminal=false){
+    if(n<100)return frenchNumberUnder100Correct(n);
+    const hundreds=Math.floor(n/100),rest=n%100;
+    const prefix=(hundreds===1?'':FR_NUMBER_UNDER_20[hundreds]+' ')+'cent';
+    if(rest===0)return prefix+(hundreds>1&&!nonTerminal?'s':'');
+    return prefix+' '+frenchNumberUnder100Correct(rest);
+  }
+  function frenchNumberName(n){
+    if(!Number.isSafeInteger(n)||n<0||n>999999999999)return null;
+    if(n===0)return 'zéro';
+    const segments=[];
+    const billions=Math.floor(n/1000000000);n%=1000000000;
+    if(billions)segments.push((billions===1?'un':frenchNumberUnder1000(billions,true))+' milliard'+(billions>1?'s':''));
+    const millions=Math.floor(n/1000000);n%=1000000;
+    if(millions)segments.push((millions===1?'un':frenchNumberUnder1000(millions,true))+' million'+(millions>1?'s':''));
+    const thousands=Math.floor(n/1000);n%=1000;
+    if(thousands)segments.push((thousands===1?'':frenchNumberUnder1000(thousands,true)+' ')+'mille');
+    if(n)segments.push(frenchNumberUnder1000(n,false));
+    return segments.join(' ');
+  }
+  const FR_NUMERIC_SPELLINGS=new Map();
+  function parsedFrenchNumber(value){
+    const cleaned=norm(value);
+    // Keep this bounded. Already attested *digit* expressions outside this
+    // range are enrolled separately, so large numbers are supported on demand.
+    return FR_NUMERIC_SPELLINGS.get(cleaned)??null;
+  }
+  function numericValueOf(value){
+    const raw=String(value);
+    if(/^(?:0|[1-9]\d*)$/u.test(raw)){
+      const number=Number(raw);
+      return Number.isSafeInteger(number)&&number<=999999999999?number:null;
+    }
+    return parsedFrenchNumber(raw);
+  }
+  // Lazy initialization (once) for normal written numerals; attested integers
+  // can extend this space to arbitrarily large safe values up to 10^12.
+  function initializeFrenchNumbers(){
+    if(FR_NUMERIC_SPELLINGS.size)return;
+    for(let n=0;n<=9999;n++){
+      const value=frenchNumberName(n);
+      FR_NUMERIC_SPELLINGS.set(norm(value),n);
+      if(n===80)FR_NUMERIC_SPELLINGS.set('quatre vingt',n);
+      if(n===200)FR_NUMERIC_SPELLINGS.set('deux cent',n);
+    }
+  }
+  function numericExpressionMatches(entry,query){
+    if(!entry.expression||entry.kind!=='number'||!Number.isSafeInteger(entry.numericValue))return false;
+    const head=String(entry.numericValue);
+    if(/^\d+$/u.test(query))return query===head; // "4" must never match 40.
+    const spoken=entry.numericSpokenKey||norm(frenchNumberName(entry.numericValue));
+    return spoken.startsWith(query);
+  }
+
   // 053E: source-attested, grammatically closed suggestions, not arbitrary n-grams.
   // This is automatic heuristic selection, NOT a manually validated dictionary.
   async function buildWordSuggestionLookup(){
+    initializeFrenchNumbers();
     let chunkStart=performance.now(),lastPublishedAt=0;
     const words=new Map(),candidates=new Map(),nounEvidence=new Set();
     const determiners=new Set(['le','la','les','un','une','des','ce','cet','cette','ces','mon','ma','mes','ton','ta','tes','son','sa','ses','notre','nos','votre','vos','leur','leurs','quel','quelle','quelques','du','au']);
@@ -322,7 +398,9 @@
       if(key.length<3||display.length>80)return;
       const previous=candidates.get(identity);
       if(previous){previous.count++;return;}
-      candidates.set(identity,{key,word:display,count:1,expression:true,kind,firstHead,lastHead});
+      const numericValue=kind==='number'?numericValueOf(firstHead):null;
+      candidates.set(identity,{key,word:display,count:1,expression:true,kind,firstHead,lastHead,
+        numericValue,numericSpokenKey:numericValue===null?null:norm(frenchNumberName(numericValue))});
     };
     for(const record of state.records)for(const fragment of textFragments(record)){
       const source=String(fragment);
@@ -354,6 +432,19 @@
         // Numbers can precede an attested nominal head: quatre éléments, 4 éléments.
         if(/^\s+$/u.test(sep)&&(/^\d+$/u.test(first.word)||numberWords.has(first.head))&&isNominalKey(second.head))
           addCandidate(source.slice(first.start,second.end),'number',first.head,second.head);
+        // Written multiword numbers (e.g. cent quarante-quatre) are only
+        // suggestions if the ENTIRE original phrase is attested in the source.
+        // Validity is round-tripped through the standard French renderer.
+        if(/^\s+$/u.test(sep)){
+          for(let j=i+2;j<tokens.length&&j<=i+7;j++){
+            const last=tokens[j];
+            if(!isNominalKey(last.head))continue;
+            const numberText=source.slice(first.start,tokens[j-1].end);
+            const number=numericValueOf(numberText);
+            if(number===null||!(/^(\s+|[-‐‑–])$/u.test(source.slice(tokens[j-1].end,last.start))))continue;
+            addCandidate(source.slice(first.start,last.end),'number',numberText,last.head);
+          }
+        }
         // Closed nominal complements only: NOM de NOM, NOM de la NOM,
         // NOM du NOM, NOM de l'homme. Never "élément à sa",
         // "éléments pour que", or a coordinate clause containing "et".
@@ -396,9 +487,14 @@
   function findAutocompleteWords(input){
     const query=norm(input);
     if(query.length<2&&!/^\d$/u.test(query))return[];
-    return state.wordEntries.filter(entry=>entry.key.startsWith(query))
-      .sort((a,b)=>(a.key.startsWith(query)?0:1)-(b.key.startsWith(query)?0:1)
-        ||(a.expression?1:0)-(b.expression?1:0)||b.count-a.count||a.word.localeCompare(b.word,'fr'));
+    const direct=entry=>entry.key.startsWith(query);
+    return state.wordEntries.filter(entry=>direct(entry)||numericExpressionMatches(entry,query))
+      .sort((a,b)=>{
+        // Show source-attested numeric equivalences promptly on letter input.
+        const rank=entry=>numericExpressionMatches(entry,query)&&!direct(entry)?0:direct(entry)?1:2;
+        return rank(a)-rank(b)||(a.expression?1:0)-(b.expression?1:0)
+          ||b.count-a.count||a.word.localeCompare(b.word,'fr');
+      });
   }
   function renderWordAutocomplete(){
     if(state.wordAutocompleteSuppressed){hideThemeAutocomplete();return;}
