@@ -424,8 +424,14 @@
   function renderSuggestionWindow(force=false){
     const box=$('themeAutocomplete'),items=state.autocompleteItems;
     if(box.hidden||!items.length)return;
-    const first=Math.max(0,Math.min(items.length-1,Math.floor(Math.max(0,box.scrollTop-AUTOCOMPLETE_HEADER_HEIGHT)/AUTOCOMPLETE_ROW_HEIGHT)-4));
-    if(!force&&first===state.autocompleteWindowStart)return;
+    const visibleStart=Math.floor(Math.max(0,box.scrollTop-AUTOCOMPLETE_HEADER_HEIGHT)/AUTOCOMPLETE_ROW_HEIGHT);
+    const visibleEnd=Math.ceil(Math.max(0,box.scrollTop+box.clientHeight-AUTOCOMPLETE_HEADER_HEIGHT)/AUTOCOMPLETE_ROW_HEIGHT);
+    const current=state.autocompleteWindowStart;
+    // Preserve stable DOM nodes while a user is tapping one of the visible rows.
+    // Rebuild only after scrolling beyond a buffered rendering window.
+    if(!force&&current>=0&&visibleStart>=current+2&&visibleEnd<current+AUTOCOMPLETE_VISIBLE_ROWS-2)return;
+    const first=Math.max(0,Math.min(Math.max(0,items.length-AUTOCOMPLETE_VISIBLE_ROWS),visibleStart-7));
+    if(!force&&first===current)return;
     state.autocompleteWindowStart=first;
     const end=Math.min(items.length,first+AUTOCOMPLETE_VISIBLE_ROWS);
     const before=box.querySelector('[data-suggest-before]'),after=box.querySelector('[data-suggest-after]');
