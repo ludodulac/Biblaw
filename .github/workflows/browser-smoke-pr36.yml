@@ -60,6 +60,11 @@ jobs:
         env:
           BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
         run: node scripts/smoke_public_preview_054.mjs
+      - name: Verify 053E automatic autonomous compounds on public mobile preview
+        if: github.event_name == 'pull_request'
+        env:
+          BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
+        run: node scripts/smoke_search_ui_053e.mjs
       - name: Diagnose 053C mobile typing on original reported public link
         if: github.event_name == 'pull_request'
         env:
@@ -76,11 +81,6 @@ jobs:
         env:
           BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
         run: node scripts/smoke_search_ui_053d.mjs
-      - name: Verify 053E automatic autonomous compounds on public mobile preview
-        if: github.event_name == 'pull_request'
-        env:
-          BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
-        run: node scripts/smoke_search_ui_053e.mjs
       - name: Run Chromium smoke test against local Pages payload
         run: |
           python -m http.server 4173 --directory _site >/tmp/biblaw-smoke-http.log 2>&1 &
