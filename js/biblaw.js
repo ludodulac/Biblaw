@@ -638,8 +638,12 @@
     };
     return state.wordEntries.filter(entry=>direct(entry)||numberAlias(entry))
       .sort((a,b)=>{
-        // Literal word prefixes outrank number aliases when typing letters.
-        const rank=entry=>direct(entry)?0:numberAlias(entry)?1:2;
+        // If the input itself is a non-numeric corpus word ("vin"),
+        // show lexical suggestions first. For numeric prefixes ("qu",
+        // "qua", "quatre", "dou"), keep equivalent digit forms prominent.
+        const lexicalExact=query.length>=3&&state.wordKeys.has(query)&&numericValueOf(query)===null;
+        const rank=entry=>numberAlias(entry)&&!direct(entry)?(lexicalExact?1:0):
+          direct(entry)?(lexicalExact?0:1):2;
         return rank(a)-rank(b)||(a.expression?1:0)-(b.expression?1:0)
           ||b.count-a.count||a.word.localeCompare(b.word,'fr');
       });
