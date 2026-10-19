@@ -91,3 +91,7 @@
 
 /* 052B: explicit singular/plural option in MOTS mode. */
 .simple-plural-option{display:flex;align-items:center;gap:.55rem;margin:.15rem 0 .75rem;color:var(--soft);font-size:.88rem;cursor:pointer}.simple-plural-option input{width:1.12rem;height:1.12rem;accent-color:var(--accent)}.simple-plural-option[hidden],.popular-themes[hidden]{display:none}
+
+/* 054: DOM-virtualized autocomplete: only 18 options in DOM at once, all matching rows scrollable. */
+.autocomplete-count{position:sticky;top:0;z-index:2;display:flex;align-items:center;height:32px;padding:0 .65rem;border-bottom:1px solid rgba(255,255,255,.12);background:#1a252e;color:#bcc9d1;font-size:.75rem;font-weight:600}
+.theme-autocomplete [data-suggest-rows] [role="option"]{display:flex;align-items:center;height:64px;min-height:64px;max-height:64px;overflow:hidden;padding:.3rem .68rem;font-size:.93rem;line-height:1.25;overflow-wrap:anywhere;white-space:normal}
