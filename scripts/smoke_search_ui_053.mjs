@@ -79,8 +79,9 @@ try{
   let tested=0;
   for(const [kind,candidate] of Object.entries(samples)){
     if(!candidate){console.log('053 source absent '+kind);continue;}
-    const words=norm(candidate).split(' ').filter(x=>x.length>=3);
-    const query=words[words.length-1];
+    // 053D: attested compounds can only be proposed from the phrase beginning.
+    const normalized=norm(candidate),first=normalized.split(' ')[0];
+    const query=first.length>=2?first:normalized.slice(0,Math.min(normalized.length,5));
     await page.locator('#query').fill(query);
     const total=Number(await page.locator('#themeAutocomplete').getAttribute('data-total-suggestions'));
     let selected=null;
@@ -92,7 +93,7 @@ try{
       const at=await page.locator('[data-autocomplete-word]').evaluateAll((elements,label)=>elements.findIndex(el=>el.dataset.autocompleteWord.toLocaleLowerCase('fr')===label.toLocaleLowerCase('fr')),candidate);
       if(at>=0){selected=page.locator('[data-autocomplete-word]').nth(at);break;}
     }
-    assert.ok(selected,kind+' is attested and reachable by scrolling from '+query+': '+candidate);
+    assert.ok(selected,kind+' is attested and reachable from its beginning '+query+': '+candidate);
     assert.equal((await selected.textContent()).toLocaleLowerCase('fr'),candidate.toLocaleLowerCase('fr'),'Punctuation and spaces preserved');
     // The option was discovered in the scroll-rendered DOM. Dispatch its native
     // button click without Playwright scrolling the virtual list a second time.
