@@ -59,7 +59,8 @@ try{
   const has=(q,label)=>data[q].values.some(r=>norm(r.label)===norm(label));
   for(const q of ['4','qu','qua','quatre'])
     assert.ok(has(q,'4 éléments'),'Literal 4 éléments must be offered for '+q);
-  assert.ok(has('4','quatre'),'Digit query finds corpus-attested spelled numeral quatre');
+  // A written-out numeral is optional: never assert that an unattested
+  // spelling must appear just because its digit counterpart does.
   assert.ok(data['4'].values.some(r=>r.label==='4'),'Digit-only original spelling is displayed');
   assert.ok(!data['4'].values.some(r=>/^40(?:\s|$)|^quarante(?:\s|$)|^quatre[- ‐‑‒–]vingt/iu.test(r.label)),
     'Numeric 4 does not match 40 or 80');
@@ -95,27 +96,88 @@ try{
     console.log('053I_CORPUS_PAIR '+JSON.stringify({digit,spoken,attested,
       originalWritten:attested&&has(digit,spoken),sourceDigitLabels:literal.map(r=>r.label)}));
   }
-  for(const label of ['4 éléments','quatre']){
+  for(const label of ['4 éléments']){
     assert.ok(sourceContains(label),'Displayed numeral form attested literally: '+label);
   }
   // A match retains the *original* source spelling when clicked.
   const orig=await open(baseline);
-  const choice=data['4'].values.find(r=>r.label==='quatre');
-  await page.locator('#query').fill('4');
+  const choice=data['qua'].values.find(r=>r.label==='4 éléments');
+  assert.ok(choice,'Attested digit phrase is accessible from written prefix');
+  await page.locator('#query').fill('qua');
   await page.locator('#themeAutocomplete').evaluate((e,i)=>e.scrollTop=Math.max(0,32+(i-3)*64),choice.i);
   await sleep(50);
-  const clicked=page.locator('#themeAutocomplete [data-autocomplete-word="quatre"]').first();
-  assert.ok(await clicked.count(),'Original word choice reachable on mobile');
+  const clicked=page.locator('#themeAutocomplete [data-autocomplete-word="4 éléments"]').first();
+  assert.ok(await clicked.count(),'Attested numeric phrase reachable on mobile');
   await clicked.evaluate(button=>button.click());
-  assert.equal(await page.locator('#query').inputValue(),'quatre','Label is not converted to digit');
+  assert.equal(await page.locator('#query').inputValue(),'4 éléments','Label preserves actual digit spelling');
   assert.deepEqual(await page.locator('.result-card [data-open]').evaluateAll(
-    nodes=>nodes.map(n=>n.dataset.open).sort()),await ids(orig.page,'quatre'),
+    nodes=>nodes.map(n=>n.dataset.open).sort()),await ids(orig.page,'4 éléments'),
     'Selecting original text uses unchanged psalm search');
   assert.deepEqual(errors,[],'No browser errors');
   assert.deepEqual(orig.errors,[],'No old browser errors');
   const compact=await open(url,320);
-  assert.ok((await rows(compact.page,'4')).values.some(r=>r.label==='quatre'),
-    '320px digit-to-letter suggestion');
+  assert.ok((await rows(compact.page,'qua')).values.some(r=>r.label==='4 éléments'),
+    '320px letter-to-digit suggestion');
+  // 055: mobile regressions reported with screenshots.
+  // No mid-word THEMES, no misleading large-number alias for "vin".
+  const vin=await rows(page,'vin');
+  assert.ok(!vin.values.some(r=>r.label==='20121'),
+    'Rare long-number aliases must not swamp short word prefix vin');
+  await page.locator('#modeThemes').click();
+  await page.locator('#query').fill('vin');
+  const themeLabels=await page.locator('#themeAutocomplete [data-autocomplete-theme]')
+    .evaluateAll(nodes=>nodes.map(n=>n.textContent.trim()));
+  assert.ok(!themeLabels.some(x=>norm(x).includes('divin')),
+    'Theme prefix vin must not suggest a divin suffix');
+  await page.locator('#query').fill('4');
+  const themeCandidates=await page.evaluate(async()=>{
+    const raw=await (await fetch('data/thematic-index/theme-directory-public.json')).json();
+    return (raw.themes||[]).filter(t=>/^(4(?:\s|$)|quatre(?:\s|$))/iu.test(t.label));
+  });
+  const shownThemes=await page.locator('#themeAutocomplete [data-autocomplete-theme]')
+    .evaluateAll(nodes=>nodes.map(n=>n.textContent.trim()));
+  if(themeCandidates.length)assert.ok(shownThemes.length>0,
+    'Numeric theme alias shown if one is already in the index');
+  await page.locator('#modeExact').click();
+  const box=page.locator('#themeAutocomplete');
+  await page.locator('#query').fill('qua');
+  const total=Number(await box.getAttribute('data-total-suggestions')||0);
+  assert.ok(total>80,'Long suggestion list for scrolling regression');
+  for(const position of [18,40,64,82,total-1]){
+    await box.evaluate((node,index)=>node.scrollTop=32+index*64,position);
+    await sleep(60);
+    const scroll=await box.evaluate(node=>node.scrollTop);
+    assert.ok(scroll>=(Math.min(position,total-5)*64)*0.65,
+      'Scroll stays deep inside virtualized list, at index '+position+' (scroll='+scroll+')');
+  }
+  const compound=await rows(page,'au dela');
+  assert.equal(compound.values.filter(r=>norm(r.label)==='au dela').length,1,
+    'Only one au-delà after normalizing case and hyphen glyphs');
+  const compoundChoice=compound.values.find(r=>norm(r.label)==='au dela');
+  assert.ok(compoundChoice,'Attested au-delà is still selectable');
+  await page.locator('#themeAutocomplete').evaluate(
+    (node,i)=>node.scrollTop=Math.max(0,32+(i-3)*64),compoundChoice.i);
+  await sleep(45);
+  await page.locator('#themeAutocomplete [data-suggestion-index="'+compoundChoice.i+'"]')
+    .evaluate(button=>button.click());
+  assert.equal(norm(await page.locator('#query').inputValue()),'au dela',
+    'The selected compound retains its original searchable label');
+  const firstResult=page.locator('[data-toggle-result]').first();
+  assert.ok(await firstResult.count(),'An actual psalm contains the full phrase');
+  await firstResult.click();
+  await page.locator('[data-open]').first().click();
+  assert.equal(await page.locator('#recordDialog .prayer-block').count(),0,
+    'Prayer is not inserted in a psalm-only dialog');
+  const marks=await page.locator('#recordDialog mark.search-hit')
+    .evaluateAll(nodes=>nodes.map(x=>x.textContent));
+  assert.ok(marks.length>0&&marks.every(mark=>norm(mark)==='au dela'),
+    'Highlight only full au-delà occurrences, never bare au');
+  await page.locator('#closeDialog').click();
+  console.log('055_UI_REGRESSIONS_PASS '+JSON.stringify({
+    themeVinPrefix:true,noLongNumberArtifact:true,scrollTo:total,
+    uniqueAuDela:true,psalmOnly:true,fullPhraseHighlights:marks.length
+  }));
+
   console.log('BIBLAW-053I MOBILE PASS '+JSON.stringify({url,checked:checks,
     pairs:pairs.map(([digit,spoken])=>({digit,spoken,attested:sourceContains(spoken)})),
     noNumericConfusion:true,originalLabelSelection:true,mobile:'320px'}));

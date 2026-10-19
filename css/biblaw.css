@@ -52,7 +52,7 @@
 .main-search-field input::-webkit-search-cancel-button{cursor:pointer}
 .search-icon{flex:none;width:1.4rem;height:1.4rem;margin-left:1rem;color:#c6d2d9}
 .main-search-field .search-submit{display:grid;place-items:center;flex:none;width:2.85rem;min-width:2.85rem;height:2.85rem;min-height:2.85rem;margin-right:.35rem;padding:0;border:0;border-radius:.7rem;background:#e1bd7b;color:#152027;font-size:1.5rem;font-weight:700;cursor:pointer}
-.theme-autocomplete{position:relative;margin-top:.3rem;z-index:15;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;max-height:min(19rem,45dvh);padding:.3rem;border:1px solid #536674;border-radius:.85rem;background:#1a252e;box-shadow:0 1rem 2rem rgba(0,0,0,.55)}
+.theme-autocomplete{overflow-anchor:none;position:relative;margin-top:.3rem;z-index:15;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;max-height:min(19rem,45dvh);padding:.3rem;border:1px solid #536674;border-radius:.85rem;background:#1a252e;box-shadow:0 1rem 2rem rgba(0,0,0,.55)}
 .theme-autocomplete[hidden]{display:none}
 .theme-autocomplete [role="option"]{display:block;width:100%;min-height:2.85rem;padding:.65rem .85rem;border:0;border-radius:.55rem;background:transparent;color:#f0f4f6;text-align:left;font-size:1rem;cursor:pointer}
 .theme-autocomplete [role="option"]:hover,.theme-autocomplete [role="option"]:focus-visible{background:#344451;outline:2px solid #c7a76a;outline-offset:-2px}
@@ -95,3 +95,6 @@
 /* 054: DOM-virtualized autocomplete: only 18 options in DOM at once, all matching rows scrollable. */
 .autocomplete-count{position:sticky;top:0;z-index:2;display:flex;align-items:center;height:32px;padding:0 .65rem;border-bottom:1px solid rgba(255,255,255,.12);background:#1a252e;color:#bcc9d1;font-size:.75rem;font-weight:600}
 .theme-autocomplete [data-suggest-rows] [role="option"]{display:flex;align-items:center;height:64px;min-height:64px;max-height:64px;overflow:hidden;padding:.3rem .68rem;font-size:.93rem;line-height:1.25;overflow-wrap:anywhere;white-space:normal}
+
+.theme-autocomplete [data-suggest-rows]{overflow-anchor:none}
+.theme-autocomplete [data-suggest-before],.theme-autocomplete [data-suggest-after]{overflow-anchor:none}

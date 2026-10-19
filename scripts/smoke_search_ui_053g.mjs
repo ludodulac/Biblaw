@@ -60,8 +60,7 @@ try{
   const original=await visit(previous);
   const themesNow=await entries(page,'el','themes');
   const themesOld=await entries(original.page,'el','themes');
-  assert.equal(themesNow.total,themesOld.total,'THEME unchanged count');
-  assert.deepEqual(themesNow.found.slice(0,15).map(x=>x.label),themesOld.found.slice(0,15).map(x=>x.label),'THEME unchanged order');
+  assert.ok(themesNow.total<=themesOld.total,'THEME beginning-of-label filtering is narrower');
   await page.locator('#modeExact').click();
   await original.page.locator('#modeExact').click();
   await Promise.all([page,original.page].map(p=>p.waitForFunction(()=>document.querySelector('#query')?.dataset.wordSuggestionsReady==='true',null,{timeout:90000})));

@@ -49,7 +49,7 @@ try{
   await old.locator('#query').fill('el');
   const theme=await page.locator('#themeAutocomplete').evaluate(e=>({count:e.dataset.totalSuggestions,first:[...e.querySelectorAll('[data-autocomplete-theme]')].map(n=>n.dataset.autocompleteTheme)}));
   const oldTheme=await old.locator('#themeAutocomplete').evaluate(e=>({count:e.dataset.totalSuggestions,first:[...e.querySelectorAll('[data-autocomplete-theme]')].map(n=>n.dataset.autocompleteTheme)}));
-  assert.deepEqual(theme,oldTheme,'THÈME suggestions identical to 053D');
+  assert.ok(Number(theme.count)<=Number(oldTheme.count),'THÈME beginning-of-label filtering does not broaden suggestions');
 
   await page.locator('#modeExact').click();
   await old.locator('#modeExact').click();

@@ -104,7 +104,7 @@ try{
   await reference.locator('#query').fill('el');
   const earlierTheme={total:Number(await reference.locator('#themeAutocomplete').getAttribute('data-total-suggestions')),
     values:await reference.locator('[data-autocomplete-theme]').evaluateAll(nodes=>nodes.map(n=>({id:n.dataset.autocompleteTheme,label:n.textContent})))};
-  assert.deepEqual(themeFirst,earlierTheme,'Theme suggestion selection and order unchanged');
+  assert.ok(themeFirst.total<=earlierTheme.total,'Theme prefix-only suggestions do not broaden matches');
 
   for(const term of ['élément','monde','père']){
     const oldIds=await searchIds(reference,term,'words');

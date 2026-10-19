@@ -91,8 +91,7 @@ try{
   await old.locator('#modeExact').click();
   await old.waitForFunction(()=>document.querySelector('#query')?.dataset.wordSuggestionsReady==='true',null,{timeout:90000});
   const oldThemes=await contents(old,'el',{mode:'themes',exhaustive:false});
-  assert.equal(preTheme.total,oldThemes.total,'THEME indexed count unchanged');
-  assert.deepEqual(preTheme.rows.map(r=>r.label),oldThemes.rows.map(r=>r.label),'THEME unchanged');
+  assert.ok(preTheme.total<=oldThemes.total,'THEME beginning-of-label filtering is narrower than earlier substring matching');
   const unchanged={};
   for(const [mode,q] of [['exact','élément'],['exact','4 éléments'],['exact','monde'],['themes','sainte assemblée']]){
     const expected=await ids(old,mode,q),actual=await ids(page,mode,q);
