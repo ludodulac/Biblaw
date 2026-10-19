@@ -74,8 +74,21 @@ try{
   assert.ok(actual.elem.values.some(s=>norm(s)==='elements'),'elem offers éléments');
   assert.ok(actual.elem.values.some(s=>norm(s)==='elementaires'),'elem offers élémentaires');
   console.log('053E_DEBUG_NUMERIC',JSON.stringify({qu:actual.qu.total,quRows:actual.qu.values.filter(s=>norm(s).includes('quatre')).slice(0,30),quat:actual.quat.total,quatRows:actual.quat.values.slice(0,30),digit:actual['4'].total,digitRows:actual['4'].values.slice(0,30),père:actual['père'].total,monde:actual.monde.total}));
-  assert.ok(actual.qu.values.some(s=>norm(s)==='quatre elements'),'qu offers attested quatre éléments');
-  assert.ok(actual.quat.values.some(s=>norm(s)==='quatre elements'),'quat offers attested quatre éléments');
+  const writtenQuatreAttested=await page.evaluate(async()=>{
+    const data=await(await fetch('data/browser-search-catalog.json')).json();
+    const normal=globalThis.BiblawThemeEngine.norm,needle=' quatre elements ';
+    return (data.records||[]).some(r=>(r.recordType==='psalm'?
+      [r.title,...(r.verses||[]).map(v=>v.text)]:[r.title,r.text,r.summary]).filter(Boolean)
+      .some(text=>(' '+normal(text)+' ').includes(needle)));
+  });
+  if(writtenQuatreAttested){
+    assert.ok(actual.qu.values.some(s=>norm(s)==='quatre elements'),'qu retains attested quatre éléments');
+    assert.ok(actual.quat.values.some(s=>norm(s)==='quatre elements'),'quat retains attested quatre éléments');
+  } else {
+    assert.ok(!actual.qu.values.some(s=>norm(s)==='quatre elements'),'No unattested quatre éléments invention');
+    assert.ok(!actual.quat.values.some(s=>norm(s)==='quatre elements'),'No unattested quatre éléments invention from quat');
+  }
+  console.log('053E_QUATRE_CORPUS_ATTESTED',writtenQuatreAttested);
   assert.ok(actual['4'].values.some(s=>norm(s)==='4 elements'),'4 offers attested 4 éléments despite single-digit query');
   assert.ok(actual['père'].values.some(s=>norm(s)==='pere mere'),'père offers attested Père-Mère');
   assert.ok(actual.monde.values.some(s=>norm(s)==='monde de l homme'),'monde offers attested monde de l’homme');
