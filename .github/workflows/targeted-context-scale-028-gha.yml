@@ -1,0 +1,327 @@
+name: BIBLAW exact targeted context scale 028 GHA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/targeted-context-runtime-recovery-028r
+    paths:
+      - .github/workflows/targeted-context-scale-028-gha.yml
+      - scripts/build_target_manifest_028.py
+      - scripts/run_target_shard_028.py
+      - scripts/aggregate_target_028.py
+      - scripts/finalize_target_028.py
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  runtime-proof-020:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      STANZA_RESOURCES_DIR: /tmp/stanza_resources_020
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: c95e6644bd2e154d85a896035fa61a52e5f375ff
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install exact historical engines
+        run: |
+          python -m pip install --upgrade pip
+          pip install "spacy==3.8.16" "stanza==1.14.0"
+          pip install "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.8.0/fr_core_news_sm-3.8.0-py3-none-any.whl"
+
+      - name: Download exact historical Stanza French resources
+        run: |
+          python - <<'PY'
+          import stanza
+          stanza.download(
+              "fr",
+              model_dir="/tmp/stanza_resources_020",
+              package="default",
+              processors="tokenize,mwt,pos,lemma",
+              resources_version="1.14.0",
+              verbose=False,
+          )
+          print("STANZA_RESOURCES_VERSION = 1.14.0")
+          PY
+
+      - name: Replay historical benchmark 020
+        run: |
+          test "$(git rev-parse HEAD)" = "c95e6644bd2e154d85a896035fa61a52e5f375ff"
+          GITHUB_SHA=c95e6644bd2e154d85a896035fa61a52e5f375ff python scripts/benchmark_lemma_pos_candidates_020.py
+          echo "b975a71cab3f624d1fedbb6c9c8216551ba637cc4fc8eb5e4d603fcf3926d1dc  biblaw-lemma-pos-benchmark-020.json" | sha256sum -c -
+          echo "SOURCE_020_RUNTIME_REPLAY = PASS"
+
+      - name: Upload replayed 020 benchmark
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-runtime-proof-020-output
+          path: biblaw-lemma-pos-benchmark-020.json
+          if-no-files-found: error
+
+  prepare-target:
+    needs: runtime-proof-020
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout 028 tooling
+        uses: actions/checkout@v4
+        with:
+          path: tooling
+          fetch-depth: 1
+
+      - name: Checkout exact product baseline
+        uses: actions/checkout@v4
+        with:
+          ref: 5c755358f5cda20db52a2d748cbb2664a1831dcc
+          path: baseline
+          fetch-depth: 1
+
+      - name: Verify product baseline
+        run: |
+          test "$(git -C baseline rev-parse HEAD)" = "5c755358f5cda20db52a2d748cbb2664a1831dcc"
+          echo "PRODUCT_BASELINE = PASS"
+
+      - name: Download replayed 020 benchmark
+        uses: actions/download-artifact@v4
+        with:
+          name: biblaw-runtime-proof-020-output
+          path: runtime-proof
+
+      - name: Download exact Morphalou 3.1 mirror artifact
+        run: |
+          curl -fL --retry 3             "https://huggingface.co/datasets/datasets-CNRS/Morphalou/resolve/2b5dec836bef836a184d157ba3f71755bf55d523/Morphalou3.1_formatCSV_toutEnUn.zip?download=true"             -o /tmp/Morphalou3.1_formatCSV_toutEnUn.zip
+          test "$(stat -c %s /tmp/Morphalou3.1_formatCSV_toutEnUn.zip)" = "38062358"
+          echo "4fc815cbf17aecdf1b47f6bbc263489a460fd8d11ae17e6b522336c72bd0e333  /tmp/Morphalou3.1_formatCSV_toutEnUn.zip" | sha256sum -c -
+          echo "MORPHALOU_SHA_VERIFIED = YES"
+
+      - name: Reproduce 026 invariants and build target manifest
+        run: |
+          python tooling/scripts/build_target_manifest_028.py             --root baseline             --morphalou /tmp/Morphalou3.1_formatCSV_toutEnUn.zip             --benchmark020 runtime-proof/biblaw-lemma-pos-benchmark-020.json             --outdir /tmp/biblaw-target-manifest-028
+          echo "026_INVARIANTS_REPRODUCED = PASS"
+
+      - name: Ensure raw Morphalou is not in target artifact
+        run: |
+          if find /tmp/biblaw-target-manifest-028 -type f -iname '*morphalou*' | grep -q .; then
+            echo "Raw Morphalou leakage detected"
+            exit 1
+          fi
+
+      - name: Upload target manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-target-manifest-028
+          path: /tmp/biblaw-target-manifest-028
+          if-no-files-found: error
+          compression-level: 6
+
+  infer-shards:
+    needs: prepare-target
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: true
+      max-parallel: 16
+      matrix:
+        shard: ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15"]
+    env:
+      STANZA_RESOURCES_DIR: /tmp/stanza_resources_028
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install exact historical engines
+        run: |
+          python -m pip install --upgrade pip
+          pip install "spacy==3.8.16" "stanza==1.14.0"
+          pip install "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.8.0/fr_core_news_sm-3.8.0-py3-none-any.whl"
+
+      - name: Download exact Stanza French resources
+        run: |
+          python - <<'PY'
+          import stanza
+          stanza.download(
+              "fr",
+              model_dir="/tmp/stanza_resources_028",
+              package="default",
+              processors="tokenize,mwt,pos,lemma",
+              resources_version="1.14.0",
+              verbose=False,
+          )
+          PY
+
+      - name: Download target manifest
+        uses: actions/download-artifact@v4
+        with:
+          name: biblaw-target-manifest-028
+          path: target
+
+      - name: Run exact shard inference
+        run: |
+          python scripts/run_target_shard_028.py             --input "target/shards/shard-${{ matrix.shard }}.json"             --output "shard-${{ matrix.shard }}.json"
+
+      - name: Upload shard result
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-028-shard-${{ matrix.shard }}
+          path: shard-${{ matrix.shard }}.json
+          if-no-files-found: error
+          compression-level: 6
+
+  aggregate-028:
+    needs: infer-shards
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Download all shard results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: biblaw-028-shard-*
+          path: shard-results
+          merge-multiple: true
+
+      - name: Download target manifest metadata
+        uses: actions/download-artifact@v4
+        with:
+          name: biblaw-target-manifest-028
+          path: target
+
+      - name: Aggregate twice and require byte-for-byte identity
+        run: |
+          python scripts/aggregate_target_028.py             --shards-dir shard-results             --replay027 target/replay-027.json             --output aggregate-a.json             --shadow-selection shadow-a.json
+          python scripts/aggregate_target_028.py             --shards-dir shard-results             --replay027 target/replay-027.json             --output aggregate-b.json             --shadow-selection shadow-b.json
+          cmp aggregate-a.json aggregate-b.json
+          cmp shadow-a.json shadow-b.json
+          cp aggregate-a.json aggregate-028.json
+          cp shadow-a.json shadow-selection-028.json
+          sha256sum aggregate-028.json | tee aggregate-028.sha256
+          echo "AGGREGATION_DETERMINISM = PASS"
+
+      - name: Upload deterministic aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-aggregate-028
+          path: |
+            aggregate-028.json
+            aggregate-028.sha256
+            shadow-selection-028.json
+          if-no-files-found: error
+          compression-level: 6
+
+  shadow-replay:
+    needs: [prepare-target, aggregate-028]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      STANZA_RESOURCES_DIR: /tmp/stanza_resources_028_shadow
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install exact historical engines
+        run: |
+          python -m pip install --upgrade pip
+          pip install "spacy==3.8.16" "stanza==1.14.0"
+          pip install "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.8.0/fr_core_news_sm-3.8.0-py3-none-any.whl"
+
+      - name: Download exact Stanza French resources
+        run: |
+          python - <<'PY'
+          import stanza
+          stanza.download(
+              "fr",
+              model_dir="/tmp/stanza_resources_028_shadow",
+              package="default",
+              processors="tokenize,mwt,pos,lemma",
+              resources_version="1.14.0",
+              verbose=False,
+          )
+          PY
+
+      - name: Download target manifest
+        uses: actions/download-artifact@v4
+        with:
+          name: biblaw-target-manifest-028
+          path: target
+
+      - name: Download aggregate selection
+        uses: actions/download-artifact@v4
+        with:
+          name: biblaw-aggregate-028
+          path: aggregate
+
+      - name: Independently rerun 2000 shadow occurrences
+        run: |
+          python scripts/run_shadow_replay_028.py             --target-dir target             --selection aggregate/shadow-selection-028.json             --runner-script scripts/run_target_shard_028.py             --output shadow-results-028.json
+
+      - name: Upload shadow replay
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-shadow-replay-028
+          path: shadow-results-028.json
+          if-no-files-found: error
+          compression-level: 6
+
+  finalize-028:
+    needs: [runtime-proof-020, prepare-target, aggregate-028, shadow-replay]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Download deterministic aggregate
+        uses: actions/download-artifact@v4
+        with:
+          name: biblaw-aggregate-028
+          path: aggregate
+
+      - name: Download independent shadow replay
+        uses: actions/download-artifact@v4
+        with:
+          name: biblaw-shadow-replay-028
+          path: shadow
+
+      - name: Finalize and require shadow equality
+        run: |
+          AGG_SHA="$(cut -d' ' -f1 aggregate/aggregate-028.sha256)"
+          python scripts/finalize_target_028.py             --aggregate aggregate/aggregate-028.json             --shadow shadow/shadow-results-028.json             --aggregation-sha "$AGG_SHA"             --runtime-proof-sha "b975a71cab3f624d1fedbb6c9c8216551ba637cc4fc8eb5e4d603fcf3926d1dc"             --output biblaw-targeted-context-scale-028.json             --report BIBLAW-LEXICAL-INDUSTRIALIZATION-028-GHA-report.md
+          sha256sum biblaw-targeted-context-scale-028.json
+
+      - name: Verify no raw Morphalou in final outputs
+        run: |
+          test ! -e Morphalou3.1_formatCSV_toutEnUn.zip
+          echo "RAW_MORPHALOU_IN_FINAL_ARTIFACT = NO"
+
+      - name: Upload final 028 GHA artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-targeted-context-scale-028
+          path: |
+            biblaw-targeted-context-scale-028.json
+            BIBLAW-LEXICAL-INDUSTRIALIZATION-028-GHA-report.md
+          if-no-files-found: error
+          compression-level: 6
