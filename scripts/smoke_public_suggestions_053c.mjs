@@ -22,19 +22,29 @@ try{
       input:document.querySelector('#query')?.value
    }));
    console.log('WORDS_INPUT',JSON.stringify({value,elapsedMs:Date.now()-t,...info}));
+   if(process.env.BIBLAW_REQUIRE_EARLY==='1'){
+     assert.equal(info.hidden,false,'During indexing suggestions panel must appear automatically at 2 letters: '+value);
+     assert.ok(info.rows>0||info.body.includes('Recherche des suggestions'), 'Suggestions or explicit progress must be visible: '+value);
+   }
  }
  console.log('AWAIT_READY_START',Date.now()-t);
  await page.waitForFunction(()=>document.querySelector('#query')?.dataset.wordSuggestionsReady==='true',{timeout:90000});
  console.log('READY_AFTER_MS',Date.now()-t);
+ const totals=new Map();
  for(const value of checks){
   await page.locator('#query').fill(value);
   const info=await page.locator('#themeAutocomplete').evaluate(e=>({hidden:e.hidden,total:Number(e.dataset.totalSuggestions||0),rows:e.querySelectorAll('[role=option]').length,first:e.querySelector('[role=option]')?.textContent,ready:document.querySelector('#query')?.dataset.wordSuggestionsReady||null}));
+  totals.set(value,info.total);
   console.log('WORDS_READY',JSON.stringify({value,...info}));
   assert.ok(!info.hidden&&info.total>0,'No results after indexed for '+value);
  }
+ assert.equal(totals.get('el'),totals.get('él'),'el and él must match the same suggestions');
+ assert.equal(totals.get('element'),totals.get('élément'),'element and élément must match the same suggestions');
+ assert.equal(totals.get('elements'),totals.get('éléments'),'elements and éléments must match the same suggestions');
  await page.locator('#query').fill('élément');
  const all=await page.locator('#themeAutocomplete').evaluate(e=>({count:e.dataset.totalSuggestions,first:e.innerText.slice(0,260)}));
  console.log('EXPRESSIONS',JSON.stringify(all));
+ assert.ok(all.first.includes('éléments de')||all.first.includes('élément de')||all.first.includes('éléments pour'),'Compound expressions containing elements appear among suggestions');
  assert.equal(errors.length,0,'JS errors');
  console.log('BIBLAW-053C PUBLIC MOBILE PASS');
 }finally{await browser.close();}
