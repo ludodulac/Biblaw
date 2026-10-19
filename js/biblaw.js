@@ -316,11 +316,11 @@
     return frenchNumberUnder100(n);
   }
   function frenchNumberUnder1000(n,nonTerminal=false){
-    if(n<100)return frenchNumberUnder100Correct(n);
+    if(n<100)return n===80&&nonTerminal?'quatre-vingt':frenchNumberUnder100Correct(n);
     const hundreds=Math.floor(n/100),rest=n%100;
     const prefix=(hundreds===1?'':FR_NUMBER_UNDER_20[hundreds]+' ')+'cent';
     if(rest===0)return prefix+(hundreds>1&&!nonTerminal?'s':'');
-    return prefix+' '+frenchNumberUnder100Correct(rest);
+    return prefix+' '+(rest===80&&nonTerminal?'quatre-vingt':frenchNumberUnder100Correct(rest));
   }
   function frenchNumberName(n){
     if(!Number.isSafeInteger(n)||n<0||n>999999999999)return null;
