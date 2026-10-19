@@ -22,6 +22,7 @@ on:
       - 'scripts/smoke_search_ui_053f.mjs'
       - 'scripts/smoke_search_ui_053g.mjs'
       - 'scripts/audit_search_ui_053h.mjs'
+      - 'scripts/smoke_search_ui_053h.mjs'
       - 'scripts/smoke_occurrences_041c.mjs'
       - 'scripts/audit_lexical_expansion_041c.py'
       - 'scripts/audit_lexical_expansion_runtime.py'
@@ -63,6 +64,11 @@ jobs:
         env:
           BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
         run: node scripts/smoke_public_preview_054.mjs
+      - name: Verify 053H strict autonomous expression filtering on real mobile HTTPS
+        if: github.event_name == 'pull_request'
+        env:
+          BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
+        run: node scripts/smoke_search_ui_053h.mjs
       - name: Audit 053G suggestion grammar before 053H fix
         if: github.event_name == 'pull_request'
         env:
