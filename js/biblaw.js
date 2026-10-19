@@ -105,7 +105,7 @@
   const composeThemeQueryNotions = query => BiblawThemeEngine.composeThemeQueryNotions(query);
   const themeQueryNotions = query => BiblawThemeEngine.themeQueryNotions(query);
   function suggestIndexedThemes(query) { return state.themeEngine?.suggestIndexedThemes(query) || []; }
-  function thematicItems(themes) {
+  function thematicItems(themes, question=null) {
     if (!selectedTypes().has('psalm')) return [];
     const a=$('archangelFilter').value,merged=new Map();
     for (const theme of themes) for (const o of theme.occurrences||[]) {
@@ -118,7 +118,8 @@
       if(betterImportance||(sameImportance&&(o.score||1)>(current.thematic?.score||0))) current.thematic=o;
       current.matchedThemes.push({id:theme.id,label:theme.label,thematic:o}); merged.set(record.id,current);
     }
-    return [...merged.values()].sort((x,y)=>importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number||String(x.record.id).localeCompare(String(y.record.id),'fr'));
+    const baseline=[...merged.values()].sort((x,y)=>importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number||String(x.record.id).localeCompare(String(y.record.id),'fr'));
+    return question&&themes.length===1&&window.BiblawQuestionPsalmRanker?BiblawQuestionPsalmRanker.rerank(baseline,question,themes[0].label):baseline;
   }
   function intersectionItems(themeA, themeB) {
     if (!selectedTypes().has('psalm')) return [];
@@ -248,14 +249,14 @@
     if(resolvedThemes.length<=1){hideAmbiguity();return;}
     $('suggestionKicker').textContent='Correspondances multiples'; $('suggestionTitle').textContent='Plusieurs thèmes correspondent à cette formulation';
     $('senseChoices').innerHTML=resolvedThemes.map(theme=>ambiguityChoice(theme,'query')).join('');
-    $('senseChoices').querySelectorAll('[data-ambiguity-target]').forEach(btn=>btn.onclick=()=>{const theme=state.themeById.get(btn.dataset.themeId);if(!theme)return;$('query').value=theme.label;search();});
+    $('senseChoices').querySelectorAll('[data-ambiguity-target]').forEach(btn=>btn.onclick=()=>{const original=$('query').value.trim();if(window.BiblawQuestionPsalmRanker?.isSpecific(original)){navigateToTheme(state.themeById.get(btn.dataset.themeId),original);return;}const theme=state.themeById.get(btn.dataset.themeId);if(!theme)return;$('query').value=theme.label;search();});
     $('ambiguityPanel').hidden=false;
   }
   function showThemeSuggestions(themes) {
     state.resolvedThemes=themes;
     $('suggestionKicker').textContent='Thèmes correspondant à votre recherche'; $('suggestionTitle').textContent='Choisissez le sens qui vous intéresse';
     $('senseChoices').innerHTML=themes.map(theme=>ambiguityChoice(theme,'query')).join('');
-    $('senseChoices').querySelectorAll('[data-ambiguity-target]').forEach(btn=>btn.onclick=()=>navigateToTheme(state.themeById.get(btn.dataset.themeId)));
+    $('senseChoices').querySelectorAll('[data-ambiguity-target]').forEach(btn=>btn.onclick=()=>navigateToTheme(state.themeById.get(btn.dataset.themeId),$('query').value.trim()));
     $('ambiguityPanel').hidden=false;
   }
   function hideTransverseNavigation(){ $('transversePanel').hidden=true; $('transversePanel').open=false; $('transverseChoices').innerHTML=''; }
@@ -268,8 +269,9 @@
     $('transversePanel').hidden=false;
   }
   function navigateToTheme(theme) {
+    const question=arguments.length>1?arguments[1]:null;
     if(!theme)return; activateThemeMode(); $('query').value=theme.label; $('query2').value=''; if($('recordDialog').open)$('recordDialog').close();
-    const thematic=thematicItems([theme]), textual=textualPsalmMatches(theme.label); hideAmbiguity(); showTransverseNavigation(theme);
+    const thematic=thematicItems([theme],question), textual=textualPsalmMatches(theme.label); hideAmbiguity(); showTransverseNavigation(theme);
     publishPresentationState({kind:'canonical-theme',theme:{id:theme.id,label:theme.label},psalmCount:thematic.length});
     render(thematic,[theme],{textualCount:textual.length}); window.scrollTo({top:0,behavior:'smooth'});
   }
@@ -301,7 +303,7 @@
       if(suggestions.length>1){ showThemeSuggestions(suggestions); hideTransverseNavigation(); publishPresentationState({kind:'ambiguous-themes',themes:suggestions.map(theme=>({id:theme.id,label:theme.label}))}); return render([],[],{suggestionPending:true}); }
       const selected=resolved[0]||(suggestions.length===1?suggestions[0]:null);
       if(selected){
-        hideAmbiguity(); const thematic=thematicItems([selected]), textual=textualPsalmMatches(query); showTransverseNavigation(selected);
+        hideAmbiguity(); const thematic=thematicItems([selected],query), textual=textualPsalmMatches(query); showTransverseNavigation(selected);
         publishPresentationState({kind:'canonical-theme',theme:{id:selected.id,label:selected.label},psalmCount:thematic.length});
         return render(thematic,[selected],{textualCount:textual.length});
       }
