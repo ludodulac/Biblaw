@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], hasSearched: false, suggestionEntries: [], wordEntries: [], wordKeys: new Set() };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], hasSearched: false, suggestionEntries: [], wordEntries: [], wordKeys: new Set(), wordIndexReady:false, autocompleteItems:[], autocompleteMode:null, autocompleteWindowStart:-1 };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -99,7 +99,7 @@
         state.normalizedFragmentsById.set(r.id,textFragments(r).map(norm).filter(Boolean));
         if (r.recordType === 'psalm') { const number=Number(r.number), list=state.psalmsByNumber.get(number)||[]; list.push(r); state.psalmsByNumber.set(number,list); }
       }
-      buildWordSuggestionLookup();
+      buildWordSuggestionLookup().catch(error=>console.error('BIBLAW suggestion index:',error));
       state.themesByRecord = new Map();
       for (const theme of state.themeDirectory) for (const occurrence of theme.occurrences || []) {
         const list = state.themesByRecord.get(occurrence.recordId) || [];
@@ -296,7 +296,8 @@
 
   // 053: index only expressions copied verbatim from documentary fragments.
   // No generated/plausible language combinations; the existing consecutive-phrase search is unchanged.
-  function buildWordSuggestionLookup(){
+  async function buildWordSuggestionLookup(){
+    let chunkStart=performance.now();
     const words=new Map(),expressions=new Map();
     const connectors=new Set(['de','du','des','au','aux','a','en','et','avec','pour','sans','sur','sous','entre','par']);
     const articles=new Set(['le','la','les','l','un','une','des']);
@@ -339,9 +340,16 @@
           if(phrase.length<=80)add(expressions,phrase);
         }
       }
+      if(performance.now()-chunkStart>12){
+        await new Promise(resolve=>setTimeout(resolve,0));
+        chunkStart=performance.now();
+      }
     }
     state.wordEntries=[...words.values(),...expressions.values()];
     state.wordKeys=new Set([...words.values()].map(entry=>entry.key));
+    state.wordIndexReady=true;
+    $('query').dataset.wordSuggestionsReady='true';
+    if(state.mode==='exact'&&norm($('query').value).length>=2)renderThemeAutocomplete();
   }
   function findAutocompleteWords(input){
     const query=norm(input);
@@ -351,22 +359,13 @@
         ||(a.expression?1:0)-(b.expression?1:0)||b.count-a.count||a.word.localeCompare(b.word,'fr'));
   }
   function renderWordAutocomplete(){
-    const box=$('themeAutocomplete'),words=findAutocompleteWords($('query').value);
-    if(!words.length){hideThemeAutocomplete();return;}
-    box.setAttribute('aria-label','Mots et expressions du corpus suggérés');
-    box.innerHTML=words.map(entry=>'<button type="button" role="option" data-autocomplete-word="'+esc(entry.word)+'" aria-selected="false">'+esc(entry.word)+'</button>').join('');
-    const buttons=[...box.querySelectorAll('[data-autocomplete-word]')];
-    for(const button of buttons){
-      button.onclick=()=>{$('query').value=button.dataset.autocompleteWord;hideThemeAutocomplete();search();};
-      button.onkeydown=event=>{
-        const i=buttons.indexOf(button);
-        if(event.key==='ArrowDown'){event.preventDefault();buttons[(i+1)%buttons.length].focus();}
-        if(event.key==='ArrowUp'){event.preventDefault();i===0?$('query').focus():buttons[i-1].focus();}
-        if(event.key==='Escape'){event.preventDefault();hideThemeAutocomplete();$('query').focus();}
-      };
+    const words=findAutocompleteWords($('query').value);
+    if(!state.wordIndexReady){
+      // Input remains interactive while the corpus-side suggestions index is prepared.
+      hideThemeAutocomplete();
+      return;
     }
-    box.hidden=false;
-    $('query').setAttribute('aria-expanded','true');
+    showSuggestionList(words,'words','Mots et expressions du corpus suggérés');
   }
 
   // 052: autocomplete only proposes labels and registered aliases from the published index.
@@ -392,9 +391,19 @@
     }
     return [...matches.values()].sort((a,b)=>a.rank-b.rank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')).map(item=>item.theme);
   }
+  // 054: every suggestion remains reachable, with only a few DOM rows rendered.
+  // Rendering 8 000+ buttons at once froze Android browsers in the 053 preview.
+  const AUTOCOMPLETE_ROW_HEIGHT=64;
+  const AUTOCOMPLETE_HEADER_HEIGHT=32;
+  const AUTOCOMPLETE_VISIBLE_ROWS=18;
   function hideThemeAutocomplete(){
-    $('themeAutocomplete').hidden=true;
-    $('themeAutocomplete').replaceChildren();
+    const box=$('themeAutocomplete');
+    box.hidden=true;
+    box.replaceChildren();
+    box.removeAttribute('data-total-suggestions');
+    state.autocompleteItems=[];
+    state.autocompleteMode=null;
+    state.autocompleteWindowStart=-1;
     $('query').setAttribute('aria-expanded','false');
   }
   function chooseAutocompleteTheme(theme){
@@ -404,25 +413,69 @@
     hideThemeAutocomplete();
     search();
   }
+  function chooseSuggestion(index){
+    const item=state.autocompleteItems[index];
+    if(!item)return;
+    if(state.autocompleteMode==='themes'){chooseAutocompleteTheme(item);return;}
+    $('query').value=item.word;
+    hideThemeAutocomplete();
+    search(); // The established phrase matcher still handles the entire consecutive expression.
+  }
+  function renderSuggestionWindow(force=false){
+    const box=$('themeAutocomplete'),items=state.autocompleteItems;
+    if(box.hidden||!items.length)return;
+    const first=Math.max(0,Math.min(items.length-1,Math.floor(Math.max(0,box.scrollTop-AUTOCOMPLETE_HEADER_HEIGHT)/AUTOCOMPLETE_ROW_HEIGHT)-4));
+    if(!force&&first===state.autocompleteWindowStart)return;
+    state.autocompleteWindowStart=first;
+    const end=Math.min(items.length,first+AUTOCOMPLETE_VISIBLE_ROWS);
+    const before=box.querySelector('[data-suggest-before]'),after=box.querySelector('[data-suggest-after]');
+    const rows=box.querySelector('[data-suggest-rows]');
+    before.style.height=(first*AUTOCOMPLETE_ROW_HEIGHT)+'px';
+    after.style.height=((items.length-end)*AUTOCOMPLETE_ROW_HEIGHT)+'px';
+    const wordMode=state.autocompleteMode==='words',attr=wordMode?'data-autocomplete-word':'data-autocomplete-theme';
+    rows.innerHTML=items.slice(first,end).map((item,i)=>{
+      const index=first+i,label=wordMode?item.word:item.label,identity=wordMode?item.word:item.id;
+      return '<button type="button" role="option" data-suggestion-index="'+index+'" '+attr+'="'+esc(identity)+'" aria-selected="false" aria-posinset="'+(index+1)+'" aria-setsize="'+items.length+'" title="'+esc(label)+'">'+esc(label)+'</button>';
+    }).join('');
+    rows.querySelectorAll('[data-suggestion-index]').forEach(button=>{
+      button.onclick=()=>chooseSuggestion(Number(button.dataset.suggestionIndex));
+      button.onkeydown=event=>{
+        const index=Number(button.dataset.suggestionIndex);
+        if(event.key==='ArrowDown'){event.preventDefault();focusSuggestion(Math.min(items.length-1,index+1));}
+        if(event.key==='ArrowUp'){event.preventDefault();index===0?$('query').focus():focusSuggestion(index-1);}
+        if(event.key==='Escape'){event.preventDefault();hideThemeAutocomplete();$('query').focus();}
+      };
+    });
+  }
+  function focusSuggestion(index){
+    const box=$('themeAutocomplete');
+    if(box.hidden||!state.autocompleteItems.length)return;
+    const y=AUTOCOMPLETE_HEADER_HEIGHT+index*AUTOCOMPLETE_ROW_HEIGHT;
+    if(y<box.scrollTop+AUTOCOMPLETE_HEADER_HEIGHT)box.scrollTop=Math.max(0,y-AUTOCOMPLETE_HEADER_HEIGHT);
+    else if(y+AUTOCOMPLETE_ROW_HEIGHT>box.scrollTop+box.clientHeight)box.scrollTop=y+AUTOCOMPLETE_ROW_HEIGHT-box.clientHeight;
+    renderSuggestionWindow(true);
+    box.querySelector('[data-suggestion-index="'+index+'"]')?.focus();
+  }
+  function showSuggestionList(items,mode,label){
+    if(!items.length){hideThemeAutocomplete();return;}
+    const box=$('themeAutocomplete');
+    state.autocompleteItems=items;
+    state.autocompleteMode=mode;
+    state.autocompleteWindowStart=-1;
+    box.setAttribute('aria-label',label);
+    box.dataset.totalSuggestions=String(items.length);
+    box.innerHTML='<div class="autocomplete-count" role="presentation">'+items.length.toLocaleString('fr-FR')+' suggestions · défilez pour tout voir</div><div data-suggest-before aria-hidden="true"></div><div data-suggest-rows></div><div data-suggest-after aria-hidden="true"></div>';
+    box.hidden=false;
+    box.scrollTop=0;
+    renderSuggestionWindow(true);
+    $('query').setAttribute('aria-expanded','true');
+  }
   function renderThemeAutocomplete(){
     if(state.mode==='exact'){renderWordAutocomplete();return;}
     if(state.mode!=='themes'||$('query2').value.trim()){hideThemeAutocomplete();return;}
-    $('themeAutocomplete').setAttribute('aria-label','Thèmes indexés suggérés');
-    const themes=findAutocompleteThemes($('query').value),box=$('themeAutocomplete');
-    if(!themes.length){hideThemeAutocomplete();return;}
-    box.innerHTML=themes.map(theme=>`<button type="button" role="option" data-autocomplete-theme="${esc(theme.id)}" aria-selected="false">${esc(theme.label)}</button>`).join('');
-    box.querySelectorAll('[data-autocomplete-theme]').forEach(button=>{
-      button.onclick=()=>chooseAutocompleteTheme(state.themeById.get(button.dataset.autocompleteTheme));
-      button.onkeydown=e=>{
-        const buttons=[...box.querySelectorAll('[data-autocomplete-theme]')],i=buttons.indexOf(button);
-        if(e.key==='ArrowDown'){e.preventDefault();buttons[(i+1)%buttons.length].focus();}
-        if(e.key==='ArrowUp'){e.preventDefault();i===0?$('query').focus():buttons[i-1].focus();}
-        if(e.key==='Escape'){e.preventDefault();hideThemeAutocomplete();$('query').focus();}
-      };
-    });
-    box.hidden=false;
-    $('query').setAttribute('aria-expanded','true');
+    showSuggestionList(findAutocompleteThemes($('query').value),'themes','Thèmes indexés suggérés');
   }
+  $('themeAutocomplete').addEventListener('scroll',()=>renderSuggestionWindow(),{passive:true});
   function renderPopularThemes(){
     const preferred=['amour','nature','ame','guerison','equilibre'];
     const seen=new Set(),chosen=[];
@@ -569,7 +622,7 @@
   $('query').addEventListener('input',()=>{handleExactQueryInput();renderThemeAutocomplete();});
   $('query').addEventListener('keydown',event=>{
     if(event.key==='Escape')hideThemeAutocomplete();
-    if(event.key==='ArrowDown'&&!$('themeAutocomplete').hidden){event.preventDefault();$('themeAutocomplete').querySelector('[role="option"]')?.focus();}
+    if(event.key==='ArrowDown'&&!$('themeAutocomplete').hidden){event.preventDefault();focusSuggestion(0);}
   });
   // 053: close after the destination has received its click; pointerdown would collapse
   // the scrollable suggestion panel before mobile mode buttons can be activated.
