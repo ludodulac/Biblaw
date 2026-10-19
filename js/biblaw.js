@@ -44,8 +44,11 @@
     // Map each normalized search character to its ORIGINAL source span.
     // This safely matches au-delà inside l’au-delà and never highlights
     // unrelated occurrences of the standalone word "au".
-    const queries=[...new Set([$('query')?.value,...activeExpansionForms()]
-      .map(norm).filter(Boolean))].sort((a,b)=>b.length-a.length);
+    const clauses=exactSearchClauses($('query')?.value);
+    const originals=clauses?.length?clauses:[$('query')?.value];
+    const forms=clauses?.length?clauses.flatMap(formsForExactClause):activeExpansionForms();
+    const queries=[...new Set([...originals,...forms].map(norm).filter(Boolean))]
+      .sort((a,b)=>b.length-a.length);
     if(!queries.length)return esc(source);
     const chars=[],begins=[],ends=[];
     let position=0;
@@ -167,7 +170,22 @@
   }
 
   function matches(query) { const allowed=selectedTypes(),a=$('archangelFilter').value; return state.records.filter(r=>allowed.has(type(r))&&(!a||r.archangel===a)).map(record=>({record,score:1,occurrenceCount:literalOccurrenceCount(record,query)})).filter(item=>item.occurrenceCount>0); }
-  function mergeExpansionMatches(items,query,matchSource=matches){ const forms=activeExpansionForms(); if(!forms.length||!singleWordQueryKey(query))return items; const byId=new Map(items.map(item=>[item.record.id,item])); for(const form of forms)for(const item of matchSource(form)){ const current=byId.get(item.record.id); if(current)current.occurrenceCount+=item.occurrenceCount; else byId.set(item.record.id,item); } items.splice(0,items.length,...byId.values()); return items; }
+  // 056: A + B means both complete queries must occur. The first clause
+  // is the primary sort key, the second breaks ties (lexicographic order).
+  const exactSearchClauses=value=>{
+    const input=String(value||'');
+    if(!input.includes('+'))return null;
+    const clauses=input.split('+').map(part=>part.trim());
+    return clauses.length===2&&clauses.every(Boolean)?clauses:[];
+  };
+  function formsForExactClause(value){
+    const key=singleWordQueryKey(value);
+    if(!key)return[];
+    const simple=$('includeSimplePlurals')?.checked?simplePluralFormsFor(value):[];
+    const verified=$('includeWordForms')?.checked?expansionFormsFor(value):[];
+    return [...new Set([...simple,...verified])];
+  }
+  function mergeExpansionMatches(items,query,matchSource=matches,overrideForms=null){ const forms=overrideForms??activeExpansionForms(); if(!forms.length||!singleWordQueryKey(query))return items; const byId=new Map(items.map(item=>[item.record.id,item])); for(const form of forms)for(const item of matchSource(form)){ const current=byId.get(item.record.id); if(current)current.occurrenceCount+=item.occurrenceCount; else byId.set(item.record.id,item); } items.splice(0,items.length,...byId.values()); return items; }
   function psalmNumberMatches(number) { if(!selectedTypes().has('psalm'))return []; const a=$('archangelFilter').value; return (state.psalmsByNumber.get(number)||[]).filter(r=>!a||r.archangel===a).sort((x,y)=>(x.book?.number||9999)-(y.book?.number||9999)||String(x.id).localeCompare(String(y.id),'fr')).map(record=>({record,score:1,numberLookup:true})); }
   function textualPsalmMatches(query) { return matches(query).filter(x=>x.record.recordType==='psalm'); }
   function resolveIndexedThemes(query) { return state.themeEngine?.resolveIndexedThemes(query) || []; }
@@ -669,6 +687,8 @@
   function renderWordAutocomplete(){
     if(state.wordAutocompleteSuppressed){hideThemeAutocomplete();return;}
     const query=norm($('query').value);
+    // Do not propose a single word as a replacement for a combined query.
+    if($('query').value.includes('+')){hideThemeAutocomplete();return;}
     if(query.length<2&&!/^\d$/u.test(query)){hideThemeAutocomplete();return;}
     const words=findAutocompleteWords($('query').value);
     if(!state.wordIndexReady&&!words.length){
@@ -870,7 +890,8 @@
     const semanticKey=singleWordQueryKey(query);
     if(state.semanticSelection&&semanticKey!==state.semanticSelection.normalizedForm)state.semanticSelection=null;
     updateExpansionControl();
-    const psalmNumber=parsePsalmNumberQuery(query);
+    const psalmNumber=state.mode==='themes'||!exactSearchClauses(query)?
+      parsePsalmNumberQuery(query):null;
     if(psalmNumber!==null && !query2){ hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'other'}); return render(psalmNumberMatches(psalmNumber),null,{numberLookup:true,psalmNumber}); }
     if(state.mode==='themes'){
       if(query2){
@@ -898,6 +919,33 @@
       hideAmbiguity();hideTransverseNavigation(); const textual=textualPsalmMatches(query); publishPresentationState({kind:textual.length?'textual-fallback':'no-result'}); return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)});
     }
     hideTransverseNavigation();publishPresentationState({kind:'other'});
+    const clauses=exactSearchClauses(query);
+    if(clauses){
+      if(clauses.length!==2){
+        hideAmbiguity();
+        return render([],null,{invalidCombined:true});
+      }
+      const [first,second]=clauses;
+      const primary=matches(first);
+      mergeExpansionMatches(primary,first,matches,formsForExactClause(first));
+      const secondary=matches(second);
+      mergeExpansionMatches(secondary,second,matches,formsForExactClause(second));
+      const secondaryById=new Map(secondary.map(x=>[x.record.id,x.occurrenceCount]));
+      const exactItems=primary.filter(item=>secondaryById.has(item.record.id))
+        .map(item=>({
+          ...item,primaryCount:item.occurrenceCount,
+          secondaryCount:secondaryById.get(item.record.id),
+          occurrenceCount:item.occurrenceCount+secondaryById.get(item.record.id)
+        }));
+      // Primary phrase FIRST, then secondary phrase, never just a sum.
+      exactItems.sort((a,b)=>
+        b.primaryCount-a.primaryCount||b.secondaryCount-a.secondaryCount||
+        (Number(a.record.number)||Number.MAX_SAFE_INTEGER)-
+        (Number(b.record.number)||Number.MAX_SAFE_INTEGER)||
+        String(a.record.id).localeCompare(String(b.record.id),'fr'));
+      hideAmbiguity();
+      return render(exactItems,null,{exactSearch:true,dualExact:true,dualTerms:clauses});
+    }
     const semanticSelection=semanticSelectionContext(query);
     const grammaticalSelection=grammarSelectionContext(query);
     const exactItems=matches(query);
@@ -911,7 +959,7 @@
 
   function summary(r){return r.recordType==='psalm'?(r.verses||[]).slice(0,2).map(v=>v.text).join(' '):r.summary||(r.text||'').slice(0,280);}
   function contextualVerses(r,thematic){ if(!thematic?.verseNumbers?.length||!r.verses?.length)return''; const wanted=new Set(thematic.verseNumbers.map(Number)); const chosen=r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4); if(!chosen.length)return''; return `<div class="theme-context"><div class="context-label">Passage concerné</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${esc(v.text)}</span></div>`).join('')}</div>`; }
-  function exactVerses(r){ if(r.recordType!=='psalm'||!r.verses?.length)return''; const query=$('query').value; if(!norm(query))return''; const semantic=semanticSelectionContext(query); let chosen; if(semantic){ const row=(semantic.sense.records||[]).find(item=>item[0]===r.id); const wanted=new Set((row?.[2]||[]).map(Number)); chosen=r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4); } else { const expansion=activeExpansionForms(); chosen=r.verses.filter(v=>literalIncludes(v.text,query)||expansion.some(form=>literalIncludes(v.text,form))).slice(0,4); } if(!chosen.length)return''; return `<div class="theme-context exact-context"><div class="context-label">Passage${chosen.length>1?'s':''} où la recherche apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`; }
+  function exactVerses(r){ if(r.recordType!=='psalm'||!r.verses?.length)return''; const query=$('query').value; if(!norm(query))return''; const clauses=exactSearchClauses(query); if(clauses?.length===2){const forms=clauses.flatMap(clause=>[clause,...formsForExactClause(clause)]);const chosen=r.verses.filter(v=>forms.some(form=>literalIncludes(v.text,form))).slice(0,4);if(!chosen.length)return'';return `<div class="theme-context exact-context"><div class="context-label">Passages où l’un des deux termes apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`;} const semantic=semanticSelectionContext(query); let chosen; if(semantic){ const row=(semantic.sense.records||[]).find(item=>item[0]===r.id); const wanted=new Set((row?.[2]||[]).map(Number)); chosen=r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4); } else { const expansion=activeExpansionForms(); chosen=r.verses.filter(v=>literalIncludes(v.text,query)||expansion.some(form=>literalIncludes(v.text,form))).slice(0,4); } if(!chosen.length)return''; return `<div class="theme-context exact-context"><div class="context-label">Passage${chosen.length>1?'s':''} où la recherche apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`; }
   function relatedThemes(r,matchedThemes){ const matched=new Set((matchedThemes||[]).map(x=>x.id)); return (state.themesByRecord.get(r.id)||[]).filter(t=>!matched.has(t.id)).slice(0,12); }
   function themeTags(themes){ if(!themes.length)return '<span class="muted inline-empty">Aucun autre thème indexé.</span>'; return `<span class="inline-themes">${themes.map(t=>`<button class="theme-text-link" data-related-theme="${esc(t.id)}">${esc(t.label)}</button>`).join('<span class="theme-separator">·</span>')}</span>`; }
   function bindThemeLinks(root=document){ root.querySelectorAll('[data-related-theme]').forEach(b=>b.onclick=()=>navigateToTheme(state.themeById.get(b.dataset.relatedTheme))); }
@@ -930,14 +978,23 @@
 
   function render(items,indexedThemes=null,companion=null){
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
-    $('resultCount').textContent=companion?.grammarSearch?`${items.reduce((n,item)=>n+item.occurrenceCount,0)} occurrences · ${items.length} textes`:companion?.suggestionPending?'Choisissez un thème':companion?.dualPending?'Intersection en attente':companion?.dualTheme?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous les deux thèmes`:companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:companion?.unresolvedTheme?'Aucun thème indexé':themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:`${items.length} résultat${items.length>1?'s':''}`;
+    const totalHits=items.reduce((n,item)=>n+(item.occurrenceCount||0),0);
+    const textType=items.length&&items.every(item=>item.record.recordType==='psalm')?'psaume':'texte';
+    const combinedCount=companion?.dualExact?
+      items.length+' '+textType+(items.length>1?'s':'')+' · '+
+      items.reduce((n,item)=>n+item.primaryCount,0)+' × «'+companion.dualTerms[0]+' » · '+
+      items.reduce((n,item)=>n+item.secondaryCount,0)+' × «'+companion.dualTerms[1]+' » · tri : 1er puis 2e':null;
+    const exactCount=companion?.exactSearch?
+      totalHits+' occurrence'+(totalHits>1?'s':'')+' · '+items.length+
+      ' '+textType+(items.length>1?'s':''):null;
+    $('resultCount').textContent=companion?.invalidCombined?'Saisissez deux expressions séparées par +':(combinedCount||exactCount||(companion?.grammarSearch?`${items.reduce((n,item)=>n+item.occurrenceCount,0)} occurrences · ${items.length} textes`:companion?.suggestionPending?'Choisissez un thème':companion?.dualPending?'Intersection en attente':companion?.dualTheme?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous les deux thèmes`:companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:companion?.unresolvedTheme?'Aucun thème indexé':themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:`${items.length} résultat${items.length>1?'s':''}`));
     const textualNotice=!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?`<div class="search-scope-note"><strong>Thème indexé · ${items.length} psaumes</strong><button class="secondary" data-show-text-search>Voir les occurrences (${companion.textualCount})</button></div>`:'';
     const nearby=companion?.unresolvedTheme?findAutocompleteThemes($('query').value):[];
     const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><strong>Aucun thème trouvé</strong><div class="near-themes">${nearby.map(theme=>`<button class="popular-theme-chip" data-near-theme="${esc(theme.id)}">${esc(theme.label)}</button>`).join('')}</div><button class="secondary" data-search-in-words>Rechercher en mots</button></div>`:'';
-    if(!items.length){ const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const suggestionPending=companion?.suggestionPending?'<div class="empty">Plusieurs thèmes correspondent à votre recherche. Choisissez celui qui vous intéresse ci-dessus.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; $('results').innerHTML=emptyNumber||dualEmpty||suggestionPending||pending||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();bindNearThemeChoices();return; }
-    $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount})=>{
+    if(!items.length){ if(companion?.invalidCombined){$('results').innerHTML='<div class="empty">Indiquez un premier mot ou groupe de mots, puis +, puis un second.</div>';return;} const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const suggestionPending=companion?.suggestionPending?'<div class="empty">Plusieurs thèmes correspondent à votre recherche. Choisissez celui qui vous intéresse ci-dessus.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; $('results').innerHTML=emptyNumber||dualEmpty||suggestionPending||pending||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();bindNearThemeChoices();return; }
+    $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount,primaryCount,secondaryCount})=>{
       const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'';
-      const status=companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`:themeMatches?'Deux thèmes':thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
+      const status=companion?.dualExact?`${primaryCount} + ${secondaryCount} occurrences`:companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`:themeMatches?'Deux thèmes':thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
       const details=resultDetailsBody(r,{thematic,matchedThemes,numberLookup,themeMatches,companion});
       const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
       return `<article class="result-card result-card-compact">
@@ -980,6 +1037,18 @@
   const setAdvancedSearch = open => { if(state.mode!=='themes')return; $('primarySearch').classList.toggle('advanced-visible',open); $('advancedSearchToggle').setAttribute('aria-expanded',String(open)); $('advancedSearchToggle').textContent=open?'Fermer le croisement':'Croiser deux thèmes'; if(open){$('query2').focus();}else{$('query2').value='';if(state.hasSearched)search();} };
   $('advancedSearchToggle').onclick=()=>setAdvancedSearch(!$('primarySearch').classList.contains('advanced-visible'));
   $('searchForm').addEventListener('submit',event=>{event.preventDefault();search();});
+  $('exactAddTerm').addEventListener('click',()=>{
+    if(state.mode!=='exact')return;
+    const field=$('query'),value=field.value;
+    if(value.includes('+')){field.focus();return;}
+    const point=field.selectionStart??value.length;
+    const left=value.slice(0,point).trimEnd(),right=value.slice(point).trimStart();
+    field.value=left+(left?' + ':'')+right;
+    field.dispatchEvent(new Event('input',{bubbles:true}));
+    field.focus();
+    const caret=left.length+(left?3:0);
+    field.setSelectionRange(caret,caret);
+  });
   $('query').addEventListener('input',()=>{state.wordAutocompleteSuppressed=false;handleExactQueryInput();renderThemeAutocomplete();});
   $('query').addEventListener('keydown',event=>{
     if(event.key==='Escape')hideThemeAutocomplete();

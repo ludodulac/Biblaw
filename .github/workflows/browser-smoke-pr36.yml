@@ -24,6 +24,7 @@ on:
       - 'scripts/audit_search_ui_053h.mjs'
       - 'scripts/smoke_search_ui_053h.mjs'
       - 'scripts/smoke_search_ui_053i.mjs'
+      - 'scripts/smoke_search_ui_056.mjs'
       - 'scripts/smoke_occurrences_041c.mjs'
       - 'scripts/audit_lexical_expansion_041c.py'
       - 'scripts/audit_lexical_expansion_runtime.py'
@@ -75,6 +76,11 @@ jobs:
         env:
           BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
         run: node scripts/smoke_search_ui_053i.mjs
+      - name: Verify 056 exact phrase totals and two-clause priority on mobile
+        if: github.event_name == 'pull_request'
+        env:
+          BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
+        run: node scripts/smoke_search_ui_056.mjs
       - name: Audit 053G suggestion grammar before 053H fix
         if: github.event_name == 'pull_request'
         env:

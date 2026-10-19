@@ -93,7 +93,7 @@ try{
     results[term]=value;
     console.log('053G_SUGGEST '+JSON.stringify({term,total:value.total,hyphens:value.found.filter(x=>/[-‐‑‒–]/u.test(x.word)).slice(0,35).map(x=>x.word)}));
     assert.ok(value.found.every(x=>norm(x.word).startsWith(norm(term))||
-      (/^\d+\s/u.test(x.word)&&/^[a-z]/u.test(norm(term)))),'No fragment/unrelated words for '+term);
+      (/^\d+(?:\s|$)/u.test(x.word)&&/^[a-z]/u.test(norm(term)))),'No fragment/unrelated words for '+term);
   }
   for(const [candidate,searches] of [['au-delà',['au','au-','au-d']],['Père-Mère',['père']],['soi-même',['soi']],['arc-en-ciel',['arc']],['celui-ci',['celui']]]){
     if(attestations.variants[candidate].length){

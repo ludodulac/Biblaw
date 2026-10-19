@@ -98,3 +98,11 @@
 
 .theme-autocomplete [data-suggest-rows]{overflow-anchor:none}
 .theme-autocomplete [data-suggest-before],.theme-autocomplete [data-suggest-after]{overflow-anchor:none}
+
+/* 056: second exact-search clause, keyboard-accessible and compact on mobile. */
+.exact-add-term{display:none;flex:none;width:2.35rem;height:2.35rem;padding:0;border:1px solid rgba(199,167,106,.6);border-radius:.68rem;background:#26323a;color:#e5c185;font-size:1.55rem;font-weight:700;line-height:1;cursor:pointer}
+.primary-search.exact-mode .exact-add-term{display:inline-flex;align-items:center;justify-content:center}
+.exact-add-term:focus-visible{outline:2px solid #e5c185;outline-offset:2px}
+.results-heading{flex-wrap:wrap;align-items:baseline}
+.results-heading #resultCount{max-width:100%;line-height:1.45;text-align:right;overflow-wrap:anywhere}
+@media(max-width:760px){.results-heading #resultCount{flex-basis:100%;text-align:left;font-size:.82rem}}
