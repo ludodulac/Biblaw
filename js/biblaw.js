@@ -493,7 +493,7 @@
         // are published only after collecting corpus-wide nominal evidence.
         if(state.mode==='exact'&&(/^\d$/u.test(norm($('query').value))||norm($('query').value).length>=2)&&performance.now()-lastPublishedAt>90){
           state.wordEntries=[...words.values(),...[...candidates.values()].filter(entry=>
-            entry.kind==='number'&&nounEvidence.has(entry.lastHead))];
+            entry.kind==='hyphen'||entry.kind==='number'&&nounEvidence.has(entry.lastHead))];
           renderWordAutocomplete();
           lastPublishedAt=performance.now();
         }
