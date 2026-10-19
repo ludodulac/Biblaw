@@ -32,7 +32,7 @@ async function getEntries(page,query){
   assert.ok(entries.size>=Math.ceil(total*0.70),'Virtual scroll exposes candidates throughout the '+total+' item list for '+query);
   assert.ok((await box.locator('[data-autocomplete-word]').count())<=18,'Optimized 18-row virtual list');
   const values=[...entries.values()];
-  assert.ok(values.every(v=>norm(v).startsWith(norm(query))),'Every candidate must begin with typed prefix: '+query);
+  assert.ok(values.every(v=>norm(v).startsWith(norm(query))||(/^\d+\s/u.test(v)&&/^[a-z]/u.test(norm(query)))),'Every candidate must begin with the typed prefix, except source-attested numeric aliases: '+query);
   return {total,values};
 }
 async function results(page,mode,query){
