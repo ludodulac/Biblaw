@@ -297,7 +297,7 @@
   // 053: index only expressions copied verbatim from documentary fragments.
   // No generated/plausible language combinations; the existing consecutive-phrase search is unchanged.
   async function buildWordSuggestionLookup(){
-    let chunkStart=performance.now();
+    let chunkStart=performance.now(),lastPublishedAt=0;
     const words=new Map(),expressions=new Map();
     const connectors=new Set(['de','du','des','au','aux','a','en','et','avec','pour','sans','sur','sous','entre','par']);
     const articles=new Set(['le','la','les','l','un','une','des']);
@@ -341,6 +341,13 @@
         }
       }
       if(performance.now()-chunkStart>12){
+        // Publish real attested words progressively so typing works before the
+        // entire corpus and all compound expressions have been indexed.
+        if(state.mode==='exact'&&norm($('query').value).length>=2&&performance.now()-lastPublishedAt>90){
+          state.wordEntries=[...words.values(),...expressions.values()];
+          renderWordAutocomplete();
+          lastPublishedAt=performance.now();
+        }
         await new Promise(resolve=>setTimeout(resolve,0));
         chunkStart=performance.now();
       }
@@ -359,10 +366,19 @@
         ||(a.expression?1:0)-(b.expression?1:0)||b.count-a.count||a.word.localeCompare(b.word,'fr'));
   }
   function renderWordAutocomplete(){
+    const query=norm($('query').value);
+    if(query.length<2){hideThemeAutocomplete();return;}
     const words=findAutocompleteWords($('query').value);
-    if(!state.wordIndexReady){
-      // Input remains interactive while the corpus-side suggestions index is prepared.
-      hideThemeAutocomplete();
+    if(!state.wordIndexReady&&!words.length){
+      // 053C: do not silently suppress the dropdown during progressive indexing.
+      const box=$('themeAutocomplete');
+      state.autocompleteItems=[];
+      state.autocompleteMode=null;
+      state.autocompleteWindowStart=-1;
+      box.setAttribute('aria-label','Préparation des suggestions du corpus');
+      box.innerHTML='<div class="autocomplete-count" role="status">Recherche des suggestions dans les psaumes…</div>';
+      box.hidden=false;
+      $('query').setAttribute('aria-expanded','true');
       return;
     }
     showSuggestionList(words,'words','Mots et expressions du corpus suggérés');
