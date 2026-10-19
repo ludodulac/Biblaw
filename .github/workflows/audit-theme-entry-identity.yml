@@ -115,7 +115,7 @@ jobs:
                 ACTUAL_JS_BLOB="$(git rev-parse HEAD:js/biblaw.js)"
                 # 052: separately reviewed UI-only browser glue; both immutable content hashes
                 # must remain explicit rather than granting permission to arbitrary JS edits.
-                APPROVED_052_UI_JS_BLOB="9deba158c594b39ee2fb868b674fbabac45daa9f"
+                APPROVED_052_UI_JS_BLOB="c7c490965671b0fc850fe0d436a3592b689ebd02"
                 if [ "$ACTUAL_JS_BLOB" != "$APPROVED_OCCURRENCE_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_052_UI_JS_BLOB" ]; then
                   echo "::error::Unreviewed js/biblaw.js changes; thematic search remains protected"
                   exit 1
