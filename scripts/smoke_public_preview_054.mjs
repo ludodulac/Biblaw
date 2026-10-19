@@ -30,6 +30,13 @@ try{
     return {stat,result,entry};
   });
   console.log('LIVE_STATUS',JSON.stringify(status));
+  console.log('LIVE_ROOT',JSON.stringify(await page.evaluate(()=>({title:document.title,html:document.documentElement.outerHTML.slice(0,1100),body:document.body?.innerText?.slice(0,700),scripts:[...document.scripts].map(s=>s.src)}))));
+  if(!status.stat){
+    const alt=url.replace('rawcdn.githack.com','raw.githack.com');
+    const altResponse=await page.goto(alt,{waitUntil:'networkidle',timeout:30000});
+    console.log('ALTERNATIVE_DOCUMENT',altResponse?.status(),page.url());
+    console.log('ALTERNATIVE_ROOT',JSON.stringify(await page.evaluate(()=>({title:document.title,stat:document.querySelector('#corpusStats')?.textContent,body:document.body?.innerText?.slice(0,600),html:document.documentElement.outerHTML.slice(0,700)}))));
+  }
   console.log('LIVE_ERRORS',JSON.stringify(errors.slice(0,15)),JSON.stringify(requests.slice(0,15)));
   assert.match(status.stat||'',/psaumes/,'Corpus loaded from live preview');
   await page.locator('#indexToggle').click();
