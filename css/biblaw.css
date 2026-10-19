@@ -58,7 +58,7 @@
 .theme-autocomplete [role="option"]:hover,.theme-autocomplete [role="option"]:focus-visible{background:#344451;outline:2px solid #c7a76a;outline-offset:-2px}
 .primary-mode-selector{display:grid;grid-template-columns:1fr 1fr;gap:.25rem;max-width:20rem;margin:.85rem 0 .75rem;padding:.22rem;border:1px solid #47555d;border-radius:.85rem;background:#131a21}
 .primary-mode-selector .mode-button{min-height:2.75rem;border:0;border-radius:.62rem;background:transparent;color:#d6e0e6;font-size:.86rem;font-weight:700;letter-spacing:.035em}
-.primary-mode-selector .mode-button.active{background:#e2bb74;color:#171d20}
+.primary-mode-selector .mode-button.active{background:#fff;color:#171d20}
 .popular-themes{display:flex;flex-wrap:wrap;gap:.45rem;min-height:2.6rem}
 .popular-theme-chip{min-height:2.6rem;padding:.55rem .8rem;border:1px solid #47545d;border-radius:999px;background:#192229;color:#dce5ea;font-size:.88rem;cursor:pointer}
 .popular-theme-chip:hover,.popular-theme-chip:focus-visible{border-color:#e2bb74;color:#fff}
@@ -106,3 +106,6 @@
 .results-heading{flex-wrap:wrap;align-items:baseline}
 .results-heading #resultCount{max-width:100%;line-height:1.45;text-align:right;overflow-wrap:anywhere}
 @media(max-width:760px){.results-heading #resultCount{flex-basis:100%;text-align:left;font-size:.82rem}}
+
+/* 057: readable search-mode labels on narrow smartphones. */
+@media(max-width:400px){.primary-mode-selector .mode-button{min-width:0;min-height:3.15rem;padding:.38rem .28rem;font-size:clamp(.7rem,3vw,.82rem);line-height:1.22;white-space:normal;overflow-wrap:normal;text-align:center}}
