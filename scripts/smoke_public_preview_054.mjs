@@ -31,6 +31,8 @@ try{
   });
   console.log('LIVE_STATUS',JSON.stringify(status));
   console.log('LIVE_ROOT',JSON.stringify(await page.evaluate(()=>({title:document.title,html:document.documentElement.outerHTML.slice(0,1100),body:document.body?.innerText?.slice(0,700),scripts:[...document.scripts].map(s=>s.src)}))));
+  console.log('LIVE_NOTICE_LINKS',JSON.stringify(await page.locator('a').evaluateAll(nodes=>nodes.map(a=>({text:(a.innerText||'').trim().slice(0,90),href:a.href})).slice(0,20))));
+  console.log('LIVE_NOTICE_BUTTONS',JSON.stringify(await page.locator('button,input[type="submit"]').evaluateAll(nodes=>nodes.map(n=>({text:(n.innerText||'').trim(),value:n.value,html:n.outerHTML.slice(0,350)})).slice(0,12))));
   if(!status.stat){
     const alt=url.replace('rawcdn.githack.com','raw.githack.com');
     const altResponse=await page.goto(alt,{waitUntil:'networkidle',timeout:30000});
