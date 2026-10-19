@@ -50,6 +50,16 @@ jobs:
           node scripts/smoke_search_ui_052.mjs
           node scripts/smoke_search_ui_053.mjs
           node scripts/smoke_occurrences_041c.mjs
+      - name: Verify immutable public preview endpoints without deploying
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          PREVIEW="https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}"
+          for resource in index.html js/biblaw.js css/biblaw.css data/browser-search-catalog.json; do
+            status="$(curl -L --retry 2 --max-time 30 -s -o /dev/null -w '%{http_code}' "$PREVIEW/$resource" || true)"
+            echo "PUBLIC_PREVIEW_HTTP $resource $status"
+            if [ "$status" != "200" ]; then echo "::warning::Public CDN did not return HTTP 200 for $resource"; fi
+          done
       - name: Enregistrer les aperçus mobiles de la PR (sans déploiement)
         if: always()
         uses: actions/upload-artifact@v4
