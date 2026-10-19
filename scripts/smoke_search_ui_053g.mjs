@@ -47,6 +47,16 @@ async function resultIds(page,mode,term){
 }
 try{
   const {page,errors}=await visit(url);
+  // Input must stay interactive while the corpus is being indexed.
+  await page.locator('#modeExact').click();
+  await page.locator('#query').fill('au-d');
+  const earlyState=await page.locator('#themeAutocomplete').evaluate(node=>({
+    visible:!node.hidden,rows:node.querySelectorAll('[data-autocomplete-word]').length,
+    loading:node.textContent.includes('Recherche des suggestions'),
+    ready:document.querySelector('#query').dataset.wordSuggestionsReady||null
+  }));
+  assert.ok(earlyState.visible,'Typing au-d opens suggestions during mobile index preparation');
+  console.log('053G_EARLY_SUGGESTIONS '+JSON.stringify(earlyState));
   const original=await visit(previous);
   const themesNow=await entries(page,'el','themes');
   const themesOld=await entries(original.page,'el','themes');
