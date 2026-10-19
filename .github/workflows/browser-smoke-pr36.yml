@@ -15,6 +15,7 @@ on:
       - 'scripts/smoke_occurrence_expansion_browser.mjs'
       - 'scripts/smoke_search_ui_052.mjs'
       - 'scripts/smoke_search_ui_053.mjs'
+      - 'scripts/smoke_public_preview_054.mjs'
       - 'scripts/smoke_occurrences_041c.mjs'
       - 'scripts/audit_lexical_expansion_041c.py'
       - 'scripts/audit_lexical_expansion_runtime.py'
@@ -64,7 +65,7 @@ jobs:
         if: github.event_name == 'pull_request'
         env:
           BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
-        run: node scripts/smoke_search_ui_052.mjs
+        run: node scripts/smoke_public_preview_054.mjs
       - name: Enregistrer les aperçus mobiles de la PR (sans déploiement)
         if: always()
         uses: actions/upload-artifact@v4
