@@ -403,7 +403,7 @@
       // A repeated bare "N de N" or a determinative "N de la N" with two
       // evidenced lexical heads is a stronger nominal construction than an
       // arbitrary neighboring word sequence. Reject uncertainty.
-      (entry.count>=2||/\\bde\\s+(?:la|le|les|l[’'])/iu.test(entry.word))&&
+      (entry.count>=2||/\bde\s+(?:la|le|les|l[’'])/iu.test(entry.word))&&
       nounEvidence.has(entry.firstHead)&&nounEvidence.has(entry.lastHead)&&
       isStandaloneNominalHead(entry.firstHead)&&isStandaloneNominalHead(entry.lastHead)&&
       !/(?:er|ir|re|ez|eront|erait|eraient|aient)$/u.test(entry.lastHead);
