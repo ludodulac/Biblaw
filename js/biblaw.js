@@ -361,7 +361,7 @@
   function findAutocompleteWords(input){
     const query=norm(input);
     if(query.length<2)return[];
-    return state.wordEntries.filter(entry=>entry.key.includes(query))
+    return state.wordEntries.filter(entry=>entry.key.startsWith(query))
       .sort((a,b)=>(a.key.startsWith(query)?0:1)-(b.key.startsWith(query)?0:1)
         ||(a.expression?1:0)-(b.expression?1:0)||b.count-a.count||a.word.localeCompare(b.word,'fr'));
   }
