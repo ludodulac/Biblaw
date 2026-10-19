@@ -16,6 +16,7 @@ on:
       - 'scripts/smoke_search_ui_052.mjs'
       - 'scripts/smoke_search_ui_053.mjs'
       - 'scripts/smoke_public_preview_054.mjs'
+      - 'scripts/smoke_public_suggestions_053c.mjs'
       - 'scripts/smoke_occurrences_041c.mjs'
       - 'scripts/audit_lexical_expansion_041c.py'
       - 'scripts/audit_lexical_expansion_runtime.py'
@@ -57,6 +58,11 @@ jobs:
         env:
           BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
         run: node scripts/smoke_public_preview_054.mjs
+      - name: Diagnose 053C mobile typing on original reported public link
+        if: github.event_name == 'pull_request'
+        env:
+          BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/0205b35b91960e89a81194251f770163e20cc5d4/index.html
+        run: node scripts/smoke_public_suggestions_053c.mjs
       - name: Run Chromium smoke test against local Pages payload
         run: |
           python -m http.server 4173 --directory _site >/tmp/biblaw-smoke-http.log 2>&1 &
