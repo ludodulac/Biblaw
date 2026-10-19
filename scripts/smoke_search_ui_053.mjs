@@ -31,18 +31,26 @@ try{
   await page.locator('#query').fill(themePair[0]);
   assert.equal(await page.locator('#themeAutocomplete').isVisible(),false);
   await page.locator('#query').fill(themePair);
-  const themeCount=await page.locator('[data-autocomplete-theme]').count();
+  const themeCount=Number(await page.locator('#themeAutocomplete').getAttribute('data-total-suggestions'));
   assert.ok(themeCount>5,'All matching theme suggestions (>5)');
+  assert.ok((await page.locator('[data-autocomplete-theme]').count())<=18,'Theme DOM uses virtual rows');
   await scrollCheck('themes');
   await page.locator('#modeExact').click();
+  await page.waitForFunction(()=>document.querySelector('#query')?.dataset.wordSuggestionsReady==='true');
   assert.equal(await page.locator('#modeExact').getAttribute('aria-pressed'),'true','Mode button works while all suggestions open');
   await page.locator('#query').fill('m');
   assert.equal(await page.locator('#themeAutocomplete').isVisible(),false);
   await page.locator('#query').fill('ma');
   const words=page.locator('[data-autocomplete-word]');
-  const wordCount=await words.count();
-  assert.ok(wordCount>5,'All matching words (>5)');
+  const wordCount=Number(await page.locator('#themeAutocomplete').getAttribute('data-total-suggestions'));
+  assert.ok(wordCount>100,'All matching words (>100)');
+  assert.ok((await words.count())<=18,'At most 18 DOM nodes represent full suggestions list');
   await scrollCheck('words');
+  assert.ok((await words.count())<=18,'Scrolling does not build thousands of buttons');
+  // A suggestion menu containing thousands of entries must never prevent basic taps.
+  await page.locator('#indexToggle').click();
+  assert.equal(await page.locator('#indexPanel').isVisible(),true,'Index remains clickable with massive list');
+  await page.locator('#closeIndex').click();
   await page.locator('#query').fill('mé');
   const accents=await words.allTextContents();
   await page.locator('#query').fill('me');
@@ -74,9 +82,17 @@ try{
     const words=norm(candidate).split(' ').filter(x=>x.length>=3);
     const query=words[words.length-1];
     await page.locator('#query').fill(query);
-    const at=await page.locator('[data-autocomplete-word]').evaluateAll((elements,label)=>elements.findIndex(el=>el.dataset.autocompleteWord.toLocaleLowerCase('fr')===label.toLocaleLowerCase('fr')),candidate);
-    assert.ok(at>=0,kind+' is attested and suggested from '+query+': '+candidate);
-    const selected=page.locator('[data-autocomplete-word]').nth(at);
+    const total=Number(await page.locator('#themeAutocomplete').getAttribute('data-total-suggestions'));
+    let selected=null;
+    // Scroll through the COMPLETE result set (virtualized DOM) to reach an attested phrase
+    // even when its source word has thousands of other occurrences.
+    for(let start=0;start<total;start+=13){
+      await page.locator('#themeAutocomplete').evaluate((box,index)=>{box.scrollTop=32+64*index;},start);
+      await page.waitForTimeout(8);
+      const at=await page.locator('[data-autocomplete-word]').evaluateAll((elements,label)=>elements.findIndex(el=>el.dataset.autocompleteWord.toLocaleLowerCase('fr')===label.toLocaleLowerCase('fr')),candidate);
+      if(at>=0){selected=page.locator('[data-autocomplete-word]').nth(at);break;}
+    }
+    assert.ok(selected,kind+' is attested and reachable by scrolling from '+query+': '+candidate);
     assert.equal((await selected.textContent()).toLocaleLowerCase('fr'),candidate.toLocaleLowerCase('fr'),'Punctuation and spaces preserved');
     await selected.click();
     assert.equal(norm(await page.locator('#query').inputValue()),norm(candidate),'Complete phrase inserted');
