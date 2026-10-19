@@ -81,6 +81,18 @@ try{
   for(const [typed,wanted] of expected)
     assert.ok(after[typed].entries.some(x=>norm(x.display)===norm(wanted)),
       'Retain attested autonomous expression '+wanted+' for '+typed);
+  // These corpus-attested nominal expressions were lost only because their
+  // phrase frequency was one; nominal-head evidence must restore them.
+  const rareButValid=[
+    ['qualité','qualité de l’âme'],
+    ['qualité','qualité de l’esprit'],
+    ['elem','élément de la destinée'],
+    ['l au','l’aube de l’existence'],
+    ['question','question de l’envoûtement']
+  ];
+  for(const [typed,wanted] of rareButValid)
+    assert.ok(after[typed].entries.some(x=>norm(x.display)===norm(wanted)),
+      'Preserve a rare grammatically closed nominal expression: '+wanted);
   const bad=['soi-même dans','soi-même est','est au-delà','qui est au-delà',
     'élément à sa','soit de nouveau','soient des éléments','aurez des réponses',
     'aura des conséquences','question de transmettre','qualité de faire','Père de la belle'];

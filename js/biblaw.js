@@ -395,15 +395,12 @@
       'nouveau','nouvelle','nouveaux','nouvelles','grands','grandes','petits','petites','vraie','vrai','vrais','vraies','belle','beau','belles','beaux'
     ]);
     const isStandaloneNominalHead=head=>isNominalKey(head)&&!nonNominalHeads.has(head);
-    // An isolated "noun de noun" observed once can be a random slice
-    // ("question de transmettre"). Require independent reuse in the source.
-    // Original user search is NEVER limited by these conservative suggestions.
+    // 053H: frequency is not proof of grammar. A rare expression may be
+    // fully valid. Require independently witnessed nominal heads and a
+    // closed genitive structure, rather than multiple phrase occurrences.
+    // Manually typed phrases are never restricted by these suggestion rules.
     const isReliableNominalExpression=entry=>
       entry.kind==='genitive'&&
-      // Even a "N de la N" window can be accidental when witnessed only
-      // once. Require repeated source evidence for EVERY genitive pattern,
-      // not merely for bare "N de N". Manual phrase search is unaffected.
-      entry.count>=2&&
       nounEvidence.has(entry.firstHead)&&nounEvidence.has(entry.lastHead)&&
       isStandaloneNominalHead(entry.firstHead)&&isStandaloneNominalHead(entry.lastHead)&&
       !/(?:er|ir|ez|eront|erait|eraient|aient)$/u.test(entry.lastHead);
