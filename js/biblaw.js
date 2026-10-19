@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], hasSearched: false, suggestionEntries: [], wordEntries: [], wordKeys: new Set(), wordIndexReady:false, autocompleteItems:[], autocompleteMode:null, autocompleteWindowStart:-1 };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], hasSearched: false, suggestionEntries: [], wordEntries: [], wordKeys: new Set(), wordIndexReady:false, wordAutocompleteSuppressed:false, autocompleteItems:[], autocompleteMode:null, autocompleteWindowStart:-1 };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -366,6 +366,7 @@
         ||(a.expression?1:0)-(b.expression?1:0)||b.count-a.count||a.word.localeCompare(b.word,'fr'));
   }
   function renderWordAutocomplete(){
+    if(state.wordAutocompleteSuppressed){hideThemeAutocomplete();return;}
     const query=norm($('query').value);
     if(query.length<2){hideThemeAutocomplete();return;}
     const words=findAutocompleteWords($('query').value);
@@ -523,6 +524,7 @@
   }
 
   function search(){
+    state.wordAutocompleteSuppressed=true;
     hideThemeAutocomplete();
     const query=$('query').value.trim(), query2=$('query2').value.trim();
     if(!query){clearSearchDisplay();return;}
@@ -641,14 +643,14 @@
   const setAdvancedSearch = open => { if(state.mode!=='themes')return; $('primarySearch').classList.toggle('advanced-visible',open); $('advancedSearchToggle').setAttribute('aria-expanded',String(open)); $('advancedSearchToggle').textContent=open?'Fermer le croisement':'Croiser deux thèmes'; if(open){$('query2').focus();}else{$('query2').value='';if(state.hasSearched)search();} };
   $('advancedSearchToggle').onclick=()=>setAdvancedSearch(!$('primarySearch').classList.contains('advanced-visible'));
   $('searchForm').addEventListener('submit',event=>{event.preventDefault();search();});
-  $('query').addEventListener('input',()=>{handleExactQueryInput();renderThemeAutocomplete();});
+  $('query').addEventListener('input',()=>{state.wordAutocompleteSuppressed=false;handleExactQueryInput();renderThemeAutocomplete();});
   $('query').addEventListener('keydown',event=>{
     if(event.key==='Escape')hideThemeAutocomplete();
     if(event.key==='ArrowDown'&&!$('themeAutocomplete').hidden){event.preventDefault();focusSuggestion(0);}
   });
   // 053: close after the destination has received its click; pointerdown would collapse
   // the scrollable suggestion panel before mobile mode buttons can be activated.
-  document.addEventListener('click',event=>{if(!event.target.closest('.query-stack'))hideThemeAutocomplete();});
+  document.addEventListener('click',event=>{if(!event.target.closest('.query-stack')){state.wordAutocompleteSuppressed=true;hideThemeAutocomplete();}});
   $('query2').addEventListener('input',hideThemeAutocomplete);
   $('results').addEventListener('click',event=>{if(event.target.closest('[data-search-in-words]')){activateExactMode();search();}});
   document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=()=>{if(state.hasSearched)search();});
