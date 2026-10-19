@@ -400,10 +400,10 @@
     // Original user search is NEVER limited by these conservative suggestions.
     const isReliableNominalExpression=entry=>
       entry.kind==='genitive'&&
-      // A repeated bare "N de N" or a determinative "N de la N" with two
-      // evidenced lexical heads is a stronger nominal construction than an
-      // arbitrary neighboring word sequence. Reject uncertainty.
-      (entry.count>=2||/\bde\s+(?:la|le|les|l[’'])/iu.test(entry.word))&&
+      // Even a "N de la N" window can be accidental when witnessed only
+      // once. Require repeated source evidence for EVERY genitive pattern,
+      // not merely for bare "N de N". Manual phrase search is unaffected.
+      entry.count>=2&&
       nounEvidence.has(entry.firstHead)&&nounEvidence.has(entry.lastHead)&&
       isStandaloneNominalHead(entry.firstHead)&&isStandaloneNominalHead(entry.lastHead)&&
       !/(?:er|ir|ez|eront|erait|eraient|aient)$/u.test(entry.lastHead);
