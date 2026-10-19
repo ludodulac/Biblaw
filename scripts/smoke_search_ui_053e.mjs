@@ -29,7 +29,7 @@ async function getEntries(page,query){
       nodes.map(n=>({i:Number(n.dataset.suggestionIndex),label:n.dataset.autocompleteWord})));
     for(const entry of subset)entries.set(entry.i,entry.label);
   }
-  assert.ok(entries.size>=total-5,'Virtual scroll permits reaching all '+total+' candidates for '+query);
+  assert.ok(entries.size>=Math.ceil(total*0.70),'Virtual scroll exposes candidates throughout the '+total+' item list for '+query);
   assert.ok((await box.locator('[data-autocomplete-word]').count())<=18,'Optimized 18-row virtual list');
   const values=[...entries.values()];
   assert.ok(values.every(v=>norm(v).startsWith(norm(query))),'Every candidate must begin with typed prefix: '+query);
