@@ -60,6 +60,11 @@ jobs:
             echo "PUBLIC_PREVIEW_HTTP $resource $status"
             if [ "$status" != "200" ]; then echo "::warning::Public CDN did not return HTTP 200 for $resource"; fi
           done
+      - name: Tap the real public preview with mobile Chromium
+        if: github.event_name == 'pull_request'
+        env:
+          BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
+        run: node scripts/smoke_search_ui_052.mjs
       - name: Enregistrer les aperçus mobiles de la PR (sans déploiement)
         if: always()
         uses: actions/upload-artifact@v4
