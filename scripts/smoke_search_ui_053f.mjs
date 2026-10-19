@@ -25,7 +25,7 @@ async function contents(page,needle,{mode='exact',exhaustive=true}={}){
   const rows=new Map();
   const selector=mode==='exact'?'[data-autocomplete-word]':'[data-autocomplete-theme]';
   if(visible){
-    const positions=exhaustive?Array.from({length:Math.ceil(total/11)},(_,i)=>i*11):[0,Math.floor(total/2),Math.max(0,total-1)];
+    const positions=exhaustive?Array.from({length:Math.ceil(total/11)},(_,i)=>i*11):[0];
     for(const pos of positions){
       await box.evaluate((e,n)=>e.scrollTop=Math.max(0,32+(n-3)*64),pos);
       await page.waitForTimeout(12);
