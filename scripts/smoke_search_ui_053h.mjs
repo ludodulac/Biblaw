@@ -67,8 +67,8 @@ try{
   const before={},after={};
   for(const q of queries){
     if(q.length===1&&!/^\d$/u.test(q))continue;
-    before[q]=await suggestions(baseline.page,q,{walk:!['soi','au','monde'].includes(q)});
-    after[q]=await suggestions(page,q,{walk:!['soi','au','monde'].includes(q)});
+    before[q]=await suggestions(baseline.page,q);
+    after[q]=await suggestions(page,q);
     console.log('053H_QUERY '+JSON.stringify({q,before:before[q].total,after:after[q].total,
       sample:after[q].entries.slice(0,20).map(x=>x.display)}));
   }
