@@ -93,8 +93,12 @@ try{
       if(at>=0){selected=page.locator('[data-autocomplete-word]').nth(at);break;}
     }
     assert.ok(selected,kind+' is attested and reachable by scrolling from '+query+': '+candidate);
-    assert.equal((await selected.textContent()).toLocaleLowerCase('fr'),candidate.toLocaleLowerCase('fr'),'Punctuation and spaces preserved');
-    await selected.click();
+    const index=Number(await selected.getAttribute('data-suggestion-index'));
+    await page.locator('#themeAutocomplete').evaluate((box,i)=>{box.scrollTop=Math.max(0,32+64*(i-2));},index);
+    await page.waitForTimeout(40);
+    const centered=page.locator('[data-suggestion-index="'+index+'"]');
+    assert.equal((await centered.textContent()).toLocaleLowerCase('fr'),candidate.toLocaleLowerCase('fr'),'Punctuation and spaces preserved');
+    await centered.click();
     assert.equal(norm(await page.locator('#query').inputValue()),norm(candidate),'Complete phrase inserted');
     const expected=await page.evaluate(async phrase=>{
       const bundle=await(await fetch('data/browser-search-catalog.json')).json();
