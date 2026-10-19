@@ -63,7 +63,7 @@ try{
     rejectedGenitive:+e.dataset.rejectedGenitiveCount
   }));
   assert.ok(internal.hyphen>0&&internal.acceptedGenitive>0&&internal.rejectedGenitive>0,'Grammar audit counters');
-  const queries=['soi','soi me','au','au dela','elem','qu','4','père','monde','question','qualité','aura','aurez','soit','soient','b','c','d','p','v'];
+  const queries=['soi','soi me','au','au dela','l au','elem','qu','4','père','monde','question','qualité','aura','aurez','soit','soient','ba','ch','di','po','vi','es','qui'];
   const before={},after={};
   for(const q of queries){
     if(q.length===1&&!/^\d$/u.test(q))continue;
@@ -74,7 +74,7 @@ try{
   }
   const expected=[
     ['soi','soi-même'],['soi me','soi-même'],['au','au-delà'],
-    ['au dela','au-delà'],['père','Père-Mère'],['qu','4 éléments'],
+    ['au dela','au-delà'],['l au','l’au-delà'],['père','Père-Mère'],['qu','4 éléments'],
     ['4','4 éléments'],['monde','monde de l’homme'],
     ['elem','éléments de la nature']
   ];
