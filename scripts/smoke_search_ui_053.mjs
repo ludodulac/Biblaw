@@ -58,23 +58,12 @@ try{
 
   const samples=await page.evaluate(async()=>{
     const bundle=await(await fetch('data/browser-search-catalog.json')).json();
+    const norm=globalThis.BiblawThemeEngine.norm;
     const sources=(bundle.records||[]).flatMap(r=>r.recordType==='psalm'?[r.title,...(r.verses||[]).map(v=>v.text)]:[r.title,r.text,r.summary]).filter(Boolean);
-    const patterns={
-      hyphen:/[\p{L}]{3,}-[\p{L}]{3,}/gu,
-      numeric:/(?:\b\d+|\bquatre|\btrois|\bdeux|\bsept)\s+[\p{L}]{3,}/giu,
-      apostrophe:/[\p{L}]{3,}\s+de\s+l[’'][\p{L}]{3,}/giu,
-      spaced:/[\p{L}]{3,}\s+(?:de|du|des|au|aux|en|pour|sans)\s+[\p{L}]{3,}/giu
-    };
-    const found={hyphen:null,numeric:null,apostrophe:null,spaced:null};
-    for(const source of sources)for(const [kind,pattern] of Object.entries(patterns)){
-      if(found[kind])continue;
-      pattern.lastIndex=0;const m=pattern.exec(String(source));
-      if(m)found[kind]=m[0];
-    }
-    for(const [kind,example] of [['hyphen','Père-Mère'],['numeric','4 éléments'],['numeric','quatre éléments'],['apostrophe',"monde de l'homme"]]){
-      if(sources.some(s=>String(s).toLocaleLowerCase('fr').includes(example.toLocaleLowerCase('fr'))))found[kind]=example;
-    }
-    return found;
+    // Fixed regression examples, but each must be verified against the actual canonical corpus.
+    const options={hyphen:'Père-Mère',numeric:'4 éléments',apostrophe:'monde de l’homme',genitive:'éléments de la nature'};
+    return Object.fromEntries(Object.entries(options).map(([kind,label])=>
+      [kind,sources.some(source=>norm(source).includes(norm(label)))?label:null]));
   });
   let tested=0;
   for(const [kind,candidate] of Object.entries(samples)){
