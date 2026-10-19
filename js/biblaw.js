@@ -381,6 +381,31 @@
       'de','du','des','d','a','au','aux','avec','pour','sans','sur','sous','entre','par','dans','vers','chez','contre','et','ou','mais','donc','car','puis','alors','comme','quand','lorsque','afin','ainsi','est','sont','etre','être','ete','été','avait','ont','a','fait','font','peut','peuvent','faut','tous','toutes','tout','toute','autre','autres'
     ]);
     const numberWords=new Set(['deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','vingt','trente','quarante','cinquante','soixante','cent','mille']);
+    // 053G: lexical compounds are contiguous hyphen groups, never windows
+    // spanning whitespace, sentences or surrounding independent words.
+    // Different source glyphs are retained verbatim in the suggestion label.
+    const hyphenSeparator=/^[-‐‑‒–]$/u;
+    const hyphenPrefix=new Set(['au','aux','en','de','du','des','sans','sous','sur','entre','outre','hors','avant','après','arrière','contre','non','semi','mi','vice','grand','grande','petit','petite']);
+    const hyphenMiddle=new Set(['a','à','au','aux','de','du','des','d','en','et','le','la','les','l','un','une','t']);
+    const demonstratives=new Set(['celui','celle','ceux','celles']);
+    const reflexives=new Set(['soi','moi','toi','lui','elle','elles','eux','nous','vous']);
+    const isIndependentHyphenWord=parts=>{
+      if(parts.length<2||parts.length>8)return false;
+      const keys=parts.map(part=>part.head),first=keys[0],last=keys[keys.length-1];
+      // Typical inversion/question structures (a-t-il, es-tu, dit-elle) are
+      // not independent words; they are fragments of their surrounding clause.
+      if(keys.slice(1).includes('t')&&['il','elle','on','ils','elles','tu','nous','vous'].includes(last))return false;
+      if(demonstratives.has(first)&&['ci','la','là'].includes(last)&&parts.length===2)return true;
+      if(reflexives.has(first)&&['meme','memes'].includes(last)&&parts.length===2)return true;
+      const contentEnd=isNominalKey(last);
+      const contentStart=isNominalKey(first);
+      if(!contentEnd)return false;
+      if(!(contentStart||hyphenPrefix.has(first)))return false;
+      // Nominal/prepositional compounds may use grammatical linkers inside,
+      // e.g. arc-en-ciel, tête-à-tête, without accepting arbitrary prose.
+      return keys.slice(1,-1).every(key=>isNominalKey(key)||hyphenMiddle.has(key));
+    };
+
     const wordHead=value=>{
       const raw=String(value).toLocaleLowerCase('fr').replace(/^l[’']/u,'');
       return norm(raw);
@@ -416,19 +441,21 @@
           /^l[’']/iu.test(first.word)
         ))nounEvidence.add(first.head);
         for(const word of (first.word.match(/[\p{L}\p{N}]+/gu)||[]))addWord(word.toLocaleLowerCase('fr'));
+        // Capture the FULL maximal hyphen group once, including functional
+        // starters (au-delà, soi-même, celui-ci) and multi-link forms
+        // (arc-en-ciel). Strictly adjacent tokens only, no spaced dashes.
+        if((i===0||!hyphenSeparator.test(source.slice(tokens[i-1].end,first.start)))&&tokens[i+1]){
+          let final=i;
+          while(final<i+7&&tokens[final+1]&&
+            hyphenSeparator.test(source.slice(tokens[final].end,tokens[final+1].start)))final++;
+          if(final>i&&isIndependentHyphenWord(tokens.slice(i,final+1))){
+            addCandidate(source.slice(first.start,tokens[final].end),'hyphen',first.head,tokens[final].head);
+          }
+        }
         if(!isNominalKey(first.head)&&!/^\d+$/u.test(first.word)&&!numberWords.has(first.head))continue;
         const second=tokens[i+1];
         if(!second)continue;
         const sep=source.slice(first.end,second.start);
-        // Exact connected hyphenated compounds: e.g. Père-Mère.
-        // Do not expand them into neighboring sentence fragments.
-        if(/^[-‐‑–]$/u.test(sep)&&isNominalKey(first.head)&&isNominalKey(second.head)){
-          let end=second,position=i+1;
-          while(position<i+3&&tokens[position+1]&&
-            /^[-‐‑–]$/u.test(source.slice(end.end,tokens[position+1].start))&&
-            isNominalKey(tokens[position+1].head)){position++;end=tokens[position];}
-          addCandidate(source.slice(first.start,end.end),'hyphen',first.head,end.head);
-        }
         // Numbers can precede an attested nominal head: quatre éléments, 4 éléments.
         if(/^\s+$/u.test(sep)&&(/^\d+$/u.test(first.word)||numberWords.has(first.head))&&isNominalKey(second.head))
           addCandidate(source.slice(first.start,second.end),'number',first.head,second.head);
@@ -481,6 +508,8 @@
     );
     state.wordEntries=[...words.values(),...expressions];
     state.wordKeys=new Set([...words.values()].map(entry=>entry.key));
+    // Read-only audit counter for verified source-attested hyphen compounds.
+    $('query').dataset.hyphenSuggestionCount=String(expressions.filter(entry=>entry.kind==='hyphen').length);
     state.wordIndexReady=true;
     $('query').dataset.wordSuggestionsReady='true';
     if(state.mode==='exact'&&norm($('query').value).length>=1)renderThemeAutocomplete();
