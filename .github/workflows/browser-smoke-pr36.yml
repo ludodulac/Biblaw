@@ -42,15 +42,6 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0
           npx playwright install --with-deps chromium
-      - name: Run Chromium smoke test against local Pages payload
-        run: |
-          python -m http.server 4173 --directory _site >/tmp/biblaw-smoke-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID"' EXIT
-          node scripts/smoke_occurrence_expansion_browser.mjs
-          node scripts/smoke_search_ui_052.mjs
-          node scripts/smoke_search_ui_053.mjs
-          node scripts/smoke_occurrences_041c.mjs
       - name: Verify immutable public preview endpoints without deploying
         if: github.event_name == 'pull_request'
         shell: bash
@@ -66,6 +57,15 @@ jobs:
         env:
           BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
         run: node scripts/smoke_public_preview_054.mjs
+      - name: Run Chromium smoke test against local Pages payload
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-smoke-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node scripts/smoke_occurrence_expansion_browser.mjs
+          node scripts/smoke_search_ui_052.mjs
+          node scripts/smoke_search_ui_053.mjs
+          node scripts/smoke_occurrences_041c.mjs
       - name: Enregistrer les aperçus mobiles de la PR (sans déploiement)
         if: always()
         uses: actions/upload-artifact@v4
