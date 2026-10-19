@@ -95,6 +95,9 @@ try{
 
   // Compare actual results against the pinned, previously tested 053C release.
   const reference=(await open(baseline)).page;
+  // 053C computes attested singular/plural candidates asynchronously.
+  // Compare search engines only once BOTH previews have finished preparing identical lexicons.
+  await reference.waitForFunction(()=>document.querySelector('#query')?.dataset.wordSuggestionsReady==='true',null,{timeout:90000});
   const beforeTheme=await searchIds(reference,'sainte assemblée','themes');
   const afterTheme=await searchIds(page,'sainte assemblée','themes');
   assert.deepEqual(afterTheme,beforeTheme,'Thematic rankings and psalm IDs unchanged');
