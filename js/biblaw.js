@@ -381,6 +381,29 @@
       'de','du','des','d','a','au','aux','avec','pour','sans','sur','sous','entre','par','dans','vers','chez','contre','et','ou','mais','donc','car','puis','alors','comme','quand','lorsque','afin','ainsi','est','sont','etre','être','ete','été','avait','ont','a','fait','font','peut','peuvent','faut','tous','toutes','tout','toute','autre','autres'
     ]);
     const numberWords=new Set(['deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','vingt','trente','quarante','cinquante','soixante','cent','mille']);
+    // 053H: a corpus attestation is not sufficient to prove a standalone noun
+    // phrase. These are grammatical categories, NOT a list of banned strings.
+    // Closed-class auxiliaries, conjugations, adverbs and determiners cannot
+    // serve as nominal heads just because they were seen next to an article.
+    const nonNominalHeads=new Set([
+      'soit','soient','sois','soyons','soyez','fut','fût','fussent','serait','seraient','seras','sera','serons','seront','seriez','serait','serais',
+      'aura','auras','aurez','aurait','aurais','aurions','auriez','auraient','auront','aurai','aurons','avaient','avait','aviez','avions','eut','eût','eurent','ayant',
+      'aussi','encore','ici','ailleurs','demain','hier','maintenant','jamais','toujours','souvent','alors','désormais','déjà','peut-être','enfin','ensuite',
+      'aucun','aucune','aucuns','aucunes','chaque','plusieurs','certain','certains','certaine','certaines',
+      'voudrait','voudraient','veut','veulent','voulez','vouloir','peut','peuvent','pourrait','pourraient',
+      'est','sont','être','ete','été','fait','font','faire','savoir','laisser','dire','mettre','transmettre','recevoir',
+      'nouveau','nouvelle','nouveaux','nouvelles','grands','grandes','petits','petites','vraie','vrai','vrais','vraies','belle','beau','belles','beaux'
+    ]);
+    const isStandaloneNominalHead=head=>isNominalKey(head)&&!nonNominalHeads.has(head);
+    // An isolated "noun de noun" observed once can be a random slice
+    // ("question de transmettre"). Require independent reuse in the source.
+    // Original user search is NEVER limited by these conservative suggestions.
+    const isReliableNominalExpression=entry=>
+      entry.kind==='genitive'&&entry.count>=2&&
+      nounEvidence.has(entry.firstHead)&&nounEvidence.has(entry.lastHead)&&
+      isStandaloneNominalHead(entry.firstHead)&&isStandaloneNominalHead(entry.lastHead)&&
+      !/(?:er|ir|re|ez|eront|erait|eraient|aient)$/u.test(entry.lastHead);
+
     // 053G: lexical compounds are contiguous hyphen groups, never windows
     // spanning whitespace, sentences or surrounding independent words.
     // Different source glyphs are retained verbatim in the suggestion label.
@@ -504,12 +527,16 @@
     const expressions=[...candidates.values()].filter(entry=>
       entry.kind==='hyphen'||
       entry.kind==='number'&&nounEvidence.has(entry.lastHead)||
-      entry.kind==='genitive'&&nounEvidence.has(entry.firstHead)&&nounEvidence.has(entry.lastHead)
+      isReliableNominalExpression(entry)
     );
     state.wordEntries=[...words.values(),...expressions];
     state.wordKeys=new Set([...words.values()].map(entry=>entry.key));
-    // Read-only audit counter for verified source-attested hyphen compounds.
+    // Read-only audit counters for the actual attested suggestions, with
+    // no change to the psalm index, search, or ranking.
     $('query').dataset.hyphenSuggestionCount=String(expressions.filter(entry=>entry.kind==='hyphen').length);
+    $('query').dataset.genitiveSuggestionCount=String(expressions.filter(entry=>entry.kind==='genitive').length);
+    $('query').dataset.rejectedGenitiveCount=String([...candidates.values()].filter(entry=>
+      entry.kind==='genitive'&&!isReliableNominalExpression(entry)).length);
     state.wordIndexReady=true;
     $('query').dataset.wordSuggestionsReady='true';
     if(state.mode==='exact'&&norm($('query').value).length>=1)renderThemeAutocomplete();
