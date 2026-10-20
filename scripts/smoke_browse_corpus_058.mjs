@@ -41,7 +41,7 @@ try{
   assert.equal(expected.psalm.length,1158,'1 158 canonical source Psalms');
   await page.locator('#secondaryTools summary').click();
   const counts={};
-  for(const category of ['psalm','prayer','note','annex']){
+  for(const category of ['psalm','prayer','note']){
     const control=page.locator('[data-browse-type="'+category+'"]');
     assert.equal(await control.textContent(),'Consulter','Existing category label is unchanged');
     const start=Date.now();
@@ -91,6 +91,11 @@ try{
     await control.click();
     assert.equal(await panel.isVisible(),false,'Consulter toggles closed');
   }
+  assert.equal(expected.annex.length,0,'Published catalog has no annex records');
+  assert.equal(await page.locator('[data-browse-type="annex"]').count(),0,
+    '059: Annexes consultation entry is entirely absent');
+  assert.equal(await page.locator('input[name="sourceType"][value="annex"]').count(),1,
+    'Search source-type input is retained, without changing search logic');
   assert.ok(await page.locator('#modeThemes').isVisible(),'Search mode remains intact');
   assert.deepEqual(errors,[],'No JavaScript browser errors');
   await page.setViewportSize({width:280,height:750});
