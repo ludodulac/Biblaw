@@ -1,0 +1,35 @@
+name: BIBLAW 062 editorial note decisions
+on:
+  pull_request:
+    paths:
+      - 'scripts/decide_notes_062.py'
+      - '.github/workflows/decide-notes-062.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  notes-062:
+    runs-on: ubuntu-latest
+    timeout-minutes: 11
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: biblaw-notes-evidence-061
+          run-id: 39433962159
+          github-token: ${{ github.token }}
+          path: /tmp/notes061
+      - uses: actions/download-artifact@v4
+        with:
+          name: biblaw-062-footnote-boundaries
+          run-id: 39461572177
+          github-token: ${{ github.token }}
+          path: /tmp/boundaries062
+      - run: python scripts/decide_notes_062.py /tmp/notes061/per-note-proof.json /tmp/boundaries062/footnote-boundaries.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-062-validation-proofs
+          path: reports/notes-062/
