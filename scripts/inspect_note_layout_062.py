@@ -57,10 +57,10 @@ print("BIBLAW_062_SELECTED "+json.dumps({"from_061":len(reports),
 selected=[]
 for r in notes:
  if len(selected)>=13:break
- if r["id"] in {"book-07-psalm-035-note-001","book-18-psalm-111-note-001",
+ if (r["id"] in {"book-07-psalm-035-note-001","book-18-psalm-111-note-001",
  "book-34-psalm-243-note-001","book-23-psalm-133-note-001",
  "book-26-psalm-181-note-002","book-16-psalm-086-note-002"} or
- (len(selected)<3 and r["id"].startswith("book-01")):
+ (len(selected)<3 and r["id"].startswith("book-01"))):
   selected.append(r)
 if len(selected)<8:selected+=notes[:8-len(selected)]
 for r in selected:
