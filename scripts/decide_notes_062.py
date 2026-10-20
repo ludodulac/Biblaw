@@ -34,10 +34,10 @@ for oldrow in targets:
  matches=difflib.SequenceMatcher(None,O,P,autojunk=False).get_matching_blocks()
  count=sum(x.size for x in matches)
  coverage=count/len(P) if P else 0
- mapped=[(i+j,x.a+j) for x in matches if x.size>0 for j,i in enumerate(range(x.b,x.b+x.size))]
+ mapped=[(x.b+j,x.a+j) for x in matches if x.size>0 for j in range(x.size)]
  lastpdf=max((p for p,_ in mapped),default=-100)
  lastorig=max((q for p,q in mapped if p>=len(P)-2),default=-1)
- candidate=original[:current[lastorig][2]].strip() if lastorig>=0 else ""
+ candidate=(original[:current[lastorig+1][1]].strip() if lastorig+1<len(current) else original.strip()) if lastorig>=0 else ""
  candidate_sim=difflib.SequenceMatcher(None,key(candidate),key(b.get("pdfNote","")),autojunk=False).ratio() if candidate else 0
  contained=key(original)==key(b.get("pdfNote",""))
  marker=int(b.get("marker") or -1)
