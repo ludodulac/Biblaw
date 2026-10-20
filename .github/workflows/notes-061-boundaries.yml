@@ -1,0 +1,41 @@
+name: BIBLAW 061 focused PDF boundary proofs
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/notes-061-boundaries.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  inspect-four-boundaries:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: biblaw-notes-evidence-061
+          run-id: 39433962159
+          github-token: ${{ github.token }}
+          path: /tmp/notes061
+      - name: Read original extracted PDF evidence for seven suspect note boundaries
+        run: |
+          python - <<'PY'
+          import json,re,unicodedata
+          from pathlib import Path
+          a=json.loads(Path('/tmp/notes061/per-note-proof.json').read_text())
+          ids=['book-05-psalm-036-note-001','book-22-psalm-150-note-001',
+               'book-18-psalm-111-note-001','book-44-psalm-285-note-002',
+               'book-44-psalm-285-note-003','book-44-psalm-285-note-004',
+               'book-34-psalm-243-note-001']
+          for i in ids:
+              p=next(v for v in a if v['id']==i)
+              options=p['pdf_page_candidates']
+              print('\nPROOF_NOTE',i,'FILE',p['source_file'],
+                'SOURCE_PAGE',p['pdf_page_declared'],'BEST_PAGE',p['best_pdf_page'],
+                'COVERAGE',p['best_pdf_coverage'],'RECIPROCAL',p['reciprocal_note_id'])
+              print('NOTE_FIRST_500',p['source_note_text'][:500])
+              print('NOTE_LAST_250',p['source_note_text'][-250:])
+              print('PDF_FIRST_2000',options[0]['pdfExcerpt'][:2000] if options else 'NO_PDF')
+              print('PDF_OTHER_PAGES',[(v['pdfPage'],v['coverage']) for v in options])
+          PY
