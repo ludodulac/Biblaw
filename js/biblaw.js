@@ -146,6 +146,7 @@
       renderPopularThemes();
       state.records = bundle.records || [];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
+      if(state.browseType)renderBrowseCategory(state.browseType);
       state.psalmsByNumber = new Map();
       state.normalizedFragmentsById = new Map();
       for (const r of state.records) {
@@ -1009,12 +1010,112 @@
     document.querySelectorAll('[data-open]').forEach(b=>b.onclick=e=>{e.stopPropagation();open(b.dataset.open);}); bindThemeLinks($('results')); bindTextSearchLink();
   }
   function bindTextSearchLink(){ const button=document.querySelector('[data-show-text-search]'); if(button)button.onclick=()=>{ activateExactMode(); search(); window.scrollTo({top:$('results').offsetTop-90,behavior:'smooth'}); }; }
-  function open(id){
-    const r=state.recordById.get(id);if(!r)return;state.active=r; $('dialogEyebrow').textContent=label(r);$('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
-    if(r.recordType==='psalm'){ const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${modeAwareText(v.text)}</div></div>`).join(''); const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`; $('dialogContent').innerHTML=verses+(r.attachedPrayer&&selectedTypes().has('prayer')?`<section class="prayer-block"><h3>Prière ${r.attachedPrayer.number}</h3>${modeAwareText(r.attachedPrayer.text)}</section>`:'')+themesBlock; bindThemeLinks($('dialogContent')); } else $('dialogContent').innerHTML=`<div class="prayer-block">${modeAwareText(r.text||r.summary||'')}</div>`;
+  function open(id,browsing=false){
+    const r=state.recordById.get(id);if(!r)return;state.active=r;state.activeBrowsing=browsing; $('browseBack').hidden=!browsing; $('dialogEyebrow').textContent=browsing?browseReference(r):label(r);$('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
+    const readText=browsing?esc:modeAwareText;
+    if(r.recordType==='psalm'){ const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${readText(v.text)}</div></div>`).join(''); const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`; $('dialogContent').innerHTML=verses+(r.attachedPrayer&&!browsing&&selectedTypes().has('prayer')?`<section class="prayer-block"><h3>Prière ${r.attachedPrayer.number}</h3>${readText(r.attachedPrayer.text)}</section>`:'')+themesBlock; bindThemeLinks($('dialogContent')); } else $('dialogContent').innerHTML=`<div class="prayer-block">${readText(r.text||r.summary||'')}</div>`;
     $('recordDialog').showModal();
   }
-  function activeText(){ const r=state.active;if(!r)return''; const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'); const header=[label(r),title]; if(r.book?.number)header.push(`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`); let out=header.join('\n')+'\n\n'; if(r.verses){ out+=(r.verses||[]).map(v=>`${v.number}. ${v.text}`).join('\n'); if(r.attachedPrayer?.text&&selectedTypes().has('prayer'))out+=`\n\nPrière ${r.attachedPrayer.number}\n\n${r.attachedPrayer.text}`; }else out+=r.text||r.summary||''; return out; }
+  function activeText(){ const r=state.active;if(!r)return''; const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'); const header=[label(r),title]; if(r.book?.number)header.push(`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`); let out=header.join('\n')+'\n\n'; if(r.verses){ out+=(r.verses||[]).map(v=>`${v.number}. ${v.text}`).join('\n'); if(r.attachedPrayer?.text&&!state.activeBrowsing&&selectedTypes().has('prayer'))out+=`\n\nPrière ${r.attachedPrayer.number}\n\n${r.attachedPrayer.text}`; }else out+=r.text||r.summary||''; return out; }
+
+  // 058: Browsing uses only catalog records; search/filter state is untouched.
+  const BROWSE_LABELS={psalm:'Psaumes',prayer:'Prières',note:'Notes',annex:'Annexes'};
+  const BROWSE_BATCH_SIZE=48;
+  const browseRecordType=r=>type(r);
+  const browseCoordinates=r=>{
+    const id=String(r.id||'').match(/^book-(\d+)-psalm-(\d+)$/u);
+    return [Number(id?.[1]||r.book?.number||r.bookNumber||9999),
+      Number(id?.[2]||r.number||9999)];
+  };
+  const browseReference=r=>{
+    const kind=browseRecordType(r);
+    if(kind==='psalm')return 'Psaume '+r.number+' · '+archangelName(r.archangel);
+    if(kind==='prayer')return 'Prière '+(r.number||'')+(r.archangel?' · '+archangelName(r.archangel):'');
+    if(kind==='note')return 'Note'+(r.number?' '+r.number:'');
+    return 'Annexe'+(r.number?' '+r.number:'');
+  };
+  function browseCategoryRecords(kind){
+    const rows=state.records.filter(r=>browseRecordType(r)===kind);
+    if(kind==='psalm')rows.sort((a,b)=>{
+      const ak=browseCoordinates(a),bk=browseCoordinates(b);
+      return ak[0]-bk[0]||ak[1]-bk[1]||String(a.id).localeCompare(String(b.id),'fr');
+    });
+    return rows;
+  }
+  function appendBrowseBatch(){
+    const box=$('browseEntries'),rows=state.browseRows||[];
+    const start=state.browseNext||0,limit=Math.min(rows.length,start+BROWSE_BATCH_SIZE);
+    const fragment=document.createDocumentFragment();
+    for(let i=start;i<limit;i++){
+      const record=rows[i],button=document.createElement('button');
+      button.type='button';button.className='browse-item';button.dataset.browseRecord=record.id;
+      const heading=document.createElement('strong'),title=document.createElement('span');
+      heading.textContent=browseReference(record);
+      title.textContent=record.title||record.id;
+      button.append(heading,title);
+      button.addEventListener('click',()=>open(record.id,true));
+      fragment.appendChild(button);
+    }
+    box.appendChild(fragment);
+    state.browseNext=limit;
+    $('browseStatus').textContent=limit+' sur '+rows.length+' textes affichés';
+    $('browseMore').hidden=limit>=rows.length;
+  }
+  function fillBrowseViewport(){
+    const box=$('browseEntries');
+    while(state.browseNext<state.browseRows.length&&box.scrollHeight<=box.clientHeight){
+      appendBrowseBatch();
+    }
+  }
+  function renderBrowseCategory(kind){
+    const rows=browseCategoryRecords(kind);
+    state.browseRows=rows;state.browseNext=0;
+    $('browseEntries').replaceChildren();
+    $('browseEntries').scrollTop=0;
+    $('browseTypeTitle').textContent=BROWSE_LABELS[kind];
+    $('browseCount').textContent=rows.length+' texte'+(rows.length===1?'':'s')+' dans le corpus';
+    $('textBrowser').dataset.recordType=kind;
+    $('textBrowser').dataset.totalRecords=String(rows.length);
+    if(!rows.length){
+      $('browseStatus').textContent=state.records.length?
+        'Aucun texte de cette catégorie dans le corpus.':'Chargement des textes…';
+      $('browseMore').hidden=true;return;
+    }
+    appendBrowseBatch();
+    fillBrowseViewport();
+  }
+  function closeBrowseCategory(){
+    state.browseType=null;state.browseRows=[];state.browseNext=0;
+    $('textBrowser').hidden=true;
+    document.querySelectorAll('[data-browse-type]').forEach(button=>
+      button.setAttribute('aria-expanded','false'));
+  }
+  function toggleBrowseCategory(kind){
+    if(!Object.hasOwn(BROWSE_LABELS,kind))return;
+    if(state.browseType===kind&&!$('textBrowser').hidden){
+      closeBrowseCategory();return;
+    }
+    state.browseType=kind;$('textBrowser').hidden=false;
+    document.querySelectorAll('[data-browse-type]').forEach(button=>
+      button.setAttribute('aria-expanded',String(button.dataset.browseType===kind)));
+    renderBrowseCategory(kind);
+  }
+  document.querySelectorAll('[data-browse-type]').forEach(button=>
+    button.addEventListener('click',()=>toggleBrowseCategory(button.dataset.browseType)));
+  $('browseClose').addEventListener('click',closeBrowseCategory);
+  $('browseMore').addEventListener('click',()=>{appendBrowseBatch();fillBrowseViewport();});
+  $('browseEntries').addEventListener('scroll',()=>{
+    const box=$('browseEntries');
+    if(state.browseRows?.length>state.browseNext&&
+      box.scrollTop+box.clientHeight>=box.scrollHeight-125){
+      appendBrowseBatch();
+    }
+  },{passive:true});
+  $('browseBack').addEventListener('click',()=>{
+    $('recordDialog').close();
+    $('browseEntries').focus({preventScroll:true});
+  });
+
   function renderThemeDirectory(){ const needle=norm($('themeFilter').value); const visible=needle?state.themeDirectory.filter(t=>norm(t.label).includes(needle)||norm(t.id).includes(needle)):state.themeDirectory; $('indexCount').textContent=needle?`${visible.length} thème${visible.length>1?'s':''} sur ${state.themeDirectory.length}`:`${state.themeDirectory.length} thèmes indexés`; $('themeDirectory').innerHTML=visible.length?visible.map(t=>`<button class="theme-row" data-directory-theme="${esc(t.id)}"><span><strong>${esc(t.label)}</strong><small>${t.occurrenceCount} psaume${t.occurrenceCount>1?'s':''}</small></span><span>${t.score}</span></button>`).join(''):'<div class="empty">Aucun thème ne correspond à ce filtre.</div>'; $('themeDirectory').querySelectorAll('[data-directory-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.directoryTheme);if(t){closeIndex();navigateToTheme(t);}}); }
   function openIndex(){ renderThemeDirectory(); $('indexPanel').hidden=false;$('indexBackdrop').hidden=false;$('indexToggle').setAttribute('aria-expanded','true'); requestAnimationFrame(()=>$('themeFilter').focus()); }
   function closeIndex(){$('indexPanel').hidden=true;$('indexBackdrop').hidden=true;$('indexToggle').setAttribute('aria-expanded','false');}
