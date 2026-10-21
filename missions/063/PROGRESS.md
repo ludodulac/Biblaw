@@ -18,6 +18,8 @@
 | 9 | `book-23-psalm-133-note-003` | 1960 | INCERTAINE |
 | 10 | `book-25-psalm-167-note-001` | 2217 | INCERTAINE |
 
+**Suivi 063A — TERMINÉ (2026-10-21, reprise documentaire) :** [`missions/063/063A_VERDICTS.md`](063A_VERDICTS.md) reprend sans les modifier les dix décisions déjà documentées dans le rapport 063 : **6 CORRIGÉE ET VALIDÉE**, **4 INCERTAINE / NON RÉSOLU** (continuations de page : 18/124/001, 21/143/001, 25/167/001 ; doublon potentiel : 23/133/003). **Aucune correction ni validation nouvelle ; aucune publication.** Preuves historiques référencées (trois runs SUCCESS). **063B non commencée.**
+
 ## 063B — 10 notes suivantes
 
 | N° | Note (identifiant exact) | Page PDF selon 062 | Verdict déjà enregistré en 063 |
