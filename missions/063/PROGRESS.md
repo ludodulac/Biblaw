@@ -64,6 +64,8 @@
 
 **Contrôle de chevauchement :** les 30 de 062 comprennent `book-44-psalm-285-note-001` en 063C ; aucune des notes 002/003/004 de 063D n'est dans ces 30. Ne pas fusionner les quatre cas par leur seul numéro de psaume.
 
+**Suivi 063D — TERMINÉ (2026-10-21, documentation probatoire) :** [`063D_RATTACHEMENTS.md`](063D_RATTACHEMENTS.md) : **0 rattachement à un psaume confirmé, 3 NON RÉSOLUS** (44/285/002 à 004). Leur appartenance au psaume 285 est exclue par les pages et `noteIds: []`, mais aucun autre psaume n'est prouvé ; il s'agit de sections annexées. Les textes corrigés en 061 et la note 001 de 063C restent strictement inchangés. **063E non commencée.**
+
 ## 063E — consolidation
 
 Reprendre seulement les verdicts, décisions et preuves existants ; aucun nouveau statut « validé » sans preuve correspondante. Références : `reports/notes-062/RAPPORT.md`, `reports/notes-062/decisions.json`, `reports/notes-063/RAPPORT.md`, `reports/notes-063/decisions.json` ; mission 061 : `reports/notes-061/CONFIRMED_BOUNDARIES.md` ; mission 060 : artefact Actions 39389492831.

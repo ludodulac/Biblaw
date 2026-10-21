@@ -1,15 +1,15 @@
 # BIBLAW — STATE (2026-10-21)
 - Dépôt : `ludodulac/Biblaw`.
 - Branche : `feat/052-search-ui` ; PR principale : [#72](https://github.com/ludodulac/Biblaw/pull/72), OPEN / DRAFT.
-- Commit de référence avant 063C : `3137e2231e57032d09dd0e8eb471921e77ba0124` ; consulter la PR #72 pour le HEAD actuel.
-- Missions terminées : 060, 061 (5 corrections), 062 (42 corrections), 063 historique (33 dossiers), 063-SETUP, 063A, 063B et 063C (suivis).
+- Commit de référence avant 063D : `b87569980e2d9a37e9b8aac1dfd9978e278ecd1c` ; consulter la PR #72 pour le HEAD actuel.
+- Missions terminées : 060, 061 (5 corrections), 062 (42 corrections), 063 historique (33 dossiers), 063-SETUP, 063A, 063B, 063C et 063D (suivis).
 - Corpus protégé : 1 158 psaumes ; 676 prières ; 280 notes extraites ; 11 notes publiques.
 - Rapport 062 : 30 incertaines ; répartition 063A/063B/063C = 10/10/10 (voir `missions/063/PROGRESS.md`).
 - Rapport 063 **déjà présent avant ce setup** : 1 validée, 10 corrigées-validées, 22 incertaines sur 33 dossiers ; aucun ajout au catalogue.
 - Incertitudes : 22 dossiers conservés INCERTAINE (dont trois livre 44) ; doublons, continuation et rattachements à ne pas supposer résolus.
-- Livre 44 / psaume 285 : note-001 incluse en 063C ; note-002/003/004 réservées à 063D, sans chevauchement ; rattachements non validés.
+- Livre 44 / psaume 285 : note-001 toujours NON RÉSOLUE en 063C ; notes 002/003/004 documentées en 063D, 0 psaume confirmé, 3 NON RÉSOLUS (exclusion de 285 prouvée) ; aucun doublon.
 - Rapports sources : `reports/notes-061/CONFIRMED_BOUNDARIES.md`, `reports/notes-062/RAPPORT.md`, `reports/notes-063/RAPPORT.md` ; 060 : artefact Actions 39389492831.
 - 063A : 6 corrigées-validées, 4 non résolues ; 063B : 1 corrigée-validée, 9 non résolues ; 063C : 1 validée, 3 corrigées-validées, 6 non résolues (dont 44/285/001 avec coupe historique). Tout est historique, aucune correction nouvelle ; détails `missions/063/063[A-C]_VERDICTS.md`.
-- Prochaine mission : **063D** (non commencée) — trois rattachements 44/285 notes 002–004 ; réutiliser uniquement les preuves historiques.
-- Suite prévue : 063D et 063E (consolidation documentaire), sans retraiter les travaux historiques.
+- Prochaine mission : **063E** (non commencée) — consolidation des décisions 063A–063D, sans réexaminer les pages source.
+- Suite prévue : 063E uniquement (consolidation documentaire), sans retraiter les travaux historiques.
 - Interdictions : ne pas fusionner, ne pas déployer, ne pas passer la PR READY ; ne pas modifier corpus, notes, catalogue ni interface sans mission distincte.
