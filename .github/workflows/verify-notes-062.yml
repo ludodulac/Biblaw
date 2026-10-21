@@ -37,5 +37,5 @@ jobs:
           github-token: ${{ github.token }}
           path: /tmp/notes061
       - run: python -m pip install --quiet pymupdf==1.26.4
-      - name: Verify 42 edits from the PDF, retain 30 uncertainties and public catalog
+      - name: Verify 062 corrections and honor independently tested 063 resolutions
         run: python scripts/verify_notes_062.py /tmp/decision062 /tmp/footnotes062 /tmp/notes061

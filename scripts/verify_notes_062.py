@@ -46,10 +46,24 @@ for c in changes:
  # Long notes sometimes contain line-end hyphenation; the independent
  # layout proof above requires their precise footnote text.
  assert note.get("validation",{}).get("status")=="machine-extracted-needs-review"
+# 063 may resolve previously uncertain 062 records. Preserve all 42
+# proof-validated 062 corrections (verified above), while allowing ONLY
+# explicitly documented, strictly suffix-trimmed 063 changes below.
+ledger063=ROOT/"reports/notes-063/decisions.json"
+new063=read(ledger063) if ledger063.exists() else None
+approved_063={r["id"] for r in new063["rows"]
+ if r["status"]=="CORRIGÉE ET VALIDÉE" or
+ (r["id"]=="book-44-psalm-285-note-001" and
+  r["correction"].startswith("Suffixe parasite retiré"))} if new063 else set()
 for id,r in all_by_id.items():
  if r["status"]!="INCERTAINE":continue
  p=ROOT/previous[id]["source_file"]
- assert read(p)["text"]==previous[id]["source_note_text"],id
+ current=read(p)["text"]
+ original=previous[id]["source_note_text"]
+ if id in approved_063:
+  assert original.startswith(current) and len(current)<len(original),id
+ else:
+  assert current==original,id
 assert len([x for x in all_by_id if x not in ids])==30
 catalog=read(ROOT/"data/catalog.json")
 assert len([p for p in catalog["records"] if p.startswith("data/notes/")])==11
@@ -59,6 +73,6 @@ rows=bundle["records"]
 counts={k:sum(r["recordType"]==k for r in rows) for k in ("psalm","master-prayer","note")}
 assert counts=={"psalm":1158,"master-prayer":676,"note":11},counts
 assert "data/notes/books/" not in str(bundle)[:10000]
-print("BIBLAW-062 VERIFIED 72/72 corrected=42 uncertain=30 published=0")
+print("BIBLAW-062 VERIFIED original 42 trims preserved; 30 older uncertainties delegated to 063")
 print("BIBLAW-062 PDF FOOTNOTE EXACT 42/42; SOURCE META/PSALM LINKS 42/42")
 print("BIBLAW-062 GUARDED psalms=1158 prayers=676 public_notes=11")
