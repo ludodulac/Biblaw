@@ -1,15 +1,15 @@
 # BIBLAW — STATE (2026-10-21)
 - Dépôt : `ludodulac/Biblaw`.
 - Branche : `feat/052-search-ui` ; PR principale : [#72](https://github.com/ludodulac/Biblaw/pull/72), OPEN / DRAFT.
-- Commit de référence avant 063A : `b6c0b5a849c0a6090f5df482f6c0bf54ef00d00f` ; consulter la PR #72 pour le HEAD actuel.
-- Missions terminées : 060, 061 (5 corrections), 062 (42 corrections), 063 historique (33 dossiers), 063-SETUP et 063A (suivi).
+- Commit de référence avant 063B : `1a47a9020dfc7f0843b4371e01df52927c32c457` ; consulter la PR #72 pour le HEAD actuel.
+- Missions terminées : 060, 061 (5 corrections), 062 (42 corrections), 063 historique (33 dossiers), 063-SETUP, 063A et 063B (suivis).
 - Corpus protégé : 1 158 psaumes ; 676 prières ; 280 notes extraites ; 11 notes publiques.
 - Rapport 062 : 30 incertaines ; répartition 063A/063B/063C = 10/10/10 (voir `missions/063/PROGRESS.md`).
 - Rapport 063 **déjà présent avant ce setup** : 1 validée, 10 corrigées-validées, 22 incertaines sur 33 dossiers ; aucun ajout au catalogue.
 - Incertitudes : 22 dossiers conservés INCERTAINE (dont trois livre 44) ; doublons, continuation et rattachements à ne pas supposer résolus.
 - Livre 44 / psaume 285 : note-001 incluse en 063C ; note-002/003/004 réservées à 063D, sans chevauchement ; rattachements non validés.
 - Rapports sources : `reports/notes-061/CONFIRMED_BOUNDARIES.md`, `reports/notes-062/RAPPORT.md`, `reports/notes-063/RAPPORT.md` ; 060 : artefact Actions 39389492831.
-- Mission 063A terminée (reprise des 10 décisions 063) : 6 corrigées-validées historiques, 4 incertaines / NON RÉSOLU ; détails `missions/063/063A_VERDICTS.md` ; aucune nouvelle correction.
-- Prochaine mission : **063B** (non commencée) — reprendre seulement les décisions existantes, sans recommencer les audits.
-- Suite prévue : 063B, 063C, 063D, 063E (consolidation documentaire), sous réserve de ne pas retraiter des travaux historiques déjà faits.
+- 063A : 6 corrections-validations historiques, 4 NON RÉSOLUES (`missions/063/063A_VERDICTS.md`) ; 063B : 1 correction-validation historique, 9 NON RÉSOLUES (`missions/063/063B_VERDICTS.md`) ; 0 correction nouvelle.
+- Prochaine mission : **063C** (non commencée) — réutiliser les résultats historiques, sans recommencer les audits.
+- Suite prévue : 063C, 063D, 063E (consolidation documentaire), sans retraiter des travaux historiques déjà faits.
 - Interdictions : ne pas fusionner, ne pas déployer, ne pas passer la PR READY ; ne pas modifier corpus, notes, catalogue ni interface sans mission distincte.

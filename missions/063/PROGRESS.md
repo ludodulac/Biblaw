@@ -35,6 +35,8 @@
 | 9 | `book-28-psalm-158-note-001` | 2589 | CORRIGÉE ET VALIDÉE |
 | 10 | `book-29-psalm-216-note-002` | 2831 | INCERTAINE |
 
+**Suivi 063B — TERMINÉ (2026-10-21, reprise documentaire) :** [`missions/063/063B_VERDICTS.md`](063B_VERDICTS.md) enregistre les 10 décisions historiques : **1 CORRIGÉE ET VALIDÉE** antérieure (28/158/001, suffixe de 226 caractères retiré en 063), **9 INCERTAINE / NON RÉSOLUES** (8 dossiers liés à des appels en doublon, 1 discordance de fin du texte PDF). **Aucune nouvelle correction ou validation**, aucun audit recommencé, aucun changement de publication. **063C non commencée.**
+
 ## 063C — 10 dernières notes
 
 | N° | Note (identifiant exact) | Page PDF selon 062 | Verdict déjà enregistré en 063 |
