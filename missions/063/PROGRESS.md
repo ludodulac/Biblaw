@@ -52,6 +52,8 @@
 | 9 | `book-37-psalm-250-note-002` | 3690 | INCERTAINE |
 | 10 | `book-44-psalm-285-note-001` | 4648 | INCERTAINE |
 
+**Suivi 063C — TERMINÉ (2026-10-21, reprise documentaire) :** [`063C_VERDICTS.md`](063C_VERDICTS.md) recense **1 VALIDÉE sans correction**, **3 CORRIGÉES ET VALIDÉES** historiquement et **6 NON RÉSOLUES**. Le dossier `book-44-psalm-285-note-001` reste NON RÉSOLU malgré une coupe textuelle déjà faite avant 063C (197 caractères). Aucun texte ni catalogue modifié, aucune validation nouvelle. **063D non commencée.**
+
 ## 063D — trois rattachements distincts du livre 44 / psaume 285
 
 | Note (hors 30) | Page PDF selon 063 | Verdict historique |
