@@ -1,0 +1,26 @@
+name: BIBLAW 063 source typography supplement
+on:
+  pull_request:
+    paths:
+      - 'scripts/inspect_page_edge_063.py'
+      - '.github/workflows/inspect-page-edge-063.yml'
+permissions:
+  contents: read
+jobs:
+  examine-17:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet pymupdf==1.26.4
+      - name: Inspect missing footnote markers and book 44 chapter boundaries
+        run: python scripts/inspect_page_edge_063.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: biblaw-063-typography-supplement
+          path: reports/notes-063/page-typography-supplement.json
+          if-no-files-found: warn
