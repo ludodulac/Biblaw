@@ -18,6 +18,25 @@ Preuves : artefact **`biblaw-064-01-proof-A`** (ID 12414425817) du [run 39751751
 
 **Résultat du sous-lot A : 5 AUTHENTIFIÉES, 0 corrigée, 0 NON RÉSOLUE.** Aucun fichier de note, texte de psaume, prière ni catalogue modifié. Checkpoint GitHub obligatoire après ce sous-lot.
 
-## Sous-lot B — cinq notes suivantes — À TRAITER
+## Sous-lot B — cinq notes suivantes — AUTHENTIFIÉES
 
-Les cinq identifiants suivants restent en attente de documentation dans ce registre au stade du premier checkpoint : `book-02-psalm-012-note-001`, `book-03-psalm-004-note-001`, `book-04-psalm-012-note-001`, `book-04-psalm-012-note-002`, `book-04-psalm-012-note-003`. Ne pas les déclarer validés sans la vérification distincte du sous-lot B. Artefact de preuve B disponible, mais verdicts **non encore enregistrés** au stade de ce checkpoint.
+Preuves : artefact **`biblaw-064-01-proof-B`** (ID 12413792579) du [run 39751751006](https://github.com/ludodulac/Biblaw/actions/runs/39751751006), `note-proof.json`, images et relevés typographiques du PDF original pages **119, 150 et 211**. Lecture visuelle des trois pages : notes sous le filet de séparation du psaume, texte complet et fins visibles. La p. 211 possède trois appels distincts **1, 2, 3**, chacun à son passage de psaume ; aucun chevauchement de texte ni double revendication.
+
+| ID | Page PDF | Verdict | Preuve précise | Correction | Incertitude |
+|---|---:|---|---|---|---|
+| `book-02-psalm-012-note-001` | 119 | **AUTHENTIFIÉE** | Marqueur imprimé **1**, police **9 pt**, 52/52 mots normalisés identiques à la note entière, `psaume.noteIds` réciproque. Début « La statue dont parle L’Archange Gabriel représente l’homme-Gabriel dans » ; fin « dans le sud de la France, pendant l’hiver 2003-2004. ». | Aucune | **Aucune** : limites, rattachement et unicité confirmés sur l'image p.119. |
+| `book-03-psalm-004-note-001` | 150 | **AUTHENTIFIÉE** | Marqueur imprimé **1**, police **9 pt**, 56/56 mots normalisés identiques à la note entière, `psaume.noteIds` réciproque. Début « Cette pierre est une variété d’actinolite, le jade néphrite. » ; fin « à l’occasion de sa célébration, à l’équinoxe de printemps. ». | Aucune | **Aucune** : limites, rattachement et unicité confirmés sur l'image p.150. |
+| `book-04-psalm-012-note-001` | 211 | **AUTHENTIFIÉE** | Marqueur imprimé **1**, police **9 pt**, 44/44 mots normalisés identiques à la note entière, `psaume.noteIds` réciproque. Début « L’Archange Ouriel fait ici référence au travail effectué par » ; fin « et d’agir dans l’âme de l’humanité et du monde. ». | Aucune | **Aucune** : limites, rattachement et unicité confirmés sur l'image p.211. |
+| `book-04-psalm-012-note-002` | 211 | **AUTHENTIFIÉE** | Marqueur imprimé **2**, police **9 pt**, 52/52 mots normalisés identiques à la note entière, `psaume.noteIds` réciproque. Début « Les Esséniens se servent de l’huile d’Ouriel pour de » ; fin « la vie quotidienne de l’homme dans ses différents aspects. ». | Aucune | **Aucune** : limites, rattachement et unicité confirmés sur l'image p.211. |
+| `book-04-psalm-012-note-003` | 211 | **AUTHENTIFIÉE** | Marqueur imprimé **3**, police **9 pt**, 47/47 mots normalisés identiques à la note entière, `psaume.noteIds` réciproque. Début « Cette célébration d’Ouriel clôturait le premier des cycles de » ; fin « réactiver l’alliance entre les Esséniens et le monde divin. ». | Aucune | **Aucune** : limites, rattachement et unicité confirmés sur l'image p.211. |
+
+**Résultat du sous-lot B : 5 AUTHENTIFIÉES, 0 corrigée, 0 NON RÉSOLUE.**
+
+## Vérifications finales et portée
+
+- **Dix identifiants du lot 064-01 : 10/10 AUTHENTIFIÉES**, 0 CORRIGÉE ET AUTHENTIFIÉE, 0 NON RÉSOLUE. Cinq décisions A enregistrées au checkpoint GitHub précédent, cinq B enregistrées dans la présente finalisation.
+- **Contrôle ciblé réel du PDF original :** 6 pages et uniquement celles-là : p. 70, 82, 105, 119, 150, 211 ; vérification humaine visuelle des images; `note-proof.json` des deux groupes : **10/10 textes complets égaux en tokens**, **10/10 numéros imprimés concordants**, **10/10 rattachements canoniques réciproques** ; **0 paire de notes concurrentes au même marqueur et texte PDF** ; **0 parasite**.
+- **Test GitHub Actions :** [run 39751751006](https://github.com/ludodulac/Biblaw/actions/runs/39751751006) **SUCCESS**, artefacts `biblaw-064-01-proof-A` (12414425817) et `biblaw-064-01-proof-B` (12413792579) ; script de preuve limité à ces dix identifiants, sans édition de corpus. Un contrôle indépendant des dix résultats lus dans les artefacts a donné **PASS 10/10**, 2 × 5, marqueurs, limites et unicité.
+- Les différences éventuelles concernent **seulement des espaces typographiques insécables** dans les nombres entre PDF et JSON ; aucune altération de mots ou phrase, donc aucune correction de note justifiée.
+- **Statut éditorial documenté ≠ promotion technique ni publication.** Le champ `validation.status` des fichiers reste `machine-extracted-needs-review` ; 11 notes publiques d'origine inchangées. Pas de déploiement, de fusion, de modification des psaumes, prières, catalogue ou notes.
+- Le lot **064-02 n'est pas commencé** ; son ouverture exige une nouvelle mission distincte. Le plan des 192 notes est intact, mais désormais **10 authentifiées sur 192 / 182 encore à examiner**.
