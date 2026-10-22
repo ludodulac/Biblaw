@@ -1,15 +1,14 @@
-# BIBLAW — STATE (2026-10-21)
-- Dépôt : `ludodulac/Biblaw`.
-- Branche : `feat/052-search-ui` ; PR principale : [#72](https://github.com/ludodulac/Biblaw/pull/72), OPEN / DRAFT.
-- Commit de référence avant 063D : `b87569980e2d9a37e9b8aac1dfd9978e278ecd1c` ; consulter la PR #72 pour le HEAD actuel.
-- Missions terminées : 060, 061 (5 corrections), 062 (42 corrections), 063 historique (33 dossiers), 063-SETUP, 063A, 063B, 063C et 063D (suivis).
-- Corpus protégé : 1 158 psaumes ; 676 prières ; 280 notes extraites ; 11 notes publiques.
-- Rapport 062 : 30 incertaines ; répartition 063A/063B/063C = 10/10/10 (voir `missions/063/PROGRESS.md`).
-- Rapport 063 **déjà présent avant ce setup** : 1 validée, 10 corrigées-validées, 22 incertaines sur 33 dossiers ; aucun ajout au catalogue.
-- Incertitudes : 22 dossiers conservés INCERTAINE (dont trois livre 44) ; doublons, continuation et rattachements à ne pas supposer résolus.
-- Livre 44 / psaume 285 : note-001 toujours NON RÉSOLUE en 063C ; notes 002/003/004 documentées en 063D, 0 psaume confirmé, 3 NON RÉSOLUS (exclusion de 285 prouvée) ; aucun doublon.
-- Rapports sources : `reports/notes-061/CONFIRMED_BOUNDARIES.md`, `reports/notes-062/RAPPORT.md`, `reports/notes-063/RAPPORT.md` ; 060 : artefact Actions 39389492831.
-- 063A : 6 corrigées-validées, 4 non résolues ; 063B : 1 corrigée-validée, 9 non résolues ; 063C : 1 validée, 3 corrigées-validées, 6 non résolues (dont 44/285/001 avec coupe historique). Tout est historique, aucune correction nouvelle ; détails `missions/063/063[A-C]_VERDICTS.md`.
-- Prochaine mission : **063E** (non commencée) — consolidation des décisions 063A–063D, sans réexaminer les pages source.
-- Suite prévue : 063E uniquement (consolidation documentaire), sans retraiter les travaux historiques.
-- Interdictions : ne pas fusionner, ne pas déployer, ne pas passer la PR READY ; ne pas modifier corpus, notes, catalogue ni interface sans mission distincte.
+# BIBLAW — STATE (2026-10-22)
+- Dépôt : `ludodulac/Biblaw` ; branche `feat/052-search-ui` ; PR [#72](https://github.com/ludodulac/Biblaw/pull/72) OPEN/DRAFT.
+- HEAD avant 063E : `57fb8ce928864fe6fbedfff3acbf47cdd4a84ad6` ; pour le HEAD actuel lire la PR #72 (le SHA évolue).
+- Missions terminées : 060 (inventaire), 061 (5 corrections), 062 (42 corrections), 063 historique (33 dossiers), 063-SETUP et 063A–063E (suivis documentaires).
+- Corpus protégé : 1 158 psaumes, 676 prières, 280 notes extraites ; 11 notes **déjà publiques** (distinctes des 11 authentifiées ci-dessous).
+- Bilan 063A–063C : **30 dossiers uniques = 11 authentifiés historiquement** (1 validée + 10 corrigées et validées) et **19 NON RÉSOLUS**.
+- 063D (hors des 30) : 3 rattachements 44/285/002–004 NON RÉSOLUS ; rattachement au psaume 285 exclu, aucun autre psaume confirmé.
+- Bilan total 063A–063D : **33 identifiants distincts**, 11 authentifiés historiquement, 22 NON RÉSOLUS ; 0 chevauchement entre lots.
+- 19 incertitudes des 30 : 13 suspicions de double attribution, 3 continuations, 1 fin divergente, 1 page incohérente, 1 section annexe.
+- 44/285/001 demeure NON RÉSOLUE en 063C ; coupe historique de 197 caractères ≠ validation ; distincte des 3 notes 063D.
+- Bilan consolidé : `missions/063/063E_BILAN_FINAL.md` ; preuves et prochaines vérifications détaillées, sources historiques liées.
+- Preuves Actions potentiellement expirées en janvier 2027 ; sauvegarde durable à décider séparément.
+- Prochaine mission : **aucune engagée** ; poursuivre seulement les 22 incertitudes ciblées et, si besoin, la préservation des preuves.
+- Interdictions : ne pas fusionner, déployer, passer READY, modifier textes bibliques/notes, métadonnées, catalogue ou interface.

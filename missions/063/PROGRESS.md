@@ -18,7 +18,7 @@
 | 9 | `book-23-psalm-133-note-003` | 1960 | INCERTAINE |
 | 10 | `book-25-psalm-167-note-001` | 2217 | INCERTAINE |
 
-**Suivi 063A — TERMINÉ (2026-10-21, reprise documentaire) :** [`missions/063/063A_VERDICTS.md`](063A_VERDICTS.md) reprend sans les modifier les dix décisions déjà documentées dans le rapport 063 : **6 CORRIGÉE ET VALIDÉE**, **4 INCERTAINE / NON RÉSOLU** (continuations de page : 18/124/001, 21/143/001, 25/167/001 ; doublon potentiel : 23/133/003). **Aucune correction ni validation nouvelle ; aucune publication.** Preuves historiques référencées (trois runs SUCCESS). **063B non commencée.**
+**Suivi 063A — TERMINÉ (2026-10-21, reprise documentaire) :** [`missions/063/063A_VERDICTS.md`](063A_VERDICTS.md) reprend sans les modifier les dix décisions déjà documentées dans le rapport 063 : **6 CORRIGÉE ET VALIDÉE**, **4 INCERTAINE / NON RÉSOLU** (continuations de page : 18/124/001, 21/143/001, 25/167/001 ; doublon potentiel : 23/133/003). **Aucune correction ni validation nouvelle ; aucune publication.** Preuves historiques référencées (trois runs SUCCESS). **Voir 063B ci-dessous.**
 
 ## 063B — 10 notes suivantes
 
@@ -35,7 +35,7 @@
 | 9 | `book-28-psalm-158-note-001` | 2589 | CORRIGÉE ET VALIDÉE |
 | 10 | `book-29-psalm-216-note-002` | 2831 | INCERTAINE |
 
-**Suivi 063B — TERMINÉ (2026-10-21, reprise documentaire) :** [`missions/063/063B_VERDICTS.md`](063B_VERDICTS.md) enregistre les 10 décisions historiques : **1 CORRIGÉE ET VALIDÉE** antérieure (28/158/001, suffixe de 226 caractères retiré en 063), **9 INCERTAINE / NON RÉSOLUES** (8 dossiers liés à des appels en doublon, 1 discordance de fin du texte PDF). **Aucune nouvelle correction ou validation**, aucun audit recommencé, aucun changement de publication. **063C non commencée.**
+**Suivi 063B — TERMINÉ (2026-10-21, reprise documentaire) :** [`missions/063/063B_VERDICTS.md`](063B_VERDICTS.md) enregistre les 10 décisions historiques : **1 CORRIGÉE ET VALIDÉE** antérieure (28/158/001, suffixe de 226 caractères retiré en 063), **9 INCERTAINE / NON RÉSOLUES** (8 dossiers liés à des appels en doublon, 1 discordance de fin du texte PDF). **Aucune nouvelle correction ou validation**, aucun audit recommencé, aucun changement de publication. **Voir 063C ci-dessous.**
 
 ## 063C — 10 dernières notes
 
@@ -52,7 +52,7 @@
 | 9 | `book-37-psalm-250-note-002` | 3690 | INCERTAINE |
 | 10 | `book-44-psalm-285-note-001` | 4648 | INCERTAINE |
 
-**Suivi 063C — TERMINÉ (2026-10-21, reprise documentaire) :** [`063C_VERDICTS.md`](063C_VERDICTS.md) recense **1 VALIDÉE sans correction**, **3 CORRIGÉES ET VALIDÉES** historiquement et **6 NON RÉSOLUES**. Le dossier `book-44-psalm-285-note-001` reste NON RÉSOLU malgré une coupe textuelle déjà faite avant 063C (197 caractères). Aucun texte ni catalogue modifié, aucune validation nouvelle. **063D non commencée.**
+**Suivi 063C — TERMINÉ (2026-10-21, reprise documentaire) :** [`063C_VERDICTS.md`](063C_VERDICTS.md) recense **1 VALIDÉE sans correction**, **3 CORRIGÉES ET VALIDÉES** historiquement et **6 NON RÉSOLUES**. Le dossier `book-44-psalm-285-note-001` reste NON RÉSOLU malgré une coupe textuelle déjà faite avant 063C (197 caractères). Aucun texte ni catalogue modifié, aucune validation nouvelle. **Voir 063D ci-dessous.**
 
 ## 063D — trois rattachements distincts du livre 44 / psaume 285
 
@@ -64,9 +64,12 @@
 
 **Contrôle de chevauchement :** les 30 de 062 comprennent `book-44-psalm-285-note-001` en 063C ; aucune des notes 002/003/004 de 063D n'est dans ces 30. Ne pas fusionner les quatre cas par leur seul numéro de psaume.
 
-**Suivi 063D — TERMINÉ (2026-10-21, documentation probatoire) :** [`063D_RATTACHEMENTS.md`](063D_RATTACHEMENTS.md) : **0 rattachement à un psaume confirmé, 3 NON RÉSOLUS** (44/285/002 à 004). Leur appartenance au psaume 285 est exclue par les pages et `noteIds: []`, mais aucun autre psaume n'est prouvé ; il s'agit de sections annexées. Les textes corrigés en 061 et la note 001 de 063C restent strictement inchangés. **063E non commencée.**
+**Suivi 063D — TERMINÉ (2026-10-21, documentation probatoire) :** [`063D_RATTACHEMENTS.md`](063D_RATTACHEMENTS.md) : **0 rattachement à un psaume confirmé, 3 NON RÉSOLUS** (44/285/002 à 004). Leur appartenance au psaume 285 est exclue par les pages et `noteIds: []`, mais aucun autre psaume n'est prouvé ; il s'agit de sections annexées. Les textes corrigés en 061 et la note 001 de 063C restent strictement inchangés. **Voir 063E ci-dessous.**
 
 ## 063E — consolidation
+
+**Suivi 063E — TERMINÉ (2026-10-22).** [Bilan final](063E_BILAN_FINAL.md) : **30 notes** A/B/C = **11 authentifiées historiquement** (1 validée sans correction + 10 corrigées-validées), **19 NON RÉSOLUES**. **3 rattachements distincts** de 063D = 3 NON RÉSOLUS supplémentaires. **33 dossiers uniques, aucun doublon d'identifiant entre les lots** ; 13 suspicions de double attribution imprimée parmi les 19. Preuve et vérification restant à faire détaillées pour chacun, sans nouveau travail de corpus ni publication.
+
 
 Reprendre seulement les verdicts, décisions et preuves existants ; aucun nouveau statut « validé » sans preuve correspondante. Références : `reports/notes-062/RAPPORT.md`, `reports/notes-062/decisions.json`, `reports/notes-063/RAPPORT.md`, `reports/notes-063/decisions.json` ; mission 061 : `reports/notes-061/CONFIRMED_BOUNDARIES.md` ; mission 060 : artefact Actions 39389492831.
 
