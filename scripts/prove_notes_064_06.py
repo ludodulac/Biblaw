@@ -127,7 +127,7 @@ for group in ("A","B"):
     rows=by_group[group]
     assert len(rows)==5
     (folder/"note-proof.json").write_text(json.dumps(rows,indent=2,ensure_ascii=False)+"\n",encoding="utf8")
-    for n in sorted(set(r["PDFPage"] for r in rows)):
+    # Save the additional pages read for confirming truncated/cross-page notes.\n    group_extra = {"A": [823, 845, 846, 848], "B": [903]}[group]\n    for n in sorted(set(r["PDFPage"] for r in rows) | set(group_extra)):
         pg=pdf[n-1]
         pix=pg.get_pixmap(matrix=fitz.Matrix(2,2),alpha=False)
         pix.save(folder/f"pdf-page-{n}.png")
