@@ -91,6 +91,19 @@ for number in PAGES:
     page_data[number]={"lines":ln,"footnoteCandidates":candidates(ln,number)}
     assert ln,number
 
+# Read-only regression for the one proven page-break correction 13/100/001.
+# Footer p.822 terminates with "avertir les"; p.823 prints its continuation
+# without repeating the local note marker. Never mistake p.822 alone for a full note.
+source_13_100=read(ROOT/"data/notes/books/book-13/book-13-psalm-100-note-001.json")
+p822=page_data[822]["footnoteCandidates"]
+assert len(p822)==1 and p822[0]["marker"]==1
+continuation_823=" ".join(ln["text"] for ln in page_data[823]["lines"]
+    if ln["size"]<=10.5 and ln["y"]>500 and ln["text"]!="823")
+assert continuation_823.startswith("responsables, dont la charge")
+assert continuation_823.endswith("laissée à l’abandon.")
+assert tok(source_13_100["text"]) == tok(p822[0]["text"]+" "+continuation_823)
+print("BIBLAW-064-06-CROSSPAGE-EXACT", len(tok(source_13_100["text"])), "tokens; PDF 822+823")
+
 by_group={"A":[],"B":[]}
 for idx,(id,expected_page) in enumerate(TARGETS):
     b,p,n=map(int,re.fullmatch(r"book-(\d+)-psalm-(\d+)-note-(\d+)",id).groups())
