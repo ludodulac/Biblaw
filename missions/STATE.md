@@ -1,15 +1,15 @@
 # BIBLAW — STATE (2026-10-22)
 - Dépôt : `ludodulac/Biblaw` ; branche `feat/052-search-ui` ; PR [#72](https://github.com/ludodulac/Biblaw/pull/72) OPEN/DRAFT.
-- HEAD de référence avant 064-02/A : `57a8bc123a56087abdb4f614bed5c0a1b8bcc982` ; consulter la PR pour le HEAD actuel.
-- Missions terminées : 060, 061 (5 corrections), 062 (42 corrigées-validées), 063 historique (33 dossiers), 063-SETUP, 063A–063E (documentation), **064-SETUP** (planification), **064-01** (10 authentifications documentaires).
+- HEAD de référence avant finalisation 064-02/B : `671f72fc9d39e02cec876fbf3b33b14d414f97d6` ; consulter la PR pour le HEAD actuel.
+- Missions terminées : 060, 061 (5 corrections), 062 (42 corrigées-validées), 063 historique (33 dossiers), 063-SETUP, 063A–063E (documentation), **064-SETUP** (planification), **064-01** (10 authentifications documentaires), **064-02** (8 authentifications documentaires, 2 cas non résolus).
 - Corpus protégé : 1 158 psaumes, 676 prières, 280 notes extraites ; 11 notes **déjà publiques**, hors plan 064.
 - Bilan 063A–C : 30 = 1 validée sans correction + 10 corrigées-validées historiquement + 19 NON RÉSOLUES ; 063D : 3 rattachements NON RÉSOLUS supplémentaires.
 - Total 063 : 33 dossiers distincts ; 11 historiques authentifiés et 22 NON RÉSOLUS ; 13 suspicions de doublons parmi les 19 de 063A–C, aucune fusion de notes.
 - Source 064 : artefact [060 — run 39389492831](https://github.com/ludodulac/Biblaw/actions/runs/39389492831), 192 candidates de bonne concordance machine (publication et validation **non automatiques**).
-- **064 : 192 notes prévues ; 064-01 = 10 authentifiées ; 064-02/A = 3 authentifiées + 2 NON RÉSOLUES (un seul appel p.325 pour 002/003) ; 13 authentifiées, 2 non résolues, 177 non examinées.** Aucun catalogue modifié.
+- **064 : 192 notes prévues ; 064-01 = 10 authentifiées ; 064-02 = 8 authentifiées + 2 NON RÉSOLUES (un seul appel p.325 pour 06/040/002 et 003) ; au total 18 authentifiées, 2 non résolues, 172 encore à examiner.** Aucun catalogue modifié.
 - Aucune intersection d'ID entre ces 192 et les 42 validées 062, les 11 authentifiées 063, ou les cas incertains des suivis.
 - Vigilance 060 : 51 des 192 avec alertes non bloquantes (43 écarts de numérotation, 11 notes longues, 3 cumul) ; 5 liens suspects à des cas 063 non résolus.
 - Plan : `missions/064/064_PLAN.md` ; journal `missions/064/PROGRESS.md` ; compte rendu `missions/064/REPORT.md`.
 - Dernière consolidation précédente : `missions/063/063E_BILAN_FINAL.md`, conclusions inchangées.
-- Mission **064-01 TERMINÉE** : checkpoint A 5/5 puis B 5/5 ; preuve visuelle PDF des pages 70,82,105,119,150,211, Actions [39751751006](https://github.com/ludodulac/Biblaw/actions/runs/39751751006) SUCCESS ; [10 verdicts](064/064-01_VERDICTS.md). 064-02 en cours : sous-lot A consigné, B à finaliser.
+- Mission **064-01 TERMINÉE** : checkpoint A 5/5 puis B 5/5 ; preuve visuelle PDF des pages 70,82,105,119,150,211, Actions [39751751006](https://github.com/ludodulac/Biblaw/actions/runs/39751751006) SUCCESS ; [10 verdicts](064/064-01_VERDICTS.md). 064-02 TERMINÉE : sous-lots A et B consignés séparément (checkpoint `671f72fc`, clôture actuelle), preuves PDF pages 268,314,318,325,334,357,369,378, Actions [39779161216](https://github.com/ludodulac/Biblaw/actions/runs/39779161216) SUCCESS, [verdicts](064/064-02_VERDICTS.md). Prochaine : **064-03**, non commencée.
 - Interdictions : PR DRAFT ; aucune fusion, aucun déploiement, aucune publication ou modification des textes, métadonnées, catalogue et interface.
