@@ -120,6 +120,16 @@ for idx,(id,expected_page) in enumerate(TARGETS):
        "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"}
     by_group["A" if idx<5 else "B"].append(row)
 
+# Garde contre les fichiers de note comprenant une prière distincte.
+for nid, page, prayer_page in [("book-20-psalm-110-note-001",1487,1488),("book-21-psalm-137-note-001",1619,1620)]:
+    r=next(r for group in ("A","B") for r in by_group[group] if r["id"]==nid)
+    assert r["PDFPage"]==page and prayer_page in PAGES
+    assert r["bestPrinted"]["wordTokens"]==8
+    assert r["bestPrinted"]["printedTokensPrefixOfNote"]
+    assert not r["bestPrinted"]["tokensExactlyEqual"]
+    assert r["wordTokens"]>8
+    print("BIBLAW-064-09-COMPOSITE-NONRESOLU",nid,"printed",8,"extracted",r["wordTokens"])
+
 for group in ("A","B"):
     folder=ROOT/f"reports/notes-064-09-proof/{group}"
     folder.mkdir(parents=True,exist_ok=True)
