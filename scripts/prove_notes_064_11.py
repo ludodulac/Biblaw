@@ -120,6 +120,14 @@ for idx,(id,expected_page) in enumerate(TARGETS):
        "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"}
     by_group["A" if idx<5 else "B"].append(row)
 
+# Machine success is not a finding of integrity. Prove the long note 22/155
+# has a 22-token suffix from the top of the next PDF page, not a footnote.
+r=next(x for x in by_group["A"] if x["id"]=="book-22-psalm-155-note-001")
+assert r["wordTokens"]==253 and r["bestPrinted"]["wordTokens"]==231
+assert r["bestPrinted"]["printedTokensPrefixOfNote"] and not r["bestPrinted"]["tokensExactlyEqual"]
+assert any(x["text"].startswith("mort. Ainsi, ils n’entrent") for x in page_data[1877]["lines"])
+print("BIBLAW-064-11-155-NONRESOLU", "sourceTokens=253", "printedFootnote=231", "psalmContinuationPage=1877")
+
 for group in ("A","B"):
     folder=ROOT/f"reports/notes-064-11-proof/{group}"
     folder.mkdir(parents=True,exist_ok=True)
