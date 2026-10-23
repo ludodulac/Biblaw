@@ -121,6 +121,17 @@ for idx,(id,expected_page) in enumerate(TARGETS):
        "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"}
     by_group["A" if idx<5 else "B"].append(row)
 
+# Non-automatic editorial guard: PDF page 1122 is an actual printed note,
+# but it is outside the documented pages of psalm 115 (prayer after v.36).
+# Identity of printed text cannot by itself authenticate attachment.
+ambiguity = next(r for r in by_group["A"] if r["id"] == "book-17-psalm-115-note-001")
+assert ambiguity["PDFPage"] == 1122
+assert ambiguity["PDFPage"] not in ambiguity["canonicalPsalmPages"]
+assert ambiguity["reciprocal"]
+assert ambiguity["printedMarkerInJSON"] == 1
+assert ambiguity["bestPrinted"] and ambiguity["bestPrinted"]["tokensExactlyEqual"]
+print("BIBLAW-064-08-ATTACHMENT-NONRESOLU",ambiguity["id"],"page",ambiguity["PDFPage"])
+
 for group in ("A","B"):
     folder=ROOT/f"reports/notes-064-08-proof/{group}"
     folder.mkdir(parents=True,exist_ok=True)
