@@ -128,6 +128,18 @@ assert r["bestPrinted"]["printedTokensPrefixOfNote"] and not r["bestPrinted"]["t
 assert any(x["text"].startswith("mort. Ainsi, ils n’entrent") for x in page_data[1877]["lines"])
 print("BIBLAW-064-11-155-NONRESOLU", "sourceTokens=253", "printedFootnote=231", "psalmContinuationPage=1877")
 
+# The original page contains one printed marker for two competing identities.
+# Preserve the non-resolved prior 063 case without a new audit of its content.
+r129003=next(x for x in by_group["B"] if x["id"]=="book-23-psalm-129-note-003")
+r129004=next(x for x in by_group["B"] if x["id"]=="book-23-psalm-129-note-004")
+r133004=next(x for x in by_group["B"] if x["id"]=="book-23-psalm-133-note-004")
+assert r129003["wordTokens"]==510 and r129003["bestPrinted"]["wordTokens"]==20
+assert r129003["bestPrinted"]["printedTokensPrefixOfNote"] and not r129003["bestPrinted"]["tokensExactlyEqual"]
+assert r129004["wordTokens"]==20 and r129004["bestPrinted"]["tokensExactlyEqual"]
+assert r133004["wordTokens"]==8 and r133004["bestPrinted"]["tokensExactlyEqual"]
+assert r133004["printedMarkerInJSON"]==1 and r133004["ordinalInID"]==4
+print("BIBLAW-064-11-B-GUARD","129/003 composite","129/004 exact","133/004 competing with 063A unresolved 003")
+
 for group in ("A","B"):
     folder=ROOT/f"reports/notes-064-11-proof/{group}"
     folder.mkdir(parents=True,exist_ok=True)
