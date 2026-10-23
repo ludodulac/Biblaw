@@ -120,6 +120,18 @@ for idx,(id,expected_page) in enumerate(TARGETS):
        "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"}
     by_group["A" if idx<5 else "B"].append(row)
 
+# Editorial regression checks: confirmed source anomalies must not be promoted by
+# an automatic exact-prefix match, nor solved through silent source mutation.
+r143003=next(r for r in by_group["A"] if r["id"]=="book-21-psalm-143-note-003")
+r143004=next(r for r in by_group["A"] if r["id"]=="book-21-psalm-143-note-004")
+r150002=next(r for r in by_group["A"] if r["id"]=="book-21-psalm-150-note-002")
+r160001=next(r for r in by_group["B"] if r["id"]=="book-21-psalm-160-note-001")
+assert r143003["PDFPage"] not in r143003["canonicalPsalmPages"] and r143003["bestPrinted"]["tokensExactlyEqual"]
+assert r143004["bestPrinted"] is None and r143004["extractedText"].endswith(r143003["extractedText"])
+assert r150002["bestPrinted"]["wordTokens"]==2 and r150002["wordTokens"]>2 and r150002["bestPrinted"]["printedTokensPrefixOfNote"]
+assert r160001["bestPrinted"]["wordTokens"]==19 and r160001["wordTokens"]>19 and r160001["bestPrinted"]["printedTokensPrefixOfNote"]
+print("BIBLAW-064-10-GUARD", "143/003 prayer-attached", "143/004 composite", "150/002 verse-contaminated", "160/001 prayer-contaminated")
+
 for group in ("A","B"):
     folder=ROOT/f"reports/notes-064-10-proof/{group}"
     folder.mkdir(parents=True,exist_ok=True)
