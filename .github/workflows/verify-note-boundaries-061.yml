@@ -1,0 +1,22 @@
+name: BIBLAW 061 verified note boundaries
+on:
+  pull_request:
+    paths:
+      - 'data/notes/books/**'
+      - 'scripts/verify_corrected_notes_061.py'
+      - '.github/workflows/verify-note-boundaries-061.yml'
+permissions:
+  contents: read
+jobs:
+  five-confirmed-notes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF reader
+        run: python -m pip install --quiet pymupdf==1.26.4
+      - name: Confirm 5 note boundaries against original PDF and unchanged public catalog
+        run: python scripts/verify_corrected_notes_061.py

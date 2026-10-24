@@ -113,7 +113,18 @@ jobs:
               if ! git diff --quiet "$BASE_SHA" -- js/biblaw.js; then
                 APPROVED_OCCURRENCE_JS_BLOB="10ae92852d6b3f295ad35aad291bca2797effbca"
                 ACTUAL_JS_BLOB="$(git rev-parse HEAD:js/biblaw.js)"
-                if [ "$ACTUAL_JS_BLOB" != "$APPROVED_OCCURRENCE_JS_BLOB" ]; then
+                # 052: separately reviewed UI-only browser glue; both immutable content hashes
+                # must remain explicit rather than granting permission to arbitrary JS edits.
+                APPROVED_052_UI_JS_BLOB="8bcba33edae1fe00493e4f853cb238b4777adc75"
+                # 053H: reviewed suggestions-only tightening; search, theme index, and rankings unchanged.
+                APPROVED_053H_SUGGESTIONS_JS_BLOB="b2bd723fe1502f018663a8ef725adabdd3997c9a"
+                # 053I: exactly reviewed bidirectional number suggestions; thematic engine remains protected.
+                APPROVED_053I_NUMERIC_JS_BLOB="fe0c9529d372e377a46b1cab527d33f98f649906"
+                # 055: reviewed presentation-level fixes for autocomplete, whole-phrase highlighting and prayer visibility.
+                APPROVED_055_UI_JS_BLOB="85deeceb991f155b94ac2a07da7b4fcc5bb6d4df"
+                # 056: reviewed MOTS-only exact occurrence totals and lexicographic two-clause ranking.
+                APPROVED_056_COMBINED_JS_BLOB="ebef9a6187b494d8f6e207aded35c5058ccdf68f"
+                if [ "$ACTUAL_JS_BLOB" != "$APPROVED_OCCURRENCE_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_052_UI_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_053H_SUGGESTIONS_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_053I_NUMERIC_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_055_UI_JS_BLOB" ] && [ "$ACTUAL_JS_BLOB" != "$APPROVED_056_COMBINED_JS_BLOB" ]; then
                   echo "::error::Unreviewed js/biblaw.js changes; thematic search remains protected"
                   exit 1
                 fi

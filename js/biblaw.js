@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [] };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], hasSearched: false, suggestionEntries: [], wordEntries: [], wordKeys: new Set(), wordIndexReady:false, wordAutocompleteSuppressed:false, autocompleteItems:[], autocompleteMode:null, autocompleteWindowStart:-1 };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -19,10 +19,80 @@
   const esc = value => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   function singleWordQueryKey(value){ const key=norm(value); return key&&!key.includes(' ')?key:null; }
   function expansionFormsFor(value){ const key=singleWordQueryKey(value); if(!key)return[]; const groupIndex=state.lexicalExpansionByForm.get(key); if(groupIndex===undefined)return[]; return (state.lexicalExpansionGroups[groupIndex]||[]).filter(form=>form!==key); }
-  function activeExpansionForms(){ const expansionRequested=state.mode==='exact'&&$('includeWordForms')?.checked; return expansionRequested?expansionFormsFor($('query')?.value||''):[]; }
+  // 052B: attested -s pairs, separate from opt-in validated morphology.
+  function simplePluralFormsFor(value){
+    const key=singleWordQueryKey(value);
+    if(!key||key.length<3)return[];
+    if(key.endsWith('s')){
+      const singular=key.slice(0,-1);
+      return singular.length>=3&&state.wordKeys.has(singular)?[singular]:[];
+    }
+    const plural=key+'s';
+    return state.wordKeys.has(plural)?[plural]:[];
+  }
+  function activeExpansionForms(){
+    if(state.mode!=='exact')return[];
+    const query=$('query')?.value||'';
+    const simple=$('includeSimplePlurals')?.checked?simplePluralFormsFor(query):[];
+    const verified=$('includeWordForms')?.checked?expansionFormsFor(query):[];
+    return [...new Set([...simple,...verified])];
+  }
   function updateExpansionControl(){ const option=$('exactExpansionOption'),checkbox=$('includeWordForms'); if(!option||!checkbox)return; const key=state.mode==='exact'?singleWordQueryKey($('query')?.value||''):null,expansions=key?expansionFormsFor(key):[]; const analyses=state.grammarByForm.get(key)||[]; const available=Boolean(key&&expansions.length); const enabled=available; option.hidden=!enabled; checkbox.disabled=!enabled; const label=option.querySelector('label span'); if(label){ const pos=analyses.length===1?analyses[0].partOfSpeech:null; label.textContent=pos==='NOUN'?'Inclure singulier et pluriel vérifiés':pos==='VERB'?'Inclure les formes verbales vérifiées':'Inclure les formes morphologiques vérifiées'; } if(!enabled)checkbox.checked=false; }
   const queryTerms = () => { const terms=new Set([$('query')?.value, $('query2')?.value].flatMap(value => norm(value).split(' ')).filter(Boolean)); for(const form of activeExpansionForms())terms.add(form); return terms; };
-  const highlighted = value => { const terms=queryTerms(); if(!terms.size)return esc(value); return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>terms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join(''); };
+  const highlighted = value => {
+    const source=String(value||'');
+    // Map each normalized search character to its ORIGINAL source span.
+    // This safely matches au-delà inside l’au-delà and never highlights
+    // unrelated occurrences of the standalone word "au".
+    const clauses=exactSearchClauses($('query')?.value);
+    const originals=clauses?.length?clauses:[$('query')?.value];
+    const forms=clauses?.length?clauses.flatMap(formsForExactClause):activeExpansionForms();
+    const queries=[...new Set([...originals,...forms].map(norm).filter(Boolean))]
+      .sort((a,b)=>b.length-a.length);
+    if(!queries.length)return esc(source);
+    const chars=[],begins=[],ends=[];
+    let position=0;
+    for(const raw of source){
+      const start=position;
+      position+=raw.length;
+      const folded=raw.normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+        .toLowerCase().replace(/œ/g,'oe').replace(/æ/g,'ae')
+        .replace(/[’']/g,' ').replace(/[^a-z0-9\s-]/g,' ')
+        .replace(/-/g,' ');
+      for(const part of folded){
+        const token=/\s/u.test(part)?' ':part;
+        if(token===' '){
+          if(!chars.length)continue;
+          if(chars[chars.length-1]===' '){ends[ends.length-1]=position;continue;}
+        }
+        chars.push(token);begins.push(start);ends.push(position);
+      }
+    }
+    if(chars[chars.length-1]===' '){chars.pop();begins.pop();ends.pop();}
+    const normalized=chars.join(''),ranges=[];
+    for(const needle of queries){
+      let index=0;
+      while((index=normalized.indexOf(needle,index))!==-1){
+        const finish=index+needle.length;
+        if((index===0||normalized[index-1]===' ')&&
+           (finish===normalized.length||normalized[finish]===' ')){
+          const start=begins[index],end=ends[finish-1];
+          if(!ranges.some(r=>start<r.end&&end>r.start))
+            ranges.push({start,end});
+        }
+        index++;
+      }
+    }
+    ranges.sort((a,b)=>a.start-b.start);
+    if(!ranges.length)return esc(source);
+    let at=0,html='';
+    for(const range of ranges){
+      html+=esc(source.slice(at,range.start));
+      html+='<mark class="search-hit">'+esc(source.slice(range.start,range.end))+'</mark>';
+      at=range.end;
+    }
+    return html+esc(source.slice(at));
+  };
   const modeAwareText = value => state.mode==='exact' ? highlighted(value) : esc(value);
   const type = r => r.recordType === 'master-prayer' ? 'prayer' : r.recordType;
   const textFragments = r => r.recordType === 'psalm' ? [r.title, ...(r.verses || []).map(v => v.text)].filter(Boolean) : [r.title, r.text, r.summary].filter(Boolean);
@@ -48,8 +118,8 @@
   const importanceLabel = value => ({ central: 'Central', important: 'Important', related: 'Lié' }[value] || 'Indexé');
   const importanceRank = value => ({ central: 0, important: 1, related: 2 }[value] ?? 3);
   const publishPresentationState = detail => document.dispatchEvent(new CustomEvent('biblaw:presentation-state', { detail }));
-  const activateThemeMode = () => { state.mode='themes'; state.semanticSelection=null; state.grammarSelection=null; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Ex. amour, nature, âme, psaume 105'; $('modeHelp').textContent='Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié. Un numéro de psaume peut aussi être saisi directement.'; hideAmbiguity(); updateExpansionControl(); };
-  const activateExactMode = () => { state.mode='exact'; $('modeExact').classList.add('active'); $('modeThemes').classList.remove('active'); $('primarySearch').classList.add('exact-mode'); $('primarySearch').classList.remove('advanced-visible'); $('query2').disabled=true; $('query2').value=''; $('advancedSearchToggle').hidden=true; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('advancedSearchToggle').textContent='Croiser deux thèmes'; $('query').placeholder='Ex. acclame, temps vis, psaume 105'; $('modeHelp').textContent='Recherche les occurrences exactes d’un mot ou d’une expression dans le corpus.'; hideAmbiguity(); hideTransverseNavigation(); updateExpansionControl(); };
+  const activateThemeMode = () => { state.mode='themes'; state.semanticSelection=null; state.grammarSelection=null; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Rechercher un thème…'; $('simplePluralOption').hidden=true; $('popularThemes').hidden=false; $('modeThemes').setAttribute('aria-pressed','true'); $('modeExact').setAttribute('aria-pressed','false'); hideThemeAutocomplete(); hideAmbiguity(); updateExpansionControl(); };
+  const activateExactMode = () => { state.mode='exact'; $('modeExact').classList.add('active'); $('modeThemes').classList.remove('active'); $('primarySearch').classList.add('exact-mode'); $('primarySearch').classList.remove('advanced-visible'); $('query2').disabled=true; $('query2').value=''; $('advancedSearchToggle').hidden=true; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('advancedSearchToggle').textContent='Croiser deux thèmes'; $('query').placeholder='Rechercher des mots…'; $('simplePluralOption').hidden=false; $('popularThemes').hidden=true; $('modeThemes').setAttribute('aria-pressed','false'); $('modeExact').setAttribute('aria-pressed','true'); hideThemeAutocomplete(); hideAmbiguity(); hideTransverseNavigation(); updateExpansionControl(); };
 
   async function load() {
     try {
@@ -72,14 +142,18 @@
       state.semanticTargetsByForm = new Map();
       for(const target of [] ){ const list=state.semanticTargetsByForm.get(target.normalizedForm)||[]; list.push(target); state.semanticTargetsByForm.set(target.normalizedForm,list); }
       state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime);
+      buildSuggestionLookup();
+      renderPopularThemes();
       state.records = bundle.records || [];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
+      if(state.browseType)renderBrowseCategory(state.browseType);
       state.psalmsByNumber = new Map();
       state.normalizedFragmentsById = new Map();
       for (const r of state.records) {
         state.normalizedFragmentsById.set(r.id,textFragments(r).map(norm).filter(Boolean));
         if (r.recordType === 'psalm') { const number=Number(r.number), list=state.psalmsByNumber.get(number)||[]; list.push(r); state.psalmsByNumber.set(number,list); }
       }
+      buildWordSuggestionLookup().catch(error=>console.error('BIBLAW suggestion index:',error));
       state.themesByRecord = new Map();
       for (const theme of state.themeDirectory) for (const occurrence of theme.occurrences || []) {
         const list = state.themesByRecord.get(occurrence.recordId) || [];
@@ -93,12 +167,26 @@
       $('corpusStats').textContent = `${psalms.length} psaumes · ${verses} versets · ${state.themeDirectory.length} thèmes indexés`;
       $('indexCount').textContent=`${state.themeDirectory.length} thèmes indexés`;
       updateExpansionControl();
-      search();
-    } catch (error) { console.error(error); $('results').innerHTML = '<div class="empty">Le corpus ne peut pas être chargé. Ouvrez Biblaw depuis son adresse web.</div>'; }
+    } catch (error) { console.error(error); $('resultsSection').hidden=false; $('resultCount').textContent=''; $('results').innerHTML = '<div class="empty">Chargement impossible.</div>'; }
   }
 
   function matches(query) { const allowed=selectedTypes(),a=$('archangelFilter').value; return state.records.filter(r=>allowed.has(type(r))&&(!a||r.archangel===a)).map(record=>({record,score:1,occurrenceCount:literalOccurrenceCount(record,query)})).filter(item=>item.occurrenceCount>0); }
-  function mergeExpansionMatches(items,query,matchSource=matches){ const forms=activeExpansionForms(); if(!forms.length||!singleWordQueryKey(query))return items; const byId=new Map(items.map(item=>[item.record.id,item])); for(const form of forms)for(const item of matchSource(form)){ const current=byId.get(item.record.id); if(current)current.occurrenceCount+=item.occurrenceCount; else byId.set(item.record.id,item); } items.splice(0,items.length,...byId.values()); return items; }
+  // 056: A + B means both complete queries must occur. The first clause
+  // is the primary sort key, the second breaks ties (lexicographic order).
+  const exactSearchClauses=value=>{
+    const input=String(value||'');
+    if(!input.includes('+'))return null;
+    const clauses=input.split('+').map(part=>part.trim());
+    return clauses.length===2&&clauses.every(Boolean)?clauses:[];
+  };
+  function formsForExactClause(value){
+    const key=singleWordQueryKey(value);
+    if(!key)return[];
+    const simple=$('includeSimplePlurals')?.checked?simplePluralFormsFor(value):[];
+    const verified=$('includeWordForms')?.checked?expansionFormsFor(value):[];
+    return [...new Set([...simple,...verified])];
+  }
+  function mergeExpansionMatches(items,query,matchSource=matches,overrideForms=null){ const forms=overrideForms??activeExpansionForms(); if(!forms.length||!singleWordQueryKey(query))return items; const byId=new Map(items.map(item=>[item.record.id,item])); for(const form of forms)for(const item of matchSource(form)){ const current=byId.get(item.record.id); if(current)current.occurrenceCount+=item.occurrenceCount; else byId.set(item.record.id,item); } items.splice(0,items.length,...byId.values()); return items; }
   function psalmNumberMatches(number) { if(!selectedTypes().has('psalm'))return []; const a=$('archangelFilter').value; return (state.psalmsByNumber.get(number)||[]).filter(r=>!a||r.archangel===a).sort((x,y)=>(x.book?.number||9999)-(y.book?.number||9999)||String(x.id).localeCompare(String(y.id),'fr')).map(record=>({record,score:1,numberLookup:true})); }
   function textualPsalmMatches(query) { return matches(query).filter(x=>x.record.recordType==='psalm'); }
   function resolveIndexedThemes(query) { return state.themeEngine?.resolveIndexedThemes(query) || []; }
@@ -268,19 +356,543 @@
     $('transversePanel').hidden=false;
   }
   function navigateToTheme(theme) {
-    if(!theme)return; activateThemeMode(); $('query').value=theme.label; $('query2').value=''; if($('recordDialog').open)$('recordDialog').close();
+    if(!theme)return; state.hasSearched=true; $('resultsSection').hidden=false; activateThemeMode(); $('query').value=theme.label; $('query2').value=''; if($('recordDialog').open)$('recordDialog').close();
     const thematic=thematicItems([theme]), textual=textualPsalmMatches(theme.label); hideAmbiguity(); showTransverseNavigation(theme);
     publishPresentationState({kind:'canonical-theme',theme:{id:theme.id,label:theme.label},psalmCount:thematic.length});
     render(thematic,[theme],{textualCount:textual.length}); window.scrollTo({top:0,behavior:'smooth'});
   }
 
+
+  // 053F: French number equivalence is used ONLY to look up source-attested
+  // suggestion labels; it never rewrites displayed expressions or search text.
+  // Standard French (France), including 70/90, et-un, plurals cents/vingts.
+  const FR_NUMBER_UNDER_20=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf'];
+  const FR_NUMBER_TENS={20:'vingt',30:'trente',40:'quarante',50:'cinquante',60:'soixante'};
+  function frenchNumberUnder100(n){
+    if(n<20)return FR_NUMBER_UNDER_20[n];
+    if(n<70){
+      const tens=Math.floor(n/10)*10,unit=n%10;
+      return FR_NUMBER_TENS[tens]+(unit===0?'':unit===1?' et un':'-'+FR_NUMBER_UNDER_20[unit]);
+    }
+    if(n<80)return 'soixante'+(n===71?' et onze':'-'+FR_NUMBER_UNDER_20[n-60]);
+    if(n===80)return 'quatre-vingts';
+    if(n<100)return 'quatre-vingt-'+(n<90?FR_NUMBER_UNDER_20[n-80]:
+      n===91?'onze':FR_NUMBER_UNDER_20[n-90]); // 90/92..99 below corrected separately
+    return null;
+  }
+  function frenchNumberUnder100Correct(n){
+    if(n>=90)return 'quatre-vingt-'+FR_NUMBER_UNDER_20[n-80];
+    return frenchNumberUnder100(n);
+  }
+  function frenchNumberUnder1000(n,nonTerminal=false){
+    if(n<100)return n===80&&nonTerminal?'quatre-vingt':frenchNumberUnder100Correct(n);
+    const hundreds=Math.floor(n/100),rest=n%100;
+    const prefix=(hundreds===1?'':FR_NUMBER_UNDER_20[hundreds]+' ')+'cent';
+    if(rest===0)return prefix+(hundreds>1&&!nonTerminal?'s':'');
+    return prefix+' '+(rest===80&&nonTerminal?'quatre-vingt':frenchNumberUnder100Correct(rest));
+  }
+  function frenchNumberName(n){
+    if(!Number.isSafeInteger(n)||n<0||n>999999999999)return null;
+    if(n===0)return 'zéro';
+    const segments=[];
+    const billions=Math.floor(n/1000000000);n%=1000000000;
+    if(billions)segments.push((billions===1?'un':frenchNumberUnder1000(billions,true))+' milliard'+(billions>1?'s':''));
+    const millions=Math.floor(n/1000000);n%=1000000;
+    if(millions)segments.push((millions===1?'un':frenchNumberUnder1000(millions,true))+' million'+(millions>1?'s':''));
+    const thousands=Math.floor(n/1000);n%=1000;
+    if(thousands)segments.push((thousands===1?'':frenchNumberUnder1000(thousands,true)+' ')+'mille');
+    if(n)segments.push(frenchNumberUnder1000(n,false));
+    return segments.join(' ');
+  }
+  const FR_NUMERIC_SPELLINGS=new Map();
+  function parsedFrenchNumber(value){
+    const cleaned=norm(value);
+    if(FR_NUMERIC_SPELLINGS.has(cleaned))return FR_NUMERIC_SPELLINGS.get(cleaned);
+    // Numerals above 9,999: parse only well-formed French scale groups.
+    // This resolves e.g. 10 000 / dix mille without enumerating all integers.
+    const tokens=cleaned.split(' ').filter(Boolean);
+    const scales=new Map([['milliard',1e9],['milliards',1e9],
+      ['million',1e6],['millions',1e6],['mille',1e3]]);
+    let total=0,chunk=[],previousScale=Infinity,seenScale=false;
+    for(const token of tokens){
+      const scale=scales.get(token);
+      if(!scale){chunk.push(token);continue;}
+      if(scale>=previousScale)return null;
+      const written=chunk.join(' ');
+      const group=written?FR_NUMERIC_SPELLINGS.get(written):1;
+      if(!Number.isSafeInteger(group)||group<1||group>999)return null;
+      total+=group*scale;
+      if(!Number.isSafeInteger(total)||total>999999999999)return null;
+      previousScale=scale;seenScale=true;chunk=[];
+    }
+    if(!seenScale)return null;
+    const tail=chunk.length?FR_NUMERIC_SPELLINGS.get(chunk.join(' ')):0;
+    if(!Number.isSafeInteger(tail)||tail<0||tail>=previousScale)return null;
+    total+=tail;
+    return total<=999999999999?total:null;
+  }
+  function numericValueOf(value){
+    const raw=String(value);
+    if(/^(?:0|[1-9]\d*)$/u.test(raw)){
+      const number=Number(raw);
+      return Number.isSafeInteger(number)&&number<=999999999999?number:null;
+    }
+    return parsedFrenchNumber(raw);
+  }
+  // Lazy initialization (once) for normal written numerals; attested integers
+  // can extend this space to arbitrarily large safe values up to 10^12.
+  function initializeFrenchNumbers(){
+    if(FR_NUMERIC_SPELLINGS.size)return;
+    for(let n=0;n<=9999;n++){
+      const value=frenchNumberName(n);
+      FR_NUMERIC_SPELLINGS.set(norm(value),n);
+      // Historical hyphens/spaces normalize identically; final -s is
+      // optional only where French typography permits it.
+      if(n===80)FR_NUMERIC_SPELLINGS.set('quatre vingt',n);
+      if(n>=200&&n<=900&&n%100===0)
+        FR_NUMERIC_SPELLINGS.set(norm(frenchNumberName(n).replace(/cents$/u,'cent')),n);
+    }
+  }
+  function numericExpressionMatches(entry,query){
+    // Whole numeric identity is mandatory for DIGITS. A textual prefix such
+    // as "quatre-vingts" is 80, never 4, even though it starts with quatre.
+    if(entry.kind==='genitive')return false;
+    const value=entry.numericValue??numericValueOf(entry.word);
+    if(!Number.isSafeInteger(value))return false;
+    if(/^\d+$/u.test(query))return String(value)===query;
+    return norm(frenchNumberName(value)).startsWith(query);
+  }
+
+  // 053E: source-attested, grammatically closed suggestions, not arbitrary n-grams.
+  // This is automatic heuristic selection, NOT a manually validated dictionary.
+  async function buildWordSuggestionLookup(){
+    initializeFrenchNumbers();
+    let chunkStart=performance.now(),lastPublishedAt=0;
+    const words=new Map(),candidates=new Map(),nounEvidence=new Set();
+    const determiners=new Set(['le','la','les','un','une','des','ce','cet','cette','ces','mon','ma','mes','ton','ta','tes','son','sa','ses','notre','nos','votre','vos','leur','leurs','quel','quelle','quelques','du','au']);
+    const functionWords=new Set([
+      ...determiners,'je','tu','il','elle','on','ils','elles','nous','vous','moi','toi','lui','eux','soi','se','en','y','qui','que','quoi','dont','ou','où','ne','pas','plus','moins','tres','bien','si','ceci','cela','celui','celle','celles','ceux','leurs','me','te','l','d','s','j','c','qu','n',
+      'de','du','des','d','a','au','aux','avec','pour','sans','sur','sous','entre','par','dans','vers','chez','contre','et','ou','mais','donc','car','puis','alors','comme','quand','lorsque','afin','ainsi','est','sont','etre','être','ete','été','avait','ont','a','fait','font','peut','peuvent','faut','tous','toutes','tout','toute','autre','autres'
+    ]);
+    const numberWords=new Set(['zéro','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','vingt','trente','quarante','cinquante','soixante','cent','mille']);
+    // 053H: a corpus attestation is not sufficient to prove a standalone noun
+    // phrase. These are grammatical categories, NOT a list of banned strings.
+    // Closed-class auxiliaries, conjugations, adverbs and determiners cannot
+    // serve as nominal heads just because they were seen next to an article.
+    const nonNominalHeads=new Set([
+      'soit','soient','sois','soyons','soyez','fut','fût','fussent','serait','seraient','seras','sera','serons','seront','seriez','serait','serais',
+      'aura','auras','aurez','aurait','aurais','aurions','auriez','auraient','auront','aurai','aurons','avaient','avait','aviez','avions','eut','eût','eurent','ayant',
+      'aussi','encore','ici','ailleurs','demain','hier','maintenant','jamais','toujours','souvent','alors','désormais','déjà','peut-être','enfin','ensuite',
+      'aucun','aucune','aucuns','aucunes','chaque','plusieurs','certain','certains','certaine','certaines',
+      'voudrait','voudraient','veut','veulent','voulez','vouloir','peut','peuvent','pourrait','pourraient',
+      'est','sont','être','ete','été','fait','font','faire','savoir','laisser','dire','mettre','transmettre','recevoir',
+      'nouveau','nouvelle','nouveaux','nouvelles','grands','grandes','petits','petites','vraie','vrai','vrais','vraies','belle','beau','belles','beaux'
+    ]);
+    const isStandaloneNominalHead=head=>isNominalKey(head)&&!nonNominalHeads.has(head);
+    // 053H: frequency is not proof of grammar. A rare expression may be
+    // fully valid. Require independently witnessed nominal heads and a
+    // closed genitive structure, rather than multiple phrase occurrences.
+    // Manually typed phrases are never restricted by these suggestion rules.
+    const isReliableNominalExpression=entry=>
+      entry.kind==='genitive'&&
+      nounEvidence.has(entry.firstHead)&&nounEvidence.has(entry.lastHead)&&
+      isStandaloneNominalHead(entry.firstHead)&&isStandaloneNominalHead(entry.lastHead)&&
+      !/(?:er|ir|ez|eront|erait|eraient|aient)$/u.test(entry.lastHead);
+
+    // 053G: lexical compounds are contiguous hyphen groups, never windows
+    // spanning whitespace, sentences or surrounding independent words.
+    // Different source glyphs are retained verbatim in the suggestion label.
+    const hyphenSeparator=/^[-‐‑‒–]$/u;
+    const hyphenPrefix=new Set(['au','aux','en','de','du','des','sans','sous','sur','entre','outre','hors','avant','après','arrière','contre','non','semi','mi','vice','grand','grande','petit','petite']);
+    const hyphenMiddle=new Set(['a','à','au','aux','de','du','des','d','en','et','le','la','les','l','un','une','t']);
+    const demonstratives=new Set(['celui','celle','ceux','celles']);
+    const reflexives=new Set(['soi','moi','toi','lui','elle','elles','eux','nous','vous']);
+    const isIndependentHyphenWord=parts=>{
+      if(parts.length<2||parts.length>8)return false;
+      const keys=parts.map(part=>part.head),first=keys[0],last=keys[keys.length-1];
+      // Typical inversion/question structures (a-t-il, es-tu, dit-elle) are
+      // not independent words; they are fragments of their surrounding clause.
+      if(keys.slice(1).includes('t')&&['il','elle','on','ils','elles','tu','nous','vous'].includes(last))return false;
+      if(demonstratives.has(first)&&['ci','la','là'].includes(last)&&parts.length===2)return true;
+      if(reflexives.has(first)&&['meme','memes'].includes(last)&&parts.length===2)return true;
+      const contentEnd=isNominalKey(last);
+      const contentStart=isNominalKey(first);
+      if(!contentEnd)return false;
+      if(!(contentStart||hyphenPrefix.has(first)))return false;
+      // Nominal/prepositional compounds may use grammatical linkers inside,
+      // e.g. arc-en-ciel, tête-à-tête, without accepting arbitrary prose.
+      return keys.slice(1,-1).every(key=>isNominalKey(key)||hyphenMiddle.has(key));
+    };
+
+    const wordHead=value=>{
+      const raw=String(value).toLocaleLowerCase('fr').replace(/^l[’']/u,'');
+      return norm(raw);
+    };
+    const isNominalKey=key=>key.length>=3&&!key.includes(' ')&&!/^\d+$/u.test(key)&&!functionWords.has(key);
+    const addWord=value=>{
+      const key=norm(value),display=String(value).trim(),identity=display.toLocaleLowerCase('fr');
+      // Digit-only tokens really occurring in the source are suggestions too.
+      // Numeric aliases are lookup routes, never synthesized display labels.
+      if(key.length<2&&!/^\d$/u.test(key))return;
+      const previous=words.get(identity);
+      if(previous){previous.count++;return;}
+      words.set(identity,{key,word:display,count:1,expression:false});
+    };
+    const addCandidate=(value,kind,firstHead,lastHead)=>{
+      const display=String(value).trim(),key=norm(display),identity=key; // Fold case and hyphen variants.
+      if(key.length<3||display.length>80)return;
+      const previous=candidates.get(identity);
+      if(previous){previous.count++;return;}
+      const numericValue=kind==='number'?numericValueOf(firstHead):
+        kind==='numeral'?numericValueOf(display):null;
+      candidates.set(identity,{key,word:display,count:1,expression:true,kind,firstHead,lastHead,
+        numericValue,numericSpokenKey:numericValue===null?null:norm(frenchNumberName(numericValue))});
+    };
+    for(const record of state.records)for(const fragment of textFragments(record)){
+      const source=String(fragment);
+      const tokens=[...source.matchAll(/[\p{L}\p{N}]+(?:[’'][\p{L}\p{N}]+)*/gu)].map(match=>({
+        word:match[0],start:match.index,end:match.index+match[0].length,key:norm(match[0]),head:wordHead(match[0])
+      }));
+      for(let i=0;i<tokens.length;i++){
+        const first=tokens[i];
+        // A nominal observed with an article in the canonical text is a
+        // corpus-based witness, not a generated word or a hand-approved phrase.
+        if(isNominalKey(first.head)&&(
+          (i>0&&determiners.has(tokens[i-1].key)&&/^\s+$/u.test(source.slice(tokens[i-1].end,first.start))) ||
+          /^l[’']/iu.test(first.word)
+        ))nounEvidence.add(first.head);
+        for(const word of (first.word.match(/[\p{L}\p{N}]+/gu)||[]))addWord(word.toLocaleLowerCase('fr'));
+        // Capture the FULL maximal hyphen group once, including functional
+        // starters (au-delà, soi-même, celui-ci) and multi-link forms
+        // (arc-en-ciel). Strictly adjacent tokens only, no spaced dashes.
+        if((i===0||!hyphenSeparator.test(source.slice(tokens[i-1].end,first.start)))&&tokens[i+1]){
+          let final=i;
+          while(final<i+7&&tokens[final+1]&&
+            hyphenSeparator.test(source.slice(tokens[final].end,tokens[final+1].start)))final++;
+          if(final>i&&isIndependentHyphenWord(tokens.slice(i,final+1))){
+            addCandidate(source.slice(first.start,tokens[final].end),'hyphen',first.head,tokens[final].head);
+          }
+        }
+        if(!isNominalKey(first.head)&&!/^\d+$/u.test(first.word)&&
+          !numberWords.has(first.head))continue;
+        const second=tokens[i+1];
+        if(!second)continue;
+        const sep=source.slice(first.end,second.start);
+        // 053I: keep the LONGEST complete attested numeral; not a slice of
+        // a larger number (e.g. 44 accidentally extracted from 144).
+        // Preserve source hyphens, spaces, and original spelling.
+        if(/^\d+$/u.test(first.word)||numberWords.has(first.head)){
+          const preceding=tokens[i-1];
+          const joinedPrev=preceding&&/^[\s\-‐‑‒–]+$/u.test(
+            source.slice(preceding.end,first.start));
+          // A number may start after another word; ignore a tail of a
+          // longer numeral, including "et un" in "vingt et un".
+          const precedingNumber=joinedPrev&&numericValueOf(
+            source.slice(preceding.start,first.end))!==null;
+          if(!precedingNumber){
+            let best=i,bestValue=numericValueOf(first.word);
+            for(let j=i+1;j<tokens.length&&j<=i+8;j++){
+              if(!/^[\s\-‐‑‒–]+$/u.test(source.slice(tokens[j-1].end,tokens[j].start)))break;
+              const value=numericValueOf(source.slice(first.start,tokens[j].end));
+              if(value!==null){best=j;bestValue=value;}
+            }
+            if(bestValue!==null){
+              if(best>i)addCandidate(source.slice(first.start,tokens[best].end),
+                'numeral',first.head,tokens[best].head);
+              const noun=tokens[best+1];
+              if(noun&&/^\s+$/u.test(source.slice(tokens[best].end,noun.start))&&
+                isNominalKey(noun.head)){
+                addCandidate(source.slice(first.start,noun.end),'number',
+                  source.slice(first.start,tokens[best].end),noun.head);
+              }
+            }
+          }
+        }
+        // Closed nominal complements only: NOM de NOM, NOM de la NOM,
+        // NOM du NOM, NOM de l'homme. Never "élément à sa",
+        // "éléments pour que", or a coordinate clause containing "et".
+        if(!isNominalKey(first.head))continue;
+        const prep=second.key;
+        if(!/^\s+$/u.test(sep)||!new Set(['de','du','des']).has(prep))continue;
+        let last=tokens[i+2];
+        if(!last||!/^\s+$/u.test(source.slice(second.end,last.start)))continue;
+        if(prep==='de'&&new Set(['le','la','les','l']).has(last.key)){
+          const tail=tokens[i+3];
+          if(!tail||!/^\s+$/u.test(source.slice(last.end,tail.start)))continue;
+          last=tail;
+        }
+        if(!isNominalKey(last.head))continue;
+        addCandidate(source.slice(first.start,last.end),'genitive',first.head,last.head);
+      }
+      if(performance.now()-chunkStart>12){
+        // Single attested words are published immediately. Compound candidates
+        // are published only after collecting corpus-wide nominal evidence.
+        if(state.mode==='exact'&&(/^\d$/u.test(norm($('query').value))||norm($('query').value).length>=2)&&performance.now()-lastPublishedAt>90){
+          state.wordEntries=[...words.values(),...[...candidates.values()].filter(entry=>
+            entry.kind==='hyphen'||entry.kind==='number'&&nounEvidence.has(entry.lastHead))];
+          renderWordAutocomplete();
+          lastPublishedAt=performance.now();
+        }
+        await new Promise(resolve=>setTimeout(resolve,0));
+        chunkStart=performance.now();
+      }
+    }
+    const expressions=[...candidates.values()].filter(entry=>
+      entry.kind==='hyphen'||entry.kind==='numeral'||
+      entry.kind==='number'&&nounEvidence.has(entry.lastHead)||
+      isReliableNominalExpression(entry)
+    );
+    state.wordEntries=[...words.values(),...expressions];
+    state.wordKeys=new Set([...words.values()].map(entry=>entry.key));
+    // Read-only audit counters for the actual attested suggestions, with
+    // no change to the psalm index, search, or ranking.
+    $('query').dataset.hyphenSuggestionCount=String(expressions.filter(entry=>entry.kind==='hyphen').length);
+    $('query').dataset.genitiveSuggestionCount=String(expressions.filter(entry=>entry.kind==='genitive').length);
+    $('query').dataset.rejectedGenitiveCount=String([...candidates.values()].filter(entry=>
+      entry.kind==='genitive'&&!isReliableNominalExpression(entry)).length);
+    state.wordIndexReady=true;
+    $('query').dataset.wordSuggestionsReady='true';
+    if(state.mode==='exact'&&norm($('query').value).length>=1)renderThemeAutocomplete();
+  }
+  function findAutocompleteWords(input){
+    const query=norm(input);
+    if(query.length<2&&!/^\d$/u.test(query))return[];
+    const direct=entry=>{
+      if(/^\d+$/u.test(query)){
+        // Never suggest "40" or "4th" for a typed "4".
+        return /^\d+(?:\s|$)/u.test(entry.key)&&entry.key.match(/^\d+/u)?.[0]===query;
+      }
+      return entry.key.startsWith(query);
+    };
+    // A large digit sequence can be genuine corpus data, but offering
+    // 20121 for the short prefix "vin" is misleading. Only show long
+    // number aliases once enough of the written numeral has been entered;
+    // an explicit numeric input always remains searchable.
+    const numberAlias=entry=>{
+      if(/^\d+$/u.test(query)||!entry.word.match(/^\d/u))return numericExpressionMatches(entry,query);
+      if((entry.numericValue??numericValueOf(entry.word))>9999&&query.length<5)return false;
+      return numericExpressionMatches(entry,query);
+    };
+    return state.wordEntries.filter(entry=>direct(entry)||numberAlias(entry))
+      .sort((a,b)=>{
+        // If the input itself is a non-numeric corpus word ("vin"),
+        // show lexical suggestions first. For numeric prefixes ("qu",
+        // "qua", "quatre", "dou"), keep equivalent digit forms prominent.
+        const lexicalExact=query.length>=3&&state.wordKeys.has(query)&&numericValueOf(query)===null;
+        const rank=entry=>numberAlias(entry)&&!direct(entry)?(lexicalExact?1:0):
+          direct(entry)?(lexicalExact?0:1):2;
+        return rank(a)-rank(b)||(a.expression?1:0)-(b.expression?1:0)
+          ||b.count-a.count||a.word.localeCompare(b.word,'fr');
+      });
+  }
+  function renderWordAutocomplete(){
+    if(state.wordAutocompleteSuppressed){hideThemeAutocomplete();return;}
+    const query=norm($('query').value);
+    // Do not propose a single word as a replacement for a combined query.
+    if($('query').value.includes('+')){hideThemeAutocomplete();return;}
+    if(query.length<2&&!/^\d$/u.test(query)){hideThemeAutocomplete();return;}
+    const words=findAutocompleteWords($('query').value);
+    if(!state.wordIndexReady&&!words.length){
+      // 053C: do not silently suppress the dropdown during progressive indexing.
+      const box=$('themeAutocomplete');
+      state.autocompleteItems=[];
+      state.autocompleteMode=null;
+      state.autocompleteWindowStart=-1;
+      box.setAttribute('aria-label','Préparation des suggestions du corpus');
+      box.innerHTML='<div class="autocomplete-count" role="status">Recherche des suggestions dans les psaumes…</div>';
+      box.hidden=false;
+      $('query').setAttribute('aria-expanded','true');
+      return;
+    }
+    showSuggestionList(words,'words','Mots et expressions du corpus suggérés');
+  }
+
+  // 052: autocomplete only proposes labels and registered aliases from the published index.
+  function buildSuggestionLookup(){
+    initializeFrenchNumbers();
+    const entries=[];
+    for(const theme of state.themeDirectory)entries.push({id:theme.id,key:norm(theme.label),alias:false});
+    for(const [alias,entry] of Object.entries(state.runtime?.aliases||{})){
+      for(const id of entry.themeIds||[])if(state.themeById.has(id))entries.push({id,key:norm(alias),alias:true});
+    }
+    // Equivalences for EXISTING thematic labels only, without adding themes.
+    const additional=[];
+    for(const entry of entries){
+      const theme=state.themeById.get(entry.id),label=theme?.label||'';
+      const parts=norm(label).split(' ');
+      const first=parts[0]||'';
+      if(/^\d+$/u.test(first)){
+        const spoken=frenchNumberName(Number(first));
+        if(spoken)additional.push({...entry,key:spoken+(parts.length>1?' '+parts.slice(1).join(' '):''),numericAlias:true});
+      }else{
+        for(let count=Math.min(7,parts.length);count>0;count--){
+          const value=numericValueOf(parts.slice(0,count).join(' '));
+          if(value===null)continue;
+          additional.push({...entry,key:String(value)+(parts.length>count?' '+parts.slice(count).join(' '):''),numericAlias:true});
+          break;
+        }
+      }
+    }
+    state.suggestionEntries=[...entries,...additional].filter(item=>item.key);
+  }
+  function findAutocompleteThemes(input){
+    const query=norm(input);
+    if(query.length<2&&!/^\d$/u.test(query))return[];
+    const matches=new Map();
+    for(const entry of state.suggestionEntries){
+      // Only words at the beginning: no "divin" suggestion for "vin".
+      if(!entry.key.startsWith(query))continue;
+      const theme=state.themeById.get(entry.id);
+      if(!theme)continue;
+      const rank=(entry.numericAlias?1:0)+(entry.alias?1:0);
+      if(!matches.has(entry.id)||rank<matches.get(entry.id).rank)matches.set(entry.id,{theme,rank});
+    }
+    return [...matches.values()].sort((a,b)=>a.rank-b.rank||a.theme.label.localeCompare(b.theme.label,'fr')||a.theme.id.localeCompare(b.theme.id,'fr')).map(item=>item.theme);
+  }
+  // 054: every suggestion remains reachable, with only a few DOM rows rendered.
+  // Rendering 8 000+ buttons at once froze Android browsers in the 053 preview.
+  const AUTOCOMPLETE_ROW_HEIGHT=64;
+  const AUTOCOMPLETE_HEADER_HEIGHT=32;
+  const AUTOCOMPLETE_VISIBLE_ROWS=18;
+  function hideThemeAutocomplete(){
+    const box=$('themeAutocomplete');
+    box.hidden=true;
+    box.replaceChildren();
+    box.removeAttribute('data-total-suggestions');
+    state.autocompleteItems=[];
+    state.autocompleteMode=null;
+    state.autocompleteWindowStart=-1;
+    state.autocompleteQueryKey=null;
+    $('query').setAttribute('aria-expanded','false');
+  }
+  function chooseAutocompleteTheme(theme){
+    if(!theme)return;
+    $('query').value=theme.label;
+    $('query2').value='';
+    hideThemeAutocomplete();
+    search();
+  }
+  function chooseSuggestion(index){
+    const item=state.autocompleteItems[index];
+    if(!item)return;
+    if(state.autocompleteMode==='themes'){chooseAutocompleteTheme(item);return;}
+    $('query').value=item.word;
+    hideThemeAutocomplete();
+    search(); // The established phrase matcher still handles the entire consecutive expression.
+  }
+  function renderSuggestionWindow(force=false){
+    const box=$('themeAutocomplete'),items=state.autocompleteItems;
+    if(box.hidden||!items.length)return;
+    const stableScrollTop=box.scrollTop;
+    const visibleStart=Math.floor(Math.max(0,box.scrollTop-AUTOCOMPLETE_HEADER_HEIGHT)/AUTOCOMPLETE_ROW_HEIGHT);
+    const visibleEnd=Math.ceil(Math.max(0,box.scrollTop+box.clientHeight-AUTOCOMPLETE_HEADER_HEIGHT)/AUTOCOMPLETE_ROW_HEIGHT);
+    const current=state.autocompleteWindowStart;
+    // Preserve stable DOM nodes while a user is tapping one of the visible rows.
+    // Rebuild only after scrolling beyond a buffered rendering window.
+    if(!force&&current>=0&&visibleStart>=current+2&&visibleEnd<current+AUTOCOMPLETE_VISIBLE_ROWS-2)return;
+    const first=Math.max(0,Math.min(Math.max(0,items.length-AUTOCOMPLETE_VISIBLE_ROWS),visibleStart-7));
+    if(!force&&first===current)return;
+    state.autocompleteWindowStart=first;
+    const end=Math.min(items.length,first+AUTOCOMPLETE_VISIBLE_ROWS);
+    const before=box.querySelector('[data-suggest-before]'),after=box.querySelector('[data-suggest-after]');
+    const rows=box.querySelector('[data-suggest-rows]');
+    before.style.height=(first*AUTOCOMPLETE_ROW_HEIGHT)+'px';
+    after.style.height=((items.length-end)*AUTOCOMPLETE_ROW_HEIGHT)+'px';
+    const wordMode=state.autocompleteMode==='words',attr=wordMode?'data-autocomplete-word':'data-autocomplete-theme';
+    rows.innerHTML=items.slice(first,end).map((item,i)=>{
+      const index=first+i,label=wordMode?item.word:item.label,identity=wordMode?item.word:item.id;
+      return '<button type="button" role="option" data-suggestion-index="'+index+'" '+attr+'="'+esc(identity)+'" aria-selected="false" aria-posinset="'+(index+1)+'" aria-setsize="'+items.length+'" title="'+esc(label)+'">'+esc(label)+'</button>';
+    }).join('');
+    // Prevent mobile scroll anchoring from snapping to the first suggestion
+    // when virtualized spacers and rows are refreshed.
+    if(Math.abs(box.scrollTop-stableScrollTop)>1)box.scrollTop=stableScrollTop;
+    rows.querySelectorAll('[data-suggestion-index]').forEach(button=>{
+      button.onclick=()=>chooseSuggestion(Number(button.dataset.suggestionIndex));
+      button.onkeydown=event=>{
+        const index=Number(button.dataset.suggestionIndex);
+        if(event.key==='ArrowDown'){event.preventDefault();focusSuggestion(Math.min(items.length-1,index+1));}
+        if(event.key==='ArrowUp'){event.preventDefault();index===0?$('query').focus():focusSuggestion(index-1);}
+        if(event.key==='Escape'){event.preventDefault();hideThemeAutocomplete();$('query').focus();}
+      };
+    });
+  }
+  function focusSuggestion(index){
+    const box=$('themeAutocomplete');
+    if(box.hidden||!state.autocompleteItems.length)return;
+    const y=AUTOCOMPLETE_HEADER_HEIGHT+index*AUTOCOMPLETE_ROW_HEIGHT;
+    if(y<box.scrollTop+AUTOCOMPLETE_HEADER_HEIGHT)box.scrollTop=Math.max(0,y-AUTOCOMPLETE_HEADER_HEIGHT);
+    else if(y+AUTOCOMPLETE_ROW_HEIGHT>box.scrollTop+box.clientHeight)box.scrollTop=y+AUTOCOMPLETE_ROW_HEIGHT-box.clientHeight;
+    renderSuggestionWindow(true);
+    box.querySelector('[data-suggestion-index="'+index+'"]')?.focus();
+  }
+  function showSuggestionList(items,mode,label){
+    if(!items.length){hideThemeAutocomplete();return;}
+    const box=$('themeAutocomplete');
+    // Redundant redraws in the same mode should not reset scroll or focus.
+    const q=norm($('query').value);
+    if(!box.hidden&&state.autocompleteMode===mode&&state.autocompleteQueryKey===q&&
+       items.length===state.autocompleteItems.length&&
+       items.every((item,i)=>item===state.autocompleteItems[i]))return;
+    state.autocompleteItems=items;
+    state.autocompleteMode=mode;
+    // Progressive indexing may republish the same list while a user scrolls.
+    // Keep position when the query/mode is unchanged.
+    const queryKey=norm($('query').value);
+    const keepPosition=state.autocompleteQueryKey===queryKey&&
+      state.autocompleteMode===mode&&!box.hidden;
+    const previousScroll=keepPosition?box.scrollTop:0;
+    state.autocompleteQueryKey=queryKey;
+    state.autocompleteWindowStart=-1;
+    box.setAttribute('aria-label',label);
+    box.dataset.totalSuggestions=String(items.length);
+    box.innerHTML='<div class="autocomplete-count" role="presentation">'+items.length.toLocaleString('fr-FR')+' suggestions · défilez pour tout voir</div><div data-suggest-before aria-hidden="true"></div><div data-suggest-rows></div><div data-suggest-after aria-hidden="true"></div>';
+    box.hidden=false;
+    box.scrollTop=previousScroll;
+    renderSuggestionWindow(true);
+    $('query').setAttribute('aria-expanded','true');
+  }
+  function renderThemeAutocomplete(){
+    if(state.mode==='exact'){renderWordAutocomplete();return;}
+    if(state.mode!=='themes'||$('query2').value.trim()){hideThemeAutocomplete();return;}
+    showSuggestionList(findAutocompleteThemes($('query').value),'themes','Thèmes indexés suggérés');
+  }
+  $('themeAutocomplete').addEventListener('scroll',()=>renderSuggestionWindow(),{passive:true});
+  function renderPopularThemes(){
+    const preferred=['amour','nature','ame','guerison','equilibre'];
+    const seen=new Set(),chosen=[];
+    const candidates=[...preferred.map(key=>state.themeDirectory.find(theme=>norm(theme.label)===key)).filter(Boolean),...state.themeDirectory.slice().sort((a,b)=>(b.occurrenceCount||0)-(a.occurrenceCount||0)||a.label.localeCompare(b.label,'fr'))];
+    for(const theme of candidates){
+      if(seen.has(theme.id))continue;
+      seen.add(theme.id);chosen.push(theme);
+      if(chosen.length===5)break;
+    }
+    $('popularThemes').innerHTML=chosen.map(theme=>`<button type="button" class="popular-theme-chip" data-popular-theme="${esc(theme.id)}">${esc(theme.label)}</button>`).join('');
+    $('popularThemes').querySelectorAll('[data-popular-theme]').forEach(button=>button.onclick=()=>chooseAutocompleteTheme(state.themeById.get(button.dataset.popularTheme)));
+  }
+  function clearSearchDisplay(){
+    state.hasSearched=false;
+    $('resultsSection').hidden=true;
+    $('resultCount').textContent='';
+    $('results').replaceChildren();
+    hideAmbiguity();hideTransverseNavigation();
+    publishPresentationState({kind:'no-result'});
+  }
+  function bindNearThemeChoices(){
+    $('results').querySelectorAll('[data-near-theme]').forEach(button=>button.onclick=()=>chooseAutocompleteTheme(state.themeById.get(button.dataset.nearTheme)));
+  }
+
   function search(){
+    state.wordAutocompleteSuppressed=true;
+    hideThemeAutocomplete();
     const query=$('query').value.trim(), query2=$('query2').value.trim();
+    if(!query){clearSearchDisplay();return;}
+    state.hasSearched=true;
+    $('resultsSection').hidden=false;
     const semanticKey=singleWordQueryKey(query);
     if(state.semanticSelection&&semanticKey!==state.semanticSelection.normalizedForm)state.semanticSelection=null;
     updateExpansionControl();
-    if(!query){hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'no-result'});return render([]);}
-    const psalmNumber=parsePsalmNumberQuery(query);
+    const psalmNumber=state.mode==='themes'||!exactSearchClauses(query)?
+      parsePsalmNumberQuery(query):null;
     if(psalmNumber!==null && !query2){ hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'other'}); return render(psalmNumberMatches(psalmNumber),null,{numberLookup:true,psalmNumber}); }
     if(state.mode==='themes'){
       if(query2){
@@ -308,6 +920,33 @@
       hideAmbiguity();hideTransverseNavigation(); const textual=textualPsalmMatches(query); publishPresentationState({kind:textual.length?'textual-fallback':'no-result'}); return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)});
     }
     hideTransverseNavigation();publishPresentationState({kind:'other'});
+    const clauses=exactSearchClauses(query);
+    if(clauses){
+      if(clauses.length!==2){
+        hideAmbiguity();
+        return render([],null,{invalidCombined:true});
+      }
+      const [first,second]=clauses;
+      const primary=matches(first);
+      mergeExpansionMatches(primary,first,matches,formsForExactClause(first));
+      const secondary=matches(second);
+      mergeExpansionMatches(secondary,second,matches,formsForExactClause(second));
+      const secondaryById=new Map(secondary.map(x=>[x.record.id,x.occurrenceCount]));
+      const exactItems=primary.filter(item=>secondaryById.has(item.record.id))
+        .map(item=>({
+          ...item,primaryCount:item.occurrenceCount,
+          secondaryCount:secondaryById.get(item.record.id),
+          occurrenceCount:item.occurrenceCount+secondaryById.get(item.record.id)
+        }));
+      // Primary phrase FIRST, then secondary phrase, never just a sum.
+      exactItems.sort((a,b)=>
+        b.primaryCount-a.primaryCount||b.secondaryCount-a.secondaryCount||
+        (Number(a.record.number)||Number.MAX_SAFE_INTEGER)-
+        (Number(b.record.number)||Number.MAX_SAFE_INTEGER)||
+        String(a.record.id).localeCompare(String(b.record.id),'fr'));
+      hideAmbiguity();
+      return render(exactItems,null,{exactSearch:true,dualExact:true,dualTerms:clauses});
+    }
     const semanticSelection=semanticSelectionContext(query);
     const grammaticalSelection=grammarSelectionContext(query);
     const exactItems=matches(query);
@@ -321,7 +960,7 @@
 
   function summary(r){return r.recordType==='psalm'?(r.verses||[]).slice(0,2).map(v=>v.text).join(' '):r.summary||(r.text||'').slice(0,280);}
   function contextualVerses(r,thematic){ if(!thematic?.verseNumbers?.length||!r.verses?.length)return''; const wanted=new Set(thematic.verseNumbers.map(Number)); const chosen=r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4); if(!chosen.length)return''; return `<div class="theme-context"><div class="context-label">Passage concerné</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${esc(v.text)}</span></div>`).join('')}</div>`; }
-  function exactVerses(r){ if(r.recordType!=='psalm'||!r.verses?.length)return''; const query=$('query').value; if(!norm(query))return''; const semantic=semanticSelectionContext(query); let chosen; if(semantic){ const row=(semantic.sense.records||[]).find(item=>item[0]===r.id); const wanted=new Set((row?.[2]||[]).map(Number)); chosen=r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4); } else { const expansion=activeExpansionForms(); chosen=r.verses.filter(v=>literalIncludes(v.text,query)||expansion.some(form=>literalIncludes(v.text,form))).slice(0,4); } if(!chosen.length)return''; return `<div class="theme-context exact-context"><div class="context-label">Passage${chosen.length>1?'s':''} où la recherche apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`; }
+  function exactVerses(r){ if(r.recordType!=='psalm'||!r.verses?.length)return''; const query=$('query').value; if(!norm(query))return''; const clauses=exactSearchClauses(query); if(clauses?.length===2){const forms=clauses.flatMap(clause=>[clause,...formsForExactClause(clause)]);const chosen=r.verses.filter(v=>forms.some(form=>literalIncludes(v.text,form))).slice(0,4);if(!chosen.length)return'';return `<div class="theme-context exact-context"><div class="context-label">Passages où l’un des deux termes apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`;} const semantic=semanticSelectionContext(query); let chosen; if(semantic){ const row=(semantic.sense.records||[]).find(item=>item[0]===r.id); const wanted=new Set((row?.[2]||[]).map(Number)); chosen=r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4); } else { const expansion=activeExpansionForms(); chosen=r.verses.filter(v=>literalIncludes(v.text,query)||expansion.some(form=>literalIncludes(v.text,form))).slice(0,4); } if(!chosen.length)return''; return `<div class="theme-context exact-context"><div class="context-label">Passage${chosen.length>1?'s':''} où la recherche apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`; }
   function relatedThemes(r,matchedThemes){ const matched=new Set((matchedThemes||[]).map(x=>x.id)); return (state.themesByRecord.get(r.id)||[]).filter(t=>!matched.has(t.id)).slice(0,12); }
   function themeTags(themes){ if(!themes.length)return '<span class="muted inline-empty">Aucun autre thème indexé.</span>'; return `<span class="inline-themes">${themes.map(t=>`<button class="theme-text-link" data-related-theme="${esc(t.id)}">${esc(t.label)}</button>`).join('<span class="theme-separator">·</span>')}</span>`; }
   function bindThemeLinks(root=document){ root.querySelectorAll('[data-related-theme]').forEach(b=>b.onclick=()=>navigateToTheme(state.themeById.get(b.dataset.relatedTheme))); }
@@ -340,13 +979,23 @@
 
   function render(items,indexedThemes=null,companion=null){
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
-    $('resultCount').textContent=companion?.grammarSearch?`${items.reduce((n,item)=>n+item.occurrenceCount,0)} occurrences · ${items.length} textes`:companion?.suggestionPending?'Choisissez un thème':companion?.dualPending?'Intersection en attente':companion?.dualTheme?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous les deux thèmes`:companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:companion?.unresolvedTheme?'Aucun thème indexé':themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:`${items.length} résultat${items.length>1?'s':''}`;
-    const textualNotice=!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>THÈME INDEXÉ</strong><span>Deux lectures de cette recherche : ${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous ce thème · le mot ou l’expression apparaît dans ${companion.textualCount} psaume${companion.textualCount>1?'s':''} du texte.</span></div><button class="secondary" data-show-text-search>Voir les occurrences textuelles</button></div>`:'';
-    const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><div><strong>Aucun thème indexé ne correspond à cette recherche</strong><span>${companion?.textualAvailable?'Le mot ou l’expression apparaît cependant dans le corpus.':'Aucune occurrence textuelle exacte ne correspond non plus avec les filtres sélectionnés.'}</span></div>${companion?.textualAvailable?'<button class="secondary" data-show-text-search>Voir les occurrences</button>':''}</div>`:'';
-    if(!items.length){ const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const suggestionPending=companion?.suggestionPending?'<div class="empty">Plusieurs thèmes correspondent à votre recherche. Choisissez celui qui vous intéresse ci-dessus.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; $('results').innerHTML=emptyNumber||dualEmpty||suggestionPending||pending||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return; }
-    $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount})=>{
+    const totalHits=items.reduce((n,item)=>n+(item.occurrenceCount||0),0);
+    const textType=items.length&&items.every(item=>item.record.recordType==='psalm')?'psaume':'texte';
+    const combinedCount=companion?.dualExact?
+      items.length+' '+textType+(items.length>1?'s':'')+' · '+
+      items.reduce((n,item)=>n+item.primaryCount,0)+' × «'+companion.dualTerms[0]+' » · '+
+      items.reduce((n,item)=>n+item.secondaryCount,0)+' × «'+companion.dualTerms[1]+' » · tri : 1er puis 2e':null;
+    const exactCount=companion?.exactSearch?
+      totalHits+' occurrence'+(totalHits>1?'s':'')+' · '+items.length+
+      ' '+textType+(items.length>1?'s':''):null;
+    $('resultCount').textContent=companion?.invalidCombined?'Saisissez deux expressions séparées par +':(combinedCount||exactCount||(companion?.grammarSearch?`${items.reduce((n,item)=>n+item.occurrenceCount,0)} occurrences · ${items.length} textes`:companion?.suggestionPending?'Choisissez un thème':companion?.dualPending?'Intersection en attente':companion?.dualTheme?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous les deux thèmes`:companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:companion?.unresolvedTheme?'Aucun thème indexé':themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:`${items.length} résultat${items.length>1?'s':''}`));
+    const textualNotice=!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?`<div class="search-scope-note"><strong>Thème indexé · ${items.length} psaumes</strong><button class="secondary" data-show-text-search>Voir les occurrences (${companion.textualCount})</button></div>`:'';
+    const nearby=companion?.unresolvedTheme?findAutocompleteThemes($('query').value):[];
+    const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><strong>Aucun thème trouvé</strong><div class="near-themes">${nearby.map(theme=>`<button class="popular-theme-chip" data-near-theme="${esc(theme.id)}">${esc(theme.label)}</button>`).join('')}</div><button class="secondary" data-search-in-words>Rechercher en mots</button></div>`:'';
+    if(!items.length){ if(companion?.invalidCombined){$('results').innerHTML='<div class="empty">Indiquez un premier mot ou groupe de mots, puis +, puis un second.</div>';return;} const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const suggestionPending=companion?.suggestionPending?'<div class="empty">Plusieurs thèmes correspondent à votre recherche. Choisissez celui qui vous intéresse ci-dessus.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; $('results').innerHTML=emptyNumber||dualEmpty||suggestionPending||pending||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();bindNearThemeChoices();return; }
+    $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount,primaryCount,secondaryCount})=>{
       const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'';
-      const status=companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`:themeMatches?'Deux thèmes':thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
+      const status=companion?.dualExact?`${primaryCount} + ${secondaryCount} occurrences`:companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`:themeMatches?'Deux thèmes':thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
       const details=resultDetailsBody(r,{thematic,matchedThemes,numberLookup,themeMatches,companion});
       const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
       return `<article class="result-card result-card-compact">
@@ -361,12 +1010,112 @@
     document.querySelectorAll('[data-open]').forEach(b=>b.onclick=e=>{e.stopPropagation();open(b.dataset.open);}); bindThemeLinks($('results')); bindTextSearchLink();
   }
   function bindTextSearchLink(){ const button=document.querySelector('[data-show-text-search]'); if(button)button.onclick=()=>{ activateExactMode(); search(); window.scrollTo({top:$('results').offsetTop-90,behavior:'smooth'}); }; }
-  function open(id){
-    const r=state.recordById.get(id);if(!r)return;state.active=r; $('dialogEyebrow').textContent=label(r);$('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
-    if(r.recordType==='psalm'){ const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${modeAwareText(v.text)}</div></div>`).join(''); const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`; $('dialogContent').innerHTML=verses+(r.attachedPrayer?`<section class="prayer-block"><h3>Prière ${r.attachedPrayer.number}</h3>${modeAwareText(r.attachedPrayer.text)}</section>`:'')+themesBlock; bindThemeLinks($('dialogContent')); } else $('dialogContent').innerHTML=`<div class="prayer-block">${modeAwareText(r.text||r.summary||'')}</div>`;
+  function open(id,browsing=false){
+    const r=state.recordById.get(id);if(!r)return;state.active=r;state.activeBrowsing=browsing; $('browseBack').hidden=!browsing; $('dialogEyebrow').textContent=browsing?browseReference(r):label(r);$('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
+    const readText=browsing?esc:modeAwareText;
+    if(r.recordType==='psalm'){ const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${readText(v.text)}</div></div>`).join(''); const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`; $('dialogContent').innerHTML=verses+(r.attachedPrayer&&!browsing&&selectedTypes().has('prayer')?`<section class="prayer-block"><h3>Prière ${r.attachedPrayer.number}</h3>${readText(r.attachedPrayer.text)}</section>`:'')+themesBlock; bindThemeLinks($('dialogContent')); } else $('dialogContent').innerHTML=`<div class="prayer-block">${readText(r.text||r.summary||'')}</div>`;
     $('recordDialog').showModal();
   }
-  function activeText(){ const r=state.active;if(!r)return''; const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'); const header=[label(r),title]; if(r.book?.number)header.push(`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`); let out=header.join('\n')+'\n\n'; if(r.verses){ out+=(r.verses||[]).map(v=>`${v.number}. ${v.text}`).join('\n'); if(r.attachedPrayer?.text)out+=`\n\nPrière ${r.attachedPrayer.number}\n\n${r.attachedPrayer.text}`; }else out+=r.text||r.summary||''; return out; }
+  function activeText(){ const r=state.active;if(!r)return''; const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'); const header=[label(r),title]; if(r.book?.number)header.push(`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`); let out=header.join('\n')+'\n\n'; if(r.verses){ out+=(r.verses||[]).map(v=>`${v.number}. ${v.text}`).join('\n'); if(r.attachedPrayer?.text&&!state.activeBrowsing&&selectedTypes().has('prayer'))out+=`\n\nPrière ${r.attachedPrayer.number}\n\n${r.attachedPrayer.text}`; }else out+=r.text||r.summary||''; return out; }
+
+  // 058: Browsing uses only catalog records; search/filter state is untouched.
+  const BROWSE_LABELS={psalm:'Psaumes',prayer:'Prières',note:'Notes',annex:'Annexes'};
+  const BROWSE_BATCH_SIZE=48;
+  const browseRecordType=r=>type(r);
+  const browseCoordinates=r=>{
+    const id=String(r.id||'').match(/^book-(\d+)-psalm-(\d+)$/u);
+    return [Number(id?.[1]||r.book?.number||r.bookNumber||9999),
+      Number(id?.[2]||r.number||9999)];
+  };
+  const browseReference=r=>{
+    const kind=browseRecordType(r);
+    if(kind==='psalm')return 'Psaume '+r.number+' · '+archangelName(r.archangel);
+    if(kind==='prayer')return 'Prière '+(r.number||'')+(r.archangel?' · '+archangelName(r.archangel):'');
+    if(kind==='note')return 'Note'+(r.number?' '+r.number:'');
+    return 'Annexe'+(r.number?' '+r.number:'');
+  };
+  function browseCategoryRecords(kind){
+    const rows=state.records.filter(r=>browseRecordType(r)===kind);
+    if(kind==='psalm')rows.sort((a,b)=>{
+      const ak=browseCoordinates(a),bk=browseCoordinates(b);
+      return ak[0]-bk[0]||ak[1]-bk[1]||String(a.id).localeCompare(String(b.id),'fr');
+    });
+    return rows;
+  }
+  function appendBrowseBatch(){
+    const box=$('browseEntries'),rows=state.browseRows||[];
+    const start=state.browseNext||0,limit=Math.min(rows.length,start+BROWSE_BATCH_SIZE);
+    const fragment=document.createDocumentFragment();
+    for(let i=start;i<limit;i++){
+      const record=rows[i],button=document.createElement('button');
+      button.type='button';button.className='browse-item';button.dataset.browseRecord=record.id;
+      const heading=document.createElement('strong'),title=document.createElement('span');
+      heading.textContent=browseReference(record);
+      title.textContent=record.title||record.id;
+      button.append(heading,title);
+      button.addEventListener('click',()=>open(record.id,true));
+      fragment.appendChild(button);
+    }
+    box.appendChild(fragment);
+    state.browseNext=limit;
+    $('browseStatus').textContent=limit+' sur '+rows.length+' textes affichés';
+    $('browseMore').hidden=limit>=rows.length;
+  }
+  function fillBrowseViewport(){
+    const box=$('browseEntries');
+    while(state.browseNext<state.browseRows.length&&box.scrollHeight<=box.clientHeight){
+      appendBrowseBatch();
+    }
+  }
+  function renderBrowseCategory(kind){
+    const rows=browseCategoryRecords(kind);
+    state.browseRows=rows;state.browseNext=0;
+    $('browseEntries').replaceChildren();
+    $('browseEntries').scrollTop=0;
+    $('browseTypeTitle').textContent=BROWSE_LABELS[kind];
+    $('browseCount').textContent=rows.length+' texte'+(rows.length===1?'':'s')+' dans le corpus';
+    $('textBrowser').dataset.recordType=kind;
+    $('textBrowser').dataset.totalRecords=String(rows.length);
+    if(!rows.length){
+      $('browseStatus').textContent=state.records.length?
+        'Aucun texte de cette catégorie dans le corpus.':'Chargement des textes…';
+      $('browseMore').hidden=true;return;
+    }
+    appendBrowseBatch();
+    fillBrowseViewport();
+  }
+  function closeBrowseCategory(){
+    state.browseType=null;state.browseRows=[];state.browseNext=0;
+    $('textBrowser').hidden=true;
+    document.querySelectorAll('[data-browse-type]').forEach(button=>
+      button.setAttribute('aria-expanded','false'));
+  }
+  function toggleBrowseCategory(kind){
+    if(!Object.hasOwn(BROWSE_LABELS,kind))return;
+    if(state.browseType===kind&&!$('textBrowser').hidden){
+      closeBrowseCategory();return;
+    }
+    state.browseType=kind;$('textBrowser').hidden=false;
+    document.querySelectorAll('[data-browse-type]').forEach(button=>
+      button.setAttribute('aria-expanded',String(button.dataset.browseType===kind)));
+    renderBrowseCategory(kind);
+  }
+  document.querySelectorAll('[data-browse-type]').forEach(button=>
+    button.addEventListener('click',()=>toggleBrowseCategory(button.dataset.browseType)));
+  $('browseClose').addEventListener('click',closeBrowseCategory);
+  $('browseMore').addEventListener('click',()=>{appendBrowseBatch();fillBrowseViewport();});
+  $('browseEntries').addEventListener('scroll',()=>{
+    const box=$('browseEntries');
+    if(state.browseRows?.length>state.browseNext&&
+      box.scrollTop+box.clientHeight>=box.scrollHeight-125){
+      appendBrowseBatch();
+    }
+  },{passive:true});
+  $('browseBack').addEventListener('click',()=>{
+    $('recordDialog').close();
+    $('browseEntries').focus({preventScroll:true});
+  });
+
   function renderThemeDirectory(){ const needle=norm($('themeFilter').value); const visible=needle?state.themeDirectory.filter(t=>norm(t.label).includes(needle)||norm(t.id).includes(needle)):state.themeDirectory; $('indexCount').textContent=needle?`${visible.length} thème${visible.length>1?'s':''} sur ${state.themeDirectory.length}`:`${state.themeDirectory.length} thèmes indexés`; $('themeDirectory').innerHTML=visible.length?visible.map(t=>`<button class="theme-row" data-directory-theme="${esc(t.id)}"><span><strong>${esc(t.label)}</strong><small>${t.occurrenceCount} psaume${t.occurrenceCount>1?'s':''}</small></span><span>${t.score}</span></button>`).join(''):'<div class="empty">Aucun thème ne correspond à ce filtre.</div>'; $('themeDirectory').querySelectorAll('[data-directory-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.directoryTheme);if(t){closeIndex();navigateToTheme(t);}}); }
   function openIndex(){ renderThemeDirectory(); $('indexPanel').hidden=false;$('indexBackdrop').hidden=false;$('indexToggle').setAttribute('aria-expanded','true'); requestAnimationFrame(()=>$('themeFilter').focus()); }
   function closeIndex(){$('indexPanel').hidden=true;$('indexBackdrop').hidden=true;$('indexToggle').setAttribute('aria-expanded','false');}
@@ -386,10 +1135,37 @@
   function closePopularQuestions(){ $('popularQuestionsPanel').hidden=true; $('popularQuestionsBackdrop').hidden=true; $('popularQuestionsToggle').setAttribute('aria-expanded','false'); }
   function choosePopularQuestion(question){ if(!question)return; $('query').value=question.text; $('query2').value=''; activateThemeMode(); closePopularQuestions(); search(); }
 
-  const setAdvancedSearch = open => { if(state.mode!=='themes')return; $('primarySearch').classList.toggle('advanced-visible',open); $('advancedSearchToggle').setAttribute('aria-expanded',String(open)); $('advancedSearchToggle').textContent=open?'Ne pas croiser deux thèmes':'Croiser deux thèmes'; };
+  const setAdvancedSearch = open => { if(state.mode!=='themes')return; $('primarySearch').classList.toggle('advanced-visible',open); $('advancedSearchToggle').setAttribute('aria-expanded',String(open)); $('advancedSearchToggle').textContent=open?'Fermer le croisement':'Croiser deux thèmes'; if(open){$('query2').focus();}else{$('query2').value='';if(state.hasSearched)search();} };
   $('advancedSearchToggle').onclick=()=>setAdvancedSearch(!$('primarySearch').classList.contains('advanced-visible'));
-  $('searchButton').onclick=search; $('query').addEventListener('keydown',e=>{if(e.key==='Enter')search();}); $('query').addEventListener('input',handleExactQueryInput); $('query2').addEventListener('keydown',e=>{if(e.key==='Enter')search();}); document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=search); $('archangelFilter').onchange=search; $('includeWordForms').onchange=search;
-  $('modeThemes').onclick=()=>{activateThemeMode();search();}; $('modeExact').onclick=()=>{activateExactMode();search();}; $('closeAmbiguity').onclick=hideAmbiguity;
+  $('searchForm').addEventListener('submit',event=>{event.preventDefault();search();});
+  $('exactAddTerm').addEventListener('click',()=>{
+    if(state.mode!=='exact')return;
+    const field=$('query'),value=field.value;
+    if(value.includes('+')){field.focus();return;}
+    const point=field.selectionStart??value.length;
+    const left=value.slice(0,point).trimEnd(),right=value.slice(point).trimStart();
+    field.value=left+(left?' + ':'')+right;
+    field.dispatchEvent(new Event('input',{bubbles:true}));
+    field.focus();
+    const caret=left.length+(left?3:0);
+    field.setSelectionRange(caret,caret);
+  });
+  $('query').addEventListener('input',()=>{state.wordAutocompleteSuppressed=false;handleExactQueryInput();renderThemeAutocomplete();});
+  $('query').addEventListener('keydown',event=>{
+    if(event.key==='Escape')hideThemeAutocomplete();
+    if(event.key==='ArrowDown'&&!$('themeAutocomplete').hidden){event.preventDefault();focusSuggestion(0);}
+  });
+  // 053: close after the destination has received its click; pointerdown would collapse
+  // the scrollable suggestion panel before mobile mode buttons can be activated.
+  document.addEventListener('click',event=>{if(!event.target.closest('.query-stack')){state.wordAutocompleteSuppressed=true;hideThemeAutocomplete();}});
+  $('query2').addEventListener('input',hideThemeAutocomplete);
+  $('results').addEventListener('click',event=>{if(event.target.closest('[data-search-in-words]')){activateExactMode();search();}});
+  document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=()=>{if(state.hasSearched)search();});
+  $('archangelFilter').onchange=()=>{if(state.hasSearched)search();};
+  $('includeWordForms').onchange=()=>{if(state.hasSearched)search();};
+  $('includeSimplePlurals').onchange=()=>{if(state.hasSearched)search();};
+  $('modeThemes').onclick=()=>{activateThemeMode();if(state.hasSearched)search();else renderThemeAutocomplete();};
+  $('modeExact').onclick=()=>{activateExactMode();if(state.hasSearched)search();else renderThemeAutocomplete();}; $('closeAmbiguity').onclick=hideAmbiguity;
   $('popularQuestionsToggle').onclick=openPopularQuestions; $('closePopularQuestions').onclick=closePopularQuestions; $('popularQuestionsBackdrop').onclick=closePopularQuestions; $('popularQuestionsBack').onclick=renderPopularQuestionFamilies;
   $('indexToggle').onclick=()=>{$('indexPanel').hidden?openIndex():closeIndex();}; $('themeFilter').oninput=renderThemeDirectory; $('closeIndex').onclick=closeIndex; $('indexBackdrop').onclick=closeIndex; $('closeDialog').onclick=()=>$('recordDialog').close(); $('printRecord').onclick=()=>window.print(); $('downloadRecord').onclick=()=>{const blob=new Blob([activeText()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${state.active?.id||'biblaw'}.txt`;a.click();URL.revokeObjectURL(a.href);};
   load();

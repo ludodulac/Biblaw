@@ -1,0 +1,13 @@
+# BIBLAW — 064-SETUP — RAPPORT (2026-10-22)
+- Statut : **TERMINÉ**, préparation exclusivement documentaire, sans validation éditoriale.
+- GitHub : `ludodulac/Biblaw`, `feat/052-search-ui`, PR #72 OPEN/DRAFT ; HEAD de départ `b0cb9cf2a3b634de6138adbe8387c8a31e178ab5`.
+- Source : rapport/summary/per-note de l'artefact 060, run 39389492831 ; catégorie extraite par le **critère exact 060**.
+- Inventaire 060 : 280 notes extraites = 11 déjà publiques + 192 fortement corroborées en attente humaine + 77 plus problématiques.
+- **192/192 identifiants retrouvés**, tous distincts, dans l'ordre source ; compteur historique confirmé.
+- Chevauchement avec 42 validées 062 : **0** ; avec 11 validées 063 : **0** ; avec les incertaines 062/063 : **0**.
+- Notes du lot 060 déjà authentifiées sur les sources consultées : **0** ; **192 restent à authentifier**.
+- Plan : **20 lots** (19 lots de 10, dernier de 2) ; chaque ID a livre, psaume présumé, n° note, source 060, statut et lot.
+- Vigilances : 51 candidates portent au moins une alerte non bloquante 060 ; 5 peuvent être des jumelles de dossiers NON RÉSOLUS 063.
+- Fichiers créés : `missions/064/064_PLAN.md`, `missions/064/PROGRESS.md`, `missions/064/REPORT.md` ; `missions/STATE.md` actualisé.
+- Sécurité : aucun PDF ouvert, aucun texte/corpus/catalogue/production modifié, aucune fusion, aucune publication.
+- Prochaine mission prévue : `064-01` (10 premières notes), **non commencée**.
