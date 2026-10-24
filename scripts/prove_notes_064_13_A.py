@@ -120,6 +120,35 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Contrôles reproductibles ciblés ; ils ne décident jamais du verdict éditorial.
+byid={r["id"]:r for r in rows}
+expected={
+  "book-27-psalm-158-note-001":22,
+  "book-27-psalm-164-note-001":22,
+  "book-27-psalm-169-note-001":35,
+  "book-27-psalm-169-note-003":48,
+  "book-27-psalm-169-note-004":48,
+}
+for id,words in expected.items():
+    r=byid[id]; f=r["bestPrinted"]
+    assert r["reciprocal"] and r["wordTokens"]==words
+    assert f and f["tokensExactlyEqual"] and f["wordTokens"]==words
+    assert r["printedMarkerInJSON"]==1 and f["marker"]==1
+assert byid["book-27-psalm-158-note-001"]["PDFPage"] not in byid["book-27-psalm-158-note-001"]["canonicalPsalmPages"]
+assert any("Pr. 53" in l["text"] for l in page_data[2484]["lines"])
+assert byid["book-27-psalm-169-note-003"]["PDFPage"]==2536
+assert any("Pr. 63" in l["text"] for l in page_data[2536]["lines"])
+other002=read(ROOT/"data/notes/books/book-27/book-27-psalm-169-note-002.json")
+other005=read(ROOT/"data/notes/books/book-27/book-27-psalm-169-note-005.json")
+r003=byid["book-27-psalm-169-note-003"];r004=byid["book-27-psalm-169-note-004"]
+assert other005["source"]["pdfPage"]==r003["PDFPage"]==2536
+assert tok(other005["text"])==tok(r003["extractedText"])
+assert other002["source"]["pdfPage"]==r004["PDFPage"]==2534
+assert tok(other002["text"])[:r004["wordTokens"]]==tok(r004["extractedText"])
+assert len(tok(other002["text"]))>r004["wordTokens"]
+assert len(r003["allCandidates"])==len(r004["allCandidates"])==1
+print("BIBLAW-064-13-A-GUARD","5 exact printed texts","one prayer page outside psalm","two competing IDs")
+
 folder=ROOT/"reports/notes-064-13-proof/A"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
