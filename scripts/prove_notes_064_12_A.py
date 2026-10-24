@@ -94,6 +94,29 @@ for id,page in TARGETS:
     opts.sort(key=lambda x:(x["matchedPrefixTokens"],x["tokensExactlyEqual"]),reverse=True)
     row={"id":id,"PDFPage":page,"canonicalPsalm":psalm["id"],"canonicalPsalmPages":psalm["source"]["pdfPages"],"psalmNoteIds":psalm["noteIds"],"reciprocal":id in psalm["noteIds"],"printedMarkerInJSON":note["appliesTo"]["marker"],"ordinalInID":n,"extractedText":note["text"],"wordTokens":len(tok(note["text"])),"bestPrinted":opts[0] if opts else None,"allCandidates":opts,"otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],"technicalStatus":note.get("validation",{}).get("status"),"editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"}
     rows.append(row)
+# Garde ciblée fondée sur les limites relues sur les images du PDF original.
+by_id={r["id"]:r for r in rows}
+expected=[
+    ("book-23-psalm-145-note-001",263,30,False),
+    ("book-23-psalm-146-note-001",15,15,True),
+    ("book-24-psalm-141-note-001",440,50,False),
+    ("book-26-psalm-169-note-001",386,24,False),
+    ("book-26-psalm-172-note-001",11,11,True),
+]
+for id,source_tokens,printed_tokens,is_exact in expected:
+    r=by_id[id]; f=r["bestPrinted"]
+    assert r["reciprocal"] and r["PDFPage"] in r["canonicalPsalmPages"]
+    assert r["wordTokens"]==source_tokens and f["wordTokens"]==printed_tokens
+    assert f["marker"]==1 and r["printedMarkerInJSON"]==1
+    assert f["matchedPrefixTokens"]==printed_tokens
+    assert f["tokensExactlyEqual"]==is_exact
+assert any("Pr. 41." in l["text"] for l in page_data[2020]["lines"])
+assert any(l["text"].startswith("Dans l’enracinement") for l in page_data[2021]["lines"])
+assert any("Pr. 36." in l["text"] for l in page_data[2135]["lines"])
+assert any("Pr. 54." in l["text"] for l in page_data[2361]["lines"])
+assert any(l["text"].startswith("Tu prendras la statue") for l in page_data[2362]["lines"])
+print("BIBLAW-064-12-A-GUARD","2/5 exact notes","3/5 composites avec prières préservées")
+
 folder=ROOT/"reports/notes-064-12-proof/A"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
