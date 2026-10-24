@@ -16,5 +16,24 @@
 
 **A : 5 examinées = 2 AUTHENTIFIÉES, 0 CORRIGÉE ET AUTHENTIFIÉE, 3 NON RÉSOLUES.** Les trois anomalies sont des textes composites, non des erreurs autorisant un tronquage isolé. Les fichiers sources demeurent inchangés.
 
-## Sous-lot B — NON COMMENCÉ
-Dossiers attendus : `26/176/001`, `26/178/001`, `26/181/001`, `26/189/001`, `26/189/003`. Ce dernier nécessite une vérification de l'unique appel imprimé face au dossier historique 063 `26/189/002`, non résolu : aucune conclusion par correspondance machine.
+## Sous-lot B — cinq notes — CHECKPOINT FINAL
+
+**Preuve** : pages PDF principales **2392, 2397, 2412, 2452, 2453**, pages de contrôle 2391–2393, 2396–2398, 2411–2413, 2451–2454, obtenues directement du PDF original par `scripts/prove_notes_064_12_B.py`, images et coordonnées/texte archivés dans `biblaw-064-12-proof-B`, artefact **12564281933** ; [Actions #40104623724](https://github.com/ludodulac/Biblaw/actions/runs/40104623724) **SUCCESS**. Le marqueur imprimé n°1 se réinitialise localement ; l'ordinal d'ID ne constitue pas sa preuve.
+
+| ID | Page PDF | Verdict | Justification documentaire des limites, appels, rattachements et doublons | Décision |
+|---|---|---|---|---|
+| `book-26-psalm-176-note-001` | 2392 | **AUTHENTIFIÉE** | Appel n°1 au verset 22 et pied distinct n°1 **43/43 tokens**, début « Pour faire suite à ce psaume », fin « maintenir le lien. ». Psaume 176, `noteIds` réciproque et pas d'autre note du psaume. | Aucune correction. |
+| `book-26-psalm-178-note-001` | 2397 | **AUTHENTIFIÉE** | Appel n°1 au verset 1 du psaume 178 ; note de pied n°1 **22/22 tokens**, « Lors d’un partage » → « répondu spontanément. ». `noteIds` réciproque ; aucun doublon. | Aucune correction. |
+| `book-26-psalm-181-note-001` | 2412 | **AUTHENTIFIÉE** | Appel n°1 au verset 13 ; unique pied n°1 **23/23 tokens**, « Le sceau de L’Archange Gabriel » → « règnes de la création. ». Psaume 181 et `noteIds` réciproques ; les autres IDs 181/002–003 ont une source distincte p.2415, sans confusion avec cette note p.2412. | Aucune correction. |
+| `book-26-psalm-189-note-001` | 2452 | **AUTHENTIFIÉE** | Appel n°1 au verset 5 du psaume 189 et pied complet n°1 **102/102 tokens**, « La nuit qui précéda » → « (voir le psaume 176). ». `noteIds` réciproque ; texte distinct du pied p.2453 et des dossiers 002/003. | Aucune correction. |
+| `book-26-psalm-189-note-003` | 2453 | **NON RÉSOLUE** | Un seul appel imprimé n°1 au verset 8 et **un seul pied de page n°1, 29/29 tokens**, « L’Archange fait ici référence à la pierre sacrée » → « Ronde des Archanges. ». Le contenu extrait de 003 égale bien le pied, mais le dossier `book-26-psalm-189-note-002` **NON RÉSOLU en 063** revendique également le **même début de 29 tokens et le même appel p.2453**, suivi de versets parasite ; il n'existe pas une seconde occurrence imprimée permettant de justifier deux identités. `noteIds` réciproque ne résout pas cette concurrence. | Aucune correction, dédoublonnage, fusion ou validation implicite du 002 ; résolution d'identité dans une mission distincte. |
+
+**B : 5 examinées = 4 AUTHENTIFIÉES, 0 CORRIGÉE ET AUTHENTIFIÉE, 1 NON RÉSOLUE.** Une correspondance parfaite au PDF n'efface pas une collision d'identifiants.
+
+## Bilan final — 064-12 uniquement
+
+- **10/10 examinées** : **6 AUTHENTIFIÉES**, **0 CORRIGÉE ET AUTHENTIFIÉE**, **4 NON RÉSOLUES** (`23/145/001`, `24/141/001`, `26/169/001`, `26/189/003`). Deux sous-lots indépendants de cinq : A 2+3, B 4+1.
+- **Pages PDF originales strictement ciblées** : p.**2019–2024, 2133–2135, 2360–2362, 2372–2374, 2391–2393, 2396–2398, 2411–2413, 2451–2454** (28 pages). Les impressions des dix notes ont été vérifiées visuellement ; les voisinages n'ont servi qu'aux limites et rattachements.
+- **Preuves Actions** : A [#40104261969](https://github.com/ludodulac/Biblaw/actions/runs/40104261969) SUCCESS, garde A [#40104571746](https://github.com/ludodulac/Biblaw/actions/runs/40104571746) SUCCESS, B [#40104623724](https://github.com/ludodulac/Biblaw/actions/runs/40104623724) SUCCESS ; artefacts **12564375980** (A) et **12564281933** (B). La garde B figure dans le script final et vérifie aussi le conflit d'ID 189/002–003.
+- **Cumul 064/192** : **120 examinées, 96 AUTHENTIFIÉES dont une corrigée historiquement en 064-06, 24 NON RÉSOLUES, 72 restantes**. Aucun des 110 dossiers déjà traités avant 064-12 n'a été rouvert.
+- **Protection** : aucune note, prière, aucun psaume, statut de publication, catalogue, moteur ou interface modifié. PR #72 OPEN/DRAFT, pas de fusion ou déploiement. **STOP après 064-12.**
