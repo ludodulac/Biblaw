@@ -78,7 +78,7 @@ for number in PAGES:
     page_data[number]={"lines":lines,"footnoteCandidates":candidates(lines,number)}
 rows=[]
 for id,page in TARGETS:
-    bk,ps,n=map(int,re.fullmatch(r"book-(\\d+)-psalm-(\\d+)-note-(\\d+)",id).groups())
+    bk,ps,n=map(int,re.fullmatch(r"book-(\d+)-psalm-(\d+)-note-(\d+)",id).groups())
     note=read(ROOT/f"data/notes/books/book-{bk:02d}/{id}.json")
     psalm=read(ROOT/f"data/corpus/books/book-{bk:02d}/psalm-{ps:03d}.json")
     assert id==note["id"] and note["recordType"]=="note"
