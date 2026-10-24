@@ -105,6 +105,32 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Protections reproductibles A, sans verdict éditorial automatique.
+by_id={r["id"]:r for r in rows}
+expected={
+ "book-30-psalm-192-note-001":5,
+ "book-30-psalm-196-note-001":142,
+ "book-30-psalm-200-note-001":89,
+ "book-30-psalm-200-note-003":111,
+ "book-30-psalm-211-note-001":28,
+}
+for id,n in expected.items():
+    r=by_id[id];f=r["bestPrinted"]
+    assert r["reciprocal"] and r["wordTokens"]==n
+    assert f and f["wordTokens"]==n and f["tokensExactlyEqual"] and f["marker"]==r["printedMarkerInJSON"]==1
+assert by_id["book-30-psalm-192-note-001"]["pdfPageWithinCanonical"]
+assert by_id["book-30-psalm-196-note-001"]["pdfPageWithinCanonical"]
+assert by_id["book-30-psalm-200-note-001"]["pdfPageWithinCanonical"]
+assert not by_id["book-30-psalm-211-note-001"]["pdfPageWithinCanonical"]
+assert any("Pr. " in v["text"] for v in page_data[2952]["lines"])
+competing=read(ROOT/"data/notes/books/book-30/book-30-psalm-200-note-002.json")
+r003=by_id["book-30-psalm-200-note-003"]
+assert competing["source"]["pdfPage"]==r003["PDFPage"]==2901
+assert competing["id"] in r003["psalmNoteIds"]
+assert tok(competing["text"])[:r003["wordTokens"]]==tok(r003["extractedText"])
+assert len(tok(competing["text"]))>r003["wordTokens"] and len(r003["allCandidates"])==1
+print("BIBLAW-064-15-A-GUARD", "5 printed texts", "2 proven cleaned composites", "2 unresolved links")
+
 folder=ROOT/"reports/notes-064-15-proof/A"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
