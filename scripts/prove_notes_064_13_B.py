@@ -105,6 +105,32 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Garde documentaire B : concordances et anomalies de rattachement/unicité
+# indépendantes du jugement éditorial sur les images PDF originales.
+byid={r["id"]:r for r in rows}
+expected={
+  "book-27-psalm-169-note-005":48,
+  "book-27-psalm-176-note-001":276,
+  "book-27-psalm-177-note-001":103,
+  "book-28-psalm-175-note-001":39,
+  "book-28-psalm-178-note-001":8,
+}
+for id,words in expected.items():
+    r=byid[id];p=r["bestPrinted"]
+    assert r["reciprocal"] and r["wordTokens"]==words
+    assert p and p["wordTokens"]==words and p["tokensExactlyEqual"]
+    assert p["marker"]==1 and r["printedMarkerInJSON"]==1
+assert byid["book-27-psalm-177-note-001"]["PDFPage"] not in byid["book-27-psalm-177-note-001"]["canonicalPsalmPages"]
+assert any("Pr. 71" in x["text"] for x in page_data[2570]["lines"])
+assert any("Pr. 63" in x["text"] for x in page_data[2536]["lines"])
+other003=read(ROOT/"data/notes/books/book-27/book-27-psalm-169-note-003.json")
+r005=byid["book-27-psalm-169-note-005"]
+assert other003["source"]["pdfPage"]==r005["PDFPage"]==2536
+assert tok(other003["text"])==tok(r005["extractedText"])
+assert len(r005["allCandidates"])==1
+assert byid["book-27-psalm-176-note-001"]["PDFPage"] in byid["book-27-psalm-176-note-001"]["canonicalPsalmPages"]
+print("BIBLAW-064-13-B-GUARD","5 exact printed texts","prayer 71 outside canonical psalm","duplicate 169/003-005")
+
 folder=ROOT/"reports/notes-064-13-proof/B"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
