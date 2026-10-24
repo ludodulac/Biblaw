@@ -105,6 +105,35 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Gardes documentaires B : comparaisons physiques ciblées, sans validation automatique.
+by_id={r["id"]:r for r in rows}
+for id,num in [
+    ("book-29-psalm-200-note-001",45),
+    ("book-29-psalm-216-note-001",28),
+    ("book-29-psalm-217-note-001",151),
+]:
+    r=by_id[id]; f=r["bestPrinted"]
+    assert r["reciprocal"] and r["pdfPageWithinCanonical"]
+    assert r["wordTokens"]==num and f and f["tokensExactlyEqual"]
+    assert f["marker"]==r["printedMarkerInJSON"]==1
+r212=by_id["book-29-psalm-212-note-001"]
+assert not r212["pdfPageWithinCanonical"] and r212["PDFPage"]==2814
+assert r212["wordTokens"]==193 and r212["bestPrinted"]["wordTokens"]==4
+assert r212["bestPrinted"]["printedTokensPrefixOfNote"]
+assert any("Pr. 102" in x["text"] for x in page_data[2814]["lines"])
+r216=by_id["book-29-psalm-216-note-003"]; f216=r216["bestPrinted"]
+assert r216["PDFPage"]==2831 and r216["pdfPageWithinCanonical"] and r216["reciprocal"]
+assert r216["wordTokens"]==77 and f216["wordTokens"]==78
+assert f216["matchedPrefixTokens"]==66 and not f216["tokensExactlyEqual"]
+assert "audelà" in r216["extractedText"]
+competing=read(ROOT/"data/notes/books/book-29/book-29-psalm-216-note-002.json")
+assert competing["source"]["pdfPage"]==2831
+assert competing["id"] in r216["psalmNoteIds"]
+assert tok(competing["text"])[:66]==tok(r216["extractedText"])[:66]
+assert len(tok(competing["text"]))>r216["wordTokens"]
+assert len(r216["allCandidates"])==1
+print("BIBLAW-064-14-B-GUARD","3 exact notes","212 prayer composite","216/002-003 competing printed occurrence")
+
 folder=ROOT/"reports/notes-064-14-proof/B"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
