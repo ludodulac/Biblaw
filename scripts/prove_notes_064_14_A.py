@@ -105,6 +105,32 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Gardes documentaires indépendantes des verdicts éditoriaux.
+by_id={r["id"]:r for r in rows}
+for id,words in [
+    ("book-29-psalm-194-note-001",5),
+    ("book-29-psalm-199-note-001",8),
+    ("book-29-psalm-199-note-002",17),
+]:
+    r=by_id[id]; f=r["bestPrinted"]
+    assert r["wordTokens"]==words and f and f["tokensExactlyEqual"]
+    assert f["marker"]==1 and r["reciprocal"]
+r=by_id["book-29-psalm-195-note-001"];f=r["bestPrinted"]
+assert r["reciprocal"] and f and f["marker"]==1
+assert f["printedTokensPrefixOfNote"] and not f["tokensExactlyEqual"]
+continuation=" ".join(x["text"] for x in page_data[2728]["lines"]
+                      if abs(x["size"]-9)<0.01 and 580<x["y"]<640)
+assert continuation.startswith("tout cimetière soit associé")
+assert continuation.endswith("de la Lumière sur la terre.")
+assert tok(r["extractedText"])==tok(f["text"]+" "+continuation)
+r2=by_id["book-29-psalm-199-note-002"]
+r3=by_id["book-29-psalm-199-note-003"]
+assert not r2["pdfPageWithinCanonical"] and r2["PDFPage"]==2751
+assert not r3["allCandidates"] and r3["PDFPage"]==2750
+assert tok(r2["extractedText"])==tok(r3["extractedText"])
+assert any("Pr. 90" in x["text"] for x in page_data[2750]["lines"])
+print("BIBLAW-064-14-A-GUARD","195 note continued on next page; 199/002-003 unresolved prayer collision")
+
 folder=ROOT/"reports/notes-064-14-proof/A"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
