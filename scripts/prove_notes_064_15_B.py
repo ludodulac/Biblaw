@@ -105,6 +105,30 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Contrôles reproductibles indépendants du jugement éditorial.
+by_id={r["id"]:r for r in rows}
+expected=[
+  ("book-30-psalm-215-note-001",1,62),
+  ("book-30-psalm-215-note-002",2,41),
+  ("book-30-psalm-215-note-003",3,140),
+  ("book-30-psalm-215-note-004",1,17),
+  ("book-30-psalm-215-note-005",1,17),
+]
+for id,marker,n in expected:
+    r=by_id[id]; p=r["bestPrinted"]
+    assert r["reciprocal"] and r["pdfPageWithinCanonical"]
+    assert r["wordTokens"]==n and p and p["wordTokens"]==n and p["tokensExactlyEqual"]
+    assert p["marker"]==r["printedMarkerInJSON"]==marker
+assert len(page_data[2969]["footnoteCandidates"])==3
+assert [x["marker"] for x in page_data[2969]["footnoteCandidates"]]==[1,2,3]
+assert len(page_data[2971]["footnoteCandidates"])==1
+p4=by_id["book-30-psalm-215-note-004"];p5=by_id["book-30-psalm-215-note-005"]
+assert p4["PDFPage"]==p5["PDFPage"]==2971
+assert tok(p4["extractedText"])==tok(p5["extractedText"])
+assert p4["bestPrinted"]["text"]==p5["bestPrinted"]["text"]
+assert p4["id"]!=p5["id"]
+print("BIBLAW-064-15-B-GUARD", "3 unique numbered notes 2969", "1 printed note vs 2 JSON candidates 2971")
+
 folder=ROOT/"reports/notes-064-15-proof/B"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")

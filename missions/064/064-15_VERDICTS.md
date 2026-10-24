@@ -26,6 +26,27 @@ Les références, noms et causes viennent des métadonnées et journaux réels G
 
 **Checkpoint A : 5 examinées — 3 AUTHENTIFIÉES, dont 2 CORRIGÉES ET AUTHENTIFIÉES ; 2 NON RÉSOLUES**. Les corrections sont des suppressions de texte du corps ajouté par erreur, pas des altérations du psaume ; les cinq verdicts sont consignés avant le sous-lot B.
 
-## Sous-lot B — À FAIRE (cinq notes)
+## Sous-lot B — cinq notes — CHECKPOINT FINAL
 
-Seulement `book-30-psalm-215-note-001`, `002`, `003`, `004`, `005`. Pas de reprise des cas précédents.
+**Preuves PDF original** : pages **2968–2973** (6 pages uniquement), captures ×2, relevés de disposition et source `note-proof.json` via `scripts/prove_notes_064_15_B.py`. [Actions initiale B #40137565177](https://github.com/ludodulac/Biblaw/actions/runs/40137565177) **SUCCESS**, artefact **12577911782** (`biblaw-064-15-proof-B`). Les cinq cas ont été confrontés visuellement aux renvois et aux pieds originaux, pas uniquement aux tokens.
+
+| ID de la note | Source PDF | Verdict | Preuve, limites, marqueur, rattachement et unicité |
+|---|---:|---|---|
+| `book-30-psalm-215-note-001` | 2969 | **AUTHENTIFIÉE** | Appel¹ au **verset 1** (« nouvelle année… la terre »), pied imprimé n°1 **62/62 tokens** de « Au sein de la tradition essénienne » à « l'année qui commence. » ; aucun débordement, page canonique et `noteIds` réciproque. |
+| `book-30-psalm-215-note-002` | 2969 | **AUTHENTIFIÉE** | Appel² au **verset 3** (« 4 grandes fêtes de l'année »), pied imprimé **n°2** de **41/41 tokens** énumérant les quatre célébrations ; limites sous filet, page canonique et `noteIds` réciproque, aucun doublon. |
+| `book-30-psalm-215-note-003` | 2969 | **AUTHENTIFIÉE** | Appel³ au **verset 5** (« dernière célébration de l'Archange Michaël »), troisième pied **n°3 de 140/140 tokens**, commencé « L'Archange fait ici allusion » et terminé « Nation Essénienne. ». Trois pieds différents numérotés 1, 2 et 3 sur la page, sans collision. `noteIds` réciproque. |
+| `book-30-psalm-215-note-004` | 2971 | **NON RÉSOLUE** | Appel local¹ au **verset 20** (« Père Michaël »), pied imprimé n°1 **17/17 tokens**, renvoi « Dans l'Évangile de l'Archange Michaël, voir le psaume 216 » ; mais **un seul pied sur cette page** et l'identifiant `215/005` revendique exactement le même contenu, la même page et le même appel. Aucune preuve pour distinguer ces deux IDs ; identité concurrente. |
+| `book-30-psalm-215-note-005` | 2971 | **NON RÉSOLUE** | Même pied unique n°1 de **17/17 tokens** sous filet et même appel au verset 20 que `215/004`. Le numéro 5 du fichier désigne un ordinal d'extraction et **pas** un n°5 imprimé. Impossible d'authentifier deux notes distinctes à partir d'une seule occurrence ; aucune fusion, suppression ou correction inférée. |
+
+**Checkpoint B : 5 examinées — 3 AUTHENTIFIÉES, 0 CORRIGÉE, 2 NON RÉSOLUES.**
+
+## Bilan final strict 064-15
+
+- **10/10 notes examinées** : sous-lot A **3 authentifiées (dont 2 corrigées) + 2 NON RÉSOLUES** ; sous-lot B **3 authentifiées + 2 NON RÉSOLUES**. Total : **6 AUTHENTIFIÉES, dont 2 CORRIGÉES ET AUTHENTIFIÉES, et 4 NON RÉSOLUES**.
+- **Notes corrigées** : `30/192/001` (93→5 tokens, retrait de la suite imprimée du verset 11 sur p.2855) ; `30/196/001` (164→142 tokens, retrait de la suite imprimée du verset 6 sur p.2874). **Deux champs `text` seulement**, textes des psaumes, prières et champs de publication intacts.
+- **Cas non résolus** : `30/200/003` (note jumelle d'un ancien dossier 063 `30/200/002` non rouvert) ; `30/211/001` (note sous prière p.2953, hors pages du psaume) ; `30/215/004` et `30/215/005` (deux identifiants concurrents pour un seul pied n°1 p.2971).
+- **21 pages PDF distinctes** examinées : A 15 pages (2853–2855,2872–2874,2896–2898,2900–2902,2952–2954) ; B 6 pages (2968–2973), sans page répétée. Pièces PNG et layout dans les artefacts A **12576971728**, B **12577911782**.
+- **Tests spécialisés** : [#40137448084](https://github.com/ludodulac/Biblaw/actions/runs/40137448084) (A après corrections) SUCCESS, [#40137565177](https://github.com/ludodulac/Biblaw/actions/runs/40137565177) (preuve B initiale) SUCCESS ; gardes Python de concordance, d'unicité et de rattachement. Les Actions de la clôture finale se vérifient aussi sur le dernier HEAD.
+- **État CI général initial** : 35/38 SUCCESS, **3 FAILURE antérieurs à la mission** ; noms, runs et causes détaillés en tête de ce registre. La mission ne touche à aucun des workflows généraux ni à l'interface, ne prétend pas avoir rétabli leur état. À comparer avec l'état GitHub des workflows après le commit final.
+- **Historique de synchronisation** : le commit GitHub `ae259b8d55082bc91064d5a66627c7ab426b5c47` (« Build thematic source packs for books 1-10 »), survenu après le checkpoint A, a synchronisé les deux seules notes corrigées dans `data/thematic-index/source-packs/book-30/part-001.json` et `part-002.json`. Pas de publication ; modification automatique distincte des commits de construction.
+- **Bilan cumulé 064** : **150/192 examinées, 113 authentifiées (dont 4 corrigées), 37 NON RÉSOLUES, 42 restantes**. Les 140 notes des missions précédentes ne sont pas retraitées. Aucun déploiement, fusion ni changement d'interface ; PR #72 **OPEN/DRAFT**. **STOP après 064-15.**
