@@ -26,5 +26,26 @@ Preuve PDF originale ciblée : **15 pages** 2986–2988, 2993–2995, 3004–300
 
 **Bilan A : 4 AUTHENTIFIÉES, 0 CORRIGÉE, 1 NON RÉSOLUE** ; aucune modification de données canoniques. Les cinq verdicts et les preuves sont consignés à ce checkpoint avant B.
 
-## Sous-lot B — À FAIRE
-Cinq notes exclusivement : `31/201/001`, `32/182/001`, `32/182/002`, `32/183/001`, `32/185/001`.
+## Sous-lot B — cinq notes — CHECKPOINT FINAL
+
+**Preuve PDF original** : 16 pages ciblées **3089–3092, 3111–3115, 3118–3120, 3126–3129**, sans réexaminer d'autres notes, seulement pour le contexte éditorial. Images originales ×2, `*-layout.json`, `note-proof.json`, [GitHub Actions B #40187890311](https://github.com/ludodulac/Biblaw/actions/runs/40187890311) **SUCCESS**, artefact **12597066515**. Relecture visuelle des débuts/fins et de la typographie : texte sous le filet en corps 9 pt, appels au bon verset, numéros imprimés et références réciproques.
+
+| Identifiant | PDF | Verdict | Preuve et délimitation |
+|---|---:|---|---|
+| `book-31-psalm-201-note-001` | 3090 | **AUTHENTIFIÉE** | Appel¹ au **verset 1** du psaume 201 (« deux ou trois … réunis ») ; note sous filet n°1 **5/5 tokens** « Évangile selon Matthieu 18:20. ». Page canonique et `noteIds` réciproque. Les identifiants 201/002 et 201/003 revendiquent une **autre** page (3092) et un **autre** texte, non examinés ; aucune concurrence avec la note 001. |
+| `book-32-psalm-182-note-001` | 3113 | **AUTHENTIFIÉE** | Appel¹ au **verset 39** (« livre de la magie »), note n°1 **97/97 tokens** sur le « livre des génies », du début « L'Archange Ouriel parle » jusqu'à « travail magique. ». P.3113 canonique, `noteIds` réciproque, note imprimée distincte du pied n°1 local p.3114. |
+| `book-32-psalm-182-note-002` | 3114–3115 | **CORRIGÉE ET AUTHENTIFIÉE** | Appel local¹ au **verset 49** (« pieds des Esséniens »), p.3114 : pied imprimé n°1 **113 tokens**, du « De tout temps et dans tous les peuples » à « ils se préservent de l'abstraction », **sans point final**. P.3115 : **continuation du même pied sous le filet en 9 pt, sans nouveau marqueur**, de « philosophique et spirituelle, un piège majeur » à « ciel et la terre. », soit **49 tokens supplémentaires**. Texte complet **162 tokens**, sans versets ou prières ajoutés. Les pages 3114 et 3115 sont dans la source du psaume 182 ; `noteIds` réciproque. **Champ `text` complété seulement : 113 → 162 tokens** ; aucun autre champ touché. |
+| `book-32-psalm-183-note-001` | 3119 | **AUTHENTIFIÉE** | Appel¹ au **verset 28** (« corde de la Lumière »), pied n°1 sous filet **11/11 tokens** « Il s'agit de la corde de la Ronde des Archanges. ». P.3119 canonique, `noteIds` réciproque, pas de doublon. |
+| `book-32-psalm-185-note-001` | 3127 | **AUTHENTIFIÉE** | Appel¹ au **verset 3** (« maison de Dieu »), pied sous filet n°1 **148/148 tokens** depuis « Maison de Dieu » jusqu'à « dédiés à Dieu. ». P.3127 canonique, `noteIds` réciproque. L'autre note 185/002 est sur **3129**, avec un texte différent, et ne concurrence pas ce pied. |
+
+**Bilan B : 5 AUTHENTIFIÉES, dont 1 CORRIGÉE ET AUTHENTIFIÉE, 0 NON RÉSOLUE.** Tous les appels ont été vérifiés sur les captures du PDF original et les limites de note contrôlées.
+
+## Clôture stricte 064-16
+
+- **10/10 notes examinées : 9 AUTHENTIFIÉES dont 1 CORRIGÉE ET AUTHENTIFIÉE ; 1 NON RÉSOLUE** (`31/184/001`, note sous Pr.76, p.3005 hors pages canoniques du psaume).
+- **Une seule correction canonique** `32/182/002`, ajout fidèle de 49 tokens imprimés du pied p.3115, 113 → 162 tokens ; aucun psaume ni prière édité, aucun changement de publication.
+- **31 pages PDF distinctes examinées**, A 15 et B 16 : p.2986–2988,2993–2995,3004–3006,3027–3029,3033–3035,3089–3092,3111–3115,3118–3120,3126–3129.
+- **Actions spécialisées A [#40187890100](https://github.com/ludodulac/Biblaw/actions/runs/40187890100) SUCCESS et B [#40187890311](https://github.com/ludodulac/Biblaw/actions/runs/40187890311) SUCCESS**, artefacts A 12597171008 et B 12597066515. Gardes de concordance, pages, unicité et extension de pied. Les tests seront revérifiés au HEAD final.
+- **CI générale initiale : 37/40 SUCCESS**, 3 échecs préexistants (noms, liens, causes ci-dessus). Aucune réparation de ces workflows, interface ni autres modules. Au checkpoint B provisoire, 39 SUCCESS / 42, trois mêmes échecs.
+- **Bilan 064 cumulé** : **160/192 examinées ; 122 authentifiées (dont 5 corrigées), 38 NON RÉSOLUES, 32 restant à examiner**. Les 150 notes antérieures n'ont pas été retraitées.
+- PR #72 **OPEN/DRAFT**, aucune fusion, publication ou déploiement. **STOP après 064-16.**

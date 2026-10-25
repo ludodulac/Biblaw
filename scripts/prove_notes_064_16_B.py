@@ -105,6 +105,36 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Gardes reproductibles B ; elles ne prononcent pas de verdict humain.
+byid={r["id"]:r for r in rows}
+expected={
+ "book-31-psalm-201-note-001":5,
+ "book-32-psalm-182-note-001":97,
+ "book-32-psalm-182-note-002":162,
+ "book-32-psalm-183-note-001":11,
+ "book-32-psalm-185-note-001":148,
+}
+for id,n in expected.items():
+    r=byid[id]; f=r["bestPrinted"]
+    assert r["reciprocal"] and r["pdfPageWithinCanonical"]
+    assert r["wordTokens"]==n and f and f["marker"]==r["printedMarkerInJSON"]==1
+    if id!="book-32-psalm-182-note-002":
+        assert f["tokensExactlyEqual"] and f["wordTokens"]==n
+r=byid["book-32-psalm-182-note-002"];f=r["bestPrinted"]
+assert f["wordTokens"]==113 and f["printedTokensPrefixOfNote"] and len(r["allCandidates"])==1
+suffix=" ".join(l["text"] for l in page_data[3115]["lines"] if 600<l["y"]<640 and l["size"]==9)
+assert suffix.startswith("philosophique et spirituelle, un piège majeur")
+assert suffix.endswith("ciel et la terre.")
+assert tok(r["extractedText"])==tok(f["text"]+" "+suffix)
+assert len(tok(suffix))==49
+# 31/201/001 n'est pas la note 31/201/002 ou /003, qui renvoient à p.3092.
+for n in [2,3]:
+    competitor=read(ROOT/f"data/notes/books/book-31/book-31-psalm-201-note-{n:03d}.json")
+    assert competitor["source"]["pdfPage"]==3092 and competitor["text"]!=byid["book-31-psalm-201-note-001"]["extractedText"]
+other185=read(ROOT/"data/notes/books/book-32/book-32-psalm-185-note-002.json")
+assert other185["source"]["pdfPage"]==3129
+print("BIBLAW-064-16-B-GUARD","4 exact printed notes","1 corrected cross-page note 113+49=162 tokens","no competing footnote")
+
 folder=ROOT/"reports/notes-064-16-proof/B"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
