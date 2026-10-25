@@ -105,6 +105,25 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Garde indépendante du jugement éditorial ; aucune donnée canonique modifiée.
+byid={r["id"]:r for r in rows}
+expected={
+ "book-34-psalm-218-note-001":(1,33),
+ "book-34-psalm-218-note-002":(2,82),
+ "book-34-psalm-228-note-001":(1,22),
+ "book-34-psalm-242-note-001":(1,31),
+ "book-35-psalm-209-note-001":(1,61),
+}
+for id,(marker,n) in expected.items():
+ r=byid[id];p=r["bestPrinted"]
+ assert r["reciprocal"] and r["pdfPageWithinCanonical"] and r["wordTokens"]==n
+ assert p and p["tokensExactlyEqual"] and p["wordTokens"]==n
+ assert p["marker"]==r["printedMarkerInJSON"]==marker
+assert len(page_data[3326]["footnoteCandidates"])==2
+assert [r["marker"] for r in page_data[3326]["footnoteCandidates"]]==[1,2]
+assert tok(byid["book-34-psalm-218-note-001"]["extractedText"])!=tok(byid["book-34-psalm-218-note-002"]["extractedText"])
+print("BIBLAW-064-18-B-GUARD", "5 exact and independent printed texts", "two distinct numbered feet page 3326")
+
 folder=ROOT/"reports/notes-064-18-proof/B"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
