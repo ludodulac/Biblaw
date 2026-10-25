@@ -105,6 +105,24 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Empreintes reproductibles ; jamais de verdict automatique.
+byid={r["id"]:r for r in rows}
+expected={
+"book-31-psalm-181-note-001":34,
+"book-31-psalm-182-note-001":42,
+"book-31-psalm-184-note-001":71,
+"book-31-psalm-189-note-001":60,
+"book-31-psalm-190-note-001":4,
+}
+for id,n in expected.items():
+    r=byid[id];f=r["bestPrinted"]
+    assert r["reciprocal"] and r["wordTokens"]==n and f and f["wordTokens"]==n and f["tokensExactlyEqual"]
+    assert f["marker"]==1 and r["printedMarkerInJSON"]==1
+assert not byid["book-31-psalm-184-note-001"]["pdfPageWithinCanonical"]
+assert any("Pr. 76" in l["text"] for l in page_data[3005]["lines"])
+assert all(byid[id]["pdfPageWithinCanonical"] for id in expected if "184" not in id)
+print("BIBLAW-064-16-A-GUARD","5 exact printed notes","1 prayer link outside psalm","no auto-authentication")
+
 folder=ROOT/"reports/notes-064-16-proof/A"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
