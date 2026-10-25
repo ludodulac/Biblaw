@@ -105,6 +105,36 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Garde documentaire B : le script ne juge jamais les notes automatiquement.
+byid={r["id"]:r for r in rows}
+expected={
+ "book-32-psalm-197-note-001":8,
+ "book-32-psalm-197-note-002":14,
+ "book-32-psalm-199-note-001":24,
+ "book-32-psalm-203-note-002":29,
+ "book-32-psalm-205-note-001":272,
+}
+for id,n in expected.items():
+    r=byid[id];p=r["bestPrinted"]
+    assert r["reciprocal"] and r["pdfPageWithinCanonical"]
+    assert r["wordTokens"]==n and p and p["marker"]==r["printedMarkerInJSON"]==1
+    assert len(r["allCandidates"])==1
+    if id not in ("book-32-psalm-199-note-001",):
+        assert p["wordTokens"]==n and p["tokensExactlyEqual"]
+r=byid["book-32-psalm-199-note-001"];f=r["bestPrinted"]
+assert f["wordTokens"]==21 and f["printedTokensPrefixOfNote"]
+continuation=[x for x in page_data[3182]["lines"] if x["text"]=="à l’Enseignement." and x["size"]==9 and x["y"]>600]
+assert len(continuation)==1 and len(tok(continuation[0]["text"]))==3
+assert tok(r["extractedText"])==tok(f["text"]+" "+continuation[0]["text"])
+r203=byid["book-32-psalm-203-note-002"]
+assert r203["extractedText"].endswith("Thomas Sagesse.")
+assert len(tok(r203["extractedText"]))==29
+assert any("Pr. 93" in x["text"] for x in page_data[3202]["lines"])
+other=read(ROOT/"data/notes/books/book-32/book-32-psalm-203-note-001.json")
+assert other["source"]["pdfPage"]==3199 and other["text"]!=r203["extractedText"]
+assert byid["book-32-psalm-197-note-001"]["PDFPage"]!=byid["book-32-psalm-197-note-002"]["PDFPage"]
+print("BIBLAW-064-17-B-GUARD","3 exact","1 cross-page completion 21+3","1 clipped prayer composite 259->29","distinct markers")
+
 folder=ROOT/"reports/notes-064-17-proof/B"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
