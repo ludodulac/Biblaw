@@ -105,6 +105,27 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Gardes ciblées A : aucun verdict automatique, aucune mutation canonique.
+byid={r["id"]:r for r in rows}
+for id,n in [
+ ("book-33-psalm-228-note-001",48),
+ ("book-33-psalm-230-note-001",51),
+ ("book-33-psalm-230-note-003",6),
+ ("book-33-psalm-243-note-001",10),
+]:
+ r=byid[id];p=r["bestPrinted"]
+ assert r["reciprocal"] and r["pdfPageWithinCanonical"] and r["wordTokens"]==n
+ assert p and p["tokensExactlyEqual"] and p["wordTokens"]==n and p["marker"]==r["printedMarkerInJSON"]==1
+r2=byid["book-33-psalm-230-note-002"]
+r3=byid["book-33-psalm-230-note-003"]
+assert r2["reciprocal"] and r2["pdfPageWithinCanonical"] and r2["wordTokens"]==106
+assert r2["bestPrinted"]["wordTokens"]==r3["bestPrinted"]["wordTokens"]==6
+assert r2["bestPrinted"]["printedTokensPrefixOfNote"] and not r2["bestPrinted"]["tokensExactlyEqual"]
+assert tok(r2["extractedText"])[:6]==tok(r3["extractedText"])
+assert len(page_data[3268]["footnoteCandidates"])==1
+assert any(x["text"].startswith("23.") for x in page_data[3269]["lines"])
+print("BIBLAW-064-18-A-GUARD", "3 unique printed notes", "1 composite 230/002", "one printed footnote claimed twice")
+
 folder=ROOT/"reports/notes-064-18-proof/A"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
