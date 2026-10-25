@@ -105,6 +105,30 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Protections limitées au sous-lot A ; concordance ≠ jugement éditorial.
+by_id={r["id"]:r for r in rows}
+expected={
+ "book-32-psalm-185-note-002":44,
+ "book-32-psalm-191-note-001":17,
+ "book-32-psalm-194-note-001":38,
+ "book-32-psalm-194-note-002":47,
+ "book-32-psalm-195-note-001":5,
+}
+for id, n in expected.items():
+    r=by_id[id]; f=r["bestPrinted"]
+    assert r["reciprocal"] and r["pdfPageWithinCanonical"]
+    assert r["wordTokens"]==n and f and f["wordTokens"]==n and f["tokensExactlyEqual"]
+    assert f["marker"]==r["printedMarkerInJSON"]==1
+    assert len(r["allCandidates"])==1
+r194a=by_id["book-32-psalm-194-note-001"]
+r194b=by_id["book-32-psalm-194-note-002"]
+assert r194a["PDFPage"]==3165 and r194b["PDFPage"]==3166
+assert tok(r194a["extractedText"])!=tok(r194b["extractedText"])
+r195=by_id["book-32-psalm-195-note-001"]
+assert r195["extractedText"]=="Évangile selon Luc 6:42."
+assert any("la même faiblesse" in x["text"] for x in page_data[3168]["lines"])
+print("BIBLAW-064-17-A-GUARD","5 exact printed texts","195 composite clipped to 5 tokens","194 notes distinct")
+
 folder=ROOT/"reports/notes-064-17-proof/A"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
