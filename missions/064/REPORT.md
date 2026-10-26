@@ -82,6 +82,8 @@ Les comptes ci-dessus ont été **recoupés sur les dix lignes de verdicts de ch
 
 **Contrôle d'unicité : 46 références distinctes, aucune provenant de 064-01, 064-06, 064-07, 064-17 ou 064-20.** Aucun de ces 46 dossiers n'a été corrigé, fusionné ou réauthentifié au titre de 064-20.
 
+**Vérification GitHub Actions sur le HEAD documentaire `b25309f298ed230d27cfde2c5cc389c51b50f8d9`** : **49 workflows PR, 46 SUCCESS et 3 FAILURE**. La [preuve spécialisée #40366841221](https://github.com/ludodulac/Biblaw/actions/runs/40366841221) est **SUCCESS** avec la garde finale portant sur les deux notes ; les trois échecs sont exactement les workflows généraux préexistants : [Browser smoke - lexical occurrence expansion #40366840695](https://github.com/ludodulac/Biblaw/actions/runs/40366840695), [BIBLAW 058 corpus browse mobile #40366840646](https://github.com/ludodulac/Biblaw/actions/runs/40366840646) et [Audit theme entry identity #40366840990](https://github.com/ludodulac/Biblaw/actions/runs/40366840990). Aucune nouvelle régression, aucune réparation hors périmètre.
+
 ## 4. Problèmes documentaires encore ouverts
 
 - **Concurrences d'identités et doublons** : deux ou plusieurs JSON revendiquent une seule note réellement imprimée. Un rapprochement lexical ne permet ni d'élire un identifiant ni de supprimer le doublon, notamment les conflits avec d'anciens dossiers 063.
