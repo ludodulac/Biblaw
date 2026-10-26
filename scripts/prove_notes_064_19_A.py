@@ -105,6 +105,25 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Vérification technique A, sans prononcer un verdict éditorial.
+byid={r["id"]:r for r in rows}
+e={"book-35-psalm-213-note-002":455,"book-35-psalm-213-note-003":455,"book-35-psalm-214-note-001":96,"book-35-psalm-215-note-001":24,"book-35-psalm-218-note-002":45}
+for id,n in e.items():
+ r=byid[id];f=r["bestPrinted"]
+ assert r["reciprocal"] and r["pdfPageWithinCanonical"] and f
+ assert r["wordTokens"]==n and f["marker"]==r["printedMarkerInJSON"]==1
+assert byid["book-35-psalm-214-note-001"]["bestPrinted"]["tokensExactlyEqual"]
+assert len(page_data[3479]["footnoteCandidates"])==1 and len(page_data[3495]["footnoteCandidates"])==1
+assert tok(byid["book-35-psalm-213-note-002"]["extractedText"])==tok(byid["book-35-psalm-213-note-003"]["extractedText"])
+assert tok(byid["book-35-psalm-213-note-002"]["bestPrinted"]["text"])==tok(byid["book-35-psalm-213-note-003"]["bestPrinted"]["text"])
+assert not byid["book-35-psalm-213-note-002"]["bestPrinted"]["tokensExactlyEqual"]
+assert byid["book-35-psalm-218-note-002"]["bestPrinted"]["tokensExactlyEqual"]
+competitor_218=read(ROOT/"data/notes/books/book-35/book-35-psalm-218-note-003.json")
+assert competitor_218["source"]["pdfPage"]==3495 and tok(competitor_218["text"])==tok(byid["book-35-psalm-218-note-002"]["extractedText"])
+competitor_215=read(ROOT/"data/notes/books/book-35/book-35-psalm-214-note-002.json")
+assert competitor_215["source"]["pdfPage"]==3485 and tok(competitor_215["text"])==tok(byid["book-35-psalm-215-note-001"]["extractedText"])
+print("BIBLAW-064-19-A-GUARD","214 cleaned","213 duplicated composite","218 duplicate","215 competing identity")
+
 folder=ROOT/"reports/notes-064-19-proof/A"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
