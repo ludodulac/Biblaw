@@ -105,6 +105,26 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Garde technique B : concordance de l'original, jamais jugement automatique.
+byid={r["id"]:r for r in rows}
+expected={"book-35-psalm-218-note-003":45,"book-35-psalm-223-note-001":39,"book-35-psalm-227-note-001":17,"book-36-psalm-233-note-002":122,"book-37-psalm-250-note-003":80}
+for id,n in expected.items():
+ r=byid[id];f=r["bestPrinted"]
+ assert r["reciprocal"] and r["pdfPageWithinCanonical"] and r["wordTokens"]==n
+ assert f and f["wordTokens"]==n and f["tokensExactlyEqual"] and f["marker"]==r["printedMarkerInJSON"]==1
+assert len(page_data[3495]["footnoteCandidates"])==1 and len(page_data[3690]["footnoteCandidates"])==1
+comp218=read(ROOT/"data/notes/books/book-35/book-35-psalm-218-note-002.json")
+assert comp218["source"]["pdfPage"]==3495 and tok(comp218["text"])==tok(byid["book-35-psalm-218-note-003"]["extractedText"])
+comp250=read(ROOT/"data/notes/books/book-37/book-37-psalm-250-note-002.json")
+assert comp250["source"]["pdfPage"]==3690 and tok(comp250["text"])[:80]==tok(byid["book-37-psalm-250-note-003"]["extractedText"])
+assert len(tok(comp250["text"]))>80
+note233=read(ROOT/"data/notes/books/book-36/book-36-psalm-233-note-002.json")
+assert note233["appliesTo"]["verse"]==16
+assert any("votre vie" in x["text"] for x in page_data[3652]["lines"])
+assert any("Fils du Soleil" in x["text"] for x in page_data[3651]["lines"])
+assert byid["book-36-psalm-233-note-002"]["otherNoteIdsSamePsalm"]==["book-36-psalm-233-note-001"]
+print("BIBLAW-064-19-B-GUARD","3 notes text exactly", "233 verse corrected 13->16", "218/250 competing note identities")
+
 folder=ROOT/"reports/notes-064-19-proof/B"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
