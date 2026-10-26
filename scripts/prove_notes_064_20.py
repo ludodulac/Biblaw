@@ -102,6 +102,20 @@ for id,page in TARGETS:
         "otherNoteIdsSamePsalm":[v for v in psalm["noteIds"] if v!=id],
         "technicalStatus":note.get("validation",{}).get("status"),
         "editorialVerdict":"NOT_ASSESSED_BY_SCRIPT"})
+# Contrôles reproductibles des deux dernières notes ; aucun verdict éditorial automatique.
+byid={r["id"]:r for r in rows}
+expected={"book-41-psalm-275-note-001":(4174,16),"book-41-psalm-276-note-001":(4178,12)}
+assert len(rows)==2 and len(expected)==2
+for id,(page,n) in expected.items():
+ r=byid[id];f=r["bestPrinted"]
+ assert r["PDFPage"]==page and r["pdfPageWithinCanonical"] and r["reciprocal"]
+ assert r["wordTokens"]==n and r["otherNoteIdsSamePsalm"]==[]
+ assert f and f["wordTokens"]==n and f["tokensExactlyEqual"]
+ assert f["marker"]==r["printedMarkerInJSON"]==1 and len(r["allCandidates"])==1
+ assert len(page_data[page]["footnoteCandidates"])==1
+assert byid["book-41-psalm-275-note-001"]["extractedText"]!=byid["book-41-psalm-276-note-001"]["extractedText"]
+print("BIBLAW-064-20-VERIFICATION", "2 exact printed footnotes", "0 competing ID", "2 canonical psalm links")
+
 folder=ROOT/"reports/notes-064-20-proof"
 folder.mkdir(parents=True,exist_ok=True)
 (folder/"note-proof.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
