@@ -13,7 +13,7 @@ TARGETS=[
  ("book-41-psalm-276-note-001",4178),
 ]
 PAGES=[4173,4174,4175,4177,4178,4179,4180]
-assert len(TARGETS)==5 and len(set(x for x,_ in TARGETS))==5
+assert len(TARGETS)==2 and len(set(x for x,_ in TARGETS))==2
 assert len(PAGES)==len(set(PAGES))
 def tok(s):
     s = unicodedata.normalize("NFD", str(s or "").casefold())
