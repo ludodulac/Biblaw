@@ -76,5 +76,5 @@ Tests documentaires ciblés exécutés sur les données GitHub du HEAD d'entrée
 
 - **4/4 notes du lot traitées** ; **0 AUTHENTIFIÉE**, **0 CORRIGÉE ET AUTHENTIFIÉE**, **4 NON RÉSOLUES**, dont deux conflits binaires de provenance.
 - Aucun PDF réouvert : l'indécision ne porte pas sur la présence ou le texte du pied imprimé mais sur **l'identifiant unique** à lui attribuer. Toute correction/suppression fondée sur le seul ordre des numéros serait une hypothèse.
-- **Bilan cumulé 065 :** 4 des 46 notes de l'inventaire traitées en phase de résolution ; **0 résolue**, **46 NON RÉSOLUES** au total (4 revues en 065-02, 42 autres lots à traiter). Les 146 authentifications 064 restent inchangées.
+- **Bilan cumulé 065 :** 4 des 46 notes de l'inventaire traitées en phase de résolution ; **0 résolue**, **46 NON RÉSOLUES** au total (4 revues en 065-02, 42 autres notes à traiter). Les 146 authentifications 064 restent inchangées.
 - Aucun texte canonique, note, psaume, prière, interface, catalogue, publication ni déploiement modifié ; pas de fusion PR #72. **STOP après 065-02.**
