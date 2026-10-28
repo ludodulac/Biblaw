@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (planification). 065-02 et 065-03 : TERMINÉES (4 + 4 notes réexaminées ; 0 authentification, 0 correction, 8 encore NON RÉSOLUES).** Les lots 065-04 à 065-13 ne sont pas commencés.
+**065-01 : TERMINÉE (planification). 065-02, 065-03 et 065-04 : TERMINÉES (12 notes réexaminées, 0 authentification, 0 correction, 12 encore NON RÉSOLUES).** Les lots 065-05 à 065-13 ne sont pas commencés.
 
 | Mesure | Résultat |
 |---|---:|
@@ -15,7 +15,7 @@
 |---|---|---:|---|
 | 065-02 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-03 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 065-04 | A | 4 | NON COMMENCÉE |
+| 065-04 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-05 | B | 4 | NON COMMENCÉE |
 | 065-06 | B | 4 | NON COMMENCÉE |
 | 065-07 | B | 4 | NON COMMENCÉE |
@@ -43,3 +43,10 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - **Preuves réutilisées :** 064-03/B (artefact 12426907184, p.416) et 064-04/A (artefact 12430728297, p.432), disponibles ; quatre notes JSON et deux psaumes. Pas de PDF rouvert.
 - **12/12 contrôles documentaires spécialisés réussis** en lecture seule ; aucune GitHub Action créée/rejouée. Aucune mutation canonique, fusion ni déploiement.
 - **Cumul phase 065 : 8/46 anomalies réexaminées, 0 résolue, 46 NON RÉSOLUES** ; 38 notes non encore réexaminées. **065-04 NON COMMENCÉE.**
+
+## Clôture 065-04 — troisième lot A
+
+- **4/4 réexaminées** : `30/215/004–005` et `35/218/002–003` ; **0 AUTHENTIFIÉE, 0 CORRIGÉE, 4 NON RÉSOLUES**. [Verdicts et preuves](065-04_VERDICTS.md).
+- Sources préexistantes : 064-15/B p.2971 (artefact 12577911782), 064-19/A–B p.3495 (artefacts 12650754088, 12651183390), quatre fichiers JSON et deux psaumes. Artefacts disponibles ; PDF non rouvert.
+- **12/12 contrôles documentaires ciblés PASS**, aucune nouvelle GitHub Action. Aucun fichier canonique modifié.
+- **Cumul 065 : 12/46 réexaminées, 0 résolue, 46 NON RÉSOLUES** ; 34 autres encore à examiner. **065-05 NON COMMENCÉE.**
