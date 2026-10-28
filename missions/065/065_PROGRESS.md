@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (inventaire/planification). 065-02 : TERMINÉE (4 vérifications, 0 authentification, 0 correction, 4 NON RÉSOLUES).** Les lots 065-03 à 065-13 ne sont pas commencés.
+**065-01 : TERMINÉE (planification). 065-02 et 065-03 : TERMINÉES (4 + 4 notes réexaminées ; 0 authentification, 0 correction, 8 encore NON RÉSOLUES).** Les lots 065-04 à 065-13 ne sont pas commencés.
 
 | Mesure | Résultat |
 |---|---:|
@@ -14,7 +14,7 @@
 | Mission | Classe | Effectif | Statut |
 |---|---|---:|---|
 | 065-02 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 065-03 | A | 4 | NON COMMENCÉE |
+| 065-03 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-04 | A | 4 | NON COMMENCÉE |
 | 065-05 | B | 4 | NON COMMENCÉE |
 | 065-06 | B | 4 | NON COMMENCÉE |
@@ -36,3 +36,10 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - **Bilan cumulé 065 :** 4/46 notes de la phase de résolution revues ; 0 anomalie levée ; 46 NON RÉSOLUES dans l'inventaire initial (4 revues, 42 non encore reprises). Les 146 AUTHENTIFIÉES de 064 ne changent pas.
 - Les archives probantes 064-02/A et 064-03/A sont disponibles ; revue ciblée des quatre JSON et deux psaumes, 12/12 tests documentaires spécialisés réussis ; aucune nouvelle CI/GitHub Actions lancée.
 - Aucun PDF rouvert ; absence de preuve pour choisir un ID canonique entre deux extractions revendiquant un seul pied ; fichiers canoniques inchangés, aucune fusion/publication/déploiement. **065-03 NON COMMENCÉE.**
+
+## Clôture 065-03 — deuxième lot
+
+- **4/4 examinées** : `07/047/002–003`, `08/025/002–003` ; **0 AUTHENTIFIÉE, 0 CORRIGÉE, 4 NON RÉSOLUES**. Voir [065-03_VERDICTS.md](065-03_VERDICTS.md).
+- **Preuves réutilisées :** 064-03/B (artefact 12426907184, p.416) et 064-04/A (artefact 12430728297, p.432), disponibles ; quatre notes JSON et deux psaumes. Pas de PDF rouvert.
+- **12/12 contrôles documentaires spécialisés réussis** en lecture seule ; aucune GitHub Action créée/rejouée. Aucune mutation canonique, fusion ni déploiement.
+- **Cumul phase 065 : 8/46 anomalies réexaminées, 0 résolue, 46 NON RÉSOLUES** ; 38 notes non encore réexaminées. **065-04 NON COMMENCÉE.**
