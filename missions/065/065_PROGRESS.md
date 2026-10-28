@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (planification). 065-02 à 065-08 : TERMINÉES.** 26/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-09 à 065-13 ne sont pas commencés.
+**065-01 : TERMINÉE (planification). 065-02 à 065-09 : TERMINÉES.** 30/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-10 à 065-13 ne sont pas commencés.
 
 | Mesure | Résultat |
 |---|---:|
@@ -20,7 +20,7 @@
 | 065-06 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-07 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-08 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
-| 065-09 | C | 4 | NON COMMENCÉE |
+| 065-09 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-10 | C | 4 | NON COMMENCÉE |
 | 065-11 | C | 4 | NON COMMENCÉE |
 | 065-12 | C | 4 | NON COMMENCÉE |
@@ -78,3 +78,10 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - Preuves réutilisées 064-15/A p.2953 (artefact 12576971728), 064-16/A p.3005 (artefact 12597171008), deux notes, deux psaumes et prières autonomes Pr.93 (livre 30) et Pr.76 (livre 31). Les deux pieds sont imprimés sous les prières sur des pages hors des psaumes, sans rattachement note→prière établi dans le modèle. PDF non rouvert.
 - **10/10 contrôles structuraux ciblés PASS ; aucune GitHub Action exécutée.** Aucun fichier canonique, psaume, prière ou interface modifié.
 - **Cumul 065 : 26/46 réexaminées, 2 résolues, 44 NON RÉSOLUES ; 20 restant à réexaminer. 065-09 NON COMMENCÉE.**
+
+## Clôture 065-09 — premier lot C
+
+- **4/4 réexaminées** : `21/143/003`, `21/143/004`, `29/199/002`, `29/199/003`, **0 AUTHENTIFIÉE, 0 CORRIGÉE, 4 NON RÉSOLUES** ; [verdicts détaillés](065-09_VERDICTS.md).
+- **Sources archivées 064-10/A** (p.1653–1654, artefact 12506082816) et **064-14/A** (p.2750–2751, artefact 12576696887), quatre JSON, deux psaumes, les deux prières autonomes Pr.38/Pr.90. 21/143/004 concatène les notes 002 et 003 déjà présentes ; 29/199/002 et 003 portent exactement le même pied p.2751 sous Pr.90. Rattachement et identité canonique non prouvés.
+- **15/15 contrôles documentaires et structuraux PASS**, lecture seule des données ; aucune nouvelle GitHub Action ni PDF rouvert.
+- **Cumul 065 : 30/46 réexaminées, 2 résolues, 44 NON RÉSOLUES ; 16 à réexaminer. 065-10 NON COMMENCÉE.** Aucun fichier canonique modifié.
