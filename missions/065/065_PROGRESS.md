@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (planification). 065-02 à 065-10 : TERMINÉES.** 34/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-11 à 065-13 ne sont pas commencés.
+**065-01 : TERMINÉE (planification). 065-02 à 065-11 : TERMINÉES.** 38/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-12 à 065-13 ne sont pas commencés.
 
 | Mesure | Résultat |
 |---|---:|
@@ -22,7 +22,7 @@
 | 065-08 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 065-09 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-10 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 065-11 | C | 4 | NON COMMENCÉE |
+| 065-11 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-12 | C | 4 | NON COMMENCÉE |
 | 065-13 | C | 4 | NON COMMENCÉE |
 
@@ -92,3 +92,10 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - **Preuves ciblées 064-18/A** p.3268–3269 (artefact 12601790662) et **064-19/A** p.3479 (artefact 12650754088), quatre JSON de note, deux psaumes, et Pr.102 autonome du livre 35. 33/230/002 contient le pied exact de 6 tokens suivi des versets 23–25 ; 003 revendique le même pied. 35/213/002 et 003 sont des composites textuellement identiques (pied de 55 tokens + suite Pr.102) ; la prière autonome ne contient pas cette suite. Identité canonique non départagée.
 - **12/12 contrôles documentaires/structuraux PASS** ; aucune nouvelle GitHub Action ni PDF rouvert. Aucun fichier canonique modifié.
 - **Cumul 065 : 34/46 réexaminées, 2 résolues, 44 NON RÉSOLUES, 12 à réexaminer ; 065-11 NON COMMENCÉE.**
+
+## Clôture 065-11 — troisième lot C
+
+- **4/4 réexaminées** : `27/169/003`, `27/169/005`, `27/169/004`, `29/216/003` — **0 AUTHENTIFIÉE, 0 CORRIGÉE, 4 NON RÉSOLUES** ; [verdicts détaillés](065-11_VERDICTS.md).
+- **Preuves** : 064-13/A–B p.2534,2536 (artefacts 12574772504, 12574719450) ; 064-14/B p.2831 (artefact 12576942014) ; quatre notes, deux candidats historiques 063 lus seulement pour le conflit, deux psaumes, Pr.63 autonome. 003/005 du psaume 27/169 sont identiques sous Pr.63 ; 004 concurrence 002 composite au v.30 ; 29/216/003 concurrence le 002 composite et porte la graphie « audelà » au lieu de « au-delà ». Identités non départagées.
+- **15/15 contrôles spécialisés documentaires PASS**, aucune nouvelle GitHub Action ni PDF rouvert. Aucun texte canonique modifié.
+- **Cumul 065 : 38/46 réexaminées, 2 résolues, 44 NON RÉSOLUES, 8 restant à réexaminer. 065-12 NON COMMENCÉE.**
