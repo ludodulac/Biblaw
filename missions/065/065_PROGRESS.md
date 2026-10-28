@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (planification). 065-02 à 065-07 : TERMINÉES.** 24/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-08 à 065-13 ne sont pas commencés.
+**065-01 : TERMINÉE (planification). 065-02 à 065-08 : TERMINÉES.** 26/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-09 à 065-13 ne sont pas commencés.
 
 | Mesure | Résultat |
 |---|---:|
@@ -19,7 +19,7 @@
 | 065-05 | B | 4 | TERMINÉE — 0 authentifiée sans correction, 2 corrigées et authentifiées, 2 NON RÉSOLUES |
 | 065-06 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-07 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 065-08 | B | 2 | NON COMMENCÉE |
+| 065-08 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 065-09 | C | 4 | NON COMMENCÉE |
 | 065-10 | C | 4 | NON COMMENCÉE |
 | 065-11 | C | 4 | NON COMMENCÉE |
@@ -71,3 +71,10 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - **Preuves** : rapports 064-12 / 064-08 / 064-13, notes JSON, psaumes, prières autonomes Pr.54 (livre 26), Pr.11 (livre 17), Pr.53 et Pr.71 (livre 27). La continuation Pr.54 de 26/169/001 manque dans la prière autonome ; les trois autres pieds sont imprimés sous des prières, hors des pages de leur psaume. Aucun PDF rouvert.
 - **12/12 contrôles documentaires ciblés PASS** ; aucun test Actions relancé, aucun texte canonique/psaume/prière modifié.
 - **Cumul 065 : 24/46 réexaminées, 2 résolues, 44 NON RÉSOLUES ; 22 à réexaminer. 065-08 NON COMMENCÉE.**
+
+## Clôture 065-08 — quatrième lot B
+
+- **2/2 examinées :** `book-30-psalm-211-note-001` et `book-31-psalm-184-note-001` — **0 AUTHENTIFIÉE, 0 CORRIGÉE, 2 NON RÉSOLUES**. Voir [065-08_VERDICTS.md](065-08_VERDICTS.md).
+- Preuves réutilisées 064-15/A p.2953 (artefact 12576971728), 064-16/A p.3005 (artefact 12597171008), deux notes, deux psaumes et prières autonomes Pr.93 (livre 30) et Pr.76 (livre 31). Les deux pieds sont imprimés sous les prières sur des pages hors des psaumes, sans rattachement note→prière établi dans le modèle. PDF non rouvert.
+- **10/10 contrôles structuraux ciblés PASS ; aucune GitHub Action exécutée.** Aucun fichier canonique, psaume, prière ou interface modifié.
+- **Cumul 065 : 26/46 réexaminées, 2 résolues, 44 NON RÉSOLUES ; 20 restant à réexaminer. 065-09 NON COMMENCÉE.**
