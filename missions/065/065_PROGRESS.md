@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (planification). 065-02 à 065-06 : TERMINÉES.** 20/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-07 à 065-13 ne sont pas commencés.
+**065-01 : TERMINÉE (planification). 065-02 à 065-07 : TERMINÉES.** 24/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-08 à 065-13 ne sont pas commencés.
 
 | Mesure | Résultat |
 |---|---:|
@@ -18,7 +18,7 @@
 | 065-04 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-05 | B | 4 | TERMINÉE — 0 authentifiée sans correction, 2 corrigées et authentifiées, 2 NON RÉSOLUES |
 | 065-06 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 065-07 | B | 4 | NON COMMENCÉE |
+| 065-07 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-08 | B | 2 | NON COMMENCÉE |
 | 065-09 | C | 4 | NON COMMENCÉE |
 | 065-10 | C | 4 | NON COMMENCÉE |
@@ -64,3 +64,10 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - **Preuves** : rapports 064-09/10/12, artefacts 12503326714 / 12505982988 / 12564375980, 4 notes, 4 psaumes, 3 prières existantes et absence du fichier Pr.36 livre 24. Les continuations parasites ne sont pas déjà intégralement conservées dans les prières autonomes. Aucun PDF rouvert.
 - **11/11 contrôles documentaires ciblés PASS** ; aucune GitHub Action relancée, aucun JSON canonique ni prière/psaume modifié.
 - **Cumul 065 : 20/46 réexaminées, 2 résolues, 44 NON RÉSOLUES, 26 encore à réexaminer**. **065-07 NON COMMENCÉE.**
+
+## Clôture 065-07 — troisième lot B
+
+- **4/4 réexaminées** : `26/169/001`, `17/115/001`, `27/158/001`, `27/177/001` — **0 AUTHENTIFIÉE, 0 CORRIGÉE, 4 NON RÉSOLUES**. Voir [065-07_VERDICTS.md](065-07_VERDICTS.md).
+- **Preuves** : rapports 064-12 / 064-08 / 064-13, notes JSON, psaumes, prières autonomes Pr.54 (livre 26), Pr.11 (livre 17), Pr.53 et Pr.71 (livre 27). La continuation Pr.54 de 26/169/001 manque dans la prière autonome ; les trois autres pieds sont imprimés sous des prières, hors des pages de leur psaume. Aucun PDF rouvert.
+- **12/12 contrôles documentaires ciblés PASS** ; aucun test Actions relancé, aucun texte canonique/psaume/prière modifié.
+- **Cumul 065 : 24/46 réexaminées, 2 résolues, 44 NON RÉSOLUES ; 22 à réexaminer. 065-08 NON COMMENCÉE.**
