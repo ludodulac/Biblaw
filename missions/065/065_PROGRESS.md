@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (planification). 065-02 à 065-09 : TERMINÉES.** 30/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-10 à 065-13 ne sont pas commencés.
+**065-01 : TERMINÉE (planification). 065-02 à 065-10 : TERMINÉES.** 34/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-11 à 065-13 ne sont pas commencés.
 
 | Mesure | Résultat |
 |---|---:|
@@ -21,7 +21,7 @@
 | 065-07 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-08 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 065-09 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 065-10 | C | 4 | NON COMMENCÉE |
+| 065-10 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-11 | C | 4 | NON COMMENCÉE |
 | 065-12 | C | 4 | NON COMMENCÉE |
 | 065-13 | C | 4 | NON COMMENCÉE |
@@ -85,3 +85,10 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - **Sources archivées 064-10/A** (p.1653–1654, artefact 12506082816) et **064-14/A** (p.2750–2751, artefact 12576696887), quatre JSON, deux psaumes, les deux prières autonomes Pr.38/Pr.90. 21/143/004 concatène les notes 002 et 003 déjà présentes ; 29/199/002 et 003 portent exactement le même pied p.2751 sous Pr.90. Rattachement et identité canonique non prouvés.
 - **15/15 contrôles documentaires et structuraux PASS**, lecture seule des données ; aucune nouvelle GitHub Action ni PDF rouvert.
 - **Cumul 065 : 30/46 réexaminées, 2 résolues, 44 NON RÉSOLUES ; 16 à réexaminer. 065-10 NON COMMENCÉE.** Aucun fichier canonique modifié.
+
+## Clôture 065-10 — deuxième lot C
+
+- **4/4 examinées :** `33/230/002`–`003` et `35/213/002`–`003`, **0 AUTHENTIFIÉE, 0 CORRIGÉE, 4 NON RÉSOLUES**. Voir [065-10_VERDICTS.md](065-10_VERDICTS.md).
+- **Preuves ciblées 064-18/A** p.3268–3269 (artefact 12601790662) et **064-19/A** p.3479 (artefact 12650754088), quatre JSON de note, deux psaumes, et Pr.102 autonome du livre 35. 33/230/002 contient le pied exact de 6 tokens suivi des versets 23–25 ; 003 revendique le même pied. 35/213/002 et 003 sont des composites textuellement identiques (pied de 55 tokens + suite Pr.102) ; la prière autonome ne contient pas cette suite. Identité canonique non départagée.
+- **12/12 contrôles documentaires/structuraux PASS** ; aucune nouvelle GitHub Action ni PDF rouvert. Aucun fichier canonique modifié.
+- **Cumul 065 : 34/46 réexaminées, 2 résolues, 44 NON RÉSOLUES, 12 à réexaminer ; 065-11 NON COMMENCÉE.**
