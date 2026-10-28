@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (planification). 065-02 à 065-05 : TERMINÉES.** 16/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-06 à 065-13 ne sont pas commencés.
+**065-01 : TERMINÉE (planification). 065-02 à 065-06 : TERMINÉES.** 20/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-07 à 065-13 ne sont pas commencés.
 
 | Mesure | Résultat |
 |---|---:|
@@ -17,7 +17,7 @@
 | 065-03 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-04 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-05 | B | 4 | TERMINÉE — 0 authentifiée sans correction, 2 corrigées et authentifiées, 2 NON RÉSOLUES |
-| 065-06 | B | 4 | NON COMMENCÉE |
+| 065-06 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-07 | B | 4 | NON COMMENCÉE |
 | 065-08 | B | 2 | NON COMMENCÉE |
 | 065-09 | C | 4 | NON COMMENCÉE |
@@ -57,3 +57,10 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - Deux modifications JSON ciblées : 21/150/002 → `text="Exode 32."`, verset 32 ; 20/110/001 → `text="Il s’agit du Nom de la Mère."`. Prière autonome 7 déjà conservée intégralement ; aucun psaume ni aucune prière modifiés.
 - **12/12 contrôles structuraux spécialisés PASS** en lecture des sources + analyse des corrections, pas de GitHub Action ni PDF rouverts.
 - **Cumul 065 : 16/46 réexaminées, 2 résolues, 44 NON RÉSOLUES ; 30 à réexaminer. 065-06 NON COMMENCÉE.**
+
+## Clôture 065-06 — deuxième lot B
+
+- **4/4 examinées** : `21/137/001`, `21/160/001`, `23/145/001`, `24/141/001` ; **0 AUTHENTIFIÉE, 0 CORRIGÉE, 4 NON RÉSOLUES**. Voir [065-06_VERDICTS.md](065-06_VERDICTS.md).
+- **Preuves** : rapports 064-09/10/12, artefacts 12503326714 / 12505982988 / 12564375980, 4 notes, 4 psaumes, 3 prières existantes et absence du fichier Pr.36 livre 24. Les continuations parasites ne sont pas déjà intégralement conservées dans les prières autonomes. Aucun PDF rouvert.
+- **11/11 contrôles documentaires ciblés PASS** ; aucune GitHub Action relancée, aucun JSON canonique ni prière/psaume modifié.
+- **Cumul 065 : 20/46 réexaminées, 2 résolues, 44 NON RÉSOLUES, 26 encore à réexaminer**. **065-07 NON COMMENCÉE.**
