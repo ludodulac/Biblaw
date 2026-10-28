@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (planification). 065-02, 065-03 et 065-04 : TERMINÉES (12 notes réexaminées, 0 authentification, 0 correction, 12 encore NON RÉSOLUES).** Les lots 065-05 à 065-13 ne sont pas commencés.
+**065-01 : TERMINÉE (planification). 065-02 à 065-05 : TERMINÉES.** 16/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-06 à 065-13 ne sont pas commencés.
 
 | Mesure | Résultat |
 |---|---:|
@@ -16,7 +16,7 @@
 | 065-02 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-03 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-04 | A | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 065-05 | B | 4 | NON COMMENCÉE |
+| 065-05 | B | 4 | TERMINÉE — 0 authentifiée sans correction, 2 corrigées et authentifiées, 2 NON RÉSOLUES |
 | 065-06 | B | 4 | NON COMMENCÉE |
 | 065-07 | B | 4 | NON COMMENCÉE |
 | 065-08 | B | 2 | NON COMMENCÉE |
@@ -50,3 +50,10 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - Sources préexistantes : 064-15/B p.2971 (artefact 12577911782), 064-19/A–B p.3495 (artefacts 12650754088, 12651183390), quatre fichiers JSON et deux psaumes. Artefacts disponibles ; PDF non rouvert.
 - **12/12 contrôles documentaires ciblés PASS**, aucune nouvelle GitHub Action. Aucun fichier canonique modifié.
 - **Cumul 065 : 12/46 réexaminées, 0 résolue, 46 NON RÉSOLUES** ; 34 autres encore à examiner. **065-05 NON COMMENCÉE.**
+
+## Clôture 065-05 — premier lot intermédiaire B
+
+- **4/4 traitées** : 07/035/005 et 12/077/001 **NON RÉSOLUES** ; 21/150/002 et 20/110/001 **CORRIGÉES ET AUTHENTIFIÉES** ([verdicts détaillés](065-05_VERDICTS.md)).
+- Deux modifications JSON ciblées : 21/150/002 → `text="Exode 32."`, verset 32 ; 20/110/001 → `text="Il s’agit du Nom de la Mère."`. Prière autonome 7 déjà conservée intégralement ; aucun psaume ni aucune prière modifiés.
+- **12/12 contrôles structuraux spécialisés PASS** en lecture des sources + analyse des corrections, pas de GitHub Action ni PDF rouverts.
+- **Cumul 065 : 16/46 réexaminées, 2 résolues, 44 NON RÉSOLUES ; 30 à réexaminer. 065-06 NON COMMENCÉE.**
