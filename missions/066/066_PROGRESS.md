@@ -21,7 +21,7 @@
 |---|---|---:|---|
 | 066-02 | A | transversal | TERMINÉE — protocole documentaire, 0 correction |
 | 066-03 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 066-04 | B | 4 | PROPOSÉE — NON COMMENCÉE |
+| 066-04 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 066-05 | B | 4 | PROPOSÉE — NON COMMENCÉE |
 | 066-06 | B | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-07 | B | 2 | PROPOSÉE — NON COMMENCÉE |
@@ -72,3 +72,11 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - 064-02/A p.325 (artefact 12426161529) et 064-03/A p.381 (artefact 12426552703) non expirés ; 065-02 et JSON de quatre notes/deux psaumes. **Un seul pied de 155 mots** pour les deux ID 06/040, **un seul pied de 5 mots** pour les deux ID 07/032. Textes identiques ; verse=null/11 et null/27 sans valeur probante de sélection.
 - **Décision nécessaire de Ludo :** provenance des identifiants à conserver, alias/archivage et mise en cohérence de `noteIds`. Aucune mutation canonique ni choix arbitraire.
 - **14/14 contrôles spécialisés PASS** ; aucun PDF rouvert, aucune nouvelle Action. **44 NON RÉSOLUES, 066-04 NON COMMENCÉE.**
+
+## Clôture 066-04 — deux paires simples 07/047 et 08/025
+
+- **4/4 traitées** : `07/047/002`, `07/047/003`, `08/025/002`, `08/025/003` ; **0 AUTHENTIFIÉE, 0 CORRIGÉE, 4 NON RÉSOLUES**. [Rapport motivé 066-04](066-04_VERDICTS.md).
+- **Archives réutilisées** : 064-03/B p.416 (artefact 12426907184, run 39781270188), 064-04/A p.432 (artefact 12430728297, run 39791400802), verdict 065-03. Deux artefacts vérifiés **non expirés**, quatre notes et deux psaumes lus sans mutation ; aucun PDF original rouvert.
+- **Faits établis** : un pied imprimé unique de 35 mots p.416 revendiqué par 07/047/002–003 ; un pied unique de 67 mots p.432 revendiqué par 08/025/002–003. Chaque paire possède des textes strictement identiques, un même marqueur/page et deux `noteIds`. Différence de `verse` (null/30 ; null/18) sans preuve d'identité.
+- **Blocage et décision Ludo** : provenance de chaque ID et arbitrage d'une identité canonique/alias, puis réconciliation autorisée et non destructive de `noteIds`.
+- **17/17 contrôles spécialisés documentaires PASS** ; 0 correction, 0 authentification en 066-04. **44 NON RÉSOLUES** au total ; aucune GitHub Action nouvelle. **066-05 NON COMMENCÉE, STOP.**
