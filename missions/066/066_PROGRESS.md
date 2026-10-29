@@ -26,7 +26,7 @@
 | 066-06 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-07 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-08 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
-| 066-09 | B | 2 | PROPOSÉE — NON COMMENCÉE |
+| 066-09 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-10 | C | 3 | PROPOSÉE — NON COMMENCÉE |
 | 066-11 | C | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-12 | C | 4 | PROPOSÉE — NON COMMENCÉE |
@@ -114,3 +114,12 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - **26/189 :** 003 (151 caractères) est le préfixe strict de l'ancien composite 002 (4265 caractères). La suite v.19–29 est égale aux versets canoniques, **mais 1679 caractères supplémentaires restent non couverts** par ce psaume actuellement limité au v.29 (fin de v.29 + passages numérotés 30–35). **Aucune troncature sûre, aucune destination supposée.**
 - **Ludo doit arbitrer** provenance des IDs, alias/archivage, conservation de la suite non couverte et `noteIds` ; rien n'est modifié. **21/21 contrôles spécialisés PASS.**
 - **Cumul : 18/44 identifiants examinés depuis 066-03, 44 NON RÉSOLUES. 066-09 NON COMMENCÉE — STOP.**
+
+## 066-09 — clôture des concurrents 30/200 et 35/215
+
+- Pilotes exacts : `30/200/003`, `35/215/001`. [Rapport 066-09](066-09_VERDICTS.md) ; historiques `30/200/002` et `35/214/002` comparés seulement, non retraités. **2/2, 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES.**
+- 064-15/A : pied de **111 tokens p.2901**, pilote 615 caractères, préfixe exact d'un composite de 2935 caractères. Suffixe v.38–42 + Pr.83 **intégralement égal** aux textes canoniques. `verse=32` comporte le dialogue, mais le verset est indiqué p.2900 contre pied p.2901 : écart documentaire sans correction conjecturale.
+- 064-19/A : pied unique de **24 tokens p.3485, psaume 215/v.36**. Texte strictement égal à l'historique `35/214/002` ; **214 ne possède ni p.3485 ni v.36**. Décision d'identité et `noteIds` **réservée à Ludo**. Artefacts 12576971728 et 12650754088 **non expirés**, PDF non rouvert.
+- **20/20 contrôles spécialisés PASS**, aucune mutation canonique.
+- **ALERTE 066-08 : 1 679 caractères historiques du composite 26/189 restent non couverts par le psaume actuel ; conservation ailleurs NON PROUVÉE.** Texte préservé, aucune suppression, dossier non réexaminé.
+- **Cumul 066 : 20/44 pilotes examinés, 44 NON RÉSOLUES. STOP — 066-10 NON COMMENCÉE.**
