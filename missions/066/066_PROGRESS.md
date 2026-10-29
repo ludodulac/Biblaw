@@ -22,7 +22,7 @@
 | 066-02 | A | transversal | TERMINÉE — protocole documentaire, 0 correction |
 | 066-03 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 066-04 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 066-05 | B | 4 | PROPOSÉE — NON COMMENCÉE |
+| 066-05 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 066-06 | B | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-07 | B | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-08 | B | 2 | PROPOSÉE — NON COMMENCÉE |
@@ -80,3 +80,11 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - **Faits établis** : un pied imprimé unique de 35 mots p.416 revendiqué par 07/047/002–003 ; un pied unique de 67 mots p.432 revendiqué par 08/025/002–003. Chaque paire possède des textes strictement identiques, un même marqueur/page et deux `noteIds`. Différence de `verse` (null/30 ; null/18) sans preuve d'identité.
 - **Blocage et décision Ludo** : provenance de chaque ID et arbitrage d'une identité canonique/alias, puis réconciliation autorisée et non destructive de `noteIds`.
 - **17/17 contrôles spécialisés documentaires PASS** ; 0 correction, 0 authentification en 066-04. **44 NON RÉSOLUES** au total ; aucune GitHub Action nouvelle. **066-05 NON COMMENCÉE, STOP.**
+
+## Clôture 066-05 — deux paires de pieds uniques v.20
+
+- **4/4 notes traitées** : `30/215/004`, `30/215/005`, `35/218/002`, `35/218/003`. [Rapport motivé](066-05_VERDICTS.md). **0 AUTHENTIFIÉE, 0 CORRIGÉE ET AUTHENTIFIÉE, 4 NON RÉSOLUES**.
+- **Preuves réutilisées** : 064-15/B, p.2971 (run 40137565177, artefact 12577911782), 064-19/A et B, p.3495 (runs 40326164710 / 40326861034, artefacts 12650754088 / 12651183390), rapport 065-04 ; artefacts non expirés. Quatre notes et deux psaumes lus sans mutation, PDF non rouvert.
+- **Faits établis** : pied imprimé local n°1 unique de **17 tokens p.2971** (30/215/004–005) et pied n°1 unique de **45 tokens p.3495** (35/218/002–003), appels respectifs au **v.20**. Textes parfaitement identiques par paire, deux `noteIds` chacune ; `verse=null` face à `verse=20` n'élit aucun ID.
+- **Ludo doit décider** d'une identité canonique prouvée ou règle d'alias/archivage et autoriser toute réconciliation `noteIds`. Aucune correction technique sûre d'un ID particulier sans ce choix.
+- **17/17 contrôles spécialisés PASS** ; 0 correction du corpus, aucune nouvelle GitHub Action. **44 NON RÉSOLUES au total. 066-06 NON COMMENCÉE ; STOP.**
