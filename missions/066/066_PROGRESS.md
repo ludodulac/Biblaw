@@ -24,7 +24,7 @@
 | 066-04 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 066-05 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 066-06 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
-| 066-07 | B | 2 | PROPOSÉE — NON COMMENCÉE |
+| 066-07 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-08 | B | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-09 | B | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-10 | C | 3 | PROPOSÉE — NON COMMENCÉE |
@@ -96,3 +96,12 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - **Faits établis** : un seul pied imprimé n°1 de **6 tokens** au v.14 p.3268. `note-002.text` (**578 caractères**) = `note-003.text` (**28 caractères**) + espace + **549 caractères** des versets numérotés 23–25, **égaux exactement** aux versets canoniques déjà présents p.3269. Le décompte historique 106 tokens (6+100) et celui par espaces des chaînes actuelles 102 (6+96) sont distingués, sans modifier la preuve d'égalité.
 - **Blocage éditorial :** deux ID réclament un pied unique ; `verse=14` sur 003 et caractère composite de 002 ne suffisent pas à élire un identifiant. Ludo doit autoriser la provenance/alias/archivage et la réconciliation des `noteIds`. **Aucune mutation.**
 - **18/18 contrôles documentaires ciblés PASS** ; **14 notes examinées en 066, 44 NON RÉSOLUES au total. STOP : 066-07 NON COMMENCÉE.**
+
+## 066-07 — clôture des concurrents historiques et du rattachement verset
+
+- **Périmètre 2/2 :** `27/169/004` et `37/250/003`, rapport [066-07_VERDICTS.md](066-07_VERDICTS.md). **0 AUTHENTIFIÉE, 0 CORRIGÉE, 2 NON RÉSOLUES** ; seuls les composites historiques `27/169/002` et `37/250/002` consultés comme comparands, sans nouveau verdict 063.
+- **Preuves 064/065 réutilisées :** 064-13/A p.2534 (artefact 12574772504), 065-11 ; 064-19/B p.3690 (artefact 12651183390), 065-12 ; deux artefacts non expirés, pas de nouveau PDF.
+- **Faits établis 27/169 :** pied n°1 de **48 tokens p.2534, appel v.30**. Note 004 (252 caractères) = préfixe exact du composite historique 002 (4179 caractères). Les versets 34–42 et Pr.63 sont déjà conservés dans le psaume et la prière autonome ; un seul `1` de marqueur d'appel après « Amin Salama » distingue les extractions.
+- **Faits établis 37/250 :** pied n°1 de **80 tokens p.3690**, **appel imprimé fin v.36**, malgré `appliesTo.verse=11` dans 003. Note 003 (454 caractères) = préfixe exact du composite historique 002 (2883 caractères) ; suffixe = versets 42–44 et Pr.135, déjà conservés **à l'identique**. Double revendication dans `noteIds`.
+- **Corrections techniques certaines :** frontières des deux composites et emplacement imprimé **v.36** démontrés, mais **aucune écriture canonique autorisée** ; identité 002 historique vs 004/003, alias/archivage et correction du verset sur l'ID retenu soumis à Ludo.
+- **21/21 contrôles spécialisés PASS**, 0 authentification/correction. **16/44 notes pilotes examinées depuis 066-03 ; 44 NON RÉSOLUES au total. STOP — 066-08 NON COMMENCÉE.**
