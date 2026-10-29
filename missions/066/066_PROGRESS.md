@@ -20,7 +20,7 @@
 | Mission | Priorité | IDs pilotes | État |
 |---|---|---:|---|
 | 066-02 | A | transversal | TERMINÉE — protocole documentaire, 0 correction |
-| 066-03 | B | 4 | PROPOSÉE — NON COMMENCÉE |
+| 066-03 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 066-04 | B | 4 | PROPOSÉE — NON COMMENCÉE |
 | 066-05 | B | 4 | PROPOSÉE — NON COMMENCÉE |
 | 066-06 | B | 2 | PROPOSÉE — NON COMMENCÉE |
@@ -65,3 +65,10 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - Écarts documentaires consignés : versets 38–45 (rapport 064) vs 38–40 (JSON courant) pour 23/129 ; pied imprimé 35/215 v.36 vs dossier historique 35/214 ; statut machine ≠ authentification ; autres divergences 29/216, 29/199 et 37/250.
 - **9/9 contrôles documentaires spécialisés PASS**, sans PDF rouvert, sans audit général, sans nouvelle GitHub Action. **44 NON RÉSOLUES**, zéro correction/authentification en 066-02.
 - **STOP : 066-03 à 066-20 NON COMMENCÉES ;** décisions éditoriales et changements de données à soumettre à Ludo.
+
+## 066-03 — clôture des deux paires simples B
+
+- **Quatre IDs seulement :** `06/040/002`, `06/040/003`, `07/032/002`, `07/032/003`. [Verdicts 066-03](066-03_VERDICTS.md) : **4 NON RÉSOLUES, 0 authentifiée, 0 corrigée**.
+- 064-02/A p.325 (artefact 12426161529) et 064-03/A p.381 (artefact 12426552703) non expirés ; 065-02 et JSON de quatre notes/deux psaumes. **Un seul pied de 155 mots** pour les deux ID 06/040, **un seul pied de 5 mots** pour les deux ID 07/032. Textes identiques ; verse=null/11 et null/27 sans valeur probante de sélection.
+- **Décision nécessaire de Ludo :** provenance des identifiants à conserver, alias/archivage et mise en cohérence de `noteIds`. Aucune mutation canonique ni choix arbitraire.
+- **14/14 contrôles spécialisés PASS** ; aucun PDF rouvert, aucune nouvelle Action. **44 NON RÉSOLUES, 066-04 NON COMMENCÉE.**
