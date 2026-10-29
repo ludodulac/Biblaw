@@ -25,7 +25,7 @@
 | 066-05 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 066-06 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-07 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
-| 066-08 | B | 2 | PROPOSÉE — NON COMMENCÉE |
+| 066-08 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-09 | B | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-10 | C | 3 | PROPOSÉE — NON COMMENCÉE |
 | 066-11 | C | 2 | PROPOSÉE — NON COMMENCÉE |
@@ -105,3 +105,12 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - **Faits établis 37/250 :** pied n°1 de **80 tokens p.3690**, **appel imprimé fin v.36**, malgré `appliesTo.verse=11` dans 003. Note 003 (454 caractères) = préfixe exact du composite historique 002 (2883 caractères) ; suffixe = versets 42–44 et Pr.135, déjà conservés **à l'identique**. Double revendication dans `noteIds`.
 - **Corrections techniques certaines :** frontières des deux composites et emplacement imprimé **v.36** démontrés, mais **aucune écriture canonique autorisée** ; identité 002 historique vs 004/003, alias/archivage et correction du verset sur l'ID retenu soumis à Ludo.
 - **21/21 contrôles spécialisés PASS**, 0 authentification/correction. **16/44 notes pilotes examinées depuis 066-03 ; 44 NON RÉSOLUES au total. STOP — 066-08 NON COMMENCÉE.**
+
+## 066-08 — clôture des concurrents historiques 23/133 et 26/189
+
+- **Deux pilotes du plan seulement :** `23/133/004` et `26/189/003`, [rapport 066-08](066-08_VERDICTS.md). Anciens `23/133/003` et `26/189/002` **consultés uniquement comme concurrents historiques 063**, sans nouveau verdict. **0 authentification, 0 correction, 2 NON RÉSOLUES.**
+- **Source→appel→pied** : p.1960, pied n°1 de **8 tokens** au v.30 ; p.2453, pied n°1 de **29 tokens** au v.8. Preuves 064-11/B (artefact 12507282337) et 064-12/B (artefact 12564281933) **non expirées** ; 065-13 réutilisé, pas de PDF rouvert.
+- **23/133 :** 004 (47 caractères) est le préfixe strict du composite 003 (4606 caractères), puis v.35–45 + Pr.30 **déjà entièrement présents et égaux** dans le psaume et la prière autonome.
+- **26/189 :** 003 (151 caractères) est le préfixe strict de l'ancien composite 002 (4265 caractères). La suite v.19–29 est égale aux versets canoniques, **mais 1679 caractères supplémentaires restent non couverts** par ce psaume actuellement limité au v.29 (fin de v.29 + passages numérotés 30–35). **Aucune troncature sûre, aucune destination supposée.**
+- **Ludo doit arbitrer** provenance des IDs, alias/archivage, conservation de la suite non couverte et `noteIds` ; rien n'est modifié. **21/21 contrôles spécialisés PASS.**
+- **Cumul : 18/44 identifiants examinés depuis 066-03, 44 NON RÉSOLUES. 066-09 NON COMMENCÉE — STOP.**
