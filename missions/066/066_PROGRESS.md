@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 066_PROGRESS — SUIVI DE PRÉPARATION
 
-**066-01 TERMINÉE — uniquement inventaire et plan de résolution.** La mission 065 a réexaminé 46 anomalies, en a corrigé et authentifié 2, et conserve **44 NON RÉSOLUES**. Mission 064 : 192 notes examinées, 146 authentifiées au terme de cette phase. Aucun fichier canonique modifié dans 066-01.
+**066-01 TERMINÉE — uniquement inventaire et plan de résolution.** **066-02 TERMINÉE — convention probatoire documentaire, 44 cas couverts, aucune modification canonique.** La mission 065 a réexaminé 46 anomalies, en a corrigé et authentifié 2, et conserve **44 NON RÉSOLUES**. Mission 064 : 192 notes examinées, 146 authentifiées au terme de cette phase. Aucun fichier canonique modifié dans 066-01.
 
 | Contrôle | Total |
 |---|---:|
@@ -19,7 +19,7 @@
 
 | Mission | Priorité | IDs pilotes | État |
 |---|---|---:|---|
-| 066-02 | A | transversal | PROPOSÉE — NON COMMENCÉE |
+| 066-02 | A | transversal | TERMINÉE — protocole documentaire, 0 correction |
 | 066-03 | B | 4 | PROPOSÉE — NON COMMENCÉE |
 | 066-04 | B | 4 | PROPOSÉE — NON COMMENCÉE |
 | 066-05 | B | 4 | PROPOSÉE — NON COMMENCÉE |
@@ -57,3 +57,11 @@
 Les contrôles vérifient uniquement l'alignement des données documentaires 065 et des affectations 066 ; **aucun réexamen de corpus, aucune lecture du PDF original ni aucune GitHub Action nouvelle.**
 
 **STOP — 066-02 et suivantes non commencées ; attendre l'autorisation de Grand-père BIBLAW et de Ludo.**
+
+## 066-02 — clôture du lot documentaire transversal A
+
+- [066-02_PROTOCOL.md](066-02_PROTOCOL.md) : vocabulaire FAIT/CONCORDANCE/HYPOTHÈSE/DÉCISION, gabarit source→appel→pied→candidats, conservation non destructive, schéma note→prière à approuver, contrôle de `noteIds` et conditions d'autorisation.
+- **44/44** fiches couvertes dans la matrice : fait établi par les archives, preuve manquante, option technique et décision de Ludo ; aucune réaffectation des lots pilotes.
+- Écarts documentaires consignés : versets 38–45 (rapport 064) vs 38–40 (JSON courant) pour 23/129 ; pied imprimé 35/215 v.36 vs dossier historique 35/214 ; statut machine ≠ authentification ; autres divergences 29/216, 29/199 et 37/250.
+- **9/9 contrôles documentaires spécialisés PASS**, sans PDF rouvert, sans audit général, sans nouvelle GitHub Action. **44 NON RÉSOLUES**, zéro correction/authentification en 066-02.
+- **STOP : 066-03 à 066-20 NON COMMENCÉES ;** décisions éditoriales et changements de données à soumettre à Ludo.
