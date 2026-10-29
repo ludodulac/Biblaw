@@ -27,7 +27,7 @@
 | 066-07 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-08 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-09 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
-| 066-10 | C | 3 | PROPOSÉE — NON COMMENCÉE |
+| 066-10 | C | 3 | TERMINÉE — 0 authentifiée, 0 corrigée, 3 NON RÉSOLUES |
 | 066-11 | C | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-12 | C | 4 | PROPOSÉE — NON COMMENCÉE |
 | 066-13 | C | 2 | PROPOSÉE — NON COMMENCÉE |
@@ -123,3 +123,11 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - **20/20 contrôles spécialisés PASS**, aucune mutation canonique.
 - **ALERTE 066-08 : 1 679 caractères historiques du composite 26/189 restent non couverts par le psaume actuel ; conservation ailleurs NON PROUVÉE.** Texte préservé, aucune suppression, dossier non réexaminé.
 - **Cumul 066 : 20/44 pilotes examinés, 44 NON RÉSOLUES. STOP — 066-10 NON COMMENCÉE.**
+
+## Clôture 066-10 — pieds imprimés sous Pr.11, Pr.53, Pr.71
+
+- **Trois notes du lot :** `17/115/001` (Pr.11), `27/158/001` (Pr.53), `27/177/001` (Pr.71), [rapport 066-10](066-10_VERDICTS.md). **3/3 examinées, 0 authentifiée, 0 corrigée, 3 NON RÉSOLUES**.
+- **FAITS ARCHIVÉS** : p.1122 (unique pied n°1 de **5 tokens** sous Pr.11) ; p.2485 (**22 tokens** sous Pr.53) ; p.2570 (**103 tokens** sous Pr.71). Les trois pages sont **hors pages des psaumes** ; renvois locaux `1` retrouvés dans les trois prières autonomes, `noteIds` encore stockés dans les psaumes. Preuves 064-08/A et 064-13/A–B non expirées, PDF non rouvert.
+- **Métadonnées** : Pr.11 `printedPages=[1121,1122]` inclut le pied ; Pr.53 `[2484]` et Pr.71 `[2569]` excluent leur page de pied, sans preuve que le champ doive la couvrir. Ludo doit décider de la sémantique des pages et d'un schéma explicite `note→prière`, puis autoriser les liens et changements de statut.
+- **31/31 contrôles spécialisés PASS** en lecture seule. Aucun JSON, psaume ou prière modifié. **ALERTE 066-08 maintenue** : **1 679 caractères** du composite 26/189 non couverts par le psaume actuel ; conservation ailleurs NON PROUVÉE.
+- **Cumul 066 : 23/44 examinées, 44 anomalies toujours NON RÉSOLUES ; STOP — 066-11 NON COMMENCÉE.**
