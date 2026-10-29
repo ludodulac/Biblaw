@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (planification). 065-02 à 065-11 : TERMINÉES.** 38/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Les lots 065-12 à 065-13 ne sont pas commencés.
+**065-01 : TERMINÉE (planification). 065-02 à 065-12 : TERMINÉES.** 42/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Le lot 065-13 n'est pas commencé.
 
 | Mesure | Résultat |
 |---|---:|
@@ -23,7 +23,7 @@
 | 065-09 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-10 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-11 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 065-12 | C | 4 | NON COMMENCÉE |
+| 065-12 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-13 | C | 4 | NON COMMENCÉE |
 
 **Contrôles de préparation :** 46 références distinctes, toutes reprises des NON RÉSOLUES 064, aucune des 146 authentifiées, aucun doublon ou oubli dans les lots, maximum quatre notes par lot. Les raisons et les preuves sont référencées dans [l'inventaire](065_INVENTAIRE.md) et l'[organisation future](065_PLAN.md).
@@ -99,3 +99,11 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - **Preuves** : 064-13/A–B p.2534,2536 (artefacts 12574772504, 12574719450) ; 064-14/B p.2831 (artefact 12576942014) ; quatre notes, deux candidats historiques 063 lus seulement pour le conflit, deux psaumes, Pr.63 autonome. 003/005 du psaume 27/169 sont identiques sous Pr.63 ; 004 concurrence 002 composite au v.30 ; 29/216/003 concurrence le 002 composite et porte la graphie « audelà » au lieu de « au-delà ». Identités non départagées.
 - **15/15 contrôles spécialisés documentaires PASS**, aucune nouvelle GitHub Action ni PDF rouvert. Aucun texte canonique modifié.
 - **Cumul 065 : 38/46 réexaminées, 2 résolues, 44 NON RÉSOLUES, 8 restant à réexaminer. 065-12 NON COMMENCÉE.**
+
+## Clôture 065-12 — quatrième lot C
+
+- **4/4 examinées :** `22/155/001`, `23/129/003`, `29/212/001`, `37/250/003`. **0 AUTHENTIFIÉE, 0 CORRIGÉE, 4 NON RÉSOLUES**. [Verdicts motivés](065-12_VERDICTS.md).
+- **Preuves** : 064-11/A–B (p.1876–1877, 1936–1937, artefacts 12506424572 et 12507282337), 064-14/B (p.2814, artefact 12576942014), 064-19/B (p.3690, artefact 12651183390) ; quatre notes, quatre psaumes, prières autonomes Pr.26 (livre 23) et Pr.102 (livre 29), deux notes de comparaison sans retraiter leurs verdicts.
+- **Blocages** : 22/155/001 contient les 22 tokens manquants au verset 21 ; 23/129/003 est composite pied/versets/Pr.26 et concurrence 004 déjà authentifiée (rapport 064 mentionne « 38–45 » alors que les JSON actuels ne portent que v.38–40) ; 29/212/001 mêle note sous Pr.102 et continuation absente de la prière autonome ; 37/250/003 concurrence le composite historique 002 et cible v.11 bien que l'appel soit à la fin du v.36.
+- **16/16 contrôles spécialisés documentaires PASS** ; aucune nouvelle GitHub Action ni PDF rouvert, aucun fichier canonique modifié.
+- **Cumul 065 : 42/46 réexaminées, 2 résolues, 44 NON RÉSOLUES, 4 restant à réexaminer. 065-13 NON COMMENCÉE.**
