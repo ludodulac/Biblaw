@@ -23,7 +23,7 @@
 | 066-03 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 066-04 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 066-05 | B | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 066-06 | B | 2 | PROPOSÉE — NON COMMENCÉE |
+| 066-06 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-07 | B | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-08 | B | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-09 | B | 2 | PROPOSÉE — NON COMMENCÉE |
@@ -88,3 +88,11 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - **Faits établis** : pied imprimé local n°1 unique de **17 tokens p.2971** (30/215/004–005) et pied n°1 unique de **45 tokens p.3495** (35/218/002–003), appels respectifs au **v.20**. Textes parfaitement identiques par paire, deux `noteIds` chacune ; `verse=null` face à `verse=20` n'élit aucun ID.
 - **Ludo doit décider** d'une identité canonique prouvée ou règle d'alias/archivage et autoriser toute réconciliation `noteIds`. Aucune correction technique sûre d'un ID particulier sans ce choix.
 - **17/17 contrôles spécialisés PASS** ; 0 correction du corpus, aucune nouvelle GitHub Action. **44 NON RÉSOLUES au total. 066-06 NON COMMENCÉE ; STOP.**
+
+## 066-06 — clôture : pied composite et identifiants 33/230
+
+- **2/2 notes** : `33/230/002`, `33/230/003` ; [rapport de verdict 066-06](066-06_VERDICTS.md), **0 AUTHENTIFIÉE, 0 CORRIGÉE, 2 NON RÉSOLUES**.
+- **Preuves réutilisées** : 064-18/A (p.3268–3269), 065-10 ; artefacts non expirés `12601790662` et `12601056941`, sans PDF rouvert.
+- **Faits établis** : un seul pied imprimé n°1 de **6 tokens** au v.14 p.3268. `note-002.text` (**578 caractères**) = `note-003.text` (**28 caractères**) + espace + **549 caractères** des versets numérotés 23–25, **égaux exactement** aux versets canoniques déjà présents p.3269. Le décompte historique 106 tokens (6+100) et celui par espaces des chaînes actuelles 102 (6+96) sont distingués, sans modifier la preuve d'égalité.
+- **Blocage éditorial :** deux ID réclament un pied unique ; `verse=14` sur 003 et caractère composite de 002 ne suffisent pas à élire un identifiant. Ludo doit autoriser la provenance/alias/archivage et la réconciliation des `noteIds`. **Aucune mutation.**
+- **18/18 contrôles documentaires ciblés PASS** ; **14 notes examinées en 066, 44 NON RÉSOLUES au total. STOP : 066-07 NON COMMENCÉE.**
