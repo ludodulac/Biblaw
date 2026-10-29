@@ -1,6 +1,6 @@
 # 🌸 BIBLAW — 065_PROGRESS — SUIVI INITIAL
 
-**065-01 : TERMINÉE (planification). 065-02 à 065-12 : TERMINÉES.** 42/46 notes réexaminées ; 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Le lot 065-13 n'est pas commencé.
+**065-01 : TERMINÉE (planification). 065-02 à 065-13 : TERMINÉES.** 46/46 notes réexaminées ; 0 AUTHENTIFIÉE sans correction, 2 CORRIGÉES ET AUTHENTIFIÉES ; 44 NON RÉSOLUES. Douze lots terminés. Mission 066 NON COMMENCÉE.
 
 | Mesure | Résultat |
 |---|---:|
@@ -24,7 +24,7 @@
 | 065-10 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-11 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 | 065-12 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
-| 065-13 | C | 4 | NON COMMENCÉE |
+| 065-13 | C | 4 | TERMINÉE — 0 authentifiée, 0 corrigée, 4 NON RÉSOLUES |
 
 **Contrôles de préparation :** 46 références distinctes, toutes reprises des NON RÉSOLUES 064, aucune des 146 authentifiées, aucun doublon ou oubli dans les lots, maximum quatre notes par lot. Les raisons et les preuves sont référencées dans [l'inventaire](065_INVENTAIRE.md) et l'[organisation future](065_PLAN.md).
 
@@ -107,3 +107,10 @@ Aucune consultation du PDF original, correction de note, changement de verdict, 
 - **Blocages** : 22/155/001 contient les 22 tokens manquants au verset 21 ; 23/129/003 est composite pied/versets/Pr.26 et concurrence 004 déjà authentifiée (rapport 064 mentionne « 38–45 » alors que les JSON actuels ne portent que v.38–40) ; 29/212/001 mêle note sous Pr.102 et continuation absente de la prière autonome ; 37/250/003 concurrence le composite historique 002 et cible v.11 bien que l'appel soit à la fin du v.36.
 - **16/16 contrôles spécialisés documentaires PASS** ; aucune nouvelle GitHub Action ni PDF rouvert, aucun fichier canonique modifié.
 - **Cumul 065 : 42/46 réexaminées, 2 résolues, 44 NON RÉSOLUES, 4 restant à réexaminer. 065-13 NON COMMENCÉE.**
+
+## Clôture 065-13 — dernier lot C et bilan définitif
+
+- **4/4 traitées :** `23/133/004`, `26/189/003`, `30/200/003`, `35/215/001`. **0 AUTHENTIFIÉE, 0 CORRIGÉE, 4 NON RÉSOLUES**, toujours en conflit avec des IDs historiques. [Verdicts et classement définitif](065-13_VERDICTS.md).
+- Sources 064-11/B p.1960 (12507282337), 064-12/B p.2453 (12564281933), 064-15/A p.2901 (12576971728), 064-19/A p.3485 (12650754088), notes, concurrents et psaumes. Aucun PDF rouvert ni workflow relancé.
+- **12/12 contrôles documentaires PASS** : correspondance des douze lots et de leurs 46 IDs distincts sans oubli ni retraitement ; aucun texte canonique modifié.
+- **Bilan définitif 065 : 46/46 réexaminées, 0 AUTHENTIFIÉE sans correction, 2 CORRIGÉES ET AUTHENTIFIÉES, 44 NON RÉSOLUES, 0 à réexaminer.** Classement primaire : 28 ID concurrents, 5 notes sous prières, 6 prières absentes/incomplètes, 3 composites, 1 divergence textuelle et 1 verset tronqué. Chevauchements dans les verdicts. **MISSION 066 NON COMMENCÉE.**
