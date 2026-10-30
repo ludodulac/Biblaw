@@ -28,7 +28,7 @@
 | 066-08 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-09 | B | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-10 | C | 3 | TERMINÉE — 0 authentifiée, 0 corrigée, 3 NON RÉSOLUES |
-| 066-11 | C | 2 | PROPOSÉE — NON COMMENCÉE |
+| 066-11 | C | 2 | TERMINÉE — 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES |
 | 066-12 | C | 4 | PROPOSÉE — NON COMMENCÉE |
 | 066-13 | C | 2 | PROPOSÉE — NON COMMENCÉE |
 | 066-14 | D | 2 | PROPOSÉE — NON COMMENCÉE |
@@ -131,3 +131,12 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - **Métadonnées** : Pr.11 `printedPages=[1121,1122]` inclut le pied ; Pr.53 `[2484]` et Pr.71 `[2569]` excluent leur page de pied, sans preuve que le champ doive la couvrir. Ludo doit décider de la sémantique des pages et d'un schéma explicite `note→prière`, puis autoriser les liens et changements de statut.
 - **31/31 contrôles spécialisés PASS** en lecture seule. Aucun JSON, psaume ou prière modifié. **ALERTE 066-08 maintenue** : **1 679 caractères** du composite 26/189 non couverts par le psaume actuel ; conservation ailleurs NON PROUVÉE.
 - **Cumul 066 : 23/44 examinées, 44 anomalies toujours NON RÉSOLUES ; STOP — 066-11 NON COMMENCÉE.**
+
+## 066-11 — clôture des pieds imprimés sous Pr.93 et Pr.76
+
+- **Deux pilotes exacts :** `30/211/001` et `31/184/001`, [rapport 066-11](066-11_VERDICTS.md). **2/2 examinées, 0 authentifiée, 0 corrigée, 2 NON RÉSOLUES**.
+- **Preuves archivées sans PDF rouvert :** 064-15/A p.2953, pied local n°1 de **28 tokens**, renvoi **« Amin¹ » dans Pr.93** (artefact **12576971728**) ; 064-16/A p.3005, pied local n°1 de **71 tokens**, renvoi **dans Pr.76** sur « la nouvelle génération des dieux¹ » (artefact **12597171008**) ; verdict 065-08. Artefacts non expirés.
+- **Faits de modèle :** les pages **2953 et 3005** sont hors périmètres des psaumes 211/184 ; `psalm.noteIds` contient chaque ID mais les prières n'ont aucun `noteIds`. Leurs `text` conservent exactement les appels, **1728 et 1742 caractères**, sans relation directe note→prière. `prayer.source.printedPages=[2952]` et `[3004]` ne couvrent pas la page des pieds ; sémantique en attente.
+- **Conservation :** les notes et prières sont **intégralement conservées comme chaînes dans les JSON actuels** ; leur fidélité intégrale au texte original des prières n'a pas été recollationnée. Aucun caractère supprimé, aucune déduction de correction canonique. **Ludo décide** du modèle de rattachement, du champ de pages et de toute migration des `noteIds`.
+- **30/30 contrôles ciblés PASS. Alerte permanente conservée : 1 679 caractères du composite historique 26/189 non couverts par le psaume actuel et conservation ailleurs NON DÉMONTRÉE.**
+- **Cumul : 25/44 notes examinées, 44 anomalies toujours NON RÉSOLUES. STOP — 066-12 NON COMMENCÉE.**
