@@ -140,3 +140,11 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - **Conservation :** les notes et prières sont **intégralement conservées comme chaînes dans les JSON actuels** ; leur fidélité intégrale au texte original des prières n'a pas été recollationnée. Aucun caractère supprimé, aucune déduction de correction canonique. **Ludo décide** du modèle de rattachement, du champ de pages et de toute migration des `noteIds`.
 - **30/30 contrôles ciblés PASS. Alerte permanente conservée : 1 679 caractères du composite historique 26/189 non couverts par le psaume actuel et conservation ailleurs NON DÉMONTRÉE.**
 - **Cumul : 25/44 notes examinées, 44 anomalies toujours NON RÉSOLUES. STOP — 066-12 NON COMMENCÉE.**
+
+## 066-ACCÉLÉRATION — fin de traitement sûr
+
+- [Rapport de synthèse](066_ACCELERATION_RESULTATS.md), base récupérable `9fa27ad5c4436744c943d385e0706f289de7f11f` : **44 ID officiels : A 6 corrigés, B 21 sécurisés par compatibilité physique, C 17 bloqués**. B = regroupement utilisable par résolveur, non intégré à l'interface, aucune authentification canonique.
+- Cinq liens note→prière réciproques et compatibles, correction du verset 21 de 22/155 avec sauvegarde complète de l'extraction. Versets 37/250 et 35/215 → v.36 corrigés ; les conflits ID restent compatibles par alias neutre.
+- **13 groupes d'occurrence / 26 IDs membres** dans `data/notes/physical-occurrences-066.json`; résolveur `scripts/resolve_note_occurrences_066.py` conserve chaque JSON source sans supprimer les références historiques. `noteIds` de psaume inchangés.
+- **ALERTE : 1 679 caractères de 26/189 non couverts par son psaume, conservation ailleurs NON DÉMONTRÉE, aucune mutation** ; Pr.102 et Pr.54 continuations incomplètes conservées dans historiques, non corrigées.
+- **Tests spécialisés en mémoire : 29/29 PASS, 13/13 paires vérifiées séparément.** Script Python ajouté sans exécution CI ; pas de fusion/déploiement. **STOP.**
