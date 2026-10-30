@@ -1,0 +1,33 @@
+name: BIBLAW 066 synchronize browser bundle (no deploy)
+on:
+  push:
+    branches: [feat/052-search-ui]
+    paths:
+      - '.github/workflows/066-sync-browser-bundle.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Rebuild browser bundle from canonical records
+        run: python scripts/build_browser_search_catalog.py
+      - name: Validate fresh bundle and attachments
+        run: python scripts/audit_corpus_attachments.py
+      - name: Recheck note resolution and nonloss
+        run: |
+          python scripts/resolve_note_occurrences_066.py --check
+          python scripts/verify_066_finalisation.py
+      - name: Commit only catalog, no force push
+        run: |
+          if git diff --quiet -- data/browser-search-catalog.json; then echo 'Already fresh'; exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/browser-search-catalog.json
+          git commit -m 'fix(biblaw): refresh generated browser catalog after canonical updates'
+          git push origin HEAD:feat/052-search-ui
