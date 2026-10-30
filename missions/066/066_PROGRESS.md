@@ -148,3 +148,8 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 - **13 groupes d'occurrence / 26 IDs membres** dans `data/notes/physical-occurrences-066.json`; résolveur `scripts/resolve_note_occurrences_066.py` conserve chaque JSON source sans supprimer les références historiques. `noteIds` de psaume inchangés.
 - **ALERTE : 1 679 caractères de 26/189 non couverts par son psaume, conservation ailleurs NON DÉMONTRÉE, aucune mutation** ; Pr.102 et Pr.54 continuations incomplètes conservées dans historiques, non corrigées.
 - **Tests spécialisés en mémoire : 29/29 PASS, 13/13 paires vérifiées séparément.** Script Python ajouté sans exécution CI ; pas de fusion/déploiement. **STOP.**
+
+## 066-FINALISATION
+
+- [Résultats](066_FINALISATION_RESULTATS.md) : **7 corrigées, 29 compatibles NON AUTHENTIFIÉES, 8 bloquées** sur 44. Pr.38 et Pr.90 liées, 29/199/003 p.2751/v.null corrigé, composite 21/143/004 conservé, graphie de 29/216 rétablie de façon réversible. **18 groupes / 36 IDs**, aucun texte historique supprimé.
+- **Alerte permanente : 1 679 caractères 26/189, Pr.102 (~1 951) et Pr.54 (1 883) NON restaurés ailleurs**, originaux préservés. Résolveur et scripts de contrôle ciblé, aucune modification interface (allow-list de publication). PR #72 DRAFT, pas de fusion ni déploiement. Base restaurable `eeecd3ded92845640a8293ca26c6c4d1229acaaa`.
