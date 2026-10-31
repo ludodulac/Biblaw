@@ -1,0 +1,58 @@
+import { chromium } from 'playwright';
+import assert from 'node:assert/strict';
+
+const url=process.env.BIBLAW_SMOKE_URL;
+if(!url)throw Error('Missing BIBLAW_SMOKE_URL');
+const browser=await chromium.launch({headless:true});
+const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+const errors=[],requests=[];
+page.on('console',message=>{if(message.type()==='error')errors.push('console '+message.text());});
+page.on('pageerror',error=>errors.push('page '+error.message));
+page.on('requestfailed',request=>requests.push(request.url()+' '+request.failure()?.errorText));
+page.on('response',response=>{
+  if(/(js\/biblaw|theme-suggestion-engine|browser-search-catalog|lexical-expansion-runtime|theme-directory-public|theme-search-runtime|linguistic-grammar-browser)/.test(response.url())){
+    console.log('LIVE_RESOURCE',response.status(),response.headers()['content-type'],response.url().split('/').slice(-2).join('/'));
+  }
+});
+try{
+  const response=await page.goto(url,{waitUntil:'networkidle',timeout:45000});
+  console.log('LIVE_DOCUMENT',response?.status(),page.url());
+  await page.waitForTimeout(1500);
+  let status=await page.evaluate(async()=>{
+    const stat=document.querySelector('#corpusStats')?.textContent;
+    const result=document.querySelector('#results')?.textContent?.slice(0,150);
+    const entry=await Promise.all(['data/browser-search-catalog.json','data/thematic-index/theme-directory-public.json','js/biblaw.js'].map(async path=>{
+      try{
+        const res=await fetch(path);
+        return {path,status:res.status,contentType:res.headers.get('content-type'),length:res.headers.get('content-length'),prefix:(await res.text()).slice(0,80)};
+      }catch(e){return {path,error:String(e)};}
+    }));
+    return {stat,result,entry};
+  });
+  console.log('LIVE_STATUS',JSON.stringify(status));
+  console.log('LIVE_ROOT',JSON.stringify(await page.evaluate(()=>({title:document.title,html:document.documentElement.outerHTML.slice(0,1100),body:document.body?.innerText?.slice(0,700),scripts:[...document.scripts].map(s=>s.src)}))));
+  console.log('LIVE_NOTICE_LINKS',JSON.stringify(await page.locator('a').evaluateAll(nodes=>nodes.map(a=>({text:(a.innerText||'').trim().slice(0,90),href:a.href})).slice(0,20))));
+  console.log('LIVE_NOTICE_BUTTONS',JSON.stringify(await page.locator('button,input[type="submit"]').evaluateAll(nodes=>nodes.map(n=>({text:(n.innerText||'').trim(),value:n.value,html:n.outerHTML.slice(0,350)})).slice(0,12))));
+  if(!status.stat){
+    // rawgit.hack presents its own confirmation before rendering any HTML.
+    // This simulates a real user explicitly pressing the service's safety notice.
+    const confirm=page.getByRole('button',{name:'Open the page'});
+    assert.ok(await confirm.isVisible(),'rawgit.hack notice offers a clickable confirmation');
+    await confirm.click();
+    await page.waitForFunction(()=>document.querySelector('#corpusStats')?.textContent?.includes('psaumes'),{timeout:45000});
+    status={stat:await page.locator('#corpusStats').textContent()};
+    console.log('POST_NOTICE_CONFIRMATION',page.url(),JSON.stringify(status));
+  }
+  console.log('LIVE_ERRORS',JSON.stringify(errors.slice(0,15)),JSON.stringify(requests.slice(0,15)));
+  assert.match(status.stat||'',/psaumes/,'Corpus loaded from live preview');
+  await page.locator('#indexToggle').click();
+  assert.equal(await page.locator('#indexPanel').isVisible(),true,'Index clickable on actual link');
+  await page.locator('#closeIndex').click();
+  await page.locator('#modeExact').click();
+  await page.waitForFunction(()=>document.querySelector('#query')?.dataset.wordSuggestionsReady==='true',{timeout:30000});
+  await page.locator('#query').fill('ma');
+  assert.ok(Number(await page.locator('#themeAutocomplete').getAttribute('data-total-suggestions'))>100,'Live suggestions loaded');
+  await page.locator('#searchButton').click();
+  assert.equal(await page.locator('#resultsSection').isVisible(),true,'Live search clickable');
+  console.log('BIBLAW-054 LIVE PREVIEW MOBILE PASS');
+}finally{await browser.close();}

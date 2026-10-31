@@ -21,7 +21,11 @@ assert "const available=Boolean(key&&expansions.length);" in js
 assert "const exactItems=matches(query);" in js
 assert "mergeExpansionMatches(exactItems,query);" in js
 assert "checkbox.checked=false" in js
-assert "state.mode==='exact'&&$('includeWordForms')?.checked" in js
+assert "if(state.mode!=='exact')return[];" in js
+assert "$('includeWordForms')?.checked?expansionFormsFor(query):[]" in js
+assert "$('includeSimplePlurals')?.checked?simplePluralFormsFor(query):[]" in js
+assert 'id="includeSimplePlurals"' in html and 'id="simplePluralOption"' in html
+assert 'function buildWordSuggestionLookup()' in js and 'function renderWordAutocomplete()' in js
 assert "fallbackExpansion" not in js
 # Historical production safeguards preserved for the 041C runtime format.
 # The old s/i/n/pf fields described the superseded 028/019 generator and have
@@ -39,8 +43,8 @@ assert 'function expansionFormsFor' in js
 assert 'function mergeExpansionMatches' in js
 assert "return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)})" in js
 assert 'data-show-text-search' in js
-assert '>Par thème</button>' in html and '>Occurrences de mots</button>' in html
+assert '>THÈME</button>' in html and '>MOTS</button>' in html
 assert html.index('id="modeThemes"') < html.index('id="secondaryTools"')
 assert html.index('id="modeExact"') < html.index('id="secondaryTools"')
-assert html.index('id="exactExpansionOption"') < html.index('id="results"')
+assert html.index('id="results"') < html.index('id="exactExpansionOption"'), "morphology moved into advanced options after results"
 print("041C lexical runtime contract PASS",len(groups),"groups",len(forms),"anchors")

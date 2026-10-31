@@ -24,7 +24,7 @@ assert "bookMeta||'Corpus structuré'" in js
 assert 'id="downloadRecord"' in html and 'Télécharger le texte' in html
 assert 'r.attachedPrayer?.text' in js
 assert 'id="query2"' in html and 'Thème 2 facultatif' in html
-assert 'id="secondaryTools"' in html and 'Autres recherches et filtres' in html
+assert 'id="secondaryTools"' in html and "Plus d'options</summary>" in html
 assert html.index('id="results"') < html.index('id="secondaryTools"')
 assert 'id="transversePanel"' in html and html.index('id="results"') < html.index('id="transversePanel"')
 assert 'Ces thèmes apparaissent dans les mêmes psaumes ; cette présence commune ne constitue pas en elle-même une relation thématique validée.' in html

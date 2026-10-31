@@ -1,0 +1,22 @@
+name: BIBLAW 067 targeted restoration checks (no deploy)
+on:
+  push:
+    branches: [feat/052-search-ui]
+    paths:
+      - 'scripts/verify_067.py'
+      - 'data/catalog.json'
+      - 'data/notes/books/book-21/book-21-psalm-137-note-001.json'
+      - 'data/notes/books/book-12/book-12-psalm-077-note-*.json'
+      - '.github/workflows/verify-notes-067.yml'
+permissions:
+  contents: read
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile dedicated checker
+        run: python -m py_compile scripts/verify_067.py
+      - name: Verify all 8 cases, 1158 Psalms and 677 Prayers without re-auditing PDF
+        run: python scripts/verify_067.py

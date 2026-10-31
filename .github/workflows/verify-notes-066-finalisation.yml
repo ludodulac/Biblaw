@@ -1,0 +1,28 @@
+name: BIBLAW 066 targeted finalisation (no deploy)
+on:
+  push:
+    branches: [feat/052-search-ui]
+    paths:
+      - 'scripts/verify_066_finalisation.py'
+      - 'data/notes/physical-occurrences-066.json'
+      - 'data/notes/books/**'
+      - 'data/prayers/michael-book-21-prayer-038.json'
+      - 'data/prayers/michael-book-29-prayer-090.json'
+      - '.github/workflows/verify-notes-066-finalisation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Python syntax
+        run: python -m py_compile scripts/resolve_note_occurrences_066.py scripts/verify_066_finalisation.py
+      - name: Run actual Python resolver
+        run: python scripts/resolve_note_occurrences_066.py --check
+      - name: Run all targeted integrity assertions
+        run: python scripts/verify_067.py

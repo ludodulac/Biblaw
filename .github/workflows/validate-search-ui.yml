@@ -18,6 +18,10 @@ on:
       - 'scripts/build_browser_search_catalog.py'
       - 'scripts/audit_production_search_queries.py'
       - 'scripts/audit_psalm_number_search.py'
+      - 'scripts/audit_public_ui_contract.py'
+      - 'scripts/audit_lexical_expansion_041c.py'
+      - 'scripts/smoke_search_ui_052.mjs'
+      - 'scripts/smoke_search_ui_053.mjs'
       - 'scripts/audit_browser_search_indexes.py'
       - 'scripts/build_lexical_expansion_runtime.py'
       - 'scripts/audit_lexical_expansion_runtime.py'
@@ -65,10 +69,12 @@ jobs:
           assert not missing, f'missing DOM ids: {missing}'
           assert 'id="bookFilter"' not in html and 'bookFilter' not in js
           assert 'value="chouette"' not in html and 'id="query" type="search" value=""' in html
-          assert 'numéro de psaume' in html.lower()
+          assert 'id="searchForm"' in html and 'enterkeyhint="search"' in html
+          assert 'id="resultsSection" class="results-section" hidden' in html
+          assert 'id="themeAutocomplete"' in html and 'id="popularThemes"' in html
           assert 'value="psalm" checked' in html
           for value in ('prayer','note','annex'): assert f'value="{value}" checked' not in html
-          for needle in ('themesByRecord','function contextualVerses','Passage concerné','Autres thèmes dans ce psaume','Thèmes présents dans ce psaume','dialog-themes','data-related-theme','classés Central, Important, puis Lié','const importanceRank','function exactVerses','const highlighted','const textFragments','const literalIncludes','const literalTextMatch','const stripLeadingArticle','const themeQueryForms','const activateThemeMode','function navigateToTheme(theme)','unresolvedTheme:true','Aucun thème indexé ne correspond à cette recherche','function textualPsalmMatches','Deux lectures de cette recherche','data-show-text-search','function resolveIndexedThemes(query)','if(resolvedThemes.length<=1){hideAmbiguity();return;}','alias?.themeIds?.length','const parsePsalmNumberQuery','function psalmNumberMatches(number)'):
+          for needle in ('themesByRecord','function contextualVerses','Passage concerné','Autres thèmes dans ce psaume','Thèmes présents dans ce psaume','dialog-themes','data-related-theme','classés Central, Important, puis Lié','const importanceRank','function exactVerses','const highlighted','const textFragments','const literalIncludes','const literalTextMatch','const stripLeadingArticle','const themeQueryForms','const activateThemeMode','function navigateToTheme(theme)','unresolvedTheme:true','Aucun thème trouvé','function textualPsalmMatches','Voir les occurrences','data-show-text-search','function resolveIndexedThemes(query)','if(resolvedThemes.length<=1){hideAmbiguity();return;}','alias?.themeIds?.length','const parsePsalmNumberQuery','function psalmNumberMatches(number)'):
               assert needle in search_js, needle
           assert '.theme-context' in css and '.compact-related' in css and '.search-hit' in css
           assert "{ central: 0, important: 1, related: 2 }" in js
@@ -98,7 +104,7 @@ jobs:
           assert "const exactItems=matches(query)" in js
           assert 'highlighted(v.text)' in exact
           assert "['l','le','la','les','un','une','des']" in search_js and 'for(const q of forms)' in search_js
-          assert "const activateExactMode = () =>" in js and "$('modeExact').onclick=()=>{activateExactMode();search();}" in js
+          assert "const activateExactMode = () =>" in js and "if(state.hasSearched)search()" in js
           assert 'theme.occurrenceCount||theme.occurrences?.length||0' in js and "theme.id?` · ${esc(theme.id)}`:''" in js
           assert "const theme=state.themeById.get(btn.dataset.themeId);if(!theme)return;$('query').value=theme.label;search();" in js
           assert "navigateToTheme(state.themeById.get(b.dataset.relatedTheme))" in js
