@@ -9,6 +9,7 @@ on:
       - 'data/prayers/**'
       - 'data/corpus/books/book-07/psalm-035.json'
       - 'data/corpus/books/book-12/psalm-077.json'
+      - 'data/corpus/books/book-24/psalm-141.json'
   workflow_dispatch:
 permissions:
   contents: write

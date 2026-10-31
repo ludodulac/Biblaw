@@ -20,6 +20,7 @@ ok(all(r.get("text") and r["appliesToPsalmId"] in pids for r in rdata),"all pray
 ok(all(all(v.get("text") for v in read(str(f.relative_to(R)))["verses"]) for f in ps),"no empty Psalm verse")
 cat=read("data/catalog.json")
 ok(len(cat["records"])==1963 and "data/prayers/ouriel-book-24-prayer-036.json" in cat["records"],"new prayer catalogued")
+ok("ouriel-book-24-prayer-036" in read("data/corpus/books/book-24/psalm-141.json")["prayerIds"],"Pr36 reciprocal prayerId on Psalm 141")
 cases=[
 ("21","137","michael",32,"Il s’agit du Nom de la Mère.",True,None),
 ("21","160","michael",54,"chemin de son âme.",False,46),
