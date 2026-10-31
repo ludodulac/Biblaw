@@ -4,6 +4,11 @@ on:
     branches: [feat/052-search-ui]
     paths:
       - '.github/workflows/066-sync-browser-bundle.yml'
+      - 'scripts/verify_067.py'
+      - 'data/catalog.json'
+      - 'data/prayers/**'
+      - 'data/corpus/books/book-07/psalm-035.json'
+      - 'data/corpus/books/book-12/psalm-077.json'
   workflow_dispatch:
 permissions:
   contents: write
@@ -22,7 +27,7 @@ jobs:
       - name: Recheck note resolution and nonloss
         run: |
           python scripts/resolve_note_occurrences_066.py --check
-          python scripts/verify_066_finalisation.py
+          python scripts/verify_067.py
       - name: Commit only catalog, no force push
         run: |
           if git diff --quiet -- data/browser-search-catalog.json; then echo 'Already fresh'; exit 0; fi

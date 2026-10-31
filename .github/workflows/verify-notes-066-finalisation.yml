@@ -25,4 +25,4 @@ jobs:
       - name: Run actual Python resolver
         run: python scripts/resolve_note_occurrences_066.py --check
       - name: Run all targeted integrity assertions
-        run: python scripts/verify_066_finalisation.py
+        run: python scripts/verify_067.py

@@ -153,3 +153,8 @@ Les contrôles vérifient uniquement l'alignement des données documentaires 065
 
 - [Résultats](066_FINALISATION_RESULTATS.md) : **7 corrigées, 29 compatibles NON AUTHENTIFIÉES, 8 bloquées** sur 44. Pr.38 et Pr.90 liées, 29/199/003 p.2751/v.null corrigé, composite 21/143/004 conservé, graphie de 29/216 rétablie de façon réversible. **18 groupes / 36 IDs**, aucun texte historique supprimé.
 - **Alerte permanente : 1 679 caractères 26/189, Pr.102 (~1 951) et Pr.54 (1 883) NON restaurés ailleurs**, originaux préservés. Résolveur et scripts de contrôle ciblé, aucune modification interface (allow-list de publication). PR #72 DRAFT, pas de fusion ni déploiement. Base restaurable `eeecd3ded92845640a8293ca26c6c4d1229acaaa`.
+
+## 067 — Dernières huit anomalies
+
+- [Résultats 067](../067/067_RESULTATS.md), base récupérable `491bf927ca06f20ca16ee052d6e5be90f4a1933a`. **7 anomalies corrigées dans les données, 1 composite (07/035/005) réconcilié comme alias historique, 0 cas sans intervention.** Six prières reconstituées à partir des limites attestées en 064/065 ; Pr.36 (livre 24) créée dans le catalogue. Les trois notes de 12/077 sont distinctes et réciproques ; aucun extrait original effacé.
+- **1 158 psaumes inchangés en nombre ; 677 prières après restauration de Pr36 (676 avant).** Les états initiaux sont dans `recovery067` et le commit `491bf927ca06f20ca16ee052d6e5be90f4a1933a`. **1 679 caractères de 26/189 et Pr.102 livre35 strictement hors périmètre**. Résultats de CI à lire dans le workflow ciblé ; aucune nouvelle relecture PDF (preuves archivées utilisées). PR #72 DRAFT, pas de fusion ni déploiement.
