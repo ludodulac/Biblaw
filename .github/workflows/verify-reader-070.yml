@@ -1,0 +1,38 @@
+name: BIBLAW 070 reading and navigation interaction (no deploy)
+on:
+  push:
+    branches: [feat/052-search-ui]
+    paths:
+      - 'js/biblaw.js'
+      - 'index.html'
+      - 'css/biblaw.css'
+      - 'scripts/smoke_reader_070.mjs'
+      - '.github/workflows/verify-reader-070.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reader:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check js/biblaw.js
+          node --check scripts/smoke_reader_070.mjs
+      - name: Assemble genuine browser payload in staging only
+        run: python scripts/build_pages_site.py
+      - name: Install Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Full reading, back, note, multi-prayer and keyboard interactions
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-070-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          BIBLAW_SMOKE_URL=http://127.0.0.1:4173/index.html node scripts/smoke_reader_070.mjs
