@@ -75,7 +75,7 @@ try{
     const prayerButtons=page.locator('#dialogContent .reader-related-prayers [data-read-related]');
     assert.ok(await prayerButtons.count()>=1,'Prayer reachable without selecting prayer search filter');
     const firstPrayer=await prayerButtons.first().getAttribute('data-read-related');
-    await page.locator('#recordDialog').evaluate(el=>{el.scrollTop=Math.min(180,el.scrollHeight-el.clientHeight);});
+    await prayerButtons.first().scrollIntoViewIfNeeded();
     const psalmScroll=(await scrollInfo(page)).top;
     await prayerButtons.first().click();
     assert.ok(await page.locator('#readerBack').isVisible(),'Prayer has return to Psalm');
