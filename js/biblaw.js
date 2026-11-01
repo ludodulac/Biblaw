@@ -161,8 +161,25 @@
         state.themesByRecord.set(occurrence.recordId, list);
       }
       for (const list of state.themesByRecord.values()) list.sort((a,b)=>importanceRank(a.importance)-importanceRank(b.importance)||a.label.localeCompare(b.label,'fr')||a.id.localeCompare(b.id,'fr'));
-      const prayers = new Map(state.records.filter(r => r.recordType === 'master-prayer').map(r => [r.appliesToPsalmId, r]));
-      state.records.filter(r => r.recordType === 'psalm').forEach(r => { if (prayers.has(r.id)) r.attachedPrayer = prayers.get(r.id); });
+// 068: All reciprocal, catalogued prayers; contextual notes are restricted to validated public records.
+      const prayers = new Map(), verifiedNotes = new Map();
+      for (const r of state.records) {
+        if (r.recordType === 'master-prayer') {
+          const psalm = state.recordById.get(r.appliesToPsalmId);
+          if (psalm?.recordType !== 'psalm' || !psalm.prayerIds?.includes(r.id)) continue;
+          const list = prayers.get(psalm.id) || []; list.push(r); prayers.set(psalm.id, list);
+        } else if (r.recordType === 'note' && r.validation?.status === 'validated' && r.text) {
+          const psalm = state.recordById.get(r.appliesTo?.recordId);
+          if (psalm?.recordType !== 'psalm' || !psalm.noteIds?.includes(r.id)) continue;
+          const list = verifiedNotes.get(psalm.id) || [];
+          if (!list.some(note => note.id === r.id)) list.push(r);
+          verifiedNotes.set(psalm.id, list);
+        }
+      }
+      state.records.filter(r => r.recordType === 'psalm').forEach(r => {
+        r.attachedPrayers = prayers.get(r.id) || [];
+        r.attachedVerifiedNotes = verifiedNotes.get(r.id) || [];
+      });
       const psalms = state.records.filter(r => r.recordType === 'psalm'), verses = psalms.reduce((n, r) => n + (r.verses || []).length, 0);
       $('corpusStats').textContent = `${psalms.length} psaumes · ${verses} versets · ${state.themeDirectory.length} thèmes indexés`;
       $('indexCount').textContent=`${state.themeDirectory.length} thèmes indexés`;
@@ -1010,13 +1027,61 @@
     document.querySelectorAll('[data-open]').forEach(b=>b.onclick=e=>{e.stopPropagation();open(b.dataset.open);}); bindThemeLinks($('results')); bindTextSearchLink();
   }
   function bindTextSearchLink(){ const button=document.querySelector('[data-show-text-search]'); if(button)button.onclick=()=>{ activateExactMode(); search(); window.scrollTo({top:$('results').offsetTop-90,behavior:'smooth'}); }; }
+
+  function visibleVerifiedNotes(notes) {
+    // Never fetch unpublished notes or promote 066 compatibility into authentication.
+    return [...new Map((notes||[]).filter(n=>n?.validation?.status==='validated' && n.text)
+      .map(n=>[n.id,n])).values()];
+  }
+  function verifiedNotesBlock(notes,readText) {
+    const rows=visibleVerifiedNotes(notes);
+    if(!rows.length)return '';
+    return `<section class="related-themes verified-note-block"><div class="context-label">Notes authentifiées</div>${rows.map(n=>
+      `<p data-verified-note="${esc(n.id)}"><strong>Note${n.appliesTo?.verse?' · verset '+esc(n.appliesTo.verse):''}</strong><br>${readText(n.text)}</p>`
+    ).join('')}</section>`;
+  }
   function open(id,browsing=false){
-    const r=state.recordById.get(id);if(!r)return;state.active=r;state.activeBrowsing=browsing; $('browseBack').hidden=!browsing; $('dialogEyebrow').textContent=browsing?browseReference(r):label(r);$('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
+    const r=state.recordById.get(id);if(!r)return;state.active=r;state.activeBrowsing=browsing;
+    $('browseBack').hidden=!browsing;
+    $('dialogEyebrow').textContent=browsing?browseReference(r):label(r);
+    $('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
     const readText=browsing?esc:modeAwareText;
-    if(r.recordType==='psalm'){ const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${readText(v.text)}</div></div>`).join(''); const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`; $('dialogContent').innerHTML=verses+(r.attachedPrayer&&!browsing&&selectedTypes().has('prayer')?`<section class="prayer-block"><h3>Prière ${r.attachedPrayer.number}</h3>${readText(r.attachedPrayer.text)}</section>`:'')+themesBlock; bindThemeLinks($('dialogContent')); } else $('dialogContent').innerHTML=`<div class="prayer-block">${readText(r.text||r.summary||'')}</div>`;
+    if(r.recordType==='psalm'){
+      const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${readText(v.text)}</div></div>`).join('');
+      const prayersBlock=!browsing&&selectedTypes().has('prayer')?(r.attachedPrayers||[]).map(prayer=>
+        `<section class="prayer-block" data-attached-prayer="${esc(prayer.id)}"><h3>Prière ${esc(prayer.number)}</h3>${readText(prayer.text)}</section>`).join(''):'';
+      const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`;
+      $('dialogContent').innerHTML=verses+prayersBlock+verifiedNotesBlock(r.attachedVerifiedNotes,readText)+themesBlock;
+      bindThemeLinks($('dialogContent'));
+    } else {
+      const notes=(r.recordType==='master-prayer'?(r.noteIds||[]).filter(id=>state.recordById.has(id))
+        .map(id=>state.recordById.get(id)).filter(n=>n.appliesToPrayerId===r.id):[]);
+      $('dialogContent').innerHTML=`<div class="prayer-block">${readText(r.text||r.summary||'')}</div>`+verifiedNotesBlock(notes,readText);
+    }
     $('recordDialog').showModal();
   }
-  function activeText(){ const r=state.active;if(!r)return''; const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée'); const header=[label(r),title]; if(r.book?.number)header.push(`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`); let out=header.join('\n')+'\n\n'; if(r.verses){ out+=(r.verses||[]).map(v=>`${v.number}. ${v.text}`).join('\n'); if(r.attachedPrayer?.text&&!state.activeBrowsing&&selectedTypes().has('prayer'))out+=`\n\nPrière ${r.attachedPrayer.number}\n\n${r.attachedPrayer.text}`; }else out+=r.text||r.summary||''; return out; }
+function activeText(){
+    const r=state.active;if(!r)return'';
+    const title=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
+    const header=[label(r),title];
+    if(r.book?.number)header.push(`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`);
+    let out=header.join('\n')+'\n\n';
+    if(r.verses){
+      out+=(r.verses||[]).map(v=>`${v.number}. ${v.text}`).join('\n');
+      if(!state.activeBrowsing&&selectedTypes().has('prayer'))for(const prayer of r.attachedPrayers||[]){
+        out+=`\n\nPrière ${prayer.number}\n\n${prayer.text}`;
+      }
+      for(const note of visibleVerifiedNotes(r.attachedVerifiedNotes))out+=`\n\nNote vérifiée\n\n${note.text}`;
+    } else {
+      out+=r.text||r.summary||'';
+      if(r.recordType==='master-prayer')for(const id of r.noteIds||[]){
+        const note=state.recordById.get(id);
+        if(note?.appliesToPrayerId===r.id&&note.validation?.status==='validated'&&note.text)
+          out+=`\n\nNote vérifiée\n\n${note.text}`;
+      }
+    }
+    return out;
+  }
 
   // 058: Browsing uses only catalog records; search/filter state is untouched.
   const BROWSE_LABELS={psalm:'Psaumes',prayer:'Prières',note:'Notes',annex:'Annexes'};
