@@ -95,11 +95,11 @@ jobs:
           assert "${modeAwareText(thematic.teaching||summary(r))}" in js
           assert "${modeAwareText(thematic.teaching||'')}" in js
           assert "${modeAwareText(summary(r))}" in js
-          opened=js[js.index('function open(id)'):js.index('function activeText')]
-          assert '${modeAwareText(v.text)}' in opened
-          assert '${modeAwareText(r.attachedPrayer.text)}' in opened
-          assert "${modeAwareText(r.text||r.summary||'')}" in opened
-          assert 'highlighted(v.text)' not in opened and 'highlighted(r.attachedPrayer.text)' not in opened
+          opened=js[js.index('function open(id,browsing=false)'):js.index('function activeText')]
+          assert '${readText(v.text)}' in opened
+          assert '${readText(prayer.text)}' in opened
+          assert "${readText(r.text||r.summary||'')}" in opened
+          assert 'const readText=browsing?esc:modeAwareText;' in opened and 'highlighted(v.text)' not in opened
           assert "state.mode='themes'" in js and "state.mode='exact'" in js
           assert "const exactItems=matches(query)" in js
           assert 'highlighted(v.text)' in exact
