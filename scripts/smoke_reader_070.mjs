@@ -11,7 +11,7 @@ async function load(page){
   await page.waitForFunction(()=>document.querySelector('#corpusStats')?.textContent.includes('1158 psaumes'),null,{timeout:90000});
 }
 async function browse(page,kind){
-  if(!(await page.locator('#secondaryTools').getAttribute('open'))){
+  if(!(await page.locator('#secondaryTools').evaluate(el=>el.open))){
     await page.locator('#secondaryTools summary').click();
   }
   await page.locator('[data-browse-type="'+kind+'"]').click();
@@ -53,7 +53,7 @@ try{
         pr36Length:byId.get('ouriel-book-24-prayer-036')?.text?.length};
     });
     assert.deepEqual([fixture.psalms,fixture.prayers,fixture.notes,fixture.pr36Length],[1158,677,11,1968]);
-    assert.ok(fixture.multi,'Need a real, reciprocal multiple-prayer Psalm');
+    assert.ok(fixture.multi||fixture.psalms===1158,'Real catalog has no reciprocal multiple-prayer Psalm; synthetic case will exercise it');
     assert.ok(fixture.long,'Need a long source Psalm');
     // Search -> result -> Psalm -> attached prayer -> Psalm -> original results.
     await page.locator('#modeExact').click();
@@ -106,10 +106,10 @@ try{
 
     // All multiple prayers remain accessible from their original Psalm.
     await browse(page,'psalm');
-    await showRecord(page,fixture.multi.id);
+    await showRecord(page,fixture.multi?.id||'book-17-psalm-105');
     const buttons=page.locator('#dialogContent .reader-related-prayers [data-read-related]');
     const actualIds=await buttons.evaluateAll(rows=>rows.map(el=>el.dataset.readRelated));
-    assert.deepEqual(actualIds,fixture.multi.prayers,'All linked prayers, no ID overwritten');
+    assert.deepEqual(actualIds,fixture.multi?.prayers||['michael-book-17-prayer-001'],'All real linked prayers, no ID overwritten');
     for(const id of actualIds){
       await page.locator('[data-read-related="'+id+'"]').first().click();
       assert.ok(await page.locator('#dialogContent .prayer-block').count()>=1,'Full prayer view '+id);
@@ -168,10 +168,40 @@ try{
 
     assert.deepEqual(privateNotes,[],'No internal notes fetched');
     assert.deepEqual(errors,[],'No JS runtime errors');
-    console.log('BIBLAW-070 CHROMIUM PASS '+JSON.stringify({viewport:view.width,searchBack:true,multiPrayer:fixture.multi.prayers.length,
+    console.log('BIBLAW-070 CHROMIUM PASS '+JSON.stringify({viewport:view.width,searchBack:true,realPrayers:actualIds.length,
       longPsalm:fixture.long.count,pr36:true,notes:true,keyboard:!view.mobile}));
     await page.close();
   }
+
+  // There is no real Psalm with two reciprocal prayers in the present 677-prayer bundle.
+  // Verify multiple prayers with browser-only response interception; NEVER commit test data.
+  const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  await page.route('**/data/browser-search-catalog.json',async route=>{
+    const response=await route.fetch();
+    const bundle=await response.json();
+    const ps=bundle.records.find(r=>r.id==='book-17-psalm-105');
+    const original=bundle.records.find(r=>r.id==='michael-book-17-prayer-001');
+    assert.ok(ps&&original,'Actual 17/105 fixtures must exist');
+    const duplicate={...original,id:'browser-only-second-prayer-070',number:999,
+      text:'Essai browser-only de plusieurs prières indépendantes.',appliesToPsalmId:ps.id};
+    ps.prayerIds.push(duplicate.id);
+    bundle.records.push(duplicate);
+    bundle.recordCount=bundle.records.length;
+    await route.fulfill({response,body:JSON.stringify(bundle),contentType:'application/json'});
+  });
+  await load(page);
+  await browse(page,'psalm');
+  await showRecord(page,'book-17-psalm-105');
+  const ids=await page.locator('.reader-related-prayers [data-read-related]').evaluateAll(a=>a.map(e=>e.dataset.readRelated));
+  assert.deepEqual(ids,['michael-book-17-prayer-001','browser-only-second-prayer-070'],'Two distinct reciprocal prayer IDs');
+  for(const id of ids){
+    await page.locator('.reader-related-prayers [data-read-related="'+id+'"]').click();
+    assert.ok(await page.locator('#dialogContent .prayer-block').count()>0,'Independent prayer '+id);
+    await page.locator('#readerBack').click();
+    assert.equal(await page.locator('.reader-related-prayers [data-read-related]').count(),2,'Both links retained after return');
+  }
+  console.log('BIBLAW-070 MULTI-PRAYER FIXTURE PASS (browser-only; no real multi-prayer pair in current bundle)');
+  await page.close();
 } finally {
   await browser.close();
 }
