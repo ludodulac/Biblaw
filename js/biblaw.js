@@ -1064,10 +1064,23 @@
       `<p data-verified-note="${esc(n.id)}"><strong>Note${n.appliesTo?.verse?' · verset '+esc(n.appliesTo.verse):''}</strong><br>${readText(n.text)}</p>`
     ).join('')}</section>`;
   }
-  function open(id,browsing=false){
-    const r=state.recordById.get(id);if(!r)return;state.active=r;state.activeBrowsing=browsing;
-    $('browseBack').hidden=!browsing;
-    $('dialogEyebrow').textContent=browsing?browseReference(r):label(r);
+  function open(id,browsing=false,viaReader=false){
+    const r=state.recordById.get(id);if(!r)return;
+    const dialog=$('recordDialog');
+    if(!dialog.open){
+      state.readerStack=[];
+      state.readerOrigin=document.activeElement;
+      state.readerOriginScrollY=window.scrollY;
+    } else if(viaReader && state.active){
+      state.readerStack.push({id:state.active.id,browsing:state.activeBrowsing,scrollTop:dialog.scrollTop});
+    }
+    state.active=r;state.activeBrowsing=browsing;
+    $('readerBack').hidden=!state.readerStack.length;
+    $('browseBack').hidden=Boolean(state.readerStack.length);
+    $('browseBack').textContent=browsing?'← Retour à la liste':'← Retour aux résultats';
+    const sourcePsalm=r.recordType==='master-prayer'?state.recordById.get(r.appliesToPsalmId):null;
+    $('dialogEyebrow').textContent=(browsing?browseReference(r):label(r))+
+      (sourcePsalm?.recordType==='psalm'?' · du psaume '+sourcePsalm.number:'');
     $('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
     const readText=browsing?esc:modeAwareText;
     if(r.recordType==='psalm'){
@@ -1082,7 +1095,10 @@
         .map(id=>state.recordById.get(id)).filter(n=>n.appliesToPrayerId===r.id&&n.appliesTo?.recordId===r.appliesToPsalmId&&state.recordById.get(r.appliesToPsalmId)?.noteIds?.includes(n.id)):[]);
       $('dialogContent').innerHTML=noteProvenanceBlock(r)+`<div class="prayer-block">${readText(r.text||r.summary||'')}</div>`+verifiedNotesBlock(notes,readText);
     }
-    $('recordDialog').showModal();
+    $('dialogContent').querySelectorAll('[data-read-related]').forEach(button=>
+      button.addEventListener('click',()=>open(button.dataset.readRelated,browsing,true)));
+    if(!dialog.open)dialog.showModal();
+    else {dialog.scrollTop=0;$('readerBack').focus({preventScroll:true});}
   }
 function activeText(){
     const r=state.active;if(!r)return'';
@@ -1201,9 +1217,22 @@ function activeText(){
       appendBrowseBatch();
     }
   },{passive:true});
-  $('browseBack').addEventListener('click',()=>{
-    $('recordDialog').close();
-    $('browseEntries').focus({preventScroll:true});
+  $('readerBack').addEventListener('click',()=>{
+    const previous=state.readerStack?.pop();
+    if(!previous)return;
+    open(previous.id,previous.browsing);
+    $('recordDialog').scrollTop=previous.scrollTop;
+    const focusTarget=$('dialogContent').querySelector('[data-read-related="'+state.active?.id+'"]');
+    (focusTarget||($('readerBack').hidden?$('browseBack'):$('readerBack'))).focus({preventScroll:true});
+  });
+  $('browseBack').addEventListener('click',()=>$('recordDialog').close());
+  $('recordDialog').addEventListener('close',()=>{
+    state.readerStack=[];
+    const origin=state.readerOrigin;
+    if(origin?.isConnected)origin.focus({preventScroll:true});
+    if(Number.isFinite(state.readerOriginScrollY))
+      window.scrollTo({top:state.readerOriginScrollY,behavior:'instant'});
+    state.readerOrigin=null;
   });
 
   function renderThemeDirectory(){ const needle=norm($('themeFilter').value); const visible=needle?state.themeDirectory.filter(t=>norm(t.label).includes(needle)||norm(t.id).includes(needle)):state.themeDirectory; $('indexCount').textContent=needle?`${visible.length} thème${visible.length>1?'s':''} sur ${state.themeDirectory.length}`:`${state.themeDirectory.length} thèmes indexés`; $('themeDirectory').innerHTML=visible.length?visible.map(t=>`<button class="theme-row" data-directory-theme="${esc(t.id)}"><span><strong>${esc(t.label)}</strong><small>${t.occurrenceCount} psaume${t.occurrenceCount>1?'s':''}</small></span><span>${t.score}</span></button>`).join(''):'<div class="empty">Aucun thème ne correspond à ce filtre.</div>'; $('themeDirectory').querySelectorAll('[data-directory-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.directoryTheme);if(t){closeIndex();navigateToTheme(t);}}); }
