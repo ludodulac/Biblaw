@@ -60,7 +60,7 @@ try{
     await page.locator('#query').fill('105');
     await page.locator('#searchButton').click();
     const openButton=page.locator('#results [data-open="book-17-psalm-105"]');
-    await openButton.waitFor();
+    await page.waitForFunction(()=>document.querySelector('#results [data-open="book-17-psalm-105"]')!==null);
     const card=openButton.locator('xpath=ancestor::article');
     await card.locator('[data-toggle-result]').click();
     await openButton.scrollIntoViewIfNeeded();
