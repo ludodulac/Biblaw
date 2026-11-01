@@ -1085,15 +1085,29 @@
     const readText=browsing?esc:modeAwareText;
     if(r.recordType==='psalm'){
       const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${readText(v.text)}</div></div>`).join('');
-      const prayersBlock=!browsing&&selectedTypes().has('prayer')?(r.attachedPrayers||[]).map(prayer=>
-        `<section class="prayer-block" data-attached-prayer="${esc(prayer.id)}"><h3>Prière ${esc(prayer.number)}</h3>${readText(prayer.text)}</section>`).join(''):'';
+      // 070: show every reciprocal prayer independently of the search type filters.
+      const attached=r.attachedPrayers||[];
+      const prayerNavigation=attached.length?
+        '<section class="related-themes reader-related-prayers" aria-label="Prières associées au psaume '+esc(r.number)+'"><h3>'+
+          attached.length+' prière'+(attached.length>1?'s':'')+' associée'+(attached.length>1?'s':'')+' au psaume '+esc(r.number)+'</h3>'+
+          '<div class="reader-prayer-list">'+attached.map(prayer=>
+            '<button type="button" class="secondary reader-related-button" data-read-related="'+esc(prayer.id)+'">'+
+            'Lire la prière '+esc(prayer.number)+' · '+esc(archangelName(prayer.archangel))+'</button>'
+          ).join('')+'</div></section>':'';
+      const prayersBlock=!browsing&&selectedTypes().has('prayer')?attached.map(prayer=>
+        '<section class="prayer-block" data-attached-prayer="'+esc(prayer.id)+'"><h3>Prière '+esc(prayer.number)+'</h3>'+readText(prayer.text)+'</section>'
+      ).join(''):'';
       const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`;
-      $('dialogContent').innerHTML=verses+prayersBlock+verifiedNotesBlock(r.attachedVerifiedNotes,readText)+themesBlock;
+      $('dialogContent').innerHTML=verses+prayerNavigation+prayersBlock+verifiedNotesBlock(r.attachedVerifiedNotes,readText)+themesBlock;
       bindThemeLinks($('dialogContent'));
     } else {
       const notes=(r.recordType==='master-prayer'?(r.noteIds||[]).filter(id=>state.recordById.has(id))
         .map(id=>state.recordById.get(id)).filter(n=>n.appliesToPrayerId===r.id&&n.appliesTo?.recordId===r.appliesToPsalmId&&state.recordById.get(r.appliesToPsalmId)?.noteIds?.includes(n.id)):[]);
-      $('dialogContent').innerHTML=noteProvenanceBlock(r)+`<div class="prayer-block">${readText(r.text||r.summary||'')}</div>`+verifiedNotesBlock(notes,readText);
+      // A prayer opened directly from the browser can still reach its source Psalm.
+      const sourceLink=sourcePsalm?.recordType==='psalm'&&sourcePsalm.prayerIds?.includes(r.id)?
+        '<nav class="reader-source"><span>Prière associée au psaume '+esc(sourcePsalm.number)+'</span>'+
+        '<button type="button" class="secondary reader-related-button" data-read-related="'+esc(sourcePsalm.id)+'">Lire le psaume source</button></nav>':'';
+      $('dialogContent').innerHTML=noteProvenanceBlock(r)+sourceLink+'<div class="prayer-block">'+readText(r.text||r.summary||'')+'</div>'+verifiedNotesBlock(notes,readText);
     }
     $('dialogContent').querySelectorAll('[data-read-related]').forEach(button=>
       button.addEventListener('click',()=>open(button.dataset.readRelated,browsing,true)));
