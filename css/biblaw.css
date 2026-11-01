@@ -130,3 +130,20 @@
 .browse-footer{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.55rem .8rem;font-size:.75rem}
 .browse-back{margin-right:auto;border:1px solid var(--line);border-radius:.7rem;background:var(--panel);color:var(--ink);padding:.65rem .7rem;font-size:.83rem;font-weight:600;cursor:pointer}
 @media(max-width:400px){.browse-entries{max-height:43dvh}.browse-item{padding:.7rem .65rem}.dialog-actions{flex-wrap:wrap}.browse-back{flex-basis:100%;text-align:left}}
+
+/* 070: preserve source line breaks; readable, scrollable long records and touch-friendly controls. */
+.record-dialog .verse>div:last-child{min-width:0;white-space:pre-wrap;overflow-wrap:anywhere;font-family:"Source Serif 4",serif;font-size:1.05rem;line-height:1.7}
+.record-dialog .verse-number{font-size:.82rem;padding-top:.15rem}
+.record-dialog .dialog-content,.record-dialog .prayer-block,.record-dialog .note-provenance{overflow-wrap:anywhere}
+.reader-related-prayers{margin-top:1.3rem;padding:1rem;border:1px solid var(--line);border-radius:.8rem}
+.reader-related-prayers h3{margin:0 0 .75rem;font-size:1rem;color:var(--ink)}
+.reader-prayer-list{display:flex;flex-wrap:wrap;gap:.55rem}
+.reader-related-button{min-height:2.75rem;text-align:left;white-space:normal}
+.reader-source{display:flex;align-items:center;justify-content:space-between;gap:.7rem;flex-wrap:wrap;margin-bottom:.8rem;color:var(--soft);font-size:.9rem}
+.record-dialog .icon-button{min-width:2.75rem;min-height:2.75rem;flex:none}
+.record-dialog .dialog-head>div{min-width:0;overflow-wrap:anywhere}
+.record-dialog .dialog-head h2{overflow-wrap:anywhere}
+.record-dialog .dialog-actions{flex-wrap:wrap;gap:.5rem}
+.record-dialog .dialog-actions button{min-height:2.75rem}
+.record-dialog [data-read-related]:focus-visible,.record-dialog button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:400px){.record-dialog .dialog-head h2{font-size:1.35rem}.record-dialog .dialog-actions .browse-back:not([hidden]){flex-basis:100%}.record-dialog .dialog-actions .primary,.record-dialog .dialog-actions .secondary{flex:1 1 auto}.record-dialog .verse{grid-template-columns:1.65rem minmax(0,1fr);gap:.45rem}.record-dialog .verse>div:last-child{font-size:1rem}}
