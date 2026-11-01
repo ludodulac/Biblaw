@@ -29,7 +29,7 @@ try{
       null,{timeout:90000});
     const stats=await page.evaluate(async()=>{
       const response=await fetch('data/browser-search-catalog.json');
-      assert(response.ok);
+      if(!response.ok)throw Error('Missing published catalog');
       const source=(await response.json()).records;
       return {psalms:source.filter(x=>x.recordType==='psalm').length,
         prayers:source.filter(x=>x.recordType==='master-prayer').length,
