@@ -1,0 +1,39 @@
+name: BIBLAW 068 integration browser validation (no deploy)
+on:
+  push:
+    branches: [feat/052-search-ui]
+    paths:
+      - 'js/biblaw.js'
+      - 'scripts/smoke_notes_068.mjs'
+      - '.github/workflows/verify-integration-068.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax and 067 source integrity
+        run: |
+          node --check js/biblaw.js
+          node --check scripts/smoke_notes_068.mjs
+          python scripts/verify_067.py
+          python scripts/resolve_note_occurrences_066.py --check
+          python scripts/audit_corpus_attachments.py
+      - name: Build actual Pages payload, do not deploy
+        run: python scripts/build_pages_site.py
+      - name: Install Chromium for desktop and mobile emulation
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Test word/theme, Psalm, Pr36, and authenticated notes on 1280/390/320px
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-068-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          BIBLAW_SMOKE_URL=http://127.0.0.1:4173/index.html node scripts/smoke_notes_068.mjs
