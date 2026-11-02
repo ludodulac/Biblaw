@@ -154,3 +154,15 @@
 .browse-selectors label{display:grid;gap:.25rem;color:var(--ink);font-size:.78rem;font-weight:600}
 .browse-selectors input,.browse-selectors select{width:100%;min-width:0;padding:.55rem .45rem;border:1px solid var(--line);border-radius:.45rem;background:var(--panel);color:var(--ink);font:inherit}
 @media(max-width:400px){.browse-selectors{grid-template-columns:1fr}}
+
+/* 072B: themes of ALREADY public notes only; independent of Psalm theme index. */
+.browse-note-themes{display:grid;gap:.5rem;padding:.7rem .8rem;border-bottom:1px solid var(--line)}
+.browse-note-themes[hidden]{display:none}
+.browse-note-themes label{color:var(--soft);font-size:.82rem;font-weight:600}
+.browse-note-themes input{width:100%;min-height:2.7rem;padding:.55rem .65rem;border:1px solid rgba(255,255,255,.2);border-radius:.65rem;color:var(--ink);background:var(--panel)}
+.browse-note-theme-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:.35rem;max-height:min(14rem,35dvh);overflow-y:auto;overscroll-behavior:contain}
+.browse-note-theme-item{min-height:2.75rem;padding:.5rem .6rem;border:1px solid var(--line);border-radius:.55rem;background:var(--panel);color:var(--ink);text-align:left;font-size:.82rem;overflow-wrap:anywhere;cursor:pointer}
+.browse-note-theme-item[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.browse-note-theme-item:focus-visible,.browse-note-themes input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.browse-note-theme-selection{margin:0;color:var(--soft);font-size:.76rem}
+@media(max-width:400px){.browse-note-themes{padding:.65rem}.browse-note-theme-list{max-height:12rem;grid-template-columns:1fr}}
