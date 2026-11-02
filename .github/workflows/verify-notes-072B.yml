@@ -1,0 +1,73 @@
+name: BIBLAW 072B note themes batches and browser preview (no deploy)
+on:
+  push:
+    branches: [feat/052-search-ui]
+    paths:
+      - 'scripts/build_note_themes_072B.py'
+      - 'scripts/build_pages_site.py'
+      - 'scripts/smoke_notes_072B.mjs'
+      - 'css/biblaw.css'
+      - 'index.html'
+      - 'js/biblaw.js'
+      - '.github/workflows/verify-notes-072B.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  notes-themes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate 10-note batches, private crosswalk and permitted public index
+        run: |
+          python scripts/build_note_themes_072B.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('data/note-themes-working-072B.json').read_text())
+          u=json.loads(Path('data/note-themes-public-072B.json').read_text())
+          c=json.loads(Path('data/browser-search-catalog.json').read_text())
+          public={x['id'] for x in c['records'] if x.get('recordType')=='note'}
+          assert p['lotSize']==10 and p['historicalLots']>=25
+          assert len(p['notes'])==p['noteCount'] and len({n['id'] for n in p['notes']})==p['noteCount']
+          assert public==set(p['publicNoteIds']) and len(public)==u['publicNoteCount']==11
+          assert all(set(t['noteIds'])<=public for t in u['themes'])
+          assert {n['id'] for n in p['notes'] if n['visibility']=='already-public'}==public
+          assert not any(n.get('text') for n in u['themes'])
+          print('BIBLAW-072B PRIVATE PUBLIC SPLIT PASS',p['noteCount'],p['historicalLots'],len(p['themes']))
+          PY
+      - name: Assemble complete local preview, ensuring private archive is excluded
+        run: |
+          python scripts/build_pages_site.py
+          test -f _site/data/note-themes-public-072B.json
+          test ! -e _site/data/note-themes-working-072B.json
+          test ! -e _site/data/notes
+      - name: Syntax checks
+        run: |
+          node --check js/biblaw.js
+          node --check scripts/smoke_notes_072B.mjs
+      - name: Real Chromium browser interactions on desktop and mobile
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+          python -m http.server 4173 --directory _site >/tmp/biblaw-072B-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          BIBLAW_SMOKE_URL=http://127.0.0.1:4173/index.html node scripts/smoke_notes_072B.mjs
+      - name: Save separate historical working crosswalk, accessible only via GitHub Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-072B-private-note-classification
+          path: data/note-themes-working-072B.json
+          retention-days: 7
+      - name: Save tested site preview, without public deployment
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-072B-preview
+          path: _site/
+          include-hidden-files: true
+          retention-days: 7
