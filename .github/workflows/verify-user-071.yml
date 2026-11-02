@@ -1,0 +1,72 @@
+name: BIBLAW 071 user validation and private preview artifact (no deploy)
+on:
+  push:
+    branches: [feat/052-search-ui]
+    paths:
+      - 'js/biblaw.js'
+      - 'index.html'
+      - 'scripts/build_pages_site.py'
+      - 'scripts/check_reader_links_071.py'
+      - 'scripts/smoke_user_071.mjs'
+      - '.github/workflows/verify-user-071.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  user-validation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source links only (no source-document audit)
+        run: python scripts/check_reader_links_071.py
+      - name: Build complete allowlisted site and verify real assets
+        run: |
+          python scripts/build_pages_site.py
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import re
+          class SiteAssets(HTMLParser):
+              def __init__(self):
+                  super().__init__();self.urls=[]
+              def handle_starttag(self, tag, attrs):
+                  a=dict(attrs)
+                  if tag=="script" and a.get("src"):self.urls.append(a["src"])
+                  if tag=="link" and a.get("rel")=="stylesheet" and a.get("href"):self.urls.append(a["href"])
+          root=Path("_site")
+          parsed=SiteAssets();parsed.feed((root/"index.html").read_text(encoding="utf-8"))
+          for path in parsed.urls:
+              if path.startswith("http"):continue
+              assert (root/path).is_file(),f"Missing publicly required browser asset {path}"
+          js=(root/"js/theme-rubrics.js").read_text(encoding="utf-8")
+          for url in re.findall(r"fetch\(['\"]([^'\"]+)['\"]\)",js):
+              if not url.startswith("http"):assert (root/url).is_file(),f"Missing rubric data {url}"
+          assert not (root/"data/notes").exists()
+          print("BIBLAW-071 PREVIEW ASSET PASS",parsed.urls)
+          PY
+      - name: JavaScript syntax
+        run: |
+          node --check js/biblaw.js
+          node --check scripts/smoke_user_071.mjs
+      - name: Install Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: User journeys, search, filters, notes and keyboard at 1280/390/320
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-071.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          BIBLAW_SMOKE_URL=http://127.0.0.1:4173/index.html node scripts/smoke_user_071.mjs
+      - name: Deliver private downloadable offline preview, not a public deployment
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-071-preview
+          path: _site/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
