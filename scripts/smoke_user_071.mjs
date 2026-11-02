@@ -160,7 +160,7 @@ try{
     await page.locator('input[name="sourceType"][value="note"]').check();
     await exact(page,'Nom de la Mère');
     const noteResults=await page.locator('#results [data-open]').evaluateAll(rows=>rows.map(e=>e.dataset.open));
-    assert.deepEqual(noteResults,['book-17-psalm-109-note-001'],'Note filter exact search');
+    assert.deepEqual(noteResults,['book-17-psalm-109-note-001','book-17-psalm-122-note-001'],'Exact phrase is present in two historical notes');
     await openSearchResult(page,'book-17-psalm-109-note-001');
     assert.equal(await page.locator('[data-note-auth="not-human"]').count(),1);
     await back(page);
