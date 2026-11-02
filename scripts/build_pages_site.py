@@ -9,6 +9,8 @@ accessible editorial validation workshop.
 from __future__ import annotations
 
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -30,6 +32,7 @@ PUBLIC_FILES = (
     "js/theme-rubrics.js",
     "js/validation.js",
     "data/browser-search-catalog.json",
+    "data/note-themes-public-072B.json",
     "data/lexical-expansion-runtime.json",
     "data/linguistic-sense-browser-runtime.json",
     "data/linguistic-grammar-browser-runtime.json",
@@ -47,12 +50,16 @@ FORBIDDEN_PREFIXES = (
     "data/corpus/",
     "data/prayers/",
     "data/notes/",
+    "data/note-themes-working-072B.json",
     "data/thematic-index/books/",
     "data/thematic-index/source-packs/",
 )
 
 
 def main() -> None:
+    # Produce only an already-public note-theme index. Private working crosswalk is
+    # generated in the repo workspace, NEVER added to the Pages allowlist.
+    subprocess.run([sys.executable,str(ROOT/"scripts/build_note_themes_072B.py")],check=True,cwd=ROOT)
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir()
