@@ -148,6 +148,25 @@ try{
     assert.ok(await note.isVisible(),'Note browser stays open');
     await page.locator('[data-browse-type="note"]').click();
 
+    // 4b. Search source-type filters must change the *actual result set*, not only browser categories.
+    await toggleOptions(page);
+    await page.locator('input[name="sourceType"][value="psalm"]').uncheck();
+    await page.locator('input[name="sourceType"][value="prayer"]').check();
+    await exact(page,'lumière');
+    const prayerResults=await page.locator('#results [data-open]').evaluateAll(rows=>rows.map(e=>e.dataset.open));
+    assert.ok(prayerResults.length>0,'Search with prayer filter finds prayers');
+    for(const id of prayerResults)assert.equal(map.get(id)?.recordType,'master-prayer','Prayer filter excludes Psalms');
+    await page.locator('input[name="sourceType"][value="prayer"]').uncheck();
+    await page.locator('input[name="sourceType"][value="note"]').check();
+    await exact(page,'Nom de la Mère');
+    const noteResults=await page.locator('#results [data-open]').evaluateAll(rows=>rows.map(e=>e.dataset.open));
+    assert.deepEqual(noteResults,['book-17-psalm-109-note-001'],'Note filter exact search');
+    await openSearchResult(page,'book-17-psalm-109-note-001');
+    assert.equal(await page.locator('[data-note-auth="not-human"]').count(),1);
+    await back(page);
+    await page.locator('input[name="sourceType"][value="note"]').uncheck();
+    await page.locator('input[name="sourceType"][value="psalm"]').check();
+
     // 5. Search -> original Psalm -> authenticated note -> Psalm -> same results/focus.
     await exact(page,'105');
     const result=page.locator('#results [data-open="book-17-psalm-105"]');
