@@ -73,6 +73,71 @@ RULES=[
 ("Terre et humanité",r"\bhumanite\b|\bterre\b|\bmonde\s+des\s+hommes\b"),
 ]
 
+# 072C: fine-grained keyword entries based on the owner's example A.
+# These are text-evidenced indexing proposals, not human-authenticated topics.
+FINE_RULES=[
+("Montagne sacrée",r"\\bmontagne(?:s)?\\s+sacree(?:s)?\\b"),
+("Montagne",r"\\bmontagne(?:s)?\\b"),
+("Retraite",r"\\bretraite(?:s)?\\b"),
+("7 prêtres",r"\\b7\\s+pretres\\b"),
+("Prêtres",r"\\bpretres?\\b"),
+("Mondes subtils",r"\\bmondes?\\s+subtils?\\b"),
+("Prière",r"\\bprier(?:e|es|s)?\\b|\\bprie(?:nt|r|z)?\\b"),
+("Méditation",r"\\bmeditat(?:ion|ions|if|ifs|ive|ives)\\b|\\bmediter\\b"),
+("Énergie",r"\\benergies?\\b"),
+("Force",r"\\bforces?\\b"),
+("Forces sacrées",r"\\bforces?\\s+sacrees?\\b"),
+("Célébration",r"\\bcelebration(?:s)?\\b"),
+("Archange",r"\\barchanges?\\b"),
+("Silence",r"\\bsilence\\b"),
+("Esséniens",r"\\besseniens?\\b"),
+("Lumière",r"\\blumiere\\b"),
+("Bénédiction",r"\\bbenediction(?:s)?\\b|\\bbenie?s?\\b"),
+("Pyramide",r"\\bpyramides?\\b"),
+("Pierres",r"\\bpierres?\\b"),
+("Textes sacrés",r"\\btextes?\\s+sacres?\\b"),
+("Consécration",r"\\bconsacr(?:ation|er|e|ee|es)\\b"),
+("Statue",r"\\bstatues?\\b"),
+("Temple",r"\\btemples?\\b"),
+("Fontaine",r"\\bfontaines?\\b"),
+("Source d’eau",r"\\bsources?\\s+d.eau\\b"),
+("Source naturelle",r"\\bsources?\\s+naturelles?\\b"),
+("Eau",r"\\beaux?\\b"),
+("Eau bénie",r"\\beaux?\\s+benies?\\b"),
+("Rivière",r"\\brivieres?\\b"),
+("Océan",r"\\bocean\\b"),
+("Village essénien",r"\\bvillages?\\s+esseniens?\\b"),
+("Terranova",r"\\bterranova\\b"),
+("France",r"\\bfrance\\b"),
+("Québec",r"\\bquebec\\b"),
+("Gabon",r"\\bgabon\\b"),
+("Olivier Manitara",r"\\bolivier\\s+manitara\\b"),
+("Michaël",r"\\bmichael\\b"),
+("Gabriel",r"\\bgabriel\\b"),
+("Raphaël",r"\\braphael\\b"),
+("Ouriel",r"\\bouriel\\b"),
+("Enseignement",r"\\benseignements?\\b"),
+("Psaume",r"\\bpsaumes?\\b"),
+("Prêtrise",r"\\bpretrise\\b"),
+("Rituel",r"\\brituels?\\b"),
+("Feu",r"\\bfeux?\\b"),
+("Flamme",r"\\bflammes?\\b"),
+("Alliance",r"\\balliances?\\b"),
+("Monde divin",r"\\bmonde\\s+divin\\b"),
+("Terre",r"\\bterre\\b"),
+("Corps",r"\\bcorps\\b"),
+("Âme",r"\\bames?\\b"),
+("Nature",r"\\bnature\\b"),
+("Hiver",r"\\bhiver\\b"),
+("Été",r"\\bete\\b"),
+("Printemps",r"\\bprintemps\\b"),
+("Automne",r"\\bautomne\\b"),
+]
+OWNER_A_ID="book-01-psalm-004-note-001"
+OWNER_A_LABELS=["Montagne sacrée","Montagne","Retraite","7 prêtres","Mondes subtils",
+                "Prière","Méditation","Énergie","Force","Forces sacrées",
+                "Célébration","Archange","Silence"]
+
 # The first ten have already been examined manually in the existing project.
 # Read that first-lot markdown as data, keeping its stated evidence (no hidden reclassification).
 def validated_first_lot():
@@ -90,21 +155,31 @@ def propose(note,first):
     ident=note.get("id","")
     content=(note.get("text") or note.get("summary") or "").strip()
     if not content:return {"themes":[],"evidence":[],"review":"missing-text"}
-    if ident in first:
-        return {**first[ident],"review":"proposed-from-existing-hand-reviewed-lot"}
     folded=normalize(content)
-    matches=[]
-    for name,pat in RULES:
+    if ident==OWNER_A_ID:
+        return {"themes":OWNER_A_LABELS[:],"evidence":["classement fourni par Ludo"],
+                "review":"owner-validated-keywords"}
+    fine=[]
+    for name,pat in FINE_RULES:
         hit=re.search(pat,folded,re.I)
-        if hit:
-            # Show exact excerpt from text (the substring corresponding to NFD
-            # is not re-indexed against NFC; preserve the original whole snippet).
-            matches.append({"name":name,"evidence":hit.group(0)[:90]})
-    # Initial proposals avoid themes unsupported by content and avoid excessive labels.
-    # Multiple matching topics survive, at most four to keep browsing useful.
-    chosen=matches[:4]
-    return {"themes":[x["name"] for x in chosen],"evidence":[x["evidence"] for x in chosen],
-            "review":"proposed-from-text-patterns" if chosen else "unclassified-evidence-insufficient"}
+        if hit:fine.append({"name":name,"evidence":hit.group(0)[:90]})
+    # Keep previously reviewed broad labels as complementary navigation,
+    # but never let them suppress the more precise text-grounded keywords.
+    broad=[]
+    if ident in first:
+        broad=[{"name":name,"evidence":"first-lot manual review"} for name in first[ident]["themes"]]
+    else:
+        for name,pat in RULES:
+            hit=re.search(pat,folded,re.I)
+            if hit:broad.append({"name":name,"evidence":hit.group(0)[:90]})
+    chosen=[]
+    seen=set()
+    for item in fine+broad:
+        if item["name"] not in seen:
+            chosen.append(item);seen.add(item["name"])
+    return {"themes":[x["name"] for x in chosen],
+            "evidence":[x["evidence"] for x in chosen],
+            "review":"proposed-fine-keywords-needs-review" if chosen else "unclassified-evidence-insufficient"}
 
 def main():
     first=validated_first_lot()
