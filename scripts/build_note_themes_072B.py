@@ -108,7 +108,10 @@ def propose(note,first):
 
 def main():
     first=validated_first_lot()
-    paths=sorted(BOOK_NOTES.glob("book-*/book-*-note-*.json"))
+    paths=sorted([*BOOK_NOTES.glob("book-*/book-*-note-*.json"),
+                  *(ROOT/"data/notes").glob("michael-psalm-*-note-*.json")])
+    # Legacy alias files are real readable notes, but remain unpublished; they
+    # are included separately under their original IDs, never merged or promoted.
     # Historic notes under books/ are not part of the public Browser corpus.
     assert len(paths)>=200,"Expected historic note archive to be present"
     inventory=[]
