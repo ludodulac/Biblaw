@@ -147,13 +147,14 @@
 
   async function load() {
     try {
-      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime] = await Promise.all([
+      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime, noteThemes] = await Promise.all([
         fetch('data/browser-search-catalog.json').then(r => { if (!r.ok) throw Error('browser-search-catalog'); return r.json(); }),
         fetch('data/thematic-index/theme-directory-public.json').then(r => { if (!r.ok) throw Error('theme-directory'); return r.json(); }),
         fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); }),
         fetch('data/lexical-expansion-runtime.json').then(r => { if (!r.ok) throw Error('lexical-expansion-runtime'); return r.json(); }),
         Promise.resolve({targets:[]}),
-        fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); })
+        fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); }),
+        fetch('data/note-themes-public-072B.json').then(r => { if (!r.ok) throw Error('note-themes-public-072B'); return r.json(); })
       ]);
       state.themeDirectory = directory.themes || [];
       state.themeById = new Map(state.themeDirectory.map(t => [t.id, t]));
@@ -170,6 +171,17 @@
       renderPopularThemes();
       state.records = bundle.records || [];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
+      // The themed note chooser is restricted to IDs ALREADY present in the
+      // published browser bundle. An index entry never grants publication.
+      const publicNotes=new Set(state.records.filter(r=>r.recordType==='note').map(r=>r.id));
+      state.noteThemes=(noteThemes.themes||[]).map(theme=>({
+        label:String(theme.label||''),
+        noteIds:(theme.noteIds||[]).filter(id=>publicNotes.has(id))
+      })).filter(theme=>theme.label&&theme.noteIds.length)
+        .sort((a,b)=>a.label.localeCompare(b.label,'fr',{sensitivity:'base'}));
+      if(noteThemes.publicNoteCount!==publicNotes.size)
+        throw Error('note-themes-public-072B count mismatch');
+      if(state.browseType==='note')renderNoteThemeChoices();
       if(state.browseType)renderBrowseCategory(state.browseType);
       state.psalmsByNumber = new Map();
       state.normalizedFragmentsById = new Map();
@@ -1195,10 +1207,14 @@ function activeText(){
     const all=browseCategoryRecords(kind);
     const number=($('browseNumber').value||'').trim();
     const archangel=$('browseArchangel').value;
-    const rows=(kind==='psalm'||kind==='prayer')?all.filter(r=>{
+    let rows=(kind==='psalm'||kind==='prayer')?all.filter(r=>{
       const recordNumber=String(r.number??browseCoordinates(r)[1]);
       return (!number||recordNumber===number)&&(!archangel||r.archangel===archangel);
     }):all;
+    if(kind==='note'&&state.selectedNoteTheme){
+      const permitted=new Set(state.noteThemes.find(t=>t.label===state.selectedNoteTheme)?.noteIds||[]);
+      rows=rows.filter(r=>permitted.has(r.id));
+    }
     state.browseRows=rows;state.browseNext=0;
     $('browseEntries').replaceChildren();
     $('browseEntries').scrollTop=0;
@@ -1214,8 +1230,37 @@ function activeText(){
     appendBrowseBatch();
     fillBrowseViewport();
   }
+  function renderNoteThemeChoices(){
+    const list=$('browseNoteThemeList');
+    const needle=norm($('browseNoteThemeFilter').value);
+    const themes=(state.noteThemes||[]).filter(t=>!needle||norm(t.label).includes(needle));
+    // Sorted once, by French alphabetical order; themes of Psalms remain separate.
+    const candidates=[{label:'Toutes les notes',noteIds:null},...themes];
+    list.replaceChildren();
+    for(const theme of candidates){
+      const button=document.createElement('button');
+      button.type='button';button.className='browse-note-theme-item';
+      button.dataset.noteTheme=theme.noteIds?theme.label:'';
+      button.setAttribute('aria-pressed',String((state.selectedNoteTheme||'')===(theme.noteIds?theme.label:'')));
+      button.textContent=theme.label+(theme.noteIds?' ('+theme.noteIds.length+')':'');
+      button.addEventListener('click',()=>{
+        state.selectedNoteTheme=theme.noteIds?theme.label:null;
+        renderNoteThemeChoices();
+        renderBrowseCategory('note');
+        // Keep filter focus/scroll stable; move focus to the chosen theme after update.
+        const match=[...list.querySelectorAll('[data-note-theme]')]
+          .find(el=>el.dataset.noteTheme===(state.selectedNoteTheme||''));
+        match?.focus({preventScroll:true});
+      });
+      list.appendChild(button);
+    }
+    $('browseNoteThemeSelection').textContent=state.selectedNoteTheme?
+      'Notes du thème : '+state.selectedNoteTheme:'Toutes les notes déjà accessibles';
+  }
   function closeBrowseCategory(){
     state.browseType=null;state.browseRows=[];state.browseNext=0;
+    state.selectedNoteTheme=null;
+    $('browseNoteThemes').hidden=true;
     $('textBrowser').hidden=true;
     document.querySelectorAll('[data-browse-type]').forEach(button=>
       button.setAttribute('aria-expanded','false'));
@@ -1228,6 +1273,10 @@ function activeText(){
     state.browseType=kind;$('textBrowser').hidden=false;
     const numbered=kind==='psalm'||kind==='prayer';
     $('browseSelectors').hidden=!numbered;
+    $('browseNoteThemes').hidden=kind!=='note';
+    state.selectedNoteTheme=null;
+    $('browseNoteThemeFilter').value='';
+    if(kind==='note')renderNoteThemeChoices();
     $('browseNumberLabel').textContent=kind==='prayer'?'prière':'psaume';
     $('browseNumber').value='';$('browseArchangel').value='';
     document.querySelectorAll('[data-browse-type]').forEach(button=>
@@ -1236,6 +1285,7 @@ function activeText(){
   }
   document.querySelectorAll('[data-browse-type]').forEach(button=>
     button.addEventListener('click',()=>toggleBrowseCategory(button.dataset.browseType)));
+  $('browseNoteThemeFilter').addEventListener('input',renderNoteThemeChoices);
   $('browseNumber').addEventListener('input',()=>{if(['psalm','prayer'].includes(state.browseType))renderBrowseCategory(state.browseType);});
   $('browseArchangel').addEventListener('change',()=>{if(['psalm','prayer'].includes(state.browseType))renderBrowseCategory(state.browseType);});
   $('browseClose').addEventListener('click',closeBrowseCategory);
