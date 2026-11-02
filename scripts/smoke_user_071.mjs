@@ -162,7 +162,7 @@ try{
     const noteResults=await page.locator('#results [data-open]').evaluateAll(rows=>rows.map(e=>e.dataset.open));
     assert.deepEqual(noteResults,['book-17-psalm-109-note-001','book-17-psalm-122-note-001'],'Exact phrase is present in two historical notes');
     await openSearchResult(page,'book-17-psalm-109-note-001');
-    assert.equal(await page.locator('[data-note-auth="not-human"]').count(),1);
+    assert.equal(await page.locator('#recordDialog [data-note-auth="not-human"]').count(),1,'Active note is non-authenticated');
     await back(page);
     await page.locator('input[name="sourceType"][value="note"]').uncheck();
     await page.locator('input[name="sourceType"][value="psalm"]').check();
