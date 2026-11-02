@@ -1192,7 +1192,13 @@ function activeText(){
     }
   }
   function renderBrowseCategory(kind){
-    const rows=browseCategoryRecords(kind);
+    const all=browseCategoryRecords(kind);
+    const number=($('browseNumber').value||'').trim();
+    const archangel=$('browseArchangel').value;
+    const rows=(kind==='psalm'||kind==='prayer')?all.filter(r=>{
+      const recordNumber=String(r.number??browseCoordinates(r)[1]);
+      return (!number||recordNumber===number)&&(!archangel||r.archangel===archangel);
+    }):all;
     state.browseRows=rows;state.browseNext=0;
     $('browseEntries').replaceChildren();
     $('browseEntries').scrollTop=0;
@@ -1220,12 +1226,18 @@ function activeText(){
       closeBrowseCategory();return;
     }
     state.browseType=kind;$('textBrowser').hidden=false;
+    const numbered=kind==='psalm'||kind==='prayer';
+    $('browseSelectors').hidden=!numbered;
+    $('browseNumberLabel').textContent=kind==='prayer'?'prière':'psaume';
+    $('browseNumber').value='';$('browseArchangel').value='';
     document.querySelectorAll('[data-browse-type]').forEach(button=>
       button.setAttribute('aria-expanded',String(button.dataset.browseType===kind)));
     renderBrowseCategory(kind);
   }
   document.querySelectorAll('[data-browse-type]').forEach(button=>
     button.addEventListener('click',()=>toggleBrowseCategory(button.dataset.browseType)));
+  $('browseNumber').addEventListener('input',()=>{if(['psalm','prayer'].includes(state.browseType))renderBrowseCategory(state.browseType);});
+  $('browseArchangel').addEventListener('change',()=>{if(['psalm','prayer'].includes(state.browseType))renderBrowseCategory(state.browseType);});
   $('browseClose').addEventListener('click',closeBrowseCategory);
   $('browseMore').addEventListener('click',()=>{appendBrowseBatch();fillBrowseViewport();});
   $('browseEntries').addEventListener('scroll',()=>{
