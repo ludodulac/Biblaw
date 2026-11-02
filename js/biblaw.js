@@ -1030,11 +1030,15 @@
       totalHits+' occurrence'+(totalHits>1?'s':'')+' · '+items.length+
       ' '+textType+(items.length>1?'s':''):null;
     $('resultCount').textContent=companion?.invalidCombined?'Saisissez deux expressions séparées par +':(combinedCount||exactCount||(companion?.grammarSearch?`${items.reduce((n,item)=>n+item.occurrenceCount,0)} occurrences · ${items.length} textes`:companion?.suggestionPending?'Choisissez un thème':companion?.dualPending?'Intersection en attente':companion?.dualTheme?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} sous les deux thèmes`:companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} portant le numéro ${companion.psalmNumber}`:companion?.unresolvedTheme?'Aucun thème indexé':themeLabels.length?`${items.length} psaume${items.length>1?'s':''} indexé${items.length>1?'s':''} · classés Central, Important, puis Lié`:`${items.length} résultat${items.length>1?'s':''}`));
+    // 071: a textual match is not evidence for a particular semantic sense.
+    // Sense classification is not activated by this UI; never imply per-token semantic truth.
+    const literalSenseNotice=state.mode==='exact'&&!companion?.numberLookup?
+      '<p class="literal-sense-notice" role="note">Surlignage des mots uniquement : il ne valide pas leur sens dans le contexte.</p>':'';
     const textualNotice=!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?`<div class="search-scope-note"><strong>Thème indexé · ${items.length} psaumes</strong><button class="secondary" data-show-text-search>Voir les occurrences (${companion.textualCount})</button></div>`:'';
     const nearby=companion?.unresolvedTheme?findAutocompleteThemes($('query').value):[];
     const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><strong>Aucun thème trouvé</strong><div class="near-themes">${nearby.map(theme=>`<button class="popular-theme-chip" data-near-theme="${esc(theme.id)}">${esc(theme.label)}</button>`).join('')}</div><button class="secondary" data-search-in-words>Rechercher en mots</button></div>`:'';
     if(!items.length){ if(companion?.invalidCombined){$('results').innerHTML='<div class="empty">Indiquez un premier mot ou groupe de mots, puis +, puis un second.</div>';return;} const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const suggestionPending=companion?.suggestionPending?'<div class="empty">Plusieurs thèmes correspondent à votre recherche. Choisissez celui qui vous intéresse ci-dessus.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; $('results').innerHTML=emptyNumber||dualEmpty||suggestionPending||pending||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();bindNearThemeChoices();return; }
-    $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount,primaryCount,secondaryCount})=>{
+    $('results').innerHTML=unresolvedNotice+textualNotice+literalSenseNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount,primaryCount,secondaryCount})=>{
       const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'';
       const status=companion?.dualExact?`${primaryCount} + ${secondaryCount} occurrences`:companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`:themeMatches?'Deux thèmes':thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
       const details=resultDetailsBody(r,{thematic,matchedThemes,numberLookup,themeMatches,companion});
@@ -1061,7 +1065,7 @@
     const rows=visibleVerifiedNotes(notes);
     if(!rows.length)return '';
     return `<section class="related-themes verified-note-block"><div class="context-label">Notes authentifiées</div>${rows.map(n=>
-      `<p data-verified-note="${esc(n.id)}"><strong>Note${n.appliesTo?.verse?' · verset '+esc(n.appliesTo.verse):''}</strong><br>${readText(n.text)}</p>`
+      `<p data-verified-note="${esc(n.id)}"><strong>Note${n.appliesTo?.verse?' · verset '+esc(n.appliesTo.verse):''}</strong><br>${readText(n.text)}<br><button type="button" class="secondary reader-related-button" data-read-related="${esc(n.id)}">Consulter cette note authentifiée</button></p>`
     ).join('')}</section>`;
   }
   function open(id,browsing=false,viaReader=false){
