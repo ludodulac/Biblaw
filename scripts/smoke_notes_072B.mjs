@@ -12,7 +12,7 @@ for(const size of views) {
  page.on('pageerror',e=>errors.push(e.message));
  await page.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
  await page.waitForFunction(()=>document.querySelector('#corpusStats')?.textContent.includes('1158 psaumes'),null,{timeout:90000});
- const index=await page.evaluate(async()=>{const r=await fetch('data/note-themes-public-072B.json');assert.ok(r.ok);return r.json();});
+ const index=await page.evaluate(async()=>{const r=await fetch('data/note-themes-public-072B.json');if(!r.ok)throw Error('Missing note themes');return r.json();});
  assert.equal(index.publicNoteCount,11);
  assert.ok(index.themes.length>0,'Public note themes generated');
  const publicRecords=await page.evaluate(async()=>{const r=await fetch('data/browser-search-catalog.json');return (await r.json()).records.filter(r=>r.recordType==='note').map(r=>r.id);});
