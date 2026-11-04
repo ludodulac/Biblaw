@@ -209,6 +209,7 @@
       updateExpansionControl();
       search();
       indexPublicWords();
+      BiblawFAQ.init(state.records);
     } catch (error) { console.error(error); $('results').innerHTML = '<div class="empty">Le corpus ne peut pas être chargé. Ouvrez Biblaw depuis son adresse web.</div>'; }
   }
 
@@ -600,6 +601,8 @@
     if(shouldFocus===true)$('notesThemeFilter').focus({preventScroll:true});
   }
   function showSearchView() {
+    BiblawFAQ.close();
+    $('faqToggle').setAttribute('aria-expanded','false');
     document.body.classList.remove('view-notes');
     $('notesLibrary').hidden=true;
     $('notesLibraryToggle').setAttribute('aria-expanded','false');
@@ -612,6 +615,8 @@
       window.scrollTo({top:0,behavior:'smooth'});
       return;
     }
+    BiblawFAQ.close();
+    $('faqToggle').setAttribute('aria-expanded','false');
     $('notesThemeFilter').value='';
     renderNoteThemeDirectory();
     panel.hidden=false;
@@ -624,18 +629,23 @@
     const target=$('ambiguityPanel').hidden?document.querySelector('.results-section'):$('ambiguityPanel');
     if (target)target.scrollIntoView({behavior:'smooth',block:'start'});
   }
-  function open(id){
+  function open(id, citedVerses=null){
     const r=state.recordById.get(id);if(!r)return;
+    const targetVerses=Array.isArray(citedVerses)&&r.recordType==='psalm'?new Set(citedVerses.map(Number)):null;
+    const fromFAQ=Boolean(targetVerses?.size);
     state.active=r;
     $('dialogEyebrow').textContent=label(r);
     $('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
     const hasPrayer=r.recordType==='psalm'&&Boolean(r.attachedPrayer?.text);
-    state.readerPart=hasPrayer?'both':'psalm';
+    state.readerPart=fromFAQ?'psalm':hasPrayer?'both':'psalm';
+    $('faqReturnFromPsalm').hidden=!fromFAQ;
+    $('faqVerseContext').hidden=!fromFAQ;
+    $('faqVerseContext').textContent=fromFAQ?'Versets cités dans la réponse : '+[...targetVerses].join(', '):'';
     $('readerChoice').hidden=!hasPrayer;
     document.querySelectorAll('[name=readerPart]').forEach(input=>{input.checked=input.value===state.readerPart;});
     $('readerExportStatus').hidden=true;
     if(r.recordType==='psalm'){
-      const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${modeAwareText(v.text)}</div></div>`).join('');
+      const verses=(r.verses||[]).map(v=>`<div class="verse${targetVerses?.has(Number(v.number))?' faq-cited-verse':''}" data-verse="${esc(v.number)}"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${modeAwareText(v.text)}</div></div>`).join('');
       const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`;
       const prayerBlock=hasPrayer?`<section class="prayer-block"><h3>Prière ${r.attachedPrayer.number}</h3>${modeAwareText(r.attachedPrayer.text)}</section>`:'';
       state.readerHtml={psalm:verses+themesBlock,prayer:prayerBlock};
@@ -644,6 +654,10 @@
     }
     renderReader();
     $('recordDialog').showModal();
+    if(fromFAQ)requestAnimationFrame(()=>{
+      const first=$('dialogContent').querySelector('.faq-cited-verse');
+      first?.scrollIntoView({block:'center',behavior:'instant'});
+    });
   }
   function renderReader(){
     const visible=state.readerPart, parts=state.readerHtml||{psalm:'',prayer:''};
@@ -724,6 +738,17 @@
     }
   };
   document.querySelectorAll('[name=readerPart]').forEach(x=>x.onchange=()=>{if(!x.checked||!state.active?.attachedPrayer?.text)return;state.readerPart=x.value;renderReader();});
+  BiblawFAQ.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
+  $('faqToggle').addEventListener('click',()=>{
+    showSearchView();
+    BiblawFAQ.open();
+    $('faqToggle').setAttribute('aria-expanded','true');
+  });
+  $('faqReturnFromPsalm').onclick=()=>$('recordDialog').close();
+  $('recordDialog').addEventListener('close',()=>{
+    BiblawFAQ.restoreAfterPsalm();
+    $('faqReturnFromPsalm').hidden=true;
+  });
   $('notesLibraryToggle').addEventListener('click',()=>toggleNotesLibrary());
   $('notesLibraryClose').addEventListener('click',()=>toggleNotesLibrary(true));
   $('notesThemeFilter').addEventListener('input',renderNoteThemeDirectory);
