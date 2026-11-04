@@ -67,9 +67,12 @@ jobs:
           p=Path('_site/data/note-themes-public-073.json')
           data=json.loads(p.read_text(encoding='utf-8'))
           assert data['publicNoteCount']==11
-          ids={n for theme in data['themes'] for n in theme['noteIds']}
-          assert len(ids)==11
-          print('PUBLICATION BLANCHE 076: 24 assets, 11 notes, aucune archive privée')
+          thematic_ids={n for theme in data['themes'] for n in theme['noteIds']}
+          reference_ids={r['id'] for r in data.get('referenceNotes', [])}
+          assert len(thematic_ids)==data['themedNoteCount']==10
+          assert len(reference_ids)==1 and not (thematic_ids & reference_ids)
+          assert len(thematic_ids | reference_ids)==data['publicNoteCount']==11
+          print('PUBLICATION 079: 10 notes par sujets + 1 renvoi, aucune archive privée')
           PY
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
