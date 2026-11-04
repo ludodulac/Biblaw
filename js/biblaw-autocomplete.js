@@ -5,8 +5,8 @@
   const norm = value => String(value || '').normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '').toLowerCase()
     .replace(/œ/g, 'oe').replace(/æ/g, 'ae')
-    .replace(/[’']/g, ' ').replace(/[^a-z0-9\s-]/g, ' ')
-    .replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
+    .replace(/[’']/g, ' ').replace(/[-\u2010-\u2015\u2212]/g,' ').replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ').trim();
 
   const SMALL = ['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf',
     'dix','onze','douze','treize','quatorze','quinze','seize','dix-sept',
@@ -59,7 +59,14 @@
 
   function createIndex() {
     const words=new Map();
-    const tokenize = str => String(str||'').match(/[\p{L}\p{M}\p{N}]+/gu)||[];
+    const tokenize = str => {
+      const source=String(str||'');
+      // Keep normal words AND complete compounds. Without this, "Saint-Esprit"
+      // was reduced to the two isolated words "Saint" and "Esprit".
+      const words=source.match(/[\p{L}\p{M}\p{N}]+/gu)||[];
+      const compounds=source.match(/[\p{L}\p{M}\p{N}]+(?:[-\u2010-\u2015\u2212][\p{L}\p{M}\p{N}]+)+/gu)||[];
+      return [...words,...compounds.map(value=>value.replace(/[\u2010-\u2015\u2212]/gu,'-'))];
+    };
     const category = r => (r.recordType==='master-prayer'?'prayer':r.recordType)+':'+(r.archangel||'');
     function addRecord(record) {
       if(!record||!['psalm','master-prayer','note'].includes(record.recordType))return;
@@ -72,10 +79,10 @@
         for(const original of tokenize(fragment)){
           const key=norm(original);
           if(key.length<2&&!/^\d$/u.test(key))continue;
-          if(!/^[a-z0-9]+$/u.test(key))continue;
+          if(!/^[a-z0-9]+(?: [a-z0-9]+)*$/u.test(key))continue;
           let item=words.get(key);
           if(!item){
-            item={key,label:original,frequency:0,scope:new Set()};
+            item={key,label:original,compound:key.includes(' '),frequency:0,scope:new Set()};
             words.set(key,item);
           }
           item.frequency++;
@@ -95,7 +102,7 @@
     }
     function suggestions(input,mode,types,archangel,themeDirectory,recordById,limit=6){
       const key=norm(input);
-      if((key.length<2&&!/^\d$/u.test(key))||key.includes(' ')&&numericValue(input)===null)return[];
+      if(key.length<2&&!/^\d$/u.test(key))return[];
       const output=[],seen=new Set();
       const add=(label,kind,target)=>{const id=kind+':'+norm(label);if(seen.has(id))return;seen.add(id);output.push({label,kind,value:target||label});};
       if(mode==='themes'&&types?.has('psalm')){
@@ -106,12 +113,26 @@
         for(const theme of themes.slice(0,Math.min(2,limit)))add(theme.label,'theme',theme.label);
       }
       const numeric=numericValue(input);
-      const wordHits=[...words.values()].filter(item=>hasScope(item,types,archangel)&&
-        (item.key.startsWith(key)||(numeric!==null&&numericValue(item.key)===numeric)));
+      const compactKey=key.replace(/\s+/g,'');
+      const wordHits=[...words.values()].filter(item=>{
+        if(!hasScope(item,types,archangel))return false;
+        // Spaces, absent hyphens and typographic hyphens are equivalent for
+        // suggestions, but only genuine recorded compounds may match compact
+        // multi-word text.
+        const compoundMatch=item.compound&&
+          item.key.replace(/\s+/g,'').startsWith(compactKey);
+        return item.key.startsWith(key)||compoundMatch||
+          (numeric!==null&&numericValue(item.key)===numeric);
+      });
       wordHits.sort((a,b)=>{
         const rank=item=>item.key===key?0:
-          numeric!==null&&numericValue(item.key)===numeric?1:2;
-        return rank(a)-rank(b)||a.key.localeCompare(b.key,'fr',{sensitivity:'base'})||
+          numeric!==null&&numericValue(item.key)===numeric?1:
+          item.compound?2:3;
+        // Prioritise recorded compounds; they should not disappear behind
+        // six ordinary words such as "sain", "saine", "sainte", etc.
+        return rank(a)-rank(b)||
+          (a.compound&&b.compound?b.frequency-a.frequency:0)||
+          a.key.localeCompare(b.key,'fr',{sensitivity:'base'})||
           b.frequency-a.frequency;
       });
       for(const item of wordHits){if(output.length>=limit)break;add(item.label,'word',item.label);}
