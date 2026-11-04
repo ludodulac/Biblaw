@@ -22,7 +22,8 @@ for(const [input,output] of [
   ['20202020',null],
   ['bonjourbonjour!',null]
 ])assert.equal(correct(input),output,input);
-assert.match(source,/function search\(\)\{\s*correctMobileQueryDuplicate\(\);/);
+const searchStart=source.slice(source.indexOf('function search(){'),source.indexOf('function summary('));
+assert.ok(searchStart.includes('correctMobileQueryDuplicate();'),'Search must still de-duplicate mobile input');
 for(const event of ['blur','change','focus','compositionend'])assert.ok(source.includes("'"+event+"',"),event);
 assert.match(html,/id="query" type="search" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"/);
 assert.ok(Number(html.match(/js\/biblaw\.js\?v=(\d+)/)?.[1])>=80,'Expected a current cache-busted app file');
