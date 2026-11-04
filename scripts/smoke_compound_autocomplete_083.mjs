@@ -11,7 +11,7 @@ const records=[
   {id:'psalm-one',recordType:'psalm',archangel:'michael',
     title:'Le Saint-Esprit',verses:[
       {text:'Le Saint-Esprit, la Saint-Esprit, sain, saine, saint, sainte, saints, sainteté, saintement.'},
-      {text:'Énergie, quatre saisons, l\u2019Âme, la clarté.'}
+      {text:'Énergie, quatre saisons, 4 étoiles, l\u2019Âme, la clarté.'}
     ]},
   {id:'psalm-two',recordType:'psalm',archangel:'michael',
     title:'Le Saint\u2011Esprit',verses:[{text:'Le Saint\u2011Esprit et le Corps-Sacré.'}]},
