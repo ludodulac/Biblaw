@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], selectedNoteTheme: null, readerPart:'both', readerHtml:null };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], noteReferences: [], selectedNoteTheme: null, readerPart:'both', readerHtml:null };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -78,11 +78,19 @@
       // No note becomes public through classification: all IDs must already exist in browser catalog.
       const publishedNotes = new Set(state.records.filter(r => type(r)==='note').map(r=>r.id));
       if (publishedNotes.size!==11 || noteThemesIndex.publicNoteCount!==11) throw Error('Public note count mismatch');
+      if (noteThemesIndex.version!==2) throw Error('Outdated note subjects index');
       const noteThemes = noteThemesIndex.themes || [];
+      const noteReferences = noteThemesIndex.referenceNotes || [];
       if (!noteThemes.length || noteThemes.some(t=>!t.label||!Array.isArray(t.noteIds)||!t.noteIds.length||t.noteIds.some(id=>!publishedNotes.has(id)))) throw Error('Invalid public note-theme allowlist');
-      const indexedNotes = new Set(noteThemes.flatMap(t=>t.noteIds));
-      if (indexedNotes.size!==publishedNotes.size) throw Error('Some public notes have no themes');
+      if (!Array.isArray(noteReferences)||noteReferences.some(x=>!x.id||!x.label||!publishedNotes.has(x.id))) throw Error('Invalid public note references');
+      const themedNotes = new Set(noteThemes.flatMap(t=>t.noteIds));
+      const referenceIds = new Set(noteReferences.map(n=>n.id));
+      if (themedNotes.size!==noteThemesIndex.themedNoteCount || referenceIds.size!==noteReferences.length ||
+          [...referenceIds].some(id=>themedNotes.has(id)) ||
+          new Set([...themedNotes,...referenceIds]).size!==publishedNotes.size ||
+          [...publishedNotes].some(id=>!themedNotes.has(id)&&!referenceIds.has(id))) throw Error('Some public notes unaccounted for');
       state.noteThemes = noteThemes.slice().sort((a,b)=>a.label.localeCompare(b.label,'fr',{sensitivity:'base'}));
+      state.noteReferences = noteReferences;
       renderNoteThemeDirectory();
 
       state.psalmsByNumber = new Map();
@@ -375,6 +383,30 @@
   }
   function bindTextSearchLink(){ const button=document.querySelector('[data-show-text-search]'); if(button)button.onclick=()=>{ activateExactMode(); search(); window.scrollTo({top:$('results').offsetTop-90,behavior:'smooth'}); }; }
   // 073: Independent navigation, restricted to the eleven published note IDs.
+  // 079: Topics are subjects evidenced in public note text, not book/verse references.
+  function noteCard(record,titleOverride='') {
+    if (!record || type(record)!=='note') return null;
+    const id=record.id,parts=id.split('-');
+    const context=parts.length===6?'Livre '+Number(parts[1])+' · Psaume '+Number(parts[3])+' · Note '+Number(parts[5]):'Note';
+    const button=document.createElement('button');
+    button.type='button';button.className='notes-record-item';
+    const heading=document.createElement('strong');
+    heading.textContent=titleOverride||'Lire la note';
+    const location=document.createElement('span');
+    location.className='notes-record-location';location.textContent=context;
+    const body=document.createElement('span');
+    body.className='notes-record-preview';
+    const text=String(record.text||record.summary||'').replace(/\s+/g,' ').trim();
+    if (text) {
+      const sample=text.length>145?text.slice(0,145).replace(/\s+\S*$/,'').trimEnd()+'…':text;
+      body.textContent=sample;
+    }
+    const action=document.createElement('span');
+    action.className='notes-open-action';action.textContent='Ouvrir la note →';
+    button.append(heading,location,body,action);
+    button.addEventListener('click',()=>open(id));
+    return button;
+  }
   function renderNoteThemeDirectory() {
     const list=$('notesThemeList'),needle=norm($('notesThemeFilter').value||'');
     list.replaceChildren();
@@ -386,8 +418,17 @@
       list.append(button);
     }
     if (!list.children.length) {
-      const empty=document.createElement('p');empty.className='muted';empty.textContent='Aucun thème trouvé.';list.append(empty);
+      const empty=document.createElement('p');empty.className='muted';empty.textContent='Aucun sujet trouvé.';list.append(empty);
     }
+    // Cross-references are navigable, but never advertised as thematic subjects.
+    const refSection=$('notesReferenceSection'),refList=$('notesReferenceList');
+    refList.replaceChildren();
+    for (const ref of state.noteReferences.filter(r=>!needle||norm(r.label).includes(needle))) {
+      const record=state.recordById.get(ref.id);
+      const card=noteCard(record,ref.label);
+      if (card) refList.append(card);
+    }
+    refSection.hidden=!refList.children.length;
   }
   function openNoteTheme(theme) {
     state.selectedNoteTheme=theme.label;
@@ -396,15 +437,8 @@
     const list=$('notesResultList');list.replaceChildren();
     for (const id of theme.noteIds) {
       const record=state.recordById.get(id);
-      if (!record||type(record)!=='note')continue;
-      const parts=id.split('-');
-      const title=parts.length===6?'Livre '+Number(parts[1])+' · Psaume '+Number(parts[3])+' · Note '+Number(parts[5]):'Note';
-      const button=document.createElement('button');
-      button.type='button';button.className='notes-record-item';
-      const heading=document.createElement('strong');heading.textContent=title;
-      const sub=document.createElement('span');sub.textContent=record.title||archangelName(record.archangel)||'Ouvrir la note';
-      button.append(heading,sub);button.addEventListener('click',()=>open(id));
-      list.append(button);
+      const card=noteCard(record);
+      if (card) list.append(card);
     }
   }
   function returnToNoteThemes(shouldFocus=true) {
