@@ -50,7 +50,13 @@ assert.deepEqual(Array.from(factory(tieMatches).rankExactWordPairs('vie','amour'
 
 assert.ok(js.includes("const exactItems=matches(query);"),'Single-word search must stay available');
 assert.ok(js.includes("function intersectionItems(themeA, themeB)"),'Two-theme intersection must remain');
-assert.ok(js.includes("if(plusPair){")&&js.includes("setAdvancedSearch(true);"),'Entering plus syntax must enable two-word mode');
+assert.ok(js.includes("const plusPair=splitExactWordPair(rawQuery);") &&
+  js.includes("const query=plusPair?plusPair[0]:rawQuery,query2=plusPair?plusPair[1]:'';"),
+  'Entering plus syntax must keep both terms in one visible field');
+assert.ok(js.includes("if(plusPair){") && js.includes("return render(rankExactWordPairs(query,query2)"),
+  'Two word ranker must activate directly from the plus syntax');
+assert.ok(html.includes('id="addQueryTerm"') && html.includes('class="search-add-hint"'),
+  'Plus button and simple explanation must be visible');
 assert.ok(js.includes("return render(rankExactWordPairs(query,query2)"),'Two-word search must call count-based ranker');
 assert.ok(js.includes("companion?.dualExactQueries?"),'Both word counts must appear in results');
 assert.ok(js.includes("secondaryOccurrenceCount"),'Second count is shown');
