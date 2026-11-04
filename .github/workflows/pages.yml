@@ -45,6 +45,8 @@ jobs:
         run: python scripts/report_explicit_theme_ambiguities.py
       - name: Vérifier export PDF et sélections de textes 077
         run: node scripts/smoke_pdf_077.mjs
+      - name: Vérifier les véritables sujets des notes publiques 079
+        run: python scripts/audit_note_subjects_079.py
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
       - name: Vérifier les fichiers du nouveau site blanc et la confidentialité des notes
