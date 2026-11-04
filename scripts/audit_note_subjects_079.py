@@ -75,7 +75,7 @@ assert set(labels) == set(EVIDENCE), "Unexpected, missing, or purely technical t
 assert len(labels) == len(set(labels))
 assert labels == sorted(labels, key=fold), "Topics not alphabetically ordered"
 assert not any(
-    re.match(r"^(versets?|psaume\\s*\\d+|\\d{4}(?:-\\d{4})?)$", label, re.I)
+    re.match(r"^(versets?|psaume\s*\d+|\d{4}(?:-\d{4})?)$", label, re.I)
     for label in labels
 ), "Citation metadata must not masquerade as a subject"
 
