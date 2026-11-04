@@ -109,8 +109,8 @@ def main() -> None:
     assert "return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)});" in browser_js
     assert "data-show-text-search" in browser_js
     assert "Voir les occurrences" in browser_js
-    assert "Aucun thème indexé ne correspond à cette recherche" in browser_js
-    assert "Le mot ou l’expression apparaît cependant dans le corpus." in browser_js
+    assert "Aucun thème trouvé" in browser_js
+    assert "data-search-in-words" in browser_js, "UI must provide explicit fallback"
     assert "Voir les occurrences" in browser_js
     assert "return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)});" in browser_js
     assert "activateExactMode(); search();" in browser_js

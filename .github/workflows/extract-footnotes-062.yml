@@ -1,0 +1,30 @@
+name: BIBLAW 062 PDF footnote boundaries
+on:
+  pull_request:
+    paths:
+      - 'scripts/extract_footnote_boundaries_062.py'
+      - '.github/workflows/extract-footnotes-062.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  footnote-layout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: biblaw-notes-evidence-061
+          run-id: 39433962159
+          github-token: ${{ github.token }}
+          path: /tmp/notes061
+      - run: python -m pip install --quiet pymupdf==1.26.4
+      - run: python scripts/extract_footnote_boundaries_062.py /tmp/notes061/per-note-proof.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-062-footnote-boundaries
+          path: reports/notes-062/footnote-boundaries.json

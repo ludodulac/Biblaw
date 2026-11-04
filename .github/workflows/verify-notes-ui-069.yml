@@ -1,0 +1,39 @@
+name: BIBLAW 069 public note provenance and UI gate (no deploy)
+on:
+  push:
+    branches: [feat/052-search-ui]
+    paths:
+      - 'js/biblaw.js'
+      - 'scripts/smoke_notes_069.mjs'
+      - '.github/workflows/verify-notes-ui-069.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JS syntax and baseline corpus structures
+        run: |
+          node --check js/biblaw.js
+          node --check scripts/smoke_notes_069.mjs
+          python scripts/verify_067.py
+          python scripts/resolve_note_occurrences_066.py --check
+          python scripts/audit_corpus_attachments.py
+      - name: Build the real browser bundle in staging, without deployment
+        run: python scripts/build_pages_site.py
+      - name: Install Chromium on supported runner
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Exercise every public note, searches, prayer gates on desktop and mobile
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-069-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          BIBLAW_SMOKE_URL=http://127.0.0.1:4173/index.html node scripts/smoke_notes_069.mjs

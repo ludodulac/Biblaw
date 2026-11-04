@@ -60,7 +60,8 @@ def main() -> None:
     required = (
         "const parsePsalmNumberQuery",
         "function psalmNumberMatches(number)",
-        "const psalmNumber=parsePsalmNumberQuery(query)",
+        "const psalmNumber=state.mode==='themes'||!exactSearchClauses(query)?",
+        "parsePsalmNumberQuery(query):null;",
         "return render(psalmNumberMatches(psalmNumber),null,{numberLookup:true,psalmNumber})",
         "psalmsByNumber: new Map()",
         "state.psalmsByNumber = new Map()",

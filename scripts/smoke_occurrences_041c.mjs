@@ -12,6 +12,8 @@ try{
  await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'networkidle'});
  await page.waitForFunction(()=>!document.getElementById('corpusStats').textContent.includes('Chargement'));
  await page.locator('#modeExact').click();
+ await page.locator('#includeSimplePlurals').uncheck(); // 052B: explicitly request strict 041C baseline
+ await page.locator('#secondaryTools summary').click(); // 052: morphology is in the folded advanced menu
  const ids=()=>page.locator('.result-card [data-open]').evaluateAll(nodes=>nodes.map(n=>n.dataset.open));
  for(const term of terms){
   await page.locator('#query').fill(term);await page.locator('#searchButton').click();

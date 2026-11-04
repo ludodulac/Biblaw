@@ -1,0 +1,41 @@
+name: BIBLAW 062 verify PDF-reviewed notes
+on:
+  pull_request:
+    paths:
+      - 'data/notes/books/**'
+      - 'scripts/verify_notes_062.py'
+      - 'reports/notes-062/**'
+      - '.github/workflows/verify-notes-062.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  proof-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: biblaw-062-validation-proofs
+          run-id: 39462255235
+          github-token: ${{ github.token }}
+          path: /tmp/decision062
+      - uses: actions/download-artifact@v4
+        with:
+          name: biblaw-062-footnote-boundaries
+          run-id: 39461572177
+          github-token: ${{ github.token }}
+          path: /tmp/footnotes062
+      - uses: actions/download-artifact@v4
+        with:
+          name: biblaw-notes-evidence-061
+          run-id: 39433962159
+          github-token: ${{ github.token }}
+          path: /tmp/notes061
+      - run: python -m pip install --quiet pymupdf==1.26.4
+      - name: Verify 062 corrections and honor independently tested 063 resolutions
+        run: python scripts/verify_notes_062.py /tmp/decision062 /tmp/footnotes062 /tmp/notes061

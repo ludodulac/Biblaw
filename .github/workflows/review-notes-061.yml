@@ -1,0 +1,36 @@
+name: BIBLAW 061 targeted 77 note evidence
+on:
+  pull_request:
+    paths:
+      - 'scripts/review_notes_061.py'
+      - '.github/workflows/review-notes-061.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  targeted-pdf-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download original 060 note-by-note audit (do not rerun)
+        uses: actions/download-artifact@v4
+        with:
+          name: biblaw-notes-audit-060
+          run-id: 39389492831
+          github-token: ${{ github.token }}
+          path: /tmp/biblaw060
+      - name: Install PDF text extractor
+        run: python -m pip install --quiet pymupdf==1.26.4
+      - name: Inspect only 77 flagged notes against original PDF
+        run: python scripts/review_notes_061.py /tmp/biblaw060/per-note.json
+      - name: Preserve per-note page evidence and counts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-notes-evidence-061
+          path: reports/notes-061/
+          if-no-files-found: warn

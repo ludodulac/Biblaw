@@ -1,0 +1,29 @@
+name: BIBLAW 063 protect validated PDF notes
+on:
+  pull_request:
+    paths:
+      - 'data/notes/books/**'
+      - 'scripts/guard_notes_063.py'
+      - 'reports/notes-063/**'
+      - '.github/workflows/guard-notes-063.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  compare-reviewed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse 063 PDF footnote proof — never rerun previous audits
+        uses: actions/download-artifact@v4
+        with:
+          name: biblaw-063-unicode-footnote-proofs
+          run-id: 39574989431
+          github-token: ${{ github.token }}
+          path: /tmp/biblaw063
+      - name: Verify 33 decisions, 11 source edits and all 11 public notes
+        run: python scripts/guard_notes_063.py /tmp/biblaw063

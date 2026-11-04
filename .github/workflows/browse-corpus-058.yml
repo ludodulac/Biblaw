@@ -1,0 +1,31 @@
+name: BIBLAW 058 corpus browse mobile
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'css/biblaw.css'
+      - 'js/biblaw.js'
+      - 'scripts/smoke_browse_corpus_058.mjs'
+      - '.github/workflows/browse-corpus-058.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  browse-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify all four source lists and full readings on a real mobile preview
+        env:
+          BIBLAW_SMOKE_URL: https://rawcdn.githack.com/ludodulac/Biblaw/${{ github.event.pull_request.head.sha }}/index.html
+        run: node scripts/smoke_browse_corpus_058.mjs
