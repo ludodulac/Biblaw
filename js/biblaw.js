@@ -91,10 +91,14 @@
       kind.className='suggestion-kind';kind.textContent=option.kind==='theme'?'Thème':'Mot';
       button.append(label,kind);
       button.addEventListener('click',()=>{
-        if(option.kind==='word'&&state.mode!=='exact')activateExactMode();
+        if(option.kind==='word'&&state.mode!=='exact'){
+          activateExactMode();
+          if(fieldName==='query2')setAdvancedSearch(true);
+        }
         if(option.kind==='theme'&&state.mode!=='themes')activateThemeMode();
-        $(fieldName).value=option.value;closeAllSuggestions();
+        $(fieldName).value=option.value;
         $(fieldName).focus({preventScroll:true});
+        closeAllSuggestions();
       });
       button.addEventListener('keydown',event=>{
         if(event.key==='Escape'){
