@@ -427,13 +427,15 @@
   function search(){
     closeAllSuggestions();
     correctMobileQueryDuplicate();
-    const plusPair=splitExactWordPair($('query').value);
-    if(plusPair){
-      if(state.mode!=='exact')activateExactMode();
-      setAdvancedSearch(true);
-      $('query').value=plusPair[0]; $('query2').value=plusPair[1];
+    // Keep the visible expression intact: the + is typed in the SAME field.
+    const rawQuery=$('query').value.trim();
+    const plusPair=splitExactWordPair(rawQuery);
+    if(plusPair && state.mode!=='exact')activateExactMode();
+    const query=plusPair?plusPair[0]:rawQuery,query2=plusPair?plusPair[1]:'';
+    if(/\+\s*$/.test(rawQuery)){
+      hideAmbiguity();hideTransverseNavigation();
+      return render([],null,{dualExactPending:true});
     }
-    const query=$('query').value.trim(), query2=$('query2').value.trim();
     const semanticKey=singleWordQueryKey(query);
     if(state.semanticSelection&&semanticKey!==state.semanticSelection.normalizedForm)state.semanticSelection=null;
     updateExpansionControl();
@@ -466,7 +468,7 @@
       hideAmbiguity();hideTransverseNavigation(); const textual=textualPsalmMatches(query); publishPresentationState({kind:textual.length?'textual-fallback':'no-result'}); return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)});
     }
     hideTransverseNavigation();publishPresentationState({kind:'other'});
-    if($('primarySearch').classList.contains('advanced-visible')){
+    if(plusPair){
       $('includeWordForms').checked=false;
       $('exactExpansionOption').hidden=true;
       if(!query2){hideAmbiguity();return render([],null,{dualExactPending:true});}
@@ -677,17 +679,32 @@
   function closePopularQuestions(){ $('popularQuestionsPanel').hidden=true; $('popularQuestionsBackdrop').hidden=true; $('popularQuestionsToggle').setAttribute('aria-expanded','false'); }
   function choosePopularQuestion(question){ if(!question)return; $('query').value=question.text; $('query2').value=''; activateThemeMode(); closePopularQuestions();showSearchView();search();requestAnimationFrame(focusSearchOutcome); }
 
+  // 084: Adding a term never opens another field or an explanation panel.
+  // The two-word priority ranking still uses rankExactWordPairs().
   const setAdvancedSearch = open => {
-    $('primarySearch').classList.toggle('advanced-visible',open);
-    $('advancedSearchToggle').setAttribute('aria-expanded',String(open));
-    $('advancedSearchToggle').textContent=open?'Annuler le croisement':state.mode==='exact'?'Croiser 2 mots':'Croiser 2 thèmes';
-    $('query2').disabled=!open;
-    if(state.mode==='exact')$('query').placeholder=open?'Premier mot · ex. vie':'Ex. Saint-Esprit, vie, amour';
-    $('dualExactHelp').hidden=!(open&&state.mode==='exact');
-    if(!open)$('query2').value='';
+    $('primarySearch').classList.remove('advanced-visible');
+    $('advancedSearchToggle').hidden=true;
+    $('advancedSearchToggle').setAttribute('aria-expanded','false');
+    $('query2').value='';
+    $('query2').disabled=true;
+    $('dualExactHelp').hidden=true;
     updateExpansionControl();
   };
-  $('advancedSearchToggle').onclick=()=>setAdvancedSearch(!$('primarySearch').classList.contains('advanced-visible'));
+  $('addQueryTerm').onclick=()=>{
+    const field=$('query'),current=field.value.trim();
+    if(!current){field.focus({preventScroll:true});return;}
+    // Only two terms in the current priority-ranking logic.
+    if(current.includes('+')){
+      field.focus({preventScroll:true});
+      field.setSelectionRange(field.value.length,field.value.length);
+      return;
+    }
+    if(state.mode!=='exact')activateExactMode();
+    field.value=current+' + ';
+    closeAllSuggestions();
+    field.focus({preventScroll:true});
+    field.setSelectionRange(field.value.length,field.value.length);
+  };
   $('searchButton').onclick=()=>{showSearchView();search();if($('query').value.trim())requestAnimationFrame(focusSearchOutcome);}; $('query').addEventListener('keydown',e=>{if(e.key==='Enter'){showSearchView();search();if($('query').value.trim())requestAnimationFrame(focusSearchOutcome);}}); $('query').addEventListener('input',handleExactQueryInput);
   $('query').addEventListener('change',correctMobileQueryDuplicate);
   $('query').addEventListener('blur',correctMobileQueryDuplicate);
