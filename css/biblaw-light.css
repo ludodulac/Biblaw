@@ -501,3 +501,75 @@ body:not(.has-query):not(.view-notes) .primary-search {margin-bottom:0}
   .primary-search .theme-search-row .query-stack>input{min-height:3.15rem;font-size:1rem}
   .primary-search .search-submit{align-self:stretch}
 }
+
+/* 084 — ONE query field; "+" is an inline action, not a second search box. */
+.primary-search .theme-search-row,
+.primary-search.exact-mode.advanced-visible .theme-search-row,
+.primary-search.advanced-visible .theme-search-row{
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+  align-items:stretch;gap:.75rem
+}
+.primary-search .theme-search-row > [hidden],
+.primary-search #advancedSearchToggle,
+.primary-search .theme-plus,.primary-search .theme2-slot,
+.primary-search .advanced-query {display:none!important}
+.primary-search .theme-search-row .query-stack{width:100%;min-width:0}
+.primary-search .search-input-line{display:flex;align-items:stretch;gap:.45rem;width:100%;min-width:0}
+.primary-search .search-input-line>input{
+  display:block;flex:1 1 auto;min-width:0;width:100%;min-height:3.3rem;
+  margin:0;padding:.72rem .8rem;border:1px solid #d6b47a;border-radius:.65rem;
+  background:#fff;color:#202020;font-size:1.05rem;font-weight:550;
+  box-shadow:inset 0 1px 3px rgba(45,35,20,.055)
+}
+.primary-search .search-input-line>input::placeholder{
+  color:#81786a;font-weight:400;opacity:1
+}
+.primary-search .search-input-line>input:focus{
+  border-color:#a7782c;outline:2px solid #e8bd71;outline-offset:0
+}
+.primary-search .search-add-term{
+  flex:0 0 3.35rem;min-width:3.35rem;min-height:3.35rem;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid #ab803b;border-radius:.7rem;
+  background:#b3873e;color:white;font-size:2rem;font-weight:500;
+  line-height:1;cursor:pointer;touch-action:manipulation
+}
+.primary-search .search-add-term:focus-visible{
+  outline:3px solid #485b7a;outline-offset:2px
+}
+.primary-search .search-add-hint{
+  margin:.52rem .2rem .06rem;
+  color:#6e5939;font-size:.79rem;line-height:1.45
+}
+.primary-search .search-submit{width:100%;align-self:stretch;min-height:3.15rem}
+.primary-search .search-shortcuts{grid-template-columns:minmax(0,1fr)}
+/* Archangel is a neutral dropdown, not a highlighted writing field. */
+body .source-scope .archangel-picker{
+  flex:1 1 100%;max-width:none;min-width:0;margin:.45rem 0 0;
+  display:flex;align-items:center;gap:.75rem;
+  padding:0;border:0;border-radius:0;background:transparent;box-shadow:none
+}
+body .source-scope .archangel-picker>label{
+  display:inline-block;flex:0 0 auto;min-height:0;margin:0;padding:0;
+  border:0;background:transparent;box-shadow:none;
+  font-size:.86rem;font-weight:650;color:#686868;cursor:default
+}
+body .source-scope .archangel-picker>.input{
+  appearance:auto;flex:1 1 auto;min-width:0;max-width:24rem;width:auto;
+  min-height:2.45rem;margin:0;padding:.38rem .75rem;
+  border:0!important;border-radius:999px;background:#eef0f2;
+  color:#30363c;font-size:.91rem;font-weight:600;box-shadow:none!important;
+  cursor:pointer
+}
+body .source-scope .archangel-picker>.input:focus,
+body .source-scope .archangel-picker>.input:focus-visible{
+  outline:2px solid #7890a6;outline-offset:2px;
+  border-color:transparent!important;box-shadow:none!important;
+  background:#e9edef
+}
+@media(max-width:760px){
+  .primary-search .search-input-line>input{min-height:3.18rem;font-size:1rem}
+  .primary-search .search-add-term{min-width:3.18rem;flex-basis:3.18rem;min-height:3.18rem}
+  body .source-scope .archangel-picker{gap:.45rem}
+  body .source-scope .archangel-picker>.input{max-width:none}
+}
