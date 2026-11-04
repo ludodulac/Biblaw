@@ -53,7 +53,7 @@ assert.equal(a.countNumericOccurrences(['Quatre fleurs, quatre saisons et 4 port
 assert.equal(a.countNumericOccurrences(['40 fleurs, 400 arbres, 4 portes'],'4'),1);
 const html=read('index.html'),app=read('js/biblaw.js');
 assert.ok(html.includes('id="searchSuggestions"')&&html.includes('id="searchSuggestions2"'));
-assert.ok(html.includes('js/biblaw-autocomplete.js?v=082'));
+assert.ok(Number(html.match(/js\/biblaw-autocomplete\.js\?v=(\d+)/)?.[1])>=82,'The public autocomplete asset must have a fresh version');
 assert.ok(app.includes("const available=index.suggestions(field.value,state.mode,selectedTypes()"));
 assert.ok(app.includes("state.themeDirectory,state.recordById,6"));
 assert.ok(app.includes("if(psalmNumber!==null && !query2 && state.mode==='themes')"));
