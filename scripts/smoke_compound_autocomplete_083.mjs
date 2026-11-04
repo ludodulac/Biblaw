@@ -52,10 +52,10 @@ assert.equal(noCompound.suggestions('saintesprit','exact',psalms,'',[],byId,6).l
   'Never invent unattested compounds');
 const html=read('index.html'),css=read('css/biblaw-light.css'),app=read('js/biblaw.js');
 assert.ok(html.includes('for="query">✎ &nbsp;Tapez votre mot ou expression'));
-assert.ok(html.includes('for="query2">Deuxième mot ou thème'));
+assert.ok(html.includes('<div hidden aria-hidden="true"><input id="query2"'), '084 must not show a second search field');
 assert.ok(css.includes('background:#fff2d4')&&css.includes('border:2px solid #b7832f'),
   'Writing field must be visually distinct from Archangel selector');
-assert.ok(html.includes('biblaw-autocomplete.js?v=083')&&html.includes('biblaw-light.css?v=083'));
+assert.ok(html.includes('biblaw-autocomplete.js?v=083') && Number(html.match(/biblaw-light\.css\?v=(\d+)/)?.[1])>=83);
 assert.ok(app.includes('rankExactWordPairs(query,query2)'),'Keep two-word ranking intact');
 assert.ok(app.includes('publishedNotes.size!==11'),'Keep eleven public notes guard');
 assert.ok(app.includes('correctMobileQueryDuplicate();'),'Keep duplicated input guard');
