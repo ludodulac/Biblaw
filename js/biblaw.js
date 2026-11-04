@@ -393,7 +393,7 @@
     if(Array.isArray(dualWords)&&dualWords.length===2){
       const chosen=r.verses.filter(v=>dualWords.some(word=>literalIncludes(v.text,word))).slice(0,4);
       if(!chosen.length)return'';
-      return `<div class="theme-context exact-context"><div class="context-label">Passages contenant les deux termes recherchés</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`;
+      return `<div class="theme-context exact-context"><div class="context-label">Passages où apparaît au moins un des deux mots</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`;
     }
     const semantic=semanticSelectionContext(query); let chosen; if(semantic){ const row=(semantic.sense.records||[]).find(item=>item[0]===r.id); const wanted=new Set((row?.[2]||[]).map(Number)); chosen=r.verses.filter(v=>wanted.has(Number(v.number))).slice(0,4); } else { const expansion=activeExpansionForms(); chosen=r.verses.filter(v=>literalIncludes(v.text,query)||expansion.some(form=>literalIncludes(v.text,form))).slice(0,4); } if(!chosen.length)return''; return `<div class="theme-context exact-context"><div class="context-label">Passage${chosen.length>1?'s':''} où la recherche apparaît</div>${chosen.map(v=>`<div class="context-verse"><strong>${esc(v.number)}</strong><span>${highlighted(v.text)}</span></div>`).join('')}</div>`; }
   function relatedThemes(r,matchedThemes){ const matched=new Set((matchedThemes||[]).map(x=>x.id)); return (state.themesByRecord.get(r.id)||[]).filter(t=>!matched.has(t.id)).slice(0,12); }
@@ -585,6 +585,7 @@
     $('advancedSearchToggle').setAttribute('aria-expanded',String(open));
     $('advancedSearchToggle').textContent=open?'Annuler le croisement':state.mode==='exact'?'Croiser 2 mots':'Croiser 2 thèmes';
     $('query2').disabled=!open;
+    if(state.mode==='exact')$('query').placeholder=open?'Premier mot · ex. vie':'Ex. lumière, maison, psaume 105';
     $('dualExactHelp').hidden=!(open&&state.mode==='exact');
     if(!open)$('query2').value='';
     updateExpansionControl();
