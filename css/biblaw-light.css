@@ -408,3 +408,24 @@ body:not(.has-query):not(.view-notes) .primary-search {margin-bottom:0}
   letter-spacing:0;margin:.1rem 0 .65rem
 }
 .notes-reference-section .notes-record-item{max-width:37rem}
+
+/* 081: Exact search can cross two words. Only the second count breaks a first-count tie. */
+.dual-exact-help {
+  margin:.65rem 0 .1rem;padding:.6rem .85rem;border-left:3px solid #bb8b44;
+  background:#fcf8f0;border-radius:.35rem;color:#645744;font-size:.82rem;line-height:1.5
+}
+.dual-exact-help[hidden]{display:none!important}
+.primary-search.exact-mode.advanced-visible .theme2-slot{display:flex}
+.primary-search.exact-mode.advanced-visible .theme-plus{display:block}
+.primary-search.exact-mode.advanced-visible .theme-search-row{
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto
+}
+.result-card-dual-exact .result-status .score {white-space:normal;line-height:1.4;text-align:center}
+@media(max-width:760px){
+  .primary-search.exact-mode.advanced-visible .theme-search-row{grid-template-columns:minmax(0,1fr)}
+  .primary-search.exact-mode.advanced-visible .theme2-slot{display:flex}
+  .primary-search.exact-mode.advanced-visible .theme-plus{display:none}
+  .result-card-dual-exact .result-summary-toggle{flex-direction:column;align-items:stretch;gap:.45rem}
+  .result-card-dual-exact .result-status{align-self:flex-start;flex-wrap:wrap}
+  .result-card-dual-exact .result-status .score{text-align:left}
+}
