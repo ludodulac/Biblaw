@@ -53,6 +53,8 @@ jobs:
         run: node scripts/smoke_dual_exact_081.mjs
       - name: Vérifier les suggestions publiques, accents et nombres 082
         run: node scripts/smoke_autocomplete_082.mjs
+      - name: Vérifier les mots composés et le champ de recherche 083
+        run: node scripts/smoke_compound_autocomplete_083.mjs
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
       - name: Vérifier les fichiers du nouveau site blanc et la confidentialité des notes
