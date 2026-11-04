@@ -293,7 +293,26 @@
     showSearchView();render(thematic,[theme],{textualCount:textual.length});requestAnimationFrame(focusSearchOutcome);
   }
 
+  // 080: Some Android keyboards can insert a complete word twice on commit/refocus.
+  // Correct only an entire single-word repetition, without touching phrases.
+  function repeatedWholeWordCorrection(value) {
+    const trimmed=String(value||'').trim();
+    const chars=Array.from(trimmed.normalize('NFC'));
+    if(chars.length<8||chars.length>80||chars.length%2!==0)return null;
+    const half=chars.length/2;
+    const first=chars.slice(0,half).join(''),second=chars.slice(half).join('');
+    if(!/^[\p{L}\p{M}]+$/u.test(first))return null;
+    return first.toLocaleLowerCase('fr')===second.toLocaleLowerCase('fr')?first:null;
+  }
+  function correctMobileQueryDuplicate() {
+    const field=$('query'),fixed=repeatedWholeWordCorrection(field?.value);
+    if(fixed===null||!field)return false;
+    field.value=fixed;
+    return true;
+  }
+
   function search(){
+    correctMobileQueryDuplicate();
     const query=$('query').value.trim(), query2=$('query2').value.trim();
     const semanticKey=singleWordQueryKey(query);
     if(state.semanticSelection&&semanticKey!==state.semanticSelection.normalizedForm)state.semanticSelection=null;
@@ -527,7 +546,11 @@
 
   const setAdvancedSearch = open => { if(state.mode!=='themes')return; $('primarySearch').classList.toggle('advanced-visible',open); $('advancedSearchToggle').setAttribute('aria-expanded',String(open)); $('advancedSearchToggle').textContent=open?'Annuler le croisement':'Croiser 2 thèmes'; };
   $('advancedSearchToggle').onclick=()=>setAdvancedSearch(!$('primarySearch').classList.contains('advanced-visible'));
-  $('searchButton').onclick=()=>{showSearchView();search();if($('query').value.trim())requestAnimationFrame(focusSearchOutcome);}; $('query').addEventListener('keydown',e=>{if(e.key==='Enter'){showSearchView();search();if($('query').value.trim())requestAnimationFrame(focusSearchOutcome);}}); $('query').addEventListener('input',handleExactQueryInput); $('query2').addEventListener('keydown',e=>{if(e.key==='Enter'){search();requestAnimationFrame(focusSearchOutcome);}}); document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=()=>{if(x.checked&&x.value!=='psalm'&&state.mode==='themes')activateExactMode();const selected=selectedTypes();$('scopeInfo').hidden=state.mode==='themes'&&selected.size>0;$('scopeInfo').textContent=selected.size?'Recherche par mots dans les catégories cochées.':'Sélectionnez au moins un type de texte.';search();}); $('archangelFilter').onchange=search; $('includeWordForms').onchange=search;
+  $('searchButton').onclick=()=>{showSearchView();search();if($('query').value.trim())requestAnimationFrame(focusSearchOutcome);}; $('query').addEventListener('keydown',e=>{if(e.key==='Enter'){showSearchView();search();if($('query').value.trim())requestAnimationFrame(focusSearchOutcome);}}); $('query').addEventListener('input',handleExactQueryInput);
+  $('query').addEventListener('change',correctMobileQueryDuplicate);
+  $('query').addEventListener('blur',correctMobileQueryDuplicate);
+  $('query').addEventListener('focus',correctMobileQueryDuplicate);
+  $('query').addEventListener('compositionend',()=>setTimeout(correctMobileQueryDuplicate,0)); $('query2').addEventListener('keydown',e=>{if(e.key==='Enter'){search();requestAnimationFrame(focusSearchOutcome);}}); document.querySelectorAll('[name=sourceType]').forEach(x=>x.onchange=()=>{if(x.checked&&x.value!=='psalm'&&state.mode==='themes')activateExactMode();const selected=selectedTypes();$('scopeInfo').hidden=state.mode==='themes'&&selected.size>0;$('scopeInfo').textContent=selected.size?'Recherche par mots dans les catégories cochées.':'Sélectionnez au moins un type de texte.';search();}); $('archangelFilter').onchange=search; $('includeWordForms').onchange=search;
   $('modeThemes').onclick=()=>{activateThemeMode();search();}; $('modeExact').onclick=()=>{activateExactMode();$('scopeInfo').hidden=false;$('scopeInfo').textContent='Recherche par mots dans les catégories cochées.';search();}; $('closeAmbiguity').onclick=hideAmbiguity;
   $('popularQuestionsToggle').onclick=openPopularQuestions; $('closePopularQuestions').onclick=closePopularQuestions; $('popularQuestionsBackdrop').onclick=closePopularQuestions; $('popularQuestionsBack').onclick=renderPopularQuestionFamilies;
   $('indexToggle').onclick=()=>{$('indexPanel').hidden?openIndex():closeIndex();}; $('themeFilter').oninput=renderThemeDirectory; $('closeIndex').onclick=closeIndex; $('indexBackdrop').onclick=closeIndex; $('closeDialog').onclick=()=>$('recordDialog').close(); $('printRecord').onclick=()=>window.print(); $('downloadRecord').onclick=()=>{
