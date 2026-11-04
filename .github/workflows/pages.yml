@@ -47,6 +47,8 @@ jobs:
         run: node scripts/smoke_pdf_077.mjs
       - name: Vérifier les véritables sujets des notes publiques 079
         run: python scripts/audit_note_subjects_079.py
+      - name: Vérifier les saisies mobiles sans doublon 080
+        run: node scripts/smoke_query_input_080.mjs
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
       - name: Vérifier les fichiers du nouveau site blanc et la confidentialité des notes
