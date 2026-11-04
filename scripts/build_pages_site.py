@@ -20,6 +20,7 @@ PUBLIC_FILES = (
     "validation.html",
     "Bible essénienne (classée par livres).pdf",
     "css/biblaw.css",
+    "css/biblaw-light.css",
     "css/theme-index.css",
     "css/validation.css",
     "js/theme-suggestion-engine.js",
