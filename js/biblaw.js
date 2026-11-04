@@ -60,7 +60,7 @@
         fetch('data/lexical-expansion-runtime.json').then(r => { if (!r.ok) throw Error('lexical-expansion-runtime'); return r.json(); }),
         Promise.resolve({targets:[]}),
         fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); }),
-        fetch('data/note-themes-public-073.json').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); })
+        fetch('data/note-themes-public-073.json?v=079').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); })
       ]);
       state.themeDirectory = directory.themes || [];
       state.themeById = new Map(state.themeDirectory.map(t => [t.id, t]));
