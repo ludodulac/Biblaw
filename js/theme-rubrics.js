@@ -28,7 +28,7 @@
         .filter(entry => entry.card)
         .map(entry => ({
           recordId: entry.recordId,
-          title: entry.card.querySelector('h3')?.textContent?.trim() || entry.recordId,
+          title: entry.card.querySelector('.result-title')?.textContent?.trim() || entry.recordId,
         }));
       if (!records.length) continue;
       rendered.push({ rubric, records });
