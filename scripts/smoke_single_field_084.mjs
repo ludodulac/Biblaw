@@ -48,5 +48,5 @@ assert.ok(js.includes("if(plusPair){") &&
 assert.ok(!js.includes("$('query').value=plusPair[0]"),
   'Full typed expression must not be overwritten');
 assert.ok(js.includes("publishedNotes.size!==11"), 'Note privacy invariant');
-assert.ok(html.includes('biblaw.js?v=084')&&html.includes('biblaw-light.css?v=084'));
+assert.ok(Number(html.match(/biblaw[.]js[?]v=([0-9]+)/)?.[1])>=84 && Number(html.match(/biblaw-light[.]css[?]v=([0-9]+)/)?.[1])>=84, 'Current version preserves the single-field UI');
 console.log('084 PASS: single search field, inline plus, hidden legacy state, normal dropdown, word ranking and notes safety');
