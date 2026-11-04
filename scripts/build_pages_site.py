@@ -22,10 +22,13 @@ PUBLIC_FILES = (
     "css/biblaw.css",
     "css/biblaw-light.css",
     "css/theme-index.css",
+    "css/theme-entry.css",
     "css/validation.css",
     "js/theme-suggestion-engine.js",
     "js/biblaw.js",
     "js/theme-relations.js",
+    "js/theme-entry.js",
+    "js/theme-rubrics.js",
     "js/validation.js",
     "data/browser-search-catalog.json",
     "data/note-themes-public-073.json",
@@ -34,6 +37,7 @@ PUBLIC_FILES = (
     "data/linguistic-grammar-browser-runtime.json",
     "data/thematic-index/theme-directory-public.json",
     "data/thematic-index/theme-relations-public.json",
+    "data/thematic-index/theme-rubrics-public.json",
     "data/thematic-index/theme-search-runtime.json",
 )
 
