@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], noteReferences: [], selectedNoteTheme: null, readerPart:'both', readerHtml:null };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], noteReferences: [], selectedNoteTheme: null, readerPart:'both', readerHtml:null, autocompleteIndex:null };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -21,7 +21,16 @@
   function expansionFormsFor(value){ const key=singleWordQueryKey(value); if(!key)return[]; const groupIndex=state.lexicalExpansionByForm.get(key); if(groupIndex===undefined)return[]; return (state.lexicalExpansionGroups[groupIndex]||[]).filter(form=>form!==key); }
   function activeExpansionForms(){ const expansionRequested=state.mode==='exact'&&$('includeWordForms')?.checked; return expansionRequested?expansionFormsFor($('query')?.value||''):[]; }
   function updateExpansionControl(){ const option=$('exactExpansionOption'),checkbox=$('includeWordForms'); if(!option||!checkbox)return; const key=state.mode==='exact'?singleWordQueryKey($('query')?.value||''):null,expansions=key?expansionFormsFor(key):[]; const analyses=state.grammarByForm.get(key)||[]; const available=Boolean(key&&expansions.length); const enabled=available&&!(state.mode==='exact'&&$('primarySearch').classList.contains('advanced-visible')); option.hidden=!enabled; checkbox.disabled=!enabled; const label=option.querySelector('label span'); if(label){ const pos=analyses.length===1?analyses[0].partOfSpeech:null; label.textContent=pos==='NOUN'?'Inclure singulier et pluriel vérifiés':pos==='VERB'?'Inclure les formes verbales vérifiées':'Inclure les formes morphologiques vérifiées'; } if(!enabled)checkbox.checked=false; }
-  const queryTerms = () => { const terms=new Set([$('query')?.value, $('query2')?.value].flatMap(value => norm(value).split(' ')).filter(Boolean)); for(const form of activeExpansionForms())terms.add(form); return terms; };
+  const queryTerms = () => {
+    const values=[$('query')?.value,$('query2')?.value];
+    const terms=new Set(values.flatMap(value=>norm(value).split(' ')).filter(Boolean));
+    for(const value of values){
+      const equivalent=BiblawAutocomplete.otherNumericForm(value);
+      if(equivalent&&!norm(equivalent).includes(' '))terms.add(norm(equivalent));
+    }
+    for(const form of activeExpansionForms())terms.add(form);
+    return terms;
+  };
   const highlighted = value => { const terms=queryTerms(); if(!terms.size)return esc(value); return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>terms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join(''); };
   const modeAwareText = value => state.mode==='exact' ? highlighted(value) : esc(value);
   const type = r => r.recordType === 'master-prayer' ? 'prayer' : r.recordType;
@@ -29,6 +38,12 @@
   const literalIncludes = (value, query) => literalOccurrenceCount({id:'__temporary',_literal:value},query)>0;
   const literalOccurrenceCount = (r, query) => {
     const needle=norm(query); if(!needle)return 0;
+    // Numeric equivalence is exact: 4 <-> quatre, never 4 <-> 40 or 80.
+    const numeric=BiblawAutocomplete.numericValue(query);
+    if(numeric!==null&&needle!=='un'){
+      const original=r._literal!==undefined?[r._literal]:textFragments(r);
+      return BiblawAutocomplete.countNumericOccurrences(original,query);
+    }
     const fragments=r._literal!==undefined?[norm(r._literal)]:(state.normalizedFragmentsById.get(r.id)||[]);
     if(!singleWordQueryKey(query)){
       const boundedNeedle=' '+needle+' ';
@@ -51,6 +66,82 @@
   const activateThemeMode = () => { state.mode='themes'; $('primarySearch').classList.remove('advanced-visible'); $('query2').value=''; $('query2').placeholder='Deuxième thème à croiser'; $('query2').setAttribute('aria-label','Thème 2 facultatif'); $('query').setAttribute('aria-label','Votre recherche'); $('advancedSearchToggle').textContent='Croiser 2 thèmes'; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('dualExactHelp').hidden=true; document.querySelectorAll('[name=sourceType]').forEach(box=>{box.checked=box.value==='psalm';}); $('scopeInfo').hidden=true; state.semanticSelection=null; state.grammarSelection=null; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Ex. amour, lumière, psaume 105'; $('modeHelp').textContent='Chercher dans les thèmes indexés des psaumes.'; hideAmbiguity(); updateExpansionControl(); };
   const activateExactMode = () => { state.mode='exact'; $('modeExact').classList.add('active'); $('modeThemes').classList.remove('active'); $('primarySearch').classList.add('exact-mode'); $('primarySearch').classList.remove('advanced-visible'); $('query2').disabled=true; $('query2').value=''; $('advancedSearchToggle').hidden=false; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('advancedSearchToggle').textContent='Croiser 2 mots'; $('query2').placeholder='Deuxième mot · ex. amour'; $('query2').setAttribute('aria-label','Deuxième mot pour départager'); $('query').setAttribute('aria-label','Premier mot prioritaire'); $('dualExactHelp').hidden=true; $('query').placeholder='Ex. lumière, maison, psaume 105'; $('modeHelp').textContent='Chercher les mots exacts dans les textes.'; hideAmbiguity(); hideTransverseNavigation(); updateExpansionControl(); };
 
+  // 082: Six suggestions maximum, sourced from the already-public corpus.
+  const suggestionFields={query:'searchSuggestions',query2:'searchSuggestions2'};
+  function closeSuggestions(fieldName){
+    const box=$(suggestionFields[fieldName]),field=$(fieldName);
+    if(!box||!field)return;
+    box.hidden=true;box.replaceChildren();field.setAttribute('aria-expanded','false');
+  }
+  function closeAllSuggestions(){closeSuggestions('query');closeSuggestions('query2');}
+  function offerSuggestions(fieldName){
+    const box=$(suggestionFields[fieldName]),field=$(fieldName),index=state.autocompleteIndex;
+    if(!box||!field||!index||field.disabled||!field.value.trim()||
+       field.value.includes('+')){closeSuggestions(fieldName);return;}
+    const available=index.suggestions(field.value,state.mode,selectedTypes(),
+      $('archangelFilter').value,state.themeDirectory,state.recordById,6);
+    if(!available.length){closeSuggestions(fieldName);return;}
+    box.replaceChildren();
+    for(const option of available){
+      const button=document.createElement('button');button.type='button';
+      button.className='search-suggestion';button.setAttribute('role','option');
+      const label=document.createElement('span');
+      label.className='suggestion-label';label.textContent=option.label;
+      const kind=document.createElement('span');
+      kind.className='suggestion-kind';kind.textContent=option.kind==='theme'?'Thème':'Mot';
+      button.append(label,kind);
+      button.addEventListener('click',()=>{
+        if(option.kind==='word'&&state.mode!=='exact')activateExactMode();
+        if(option.kind==='theme'&&state.mode!=='themes')activateThemeMode();
+        $(fieldName).value=option.value;closeAllSuggestions();
+        $(fieldName).focus({preventScroll:true});
+      });
+      button.addEventListener('keydown',event=>{
+        if(event.key==='Escape'){
+          event.preventDefault();closeAllSuggestions();field.focus({preventScroll:true});
+        }else if(event.key==='ArrowDown'){
+          event.preventDefault();(button.nextElementSibling||field).focus({preventScroll:true});
+        }else if(event.key==='ArrowUp'){
+          event.preventDefault();(button.previousElementSibling||field).focus({preventScroll:true});
+        }
+      });
+      box.append(button);
+    }
+    box.hidden=false;field.setAttribute('aria-expanded','true');
+  }
+  function bindSuggestions(){
+    for(const fieldName of Object.keys(suggestionFields)){
+      $(fieldName).addEventListener('input',()=>offerSuggestions(fieldName));
+      $(fieldName).addEventListener('focus',()=>offerSuggestions(fieldName));
+      $(fieldName).addEventListener('keydown',event=>{
+        if(event.key==='Escape')closeAllSuggestions();
+        if(event.key==='ArrowDown'){
+          const box=$(suggestionFields[fieldName]);
+          if(!box.hidden){
+            event.preventDefault();box.querySelector('button')?.focus({preventScroll:true});
+          }
+        }
+      });
+    }
+    document.addEventListener('pointerdown',event=>{
+      if(!event.target.closest('.query-stack'))closeAllSuggestions();
+    });
+  }
+  function indexPublicWords(){
+    const index=BiblawAutocomplete.createIndex(),records=state.records;
+    let cursor=0;
+    function batch(){
+      const next=Math.min(records.length,cursor+45);
+      for(;cursor<next;cursor++)index.addRecord(records[cursor]);
+      if(cursor<records.length)setTimeout(batch,0);
+      else{
+        state.autocompleteIndex=index;
+        if(document.activeElement===$('query'))offerSuggestions('query');
+        if(document.activeElement===$('query2'))offerSuggestions('query2');
+      }
+    }
+    setTimeout(batch,0);
+  }
   async function load() {
     try {
       const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime, noteThemesIndex] = await Promise.all([
@@ -113,6 +204,7 @@
       $('indexCount').textContent=`${state.themeDirectory.length} thèmes indexés`;
       updateExpansionControl();
       search();
+      indexPublicWords();
     } catch (error) { console.error(error); $('results').innerHTML = '<div class="empty">Le corpus ne peut pas être chargé. Ouvrez Biblaw depuis son adresse web.</div>'; }
   }
 
@@ -329,6 +421,7 @@
   }
 
   function search(){
+    closeAllSuggestions();
     correctMobileQueryDuplicate();
     const plusPair=splitExactWordPair($('query').value);
     if(plusPair){
@@ -342,7 +435,7 @@
     updateExpansionControl();
     if(!query){hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'no-result'});return render([]);}
     const psalmNumber=parsePsalmNumberQuery(query);
-    if(psalmNumber!==null && !query2){ hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'other'}); return render(psalmNumberMatches(psalmNumber),null,{numberLookup:true,psalmNumber}); }
+    if(psalmNumber!==null && !query2 && state.mode==='themes'){ hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'other'}); return render(psalmNumberMatches(psalmNumber),null,{numberLookup:true,psalmNumber}); }
     if(state.mode==='themes'){
       if(query2){
         const resolvedA=resolveIndexedThemes(query), resolvedB=resolveIndexedThemes(query2);
@@ -614,5 +707,6 @@
   $('notesLibraryClose').addEventListener('click',()=>toggleNotesLibrary(true));
   $('notesThemeFilter').addEventListener('input',renderNoteThemeDirectory);
   $('notesThemeBack').addEventListener('click',returnToNoteThemes);
+  bindSuggestions();
   load();
 })();
