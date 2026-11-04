@@ -20,7 +20,7 @@
   function singleWordQueryKey(value){ const key=norm(value); return key&&!key.includes(' ')?key:null; }
   function expansionFormsFor(value){ const key=singleWordQueryKey(value); if(!key)return[]; const groupIndex=state.lexicalExpansionByForm.get(key); if(groupIndex===undefined)return[]; return (state.lexicalExpansionGroups[groupIndex]||[]).filter(form=>form!==key); }
   function activeExpansionForms(){ const expansionRequested=state.mode==='exact'&&$('includeWordForms')?.checked; return expansionRequested?expansionFormsFor($('query')?.value||''):[]; }
-  function updateExpansionControl(){ const option=$('exactExpansionOption'),checkbox=$('includeWordForms'); if(!option||!checkbox)return; const key=state.mode==='exact'?singleWordQueryKey($('query')?.value||''):null,expansions=key?expansionFormsFor(key):[]; const analyses=state.grammarByForm.get(key)||[]; const available=Boolean(key&&expansions.length); const enabled=available; option.hidden=!enabled; checkbox.disabled=!enabled; const label=option.querySelector('label span'); if(label){ const pos=analyses.length===1?analyses[0].partOfSpeech:null; label.textContent=pos==='NOUN'?'Inclure singulier et pluriel vérifiés':pos==='VERB'?'Inclure les formes verbales vérifiées':'Inclure les formes morphologiques vérifiées'; } if(!enabled)checkbox.checked=false; }
+  function updateExpansionControl(){ const option=$('exactExpansionOption'),checkbox=$('includeWordForms'); if(!option||!checkbox)return; const key=state.mode==='exact'?singleWordQueryKey($('query')?.value||''):null,expansions=key?expansionFormsFor(key):[]; const analyses=state.grammarByForm.get(key)||[]; const available=Boolean(key&&expansions.length); const enabled=available&&!(state.mode==='exact'&&$('primarySearch').classList.contains('advanced-visible')); option.hidden=!enabled; checkbox.disabled=!enabled; const label=option.querySelector('label span'); if(label){ const pos=analyses.length===1?analyses[0].partOfSpeech:null; label.textContent=pos==='NOUN'?'Inclure singulier et pluriel vérifiés':pos==='VERB'?'Inclure les formes verbales vérifiées':'Inclure les formes morphologiques vérifiées'; } if(!enabled)checkbox.checked=false; }
   const queryTerms = () => { const terms=new Set([$('query')?.value, $('query2')?.value].flatMap(value => norm(value).split(' ')).filter(Boolean)); for(const form of activeExpansionForms())terms.add(form); return terms; };
   const highlighted = value => { const terms=queryTerms(); if(!terms.size)return esc(value); return String(value||'').split(/([\p{L}\p{N}œŒæÆ’'-]+)/gu).map(part=>terms.has(norm(part))?`<mark class="search-hit">${esc(part)}</mark>`:esc(part)).join(''); };
   const modeAwareText = value => state.mode==='exact' ? highlighted(value) : esc(value);
@@ -48,8 +48,8 @@
   const importanceLabel = value => ({ central: 'Central', important: 'Important', related: 'Lié' }[value] || 'Indexé');
   const importanceRank = value => ({ central: 0, important: 1, related: 2 }[value] ?? 3);
   const publishPresentationState = detail => document.dispatchEvent(new CustomEvent('biblaw:presentation-state', { detail }));
-  const activateThemeMode = () => { state.mode='themes'; document.querySelectorAll('[name=sourceType]').forEach(box=>{box.checked=box.value==='psalm';}); $('scopeInfo').hidden=true; state.semanticSelection=null; state.grammarSelection=null; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Ex. amour, lumière, psaume 105'; $('modeHelp').textContent='Chercher dans les thèmes indexés des psaumes.'; hideAmbiguity(); updateExpansionControl(); };
-  const activateExactMode = () => { state.mode='exact'; $('modeExact').classList.add('active'); $('modeThemes').classList.remove('active'); $('primarySearch').classList.add('exact-mode'); $('primarySearch').classList.remove('advanced-visible'); $('query2').disabled=true; $('query2').value=''; $('advancedSearchToggle').hidden=true; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('advancedSearchToggle').textContent='Croiser 2 thèmes'; $('query').placeholder='Ex. lumière, maison, psaume 105'; $('modeHelp').textContent='Chercher les mots exacts dans les textes.'; hideAmbiguity(); hideTransverseNavigation(); updateExpansionControl(); };
+  const activateThemeMode = () => { state.mode='themes'; $('primarySearch').classList.remove('advanced-visible'); $('query2').value=''; $('query2').placeholder='Deuxième thème à croiser'; $('query2').setAttribute('aria-label','Thème 2 facultatif'); $('query').setAttribute('aria-label','Votre recherche'); $('advancedSearchToggle').textContent='Croiser 2 thèmes'; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('dualExactHelp').hidden=true; document.querySelectorAll('[name=sourceType]').forEach(box=>{box.checked=box.value==='psalm';}); $('scopeInfo').hidden=true; state.semanticSelection=null; state.grammarSelection=null; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Ex. amour, lumière, psaume 105'; $('modeHelp').textContent='Chercher dans les thèmes indexés des psaumes.'; hideAmbiguity(); updateExpansionControl(); };
+  const activateExactMode = () => { state.mode='exact'; $('modeExact').classList.add('active'); $('modeThemes').classList.remove('active'); $('primarySearch').classList.add('exact-mode'); $('primarySearch').classList.remove('advanced-visible'); $('query2').disabled=true; $('query2').value=''; $('advancedSearchToggle').hidden=false; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('advancedSearchToggle').textContent='Croiser 2 mots'; $('query2').placeholder='Deuxième mot · ex. amour'; $('query2').setAttribute('aria-label','Deuxième mot pour départager'); $('query').setAttribute('aria-label','Premier mot prioritaire'); $('dualExactHelp').hidden=true; $('query').placeholder='Ex. lumière, maison, psaume 105'; $('modeHelp').textContent='Chercher les mots exacts dans les textes.'; hideAmbiguity(); hideTransverseNavigation(); updateExpansionControl(); };
 
   async function load() {
     try {
@@ -117,6 +117,23 @@
   }
 
   function matches(query) { const allowed=selectedTypes(),a=$('archangelFilter').value; return state.records.filter(r=>allowed.has(type(r))&&(!a||r.archangel===a)).map(record=>({record,score:1,occurrenceCount:literalOccurrenceCount(record,query)})).filter(item=>item.occurrenceCount>0); }
+  // 081: Literal pair ranking reuses the certified word-boundary counter and active source filters.
+  function splitExactWordPair(value) {
+    const parts=String(value||'').split('+');
+    if(parts.length!==2)return null;
+    const first=parts[0].trim(),second=parts[1].trim();
+    return first&&second?[first,second]:null;
+  }
+  function rankExactWordPairs(firstWord,secondWord) {
+    const secondCounts=new Map(matches(secondWord).map(item=>[item.record.id,item.occurrenceCount]));
+    return matches(firstWord)
+      .filter(item=>secondCounts.has(item.record.id))
+      .map(item=>({...item,secondaryOccurrenceCount:secondCounts.get(item.record.id)}))
+      .sort((a,b)=>b.occurrenceCount-a.occurrenceCount||
+        b.secondaryOccurrenceCount-a.secondaryOccurrenceCount||
+        (Number(a.record.number)||Number.MAX_SAFE_INTEGER)-(Number(b.record.number)||Number.MAX_SAFE_INTEGER)||
+        String(a.record.id).localeCompare(String(b.record.id),'fr'));
+  }
   function mergeExpansionMatches(items,query,matchSource=matches){ const forms=activeExpansionForms(); if(!forms.length||!singleWordQueryKey(query))return items; const byId=new Map(items.map(item=>[item.record.id,item])); for(const form of forms)for(const item of matchSource(form)){ const current=byId.get(item.record.id); if(current)current.occurrenceCount+=item.occurrenceCount; else byId.set(item.record.id,item); } items.splice(0,items.length,...byId.values()); return items; }
   function psalmNumberMatches(number) { if(!selectedTypes().has('psalm'))return []; const a=$('archangelFilter').value; return (state.psalmsByNumber.get(number)||[]).filter(r=>!a||r.archangel===a).sort((x,y)=>(x.book?.number||9999)-(y.book?.number||9999)||String(x.id).localeCompare(String(y.id),'fr')).map(record=>({record,score:1,numberLookup:true})); }
   function textualPsalmMatches(query) { return matches(query).filter(x=>x.record.recordType==='psalm'); }
@@ -313,6 +330,12 @@
 
   function search(){
     correctMobileQueryDuplicate();
+    const plusPair=splitExactWordPair($('query').value);
+    if(plusPair){
+      if(state.mode!=='exact')activateExactMode();
+      setAdvancedSearch(true);
+      $('query').value=plusPair[0]; $('query2').value=plusPair[1];
+    }
     const query=$('query').value.trim(), query2=$('query2').value.trim();
     const semanticKey=singleWordQueryKey(query);
     if(state.semanticSelection&&semanticKey!==state.semanticSelection.normalizedForm)state.semanticSelection=null;
@@ -346,6 +369,13 @@
       hideAmbiguity();hideTransverseNavigation(); const textual=textualPsalmMatches(query); publishPresentationState({kind:textual.length?'textual-fallback':'no-result'}); return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)});
     }
     hideTransverseNavigation();publishPresentationState({kind:'other'});
+    if($('primarySearch').classList.contains('advanced-visible')){
+      $('includeWordForms').checked=false;
+      $('exactExpansionOption').hidden=true;
+      if(!query2){hideAmbiguity();return render([],null,{dualExactPending:true});}
+      hideAmbiguity();
+      return render(rankExactWordPairs(query,query2),null,{exactSearch:true,dualExactQueries:[query,query2]});
+    }
     const semanticSelection=semanticSelectionContext(query);
     const grammaticalSelection=grammarSelectionContext(query);
     const exactItems=matches(query);
