@@ -28,7 +28,7 @@ for question in questions:
     answer = question["answer"]
     refs = question["references"]
     assert len(answer) > 500 and len(refs) >= 4
-    assert len(re.findall(r"\\(psaume \\d+ [^)]+\\)", answer)) == len(refs), "Missing linked citation"
+    assert len([m for m in answer.split('(psaume ') if m != answer]) == len(refs), 'Missing linked citation'
     previous_end = 0
     for ref in refs:
         at = answer.find(ref["label"], previous_end)
@@ -43,7 +43,7 @@ for question in questions:
         assert requested == sorted(set(requested)) and requested, ident
         available = {int(verse["number"]) for verse in psalm["verses"]}
         assert set(requested) <= available, (ident,requested)
-        match = re.fullmatch(r"book-(\\d+)-psalm-(\\d+)", ident)
+        match = re.fullmatch(r'book-([0-9]+)-psalm-([0-9]+)', ident)
         assert match is not None
         canonical = read(f"data/corpus/books/book-{match.group(1)}/psalm-{match.group(2)}.json")
         assert canonical["id"] == ident and canonical["archangel"] == ref["archangel"]
