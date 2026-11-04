@@ -295,3 +295,21 @@ body.view-notes .shell {padding-top:clamp(1rem,3vw,2rem)}
  .dialog-head,.dialog-content {background:#fff}
  .search-hit {background:transparent;color:inherit}
 }
+
+/* A calm homepage: no empty results or advanced controls before the first search. */
+body:not(.has-query):not(.view-notes) .results-section,
+body:not(.has-query):not(.view-notes) #secondaryTools {display:none!important}
+body:not(.has-query):not(.view-notes) .primary-search {margin-bottom:0}
+#themeRubricsPanel .theme-rubric-links {gap:.45rem}
+#themeRubricsPanel .theme-rubric-link {color:#744c20}
+#themeRubricsPanel .theme-rubric-heading {color:#302922}
+.search-shortcuts .popular-questions-toggle {white-space:normal}
+@media(max-width:760px){
+  .primary-search.advanced-visible .theme-search-row {grid-template-columns:1fr}
+  .primary-search.advanced-visible .advanced-query {display:flex}
+  .primary-search.advanced-visible .theme-plus {display:none}
+  .primary-search.advanced-visible .search-submit {grid-column:1}
+  .site-header .index-toggle {padding:.5rem .65rem;font-size:.8rem}
+  .search-scope-note {margin-bottom:.6rem}
+  .ambiguity-panel {padding:.8rem}
+}
