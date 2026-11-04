@@ -129,6 +129,7 @@
     for(const fragment of fragments||[]){
       const tokens=norm(fragment).match(/[a-z0-9]+/g)||[];
       for(let i=0;i<tokens.length;){
+        if(!/^\d+$/u.test(tokens[i])&&!numberMap().has(tokens[i])){i++;continue;}
         let bestLength=0,bestNumber=null;
         if(/^\d+$/u.test(tokens[i])){
           bestLength=1;bestNumber=numericValue(tokens[i]);
