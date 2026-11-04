@@ -358,3 +358,33 @@ body:not(.has-query):not(.view-notes) .primary-search {margin-bottom:0}
 @media print {
  .reader-choice,.reader-export-status {display:none!important}
 }
+
+/* 078 — Archange is a visible search filter; popular questions are paused. */
+#popularQuestionsToggle[hidden],.popular-questions-toggle[hidden] {display:none!important}
+.search-shortcuts {grid-template-columns:repeat(2,minmax(0,1fr))}
+.source-scope .archangel-picker {
+  display:grid;grid-template-columns:1fr;gap:.24rem;
+  flex:0 1 14rem;min-width:11.5rem;max-width:17rem;
+  margin-left:auto;align-self:center
+}
+.source-scope .archangel-picker>label {
+  display:block;min-height:0;margin:0;padding:0;border:0;border-radius:0;
+  background:transparent;color:#5d554b;box-shadow:none;cursor:default;
+  font-size:.79rem;font-weight:650
+}
+.source-scope .archangel-picker>.input {
+  width:100%;min-height:2.65rem;margin:0;padding:.52rem .8rem;
+  border:1px solid #d6c9b5;border-radius:.72rem;
+  background:#fff;color:#34312d;cursor:pointer;font-size:.9rem
+}
+.source-scope .archangel-picker>.input:focus-visible {
+  outline:3px solid #ad7b31;outline-offset:2px
+}
+@media(max-width:760px) {
+  .search-shortcuts{grid-template-columns:1fr}
+  .source-scope .archangel-picker{
+    flex:1 1 100%;min-width:0;max-width:none;margin-left:0;
+    margin-top:.24rem
+  }
+  .source-scope .archangel-picker>.input{min-height:2.85rem}
+}
