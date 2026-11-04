@@ -19,6 +19,11 @@
    if(q){if(p)add('gap','');add('title','Prière '+record.attachedPrayer.number);for(const line of record.attachedPrayer.text.split(/\n/))add('text',line);}
   }else if(record.recordType==='master-prayer'){title='Prière '+record.number;filename='Biblaw_Priere_'+slug(record.number||record.id)+'.pdf';add('title',title);add('text',record.text);}
   else if(record.recordType==='note'){title='Note';filename='Biblaw_Note_'+slug(record.id)+'.pdf';add('title',record.title||title);add('text',record.text||record.summary);}
+  else if(record.recordType==='faq'){
+    title=String(record.title||'Question');
+    filename='Biblaw_Question_'+slug(record.id||'reponse')+'.pdf';
+    add('title',title);add('text',record.text);
+  }
   else throw Error('Type de texte non exportable');
   if(!blocks.some(b=>b.kind==='text'&&b.text))throw Error('Texte indisponible');
   return{title,filename,blocks};
