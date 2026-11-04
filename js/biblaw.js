@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [] };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], selectedNoteTheme: null };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -53,13 +53,14 @@
 
   async function load() {
     try {
-      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime] = await Promise.all([
+      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime, noteThemesIndex] = await Promise.all([
         fetch('data/browser-search-catalog.json').then(r => { if (!r.ok) throw Error('browser-search-catalog'); return r.json(); }),
         fetch('data/thematic-index/theme-directory-public.json').then(r => { if (!r.ok) throw Error('theme-directory'); return r.json(); }),
         fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); }),
         fetch('data/lexical-expansion-runtime.json').then(r => { if (!r.ok) throw Error('lexical-expansion-runtime'); return r.json(); }),
         Promise.resolve({targets:[]}),
-        fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); })
+        fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); }),
+        fetch('data/note-themes-public-073.json').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); })
       ]);
       state.themeDirectory = directory.themes || [];
       state.themeById = new Map(state.themeDirectory.map(t => [t.id, t]));
@@ -74,6 +75,16 @@
       state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime);
       state.records = bundle.records || [];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
+      // No note becomes public through classification: all IDs must already exist in browser catalog.
+      const publishedNotes = new Set(state.records.filter(r => type(r)==='note').map(r=>r.id));
+      if (publishedNotes.size!==11 || noteThemesIndex.publicNoteCount!==11) throw Error('Public note count mismatch');
+      const noteThemes = noteThemesIndex.themes || [];
+      if (!noteThemes.length || noteThemes.some(t=>!t.label||!Array.isArray(t.noteIds)||!t.noteIds.length||t.noteIds.some(id=>!publishedNotes.has(id)))) throw Error('Invalid public note-theme allowlist');
+      const indexedNotes = new Set(noteThemes.flatMap(t=>t.noteIds));
+      if (indexedNotes.size!==publishedNotes.size) throw Error('Some public notes have no themes');
+      state.noteThemes = noteThemes.slice().sort((a,b)=>a.label.localeCompare(b.label,'fr',{sensitivity:'base'}));
+      renderNoteThemeDirectory();
+
       state.psalmsByNumber = new Map();
       state.normalizedFragmentsById = new Map();
       for (const r of state.records) {
@@ -361,6 +372,49 @@
     document.querySelectorAll('[data-open]').forEach(b=>b.onclick=e=>{e.stopPropagation();open(b.dataset.open);}); bindThemeLinks($('results')); bindTextSearchLink();
   }
   function bindTextSearchLink(){ const button=document.querySelector('[data-show-text-search]'); if(button)button.onclick=()=>{ activateExactMode(); search(); window.scrollTo({top:$('results').offsetTop-90,behavior:'smooth'}); }; }
+  // 073: Independent navigation, restricted to the eleven published note IDs.
+  function renderNoteThemeDirectory() {
+    const list=$('notesThemeList'),needle=norm($('notesThemeFilter').value||'');
+    list.replaceChildren();
+    for (const theme of state.noteThemes.filter(t=>!needle||norm(t.label).includes(needle))) {
+      const button=document.createElement('button');
+      button.type='button';button.className='notes-theme-item';
+      button.textContent=theme.label+' ('+theme.noteIds.length+')';
+      button.addEventListener('click',()=>openNoteTheme(theme));
+      list.append(button);
+    }
+    if (!list.children.length) {
+      const empty=document.createElement('p');empty.className='muted';empty.textContent='Aucun thème trouvé.';list.append(empty);
+    }
+  }
+  function openNoteTheme(theme) {
+    state.selectedNoteTheme=theme.label;
+    $('notesThemePicker').hidden=true;$('notesThemeResults').hidden=false;
+    $('notesSelectedTheme').textContent=theme.label+' — '+theme.noteIds.length+' note'+(theme.noteIds.length>1?'s':'');
+    const list=$('notesResultList');list.replaceChildren();
+    for (const id of theme.noteIds) {
+      const record=state.recordById.get(id);
+      if (!record||type(record)!=='note')continue;
+      const parts=id.split('-');
+      const title=parts.length===6?'Livre '+Number(parts[1])+' · Psaume '+Number(parts[3])+' · Note '+Number(parts[5]):'Note';
+      const button=document.createElement('button');
+      button.type='button';button.className='notes-record-item';
+      const heading=document.createElement('strong');heading.textContent=title;
+      const sub=document.createElement('span');sub.textContent=record.title||archangelName(record.archangel)||'Ouvrir la note';
+      button.append(heading,sub);button.addEventListener('click',()=>open(id));
+      list.append(button);
+    }
+  }
+  function returnToNoteThemes() {
+    state.selectedNoteTheme=null;$('notesThemeResults').hidden=true;$('notesThemePicker').hidden=false;
+    $('notesThemeFilter').focus({preventScroll:true});
+  }
+  function toggleNotesLibrary(forceClose=false) {
+    const panel=$('notesLibrary'),show=!forceClose&&panel.hidden;
+    panel.hidden=!show;$('notesLibraryToggle').setAttribute('aria-expanded',String(show));
+    if (show) { returnToNoteThemes();panel.scrollIntoView({behavior:'smooth',block:'start'}); }
+    else { $('notesLibraryToggle').focus({preventScroll:true}); }
+  }
   function open(id){
     const r=state.recordById.get(id);if(!r)return;state.active=r; $('dialogEyebrow').textContent=label(r);$('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:'Note associée');
     if(r.recordType==='psalm'){ const verses=(r.verses||[]).map(v=>`<div class="verse"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${modeAwareText(v.text)}</div></div>`).join(''); const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`; $('dialogContent').innerHTML=verses+(r.attachedPrayer?`<section class="prayer-block"><h3>Prière ${r.attachedPrayer.number}</h3>${modeAwareText(r.attachedPrayer.text)}</section>`:'')+themesBlock; bindThemeLinks($('dialogContent')); } else $('dialogContent').innerHTML=`<div class="prayer-block">${modeAwareText(r.text||r.summary||'')}</div>`;
@@ -392,5 +446,9 @@
   $('modeThemes').onclick=()=>{activateThemeMode();search();}; $('modeExact').onclick=()=>{activateExactMode();search();}; $('closeAmbiguity').onclick=hideAmbiguity;
   $('popularQuestionsToggle').onclick=openPopularQuestions; $('closePopularQuestions').onclick=closePopularQuestions; $('popularQuestionsBackdrop').onclick=closePopularQuestions; $('popularQuestionsBack').onclick=renderPopularQuestionFamilies;
   $('indexToggle').onclick=()=>{$('indexPanel').hidden?openIndex():closeIndex();}; $('themeFilter').oninput=renderThemeDirectory; $('closeIndex').onclick=closeIndex; $('indexBackdrop').onclick=closeIndex; $('closeDialog').onclick=()=>$('recordDialog').close(); $('printRecord').onclick=()=>window.print(); $('downloadRecord').onclick=()=>{const blob=new Blob([activeText()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${state.active?.id||'biblaw'}.txt`;a.click();URL.revokeObjectURL(a.href);};
+  $('notesLibraryToggle').addEventListener('click',()=>toggleNotesLibrary());
+  $('notesLibraryClose').addEventListener('click',()=>toggleNotesLibrary(true));
+  $('notesThemeFilter').addEventListener('input',renderNoteThemeDirectory);
+  $('notesThemeBack').addEventListener('click',returnToNoteThemes);
   load();
 })();
