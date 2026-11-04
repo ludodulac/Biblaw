@@ -39,7 +39,7 @@ assert 'function expansionFormsFor' in js
 assert 'function mergeExpansionMatches' in js
 assert "return render([],[],{textualCount:textual.length,unresolvedTheme:true,textualAvailable:Boolean(textual.length)})" in js
 assert 'data-show-text-search' in js
-assert '>Par thème</button>' in html and '>Occurrences de mots</button>' in html
+assert '>Thèmes</button>' in html and '>Mots exacts</button>' in html
 assert html.index('id="modeThemes"') < html.index('id="secondaryTools"')
 assert html.index('id="modeExact"') < html.index('id="secondaryTools"')
 assert html.index('id="exactExpansionOption"') < html.index('id="results"')
