@@ -59,5 +59,5 @@ assert.ok(js.includes("correctMobileQueryDuplicate();"),'080 keyboard correction
 assert.ok(js.includes("publishedNotes.size!==11"),'Public note gate must remain');
 assert.match(html,/id="dualExactHelp"/);
 assert.match(html,/id="advancedSearchToggle"/);
-assert.ok(Number(html.match(/js\\/biblaw\\.js\\?v=(\\d+)/)?.[1])>=81,'Avoid old JavaScript in mobile cache');
+assert.ok(Number(html.match(/js\/biblaw\.js\?v=(\d+)/)?.[1])>=81,'Expected a current cache-busted app file');
 console.log('081 PASS — vie/amour 26-32, 26-25, 25-32, 20-14, 10-16; first count dominates, second breaks ties, both required');
