@@ -35,3 +35,21 @@
 .exact-expansion-option{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin:.15rem 0 .8rem;padding:.6rem .75rem;border:1px solid var(--line);border-radius:.75rem;background:var(--panel2);font-size:.82rem}.exact-expansion-option[hidden]{display:none}.exact-expansion-option>span{color:var(--muted);font-weight:600}.exact-expansion-option label{display:flex;align-items:center;gap:.45rem;color:#d6dde1;cursor:pointer}.exact-expansion-option input{width:1rem;height:1rem;margin:0;accent-color:var(--accent)}.exact-expansion-option input:disabled+span{opacity:.45}.exact-expansion-option input:disabled{cursor:not-allowed}.exact-expansion-option label:has(input:disabled){cursor:default}@media(max-width:760px){.exact-expansion-option{align-items:flex-start;flex-direction:column;gap:.45rem}}
 
 .primary-mode-selector{max-width:32rem;margin:.1rem 0 .65rem}.primary-mode-selector .mode-button{flex:1;min-height:2.65rem}.primary-mode-help{margin:-.1rem 0 .75rem}@media(max-width:760px){.primary-mode-selector{max-width:none;width:100%}.primary-mode-selector .mode-button{min-height:2.8rem;padding:.55rem .6rem}}
+
+/* 073: Public-only notes theme navigation independent from Psalm index. */
+.notes-library[hidden],#notesThemeResults[hidden],#notesThemePicker[hidden]{display:none}
+.notes-library{scroll-margin-top:5rem;margin-top:.9rem}
+.notes-library-header{display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+.notes-library-header h2{font-family:"Source Serif 4",serif;font-size:clamp(1.1rem,3vw,1.5rem);margin:0}
+.notes-library-info{color:var(--muted);font-size:.83rem;line-height:1.5}
+#notesThemePicker>label{display:block;font-size:.83rem;font-weight:600;margin:1rem 0 .35rem}
+#notesThemeFilter{width:100%;min-height:2.8rem;padding:.55rem .75rem;border-radius:.7rem;border:1px solid rgba(255,255,255,.25);background:var(--panel2);color:var(--ink)}
+.notes-theme-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:.45rem;margin-top:.75rem;max-height:min(55dvh,30rem);overflow-y:auto;overscroll-behavior:contain}
+.notes-theme-item,.notes-record-item{display:block;min-height:2.9rem;padding:.65rem .8rem;border:1px solid var(--line);border-radius:.65rem;background:var(--panel2);color:var(--ink);text-align:left;cursor:pointer;overflow-wrap:anywhere}
+.notes-theme-item:hover,.notes-record-item:hover{border-color:var(--accent)}
+.notes-theme-item:focus-visible,.notes-record-item:focus-visible,#notesThemeFilter:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#notesSelectedTheme{margin:.9rem 0;font-size:1.1rem}
+.notes-result-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:.5rem}
+.notes-record-item strong,.notes-record-item span{display:block}
+.notes-record-item span{font-size:.82rem;color:var(--muted);margin-top:.25rem}
+@media(max-width:400px){.notes-library-header{align-items:flex-start}.notes-library-header .secondary{padding:.55rem}.notes-theme-list,.notes-result-list{grid-template-columns:1fr;max-height:50dvh}}
