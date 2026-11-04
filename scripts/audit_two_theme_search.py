@@ -17,7 +17,7 @@ assert '{theme:themeA,thematic:thematicA}' in intersection
 assert 'theme:themeB' in intersection and 'thematic:thematicB' in intersection
 assert 'score+' not in intersection and 'current.score' not in intersection
 assert 'resolvedA.length!==1||resolvedB.length!==1' in js
-assert 'showDualAmbiguity' in js and 'Résolvez chaque thème avant l’intersection' in js
+assert 'showDualAmbiguity' in js and 'Choisissez les deux thèmes' in js
 assert 'dualThemeReasons' in js
 assert "thematic.teaching||''" in js
 assert 'Teaching combiné' not in js and 'combinedTeaching' not in js
