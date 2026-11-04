@@ -21,7 +21,10 @@ assert 'recordPages' not in js and 'pdfPages' not in js
 assert "thematic||themeMatches?'Voir le psaume source':'Voir'" in js
 assert 'data-open=' in js and 'data-open=' not in html
 assert "bookMeta||'Corpus structuré'" in js
-assert 'id="downloadRecord"' in html and 'Télécharger le texte' in html
+assert 'id="downloadRecord"' in html and 'Télécharger PDF' in html
+assert 'js/biblaw-pdf.js' in html and 'BiblawPDF.download(state.active,scope)' in js
+assert 'name="readerPart" value="psalm"' in html and 'name="readerPart" value="prayer"' in html and 'name="readerPart" value="both"' in html
+assert 'id="sourceScope"' in html and html.count('name="sourceType"') == 3
 assert 'r.attachedPrayer?.text' in js
 assert 'id="query2"' in html and 'Thème 2 facultatif' in html
 assert 'id="secondaryTools"' in html and 'Autres recherches et filtres' in html
@@ -80,7 +83,7 @@ exact = js[js.index('function exactVerses'):js.index('function relatedThemes')]
 assert 'literalIncludes(v.text,query)' in exact
 assert '${highlighted(v.text)}' in exact
 assert '<mark class="search-hit">' in js
-assert "new Blob([activeText()]" in js and '<mark' not in js[js.index('function activeText()'):js.index('function renderThemeDirectory()')]
+assert 'text/plain;charset=utf-8' not in js and '<mark' not in js[js.index('function activeText()'):js.index('function renderThemeDirectory()')]
 assert '@media print' in css and '.search-hit{padding:0;border-radius:0;background:transparent;color:inherit}' in css
 assert 'importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number' in js
 
