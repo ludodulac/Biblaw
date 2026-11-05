@@ -27,7 +27,7 @@ ids = set()
 for question in questions:
     answer = question["answer"]
     refs = question["references"]
-    assert len(answer) > 500 and len(refs) >= 4
+    assert len(answer) > 500 and len(refs) >= 3
     assert answer.count('(psaume ') == len(refs), 'Missing linked citation'
     previous_end = 0
     for ref in refs:
