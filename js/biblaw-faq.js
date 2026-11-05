@@ -76,10 +76,10 @@
   async function init(records){
     state.records=new Map((records||[]).map(r=>[r.id,r]));
     if(state.loading)return state.loading;
-    state.loading=fetch('data/faq-public-085.json?v=085').then(async response=>{
+    state.loading=fetch('data/faq-public-085.json?v=086').then(async response=>{
       if(!response.ok)throw Error('Les questions ne sont pas disponibles.');
       const data=await response.json();
-      if(data.version!==1||data.questions?.length!==4||
+      if(data.version!==2||data.questions?.length!==8||
          data.questions.some(q=>!q.id||!q.title||!q.answer||!Array.isArray(q.references)))
         throw Error('Fichier de questions invalide.');
       for(const q of data.questions)for(const ref of q.references)if(!validReference(ref))
