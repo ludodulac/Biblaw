@@ -57,9 +57,9 @@ jobs:
         run: node scripts/smoke_compound_autocomplete_083.mjs
       - name: Vérifier le champ unique et le bouton plus 084
         run: node scripts/smoke_single_field_084.mjs
-      - name: Vérifier les références des treize réponses et la confidentialité 087
+      - name: Vérifier les références des dix-neuf réponses et la confidentialité 088
         run: python scripts/audit_faq_085.py
-      - name: Tester les treize questions, le retour et les PDF 087
+      - name: Tester les dix-neuf questions, le retour et les PDF 088
         run: node scripts/smoke_faq_085.mjs
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
