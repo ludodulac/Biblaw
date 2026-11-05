@@ -13,6 +13,34 @@
       Array.isArray(ref.verses)&&ref.verses.length>0&&
       ref.verses.every(n=>record.verses?.some(verse=>Number(verse.number)===n)));
   }
+  // 090: build cited verse links from the author's unchanged words; never guess a Psalm.
+  function linkedReferences(question,bookNumbers){
+    const pattern=/\\(psaume\\s+(\\d+)\\s+(?:de\\s+|d['’])\\s*(Michaël|Gabriel|Raphaël|Ouriel),\\s+versets?\\s+([^)]+)\\)/g;
+    const matches=[...String(question.answer||'').matchAll(pattern)];
+    if(matches.length!==4||question.answer.split('(psaume ').length!==5)
+      throw Error('Références incomplètes : '+question.id);
+    const references=matches.map(match=>{
+      const number=Number(match[1]),archangel=match[2].normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+      const book=bookNumbers[archangel+':'+number];
+      if(!Number.isInteger(book))throw Error('Psaume non identifié : '+match[0]);
+      const verses=[],tail=match[3].replace(/(\\d+)\\s+à\\s+(\\d+)/g,(_,start,end)=>{
+        const a=Number(start),b=Number(end);
+        if(b<a||b-a>100)throw Error('Plage de versets invalide');
+        for(let i=a;i<=b;i++)verses.push(i);
+        return '';
+      });
+      for(const digit of tail.matchAll(/\\d+/g))verses.push(Number(digit[0]));
+      const selected=[...new Set(verses)].sort((a,b)=>a-b);
+      if(!selected.length)throw Error('Versets introuvables : '+match[0]);
+      return {label:match[0],recordId:'book-'+String(book).padStart(2,'0')+
+        '-psalm-'+String(number).padStart(3,'0'),archangel,number,verses:selected};
+    });
+    if(question.references?.length){
+      if(JSON.stringify(question.references)!==JSON.stringify(references))
+        throw Error('Références contradictoires : '+question.id);
+    }
+    return {...question,references};
+  }
   function showStatus(message){
     $('faqStatus').textContent=message;
     $('faqStatus').hidden=!message;
@@ -82,9 +110,27 @@
       if(data.version!==5||data.questions?.length!==25||
          data.questions.some(q=>!q.id||!q.title||!q.answer||!Array.isArray(q.references)))
         throw Error('Fichier de questions invalide.');
-      for(const q of data.questions)for(const ref of q.references)if(!validReference(ref))
+      const urls=[1,2,3,4,5].map(n=>'data/faq-090-'+n+'.json?v=090');
+      const [books,...additional]=await Promise.all([
+        'data/faq-090-books.json?v=090',...urls
+      ].map(async url=>{
+        const r=await fetch(url);
+        if(!r.ok)throw Error('Questions supplémentaires indisponibles : '+url);
+        return r.json();
+      }));
+      if(books.version!==1||Object.keys(books.verifiedPsalms||{}).length!==15||
+          additional.length!==5)throw Error('Références 090 incomplètes.');
+      const newQuestions=additional.map((q,i)=>{
+        if(q.id!=='faq-presence-dieu-'+(i+1)||!q.title||!q.answer)
+          throw Error('Question 090 absente ou incorrecte.');
+        return linkedReferences(q,books.verifiedPsalms);
+      });
+      const questions=data.questions.concat(newQuestions);
+      if(questions.length!==30||new Set(questions.map(q=>q.id)).size!==30)
+        throw Error('Liste des questions invalide.');
+      for(const q of questions)for(const ref of q.references)if(!validReference(ref))
         throw Error('Référence de psaume introuvable : '+ref.recordId);
-      state.questions=data.questions;
+      state.questions=questions;
       state.byId=new Map(state.questions.map(q=>[q.id,q]));
       renderIndex();showStatus('');
       return true;
