@@ -6,7 +6,7 @@ const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const faq=JSON.parse(read('data/faq-public-085.json'));
 const bundle=JSON.parse(read('data/browser-search-catalog.json'));
 const html=read('index.html'),js=read('js/biblaw.js');
-assert.equal(faq.questions.length,19);
+assert.equal(faq.questions.length,25);
 assert.ok(html.includes('id="faqToggle"')&&html.includes('id="faqLibrary"')&&
   html.includes('id="faqReturnFromPsalm"')&&html.includes('id="faqAnswerBody"'));
 assert.ok(js.includes("BiblawFAQ.setOpenPsalm(ref=>open(ref.recordId,ref.verses))"));
@@ -43,7 +43,7 @@ context.BiblawFAQ.setOpenPsalm(ref=>{opened=ref;});
 assert.equal(await context.BiblawFAQ.init(bundle.records),true);
 context.BiblawFAQ.open();
 assert.ok(classes.has('view-faq'));
-assert.equal(get('faqList').children.length,19);
+assert.equal(get('faqList').children.length,25);
 get('faqList').children[0].onclick();
 assert.equal(get('faqAnswer').hidden,false);
 assert.equal(get('faqIndex').hidden,true);
@@ -147,6 +147,28 @@ assert.equal(printed[4].text,faq.questions[18].answer);
 get('faqBack').onclick();
 assert.equal(get('faqIndex').hidden,false);
 assert.equal(get('faqAnswer').hidden,true);
+for(let i=19;i<25;i++){
+  get('faqList').children[i].onclick();
+  assert.equal(get('faqAnswerTitle').textContent,faq.questions[i].title);
+  const cited=get('faqAnswerBody').children.filter(el=>el.tag==='button');
+  assert.equal(cited.length,4);
+  assert.equal(cited.filter(el=>el.disabled).length,0);
+  get('faqBack').onclick();
+}
+get('faqList').children[24].onclick();
+const natureLinks=get('faqAnswerBody').children.filter(el=>el.tag==='button');
+context.window.scrollY=815;
+natureLinks[0].onclick();
+assert.equal(opened.recordId,'book-41-psalm-277');
+assert.deepEqual(Array.from(opened.verses),[6,7,8,9,10,11,12,13,14,15]);
+context.window.scrollY=0;
+context.BiblawFAQ.restoreAfterPsalm();
+assert.equal(context.window.scrollY,815);
+assert.equal(natureLinks[0].focused,true);
+assert.equal(get('faqAnswer').hidden,false);
+get('faqPdf').onclick();
+assert.equal(printed[5].text,faq.questions[24].answer);
+get('faqBack').onclick();
 context.BiblawFAQ.close();
 assert.equal(get('faqLibrary').hidden,true);
 
@@ -159,4 +181,4 @@ const pdfContent=Buffer.from(await output.blob.arrayBuffer()).toString('latin1')
 assert.ok(pdfContent.startsWith('%PDF-1.4'));
 assert.ok(pdfContent.includes('/Type /Page'));
 assert.ok(output.pages>=1);
-console.log('FAQ 088 PASS: nineteen answers, Bible verse links, scroll restoration and original PDF texts');
+console.log('FAQ 089 PASS: twenty-five answers, linked verses, return positions, PDFs and previous tests');

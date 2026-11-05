@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""088: audit all nineteen public FAQ answers, linked Psalm and verse boundaries.
+"""089: audit all twenty-five public FAQ answers, linked Psalm and verse boundaries.
 The FAQ does not grant publication rights to any additional historical notes.
 """
 import json
@@ -11,11 +11,11 @@ def read(relative):
     return json.loads((ROOT / relative).read_text(encoding="utf-8"))
 
 data = read("data/faq-public-085.json")
-assert data["version"] == 4, "Invalid FAQ version"
+assert data["version"] == 5, "Invalid FAQ version"
 questions = data["questions"]
-assert len(questions) == 19
-assert [q["id"] for q in questions] == [f"faq-dieu-{n}" for n in range(1, 5)] + [f"faq-souffrance-{n}" for n in range(1, 5)] + [f"faq-mort-{n}" for n in range(1, 6)] + [f"faq-sens-vie-{n}" for n in range(1, 7)]
-assert len({q["title"] for q in questions}) == 19
+assert len(questions) == 25
+assert [q["id"] for q in questions] == [f"faq-dieu-{n}" for n in range(1, 5)] + [f"faq-souffrance-{n}" for n in range(1, 5)] + [f"faq-mort-{n}" for n in range(1, 6)] + [f"faq-sens-vie-{n}" for n in range(1, 7)] + [f"faq-nature-dieu-{n}" for n in range(1, 7)]
+assert len({q["title"] for q in questions}) == 25
 
 public = read("data/browser-search-catalog.json")
 public_records = {r["id"]: r for r in public["records"]}
@@ -50,5 +50,5 @@ for question in questions:
         assert {int(verse["number"]) for verse in canonical["verses"]} >= set(requested)
         count += 1
 
-assert count == 73 and len(ids) == 45, (count,len(ids))
-print(f"FAQ 088 PASS: {len(questions)} exact answers, {count} links, {len(ids)} public psalms, every requested verse exists, 11-note privacy unchanged")
+assert count == 97 and len(ids) == 56, (count,len(ids))
+print(f"FAQ 089 PASS: {len(questions)} exact answers, {count} links, {len(ids)} public psalms, every requested verse exists, 11-note privacy unchanged")
