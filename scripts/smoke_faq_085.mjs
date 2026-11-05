@@ -4,6 +4,8 @@ import vm from 'node:vm';
 
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const faq=JSON.parse(read('data/faq-public-085.json'));
+const addon=Array.from({length:5},(_,i)=>JSON.parse(read('data/faq-090-'+(i+1)+'.json')));
+const books=JSON.parse(read('data/faq-090-books.json'));
 const bundle=JSON.parse(read('data/browser-search-catalog.json'));
 const html=read('index.html'),js=read('js/biblaw.js');
 assert.equal(faq.questions.length,25);
@@ -33,7 +35,13 @@ const document={
   createTextNode:text=>new Element('text'),
   body:{classList:{add:k=>classes.add(k),remove:k=>classes.delete(k)}}
 };
-const context={document,console,Blob,fetch:async()=>({ok:true,json:async()=>faq}),
+const context={document,console,Blob,fetch:async(url)=>({ok:true,json:async()=>{
+    if(url.includes('faq-public-085'))return faq;
+    if(url.includes('faq-090-books'))return books;
+    const found=url.match(/faq-090-([1-5])[.]json/);
+    assert.ok(found,'Unexpected FAQ data URL: '+url);
+    return addon[Number(found[1])-1];
+  }}),
   BiblawPDF:{download:record=>printed.push(record)},
   window:{scrollY:187,scrollTo:({top})=>{context.window.scrollY=top;}}};
 context.globalThis=context;
@@ -43,7 +51,7 @@ context.BiblawFAQ.setOpenPsalm(ref=>{opened=ref;});
 assert.equal(await context.BiblawFAQ.init(bundle.records),true);
 context.BiblawFAQ.open();
 assert.ok(classes.has('view-faq'));
-assert.equal(get('faqList').children.length,25);
+assert.equal(get('faqList').children.length,30);
 get('faqList').children[0].onclick();
 assert.equal(get('faqAnswer').hidden,false);
 assert.equal(get('faqIndex').hidden,true);
