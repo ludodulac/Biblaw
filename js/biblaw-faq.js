@@ -15,21 +15,21 @@
   }
   // 090: build cited verse links from the author's unchanged words; never guess a Psalm.
   function linkedReferences(question,bookNumbers){
-    const pattern=/\\(psaume\\s+(\\d+)\\s+(?:de\\s+|d['’])\\s*(Michaël|Gabriel|Raphaël|Ouriel),\\s+versets?\\s+([^)]+)\\)/g;
+    const pattern=/\(psaume\s+(\d+)\s+(?:de\s+|d['’])\s*(Michaël|Gabriel|Raphaël|Ouriel),\s+versets?\s+([^)]+)\)/g;
     const matches=[...String(question.answer||'').matchAll(pattern)];
     if(matches.length!==4||question.answer.split('(psaume ').length!==5)
       throw Error('Références incomplètes : '+question.id);
     const references=matches.map(match=>{
-      const number=Number(match[1]),archangel=match[2].normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+      const number=Number(match[1]),archangel=match[2].normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
       const book=bookNumbers[archangel+':'+number];
       if(!Number.isInteger(book))throw Error('Psaume non identifié : '+match[0]);
-      const verses=[],tail=match[3].replace(/(\\d+)\\s+à\\s+(\\d+)/g,(_,start,end)=>{
+      const verses=[],tail=match[3].replace(/(\d+)\s+à\s+(\d+)/g,(_,start,end)=>{
         const a=Number(start),b=Number(end);
         if(b<a||b-a>100)throw Error('Plage de versets invalide');
         for(let i=a;i<=b;i++)verses.push(i);
         return '';
       });
-      for(const digit of tail.matchAll(/\\d+/g))verses.push(Number(digit[0]));
+      for(const digit of tail.matchAll(/\d+/g))verses.push(Number(digit[0]));
       const selected=[...new Set(verses)].sort((a,b)=>a-b);
       if(!selected.length)throw Error('Versets introuvables : '+match[0]);
       return {label:match[0],recordId:'book-'+String(book).padStart(2,'0')+
