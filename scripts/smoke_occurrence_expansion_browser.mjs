@@ -45,8 +45,8 @@ try {
   assert.equal(await secondary.locator('#modeExact').count(), 0, 'Secondary tools must not duplicate the mode selector');
   assert.equal(await themesMode.isVisible(), true, 'Par thème must be visible');
   assert.equal(await exactMode.isVisible(), true, 'Occurrences de mots must be visible');
-  assert.equal((await themesMode.textContent()).trim(), 'Par thème');
-  assert.equal((await exactMode.textContent()).trim(), 'Occurrences de mots');
+  assert.equal((await themesMode.textContent()).trim(), 'Thèmes');
+  assert.equal((await exactMode.textContent()).trim(), 'Mots exacts');
   assert.equal(await themesMode.evaluate(el => el.classList.contains('active')), true, 'Theme mode must be selected by default');
   assert.equal(await exactMode.evaluate(el => el.classList.contains('active')), false, 'Occurrence mode must not be default');
   assert.equal(await option.isVisible(), false, 'Lexical expansion must never appear in Theme mode by default');
