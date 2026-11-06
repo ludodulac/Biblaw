@@ -51,3 +51,13 @@ Les 8 réponses ont été relues avec leurs passages du corpus : Raphaël 88, 15
 
 Les 8 réponses ont été relues avec les psaumes de référence : Gabriel 244, 165, 156, 144, 291 ; Ouriel 131, 200, 214 ; Raphaël 171, 190, 211, 26 ; Michaël 170, 236, 15 ; Ouriel 106 et 156. Les exemples de Gabriel 244:30-40 dans la question 7 ont été vérifiés en particulier. **Aucune modification textuelle** nécessaire dans ce lot. Contrôle effectué contre les textes structurés du dépôt, non contre le fac-similé PDF.
 
+
+## Lots 05 à 08 — approfondissement des réponses (28 réponses)
+
+- **Lot 05 — FAQ 095, 7 réponses** : connaissance de soi, habitudes, désirs, réactions, caractère, volonté, vie intérieure. Les passages de Raphaël 102, 134, 190 ; Gabriel 84, 165, 209 ; Ouriel 132, 152, 154, 169, 239, 252 ; Michaël 171, 189 ont été comparés aux affirmations. Aucune modification textuelle nécessaire.
+- **Lot 06 — FAQ 094, 6 réponses** : bonheur et circonstances, intérieur et richesse. Comparaison avec Gabriel 29, 174, 197 ; Ouriel 15, 59, 73 ; Michaël 102 ; Raphaël 68, 211. Le passage Ouriel 73:12 confirme expressément l'exemple du repas en famille/avec des amis ; conservé. Aucune modification.
+- **Lot 07 — FAQ 093, 5 réponses** : sens de la vie et mission personnelle. Comparaison avec Ouriel 16, 155, 237 ; Raphaël 177 ; Michaël 205, 267. Aucune modification.
+- **Lot 08 — FAQ 092, 10 réponses** : religions, science, conscience. Comparaison avec Gabriel 178, 216 ; Michaël 159, 191, 211, 274, 280, 285, 289, 292 ; Raphaël 194, 269, 282, 26, 102 ; Ouriel 146. Les réponses traitent de la « science » *telle que citée et comprise dans les psaumes* ; aucune assertion externe de validation ou réfutation scientifique n'y a été ajoutée. Aucune modification.
+
+**À ce stade : 63 réponses examinées sur 102.** Les contrôles décrits restent documentaires sur le corpus structuré, non des validations éditoriales humaines.
+
