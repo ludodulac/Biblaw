@@ -153,7 +153,7 @@
       const questions091=newAnswers.map((q,i)=>{
         if(q.id!=='faq-priere-paix-'+(i+1)||!q.title||!q.answer)
           throw Error('Question 091 absente ou incorrecte.');
-        return linkedReferences(q,newBookData.verifiedPsalms,i===0?3:(i===3?5:4));
+        return linkedReferences(q,newBookData.verifiedPsalms,i===0?3:4);
       });
       // 092: ten verbatim owner-authored answers, with 30 verified Psalm citations.
       const response092=await fetch('data/faq-092.json?v=092');
