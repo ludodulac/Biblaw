@@ -65,6 +65,10 @@ jobs:
         run: python scripts/audit_faq_090.py
       - name: Tester les trente questions, les liens et les PDF 090
         run: node scripts/smoke_faq_090.mjs
+      - name: Vérifier les neuf réponses, leurs psaumes et la confidentialité 091
+        run: python scripts/audit_faq_091.py
+      - name: Tester les trente-neuf questions, les retours et PDF 091
+        run: node scripts/smoke_faq_091.mjs
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
       - name: Vérifier les fichiers du nouveau site blanc et la confidentialité des notes
