@@ -139,6 +139,7 @@
         return linkedReferences(q,books.verifiedPsalms);
       });
       // 091: exactly nine additional owner-authored answers, with validated canonical Psalm links.
+  // The citation counts are pinned to the corrected editorial data; every citation must resolve.
       const extraUrls=[1,2,3,4,5,6,7,8,9].map(n=>'data/faq-091-'+n+'.json?v=091');
       const [newBookData,...newAnswers]=await Promise.all([
         'data/faq-091-books.json?v=091',...extraUrls
@@ -152,7 +153,7 @@
       const questions091=newAnswers.map((q,i)=>{
         if(q.id!=='faq-priere-paix-'+(i+1)||!q.title||!q.answer)
           throw Error('Question 091 absente ou incorrecte.');
-        return linkedReferences(q,newBookData.verifiedPsalms,i===0?3:4);
+        return linkedReferences(q,newBookData.verifiedPsalms,i===0?4:(i===3?5:4));
       });
       // 092: ten verbatim owner-authored answers, with 30 verified Psalm citations.
       const response092=await fetch('data/faq-092.json?v=092');
@@ -205,7 +206,7 @@
       const data096=await response096.json();
       if(data096.version!==1||Object.keys(data096.verifiedPsalms||{}).length!==28||
           data096.questions?.length!==14)throw Error('Références 096 incomplètes.');
-      const expected096=[4,4,4,4,4,4,4,4,4,3,4,4,3,5];
+      const expected096=[4,4,4,4,4,4,4,4,7,6,4,4,7,5];
       const questions096=data096.questions.map((q,i)=>{
         if(q.id!=='faq-harmonie-conscience-'+(i+1)||!q.title||!q.answer)
           throw Error('Question 096 absente ou incorrecte.');
@@ -229,7 +230,7 @@
       const data098=await response098.json();
       if(data098.version!==1||Object.keys(data098.verifiedPsalms||{}).length!==25||
           data098.questions?.length!==13)throw Error('Références 098 incomplètes.');
-      const expected098=[3,3,3,3,3,3,3,3,3,3,3,3,6];
+      const expected098=[4,5,4,4,5,5,4,5,5,5,5,6,18];
       const questions098=data098.questions.map((q,i)=>{
         if(q.id!=='faq-pratique-spirituelle-'+(i+1)||!q.title||!q.answer)
           throw Error('Question 098 absente ou incorrecte.');
