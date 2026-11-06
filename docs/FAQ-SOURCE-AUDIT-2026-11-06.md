@@ -124,3 +124,18 @@ Une vérification des règles du chargeur public \`js/biblaw-faq.js\` a révél�
 
 - Une relecture complémentaire des formulations visibles a identifié un commentaire rédactionnel extérieur au corpus dans `faq-harmonie-conscience-10` (« Quelle est la différence entre le cerveau et le mental ? ») : une explication sur ce que les psaumes ne définissent pas anatomiquement. Cette réserve a été **supprimée**, en conservant uniquement l'enseignement de Gabriel 119:14-16. Le nombre et le contenu des six références cliquables n'ont pas changé.
 - Principe pour la suite : supprimer d'abord les phrases non appuyées, ne pas ajouter de nouvelles interprétations, ne conserver que les formulations reliées directement à des psaumes. Les passages douteux doivent être comparés aux versets avant correction.
+
+## Relecture ciblée des formulations déductives — suite du 6 novembre 2026
+
+La vérification a repris les réponses sur la science, les sens subtils, la conscience, la pensée, la mission personnelle et les pratiques spirituelles. Les passages à risque sont comparés aux versets avant suppression, sans modifier les questions ou le corpus.
+
+Deux corrections supplémentaires :
+
+1. `faq-religions-science-8` (« Une expérience mystique est-elle uniquement un phénomène cérébral ? ») : suppression de la conclusion rédactionnelle présentant l'expérience mystique comme n'étant pas exclusivement liée aux fonctions physiques. Ce rapprochement avec le cerveau n'était pas énoncé directement par les passages cités. Remplacement par l'enseignement explicite de Michaël 274:7-9 : les sens physiques servent de fondement à l'éveil des sens subtils. Les trois références existantes sont maintenues.
+2. `faq-harmonie-conscience-11` (« Quelle est la différence entre le mental et la conscience ? ») : retrait du dernier paragraphe qui constituait une synthèse interprétative non sourcée définissant « le mental ». Les quatre paragraphes attribués à Ouriel et Raphaël, avec leurs quatre références canoniques, restent inchangés.
+
+**Contrôle après corrections :** les cinq workflows GitHub du commit `ba565c14c4ec2f4f35760e2a2f15cd57ffe830f4` ont abouti avec succès, notamment `FAQ reference integrity` (102 réponses et liens canoniques).
+
+**Attention intégration :** le fichier `index.html` de la branche historique PR #72 ne contient pas encore la section FAQ, et plusieurs fichiers FAQ/leur chargeur y sont absents. Ne jamais supposer que PR #72 et PR #74 sont interchangeables ; conserver ces changements séparés et vérifier la conservation de la FAQ si les deux branches sont réunies ultérieurement. Rien n'a été fusionné ni publié.
+
+**Bilan corrigé :** 23 réponses ont fait l'objet d'au moins une modification textuelle dans cette branche, dont les deux corrections ci-dessus. Les réponses restantes n'ont pas été réécrites. La confirmation éditoriale humaine et la comparaison indépendante au PDF source restent distinctes des tests techniques.
