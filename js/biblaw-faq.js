@@ -174,8 +174,20 @@
           throw Error('Question 094 absente ou incorrecte.');
         return linkedReferences(q,data094.verifiedPsalms,i===5?4:3);
       });
-      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093,questions094);
-      if(questions.length!==60||new Set(questions.map(q=>q.id)).size!==60)
+      // 095: seven complete owner-authored answers on thoughts, emotions and self-mastery.
+      const response095=await fetch('data/faq-095.json?v=095');
+      if(!response095.ok)throw Error('Questions 095 indisponibles.');
+      const data095=await response095.json();
+      if(data095.version!==1||Object.keys(data095.verifiedPsalms||{}).length!==14||
+          data095.questions?.length!==7)throw Error('Références 095 incomplètes.');
+      const expected095=[3,3,3,3,4,4,5];
+      const questions095=data095.questions.map((q,i)=>{
+        if(q.id!=='faq-maitrise-interieure-'+(i+1)||!q.title||!q.answer)
+          throw Error('Question 095 absente ou incorrecte.');
+        return linkedReferences(q,data095.verifiedPsalms,expected095[i]);
+      });
+      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093,questions094,questions095);
+      if(questions.length!==67||new Set(questions.map(q=>q.id)).size!==67)
         throw Error('Liste des questions invalide.');
       for(const q of questions)for(const ref of q.references)if(!validReference(ref))
         throw Error('Référence de psaume introuvable : '+ref.recordId);
