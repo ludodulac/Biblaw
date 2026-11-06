@@ -61,3 +61,47 @@ Les 8 réponses ont été relues avec les psaumes de référence : Gabriel 244, 
 
 **À ce stade : 63 réponses examinées sur 102.** Les contrôles décrits restent documentaires sur le corpus structuré, non des validations éditoriales humaines.
 
+
+## Lot 09 — questions fondamentales, FAQ 085 (25 réponses)
+
+- **Périmètre** : `data/faq-public-085.json`, ses 25 questions, et les **56 psaumes distincts** cités dans leurs objets `references`, lus dans `data/corpus/books/`.
+- **Contrôle** : chacun des versets référencés a été retrouvé dans son fichier canonique structuré et rapproché des affirmations correspondantes.
+- **Corrections : 3 réponses**, sans modifier leurs identifiants, titres, ordre ou références :
+  1. `faq-dieu-2` (« Existe-t-il des preuves de l'existence de Dieu ? ») : retrait du commentaire sur les « preuves scientifiques » ; retour aux lois et au discernement enseignés dans les psaumes.
+  2. `faq-mort-5` (« La réincarnation est-elle possible ? ») : retrait de la réserve scientifique extérieure ; conservation de la distinction entre réincarnation et immortalité.
+  3. `faq-nature-dieu-4` (« Dieu est-il une énergie ? ») : retrait de la comparaison avec l'électricité et les forces étudiées par la science ; remplacement par Ouriel 171.
+- **Aucune modification** des 22 autres réponses de ce fichier.
+
+## Lot 10 — présence divine et signes, FAQ 090 (5 réponses)
+
+- **Périmètre** : `data/faq-090-1.json` à `data/faq-090-5.json` et `data/faq-090-books.json`.
+- Les références à Michaël 5 et 94, Raphaël 72, 104, 50, 177, 105, 163, 272, 252, Gabriel 279 et 205, Ouriel 274, 74 et 192 ont été relues dans le corpus structuré.
+- **Aucune modification** après examen : les cinq réponses restituent les passages cités. Les exemples concernant les signes et les animaux sont cohérents avec Raphaël 105 et 163.
+
+## Lot 11 — prière, paix et connaissance de soi, FAQ 091 (9 réponses)
+
+- **Périmètre** : `data/faq-091-1.json` à `data/faq-091-9.json` et `data/faq-091-books.json`.
+- Les références de Raphaël 72, 2, 45, 154, 161, 130, Michaël 5, 43, 273, 168, 205, 257 et 1, Gabriel 76, 278, 289 et 198, Ouriel 62, 74, 85, 25, 115, 221 et 137 ont été relues.
+- **Corrections : 2 réponses** : `faq-priere-paix-1` et `faq-priere-paix-4`. Les commentaires rédactionnels finaux ont été remplacés par des enseignements de Raphaël 72 et Ouriel 62.
+- **Sept autres réponses** conservées telles quelles.
+
+## Bilan des 102 réponses — audit documentaire terminé
+
+| Fichier(s) | Réponses examinées | Réponses modifiées |
+| --- | ---: | ---: |
+| `data/faq-public-085.json` | 25 | 3 |
+| `data/faq-090-{1..5}.json` | 5 | 0 |
+| `data/faq-091-{1..9}.json` | 9 | 2 |
+| `data/faq-092.json` | 10 | 0 |
+| `data/faq-093.json` | 5 | 0 |
+| `data/faq-094.json` | 6 | 0 |
+| `data/faq-095.json` | 7 | 0 |
+| `data/faq-096.json` | 14 | 3 |
+| `data/faq-097.json` | 8 | 0 |
+| `data/faq-098.json` | 13 | 13 |
+| **Total** | **102** | **21** |
+
+**Dernière vérification de contenu** : les 22 fichiers FAQ ont été chargés sur la branche d'audit et reparsés. Les deux lots totalisent respectivement **35** et **67** réponses, avec des identifiants distincts dans chaque lot. Aucune expression figurant dans le filtre de commentaires scientifiques extérieurs (dont « scientifique », « pas une preuve », « démontré » et « doctrine ») n'a été relevée dans les 102 réponses de la branche corrigée ; chaque réponse contient une mention de psaume.
+
+**Limites à conserver explicitement** : la comparaison a été réalisée avec les psaumes canoniques *structurés et extraits* du dépôt, sans relecture indépendante des pages scannées du PDF source et sans authentification humaine. Un contrôle lexical et une vérification de l'existence de versets ne prouvent pas à eux seuls chaque nuance éditoriale. La branche, cette note et les modifications de FAQ restent en **PR DRAFT** : aucune fusion, aucune publication.
+
