@@ -33,3 +33,12 @@ Tous ces chemins sont sous `data/corpus/books/`.
 - La présence d'une référence dans un fichier ne constitue **pas** une authentification éditoriale humaine de chaque affirmation.
 - À poursuivre : audit des réponses 5 à 13 de `data/faq-098.json` (plusieurs paragraphes prescriptifs commençant par « Concrètement ») puis les autres fichiers FAQ, par lots de 10 ; vérifier également les extraits du PDF originel pour les passages litigieux.
 - La branche d'audit n'est **pas** publiée. Préserver `main` et la PR #72 en DRAFT.
+
+## Lot 02 — pratiques quotidiennes (6 novembre 2026)
+
+- **Périmètre :** neuf réponses restantes du fichier `data/faq-098.json` (questions 5 à 13).
+- **Examen :** chaque enseignement principal et les propositions pratiques ont été confrontés aux psaumes canoniques de `data/corpus/books/` cités dans ces réponses : Gabriel 156, 165, 28, 197, 67, 209 ; Michaël 208, 170, 171, 189, 267, 145, 165, 140 ; Raphaël 45, 218, 134 ; Ouriel 152, 214, 182.
+- **Modifications :** 17 paragraphes corrigés dans 9 réponses. Suppression de protocoles de méditation, d'attention, de gratitude, d'habitudes et de conseils de comportement qui étaient des propositions rédactionnelles non attribuables aux versets ; remplacement par des prescriptions présentes dans les psaumes, avec références précises. Rectification des exemples de repas, marche et parole.
+- **Invariants :** 13 réponses conservées dans ce fichier, sans modification des identifiants, titres, ordre et correspondances `verifiedPsalms`. Aucun corpus, index, script de chargement ou code d'interface modifié.
+- **Contrôle :** JSON valide et relecture des neuf réponses corrigées dans la structure chargée ; validation de la publication réelle et relecture indépendante du PDF non réalisées. 
+
