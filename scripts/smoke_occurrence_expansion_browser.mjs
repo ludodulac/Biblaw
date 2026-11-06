@@ -102,7 +102,8 @@ try {
   await themesMode.click();
   await page.locator('#query').fill(fixture.psalmNumber);
   await page.locator('#searchButton').click();
-  assert.match(await page.locator('#resultCount').innerText(), /portant le numéro 105/i);
+  assert.match(await page.locator('#resultCount').innerText(), /4 psaumes trouvés/i);
+  assert.equal(await page.locator('.result-card').count(),4, 'Four canonical Psalms numbered 105 expected');
 
   // Public source filters are now in the primary search (not in secondary tools).
   assert.equal(await page.locator('#sourceScope [name=sourceType]').count(), 3,
