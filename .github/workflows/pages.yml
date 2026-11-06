@@ -85,6 +85,10 @@ jobs:
         run: python scripts/audit_faq_095.py
       - name: Tester soixante-sept réponses, vingt-cinq références et les PDF 095
         run: node scripts/smoke_faq_095.mjs
+      - name: Vérifier les quatorze réponses sur l'harmonie et la conscience 096
+        run: python scripts/audit_faq_096.py
+      - name: Tester quatre-vingt-une réponses, cinquante-cinq références et les PDF 096
+        run: node scripts/smoke_faq_096.mjs
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
       - name: Vérifier les fichiers du nouveau site blanc et la confidentialité des notes

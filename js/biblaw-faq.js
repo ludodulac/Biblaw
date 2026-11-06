@@ -186,8 +186,20 @@
           throw Error('Question 095 absente ou incorrecte.');
         return linkedReferences(q,data095.verifiedPsalms,expected095[i]);
       });
-      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093,questions094,questions095);
-      if(questions.length!==67||new Set(questions.map(q=>q.id)).size!==67)
+      // 096: seven articles on harmony, seven on consciousness, all owner-authored.
+      const response096=await fetch('data/faq-096.json?v=096');
+      if(!response096.ok)throw Error('Questions 096 indisponibles.');
+      const data096=await response096.json();
+      if(data096.version!==1||Object.keys(data096.verifiedPsalms||{}).length!==28||
+          data096.questions?.length!==14)throw Error('Références 096 incomplètes.');
+      const expected096=[4,4,4,4,4,4,4,4,4,3,4,4,3,5];
+      const questions096=data096.questions.map((q,i)=>{
+        if(q.id!=='faq-harmonie-conscience-'+(i+1)||!q.title||!q.answer)
+          throw Error('Question 096 absente ou incorrecte.');
+        return linkedReferences(q,data096.verifiedPsalms,expected096[i]);
+      });
+      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093,questions094,questions095,questions096);
+      if(questions.length!==81||new Set(questions.map(q=>q.id)).size!==81)
         throw Error('Liste des questions invalide.');
       for(const q of questions)for(const ref of q.references)if(!validReference(ref))
         throw Error('Référence de psaume introuvable : '+ref.recordId);
