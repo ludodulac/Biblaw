@@ -105,3 +105,17 @@ Les 8 réponses ont été relues avec les psaumes de référence : Gabriel 244, 
 
 **Limites à conserver explicitement** : la comparaison a été réalisée avec les psaumes canoniques *structurés et extraits* du dépôt, sans relecture indépendante des pages scannées du PDF source et sans authentification humaine. Un contrôle lexical et une vérification de l'existence de versets ne prouvent pas à eux seuls chaque nuance éditoriale. La branche, cette note et les modifications de FAQ restent en **PR DRAFT** : aucune fusion, aucune publication.
 
+
+## Contrôle d'intégration et correction de régression — 6 novembre 2026
+
+Une vérification des règles du chargeur public \`js/biblaw-faq.js\` a révélé une anomalie **non détectée par les validations linguistiques** : les corrections éditoriales ajoutaient des citations alors que le chargeur impose un nombre exact de références par question. Sans correction, le chargement des FAQ aurait échoué après intégration, malgré la validité des JSON. Certaines citations composaient par ailleurs deux psaumes dans une même parenthèse, que le parseur aurait attribuée à tort à un seul psaume.
+
+**Réparation, dans l'ordre :**
+1. Les trois réponses modifiées de \`faq-public-085.json\` ont conservé leurs références d'origine cliquables, sans citation supplémentaire contradictoire.
+2. Les références groupées ambiguës ont été supprimées dans \`faq-091-1.json\`, \`faq-096.json\` (question 13) et \`faq-098.json\` (question 1) ; les références originales justifiant ces passages ont été conservées.
+3. Les compteurs exacts attendus pour les questions 091, 096 et 098 ont été alignés sur les textes corrigés dans le chargeur. Le contrôle strict reste actif : une référence absente ou supplémentaire provoquera une erreur détectable, plutôt qu'une interprétation silencieuse.
+4. Une sentinelle indépendante a été ajoutée dans \`scripts/check_faq_integrity.mjs\`, déclenchée sur les PR pertinentes par \`.github/workflows/faq-integrity.yml\`. Elle vérifie les 102 identifiants, les compteurs de références, la syntaxe des citations, leur ordre (FAQ 085), la correspondance archange/livre/psaume, l'existence des numéros de versets et l'absence de références groupées ambiguës.
+
+**Preuve CI :** exécution GitHub Actions « FAQ reference integrity » **réussie** sur le commit \`d7ad8599ca960febe7fe22481ff79460e4978373\`. Résultat : **102 réponses distinctes, 407 références de psaumes exploitables, 166 psaumes canoniques distincts**. Les quatre autres workflows GitHub de ce commit ont également terminé avec succès. Cette preuve est **technique**, pas une relecture théologique ni un test visuel sur téléphone.
+
+**Reste à vérifier :** le PDF original nommé \`Bible essénienne (classée par livres).pdf\`, indiqué comme provenance par le corpus, n'a pas été retrouvé parmi les fichiers identifiés dans le Drive connecté lors de cette intervention. Les comparaisons directes avec les pages du PDF et le test visuel interactif en navigateur mobile n'ont pas été effectués. Pas de fusion, pas de publication : PR #74 et PR #72 conservées en DRAFT.
