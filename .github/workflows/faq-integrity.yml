@@ -33,3 +33,16 @@ jobs:
         run: node scripts/check_faq_integrity.mjs
       - name: Exercise the FAQ public loader and citation links
         run: node scripts/check_faq_dom.mjs
+      - name: Rejouer les contrôles FAQ du déploiement Pages
+        shell: bash
+        run: |
+          failed=0
+          for test in scripts/audit_faq_*.py scripts/smoke_faq_*.mjs; do
+            echo "=== $test ==="
+            if [[ "$test" == *.py ]]; then
+              python "$test" || failed=1
+            else
+              node "$test" || failed=1
+            fi
+          done
+          exit "$failed"
