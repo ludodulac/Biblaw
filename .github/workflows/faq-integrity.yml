@@ -1,0 +1,31 @@
+name: FAQ reference integrity
+
+on:
+  pull_request:
+    paths:
+      - 'data/faq-*.json'
+      - 'data/corpus/books/**'
+      - 'js/biblaw-faq.js'
+      - 'scripts/check_faq_integrity.mjs'
+      - '.github/workflows/faq-integrity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/faq-*.json'
+      - 'data/corpus/books/**'
+      - 'js/biblaw-faq.js'
+      - 'scripts/check_faq_integrity.mjs'
+
+permissions:
+  contents: read
+
+jobs:
+  faq-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify 102 FAQ answers and clickable canonical Psalm references
+        run: node scripts/check_faq_integrity.mjs
