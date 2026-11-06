@@ -6,6 +6,8 @@ const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const faq=JSON.parse(read('data/faq-public-085.json'));
 const addon=Array.from({length:5},(_,i)=>JSON.parse(read('data/faq-090-'+(i+1)+'.json')));
 const books=JSON.parse(read('data/faq-090-books.json'));
+const addon091=Array.from({length:9},(_,i)=>JSON.parse(read('data/faq-091-'+(i+1)+'.json')));
+const books091=JSON.parse(read('data/faq-091-books.json'));
 const bundle=JSON.parse(read('data/browser-search-catalog.json'));
 const html=read('index.html'),js=read('js/biblaw.js');
 assert.equal(faq.questions.length,25);
@@ -38,6 +40,9 @@ const document={
 const context={document,console,Blob,fetch:async(url)=>({ok:true,json:async()=>{
     if(url.includes('faq-public-085'))return faq;
     if(url.includes('faq-090-books'))return books;
+    if(url.includes('faq-091-books'))return books091;
+    const next=url.match(/faq-091-([1-9])[.]json/);
+    if(next)return addon091[Number(next[1])-1];
     const found=url.match(/faq-090-([1-5])[.]json/);
     assert.ok(found,'Unexpected FAQ data URL: '+url);
     return addon[Number(found[1])-1];
@@ -51,7 +56,7 @@ context.BiblawFAQ.setOpenPsalm(ref=>{opened=ref;});
 assert.equal(await context.BiblawFAQ.init(bundle.records),true);
 context.BiblawFAQ.open();
 assert.ok(classes.has('view-faq'));
-assert.equal(get('faqList').children.length,30);
+assert.equal(get('faqList').children.length,39);
 get('faqList').children[0].onclick();
 assert.equal(get('faqAnswer').hidden,false);
 assert.equal(get('faqIndex').hidden,true);
