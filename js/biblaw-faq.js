@@ -163,8 +163,19 @@
           throw Error('Question 093 absente ou incorrecte.');
         return linkedReferences(q,data093.verifiedPsalms,3);
       });
-      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093);
-      if(questions.length!==54||new Set(questions.map(q=>q.id)).size!==54)
+      // 094: six complete author-written articles on happiness and five related questions.
+      const response094=await fetch('data/faq-094.json?v=094');
+      if(!response094.ok)throw Error('Questions 094 indisponibles.');
+      const data094=await response094.json();
+      if(data094.version!==1||Object.keys(data094.verifiedPsalms||{}).length!==9||
+          data094.questions?.length!==6)throw Error('Références 094 incomplètes.');
+      const questions094=data094.questions.map((q,i)=>{
+        if(q.id!=='faq-bonheur-'+(i+1)||!q.title||!q.answer)
+          throw Error('Question 094 absente ou incorrecte.');
+        return linkedReferences(q,data094.verifiedPsalms,i===5?4:3);
+      });
+      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093,questions094);
+      if(questions.length!==60||new Set(questions.map(q=>q.id)).size!==60)
         throw Error('Liste des questions invalide.');
       for(const q of questions)for(const ref of q.references)if(!validReference(ref))
         throw Error('Référence de psaume introuvable : '+ref.recordId);

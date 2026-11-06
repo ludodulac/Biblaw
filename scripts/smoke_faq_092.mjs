@@ -9,6 +9,7 @@ const books090=JSON.parse(read('data/faq-090-books.json'));
 const books091=JSON.parse(read('data/faq-091-books.json'));
 const addon=JSON.parse(read('data/faq-092.json'));
 const addon093=JSON.parse(read('data/faq-093.json'));
+const addon094=JSON.parse(read('data/faq-094.json'));
 const corpus=JSON.parse(read('data/browser-search-catalog.json'));
 assert.equal(base.questions.length,25);
 assert.equal(addon.questions.length,10);
@@ -42,6 +43,7 @@ const context={
     if(url.includes('faq-091-books'))return books091;
     if(url.includes('faq-092.json'))return addon;
     if(url.includes('faq-093.json'))return addon093;
+    if(url.includes('faq-094.json'))return addon094;
     let match=url.match(/faq-090-([1-5])\.json/);
     if(match)return prev090[Number(match[1])-1];
     match=url.match(/faq-091-([1-9])\.json/);
@@ -57,7 +59,7 @@ context.BiblawFAQ.setOpenPsalm(ref=>psalmCalls.push(ref));
 assert.equal(await context.BiblawFAQ.init(corpus.records),true,'49-question FAQ must load');
 context.BiblawFAQ.open();
 assert.ok(classNames.has('view-faq'));
-assert.equal(get('faqList').children.length,54);
+assert.equal(get('faqList').children.length,60);
 assert.equal(get('faqList').children[0].children[0].textContent,base.questions[0].title);
 
 let count=0;
