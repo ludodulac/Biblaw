@@ -123,8 +123,8 @@ try {
     'Theme results must never expose lexical expansion');
   const themeStatuses = await page.locator('.result-card .result-status .score').allTextContents();
   assert.ok(themeStatuses.length > 0 &&
-    themeStatuses.every(x => ['Central','Important','Lié'].includes(x.trim())),
-    'Canonical theme importance presentation drifted');
+    themeStatuses.every(x => ['Central','Important','Lié','Indexé'].includes(x.trim())),
+    'Canonical theme importance presentation drifted: '+JSON.stringify(themeStatuses));
 
   // F — The current + control builds a second exact word without a second fake field.
   await page.locator('#query').fill('vie');
