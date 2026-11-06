@@ -7,6 +7,7 @@ on:
       - 'data/corpus/books/**'
       - 'js/biblaw-faq.js'
       - 'scripts/check_faq_integrity.mjs'
+      - 'scripts/check_faq_dom.mjs'
       - '.github/workflows/faq-integrity.yml'
   push:
     branches: [main]
@@ -15,6 +16,7 @@ on:
       - 'data/corpus/books/**'
       - 'js/biblaw-faq.js'
       - 'scripts/check_faq_integrity.mjs'
+      - 'scripts/check_faq_dom.mjs'
 
 permissions:
   contents: read
@@ -29,3 +31,5 @@ jobs:
           node-version: '22'
       - name: Verify 102 FAQ answers and clickable canonical Psalm references
         run: node scripts/check_faq_integrity.mjs
+      - name: Exercise the FAQ public loader and citation links
+        run: node scripts/check_faq_dom.mjs
