@@ -11,6 +11,8 @@ const f093=JSON.parse(read('data/faq-093.json'));
 const f094=JSON.parse(read('data/faq-094.json'));
 const f095=JSON.parse(read('data/faq-095.json'));
 const f096=JSON.parse(read('data/faq-096.json'));
+const addon097=JSON.parse(read('data/faq-097.json'));
+const addon098=JSON.parse(read('data/faq-098.json'));
 const books090=JSON.parse(read('data/faq-090-books.json'));
 const books091=JSON.parse(read('data/faq-091-books.json'));
 const corpus=JSON.parse(read('data/browser-search-catalog.json'));
@@ -18,7 +20,7 @@ assert.equal(base.questions.length,25);
 assert.equal(f096.questions.length,14);
 assert.equal(Object.keys(f096.verifiedPsalms).length,28);
 assert.ok(read('scripts/build_pages_site.py').includes('"data/faq-096.json"'));
-assert.ok(read('index.html').includes('biblaw-faq.js?v=096'));
+assert.ok(Number(read('index.html').match(/biblaw-faq[.]js[?]v=(\d+)/)?.[1])>=96);
 assert.ok(read('css/biblaw-light.css').includes('white-space:pre-wrap'));
 
 class Element {
@@ -50,6 +52,8 @@ const context={
     if(url.includes('faq-094.json'))return f094;
     if(url.includes('faq-095.json'))return f095;
     if(url.includes('faq-096.json'))return f096;
+    if(url.includes('faq-097.json'))return addon097;
+    if(url.includes('faq-098.json'))return addon098;
     let m=url.match(/faq-090-([1-5])\.json/);
     if(m)return f090[+m[1]-1];
     m=url.match(/faq-091-([1-9])\.json/);
@@ -65,7 +69,7 @@ context.BiblawFAQ.setOpenPsalm(ref=>opened.push(ref));
 assert.equal(await context.BiblawFAQ.init(corpus.records),true,'All 81 questions loaded');
 context.BiblawFAQ.open();
 assert.ok(classes.has('view-faq'));
-assert.equal(get('faqList').children.length,81);
+assert.equal(get('faqList').children.length,102);
 assert.equal(get('faqList').children[0].children[0].textContent,base.questions[0].title);
 assert.equal(get('faqList').children[66].children[0].textContent,f095.questions[6].title);
 const expected=[4,4,4,4,4,4,4,4,4,3,4,4,3,5];

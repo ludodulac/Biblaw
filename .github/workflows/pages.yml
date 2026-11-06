@@ -89,6 +89,10 @@ jobs:
         run: python scripts/audit_faq_096.py
       - name: Tester quatre-vingt-une réponses, cinquante-cinq références et les PDF 096
         run: node scripts/smoke_faq_096.mjs
+      - name: Vérifier les vingt-et-une nouvelles réponses et leurs psaumes 097/098
+        run: python scripts/audit_faq_097_098.py
+      - name: Tester cent deux réponses, soixante-neuf liens et les PDF 097/098
+        run: node scripts/smoke_faq_097_098.mjs
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
       - name: Vérifier les fichiers du nouveau site blanc et la confidentialité des notes

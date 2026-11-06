@@ -58,6 +58,19 @@
       $('faqList').append(b);
     }
   }
+  // 098: preserve author-written subsection headings as visible bold text, without rendering markup as HTML.
+  function appendFormattedText(container,fragment){
+    const bold=/\*\*([^*\n]+)\*\*/g;
+    let cursor=0;
+    for(const match of fragment.matchAll(bold)){
+      container.append(document.createTextNode(fragment.slice(cursor,match.index)));
+      const strong=document.createElement('strong');
+      strong.textContent=match[1];
+      container.append(strong);
+      cursor=match.index+match[0].length;
+    }
+    container.append(document.createTextNode(fragment.slice(cursor)));
+  }
   function appendAnswerWithLinks(container,question){
     const refs=question.references||[];
     const answer=String(question.answer||'');
@@ -65,7 +78,7 @@
     for(const ref of refs){
       const at=answer.indexOf(ref.label,cursor);
       if(at<cursor)throw Error('La référence ne correspond pas au texte');
-      container.append(document.createTextNode(answer.slice(cursor,at)));
+      appendFormattedText(container,answer.slice(cursor,at));
       const button=document.createElement('button');
       button.type='button';button.className='faq-psalm-link';
       button.textContent=ref.label;
@@ -81,7 +94,7 @@
       container.append(button);
       cursor=at+ref.label.length;
     }
-    container.append(document.createTextNode(answer.slice(cursor)));
+    appendFormattedText(container,answer.slice(cursor));
   }
   function showAnswer(id){
     const question=state.byId.get(id);if(!question)return;
@@ -198,8 +211,32 @@
           throw Error('Question 096 absente ou incorrecte.');
         return linkedReferences(q,data096.verifiedPsalms,expected096[i]);
       });
-      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093,questions094,questions095,questions096);
-      if(questions.length!==81||new Set(questions.map(q=>q.id)).size!==81)
+      // 097: eight complete owner-authored questions about spiritual reality.
+      const response097=await fetch('data/faq-097.json?v=097');
+      if(!response097.ok)throw Error('Questions 097 indisponibles.');
+      const data097=await response097.json();
+      if(data097.version!==1||Object.keys(data097.verifiedPsalms||{}).length!==19||
+          data097.questions?.length!==8)throw Error('Références 097 incomplètes.');
+      const expected097=[3,3,3,4,3,3,4,4];
+      const questions097=data097.questions.map((q,i)=>{
+        if(q.id!=='faq-realite-spirituelle-'+(i+1)||!q.title||!q.answer)
+          throw Error('Question 097 absente ou incorrecte.');
+        return linkedReferences(q,data097.verifiedPsalms,expected097[i]);
+      });
+      // 098: thirteen complete articles about everyday spiritual practice.
+      const response098=await fetch('data/faq-098.json?v=098');
+      if(!response098.ok)throw Error('Questions 098 indisponibles.');
+      const data098=await response098.json();
+      if(data098.version!==1||Object.keys(data098.verifiedPsalms||{}).length!==25||
+          data098.questions?.length!==13)throw Error('Références 098 incomplètes.');
+      const expected098=[3,3,3,3,3,3,3,3,3,3,3,3,6];
+      const questions098=data098.questions.map((q,i)=>{
+        if(q.id!=='faq-pratique-spirituelle-'+(i+1)||!q.title||!q.answer)
+          throw Error('Question 098 absente ou incorrecte.');
+        return linkedReferences(q,data098.verifiedPsalms,expected098[i]);
+      });
+      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093,questions094,questions095,questions096,questions097,questions098);
+      if(questions.length!==102||new Set(questions.map(q=>q.id)).size!==102)
         throw Error('Liste des questions invalide.');
       for(const q of questions)for(const ref of q.references)if(!validReference(ref))
         throw Error('Référence de psaume introuvable : '+ref.recordId);
@@ -230,7 +267,9 @@
   function download(){
     const q=state.current;if(!q)return;
     try{
-      BiblawPDF.download({recordType:'faq',id:q.id,title:q.title,text:q.answer});
+      // Bold is a typographic heading, not literal asterisks in the exported PDF.
+      BiblawPDF.download({recordType:'faq',id:q.id,title:q.title,
+        text:q.answer.replace(/\*\*([^*\n]+)\*\*/g,'$1')});
       showStatus('');
     }catch(error){showStatus('Impossible de créer le PDF : '+error.message);}
   }
