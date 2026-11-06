@@ -103,40 +103,49 @@ try {
   await page.locator('#searchButton').click();
   assert.match(await page.locator('#resultCount').innerText(), /portant le numéro 105/i);
 
-  // Secondary tools still contain the actual filters, not the main mode selector.
-  await secondary.evaluate(el => { el.open = true; });
-  assert.equal(await secondary.locator('[name=sourceType]').count() >= 4, true, 'Text type filters must remain available');
-  assert.equal(await secondary.locator('#archangelFilter').count(), 1, 'Archangel filter must remain available');
+  // Public source filters are now in the primary search (not in secondary tools).
+  assert.equal(await page.locator('#sourceScope [name=sourceType]').count(), 3,
+    'Psalm, prayer and note filters must stay available');
+  assert.equal(await page.locator('#sourceScope #archangelFilter').count(), 1,
+    'Archangel filter must stay available');
 
   // E — Return to Theme mode and verify the known canonical theme presentation.
   await themesMode.click();
-  assert.equal(await page.locator('#advancedSearchToggle').isVisible(), true, 'Dual-theme control must return in Theme mode');
+  assert.equal(await page.locator('#addQueryTerm').isVisible(), true,
+    'The visible + control must be available');
   await page.locator('#query').fill(fixture.theme.query);
   await page.locator('#searchButton').click();
-  assert.equal(await page.locator('.result-card').count(), fixture.theme.recordCount, 'Canonical theme result count drifted');
-  assert.equal(await option.isVisible(), false, 'Theme results must never expose lexical expansion');
+  assert.equal(await page.locator('.result-card').count(), fixture.theme.recordCount,
+    'Canonical theme result count drifted');
+  assert.equal(await option.isVisible(), false,
+    'Theme results must never expose lexical expansion');
   const themeStatuses = await page.locator('.result-card .result-status .score').allTextContents();
-  assert.ok(themeStatuses.length > 0 && themeStatuses.every(x => ['Central','Important','Lié'].includes(x.trim())), 'Canonical theme importance presentation drifted');
+  assert.ok(themeStatuses.length > 0 &&
+    themeStatuses.every(x => ['Central','Important','Lié'].includes(x.trim())),
+    'Canonical theme importance presentation drifted');
 
-  // F — Existing dual-theme route remains functional and belongs only to Theme mode.
-  await page.locator('#advancedSearchToggle').click();
-  assert.equal(await page.locator('#query2').isVisible(), true, 'Second theme field must open in Theme mode');
-  await page.locator('#query').fill(fixture.theme.query);
-  await page.locator('#query2').fill(fixture.secondTheme);
+  // F — The current + control builds a second exact word without a second fake field.
+  await page.locator('#query').fill('vie');
+  await page.locator('#addQueryTerm').click();
+  assert.equal(await exactMode.evaluate(el => el.classList.contains('active')), true,
+    'Using + must switch to exact-word mode');
+  assert.match(await page.locator('#query').inputValue(), /^vie\s*\+\s*$/,
+    'Using + must create a visible second-word slot');
+  await page.locator('#query').fill('vie + amour');
   await page.locator('#searchButton').click();
-  const dualText = ((await page.locator('#resultCount').innerText()) + ' ' + (await page.locator('#results').innerText())).toLowerCase();
-  assert.ok(dualText.includes('sous les deux thèmes') || dualText.includes('aucun psaume'), 'Dual-theme search did not reach the intersection route');
+  assert.ok((await page.locator('#results').innerText()).trim(),
+    'The two-word search must produce an informative result');
 
-  // Popular Questions and Index remain reachable.
-  await page.locator('#popularQuestionsToggle').click();
-  assert.equal(await page.locator('#popularQuestionsPanel').isVisible(), true, 'Popular Questions must still open');
-  await page.locator('#closePopularQuestions').click();
+  // Popular Questions are intentionally hidden. FAQ, Notes and Index remain reachable.
+  assert.equal(await page.locator('#popularQuestionsToggle').isVisible(), false);
+  assert.equal(await page.locator('#faqToggle').isVisible(), true);
+  assert.equal(await page.locator('#notesLibraryToggle').isVisible(), true);
   await page.locator('#indexToggle').click();
   assert.equal(await page.locator('#indexPanel').isVisible(), true, 'Theme Index must still open');
   await page.locator('#closeIndex').click();
 
   assert.deepEqual(pageErrors, [], `Browser page errors: ${pageErrors.join(' | ')}`);
-  console.log('Primary mode separation browser smoke PASS: theme-default, explicit occurrence switch, acclame→acclament, phrase exact-only, canonical theme, dual-theme, filters, popular questions, index');
+  console.log('Primary mode separation browser smoke PASS: theme-default, explicit occurrence switch, acclame→acclament, phrase exact-only, canonical theme, + two-word search, source filters, FAQ, index');
 } finally {
   await browser.close();
 }
