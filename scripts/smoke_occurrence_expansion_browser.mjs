@@ -6,7 +6,7 @@ const fixture = {
   lexical: { query: 'acclame', alt: 'acclament', exactRecordCount: 1, expandedRecordCount: 2 },
   noExpansion: 'travers',
   phrase: { query: 'temps vis', recordCount: 1 },
-  theme: { query: 'sainte assemblée', recordCount: 3 },
+  theme: { query: 'sainte assemblée', recordCount: 4 },
   secondTheme: 'alliance',
   psalmNumber: '105',
 };
