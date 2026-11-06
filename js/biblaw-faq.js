@@ -117,7 +117,7 @@
   async function init(records){
     state.records=new Map((records||[]).map(r=>[r.id,r]));
     if(state.loading)return state.loading;
-    state.loading=fetch('data/faq-public-085.json?v=089').then(async response=>{
+    state.loading=fetch('data/faq-public-085.json?v=099').then(async response=>{
       if(!response.ok)throw Error('Les questions ne sont pas disponibles.');
       const data=await response.json();
       if(data.version!==5||data.questions?.length!==25||
@@ -140,7 +140,7 @@
       });
       // 091: exactly nine additional owner-authored answers, with validated canonical Psalm links.
   // The citation counts are pinned to the corrected editorial data; every citation must resolve.
-      const extraUrls=[1,2,3,4,5,6,7,8,9].map(n=>'data/faq-091-'+n+'.json?v=091');
+      const extraUrls=[1,2,3,4,5,6,7,8,9].map(n=>'data/faq-091-'+n+'.json?v=099');
       const [newBookData,...newAnswers]=await Promise.all([
         'data/faq-091-books.json?v=091',...extraUrls
       ].map(async url=>{
@@ -156,7 +156,7 @@
         return linkedReferences(q,newBookData.verifiedPsalms,i===0?3:4);
       });
       // 092: ten verbatim owner-authored answers, with 30 verified Psalm citations.
-      const response092=await fetch('data/faq-092.json?v=092');
+      const response092=await fetch('data/faq-092.json?v=099');
       if(!response092.ok)throw Error('Questions 092 indisponibles.');
       const data092=await response092.json();
       if(data092.version!==1||Object.keys(data092.verifiedPsalms||{}).length!==16||
@@ -201,7 +201,7 @@
         return linkedReferences(q,data095.verifiedPsalms,expected095[i]);
       });
       // 096: seven articles on harmony, seven on consciousness, all owner-authored.
-      const response096=await fetch('data/faq-096.json?v=096');
+      const response096=await fetch('data/faq-096.json?v=099');
       if(!response096.ok)throw Error('Questions 096 indisponibles.');
       const data096=await response096.json();
       if(data096.version!==1||Object.keys(data096.verifiedPsalms||{}).length!==28||
@@ -225,7 +225,7 @@
         return linkedReferences(q,data097.verifiedPsalms,expected097[i]);
       });
       // 098: thirteen complete articles about everyday spiritual practice.
-      const response098=await fetch('data/faq-098.json?v=098');
+      const response098=await fetch('data/faq-098.json?v=099');
       if(!response098.ok)throw Error('Questions 098 indisponibles.');
       const data098=await response098.json();
       if(data098.version!==1||Object.keys(data098.verifiedPsalms||{}).length!==25||
