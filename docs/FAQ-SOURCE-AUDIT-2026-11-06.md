@@ -119,3 +119,8 @@ Une vérification des règles du chargeur public \`js/biblaw-faq.js\` a révél�
 **Preuve CI :** exécution GitHub Actions « FAQ reference integrity » **réussie** sur le commit \`d7ad8599ca960febe7fe22481ff79460e4978373\`. Résultat : **102 réponses distinctes, 407 références de psaumes exploitables, 166 psaumes canoniques distincts**. Les quatre autres workflows GitHub de ce commit ont également terminé avec succès. Cette preuve est **technique**, pas une relecture théologique ni un test visuel sur téléphone.
 
 **Reste à vérifier :** le PDF original nommé \`Bible essénienne (classée par livres).pdf\`, indiqué comme provenance par le corpus, n'a pas été retrouvé parmi les fichiers identifiés dans le Drive connecté lors de cette intervention. Les comparaisons directes avec les pages du PDF et le test visuel interactif en navigateur mobile n'ont pas été effectués. Pas de fusion, pas de publication : PR #74 et PR #72 conservées en DRAFT.
+
+## Nettoyage éditorial ciblé — 6 novembre 2026
+
+- Une relecture complémentaire des formulations visibles a identifié un commentaire rédactionnel extérieur au corpus dans `faq-harmonie-conscience-10` (« Quelle est la différence entre le cerveau et le mental ? ») : une explication sur ce que les psaumes ne définissent pas anatomiquement. Cette réserve a été **supprimée**, en conservant uniquement l'enseignement de Gabriel 119:14-16. Le nombre et le contenu des six références cliquables n'ont pas changé.
+- Principe pour la suite : supprimer d'abord les phrases non appuyées, ne pas ajouter de nouvelles interprétations, ne conserver que les formulations reliées directement à des psaumes. Les passages douteux doivent être comparés aux versets avant correction.
