@@ -14,10 +14,10 @@
       ref.verses.every(n=>record.verses?.some(verse=>Number(verse.number)===n)));
   }
   // 090: build cited verse links from the author's unchanged words; never guess a Psalm.
-  function linkedReferences(question,bookNumbers){
+  function linkedReferences(question,bookNumbers,expectedCitations=4){
     const pattern=/\(psaume\s+(\d+)\s+(?:de\s+|d['’])\s*(Michaël|Gabriel|Raphaël|Ouriel),\s+versets?\s+([^)]+)\)/g;
     const matches=[...String(question.answer||'').matchAll(pattern)];
-    if(matches.length!==4||question.answer.split('(psaume ').length!==5)
+    if(matches.length!==expectedCitations||question.answer.split('(psaume ').length!==expectedCitations+1)
       throw Error('Références incomplètes : '+question.id);
     const references=matches.map(match=>{
       const number=Number(match[1]),archangel=match[2].normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -125,8 +125,24 @@
           throw Error('Question 090 absente ou incorrecte.');
         return linkedReferences(q,books.verifiedPsalms);
       });
-      const questions=data.questions.concat(newQuestions);
-      if(questions.length!==30||new Set(questions.map(q=>q.id)).size!==30)
+      // 091: exactly nine additional owner-authored answers, with validated canonical Psalm links.
+      const extraUrls=[1,2,3,4,5,6,7,8,9].map(n=>'data/faq-091-'+n+'.json?v=091');
+      const [newBookData,...newAnswers]=await Promise.all([
+        'data/faq-091-books.json?v=091',...extraUrls
+      ].map(async url=>{
+        const response=await fetch(url);
+        if(!response.ok)throw Error('Questions 091 indisponibles : '+url);
+        return response.json();
+      }));
+      if(newBookData.version!==1||Object.keys(newBookData.verifiedPsalms||{}).length!==24||
+          newAnswers.length!==9)throw Error('Références 091 incomplètes.');
+      const questions091=newAnswers.map((q,i)=>{
+        if(q.id!=='faq-priere-paix-'+(i+1)||!q.title||!q.answer)
+          throw Error('Question 091 absente ou incorrecte.');
+        return linkedReferences(q,newBookData.verifiedPsalms,i===0?3:4);
+      });
+      const questions=data.questions.concat(newQuestions,questions091);
+      if(questions.length!==39||new Set(questions.map(q=>q.id)).size!==39)
         throw Error('Liste des questions invalide.');
       for(const q of questions)for(const ref of q.references)if(!validReference(ref))
         throw Error('Référence de psaume introuvable : '+ref.recordId);
