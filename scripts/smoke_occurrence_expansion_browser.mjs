@@ -16,7 +16,7 @@ const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
 const pageErrors = [];
 page.on('pageerror', error => pageErrors.push(String(error)));
 
-const resultIds = () => page.locator('.result-card [data-open]').evaluateAll(nodes => nodes.map(node => node.dataset.open));
+const resultIds = () => page.locator('.result-card .result-summary-toggle[data-open]').evaluateAll(nodes => nodes.map(node => node.dataset.open));
 async function openAllResults() {
   const toggles = page.locator('.result-card [data-toggle-result]');
   for (let i = 0; i < await toggles.count(); i++) {
