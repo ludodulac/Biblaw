@@ -12,7 +12,7 @@ const script = await readFile(join(root, 'js/biblaw-faq.js'), 'utf8');
 const citation = /\(psaume\s+(\d+)\s+(?:de\s+|d['’])\s*(Michaël|Gabriel|Raphaël|Ouriel),\s+versets?\s+([^)]+)\)/g;
 const groups = [
   {name:'090', files:[1,2,3,4,5].map(n=>'data/faq-090-'+n+'.json'), book:'data/faq-090-books.json', expected:[4,4,4,4,4]},
-  {name:'091', files:[1,2,3,4,5,6,7,8,9].map(n=>'data/faq-091-'+n+'.json'), book:'data/faq-091-books.json', expected:[3,4,4,5,4,4,4,4,4]},
+  {name:'091', files:[1,2,3,4,5,6,7,8,9].map(n=>'data/faq-091-'+n+'.json'), book:'data/faq-091-books.json', expected:[3,4,4,4,4,4,4,4,4]},
   {name:'092', files:['data/faq-092.json'], expected:Array(10).fill(3)},
   {name:'093', files:['data/faq-093.json'], expected:Array(5).fill(3)},
   {name:'094', files:['data/faq-094.json'], expected:[3,3,3,3,3,4]},
@@ -21,7 +21,7 @@ const groups = [
   {name:'097', files:['data/faq-097.json'], expected:[3,3,3,4,3,3,4,4]},
   {name:'098', files:['data/faq-098.json'], expected:[3,5,4,4,5,5,4,5,5,5,5,6,18]}
 ];
-assert.ok(script.includes('i===0?3:(i===3?5:4)'), 'Loader citation counts 091 have drifted');
+assert.ok(script.includes('i===0?3:4'), 'Loader citation counts 091 have drifted');
 for(const key of ['096','098']) {
   const group = groups.find(g=>g.name===key);
   assert.ok(script.includes('const expected'+key+'='+JSON.stringify(group.expected)+';'),
