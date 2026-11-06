@@ -152,8 +152,19 @@
           throw Error('Question 092 absente ou incorrecte.');
         return linkedReferences(q,data092.verifiedPsalms,3);
       });
-      const questions=data.questions.concat(newQuestions,questions091,questions092);
-      if(questions.length!==49||new Set(questions.map(q=>q.id)).size!==49)
+      // 093: five owner-authored questions on personal meaning, preserving full paragraphs.
+      const response093=await fetch('data/faq-093.json?v=093');
+      if(!response093.ok)throw Error('Questions 093 indisponibles.');
+      const data093=await response093.json();
+      if(data093.version!==1||Object.keys(data093.verifiedPsalms||{}).length!==6||
+          data093.questions?.length!==5)throw Error('Références 093 incomplètes.');
+      const questions093=data093.questions.map((q,i)=>{
+        if(q.id!=='faq-sens-personnel-'+(i+1)||!q.title||!q.answer)
+          throw Error('Question 093 absente ou incorrecte.');
+        return linkedReferences(q,data093.verifiedPsalms,3);
+      });
+      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093);
+      if(questions.length!==54||new Set(questions.map(q=>q.id)).size!==54)
         throw Error('Liste des questions invalide.');
       for(const q of questions)for(const ref of q.references)if(!validReference(ref))
         throw Error('Référence de psaume introuvable : '+ref.recordId);
