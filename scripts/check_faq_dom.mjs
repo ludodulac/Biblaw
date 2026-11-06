@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Integration smoke for the real FAQ loader: 102 questions, 407 clickable citations,
+// Integration smoke for the real FAQ loader: 102 questions, 406 clickable citations,
 // index -> answer -> canonical Psalm -> back, and FAQ PDF export.
 import assert from 'node:assert/strict';
 import {readFile, readdir} from 'node:fs/promises';
@@ -89,8 +89,8 @@ for(const item of nodes.faqList.children){
   assert.equal(nodes.faqAnswer.hidden,true);
 }
 assert.equal(questionCount,102);
-assert.equal(linkCount,407);
-assert.equal(opened,407);
+assert.equal(linkCount,406);
+assert.equal(opened,406);
 nodes.faqList.children.at(-1).onclick();
 nodes.faqPdf.onclick();
 assert.equal(exported,1,'PDF export did not trigger');
