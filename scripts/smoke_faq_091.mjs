@@ -7,12 +7,13 @@ const old=Array.from({length:5},(_,i)=>JSON.parse(read('data/faq-090-'+(i+1)+'.j
 const b090=JSON.parse(read('data/faq-090-books.json'));
 const next=Array.from({length:9},(_,i)=>JSON.parse(read('data/faq-091-'+(i+1)+'.json')));
 const b091=JSON.parse(read('data/faq-091-books.json'));
+const addon092=JSON.parse(read('data/faq-092.json'));
 const corpus=JSON.parse(read('data/browser-search-catalog.json'));
 assert.equal(base.questions.length,25);
 assert.equal(next.length,9);
 assert.equal(Object.keys(b091.verifiedPsalms).length,24);
 assert.ok(read('scripts/build_pages_site.py').includes('"data/faq-091-9.json"'));
-assert.ok(read('index.html').includes('biblaw-faq.js?v=091'));
+assert.ok(Number(read('index.html').match(/biblaw-faq[.]js[?]v=(\d+)/)?.[1])>=91);
 class Element {
   constructor(tag='div'){this.tag=tag;this.children=[];this.hidden=false;this.disabled=false;this.textContent='';this.attrs={};this.focused=false;}
   replaceChildren(...items){this.children=items;}
@@ -37,6 +38,7 @@ const context={
     if(url.includes('faq-public-085'))return base;
     if(url.includes('faq-090-books'))return b090;
     if(url.includes('faq-091-books'))return b091;
+    if(url.includes('faq-092.json'))return addon092;
     let m=url.match(/faq-090-([1-5])\.json/);
     if(m)return old[+m[1]-1];
     m=url.match(/faq-091-([1-9])\.json/);
@@ -52,7 +54,7 @@ context.BiblawFAQ.setOpenPsalm(ref=>sourceCalls.push(ref));
 assert.equal(await context.BiblawFAQ.init(corpus.records),true,'39-question FAQ must load');
 context.BiblawFAQ.open();
 assert.ok(classNames.has('view-faq'));
-assert.equal(get('faqList').children.length,39);
+assert.equal(get('faqList').children.length,49);
 assert.equal(get('faqList').children[0].children[0].textContent,base.questions[0].title);
 let linkCount=0,uniquePsalms=new Set();
 for(let i=0;i<9;i++){

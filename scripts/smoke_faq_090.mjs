@@ -8,6 +8,7 @@ const extra=Array.from({length:5},(_,i)=>JSON.parse(read('data/faq-090-'+(i+1)+'
 const books=JSON.parse(read('data/faq-090-books.json'));
 const extra091=Array.from({length:9},(_,i)=>JSON.parse(read('data/faq-091-'+(i+1)+'.json')));
 const books091=JSON.parse(read('data/faq-091-books.json'));
+const addon092=JSON.parse(read('data/faq-092.json'));
 const catalog=JSON.parse(read('data/browser-search-catalog.json'));
 assert.equal(base.questions.length,25);
 assert.equal(extra.length,5);
@@ -37,6 +38,7 @@ const context={document,console,Blob,
     if(url.includes('faq-public-085'))return base;
     if(url.includes('faq-090-books'))return books;
     if(url.includes('faq-091-books'))return books091;
+    if(url.includes('faq-092.json'))return addon092;
     const m091=url.match(/faq-091-([1-9])\.json/);
     if(m091)return extra091[Number(m091[1])-1];
     const m=url.match(/faq-090-([1-5])\.json/);
@@ -51,7 +53,7 @@ vm.runInNewContext(read('js/biblaw-faq.js'),context,{timeout:10000});
 context.BiblawFAQ.setOpenPsalm(ref=>psalmRequests.push(ref));
 assert.equal(await context.BiblawFAQ.init(catalog.records),true,'The 30 public FAQs must load');
 context.BiblawFAQ.open();
-assert.equal(get('faqList').children.length,39,'Exactly 39 questions available');
+assert.equal(get('faqList').children.length,49,'Exactly 49 questions available');
 assert.equal(get('faqList').children[0].children[0].textContent,base.questions[0].title);
 for(let i=0;i<5;i++){
   get('faqList').children[25+i].onclick();

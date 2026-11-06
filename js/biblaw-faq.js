@@ -141,8 +141,19 @@
           throw Error('Question 091 absente ou incorrecte.');
         return linkedReferences(q,newBookData.verifiedPsalms,i===0?3:4);
       });
-      const questions=data.questions.concat(newQuestions,questions091);
-      if(questions.length!==39||new Set(questions.map(q=>q.id)).size!==39)
+      // 092: ten verbatim owner-authored answers, with 30 verified Psalm citations.
+      const response092=await fetch('data/faq-092.json?v=092');
+      if(!response092.ok)throw Error('Questions 092 indisponibles.');
+      const data092=await response092.json();
+      if(data092.version!==1||Object.keys(data092.verifiedPsalms||{}).length!==16||
+          data092.questions?.length!==10)throw Error('Références 092 incomplètes.');
+      const questions092=data092.questions.map((q,i)=>{
+        if(q.id!=='faq-religions-science-'+(i+1)||!q.title||!q.answer)
+          throw Error('Question 092 absente ou incorrecte.');
+        return linkedReferences(q,data092.verifiedPsalms,3);
+      });
+      const questions=data.questions.concat(newQuestions,questions091,questions092);
+      if(questions.length!==49||new Set(questions.map(q=>q.id)).size!==49)
         throw Error('Liste des questions invalide.');
       for(const q of questions)for(const ref of q.references)if(!validReference(ref))
         throw Error('Référence de psaume introuvable : '+ref.recordId);
