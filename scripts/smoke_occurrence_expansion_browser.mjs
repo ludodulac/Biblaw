@@ -115,10 +115,11 @@ try {
   await themesMode.click();
   assert.equal(await page.locator('#addQueryTerm').isVisible(), true,
     'The visible + control must be available');
+  await page.evaluate(()=>{window.__debugSearchEvents=[];document.addEventListener('biblaw:presentation-state',ev=>window.__debugSearchEvents.push(ev.detail));});
   await page.locator('#query').fill(fixture.theme.query);
   assert.equal(await page.locator('#query').inputValue(), fixture.theme.query, 'Theme input was unexpectedly modified');
   await page.locator('#searchButton').click();
-  console.log('THEME_DEBUG '+JSON.stringify(await page.evaluate(()=>({query:document.getElementById('query').value,mode:document.getElementById('modeThemes').classList.contains('active'),status:document.getElementById('resultCount').textContent,scores:[...document.querySelectorAll('.result-card .result-status .score')].map(x=>x.textContent)}))));
+  console.log('THEME_DEBUG '+JSON.stringify(await page.evaluate(()=>({query:document.getElementById('query').value,mode:document.getElementById('modeThemes').classList.contains('active'),status:document.getElementById('resultCount').textContent,scores:[...document.querySelectorAll('.result-card .result-status .score')].map(x=>x.textContent),events:window.__debugSearchEvents,errors:window.__debugErrors||[]})))+' pageErrors='+JSON.stringify(pageErrors));
   assert.equal(await page.locator('.result-card').count(), fixture.theme.recordCount,
     'Canonical theme result count drifted');
   assert.equal(await option.isVisible(), false,
