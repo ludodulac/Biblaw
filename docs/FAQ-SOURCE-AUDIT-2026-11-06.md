@@ -42,3 +42,12 @@ Tous ces chemins sont sous `data/corpus/books/`.
 - **Invariants :** 13 réponses conservées dans ce fichier, sans modification des identifiants, titres, ordre et correspondances `verifiedPsalms`. Aucun corpus, index, script de chargement ou code d'interface modifié.
 - **Contrôle :** JSON valide et relecture des neuf réponses corrigées dans la structure chargée ; validation de la publication réelle et relecture indépendante du PDF non réalisées. 
 
+
+## Lot 03 — réalité spirituelle (8 réponses, fichier 097)
+
+Les 8 réponses ont été relues avec leurs passages du corpus : Raphaël 88, 15, 268, 222, 76 ; Gabriel 244, 33, 191, 213, 70 ; Michaël 94, 279, 254 ; Ouriel 182, 277, 156, 186, 106 et 152. Les affirmations principales sont appuyées par les passages cités. **Aucune modification textuelle** nécessaire pour ce lot ; ce n'est pas une certification éditoriale indépendante des PDF.
+
+## Lot 04 — harmonie et conscience, questions 1 à 8 (8 réponses, fichier 096)
+
+Les 8 réponses ont été relues avec les psaumes de référence : Gabriel 244, 165, 156, 144, 291 ; Ouriel 131, 200, 214 ; Raphaël 171, 190, 211, 26 ; Michaël 170, 236, 15 ; Ouriel 106 et 156. Les exemples de Gabriel 244:30-40 dans la question 7 ont été vérifiés en particulier. **Aucune modification textuelle** nécessaire dans ce lot. Contrôle effectué contre les textes structurés du dépôt, non contre le fac-similé PDF.
+
