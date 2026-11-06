@@ -98,7 +98,8 @@ try {
   assert.equal(await option.isVisible(), false, 'A multi-word expression must not expose lexical expansion');
   assert.equal(await page.locator('.result-card').count(), fixture.phrase.recordCount, 'Exact phrase result count drifted');
 
-  // Search by Psalm number remains available.
+  // Search by Psalm number remains available in Theme mode.
+  await themesMode.click();
   await page.locator('#query').fill(fixture.psalmNumber);
   await page.locator('#searchButton').click();
   assert.match(await page.locator('#resultCount').innerText(), /portant le numéro 105/i);
