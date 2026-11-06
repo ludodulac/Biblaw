@@ -118,7 +118,10 @@ try {
   await page.evaluate(()=>{window.__debugSearchEvents=[];window.__debugClickEvents=[];document.addEventListener('biblaw:presentation-state',ev=>window.__debugSearchEvents.push(ev.detail));document.addEventListener('click',e=>window.__debugClickEvents.push({id:e.target?.id,tag:e.target?.tagName}),true);});
   await page.locator('#query').fill(fixture.theme.query);
   assert.equal(await page.locator('#query').inputValue(), fixture.theme.query, 'Theme input was unexpectedly modified');
+  const geometry=()=>page.evaluate(()=>{const button=document.getElementById('searchButton'),r=button.getBoundingClientRect(),el=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return {buttonRect:{x:r.x,y:r.y,w:r.width,h:r.height},viewport:{w:innerWidth,h:innerHeight,scrollY},atCenter:{id:el?.id,tag:el?.tagName,className:el?.className},pointerEvents:getComputedStyle(button).pointerEvents,visibility:getComputedStyle(button).visibility,display:getComputedStyle(button).display,position:getComputedStyle(button).position,activeElement:document.activeElement?.id,suggestionsHidden:document.getElementById('searchSuggestions').hidden};});
+  console.log('SEARCH_GEOMETRY_BEFORE '+JSON.stringify(await geometry()));
   await page.locator('#searchButton').click();
+  console.log('SEARCH_GEOMETRY_AFTER '+JSON.stringify(await geometry()));
   console.log('THEME_DEBUG '+JSON.stringify(await page.evaluate(()=>({query:document.getElementById('query').value,mode:document.getElementById('modeThemes').classList.contains('active'),status:document.getElementById('resultCount').textContent,scores:[...document.querySelectorAll('.result-card .result-status .score')].map(x=>x.textContent),events:window.__debugSearchEvents,clicks:window.__debugClickEvents,buttonCallback:String(document.getElementById('searchButton').onclick).slice(0,220),errors:window.__debugErrors||[]})))+' pageErrors='+JSON.stringify(pageErrors));
   assert.equal(await page.locator('.result-card').count(), fixture.theme.recordCount,
     'Canonical theme result count drifted');
