@@ -139,3 +139,14 @@ Deux corrections supplémentaires :
 **Attention intégration :** le fichier `index.html` de la branche historique PR #72 ne contient pas encore la section FAQ, et plusieurs fichiers FAQ/leur chargeur y sont absents. Ne jamais supposer que PR #72 et PR #74 sont interchangeables ; conserver ces changements séparés et vérifier la conservation de la FAQ si les deux branches sont réunies ultérieurement. Rien n'a été fusionné ni publié.
 
 **Bilan corrigé :** 23 réponses ont fait l'objet d'au moins une modification textuelle dans cette branche, dont les deux corrections ci-dessus. Les réponses restantes n'ont pas été réécrites. La confirmation éditoriale humaine et la comparaison indépendante au PDF source restent distinctes des tests techniques.
+
+## Préparation finale de publication — 6 novembre 2026
+
+- **État éditorial effectif** : 102 réponses présentes, 23 réponses modifiées par rapport à `main`. Les suppressions ciblent les commentaires scientifiques extérieurs, les consignes inventées et les synthèses non explicitement fondées sur les textes canoniques. Les autres réponses sont conservées.
+- **État technique final** : 406 références cliquables dans les 102 réponses ; 166 psaumes distincts du corpus structuré. Les doublons rédactionnels finaux de FAQ 091-1 et 091-4 ont été retirés après audit, sans toucher aux psaumes.
+- **Compatibilité déploiement Pages** : tous les anciens audits `audit_faq_*.py` et tests `smoke_faq_*.mjs` sont désormais joués dans la CI de la PR. Les scripts historiques 096 et 097/098 ont été alignés sur le nouveau nombre réel de citations, tout en maintenant leurs contrôles des identifiants, des numéros de versets, des titres et des exports. L'exécution ciblée a réussi.
+- **Navigation réelle testée** : le smoke Chromium à fenêtre mobile (390 × 844) a confirmé la liste des 102 questions, l'ouverture d'une réponse, les versets cités mis en évidence, le retour à la réponse, un téléchargement PDF réel et les sous-titres de la dernière question. Le test distinct de la recherche a aussi permis d'identifier et corriger un problème mobile où la liste de suggestions recouvrait le bouton « Rechercher » ; sur petit écran elle reste désormais dans le flux de la page.
+- **Cache du navigateur** : la version des assets modifiés a été incrémentée en `v=099` dans `index.html` et le chargeur FAQ, afin d'éviter de servir l'ancien texte et le vieux JavaScript.
+- **PDF canonique retrouvé dans le dépôt** : `Bible essénienne (classée par livres).pdf` existe à la racine du dépôt (`main`, 15 890 697 octets), contrairement à l'incertitude indiquée dans les notes intermédiaires. Cette intervention a contrôlé le corpus structuré et ses métadonnées de pages, pas vérifié indépendamment chaque page originale du PDF. La présence du PDF n'est pas une validation humaine automatique des interprétations.
+- **Préservation** : PR #72 non modifiée, distincte de la PR #74. Aucun changement au corpus canonique.
+
