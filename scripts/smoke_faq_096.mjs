@@ -72,7 +72,7 @@ assert.ok(classes.has('view-faq'));
 assert.equal(get('faqList').children.length,102);
 assert.equal(get('faqList').children[0].children[0].textContent,base.questions[0].title);
 assert.equal(get('faqList').children[66].children[0].textContent,f095.questions[6].title);
-const expected=[4,4,4,4,4,4,4,4,4,3,4,4,3,5];
+const expected=[4,4,4,4,4,4,4,4,7,6,4,4,6,5];
 let links=0;const unique=new Set();
 for(let i=0;i<14;i++){
   const q=f096.questions[i];
@@ -115,9 +115,9 @@ for(let i=0;i<14;i++){
   get('faqBack').onclick();
   assert.equal(get('faqIndex').hidden,false);
 }
-assert.equal(links,55);
+assert.equal(links,64);
 assert.equal(unique.size,28);
 assert.equal(pdf.length,14);
 context.BiblawFAQ.close();
 assert.equal(get('faqLibrary').hidden,true);
-console.log('FAQ 096 PASS: 81 questions, 14 owner texts, 55 verified Psalm links, 28 canonical sources, PDF and return navigation');
+console.log('FAQ 096 PASS: 81 questions, 14 owner texts, 64 verified Psalm links, 28 canonical sources, PDF and return navigation');
