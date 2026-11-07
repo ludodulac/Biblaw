@@ -108,6 +108,19 @@ def main():
                 "offset":match[1],"pdf_page":match[3]+1,"pdf_page_chars":match[4],
                 "excerpt":source["text"][:100]
             })
+    for r in observations:
+        if r["matched_chunks"] == 0:
+            p = int(r["sourcePages"][0])
+            needle = normalize(r["excerpt"])
+            debug = []
+            for page_one_based in range(max(1,p-9), min(len(doc),p+10)):
+                txt = page(page_one_based-1)
+                if txt:
+                    debug.append({"page":page_one_based,"chars":len(txt),
+                                  "contains_start":needle[:55] in txt,
+                                  "start":txt[:125]})
+            print("PDF_SOURCE_DIAG "+json.dumps({"psalm":r["psalm"],
+                  "verse":r["verse"],"refpage":p,"nearby":debug},ensure_ascii=False))
     statuses = Counter()
     for r in observations:
         status = "PASS" if r["n_chunks"] and r["matched_chunks"] >= 1 else "UNVERIFIED"
