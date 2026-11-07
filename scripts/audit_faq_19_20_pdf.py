@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "Bible essénienne (classée par livres).pdf"
 # A, B, C are the 3 draft answers in docs/FAQ-MISSION-19-20-PROJETS-2026-11-07.md.
 TARGETS = [
-    ("A", 37, 254, "michael", list(range(1, 16)) + list(range(21, 29))),
+    ("A", 37, 254, "michael", list(range(1, 10)) + list(range(11, 16)) + list(range(21, 29))),
     ("A", 19, 106, "raphael", list(range(15, 18))),
     ("A", 44, 277, "ouriel", list(range(5, 11))),
     ("B", 7, 26, "raphael", list(range(4, 12))),
