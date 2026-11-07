@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "date": "2026-11-07",
+  "mission": "BIBLAW FAQ questions 19 & 20",
+  "source": {
+    "repository": "ludodulac/Biblaw",
+    "file": "Bible essénienne (classée par livres).pdf",
+    "pages": 4744,
+    "bytes": 15890697,
+    "sha256": "8b99bd72b3cc26659f36f8f2545d9c6b1258c9ab0ff9c9139e1eafdfb6f8c4a3"
+  },
+  "verification": {
+    "run_id": 42383363436,
+    "run_url": "https://github.com/ludodulac/Biblaw/actions/runs/42383363436",
+    "method": "PyMuPDF direct extraction of original PDF, three distinct word segments per cited canonical verse, allowing two adjacent physical pages for verses split at page breaks.",
+    "staged_question_count": 3,
+    "citation_occurrences_in_answers": 18,
+    "unique_psalms": 9,
+    "unique_cited_verses": 110,
+    "verified_verses": 110,
+    "fully_matched_three_segments": 110,
+    "unverified_verses": 0
+  },
+  "psalms": [
+    {
+      "archangel": "Ouriel",
+      "psalm": 14,
+      "book": 4,
+      "verses_verified": 13,
+      "pdf_pages": [
+        214,
+        215
+      ]
+    },
+    {
+      "archangel": "Raphaël",
+      "psalm": 26,
+      "book": 7,
+      "verses_verified": 8,
+      "pdf_pages": [
+        362,
+        363
+      ]
+    },
+    {
+      "archangel": "Raphaël",
+      "psalm": 106,
+      "book": 19,
+      "verses_verified": 3,
+      "pdf_pages": [
+        1351,
+        1352,
+        1353
+      ]
+    },
+    {
+      "archangel": "Ouriel",
+      "psalm": 106,
+      "book": 20,
+      "verses_verified": 17,
+      "pdf_pages": [
+        1468,
+        1469,
+        1470
+      ]
+    },
+    {
+      "archangel": "Michaël",
+      "psalm": 160,
+      "book": 21,
+      "verses_verified": 9,
+      "pdf_pages": [
+        1742,
+        1743,
+        1744,
+        1745,
+        1746,
+        1747
+      ]
+    },
+    {
+      "archangel": "Raphaël",
+      "psalm": 177,
+      "book": 27,
+      "verses_verified": 8,
+      "pdf_pages": [
+        2567,
+        2568,
+        2569
+      ]
+    },
+    {
+      "archangel": "Michaël",
+      "psalm": 254,
+      "book": 37,
+      "verses_verified": 22,
+      "pdf_pages": [
+        3705,
+        3706,
+        3707,
+        3708
+      ]
+    },
+    {
+      "archangel": "Michaël",
+      "psalm": 267,
+      "book": 37,
+      "verses_verified": 24,
+      "pdf_pages": [
+        3772,
+        3773,
+        3774,
+        3775
+      ]
+    },
+    {
+      "archangel": "Ouriel",
+      "psalm": 277,
+      "book": 44,
+      "verses_verified": 6,
+      "pdf_pages": [
+        4597,
+        4598,
+        4599,
+        4600,
+        4601
+      ]
+    }
+  ],
+  "split_verses_directly_visually_inspected": [
+    {
+      "archangel": "Ouriel",
+      "psalm": 14,
+      "verse": 9,
+      "pdf_pages": [
+        214,
+        215
+      ]
+    },
+    {
+      "archangel": "Raphaël",
+      "psalm": 26,
+      "verse": 8,
+      "pdf_pages": [
+        362,
+        363
+      ]
+    },
+    {
+      "archangel": "Ouriel",
+      "psalm": 106,
+      "verse": 8,
+      "pdf_pages": [
+        1468,
+        1469
+      ]
+    },
+    {
+      "archangel": "Michaël",
+      "psalm": 160,
+      "verse": 6,
+      "pdf_pages": [
+        1742,
+        1743
+      ]
+    },
+    {
+      "archangel": "Ouriel",
+      "psalm": 277,
+      "verse": 9,
+      "pdf_pages": [
+        4597,
+        4598
+      ]
+    }
+  ],
+  "topic_search": {
+    "near_death_experiences": "No explicit treatment of expériences de mort imminente, mort imminente, mort clinique, arrêt cardiaque or several checked near-death synonyms located by full-text searching all 4744 original PDF pages. Theological passages on afterlife do not describe NDE reports.",
+    "science_and_afterlife": "PDF page 1067, book 17 introduction, speaks of 'ancienne science des Esséniens de la conservation de la mémoire après la mort'. PDF page 2045, Raphaël psalm 149 verse 18, refers to 'science du mémorial'. Neither passage explains findings of modern science about near-death states or afterlife; no developed answer supplied.",
+    "false_positive": "Exact token 'science de la mort' matches a substring of 'inconscience de la mort' on PDF page 423; not a substantive source."
+  },
+  "limits": [
+    "Textual match verifies the cited source and verse numbering, not automatically every nuance of a paraphrase.",
+    "No original PDF pages or corpus files were modified.",
+    "No site-public changes or merge performed."
+  ]
+}
