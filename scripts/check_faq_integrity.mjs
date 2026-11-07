@@ -67,6 +67,12 @@ let total=0;
 let linked=0;
 function register(q) {
   assert.ok(q.id&&q.title&&q.answer,'Missing FAQ fields');
+  // Editorial contract: answers state only what the Essene Bible teaches.
+  assert.ok(q.answer.startsWith('La Bible essénienne enseigne que'),
+    'FAQ must start with explicit source attribution: '+q.id);
+  assert.doesNotMatch(q.answer,
+    /les passages examinés|les psaumes cités ne (?:prouvent|garantissent)|sur le plan scientifique|pas scientifiquement démontré|cela ne constitue pas une preuve scientifique|ne permet pas d'affirmer|selon une doctrine non vérifiée/i,
+    'Extraneous editorial commentary in '+q.id);
   assert.ok(!ids.has(q.id),'Duplicate FAQ ID: '+q.id);
   assert.doesNotMatch(q.answer,/\(psaume[^)]*;\s*psaume[^)]*\)/i,
     'Multiple Psalms hidden in one unclickable citation: '+q.id);
