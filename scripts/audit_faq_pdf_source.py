@@ -96,7 +96,7 @@ def main():
             probes = chunks(source["text"])
             candidates = []
             for source_page in source_pages:
-                for offset in (-2,-1,0,1):
+                for offset in range(-2,6):
                     zero_index = int(source_page)+offset
                     txt = page(zero_index)
                     hits = sum(x in txt for x in probes)
@@ -125,6 +125,8 @@ def main():
     for r in observations:
         status = "PASS" if r["n_chunks"] and r["matched_chunks"] >= 1 else "UNVERIFIED"
         statuses[status] += 1
+        if status == "PASS" and r["offset"] != -1:
+            statuses["PAGE_METADATA_MISMATCH"] += 1
         print(f"{status} {r['archangel']} {r['psalm']}:{r['verse']} "
               f"pdfpage={r['pdf_page']} jsonpage={r['sourcePages']} "
               f"shingles={r['matched_chunks']}/{r['n_chunks']} offset={r['offset']}")
@@ -137,7 +139,7 @@ def main():
         "observations":observations
     },ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(f"PDF_SOURCE_RESULT {dict(statuses)} output={output.relative_to(ROOT)}")
-    return 0 if statuses["PASS"] else 1
+    return 0 if statuses["UNVERIFIED"] == 0 else 1
 
 if __name__ == "__main__":
     sys.exit(main())
