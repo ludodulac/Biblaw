@@ -178,3 +178,24 @@ Les **8 divergences de pagination** ne sont pas des désaccords sur le texte : s
 **Traçabilité :** fichier `docs/FAQ-PDF-SOURCE-EVIDENCE-2026-11-07.json` (187 contrôles individuels), script reproductible `scripts/audit_faq_pdf_source.py`, GitHub Actions « FAQ source PDF comparison » du run **42367205982** (réussi). Les correspondances contrôlent des segments des versets et ne constituent pas, à elles seules, une validation indépendante de toutes les nuances rédactionnelles des 102 réponses.
 
 **Périmètre et sécurité :** aucun texte du corpus original n'a été modifié et aucune PR n'a été fusionnée ou publiée. Mission 2 de vérification de la source des passages sensibles **achevée** ; les anomalies de pagination sont consignées pour une correction spécifique à la provenance, distincte du nettoyage éditorial.
+
+## MISSION 3 — Nettoyage éditorial final des 102 réponses — 7 novembre 2026
+
+**Principe éditorial confirmé :** exposer les enseignements de la Bible essénienne, sans avis scientifique extérieur, réserve personnelle, extrapolation au-delà des versets ni consignes pratiques inventées. Conserver les paragraphes appuyés par des psaumes et ne supprimer que les ajouts étrangers au corpus.
+
+**Relecture finale :** l'ensemble des **102 réponses** a été contrôlé par une nouvelle recherche de commentaires éditoriaux extérieurs, de comparaisons cérébrales, de réserves scientifiques et de faux exercices pratiques. Après correction, aucune des expressions ciblées n'est restée dans les réponses. Les synthèses de l'enseignement provenant de plusieurs versets ne sont pas supprimées mécaniquement lorsqu'elles sont cohérentes avec les sources citées.
+
+Corrections ciblées effectuées pendant cette mission :
+
+1. `faq-mort-3`, **« Peut-on retrouver ses proches décédés ? »** : suppression de la formule ajoutée « les passages examinés ne garantissent pas… », qui commentait les textes de l'extérieur. L'explication sur Raphaël 178:4,5,15 a été précisée pour parler des mondes subtils et des influences réellement rencontrés pendant la vie, sans suggérer indûment la réunion avec les proches humains après la mort. Trois liens conservés.
+2. `faq-religions-science-8`, **expérience mystique et cerveau** : suppression de la comparaison initiale inférée avec les phénomènes du corps physique et d'une reprise finale redondante. Conservation de l'enseignement explicite de Michaël 274 sur les sens physiques et subtils, avec les trois références déjà présentes.
+3. `faq-realite-spirituelle-3`, **« Dieu existe-t-il ? »** : retrait de la comparaison selon laquelle Dieu ne serait pas une « simple idée élaborée par l'homme ». Conservation de l'exposé positif de la Bible essénienne et des trois psaumes sources.
+4. **Sept introductions** reformulées sans changer leur sens ni leurs références : `faq-dieu-3`, `faq-mort-4`, `faq-nature-dieu-1`, `faq-nature-dieu-2`, `faq-nature-dieu-4`, `faq-nature-dieu-5` et `faq-priere-paix-4`. Désormais, chaque réponse commence exactement par **« La Bible essénienne enseigne que »**.
+
+**Bilan comparé à `main` :** **30 réponses modifiées**, **72 autres laissées intactes**. Le nombre de réponses demeure 102. Les **406 références cliquables** sont maintenues, y compris dans les réponses retouchées pendant cette mission. Le script `scripts/check_faq_integrity.mjs` impose dorénavant la formule d'attribution dès le début de chaque réponse et interdit explicitement plusieurs tournures de commentaires scientifiques ou éditoriaux extérieurs.
+
+**Validation technique :** le workflow « FAQ reference integrity » et le workflow « FAQ source PDF comparison » ont terminé avec succès après les dernières modifications de contenu (commit `fa1450278739bae7f6bbfd1575a446ec13cd9453`). Ces contrôles n'affirment pas que les 102 paraphrases ont été certifiées par une autorité doctrinale. Ils garantissent la structure, la fidélité textuelle des 187 versets PDF contrôlés précédemment et l'absence des tournures bannies recherchées.
+
+**Conservation des travaux :** PR #74 toujours **DRAFT**, PR #72 inchangée, pas de fusion, pas de publication et aucune modification des textes canoniques.
+
+**Statut : MISSION 3 TERMINÉE.** Les tests fonctionnels complets et la préparation de publication constituent les missions 4 et 5.
