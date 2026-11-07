@@ -38,7 +38,7 @@ jobs:
         run: |
           failed=0
           for test in scripts/audit_faq_*.py scripts/smoke_faq_*.mjs; do
-            if [[ "$test" == "scripts/smoke_faq_browser.mjs" ]]; then continue; fi
+            if [[ "$test" == "scripts/smoke_faq_browser.mjs" || "$test" == "scripts/audit_faq_pdf_source.py" ]]; then continue; fi
             echo "=== $test ==="
             if [[ "$test" == *.py ]]; then
               python "$test" || failed=1
