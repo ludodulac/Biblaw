@@ -13,6 +13,8 @@ const f095=JSON.parse(read('data/faq-095.json'));
 const f096=JSON.parse(read('data/faq-096.json'));
 const addon097=JSON.parse(read('data/faq-097.json'));
 const addon098=JSON.parse(read('data/faq-098.json'));
+const addon099=JSON.parse(read('data/faq-099.json'));
+const routing099=JSON.parse(read('data/faq-099-routing.json'));
 const books090=JSON.parse(read('data/faq-090-books.json'));
 const books091=JSON.parse(read('data/faq-091-books.json'));
 const corpus=JSON.parse(read('data/browser-search-catalog.json'));
@@ -54,6 +56,8 @@ const context={
     if(url.includes('faq-096.json'))return f096;
     if(url.includes('faq-097.json'))return addon097;
     if(url.includes('faq-098.json'))return addon098;
+    if(url.includes('faq-099.json'))return addon099;
+    if(url.includes('faq-099-routing.json'))return routing099;
     let m=url.match(/faq-090-([1-5])\.json/);
     if(m)return f090[+m[1]-1];
     m=url.match(/faq-091-([1-9])\.json/);
@@ -69,10 +73,10 @@ context.BiblawFAQ.setOpenPsalm(ref=>opened.push(ref));
 assert.equal(await context.BiblawFAQ.init(corpus.records),true,'All 81 questions loaded');
 context.BiblawFAQ.open();
 assert.ok(classes.has('view-faq'));
-assert.equal(get('faqList').children.length,102);
+assert.equal(get('faqList').children.length,105);
 assert.equal(get('faqList').children[0].children[0].textContent,base.questions[0].title);
 assert.equal(get('faqList').children[66].children[0].textContent,f095.questions[6].title);
-const expected=[4,4,4,4,4,4,4,4,4,3,4,4,3,5];
+const expected=[4,4,4,4,4,4,4,4,7,6,4,4,6,5];
 let links=0;const unique=new Set();
 for(let i=0;i<14;i++){
   const q=f096.questions[i];
@@ -115,9 +119,9 @@ for(let i=0;i<14;i++){
   get('faqBack').onclick();
   assert.equal(get('faqIndex').hidden,false);
 }
-assert.equal(links,55);
+assert.equal(links,64);
 assert.equal(unique.size,28);
 assert.equal(pdf.length,14);
 context.BiblawFAQ.close();
 assert.equal(get('faqLibrary').hidden,true);
-console.log('FAQ 096 PASS: 81 questions, 14 owner texts, 55 verified Psalm links, 28 canonical sources, PDF and return navigation');
+console.log('FAQ 096 PASS: 81 questions, 14 owner texts, 64 verified Psalm links, 28 canonical sources, PDF and return navigation');

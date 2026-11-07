@@ -59,6 +59,8 @@ PUBLIC_FILES = (
     "data/faq-096.json",
     "data/faq-097.json",
     "data/faq-098.json",
+    "data/faq-099.json",
+    "data/faq-099-routing.json",
     "data/lexical-expansion-runtime.json",
     "data/linguistic-sense-browser-runtime.json",
     "data/linguistic-grammar-browser-runtime.json",

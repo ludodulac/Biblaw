@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - 'index.html'
+      - 'js/biblaw-faq.js'
+      - 'data/faq-*.json'
+      - 'scripts/smoke_faq_browser.mjs'
+      - 'scripts/smoke_faq_full_browser.mjs'
       - 'css/biblaw.css'
       - 'js/biblaw.js'
       - 'js/theme-suggestion-engine.js'
@@ -24,8 +28,8 @@ permissions:
 
 jobs:
   chromium-smoke:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -44,5 +48,7 @@ jobs:
           python -m http.server 4173 --directory _site >/tmp/biblaw-smoke-http.log 2>&1 &
           SERVER_PID=$!
           trap 'kill "$SERVER_PID"' EXIT
+          node scripts/smoke_faq_browser.mjs
+          node scripts/smoke_faq_full_browser.mjs
           node scripts/smoke_occurrence_expansion_browser.mjs
           node scripts/smoke_occurrences_041c.mjs

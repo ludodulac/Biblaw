@@ -4,7 +4,7 @@
   'use strict';
   const $=id=>document.getElementById(id);
   const state={questions:[],byId:new Map(),records:new Map(),openPsalm:null,current:null,
-    lastLink:null,lastScroll:0,loading:null};
+    lastLink:null,lastScroll:0,loading:null,routes:[],aliases:new Map()};
   const labelNumber=(n,verses)=>'Psaume '+n+', verset'+(verses.length>1?'s':'')+' '+verses.join(', ');
   function validReference(ref){
     const record=state.records.get(ref.recordId);
@@ -45,9 +45,18 @@
     $('faqStatus').textContent=message;
     $('faqStatus').hidden=!message;
   }
+  function normalizeQuestion(text){
+    return String(text||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .toLowerCase().replace(/[’']/g,' ').replace(/[^a-z0-9]+/g,' ').trim();
+  }
   function renderIndex(){
     $('faqList').replaceChildren();
+    const query=normalizeQuestion($('faqSearch').value);
+    let shown=0;
     for(const question of state.questions){
+      const texts=[question.title,...(state.aliases.get(question.id)||[])];
+      if(query&&!texts.some(text=>normalizeQuestion(text).includes(query)))continue;
+      shown++;
       const b=document.createElement('button');b.type='button';
       b.className='faq-question-item';
       const title=document.createElement('span');title.className='faq-question-title';title.textContent=question.title;
@@ -57,6 +66,12 @@
       b.onclick=()=>showAnswer(question.id);
       $('faqList').append(b);
     }
+    const unsupported=state.routes.some(route=>route.resolution==='unsupported'&&
+      normalizeQuestion(route.question)===query);
+    $('faqSearchStatus').textContent=query
+      ?(unsupported?'Aucune réponse fondée dans les psaumes pour cette question.':
+        shown+' réponse'+(shown>1?'s':'')+' trouvée'+(shown>1?'s':''))
+      :'';
   }
   // 098: preserve author-written subsection headings as visible bold text, without rendering markup as HTML.
   function appendFormattedText(container,fragment){
@@ -117,7 +132,7 @@
   async function init(records){
     state.records=new Map((records||[]).map(r=>[r.id,r]));
     if(state.loading)return state.loading;
-    state.loading=fetch('data/faq-public-085.json?v=089').then(async response=>{
+    state.loading=fetch('data/faq-public-085.json?v=099').then(async response=>{
       if(!response.ok)throw Error('Les questions ne sont pas disponibles.');
       const data=await response.json();
       if(data.version!==5||data.questions?.length!==25||
@@ -139,7 +154,8 @@
         return linkedReferences(q,books.verifiedPsalms);
       });
       // 091: exactly nine additional owner-authored answers, with validated canonical Psalm links.
-      const extraUrls=[1,2,3,4,5,6,7,8,9].map(n=>'data/faq-091-'+n+'.json?v=091');
+  // The citation counts are pinned to the corrected editorial data; every citation must resolve.
+      const extraUrls=[1,2,3,4,5,6,7,8,9].map(n=>'data/faq-091-'+n+'.json?v=099');
       const [newBookData,...newAnswers]=await Promise.all([
         'data/faq-091-books.json?v=091',...extraUrls
       ].map(async url=>{
@@ -155,7 +171,7 @@
         return linkedReferences(q,newBookData.verifiedPsalms,i===0?3:4);
       });
       // 092: ten verbatim owner-authored answers, with 30 verified Psalm citations.
-      const response092=await fetch('data/faq-092.json?v=092');
+      const response092=await fetch('data/faq-092.json?v=099');
       if(!response092.ok)throw Error('Questions 092 indisponibles.');
       const data092=await response092.json();
       if(data092.version!==1||Object.keys(data092.verifiedPsalms||{}).length!==16||
@@ -200,12 +216,12 @@
         return linkedReferences(q,data095.verifiedPsalms,expected095[i]);
       });
       // 096: seven articles on harmony, seven on consciousness, all owner-authored.
-      const response096=await fetch('data/faq-096.json?v=096');
+      const response096=await fetch('data/faq-096.json?v=099');
       if(!response096.ok)throw Error('Questions 096 indisponibles.');
       const data096=await response096.json();
       if(data096.version!==1||Object.keys(data096.verifiedPsalms||{}).length!==28||
           data096.questions?.length!==14)throw Error('Références 096 incomplètes.');
-      const expected096=[4,4,4,4,4,4,4,4,4,3,4,4,3,5];
+      const expected096=[4,4,4,4,4,4,4,4,7,6,4,4,6,5];
       const questions096=data096.questions.map((q,i)=>{
         if(q.id!=='faq-harmonie-conscience-'+(i+1)||!q.title||!q.answer)
           throw Error('Question 096 absente ou incorrecte.');
@@ -224,24 +240,62 @@
         return linkedReferences(q,data097.verifiedPsalms,expected097[i]);
       });
       // 098: thirteen complete articles about everyday spiritual practice.
-      const response098=await fetch('data/faq-098.json?v=098');
+      const response098=await fetch('data/faq-098.json?v=099');
       if(!response098.ok)throw Error('Questions 098 indisponibles.');
       const data098=await response098.json();
       if(data098.version!==1||Object.keys(data098.verifiedPsalms||{}).length!==25||
           data098.questions?.length!==13)throw Error('Références 098 incomplètes.');
-      const expected098=[3,3,3,3,3,3,3,3,3,3,3,3,6];
+      const expected098=[3,5,4,4,5,5,4,5,5,5,5,6,18];
       const questions098=data098.questions.map((q,i)=>{
         if(q.id!=='faq-pratique-spirituelle-'+(i+1)||!q.title||!q.answer)
           throw Error('Question 098 absente ou incorrecte.');
         return linkedReferences(q,data098.verifiedPsalms,expected098[i]);
       });
-      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093,questions094,questions095,questions096,questions097,questions098);
-      if(questions.length!==102||new Set(questions.map(q=>q.id)).size!==102)
+      // 099 — Exactly three new canonical answers; the other formulations
+      // are routed to existing entries, never duplicated in the index.
+      const [response099,responseRoutes]=await Promise.all([
+        fetch('data/faq-099.json?v=100'),fetch('data/faq-099-routing.json?v=100')
+      ]);
+      if(!response099.ok||!responseRoutes.ok)throw Error('Questions 19 et 20 indisponibles.');
+      const data099=await response099.json();
+      const routeData=await responseRoutes.json();
+      if(data099.version!==1||data099.questions?.length!==3||
+          Object.keys(data099.verifiedPsalms||{}).length!==9)
+        throw Error('Nouvelles réponses 099 incomplètes.');
+      const expected099=[7,5,6];
+      const questions099=data099.questions.map((q,i)=>linkedReferences(q,data099.verifiedPsalms,expected099[i]));
+      const questions=data.questions.concat(newQuestions,questions091,questions092,questions093,questions094,questions095,questions096,questions097,questions098,questions099);
+      if(questions.length!==105||new Set(questions.map(q=>q.id)).size!==105)
         throw Error('Liste des questions invalide.');
       for(const q of questions)for(const ref of q.references)if(!validReference(ref))
         throw Error('Référence de psaume introuvable : '+ref.recordId);
       state.questions=questions;
       state.byId=new Map(state.questions.map(q=>[q.id,q]));
+      if(routeData.version!==1||routeData.routes?.length!==19)
+        throw Error('Correspondances des 19 questions incomplètes.');
+      const numbers=new Set();
+      state.aliases=new Map();
+      const counts={new:0,reuse:0,redirect_new:0,unsupported:0};
+      for(const route of routeData.routes){
+        if(!Number.isInteger(route.number)||numbers.has(route.number)||!route.question||
+           !(route.resolution in counts))throw Error('Correspondance de question incorrecte.');
+        numbers.add(route.number);counts[route.resolution]++;
+        if(route.resolution==='unsupported'){
+          if(route.target_id!==null)throw Error('Question sans source avec cible.');
+          continue;
+        }
+        const question=state.byId.get(route.target_id);
+        if(!question)throw Error('Correspondance introuvable : '+route.question);
+        if(route.resolution==='new'&&question.title!==route.question)
+          throw Error('Titre de la nouvelle réponse incohérent.');
+        const aliases=state.aliases.get(question.id)||[];
+        aliases.push(route.question);
+        state.aliases.set(question.id,aliases);
+      }
+      if(numbers.size!==19||counts.new!==3||counts.reuse!==12||
+         counts.redirect_new!==2||counts.unsupported!==2)
+        throw Error('Classement 19/20 incohérent.');
+      state.routes=routeData.routes;
       renderIndex();showStatus('');
       return true;
     }).catch(error=>{showStatus(error.message);console.error(error);return false;});
@@ -250,6 +304,8 @@
   function open(){
     $('faqLibrary').hidden=false;
     document.body.classList.add('view-faq');
+    $('faqSearch').value='';
+    renderIndex();
     backToIndex();
     if(!state.questions.length)showStatus('Chargement des questions…');
     $('faqClose').focus({preventScroll:true});
@@ -273,6 +329,7 @@
       showStatus('');
     }catch(error){showStatus('Impossible de créer le PDF : '+error.message);}
   }
+  $('faqSearch').oninput=renderIndex;
   $('faqBack').onclick=backToIndex;
   $('faqClose').onclick=()=>{
     close();window.scrollTo({top:0,behavior:'instant'});

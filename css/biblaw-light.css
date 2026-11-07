@@ -661,3 +661,24 @@ body.view-faq .shell{padding-top:1.15rem}
   body.view-faq .faq-psalm-link{color:#202020!important;text-decoration:none!important}
   body.view-faq .record-dialog:not([open]){display:none!important}
 }
+
+/* 100 — Sur ordinateur comme sur téléphone, l'autocomplétion reste
+   dans le flux. Les suggestions ne masquent jamais le bouton Rechercher.
+   Combiné à la fermeture au click (pas au pointerdown), cela garde le
+   bouton au même endroit pendant l'appui. */
+.primary-search .query-stack .search-suggestions:not([hidden]) {
+  position:relative;
+  top:auto;left:auto;right:auto;
+  width:100%;box-sizing:border-box;margin-top:.45rem;
+  max-height:min(15rem,35dvh);z-index:1;
+}
+
+
+/* 101 — Rechercher dans 105 questions, sans dupliquer les réponses canoniques.
+   Le champ affiche les questions synonymes en renvoi vers l'article existant. */
+.faq-search-label{display:block;margin:.8rem 0 .35rem;font-weight:700}
+.faq-search-input{display:block;box-sizing:border-box;width:100%;min-height:2.9rem;
+ padding:.67rem .8rem;border:1px solid #c7bbb0;border-radius:.65rem;
+ background:#fff;color:#242424;font:inherit}
+.faq-search-input:focus-visible{outline:3px solid #bd9a58;outline-offset:2px}
+.faq-search-status{min-height:1.1rem;margin:.3rem 0 .7rem;font-size:.86rem;color:#57524c}

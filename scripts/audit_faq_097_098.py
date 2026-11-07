@@ -19,7 +19,7 @@ assert len([x for x in records_list if x["recordType"] == "psalm"]) == 1158
 assert len([x for x in records_list if x["recordType"] == "note"]) == 11
 citation_rx = re.compile(r"\(psaume\s+(\d+)\s+(?:de\s+|d['’])\s*(Michaël|Gabriel|Raphaël|Ouriel),\s+versets?\s+([^)]+)\)")
 expected_a=[3,3,3,4,3,3,4,4]
-expected_b=[3,3,3,3,3,3,3,3,3,3,3,3,6]
+expected_b=[3,5,4,4,5,5,4,5,5,5,5,6,18]
 unique=set()
 total=0
 
@@ -59,13 +59,13 @@ for pack,prefix,expected in [(a,"faq-realite-spirituelle-",expected_a),
             total+=1
 
 last=b["questions"][-1]["answer"]
-for heading in ["Les repas peuvent devenir un exercice de gratitude et de conscience.",
+for heading in ["Les repas : nourrir le corps et les dimensions plus subtiles de la vie.",
                 "La marche peut devenir un exercice d'attention et de présence.",
                 "La parole peut devenir un exercice de vérité et de maîtrise intérieure."]:
     assert "**"+heading+"**" in last
 assert last.count("**") == 6
-assert total == 69 and len(unique) == 42, (total,len(unique))
+assert total == 101 and len(unique) == 42, (total,len(unique))
 assert 25+5+9+10+5+6+7+14+8+13 == 102
 build=(ROOT/"scripts/build_pages_site.py").read_text(encoding="utf-8")
 assert '"data/faq-097.json"' in build and '"data/faq-098.json"' in build
-print("FAQ 097/098 PASS: 21 complete original answers, 69 canonical references, 42 Psalms, original subsection headings and 11 public notes preserved")
+print("FAQ 097/098 PASS: 21 complete original answers, 101 canonical references, 42 Psalms, original subsection headings and 11 public notes preserved")
