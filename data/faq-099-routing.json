@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "summary": {
+    "new": 3,
+    "redirect_new": 2,
+    "reuse": 12,
+    "unsupported": 2
+  },
+  "routes": [
+    {
+      "number": 1,
+      "question": "Que devient notre conscience après la mort ?",
+      "resolution": "new",
+      "target_id": "faq-conscience-mort-19",
+      "related_ids": []
+    },
+    {
+      "number": 2,
+      "question": "La conscience disparaît-elle lorsque le cerveau cesse de fonctionner ?",
+      "resolution": "redirect_new",
+      "target_id": "faq-conscience-mort-19",
+      "related_ids": [
+        "faq-harmonie-conscience-13"
+      ]
+    },
+    {
+      "number": 3,
+      "question": "Existe-t-il une vie après la mort ?",
+      "resolution": "reuse",
+      "target_id": "faq-mort-1",
+      "related_ids": [
+        "faq-mort-2"
+      ]
+    },
+    {
+      "number": 4,
+      "question": "Existe-t-il une réincarnation ?",
+      "resolution": "reuse",
+      "target_id": "faq-mort-5",
+      "related_ids": []
+    },
+    {
+      "number": 5,
+      "question": "Existe-t-il une autre forme d'existence ?",
+      "resolution": "reuse",
+      "target_id": "faq-realite-spirituelle-1",
+      "related_ids": [
+        "faq-mort-1",
+        "faq-realite-spirituelle-5"
+      ]
+    },
+    {
+      "number": 6,
+      "question": "Que nous apprennent réellement les expériences de mort imminente ?",
+      "resolution": "unsupported",
+      "target_id": null,
+      "related_ids": []
+    },
+    {
+      "number": 7,
+      "question": "La conscience peut-elle survivre à la mort du corps ?",
+      "resolution": "redirect_new",
+      "target_id": "faq-conscience-mort-19",
+      "related_ids": [
+        "faq-mort-2"
+      ]
+    },
+    {
+      "number": 8,
+      "question": "Que peut nous apprendre la science sur la mort et l'au-delà ?",
+      "resolution": "unsupported",
+      "target_id": null,
+      "related_ids": [
+        "faq-religions-science-6",
+        "faq-religions-science-7"
+      ]
+    },
+    {
+      "number": 9,
+      "question": "Comment apprendre à mieux vivre sur Terre ?",
+      "resolution": "reuse",
+      "target_id": "faq-pratique-spirituelle-1",
+      "related_ids": [
+        "faq-harmonie-conscience-1"
+      ]
+    },
+    {
+      "number": 10,
+      "question": "Comment vivre autrement ?",
+      "resolution": "reuse",
+      "target_id": "faq-pratique-spirituelle-11",
+      "related_ids": [
+        "faq-maitrise-interieure-5"
+      ]
+    },
+    {
+      "number": 11,
+      "question": "Comment devenir plus heureux ?",
+      "resolution": "reuse",
+      "target_id": "faq-bonheur-6",
+      "related_ids": [
+        "faq-bonheur-1"
+      ]
+    },
+    {
+      "number": 12,
+      "question": "Comment vivre harmonieusement avec les autres ?",
+      "resolution": "reuse",
+      "target_id": "faq-harmonie-conscience-1",
+      "related_ids": [
+        "faq-harmonie-conscience-6"
+      ]
+    },
+    {
+      "number": 13,
+      "question": "Comment développer sa connaissance de soi ?",
+      "resolution": "reuse",
+      "target_id": "faq-priere-paix-7",
+      "related_ids": [
+        "faq-maitrise-interieure-1"
+      ]
+    },
+    {
+      "number": 14,
+      "question": "Comment transformer ses pensées et ses émotions ?",
+      "resolution": "reuse",
+      "target_id": "faq-maitrise-interieure-1",
+      "related_ids": [
+        "faq-pratique-spirituelle-6",
+        "faq-pratique-spirituelle-7"
+      ]
+    },
+    {
+      "number": 15,
+      "question": "Comment développer sa conscience ?",
+      "resolution": "new",
+      "target_id": "faq-conscience-developpement-20",
+      "related_ids": [
+        "faq-harmonie-conscience-8"
+      ]
+    },
+    {
+      "number": 16,
+      "question": "Comment donner un sens à ses activités quotidiennes ?",
+      "resolution": "reuse",
+      "target_id": "faq-pratique-spirituelle-11",
+      "related_ids": [
+        "faq-pratique-spirituelle-12"
+      ]
+    },
+    {
+      "number": 17,
+      "question": "Comment concilier une vie matérielle et une vie spirituelle ?",
+      "resolution": "reuse",
+      "target_id": "faq-pratique-spirituelle-1",
+      "related_ids": [
+        "faq-realite-spirituelle-1"
+      ]
+    },
+    {
+      "number": 18,
+      "question": "Comment progresser intérieurement grâce aux expériences de la vie ?",
+      "resolution": "new",
+      "target_id": "faq-experiences-progres-20",
+      "related_ids": [
+        "faq-sens-personnel-3"
+      ]
+    },
+    {
+      "number": 19,
+      "question": "Comment faire de chaque journée une occasion de développement personnel et spirituel ?",
+      "resolution": "reuse",
+      "target_id": "faq-pratique-spirituelle-11",
+      "related_ids": [
+        "faq-pratique-spirituelle-13"
+      ]
+    }
+  ]
+}
