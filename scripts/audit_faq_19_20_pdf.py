@@ -78,13 +78,21 @@ def execute():
                 for offset in range(-6, 9):
                     idx = int(sp)-1+offset
                     if 0 <= idx < len(doc):
-                        score = sum(s in page(idx) for s in pn)
-                        options.append((score, -abs(offset), idx))
-            best = max(options) if options else (0, 0, -1)
+                        # A long verse can straddle two physical pages of the original
+                        # document. Score both the single page and an adjacent page pair.
+                        # Prefer a single-page proof when both contain all word segments.
+                        for span in (1, 2):
+                            if idx + span - 1 >= len(doc):
+                                continue
+                            raw = page(idx) if span == 1 else page(idx) + " " + page(idx+1)
+                            score = sum(s in raw for s in pn)
+                            options.append((score, -(span-1), -abs(offset), idx, span))
+            best = max(options) if options else (0, 0, 0, -1, 1)
             result = {
                 "group":group, "book":book, "psalm":num, "archangel":arch,
                 "verse":vid, "canonical":filename, "json_pages":v.get("sourcePages",[]),
-                "pdf_page":best[2]+1 if best[2]>=0 else None,
+                "pdf_page":best[3]+1 if best[3]>=0 else None,
+                "pdf_pages_used":list(range(best[3]+1,best[3]+best[4]+1)) if best[3]>=0 else [],
                 "matched_segments":best[0], "total_segments":len(pn),
                 "verified_in_original_pdf":best[0] >= 1,
                 "fully_matched":best[0] == len(pn) and len(pn)>0,
