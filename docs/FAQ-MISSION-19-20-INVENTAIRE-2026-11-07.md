@@ -1,4 +1,6 @@
 # BIBLAW — Mission questions 19 et 20 : inventaire et arbitrage éditorial
+
+> **MISE À JOUR DÉFINITIVE (7 novembre 2026)** — Le tableau ci-dessous conserve les 19 formulations et leur **premier classement de repérage** (9/8/2). Les décisions finales, prises après lecture du corpus et vérification directe du PDF original, figurent dans `docs/FAQ-MISSION-19-20-ROUTING.json` et `docs/FAQ-MISSION-19-20-BILAN-FINAL-2026-11-07.md` : **3 réponses nouvelles**, **12 formulations vers des réponses existantes**, **2 formulations renvoyées à l'une des réponses nouvelles**, **2 questions sans source suffisante**. Les **110 versets effectivement cités** ont été localisés dans le PDF original ; les cinq versets débordant sur deux pages ont été rapprochés sur les deux pages. Aucune modification du site public.
 **Date :** 7 novembre 2026  
 **Statut :** travail préparatoire — non publié, non intégré aux FAQ  
 **Dépôt :** `ludodulac/Biblaw`  
@@ -10,7 +12,7 @@ Les **102 intitulés** ont été inventoriés sur la branche de la PR #74 : 25 (
 
 Le **texte des réponses directement pertinentes** a été rapproché des 19 sujets. Les psaumes retenus pour les trois nouveaux projets de réponse ont été lus dans le corpus canonique structuré `data/corpus/books/`, avec leurs versets numérotés. Cela **n'équivaut pas à un nouvel audit intégral des 102 textes**.
 
-Le dépôt contient `Bible essénienne (classée par livres).pdf`, mais le PDF binaire n'a pas pu être ouvert directement dans cette session. La PR #74 contient déjà `docs/FAQ-PDF-SOURCE-EVIDENCE-2026-11-07.json` : **187 versets ciblés de 33 psaumes** comparés à la couche textuelle du PDF, 187 trouvés, dont des divergences de pagination. Cette preuve partielle ne confirme pas automatiquement tous les versets cités ci-dessous. **Vérification directe PDF restant à compléter avant publication** pour les versets non couverts par ce journal.
+Au stade du premier inventaire, le PDF n'avait pas encore été ouvert directement. **Cette limitation a été levée** : une copie binaire strictement identique au PDF du dépôt a ensuite été comparée et inspectée page par page (SHA-256 et résultats dans le bilan final). La PR #74 contient déjà `docs/FAQ-PDF-SOURCE-EVIDENCE-2026-11-07.json` : **187 versets ciblés de 33 psaumes** comparés à la couche textuelle du PDF, 187 trouvés, dont des divergences de pagination. Cette preuve partielle ne confirme pas automatiquement tous les versets cités ci-dessous. **Cette limite de première passe a été levée pour les trois nouveaux articles**, grâce à la vérification PDF ciblée de l'ensemble des 110 versets cités. Cela ne constitue pas un audit général des 102 réponses antérieures.
 
 ### Codes
 - **EXISTANTE** : une réponse actuelle répond déjà directement à la question ; conserver le texte de référence, proposer un renvoi.
@@ -57,7 +59,7 @@ Le dépôt contient `Bible essénienne (classée par livres).pdf`, mais le PDF b
 | Choix et conséquences | Michaël **267**, v. **1–25** et **32–39** (`book-37/psalm-267.json`) | Toute situation propose un chemin ; chaque acte a inspiration et conséquence ; pratique quotidienne et destinée. |
 | Inspiration incarnée | Ouriel **14**, v. **2–16** (`book-04/psalm-014.json`) | Unir inspiration de l'esprit et réalisations quotidiennes ; ne pas séparer les deux. |
 
-**Note documentaire :** pour les trois projets de réponses, l'identité archange/psaume et la numérotation des versets ont été vérifiées dans ces fichiers canoniques. Le journal PDF de la PR #74 ne couvre, parmi ces références, que certains versets : Michaël 254 v. 7–9, Raphaël 26 v. 4–10, Ouriel 106 v. 11–13, Michaël 160 v. 15–16 et Michaël 267 v. 10–19. Les autres passages nécessitent encore une confrontation directe au PDF original.
+**Note documentaire actualisée :** les psaumes, les archanges et la numérotation des versets ont été vérifiés dans le corpus canonique ; **les 110 versets cités dans le staging ont aussi été contrôlés dans le PDF original** par une nouvelle exécution ciblée dans la PR #75 (distincte des contrôles antérieurs de la PR #74).
 
 ## 4. Livrable rédactionnel et prochaine décision
 Trois **projets de réponses développées**, sans insertion publique, sont conservés dans `docs/FAQ-MISSION-19-20-PROJETS-2026-11-07.md` :
