@@ -672,3 +672,13 @@ body.view-faq .shell{padding-top:1.15rem}
   width:100%;box-sizing:border-box;margin-top:.45rem;
   max-height:min(15rem,35dvh);z-index:1;
 }
+
+
+/* 101 — Rechercher dans 105 questions, sans dupliquer les réponses canoniques.
+   Le champ affiche les questions synonymes en renvoi vers l'article existant. */
+.faq-search-label{display:block;margin:.8rem 0 .35rem;font-weight:700}
+.faq-search-input{display:block;box-sizing:border-box;width:100%;min-height:2.9rem;
+ padding:.67rem .8rem;border:1px solid #c7bbb0;border-radius:.65rem;
+ background:#fff;color:#242424;font:inherit}
+.faq-search-input:focus-visible{outline:3px solid #bd9a58;outline-offset:2px}
+.faq-search-status{min-height:1.1rem;margin:.3rem 0 .7rem;font-size:.86rem;color:#57524c}
