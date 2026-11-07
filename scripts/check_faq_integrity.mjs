@@ -19,7 +19,8 @@ const groups = [
   {name:'095', files:['data/faq-095.json'], expected:[3,3,3,3,4,4,5]},
   {name:'096', files:['data/faq-096.json'], expected:[4,4,4,4,4,4,4,4,7,6,4,4,6,5]},
   {name:'097', files:['data/faq-097.json'], expected:[3,3,3,4,3,3,4,4]},
-  {name:'098', files:['data/faq-098.json'], expected:[3,5,4,4,5,5,4,5,5,5,5,6,18]}
+  {name:'098', files:['data/faq-098.json'], expected:[3,5,4,4,5,5,4,5,5,5,5,6,18]},
+  {name:'099', files:['data/faq-099.json'], expected:[7,5,6]}
 ];
 assert.ok(script.includes('i===0?3:4'), 'Loader citation counts 091 have drifted');
 for(const key of ['096','098']) {
@@ -119,6 +120,30 @@ for(const group of groups) {
     }
   }
 }
-assert.equal(total,102,'Wrong FAQ question total');
+assert.equal(total,105,'Wrong FAQ question total');
+assert.equal(linked,424,'Expected 424 canonical verse links');
+const routeData=await json('data/faq-099-routing.json');
+assert.equal(routeData.version,1);
+assert.equal(routeData.routes?.length,19);
+const counts={new:0,reuse:0,redirect_new:0,unsupported:0};
+const routeNumbers=new Set();
+for(const route of routeData.routes) {
+  assert.ok(Number.isInteger(route.number)&&route.number>=1&&route.number<=19);
+  assert.ok(!routeNumbers.has(route.number),'Duplicate route number: '+route.number);
+  routeNumbers.add(route.number);
+  assert.ok(route.question,'Empty route question');
+  assert.ok(route.resolution in counts,'Invalid routing category');
+  counts[route.resolution]++;
+  if(route.resolution==='unsupported') {
+    assert.equal(route.target_id,null,'Unsupported question has an invented answer');
+  } else {
+    assert.ok(ids.has(route.target_id),'Route has no canonical destination: '+route.question);
+    if(route.resolution==='new')assert.ok(
+      ['faq-conscience-mort-19','faq-conscience-developpement-20','faq-experiences-progres-20'].includes(route.target_id),
+      'New route does not point to a new article'
+    );
+  }
+}
+assert.deepEqual(counts,{new:3,reuse:12,redirect_new:2,unsupported:2});
 console.log('BIBLAW FAQ OK: '+total+' distinct answers, '+linked+
   ' clickable Psalm references, '+passageCache.size+' distinct canonical Psalm records.');
