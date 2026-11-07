@@ -1,0 +1,33 @@
+name: BIBLAW FAQ 19-20 original PDF audit (DRAFT)
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit_faq_19_20_pdf.py'
+      - '.github/workflows/audit-faq-19-20-pdf.yml'
+      - 'docs/FAQ-MISSION-19-20-*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pdf-source-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF parser
+        run: python -m pip install --quiet pymupdf
+      - name: Check exact archived Bible PDF, targeted verses, and near-death/science terms
+        run: python scripts/audit_faq_19_20_pdf.py
+      - name: Keep independent PDF audit evidence (DRAFT only)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblaw-faq-19-20-original-pdf-evidence
+          path: docs/FAQ-MISSION-19-20-PDF-EVIDENCE.json
+          if-no-files-found: warn
