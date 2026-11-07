@@ -29,7 +29,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify 102 FAQ answers and clickable canonical Psalm references
+      - name: Verify 105 FAQ answers, 424 canonical links and 19 alternative routes
         run: node scripts/check_faq_integrity.mjs
       - name: Exercise the FAQ public loader and citation links
         run: node scripts/check_faq_dom.mjs
@@ -38,7 +38,7 @@ jobs:
         run: |
           failed=0
           for test in scripts/audit_faq_*.py scripts/smoke_faq_*.mjs; do
-            if [[ "$test" == "scripts/smoke_faq_browser.mjs" || "$test" == "scripts/audit_faq_pdf_source.py" ]]; then continue; fi
+            if [[ "$test" == "scripts/smoke_faq_browser.mjs" || "$test" == "scripts/smoke_faq_full_browser.mjs" || "$test" == "scripts/audit_faq_pdf_source.py" ]]; then continue; fi
             echo "=== $test ==="
             if [[ "$test" == *.py ]]; then
               python "$test" || failed=1
