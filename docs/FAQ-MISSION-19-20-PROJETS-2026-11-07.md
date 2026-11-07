@@ -1,7 +1,7 @@
-# BIBLAW — Mission 19 et 20 : projets de réponses à confronter au PDF
+# BIBLAW — Mission 19 et 20 : trois réponses contrôlées contre le PDF original
 **Date :** 7 novembre 2026 · **Statut :** DRAFT ÉDITORIAL, **NON PUBLIÉ**  
 **Base de travail :** les 102 FAQ lues sur le HEAD `5eb79ea617bab48115ebb3d7ad6039b9870e167a` de la PR #74 (non modifiée).  
-**Méthode :** formulations exclusivement attribuées aux psaumes, numéros de versets contrôlés dans `data/corpus/books/`. **Vérification contre les pages du PDF original encore incomplète** (voir l'inventaire et le journal documentaire de la PR #74). Ces textes ne remplacent aucune FAQ existante et ne doivent pas être intégrés sans contrôle final.
+**Méthode :** formulations exclusivement attribuées aux psaumes, numéros de versets contrôlés dans `data/corpus/books/`. **Contrôle direct du PDF original réalisé** : les 110 versets distincts effectivement cités par les trois réponses ont été localisés dans le PDF et confirmés à partir de trois segments textuels par verset, en tenant compte de cinq versets qui débordent sur la page suivante. Lecture et examen visuel des pages concernées également réalisés. Les textes sont préparés, non publiés ; la validation de diffusion appartient au propriétaire.
 
 ---
 
@@ -18,7 +18,7 @@ Ouriel distingue enfin ce qui appartient au corps mortel de l'âme supérieure q
 
 Ainsi, la Bible essénienne distingue l'immortalité de l'âme et la continuité consciente de la personnalité terrestre. Elle enseigne la possibilité de conserver et de prolonger des acquis de conscience au-delà du corps, tout en soulignant que cette continuité dépend de ce qui a été véritablement éveillé et construit pendant l'existence (psaume **277 d'Ouriel, versets 5 à 10** ; psaume **106 de Raphaël, versets 15 à 17** ; psaume **254 de Michaël, versets 21 à 28**).
 
-**Traçabilité / points à finir :** `data/corpus/books/book-37/psalm-254.json` ; `book-19/psalm-106.json` ; `book-44/psalm-277.json`. Le journal PDF existant atteste Michaël 254, v. 7–9 seulement parmi ces plages. Ne pas écrire que les psaumes expliquent le fonctionnement biologique du cerveau ni qu'une personne conserve nécessairement tous ses souvenirs.
+**Traçabilité / points à finir :** `data/corpus/books/book-37/psalm-254.json` ; `book-19/psalm-106.json` ; `book-44/psalm-277.json`. **PDF direct : passages cités retrouvés et correspondances confirmées.** Ne pas écrire que les psaumes expliquent le fonctionnement biologique du cerveau ni qu'une personne conserve nécessairement tous ses souvenirs.
 
 ---
 
@@ -35,7 +35,7 @@ Michaël relie cet éveil à l'attention et à la concentration. Il constate que
 
 Ouriel rappelle enfin que la conscience éveillée doit se traduire dans la manière de vivre. Les inspirations de l'esprit ne prennent leur pleine valeur que lorsqu'elles sont réalisées dans les paroles, les gestes, les œuvres et les comportements quotidiens. Il invite ainsi l'homme à faire de sa vie une œuvre qui unit l'inspiration intérieure et sa manifestation sur la terre (psaume **14 d'Ouriel, versets 4 à 12 et 16**).
 
-**Traçabilité / points à finir :** `book-07/psalm-026.json`, `book-20/psalm-106.json`, `book-21/psalm-160.json`, `book-04/psalm-014.json`. Journal PDF partiel : Raphaël 26 v. 4–10, Ouriel 106 v. 11–13, Michaël 160 v. 15–16. Aucune routine quotidienne, exercice minuté ou méthode nouvelle n'est ajoutée.
+**Traçabilité / points à finir :** `book-07/psalm-026.json`, `book-20/psalm-106.json`, `book-21/psalm-160.json`, `book-04/psalm-014.json`. **PDF direct : passages cités retrouvés et correspondances confirmées.** Aucune routine quotidienne, exercice minuté ou méthode nouvelle n'est ajoutée.
 
 ---
 
@@ -52,13 +52,13 @@ Le progrès intérieur implique alors de passer de l'expérience vécue à une �
 
 Ouriel complète cet enseignement en demandant d'unir les aspirations spirituelles et les réalisations terrestres. Il invite l'homme à ne pas rester dans la seule inspiration, ni dans les seules préoccupations matérielles : la vie quotidienne, les attitudes, les paroles et les œuvres doivent permettre de réaliser ce qui a été compris intérieurement. Ce lien entre inspiration et réalisation donne au travail de transformation un ancrage réel dans l'existence (psaume **14 d'Ouriel, versets 4 à 16**).
 
-**Traçabilité / points à finir :** `book-27/psalm-177.json`, `book-37/psalm-267.json`, `book-04/psalm-014.json`. Journal PDF partiel : Michaël 267 v. 10–19. Aucun exercice d'interprétation des signes ou des événements n'est inventé.
+**Traçabilité / points à finir :** `book-27/psalm-177.json`, `book-37/psalm-267.json`, `book-04/psalm-014.json`. **PDF direct : passages cités retrouvés et correspondances confirmées.** Aucun exercice d'interprétation des signes ou des événements n'est inventé.
 
 ---
 
 ## Cas expressément laissés sans rédaction
-**Demande n°6 — Expériences de mort imminente :** pas de réponse rédigée. Les recherches ciblées de termes explicites dans le dépôt n'ont pas donné de correspondance attestée, et les passages sur l'au-delà ne suffisent pas à décrire des expériences de mort imminente.
+**Demande n°6 — Expériences de mort imminente :** pas de réponse rédigée. La recherche textuelle dans les **4 744 pages du PDF original** n'a pas trouvé les formulations « mort imminente », « mort clinique », « arrêt cardiaque », ni les variantes contrôlées concernant le retour de la mort ou la sortie du corps. Les passages sur l'au-delà ne suffisent pas à décrire de telles expériences.
 
-**Demande n°8 — Science, mort et au-delà :** pas de réponse rédigée. Les FAQ existantes sur science et spiritualité (`faq-religions-science-6` à `10`) ne démontrent pas qu'un psaume parle directement des méthodes ou conclusions de la science à propos de la mort. Ne pas importer d'explications extérieures.
+**Demande n°8 — Science, mort et au-delà :** pas de réponse rédigée. Les FAQ existantes sur science et spiritualité (`faq-religions-science-6` à `10`) ne traitent pas directement les méthodes ou conclusions scientifiques sur l'au-delà. Le PDF emploie « science du mémorial » au **psaume 149 de Raphaël, verset 18** (PDF p. 2045) et évoque une « ancienne science des Esséniens » dans l'introduction du livre 17 (PDF p. 1067) ; **ces mentions ne constituent pas une réponse développée à la question sur les connaissances scientifiques concernant la mort**. Ne pas importer d'explications extérieures.
 
-**Aucun texte de cette page n'est à considérer comme publié ou définitivement validé.**
+**Les trois réponses ont été vérifiées sur leur source PDF ; elles sont conservées en staging, sans publication ni fusion.** Voir `docs/FAQ-MISSION-19-20-STAGING.json`, `docs/FAQ-MISSION-19-20-ROUTING.json` et le bilan final. La PR #75 reste en DRAFT.
