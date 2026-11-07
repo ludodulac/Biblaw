@@ -156,6 +156,35 @@ def execute():
     print("PDF_SCIENCE_DEATH_PROXIMITY",len(proximity_hits))
     for item in proximity_hits[:15]:
         print("PDF_PROXIMITY_SAMPLE",json.dumps(item,ensure_ascii=False))
+    # Manual editorial triage of ambiguous 'science' terms in the original PDF.
+    # Print context with page numbers so reviewers can distinguish Essene sacred science
+    # from an external scientific statement about modern near-death experiences.
+    for pg in (1067, 2045, 222, 2697):
+        txt = doc.load_page(pg-1).get_text("text",sort=True)
+        flat = norm(txt)
+        for token in ("science", "mort", "memorial"):
+            ix = flat.find(token)
+            if ix >= 0:
+                print("PDF_EDITORIAL_CONTEXT",json.dumps({
+                    "pdf_page":pg,"token":token,"excerpt":flat[max(0,ix-230):ix+680]
+                },ensure_ascii=False))
+                break
+    further_terms = [
+        "sortie du corps", "sortie hors du corps", "hors de son corps",
+        "revenu de la mort", "revenus de la mort", "revenu d entre les morts",
+        "mort apparente", "proche de la mort", "pres de la mort",
+        "ressuscite apres", "coma", "recit de mort imminente",
+        "resuscitation", "decorporation"
+    ]
+    for term in further_terms:
+        ph = []
+        for idx in range(len(doc)):
+            t = page(idx)
+            loc = t.find(term)
+            if loc >= 0:
+                ph.append({"pdf_page":idx+1,"excerpt":t[max(0,loc-140):loc+250]})
+        print("PDF_NDE_VARIANT",json.dumps({"term":term,"count":len(ph),"examples":ph[:3]},ensure_ascii=False))
+
     print("PDF_EVIDENCE_FILE",str(output.relative_to(ROOT)))
     doc.close()
     return 0 if verified == len(unique) else 1
