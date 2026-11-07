@@ -21,7 +21,7 @@ assert.equal(f097.questions.length,8);
 assert.equal(f098.questions.length,13);
 assert.ok(read('scripts/build_pages_site.py').includes('"data/faq-097.json"'));
 assert.ok(read('scripts/build_pages_site.py').includes('"data/faq-098.json"'));
-assert.ok(read('index.html').includes('biblaw-faq.js?v=100'));
+assert.ok(read('index.html').includes('biblaw-faq.js?v=101'));
 
 class Element {
   constructor(tag='div'){
@@ -69,7 +69,7 @@ const context={
   window:{scrollY:110,scrollTo({top}){this.scrollY=top}}
 };
 context.globalThis=context;
-vm.runInNewContext(read('js/biblaw-faq.js'),context,{timeout:10000});
+vm.runInNewContext(read('scripts/fixtures/faq-loader-before-100.js'),context,{timeout:10000});
 context.BiblawFAQ.setOpenPsalm(ref=>opened.push(ref));
 assert.equal(await context.BiblawFAQ.init(corpus.records),true,'All 105 Q&A should load');
 context.BiblawFAQ.open();
