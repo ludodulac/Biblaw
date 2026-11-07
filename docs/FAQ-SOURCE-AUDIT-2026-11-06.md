@@ -150,3 +150,31 @@ Deux corrections supplémentaires :
 - **PDF canonique retrouvé dans le dépôt** : `Bible essénienne (classée par livres).pdf` existe à la racine du dépôt (`main`, 15 890 697 octets), contrairement à l'incertitude indiquée dans les notes intermédiaires. Cette intervention a contrôlé le corpus structuré et ses métadonnées de pages, pas vérifié indépendamment chaque page originale du PDF. La présence du PDF n'est pas une validation humaine automatique des interprétations.
 - **Préservation** : PR #72 non modifiée, distincte de la PR #74. Aucun changement au corpus canonique.
 
+
+## MISSION 2 — Comparaison directe avec le PDF original — 7 novembre 2026
+
+**Résultat : contrôle effectué sur le PDF original lui-même.** Fichier `Bible essénienne (classée par livres).pdf`, 4 744 pages (15 890 697 octets), conservé dans le dépôt. Le lecteur PyMuPDF a extrait la couche textuelle de pages identifiées dans ce fichier ; le contrôle a comparé des segments de texte en début, milieu et fin de chaque verset sensible avec les versets des JSON du corpus.
+
+| Mesure | Résultat |
+| --- | ---: |
+| Psaumes sélectionnés parmi les sources des 23 FAQ modifiées | **33** |
+| Versets ciblés directement confrontés au PDF | **187** |
+| Versets retrouvés dans le PDF | **187 / 187** |
+| Absences textuelles confirmées | **0** |
+| Versets avec correspondance de 3 segments sur 3 | **174** |
+| Cas présentant une divergence de page source indiquée dans le JSON | **8** |
+
+Les **8 divergences de pagination** ne sont pas des désaccords sur le texte : sept versets du **psaume 182 d'Ouriel, versets 29 à 35**, figurent page **3112** du PDF, tandis que `sourcePages` les place page **3109** (page de titre du livre 32). Le verset **16 du psaume 189 de Michaël** est retrouvé page **2320**, alors que la page source enregistrée est **2319** (un passage chevauchant une page est possible). Les passages eux-mêmes concordent ; la provenance paginée doit faire l'objet d'une correction distincte, contrôlée, sans retoucher les mots des psaumes.
+
+**Exemples de rapprochements éditoriaux contrôlés :**
+
+- **Michaël 274:7–9 (PDF pages 4168–4169)** : les sens physiques sont un fondement pour l'éveil des sens subtils ; formulation de FAQ correspondante conservée.
+- **Gabriel 119:14–16 (page 1237)** : l'intellect est une partie de l'intelligence globale ; la réponse sur le cerveau et le mental conserve uniquement cet enseignement.
+- **Ouriel 138:5–9 et Raphaël 184:10–13 (pages 2117 et 3003–3004)** : les versets exposent explicitement la réincarnation telle que la Bible essénienne l'enseigne ; la réponse ne doit pas réintroduire de réserve scientifique extérieure.
+- **Raphaël 26:4–10 (pages 362–363)** : passages sur l'éveil et la fonction de la conscience.
+- **Gabriel 209:4–10 (pages 2939–2940)** : amour, respect, admiration, confiance et dialogue ; la formulation de FAQ est effectivement appuyée par ces versets.
+- **Ouriel 182:29–35 (page 3112)** : unité de la vie spirituelle et de la vie matérielle, malgré les erreurs de `sourcePages` des sept versets.
+
+**Traçabilité :** fichier `docs/FAQ-PDF-SOURCE-EVIDENCE-2026-11-07.json` (187 contrôles individuels), script reproductible `scripts/audit_faq_pdf_source.py`, GitHub Actions « FAQ source PDF comparison » du run **42367205982** (réussi). Les correspondances contrôlent des segments des versets et ne constituent pas, à elles seules, une validation indépendante de toutes les nuances rédactionnelles des 102 réponses.
+
+**Périmètre et sécurité :** aucun texte du corpus original n'a été modifié et aucune PR n'a été fusionnée ou publiée. Mission 2 de vérification de la source des passages sensibles **achevée** ; les anomalies de pagination sont consignées pour une correction spécifique à la provenance, distincte du nettoyage éditorial.
