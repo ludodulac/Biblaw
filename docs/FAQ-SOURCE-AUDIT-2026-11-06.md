@@ -199,3 +199,33 @@ Corrections ciblées effectuées pendant cette mission :
 **Conservation des travaux :** PR #74 toujours **DRAFT**, PR #72 inchangée, pas de fusion, pas de publication et aucune modification des textes canoniques.
 
 **Statut : MISSION 3 TERMINÉE.** Les tests fonctionnels complets et la préparation de publication constituent les missions 4 et 5.
+
+## MISSION 4 — Tests complets de l'interface publique — 7 novembre 2026
+
+**Statut : TERMINÉE, tous les tests du parcours de la mission 4 ont réussi.**
+
+Un nouveau test intégré Chromium/Playwright, `scripts/smoke_faq_full_browser.mjs`, a parcouru automatiquement le **véritable assemblage local de GitHub Pages (`_site`)**, sans publication, dans **deux fenêtres** : téléphone **390 × 844** et ordinateur **1440 × 900**.
+
+| Scénario | Téléphone | Ordinateur |
+| --- | ---: | ---: |
+| Questions affichées dans l'index | 102/102 | 102/102 |
+| Réponses ouvertes, puis retour à l'index | 102/102 | 102/102 |
+| Liens de psaumes présents et actifs | 406/406 | 406/406 |
+| Aller-retour réel lecteur de psaume → réponse, versets cités surlignés | 16 | 16 |
+| Vrais fichiers PDF téléchargés, entête `%PDF-` et contenu non vide | 3 | 3 |
+| Écrans débordant horizontalement | 0 pixel | 0 pixel |
+| Erreurs JavaScript dans la console/page | 0 | 0 |
+| Recherche d'un numéro de psaume puis changement de thème | PASS | PASS |
+| Recherche de deux mots `vie + amour` | PASS | PASS |
+| Fermeture/réouverture de la FAQ, sous-titres des réponses | PASS | PASS |
+| Présence des filtres de sources/archanges, Notes et Index, Questions populaires cachées | PASS | PASS |
+
+Dans les deux formats, la recherche `105` produit **quatre psaumes**, puis le remplacement par `sainte assemblée` donne **trois psaumes**, sans laisser les anciens résultats visibles. Les trois vrais PDF extraits par format sont valides (tailles 2 811, 3 626 et 13 843 octets). Les trois tests précédemment installés ont réussi dans la même exécution : `smoke_faq_browser.mjs`, `smoke_occurrence_expansion_browser.mjs`, `smoke_occurrences_041c.mjs` (8 racines d'expansion lexicales).
+
+**Correction découverte et vérifiée pendant la mission 4 :** sur ordinateur, la liste déroulante de six suggestions de recherche pouvait couvrir le bouton **« Rechercher »**, empêchant son clic. Le test complet l'a reproduit, alors que la version téléphone réussissait. La règle CSS de maintien des suggestions dans le flux, initialement réservée au mobile, est devenue commune aux deux formats, sans changer le fond ni le style des éléments. La version de `css/biblaw-light.css` utilisée par `index.html` a été incrémentée à `v=100`. Le nouveau test et la régression de recherche sont désormais **verts dans les deux formats**.
+
+**Preuve GitHub Actions :** `Browser smoke - lexical occurrence expansion`, run **42370822346**, commit **`15ccc597510d2951cc947eb2a958cb9a2dc5a6fe`**, conclusion **success**. Les rapports `MISSION4_VIEWPORT_PASS` présents dans les logs donnent les mesures détaillées pour chaque format. Le workflow a fait une construction locale de la charge utile GitHub Pages, et n'a pas testé le domaine public après déploiement.
+
+**Périmètre :** les tests portent sur la FAQ, le parcours de recherche, les liens canoniques, les PDF, les options et la navigation. Ce sont des tests fonctionnels automatisés de navigateur, pas une revue esthétique manuelle de toutes les pages ni un essai sur chaque appareil physique. Les tests complémentaires de compatibilité et de mise en ligne sont réservés à la mission 5.
+
+**Sécurité :** PR #74 toujours DRAFT et non fusionnée, PR #72 intacte, aucun changement aux textes canoniques, aucun déploiement.
