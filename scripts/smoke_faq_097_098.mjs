@@ -12,6 +12,8 @@ const f095=JSON.parse(read('data/faq-095.json'));
 const f096=JSON.parse(read('data/faq-096.json'));
 const f097=JSON.parse(read('data/faq-097.json'));
 const f098=JSON.parse(read('data/faq-098.json'));
+const f099=JSON.parse(read('data/faq-099.json'));
+const routes099=JSON.parse(read('data/faq-099-routing.json'));
 const books090=JSON.parse(read('data/faq-090-books.json'));
 const books091=JSON.parse(read('data/faq-091-books.json'));
 const corpus=JSON.parse(read('data/browser-search-catalog.json'));
@@ -19,12 +21,12 @@ assert.equal(f097.questions.length,8);
 assert.equal(f098.questions.length,13);
 assert.ok(read('scripts/build_pages_site.py').includes('"data/faq-097.json"'));
 assert.ok(read('scripts/build_pages_site.py').includes('"data/faq-098.json"'));
-assert.ok(read('index.html').includes('biblaw-faq.js?v=099'));
+assert.ok(read('index.html').includes('biblaw-faq.js?v=100'));
 
 class Element {
   constructor(tag='div'){
     this.tag=tag;this.children=[];this.hidden=false;this.disabled=false;
-    this.textContent='';this.focused=false;this.attrs={};
+    this.textContent='';this.focused=false;this.attrs={};this.value='';
   }
   replaceChildren(...items){this.children=items;}
   append(...items){this.children.push(...items);}
@@ -55,6 +57,8 @@ const context={
     if(url.includes('faq-096.json'))return f096;
     if(url.includes('faq-097.json'))return f097;
     if(url.includes('faq-098.json'))return f098;
+    if(url.includes('faq-099.json'))return f099;
+    if(url.includes('faq-099-routing.json'))return routes099;
     let m=url.match(/faq-090-([1-5])\.json/);
     if(m)return f090[+m[1]-1];
     m=url.match(/faq-091-([1-9])\.json/);
@@ -67,10 +71,10 @@ const context={
 context.globalThis=context;
 vm.runInNewContext(read('js/biblaw-faq.js'),context,{timeout:10000});
 context.BiblawFAQ.setOpenPsalm(ref=>opened.push(ref));
-assert.equal(await context.BiblawFAQ.init(corpus.records),true,'All 102 Q&A should load');
+assert.equal(await context.BiblawFAQ.init(corpus.records),true,'All 105 Q&A should load');
 context.BiblawFAQ.open();
 assert.ok(classes.has('view-faq'));
-assert.equal(get('faqList').children.length,102);
+assert.equal(get('faqList').children.length,105);
 assert.equal(get('faqList').children[0].children[0].textContent,base.questions[0].title);
 assert.equal(get('faqList').children[80].children[0].textContent,f096.questions[13].title);
 assert.equal(get('faqList').children[88].children[0].textContent,f097.questions[7].title);
@@ -137,4 +141,4 @@ assert.equal(unique.size,42);
 assert.equal(downloads.length,21);
 context.BiblawFAQ.close();
 assert.equal(get('faqLibrary').hidden,true);
-console.log('FAQ 097+098 PASS: 102 Q&A, 21 original articles, 101 verified links, 42 sources, proper bold subheadings, 21 PDFs and return navigation');
+console.log('FAQ 097+098 PASS: 105 Q&A, 21 original articles, 101 verified links, 42 sources, proper bold subheadings, 21 PDFs and return navigation');
