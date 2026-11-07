@@ -18,42 +18,42 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "Bible essénienne (classée par livres).pdf"
-# A targeted cross-section of verses used in the 23 edited FAQ answers.
+# The Psalm verse ranges directly relevant to the 23 edited FAQ answers.
 # Tuple: book, Psalm number, verse numbers.
 TARGETS = [
-    (43,267,[26,28]),  # Raphaël: divine intelligence
-    (14,103,[6,10]),   # Gabriel: knowing God
-    (24,138,[5,9]),    # Ouriel: reincarnation
-    (31,184,[10,13]),  # Raphaël: reincarnation
-    (28,171,[2,8]),    # Ouriel: divine creative power
-    (41,274,[7,9]),    # Michaël: physical and subtle senses
-    (18,119,[14,16]),  # Gabriel: intellect and intelligence
-    (7,26,[4,10]),     # Raphaël: consciousness as organ
-    (20,106,[11,13]),  # Ouriel: consciousness
-    (37,254,[7,9]),    # Michaël: consciousness
-    (40,256,[14,21]),  # Ouriel: soul
-    (21,155,[1,8]),    # Michaël: dimensions of being
-    (39,249,[12,18]),  # Raphaël: inner life
-    (16,82,[4,6]),     # Ouriel: meditation
-    (3,18,[2,4]),      # Raphaël: meditation
-    (21,160,[15,16]),  # Michaël: attention
-    (25,189,[15,17]),  # Michaël: concentration
-    (22,156,[31,33]),  # Gabriel: peace
-    (29,208,[11,17]),  # Michaël: calming the body
-    (24,152,[2,9]),    # Ouriel: discernment
-    (23,134,[18,25]),  # Raphaël: thought
-    (26,165,[36,43]),  # Gabriel: feelings
-    (30,209,[4,10]),   # Gabriel: love
-    (36,214,[12,20]),  # Ouriel: listening
-    (6,28,[1,5]),      # Gabriel: gratitude
-    (30,197,[3,6]),    # Gabriel: gratitude
-    (25,171,[6,8]),    # Michaël: habits
-    (37,267,[10,19]),  # Michaël: acts
-    (21,145,[10,13]),  # Michaël: work
-    (10,67,[5,15]),    # Gabriel: food
-    (7,45,[7,9]),      # Raphaël: walking
-    (21,140,[4,16]),   # Michaël: speech
-    (32,182,[29,35]),  # Ouriel: daily life
+    (43,267,list(range(26,29))),  # Raphaël: divine intelligence
+    (14,103,list(range(6,11))),   # Gabriel: knowing God
+    (24,138,list(range(5,10))),    # Ouriel: reincarnation
+    (31,184,list(range(10,14))),  # Raphaël: reincarnation
+    (28,171,list(range(2,9))),    # Ouriel: divine creative power
+    (41,274,list(range(7,10))),    # Michaël: physical and subtle senses
+    (18,119,list(range(14,17))),  # Gabriel: intellect and intelligence
+    (7,26,list(range(4,11))),     # Raphaël: consciousness as organ
+    (20,106,list(range(11,14))),  # Ouriel: consciousness
+    (37,254,list(range(7,10))),    # Michaël: consciousness
+    (40,256,list(range(14,22))),  # Ouriel: soul
+    (21,155,list(range(1,9))),    # Michaël: dimensions of being
+    (39,249,list(range(12,19))),  # Raphaël: inner life
+    (16,82,list(range(4,7))),     # Ouriel: meditation
+    (3,18,list(range(2,5))),      # Raphaël: meditation
+    (21,160,list(range(15,17))),  # Michaël: attention
+    (25,189,list(range(15,18))),  # Michaël: concentration
+    (22,156,list(range(31,34))),  # Gabriel: peace
+    (29,208,list(range(11,18))),  # Michaël: calming the body
+    (24,152,list(range(2,10))),    # Ouriel: discernment
+    (23,134,list(range(18,26))),  # Raphaël: thought
+    (26,165,list(range(36,44))),  # Gabriel: feelings
+    (30,209,list(range(4,11))),   # Gabriel: love
+    (36,214,list(range(12,21))),  # Ouriel: listening
+    (6,28,list(range(1,6))),      # Gabriel: gratitude
+    (30,197,list(range(3,7))),    # Gabriel: gratitude
+    (25,171,list(range(6,9))),    # Michaël: habits
+    (37,267,list(range(10,20))),  # Michaël: acts
+    (21,145,list(range(10,14))),  # Michaël: work
+    (10,67,list(range(5,16))),    # Gabriel: food
+    (7,45,list(range(7,10))),      # Raphaël: walking
+    (21,140,list(range(4,17))),   # Michaël: speech
+    (32,182,list(range(29,36))),  # Ouriel: daily life
 ]
 
 def normalize(value):
