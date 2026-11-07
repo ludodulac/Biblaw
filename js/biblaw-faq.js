@@ -4,7 +4,9 @@
   'use strict';
   const $=id=>document.getElementById(id);
   const state={questions:[],byId:new Map(),records:new Map(),openPsalm:null,current:null,
-    lastLink:null,lastScroll:0,loading:null,routes:[],aliases:new Map()};
+    lastLink:null,lastScroll:0,loading:null,routes:[],aliases:new Map(),
+    themesMode:false,themeIndex:null,indexLoading:null,selectedTopic:null,
+    sourceCache:new Map(),answerLoading:new Map(),requestId:0};
   const labelNumber=(n,verses)=>'Psaume '+n+', verset'+(verses.length>1?'s':'')+' '+verses.join(', ');
   function validReference(ref){
     const record=state.records.get(ref.recordId);
@@ -49,7 +51,128 @@
     return String(text||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
       .toLowerCase().replace(/[’']/g,' ').replace(/[^a-z0-9]+/g,' ').trim();
   }
+  // 101: The public FAQ starts with a light thematic index. No answer JSON
+  // is requested until the visitor explicitly opens that answer.
+  function renderThemedIndex(){
+    const manifest=state.themeIndex;
+    const query=normalizeQuestion($('faqSearch').value);
+    const chosen=state.selectedTopic;
+    $('faqList').replaceChildren();
+    $('faqTopicButtons').replaceChildren();
+    $('faqTopics').hidden=Boolean(chosen||query);
+    $('faqThemeBack').hidden=!chosen&&!query;
+    $('faqSelectedTheme').hidden=!chosen;
+    if(chosen)$('faqSelectedTheme').textContent=manifest?.topics.find(t=>t.id===chosen)?.label||'';
+    if(!manifest){$('faqSearchStatus').textContent='';return;}
+    if(!chosen&&!query){
+      for(const topic of manifest.topics){
+        const button=document.createElement('button');
+        button.type='button';button.className='faq-topic-button';
+        const label=document.createElement('span');label.textContent=topic.label;
+        const count=document.createElement('small');count.textContent=topic.count+' questions';
+        button.append(label,count);
+        button.onclick=()=>{state.selectedTopic=topic.id;renderThemedIndex();};
+        $('faqTopicButtons').append(button);
+      }
+    }
+    const shown=manifest.questions.filter(q=>query
+      ?[q.title,...q.aliases].some(text=>normalizeQuestion(text).includes(query))
+      :q.theme===chosen);
+    for(const question of shown){
+      const b=document.createElement('button');b.type='button';b.className='faq-question-item';
+      const title=document.createElement('span');title.className='faq-question-title';title.textContent=question.title;
+      const chevron=document.createElement('span');chevron.className='faq-chevron';
+      chevron.textContent='›';chevron.setAttribute('aria-hidden','true');
+      b.append(title,chevron);b.onclick=()=>showAnswer(question.id);
+      $('faqList').append(b);
+    }
+    $('faqSearchStatus').textContent=query
+      ?(manifest.unsupported.some(t=>normalizeQuestion(t)===query)
+        ?'Aucune réponse fondée dans les psaumes pour cette question.'
+        :shown.length+' réponse'+(shown.length>1?'s':'')+' trouvée'+(shown.length>1?'s':''))
+      :chosen?shown.length+' questions dans ce thème.':'';
+  }
+  async function loadIndex(){
+    if(state.themeIndex)return true;
+    if(state.indexLoading)return state.indexLoading;
+    state.indexLoading=fetch('data/faq-101-index.json?v=101').then(async response=>{
+      if(!response.ok)throw Error('Liste des thèmes indisponible.');
+      const data=await response.json();
+      if(data.version!==1||data.originalArticles!==105||data.visibleArticles!==95||
+         data.originalCitations!==424||data.questions?.length!==95||
+         !Array.isArray(data.topics)||!Array.isArray(data.unsupported)||
+         new Set(data.questions.map(q=>q.id)).size!==95||
+         data.questions.some(q=>!q.id||!q.title||!q.source?.file||
+           !data.topics.some(topic=>topic.id===q.theme)))
+        throw Error('Index thématique incomplet.');
+      state.themeIndex=data;
+      renderThemedIndex();showStatus('');
+      return true;
+    }).catch(error=>{showStatus(error.message);console.error(error);state.indexLoading=null;return false;});
+    return state.indexLoading;
+  }
+  async function fetchSource(path){
+    if(!state.sourceCache.has(path)){
+      const promise=fetch(path+'?v=101').then(response=>{
+        if(!response.ok)throw Error('Réponse indisponible : '+path);
+        return response.json();
+      }).catch(error=>{state.sourceCache.delete(path);throw error;});
+      state.sourceCache.set(path,promise);
+    }
+    return state.sourceCache.get(path);
+  }
+  async function fetchArticle(id,source){
+    const data=await fetchSource(source.file);
+    const q=Array.isArray(data.questions)?data.questions.find(item=>item.id===id):data;
+    if(!q||q.id!==id||!q.title||!q.answer)
+      throw Error('Question introuvable : '+id);
+    let article;
+    if(!source.books&&!source.citations){
+      if(!Array.isArray(q.references))throw Error('Références manquantes : '+id);
+      article=q;
+    }else{
+      const books=source.books?await fetchSource(source.books):data;
+      if(!books?.verifiedPsalms||!Number.isInteger(source.citations))
+        throw Error('Références vérifiées indisponibles : '+id);
+      article=linkedReferences(q,books.verifiedPsalms,source.citations);
+    }
+    for(const ref of article.references)if(!validReference(ref))
+      throw Error('Référence de psaume non valide : '+id+' / '+ref.recordId);
+    return article;
+  }
+  async function fetchAnswer(entry){
+    if(state.byId.has(entry.id))return state.byId.get(entry.id);
+    if(state.answerLoading.has(entry.id))return state.answerLoading.get(entry.id);
+    const promise=(async()=>{
+      const main=await fetchArticle(entry.id,entry.source);
+      let answer=main;
+      if(entry.merge){
+        const fold=await fetchArticle(entry.merge.id,entry.merge.source);
+        answer={...main,
+          answer:main.answer+'\\n\\n**'+entry.merge.heading+'**\\n\\n'+fold.answer,
+          references:main.references.concat(fold.references)};
+      }
+      state.byId.set(entry.id,answer);
+      return answer;
+    })().finally(()=>state.answerLoading.delete(entry.id));
+    state.answerLoading.set(entry.id,promise);
+    return promise;
+  }
+  async function showLazyAnswer(id){
+    const entry=state.themeIndex?.questions.find(item=>item.id===id);
+    if(!entry)return;
+    const requestId=++state.requestId;
+    showStatus('Chargement de la réponse…');
+    try{
+      await fetchAnswer(entry);
+      if(requestId!==state.requestId||$('faqLibrary').hidden)return;
+      showLoadedAnswer(id);
+    }catch(error){
+      if(requestId===state.requestId){showStatus(error.message);console.error(error);}
+    }
+  }
   function renderIndex(){
+    if(state.themesMode){renderThemedIndex();return;}
     $('faqList').replaceChildren();
     const query=normalizeQuestion($('faqSearch').value);
     let shown=0;
@@ -112,6 +235,10 @@
     appendFormattedText(container,answer.slice(cursor));
   }
   function showAnswer(id){
+    if(state.themesMode)return showLazyAnswer(id);
+    return showLoadedAnswer(id);
+  }
+  function showLoadedAnswer(id){
     const question=state.byId.get(id);if(!question)return;
     state.current=question;
     $('faqIndex').hidden=true;$('faqAnswer').hidden=false;
@@ -342,16 +469,25 @@
     }).catch(error=>{showStatus(error.message);console.error(error);return false;});
     return state.loading;
   }
+  function prime(records){
+    state.records=new Map((records||[]).map(r=>[r.id,r]));
+    state.themesMode=true;
+    return true;
+  }
   function open(){
     $('faqLibrary').hidden=false;
     document.body.classList.add('view-faq');
     $('faqSearch').value='';
+    state.selectedTopic=null;
     renderIndex();
     backToIndex();
-    if(!state.questions.length)showStatus('Chargement des questions…');
+    if(state.themesMode){
+      if(!state.themeIndex){showStatus('Chargement des thèmes…');loadIndex();}
+    }else if(!state.questions.length)showStatus('Chargement des questions…');
     $('faqClose').focus({preventScroll:true});
   }
   function close(){
+    state.requestId++;
     document.body.classList.remove('view-faq');
     $('faqLibrary').hidden=true;
   }
@@ -371,6 +507,7 @@
     }catch(error){showStatus('Impossible de créer le PDF : '+error.message);}
   }
   $('faqSearch').oninput=renderIndex;
+  $('faqThemeBack').onclick=()=>{state.selectedTopic=null;$('faqSearch').value='';renderIndex();};
   $('faqBack').onclick=backToIndex;
   $('faqClose').onclick=()=>{
     close();window.scrollTo({top:0,behavior:'instant'});
@@ -379,7 +516,7 @@
   $('faqPdf').onclick=download;
   $('faqPrint').onclick=()=>window.print();
   globalThis.BiblawFAQ=Object.freeze({
-    init,open,close,restoreAfterPsalm,
+    init,prime,open,close,restoreAfterPsalm,
     setOpenPsalm(callback){state.openPsalm=callback;}
   });
 })();
