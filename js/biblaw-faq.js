@@ -269,12 +269,53 @@
         throw Error('Liste des questions invalide.');
       for(const q of questions)for(const ref of q.references)if(!validReference(ref))
         throw Error('Référence de psaume introuvable : '+ref.recordId);
-      state.questions=questions;
+      // 100 — Editorial grouping, not content deletion. All 105 verified
+      // original answers remain byte-for-byte untouched in their original JSON.
+      // The visitor sees 95 entries; each of the 10 merged answers contains
+      // BOTH complete original texts and ALL of their original citation links.
+      const responseMerge=await fetch('data/faq-100-merge.json?v=100');
+      if(!responseMerge.ok)throw Error('Regroupements de questions indisponibles.');
+      const mergeData=await responseMerge.json();
+      if(mergeData.version!==1||mergeData.groups?.length!==10||
+         mergeData.originalArticles!==105||mergeData.visibleArticles!==95||
+         mergeData.originalCitationCount!==424||mergeData.visibleCitationCount!==424)
+        throw Error('Plan de regroupement des questions incomplet.');
+      const originalById=new Map(questions.map(q=>[q.id,q]));
+      const removed=new Set(),canonical=new Set(),composite=new Map(),mergedAliases=new Map();
+      let retainedCitations=0;
+      for(const entry of mergeData.groups){
+        const main=originalById.get(entry.keepId),extra=originalById.get(entry.foldId);
+        if(!main||!extra||main.id===extra.id||
+           canonical.has(main.id)||removed.has(main.id)||
+           removed.has(extra.id)||canonical.has(extra.id)||
+           !entry.heading||/[\n*]/.test(entry.heading))
+          throw Error('Regroupement ambigu ou contradictoire : '+entry.number);
+        canonical.add(main.id);removed.add(extra.id);
+        const joined={...main,
+          answer:main.answer+'\n\n**'+entry.heading+'**\n\n'+extra.answer,
+          references:main.references.concat(extra.references)};
+        // Count every retained reference, including repeated references to
+        // the same Psalm in separate source articles. No editorial deletions.
+        retainedCitations+=joined.references.length;
+        composite.set(main.id,joined);
+        mergedAliases.set(main.id,[extra.title]);
+      }
+      const originalCitations=questions.reduce((n,q)=>n+q.references.length,0);
+      if(originalCitations!==424||retainedCitations+
+          questions.filter(q=>!canonical.has(q.id)&&!removed.has(q.id))
+            .reduce((n,q)=>n+q.references.length,0)!==424)
+        throw Error('Une référence de psaume a été perdue dans le regroupement.');
+      state.questions=questions.filter(q=>!removed.has(q.id))
+        .map(q=>composite.get(q.id)||q);
+      if(state.questions.length!==95||new Set(state.questions.map(q=>q.id)).size!==95)
+        throw Error('Le regroupement doit produire 95 questions différentes.');
       state.byId=new Map(state.questions.map(q=>[q.id,q]));
+      for(const entry of mergeData.groups)
+        state.byId.set(entry.foldId,composite.get(entry.keepId));
       if(routeData.version!==1||routeData.routes?.length!==19)
         throw Error('Correspondances des 19 questions incomplètes.');
       const numbers=new Set();
-      state.aliases=new Map();
+      state.aliases=mergedAliases;
       const counts={new:0,reuse:0,redirect_new:0,unsupported:0};
       for(const route of routeData.routes){
         if(!Number.isInteger(route.number)||numbers.has(route.number)||!route.question||
