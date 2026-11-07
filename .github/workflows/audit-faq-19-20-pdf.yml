@@ -35,11 +35,3 @@ jobs:
           name: biblaw-faq-19-20-original-pdf-evidence
           path: docs/FAQ-MISSION-19-20-PDF-EVIDENCE.json
           if-no-files-found: warn
-      - name: Temporarily keep the unchanged original PDF for page-by-page manual inspection
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: biblaw-faq-19-20-original-pdf-review
-          path: 'Bible essénienne (classée par livres).pdf'
-          retention-days: 1
-          if-no-files-found: error
