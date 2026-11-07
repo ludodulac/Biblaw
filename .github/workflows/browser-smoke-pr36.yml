@@ -7,6 +7,7 @@ on:
       - 'js/biblaw-faq.js'
       - 'data/faq-*.json'
       - 'scripts/smoke_faq_browser.mjs'
+      - 'scripts/smoke_faq_full_browser.mjs'
       - 'css/biblaw.css'
       - 'js/biblaw.js'
       - 'js/theme-suggestion-engine.js'
@@ -28,7 +29,7 @@ permissions:
 jobs:
   chromium-smoke:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -48,5 +49,6 @@ jobs:
           SERVER_PID=$!
           trap 'kill "$SERVER_PID"' EXIT
           node scripts/smoke_faq_browser.mjs
+          node scripts/smoke_faq_full_browser.mjs
           node scripts/smoke_occurrence_expansion_browser.mjs
           node scripts/smoke_occurrences_041c.mjs
