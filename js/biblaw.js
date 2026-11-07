@@ -127,7 +127,10 @@
         }
       });
     }
-    document.addEventListener('pointerdown',event=>{
+    // Les suggestions sont dans le flux sur mobile. Ne pas les retirer
+    // dès pointerdown : leur disparition déplace le bouton Rechercher avant
+    // pointerup, et le clic aboutit sur le panneau au lieu du bouton.
+    document.addEventListener('click',event=>{
       if(!event.target.closest('.query-stack'))closeAllSuggestions();
     });
   }

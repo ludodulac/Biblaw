@@ -661,3 +661,14 @@ body.view-faq .shell{padding-top:1.15rem}
   body.view-faq .faq-psalm-link{color:#202020!important;text-decoration:none!important}
   body.view-faq .record-dialog:not([open]){display:none!important}
 }
+
+/* 099 — Sur téléphone, l'autocomplétion reste dans le flux et ne recouvre
+   jamais le bouton Rechercher placé après le champ. */
+@media (max-width:760px) {
+  .primary-search .query-stack .search-suggestions:not([hidden]) {
+    position:relative;
+    top:auto;left:auto;right:auto;
+    width:100%;box-sizing:border-box;margin-top:.45rem;
+    max-height:min(15rem,35dvh);z-index:1;
+  }
+}

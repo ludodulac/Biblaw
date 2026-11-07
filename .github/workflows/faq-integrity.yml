@@ -1,0 +1,49 @@
+name: FAQ reference integrity
+
+on:
+  pull_request:
+    paths:
+      - 'data/faq-*.json'
+      - 'data/corpus/books/**'
+      - 'js/biblaw-faq.js'
+      - 'scripts/check_faq_integrity.mjs'
+      - 'scripts/check_faq_dom.mjs'
+      - '.github/workflows/faq-integrity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/faq-*.json'
+      - 'data/corpus/books/**'
+      - 'js/biblaw-faq.js'
+      - 'scripts/check_faq_integrity.mjs'
+      - 'scripts/check_faq_dom.mjs'
+
+permissions:
+  contents: read
+
+jobs:
+  faq-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify 102 FAQ answers and clickable canonical Psalm references
+        run: node scripts/check_faq_integrity.mjs
+      - name: Exercise the FAQ public loader and citation links
+        run: node scripts/check_faq_dom.mjs
+      - name: Rejouer les contrôles FAQ du déploiement Pages
+        shell: bash
+        run: |
+          failed=0
+          for test in scripts/audit_faq_*.py scripts/smoke_faq_*.mjs; do
+            if [[ "$test" == "scripts/smoke_faq_browser.mjs" || "$test" == "scripts/audit_faq_pdf_source.py" ]]; then continue; fi
+            echo "=== $test ==="
+            if [[ "$test" == *.py ]]; then
+              python "$test" || failed=1
+            else
+              node "$test" || failed=1
+            fi
+          done
+          exit "$failed"

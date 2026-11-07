@@ -19,7 +19,7 @@ assert.equal(f097.questions.length,8);
 assert.equal(f098.questions.length,13);
 assert.ok(read('scripts/build_pages_site.py').includes('"data/faq-097.json"'));
 assert.ok(read('scripts/build_pages_site.py').includes('"data/faq-098.json"'));
-assert.ok(read('index.html').includes('biblaw-faq.js?v=098'));
+assert.ok(read('index.html').includes('biblaw-faq.js?v=099'));
 
 class Element {
   constructor(tag='div'){
@@ -75,7 +75,7 @@ assert.equal(get('faqList').children[0].children[0].textContent,base.questions[0
 assert.equal(get('faqList').children[80].children[0].textContent,f096.questions[13].title);
 assert.equal(get('faqList').children[88].children[0].textContent,f097.questions[7].title);
 
-const a=[3,3,3,4,3,3,4,4],b=[3,3,3,3,3,3,3,3,3,3,3,3,6];
+const a=[3,3,3,4,3,3,4,4],b=[3,5,4,4,5,5,4,5,5,5,5,6,18];
 const cases=[...f097.questions.map((q,i)=>({q,n:a[i],index:81+i,group:17,sub:i})),
              ...f098.questions.map((q,i)=>({q,n:b[i],index:89+i,group:18,sub:i}))];
 let count=0;
@@ -94,7 +94,7 @@ for(const {q,n,index,group,sub} of cases){
     const headings=nodes.filter(x=>x.tag==='strong');
     assert.equal(headings.length,3);
     assert.deepEqual(headings.map(x=>x.textContent),[
-      'Les repas peuvent devenir un exercice de gratitude et de conscience.',
+      'Les repas : nourrir le corps et les dimensions plus subtiles de la vie.',
       "La marche peut devenir un exercice d'attention et de présence.",
       'La parole peut devenir un exercice de vérité et de maîtrise intérieure.'
     ]);
@@ -114,7 +114,7 @@ for(const {q,n,index,group,sub} of cases){
       assert.deepEqual(Array.from(ref.verses),[
         ...Array.from({length:13},(_,i)=>i+1),...Array.from({length:9},(_,i)=>i+22)
       ]);
-    if(group===18&&sub===12&&j===4){
+    if(group===18&&sub===12&&j===9){
       assert.equal(ref.archangel,'michael','Michael and Gabriel psalm 165 must not be confused');
       assert.equal(ref.recordId,'book-25-psalm-165');
     }
@@ -132,9 +132,9 @@ for(const {q,n,index,group,sub} of cases){
   get('faqBack').onclick();
   assert.equal(get('faqIndex').hidden,false);
 }
-assert.equal(count,69);
+assert.equal(count,101);
 assert.equal(unique.size,42);
 assert.equal(downloads.length,21);
 context.BiblawFAQ.close();
 assert.equal(get('faqLibrary').hidden,true);
-console.log('FAQ 097+098 PASS: 102 Q&A, 21 original articles, 69 verified links, 42 sources, proper bold subheadings, 21 PDFs and return navigation');
+console.log('FAQ 097+098 PASS: 102 Q&A, 21 original articles, 101 verified links, 42 sources, proper bold subheadings, 21 PDFs and return navigation');

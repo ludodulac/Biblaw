@@ -12,7 +12,7 @@ try{
  await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'networkidle'});
  await page.waitForFunction(()=>!document.getElementById('corpusStats').textContent.includes('Chargement'));
  await page.locator('#modeExact').click();
- const ids=()=>page.locator('.result-card [data-open]').evaluateAll(nodes=>nodes.map(n=>n.dataset.open));
+ const ids=()=>page.locator('.result-card .result-summary-toggle[data-open]').evaluateAll(nodes=>nodes.map(n=>n.dataset.open));
  for(const term of terms){
   await page.locator('#query').fill(term);await page.locator('#searchButton').click();
   const exact=await ids();const checkbox=page.locator('#includeWordForms');
