@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Safety gate for 19 requested FAQ formulations and 3 drafts. Does not edit public site."""
+"""Verify the original 19/20 drafts and public candidate are exactly identical.
+This script does not deploy or modify anything."""
 import json
 import re
 from collections import Counter
@@ -43,6 +44,19 @@ def main():
     staged=load("docs/FAQ-MISSION-19-20-STAGING.json")
     routing=load("docs/FAQ-MISSION-19-20-ROUTING.json")
     questions=staged["questions"]
+    # The public 105-FAQ preview must contain the *exact* texts and Psalm map
+    # verified against the PDF, never a paraphrase mutated during integration.
+    candidate=load("data/faq-099.json")
+    public_routes=load("data/faq-099-routing.json")
+    assert candidate==staged, "Published candidate diverges from PDF-verified staging"
+    expected_public_routes={
+        "version":routing["version"],"summary":routing["summary"],
+        "routes":[
+            {key:r[key] for key in ("number","question","resolution","target_id","related_ids")}
+            for r in routing["routes"]
+        ]
+    }
+    assert public_routes==expected_public_routes, "Public routing diverges from reviewed plan"
     assert staged["version"]==1 and len(questions)==3
     new_ids={q["id"] for q in questions}
     assert len(new_ids)==3 and not new_ids.intersection(existing)
@@ -92,7 +106,7 @@ def main():
             assert rid in existing,(r["number"],rid)
     print(f"FAQ_19_20_STAGING_PASS existing={len(existing)} staged={len(questions)} citations={total_citations} cited_distinct_verses={len(all_cited_verses)}")
     print("FAQ_19_20_ROUTING_PASS "+str(dict(classifications)))
-    print("FAQ_19_20_NO_PUBLIC_CHANGE: staging in docs only, no user-facing data modified")
+    print("FAQ_19_20_PUBLIC_INTEGRATION_VERIFIED: published candidate identical to verified staging; no deploy")
 
 if __name__=="__main__":
     main()
