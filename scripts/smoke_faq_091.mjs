@@ -65,7 +65,7 @@ const context={
   window:{scrollY:40,scrollTo({top}){this.scrollY=top}}
 };
 context.globalThis=context;
-vm.runInNewContext(read('js/biblaw-faq.js'),context,{timeout:10000});
+vm.runInNewContext(read('scripts/fixtures/faq-loader-before-100.js'),context,{timeout:10000});
 context.BiblawFAQ.setOpenPsalm(ref=>sourceCalls.push(ref));
 assert.equal(await context.BiblawFAQ.init(corpus.records),true,'39-question FAQ must load');
 context.BiblawFAQ.open();
