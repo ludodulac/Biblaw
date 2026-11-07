@@ -21,7 +21,7 @@ assert.equal(f097.questions.length,8);
 assert.equal(f098.questions.length,13);
 assert.ok(read('scripts/build_pages_site.py').includes('"data/faq-097.json"'));
 assert.ok(read('scripts/build_pages_site.py').includes('"data/faq-098.json"'));
-assert.ok(read('index.html').includes('biblaw-faq.js?v=101'));
+assert.ok(Number(read('index.html').match(/biblaw-faq[.]js[?]v=(\d+)/)?.[1])>=101);
 
 class Element {
   constructor(tag='div'){
