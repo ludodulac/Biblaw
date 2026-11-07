@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Integration smoke for the real FAQ loader: 102 questions, 406 clickable citations,
+// Integration smoke for the real FAQ loader: 105 questions, 424 clickable citations,
 // index -> answer -> canonical Psalm -> back, and FAQ PDF export.
 import assert from 'node:assert/strict';
 import {readFile, readdir} from 'node:fs/promises';
@@ -21,19 +21,20 @@ assert.equal(records.length,1158,'Unexpected canonical corpus count');
 let printed=0, opened=0, exported=0;
 function elt(tag='div'){
   const node={
-    tagName:tag.toLowerCase(),textContent:'',className:'',hidden:false,disabled:false,
+    tagName:tag.toLowerCase(),textContent:'',className:'',hidden:false,disabled:false,value:'',
     title:'',type:'',onclick:null,children:[],attrs:{},classSet:new Set(),
     replaceChildren(...x){this.children=x;},
     append(...x){this.children.push(...x);},
     setAttribute(k,v){this.attrs[k]=String(v);},
-    focus(){},
+    focus(){},addEventListener(){}, 
   };
   node.classList={add:k=>node.classSet.add(k),remove:k=>node.classSet.delete(k),
     contains:k=>node.classSet.has(k)};
   return node;
 }
 const needed=['faqStatus','faqList','faqIndex','faqAnswer','faqAnswerTitle',
-  'faqAnswerBody','faqBack','faqClose','faqPdf','faqPrint','faqLibrary','faqToggle'];
+  'faqAnswerBody','faqBack','faqClose','faqPdf','faqPrint','faqLibrary','faqToggle',
+  'faqSearch','faqSearchStatus'];
 const nodes=Object.fromEntries(needed.map(k=>[k,elt()]));
 nodes.faqLibrary.hidden=true;
 nodes.faqAnswer.hidden=true;
@@ -63,7 +64,7 @@ ctx.BiblawFAQ.setOpenPsalm(ref=>{
 });
 assert.equal(await ctx.BiblawFAQ.init(records),true,'FAQ data load failed');
 assert.equal(nodes.faqStatus.textContent,'','FAQ load produced an error');
-assert.equal(nodes.faqList.children.length,102,'Wrong index count');
+assert.equal(nodes.faqList.children.length,105,'Wrong index count');
 ctx.BiblawFAQ.open();
 assert.equal(nodes.faqLibrary.hidden,false);
 let questionCount=0,linkCount=0;
@@ -88,9 +89,9 @@ for(const item of nodes.faqList.children){
   assert.equal(nodes.faqIndex.hidden,false);
   assert.equal(nodes.faqAnswer.hidden,true);
 }
-assert.equal(questionCount,102);
-assert.equal(linkCount,406);
-assert.equal(opened,406);
+assert.equal(questionCount,105);
+assert.equal(linkCount,424);
+assert.equal(opened,424);
 nodes.faqList.children.at(-1).onclick();
 nodes.faqPdf.onclick();
 assert.equal(exported,1,'PDF export did not trigger');
