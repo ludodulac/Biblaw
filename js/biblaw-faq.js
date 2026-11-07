@@ -329,7 +329,7 @@
       showStatus('');
     }catch(error){showStatus('Impossible de créer le PDF : '+error.message);}
   }
-  $('faqSearch').addEventListener('input',renderIndex);
+  $('faqSearch').oninput=renderIndex;
   $('faqBack').onclick=backToIndex;
   $('faqClose').onclick=()=>{
     close();window.scrollTo({top:0,behavior:'instant'});
