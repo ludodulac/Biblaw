@@ -149,7 +149,7 @@
       if(entry.merge){
         const fold=await fetchArticle(entry.merge.id,entry.merge.source);
         answer={...main,
-          answer:main.answer+'\\n\\n**'+entry.merge.heading+'**\\n\\n'+fold.answer,
+          answer:main.answer+'\n\n**'+entry.merge.heading+'**\n\n'+fold.answer,
           references:main.references.concat(fold.references)};
       }
       state.byId.set(entry.id,answer);
@@ -472,6 +472,9 @@
   function prime(records){
     state.records=new Map((records||[]).map(r=>[r.id,r]));
     state.themesMode=true;
+    $('faqThemeBack').onclick=()=>{
+      state.selectedTopic=null;$('faqSearch').value='';renderIndex();
+    };
     return true;
   }
   function open(){
@@ -507,7 +510,6 @@
     }catch(error){showStatus('Impossible de créer le PDF : '+error.message);}
   }
   $('faqSearch').oninput=renderIndex;
-  $('faqThemeBack').onclick=()=>{state.selectedTopic=null;$('faqSearch').value='';renderIndex();};
   $('faqBack').onclick=backToIndex;
   $('faqClose').onclick=()=>{
     close();window.scrollTo({top:0,behavior:'instant'});
