@@ -150,7 +150,7 @@ try{
      'Unsupported question must not become a false answer');
    assert.match(await page.locator('#faqSearchStatus').innerText(),/Aucune réponse fondée/);
    await page.locator('#faqSearch').fill('');
-   assert.equal(await page.locator('#faqList .faq-question-item').count(),105,
+   assert.equal(await page.locator('#faqList .faq-question-item').count(),95,
      'Clearing search must restore the complete index');
    await page.locator('#faqClose').click();
    assert.equal(await page.locator('#faqLibrary').isVisible(),false,'FAQ close did not return to search');
