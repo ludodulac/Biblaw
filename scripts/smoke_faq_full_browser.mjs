@@ -107,6 +107,14 @@ try{
    assert.equal((await page.locator('#faqAnswerTitle').innerText()).trim(),
      'Que devient notre conscience après la mort ?');
    await page.locator('#faqBack').click();
+   // A different wording reuses the existing 102-article corpus, not a copy.
+   await page.locator('#faqSearch').fill('comment vivre autrement');
+   assert.equal(await page.locator('#faqList .faq-question-item').count(),1,
+     'Existing FAQ alias must find one destination');
+   await page.locator('#faqList .faq-question-item').first().click();
+   assert.match(await page.locator('#faqAnswerTitle').innerText(),/activités ordinaires/i,
+     'Existing FAQ alias navigated to the wrong article');
+   await page.locator('#faqBack').click();
    await page.locator('#faqSearch').fill('que nous apprennent réellement les expériences de mort imminente');
    assert.equal(await page.locator('#faqList .faq-question-item').count(),0,
      'Unsupported question must not become a false answer');
