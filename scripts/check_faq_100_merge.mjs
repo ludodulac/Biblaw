@@ -9,7 +9,7 @@ const original=[];
 original.push(...(await json('data/faq-public-085.json')).questions);
 for(let n=1;n<=5;n++)original.push(await json('data/faq-090-'+n+'.json'));
 for(let n=1;n<=9;n++)original.push(await json('data/faq-091-'+n+'.json'));
-for(let n=92;n<=99;n++)original.push(...(await json('data/faq-'+n+'.json')).questions);
+for(let n=92;n<=99;n++)original.push(...(await json('data/faq-'+String(n).padStart(3,'0')+'.json')).questions);
 const byId=new Map(original.map(q=>[q.id,q]));
 assert.equal(original.length,105);
 assert.equal(byId.size,105);
