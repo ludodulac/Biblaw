@@ -8,6 +8,7 @@ on:
       - .github/workflows/book03-full-derivatives-temporary.yml
       - data/thematic-index/books/book-03.json
       - scripts/audit_book03_full_theme_coverage.py
+      - scripts/audit_book01_end_book02_first10_theme_coverage.py
 
 permissions:
   contents: write
