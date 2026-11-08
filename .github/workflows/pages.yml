@@ -49,6 +49,8 @@ jobs:
         run: python scripts/audit_book06_full_theme_coverage.py
       - name: Vérifier l'intégrité thématique des 25 psaumes du livre 7
         run: python scripts/audit_book07_full_theme_coverage.py
+      - name: Vérifier l'intégrité thématique des 27 psaumes du livre 8
+        run: python scripts/audit_book08_full_theme_coverage.py
       - name: Vérifier l'intégrité documentaire publiée
         run: python scripts/audit_corpus_attachments.py
       - name: Vérifier l'expansion lexicale sûre
