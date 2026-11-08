@@ -139,8 +139,8 @@ def main():
         "book-01-psalms-001-010","book-01-psalms-011-020","book-01-psalms-021-022"
     ]
     assert audits1[2]["verifiedVerseCount"]==30 and audits1[2]["addedRelationCount"]==25
-    assert audits2[-1]["scope"]=="book-02-psalms-001-010"
-    assert audits2[-1]["verifiedVerseCount"]==123 and audits2[-1]["addedRelationCount"]==105
+    assert audits2[0]["scope"]=="book-02-psalms-001-010"
+    assert audits2[0]["verifiedVerseCount"]==123 and audits2[0]["addedRelationCount"]==105
     print("BIBLAW BOOK 01 FINISH + BOOK 02/1-10 PASS: 12 Psalms, 153 unchanged verses, 54 original + 130 new verse-anchored relations; 1265 themes, 5 new public search topics.")
 
 
