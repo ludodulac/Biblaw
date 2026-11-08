@@ -4,9 +4,9 @@
   "purpose": "search-quality-audit-only; no automatic semantic merging or renaming",
   "stats": {
     "themeCount": 1267,
-    "themeRelationCount": 11147,
-    "singletonThemeCount": 880,
-    "rareThemeCountOccurrenceLTE2": 1012,
+    "themeRelationCount": 11446,
+    "singletonThemeCount": 870,
+    "rareThemeCountOccurrenceLTE2": 1001,
     "sameIdMultipleLabelsCount": 35,
     "sameNormalizedLabelMultipleIdsCount": 5,
     "normalizedDirectoryCollisionCount": 0,
@@ -14,10 +14,10 @@
     "relationsWithoutVerseNumbers": 0,
     "relationsWithoutTeaching": 0,
     "themeCountByArchangelCoverage": {
-      "1": 933,
-      "2": 147,
+      "1": 929,
+      "2": 139,
       "3": 72,
-      "4": 115
+      "4": 127
     }
   },
   "hardStructuralIssues": {
@@ -214,6 +214,19 @@
             {
               "bookNumber": 4,
               "archangel": "ouriel",
+              "psalmNumber": 1,
+              "recordId": "book-04-psalm-001",
+              "label": "Alliance",
+              "importance": "important",
+              "directness": "direct",
+              "verseNumbers": [
+                3
+              ],
+              "teaching": "La Bible essénienne enseigne que l’alliance du Soleil est donnée comme fondement d’une vision claire des choses."
+            },
+            {
+              "bookNumber": 4,
+              "archangel": "ouriel",
               "psalmNumber": 12,
               "recordId": "book-04-psalm-012",
               "label": "Alliance",
@@ -227,6 +240,19 @@
                 8
               ],
               "teaching": "L'alliance entre monde divin et monde humain doit être entretenue quotidiennement et incarnée dans des supports, pensées et œuvres."
+            },
+            {
+              "bookNumber": 4,
+              "archangel": "ouriel",
+              "psalmNumber": 23,
+              "recordId": "book-04-psalm-023",
+              "label": "Alliance",
+              "importance": "important",
+              "directness": "direct",
+              "verseNumbers": [
+                1
+              ],
+              "teaching": "La Bible essénienne enseigne que la relation originelle entre Dieu et l’homme est décrite comme une alliance de feu et de Lumière."
             },
             {
               "bookNumber": 7,
@@ -2831,6 +2857,19 @@
               "teaching": "Être premier signifie être le serviteur le plus disponible pour la Lumière et non occuper une position de domination."
             },
             {
+              "bookNumber": 4,
+              "archangel": "ouriel",
+              "psalmNumber": 2,
+              "recordId": "book-04-psalm-002",
+              "label": "Service",
+              "importance": "important",
+              "directness": "direct",
+              "verseNumbers": [
+                4
+              ],
+              "teaching": "La Bible essénienne enseigne que la légèreté permet de servir une cause plus grande sans se laisser détourner par les difficultés."
+            },
+            {
               "bookNumber": 11,
               "archangel": "raphael",
               "psalmNumber": 60,
@@ -3346,6 +3385,21 @@
               "teaching": "Les limitations du corps doivent être transformées en fondations du temple de méditation et de l'union avec Dieu."
             },
             {
+              "bookNumber": 4,
+              "archangel": "ouriel",
+              "psalmNumber": 12,
+              "recordId": "book-04-psalm-012",
+              "label": "Temple",
+              "importance": "important",
+              "directness": "direct",
+              "verseNumbers": [
+                2,
+                4,
+                8
+              ],
+              "teaching": "La Bible essénienne enseigne que le temple est le lieu d’une œuvre collective qui permet d’entretenir la relation au monde divin."
+            },
+            {
               "bookNumber": 6,
               "archangel": "gabriel",
               "psalmNumber": 25,
@@ -3617,6 +3671,33 @@
                 2
               ],
               "teaching": "La Bible essénienne enseigne que la filiation ancestrale transmet une mémoire qui porte l’homme dans le présent."
+            },
+            {
+              "bookNumber": 4,
+              "archangel": "ouriel",
+              "psalmNumber": 1,
+              "recordId": "book-04-psalm-001",
+              "label": "Transmission",
+              "importance": "important",
+              "directness": "direct",
+              "verseNumbers": [
+                2,
+                4
+              ],
+              "teaching": "La Bible essénienne enseigne que les récits transmis peuvent faire connaître le Père, mais ne remplacent pas une recherche intérieure personnelle."
+            },
+            {
+              "bookNumber": 4,
+              "archangel": "ouriel",
+              "psalmNumber": 10,
+              "recordId": "book-04-psalm-010",
+              "label": "Transmission",
+              "importance": "important",
+              "directness": "direct",
+              "verseNumbers": [
+                3
+              ],
+              "teaching": "La Bible essénienne enseigne que les fruits de l’arbre humain portent des semences destinées aux générations à venir."
             },
             {
               "bookNumber": 12,
@@ -4376,7 +4457,7 @@
         "labels": [
           {
             "label": "Actes",
-            "count": 7
+            "count": 8
           },
           {
             "label": "Actes concrets",
@@ -4471,6 +4552,20 @@
             "teaching": "La Bible essénienne enseigne que l’esprit divin peut être reconnu à travers des actes conscients plutôt que de simples désirs."
           },
           {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 4,
+            "recordId": "book-04-psalm-004",
+            "label": "Actes",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              3,
+              7
+            ],
+            "teaching": "La Bible essénienne enseigne que la recherche de la quintessence se prolonge dans une mise en pratique concrète."
+          },
+          {
             "bookNumber": 10,
             "archangel": "gabriel",
             "psalmNumber": 56,
@@ -4515,7 +4610,7 @@
         "labels": [
           {
             "label": "Alliance",
-            "count": 164
+            "count": 166
           },
           {
             "label": "Alliance de Lumière",
@@ -4692,6 +4787,19 @@
           {
             "bookNumber": 4,
             "archangel": "ouriel",
+            "psalmNumber": 1,
+            "recordId": "book-04-psalm-001",
+            "label": "Alliance",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              3
+            ],
+            "teaching": "La Bible essénienne enseigne que l’alliance du Soleil est donnée comme fondement d’une vision claire des choses."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
             "psalmNumber": 12,
             "recordId": "book-04-psalm-012",
             "label": "Alliance",
@@ -4705,6 +4813,19 @@
               8
             ],
             "teaching": "L'alliance entre monde divin et monde humain doit être entretenue quotidiennement et incarnée dans des supports, pensées et œuvres."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 23,
+            "recordId": "book-04-psalm-023",
+            "label": "Alliance",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1
+            ],
+            "teaching": "La Bible essénienne enseigne que la relation originelle entre Dieu et l’homme est décrite comme une alliance de feu et de Lumière."
           },
           {
             "bookNumber": 7,
@@ -7480,7 +7601,7 @@
         "labels": [
           {
             "label": "Discernement",
-            "count": 50
+            "count": 56
           },
           {
             "label": "Discernement du bonheur",
@@ -7616,6 +7737,92 @@
               10
             ],
             "teaching": "La Bible essénienne enseigne que distinguer les forces et leurs effets permet de les harmoniser sans se laisser dominer."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 1,
+            "recordId": "book-04-psalm-001",
+            "label": "Discernement",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              4
+            ],
+            "teaching": "La Bible essénienne enseigne que la répétition des récits reçus doit laisser place à une connaissance examinée à partir de son propre être."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 8,
+            "recordId": "book-04-psalm-008",
+            "label": "Discernement",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              7,
+              8
+            ],
+            "teaching": "La Bible essénienne enseigne que l’homme doit examiner les causes de son expérience et ne pas élever les enfants selon des conceptions erronées."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 18,
+            "recordId": "book-04-psalm-018",
+            "label": "Discernement",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              3,
+              5,
+              6,
+              16
+            ],
+            "teaching": "La Bible essénienne enseigne que les résultats vécus aident à discerner un chemin juste d’une croyance stérile."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 19,
+            "recordId": "book-04-psalm-019",
+            "label": "Discernement",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              26,
+              27
+            ],
+            "teaching": "La Bible essénienne enseigne que il faut distinguer le mortel changeant de l’éternel."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 21,
+            "recordId": "book-04-psalm-021",
+            "label": "Discernement",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              8,
+              14
+            ],
+            "teaching": "La Bible essénienne enseigne que connaître ses associations et reconnaître ses illusions aide à garder la clarté."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 23,
+            "recordId": "book-04-psalm-023",
+            "label": "Discernement",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              5
+            ],
+            "teaching": "La Bible essénienne enseigne que une vision précise des souhaits et des associés protège des influences imposées."
           },
           {
             "bookNumber": 7,
@@ -8391,7 +8598,7 @@
         "labels": [
           {
             "label": "Engagement",
-            "count": 12
+            "count": 13
           },
           {
             "label": "Engagement et responsabilité",
@@ -8462,6 +8669,20 @@
               7
             ],
             "teaching": "L'homme doit affirmer son choix de vie sans timidité et montrer concrètement une autre possibilité."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 17,
+            "recordId": "book-04-psalm-017",
+            "label": "Engagement",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              3,
+              26
+            ],
+            "teaching": "La Bible essénienne enseigne que une parole consacrée engage celui qui la prononce à tenir son œuvre."
           },
           {
             "bookNumber": 4,
@@ -8759,7 +8980,7 @@
         "labels": [
           {
             "label": "Feu",
-            "count": 59
+            "count": 60
           },
           {
             "label": "Feu de Michaël",
@@ -8862,6 +9083,19 @@
               11
             ],
             "teaching": "La Bible essénienne enseigne que le feu divin est nourri lorsque l’eau et l’air de l’homme sont unis de façon juste."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 24,
+            "recordId": "book-04-psalm-024",
+            "label": "Feu",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              11
+            ],
+            "teaching": "La Bible essénienne enseigne que le feu intérieur doit être gardé vivant pour continuer l’œuvre."
           },
           {
             "bookNumber": 5,
@@ -11275,7 +11509,7 @@
         "labels": [
           {
             "label": "Magie",
-            "count": 2
+            "count": 3
           },
           {
             "label": "Magie / arts magiques",
@@ -11283,6 +11517,20 @@
           }
         ],
         "contextualEvidence": [
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 4,
+            "recordId": "book-04-psalm-004",
+            "label": "Magie",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              3,
+              7
+            ],
+            "teaching": "La Bible essénienne enseigne que la magie est présentée comme une réalité à vivre et à pratiquer, plutôt qu’un savoir seulement appris."
+          },
           {
             "bookNumber": 4,
             "archangel": "ouriel",
@@ -12677,7 +12925,7 @@
         "labels": [
           {
             "label": "Nature",
-            "count": 45
+            "count": 52
           },
           {
             "label": "Nature et Mère",
@@ -12804,6 +13052,75 @@
           {
             "bookNumber": 4,
             "archangel": "ouriel",
+            "psalmNumber": 7,
+            "recordId": "book-04-psalm-007",
+            "label": "Nature",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              3
+            ],
+            "teaching": "La Bible essénienne enseigne que l’homme doit associer les règnes de la nature à son élévation vers le divin."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 10,
+            "recordId": "book-04-psalm-010",
+            "label": "Nature",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              2,
+              5
+            ],
+            "teaching": "La Bible essénienne enseigne que l’arbre sert de modèle vivant à la compréhension de l’homme dans ses trois sphères."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 11,
+            "recordId": "book-04-psalm-011",
+            "label": "Nature",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              7
+            ],
+            "teaching": "La Bible essénienne enseigne que la bénédiction des règnes de la nature est reliée à la valeur de l’engagement humain."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 15,
+            "recordId": "book-04-psalm-015",
+            "label": "Nature",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              15,
+              16
+            ],
+            "teaching": "La Bible essénienne enseigne que les éléments de la nature sont décrits comme des lettres d’un langage universel que l’homme peut apprendre à lire."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 16,
+            "recordId": "book-04-psalm-016",
+            "label": "Nature",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              15
+            ],
+            "teaching": "La Bible essénienne enseigne que les êtres de la nature peuvent transmettre leur sagesse à celui qui connaît son chemin."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
             "psalmNumber": 19,
             "recordId": "book-04-psalm-019",
             "label": "Nature",
@@ -12818,6 +13135,36 @@
               28
             ],
             "teaching": "Montagnes, forêts et océans enseignent paix, stabilité et équilibre à la partie terrestre de l'homme."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 22,
+            "recordId": "book-04-psalm-022",
+            "label": "Nature",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              2,
+              3,
+              6,
+              10
+            ],
+            "teaching": "La Bible essénienne enseigne que la nature entière peut enseigner et nourrir la vraie nature de l’homme."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 24,
+            "recordId": "book-04-psalm-024",
+            "label": "Nature",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              10
+            ],
+            "teaching": "La Bible essénienne enseigne que les éléments de la nature sont appelés à aider ceux qui œuvrent pour le Père."
           },
           {
             "bookNumber": 6,
@@ -19146,7 +19493,7 @@
         "labels": [
           {
             "label": "Offrande",
-            "count": 1
+            "count": 2
           },
           {
             "label": "Offrande de soi",
@@ -19154,6 +19501,21 @@
           }
         ],
         "contextualEvidence": [
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 7,
+            "recordId": "book-04-psalm-007",
+            "label": "Offrande",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              4,
+              5,
+              6
+            ],
+            "teaching": "La Bible essénienne enseigne que les vertus et les pensées conscientes peuvent être offertes aux mondes supérieurs comme une nourriture."
+          },
           {
             "bookNumber": 4,
             "archangel": "ouriel",
@@ -19200,7 +19562,7 @@
         "labels": [
           {
             "label": "Paradis",
-            "count": 1
+            "count": 2
           },
           {
             "label": "Paradis et lieu du bonheur",
@@ -19220,6 +19582,19 @@
               12
             ],
             "teaching": "La Bible essénienne enseigne que la culture des semences de Lumière est comparée à l’ouverture d’un jardin de paradis."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 21,
+            "recordId": "book-04-psalm-021",
+            "label": "Paradis",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              5
+            ],
+            "teaching": "La Bible essénienne enseigne que le paradis est décrit comme une ouverture sans frontières vers le monde divin."
           },
           {
             "bookNumber": 12,
@@ -19248,7 +19623,7 @@
         "labels": [
           {
             "label": "Perfection",
-            "count": 6
+            "count": 8
           },
           {
             "label": "Perfection de l’œuvre",
@@ -19314,6 +19689,33 @@
               6
             ],
             "teaching": "La Bible essénienne enseigne que le corps doit être cultivé pour s’épanouir en perfection et en grandeur."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 2,
+            "recordId": "book-04-psalm-002",
+            "label": "Perfection",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              6
+            ],
+            "teaching": "La Bible essénienne enseigne que la perfection intérieure est associée à la légèreté envers soi-même et envers l’autre."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 13,
+            "recordId": "book-04-psalm-013",
+            "label": "Perfection",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              3,
+              7
+            ],
+            "teaching": "La Bible essénienne enseigne que mener de petites choses jusqu’à la perfection prépare des œuvres plus vastes."
           },
           {
             "bookNumber": 4,
@@ -22136,7 +22538,7 @@
         "labels": [
           {
             "label": "Respiration",
-            "count": 50
+            "count": 51
           },
           {
             "label": "Respiration / souffle",
@@ -22231,6 +22633,19 @@
               3
             ],
             "teaching": "La Bible essénienne enseigne que le corps spirituel préparé permet à l’homme de retrouver une respiration légère et vivante."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 9,
+            "recordId": "book-04-psalm-009",
+            "label": "Respiration",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              4
+            ],
+            "teaching": "La Bible essénienne enseigne que le nez et la respiration expriment les êtres et les influences présents autour de l’homme."
           },
           {
             "bookNumber": 7,
@@ -23064,7 +23479,7 @@
         "labels": [
           {
             "label": "Semence",
-            "count": 8
+            "count": 11
           },
           {
             "label": "Semence / graine",
@@ -23199,6 +23614,47 @@
           {
             "bookNumber": 4,
             "archangel": "ouriel",
+            "psalmNumber": 10,
+            "recordId": "book-04-psalm-010",
+            "label": "Semence",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              3
+            ],
+            "teaching": "La Bible essénienne enseigne que la vie que l’homme cultive aujourd’hui prépare les semences qu’il transmettra demain."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 16,
+            "recordId": "book-04-psalm-016",
+            "label": "Semence",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              2
+            ],
+            "teaching": "La Bible essénienne enseigne que la destinée de l’âme est comparée à une semence qui demande à être réveillée et cultivée."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 20,
+            "recordId": "book-04-psalm-020",
+            "label": "Semence",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              19,
+              25
+            ],
+            "teaching": "La Bible essénienne enseigne que les activités sont comparées à des graines qui portent des fruits dans la terre intérieure."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
             "psalmNumber": 23,
             "recordId": "book-04-psalm-023",
             "label": "Semence",
@@ -23240,7 +23696,7 @@
         "labels": [
           {
             "label": "Service",
-            "count": 26
+            "count": 27
           },
           {
             "label": "Service du monde divin",
@@ -23281,6 +23737,19 @@
               9
             ],
             "teaching": "Être premier signifie être le serviteur le plus disponible pour la Lumière et non occuper une position de domination."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 2,
+            "recordId": "book-04-psalm-002",
+            "label": "Service",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              4
+            ],
+            "teaching": "La Bible essénienne enseigne que la légèreté permet de servir une cause plus grande sans se laisser détourner par les difficultés."
           },
           {
             "bookNumber": 11,
@@ -23958,7 +24427,7 @@
         "labels": [
           {
             "label": "Temple",
-            "count": 8
+            "count": 9
           },
           {
             "label": "Temple intérieur",
@@ -23995,6 +24464,21 @@
               10
             ],
             "teaching": "Les limitations du corps doivent être transformées en fondations du temple de méditation et de l'union avec Dieu."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 12,
+            "recordId": "book-04-psalm-012",
+            "label": "Temple",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              4,
+              8
+            ],
+            "teaching": "La Bible essénienne enseigne que le temple est le lieu d’une œuvre collective qui permet d’entretenir la relation au monde divin."
           },
           {
             "bookNumber": 6,
@@ -24144,7 +24628,7 @@
         "labels": [
           {
             "label": "Transmission",
-            "count": 43
+            "count": 45
           },
           {
             "label": "Transmission aux générations",
@@ -24227,6 +24711,33 @@
               2
             ],
             "teaching": "La Bible essénienne enseigne que la filiation ancestrale transmet une mémoire qui porte l’homme dans le présent."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 1,
+            "recordId": "book-04-psalm-001",
+            "label": "Transmission",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              4
+            ],
+            "teaching": "La Bible essénienne enseigne que les récits transmis peuvent faire connaître le Père, mais ne remplacent pas une recherche intérieure personnelle."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 10,
+            "recordId": "book-04-psalm-010",
+            "label": "Transmission",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              3
+            ],
+            "teaching": "La Bible essénienne enseigne que les fruits de l’arbre humain portent des semences destinées aux générations à venir."
           },
           {
             "bookNumber": 12,
@@ -24942,7 +25453,7 @@
         "labels": [
           {
             "label": "Union",
-            "count": 61
+            "count": 62
           },
           {
             "label": "Union et communauté",
@@ -25171,6 +25682,21 @@
               11
             ],
             "teaching": "La Bible essénienne enseigne que le corps et l’esprit doivent être reconnus comme unis pour former la maison de la rencontre avec Dieu."
+          },
+          {
+            "bookNumber": 4,
+            "archangel": "ouriel",
+            "psalmNumber": 7,
+            "recordId": "book-04-psalm-007",
+            "label": "Union",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              3,
+              5
+            ],
+            "teaching": "La Bible essénienne enseigne que l’élévation vers le divin associe l’homme aux éléments et aux règnes qu’il porte avec lui."
           },
           {
             "bookNumber": 5,
@@ -26189,7 +26715,7 @@
       {
         "id": "cause-et-consequence",
         "label": "Cause et conséquence",
-        "occurrenceCount": 1,
+        "occurrenceCount": 3,
         "centralPsalmCount": 1,
         "archangelCount": 1
       },
@@ -26434,9 +26960,9 @@
       {
         "id": "esprit-et-matiere",
         "label": "Esprit et matière",
-        "occurrenceCount": 3,
+        "occurrenceCount": 8,
         "centralPsalmCount": 2,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "faiblesse-et-force",
@@ -26595,7 +27121,7 @@
       {
         "id": "microcosme-et-macrocosme",
         "label": "Microcosme et macrocosme",
-        "occurrenceCount": 3,
+        "occurrenceCount": 4,
         "centralPsalmCount": 2,
         "archangelCount": 2
       },
@@ -26875,7 +27401,7 @@
       {
         "id": "pere-et-mere",
         "label": "Père et Mère",
-        "occurrenceCount": 3,
+        "occurrenceCount": 5,
         "centralPsalmCount": 2,
         "archangelCount": 3
       },
@@ -27141,9 +27667,9 @@
       {
         "id": "terre-et-mere",
         "label": "Terre et Mère",
-        "occurrenceCount": 2,
+        "occurrenceCount": 5,
         "centralPsalmCount": 1,
-        "archangelCount": 2
+        "archangelCount": 3
       },
       {
         "id": "terre-eau-air-feu",
@@ -27925,13 +28451,6 @@
         "archangelCount": 1
       },
       {
-        "id": "cause-et-consequence",
-        "label": "Cause et conséquence",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "cause-a-effet",
         "label": "Cause à effet",
         "occurrenceCount": 1,
@@ -28198,22 +28717,8 @@
         "archangelCount": 1
       },
       {
-        "id": "conformisme",
-        "label": "Conformisme",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
         "id": "confusion-des-mondes",
         "label": "Confusion des mondes",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "connaissance-directe",
-        "label": "Connaissance directe",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
         "archangelCount": 1
@@ -29150,13 +29655,6 @@
         "archangelCount": 1
       },
       {
-        "id": "experience-vecue",
-        "label": "Expérience vécue",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
         "id": "faiblesse",
         "label": "Faiblesse",
         "occurrenceCount": 1,
@@ -29731,13 +30229,6 @@
         "archangelCount": 1
       },
       {
-        "id": "ignorance",
-        "label": "Ignorance",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
         "id": "immortalite-de-lame",
         "label": "Immortalité de l’âme",
         "occurrenceCount": 1,
@@ -29817,13 +30308,6 @@
       {
         "id": "influences-instinctives",
         "label": "Influences instinctives",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
-        "id": "instant-present",
-        "label": "Instant présent",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
@@ -31054,13 +31538,6 @@
         "archangelCount": 1
       },
       {
-        "id": "plenitude",
-        "label": "Plénitude",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "poches-d-eau-polluee",
         "label": "Poches d’eau polluée",
         "occurrenceCount": 1,
@@ -31243,13 +31720,6 @@
         "archangelCount": 1
       },
       {
-        "id": "protection-interieure",
-        "label": "Protection intérieure",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "precieux",
         "label": "Précieux / trésor divin",
         "occurrenceCount": 1,
@@ -31343,13 +31813,6 @@
       {
         "id": "psaumes-de-la-ronde",
         "label": "Psaumes de la Ronde des Archanges",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
-        "id": "puissance-creatrice",
-        "label": "Puissance créatrice",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
@@ -32598,13 +33061,6 @@
         "label": "Transmission du savoir-faire",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
-        "id": "travail-de-la-lumiere",
-        "label": "Travail de la Lumière",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
         "archangelCount": 1
       },
       {
@@ -33968,13 +34424,6 @@
         "archangelCount": 1
       },
       {
-        "id": "associations-spirituelles",
-        "label": "Associations spirituelles",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 1,
-        "archangelCount": 2
-      },
-      {
         "id": "assumer-son-humanite",
         "label": "Assumer son humanité",
         "occurrenceCount": 1,
@@ -34192,13 +34641,6 @@
         "archangelCount": 1
       },
       {
-        "id": "cause-et-consequence",
-        "label": "Cause et conséquence",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "cause-a-effet",
         "label": "Cause à effet",
         "occurrenceCount": 1,
@@ -34388,13 +34830,6 @@
         "archangelCount": 1
       },
       {
-        "id": "clarte",
-        "label": "Clarté",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 1,
-        "archangelCount": 2
-      },
-      {
         "id": "clarte-et-verite",
         "label": "Clarté et vérité",
         "occurrenceCount": 1,
@@ -34516,9 +34951,9 @@
       {
         "id": "conformisme",
         "label": "Conformisme",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 0,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "confusion-des-mondes",
@@ -34530,7 +34965,7 @@
       {
         "id": "connaissance-directe",
         "label": "Connaissance directe",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
         "archangelCount": 1
       },
@@ -35557,13 +35992,6 @@
         "archangelCount": 1
       },
       {
-        "id": "esperance",
-        "label": "Espérance",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 1,
-        "archangelCount": 2
-      },
-      {
         "id": "essentiel",
         "label": "Essentiel",
         "occurrenceCount": 2,
@@ -35589,13 +36017,6 @@
         "label": "Expérience directe",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "experience-vecue",
-        "label": "Expérience vécue",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
         "archangelCount": 1
       },
       {
@@ -36252,9 +36673,9 @@
       {
         "id": "ignorance",
         "label": "Ignorance",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 0,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "imitation",
@@ -36378,7 +36799,7 @@
       {
         "id": "instant-present",
         "label": "Instant présent",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 0,
         "archangelCount": 1
       },
@@ -37286,13 +37707,6 @@
         "archangelCount": 2
       },
       {
-        "id": "offrande",
-        "label": "Offrande",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 1,
-        "archangelCount": 2
-      },
-      {
         "id": "offrande-du-present",
         "label": "Offrande du présent",
         "occurrenceCount": 1,
@@ -37494,13 +37908,6 @@
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
-      },
-      {
-        "id": "paradis",
-        "label": "Paradis",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 1,
-        "archangelCount": 2
       },
       {
         "id": "pardon-et-reparation",
@@ -37827,7 +38234,7 @@
       {
         "id": "plenitude",
         "label": "Plénitude",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
         "archangelCount": 1
       },
@@ -38044,7 +38451,7 @@
       {
         "id": "protection-interieure",
         "label": "Protection intérieure",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
         "archangelCount": 1
       },
@@ -38142,13 +38549,6 @@
       {
         "id": "psaumes-de-la-ronde",
         "label": "Psaumes de la Ronde des Archanges",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
-        "id": "puissance-creatrice",
-        "label": "Puissance créatrice",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
@@ -38439,13 +38839,6 @@
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
         "archangelCount": 1
-      },
-      {
-        "id": "renaissance",
-        "label": "Renaissance",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 0,
-        "archangelCount": 2
       },
       {
         "id": "renaissance-par-la-mere",
@@ -38994,13 +39387,6 @@
         "archangelCount": 1
       },
       {
-        "id": "solidarite",
-        "label": "Solidarité",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 0,
-        "archangelCount": 2
-      },
-      {
         "id": "sommeil-de-linconscience",
         "label": "Sommeil de l’inconscience",
         "occurrenceCount": 1,
@@ -39337,13 +39723,6 @@
         "archangelCount": 1
       },
       {
-        "id": "terre-et-mere",
-        "label": "Terre et Mère",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 1,
-        "archangelCount": 2
-      },
-      {
         "id": "terre-promise",
         "label": "Terre promise",
         "occurrenceCount": 1,
@@ -39577,7 +39956,7 @@
       {
         "id": "travail-de-la-lumiere",
         "label": "Travail de la Lumière",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
         "archangelCount": 1
       },
