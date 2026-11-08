@@ -1,0 +1,36 @@
+name: Book 4 one-time canonical derivative rebuild
+on:
+  push:
+    branches:
+      - feat/book04-full-theme-coverage
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Validate editorial additions and preserve historical associations
+        run: python scripts/audit_book04_full_theme_coverage.py
+      - name: Rebuild all deterministic thematic derivatives
+        run: python scripts/rebuild_thematic_derivatives.py
+      - name: Audit book 4 and previously completed books
+        run: |
+          python scripts/audit_book04_full_theme_coverage.py
+          python scripts/audit_book03_full_theme_coverage.py
+          python scripts/audit_book02_psalms11_24_theme_coverage.py
+          python scripts/audit_book01_end_book02_first10_theme_coverage.py
+      - name: Commit rebuilt data and remove this temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm .github/workflows/book04-rebuild-once.yml
+          git add -u
+          git add -A data
+          if ! git diff --cached --quiet; then
+            git commit -m "build(book04): regenerate public thematic indexes and remove temporary workflow"
+            git push origin HEAD:feat/book04-full-theme-coverage
+          fi
