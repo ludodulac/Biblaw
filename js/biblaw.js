@@ -212,7 +212,8 @@
       updateExpansionControl();
       search();
       indexPublicWords();
-      BiblawFAQ.init(state.records);
+      // Prepare the FAQ without fetching 105 answers on the homepage.
+      BiblawFAQ.prime(state.records);
     } catch (error) { console.error(error); $('results').innerHTML = '<div class="empty">Le corpus ne peut pas être chargé. Ouvrez Biblaw depuis son adresse web.</div>'; }
   }
 

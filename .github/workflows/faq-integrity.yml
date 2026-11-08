@@ -8,6 +8,8 @@ on:
       - 'js/biblaw-faq.js'
       - 'scripts/check_faq_integrity.mjs'
       - 'scripts/check_faq_dom.mjs'
+      - 'scripts/check_faq_100_merge.mjs'
+      - 'scripts/check_faq_101_topics.mjs'
       - '.github/workflows/faq-integrity.yml'
   push:
     branches: [main]
@@ -17,6 +19,7 @@ on:
       - 'js/biblaw-faq.js'
       - 'scripts/check_faq_integrity.mjs'
       - 'scripts/check_faq_dom.mjs'
+      - 'scripts/check_faq_100_merge.mjs'
 
 permissions:
   contents: read
@@ -29,8 +32,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify 105 FAQ answers, 424 canonical links and 19 alternative routes
+      - name: Verify 105 archived FAQ, 95 composite entries, 424 links and 19 routes
         run: node scripts/check_faq_integrity.mjs
+      - name: Vérifier les dix regroupements sans perte de citations ni textes
+        run: node scripts/check_faq_100_merge.mjs
+      - name: Vérifier les thèmes FAQ et le chargement différé des 95 réponses
+        run: node scripts/check_faq_101_topics.mjs
       - name: Exercise the FAQ public loader and citation links
         run: node scripts/check_faq_dom.mjs
       - name: Rejouer les contrôles FAQ du déploiement Pages

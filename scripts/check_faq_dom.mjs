@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Integration smoke for the real FAQ loader: 105 questions, 424 clickable citations,
+// Integration smoke for the real FAQ loader: 95 visible questions, 424 clickable citations,
 // index -> answer -> canonical Psalm -> back, and FAQ PDF export.
 import assert from 'node:assert/strict';
 import {readFile, readdir} from 'node:fs/promises';
@@ -64,7 +64,7 @@ ctx.BiblawFAQ.setOpenPsalm(ref=>{
 });
 assert.equal(await ctx.BiblawFAQ.init(records),true,'FAQ data load failed');
 assert.equal(nodes.faqStatus.textContent,'','FAQ load produced an error');
-assert.equal(nodes.faqList.children.length,105,'Wrong index count');
+assert.equal(nodes.faqList.children.length,95,'Wrong index count');
 ctx.BiblawFAQ.open();
 assert.equal(nodes.faqLibrary.hidden,false);
 let questionCount=0,linkCount=0;
@@ -89,7 +89,7 @@ for(const item of nodes.faqList.children){
   assert.equal(nodes.faqIndex.hidden,false);
   assert.equal(nodes.faqAnswer.hidden,true);
 }
-assert.equal(questionCount,105);
+assert.equal(questionCount,95);
 assert.equal(linkCount,424);
 assert.equal(opened,424);
 nodes.faqList.children.at(-1).onclick();

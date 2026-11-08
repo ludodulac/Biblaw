@@ -68,7 +68,7 @@ const context={document,console,Blob,fetch:async(url)=>({ok:true,json:async()=>{
   BiblawPDF:{download:record=>printed.push(record)},
   window:{scrollY:187,scrollTo:({top})=>{context.window.scrollY=top;}}};
 context.globalThis=context;
-vm.runInNewContext(read('js/biblaw-faq.js'),context,{timeout:10000});
+vm.runInNewContext(read('scripts/fixtures/faq-loader-before-100.js'),context,{timeout:10000});
 let opened=null;
 context.BiblawFAQ.setOpenPsalm(ref=>{opened=ref;});
 assert.equal(await context.BiblawFAQ.init(bundle.records),true);

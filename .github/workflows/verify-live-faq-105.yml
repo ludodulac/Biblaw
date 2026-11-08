@@ -35,7 +35,7 @@ jobs:
                   return response.read().decode('utf-8')
           def check():
               html = fetch('')
-              assert 'id="faqSearch"' in html and 'js/biblaw-faq.js?v=100' in html, 'Public index is not the released 105-FAQ version'
+              assert 'id="faqSearch"' in html and 'js/biblaw-faq.js?v=102' in html, 'Public index is not the expected themed FAQ release'
               js = fetch('js/biblaw-faq.js')
               assert 'faq-099.json' in js and 'faq-099-routing.json' in js, 'Public FAQ loader not updated'
               paths = ['data/faq-public-085.json']
@@ -51,6 +51,11 @@ jobs:
               links = sum(q['answer'].count('(psaume ') for q in all_questions)
               assert count == 105 and len(set(ids)) == 105, f'Public FAQ count or IDs: {count}/{len(set(ids))}'
               assert links == 424, f'Public Psalm citations: {links}'
+              thematic = json.loads(fetch('data/faq-101-index.json'))
+              assert thematic['version'] == 1 and len(thematic['questions']) == 95
+              assert len(thematic['topics']) == 11
+              assert sum(x['count'] for x in thematic['topics']) == 95
+              assert thematic['originalCitations'] == 424
               routes = json.loads(fetch('data/faq-099-routing.json'))['routes']
               assert len(routes) == 19
               for route in routes:

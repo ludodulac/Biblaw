@@ -89,7 +89,7 @@ jobs:
           assert "${modeAwareText(thematic.teaching||summary(r))}" in js
           assert "${modeAwareText(thematic.teaching||'')}" in js
           assert "${modeAwareText(summary(r))}" in js
-          opened=js[js.index('function open(id)'):js.index('function activeText')]
+          opened=js[js.index('function open(id,'):js.index('function activeText')]
           assert '${modeAwareText(v.text)}' in opened
           assert '${modeAwareText(r.attachedPrayer.text)}' in opened
           assert "${modeAwareText(r.text||r.summary||'')}" in opened
