@@ -3,19 +3,19 @@
   "status": "review-candidates-generated",
   "purpose": "search-quality-audit-only; no automatic semantic merging or renaming",
   "stats": {
-    "themeCount": 1252,
-    "themeRelationCount": 10443,
-    "singletonThemeCount": 924,
-    "rareThemeCountOccurrenceLTE2": 1050,
-    "sameIdMultipleLabelsCount": 32,
+    "themeCount": 1255,
+    "themeRelationCount": 10483,
+    "singletonThemeCount": 920,
+    "rareThemeCountOccurrenceLTE2": 1047,
+    "sameIdMultipleLabelsCount": 34,
     "sameNormalizedLabelMultipleIdsCount": 5,
     "normalizedDirectoryCollisionCount": 0,
-    "compositeLabelCandidateCount": 186,
+    "compositeLabelCandidateCount": 185,
     "relationsWithoutVerseNumbers": 0,
     "relationsWithoutTeaching": 0,
     "themeCountByArchangelCoverage": {
-      "1": 972,
-      "2": 117,
+      "1": 966,
+      "2": 126,
       "3": 65,
       "4": 98
     }
@@ -57,6 +57,19 @@
                 7
               ],
               "teaching": "L'œuvre terrestre est rendue possible par une alliance entre l'homme et des forces subtiles ou divines."
+            },
+            {
+              "bookNumber": 1,
+              "archangel": "michael",
+              "psalmNumber": 10,
+              "recordId": "book-01-psalm-010",
+              "label": "Alliance",
+              "importance": "important",
+              "directness": "direct",
+              "verseNumbers": [
+                14
+              ],
+              "teaching": "La Bible essénienne évoque une alliance de Lumière scellée par le travail accompli et la continuité du feu intérieur."
             },
             {
               "bookNumber": 2,
@@ -4266,7 +4279,7 @@
         "labels": [
           {
             "label": "Alliance",
-            "count": 156
+            "count": 157
           },
           {
             "label": "Alliance de Lumière",
@@ -4286,6 +4299,19 @@
               7
             ],
             "teaching": "L'œuvre terrestre est rendue possible par une alliance entre l'homme et des forces subtiles ou divines."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 10,
+            "recordId": "book-01-psalm-010",
+            "label": "Alliance",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              14
+            ],
+            "teaching": "La Bible essénienne évoque une alliance de Lumière scellée par le travail accompli et la continuité du feu intérieur."
           },
           {
             "bookNumber": 2,
@@ -7894,6 +7920,70 @@
               12
             ],
             "teaching": "Relation textuelle « Discernement » : v.1 : Cultive le discernement afin de ne jamais enfanter sur la terre un monde ou une œuvre qui est inspiré par une volonté, un désir, une influence… / v.12 : que l’homme peut imaginer. Père Ouriel, comment faire apparaître ce discernement comme une évidence et une conviction profonde ? Nous sommes plongés dans un monde qui nous sollicite sans cesse pour que nous participions,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+          }
+        ],
+        "reviewRule": "Preserve contextual wording unless corpus-internal evidence shows a genuine identifier or labeling error; do not force one global definition."
+      },
+      {
+        "themeId": "ecologie",
+        "labels": [
+          {
+            "label": "Écologie",
+            "count": 1
+          },
+          {
+            "label": "Écologie vivante",
+            "count": 1
+          }
+        ],
+        "contextualEvidence": [
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 8,
+            "recordId": "book-01-psalm-008",
+            "label": "Écologie",
+            "importance": "related",
+            "directness": "editorial",
+            "verseNumbers": [
+              3,
+              5,
+              7,
+              8
+            ],
+            "teaching": "La Bible essénienne appelle à un échange conscient avec la Terre et condamne une relation d'exploitation où l'homme ne lui rend rien."
+          },
+          {
+            "bookNumber": 12,
+            "archangel": "ouriel",
+            "psalmNumber": 66,
+            "recordId": "book-12-psalm-066",
+            "label": "Écologie vivante",
+            "importance": "central",
+            "directness": "direct",
+            "verseNumbers": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21
+            ],
+            "teaching": "L'écologie authentique reconnaît terre et nature comme des êtres vivants et relie l'état intérieur de l'homme à la santé des règnes qu'il nourrit ou appauvrit."
           }
         ],
         "reviewRule": "Preserve contextual wording unless corpus-internal evidence shows a genuine identifier or labeling error; do not force one global definition."
@@ -18502,7 +18592,7 @@
         "labels": [
           {
             "label": "Perfection",
-            "count": 4
+            "count": 5
           },
           {
             "label": "Perfection de l’œuvre",
@@ -18525,6 +18615,22 @@
               10
             ],
             "teaching": "La perfection est reliée à la réunion consciente de l'homme, du corps, des énergies et des intelligences adaptées à l'action."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 9,
+            "recordId": "book-01-psalm-009",
+            "label": "Perfection",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              9,
+              14,
+              17,
+              19
+            ],
+            "teaching": "La Bible essénienne invite à cultiver les semences de vertu jusqu'à leur plein accomplissement, en vue de l'éveil de la graine divine."
           },
           {
             "bookNumber": 2,
@@ -18616,11 +18722,60 @@
         "reviewRule": "Preserve contextual wording unless corpus-internal evidence shows a genuine identifier or labeling error; do not force one global definition."
       },
       {
+        "themeId": "pollution",
+        "labels": [
+          {
+            "label": "Pollution",
+            "count": 1
+          },
+          {
+            "label": "Pollution intérieure et extérieure",
+            "count": 1
+          }
+        ],
+        "contextualEvidence": [
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 8,
+            "recordId": "book-01-psalm-008",
+            "label": "Pollution",
+            "importance": "related",
+            "directness": "contextual",
+            "verseNumbers": [
+              7
+            ],
+            "teaching": "La Bible essénienne reproche à l'homme de traiter la Terre comme une poubelle au lieu de nourrir une relation de réciprocité."
+          },
+          {
+            "bookNumber": 12,
+            "archangel": "ouriel",
+            "psalmNumber": 71,
+            "recordId": "book-12-psalm-071",
+            "label": "Pollution intérieure et extérieure",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              4,
+              8,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16
+            ],
+            "teaching": "Polluer l'eau, l'air, la terre et le feu correspond aussi à déformer sentiments, souffle, actes et être éternel ; la pollution physique reflète ainsi une rupture intérieure."
+          }
+        ],
+        "reviewRule": "Preserve contextual wording unless corpus-internal evidence shows a genuine identifier or labeling error; do not force one global definition."
+      },
+      {
         "themeId": "purete",
         "labels": [
           {
             "label": "Pureté",
-            "count": 93
+            "count": 94
           },
           {
             "label": "Pureté de la pensée",
@@ -18628,6 +18783,22 @@
           }
         ],
         "contextualEvidence": [
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 5,
+            "recordId": "book-01-psalm-005",
+            "label": "Pureté",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              5,
+              7,
+              8,
+              14
+            ],
+            "teaching": "La Bible essénienne enseigne que la pureté des vertus et l'impersonnalité conditionnent la communication véritable avec les êtres divins."
+          },
           {
             "bookNumber": 5,
             "archangel": "michael",
@@ -23767,7 +23938,7 @@
         "labels": [
           {
             "label": "Union",
-            "count": 47
+            "count": 49
           },
           {
             "label": "Union et communauté",
@@ -23775,6 +23946,35 @@
           }
         ],
         "contextualEvidence": [
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 3,
+            "recordId": "book-01-psalm-003",
+            "label": "Union",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              6
+            ],
+            "teaching": "La Bible essénienne présente l'union avec Dieu et la vie partagée avec le Père comme la finalité de la préparation consciente."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 7,
+            "recordId": "book-01-psalm-007",
+            "label": "Union",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              7,
+              11,
+              12,
+              16
+            ],
+            "teaching": "La Bible essénienne enseigne qu'une relation directe et intime avec le Père demeure possible dans la chambre secrète de l'être."
+          },
           {
             "bookNumber": 3,
             "archangel": "raphael",
@@ -24841,7 +25041,7 @@
       {
         "id": "communication-avec-le-divin",
         "label": "Communication avec le divin",
-        "occurrenceCount": 2,
+        "occurrenceCount": 3,
         "centralPsalmCount": 2,
         "archangelCount": 2
       },
@@ -25415,13 +25615,6 @@
       {
         "id": "plante-et-fleur",
         "label": "Plante et fleur",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
-        "id": "pollution",
-        "label": "Pollution intérieure et extérieure",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
@@ -26024,6 +26217,13 @@
         "archangelCount": 1
       },
       {
+        "id": "acceptation-de-la-vie-terrestre",
+        "label": "Acceptation de la vie terrestre",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
         "id": "accueil-du-nouveau",
         "label": "Accueil du nouveau",
         "occurrenceCount": 1,
@@ -26096,13 +26296,6 @@
       {
         "id": "adaptation-sans-perte-identite",
         "label": "Adaptation sans perte d’identité",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
-        "id": "affinite",
-        "label": "Affinité",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
@@ -26425,6 +26618,13 @@
       {
         "id": "autorite-interieure",
         "label": "Autorité intérieure",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
+        "id": "baguette-magique",
+        "label": "Baguette magique",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
@@ -27200,13 +27400,6 @@
         "archangelCount": 1
       },
       {
-        "id": "correspondances",
-        "label": "Correspondances",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "corruptible-et-incorruptible",
         "label": "Corruptible et incorruptible",
         "occurrenceCount": 1,
@@ -27293,6 +27486,13 @@
       {
         "id": "cycles-de-la-vie",
         "label": "Cycles de la vie",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
+        "id": "celebration",
+        "label": "Célébration",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
@@ -27631,13 +27831,6 @@
         "label": "Dépendance et nourriture",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
-        "id": "desir",
-        "label": "Désir",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
         "archangelCount": 1
       },
       {
@@ -29930,13 +30123,6 @@
         "archangelCount": 1
       },
       {
-        "id": "pollution",
-        "label": "Pollution intérieure et extérieure",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
         "id": "pollution-subtile",
         "label": "Pollution subtile",
         "occurrenceCount": 1,
@@ -30429,13 +30615,6 @@
       {
         "id": "anti-abstraction",
         "label": "Refus de l’abstraction",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
-        "id": "anti-fanatisme",
-        "label": "Refus du fanatisme",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
@@ -30989,13 +31168,6 @@
       {
         "id": "soleil",
         "label": "Soleil",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "soleil-interieur",
-        "label": "Soleil intérieur",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
         "archangelCount": 1
@@ -31995,13 +32167,6 @@
         "archangelCount": 1
       },
       {
-        "id": "ecologie",
-        "label": "Écologie vivante",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "ecoute-de-la-reponse",
         "label": "Écoute de la réponse",
         "occurrenceCount": 1,
@@ -32501,6 +32666,13 @@
         "archangelCount": 1
       },
       {
+        "id": "acceptation-de-la-vie-terrestre",
+        "label": "Acceptation de la vie terrestre",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
         "id": "accueil-du-nouveau",
         "label": "Accueil du nouveau",
         "occurrenceCount": 1,
@@ -32594,9 +32766,9 @@
       {
         "id": "affinite",
         "label": "Affinité",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 0,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "affinites",
@@ -32970,6 +33142,13 @@
         "archangelCount": 1
       },
       {
+        "id": "baguette-magique",
+        "label": "Baguette magique",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
         "id": "bapteme",
         "label": "Baptême de Gabriel",
         "occurrenceCount": 1,
@@ -32982,13 +33161,6 @@
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
         "archangelCount": 1
-      },
-      {
-        "id": "beaute",
-        "label": "Beauté",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 2,
-        "archangelCount": 2
       },
       {
         "id": "beaute-et-laideur",
@@ -33061,13 +33233,6 @@
         "archangelCount": 1
       },
       {
-        "id": "bonheur",
-        "label": "Bonheur",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 2,
-        "archangelCount": 1
-      },
-      {
         "id": "bonnes-alliances",
         "label": "Bonnes alliances",
         "occurrenceCount": 1,
@@ -33080,13 +33245,6 @@
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
         "archangelCount": 1
-      },
-      {
-        "id": "but-de-la-vie",
-        "label": "But de la vie",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 2,
-        "archangelCount": 2
       },
       {
         "id": "baton-de-dieu",
@@ -33444,13 +33602,6 @@
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
         "archangelCount": 1
-      },
-      {
-        "id": "communication-avec-le-divin",
-        "label": "Communication avec le divin",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 2,
-        "archangelCount": 2
       },
       {
         "id": "concentration-et-memoire",
@@ -33847,9 +33998,9 @@
       {
         "id": "correspondances",
         "label": "Correspondances",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "corruptible-et-incorruptible",
@@ -33945,6 +34096,13 @@
       {
         "id": "cycles-de-la-vie",
         "label": "Cycles de la vie",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
+        "id": "celebration",
+        "label": "Célébration",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
@@ -34323,9 +34481,9 @@
       {
         "id": "desir",
         "label": "Désir",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "detente",
@@ -35875,13 +36033,6 @@
         "archangelCount": 1
       },
       {
-        "id": "maitrise-de-soi",
-        "label": "Maîtrise de soi",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "maitrise-des-influences",
         "label": "Maîtrise des influences",
         "occurrenceCount": 1,
@@ -36947,10 +37098,10 @@
       },
       {
         "id": "pollution",
-        "label": "Pollution intérieure et extérieure",
-        "occurrenceCount": 1,
+        "label": "Pollution",
+        "occurrenceCount": 2,
         "centralPsalmCount": 0,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "pollution-subtile",
@@ -37487,9 +37638,9 @@
       {
         "id": "anti-fanatisme",
         "label": "Refus du fanatisme",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 0,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "regard-et-reflet",
@@ -38138,9 +38289,9 @@
       {
         "id": "soleil-interieur",
         "label": "Soleil intérieur",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "soleil-conscience",
@@ -39291,18 +39442,18 @@
         "archangelCount": 1
       },
       {
-        "id": "ecole-de-dieu",
-        "label": "École de Dieu",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 1,
-        "archangelCount": 2
-      },
-      {
         "id": "ecole-essenienne",
         "label": "École essénienne",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
         "archangelCount": 1
+      },
+      {
+        "id": "ecologie",
+        "label": "Écologie",
+        "occurrenceCount": 2,
+        "centralPsalmCount": 1,
+        "archangelCount": 2
       },
       {
         "id": "ecologie-interieure",
@@ -39317,13 +39468,6 @@
         "occurrenceCount": 2,
         "centralPsalmCount": 1,
         "archangelCount": 2
-      },
-      {
-        "id": "ecologie",
-        "label": "Écologie vivante",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
       },
       {
         "id": "ecoute-de-la-reponse",
