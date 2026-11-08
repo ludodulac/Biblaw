@@ -8,6 +8,7 @@ on:
       - .github/workflows/book01-psalms11-20-derivatives-temporary.yml
       - data/thematic-index/books/book-01.json
       - scripts/audit_book01_psalms11_20_theme_coverage.py
+      - scripts/audit_conceptual_coverage.py
 
 permissions:
   contents: write
