@@ -81,7 +81,7 @@ book["method"].setdefault("themeCoverageAudits",[]).append({
     "sourcePsalmsModified":False,
     "sourceVerseNumberingNotes":nonstandard
 })
-book["synthesis"]["centralAxis"]=(
+book["bookSynthesis"]["centralAxis"]=(
     "Synthèse d'indexation descriptive et non exclusive : le livre 16 d'Ouriel, "
     "« Ouvrez les portes d'un autre futur », relie l'authenticité des actes à la pureté "
     "des pensées, la vérité vécue à la royauté intérieure, la sublimation des influences "
@@ -95,7 +95,7 @@ book["synthesis"]["centralAxis"]=(
     "le pardon et la réparation à l'ouverture d'un chemin, le dauphin à un modèle "
     "d'harmonie et de langage, et le passage de la porte à l'allègement de l'être."
 )
-book["synthesis"]["majorThemes"]=[
+book["bookSynthesis"]["majorThemes"]=[
     "coherence-interieure","purete","verite","stabilite","royaute","maitre",
     "alchimie-interieure","sublimation","meditation","concentration","legerete",
     "ame-collective","nation-essenienne","union","respect-des-regnes",
@@ -107,6 +107,6 @@ book["synthesis"]["majorThemes"]=[
     "discernement-magique","pardon-et-reparation","dauphin","langage-universel",
     "passage-de-la-porte","preparation"
 ]
-assert all(t in canonical for t in book["synthesis"]["majorThemes"])
+assert all(t in canonical for t in book["bookSynthesis"]["majorThemes"])
 save(BOOK,book)
 print(f"BOOK16 EDITORIAL: {len(psalms)} psalms, {verse_total} verses, {HISTORICAL} historical untouched, {ADDED} new, {HISTORICAL+ADDED} total; special numbering: {nonstandard}")
