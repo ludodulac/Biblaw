@@ -15,7 +15,7 @@ BOOK = THEMATIC / "books/book-07.json"
 BASELINE = THEMATIC / "audits/book07-original-relations.json"
 NUMBERS = set(range(24,49))
 ORIGINAL = 79
-ADDED = 421
+ADDED = 440
 VERSES = 454
 
 def load(path):
