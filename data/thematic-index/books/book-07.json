@@ -24,18 +24,19 @@
         "source": "data/corpus/books/book-07/psalm-024.json through psalm-048.json",
         "approach": "conservative-editorial-verse-evidence",
         "originalRelationCount": 79,
-        "addedRelationCount": 421,
+        "addedRelationCount": 440,
         "verifiedVerseCount": 454,
         "sourcePsalmsModified": false
       }
     ]
   },
   "bookSynthesis": {
-    "centralAxis": "Synthèse d’indexation non exclusive : la lecture des 25 psaumes de Raphaël (24–48) met particulièrement en relief Lumière, Conscience, Âme, Responsabilité, Méditation, Nature, Air, Pureté, Monde divin, Discernement, Tradition de la Lumière, Pensée. Les correspondances thématiques sont justifiées par les versets du corpus, servent à la recherche et n’épuisent pas les niveaux de lecture possibles des psaumes.",
+    "centralAxis": "Synthèse d’indexation non exclusive : la lecture des 25 psaumes de Raphaël (24–48) met particulièrement en relief Lumière, Conscience, Âme, Souffle, Responsabilité, Méditation, Nature, Air, Pureté, Monde divin, Discernement, Tradition de la Lumière. Ces rapprochements, justifiés par les versets du corpus, servent à la recherche et ne prétendent pas épuiser les niveaux de lecture des psaumes.",
     "majorThemes": [
       "lumiere",
       "conscience",
       "ame",
+      "souffle",
       "responsabilite",
       "meditation",
       "nature",
@@ -50,12 +51,11 @@
       "sagesse",
       "stabilite",
       "liberte",
+      "organes",
       "eveil",
       "vie-interieure",
       "amour",
-      "vie",
-      "corps",
-      "opportunite"
+      "vie"
     ],
     "scope": "descriptive-indexing-non-exclusive"
   },
@@ -293,6 +293,31 @@
             17
           ],
           "teaching": "La Bible essénienne enseigne que l'enseignement et les paroles des maîtres sont présentés comme des ouvertures vers la sagesse."
+        },
+        {
+          "themeId": "souffle",
+          "label": "Souffle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3,
+            6,
+            14,
+            23
+          ],
+          "teaching": "La Bible essénienne enseigne que le souffle de Raphaël accompagne la méditation et ouvre l'homme à une vie plus grande."
+        },
+        {
+          "themeId": "temple-de-la-meditation",
+          "label": "Temple de la méditation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            7,
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que le temple de la méditation est présenté comme un espace capable d'accueillir la vie de Raphaël."
         }
       ],
       "notesUsed": [
@@ -514,6 +539,41 @@
             10
           ],
           "teaching": "La Bible essénienne enseigne que la tradition de Lumière reste vivante en s'ouvrant au présent et au nouveau."
+        },
+        {
+          "themeId": "ancetres",
+          "label": "Ancêtres",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            8,
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que les paroles des maîtres et des ancêtres portent la tradition vivante qui édifie l'être intérieur."
+        },
+        {
+          "themeId": "organes",
+          "label": "Organes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            8,
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que la tradition est présentée comme formant des organes spirituels capables de recevoir la Lumière."
+        },
+        {
+          "themeId": "esprit-et-corps",
+          "label": "Esprit et corps",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que l'union de l'esprit et du corps demande un corps intérieur constitué dans la tradition."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -740,6 +800,19 @@
             9
           ],
           "teaching": "La Bible essénienne enseigne que l'enseignement reçu de la famille de Lumière doit être accompli dans des œuvres."
+        },
+        {
+          "themeId": "organes",
+          "label": "Organes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4,
+            5,
+            9,
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que les organes du corps deviennent des instruments de perception lorsqu'ils sont vivifiés par la conscience."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -992,6 +1065,29 @@
             28
           ],
           "teaching": "La Bible essénienne enseigne que une communauté de Lumière est présentée comme une voie pour maintenir les échanges vivants."
+        },
+        {
+          "themeId": "souffle",
+          "label": "Souffle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2,
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que le souffle montre la vie partagée entre les êtres et les mondes."
+        },
+        {
+          "themeId": "regard",
+          "label": "Regard",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19,
+            20,
+            21
+          ],
+          "teaching": "La Bible essénienne enseigne que le regard transforme les échanges extérieurs en influences qui structurent l'intérieur de l'homme."
         }
       ],
       "notesUsed": [
@@ -1216,6 +1312,17 @@
             9
           ],
           "teaching": "La Bible essénienne enseigne que la brisure de la pierre représente la transformation qui libère l'essence divine."
+        },
+        {
+          "themeId": "apparence-et-verite",
+          "label": "Apparence et vérité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13,
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que la beauté rayonnante ne doit pas être une simple apparence, mais le fruit de la vie intérieure."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -1755,6 +1862,20 @@
             28
           ],
           "teaching": "La Bible essénienne enseigne que la vie est mouvement et rencontre avec les mondes d'en haut et d'en bas."
+        },
+        {
+          "themeId": "souffle",
+          "label": "Souffle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6,
+            7,
+            9,
+            21,
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que le souffle subtil accompagne le mouvement de la vie, l'écoute et le renouvellement."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -2031,6 +2152,18 @@
             18
           ],
           "teaching": "La Bible essénienne enseigne que la méditation et l'écoute des langages divins servent une œuvre active."
+        },
+        {
+          "themeId": "concentration",
+          "label": "Concentration",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10,
+            16,
+            17
+          ],
+          "teaching": "La Bible essénienne enseigne que la concentration jusqu'à la finesse permet de percevoir les langages du monde divin."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -2563,6 +2696,16 @@
             15
           ],
           "teaching": "La Bible essénienne enseigne que l'homme peut saisir l'occasion de devenir un instrument de la Lumière."
+        },
+        {
+          "themeId": "organes",
+          "label": "Organes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que les organes du corps sont présentés comme des outils du temple intérieur à entretenir avec gratitude."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3846,6 +3989,18 @@
             16
           ],
           "teaching": "La Bible essénienne enseigne que les dons individuels deviennent utiles par une réalisation collective."
+        },
+        {
+          "themeId": "souffle",
+          "label": "Souffle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que le souffle de Raphaël est relié au don déposé en chaque être et à son développement."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -4383,6 +4538,19 @@
             8
           ],
           "teaching": "La Bible essénienne enseigne que les bénédictions et les occasions de la vie peuvent être orientées vers la Lumière."
+        },
+        {
+          "themeId": "souffle",
+          "label": "Souffle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            4,
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que le souffle originel est présenté comme une ouverture au renouvellement de l'esprit."
         }
       ],
       "notesUsed": [
@@ -5219,6 +5387,29 @@
             20
           ],
           "teaching": "La Bible essénienne enseigne que la graine d'éternité doit grandir jusqu'à devenir un arbre de vie."
+        },
+        {
+          "themeId": "souffle",
+          "label": "Souffle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1,
+            2,
+            15,
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que l'air vivant et le souffle relient l'homme et l'arbre aux mondes de l'esprit."
+        },
+        {
+          "themeId": "organes",
+          "label": "Organes",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12
+          ],
+          "teaching": "La Bible essénienne enseigne que l'homme doit connaître la structure de son corps et ses organes subtils pour accueillir la pensée divine."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -5949,6 +6140,18 @@
             8
           ],
           "teaching": "La Bible essénienne enseigne que la perception subtile doit être dirigée vers l'esprit illimité."
+        },
+        {
+          "themeId": "bonte",
+          "label": "Bonté",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9,
+            13,
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que la bonté des êtres divins envers les hommes devient un modèle de relation aux règnes inférieurs."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -6310,6 +6513,17 @@
             29
           ],
           "teaching": "La Bible essénienne enseigne que le nom divin propose de dépasser la seule volonté personnelle pour manifester la volonté de Dieu."
+        },
+        {
+          "themeId": "souffle",
+          "label": "Souffle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            31,
+            32
+          ],
+          "teaching": "La Bible essénienne enseigne que le nom de Raphaël enseigne l'orientation de la volonté vers le souffle de vie et de Lumière."
         }
       ],
       "notesUsed": [
@@ -6613,6 +6827,18 @@
             14
           ],
           "teaching": "La Bible essénienne enseigne que le souffle de Raphaël laisse une présence d'amitié et d'alliance entre les êtres."
+        },
+        {
+          "themeId": "souffle",
+          "label": "Souffle",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5,
+            12,
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le souffle de Raphaël vivifie les atmosphères d'âme et l'alliance de la communauté."
         }
       ],
       "semanticDepth": "deep-content-grounded"
