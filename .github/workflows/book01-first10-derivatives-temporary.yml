@@ -1,0 +1,35 @@
+name: Rebuild Book 01 thematic derivatives (temporary branch helper)
+
+on:
+  push:
+    branches:
+      - feat/book01-psalms-01-10-theme-coverage-2026-11-08
+    paths:
+      - data/thematic-index/books/book-01.json
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - name: Rebuild complete canonical thematic derivative chain
+        run: python scripts/check_biblaw.py TARGETED --area thematic
+      - name: Audit the ten Psalms and public search projections
+        run: python scripts/audit_book01_first10_theme_coverage.py
+      - name: Commit deterministic generated files to this review branch only
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/thematic-index data/browser-search-catalog.json
+          if git diff --cached --quiet; then
+            echo 'All thematic derivatives are already current'
+            exit 0
+          fi
+          git commit -m 'Regenerate complete thematic search indexes for Book 01 Psalms 1-10'
+          git push origin HEAD:feat/book01-psalms-01-10-theme-coverage-2026-11-08
