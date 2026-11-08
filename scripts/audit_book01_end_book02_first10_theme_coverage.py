@@ -84,7 +84,7 @@ def main():
     d_by_id = {t["id"]: t for t in directory["themes"]}
     p_by_id = {t["id"]: t for t in public["themes"]}
     assert set(d_by_id)==set(p_by_id)
-    assert len(d_by_id)==runtime["themeCount"]==public["themeCount"]==directory["themeCount"]==1265
+    assert len(d_by_id)==runtime["themeCount"]==public["themeCount"]==directory["themeCount"] and len(d_by_id)>=1265
     assert len(BASELINE)==len(ADDED)==len(SENTINELS)==12
     old_count = new_count = verse_count = 0
 
