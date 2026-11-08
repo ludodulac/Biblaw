@@ -16,31 +16,46 @@
     "deepPsalmCount": 25,
     "contentGrounding": "complete",
     "interpretiveScope": "descriptive-indexing-non-exclusive",
-    "interpretivePolicy": "Theme connections are research aids grounded in corpus verses; they do not claim to exhaust or uniquely determine the Psalm’s possible levels of reading."
+    "interpretivePolicy": "Theme connections are research aids grounded in corpus verses; they do not claim to exhaust or uniquely determine the Psalm’s possible levels of reading.",
+    "themeCoverageAudits": [
+      {
+        "scope": "book-07-psalms-024-048",
+        "reviewedOn": "2026-11-08",
+        "source": "data/corpus/books/book-07/psalm-024.json through psalm-048.json",
+        "approach": "conservative-editorial-verse-evidence",
+        "originalRelationCount": 79,
+        "addedRelationCount": 421,
+        "verifiedVerseCount": 454,
+        "sourcePsalmsModified": false
+      }
+    ]
   },
   "bookSynthesis": {
-    "centralAxis": "Synthèse d’indexation non exclusive : les relations indexées de ce livre font ressortir notamment Méditation, Corps de Lumière, Discernement, Air, Immortalité, Arbre de vie, Oiseau du soleil, Guérison, Tradition de la Lumière, Famille d’âmes. Cette synthèse sert au repérage et à la recherche dans le corpus ; elle ne prétend pas épuiser ni fixer les différents niveaux de lecture possibles.",
+    "centralAxis": "Synthèse d’indexation non exclusive : la lecture des 25 psaumes de Raphaël (24–48) met particulièrement en relief Lumière, Conscience, Âme, Responsabilité, Méditation, Nature, Air, Pureté, Monde divin, Discernement, Tradition de la Lumière, Pensée. Les correspondances thématiques sont justifiées par les versets du corpus, servent à la recherche et n’épuisent pas les niveaux de lecture possibles des psaumes.",
     "majorThemes": [
-      "meditation",
-      "corps-de-lumiere",
-      "discernement",
-      "air",
-      "immortalite",
-      "arbre-de-vie",
-      "oiseau-du-soleil",
-      "guerison",
-      "tradition-de-la-lumiere",
-      "famille-dames",
+      "lumiere",
       "conscience",
-      "soleil-interieur",
-      "corps-outil-de-la-conscience",
-      "technologie",
+      "ame",
+      "responsabilite",
+      "meditation",
       "nature",
-      "echange",
-      "village-essenien",
-      "pierre",
-      "etincelle-divine",
-      "plante-et-fleur"
+      "air",
+      "purete",
+      "monde-divin",
+      "discernement",
+      "tradition-de-la-lumiere",
+      "pensee",
+      "maitre",
+      "ecole-de-dieu",
+      "sagesse",
+      "stabilite",
+      "liberte",
+      "eveil",
+      "vie-interieure",
+      "amour",
+      "vie",
+      "corps",
+      "opportunite"
     ],
     "scope": "descriptive-indexing-non-exclusive"
   },
@@ -121,7 +136,7 @@
           "themeId": "offrande",
           "label": "Offrande",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             5,
             6
@@ -132,7 +147,7 @@
           "themeId": "fecondation",
           "label": "Fécondation",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             5,
             6,
@@ -157,7 +172,7 @@
           "themeId": "terre-interieure",
           "label": "Terre intérieure",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             7,
             18,
@@ -170,7 +185,7 @@
           "themeId": "racines",
           "label": "Racines",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             19,
             20
@@ -193,7 +208,7 @@
           "themeId": "nature",
           "label": "Nature",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             4,
             5,
@@ -618,7 +633,7 @@
           "themeId": "soleil",
           "label": "Soleil",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             4,
             5
@@ -686,7 +701,7 @@
           "themeId": "famille-dames",
           "label": "Famille d’âmes",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             1,
             9
@@ -845,7 +860,7 @@
           "themeId": "temple",
           "label": "Temple",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             1,
             4,
@@ -1087,7 +1102,7 @@
           "themeId": "regnes",
           "label": "Règnes",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             1,
             5,
@@ -1182,7 +1197,7 @@
           "themeId": "corps",
           "label": "Corps",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             6,
             8,
@@ -1194,7 +1209,7 @@
           "themeId": "transformation",
           "label": "Transformation",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             6,
@@ -1346,7 +1361,7 @@
           "themeId": "pensee-creatrice",
           "label": "Pensée créatrice",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             8,
             10,
@@ -1359,7 +1374,7 @@
           "themeId": "verticalite",
           "label": "Verticalité",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             9,
             12,
@@ -1579,7 +1594,7 @@
           "themeId": "racines",
           "label": "Racines",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             7,
             12,
@@ -1593,7 +1608,7 @@
           "themeId": "terre-et-mere",
           "label": "Terre et Mère",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             7,
             11,
@@ -1819,7 +1834,7 @@
           "themeId": "enseignement",
           "label": "Enseignement",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             1,
             3,
@@ -1855,7 +1870,7 @@
           "themeId": "nature",
           "label": "Nature",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             4,
             5,
@@ -1867,7 +1882,7 @@
           "themeId": "regnes",
           "label": "Règnes",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             4,
             7,
@@ -2135,7 +2150,7 @@
           "themeId": "heredite",
           "label": "Hérédité",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             2
           ],
@@ -2278,7 +2293,7 @@
           "themeId": "fecondation",
           "label": "Fécondation",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             28
           ],
@@ -2521,7 +2536,7 @@
           "themeId": "eau-de-vie",
           "label": "Eau de vie",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             8,
             15
@@ -2636,7 +2651,7 @@
           "themeId": "memoire",
           "label": "Mémoire",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             2,
             3,
@@ -2716,7 +2731,7 @@
           "themeId": "eau",
           "label": "Eau",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             8,
             9
@@ -2727,7 +2742,7 @@
           "themeId": "soleil",
           "label": "Soleil",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             8,
             9
@@ -2995,7 +3010,7 @@
           "themeId": "pierre",
           "label": "Pierre",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             10,
             11
@@ -3180,7 +3195,7 @@
           "themeId": "meditation",
           "label": "Méditation",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             6
           ],
@@ -3190,7 +3205,7 @@
           "themeId": "protection",
           "label": "Protection",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             6
           ],
@@ -3400,7 +3415,7 @@
           "themeId": "corps",
           "label": "Corps",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             4
           ],
@@ -3788,7 +3803,7 @@
           "themeId": "esprit-et-matiere",
           "label": "Esprit et matière",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             15,
             17
@@ -3930,7 +3945,7 @@
           "themeId": "tradition-de-la-lumiere",
           "label": "Tradition de la Lumière",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             2,
             3,
@@ -4263,7 +4278,7 @@
           "themeId": "eau",
           "label": "Eau",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             4,
@@ -4483,7 +4498,7 @@
           "themeId": "protection-interieure",
           "label": "Protection intérieure",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             2,
             6,
@@ -4767,7 +4782,7 @@
           "themeId": "esprit-et-matiere",
           "label": "Esprit et matière",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             8,
             10,
@@ -4993,7 +5008,7 @@
           "themeId": "racines",
           "label": "Racines",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             4,
@@ -5151,7 +5166,7 @@
           "themeId": "homme-arbre",
           "label": "Homme-arbre",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             6,
@@ -5273,7 +5288,7 @@
           "themeId": "liberte",
           "label": "Liberté",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             1,
             4,
@@ -5492,7 +5507,7 @@
           "themeId": "regard",
           "label": "Regard",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             4,
@@ -5780,7 +5795,7 @@
           "themeId": "cellules",
           "label": "Cellules",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             5
@@ -5791,7 +5806,7 @@
           "themeId": "memoire",
           "label": "Mémoire",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             4
@@ -6206,7 +6221,7 @@
           "themeId": "esprit-et-matiere",
           "label": "Esprit et matière",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             7,
             21,
@@ -6448,7 +6463,7 @@
           "themeId": "air",
           "label": "Air",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             5,
             6,
