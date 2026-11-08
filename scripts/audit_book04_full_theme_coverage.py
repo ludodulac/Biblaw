@@ -53,7 +53,7 @@ def main():
             encountered.add(theme_id)
             assert theme["label"].strip()
             assert theme["importance"] in {"central", "important", "secondary"}
-            assert theme["directness"] in {"direct", "symbolic"}
+            assert theme["directness"] in {"direct", "symbolic", "editorial"}
             refs = theme["verseNumbers"]
             assert refs and len(refs) == len(set(refs)) and set(refs) <= verses, (
                 f"Psalm {n}, {theme_id}: invalid verse references {refs}"
