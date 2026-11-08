@@ -2,7 +2,8 @@
 """Book 7 (Raphael), psalms 24–48: verse-grounded editorial thematic coverage audit.
 
 The source texts remain immutable. A snapshot of the 79 historical links ensures
-they are retained without changing any of their metadata.
+they are retained without changing any of their metadata. Supplemental souffle,
+organes and regard themes reuse concepts already present in earlier books.
 """
 from __future__ import annotations
 import json
