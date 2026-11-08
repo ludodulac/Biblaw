@@ -48,7 +48,7 @@ SENTINELS = {
     (2,1): {2: "3 mondes",7: "féconde l'homme"},
     (2,2): {8: "interprètes",10: "la plante"},
     (2,3): {2: "base fondamentale de la guérison",7: "non-communication"},
-    (2,4): {6: "la pureté",8: "médite cet enseignement"},
+    (2,4): {6: "de pureté",8: "médite cet enseignement"},
     (2,5): {1: "chaîne magique",3: "la chaîne de la communauté"},
     (2,6): {1: "semblable à un arbre",4: "état intérieur de bonheur"},
     (2,7): {2: "des étoiles et des fées",10: "une lampe"},
