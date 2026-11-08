@@ -16,31 +16,46 @@
     "deepPsalmCount": 30,
     "contentGrounding": "complete",
     "interpretiveScope": "descriptive-indexing-non-exclusive",
-    "interpretivePolicy": "Theme connections are research aids grounded in corpus verses; they do not claim to exhaust or uniquely determine the Psalm’s possible levels of reading."
+    "interpretivePolicy": "Theme connections are research aids grounded in corpus verses; they do not claim to exhaust or uniquely determine the Psalm’s possible levels of reading.",
+    "themeCoverageAudits": [
+      {
+        "scope": "book-06-psalms-025-054",
+        "reviewedOn": "2026-11-08",
+        "source": "data/corpus/books/book-06/psalm-025.json through psalm-054.json",
+        "approach": "conservative-editorial-verse-evidence",
+        "originalRelationCount": 84,
+        "addedRelationCount": 477,
+        "verifiedVerseCount": 397,
+        "sourcePsalmsModified": false
+      }
+    ]
   },
   "bookSynthesis": {
-    "centralAxis": "Synthèse d’indexation non exclusive : les relations indexées de ce livre font ressortir notamment Âme, Maître, Simplicité, Nation Essénienne, Échange, Source, Anges, Eau, Respect et discipline, Temple. Cette synthèse sert au repérage et à la recherche dans le corpus ; elle ne prétend pas épuiser ni fixer les différents niveaux de lecture possibles.",
+    "centralAxis": "Synthèse d’indexation non exclusive : la lecture intégrale des 30 psaumes de Gabriel (25–54) met particulièrement en relief Monde divin, Lumière, Âme, Pureté, Sagesse, Eau, Conscience, Amour, Engagement, Source, Maître, Vie intérieure. Ces rapprochements éditoriaux, appuyés sur les versets exacts, facilitent la recherche sans prétendre épuiser les niveaux de lecture possibles des psaumes.",
     "majorThemes": [
-      "ame",
-      "maitre",
-      "simplicite",
-      "nation-essenienne",
-      "echange",
-      "source",
-      "anges",
-      "eau",
-      "respect-et-discipline",
-      "temple",
-      "purete",
-      "receptivite",
-      "discipline",
-      "gratitude",
-      "alchimie",
-      "joie",
-      "amour",
+      "monde-divin",
       "lumiere",
-      "assimilation",
-      "patience"
+      "ame",
+      "purete",
+      "sagesse",
+      "eau",
+      "conscience",
+      "amour",
+      "engagement",
+      "source",
+      "maitre",
+      "vie-interieure",
+      "nature",
+      "beaute",
+      "anges",
+      "respect",
+      "bonheur",
+      "corps",
+      "eternite",
+      "responsabilite",
+      "nation-essenienne",
+      "discipline",
+      "ecole-de-dieu"
     ],
     "scope": "descriptive-indexing-non-exclusive"
   },
@@ -216,7 +231,7 @@
           "themeId": "reflet-interieur-exterieur",
           "label": "Reflet intérieur-extérieur",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             4,
             5,
@@ -343,7 +358,7 @@
           "themeId": "corps-de-manifestation",
           "label": "Corps de manifestation",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             18,
             23,
@@ -516,7 +531,7 @@
           "themeId": "eau",
           "label": "Eau",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             5,
             10,
@@ -813,7 +828,7 @@
           "themeId": "terre-interieure",
           "label": "Terre intérieure",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             9,
             16
@@ -1122,7 +1137,7 @@
           "themeId": "nature",
           "label": "Nature",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             5,
             9
@@ -1322,7 +1337,7 @@
           "themeId": "corps",
           "label": "Corps",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             6,
             7,
@@ -1587,7 +1602,7 @@
           "themeId": "intermediaire-des-mondes",
           "label": "Intermédiaire des mondes",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             1,
             11
@@ -1712,7 +1727,7 @@
           "themeId": "nature",
           "label": "Nature",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             8
@@ -1744,7 +1759,7 @@
           "themeId": "esprit-et-matiere",
           "label": "Esprit et matière",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             4,
@@ -1915,7 +1930,7 @@
           "themeId": "eau",
           "label": "Eau",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             1,
             9,
@@ -2036,7 +2051,7 @@
           "themeId": "reflet-interieur-exterieur",
           "label": "Reflet intérieur-extérieur",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             8,
@@ -2145,7 +2160,7 @@
           "themeId": "corps-de-lumiere",
           "label": "Corps de Lumière",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             7
           ],
@@ -2427,7 +2442,7 @@
           "themeId": "eau",
           "label": "Eau",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             12,
             13
@@ -2534,7 +2549,7 @@
           "themeId": "racines",
           "label": "Racines",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             1
           ],
@@ -2619,7 +2634,7 @@
           "themeId": "semence",
           "label": "Semence",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             4,
             5,
@@ -2893,7 +2908,7 @@
           "themeId": "eau",
           "label": "Eau",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             9,
             13,
@@ -3086,7 +3101,7 @@
           "themeId": "eau",
           "label": "Eau",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             4,
@@ -3314,7 +3329,7 @@
           "themeId": "eau",
           "label": "Eau",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             2,
             11,
@@ -3480,7 +3495,7 @@
           "themeId": "eau",
           "label": "Eau",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             3,
             4,
@@ -3836,7 +3851,7 @@
           "themeId": "nation-essenienne",
           "label": "Nation Essénienne",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             12
           ],
@@ -4087,7 +4102,7 @@
           "themeId": "monde-interieur-et-exterieur",
           "label": "Monde intérieur et extérieur",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             5,
             7,
@@ -4308,7 +4323,7 @@
           "themeId": "graal",
           "label": "Graal",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             11
           ],
@@ -4495,7 +4510,7 @@
           "themeId": "esprit-et-matiere",
           "label": "Esprit et matière",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             2,
             6,
@@ -4657,7 +4672,7 @@
           "themeId": "corps-de-lumiere",
           "label": "Corps de Lumière",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             12,
             14
@@ -4900,7 +4915,7 @@
           "themeId": "lumiere",
           "label": "Lumière",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             2,
             4,
@@ -5359,7 +5374,7 @@
           "themeId": "source-fleuve-ocean",
           "label": "Source, fleuve et océan",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             5
           ],
@@ -5670,7 +5685,7 @@
           "themeId": "arbre",
           "label": "Arbre",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             1
           ],
@@ -6032,7 +6047,7 @@
           "themeId": "corps",
           "label": "Corps",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             2,
             7,
@@ -6238,7 +6253,7 @@
           "themeId": "eternite",
           "label": "Éternité",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             6
           ],
@@ -6405,7 +6420,7 @@
           "themeId": "protection-interieure",
           "label": "Protection intérieure",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             6,
             7,
@@ -6740,7 +6755,7 @@
           "themeId": "placenta",
           "label": "Placenta",
           "importance": "important",
-          "directness": "direct",
+          "directness": "symbolic",
           "verseNumbers": [
             14,
             15
