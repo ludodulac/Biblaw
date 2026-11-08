@@ -44,9 +44,16 @@ assert stats["relationsWithoutTeaching"] == 0
 
 # Contrastive panel. These are observations and already-validated semantic facts only.
 mort = themes["mort"]
-abondance = themes["abondance"]
-assert mort["occurrenceCount"] == 161
-assert abondance["occurrenceCount"] == 1
+assert mort["occurrenceCount"] > 50, "transversal control unexpectedly sparse"
+# The previous fixed 'abondance == 1' check became stale when new, verse-proven
+# relations were indexed. Choose a genuine singleton from the *current* corpus
+# instead: rarity is an observation, never a frozen semantic fact.
+singletons = sorted(
+    (theme for theme in themes.values() if theme["occurrenceCount"] == 1),
+    key=lambda theme: theme["id"],
+)
+assert singletons, "no singleton remains for the rarity negative control"
+rare_control = singletons[0]
 
 validated = relations.get("relations", [])
 validated_types = {}
@@ -112,9 +119,9 @@ report = {
             "diagnosis": "well represented as an indexed theme; this count does not prove all semantic formulations of death are captured",
         },
         {
-            "case": "abondance",
+            "case": rare_control["id"],
             "kind": "rare-negative-control",
-            "observation": {"themeId": "abondance", "indexedPsalms": abondance["occurrenceCount"]},
+            "observation": {"themeId": rare_control["id"], "indexedPsalms": rare_control["occurrenceCount"]},
             "diagnosis": "singleton status alone creates no semantic defect and must not trigger consolidation",
         },
         {

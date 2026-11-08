@@ -3,10 +3,10 @@
   "status": "review-candidates-generated",
   "purpose": "search-quality-audit-only; no automatic semantic merging or renaming",
   "stats": {
-    "themeCount": 1255,
-    "themeRelationCount": 10483,
-    "singletonThemeCount": 920,
-    "rareThemeCountOccurrenceLTE2": 1047,
+    "themeCount": 1260,
+    "themeRelationCount": 10553,
+    "singletonThemeCount": 911,
+    "rareThemeCountOccurrenceLTE2": 1049,
     "sameIdMultipleLabelsCount": 34,
     "sameNormalizedLabelMultipleIdsCount": 5,
     "normalizedDirectoryCollisionCount": 0,
@@ -14,10 +14,10 @@
     "relationsWithoutVerseNumbers": 0,
     "relationsWithoutTeaching": 0,
     "themeCountByArchangelCoverage": {
-      "1": 966,
-      "2": 126,
-      "3": 65,
-      "4": 98
+      "1": 962,
+      "2": 135,
+      "3": 64,
+      "4": 99
     }
   },
   "hardStructuralIssues": {
@@ -3453,6 +3453,19 @@
         ],
         "contextualEvidence": {
           "transmission": [
+            {
+              "bookNumber": 1,
+              "archangel": "michael",
+              "psalmNumber": 18,
+              "recordId": "book-01-psalm-018",
+              "label": "Transmission",
+              "importance": "related",
+              "directness": "direct",
+              "verseNumbers": [
+                1
+              ],
+              "teaching": "La Bible essénienne invite l'homme à laisser aux générations suivantes des traces de son expérience qui pourront leur servir d'indications de chemin."
+            },
             {
               "bookNumber": 12,
               "archangel": "ouriel",
@@ -7993,7 +8006,7 @@
         "labels": [
           {
             "label": "Engagement",
-            "count": 10
+            "count": 11
           },
           {
             "label": "Engagement et responsabilité",
@@ -8001,6 +8014,21 @@
           }
         ],
         "contextualEvidence": [
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 14,
+            "recordId": "book-01-psalm-014",
+            "label": "Engagement",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              8,
+              9,
+              10
+            ],
+            "teaching": "La Bible essénienne invite à mettre en actes chaque jour ce que l'on croit profondément et à tenir ses engagements envers la Lumière."
+          },
           {
             "bookNumber": 2,
             "archangel": "gabriel",
@@ -9408,7 +9436,7 @@
         "labels": [
           {
             "label": "Fidélité",
-            "count": 13
+            "count": 14
           },
           {
             "label": "Fidélité aux lois",
@@ -9416,6 +9444,20 @@
           }
         ],
         "contextualEvidence": [
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 12,
+            "recordId": "book-01-psalm-012",
+            "label": "Fidélité",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              8,
+              9
+            ],
+            "teaching": "La Bible essénienne invite l'être à consacrer sa vie à son chemin divin et à le suivre avec constance plutôt que de se disperser sur de multiples chemins."
+          },
           {
             "bookNumber": 1,
             "archangel": "michael",
@@ -18775,7 +18817,7 @@
         "labels": [
           {
             "label": "Pureté",
-            "count": 94
+            "count": 95
           },
           {
             "label": "Pureté de la pensée",
@@ -18798,6 +18840,20 @@
               14
             ],
             "teaching": "La Bible essénienne enseigne que la pureté des vertus et l'impersonnalité conditionnent la communication véritable avec les êtres divins."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 15,
+            "recordId": "book-01-psalm-015",
+            "label": "Pureté",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              2,
+              8
+            ],
+            "teaching": "La Bible essénienne associe le travail du mage éveillé à la pureté divine et décrit la pureté comme une qualité vivante du cercle."
           },
           {
             "bookNumber": 5,
@@ -22184,7 +22240,7 @@
         "labels": [
           {
             "label": "Semence",
-            "count": 5
+            "count": 6
           },
           {
             "label": "Semence / graine",
@@ -22214,6 +22270,19 @@
               17
             ],
             "teaching": "L'homme est une terre porteuse de semences divines — idées, vertus et principes — qu'il doit cultiver jusqu'à leur fructification."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 20,
+            "recordId": "book-01-psalm-020",
+            "label": "Semence",
+            "importance": "important",
+            "directness": "symbolic",
+            "verseNumbers": [
+              4
+            ],
+            "teaching": "La Bible essénienne présente le regard comme capable de transmettre une semence de feu divin puisée dans le monde divin."
           },
           {
             "bookNumber": 2,
@@ -23212,7 +23281,7 @@
         "labels": [
           {
             "label": "Transmission",
-            "count": 38
+            "count": 39
           },
           {
             "label": "Transmission aux générations",
@@ -23224,6 +23293,19 @@
           }
         ],
         "contextualEvidence": [
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 18,
+            "recordId": "book-01-psalm-018",
+            "label": "Transmission",
+            "importance": "related",
+            "directness": "direct",
+            "verseNumbers": [
+              1
+            ],
+            "teaching": "La Bible essénienne invite l'homme à laisser aux générations suivantes des traces de son expérience qui pourront leur servir d'indications de chemin."
+          },
           {
             "bookNumber": 12,
             "archangel": "ouriel",
@@ -23938,7 +24020,7 @@
         "labels": [
           {
             "label": "Union",
-            "count": 49
+            "count": 52
           },
           {
             "label": "Union et communauté",
@@ -23974,6 +24056,46 @@
               16
             ],
             "teaching": "La Bible essénienne enseigne qu'une relation directe et intime avec le Père demeure possible dans la chambre secrète de l'être."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 15,
+            "recordId": "book-01-psalm-015",
+            "label": "Union",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              6,
+              7
+            ],
+            "teaching": "La Bible essénienne enseigne que l'union et l'association avec d'autres êtres accroissent la force de réalisation d'une œuvre."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 18,
+            "recordId": "book-01-psalm-018",
+            "label": "Union",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              8
+            ],
+            "teaching": "La Bible essénienne enseigne que l'homme et le monde divin doivent s'unir, car l'un a besoin de l'expérience des hommes et les hommes doivent retrouver leur être."
+          },
+          {
+            "bookNumber": 1,
+            "archangel": "michael",
+            "psalmNumber": 20,
+            "recordId": "book-01-psalm-020",
+            "label": "Union",
+            "importance": "important",
+            "directness": "direct",
+            "verseNumbers": [
+              2
+            ],
+            "teaching": "La Bible essénienne enseigne que l'homme et la femme sont invités à s'unir respectivement au Père et à la Mère, puis à se rejoindre pour organiser la Lumière dans l'être humain."
           },
           {
             "bookNumber": 3,
@@ -26196,13 +26318,6 @@
         "archangelCount": 1
       },
       {
-        "id": "abondance",
-        "label": "Abondance",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "aboutissement",
         "label": "Aboutissement",
         "occurrenceCount": 1,
@@ -26651,13 +26766,6 @@
         "archangelCount": 1
       },
       {
-        "id": "biche",
-        "label": "Biche",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
         "id": "bien",
         "label": "Bien",
         "occurrenceCount": 1,
@@ -26784,6 +26892,13 @@
         "archangelCount": 1
       },
       {
+        "id": "cathares",
+        "label": "Cathares",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
         "id": "categories-de-chercheurs",
         "label": "Catégories de chercheurs",
         "occurrenceCount": 1,
@@ -26907,13 +27022,6 @@
         "label": "Chouette",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "christ",
-        "label": "Christ",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
         "archangelCount": 1
       },
       {
@@ -27414,10 +27522,10 @@
         "archangelCount": 1
       },
       {
-        "id": "courage",
-        "label": "Courage",
+        "id": "couple",
+        "label": "Couple",
         "occurrenceCount": 1,
-        "centralPsalmCount": 1,
+        "centralPsalmCount": 0,
         "archangelCount": 1
       },
       {
@@ -27491,24 +27599,10 @@
         "archangelCount": 1
       },
       {
-        "id": "celebration",
-        "label": "Célébration",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
         "id": "dauphin",
         "label": "Dauphin",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "descendance",
-        "label": "Descendance",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
         "archangelCount": 1
       },
       {
@@ -27780,20 +27874,6 @@
       {
         "id": "dons-divins",
         "label": "Dons divins",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "douceur",
-        "label": "Douceur",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "doute",
-        "label": "Doute",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
         "archangelCount": 1
@@ -28081,13 +28161,6 @@
       {
         "id": "exploration-des-mondes",
         "label": "Exploration des mondes",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "experience",
-        "label": "Expérience",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
         "archangelCount": 1
@@ -29136,6 +29209,13 @@
         "archangelCount": 1
       },
       {
+        "id": "maladie",
+        "label": "Maladie",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
         "id": "manifestation-du-divin",
         "label": "Manifestation du divin",
         "occurrenceCount": 1,
@@ -29320,13 +29400,6 @@
       {
         "id": "mondes",
         "label": "Mondes",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "musique",
-        "label": "Musique",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
         "archangelCount": 1
@@ -29761,13 +29834,6 @@
       {
         "id": "orgueil",
         "label": "Orgueil",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "orientation",
-        "label": "Orientation",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
         "archangelCount": 1
@@ -31163,13 +31229,6 @@
         "label": "Simplicité et évidence",
         "occurrenceCount": 1,
         "centralPsalmCount": 0,
-        "archangelCount": 1
-      },
-      {
-        "id": "soleil",
-        "label": "Soleil",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 1,
         "archangelCount": 1
       },
       {
@@ -32647,9 +32706,9 @@
       {
         "id": "abondance",
         "label": "Abondance",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "aboutissement",
@@ -32946,6 +33005,13 @@
         "archangelCount": 2
       },
       {
+        "id": "amitie",
+        "label": "Amitié",
+        "occurrenceCount": 2,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
         "id": "ancrage-des-quatre-archanges",
         "label": "Ancrage des quatre Archanges",
         "occurrenceCount": 1,
@@ -33172,9 +33238,9 @@
       {
         "id": "biche",
         "label": "Biche",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "bien",
@@ -33307,6 +33373,13 @@
         "label": "Carte au trésor",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
+        "archangelCount": 1
+      },
+      {
+        "id": "cathares",
+        "label": "Cathares",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
         "archangelCount": 1
       },
       {
@@ -33461,13 +33534,6 @@
         "label": "Chouette",
         "occurrenceCount": 1,
         "centralPsalmCount": 1,
-        "archangelCount": 1
-      },
-      {
-        "id": "christ",
-        "label": "Christ",
-        "occurrenceCount": 1,
-        "centralPsalmCount": 0,
         "archangelCount": 1
       },
       {
@@ -33751,13 +33817,6 @@
         "archangelCount": 1
       },
       {
-        "id": "conviction",
-        "label": "Conviction",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 1,
-        "archangelCount": 2
-      },
-      {
         "id": "corps-comme-cle",
         "label": "Corps comme clé",
         "occurrenceCount": 1,
@@ -34017,11 +34076,18 @@
         "archangelCount": 1
       },
       {
+        "id": "couple",
+        "label": "Couple",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
         "id": "courage",
         "label": "Courage",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "courage-et-fidelite",
@@ -34103,7 +34169,7 @@
       {
         "id": "celebration",
         "label": "Célébration",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 0,
         "archangelCount": 1
       },
@@ -34117,9 +34183,9 @@
       {
         "id": "descendance",
         "label": "Descendance",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 0,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "dette",
@@ -34432,16 +34498,16 @@
       {
         "id": "douceur",
         "label": "Douceur",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
         "archangelCount": 1
       },
       {
         "id": "doute",
         "label": "Doute",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "drapeau-essenien",
@@ -34768,7 +34834,7 @@
       {
         "id": "experience",
         "label": "Expérience",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
         "archangelCount": 1
       },
@@ -35963,6 +36029,13 @@
         "archangelCount": 1
       },
       {
+        "id": "maladie",
+        "label": "Maladie",
+        "occurrenceCount": 1,
+        "centralPsalmCount": 0,
+        "archangelCount": 1
+      },
+      {
         "id": "manifestation-du-divin",
         "label": "Manifestation du divin",
         "occurrenceCount": 1,
@@ -36203,9 +36276,9 @@
       {
         "id": "musique",
         "label": "Musique",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "mysteres-sacres",
@@ -36721,9 +36794,9 @@
       {
         "id": "orientation",
         "label": "Orientation",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "orientation-vers-le-divin",
@@ -37888,13 +37961,6 @@
         "archangelCount": 1
       },
       {
-        "id": "royaute",
-        "label": "Royauté",
-        "occurrenceCount": 2,
-        "centralPsalmCount": 0,
-        "archangelCount": 2
-      },
-      {
         "id": "royaute-interieure",
         "label": "Royauté intérieure",
         "occurrenceCount": 2,
@@ -38282,9 +38348,9 @@
       {
         "id": "soleil",
         "label": "Soleil",
-        "occurrenceCount": 1,
+        "occurrenceCount": 2,
         "centralPsalmCount": 1,
-        "archangelCount": 1
+        "archangelCount": 2
       },
       {
         "id": "soleil-interieur",
@@ -39796,6 +39862,13 @@
         "label": "Éveil",
         "occurrenceCount": 2,
         "centralPsalmCount": 2,
+        "archangelCount": 1
+      },
+      {
+        "id": "evolution",
+        "label": "Évolution",
+        "occurrenceCount": 2,
+        "centralPsalmCount": 0,
         "archangelCount": 1
       },
       {
