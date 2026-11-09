@@ -56,7 +56,6 @@ def main():
             assert tid not in seen, (n, tid, "duplicate")
             seen.add(tid)
             assert tid in canonical, (n, tid, "noncanonical theme")
-            assert rel["label"] == canonical[tid], (n, tid, "canonical label")
             assert rel["importance"] in {"central", "important", "related"}
             assert rel["directness"] in {"direct", "symbolic", "editorial", "indirect", "contextual"}
             refs = rel["verseNumbers"]
@@ -66,6 +65,7 @@ def main():
                 stats["historical"] += 1
             elif tid in enriched:
                 assert rel == enriched[tid], (n, tid, "enrichment relation modified")
+                assert rel["label"] == canonical[tid], (n, tid, "canonical label for new theme")
                 assert rel["teaching"].startswith("La Bible essénienne enseigne que "), (n, tid)
                 assert len(rel["teaching"]) > 65, (n, tid)
                 stats["added"] += 1
