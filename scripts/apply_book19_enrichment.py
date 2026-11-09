@@ -12,11 +12,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data/thematic-index"
-BOOK_PATH = INDEX / "books/book-18.json"
+BOOK_PATH = INDEX / "books/book-19.json"
 BASELINE_PATH = INDEX / "audits/book19-original-relations.json"
 ADDITIONS_PATH = INDEX / "audits/book19-enrichment-relations.json"
-CORPUS = ROOT / "data/corpus/books/book-18"
-PSALMS = set(range(102, 138))
+CORPUS = ROOT / "data/corpus/books/book-19"
+PSALMS = set(range(102, 128))
 HISTORICAL = 401
 ADDED = 292
 VERSES = 817
@@ -78,9 +78,9 @@ def main():
         "elles n'épuisent pas les lectures possibles et ne constituent pas une vérification indépendante du PDF."
     )
     audit = {
-        "scope": "book-18-psalms-102-127",
+        "scope": "book-19-psalms-102-127",
         "reviewedOn": "2026-11-09",
-        "source": "data/corpus/books/book-18/psalm-102.json through psalm-127.json",
+        "source": "data/corpus/books/book-19/psalm-102.json through psalm-127.json",
         "approach": "conservative-editorial-verse-evidence-in-extracted-json",
         "originalRelationCount": HISTORICAL,
         "addedRelationCount": ADDED,
