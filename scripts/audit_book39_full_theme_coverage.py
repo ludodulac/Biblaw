@@ -17,12 +17,12 @@ def main():
     book = load(INDEX / "books/book-39.json")
     frozen = load(INDEX / "audits/book39-original-relations.json")
     pieces = [load(INDEX / f"audits/book39-enrichment-relations-part{n}.json") for n in (1, 2, 3)]
-    assert book["book"]["number"] == frozen["book"] == 38
+    assert book["book"]["number"] == frozen["book"] == 39
     assert book["book"]["archangel"] == frozen["archangel"] == "raphael"
     assert frozen["originalRelationCount"] == HISTORICAL
     additions = {}
     for piece in pieces:
-        assert piece["book"] == 38 and piece["archangel"] == "raphael"
+        assert piece["book"] == 39 and piece["archangel"] == "raphael"
         for n, themes in piece["psalms"].items():
             assert n not in additions, (n, "duplicate part")
             additions[n] = themes
