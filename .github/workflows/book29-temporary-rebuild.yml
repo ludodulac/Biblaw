@@ -3,9 +3,15 @@ on:
   push:
     branches:
       - feat/book29-michael-thematic-coverage-20261109
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: book29-regeneration-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 jobs:
   rebuild-book29:
     runs-on: ubuntu-latest
@@ -14,6 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -31,5 +38,5 @@ jobs:
           git add -A data/thematic-index
           if ! git diff --cached --quiet; then
             git commit -m "BIBLAW book29: rebuild canonical thematic indexes and 27 psalms"
-            git push origin "HEAD:${{ github.ref_name }}"
+            git push origin "HEAD:${{ github.head_ref || github.ref_name }}"
           fi
