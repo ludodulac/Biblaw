@@ -129,7 +129,7 @@ def main():
     output = json.dumps(book, ensure_ascii=False, indent=2) + "\n"
     if BOOK_PATH.read_text(encoding="utf-8") != output:
         BOOK_PATH.write_text(output, encoding="utf-8")
-    print(f"BOOK30 ENRICHMENT OK: 26 psalms, {VERSES} extracted verses, "
+    print(f"BOOK31 ENRICHMENT OK: 26 psalms, {VERSES} extracted verses, "
           f"{HISTORICAL} historical + {ADDED} new = {HISTORICAL + ADDED}")
 
 if __name__ == "__main__":
