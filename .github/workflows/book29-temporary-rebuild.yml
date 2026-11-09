@@ -1,0 +1,35 @@
+name: Temporary rebuild BIBLAW book 29
+on:
+  push:
+    branches:
+      - feat/book29-michael-thematic-coverage-20261109
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rebuild-book29:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild and independently audit book 29
+        run: |
+          python scripts/run_canonical_thematic_pipeline.py
+          python scripts/audit_book29_full_theme_coverage.py
+          python scripts/validate_thematic_index.py
+          git diff --exit-code -- data/corpus/books
+          git status --short
+      - name: Commit only regenerated thematic data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/thematic-index
+          if ! git diff --cached --quiet; then
+            git commit -m "BIBLAW book29: rebuild canonical thematic indexes and 27 psalms"
+            git push origin "HEAD:${{ github.ref_name }}"
+          fi
