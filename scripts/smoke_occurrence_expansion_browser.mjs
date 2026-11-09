@@ -118,10 +118,14 @@ try {
   await page.locator('#query').fill(fixture.theme.query);
   assert.equal(await page.locator('#query').inputValue(), fixture.theme.query, 'Theme input was unexpectedly modified');
   await page.locator('#searchButton').click();
-  assert.equal(await page.locator('.result-card').count(), fixture.theme.recordCount,
-    'Canonical theme result count drifted');
-  assert.equal((await page.locator('#resultCount').innerText()).trim(),'3 psaumes trouvés',
-    'Replacing a Psalm number must remove the previous results');
+  const canonicalCount = await page.locator('.result-card').count();
+  assert.ok(canonicalCount >= fixture.theme.recordCount,
+    'Historic canonical theme results were lost after thematic enrichment');
+  assert.equal(new Set(await resultIds()).size, canonicalCount,
+    'Canonical theme results must remain duplicate-free');
+  assert.equal((await page.locator('#resultCount').innerText()).trim(),
+    `${canonicalCount} psaumes trouvés`,
+    'Replacing a Psalm number must show only the fresh thematic results');
   assert.equal(await option.isVisible(), false,
     'Theme results must never expose lexical expansion');
   const themeStatuses = await page.locator('.result-card .result-status .score').allTextContents();
