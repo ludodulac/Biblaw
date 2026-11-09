@@ -1,0 +1,35 @@
+name: "BIBLAW Livre 38 - reconstruction thematique"
+on:
+  push:
+    branches:
+      - feat/book38-gabriel-thematic-coverage-20261109
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruire les index et controler le livre 38
+        run: |
+          python scripts/run_canonical_thematic_pipeline.py
+          python scripts/audit_book38_full_theme_coverage.py
+          python scripts/audit_book37_full_theme_coverage.py
+          python scripts/audit_browser_search_indexes.py
+          python scripts/audit_public_theme_directory.py
+          python scripts/validate_thematic_search_runtime.py
+          python scripts/audit_corpus_attachments.py
+      - name: Enregistrer les fichiers canoniques reconstruits
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u data/thematic-index data/browser-search-catalog.json
+          if ! git diff --cached --quiet; then
+            git commit -m "[skip ci] BIBLAW livre 38: index canonique reconstruit et audite"
+            git push origin HEAD:feat/book38-gabriel-thematic-coverage-20261109
+          fi
