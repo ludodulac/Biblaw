@@ -1,0 +1,32 @@
+name: BIBLAW — Refresh conceptual coverage (temporary)
+on:
+  push:
+    branches:
+      - fix/book22-conceptual-coverage-repro-20261109
+permissions:
+  contents: write
+jobs:
+  refresh:
+    if: ${{ !contains(github.event.head_commit.message, '[coverage-output]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate coverage report from source
+        run: |
+          python scripts/audit_conceptual_coverage.py
+          python scripts/audit_book22_full_theme_coverage.py
+      - name: Commit regenerated report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/thematic-index/conceptual-coverage-audit.json
+          if ! git diff --cached --quiet; then
+            git commit -m "build(book22): refresh conceptual coverage [coverage-output]"
+            git push origin HEAD:fix/book22-conceptual-coverage-repro-20261109
+          fi
