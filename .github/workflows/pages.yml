@@ -111,6 +111,8 @@ jobs:
         run: python scripts/audit_book37_full_theme_coverage.py
       - name: Vérifier les 26 psaumes du livre 38 et leurs associations thématiques
         run: python scripts/audit_book38_full_theme_coverage.py
+      - name: Vérifier les 26 psaumes du livre 39 et leurs associations thématiques
+        run: python scripts/audit_book39_full_theme_coverage.py
       - name: Vérifier l'intégrité documentaire publiée
         run: python scripts/audit_corpus_attachments.py
       - name: Vérifier l'expansion lexicale sûre
