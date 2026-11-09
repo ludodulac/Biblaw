@@ -84,7 +84,7 @@ def main():
     assert counts == {"psalms": 26, "verses": VERSES, "historical": HISTORICAL, "added": ADDED}, counts
     assert nonstandard == check["sourceVerseNumberingNotes"] == []
     assert "indépendante" in check["documentaryCaveats"][0]
-    print(f"BOOK30 PASS: 26 psalms 180–205, {VERSES} extracted verses, "
+    print(f"BOOK31 PASS: 26 psalms 180–205, {VERSES} extracted verses, "
           f"{HISTORICAL} historical + {ADDED} new = {HISTORICAL + ADDED}.")
 if __name__ == "__main__":
     main()
