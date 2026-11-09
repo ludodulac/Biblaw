@@ -1,0 +1,43 @@
+name: Temporary rebuild BIBLAW book 33
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: book33-regeneration-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          ref: ${{ github.head_ref || github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF extraction dependency
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
+      - name: Regenerate canonical thematic indexes and audit book 33
+        run: |
+          python scripts/run_canonical_thematic_pipeline.py
+          python scripts/audit_book33_full_theme_coverage.py
+          python scripts/validate_thematic_index.py
+          git diff --exit-code -- data/corpus/books
+          git status --short
+      - name: Commit only regenerated thematic outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/thematic-index
+          if ! git diff --cached --quiet; then
+            git commit -m "BIBLAW book33: regenerate canonical thematic indexes"
+            git push origin "HEAD:${{ github.head_ref || github.ref_name }}"
+          fi
