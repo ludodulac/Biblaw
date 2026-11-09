@@ -75,6 +75,7 @@ def main() -> None:
     run("build_thematic_search_runtime.py")
     run("validate_thematic_search_runtime.py")
     run("build_browser_search_catalog.py")
+    run("audit_conceptual_coverage.py")
 
     # Production-boundary checks catch stale bundle/legacy attachment regressions immediately.
     run("audit_corpus_attachments.py")
