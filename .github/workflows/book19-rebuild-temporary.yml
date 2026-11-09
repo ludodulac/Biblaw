@@ -5,6 +5,7 @@ on:
       - feat/book19-full-theme-coverage
     paths:
       - data/thematic-index/books/book-19.json
+      - scripts/audit_book19_full_theme_coverage.py
       - .github/workflows/book19-rebuild-temporary.yml
 permissions:
   contents: write
