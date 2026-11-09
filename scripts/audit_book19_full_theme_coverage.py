@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-"""Contrôle pérenne du livre 19 Raphaël : 27 psaumes, 811 versets, 401+292 relations."""
+"""Contrôle pérenne du livre 19 Raphaël : 26 psaumes, 817 versets, 401+292 relations."""
 from pathlib import Path
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data/thematic-index"
-CORPUS = ROOT / "data/corpus/books/book-18"
-NUMBERS = set(range(102, 138))
+CORPUS = ROOT / "data/corpus/books/book-19"
+NUMBERS = set(range(102, 128))
 HISTORICAL, ADDED, VERSES = 401, 292, 817
 
 def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 def main():
-    book = load(INDEX / "books/book-18.json")
+    book = load(INDEX / "books/book-19.json")
     frozen = load(INDEX / "audits/book19-original-relations.json")
     added = load(INDEX / "audits/book19-enrichment-relations.json")
     canonical = {x["themeId"]: x["canonicalLabel"]
@@ -24,7 +24,7 @@ def main():
     assert set(map(int, frozen["psalms"])) == set(map(int, added["psalms"])) == NUMBERS
     assert len(book["psalmAnalyses"]) == len(NUMBERS)
     audit = book["method"]["themeCoverageAudits"][-1]
-    assert audit["scope"] == "book-18-psalms-102-127"
+    assert audit["scope"] == "book-19-psalms-102-127"
     assert audit["originalRelationCount"] == HISTORICAL
     assert audit["addedRelationCount"] == ADDED and audit["verifiedVerseCount"] == VERSES
     assert audit["sourcePsalmsModified"] is False
