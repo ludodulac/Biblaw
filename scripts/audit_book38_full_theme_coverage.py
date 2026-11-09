@@ -76,6 +76,15 @@ def main():
                 assert rel["label"] == canonical[tid]
                 assert rel["teaching"].startswith("La Bible essénienne enseigne que ")
                 assert len(rel["teaching"]) >= 75
+                # La présence du verset exact dans l'explication empêche une
+                # citation attribuée au mauvais psaume ou un contenu inventé.
+                verse_texts = [
+                    v["text"].strip() for v in src["verses"]
+                    if v["number"] in refs
+                ]
+                assert any(f"« {txt} »" in rel["teaching"] for txt in verse_texts), (
+                    n, tid, "citation not faithful to source JSON"
+                )
                 counts["added"] += 1
             else:
                 raise AssertionError((n, tid, "unexpected thematic relation"))
