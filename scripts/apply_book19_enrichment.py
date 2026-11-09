@@ -28,7 +28,7 @@ def main():
     book = load(BOOK_PATH)
     baseline = load(BASELINE_PATH)
     additions = load(ADDITIONS_PATH)
-    assert book["book"]["number"] == baseline["book"] == additions["book"] == 18
+    assert book["book"]["number"] == baseline["book"] == additions["book"] == 19
     assert book["book"]["archangel"] == baseline["archangel"] == additions["archangel"] == "raphael"
     assert baseline["originalRelationCount"] == HISTORICAL
     assert set(map(int, baseline["psalms"])) == PSALMS
