@@ -240,8 +240,13 @@ def main() -> None:
 
     assert observed["assemblée"]["themes"] == observed["l’assemblée"]["themes"] == []
     assert observed["sainte assemblée"]["themes"] == observed["la sainte assemblée"]["themes"] == ["sainte-assemblee"]
-    assert observed["sainte assemblée"]["indexed"] == 3
-    assert observed["sainte assemblée"]["importance"] == Counter({"important": 2, "central": 1})
+    # This is a monotonic semantic coverage sentinel: historic results must survive,
+    # but adding a verse-grounded association in a later book legitimately grows it.
+    assembly = observed["sainte assemblée"]
+    assert assembly["indexed"] == observed["la sainte assemblée"]["indexed"]
+    assert assembly["indexed"] >= 3, "historic Sainte Assemblée coverage lost"
+    assert assembly["importance"].get("important", 0) >= 2
+    assert assembly["importance"].get("central", 0) >= 1
 
     assembly_alias = runtime["aliases"].get("assemblee")
     assert not assembly_alias or "sainte-assemblee" not in assembly_alias.get("themeIds", []), (
