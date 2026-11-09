@@ -1,0 +1,27 @@
+name: Temporary conceptual coverage rebuild book 29
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          ref: ${{ github.head_ref || github.ref_name }}
+      - name: Regenerate conceptual coverage report from canonical source
+        run: |
+          python scripts/audit_conceptual_coverage.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/thematic-index/conceptual-coverage-audit.json
+          if ! git diff --cached --quiet; then
+            git commit -m "BIBLAW book29: regenerate conceptual coverage audit"
+            git push origin "HEAD:${{ github.head_ref || github.ref_name }}"
+          fi
