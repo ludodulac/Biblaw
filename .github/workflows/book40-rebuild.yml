@@ -1,0 +1,39 @@
+name: BIBLAW book40 bounded thematic rebuild
+on:
+  push:
+    branches:
+      - feat/book40-ouriel-deep-thematic-20261109
+permissions:
+  contents: write
+concurrency:
+  group: biblaw-book40-deep-rebuild
+  cancel-in-progress: false
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install documentary PDF tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Rebuild canonical indexes from source
+        run: python scripts/run_canonical_thematic_pipeline.py
+      - name: Audit books 38 39 40 and complete thematic validation
+        run: |
+          python scripts/audit_book38_full_theme_coverage.py
+          python scripts/audit_book39_full_theme_coverage.py
+          python scripts/audit_book40_full_theme_coverage.py
+          python scripts/validate_thematic_index.py
+      - name: Commit regenerated artifacts on feature branch
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -u data/thematic-index data/browser-search-catalog.json data/catalog.json data/corpus data/notes
+          if git diff --cached --quiet; then
+            echo 'No changes to generated outputs'
+            exit 0
+          fi
+          git commit -m '[skip ci] BIBLAW book40: regenerate indexes with 182 sourced relations'
+          git push origin HEAD:feat/book40-ouriel-deep-thematic-20261109
