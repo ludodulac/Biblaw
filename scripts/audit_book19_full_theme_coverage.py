@@ -18,7 +18,7 @@ def main():
     added = load(INDEX / "audits/book19-enrichment-relations.json")
     canonical = {x["themeId"]: x["canonicalLabel"]
                  for x in load(INDEX / "theme-search-index.json")["themes"]}
-    assert book["book"]["number"] == frozen["book"] == added["book"] == 18
+    assert book["book"]["number"] == frozen["book"] == added["book"] == 19
     assert book["book"]["archangel"] == frozen["archangel"] == added["archangel"] == "raphael"
     assert frozen["originalRelationCount"] == HISTORICAL
     assert set(map(int, frozen["psalms"])) == set(map(int, added["psalms"])) == NUMBERS
