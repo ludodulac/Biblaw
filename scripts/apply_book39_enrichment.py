@@ -24,11 +24,11 @@ def load(path: Path):
 def main():
     book, frozen = load(BOOK_PATH), load(BASELINE)
     parts = [load(p) for p in PARTS]
-    assert book["book"]["number"] == frozen["book"] == 38
+    assert book["book"]["number"] == frozen["book"] == 39
     assert book["book"]["archangel"] == frozen["archangel"] == "raphael"
     assert frozen["originalRelationCount"] == HISTORICAL
     assert set(map(int, frozen["psalms"])) == NUMBERS
-    assert all(p["book"] == 38 and p["archangel"] == "raphael" for p in parts)
+    assert all(p["book"] == 39 and p["archangel"] == "raphael" for p in parts)
     additions = {}
     for piece in parts:
         for n, themes in piece["psalms"].items():
