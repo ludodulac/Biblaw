@@ -14,7 +14,33 @@
     "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme.",
     "semanticPass": "deep-content-grounded-complete",
     "deepPsalmCount": 26,
-    "contentGrounding": "complete"
+    "contentGrounding": "complete",
+    "interpretiveScope": "descriptive-indexing-non-exclusive",
+    "interpretivePolicy": "Relations descriptives étayées dans les JSON déjà extraits du PDF, sans relecture exhaustive indépendante du document original. Les déclarations religieuses concernant le bonheur, la guérison, l’alimentation ou la santé sont documentées comme doctrine du texte et non comme conseils médicaux ni faits scientifiquement établis. L’indexation est non exclusive.",
+    "themeCoverageAudits": [
+      {
+        "scope": "book-35-psalms-206-231",
+        "reviewedOn": "2026-11-09",
+        "source": "data/corpus/books/book-35/psalm-206.json through psalm-231.json",
+        "approach": "conservative-editorial-verse-evidence-in-extracted-json",
+        "originalRelationCount": 312,
+        "addedRelationCount": 148,
+        "verifiedVerseCount": 666,
+        "sourcePsalmsModified": false,
+        "sourceVerseNumberingNotes": [
+          [
+            215,
+            26,
+            46
+          ]
+        ],
+        "documentaryCaveats": [
+          "Les versets ont été contrôlés dans les JSON extraits du PDF, sans nouvelle relecture indépendante de l'intégralité du PDF original.",
+          "Les passages sur la santé, la guérison et l'alimentation sont présentés comme enseignements religieux, sans validation médicale ni scientifique.",
+          "La numérotation du psaume 215 s'étend de 26 à 46, conformément au corpus extrait ; les numéros n'ont pas été artificiellement renumérotés."
+        ]
+      }
+    ]
   },
   "bookSynthesis": {
     "centralAxis": "Le chemin du bonheur présente le bonheur comme le fruit d’une manière juste de vivre, de penser et d’agir, fondée sur la conscience, la valeur accordée à la vie et la responsabilité envers ce que l’être humain porte et nourrit en lui. Dans le cadre doctrinal interne du corpus, le livre relie cet accomplissement à la maîtrise, à l’équilibre et à la capacité de conduire ses forces vers une œuvre constructive.",
@@ -206,6 +232,76 @@
             19
           ],
           "teaching": "Relation textuelle « Monde invisible » : v.18 : Si, en regardant le monde, il s’éveille en toi une pensée, un état d’âme, un élan, sois conscient que cette subtilité a aussi été donnée aux êtres des mondes invisibles qui animent ton corps,… / v.19 : Je ne dis pas que tu ne peux pas avoir de contacts avec ce qui est ignorant et sombre ; je dis que tu ne dois pas laisser cela entrer en toi afin qu’il…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "connaissance-de-soi",
+          "label": "Connaissance de soi",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que connaître le monde ne suffit pas sans apprendre à se connaître soi-même."
+        },
+        {
+          "themeId": "influences",
+          "label": "Influences",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que les influences intérieures colorent le regard que l’être humain porte sur le monde."
+        },
+        {
+          "themeId": "ennoblissement",
+          "label": "Ennoblissement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que la perception du négatif peut inviter à un travail de transformation et d’ennoblissement."
+        },
+        {
+          "themeId": "meditation",
+          "label": "Méditation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que la méditation et l’examen de soi participent au chemin intérieur décrit dans ce psaume."
+        },
+        {
+          "themeId": "nourriture",
+          "label": "Nourriture",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que le texte distingue la nourriture matérielle de ce qui nourrit symboliquement les êtres subtils."
+        },
+        {
+          "themeId": "travail-sur-soi",
+          "label": "Travail sur soi",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le travail sur soi est associé à l’analyse de ses états intérieurs et à la recherche d’équilibre."
+        },
+        {
+          "themeId": "education",
+          "label": "Éducation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que l’éducation du corps et du regard est présentée comme un soutien de la maîtrise."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -377,6 +473,56 @@
             18
           ],
           "teaching": "Relation textuelle « Pensée » : v.15 : Bien souvent, l’homme pense au drapeau qu’il va faire flotter au-dessus de lui pour se faire connaître dans tous les mondes, mais il oublie que s’il n’y a pas un mât solidement ancré, rien… / v.18 : Si vous pensez pouvoir flotter dans l’air sans mât, vous faites une grande erreur et finirez un jour par être emportés par le vent, sans savoir où retombera votre drapeau ; vous n’aurez aucune…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "drapeau-essenien",
+          "label": "Drapeau essénien",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que le drapeau est proposé comme symbole spirituel invitant à comprendre le chemin de la perfection."
+        },
+        {
+          "themeId": "meditation",
+          "label": "Méditation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que la méditation sur le symbole du drapeau vise à relier compréhension et manifestation."
+        },
+        {
+          "themeId": "fixite-dans-le-mouvement",
+          "label": "Fixité dans le mouvement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le mât fixe et le drapeau mobile figurent l’articulation de la stabilité et du mouvement."
+        },
+        {
+          "themeId": "futur",
+          "label": "Futur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16
+          ],
+          "teaching": "La Bible essénienne enseigne que il importe de ne pas sacrifier la construction du présent à la seule attente du futur."
+        },
+        {
+          "themeId": "construction",
+          "label": "Construction",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que la construction d’un mât solide précède symboliquement la diffusion du drapeau essénien."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -552,6 +698,56 @@
             36
           ],
           "teaching": "Relation textuelle « Œuvre » : v.24 : a besoin de pouvoir le vivre et le mettre en œuvre, chose qu’il ne peut pas faire lorsque tout est confiné et ne doit aller que dans une seule direction.… / v.36 : ton corps et ta vie pour que tu accomplisses les œuvres dont il a besoin. Ceci est un point essentiel.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "echange",
+          "label": "Échange",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que la vie est décrite comme échange entre les êtres."
+        },
+        {
+          "themeId": "discernement",
+          "label": "Discernement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le texte relie l’ouverture à l’universel à la capacité de discerner l’harmonie du vivant."
+        },
+        {
+          "themeId": "connaissance-de-soi",
+          "label": "Connaissance de soi",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16
+          ],
+          "teaching": "La Bible essénienne enseigne que chaque être doit apprendre à connaître sa place et son rôle au sein de l’ensemble."
+        },
+        {
+          "themeId": "diversite-et-unite",
+          "label": "Diversité et unité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            18
+          ],
+          "teaching": "La Bible essénienne enseigne que la diversité des capacités individuelles contribue au fonctionnement d’une même assemblée."
+        },
+        {
+          "themeId": "mission",
+          "label": "Mission",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            36
+          ],
+          "teaching": "La Bible essénienne enseigne que le développement de sa vertu est relié à une mission à accomplir à travers sa vie."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -753,6 +949,76 @@
             30
           ],
           "teaching": "Relation textuelle « Âme » : v.5 : naître et vivre de lui. Il connaît l’intelligence et l’â me qui vont venir habiter l’œuvre, il connaît les intentions, les forces, les impulsions, les énergies qui doivent venir participer, qui doivent être offertes… / v.12 : Le côté sombre a la particularité d’enlever l’individualité de l’homme afin qu’il n’ait plus de vraie nature, d’âme, de volonté propre, d’intelligence, mais qu’il soit simplement utilisé, programmé, obéissant. / v.30 : engendrer des coques vides ou des œuvres négatives, sans â me, sans sagesse, sans divinité, vous serez associés à ce monde ici-bas et dans l’au-delà. Où que vous soyez, les mondes qui vivront de…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "preparation",
+          "label": "Préparation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que la préparation engage déjà la personne dans l’œuvre qu’elle souhaite faire naître."
+        },
+        {
+          "themeId": "engagement",
+          "label": "Engagement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que l’éveil s’accompagne d’un engagement concret sur le chemin spirituel décrit."
+        },
+        {
+          "themeId": "heritage",
+          "label": "Héritage",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que l’œuvre transmet un héritage de la Tradition et prolonge ce qui a été commencé."
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que le soutien apporté à l’œuvre et l’offrande font partie de la préparation."
+        },
+        {
+          "themeId": "bien-commun",
+          "label": "Bien commun",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            33
+          ],
+          "teaching": "La Bible essénienne enseigne que la préparation doit viser la réalisation effective du bien commun plutôt que son simple souhait."
+        },
+        {
+          "themeId": "futur",
+          "label": "Futur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que les œuvres auxquelles une personne s’associe engagent son avenir."
+        },
+        {
+          "themeId": "offrande",
+          "label": "Offrande",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que le psaume présente l’offrande comme une dimension fondamentale du soutien à l’œuvre."
         }
       ],
       "notesUsed": [
@@ -954,6 +1220,66 @@
             25
           ],
           "teaching": "Relation textuelle « Hérédité » : v.8 : Vous avez laissé un monde nauséabond, malade, inapproprié envahir votre atmosphère et votre souffle. Maintenant, tous les hommes respirent d’une façon collective cette malédiction qui abaisse leur taux vibratoire, raccourcit leur vie, les affaiblit,… / v.25 : Si vous ne vous nourrissez que de mondes obscurs, de pensées incohérentes, éteintes, tout s’affaiblit : votre corps, votre sang, votre descendance, votre lignée, l’ambiance de votre maison, votre famille, vos amis, votre travail…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "ennoblissement",
+          "label": "Ennoblissement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que la respiration est présentée comme une voie d’ennoblissement et d’éveil."
+        },
+        {
+          "themeId": "education",
+          "label": "Éducation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que la maîtrise du souffle est considérée comme une technique à apprendre et à éduquer."
+        },
+        {
+          "themeId": "nourriture",
+          "label": "Nourriture",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que le souffle est décrit comme une nourriture subtile dans la cosmologie du psaume."
+        },
+        {
+          "themeId": "meditation",
+          "label": "Méditation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            17
+          ],
+          "teaching": "La Bible essénienne enseigne que la méditation participe à l’élévation quotidienne du souffle dans la Ronde des Archanges."
+        },
+        {
+          "themeId": "etude",
+          "label": "Étude",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            17
+          ],
+          "teaching": "La Bible essénienne enseigne que l’étude est citée parmi les pratiques visant à élever le souffle."
+        },
+        {
+          "themeId": "parole",
+          "label": "Parole",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            20
+          ],
+          "teaching": "La Bible essénienne enseigne que la conscience des paroles et des gestes participe à la relation aux vertus angéliques."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -1124,6 +1450,66 @@
             18
           ],
           "teaching": "Relation textuelle « Père » : v.15 : Ils n’ont pas trouvé, ils n’ont pas vu leur p ère, leur mère, leur semence, leur valeur, leur rôle fondamental ; ils ne sont pas individualisés, étant uniquement animés par un être collectif.… / v.18 : fixité afin de rediriger l’énergie et d’éveiller le centre intérieur. Père Raphaël, veux-tu dire qu’il faut consacrer sa vie à travers les valeurs les plus élevées et surtout, à travers toutes les valeurs, trouver…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "apparences",
+          "label": "Apparences",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que la comparaison et les faux-semblants sont opposés à une stabilité intérieure authentique."
+        },
+        {
+          "themeId": "individualisation",
+          "label": "Individualisation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que l’enseignement essénien présenté se fonde sur l’individualisation de l’être."
+        },
+        {
+          "themeId": "connaissance-de-soi",
+          "label": "Connaissance de soi",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "La Bible essénienne enseigne que l’individualisation est explicitement décrite comme chemin de connaissance de soi."
+        },
+        {
+          "themeId": "confiance",
+          "label": "Confiance",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que la connaissance de sa place et de sa mission fait naître confiance et sérénité."
+        },
+        {
+          "themeId": "fidelite",
+          "label": "Fidélité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            27
+          ],
+          "teaching": "La Bible essénienne enseigne que la fidélité est associée à la stabilité et à la sérénité dans l’individualisation."
+        },
+        {
+          "themeId": "influences",
+          "label": "Influences",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            30
+          ],
+          "teaching": "La Bible essénienne enseigne que le monde extérieur est décrit comme soumis à des courants changeants et à des influences."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -1305,6 +1691,66 @@
             3
           ],
           "teaching": "Relation textuelle « Guérison » : v.1 : Il fut un temps où j’étais connu et honoré dans certaines pierres. Les hommes savaient que les pierres sont vivantes, qu’elles respirent et sont habitées par des vertus magiques reliées au cosmos, aux étoiles,… / v.3 : Les anciens se guérissaient avec le souffle, car ils connaissaient les secrets de la respiration. Ils savaient naturellement respirer et être en harmonie avec l’eau, les montagnes, la terre, le soleil, les arbres, la…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "nourriture",
+          "label": "Nourriture",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que le texte appelle à interroger la manière dont l’homme se nourrit et respecte la nature."
+        },
+        {
+          "themeId": "nature",
+          "label": "Nature",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que le respect de la nature vivante est lié à la respiration, à la pensée et à l’alimentation."
+        },
+        {
+          "themeId": "generations",
+          "label": "Générations",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            20
+          ],
+          "teaching": "La Bible essénienne enseigne que le psaume appelle à protéger les générations futures selon la vision religieuse qu’il développe."
+        },
+        {
+          "themeId": "communication",
+          "label": "Communication",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que les moyens de communication sont cités parmi les ressources que la communauté est appelée à élaborer."
+        },
+        {
+          "themeId": "construction",
+          "label": "Construction",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            32
+          ],
+          "teaching": "La Bible essénienne enseigne que la construction des Villages Esséniens est présentée comme une étape de l’autonomie communautaire."
+        },
+        {
+          "themeId": "sante",
+          "label": "Santé",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que la santé est présentée dans le texte comme un don divin, en tant qu’affirmation doctrinale et non médicale."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -1492,6 +1938,66 @@
             6
           ],
           "teaching": "Relation textuelle « Père » : v.2 : Soyez des pères et des mères sages et aimants pour mettre au monde la lumière du savoir vivant, qui éclaire et libère, et en prendre soin. / v.6 : la transmettre d’une façon juste. Ceux-là sont dignes d’être des pères et des mères et de transmettre le corps de la Lumière, car ils en prennent soin.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "experience-vecue",
+          "label": "Expérience vécue",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le véritable savoir est présenté comme une expérience vivante, non une théorie extérieure."
+        },
+        {
+          "themeId": "discernement",
+          "label": "Discernement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que la transmission d’expériences exige le discernement entre des parcours humains différents."
+        },
+        {
+          "themeId": "enfant",
+          "label": "Enfant",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que les enfants sont décrits comme porteurs d’innocence et de spontanéité."
+        },
+        {
+          "themeId": "joie",
+          "label": "Joie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que la joie de vivre des enfants est présentée comme une richesse à transmettre."
+        },
+        {
+          "themeId": "partage",
+          "label": "Partage",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que un savoir vivant peut être partagé parce qu’il a été vécu dans l’être entier."
+        },
+        {
+          "themeId": "transformation",
+          "label": "Transformation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que le texte met en garde contre l’attente de la fin de la vie pour engager sa transformation profonde."
         }
       ],
       "notesUsed": [
@@ -1656,6 +2162,66 @@
             25
           ],
           "teaching": "Relation textuelle « Religion » : v.24 : Vous êtes la religion de la Lumière. Je ne vous parle pas des religions des hommes, je vous parle de l’unique religion de la vie et de l’intelligence. / v.25 : Chacun de vous est religion, c’est-à-dire reliance des mondes. C’est pourquoi vous devez tout conduire vers l’ennoblissement et non pas vers la sécheresse, l’anéantissement, la perdition et la pauvreté.. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "education",
+          "label": "Éducation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que le savoir doit être mis au service de la sagesse, de l’éducation et de la transmission."
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que le soutien mutuel est placé au cœur des alliances de la vie."
+        },
+        {
+          "themeId": "partage",
+          "label": "Partage",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que le partage est cité comme principe fondamental des relations."
+        },
+        {
+          "themeId": "echange",
+          "label": "Échange",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que l’échange est indissociable de l’alliance et du soutien mutuel."
+        },
+        {
+          "themeId": "ennoblissement",
+          "label": "Ennoblissement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16
+          ],
+          "teaching": "La Bible essénienne enseigne que une pensée peut être accueillie et conduite vers une forme plus noble."
+        },
+        {
+          "themeId": "mission",
+          "label": "Mission",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            23
+          ],
+          "teaching": "La Bible essénienne enseigne que la mission humaine est décrite comme l’orientation des entreprises vers un monde supérieur."
         }
       ],
       "notesUsed": [
@@ -1818,6 +2384,66 @@
             43
           ],
           "teaching": "Relation textuelle « Alliance » : v.43 : monde qui va venir et de maintenir le lien, l’ alliance. Si ce monde n’est pas déjà là, c’est l’échec garanti. Ce sont là des lois de la magie que vous devez étudier, car…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "bonheur",
+          "label": "Bonheur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            26
+          ],
+          "teaching": "La Bible essénienne enseigne que l’attente du bonheur est présentée comme souvent dépendante, à tort, de moyens extérieurs."
+        },
+        {
+          "themeId": "paix",
+          "label": "Paix",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            26
+          ],
+          "teaching": "La Bible essénienne enseigne que le texte rapporte l’idée selon laquelle plus de moyens matériels procureraient la paix."
+        },
+        {
+          "themeId": "parole",
+          "label": "Parole",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            27
+          ],
+          "teaching": "La Bible essénienne enseigne que une parole de sagesse rappelle que l’être humain ne peut donner que ce qu’il porte déjà."
+        },
+        {
+          "themeId": "partage",
+          "label": "Partage",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            30
+          ],
+          "teaching": "La Bible essénienne enseigne que le partage est présenté comme dépendant de ce que la personne porte en elle."
+        },
+        {
+          "themeId": "construction",
+          "label": "Construction",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            33
+          ],
+          "teaching": "La Bible essénienne enseigne que le psaume invite à agir maintenant avec les moyens disponibles pour construire un cadre d’accueil."
+        },
+        {
+          "themeId": "affinite",
+          "label": "Affinité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            35
+          ],
+          "teaching": "La Bible essénienne enseigne que la loi des affinités détermine symboliquement les conditions d’accueil des mondes évoqués."
         }
       ],
       "notesUsed": [
@@ -1983,6 +2609,66 @@
             18
           ],
           "teaching": "Relation textuelle « Religion » : v.9 : Les hommes admirent le soleil, puis ils s’intéressent à la religion de la Lumière, puis au bouddhisme, au zen, ensuite au christianisme ou à l’islam, mais ils n’approfondissent rien, ils ne sont pas fidèles… / v.18 : jeter et de renouveler. Si vous adoptez cette philosophie, cette religion, ce mode de vie, je vous garantis que non seulement vous ne trouverez pas le bonheur sur la terre, mais qu’en plus, vous…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "discernement",
+          "label": "Discernement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que le discernement des esprits est proposé pour préserver ce qui est bon."
+        },
+        {
+          "themeId": "amour",
+          "label": "Amour",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que prendre soin de ce que l’on a est lié au développement de l’amour et de l’harmonie."
+        },
+        {
+          "themeId": "fidelite",
+          "label": "Fidélité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16
+          ],
+          "teaching": "La Bible essénienne enseigne que la fidélité est présentée comme une vertu à renforcer dans tous les domaines de la vie."
+        },
+        {
+          "themeId": "engagement",
+          "label": "Engagement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16
+          ],
+          "teaching": "La Bible essénienne enseigne que l’engagement et le respect sont associés à l’apprentissage de la fidélité."
+        },
+        {
+          "themeId": "ennoblissement",
+          "label": "Ennoblissement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que le changement véritable est présenté comme approfondissement et ennoblissement de l’acquis."
+        },
+        {
+          "themeId": "education",
+          "label": "Éducation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            32
+          ],
+          "teaching": "La Bible essénienne enseigne que l’éducation de soi vise à cultiver la fidélité sur les plans physique et intérieur."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -2157,6 +2843,56 @@
             7
           ],
           "teaching": "Relation textuelle « Pureté » : v.5 : Dieu aime les âmes pures qui, malgré l’oppression subie, le mal infligé par les autres hommes, ne perdent pas l’étincelle divine et le lien vivant avec un monde supérieur. Cela est un trésor en… / v.7 : une préparation, un travail sur soi, un dévouement et une pureté absolue.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "preparation",
+          "label": "Préparation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que donner un corps à la Lumière suppose une préparation et un travail sur soi."
+        },
+        {
+          "themeId": "nourriture",
+          "label": "Nourriture",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que les œuvres humaines doivent, selon le texte, apporter une juste nourriture aux mondes environnants."
+        },
+        {
+          "themeId": "construction",
+          "label": "Construction",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que le psaume refuse de bâtir une œuvre spirituelle en dépouillant les autres."
+        },
+        {
+          "themeId": "partage",
+          "label": "Partage",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que le partage équitable des richesses du ciel et de la terre est associé à l’abondance."
+        },
+        {
+          "themeId": "meditation",
+          "label": "Méditation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            27
+          ],
+          "teaching": "La Bible essénienne enseigne que l’observation attentive, le discernement et la méditation accompagnent la sagesse intérieure."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -2329,6 +3065,66 @@
             21
           ],
           "teaching": "Relation textuelle « Âme » : v.21 : de vos pensées, de vos œuvres et de vos âm es, portant toutes les écritures de la Nation Essénienne et réalisant le potentiel que vous aurez mis en lui.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "fidelite",
+          "label": "Fidélité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13
+          ],
+          "teaching": "La Bible essénienne enseigne que le psaume appelle à la fidélité dans la poursuite d’une œuvre engagée."
+        },
+        {
+          "themeId": "union",
+          "label": "Union",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que l’union des membres est donnée comme une clé de l’œuvre collective."
+        },
+        {
+          "themeId": "purification",
+          "label": "Purification",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que le souffle reçu est associé à un nettoyage symbolique de l’espace intérieur."
+        },
+        {
+          "themeId": "evolution",
+          "label": "Évolution",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "La Bible essénienne enseigne que l’évolution intérieure requiert clarté et discipline de la pensée."
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que les membres sont invités à se soutenir et à se protéger mutuellement."
+        },
+        {
+          "themeId": "amour",
+          "label": "Amour",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que l’amour mutuel accompagne l’appel au soutien et à la protection réciproques."
         }
       ],
       "notesUsed": [
@@ -2496,6 +3292,56 @@
             8
           ],
           "teaching": "Relation textuelle « Équilibre » : v.8 : terminer le soir, autrement dit, la vivre en apportant un équilibre des mondes et non pas en accumulant certaines pensées qui finissent par nous conduire vers un monde destructeur ?…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "cycles",
+          "label": "Cycles",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que le monde de l’air et des pensées est décrit comme soumis à une loi de cycles."
+        },
+        {
+          "themeId": "echange",
+          "label": "Échange",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que la pensée circule entre l’être humain et un monde collectif selon une logique d’échange."
+        },
+        {
+          "themeId": "nourriture",
+          "label": "Nourriture",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que les pensées reçues sont nourries avant d’être renvoyées vers le monde."
+        },
+        {
+          "themeId": "ideal",
+          "label": "Idéal",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que les inspirations quotidiennes sont invitées à se relier à un idéal supérieur."
+        },
+        {
+          "themeId": "ennoblissement",
+          "label": "Ennoblissement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que les réflexions peuvent être un chemin d’élévation et d’ennoblissement."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -2707,6 +3553,56 @@
             14
           ],
           "teaching": "Relation textuelle « Âme » : v.12 : transmission de la vie ; c’est un monde vide d’ âme et de divinité. C’est comme si vous disiez à un enfant qui voit un vélo pour la première fois de monter dessus, d’appuyer… / v.13 : la lettre morte, ce qui autrefois était certes empli d’ âme et d’esprit, mais qui, aujourd’hui, est dénaturé, éteint, l’homme n’ayant pas voulu respecter les Dieux.… / v.14 : Servir les Dieux, honorer leur présence, les nourrir, permet de vivre avec l’âme et l’esprit.. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "nourriture",
+          "label": "Nourriture",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le service des Dieux est décrit comme un acte symbolique de nourriture et d’honneur."
+        },
+        {
+          "themeId": "partage",
+          "label": "Partage",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que il n’est possible de partager que ce que l’on possède réellement en soi."
+        },
+        {
+          "themeId": "amour",
+          "label": "Amour",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que l’amour des fleurs accompagne le savoir-faire du jardinier dans sa transmission."
+        },
+        {
+          "themeId": "jardin",
+          "label": "Jardin",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que l’exemple du jardinier relie l’amour des fleurs au savoir-faire vivant."
+        },
+        {
+          "themeId": "service",
+          "label": "Service",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le service et l’honneur rendus aux Dieux sont reliés à la vie de l’âme et de l’esprit."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -2863,6 +3759,66 @@
             2
           ],
           "teaching": "Relation textuelle « Discernement » : v.2 : Allumez en vous le feu de l’idéal. Soyez des êtres volontaires, déterminés, qui aspirent à marcher avec sagesse et discernement vers un monde parfait, grand, sublime.. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "ideal",
+          "label": "Idéal",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que le feu de l’idéal est présenté comme moteur d’un monde à faire apparaître."
+        },
+        {
+          "themeId": "determination",
+          "label": "Détermination",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que une volonté déterminée accompagne l’aspiration à marcher vers l’idéal."
+        },
+        {
+          "themeId": "volonte",
+          "label": "Volonté",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que une vision idéale est invitée à devenir action grâce à la volonté."
+        },
+        {
+          "themeId": "education",
+          "label": "Éducation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12
+          ],
+          "teaching": "La Bible essénienne enseigne que le discernement entre idéal et utopie dépend de la connaissance et de l’éducation."
+        },
+        {
+          "themeId": "enthousiasme",
+          "label": "Enthousiasme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que l’enthousiasme pour les idées sublimes pousse les êtres décrits à dépasser des limites."
+        },
+        {
+          "themeId": "apparences",
+          "label": "Apparences",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que le psaume invite à ne pas s’arrêter aux surfaces et aux apparences du matérialisme."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3061,6 +4017,46 @@
             25
           ],
           "teaching": "Relation textuelle « Destinée » : v.6 : capable de changer son être, son attitude, son comportement, sa destinée après avoir reçu une révélation de l’esprit.… / v.25 : conduit dans la maîtrise de votre être et de votre destinée, en accord avec la grande harmonie du cosmos ; si elle vous permet le langage direct avec les mondes supérieurs et les mondes…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "animisme",
+          "label": "Animisme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que le texte associe l’animisme à une conscience vivante de la pensée et de l’esprit."
+        },
+        {
+          "themeId": "influences",
+          "label": "Influences",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que la conscience peut être enfermée dans la sphère d’influence du monde des hommes."
+        },
+        {
+          "themeId": "education",
+          "label": "Éducation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            16
+          ],
+          "teaching": "La Bible essénienne enseigne que l’absence d’éducation intérieure est reliée à la difficulté de discerner les mondes."
+        },
+        {
+          "themeId": "guerison",
+          "label": "Guérison",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que la pensée est présentée comme bienfaitrice et guérissante dans le cadre religieux du psaume."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3252,6 +4248,66 @@
             24
           ],
           "teaching": "Relation textuelle « Père » : v.10 : racines profondes de l’homme, ainsi qu’avec l’intelligence de Dieu le Père, présente en toutes choses.… / v.14 : J’es père que mes explications vous éclaireront sur le sens et la définition de la Nation Essénienne. Père Raphaël, cette Nation Essénienne, qui est la… / v.24 : la constitution du corps du futur afin que Dieu le Père, les Dieux, les Archanges, les Anges, les hommes, les animaux, les végétaux et les minéraux puissent trouver leur place et entrer dans le…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "responsabilite",
+          "label": "Responsabilité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            18
+          ],
+          "teaching": "La Bible essénienne enseigne que l’accueil de la manifestation divine est déclaré relever de la responsabilité des humains."
+        },
+        {
+          "themeId": "construction",
+          "label": "Construction",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que le texte appelle à bâtir un corps collectif permettant la transmission de l’enseignement."
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que l’assemblée doit soutenir la structure spirituelle et prendre soin de son fonctionnement."
+        },
+        {
+          "themeId": "partage",
+          "label": "Partage",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que le partage des richesses est relié au respect des fonctions de l’assemblée."
+        },
+        {
+          "themeId": "futur",
+          "label": "Futur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "La Bible essénienne enseigne que la Nation Essénienne est décrite comme constitution d’un corps pour le futur."
+        },
+        {
+          "themeId": "organisation",
+          "label": "Organisation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que le fonctionnement de l’assemblée suppose des fonctions reconnues et un soutien organisé."
         }
       ],
       "notesUsed": [
@@ -3406,6 +4462,56 @@
             6
           ],
           "teaching": "Relation textuelle « Guérison » : v.6 : Si, par exemple, les mondes supérieurs décident de montrer à un homme comment il peut guérir les pensées, celui-ci devra se faire un corps de cette révélation afin de pouvoir la transmettre à son…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "capital",
+          "label": "Capital",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que l’homme est présenté métaphoriquement comme un capital à faire fructifier pour Dieu."
+        },
+        {
+          "themeId": "fructification",
+          "label": "Fructification",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que ce qui est reçu est présenté comme prêté en vue d’être rendu fécond."
+        },
+        {
+          "themeId": "construction",
+          "label": "Construction",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que une richesse reçue doit prendre corps dans une réalisation plutôt que rester exhibée."
+        },
+        {
+          "themeId": "responsabilite",
+          "label": "Responsabilité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que le don reçu implique la responsabilité de le faire fructifier."
+        },
+        {
+          "themeId": "semence",
+          "label": "Semence",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que la révélation est comparée à une graine appelée à faire apparaître un monde."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3587,6 +4693,76 @@
             33
           ],
           "teaching": "Relation textuelle « Dieux » : v.26 : Je vous dis qu’au fond de vous, vous savez que vous portez un héritage très lourd et que vous avez été très mal éduqués, que votre corps n’a pas été préparé pour vivre avec… / v.33 : L’impersonnalité est une qualité supérieure, à l’image de la pureté et de la vérité. Tel est le lien avec Dieu.. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "neutralite",
+          "label": "Neutralité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que une attitude intérieure neutre est associée au centrage et à l’équilibre."
+        },
+        {
+          "themeId": "centrage",
+          "label": "Centrage",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que être centré en soi est présenté comme préalable à l’accueil conscient des forces."
+        },
+        {
+          "themeId": "silence",
+          "label": "Silence",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que le silence intérieur et le centre sont associés à la communion et à la neutralité."
+        },
+        {
+          "themeId": "construction",
+          "label": "Construction",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que l’état calme et impersonnel est présenté comme condition de la construction de soi."
+        },
+        {
+          "themeId": "calme",
+          "label": "Calme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que le calme est associé à une utilisation consciente de l’énergie."
+        },
+        {
+          "themeId": "animisme",
+          "label": "Animisme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            21
+          ],
+          "teaching": "La Bible essénienne enseigne que l’animisme désigne dans ce psaume une écoute intérieure pure et une objectivité spirituelle."
+        },
+        {
+          "themeId": "evolution",
+          "label": "Évolution",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            29
+          ],
+          "teaching": "La Bible essénienne enseigne que les expériences et les choix sont présentés comme occasions d’évoluer."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3791,6 +4967,56 @@
             6
           ],
           "teaching": "Relation textuelle « Pensée » : v.3 : Vous vivez avec le corps et même pour le corps et bien souvent, vous aimez la Lumière pour les bienfaits que le corps peut en retirer. Vous pensez comme le monde moderne, vous cherchez… / v.6 : monde des hommes, à offrir votre vie, votre souffle, vos pensées et même l’intégralité de votre être à ce monde et qu’après, je vous entends exprimer votre désir de vivre dans la Lumière, je…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "amour",
+          "label": "Amour",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que l’amour et l’attention sont appelés à se tourner vers la Lumière."
+        },
+        {
+          "themeId": "meditation",
+          "label": "Méditation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que les temps de méditation sont examinés comme des pratiques de la vie quotidienne."
+        },
+        {
+          "themeId": "preparation",
+          "label": "Préparation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que l’investissement dans une œuvre exige de préparer un espace où elle pourra se déployer."
+        },
+        {
+          "themeId": "construction",
+          "label": "Construction",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13
+          ],
+          "teaching": "La Bible essénienne enseigne que la pensée abstraite doit s’accompagner d’une construction concrète."
+        },
+        {
+          "themeId": "eternite",
+          "label": "Éternité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            12
+          ],
+          "teaching": "La Bible essénienne enseigne que l’immortalité est attribuée à la Lumière dans la doctrine de ce psaume."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3996,6 +5222,66 @@
             21
           ],
           "teaching": "Relation textuelle « Mère » : v.11 : La sainte assemblée est une mère aimante et protectrice qui prend soin de la Nation et de chacun de ses membres. Ainsi, si un membre fonctionne mal, une force… / v.15 : tout et de l’alliance des 7 règnes dans le Père-M ère. Père Raphaël, veux-tu nous dire que toutes les grandes décisions doivent être prises en commun ?… / v.21 : Vous êtes les fondateurs, les pères et les mères de la Nation Essénienne.. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "ennoblissement",
+          "label": "Ennoblissement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que l’assemblée est invitée à ennoblir ce qui est essentiel à son œuvre."
+        },
+        {
+          "themeId": "amour",
+          "label": "Amour",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le service collectif est relié à l’intelligence et à l’amour."
+        },
+        {
+          "themeId": "guerison",
+          "label": "Guérison",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que la sainte assemblée est décrite comme une force de guérison au sens doctrinal du texte."
+        },
+        {
+          "themeId": "joie",
+          "label": "Joie",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que l’accueil des enfants est associé à la joie, à la clarté et au bonheur."
+        },
+        {
+          "themeId": "communaute",
+          "label": "Communauté",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que l’assemblée est présentée comme une communauté protectrice de chacun de ses membres."
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que la communauté est invitée à prendre soin de ses membres en difficulté."
         }
       ],
       "notesUsed": [
@@ -4180,6 +5466,56 @@
             5
           ],
           "teaching": "Relation textuelle « Intelligence » : v.4 : des êtres conscients ? Sont-ils doués de pensée et d’ intelligence ? À cela je répondrai que la pensée et l’intelligence prennent de nombreuses formes, selon les mondes dans lesquels elles se manifestent.… / v.5 : Ce que vous appelez « intelligence » et « conscience » dans l’être humain est relatif. Pour lui, la conscience signifie principalement qu’il est habité par un monde clair,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "meditation",
+          "label": "Méditation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que la méditation sur l’arbre est proposée comme miroir de la condition humaine."
+        },
+        {
+          "themeId": "evolution",
+          "label": "Évolution",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que la rencontre avec le règne animal est décrite comme une étape d’éveil de l’arbre."
+        },
+        {
+          "themeId": "futur",
+          "label": "Futur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que la rencontre de l’Ange est associée à une orientation nouvelle de l’avenir humain."
+        },
+        {
+          "themeId": "ideal",
+          "label": "Idéal",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que l’angélisation durant la vie terrestre est présentée comme un idéal."
+        },
+        {
+          "themeId": "homme-arbre",
+          "label": "Homme-arbre",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que le psaume invite à comprendre la croissance humaine par le parallèle avec l’arbre."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -4348,6 +5684,56 @@
             24
           ],
           "teaching": "Relation textuelle « Harmonie » : v.5 : L’animal veut juste vivre en harmonie avec l’homme et faire partie de son environnement, de sa qualité de vie, de son espace. Il est là pour montrer à l’homme… / v.24 : de sagesse et s’ils vous ont appris à vivre en harmonie avec la nature vivante et dans la présence de la Mère. Si ce n’est pas le cas, ne marchez pas dans les pas…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "animisme",
+          "label": "Animisme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que le psaume lie l’animisme à la redécouverte de la relation vivante avec la nature."
+        },
+        {
+          "themeId": "partage",
+          "label": "Partage",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que la rencontre avec une fleur invite à un partage vivant plutôt qu’à une admiration superficielle."
+        },
+        {
+          "themeId": "responsabilite",
+          "label": "Responsabilité",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que la haute pensée est présentée comme éveillant la responsabilité de la vie sur terre."
+        },
+        {
+          "themeId": "liberte",
+          "label": "Liberté",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que la haute pensée est décrite comme chemin symbolique de libération intérieure."
+        },
+        {
+          "themeId": "echange",
+          "label": "Échange",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            21
+          ],
+          "teaching": "La Bible essénienne enseigne que la rencontre avec pierres, plantes ou animaux demande une présence silencieuse et un échange."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -4529,6 +5915,56 @@
             17
           ],
           "teaching": "Relation textuelle « Anges » : v.16 : D’autres encore vont croire aux Anges, mais sans entrer dans la réalité. Ils sont eux aussi sous l’emprise d’un concept, car ils se font une idée et vivent en… / v.17 : Il ne s’agit pas d’aller dans le monde des Anges pour prendre, mais bien pour mettre la vie mortelle à sa juste place et éveiller, servir, renforcer, honorer l’immortel.. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "mission",
+          "label": "Mission",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que l’incarnation humaine est décrite comme liée à une mission à retrouver et à accomplir."
+        },
+        {
+          "themeId": "famille-d-ame",
+          "label": "Famille d’âme",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que les réalisations sur terre sont reliées à la famille d’âmes."
+        },
+        {
+          "themeId": "formation",
+          "label": "Formation",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que la formation spirituelle est proposée comme moyen de retrouver sa mémoire et sa mission."
+        },
+        {
+          "themeId": "discernement",
+          "label": "Discernement",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que les prétentions à communiquer avec des mondes supérieurs appellent un discernement prudent."
+        },
+        {
+          "themeId": "action",
+          "label": "Action",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que le souvenir de sa mission doit déboucher sur une mise à l’œuvre sans tarder."
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -4679,6 +6115,76 @@
             7
           ],
           "teaching": "Relation textuelle « Maîtrise » : v.7 : d’aller de l’avant, vers une conscience plus large et une maîtrise plus affirmée, plus efficace.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "construction",
+          "label": "Construction",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que l’entraide et les relations authentiques sont posées comme bases d’un monde à construire."
+        },
+        {
+          "themeId": "union",
+          "label": "Union",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que l’union des personnes permet de bâtir un monde plus harmonieux."
+        },
+        {
+          "themeId": "echange",
+          "label": "Échange",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que l’échange pur est associé à des relations vraies et douces."
+        },
+        {
+          "themeId": "epreuve",
+          "label": "Épreuve",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que les épreuves sont présentées comme des occasions d’éveil et de renforcement."
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que le texte invite à s’entourer de soutiens dans la vie collective."
+        },
+        {
+          "themeId": "futur",
+          "label": "Futur",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            13
+          ],
+          "teaching": "La Bible essénienne enseigne que la stabilité de l’œuvre est présentée comme préparation du monde qui vient."
+        },
+        {
+          "themeId": "amour",
+          "label": "Amour",
+          "importance": "important",
+          "directness": "direct",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que les relations d’amitié et d’affection sont reliées au soutien dans la vie."
         }
       ],
       "semanticDepth": "deep-content-grounded"
