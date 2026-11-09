@@ -136,7 +136,7 @@ def main():
         if lo == 29: run('apply_book29_enrichment.py'); run('apply_book30_enrichment.py'); run('apply_book31_enrichment.py')
         if lo == 32: run('apply_book32_enrichment.py'); run('apply_book33_enrichment.py'); run('apply_book34_enrichment.py')
         if lo == 35: run('apply_book35_enrichment.py'); run('apply_book36_enrichment.py'); run('apply_book37_enrichment.py')
-        if lo == 38: run('apply_book38_enrichment.py')
+        if lo == 38: run('apply_book38_enrichment.py'); run('apply_book39_enrichment.py')
     run('deepen_book44_semantic_evidence.py'); run('finalize_book44_semantic.py')
     run('sync_thematic_documentary_status.py'); run('normalize_thematic_metadata.py'); run('build_book_contexts.py'); run('validate_thematic_index.py'); run('build_thematic_directory.py'); run('build_public_theme_directory.py'); run('audit_thematic_search_quality.py'); run('build_thematic_search_index.py'); run('validate_thematic_search_index.py'); run('build_thematic_connections.py'); run('validate_thematic_connections.py'); run('build_thematic_search_runtime.py'); run('validate_thematic_search_runtime.py'); run('build_browser_search_catalog.py'); run('audit_corpus_attachments.py'); run('audit_legacy_psalm_references.py'); run('audit_conceptual_coverage.py')
     print_timing_summary(time.perf_counter()-pipeline_started)
