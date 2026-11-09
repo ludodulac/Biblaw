@@ -43,7 +43,7 @@ def main():
     assert audit["addedRelationCount"] == ADDED
     assert audit["verifiedVerseCount"] == VERSES
     assert audit["sourcePsalmsModified"] is False
-    assert "décalage" in book["method"]["numberingNote"]
+    assert "offset of 48" in book["method"]["numberingNote"]
 
     seen_psalms = set()
     nonstandard = []
