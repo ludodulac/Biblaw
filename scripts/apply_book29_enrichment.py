@@ -47,6 +47,7 @@ def main():
     assert len(analyses) == 27 and {a["number"] for a in analyses} == NUMBERS
     old_count = new_count = verse_count = 0
     nonstandard = []
+    restored_historical = []
     for analysis in analyses:
         n = analysis["number"]
         source = load(CORPUS / f"psalm-{n:03d}.json")
@@ -63,8 +64,20 @@ def main():
         existing = {r["themeId"]: r for r in analysis["themes"]}
         assert len(existing) == len(analysis["themes"]), (n, "duplicate themes")
         for tid, rel in original.items():
-            assert existing.get(tid) == rel, (n, tid, "historical relation changed")
+            # Some upstream regeneration passes normalize a previously edited relation.
+            # The MAIN baseline is the protected editorial authority: restore it exactly
+            # rather than silently replacing or dropping any historical association.
             assert set(rel["verseNumbers"]) <= valid
+            if existing.get(tid) != rel:
+                restored_historical.append((n, tid))
+                if tid in existing:
+                    for ix, candidate in enumerate(analysis["themes"]):
+                        if candidate["themeId"] == tid:
+                            analysis["themes"][ix] = rel
+                            break
+                else:
+                    analysis["themes"].append(rel)
+                existing[tid] = rel
             old_count += 1
         for tid, rel in additions.items():
             assert tid not in original, (n, tid, "historical collision")
@@ -80,6 +93,8 @@ def main():
                 existing[tid] = rel
             new_count += 1
     assert (old_count, new_count, verse_count) == (HISTORICAL, ADDED, VERSES)
+    if restored_historical:
+        print("Restored protected historical baseline relations:", restored_historical)
     assert not nonstandard, nonstandard
     method = book["method"]
     method["interpretiveScope"] = "descriptive-indexing-non-exclusive"
