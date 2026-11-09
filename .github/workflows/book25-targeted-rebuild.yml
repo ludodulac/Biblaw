@@ -1,0 +1,50 @@
+name: BIBLAW — Book 25 targeted rebuild (temporary)
+on:
+  push:
+    branches:
+      - feat/book25-michael-full-theme-coverage-20261109
+permissions:
+  contents: write
+jobs:
+  book25:
+    if: ${{ !contains(github.event.head_commit.message, '[book25-output]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile Michael scripts
+        run: python -m py_compile scripts/apply_book25_enrichment.py scripts/audit_book25_full_theme_coverage.py
+      - name: Apply book 25 twice and ensure idempotence
+        run: |
+          python scripts/apply_book25_enrichment.py
+          sha256sum data/thematic-index/books/book-25.json > /tmp/book25.sha
+          python scripts/apply_book25_enrichment.py
+          sha256sum -c /tmp/book25.sha
+      - name: Rebuild canonical thematic derivatives
+        run: python scripts/rebuild_thematic_derivatives.py
+      - name: Verify all protected books and source corpus
+        run: |
+          python scripts/audit_book25_full_theme_coverage.py
+          python scripts/audit_book24_full_theme_coverage.py
+          python scripts/audit_book23_full_theme_coverage.py
+          python scripts/audit_book22_full_theme_coverage.py
+          python scripts/audit_book21_full_theme_coverage.py
+          python scripts/audit_book20_full_theme_coverage.py
+          python scripts/validate_thematic_index.py
+          git diff --exit-code -- data/corpus/books
+      - name: Commit regenerated outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data
+          if ! git diff --cached --quiet; then
+            git commit -m "build(book25): regenerate thematic indexes [book25-output]"
+            git push origin HEAD:feat/book25-michael-full-theme-coverage-20261109
+          fi
