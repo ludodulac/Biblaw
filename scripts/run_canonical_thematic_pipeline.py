@@ -132,7 +132,7 @@ def main():
     run('deepen_book23_semantic_part1.py'); run('deepen_books23_25_semantic_evidence.py'); run('finalize_books23_25_semantic.py'); run('apply_book23_enrichment.py'); run('apply_book24_enrichment.py'); run('apply_book25_enrichment.py')
     for lo,hi in ((26,28),(29,31),(32,34),(35,37),(38,40),(41,43)):
         run(f'deepen_books{lo}_{hi}_semantic_evidence.py'); run(f'finalize_books{lo}_{hi}_semantic.py')
-        if lo == 26: run('apply_book26_enrichment.py')
+        if lo == 26: run('apply_book26_enrichment.py'); run('apply_book27_enrichment.py')
     run('deepen_book44_semantic_evidence.py'); run('finalize_book44_semantic.py')
     run('sync_thematic_documentary_status.py'); run('normalize_thematic_metadata.py'); run('build_book_contexts.py'); run('validate_thematic_index.py'); run('build_thematic_directory.py'); run('build_public_theme_directory.py'); run('audit_thematic_search_quality.py'); run('build_thematic_search_index.py'); run('validate_thematic_search_index.py'); run('build_thematic_connections.py'); run('validate_thematic_connections.py'); run('build_thematic_search_runtime.py'); run('validate_thematic_search_runtime.py'); run('build_browser_search_catalog.py'); run('audit_corpus_attachments.py'); run('audit_legacy_psalm_references.py')
     print_timing_summary(time.perf_counter()-pipeline_started)
