@@ -122,7 +122,7 @@ def main():
     for n in range(1,9): run(f'deepen_book21_semantic_part{n}.py')
     run('ground_book21_semantic_evidence.py'); run('finalize_book21_semantic.py'); run('apply_book21_enrichment.py')
     for n in range(1,8): run(f'deepen_book22_semantic_part{n}.py')
-    run('ground_book22_semantic_evidence.py'); run('finalize_book22_semantic.py')
+    run('ground_book22_semantic_evidence.py'); run('finalize_book22_semantic.py'); run('apply_book22_enrichment.py')
     run_parallel((
         'complete_books24_26_thematic.py',
         'complete_books27_30_thematic.py',
