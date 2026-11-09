@@ -16,12 +16,12 @@
     "deepPsalmCount": 26,
     "contentGrounding": "complete",
     "interpretiveScope": "descriptive-indexing-non-exclusive",
-    "interpretivePolicy": "Relations descriptives étayées dans les JSON déjà extraits du PDF, sans relecture exhaustive indépendante du document original. Les déclarations religieuses concernant le bonheur, la guérison, l’alimentation ou la santé sont documentées comme doctrine du texte et non comme conseils médicaux ni faits scientifiquement établis. L’indexation est non exclusive.",
+    "interpretivePolicy": "Relations descriptives vérifiées dans les JSON déjà extraits du PDF. Aucune nouvelle comparaison exhaustive indépendante avec le PDF original. Les énoncés doctrinaux, notamment spirituels ou liés à la guérison, ne constituent pas des affirmations médicalement ou scientifiquement validées. Cette indexation reste non exclusive.",
     "themeCoverageAudits": [
       {
         "scope": "book-35-psalms-206-231",
         "reviewedOn": "2026-11-09",
-        "source": "data/corpus/books/book-35/psalm-206.json through psalm-231.json",
+        "source": "data/corpus/books/book-35/psalm-216.json through psalm-243.json",
         "approach": "conservative-editorial-verse-evidence-in-extracted-json",
         "originalRelationCount": 312,
         "addedRelationCount": 148,
@@ -36,8 +36,8 @@
         ],
         "documentaryCaveats": [
           "Les versets ont été contrôlés dans les JSON extraits du PDF, sans nouvelle relecture indépendante de l'intégralité du PDF original.",
-          "Les passages sur la santé, la guérison et l'alimentation sont présentés comme enseignements religieux, sans validation médicale ni scientifique.",
-          "La numérotation du psaume 215 s'étend de 26 à 46, conformément au corpus extrait ; les numéros n'ont pas été artificiellement renumérotés."
+          "Les descriptions spirituelles et les passages évoquant la guérison sont rapportés comme doctrine interne du texte, sans validation médicale.",
+          "Le corpus comporte une numérotation de versets non initiale au psaume 215 (26 à 46), et certains titres ont des espacements atypiques (comme « A rchange » et « D ieu ») : les originaux sont conservés."
         ]
       }
     ]
