@@ -63,7 +63,6 @@
     $('faqList').replaceChildren();
     $('faqTopicButtons').replaceChildren();
     $('faqTopics').hidden=Boolean(chosen||query);
-    $('faqThemeBack').hidden=!chosen&&!query;
     $('faqSelectedTheme').hidden=!chosen||Boolean(query);
     if(chosen)$('faqSelectedTheme').textContent=manifest?.topics.find(t=>t.id===chosen)?.label||'';
     if(!manifest){
@@ -607,7 +606,6 @@
     renderIndex();
     backToIndex();
     if(state.themesMode){
-      $('faqThemeBack').onclick=returnToTopics;
       if(!state.themeIndex){showStatus('Chargement des thèmes…');loadIndex();}
     }else if(!state.questions.length)showStatus('Chargement des questions…');
     $('faqClose').focus({preventScroll:true});
@@ -638,9 +636,16 @@
     showStatus('');
     renderIndex();
   };
-  $('faqBack').onclick=backToIndex;
+  // One persistent "Retour" in the header for every FAQ level:
+  // answer → questions, questions/search → themes, themes → main search.
+  // The label and position never change, including on a small screen.
   $('faqClose').onclick=()=>{
+    if(!$('faqAnswer').hidden){backToIndex();return;}
+    if(state.themesMode&&(state.selectedTopic||$('faqSearch').value.trim())){
+      returnToTopics();return;
+    }
     close();window.scrollTo({top:0,behavior:'instant'});
+    $('faqToggle').setAttribute('aria-expanded','false');
     $('faqToggle').focus({preventScroll:true});
   };
   $('faqPdf').onclick=download;
