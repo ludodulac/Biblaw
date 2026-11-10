@@ -26,10 +26,10 @@ async function openAllResults() {
 
 try {
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
-  await page.waitForFunction(() => {
-    const el = document.getElementById('corpusStats');
-    return el && !el.textContent.includes('Chargement');
-  });
+  // Exercise the search engine after an explicit user intent (M3 lazy load).
+  await page.locator('#query').fill('acclame');
+  await page.waitForFunction(() => document.getElementById('corpusStats').textContent.includes('1158 psaumes'), {timeout:60000});
+  await page.locator('#query').fill('');
 
   const primary = page.locator('#primarySearch');
   const themesMode = page.locator('#modeThemes');
