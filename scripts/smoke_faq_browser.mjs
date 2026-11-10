@@ -32,8 +32,8 @@ try{
   await page.locator('#faqPdf').click();
   const file=await download;
   assert.match(file.suggestedFilename(),/^Biblaw_Question_.*\.pdf$/);
-  await page.locator('#faqBack').click();
-  await page.locator('#faqThemeBack').click();
+  await page.locator('#faqClose').click();
+  await page.locator('#faqClose').click();
   assert.equal(await page.locator('#faqTopicButtons .faq-topic-button').count(),11);
   await page.locator('#faqClose').click();
   assert.equal(await page.locator('#faqLibrary').isVisible(),false);
