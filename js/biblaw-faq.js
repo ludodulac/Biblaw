@@ -280,7 +280,10 @@
     try{
       if(!state.recordsReady){
         showStatus('Chargement du corpus pour ouvrir ce psaume…');
-        if(!state.corpusLoading||!await state.corpusLoading)
+        const loading=state.corpusLoading;
+        // M3: the corpus loader may be a lazy function or an already-started
+        // promise (legacy integrations and integrity tests still use the latter).
+        if(!loading||!await (typeof loading==='function'?loading():loading))
           throw Error('Le corpus documentaire est indisponible. Réessayez plus tard.');
       }
       // Ignore a delayed request when the visitor has left the answer.
@@ -590,7 +593,9 @@
     state.themesMode=true;
     return true;
   }
-  function setCorpusLoading(promise){state.corpusLoading=Promise.resolve(promise);}
+  function setCorpusLoading(loader){
+    state.corpusLoading=typeof loader==='function'?loader:Promise.resolve(loader);
+  }
   function open(){
     $('faqLibrary').hidden=false;
     document.body.classList.add('view-faq');
