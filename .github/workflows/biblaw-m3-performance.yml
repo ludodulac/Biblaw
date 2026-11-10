@@ -1,8 +1,6 @@
 name: Biblaw M3 - on-demand corpus performance
 
 on:
-  push:
-    branches: [feat/biblaw-m3-on-demand-corpus-20261110]
   pull_request:
     paths:
       - 'index.html'
