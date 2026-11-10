@@ -27,7 +27,9 @@ try {
       await page.locator('#faqList .faq-question-item').first().click();
       await page.locator('#faqAnswerBody .faq-psalm-link').first().waitFor();
       assert.deepEqual(requests,[],'Reading FAQ answers fetched the search corpus');
-      await page.locator('#faqClose').click();
+      await page.locator('#faqClose').click(); // article → four questions
+      await page.locator('#faqClose').click(); // topic → 11 themes
+      await page.locator('#faqClose').click(); // FAQ → general search
 
       const start=Date.now();
       await page.locator('#query').fill('psaume 105');
