@@ -51,6 +51,7 @@ try{
      if(seen===0||seen===50||seen===94){
       for(const index of [...new Set([0,count-1])]){
        await refs.nth(index).click();
+       await page.locator('#recordDialog').waitFor({state:'visible',timeout:60000});
        assert.equal(await page.locator('#recordDialog').isVisible(),true);
        assert.ok(await page.locator('#dialogContent .faq-cited-verse').count()>0);
        await page.locator('#faqReturnFromPsalm').click();
