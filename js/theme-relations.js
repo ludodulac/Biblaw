@@ -34,15 +34,19 @@
     choices.querySelectorAll('[data-validated-theme-id]').forEach(button => { button.onclick = () => { const theme = themesById.get(button.dataset.validatedThemeId); if (!theme) return; $('query').value = theme.label; $('query2').value = ''; $('modeThemes')?.click(); $('searchButton')?.click(); window.scrollTo({top: 0, behavior: 'smooth'}); }; });
     panel.hidden = false;
   };
-  async function load() {
+  // M3: Reuse the canonical directory that the search engine has already
+  // loaded. The former independent request pulled another 10 MB of JSON and
+  // defeated on-demand startup even when the visitor only opened the FAQ.
+  async function load(themes) {
     try {
-      const [relations, directory] = await Promise.all([
-        fetch('data/thematic-index/theme-relations-public.json').then(r => { if (!r.ok) throw Error('theme-relations-public'); return r.json(); }),
-        fetch('data/thematic-index/theme-directory-public.json').then(r => { if (!r.ok) throw Error('theme-directory-public'); return r.json(); })
-      ]);
-      if (relations.presentationOnly !== true || relations.publicSearchEffect !== false) throw Error('unsafe-theme-relations-public');
-      relationPayload = relations; themesById = new Map((directory.themes || []).map(theme => [theme.id, theme])); render();
-    } catch (error) { console.error(error); panel.hidden = true; }
+      const relations=await fetch('data/thematic-index/theme-relations-public.json')
+        .then(r => { if (!r.ok) throw Error('theme-relations-public'); return r.json(); });
+      if (relations.presentationOnly !== true || relations.publicSearchEffect !== false)
+        throw Error('unsafe-theme-relations-public');
+      relationPayload=relations;
+      themesById=new Map(themes.map(theme=>[theme.id,theme]));
+      render();
+    } catch (error) { console.error(error); panel.hidden=true; }
   }
   $('searchButton')?.addEventListener('click', () => setTimeout(render, 0));
   $('query')?.addEventListener('keydown', event => { if (event.key === 'Enter') setTimeout(render, 0); });
@@ -50,5 +54,8 @@
   $('modeThemes')?.addEventListener('click', () => setTimeout(render, 0));
   $('modeExact')?.addEventListener('click', () => setTimeout(render, 0));
   document.addEventListener('click', event => { if (event.target.closest('[data-related-theme], [data-directory-theme], [data-transverse-theme]')) setTimeout(render, 0); });
-  load();
+  document.addEventListener('biblaw:corpus-ready',event=>{
+    const themes=event.detail?.themes;
+    if(Array.isArray(themes))void load(themes);
+  },{once:true});
 })();
