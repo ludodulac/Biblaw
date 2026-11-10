@@ -1,8 +1,6 @@
 name: Biblaw 106 - all Bible themes A-Z
 
 on:
-  push:
-    branches: [feat/biblaw-all-themes-alphabetic-20261110]
   pull_request:
     paths:
       - 'index.html'
