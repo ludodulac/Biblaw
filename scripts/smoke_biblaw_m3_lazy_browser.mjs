@@ -77,8 +77,9 @@ try {
   });
   try {
     await page.goto(base,{waitUntil:'networkidle'});
+    // Typing alone starts the first request. Verify its visible failure
+    // before attempting the next search, avoiding a retry race in the test.
     await page.locator('#query').fill('psaume 105');
-    await page.locator('#searchButton').click();
     await page.getByText(/Vérifiez votre connexion et réessayez/).waitFor({timeout:30000});
     await page.locator('#query').fill('psaume 106');
     await page.locator('#searchButton').click();
