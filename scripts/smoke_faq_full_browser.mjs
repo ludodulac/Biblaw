@@ -64,10 +64,10 @@ try{
       const bytes=await readFile(await file.path());
       assert.equal(bytes.subarray(0,5).toString(),'%PDF-');
      }
-     await page.locator('#faqBack').click();
+     await page.locator('#faqClose').click();
      seen++;
     }
-    await page.locator('#faqThemeBack').click();
+    await page.locator('#faqClose').click();
    }
    assert.equal(seen,95);
    assert.equal(titles.size,95);
@@ -93,7 +93,7 @@ try{
     assert.match(await page.locator('#faqAnswerTitle').innerText(),canonical);
     assert.equal(await page.locator('#faqAnswerBody .faq-psalm-link').count(),count);
     assert.ok(await page.locator('#faqAnswerBody strong').count()>0);
-    await page.locator('#faqBack').click();
+    await page.locator('#faqClose').click();
    }
    await page.locator('#faqSearch').fill('Que nous apprennent réellement les expériences de mort imminente ?');
    assert.equal(await page.locator('#faqList .faq-question-item').count(),0);
