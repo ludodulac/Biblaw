@@ -1,0 +1,55 @@
+name: Biblaw M3 - on-demand corpus performance
+
+on:
+  push:
+    branches: [feat/biblaw-m3-on-demand-corpus-20261110]
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'js/biblaw.js'
+      - 'js/biblaw-faq.js'
+      - 'js/theme-relations.js'
+      - 'scripts/smoke_biblaw_m3_lazy_browser.mjs'
+      - 'scripts/smoke_faq_independent_browser.mjs'
+      - '.github/workflows/biblaw-m3-performance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  performance-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate public behavior and syntax
+        run: |
+          node --check js/biblaw.js
+          node --check js/biblaw-faq.js
+          node --check js/theme-relations.js
+          python scripts/audit_public_ui_contract.py
+          node scripts/check_faq_integrity.mjs
+          node scripts/check_faq_100_merge.mjs
+          node scripts/check_faq_101_topics.mjs
+          node scripts/check_faq_dom.mjs
+      - name: Stage public assets locally, never deploy
+        run: python scripts/build_pages_site.py
+      - name: Install Chromium test runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Run performance, FAQ and search browser regressions
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-m3-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node scripts/smoke_biblaw_m3_lazy_browser.mjs
+          node scripts/smoke_faq_independent_browser.mjs
+          node scripts/smoke_faq_m2_navigation_browser.mjs
+          node scripts/smoke_faq_browser.mjs
+          node scripts/smoke_occurrence_expansion_browser.mjs
+          node scripts/smoke_occurrences_041c.mjs
