@@ -248,6 +248,9 @@
       // Supply the records only after the search engine is ready.
       // FAQ topics and answers already work independently before this point.
       BiblawFAQ.setRecords(state.records);
+      document.dispatchEvent(new CustomEvent('biblaw:corpus-ready',{
+        detail:{themes:state.themeDirectory}
+      }));
       return true;
     } catch (error) {
       console.error(error);
