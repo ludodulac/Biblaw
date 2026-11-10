@@ -51,5 +51,6 @@ jobs:
           node scripts/smoke_faq_independent_browser.mjs
           node scripts/smoke_faq_m2_navigation_browser.mjs
           node scripts/smoke_faq_browser.mjs
+          node scripts/smoke_faq_full_browser.mjs
           node scripts/smoke_occurrence_expansion_browser.mjs
           node scripts/smoke_occurrences_041c.mjs
