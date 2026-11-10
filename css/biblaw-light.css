@@ -612,7 +612,6 @@ body.view-faq .shell{padding-top:1.15rem}
 .faq-question-title{font-size:1.01rem;font-weight:650}
 .faq-chevron{color:#a37438;font-size:1.6rem;line-height:1}
 .faq-answer{color:#302a22}
-.faq-answer .faq-back{margin:0 0 1.25rem}
 .faq-answer h3{font-family:"Source Serif 4",serif;font-size:clamp(1.45rem,4.1vw,2.1rem);line-height:1.3;margin:0 0 1rem}
 .faq-answer-body{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(1.08rem,2.7vw,1.23rem);line-height:1.88;white-space:pre-wrap;margin:0 0 1.4rem}
 .faq-psalm-link{
@@ -654,7 +653,7 @@ body.view-faq .shell{padding-top:1.15rem}
   body.view-faq #secondaryTools,body.view-faq #ambiguityPanel,body.view-faq #validatedRelationsPanel,
   body.view-faq #transversePanel,body.view-faq #faqIndex{display:none!important}
   body.view-faq .faq-library{display:block!important;border:0!important;padding:0!important;box-shadow:none!important}
-  body.view-faq .faq-header,body.view-faq .faq-actions,body.view-faq .faq-back,body.view-faq .faq-status{display:none!important}
+  body.view-faq .faq-header,body.view-faq .faq-actions,body.view-faq .faq-status{display:none!important}
   body.view-faq #faqAnswer{display:block!important}
   body.view-faq #faqAnswerTitle{color:#000}
   body.view-faq #faqAnswerBody{color:#000;font-size:12pt;line-height:1.6}
@@ -696,10 +695,9 @@ body.view-faq .shell{padding-top:1.15rem}
 .faq-topic-button small{font-size:.77rem;font-weight:500;color:#746959}
 .faq-topic-button:hover,.faq-topic-button:focus-visible{border-color:#b8863b;
   background:#fff4df;outline:2px solid #c9a263;outline-offset:1px}
-.faq-theme-back{margin:0 0 .65rem}
 .faq-selected-theme{font-family:"Source Serif 4",serif;font-size:1.35rem;
   margin:0 0 .7rem;color:#32291e}
-.faq-topics[hidden],.faq-theme-back[hidden],.faq-selected-theme[hidden]{
+.faq-topics[hidden],.faq-selected-theme[hidden]{
   display:none!important}
 @media(max-width:760px){.faq-topic-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:360px){.faq-topic-buttons{grid-template-columns:1fr}
