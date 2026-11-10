@@ -212,9 +212,15 @@
       updateExpansionControl();
       search();
       indexPublicWords();
-      // Prepare the FAQ without fetching 105 answers on the homepage.
-      BiblawFAQ.prime(state.records);
-    } catch (error) { console.error(error); $('results').innerHTML = '<div class="empty">Le corpus ne peut pas être chargé. Ouvrez Biblaw depuis son adresse web.</div>'; }
+      // Supply the records only after the search engine is ready.
+      // FAQ topics and answers already work independently before this point.
+      BiblawFAQ.setRecords(state.records);
+      return true;
+    } catch (error) {
+      console.error(error);
+      $('results').innerHTML = '<div class="empty">Le corpus ne peut pas être chargé. Ouvrez Biblaw depuis son adresse web.</div>';
+      return false;
+    }
   }
 
   function matches(query) { const allowed=selectedTypes(),a=$('archangelFilter').value; return state.records.filter(r=>allowed.has(type(r))&&(!a||r.archangel===a)).map(record=>({record,score:1,occurrenceCount:literalOccurrenceCount(record,query)})).filter(item=>item.occurrenceCount>0); }
@@ -758,5 +764,5 @@
   $('notesThemeFilter').addEventListener('input',renderNoteThemeDirectory);
   $('notesThemeBack').addEventListener('click',returnToNoteThemes);
   bindSuggestions();
-  load();
+  BiblawFAQ.setCorpusLoading(load());
 })();

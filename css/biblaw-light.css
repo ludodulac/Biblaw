@@ -704,3 +704,10 @@ body.view-faq .shell{padding-top:1.15rem}
 @media(max-width:760px){.faq-topic-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:360px){.faq-topic-buttons{grid-template-columns:1fr}
   .faq-topic-button{min-height:3.8rem}}
+
+/* FAQ M2 — Controls follow the answer, accessible without scrolling back up. */
+.faq-answer-nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem;margin-top:1rem}
+.faq-answer-nav[hidden],.faq-answer-nav>button[hidden]{display:none!important}
+.faq-answer-nav>button{min-height:2.8rem;max-width:100%;white-space:normal;text-align:center}
+@media(max-width:760px){.faq-answer-nav>button{flex:1 1 10rem}}
+@media print{body.view-faq .faq-answer-nav{display:none!important}}
