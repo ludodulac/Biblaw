@@ -751,7 +751,7 @@
   // It never rebuilds an independent thematic corpus or invents relevance.
   function bibleThemeLetter(label){
     const first=String(label||'').trim().normalize('NFD')
-      .replace(/[\\u0300-\\u036f]/g,'').charAt(0).toUpperCase();
+      .replace(/[\u0300-\u036f]/g,'').charAt(0).toUpperCase();
     return /^[A-Z]$/.test(first)?first:'0–9';
   }
   function setBibleThemesStatus(message){
