@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], noteReferences: [], selectedNoteTheme: null, readerPart:'both', readerHtml:null, autocompleteIndex:null, corpusReady:false, corpusPromise:null, pendingSearch:false };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], noteReferences: [], selectedNoteTheme: null, readerPart:'both', readerHtml:null, autocompleteIndex:null, corpusReady:false, corpusPromise:null, pendingSearch:false, bibleThemesSorted:null, bibleThemeDirectoryScroll:0, bibleThemeSelected:null, bibleThemeRequestId:0 };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -286,9 +286,9 @@
   const composeThemeQueryNotions = query => BiblawThemeEngine.composeThemeQueryNotions(query);
   const themeQueryNotions = query => BiblawThemeEngine.themeQueryNotions(query);
   function suggestIndexedThemes(query) { return state.themeEngine?.suggestIndexedThemes(query) || []; }
-  function thematicItems(themes) {
-    if (!selectedTypes().has('psalm')) return [];
-    const a=$('archangelFilter').value,merged=new Map();
+  function thematicItems(themes, ignoreFilters=false) {
+    if (!ignoreFilters && !selectedTypes().has('psalm')) return [];
+    const a=ignoreFilters?'':$('archangelFilter').value,merged=new Map();
     for (const theme of themes) for (const o of theme.occurrences||[]) {
       if (a&&o.archangel!==a) continue;
       const record=state.recordById.get(o.recordId); if(!record||record.recordType!=='psalm') continue;
@@ -664,6 +664,7 @@
     if(shouldFocus===true)$('notesThemeFilter').focus({preventScroll:true});
   }
   function showSearchView() {
+    closeBibleThemes();
     BiblawFAQ.close();
     $('faqToggle').setAttribute('aria-expanded','false');
     document.body.classList.remove('view-notes');
@@ -745,6 +746,152 @@
     }
     return r.text||r.summary||'';
   }
+  // 106: The bottom-page A–Z directory is a view over the SAME validated
+  // themeDirectory, thematicItems() and Psalm reader used by normal search.
+  // It never rebuilds an independent thematic corpus or invents relevance.
+  function bibleThemeLetter(label){
+    const first=String(label||'').trim().normalize('NFD')
+      .replace(/[\\u0300-\\u036f]/g,'').charAt(0).toUpperCase();
+    return /^[A-Z]$/.test(first)?first:'0–9';
+  }
+  function setBibleThemesStatus(message){
+    $('bibleThemesStatus').textContent=message;
+    $('bibleThemesStatus').hidden=!message;
+  }
+  function renderBibleThemesAlphabetical(){
+    if(!state.bibleThemesSorted){
+      state.bibleThemesSorted=[...state.themeDirectory].sort((a,b)=>
+        a.label.localeCompare(b.label,'fr',{sensitivity:'base',numeric:true})||
+        a.id.localeCompare(b.id,'fr'));
+    }
+    const query=norm($('bibleThemesFilter').value);
+    const shown=query?state.bibleThemesSorted.filter(t=>norm(t.label).includes(query)):state.bibleThemesSorted;
+    $('bibleThemesCount').textContent=shown.length+' thème'+(shown.length>1?'s':'')+
+      (query?' trouvé'+(shown.length>1?'s':'')+' sur '+state.bibleThemesSorted.length:' indexés');
+    let letter='',html='',letters=[];
+    for(const theme of shown){
+      const group=bibleThemeLetter(theme.label);
+      if(group!==letter){
+        letter=group;letters.push(group);
+        html+='<h3 class="bible-themes-letter" id="bible-themes-letter-'+esc(group)+'">'+esc(group)+'</h3>';
+      }
+      html+='<button type="button" data-bible-theme-id="'+esc(theme.id)+'"><span><strong>'+
+        esc(theme.label)+'</strong><small>'+Number(theme.occurrenceCount||theme.occurrences?.length||0)+
+        ' psaumes indexés</small></span><span aria-hidden="true">›</span></button>';
+    }
+    $('bibleThemesDirectory').innerHTML=html||'<p class="empty">Aucun thème ne correspond à cette recherche.</p>';
+    $('bibleThemesLetters').hidden=Boolean(query);
+    $('bibleThemesLetters').innerHTML=query?'':letters.map(l=>
+      '<button type="button" data-bible-theme-letter="'+esc(l)+'" aria-label="Aller à la lettre '+esc(l)+'">'+
+      esc(l)+'</button>').join('');
+  }
+  function selectBibleTheme(theme){
+    if(!state.corpusReady)return;
+    state.bibleThemeDirectoryScroll=window.scrollY;
+    state.bibleThemeSelected=theme.id;
+    const items=thematicItems([theme],true).sort((a,b)=>
+      importanceRank(a.thematic?.importance)-importanceRank(b.thematic?.importance)||
+      (b.thematic?.score||0)-(a.thematic?.score||0)||
+      Number(a.record.number)-Number(b.record.number)||
+      a.record.id.localeCompare(b.record.id,'fr'));
+    $('bibleThemeSelected').textContent=theme.label;
+    $('bibleThemeResultCount').textContent=items.length+' psaume'+(items.length>1?'s':'')+' pour ce thème.';
+    const groups=new Map();
+    for(const item of items){
+      const rank=importanceLabel(item.thematic?.importance);
+      if(!groups.has(rank))groups.set(rank,[]);
+      groups.get(rank).push(item);
+    }
+    let html='';
+    for(const [rank,entries] of groups){
+      html+='<h4 class="bible-theme-group-heading">'+esc(rank)+' — '+entries.length+
+        ' psaume'+(entries.length>1?'s':'')+'</h4>';
+      for(const item of entries){
+        const r=item.record;
+        const book=r.book?.number?'Livre '+r.book.number+' · ':'';
+        html+='<button type="button" data-bible-theme-psalm="'+esc(r.id)+'"><span><strong>Psaume '+
+          esc(r.number)+' — '+esc(r.title||'Sans titre')+'</strong><small>'+
+          esc(book+archangelName(r.archangel))+'</small></span>'+
+          '<span class="bible-theme-psalm-rank">'+esc(rank)+' ›</span></button>';
+      }
+    }
+    $('bibleThemePsalmList').innerHTML=html||'<p class="empty">Aucun psaume indexé pour ce thème.</p>';
+    $('bibleThemesIndex').hidden=true;
+    $('bibleThemeResults').hidden=false;
+    setBibleThemesStatus('');
+    window.scrollTo({top:0,behavior:'instant'});
+    $('bibleThemeSelected').focus({preventScroll:true});
+  }
+  function closeBibleThemes(){
+    state.bibleThemeRequestId++;
+    $('bibleThemesLibrary').hidden=true;
+    $('bibleThemesToggle').setAttribute('aria-expanded','false');
+    document.body.classList.remove('view-bible-themes');
+  }
+  function openBibleThemes(){
+    showSearchView();
+    const id=++state.bibleThemeRequestId;
+    $('bibleThemesLibrary').hidden=false;
+    document.body.classList.add('view-bible-themes');
+    $('bibleThemesToggle').setAttribute('aria-expanded','true');
+    $('bibleThemesFilter').value='';
+    state.bibleThemeSelected=null;
+    $('bibleThemesIndex').hidden=false;
+    $('bibleThemeResults').hidden=true;
+    window.scrollTo({top:0,behavior:'instant'});
+    if(state.corpusReady){
+      renderBibleThemesAlphabetical();setBibleThemesStatus('');
+    }else{
+      $('bibleThemesDirectory').replaceChildren();
+      $('bibleThemesLetters').replaceChildren();
+      $('bibleThemesCount').textContent='';
+      setBibleThemesStatus('Chargement des thèmes de la Bible…');
+      void ensureCorpusReady().then(ok=>{
+        if(id!==state.bibleThemeRequestId||$('bibleThemesLibrary').hidden)return;
+        if(ok){renderBibleThemesAlphabetical();setBibleThemesStatus('');}
+        else setBibleThemesStatus('Impossible de charger les thèmes. Appuyez sur Retour puis réessayez.');
+      });
+    }
+  }
+  function backFromBibleThemes(){
+    if(!$('bibleThemeResults').hidden){
+      const id=state.bibleThemeSelected;
+      state.bibleThemeSelected=null;
+      $('bibleThemeResults').hidden=true;
+      $('bibleThemesIndex').hidden=false;
+      window.scrollTo({top:state.bibleThemeDirectoryScroll,behavior:'instant'});
+      const button=[...$('bibleThemesDirectory').querySelectorAll('[data-bible-theme-id]')]
+        .find(b=>b.dataset.bibleThemeId===id);
+      button?.focus({preventScroll:true});
+      return;
+    }
+    closeBibleThemes();
+    window.scrollTo({top:0,behavior:'instant'});
+    $('bibleThemesToggle').focus({preventScroll:true});
+  }
+  $('bibleThemesToggle').onclick=openBibleThemes;
+  $('bibleThemesBack').onclick=backFromBibleThemes;
+  $('bibleThemesFilter').oninput=()=>{if(state.corpusReady)renderBibleThemesAlphabetical();};
+  $('bibleThemesLetters').onclick=event=>{
+    const button=event.target.closest('[data-bible-theme-letter]');
+    if(!button)return;
+    const letter=button.dataset.bibleThemeLetter;
+    const heading=[...$('bibleThemesDirectory').querySelectorAll('.bible-themes-letter')]
+      .find(h=>h.textContent===letter);
+    heading?.scrollIntoView({behavior:'instant',block:'start'});
+  };
+  $('bibleThemesDirectory').onclick=event=>{
+    const button=event.target.closest('[data-bible-theme-id]');
+    if(!button)return;
+    const theme=state.themeById.get(button.dataset.bibleThemeId);
+    if(theme)selectBibleTheme(theme);
+  };
+  $('bibleThemePsalmList').onclick=event=>{
+    const button=event.target.closest('[data-bible-theme-psalm]');
+    if(button&&state.recordById.has(button.dataset.bibleThemePsalm))
+      open(button.dataset.bibleThemePsalm);
+  };
+
   function renderThemeDirectory(){ const needle=norm($('themeFilter').value); const visible=needle?state.themeDirectory.filter(t=>norm(t.label).includes(needle)||norm(t.id).includes(needle)):state.themeDirectory; $('indexCount').textContent=needle?`${visible.length} thème${visible.length>1?'s':''} sur ${state.themeDirectory.length}`:`${state.themeDirectory.length} thèmes indexés`; $('themeDirectory').innerHTML=visible.length?visible.map(t=>`<button class="theme-row" data-directory-theme="${esc(t.id)}"><span><strong>${esc(t.label)}</strong><small>${t.occurrenceCount} psaume${t.occurrenceCount>1?'s':''}</small></span><span aria-hidden="true">›</span></button>`).join(''):'<div class="empty">Aucun thème ne correspond à ce filtre.</div>'; $('themeDirectory').querySelectorAll('[data-directory-theme]').forEach(b=>b.onclick=()=>{const t=state.themeById.get(b.dataset.directoryTheme);if(t){closeIndex();navigateToTheme(t);}}); }
   function openIndex(){
     $('indexPanel').hidden=false;
