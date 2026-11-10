@@ -1,6 +1,8 @@
 name: Biblaw FAQ M2 - fluid navigation
 
 on:
+  push:
+    branches: [feat/faq-m2-fluid-navigation-20261110]
   pull_request:
     paths:
       - 'index.html'
@@ -39,4 +41,5 @@ jobs:
           python -m http.server 4173 --directory _site >/tmp/biblaw-faq-m2-http.log 2>&1 &
           SERVER_PID=$!
           trap 'kill "$SERVER_PID"' EXIT
+          node scripts/smoke_faq_independent_browser.mjs
           node scripts/smoke_faq_m2_navigation_browser.mjs
