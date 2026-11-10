@@ -35,8 +35,8 @@ function node(tag='div'){
     classList:{add(){},remove(){}}};
 }
 const ids=['faqStatus','faqList','faqIndex','faqAnswer','faqAnswerTitle','faqAnswerBody',
-  'faqBack','faqClose','faqPdf','faqPrint','faqLibrary','faqToggle','faqSearch',
-  'faqSearchStatus','faqTopicButtons','faqTopics','faqThemeBack','faqSelectedTheme'];
+  'faqClose','faqPdf','faqPrint','faqLibrary','faqToggle','faqSearch',
+  'faqSearchStatus','faqTopicButtons','faqTopics','faqSelectedTheme'];
 const elements=Object.fromEntries(ids.map(id=>[id,node()]));
 elements.faqLibrary.hidden=true;
 let downloads=0;
@@ -87,9 +87,9 @@ for(const topic of index.topics){
     }
     answers++;
     links+=citations.length;
-    elements.faqBack.onclick();
+    elements.faqClose.onclick();
   }
-  elements.faqThemeBack.onclick();
+  elements.faqClose.onclick();
 }
 assert.equal(answers,95);
 assert.equal(links,424,'Deduplicated answers did not preserve every citation');
@@ -101,7 +101,7 @@ assert.match(elements.faqAnswerTitle.textContent,/Avons-nous une mission particu
 assert.equal(elements.faqAnswerBody.children.filter(x=>x.className==='faq-psalm-link').length,7);
 elements.faqPdf.onclick();
 assert.equal(downloads,1);
-elements.faqBack.onclick();
+elements.faqClose.onclick();
 elements.faqSearch.value='Que peut nous apprendre la science sur la mort et l’au-delà ?';
 elements.faqSearch.oninput();
 assert.match(elements.faqSearchStatus.textContent,/Aucune réponse fondée/);
