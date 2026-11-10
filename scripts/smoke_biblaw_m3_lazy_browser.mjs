@@ -34,7 +34,7 @@ try {
       await page.locator('#searchButton').click();
       await page.waitForFunction(
         ()=>document.getElementById('corpusStats').textContent.includes('1158 psaumes'),
-        {timeout:60000}
+        null,{timeout:60000}
       );
       await page.locator('#results [data-open]').first().waitFor({timeout:15000});
       const elapsed=Date.now()-start;
@@ -84,7 +84,7 @@ try {
     await page.locator('#searchButton').click();
     await page.waitForFunction(
       ()=>document.getElementById('corpusStats').textContent.includes('1158 psaumes'),
-      {timeout:60000}
+      null,{timeout:60000}
     );
     await page.locator('#results [data-open]').first().waitFor({timeout:15000});
     assert.equal(attempts,2,'Search corpus retry did not work');
