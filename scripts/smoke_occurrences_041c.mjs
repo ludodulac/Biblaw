@@ -10,7 +10,9 @@ const errors=[];page.on('pageerror',e=>errors.push(String(e)));
 const report={runtimeGroups:runtime.g.length,runtimeAnchors:byForm.size,tests:{}};
 try{
  await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'networkidle'});
- await page.waitForFunction(()=>!document.getElementById('corpusStats').textContent.includes('Chargement'));
+ await page.locator('#query').fill('pain');
+ await page.waitForFunction(()=>document.getElementById('corpusStats').textContent.includes('1158 psaumes'),{timeout:60000});
+ await page.locator('#query').fill('');
  await page.locator('#modeExact').click();
  const ids=()=>page.locator('.result-card .result-summary-toggle[data-open]').evaluateAll(nodes=>nodes.map(n=>n.dataset.open));
  for(const term of terms){
