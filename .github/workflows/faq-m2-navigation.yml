@@ -1,8 +1,6 @@
 name: Biblaw FAQ M2 - fluid navigation
 
 on:
-  push:
-    branches: [feat/faq-m2-fluid-navigation-20261110]
   pull_request:
     paths:
       - 'index.html'
