@@ -6,7 +6,8 @@
   const state={questions:[],byId:new Map(),records:new Map(),openPsalm:null,current:null,
     lastLink:null,lastScroll:0,loading:null,routes:[],aliases:new Map(),
     themesMode:false,themeIndex:null,indexLoading:null,selectedTopic:null,
-    sourceCache:new Map(),answerLoading:new Map(),requestId:0};
+    sourceCache:new Map(),answerLoading:new Map(),requestId:0,
+    recordsReady:false,corpusLoading:null};
   const labelNumber=(n,verses)=>'Psaume '+n+', verset'+(verses.length>1?'s':'')+' '+verses.join(', ');
   function validReference(ref){
     const record=state.records.get(ref.recordId);
@@ -136,7 +137,9 @@
         throw Error('Références vérifiées indisponibles : '+id);
       article=linkedReferences(q,books.verifiedPsalms,source.citations);
     }
-    for(const ref of article.references)if(!validReference(ref))
+    // FAQ answers may be read before the search corpus arrives. Verify links as soon
+    // as the corpus is available, and always again before opening a cited Psalm.
+    if(state.recordsReady)for(const ref of article.references)if(!validReference(ref))
       throw Error('Référence de psaume non valide : '+id+' / '+ref.recordId);
     return article;
   }
@@ -220,19 +223,41 @@
       const button=document.createElement('button');
       button.type='button';button.className='faq-psalm-link';
       button.textContent=ref.label;
-      const valid=validReference(ref);
+      // Links remain operable while the independent FAQ is ready but the
+      // documentary corpus is still downloading. Actual records are checked
+      // only after the corpus has loaded, never guessed from a citation.
+      const valid=!state.recordsReady||validReference(ref);
       button.disabled=!valid;
       button.title=valid?'Lire '+labelNumber(ref.number,ref.verses):'Référence non disponible dans le corpus public';
       button.setAttribute('aria-label',button.title);
-      if(valid)button.onclick=()=>{
-        if(typeof state.openPsalm!=='function'){showStatus('Lecteur des psaumes indisponible.');return;}
-        state.lastLink=button;state.lastScroll=window.scrollY;
-        state.openPsalm(ref);
-      };
+      if(valid)button.onclick=()=>openReference(ref,button);
       container.append(button);
       cursor=at+ref.label.length;
     }
     appendFormattedText(container,answer.slice(cursor));
+  }
+  async function openReference(ref,button){
+    if(typeof state.openPsalm!=='function'){
+      showStatus('Lecteur des psaumes indisponible.');return;
+    }
+    const requestId=state.requestId,question=state.current;
+    state.lastLink=button;state.lastScroll=window.scrollY;
+    try{
+      if(!state.recordsReady){
+        showStatus('Chargement du corpus pour ouvrir ce psaume…');
+        if(!state.corpusLoading||!await state.corpusLoading)
+          throw Error('Le corpus documentaire est indisponible. Réessayez plus tard.');
+      }
+      // Ignore a delayed request when the visitor has left the answer.
+      if(requestId!==state.requestId||state.current!==question||$('faqLibrary').hidden)return;
+      if(!validReference(ref))throw Error('Référence de psaume non valide : '+ref.recordId);
+      state.openPsalm(ref);
+      showStatus('');
+    }catch(error){
+      if(requestId===state.requestId&&!$('faqLibrary').hidden)
+        showStatus(error.message||'Impossible d’ouvrir ce psaume.');
+      console.error(error);
+    }
   }
   function showAnswer(id){
     if(state.themesMode)return showLazyAnswer(id);
@@ -257,7 +282,9 @@
     window.scrollTo({top:0,behavior:'instant'});
   }
   async function init(records){
-    state.records=new Map((records||[]).map(r=>[r.id,r]));
+    // Keep the archived full-loader available to the existing integrity checks.
+    state.themesMode=false;
+    setRecords(records||[]);
     if(state.loading)return state.loading;
     state.loading=fetch('data/faq-public-085.json?v=099').then(async response=>{
       if(!response.ok)throw Error('Les questions ne sont pas disponibles.');
@@ -469,14 +496,20 @@
     }).catch(error=>{showStatus(error.message);console.error(error);return false;});
     return state.loading;
   }
+  function setRecords(records){
+    state.records=new Map(records.map(r=>[r.id,r]));
+    state.recordsReady=true;
+  }
   function prime(records){
-    state.records=new Map((records||[]).map(r=>[r.id,r]));
+    if(Array.isArray(records))setRecords(records);
     state.themesMode=true;
-    $('faqThemeBack').onclick=()=>{
+    const back=$('faqThemeBack');
+    if(back)back.onclick=()=>{
       state.selectedTopic=null;$('faqSearch').value='';renderIndex();
     };
     return true;
   }
+  function setCorpusLoading(promise){state.corpusLoading=Promise.resolve(promise);}
   function open(){
     $('faqLibrary').hidden=false;
     document.body.classList.add('view-faq');
@@ -518,7 +551,10 @@
   $('faqPdf').onclick=download;
   $('faqPrint').onclick=()=>window.print();
   globalThis.BiblawFAQ=Object.freeze({
-    init,prime,open,close,restoreAfterPsalm,
+    init,prime,setRecords,setCorpusLoading,open,close,restoreAfterPsalm,
     setOpenPsalm(callback){state.openPsalm=callback;}
   });
+  // Initialize thematic navigation immediately, independently of the 11 MB
+  // search catalog. Opening the FAQ requests only its 29 KB index.
+  prime();
 })();
