@@ -23,6 +23,7 @@ try{
   assert.ok((await page.locator('#faqAnswerTitle').innerText()).includes('souffrance'));
   assert.ok(faqRequests.length>1,'The answer was not fetched on demand');
   await page.locator('#faqAnswerBody .faq-psalm-link').first().click();
+  await page.locator('#recordDialog').waitFor({state:'visible',timeout:60000});
   assert.equal(await page.locator('#recordDialog').isVisible(),true);
   assert.ok(await page.locator('#dialogContent .faq-cited-verse').count()>0);
   await page.locator('#faqReturnFromPsalm').click();
