@@ -8,7 +8,7 @@ page.on('pageerror',e=>errors.push(e.message));
 page.on('request',r=>{if(/\/data\/faq-[\w-]+\.json/.test(r.url()))faqRequests.push(r.url());});
 try{
   await page.goto(base,{waitUntil:'networkidle'});
-  await page.waitForFunction(()=>!document.getElementById('corpusStats').textContent.includes('Chargement'),{timeout:45000});
+  // M3: FAQ navigation does not need to download the general corpus first.
   assert.equal(faqRequests.length,0,'FAQ content loaded on the site homepage');
   await page.locator('#faqToggle').click();
   await page.locator('#faqTopicButtons .faq-topic-button').first().waitFor();
