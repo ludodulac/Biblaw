@@ -254,7 +254,9 @@
       return true;
     } catch (error) {
       console.error(error);
-      $('results').innerHTML = '<div class="empty">Le corpus ne peut pas être chargé. Ouvrez Biblaw depuis son adresse web.</div>';
+      $('corpusStats').textContent='Corpus indisponible. Relancez une recherche pour réessayer.';
+      $('resultCount').textContent='';
+      $('results').innerHTML = '<div class="empty" role="status">Le corpus ne peut pas être chargé. Vérifiez votre connexion et réessayez.</div>';
       return false;
     }
   }
