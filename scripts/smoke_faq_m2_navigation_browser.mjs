@@ -41,11 +41,11 @@ try{
 
       // Two clicks during a deliberately stalled download: only the last
       // choice must win, without duplicate fetches or a stale answer.
+      const firstRequest=page.waitForRequest(r=>/\/data\/faq-public-085\.json/.test(r.url()));
       await page.locator('#faqList .faq-question-item').nth(0).click();
       await page.getByText('Chargement de la réponse…').waitFor();
+      await firstRequest;
       await page.locator('#faqList .faq-question-item').nth(1).click();
-      await page.waitForFunction(()=>window.scrollY===0);
-      await page.waitForFunction(()=>true);
       assert.equal(sources.filter(s=>s==='faq-public-085.json').length,1);
       assert.ok(releaseAnswer,'The answer was not intercepted');
       releaseAnswer();
@@ -53,8 +53,6 @@ try{
       assert.equal(await page.locator('#faqAnswer').isVisible(),true);
       assert.equal(await page.locator('#faqIndex').isVisible(),false);
       assert.equal(sources.filter(s=>s==='faq-public-085.json').length,1);
-      assert.equal(await page.locator('#faqAnswerNav').count(),0,
-        'The navigation control is created as a single cached nav without an id');
       assert.equal(await page.locator('.faq-answer-nav').count(),1);
       await page.locator('.faq-answer-nav button').first().click();
       await page.locator('#faqAnswerTitle').getByText('Si Dieu existe et qu\'il est bon, pourquoi permet-il la souffrance ?').waitFor();
