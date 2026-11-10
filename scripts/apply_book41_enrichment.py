@@ -108,7 +108,7 @@ def main():
     audit = {
         "scope": "book-41-psalms-270-295",
         "reviewedOn": "2026-11-10",
-        "source": "data/corpus/books/book-41/psalm-234.json through psalm-259.json",
+        "source": "data/corpus/books/book-41/psalm-270.json through psalm-295.json",
         "approach": "conservative-editorial-verse-evidence-in-extracted-json",
         "originalRelationCount": HISTORICAL,
         "addedRelationCount": ADDED,
