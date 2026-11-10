@@ -14,7 +14,27 @@
     "rule": "PDF-only. Index broad meaningful themes with verse evidence. Context may nuance ranking but may not manufacture a theme.",
     "semanticPass": "deep-content-grounded-complete",
     "deepPsalmCount": 26,
-    "contentGrounding": "complete"
+    "contentGrounding": "complete",
+    "interpretiveScope": "descriptive-indexing-non-exclusive",
+    "interpretivePolicy": "Relations éditoriales descriptives reliées aux versets extraits du PDF, sans relecture intégrale indépendante du document original. Les thèmes de la responsabilité parentale, de la transmission, de la souveraineté, de la paix, du discernement et de la parole sont présentés comme doctrine de la Bible essénienne. Les passages sur les influences invisibles, la mort, la souffrance et la guérison ne constituent ni faits scientifiques, ni diagnostics, ni conseils médicaux. L’indexation thématique reste descriptive et non exclusive.",
+    "themeCoverageAudits": [
+      {
+        "scope": "book-41-psalms-270-295",
+        "reviewedOn": "2026-11-10",
+        "source": "data/corpus/books/book-41/psalm-270.json through psalm-295.json",
+        "approach": "conservative-editorial-verse-evidence-in-extracted-json",
+        "originalRelationCount": 312,
+        "addedRelationCount": 182,
+        "verifiedVerseCount": 974,
+        "sourcePsalmsModified": false,
+        "sourceVerseNumberingNotes": [],
+        "documentaryCaveats": [
+          "Les versets sont contrôlés dans les JSON extraits du PDF, sans nouvelle relecture indépendante intégrale du document original.",
+          "Les affirmations sur influences invisibles, possession, souffrance, santé et guérison sont des positions doctrinales du texte et non des faits médicaux ou scientifiques établis.",
+          "Les numéros de versets canoniques sont préservés sans modification du corpus original."
+        ]
+      }
+    ]
   },
   "bookSynthesis": {
     "centralAxis": "La responsabilité d’un parent présente la transmission comme une responsabilité qui dépasse la seule protection matérielle et engage l’exemple, l’éducation, la conscience et la qualité des forces offertes à l’enfant. Dans le cadre doctrinal interne du corpus, le livre relie cette responsabilité à la maîtrise de soi, à la fidélité à la vie et à la capacité de préparer un environnement intérieur et extérieur favorable à l’éveil et à l’autonomie.",
@@ -197,6 +217,76 @@
             13
           ],
           "teaching": "Relation textuelle « Conscience » : v.13 : Il ne s’agit pas d’être fidèle envers Dieu uniquement lorsque cela arrange l’homme, lorsqu’il n’y a pas d’autre chemin, non, je parle du lien vivant et conscient avec Dieu et de l’usage de la…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "royaute-interieure",
+          "label": "Royauté intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Royauté intérieure » est éclairé ici par le verset 8 : « La souveraineté est un signe de royauté qui montre que l’homme est possesseur de son être, de son environnement et qu’en cela, il est digne d’être ce qu’il est, d’être à sa place et de faire entendre sa parole. »"
+        },
+        {
+          "themeId": "connaissance-de-soi",
+          "label": "Connaissance de soi",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Connaissance de soi » est éclairé ici par le verset 5 : « Ce que je veux vous dire, c’est que si vous ne vous connaissez pas dans votre être véritable, vous ne pouvez être souverains. »"
+        },
+        {
+          "themeId": "discernement-des-influences",
+          "label": "Discernement des influences",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement des influences » est éclairé ici par le verset 24 : « Si vous n’êtes pas capables de discerner entre des influences extérieures éphémères et ce qui est digne de Dieu, vous avez vraiment besoin d’aller à l’école et de vous éduquer. Faites-le sans tarder ; c’est une urgence, une priorité, une nécessité absolue. »"
+        },
+        {
+          "themeId": "stabilite-interieure",
+          "label": "Stabilité intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Stabilité intérieure » est éclairé ici par le verset 28 : « Il est important d’être fidèle à Dieu, d’être stable pour Lui, d’être un roi dans son propre royaume pour L’honorer librement et avec force, sans compromis et de ne pas être l’esclave d’influences usurpatrices. »"
+        },
+        {
+          "themeId": "fidelite-aux-engagements",
+          "label": "Fidélité aux engagements",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Fidélité aux engagements » est éclairé ici par le verset 14 : « C’est à travers la tentation que se manifeste la fidélité et qu’apparaît la souveraineté. »"
+        },
+        {
+          "themeId": "liberte-et-choix",
+          "label": "Liberté et choix",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Liberté et choix » est éclairé ici par le verset 15 : « L’homme est tenté parce qu’il est libre. Il reçoit des inspirations, il est visité par des révélations, des visions, des pensées, des influences qui l’incitent à se détourner du juste chemin tracé par Dieu et ses Anges. C’est à ce moment-là qu’il doit éveiller son être intérieur et agir dans sa souveraineté en manifestant sa propre décision. »"
+        },
+        {
+          "themeId": "maitrise-de-soi",
+          "label": "Maîtrise de soi",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Maîtrise de soi » est éclairé ici par le verset 6 : « Être souverains, ce n’est pas seulement vous connaître, c’est aussi vous manifester en conformité à ce que vous êtes en vous-mêmes et dans votre environnement. C’est une maîtrise et une liberté. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -363,6 +453,76 @@
             14
           ],
           "teaching": "Relation textuelle « Influences » : v.14 : Je ne dis pas que les hommes sont mauvais, je dis qu’ils sont sous l’influence de mondes dédiés à la mort. Ils sont des porteurs de graines, et donc de mondes, et dès qu’ils…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "impersonnalite",
+          "label": "Impersonnalité",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Impersonnalité » est éclairé ici par le verset 11 : « Ce qui est fondamental, c’est l’impersonnalité au service de l’œuvre. »"
+        },
+        {
+          "themeId": "service-impersonnel",
+          "label": "Service impersonnel",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Service impersonnel » est éclairé ici par le verset 10 : « Si vous voulez réellement réaliser une œuvre pour Dieu, la seule condition est la pure intention et le désintéressement que vous devez mettre dans l’activation des mondes. Si vous commencez à y greffer des intérêts personnels, soyez certains que l’œuvre sera détournée, qu’elle sera sans force, fade, vide et ne pourra pas nourrir une multitude. »"
+        },
+        {
+          "themeId": "semence-et-realisation",
+          "label": "Semence et réalisation",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Semence et réalisation » est éclairé ici par le verset 5 : « Pour qu’une œuvre divine touche la terre, il faut vous mobiliser, car c’est vous qui devez mettre la semence en terre et lui permettre de germer et de pousser en traversant avec succès toutes les épreuves de l’enfermement, de la compression, de la limitation. »"
+        },
+        {
+          "themeId": "conscience-dans-l-oeuvre",
+          "label": "Conscience dans l’œuvre",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            12
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Conscience dans l’œuvre » est éclairé ici par le verset 12 : « L’amour, la liberté, la conscience unis à l’impersonnalité font apparaître l’immortalité. »"
+        },
+        {
+          "themeId": "epreuve-comme-eveil",
+          "label": "Épreuve comme éveil",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Épreuve comme éveil » est éclairé ici par le verset 7 : « C’est à travers les épreuves que ce que vous êtes ressort et apparaît pour révéler votre destinée. »"
+        },
+        {
+          "themeId": "oeuvre-durable",
+          "label": "Œuvre durable",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            18
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Œuvre durable » est éclairé ici par le verset 18 : « Je dis que ce n’est pas ce que vous voyez qui compte, c’est ce qui vit à l’intérieur de l’œuvre et qui sera amené à grandir, à fleurir, à donner des fruits. »"
+        },
+        {
+          "themeId": "reel-contre-faux-semblant",
+          "label": "Réel contre faux-semblant",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Réel contre faux-semblant » est éclairé ici par le verset 15 : « Il y a des êtres qui se cachent derrière un beau visage avec de belles paroles et de nobles intentions, mais ils n’agissent que pour sauver leur vie insipide. Leur vraie motivation est que s’ils ne font pas quelque chose dans la croyance à un monde supérieur, ils sont perdus. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -589,6 +749,76 @@
             34
           ],
           "teaching": "Relation textuelle « Vision » : v.9 : Vous, les Esséniens, je voudrais que vous preniez conscience que vous êtes responsables d’une tradition, d’une nation, d’une terre, d’une religion et donc d’une naissance de Dieu. Ainsi, vous êtes des parents et votre… / v.10 : La plupart des parents qui démissionnent n’acceptent pas leurs défauts et rejettent la responsabilité de leur échec sur les autres, voire même sur leurs enfants. / v.15 : Du parent vers l’enfant se transmettent la sagesse des âges, la bonne façon de marcher sur la terre, d’écouter, de regarder, de parler, d’accomplir le geste juste, d’être dans l’attitude, la conscience, le comportement…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "responsabilite-envers-les-generations",
+          "label": "Responsabilité envers les générations",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            35
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité envers les générations » est éclairé ici par le verset 35 : « Le cercle des Sages au sein de la Nation Essénienne vous invite à devenir de bons parents sur la terre. Il faut à la fois prendre soin de vos enfants, de tous les enfants de la terre et de Dieu. Vous devez, par ce cercle, donner naissance à Dieu, faire apparaître Dieu. Ce sont votre tradition, votre fonction, votre destinée. »"
+        },
+        {
+          "themeId": "connaissance-de-soi",
+          "label": "Connaissance de soi",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Connaissance de soi » est éclairé ici par le verset 2 : « Devenir adulte signifie être parvenu à son plein potentiel, être une individualité libre, consciente, responsable. »"
+        },
+        {
+          "themeId": "prendre-soin",
+          "label": "Prendre soin",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            22
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Prendre soin » est éclairé ici par le verset 22 : « Un parent doit prendre soin de l’enfant autant que de lui-même, voire plus. »"
+        },
+        {
+          "themeId": "transmission-du-savoir-faire",
+          "label": "Transmission du savoir-faire",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Transmission du savoir-faire » est éclairé ici par le verset 15 : « Du parent vers l’enfant se transmettent la sagesse des âges, la bonne façon de marcher sur la terre, d’écouter, de regarder, de parler, d’accomplir le geste juste, d’être dans l’attitude, la conscience, le comportement justes. Ainsi, progressivement, la sagesse de l’un devient la lumière de l’autre, et le bonheur grandit sur la terre. »"
+        },
+        {
+          "themeId": "education-et-transmission",
+          "label": "Éducation et transmission",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Éducation et transmission » est éclairé ici par le verset 14 : « Les enfants doivent être dans l’éducation et c’est la responsabilité des parents de transmettre la bonne éducation. »"
+        },
+        {
+          "themeId": "responsabilite-creatrice",
+          "label": "Responsabilité créatrice",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité créatrice » est éclairé ici par le verset 4 : « L’homme peut être un parent en mettant un enfant au monde, ou alors une œuvre, dans les mondes spirituel et physique. »"
+        },
+        {
+          "themeId": "tradition-et-formation",
+          "label": "Tradition et formation",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Tradition et formation » est éclairé ici par le verset 7 : « Un parent doit être stable, éduqué, éveillé, conscient, fixé dans la sagesse permanente et cherchant à conduire son enfant vers une éducation qui puise ses fondements dans la tradition de la terre et de ses lois immuables. L’éducation ne doit jamais être orientée vers ce qui est volatil, éphémère, instinctif. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -789,6 +1019,76 @@
             28
           ],
           "teaching": "Relation textuelle « Responsabilité » : v.14 : Il est évident que celui qui veut devenir un parent responsable, entrer dans le cercle des Sages pour porter l’alliance avec un monde supérieur doit demander à Dieu à connaître et à vivre instantanément… / v.16 : Il n’y a pas de responsabilité et de maîtrise pour les ignorants et les inconscients. / v.18 : Les ignorants croient que par un simple désir intérieur, par la volonté ou le choix, la décision, ils vont maîtriser les mondes et leur destinée, mais c’est une illusion. La carapace qui a été…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "consequences-des-actes",
+          "label": "Conséquences des actes",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            12
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Conséquences des actes » est éclairé ici par le verset 12 : « Si vous viviez dans l’instant la conséquence de vos pensées, de vos paroles et de vos actes, alors, très rapidement, vous seriez dans la pensée, la parole et l’acte justes. Vous seriez réellement avec moi, à l’école du feu, et votre chemin serait clair, sans aucune obscurité. »"
+        },
+        {
+          "themeId": "coherence-pensee-parole-acte",
+          "label": "Cohérence pensée-parole-acte",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Cohérence pensée-parole-acte » est éclairé ici par le verset 6 : « Demandez à demeurer dans la vérité et à être redressés dès que vous sortez de la vision juste. Demandez à recevoir immédiatement la conséquence de vos pensées, de vos paroles et de vos actes de façon à ne pas pouvoir vous écarter du juste chemin. »"
+        },
+        {
+          "themeId": "responsabilite-de-sa-destinee",
+          "label": "Responsabilité de sa destinée",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité de sa destinée » est éclairé ici par le verset 5 : « Je dis que la seule prière que vous pouvez faire, c’est de demander qu’aucune erreur ne s’accumule dans votre vie de façon à diriger votre destinée. »"
+        },
+        {
+          "themeId": "maitrise-de-soi",
+          "label": "Maîtrise de soi",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Maîtrise de soi » est éclairé ici par le verset 8 : « Vivre avec sagesse et la maîtrise de ses actes est une bénédiction. Pour cela, l’homme doit demander à Dieu à être redressé dans l’instant, immédiatement, afin de ne pas pouvoir s’écarter de ce qui est juste dans la pensée, la parole et l’acte. Ainsi, il pourrait être dans la bonne éducation et surtout, il n’accumulerait pas de dettes qu’il lui faudra régler un jour. »"
+        },
+        {
+          "themeId": "pardon-et-reparation",
+          "label": "Pardon et réparation",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Pardon et réparation » est éclairé ici par le verset 9 : « Si l’homme n’est pas dans l’instantané, il accumule des problèmes, des mondes, jusqu’au jour où il sera dans l’obligation de tout vivre et de tout réparer, compenser, équilibrer. Il souffrira, car il ne saura pas d’où vient le problème ni pourquoi. Il y aura un décalage entre ce qu’il a accompli il y a longtemps et ce qu’il vit maintenant. L’ignorance se placera entre la cause et l’effet, et l’homme n’en tirera aucun bénéfice. »"
+        },
+        {
+          "themeId": "sagesse-vecue",
+          "label": "Sagesse vécue",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            27
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sagesse vécue » est éclairé ici par le verset 27 : « Sachant cela, vous serez sages, et les dirigeants de la Nation pourront conduire les êtres dans le bonheur, comme de vrais parents. »"
+        },
+        {
+          "themeId": "education-et-transmission",
+          "label": "Éducation et transmission",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Éducation et transmission » est éclairé ici par le verset 28 : « Un parent doit savoir cela afin de guider ses enfants d’une façon sage, sensée, responsable. Il peut enseigner ce qui doit être fait et ce qui ne le doit pas. Le problème, c’est que, bien souvent, les parents sont encore des enfants et ont encore beaucoup d’expériences à vivre avant de pouvoir devenir de véritables parents, capables de transmettre une bonne éducation. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -1001,6 +1301,76 @@
             33
           ],
           "teaching": "Relation textuelle « Terre » : v.7 : hommes vont dire : « Mais comment vivre sur la terre sans faire usage des sens physiques ? » Il n’est pas question d’atrophier les sens physiques, mais juste de ne pas les rendre… / v.16 : Oui, l’homme souffre sur la terre, cela est certain, mais la cause en est qu’il est ignorant, mal éduqué, ne marchant pas dans une tradition et une filiation claires… / v.33 : de véhicule inconscient à des mondes qui veulent ensemencer la terre et la vie.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "sens-subtils",
+          "label": "Sens subtils",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sens subtils » est éclairé ici par le verset 8 : « Les sens physiques doivent être un fondement pour éveiller les sens plus subtils de l’âme et de l’esprit jusqu’à atteindre l’idée, l’intelligence et la sagesse. »"
+        },
+        {
+          "themeId": "education-des-sens",
+          "label": "Éducation des sens",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            12
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Éducation des sens » est éclairé ici par le verset 12 : « Les sens qui ne font pas apparaître la lumière sage doivent être éduqués et restreints, conduits dans le jeûne conscient et la discipline. »"
+        },
+        {
+          "themeId": "discipline",
+          "label": "Discipline",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discipline » est éclairé ici par le verset 24 : « Vous devez apprendre à mettre les sens du corps physique dans le repos, le silence, le jeûne afin d’éveiller d’autres sens plus subtils qui feront apparaître la Lumière comme une réalité vivante, une expérience réelle. »"
+        },
+        {
+          "themeId": "concentration",
+          "label": "Concentration",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            13
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Concentration » est éclairé ici par le verset 13 : « La concentration doit être dans une permanence de ne pas chercher le regard approbateur et la vie dans le monde matériel tant que vous n’avez pas atteint l’éveil de la sagesse. »"
+        },
+        {
+          "themeId": "perception-subtile",
+          "label": "Perception subtile",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            30
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Perception subtile » est éclairé ici par le verset 30 : « Pour vivre avec la sagesse, il faut avoir éveillé les sens subtils, car les sens liés au corps physique voudront toujours accaparer la Lumière afin de la conduire dans le corps et de la justifier par le corps. Mais le corps est mortel et la Lumière est immortelle. »"
+        },
+        {
+          "themeId": "equilibre-des-mondes",
+          "label": "Équilibre des mondes",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Équilibre des mondes » est éclairé ici par le verset 5 : « Ne vibrer que sur une seule corde ne permet pas de faire vibrer toute la palette, toute la gamme et d’entrer dans l’harmonie d’ensemble qui fait apparaître la sagesse immuable. »"
+        },
+        {
+          "themeId": "sagesse-vecue",
+          "label": "Sagesse vécue",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sagesse vécue » est éclairé ici par le verset 14 : « La sagesse n’est pas le plus haut, elle est le fondement qui doit guider et organiser la vie de l’homme. C’est un seuil qui permet de donner un sens, une valeur, une grandeur, une orientation aux sens du corps physique, qui sont semblables à des enfants qui veulent tout regarder, tout goûter, tout vivre, s’émerveiller, sans aucun discernement, sans continence. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -1184,6 +1554,76 @@
             40
           ],
           "teaching": "Relation textuelle « Corps » : v.9 : jusque dans vos pieds, jusque dans votre vie quotidienne, un corps apparaîtra dans votre corps, qui sera en accord avec la parole et l’intelligence immortelle de Dieu. Vous deviendrez des Esséniens, des Esséniennes, des… / v.12 : de l’existence. Vous devez le comprendre et vous faire un corps avec l’esprit qui anime le psaume afin de vivre avec lui intellectuellement, sentimentalement, volontairement, jusque dans vos actes, vos mouvements, vos réalisations.… / v.40 : Lumière qui vient vers lui et de lui donner un corps et toutes les conditions pour aboutir. Si l’homme ne le fait pas, il n’y a pas le bon dosage et le monde divin…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "ecoute",
+          "label": "Écoute",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Écoute » est éclairé ici par le verset 7 : « Cultivez cet art de la prononciation et de l’écoute d’un psaume. »"
+        },
+        {
+          "themeId": "equilibre-des-forces",
+          "label": "Équilibre des forces",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Équilibre des forces » est éclairé ici par le verset 14 : « Si l’homme ne sait pas établir le bon dosage avec son environnement, il compromettra les échanges harmonieux et l’équilibre, l’ordre des choses. »"
+        },
+        {
+          "themeId": "part-du-travail",
+          "label": "Part du travail",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            26
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Part du travail » est éclairé ici par le verset 26 : « Tu ne peux pas demander à une personne qui sait faire une chose de tout faire, car elle finira par ne plus rien faire de bien ; elle perdra son énergie, elle sera submergée, écrasée jusqu’à devenir bonne à rien. Ce sont le gaspillage, la destruction, la faillite, le désordre. »"
+        },
+        {
+          "themeId": "transmission-du-savoir-faire",
+          "label": "Transmission du savoir-faire",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            30
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Transmission du savoir-faire » est éclairé ici par le verset 30 : « Vous devez jeûner, apprendre, transmettre, être les modèles pour que les êtres puissent s’approprier les gestes, l’intelligence, le savoir-faire, les conseils et que vous deveniez riches des multiples compétences qui s’incarnent dans les êtres pour construire un monde vivant la grandeur et l’expansion. »"
+        },
+        {
+          "themeId": "soutien-des-fonctions",
+          "label": "Soutien des fonctions",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Soutien des fonctions » est éclairé ici par le verset 28 : « Une société est un cercle de parents éveillés et de prendre soin. Dans un tel cercle, vous n’avez pas d’autre choix que de vous éduquer, de vous organiser et de répartir les tâches d’une façon juste et bonne. »"
+        },
+        {
+          "themeId": "sagesse-vecue",
+          "label": "Sagesse vécue",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sagesse vécue » est éclairé ici par le verset 19 : « Méditez cela, car c’est une clé, et comprenez que le psaume sur la vertu du dosage n’est pas une philosophie abstraite, mais une science, un art de vivre, un chemin qui libère les mondes. Dans ce psaume, il y a un enseignement qui peut devenir une pratique personnelle, mais aussi une nouvelle façon d’être et d’échanger avec l’environnement, qu’il soit humain, naturel ou spirituel. »"
+        },
+        {
+          "themeId": "organisation-collective",
+          "label": "Organisation collective",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Organisation collective » est éclairé ici par le verset 28 : « Une société est un cercle de parents éveillés et de prendre soin. Dans un tel cercle, vous n’avez pas d’autre choix que de vous éduquer, de vous organiser et de répartir les tâches d’une façon juste et bonne. »"
         }
       ],
       "notesUsed": [
@@ -1422,6 +1862,76 @@
             28
           ],
           "teaching": "Relation textuelle « Âme » : v.9 : des mondes supérieurs, ils sont affaiblis, à l’image de l’ âme qui, n’étant plus en contact avec le corps, pourrait s’éteindre à la conscience de la vie terrestre.… / v.11 : le lien avec Dieu et son intelligence. Ils sont l’ âme et la force de Lumière qui animent la statue du culte de l’immortalité. Le cercle des Sages doit être instruit de cette science… / v.14 : Chaque Essénien, chaque Essénienne doit être une antenne qui reçoit et émet l’âme du corps de Dieu à travers les psaumes pensés, ressentis et vécus de l’intérieur.. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "corps-de-la-sagesse",
+          "label": "Corps de la sagesse",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Corps de la sagesse » est éclairé ici par le verset 2 : « Donnez un corps à la sagesse afin qu’elle soit vivante au milieu de vous, présente, et qu’elle vous guide dans les choix de votre vie. »"
+        },
+        {
+          "themeId": "sagesse-comme-bien-commun",
+          "label": "Sagesse comme Bien commun",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            22
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sagesse comme Bien commun » est éclairé ici par le verset 22 : « Ce service de Dieu doit être pour le bien de tous, car la sagesse est bonne pour tous les êtres. »"
+        },
+        {
+          "themeId": "psaumes-de-la-ronde",
+          "label": "Psaumes de la Ronde des Archanges",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            13
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Psaumes de la Ronde des Archanges » est éclairé ici par le verset 13 : « La prononciation, la récitation des psaumes comme une offrande à Dieu est une activité qui doit devenir primordiale dans la Nation Essénienne. »"
+        },
+        {
+          "themeId": "conscience-dans-l-oeuvre",
+          "label": "Conscience dans l’œuvre",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            32
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Conscience dans l’œuvre » est éclairé ici par le verset 32 : « Les psaumes sont l’intelligence de Dieu manifestée et condensée qui veut maintenant devenir vivante dans l’intelligence, la compréhension vivante, le champ de vie du cœur aimant, la force de la volonté et de l’expérience intérieure profondément vécue. L’énergie ainsi engendrée par le Cercle doit se condenser dans la et les statues afin qu’un puissant champ de force et courant d’énergie se manifeste et agisse sur toute la terre et dans toutes les consciences. »"
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            27
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Soutien mutuel » est éclairé ici par le verset 27 : « Que ce collège soit constitué d’individualités libres qui s’unissent en communauté d’amour pour non seulement étudier, servir les psaumes de Dieu, mais pour en vivre la sagesse, s’en constituer un corps d’immortalité. »"
+        },
+        {
+          "themeId": "tradition-comme-courant-vivant",
+          "label": "Tradition comme courant vivant",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            34
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Tradition comme courant vivant » est éclairé ici par le verset 34 : « Dans l’ancienne tradition de la Lumière, ce cercle était appelé : les docteurs de la Loi. C’étaient les lecteurs, celles et ceux qui prononçaient et rendaient vivantes les paroles de Dieu afin d’en saturer l’atmosphère et de la rendre vivante et agissante. »"
+        },
+        {
+          "themeId": "oeuvre-collective",
+          "label": "Œuvre collective",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            49
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Œuvre collective » est éclairé ici par le verset 49 : « Que les amoureux de la sagesse se lèvent et s’unissent en un saint cercle de conscience et d’amour afin de prononcer les psaumes et de les interpréter en mettant toutes les couleurs, les saveurs, les beautés qui ne sont que dans la petite forme d’un psaume, mais qui, en réalité, peuvent faire apparaître toute une histoire. »"
         }
       ],
       "notesUsed": [
@@ -1629,6 +2139,76 @@
             44
           ],
           "teaching": "Relation textuelle « Intelligence » : v.1 : avoir accès à Dieu et aux mondes supérieurs de l’ intelligence et de l’amour, des vertus angéliques.… / v.2 : présent et qu’Il t’anime. C’est Lui la vie, l’âme, l’ intelligence. Se tenir dans l’alliance, c’est être avec Lui en conscience. Il est le lien, l’alliance qui est la mémoire du feu vivant et… / v.44 : pourront plus et la beauté de la vie, de l’i ntelligence divine omniprésente apparaîtra. Ce sera le règne des Anges. L’aile de l’Ange sera votre subtilité.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "organes-subtils",
+          "label": "Organes subtils",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Organes subtils » est éclairé ici par le verset 15 : « Pour voir et entendre, il faut des organes, et si tu ne perçois pas et n’entends pas l’omniprésence de Dieu, c’est juste que certains organes subtils ne sont pas développés en toi. C’est une question d’éducation et d’orientation. »"
+        },
+        {
+          "themeId": "perception-subtile",
+          "label": "Perception subtile",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            21
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Perception subtile » est éclairé ici par le verset 21 : « La pureté de l’œil, c’est de voir d’une façon juste et dans tous les mondes. Cela est pareil pour tous les autres organes des sens. »"
+        },
+        {
+          "themeId": "education-du-regard",
+          "label": "Éducation du regard",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            22
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Éducation du regard » est éclairé ici par le verset 22 : « L’impureté vient lorsque l’organe est faussé et que la vision n’est plus juste. Une telle vision doit être rectifiée, ni plus ni moins. »"
+        },
+        {
+          "themeId": "finesse-et-subtilite",
+          "label": "Finesse et subtilité",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            39
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Finesse et subtilité » est éclairé ici par le verset 39 : « Nourris-toi de subtilité pour développer les organes subtils en toi. »"
+        },
+        {
+          "themeId": "discernement-des-apparences",
+          "label": "Discernement des apparences",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            45
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement des apparences » est éclairé ici par le verset 45 : « Lorsque tu percevras ce qui, aujourd’hui, te demeure caché, tu te libèreras des apparences trompeuses et tu comprendras l’importance de la bénédiction de Dieu. »"
+        },
+        {
+          "themeId": "nature-des-associations",
+          "label": "Nature des associations",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Nature des associations » est éclairé ici par le verset 25 : « L’impureté mélange les mondes, crée les mauvaises associations qui engendrent la confusion, le trouble, la guerre. Ces mondes n’ont rien à voir avec la bénédiction de Dieu et son appel à l’éveil et à l’amour, qui est omniprésent. »"
+        },
+        {
+          "themeId": "lumiere-interieure",
+          "label": "Lumière intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Lumière intérieure » est éclairé ici par le verset 6 : « Par ton intériorité, tu as accès à Dieu ; cela est naturel, cela fait partie de l’ordre cosmique. Mais l’homme se fait des idées fausses, il élabore des concepts qui deviennent des organes de perception en lui qui faussent la vision et qui cultivent des croyances illusoires. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -1836,6 +2416,76 @@
             41
           ],
           "teaching": "Relation textuelle « Regard » : v.39 : Si tu ne regardes le monde qu’à travers la vision extérieure, tu ne pourras pas être un dévot de Dieu. / v.40 : que l’homme porte en lui et c’est pourquoi celui qui regarde le monde sans Dieu ne voit que sa propre imperfection. C’est un chemin de perdition, car le monde extérieur conduit inévitablement vers l’enfermement… / v.41 : L’homme qui regarde sans dévotion, sans enthousiasme, sans émerveillement devant le mystère omniprésent de Dieu et de sa religion finit par se vider de ses vertus…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "honnetete",
+          "label": "Honnêteté",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Honnêteté » est éclairé ici par le verset 25 : « Ne pas mentir est la règle fondamentale du feu. Pour cela, tu dois être dans la discipline du feu et de la Lumière. »"
+        },
+        {
+          "themeId": "discipline",
+          "label": "Discipline",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            35
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discipline » est éclairé ici par le verset 35 : « La deuxième condition est la dévotion ; ce sont une règle et une discipline fondamentales du feu. Lorsqu’elle est pure, vraie, puissante, elle est un organe qui permet d’ouvrir la porte vers l’Ange, l’Archange et le Dieu. »"
+        },
+        {
+          "themeId": "discernement",
+          "label": "Discernement",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            44
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement » est éclairé ici par le verset 44 : « Les ténèbres de la matière et la lumière de l’esprit doivent être chacune à sa place, dans un discernement parfait et dans l’équilibre. »"
+        },
+        {
+          "themeId": "responsabilite-de-la-parole",
+          "label": "Responsabilité de la parole",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            32
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité de la parole » est éclairé ici par le verset 32 : « Si tu parles, sois conscient de celui qui cherche à apparaître dans ta parole. »"
+        },
+        {
+          "themeId": "humilite",
+          "label": "Humilité",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            30
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Humilité » est éclairé ici par le verset 30 : « Il ne faut pas te mettre en avant pour ce qui n’a pas une valeur supérieure, car la discrétion et l’humilité sont des forces primordiales si tu veux faire l’expérience du feu. »"
+        },
+        {
+          "themeId": "paix",
+          "label": "Paix",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            45
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Paix » est éclairé ici par le verset 45 : « La clarté enfante la paix. »"
+        },
+        {
+          "themeId": "stabilite-interieure",
+          "label": "Stabilité intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            49
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Stabilité intérieure » est éclairé ici par le verset 49 : « Il est important d’être posé, d’être stable et de cultiver le calme. Ce sont des valeurs de la matière. Il est aussi fondamental d’être souple, tolérant, ouvert, sans peur et dans le juste discernement. Ce sont des valeurs de l’esprit. L’arbre connaît ce savoir et il te l’enseignera au nom de Dieu. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -2033,6 +2683,76 @@
             22
           ],
           "teaching": "Relation textuelle « Mort » : v.4 : vie. Ils sont « les vivants » dans un monde mort. Il y a en eux le pouvoir d’éveiller la vie, l’existence de Dieu. Dieu est « le Vivant ».… / v.22 : goûter un autre monde, un monde plus grand que la mort, un monde sage. Si tu ne le veux pas, c’est que tu es idiot et que tu as placé toute ta confiance dans…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "pratique-et-conscience",
+          "label": "Pratique et conscience",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            18
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Pratique et conscience » est éclairé ici par le verset 18 : « Pensez les psaumes, ressentez-les, vivez-les de l’intérieur et incarnez-les dans vos décisions et dans vos actes jusqu’à ce qu’ils deviennent vous. Alors, je vous assure que vous traverserez les mondes pour entrer dans un espace supérieur qui s’appelle la vie intérieure avec Dieu. Père Michaël, grandes sont les paroles de Dieu, puissants sont tes psaumes, universels, mais nous ne pouvons pas tous les incarner, car l’Enseignement est vaste. Alors, qu’adviendra-t-il de nous si nous n’avons pas accueilli et réalisé en nous tous les psaumes de Dieu ? »"
+        },
+        {
+          "themeId": "parole-vivante",
+          "label": "Parole vivante",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            12
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Parole vivante » est éclairé ici par le verset 12 : « La récitation, la prononciation, l’invocation des psaumes doivent être profondément pensées, ressenties et vécues de l’intérieur. C’est à la fois une offrande de Lumière et un chantier sacré. »"
+        },
+        {
+          "themeId": "digestion-avant-transmission",
+          "label": "Digestion avant transmission",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Digestion avant transmission » est éclairé ici par le verset 14 : « Mangez et digérez les psaumes afin de faire apparaître en vous l’autre corps qui, à l’image de la barque des anciens mystères, permet de traverser le fleuve et d’atteindre l’autre rive. »"
+        },
+        {
+          "themeId": "incarnation-de-la-pensee",
+          "label": "Incarnation de la pensée",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            18
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Incarnation de la pensée » est éclairé ici par le verset 18 : « Pensez les psaumes, ressentez-les, vivez-les de l’intérieur et incarnez-les dans vos décisions et dans vos actes jusqu’à ce qu’ils deviennent vous. Alors, je vous assure que vous traverserez les mondes pour entrer dans un espace supérieur qui s’appelle la vie intérieure avec Dieu. Père Michaël, grandes sont les paroles de Dieu, puissants sont tes psaumes, universels, mais nous ne pouvons pas tous les incarner, car l’Enseignement est vaste. Alors, qu’adviendra-t-il de nous si nous n’avons pas accueilli et réalisé en nous tous les psaumes de Dieu ? »"
+        },
+        {
+          "themeId": "nouveau-depart",
+          "label": "Nouveau départ",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Nouveau départ » est éclairé ici par le verset 10 : « Un cycle s’arrête dans votre monde et c’est pourquoi une renaissance doit avoir lieu. Lorsqu’un monde s’éteint, un autre doit naître. »"
+        },
+        {
+          "themeId": "transmission",
+          "label": "Transmission",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Transmission » est éclairé ici par le verset 9 : « Je vous dis cela pour que vous puissiez vous éveiller individuellement et collectivement, car les psaumes ne vous ont pas été transmis juste pour vous enseigner superficiellement, mais pour éveiller votre âme et faire apparaître un corps de sagesse immortelle. »"
+        },
+        {
+          "themeId": "fidelite-aux-engagements",
+          "label": "Fidélité aux engagements",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Fidélité aux engagements » est éclairé ici par le verset 8 : « Prenez soin des psaumes et, sans aucune hésitation, mettez-les en action dans votre vie. Ils sont la parole de Dieu, son corps, sa bénédiction, sa présence et sa force. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -2202,6 +2922,76 @@
             24
           ],
           "teaching": "Relation textuelle « Eau » : v.24 : Ceux qui normalisent le monde, qui le réduisent, qui le gouvernent par l’oppression des minorités, ceux-là sont les esclavagistes qui luttent contre Dieu et conduisent tout vers la pauvreté à tous les niveaux.. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "diversite-et-unite",
+          "label": "Diversité et unité",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Diversité et unité » est éclairé ici par le verset 1 : « Ce qui fait la richesse de la terre et de l’humanité, ce sont l’unité et la diversité. »"
+        },
+        {
+          "themeId": "respect-des-regnes",
+          "label": "Respect des règnes",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            27
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Respect des règnes » est éclairé ici par le verset 27 : « Tous les règnes sont dignes de respect et doivent être valorisés. »"
+        },
+        {
+          "themeId": "harmonie-dans-la-diversite",
+          "label": "Harmonie dans la diversité",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Harmonie dans la diversité » est éclairé ici par le verset 11 : « La reconnaissance des différences permet de vivre ensemble dans l’harmonie, le partage et l’unité. »"
+        },
+        {
+          "themeId": "bien-commun-des-regnes",
+          "label": "Bien commun des règnes",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Bien commun des règnes » est éclairé ici par le verset 2 : « Chaque être, chaque forme d’existence dans l’unité possède sa qualité propre et peut apporter, partager sa vertu pour le bien de l’ensemble. »"
+        },
+        {
+          "themeId": "dignite",
+          "label": "Dignité",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Dignité » est éclairé ici par le verset 15 : « Chaque être est le bienvenu, chaque être est noble, chaque être est habité par Dieu et porte en lui l’unité de Dieu. Chaque être est digne et respectable. »"
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Soutien mutuel » est éclairé ici par le verset 11 : « La reconnaissance des différences permet de vivre ensemble dans l’harmonie, le partage et l’unité. »"
+        },
+        {
+          "themeId": "justice",
+          "label": "Justice",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Justice » est éclairé ici par le verset 24 : « Ceux qui normalisent le monde, qui le réduisent, qui le gouvernent par l’oppression des minorités, ceux-là sont les esclavagistes qui luttent contre Dieu et conduisent tout vers la pauvreté à tous les niveaux. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -2393,6 +3183,76 @@
             21
           ],
           "teaching": "Relation textuelle « Enfant » : v.2 : Si vous voulez être mes enfants et accomplir la volonté de Dieu, alors : plus de guerre. C’est mon souhait, mon influence, ma bénédiction, mon règne. / v.18 : Les êtres vivant ainsi sont des enfants qui doivent être protégés par de bons parents, bien éduqués et bien formés. / v.21 : est et ce qu’il a à faire. Il est un enfant qui a besoin de protection et d’éducation. Il n’est pas prêt à s’approcher des mystères de l’esprit, car seuls les parents, les êtres…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "paix",
+          "label": "Paix",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Paix » est éclairé ici par le verset 2 : « Si vous voulez être mes enfants et accomplir la volonté de Dieu, alors : plus de guerre. C’est mon souhait, mon influence, ma bénédiction, mon règne. »"
+        },
+        {
+          "themeId": "maitrise-de-la-vie-interieure",
+          "label": "Maîtrise de la vie intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Maîtrise de la vie intérieure » est éclairé ici par le verset 24 : « Peu importe la forme extérieure, l’apparence, les conditions, les circonstances, l’environnement, car la force est essentiellement dans la maîtrise de la vie intérieure et dans l’art du choix de se laisser influencer ou non par la Lumière ou par les ténèbres dans ses pensées, ses sentiments, sa volonté. »"
+        },
+        {
+          "themeId": "discernement-des-influences",
+          "label": "Discernement des influences",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement des influences » est éclairé ici par le verset 6 : « Peu importe les circonstances, par quel évènement les portes s’ouvrent, ce qui est le plus capital, c’est comment l’homme gère cette invasion, cette tentative du monde de l’homme d’apporter le règne de l’intelligence sombre, qui conduit tous les êtres dans la dégradation, l’esclavage et le royaume de la colère. »"
+        },
+        {
+          "themeId": "protection-interieure",
+          "label": "Protection intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            12
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Protection intérieure » est éclairé ici par le verset 12 : « Ne sois pas en combat intérieur avec les mondes qui viennent te visiter, mais demande-leur de rester à leur juste place et ne cultive aucun désaccord entre ta vie intérieure et ta vie extérieure. »"
+        },
+        {
+          "themeId": "coherence-pensee-parole-acte",
+          "label": "Cohérence pensée-parole-acte",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            13
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Cohérence pensée-parole-acte » est éclairé ici par le verset 13 : « Le feu en toi, feu des pensées, du cœur et de la volonté, doit être clair, harmonieux, serein, fort et prêt à l’ouvrage, à l’action. »"
+        },
+        {
+          "themeId": "dignite",
+          "label": "Dignité",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Dignité » est éclairé ici par le verset 28 : « Défendre la dignité de l’homme, c’est être digne, droit et porter dans sa vie les grandes vertus des Anges et de la religion universelle de Dieu. Soyez cela et portez sur la terre le drapeau de la Nation Essénienne, qui est le corps de Dieu en incarnation. »"
+        },
+        {
+          "themeId": "force-interieure",
+          "label": "Force intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            22
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Force intérieure » est éclairé ici par le verset 22 : « Je parle de la force de l’intelligence qui vient du contrôle de la vie intérieure comme de la vie extérieure. »"
         }
       ],
       "notesUsed": [
@@ -2589,6 +3449,76 @@
             28
           ],
           "teaching": "Relation textuelle « Feu » : v.1 : J’offre ma bénédiction de feu et de Lumière à tous les Esséniens et à tous les Enfants de la Lumière qui cherchent la vérité, qui honorent le grand… / v.22 : peuples, il existerait des porteurs de psaumes des Archanges du feu, de l’air, de l’eau et de la terre de Lumière.… / v.28 : La sagesse doit être votre feu de vie, votre air, votre eau et votre terre de Lumière.. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "nouveau-cycle",
+          "label": "Nouveau cycle",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Nouveau cycle » est éclairé ici par le verset 5 : « Soyez conscients qu’il ne vous reste qu’une année pour laisser derrière vous ce qui ne doit pas entrer dans ce nouveau cycle de vie qui durera 7 années. »"
+        },
+        {
+          "themeId": "preparation",
+          "label": "Préparation",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Préparation » est éclairé ici par le verset 4 : « Se préparer pour le jubilé de Dieu est une preuve d’intelligence et de respect de Dieu. »"
+        },
+        {
+          "themeId": "purification",
+          "label": "Purification",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Purification » est éclairé ici par le verset 6 : « Préparez-vous, faites un travail sur vous. Nettoyez-vous. Entrez dans la maîtrise et dans la purification. »"
+        },
+        {
+          "themeId": "discernement-des-associations",
+          "label": "Discernement des associations",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement des associations » est éclairé ici par le verset 8 : « Libérez-vous des mauvaises alliances et associations, guérissez-les de façon à être les plus légers possible. »"
+        },
+        {
+          "themeId": "transmission-aux-generations",
+          "label": "Transmission aux générations",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            23
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Transmission aux générations » est éclairé ici par le verset 23 : « Que je vous dise cela est une bénédiction pour vous et les générations qui naîtront de nous, de notre alliance, de notre mariage, de notre union. Voyez cela comme une bénédiction et décidez-vous à entrer dans le courant qui réalise et transforme le monde. »"
+        },
+        {
+          "themeId": "sagesse-vecue",
+          "label": "Sagesse vécue",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sagesse vécue » est éclairé ici par le verset 14 : « Vous devez rendre vivant ce que vous avez reçu, l’enraciner de façon à ce qu’une nouvelle lumière de sagesse, une nouvelle intelligence collective entrent dans le monde, engendrant une nouvelle façon d’être au monde, un autre futur et un corps de lumière angélique. »"
+        },
+        {
+          "themeId": "conscience-dans-l-oeuvre",
+          "label": "Conscience dans l’œuvre",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            22
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Conscience dans l’œuvre » est éclairé ici par le verset 22 : « Que chaque psaume soit réellement incarné à travers des corps, qu’il soit rendu conscient dans l’intelligible pur comme dans le sensible par un prêtre, une prêtresse dédiés, cela serait une perfection. Ainsi, sur toute la terre, dans tous les pays, les peuples, il existerait des porteurs de psaumes des Archanges du feu, de l’air, de l’eau et de la terre de Lumière. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -2811,6 +3741,76 @@
             18
           ],
           "teaching": "Relation textuelle « Anges » : v.2 : corps existe aussi dans les mondes des Dieux, des Arch anges, des Anges, des animaux, des végétaux, des minéraux et de la Mère.… / v.7 : Dans la tête, il y a l’intelligence, qui correspond à l’Initiation et au dialogue avec le saint Ange de Dieu. / v.18 : Développez l’unité et honorez les vertus des Anges de la Lumière.. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "corps-collectif",
+          "label": "Corps collectif",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Corps collectif » est éclairé ici par le verset 4 : « Chaque organe, chaque fonction doit être stable et aussi être en harmonie avec tous les autres organes et fonctions. Le cœur doit accomplir son œuvre sans rien faire d’autre, il ne doit pas remplacer les poumons ou la digestion. »"
+        },
+        {
+          "themeId": "soutien-des-fonctions",
+          "label": "Soutien des fonctions",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            17
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Soutien des fonctions » est éclairé ici par le verset 17 : « Dans ce corps de la Nation Essénienne, il n’y a pas de fonction supérieure à une autre, car chacune est essentielle au bon fonctionnement de l’ensemble. Alors, ne divisez pas, ne compartimentez pas et ne permettez pas la querelle, le conflit, la confusion. »"
+        },
+        {
+          "themeId": "organisation-collective",
+          "label": "Organisation collective",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            20
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Organisation collective » est éclairé ici par le verset 20 : « Chaque organe doit être utile à l’ensemble et œuvrer dans sa fonction pour l’ensemble en faisant tout converger vers l’unique idée de faire apparaître le corps de Dieu sur la terre dans une intelligence globale, une activité saine, une bonne économie des énergies et des forces à l’œuvre afin que l’aboutissement soit concret, évident, simple et parfaitement organisé. Père Michaël, comment définir les fonctionnalités de chacun et surtout les organes fondamentaux dans ce corps de la Nation Essénienne ? »"
+        },
+        {
+          "themeId": "responsabilite-de-sa-part",
+          "label": "Responsabilité de sa part",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité de sa part » est éclairé ici par le verset 24 : « Je vous demande d’être clairs, concentrés et précis dans ce que vous faites pour le corps de la Nation Essénienne. Si vous vous engagez dans ce corps, c’est pour servir Dieu et rien d’autre. »"
+        },
+        {
+          "themeId": "harmonie-avant-l-oeuvre",
+          "label": "Harmonie avant l’œuvre",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            12
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Harmonie avant l’œuvre » est éclairé ici par le verset 12 : « Ce corps vit et respire dans plusieurs mondes et il est nécessaire qu’il se développe d’une façon juste et harmonieuse dans votre monde. Pour cela, vous devez le servir comme peuvent le faire des parents aimants et attentionnés. Il faut nourrir ce corps, prendre soin de lui et lui donner toutes les conditions pour qu’il puisse prendre sa juste place dans le monde de l’homme et y accomplir sa mission avec force et sagesse. »"
+        },
+        {
+          "themeId": "achevement-et-maitrise",
+          "label": "Achèvement et maîtrise",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            30
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Achèvement et maîtrise » est éclairé ici par le verset 30 : « Apprenez à vous concentrer et à faire les choses bien, à les mener jusqu’au bout. Apprenez à finir ce que vous commencez. »"
+        },
+        {
+          "themeId": "bien-commun",
+          "label": "Bien commun",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Bien commun » est éclairé ici par le verset 28 : « Chacun doit se tenir à sa place et accomplir l’œuvre qui est la sienne à la perfection, pour le bien de l’ensemble. Si ce n’est pas le cas, votre corps ou le corps de la Nation Essénienne s’affaiblira, ce qui engendrera une rupture de la circulation de l’énergie et des maladies. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3025,6 +4025,76 @@
             51
           ],
           "teaching": "Relation textuelle « Vie » : v.9 : rien derrière tout cela. Ainsi, ils fécondent et entretiennent leur vie dans le néant, dans l’apparence.… / v.25 : la méthode juste pour savoir si c’est le prolongement d’une vie intérieure ou simplement une compréhension du moment, née de notre être superficiel engendré par le monde des hommes ?… / v.38 : L’homme doit avoir une vie intérieure reliée à Dieu, à l’immortalité et il doit l’exprimer tel que cela est. Que cela plaise ou non ne doit pas être…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "parole-creatrice",
+          "label": "Parole créatrice",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Parole créatrice » est éclairé ici par le verset 1 : « La parole n’est pas uniquement un organe qui sert à communiquer comme vous le concevez. Elle est un être vivant qui féconde les mondes, qui emplit d’âme, d’esprit les espaces et qui définit la puissance et la véracité d’un être. »"
+        },
+        {
+          "themeId": "responsabilite-de-la-parole",
+          "label": "Responsabilité de la parole",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            33
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité de la parole » est éclairé ici par le verset 33 : « En chaque parole, il y a une âme, une intelligence, une destinée, un esprit bon ou mauvais. Parler, c’est non seulement s’associer avec cet esprit, mais c’est aussi le mettre au monde, lui donner un corps et lui ouvrir une destinée. »"
+        },
+        {
+          "themeId": "coherence-pensee-parole-acte",
+          "label": "Cohérence pensée-parole-acte",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Cohérence pensée-parole-acte » est éclairé ici par le verset 11 : « Il n’y a pas l’homme et sa parole, mais il y a une unité. Vous êtes ce que vous dites et ce que vous faites. »"
+        },
+        {
+          "themeId": "parole-vivante",
+          "label": "Parole vivante",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            20
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Parole vivante » est éclairé ici par le verset 20 : « Le psaume vient de Dieu à travers les Archanges. Il doit être pensé, ressenti, vécu de l’intérieur et prononcé comme une force créatrice consciente pour faire apparaître Dieu dans la statue des mystères sacrés. »"
+        },
+        {
+          "themeId": "discernement-de-la-parole",
+          "label": "Discernement de la parole",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            31
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement de la parole » est éclairé ici par le verset 31 : « Vous devez être dans la mesure, dans l’économie, dans l’équilibre et la sagesse. Vous devez savoir quand parler et quand vous taire. »"
+        },
+        {
+          "themeId": "honnetete",
+          "label": "Honnêteté",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            39
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Honnêteté » est éclairé ici par le verset 39 : « La vérité exprime toujours ce que l’être est réellement. »"
+        },
+        {
+          "themeId": "education-de-la-parole",
+          "label": "Éducation de la parole",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Éducation de la parole » est éclairé ici par le verset 4 : « Vous devez vous éduquer par la prononciation et la récitation des psaumes. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3243,6 +4313,76 @@
             21
           ],
           "teaching": "Relation textuelle « Mort » : v.12 : chemin qui vous ouvrira les portails de la lumière im mortelle dans tous les mondes. Tous les mondes verront que votre être, votre parole ont une valeur, un sens bien plus grands et honorables… / v.13 : L’intelligence, la parole et la conduite de l’homme véritable sont bien plus grandes que la mort. / v.17 : Si dans votre vie mortelle vous n’avez pas cette bénédiction d’être parent, alors, par la force, par l’unité de la sainte assemblée essénienne, ensemble, vous pouvez, chacun à…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "prendre-soin-de-la-vie",
+          "label": "Prendre soin de la vie",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Prendre soin de la vie » est éclairé ici par le verset 4 : « Le parent prend soin de l’autre et donne sa vie pour le bien. »"
+        },
+        {
+          "themeId": "transmission-aux-generations",
+          "label": "Transmission aux générations",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            8
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Transmission aux générations » est éclairé ici par le verset 8 : « Un parent transmet ce qu’il est dans sa vie quotidienne à la terre et aux générations futures. Sa pensée, sa parole et ses actes sont une fécondation active dans la vie des êtres qui sont sous sa responsabilité et c’est pourquoi, en créant le cercle des Sages, vous devez être conscients et étudier le rôle d’être un parent. »"
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            26
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Soutien mutuel » est éclairé ici par le verset 26 : « Le soutien mutuel doit être vivant et bien organisé afin qu’aucun être qui aide la Nation Essénienne ne soit abandonné. »"
+        },
+        {
+          "themeId": "sagesse-vecue",
+          "label": "Sagesse vécue",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            30
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sagesse vécue » est éclairé ici par le verset 30 : « L’homme doit entrer dans la vieillesse par la sagesse, la respectabilité, l’honneur, la beauté morale, la dignité, la contribution au Bien commun et l’immortalité. Il doit être un parent, un grand-parent, porteur de paroles de sagesse qui libèrent de l’obscurité, qui guérissent et ouvrent un chemin à Dieu dans la vérité et la pureté. Prenez conscience que c’est une opportunité que vous devez saisir pour la réaliser. Devenez des parents, car il n’y a rien de plus important dans votre vie. »"
+        },
+        {
+          "themeId": "responsabilite-envers-les-generations",
+          "label": "Responsabilité envers les générations",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            31
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité envers les générations » est éclairé ici par le verset 31 : « La mission de l’homme sur la terre, c’est de faire apparaître un monde qui sera porté par une lignée. Faites-le consciemment afin de choisir celle qui correspond à la vision qui vous semble la plus juste et la plus belle. »"
+        },
+        {
+          "themeId": "fidelite-aux-engagements",
+          "label": "Fidélité aux engagements",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            10
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Fidélité aux engagements » est éclairé ici par le verset 10 : « Être parent est un honneur, mais c’est aussi un engagement et une responsabilité. Entrer dans le cercle des Sages, c’est prendre cet engagement pour le corps de la Nation Essénienne. Il faudra porter ce corps et lui donner les éléments nécessaires pour son développement sain et harmonieux. »"
+        },
+        {
+          "themeId": "bien-commun",
+          "label": "Bien commun",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            30
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Bien commun » est éclairé ici par le verset 30 : « L’homme doit entrer dans la vieillesse par la sagesse, la respectabilité, l’honneur, la beauté morale, la dignité, la contribution au Bien commun et l’immortalité. Il doit être un parent, un grand-parent, porteur de paroles de sagesse qui libèrent de l’obscurité, qui guérissent et ouvrent un chemin à Dieu dans la vérité et la pureté. Prenez conscience que c’est une opportunité que vous devez saisir pour la réaliser. Devenez des parents, car il n’y a rien de plus important dans votre vie. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3452,6 +4592,76 @@
             28
           ],
           "teaching": "Relation textuelle « Volonté » : v.3 : Si tu veux vivre avec la Lumière, tu dois respecter son chemin, ses exigences, ses lois, sa volonté. / v.13 : Dieu sans respecter sa maison, sa loi, ses règles, sa volonté, son Nom. Ils se complaisent dans leurs imperfections, se justifient de leurs faiblesses en proclamant que le monde n’est pas facile, mais ils… / v.20 : ta vie, de contrôler tes pensées, tes sentiments et ta volonté. Ceci n’est pas une condamnation de ma part, mais je tiens à te montrer la réalité des mondes.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "respect",
+          "label": "Respect",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Respect » est éclairé ici par le verset 3 : « Si tu veux vivre avec la Lumière, tu dois respecter son chemin, ses exigences, ses lois, sa volonté. »"
+        },
+        {
+          "themeId": "liberte-et-choix",
+          "label": "Liberté et choix",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Liberté et choix » est éclairé ici par le verset 1 : « Il est important que tu saches et que tu décides, en conscience, de ce que tu veux faire de ta vie. Est-ce que tu veux vivre avec ton âme immortelle ? Est-ce que tu veux servir la lumière de l’intelligence supérieure de Dieu ou est-ce que tu veux connaître la gloire et la réussite du monde des hommes et du corps mortel ? »"
+        },
+        {
+          "themeId": "responsabilite-de-sa-destinee",
+          "label": "Responsabilité de sa destinée",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité de sa destinée » est éclairé ici par le verset 2 : « Il ne s’agit pas de dire : « Je veux ceci ou cela », mais de faire ce qui est nécessaire pour vivre conformément à ton choix. »"
+        },
+        {
+          "themeId": "discernement",
+          "label": "Discernement",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            30
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement » est éclairé ici par le verset 30 : « Dieu est tout ce qui est juste, bon et vrai. Sans Lui, c’est le mensonge du rien, l’apparence, l’usurpation, la lumière trompeuse et, finalement, l’esclavage des ténèbres gouvernantes. »"
+        },
+        {
+          "themeId": "fidelite",
+          "label": "Fidélité",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Fidélité » est éclairé ici par le verset 3 : « Si tu veux vivre avec la Lumière, tu dois respecter son chemin, ses exigences, ses lois, sa volonté. »"
+        },
+        {
+          "themeId": "education",
+          "label": "Éducation",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            29
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Éducation » est éclairé ici par le verset 29 : « Ne t’approche pas de Dieu comme un inconscient, un ignorant et un mal élevé. Approche-toi doucement, avec respect et dévotion ; éduque-toi, entre dans l’apprentissage, l’éveil, l’observation, le travail sur toi afin d’apprendre à respirer avec le champ de vie de la Ronde des Archanges, du culte de la statue de la Lumière, afin d’accueillir la sagesse des psaumes et de devenir de plus en plus capable de vivre en clarté, en harmonie et en pureté dans la maison de ton Père. Ainsi, petit à petit, tu connaîtras la véritable relation et l’art de vivre avec Dieu. Il n’y a pas d’autre façon de vivre pour l’homme honnête. »"
+        },
+        {
+          "themeId": "maitrise-pensee-parole",
+          "label": "Maîtrise de la pensée et de la parole",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Maîtrise de la pensée et de la parole » est éclairé ici par le verset 24 : « Dès maintenant, vous pouvez vous organiser pour changer les pensées négatives, les contrôler, les dévier et les orienter dans une autre direction. Vous le pouvez avec l’aide de la Nation Essénienne. Vous le pouvez, mais la passivité montre la faiblesse de l’homme qui se laisse envahir par un monde sombre et qui, finalement, se donne à lui, devient son serviteur, adopte ses commandements, accomplit ses actes et devient un être exécrable. Père Michaël, comment pouvons-nous faire quand un monde tellement bien organisé, riche de plusieurs milliards de fidèles nous envahit et que nous ne sommes plus en mesure de contrôler ces forces et influences ? »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3640,6 +4850,76 @@
             13
           ],
           "teaching": "Relation textuelle « Acte » : v.7 : nécessitent de la dureté, de la vaillance et des a ctes qui demeurent étrangers à la douce respiration du cœur. Les nécessités de la vie matérielle ne doivent pas étouffer les valeurs et la… / v.13 : : les pensées, les paroles, les aspirations et les act es. La vérité, l’honnêteté, l’affection sont le fondement.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "sanctuaire-du-coeur",
+          "label": "Sanctuaire du cœur",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sanctuaire du cœur » est éclairé ici par le verset 19 : « Cultive en toi ce centre d’énergie, protège-le, prends-en soin. Il est le sanctuaire intérieur dans lequel la statue de Dieu va apparaître pour te montrer qui tu es au-delà de la mort. Père Michaël, comment faire, à notre époque, pour laisser son cœur s’exprimer sans qu’il soit abîmé par toutes les agressions extérieures ? »"
+        },
+        {
+          "themeId": "protection-interieure",
+          "label": "Protection intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Protection intérieure » est éclairé ici par le verset 7 : « Le cœur doit être protégé et rien ne doit pouvoir lui faire du mal, le blesser. Il doit être préservé du sombre et des intérêts de la vie uniquement matérielle qui, parfois, nécessitent de la dureté, de la vaillance et des actes qui demeurent étrangers à la douce respiration du cœur. Les nécessités de la vie matérielle ne doivent pas étouffer les valeurs et la dimension du cœur. »"
+        },
+        {
+          "themeId": "vertus-des-anges",
+          "label": "Vertus des Anges",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            13
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Vertus des Anges » est éclairé ici par le verset 13 : « Les Anges sont un monde du cœur, des nobles vertus, des bienfaits. Dans leur monde, tout est profond, tout a du sens et les vertus du cœur sont exaltées et omniprésentes. La respiration est dans le bonheur, la douceur, la communion d’âme. Le cœur emplit tout : les pensées, les paroles, les aspirations et les actes. La vérité, l’honnêteté, l’affection sont le fondement. »"
+        },
+        {
+          "themeId": "amour",
+          "label": "Amour",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Amour » est éclairé ici par le verset 9 : « Plus le cœur est grand, généreux, ouvert, tolérant, pur, empli d’amour, plus l’Ange peut accompagner l’homme, vivre avec lui, le protéger, le guider et lui éviter les souffrances inutiles. »"
+        },
+        {
+          "themeId": "force-interieure",
+          "label": "Force intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Force intérieure » est éclairé ici par le verset 25 : « Ne sous-estime pas la force, le courage, la vaillance, la détermination du cœur. Il n’est pas un être fragile, mais il est actif, dominant et conquérant. »"
+        },
+        {
+          "themeId": "coeur",
+          "label": "Cœur",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            2
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Cœur » est éclairé ici par le verset 2 : « La grandeur dans l’homme commence avec le cœur. »"
+        },
+        {
+          "themeId": "prendre-soin",
+          "label": "Prendre soin",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Prendre soin » est éclairé ici par le verset 6 : « Prenez soin du cœur, des valeurs du cœur, de l’intelligence et des besoins du cœur. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -3847,6 +5127,76 @@
             40
           ],
           "teaching": "Relation textuelle « Pensée » : v.12 : ils vivent certaines épreuves, pourquoi ils sont harcelés par des pensées mauvaises, des états d’âme de mécontentement ou des maladies. Ils croient que ce sont des courants contraires à l’harmonie et à la volonté… / v.22 : qui aspirent à entrer soient dans la discipline, l’éducation, la pensée, l’attitude, le comportement justes.… / v.25 : destinée, en le validant par des gestes, des paroles, des pensées et des actes qui lui offrent la puissance de la Lumière. Si vous donnez cette puissance aux forces sombres, par inconscience ou bêtise,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "discernement-mortel-immortel",
+          "label": "Discernement mortel-immortel",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            48
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement mortel-immortel » est éclairé ici par le verset 48 : « Seule la sagesse doit guider votre vie et elle commence par le juste discernement entre ce qui est destiné au recyclage et ce qui est destiné à l’immortalité. »"
+        },
+        {
+          "themeId": "maitrise-de-soi",
+          "label": "Maîtrise de soi",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            33
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Maîtrise de soi » est éclairé ici par le verset 33 : « La statue de la Bienveillance et de la Rigueur exige une discipline, un éveil, une maîtrise de soi. »"
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            31
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Soutien mutuel » est éclairé ici par le verset 31 : « C’est une question d’éducation, d’organisation, de discipline, de soutien mutuel. »"
+        },
+        {
+          "themeId": "meditation-et-recul",
+          "label": "Méditation et recul",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            44
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Méditation et recul » est éclairé ici par le verset 44 : « Celui qui œuvre avec la statue de la Bienveillance-Rigueur saura prendre du recul et il ne laissera pas ce qui est éphémère envahir ce qui est immortel. Il se mettra en méditation et entrera dans le calme, l’harmonie et la clarté. Avec la clarté, il regardera derrière la nouvelle et peut-être découvrira-t-il que c’est un monde d’apparence, d’illusion qui se cache. Parfois, c’est ainsi : il n’y a rien, mais l’homme lui-même engendre la catastrophe par ce qu’il met dans ce rien. Peut-être est-ce un monde qui n’est vrai que partiellement ou peut-être est-il totalement vrai ? Quoi qu’il en soit, à partir du moment où l’homme éveille des émotions négatives et qu’il entre en action, animé par ces émotions, il valide ce monde et lui permet d’entrer en lui et de prendre sa vie. »"
+        },
+        {
+          "themeId": "reel-contre-faux-semblant",
+          "label": "Réel contre faux-semblant",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            39
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Réel contre faux-semblant » est éclairé ici par le verset 39 : « Le négatif n’est qu’une apparence et même s’il est réel, se laisser envahir par lui ne sera d’aucune utilité. Le calme est le fondement. Ensuite vient l’harmonie. Et enfin, la clarté. »"
+        },
+        {
+          "themeId": "protection-interieure",
+          "label": "Protection intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            46
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Protection intérieure » est éclairé ici par le verset 46 : « La statue de la Bienveillance-Rigueur doit être suffisamment chargée pour vous protéger de cet envahissement afin que, quoi qu’il arrive dans votre vie, vous soyez capables de ne pas laisser l’évènement entrer en vous sans frontières, sans contrôle, sans gardien, sans filtre, sans conscience ni retenue. »"
+        },
+        {
+          "themeId": "equilibre-des-mondes",
+          "label": "Équilibre des mondes",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Équilibre des mondes » est éclairé ici par le verset 3 : « La statue de la Bienveillance touche le monde de la matière et vous enseigne que vous devez être sages, éveillés et dans la maîtrise de vous-mêmes pour libérer les intelligences et les forces emprisonnées dans les ténèbres. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -4042,6 +5392,76 @@
             33
           ],
           "teaching": "Relation textuelle « Éducation » : v.31 : omniprésent et ne demande qu’à Se révéler par une juste éducation et une vision universelle. Il n’élève pas un homme en particulier mais veut élever tous les êtres vivants à travers un être ou… / v.33 : et la vie. Le chemin pour Le rencontrer s’appelle l’ éducation et l’éveil libre de la vie intérieure et de la conscience.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "liberte-et-choix",
+          "label": "Liberté et choix",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            35
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Liberté et choix » est éclairé ici par le verset 35 : « Il n’y a pas d’amour sans liberté et choix. »"
+        },
+        {
+          "themeId": "amour",
+          "label": "Amour",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            35
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Amour » est éclairé ici par le verset 35 : « Il n’y a pas d’amour sans liberté et choix. »"
+        },
+        {
+          "themeId": "discernement-des-influences",
+          "label": "Discernement des influences",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            27
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement des influences » est éclairé ici par le verset 27 : « Dieu n’aime pas les sectaires, les fanatiques, ceux qui affirment ce qu’ils ne savent pas, qui parlent de ce qu’ils n’ont pas vécu et surtout, qui parlent à la place de Dieu en utilisant son Nom. Ils proclament ce que Dieu veut selon eux et disent que toutes celles et tous ceux qui disent le contraire sont hérétiques, ne sont pas en accord avec Dieu. Ils sont bien téméraires de parler sans intelligence, car ils agissent comme si Dieu n’existait pas. »"
+        },
+        {
+          "themeId": "respect",
+          "label": "Respect",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Respect » est éclairé ici par le verset 28 : « Chasser les autres, les condamner n’est pas la bonne solution. »"
+        },
+        {
+          "themeId": "lumiere-interieure",
+          "label": "Lumière intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            17
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Lumière intérieure » est éclairé ici par le verset 17 : « Je dis que la source originelle de tout ce qui existe réside à l’intérieur et qu’il suffit de la révéler pour vivre en harmonie avec elle. Pour la révéler, il ne faut pas que ce soit le corps, la psychologie ou la croyance aveugle qui dirigent votre vie intérieure. »"
+        },
+        {
+          "themeId": "sagesse-vecue",
+          "label": "Sagesse vécue",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sagesse vécue » est éclairé ici par le verset 25 : « Dieu aime les doux, les pacifiques, les êtres bien éduqués, les illuminés, les sages, les intelligents, les éveillés, les parents authentiques, les guides dans l’amour et la rigueur. Dieu aime celles et ceux qui calment le corps, le placent dans le repos et éveillent l’esprit et l’âme. »"
+        },
+        {
+          "themeId": "paix",
+          "label": "Paix",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Paix » est éclairé ici par le verset 25 : « Dieu aime les doux, les pacifiques, les êtres bien éduqués, les illuminés, les sages, les intelligents, les éveillés, les parents authentiques, les guides dans l’amour et la rigueur. Dieu aime celles et ceux qui calment le corps, le placent dans le repos et éveillent l’esprit et l’âme. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -4231,6 +5651,76 @@
             25
           ],
           "teaching": "Relation textuelle « Alliance » : v.25 : les influences, les mondes qui ne sont pas dans l’ Alliance, dans la grande respiration, dans l’harmonie cosmique, dans la volonté de Dieu dans sa statue et dans sa Ronde des Archanges et des…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "protection-interieure",
+          "label": "Protection intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            11
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Protection intérieure » est éclairé ici par le verset 11 : « Je veux t’enseigner que si tu cherches la protection, ne fais pas que la souhaiter, la désirer, l’appeler sans intelligence et volonté. L’intelligence, la bonne éducation, c’est que lorsque tu invites un être dans ta vie comme la Lumière, le minimum, c’est de l’accueillir, c’est de lui préparer un lieu où elle sera bien, où elle aura tout ce qu’elle aime. »"
+        },
+        {
+          "themeId": "liberte-et-choix",
+          "label": "Liberté et choix",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Liberté et choix » est éclairé ici par le verset 7 : « Comprends que la liberté est fondamentale et que tu dois être suffisamment libre, et donc déterminé, pour pouvoir prendre ta vie en mains, l’organiser de façon à préparer un espace pour accueillir la Lumière et être capable de lui ouvrir les portes de ton être et de ta destinée. La Lumière apportera la bénédiction et la protection. »"
+        },
+        {
+          "themeId": "discipline",
+          "label": "Discipline",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discipline » est éclairé ici par le verset 25 : « Si tu veux goûter la Lumière, vivre avec elle en toi, connaître sa bénédiction et demeurer dans sa protection, tu n’as pas d’autre choix que de pratiquer le Culte quotidiennement, de te relier et de te nettoyer, d’enlever les pensées, les volontés, les influences, les mondes qui ne sont pas dans l’Alliance, dans la grande respiration, dans l’harmonie cosmique, dans la volonté de Dieu dans sa statue et dans sa Ronde des Archanges et des Anges. »"
+        },
+        {
+          "themeId": "maitrise-de-la-vie-interieure",
+          "label": "Maîtrise de la vie intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Maîtrise de la vie intérieure » est éclairé ici par le verset 15 : « Chaque jour, tu dois te dévêtir en conscience, intérieurement, pour nettoyer et enlever les mondes qui te cloisonnent, t’enferment, t’isolent dans un monde où la Lumière n’est pas autorisée à entrer. Père Michaël, comment faire pour enlever ce manteau placé autour de nous ? »"
+        },
+        {
+          "themeId": "connaissance-de-soi",
+          "label": "Connaissance de soi",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Connaissance de soi » est éclairé ici par le verset 19 : « Ta richesse est importante et tu dois la faire fructifier en te connaissant toi-même dans la volonté et l’intelligence de Dieu. »"
+        },
+        {
+          "themeId": "responsabilite-de-sa-destinee",
+          "label": "Responsabilité de sa destinée",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité de sa destinée » est éclairé ici par le verset 7 : « Comprends que la liberté est fondamentale et que tu dois être suffisamment libre, et donc déterminé, pour pouvoir prendre ta vie en mains, l’organiser de façon à préparer un espace pour accueillir la Lumière et être capable de lui ouvrir les portes de ton être et de ta destinée. La Lumière apportera la bénédiction et la protection. »"
+        },
+        {
+          "themeId": "transmission-aux-generations",
+          "label": "Transmission aux générations",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            16
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Transmission aux générations » est éclairé ici par le verset 16 : « Je ne vais pas t’expliquer les lois de la vie, que tu dois non seulement connaître, mais que tu dois enseigner aux générations futures. Ce savoir s’appelle « savoir vivre sur la terre avec Dieu ». Sans Lui, tu n’es rien, tu n’es pas un homme, rien. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -4436,6 +5926,76 @@
             28
           ],
           "teaching": "Relation textuelle « Intelligence » : v.7 : la continuité. Il est dans la réflexion, il éveille l’ intelligence, il pratique l’économie, le recul, la retenue, la prudence de façon à pouvoir se projeter et anticiper les évènements, les situations.… / v.9 : qui les asservissent, dans des utopies dénuées de sagesse, d’ intelligence, totalement ignorants des étapes de la vie et du but à atteindre.… / v.28 : dans les mondes immuables de la sagesse et appelez l’ intelligence des mondes. Mais surtout, ne soyez pas des réceptacles des pensées fugaces, du moment, qui ne font que passer, qui n’ont aucune consistance,…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "responsabilite-envers-les-generations",
+          "label": "Responsabilité envers les générations",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            24
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité envers les générations » est éclairé ici par le verset 24 : « Vous devez emmener avec vous les générations futures et l’humanité de demain. En cela, vous serez des parents pour Dieu et vous n’aurez plus le choix que d’être responsables, conscients, attentionnés, efficaces. »"
+        },
+        {
+          "themeId": "education-et-transmission",
+          "label": "Éducation et transmission",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            15
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Éducation et transmission » est éclairé ici par le verset 15 : « L’homme doit être éduqué dans la religion vivante de Dieu. Il doit franchir les étapes de l’éducation et ne pas demeurer un enfant alors qu’il est un adulte. »"
+        },
+        {
+          "themeId": "sagesse-vecue",
+          "label": "Sagesse vécue",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sagesse vécue » est éclairé ici par le verset 5 : « Un parent n’a pas d’autre choix que d’être conscient et de s’orienter à la lumière du soleil de la sagesse. Il sait que l’alliance avec une seule pensée, une envie peut être le bonheur ou le malheur dans le futur. »"
+        },
+        {
+          "themeId": "connaissance-de-soi",
+          "label": "Connaissance de soi",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            17
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Connaissance de soi » est éclairé ici par le verset 17 : « Un adulte est une individualité libre, responsable, claire, qui sait réfléchir, analyser, méditer, discerner, regarder, faire le tri, la part des choses. Sa vie intérieure est éveillée et sa vie extérieure maîtrisée. Ce qui entre en lui doit être conscient et sous contrôle. Son chemin doit être clair, pesé et sensé. Une simple pensée du moment, un désir, un rêve, un sentiment, une envie fugace ne doivent pas s’emparer de lui pour féconder son avenir sans sagesse ni respect. Il doit analyser, digérer, regarder tout ce qui entre en lui afin d’en percevoir les conséquences. »"
+        },
+        {
+          "themeId": "discernement",
+          "label": "Discernement",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            17
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement » est éclairé ici par le verset 17 : « Un adulte est une individualité libre, responsable, claire, qui sait réfléchir, analyser, méditer, discerner, regarder, faire le tri, la part des choses. Sa vie intérieure est éveillée et sa vie extérieure maîtrisée. Ce qui entre en lui doit être conscient et sous contrôle. Son chemin doit être clair, pesé et sensé. Une simple pensée du moment, un désir, un rêve, un sentiment, une envie fugace ne doivent pas s’emparer de lui pour féconder son avenir sans sagesse ni respect. Il doit analyser, digérer, regarder tout ce qui entre en lui afin d’en percevoir les conséquences. »"
+        },
+        {
+          "themeId": "fidelite-et-continuite",
+          "label": "Fidélité et continuité",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Fidélité et continuité » est éclairé ici par le verset 7 : « Être un parent, c’est autre chose. Cela nécessite une prise de conscience, un engagement et une continuité, une tradition plus grande que la mort. Le parent a conscience de la filiation, du fil de la vie, de la trame immortelle, du lien de causalité, de la continuité. Il est dans la réflexion, il éveille l’intelligence, il pratique l’économie, le recul, la retenue, la prudence de façon à pouvoir se projeter et anticiper les évènements, les situations. »"
+        },
+        {
+          "themeId": "maitrise-de-la-destinee",
+          "label": "Maîtrise de la destinée",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Maîtrise de la destinée » est éclairé ici par le verset 25 : « Lorsque tu as un enfant dans tes bras, tu ne peux pas faire n’importe quoi, tu dois être responsable de ce que tu fais et du chemin que tu ouvres. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -4702,6 +6262,76 @@
             59
           ],
           "teaching": "Relation textuelle « Mort » : v.33 : mondes dans la sagesse de Dieu. Cette sagesse est im mortelle, éternelle et bonne. Tu sauras lorsqu’elle est présente, car en elle, il n’y a aucune illusion, aucune peur, aucun doute, rien qui vient… / v.37 : esprit qui conduit l’homme vers la vie de son corps mortel. La vraie richesse est celle de servir Dieu et d’être avec Lui, avec sa statue de Lumière. La Statue contient l’image de l’homme… / v.41 : Le serpent tentateur place toujours l’image de l’homme mortel entre l’Ange, la vertu, et le corps et la terre. Ainsi, il n’y a pas d’unité, car l’homme, ou l’image, le double, le…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "organes-subtils",
+          "label": "Organes subtils",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Organes subtils » est éclairé ici par le verset 5 : « La voie de l’éveil, dont de nombreux sages ont parlé, consiste à devenir conscient de la vie intérieure, et donc des organes qui la portent, afin de vivre dans ces 2 mondes. »"
+        },
+        {
+          "themeId": "education-des-sens",
+          "label": "Éducation des sens",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            47
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Éducation des sens » est éclairé ici par le verset 47 : « Tu dois recevoir les outils des anciens et entrer dans la discipline. Ensuite, il te faut éveiller tes sens internes pour entrer dans la subtilité des mondes. Cette subtilité donne de l’intimité à la vie et à sa force créatrice. »"
+        },
+        {
+          "themeId": "stabilite-et-enracinement",
+          "label": "Stabilité et enracinement",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            25
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Stabilité et enracinement » est éclairé ici par le verset 25 : « La terre apporte la stabilité, le calme, l’enracinement et elle éveille les organes internes d’une façon juste. »"
+        },
+        {
+          "themeId": "perception-subtile",
+          "label": "Perception subtile",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            20
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Perception subtile » est éclairé ici par le verset 20 : « Lorsque l’éveil est bon, tu peux percevoir le visible et l’invisible d’une façon juste, claire, harmonieuse et c’est la grande sagesse, celle des mystères immuables de la religion de Dieu, qui apparaît, qui se révèle. »"
+        },
+        {
+          "themeId": "discernement-des-influences",
+          "label": "Discernement des influences",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            9
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement des influences » est éclairé ici par le verset 9 : « Devenir conscient, c’est traverser le monde des illusions, des influences et des fausses images de soi-même et du monde. »"
+        },
+        {
+          "themeId": "connaissance-de-soi",
+          "label": "Connaissance de soi",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            62
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Connaissance de soi » est éclairé ici par le verset 62 : « Peu importe tes faiblesses, ta condition, accepte ce que tu es, pose-toi sur cette base et à partir de ce point, travaille sur toi pour t’améliorer afin de devenir un serviteur de Dieu et de son immortalité, non pas l’immortalité de la fausse image de l’homme et de sa réincarnation, mais l’immortalité et la réincarnation de Dieu. »"
+        },
+        {
+          "themeId": "meditation-comme-observation",
+          "label": "Méditation comme observation",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            36
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Méditation comme observation » est éclairé ici par le verset 36 : « Tu utilises tes organes de perception internes par habitude, par routine, d’une façon inconsciente, machinale. Tu dois éveiller l’organe, le nettoyer et ensuite, le rendre conscient, l’orienter, faire naître un rythme, une habitude, et de nouveau, l’endormir afin que cette nouvelle perception devienne une routine, quelque chose de machinal, d’automatique. C’est un esprit qui travaille pour toi dans les 2 mondes. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -4936,6 +6566,76 @@
             41
           ],
           "teaching": "Relation textuelle « Vision » : v.4 : Pendant la phase du sommeil, tu abandonnes le corps et l’intellect pour entrer dans le monde de l’eau, où tu peux entendre des mystères et recevoir des informations plus universelles. / v.20 : Si tu n’es pas présent dans ton corps, si tu ne te tiens pas dans l’unité avec la sagesse de la terre, si ton intellect n’est pas éveillé, si tes organes internes ne sont… / v.21 : Il n’y a que dans la maîtrise, dans l’état d’éveil et de conscience, en accord avec la sagesse de Dieu la Mère et de son école de la terre, que tu pourras recevoir le…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "sommeil",
+          "label": "Sommeil",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sommeil » est éclairé ici par le verset 1 : « Comprends que le sommeil et l’éveil sont à la fois 2 portes et 2 états d’être. Il y a une loi qui régit ces 2 états d’être et tu dois la connaître. »"
+        },
+        {
+          "themeId": "discernement-des-influences",
+          "label": "Discernement des influences",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            26
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement des influences » est éclairé ici par le verset 26 : « L’intellect te dira que tu es pris par des mondes positifs ou négatifs, mais s’il n’y a plus de discernement, de sagesse, de tradition, de protection, d’éducation, ces mondes t’envahissent. Ils fusionnent, ils te possèdent jusqu’à ce que tu deviennes eux, que tu penses, que tu perçoives, que tu vives comme eux. Alors, tu es absolument persuadé d’être cela, car tu le rêves, tu le vis, tu le respires, tu le perçois. Tu dors, tu n’es plus éveillé, tu n’es plus dans la sagesse, tes pas ne touchent plus le sol, tu n’es plus avec la terre ni avec l’Ange, mais tu es dans le corps du serpent de la lumière trompeuse et du monde de l’homme. Ce serpent s’incorpore dans ton corps et te dévore tout entier : tu es lui, persuadé d’être un homme. C’est pourquoi l’éducation, la préparation, la transmission du savoir et du corps sont fondamentales. C’est aussi pourquoi, pour la célébration du culte de la statue de Dieu, tu dois te préparer à la fois au sommeil et à l’éveil. Ce sont une science sacrée et un art de vivre. »"
+        },
+        {
+          "themeId": "vigilance-de-la-pensee",
+          "label": "Vigilance de la pensée",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            18
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Vigilance de la pensée » est éclairé ici par le verset 18 : « Apprends à te concentrer, à exercer ton attention et à éveiller ta pensée pour la rendre consciente, vivante, puissante, sentante et percevante. »"
+        },
+        {
+          "themeId": "conscience-du-present",
+          "label": "Conscience du présent",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            33
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Conscience du présent » est éclairé ici par le verset 33 : « Dans l’état de veille, tu dois être conscient, car tu es dans le monde de la fécondation de la terre et de l’humanité. C’est pourquoi ton quotidien doit être dans l’éveil, la discipline et le service du Culte à travers la récitation-offrande des psaumes. »"
+        },
+        {
+          "themeId": "meditation",
+          "label": "Méditation",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            17
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Méditation » est éclairé ici par le verset 17 : « Apprends la méditation. »"
+        },
+        {
+          "themeId": "preparation-interieure",
+          "label": "Préparation intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            41
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Préparation intérieure » est éclairé ici par le verset 41 : « Il y a la discipline de la journée, puis la préparation au sommeil. Il doit y avoir le gardien du portail afin que ce qui appartient au recyclage ne puisse influencer et que ce qui appartient à la Lumière de toute éternité soit honoré et renforcé. De nouveau, le matin au réveil, des gardiens doivent protéger la statue de la Lumière et l’image de Dieu dans la pensée, l’intellect et la vie quotidienne de l’Essénien. »"
+        },
+        {
+          "themeId": "coherence-pensee-parole-acte",
+          "label": "Cohérence pensée-parole-acte",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            19
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Cohérence pensée-parole-acte » est éclairé ici par le verset 19 : « Unis ta pensée à une intelligence supérieure, des états d’âme, une volonté angélique et éveille-toi à travers le corps et ce que tu fais avec le corps, comme la respiration, les gestes et la marche. Alors tu seras posé sur la terre et sur son école de sagesse, son école de Dieu et à ce moment-là, la résonance avec un monde supérieur pourra se faire. Tu pourras traverser l’eau et entrer dans la conversation et l’alliance avec le saint Ange, l’envoyé de Dieu. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -5142,6 +6842,76 @@
             25
           ],
           "teaching": "Relation textuelle « Âme » : v.10 : L’homme a été dépossédé de son être véritable, de son âme et il ne sait plus qui il est et ce qu’il doit faire. Alors il flâne dans tous les mondes afin de chercher… / v.24 : se nourrir de tes pensées, de ton souffle, de ton âme de vie, pour finalement mettre leurs enfants au monde avec ton autorité, en usurpant ton être. C’est pourquoi tu dois restaurer la tradition… / v.25 : pour prendre leur vie en mains et vivre avec leur âme en honorant Dieu en eux et en tout dans la pureté et la vérité.…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "protection-de-son-espace",
+          "label": "Protection de son espace",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Protection de son espace » est éclairé ici par le verset 5 : « Tu dois être le gardien de ces portes, et seul le monde divin, ses Anges et les représentants de sa lumière et de ses vertus, qui sont son corps de manifestation, peuvent être autorisés à passer par les portes et à pénétrer dans l’espace sacré de la vie intérieure et du feu, de la flamme de l’intelligence et de la conversation, de l’alliance, de la relation avec Dieu. Ce lien doit être préservé de toutes profanations et intrusions provenant d’un monde extérieur flou, non maîtrisé, non clarifié. »"
+        },
+        {
+          "themeId": "discernement-des-influences",
+          "label": "Discernement des influences",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            28
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement des influences » est éclairé ici par le verset 28 : « La frontière doit être établie et la vigilance doit se tenir en alerte à la périphérie afin que toutes influences, pensées, intelligences qui se présentent pour entrer soient analysées, observées, mesurées, pesées et que l’entrée soit refusée à tout ce qui n’est pas respectueux du service de Dieu et de l’offrande à Dieu. C’est une attitude saine qui doit redevenir une évidence. »"
+        },
+        {
+          "themeId": "maitrise-de-la-vie-interieure",
+          "label": "Maîtrise de la vie intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            1
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Maîtrise de la vie intérieure » est éclairé ici par le verset 1 : « Celui qui aspire à cheminer vers la subtilité, la sensibilité, la finesse du monde ardent doit apprendre à être maître de lui-même. Il doit mettre des gardiens aux portails de son intelligence, de ses sens et de toutes les voies de communication et d’échange qu’il peut y avoir entre le monde intérieur intelligible et le monde extérieur sensible. »"
+        },
+        {
+          "themeId": "corps-temple",
+          "label": "Corps-temple",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            22
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Corps-temple » est éclairé ici par le verset 22 : « Le corps est une maison, un temple. Tu dois savoir quel est le dieu qui y est honoré en vérité, c’est-à-dire qui est vivant à l’intérieur. »"
+        },
+        {
+          "themeId": "equilibre-interieur-exterieur",
+          "label": "Équilibre intérieur-extérieur",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Équilibre intérieur-extérieur » est éclairé ici par le verset 4 : « Bien des êtres proclament qu’ils ont été blessés, anéantis ou que leur vie a été embellie par les relations entre l’intérieur et l’extérieur. Ne sous-estime pas les portes qui unissent ces 2 mondes, ainsi que la conscience des échanges. »"
+        },
+        {
+          "themeId": "responsabilite-de-sa-destinee",
+          "label": "Responsabilité de sa destinée",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            3
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Responsabilité de sa destinée » est éclairé ici par le verset 3 : « Sache que le monde extérieur n’est qu’une forme manifeste d’êtres subtils qui vivent autour de toi dans les mondes invisibles. Ainsi, pour diriger ta vie et la maîtriser, il ne te suffit pas de contrôler les objets et les êtres visibles ou encore tes pensées, tes sentiments et ta volonté, il te faut également mettre de l’ordre et de la clarté dans les mondes des esprits, des génies et des égrégores qui se manifestent et agissent en toi et autour de toi. Ainsi, tu pourras renforcer l’alliance avec un Ange de Dieu et la conduire dans la victoire. »"
+        },
+        {
+          "themeId": "organisation-de-la-vie",
+          "label": "Organisation de la vie",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            16
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Organisation de la vie » est éclairé ici par le verset 16 : « Tu dois savoir quoi conserver et quoi éliminer. Ce sont 2 fonctions fondamentales du corps. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
@@ -5301,6 +7071,76 @@
             9
           ],
           "teaching": "Relation textuelle « Corps » : v.9 : ce que vous avez acquis afin qu’elle vous constitue un corps de sagesse et vous permette de vivre votre quotidien avec conscience, concentration sur l’essentiel, discernement et avec l’œil ouvert afin de mettre de…. Les autres versets référencés prolongent cette même relation dans le psaume."
+        },
+        {
+          "themeId": "nouveau-cycle",
+          "label": "Nouveau cycle",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            5
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Nouveau cycle » est éclairé ici par le verset 5 : « C’est une bénédiction dans la vie de l’homme lorsqu’il peut être conscient dans les changements, les cycles de façon à se préparer pour entrer dans le nouveau d’une façon juste. »"
+        },
+        {
+          "themeId": "preparation-interieure",
+          "label": "Préparation intérieure",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            4
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Préparation intérieure » est éclairé ici par le verset 4 : « Cette année est une préparation à la grande fête de Dieu du jubilé. Vous serez présentés devant vous-mêmes et il n’y aura pas de mensonge, pas de masque devant votre visage, pas de semblant, mais vous face à vous. »"
+        },
+        {
+          "themeId": "sagesse-vecue",
+          "label": "Sagesse vécue",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            6
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Sagesse vécue » est éclairé ici par le verset 6 : « Conduisez vers la sagesse tout ce que vous avez pu apprendre, toutes vos expériences, tout ce que vous avez vécu. Ne laissez rien en dehors de la sagesse. »"
+        },
+        {
+          "themeId": "soutien-mutuel",
+          "label": "Soutien mutuel",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            14
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Soutien mutuel » est éclairé ici par le verset 14 : « Soyez dans l’unité, forts de la concentration de la sainte assemblée, forts dans l’œuvre par le soutien mutuel, forts par la sagesse. »"
+        },
+        {
+          "themeId": "travail-sur-soi",
+          "label": "Travail sur soi",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            17
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Travail sur soi » est éclairé ici par le verset 17 : « Je bénis celles et ceux qui poseront leurs pas sur ce chemin d’éveil, de discipline, de connaissance de soi et de travail sur soi dans le but ultime de servir Dieu et son culte sacré sur la terre et dans la vie. »"
+        },
+        {
+          "themeId": "discernement-des-apparences",
+          "label": "Discernement des apparences",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            7
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Discernement des apparences » est éclairé ici par le verset 7 : « Éveillez-vous au-delà des illusions, sans mensonge, sans vous cacher. »"
+        },
+        {
+          "themeId": "transmission-aux-generations",
+          "label": "Transmission aux générations",
+          "importance": "important",
+          "directness": "editorial",
+          "verseNumbers": [
+            18
+          ],
+          "teaching": "La Bible essénienne enseigne que le thème « Transmission aux générations » est éclairé ici par le verset 18 : « Je dis : toutes celles et tous ceux qui marcheront sur ce noble chemin, qui se soutiendront comme des compagnons de route ouvriront une autre vie à toutes celles et tous ceux qui chemineront derrière eux. »"
         }
       ],
       "semanticDepth": "deep-content-grounded"
