@@ -103,10 +103,14 @@ try{
         return window.scrollY;
       });
       assert.ok(originalAnswerPos>100,'Answer must be scrollable for reading position test');
-      await page.getByRole('button',{name:'Question suivante →'}).click();
-      assert.notEqual(await page.locator('#faqAnswerTitle').innerText(),firstTitle);
-      await page.getByRole('button',{name:'← Question précédente'}).click();
-      assert.equal(await page.locator('#faqAnswerTitle').innerText(),firstTitle);
+      // Dispatch directly: Playwright locator.click() would first auto-scroll
+      // to the bottom control and alter the reading position being measured.
+      await page.evaluate(()=>[...document.querySelectorAll('.faq-answer-nav button')]
+        .find(b=>b.textContent.includes('suivante')).click());
+      await page.waitForFunction(title=>document.getElementById('faqAnswerTitle').textContent!==title,firstTitle);
+      await page.evaluate(()=>[...document.querySelectorAll('.faq-answer-nav button')]
+        .find(b=>b.textContent.includes('précédente')).click());
+      await page.waitForFunction(title=>document.getElementById('faqAnswerTitle').textContent===title,firstTitle);
       assert.ok(Math.abs(await page.evaluate(()=>window.scrollY)-originalAnswerPos)<6,
         'Answer reading position was lost when returning from a neighboring question');
       await page.locator('#faqBack').click();
