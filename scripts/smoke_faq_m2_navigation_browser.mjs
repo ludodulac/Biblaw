@@ -80,9 +80,9 @@ try{
       assert.match(pdf.suggestedFilename(),/^Biblaw_Question_.*\.pdf$/);
 
       // Topic return is immediate and the index is not requested again.
-      await page.locator('#faqBack').click();
+      await page.locator('#faqClose').click();
       assert.equal(await page.locator('#faqList .faq-question-item').count(),4);
-      await page.locator('#faqThemeBack').click();
+      await page.locator('#faqClose').click();
       assert.equal(await page.locator('#faqTopicButtons .faq-topic-button').count(),11);
 
       // Long topic: the original list scroll position is restored on return.
@@ -113,7 +113,7 @@ try{
       await page.waitForFunction(title=>document.getElementById('faqAnswerTitle').textContent===title,firstTitle);
       assert.ok(Math.abs(await page.evaluate(()=>window.scrollY)-originalAnswerPos)<6,
         'Answer reading position was lost when returning from a neighboring question');
-      await page.locator('#faqBack').click();
+      await page.locator('#faqClose').click();
       assert.ok(Math.abs(await page.evaluate(()=>window.scrollY)-beforeList)<6,
         'The question list scroll position was lost');
       assert.equal(await page.locator('#faqList .faq-question-item').count(),22);
@@ -123,10 +123,10 @@ try{
       assert.equal(await page.locator('#faqList .faq-question-item').count(),1);
       await page.locator('#faqList .faq-question-item').first().click();
       await page.locator('#faqAnswerTitle').getByText('Avons-nous une mission particulière ?').waitFor();
-      await page.locator('#faqBack').click();
+      await page.locator('#faqClose').click();
       assert.equal(await page.locator('#faqSearch').inputValue(),'Ai-je une mission particulière ?');
       assert.equal(await page.locator('#faqList .faq-question-item').count(),1);
-      await page.locator('#faqThemeBack').click();
+      await page.locator('#faqClose').click();
       await page.locator('#faqClose').click();
 
       // Closed/reopened FAQ keeps the original index cached.
