@@ -503,10 +503,6 @@
   function prime(records){
     if(Array.isArray(records))setRecords(records);
     state.themesMode=true;
-    const back=$('faqThemeBack');
-    if(back)back.onclick=()=>{
-      state.selectedTopic=null;$('faqSearch').value='';renderIndex();
-    };
     return true;
   }
   function setCorpusLoading(promise){state.corpusLoading=Promise.resolve(promise);}
@@ -518,6 +514,9 @@
     renderIndex();
     backToIndex();
     if(state.themesMode){
+      $('faqThemeBack').onclick=()=>{
+        state.selectedTopic=null;$('faqSearch').value='';renderIndex();
+      };
       if(!state.themeIndex){showStatus('Chargement des thèmes…');loadIndex();}
     }else if(!state.questions.length)showStatus('Chargement des questions…');
     $('faqClose').focus({preventScroll:true});
