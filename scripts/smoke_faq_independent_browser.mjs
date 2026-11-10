@@ -57,8 +57,8 @@ try{
       assert.ok(await page.locator('#dialogContent .faq-cited-verse').count()>0);
       await page.locator('#faqReturnFromPsalm').click();
       assert.equal(await page.locator('#faqAnswer').isVisible(),true);
-      await page.locator('#faqBack').click();
-      await page.locator('#faqThemeBack').click();
+      await page.locator('#faqClose').click();
+      await page.locator('#faqClose').click();
       assert.equal(await page.locator('#faqTopicButtons .faq-topic-button').count(),11);
       await page.locator('#faqClose').click();
       await page.locator('#query').fill('psaume 105');
