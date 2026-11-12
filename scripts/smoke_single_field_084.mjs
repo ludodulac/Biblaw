@@ -14,7 +14,7 @@ assert.ok(!header.includes('id="indexToggle"'),'Index should not remain in the h
 const notesPosition=html.indexOf('id="notesLibraryToggle"');
 const indexPosition=html.indexOf('id="bibleThemesToggle"');
 assert.ok(notesPosition>=0&&indexPosition>notesPosition,'The unique A–Z theme index follows all notes');
-assert.match(html,/id="bibleThemesToggle"[^>]*aria-controls="bibleThemesLibrary">Index des thèmes/);
+assert.match(html,/id="bibleThemesToggle"[^>]*aria-controls="bibleThemesLibrary" aria-label="Index des thèmes">Index des thèmes/);
 assert.equal((html.match(/id="bibleThemesToggle"/g)||[]).length,1,'Exactly one index button');
 assert.ok(!html.includes('id="indexToggle"')&&!html.includes('id="indexPanel"')&&
   !html.includes('id="bibleThemesShortcut"'),'Remove the redundant theme index and footer entry');
