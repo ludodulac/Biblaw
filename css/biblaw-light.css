@@ -775,3 +775,10 @@ body.view-bible-themes .shell{padding-top:1.15rem}
   body.view-bible-themes .bible-themes-letters,body.view-bible-themes .bible-themes-filter-label,
   body.view-bible-themes #bibleThemesFilter{display:none!important}
 }
+
+/* Semantic discovery: theme suggestions only, never a new canonical Psalm link. */
+.related-discovery{display:block!important;margin-bottom:1.05rem;max-width:100%}
+.related-discovery>div:first-child{display:grid;gap:.25rem}
+.related-discovery-themes{display:flex;flex-wrap:wrap;gap:.55rem;padding:.65rem 0}
+.related-discovery-themes .theme-text-link{background:white;border:1px solid #d9c4a4;border-radius:.5rem;min-height:2.35rem;padding:.35rem .7rem;cursor:pointer}
+.related-discovery>button.secondary{margin-top:.35rem}
