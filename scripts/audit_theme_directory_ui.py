@@ -17,7 +17,9 @@ assert "fetch('data/thematic-index/theme-directory-public.json')" in js, "public
 assert "fetch('data/thematic-index/theme-directory.json')" not in js, "public UI must not download the editorial theme directory"
 assert 'function renderThemeDirectory()' in js
 assert 'function openIndex()' in js
-assert "$('themeFilter').oninput=renderThemeDirectory" in js
+assert "$('themeFilter').oninput=()=>{if(state.corpusReady)renderThemeDirectory();}" in js, (
+    "filtering must reuse the loaded canonical theme directory and must not trigger an eager corpus download"
+)
 assert "$('indexPanel').hidden?openIndex():closeIndex()" in js
 open_index = js[js.index('function openIndex()'):js.index('function closeIndex()')]
 assert 'renderThemeDirectory()' in open_index and "$('indexPanel').hidden=false" in open_index, "directory must render on opening"
