@@ -149,9 +149,11 @@ try {
   assert.equal(await page.locator('#popularQuestionsToggle').isVisible(), false);
   assert.equal(await page.locator('#faqToggle').isVisible(), true);
   assert.equal(await page.locator('#notesLibraryToggle').isVisible(), true);
-  await page.locator('#indexToggle').click();
-  assert.equal(await page.locator('#indexPanel').isVisible(), true, 'Theme Index must still open');
-  await page.locator('#closeIndex').click();
+  await page.locator('#bibleThemesToggle').click();
+  assert.equal(await page.locator('#bibleThemesLibrary').isVisible(), true,
+    'The unified A–Z theme index must open');
+  await page.locator('#bibleThemesDirectory [data-bible-theme-id]').first().waitFor({timeout:15000});
+  await page.locator('#bibleThemesBack').click();
 
   assert.deepEqual(pageErrors, [], `Browser page errors: ${pageErrors.join(' | ')}`);
   console.log('Primary mode separation browser smoke PASS: theme-default, explicit occurrence switch, acclame→acclament, phrase exact-only, canonical theme, + two-word search, source filters, FAQ, index');

@@ -22,7 +22,6 @@ PUBLIC_FILES = (
     "Bible essénienne (classée par livres).pdf",
     "css/biblaw.css",
     "css/biblaw-light.css",
-    "css/theme-index.css",
     "css/theme-entry.css",
     "css/validation.css",
     "js/theme-suggestion-engine.js",

@@ -41,7 +41,13 @@ try{
     try{
       await page.goto(base,{waitUntil:'networkidle'});
       assert.deepEqual(heavy,[],'The large theme/corpus files should stay deferred at startup');
+      assert.equal(await page.getByRole('button',{name:'Index des thèmes',exact:true}).count(),1,
+        'There must be exactly one index button on the homepage');
+      assert.equal(await page.locator('#indexPanel,#indexToggle,#bibleThemesShortcut').count(),0,
+        'The redundant theme index and footer shortcut must be gone');
+      assert.equal(await page.locator('#bibleThemesToggle').innerText(),'Index des thèmes');
       await page.locator('#bibleThemesToggle').click();
+      assert.equal(await page.locator('#bibleThemesTitle').innerText(),'Index des thèmes');
       await page.locator('#bibleThemesDirectory [data-bible-theme-id]').first().waitFor({timeout:60000});
       assert.equal(await page.locator('#bibleThemesDirectory [data-bible-theme-id]').count(),themes.length);
       assert.equal(await page.locator('#bibleThemesLibrary').isVisible(),true);

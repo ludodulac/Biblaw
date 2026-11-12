@@ -49,7 +49,8 @@ assert "Number(a.record.number)||Number.MAX_SAFE_INTEGER" in js
 assert "String(a.record.id).localeCompare(String(b.record.id),'fr')" in js
 assert "companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`" in js
 # 040B: exact search is always unfiltered by grammatical or semantic senses.
-search_body = js[js.index('function search('):js.index('function renderThemeDirectory()')] if js.index('function search(') < js.index('function renderThemeDirectory()') else js[js.index('function search('):]
+search_body = js[js.index('function search('):js.index('function renderPopularQuestionFamilies()')]
+assert search_body, 'Search implementation must remain available before popular-question helpers'
 assert 'const exactItems=matches(query);' in search_body
 assert 'mergeExpansionMatches(exactItems,query);' in search_body
 assert 'render(exactItems,null,{exactSearch:true});' in search_body
@@ -83,7 +84,7 @@ exact = js[js.index('function exactVerses'):js.index('function relatedThemes')]
 assert 'literalIncludes(v.text,query)' in exact
 assert '${highlighted(v.text)}' in exact
 assert '<mark class="search-hit">' in js
-assert 'text/plain;charset=utf-8' not in js and '<mark' not in js[js.index('function activeText()'):js.index('function renderThemeDirectory()')]
+assert 'text/plain;charset=utf-8' not in js and '<mark' not in js[js.index('function activeText()'):js.index('function renderPopularQuestionFamilies()')]
 assert '@media print' in css and '.search-hit{padding:0;border-radius:0;background:transparent;color:inherit}' in css
 assert 'importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number' in js
 

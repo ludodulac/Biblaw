@@ -52,10 +52,11 @@ try {
       assert.match(pdf.suggestedFilename(),/\.pdf$/);
       await page.locator('#closeDialog').click();
 
-      // The index and notes reuse the corpus that the search already loaded.
-      await page.locator('#indexToggle').click();
-      await page.locator('#themeDirectory .theme-row').first().waitFor({timeout:15000});
-      await page.locator('#closeIndex').click();
+      // The unique A–Z index and notes reuse the corpus already loaded by search.
+      await page.locator('#bibleThemesToggle').click();
+      await page.locator('#bibleThemesDirectory [data-bible-theme-id]').first().waitFor({timeout:15000});
+      assert.equal(await page.locator('#bibleThemesDirectory [data-bible-theme-id]').count(),1267);
+      await page.locator('#bibleThemesBack').click();
       await page.locator('#notesLibraryToggle').click();
       await page.locator('#notesArchiveCount').getByText(/280 notes/).waitFor({timeout:15000});
       await page.locator('#notesPublishedToggle').click();

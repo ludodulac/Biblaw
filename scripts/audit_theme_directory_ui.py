@@ -1,33 +1,46 @@
 #!/usr/bin/env python3
-"""Guard the large public theme directory against eager rendering and payload regressions."""
+"""Protect the single public A–Z theme index and its canonical, lazy-loaded data."""
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 html = (ROOT / "index.html").read_text(encoding="utf-8")
 js = (ROOT / "js" / "biblaw.js").read_text(encoding="utf-8")
-css = (ROOT / "css" / "biblaw.css").read_text(encoding="utf-8")
-index_css_path = ROOT / "css" / "theme-index.css"
-assert index_css_path.exists(), "theme directory must keep its dedicated presentation stylesheet"
-index_css = index_css_path.read_text(encoding="utf-8")
+css = (ROOT / "css" / "biblaw-light.css").read_text(encoding="utf-8")
+build = (ROOT / "scripts" / "build_pages_site.py").read_text(encoding="utf-8")
 
-assert 'id="themeFilter"' in html, "theme index must expose a dedicated filter"
-assert 'placeholder="Ex. corps d’eau, alliance, lumière"' in html
-assert 'href="css/theme-index.css"' in html
-assert "fetch('data/thematic-index/theme-directory-public.json')" in js, "public UI must load the compact theme projection"
-assert "fetch('data/thematic-index/theme-directory.json')" not in js, "public UI must not download the editorial theme directory"
-assert 'function renderThemeDirectory()' in js
-assert 'function openIndex()' in js
-assert "$('themeFilter').oninput=()=>{if(state.corpusReady)renderThemeDirectory();}" in js, (
-    "filtering must reuse the loaded canonical theme directory and must not trigger an eager corpus download"
-)
-assert "$('indexPanel').hidden?openIndex():closeIndex()" in js
-open_index = js[js.index('function openIndex()'):js.index('function closeIndex()')]
-assert 'renderThemeDirectory()' in open_index and "$('indexPanel').hidden=false" in open_index, "directory must render on opening"
-assert "themes(); search();" not in js, "theme directory must not eagerly render at corpus load"
-assert "$('themeDirectory').innerHTML=visible.length?" in js
-assert "norm(t.label).includes(needle)||norm(t.id).includes(needle)" in js
-assert '.index-filter{' in css and '.search-field{' in css, "theme index must retain filter layout and shared search-field styling"
-assert '.theme-row{' in index_css and '.theme-row:hover' in index_css
-assert '.theme-row strong{' in index_css and '.theme-row small{' in index_css
+# Exactly one visitor entry point: below « Toutes les notes », not in the header.
+assert html.count('id="bibleThemesToggle"') == 1
+assert html.count('id="bibleThemesLibrary"') == 1
+assert html.index('id="notesLibraryToggle"') < html.index('id="bibleThemesToggle"')
+assert 'id="bibleThemesToggle" class="popular-questions-toggle"' in html
+assert 'aria-controls="bibleThemesLibrary" aria-label="Index des thèmes">Index des thèmes</button>' in html
+assert '<h2 id="bibleThemesTitle">Index des thèmes</h2>' in html
+assert 'id="bibleThemesFilter"' in html
+assert 'id="bibleThemesLetters"' in html
+assert 'id="bibleThemePsalmList"' in html
 
-print('Theme directory UI OK: compact payload, lazy rendering, local filtering and readable rows are protected')
+# Obsolete, competing directory no longer exists in the public markup/runtime.
+for old in ('id="indexToggle"', 'id="indexPanel"', 'id="indexBackdrop"',
+            'id="bibleThemesShortcut"', 'id="themeFilter"', 'id="themeDirectory"'):
+    assert old not in html, f"old directory still mounted: {old}"
+for old in ('function openIndex()', 'function renderThemeDirectory()',
+            "css/theme-index.css", '#indexPanel'):
+    assert old not in js + html + css + build, f"unused directory code: {old}"
+
+# One index and its Psalm reader; never invent or strip canonical associations.
+assert "fetch('data/thematic-index/theme-directory-public.json')" in js
+assert "fetch('data/thematic-index/theme-directory.json')" not in js
+assert "state.bibleThemesSorted=[...state.themeDirectory]" in js
+assert "const shown=query?state.bibleThemesSorted.filter" in js
+assert "function renderBibleThemesAlphabetical()" in js
+assert "function selectBibleTheme(theme)" in js
+assert "thematicItems([theme],true)" in js, "All Psalms must ignore active main-search filters"
+assert "importanceRank(a.thematic?.importance)-importanceRank(b.thematic?.importance)" in js
+assert "$('bibleThemesToggle').onclick=openBibleThemes" in js
+assert "if(state.corpusReady){" in js[js.index("function openBibleThemes()"):js.index("function backFromBibleThemes()")]
+assert "void ensureCorpusReady().then(ok=>" in js[js.index("function openBibleThemes()"):js.index("function backFromBibleThemes()")]
+assert "body.view-bible-themes #primarySearch" in css
+assert "#bibleThemesToggle::before" in css
+assert '"css/theme-index.css"' not in build
+
+print("Single A–Z theme index OK: one button after Notes, full canonical Psalms, lazy loading and no duplicate UI")
