@@ -1,8 +1,6 @@
 name: Biblaw - show 280 archived notes transparently
 
 on:
-  push:
-    branches: [feat/notes-280-visible-provisional-20261112]
   pull_request:
     paths:
       - 'index.html'
