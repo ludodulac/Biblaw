@@ -45,8 +45,10 @@ try{
     assert.match(readerText,/Transcription automatique à vérifier/);
     assert.match(readerText,/page PDF/);
     assert.ok((await page.locator('.prayer-block').innerText()).length>100);
-    const source=page.locator('#dialogContent .notes-source-reference a');
-    assert.match(await source.getAttribute('href'),/pdf#page=\d+/);
+    const source=page.locator('#dialogContent .notes-source-reference');
+    assert.match(await source.innerText(),/PDF page \d+/);
+    assert.equal(await source.locator('a').count(),0,
+      'An unverified source-page number must not create a deep link');
     const download=page.waitForEvent('download');
     await page.locator('#downloadRecord').click();
     assert.match((await download).suggestedFilename(),/^Biblaw_Note_.*\.pdf$/);
