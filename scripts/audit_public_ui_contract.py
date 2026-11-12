@@ -84,7 +84,7 @@ exact = js[js.index('function exactVerses'):js.index('function relatedThemes')]
 assert 'literalIncludes(v.text,query)' in exact
 assert '${highlighted(v.text)}' in exact
 assert '<mark class="search-hit">' in js
-assert 'text/plain;charset=utf-8' not in js and '<mark' not in js[js.index('function activeText()'):js.index('function renderThemeDirectory()')]
+assert 'text/plain;charset=utf-8' not in js and '<mark' not in js[js.index('function activeText()'):js.index('function renderPopularQuestionFamilies()')]
 assert '@media print' in css and '.search-hit{padding:0;border-radius:0;background:transparent;color:inherit}' in css
 assert 'importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number' in js
 
