@@ -57,8 +57,11 @@ try {
       await page.locator('#themeDirectory .theme-row').first().waitFor({timeout:15000});
       await page.locator('#closeIndex').click();
       await page.locator('#notesLibraryToggle').click();
+      await page.locator('#notesArchiveCount').getByText(/280 notes/).waitFor({timeout:15000});
+      await page.locator('#notesPublishedToggle').click();
       await page.locator('#notesThemeList .notes-theme-item').first().waitFor({timeout:15000});
-      await page.locator('#notesLibraryClose').click();
+      await page.locator('#notesLibraryClose').click(); // published subjects → archive
+      await page.locator('#notesLibraryClose').click(); // archive → search
       assert.equal(requests.filter(p=>p.endsWith('/browser-search-catalog.json')).length,1);
       assert.equal(requests.filter(p=>p.endsWith('/theme-directory-public.json')).length,1,
         'Validated relations must not download the 10 MB directory twice');
