@@ -873,12 +873,11 @@
       const preliminary=r.publicationStatus==='unverified';
       const source=r.sourcePdfPage?
         '<p class="notes-source-reference">Source : Bible essénienne · PDF page '+r.sourcePdfPage+
-        ' · <a href="Bible%20ess%C3%A9nienne%20(class%C3%A9e%20par%20livres).pdf#page='+r.sourcePdfPage+
-        '" target="_blank" rel="noopener">Voir la page du document</a></p>':'';
+        ' (référence de l’extraction à vérifier).</p>':'';
       const warning=preliminary?
         '<p class="notes-review-warning" role="note"><strong>Transcription automatique à vérifier.</strong> '+
         'Ce texte peut comporter des erreurs. Consultez le document d’origine avant de le citer.</p>':'';
-      state.readerHtml={psalm:warning+source+'<div class="prayer-block">'+modeAwareText(r.text||r.summary||'')+'</div>',prayer:''};
+      state.readerHtml={psalm:`${warning}${source}<div class="prayer-block">${modeAwareText(r.text||r.summary||'')}</div>`,prayer:''};
     }
     renderReader();
     $('recordDialog').showModal();
