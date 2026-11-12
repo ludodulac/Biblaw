@@ -1154,7 +1154,7 @@
   $('notesArchiveSearch').addEventListener('input',()=>{if(state.archivedNotes)renderArchivedNotes();});
   $('notesArchiveBook').addEventListener('change',()=>{if(state.archivedNotes)renderArchivedNotes();});
   $('notesThemeFilter').addEventListener('input',renderNoteThemeDirectory);
-  $('notesThemeBack').addEventListener('click',returnToNoteThemes);
+
   bindSuggestions();
   // A function deliberately defers the expensive load until a Psalm is opened.
   BiblawFAQ.setCorpusLoading(ensureCorpusReady);
