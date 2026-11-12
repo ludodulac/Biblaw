@@ -782,3 +782,45 @@ body.view-bible-themes .shell{padding-top:1.15rem}
 .related-discovery-themes{display:flex;flex-wrap:wrap;gap:.55rem;padding:.65rem 0}
 .related-discovery-themes .theme-text-link{background:white;border:1px solid #d9c4a4;border-radius:.5rem;min-height:2.35rem;padding:.35rem .7rem;cursor:pointer}
 .related-discovery>button.secondary{margin-top:.35rem}
+
+/* Notes archive: 280 extracted texts, not to be confused with 11 published notes.
+   Filter and book navigation load independently of the large Psalms corpus. */
+#notesArchivePanel[hidden],#notesThemePicker[hidden],#notesThemeResults[hidden],
+#notesPublishedInfo[hidden]{display:none!important}
+.notes-library-tabs{display:flex;flex-wrap:wrap;gap:.55rem;margin:0 0 1rem}
+.notes-library-tabs button{font:inherit;font-size:.93rem;font-weight:650;min-height:2.8rem;
+  border:1px solid #ddcfb8;border-radius:.7rem;padding:.65rem .85rem;background:#fff;cursor:pointer}
+.notes-library-tabs button[aria-pressed="true"]{border-color:#ac8039;background:#fff1d8;
+  box-shadow:inset 0 0 0 1px #ac8039;color:#664719}
+#notesArchivePanel{max-width:65rem}
+#notesArchivePanel .notes-library-info{font-size:.9rem;line-height:1.6;color:#51493e;
+  background:#fff8ee;border:1px solid #e6d8c2;padding:.8rem 1rem;border-radius:.8rem}
+.notes-archive-label{display:block;font-weight:700;color:#3b342b;margin:.9rem 0 .35rem}
+#notesArchiveSearch,#notesArchiveBook{width:100%;max-width:37rem;min-height:2.8rem;
+  border:1px solid #d7cab9;border-radius:.7rem;background:#fff;font:inherit;padding:.6rem .85rem}
+.notes-archive-count{font-size:.95rem;font-weight:650;color:#72542b;margin:1rem 0}
+.notes-archive-list{display:grid;gap:.65rem}
+.notes-archive-book{border:1px solid #e5ddcf;border-radius:.85rem;background:#fff;
+  overflow:hidden}
+.notes-archive-book>summary{list-style:revert;cursor:pointer;padding:.9rem 1.05rem;
+  font-weight:700;color:#382e22;min-height:3.05rem}
+.notes-archive-book[open]>summary{background:#fff8ec;border-bottom:1px solid #ebddc6}
+.notes-archive-cards{padding:.75rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+.notes-archive-item{display:flex;flex-direction:column;align-items:flex-start;gap:.28rem;
+  border:1px solid #e9e1d5;border-radius:.7rem;min-height:6rem;white-space:normal}
+.notes-review-status{display:inline-block;font-size:.77rem;font-weight:700;padding:.2rem .5rem;
+  border-radius:999px}
+.notes-review-pending{color:#805010;background:#fff0d8}
+.notes-review-published{color:#24633f;background:#e9f6ec}
+.notes-review-warning{padding:.8rem 1rem;border-radius:.65rem;background:#fff4e3;
+  color:#6e4615;border:1px solid #e4c49a;line-height:1.6}
+.notes-source-reference{font-size:.9rem;color:#67543d;margin:.8rem 0 1rem}
+.notes-source-reference a{color:#76501c;text-decoration:underline}
+@media(max-width:760px){
+  .notes-archive-cards{grid-template-columns:1fr}
+  .notes-library-tabs{display:grid;grid-template-columns:1fr}
+  .notes-archive-book>summary{padding:1rem .85rem}
+}
+@media print{
+  #notesArchivePanel .notes-library-tabs,.notes-archive-book>summary{display:none}
+}
