@@ -43,7 +43,7 @@ try{
     await page.locator('#recordDialog').waitFor({state:'visible'});
     const readerText=await page.locator('#dialogContent').innerText();
     assert.match(readerText,/Transcription automatique à vérifier/);
-    assert.match(readerText,/page PDF/);
+    assert.match(readerText,/PDF page/);
     assert.ok((await page.locator('.prayer-block').innerText()).length>100);
     const source=page.locator('#dialogContent .notes-source-reference');
     assert.match(await source.innerText(),/PDF page \d+/);
