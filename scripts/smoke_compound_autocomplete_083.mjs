@@ -51,7 +51,9 @@ noCompound.addRecord({id:'simple',recordType:'psalm',archangel:'michael',title:'
 assert.equal(noCompound.suggestions('saintesprit','exact',psalms,'',[],byId,6).length,0,
   'Never invent unattested compounds');
 const html=read('index.html'),css=read('css/biblaw-light.css'),app=read('js/biblaw.js');
-assert.ok(html.includes('for="query">✎ &nbsp;Tapez votre mot ou expression'));
+// The instruction now sits inside the input; its accessible name stays explicit.
+assert.match(html,/id="query"[^>]*aria-label="Tapez votre mot ou expression" placeholder="Tapez votre mot ou expression"/);
+assert.ok(!html.includes('class="search-query-label"'),'No duplicate label above the field');
 assert.ok(html.includes('<div hidden aria-hidden="true"><input id="query2"'), '084 must not show a second search field');
 assert.ok(css.includes('background:#fff2d4')&&css.includes('border:2px solid #b7832f'),
   'Writing field must be visually distinct from Archangel selector');
