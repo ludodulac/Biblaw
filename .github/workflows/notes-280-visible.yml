@@ -1,0 +1,65 @@
+name: Biblaw - show 280 archived notes transparently
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'js/biblaw.js'
+      - 'js/biblaw-pdf.js'
+      - 'css/biblaw-light.css'
+      - 'scripts/build_public_note_extractions.py'
+      - 'scripts/build_pages_site.py'
+      - 'scripts/smoke_notes_280_browser.mjs'
+      - '.github/workflows/notes-280-visible.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-notes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify original public notes and JavaScript syntax
+        run: |
+          node --check js/biblaw.js
+          node --check js/biblaw-pdf.js
+          python -m py_compile scripts/build_public_note_extractions.py scripts/build_pages_site.py
+          python scripts/audit_note_subjects_079.py
+          python scripts/audit_public_ui_contract.py
+          node scripts/check_faq_integrity.mjs
+          node scripts/check_faq_101_topics.mjs
+      - name: Create a minimal public Pages bundle including the labelled note projection
+        run: |
+          python scripts/build_pages_site.py
+          test -f _site/data/notes-extracted-public.json
+          test ! -d _site/data/notes
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          archive=json.loads(Path('_site/data/notes-extracted-public.json').read_text())
+          assert len(archive['notes'])==archive['archiveCount']==280
+          assert archive['alreadyPublishedCount']==11
+          assert archive['needsReviewCount']==269
+          assert archive['bookCount']==41
+          assert len({note['id'] for note in archive['notes']})==280
+          print('280 note records accessible; source folders and unreviewed raw files are NOT published')
+          PY
+      - name: Install browser test dependency
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify 280 notes on mobile and desktop and preserve existing user workflows
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-notes-280-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node scripts/smoke_notes_280_browser.mjs
+          node scripts/smoke_biblaw_m3_lazy_browser.mjs
+          node scripts/smoke_faq_single_retour_browser.mjs
+          node scripts/smoke_semantic_discovery_browser.mjs

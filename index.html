@@ -1,4 +1,4 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Biblaw — Recherche dans les psaumes</title><meta name="description" content="Recherche documentaire dans les psaumes de Biblaw par thème, numéro, terme ou expression."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/biblaw.css"><link rel="stylesheet" href="css/theme-index.css"><link rel="stylesheet" href="css/theme-entry.css"><link rel="stylesheet" href="css/biblaw-light.css?v=132"></head><body>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Biblaw — Recherche dans les psaumes</title><meta name="description" content="Recherche documentaire dans les psaumes de Biblaw par thème, numéro, terme ou expression."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/biblaw.css"><link rel="stylesheet" href="css/theme-index.css"><link rel="stylesheet" href="css/theme-entry.css"><link rel="stylesheet" href="css/biblaw-light.css?v=133"></head><body>
 <header class="site-header"><a class="wordmark" href="index.html" aria-label="Biblaw, accueil"><span class="wordmark-mark">B</span><span>Biblaw</span></a><button id="indexToggle" class="index-toggle" type="button" aria-expanded="false" aria-controls="indexPanel">Index des thèmes</button></header>
 <main class="shell">
 <section id="primarySearch" class="primary-search" aria-labelledby="primarySearchTitle"><h1 id="primarySearchTitle">Que cherchez-vous ?</h1><p class="search-intro">Explorez les psaumes et les notes en quelques clics.</p><div class="mode primary-mode-selector" role="group" aria-label="Type de recherche"><button class="mode-button active" id="modeThemes" type="button">Thèmes</button><button class="mode-button" id="modeExact" type="button">Mots exacts</button></div><p id="modeHelp" class="help primary-mode-help">Retrouve les thèmes indexés. Les psaumes sont classés Central, Important, puis Lié. Un numéro de psaume peut aussi être saisi directement.</p><fieldset id="sourceScope" class="source-scope">
@@ -29,10 +29,26 @@
   <button id="faqToggle" class="popular-questions-toggle" type="button" aria-controls="faqLibrary" aria-expanded="false">Questions fréquemment posées</button>
 </div></section>
 <section id="notesLibrary" class="panel notes-library" hidden aria-labelledby="notesLibraryTitle">
-  <div class="notes-library-header"><h2 id="notesLibraryTitle">Notes par sujets</h2><button id="notesLibraryClose" type="button" class="secondary">← Recherche</button></div>
-  <p class="notes-library-info">Choisissez un sujet pour lire les notes qui en parlent.</p>
-  <div id="notesThemePicker"><label for="notesThemeFilter">Chercher un sujet</label><input id="notesThemeFilter" type="search" placeholder="Ex. Ménora, calendrier maya…" autocomplete="off"><div id="notesThemeList" class="notes-theme-list" aria-label="Sujets classés alphabétiquement"></div><div id="notesReferenceSection" class="notes-reference-section" hidden><h3>Note de renvoi</h3><div id="notesReferenceList" class="notes-result-list"></div></div></div>
-  <div id="notesThemeResults" hidden><button id="notesThemeBack" type="button" class="secondary">← Tous les sujets</button><h3 id="notesSelectedTheme"></h3><div id="notesResultList" class="notes-result-list"></div></div>
+  <div class="notes-library-header"><h2 id="notesLibraryTitle">Notes de la Bible</h2><button id="notesLibraryClose" type="button" class="secondary">← Retour</button></div>
+  <div class="notes-library-tabs" role="group" aria-label="Choisir la présentation des notes">
+    <button id="notesAllToggle" class="secondary" type="button" aria-pressed="true">Toutes les notes (280)</button>
+    <button id="notesPublishedToggle" class="secondary" type="button" aria-pressed="false">Notes par sujets (11 publiées)</button>
+  </div>
+  <div id="notesArchivePanel">
+    <p class="notes-library-info"><strong>280 notes extraites dans 41 livres, dont 11 déjà publiées.</strong>
+       Les 269 autres transcriptions proviennent d’une extraction automatique et
+       <strong>restent à vérifier</strong> : des erreurs peuvent subsister.
+       La page du document source est indiquée pour chaque note.</p>
+    <label for="notesArchiveSearch" class="notes-archive-label">Rechercher un mot dans les notes</label>
+    <input id="notesArchiveSearch" type="search" placeholder="Ex. conte, Michaël, prière…" autocomplete="off">
+    <label for="notesArchiveBook" class="notes-archive-label">Filtrer par livre</label>
+    <select id="notesArchiveBook"><option value="">Tous les livres</option></select>
+    <p id="notesArchiveCount" class="notes-archive-count" role="status" aria-live="polite">Chargement des notes…</p>
+    <div id="notesArchiveList" class="notes-archive-list"></div>
+  </div>
+  <p id="notesPublishedInfo" class="notes-library-info" hidden>Ces 11 notes sont déjà publiées dans BIBLAW et classées sous 26 sujets. Elles sont également incluses dans les 280 notes ci-dessus.</p>
+  <div id="notesThemePicker" hidden><label for="notesThemeFilter">Chercher un sujet</label><input id="notesThemeFilter" type="search" placeholder="Ex. Ménora, calendrier maya…" autocomplete="off"><div id="notesThemeList" class="notes-theme-list" aria-label="Sujets classés alphabétiquement"></div><div id="notesReferenceSection" class="notes-reference-section" hidden><h3>Note de renvoi</h3><div id="notesReferenceList" class="notes-result-list"></div></div></div>
+  <div id="notesThemeResults" hidden><h3 id="notesSelectedTheme"></h3><div id="notesResultList" class="notes-result-list"></div></div>
 </section>
 <section id="faqLibrary" class="panel faq-library" aria-labelledby="faqLibraryTitle" hidden>
   <div class="faq-header">
@@ -91,4 +107,4 @@
 <label><input type="radio" name="readerPart" value="psalm"> Psaume</label>
 <label><input type="radio" name="readerPart" value="prayer"> Prière</label>
 <label><input type="radio" name="readerPart" value="both" checked> Les deux</label>
-</fieldset><p id="faqVerseContext" class="faq-verse-context" hidden></p><div id="dialogContent" class="dialog-content"></div><p id="readerExportStatus" class="reader-export-status" role="status" aria-live="polite" hidden></p><div class="dialog-actions"><button id="faqReturnFromPsalm" class="secondary" type="button" hidden>← Retour à la réponse</button><button id="printRecord" class="secondary">Imprimer</button><button id="downloadRecord" class="primary" type="button">Télécharger PDF</button></div></dialog><script src="js/theme-suggestion-engine.js?v=132"></script><script src="js/biblaw-pdf.js?v=085"></script><script src="js/biblaw-autocomplete.js?v=083"></script><script src="js/biblaw-faq.js?v=105"></script><script src="js/biblaw.js?v=132"></script><script src="js/theme-relations.js?v=104"></script><script src="js/theme-entry.js"></script><script src="js/theme-rubrics.js"></script></body></html>
+</fieldset><p id="faqVerseContext" class="faq-verse-context" hidden></p><div id="dialogContent" class="dialog-content"></div><p id="readerExportStatus" class="reader-export-status" role="status" aria-live="polite" hidden></p><div class="dialog-actions"><button id="faqReturnFromPsalm" class="secondary" type="button" hidden>← Retour à la réponse</button><button id="printRecord" class="secondary">Imprimer</button><button id="downloadRecord" class="primary" type="button">Télécharger PDF</button></div></dialog><script src="js/theme-suggestion-engine.js?v=132"></script><script src="js/biblaw-pdf.js?v=085"></script><script src="js/biblaw-autocomplete.js?v=083"></script><script src="js/biblaw-faq.js?v=105"></script><script src="js/biblaw.js?v=133"></script><script src="js/theme-relations.js?v=104"></script><script src="js/theme-entry.js"></script><script src="js/theme-rubrics.js"></script></body></html>

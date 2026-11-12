@@ -18,7 +18,16 @@
    if(p){add('title','Psaume '+record.number+' — '+(record.title||''));if(record.book?.number)add('meta','Livre '+record.book.number);for(const v of record.verses||[])add('text',v.number+'. '+v.text);}
    if(q){if(p)add('gap','');add('title','Prière '+record.attachedPrayer.number);for(const line of record.attachedPrayer.text.split(/\n/))add('text',line);}
   }else if(record.recordType==='master-prayer'){title='Prière '+record.number;filename='Biblaw_Priere_'+slug(record.number||record.id)+'.pdf';add('title',title);add('text',record.text);}
-  else if(record.recordType==='note'){title='Note';filename='Biblaw_Note_'+slug(record.id)+'.pdf';add('title',record.title||title);add('text',record.text||record.summary);}
+  else if(record.recordType==='note'){
+   title='Note';
+   filename='Biblaw_Note_'+slug(record.id)+'.pdf';
+   add('title',record.title||title);
+   if(record.publicationStatus==='unverified'){
+     add('meta','TRANSCRIPTION AUTOMATIQUE A VERIFIER - Consultez la page source avant citation.');
+   }
+   if(record.sourcePdfPage)add('meta','Source : Bible essenienne, page PDF '+record.sourcePdfPage);
+   add('text',record.text||record.summary);
+  }
   else if(record.recordType==='faq'){
     title=String(record.title||'Question');
     filename='Biblaw_Question_'+slug(record.id||'reponse')+'.pdf';
