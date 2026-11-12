@@ -710,10 +710,7 @@ body.view-faq .shell{padding-top:1.15rem}
 @media(max-width:760px){.faq-answer-nav>button{flex:1 1 10rem}}
 @media print{body.view-faq .faq-answer-nav{display:none!important}}
 
-/* 106 — Public A–Z Bible theme directory: one additional footer entry.
-   It reuses the canonical thematic index and the existing Psalm reader. */
-.bible-themes-shortcut{max-width:54rem;margin:1.7rem auto 1.2rem;text-align:center}
-.bible-themes-shortcut>button{display:block;width:100%;min-height:3.65rem;padding:.85rem 1.1rem;font:inherit;font-weight:700}
+/* Single A–Z theme directory using the canonical thematic index and the Psalm reader. */
 body.view-bible-themes #primarySearch,
 body.view-bible-themes #notesLibrary,
 body.view-bible-themes #faqLibrary,
@@ -721,8 +718,7 @@ body.view-bible-themes #ambiguityPanel,
 body.view-bible-themes .results-section,
 body.view-bible-themes #validatedRelationsPanel,
 body.view-bible-themes #transversePanel,
-body.view-bible-themes #secondaryTools,
-body.view-bible-themes #bibleThemesShortcut{display:none!important}
+body.view-bible-themes #secondaryTools{display:none!important}
 body.view-bible-themes .shell{padding-top:1.15rem}
 .bible-themes-library{max-width:54rem;margin:0 auto;padding:clamp(.9rem,3vw,1.8rem);
   border:1px solid #e9e1d4;border-radius:1.15rem;background:white;
@@ -771,7 +767,7 @@ body.view-bible-themes .shell{padding-top:1.15rem}
   .bible-themes-letters button{flex:1 0 2rem}
 }
 @media print{
-  body.view-bible-themes #bibleThemesShortcut,body.view-bible-themes .bible-themes-header,
+  body.view-bible-themes .bible-themes-header,
   body.view-bible-themes .bible-themes-letters,body.view-bible-themes .bible-themes-filter-label,
   body.view-bible-themes #bibleThemesFilter{display:none!important}
 }
@@ -825,19 +821,8 @@ body.view-bible-themes .shell{padding-top:1.15rem}
   #notesArchivePanel .notes-library-tabs,.notes-archive-book>summary{display:none}
 }
 
-/* 134 — Home: FAQ in the header, notes then theme index below search.
-   Lift only the theme index dialog on desktop; retain the mobile bottom sheet. */
-.search-shortcuts #indexToggle::before { content:'☷'; }
-@media (min-width:761px) {
-  #indexPanel {
-    top:clamp(4.75rem,9vh,7rem);
-    bottom:auto;
-    height:min(78dvh,53rem);
-    max-height:none;
-    border-bottom:1px solid #e8dfd5;
-    border-radius:1.4rem;
-  }
-}
+/* One entry point under « Toutes les notes » for the full A–Z theme index. */
+.search-shortcuts #bibleThemesToggle::before { content:'☷'; }
 @media (max-width:760px) {
   .site-header #faqToggle {
     max-width:min(62vw,15rem);
