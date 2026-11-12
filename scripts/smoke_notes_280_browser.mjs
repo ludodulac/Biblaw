@@ -32,6 +32,7 @@ try{
     await page.goto(url,{waitUntil:'domcontentloaded'});
     await page.locator('#notesLibraryToggle').click();
     await page.locator('#notesArchiveCount').getByText(/280 notes/).waitFor({timeout:20000});
+    await page.locator('.notes-archive-book').first().waitFor({timeout:15000});
     assert.equal(await page.locator('.notes-archive-book').count(),41);
     assert.equal(await page.locator('#notesAllToggle').getAttribute('aria-pressed'),'true');
     assert.deepEqual(heavy,[],'Notes archive should not load the 23 MB Psalm corpus');
