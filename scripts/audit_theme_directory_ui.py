@@ -13,7 +13,7 @@ assert html.count('id="bibleThemesToggle"') == 1
 assert html.count('id="bibleThemesLibrary"') == 1
 assert html.index('id="notesLibraryToggle"') < html.index('id="bibleThemesToggle"')
 assert 'id="bibleThemesToggle" class="popular-questions-toggle"' in html
-assert 'aria-controls="bibleThemesLibrary">Index des thèmes</button>' in html
+assert 'aria-controls="bibleThemesLibrary" aria-label="Index des thèmes">Index des thèmes</button>' in html
 assert '<h2 id="bibleThemesTitle">Index des thèmes</h2>' in html
 assert 'id="bibleThemesFilter"' in html
 assert 'id="bibleThemesLetters"' in html
