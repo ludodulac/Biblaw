@@ -3,7 +3,20 @@ import {readFileSync} from 'node:fs';
 
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const html=read('index.html'),js=read('js/biblaw.js'),css=read('css/biblaw-light.css');
-assert.match(html,/<label class="search-query-label" for="query">/);
+// The search hint now lives inside the input; accessibility is preserved by aria-label.
+assert.doesNotMatch(html,/<label class="search-query-label" for="query">/);
+assert.match(html,/id="query"[^>]*aria-label="Tapez votre mot ou expression" placeholder="Tapez votre mot ou expression"/);
+assert.ok(html.includes('Explorez la Bible essénienne par mot, thème ou question.'));
+assert.ok(!html.includes('Que cherchez-vous ?')&&!html.includes('Annexes · bientôt'));
+const header=html.match(/<header class="site-header">.*?<\/header>/s)?.[0]||'';
+assert.match(header,/id="faqToggle"[^>]*aria-controls="faqLibrary">Questions les plus souvent posées/);
+assert.ok(!header.includes('id="indexToggle"'),'Index should not remain in the header');
+const notesPosition=html.indexOf('id="notesLibraryToggle"');
+const indexPosition=html.indexOf('id="indexToggle"');
+assert.ok(notesPosition>=0&&indexPosition>notesPosition,'Theme index follows all notes');
+assert.match(html,/id="indexToggle"[^>]*aria-controls="indexPanel">Index des thèmes/);
+assert.ok(css.includes('#indexPanel {')&&css.includes('top:clamp('),'Index must open higher on desktop');
+
 assert.match(html,/<div class="search-input-line">/);
 assert.match(html,/<button type="button" id="addQueryTerm"/);
 assert.match(html,/Pour ajouter un autre mot, appuyez sur <strong>\+<\/strong>/);

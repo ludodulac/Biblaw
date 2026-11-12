@@ -824,3 +824,27 @@ body.view-bible-themes .shell{padding-top:1.15rem}
 @media print{
   #notesArchivePanel .notes-library-tabs,.notes-archive-book>summary{display:none}
 }
+
+/* 134 — Home: FAQ in the header, notes then theme index below search.
+   Lift only the theme index dialog on desktop; retain the mobile bottom sheet. */
+.search-shortcuts #indexToggle::before { content:'☷'; }
+@media (min-width:761px) {
+  #indexPanel {
+    top:clamp(4.75rem,9vh,7rem);
+    bottom:auto;
+    height:min(78dvh,53rem);
+    max-height:none;
+    border-bottom:1px solid #e8dfd5;
+    border-radius:1.4rem;
+  }
+}
+@media (max-width:760px) {
+  .site-header #faqToggle {
+    max-width:min(62vw,15rem);
+    padding:.55rem .6rem;
+    text-align:center;
+    white-space:normal;
+    line-height:1.2;
+    font-size:.78rem;
+  }
+}
