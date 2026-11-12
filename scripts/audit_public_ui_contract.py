@@ -49,7 +49,8 @@ assert "Number(a.record.number)||Number.MAX_SAFE_INTEGER" in js
 assert "String(a.record.id).localeCompare(String(b.record.id),'fr')" in js
 assert "companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`" in js
 # 040B: exact search is always unfiltered by grammatical or semantic senses.
-search_body = js[js.index('function search('):js.index('function renderThemeDirectory()')] if js.index('function search(') < js.index('function renderThemeDirectory()') else js[js.index('function search('):]
+search_body = js[js.index('function search('):js.index('function renderPopularQuestionFamilies()')]
+assert search_body, 'Search implementation must remain available before popular-question helpers'
 assert 'const exactItems=matches(query);' in search_body
 assert 'mergeExpansionMatches(exactItems,query);' in search_body
 assert 'render(exactItems,null,{exactSearch:true});' in search_body
