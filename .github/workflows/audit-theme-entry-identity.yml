@@ -108,16 +108,20 @@ jobs:
                 data/thematic-index/theme-relations-validated.json \
                 data/thematic-index/theme-relations-public.json \
                 data/thematic-index/theme-connections.json
-              # Narrow exception: exact reviewed 040A/041C occurrence-only implementation.
-              # Any further change to biblaw.js requires independent contract approval.
+              # Reviewed, hash-pinned exceptions only: the 040A/041C occurrence runtime,
+              # or the A–Z index unification, which deletes obsolete index UI code only.
+              # Any other biblaw.js change still requires independent approval.
               if ! git diff --quiet "$BASE_SHA" -- js/biblaw.js; then
                 APPROVED_OCCURRENCE_JS_BLOB="10ae92852d6b3f295ad35aad291bca2797effbca"
+                APPROVED_SINGLE_INDEX_JS_BLOB="7c7cef00d880921aa9d148c3f797582ffb68a1cd"
                 ACTUAL_JS_BLOB="$(git rev-parse HEAD:js/biblaw.js)"
-                if [ "$ACTUAL_JS_BLOB" != "$APPROVED_OCCURRENCE_JS_BLOB" ]; then
+                if [ "$ACTUAL_JS_BLOB" != "$APPROVED_OCCURRENCE_JS_BLOB" ] &&
+                   [ "$ACTUAL_JS_BLOB" != "$APPROVED_SINGLE_INDEX_JS_BLOB" ]; then
                   echo "::error::Unreviewed js/biblaw.js changes; thematic search remains protected"
                   exit 1
                 fi
                 python scripts/audit_public_ui_contract.py
+                python scripts/audit_theme_directory_ui.py
               fi
             fi
           fi
