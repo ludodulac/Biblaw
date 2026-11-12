@@ -12,10 +12,13 @@ const header=html.match(/<header class="site-header">.*?<\/header>/s)?.[0]||'';
 assert.match(header,/id="faqToggle"[^>]*aria-controls="faqLibrary">Questions les plus souvent posées/);
 assert.ok(!header.includes('id="indexToggle"'),'Index should not remain in the header');
 const notesPosition=html.indexOf('id="notesLibraryToggle"');
-const indexPosition=html.indexOf('id="indexToggle"');
-assert.ok(notesPosition>=0&&indexPosition>notesPosition,'Theme index follows all notes');
-assert.match(html,/id="indexToggle"[^>]*aria-controls="indexPanel">Index des thèmes/);
-assert.ok(css.includes('#indexPanel {')&&css.includes('top:clamp('),'Index must open higher on desktop');
+const indexPosition=html.indexOf('id="bibleThemesToggle"');
+assert.ok(notesPosition>=0&&indexPosition>notesPosition,'The unique A–Z theme index follows all notes');
+assert.match(html,/id="bibleThemesToggle"[^>]*aria-controls="bibleThemesLibrary">Index des thèmes/);
+assert.equal((html.match(/id="bibleThemesToggle"/g)||[]).length,1,'Exactly one index button');
+assert.ok(!html.includes('id="indexToggle"')&&!html.includes('id="indexPanel"')&&
+  !html.includes('id="bibleThemesShortcut"'),'Remove the redundant theme index and footer entry');
+assert.ok(css.includes('.bible-themes-library{'),'Full A–Z theme library must stay styled');
 
 assert.match(html,/<div class="search-input-line">/);
 assert.match(html,/<button type="button" id="addQueryTerm"/);
