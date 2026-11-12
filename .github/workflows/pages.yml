@@ -31,6 +31,10 @@ jobs:
         run: python scripts/audit_theme_directory_ui.py
       - name: Vérifier le runtime thématique public
         run: python scripts/validate_thematic_search_runtime.py
+      - name: Vérifier les correspondances sémantiques publiques des 1 267 thèmes
+        run: |
+          python scripts/audit_semantic_theme_navigation.py
+          node scripts/smoke_semantic_engine.mjs
       - name: Vérifier les thèmes des dix premiers psaumes du livre 1
         run: python scripts/audit_book01_first10_theme_coverage.py
       - name: Vérifier les thèmes des psaumes 11 à 20 du livre 1
