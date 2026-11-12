@@ -1,8 +1,6 @@
 name: Biblaw - semantic theme discovery and release regression
 
 on:
-  push:
-    branches: [feat/semantic-discovery-1267-release-20261112]
   pull_request:
     paths:
       - 'index.html'
