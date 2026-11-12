@@ -177,14 +177,15 @@
   }
   async function load() {
     try {
-      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime, noteThemesIndex] = await Promise.all([
+      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime, noteThemesIndex, semanticNavigation] = await Promise.all([
         fetch('data/browser-search-catalog.json').then(r => { if (!r.ok) throw Error('browser-search-catalog'); return r.json(); }),
         fetch('data/thematic-index/theme-directory-public.json').then(r => { if (!r.ok) throw Error('theme-directory'); return r.json(); }),
         fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); }),
         fetch('data/lexical-expansion-runtime.json').then(r => { if (!r.ok) throw Error('lexical-expansion-runtime'); return r.json(); }),
         Promise.resolve({targets:[]}),
         fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); }),
-        fetch('data/note-themes-public-073.json?v=079').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); })
+        fetch('data/note-themes-public-073.json?v=079').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); }),
+        fetch('data/thematic-index/theme-semantic-navigation-public.json').then(r => { if (!r.ok) throw Error('theme-semantic-navigation-public'); return r.json(); })
       ]);
       $('corpusStats').textContent='Préparation des index de recherche…';
       await yieldToBrowser();
@@ -198,7 +199,13 @@
       state.grammarByForm = new Map((grammarBrowserRuntime.forms||[]).map(form=>[form.normalizedForm,form.analyses]));
       state.semanticTargetsByForm = new Map();
       for(const target of [] ){ const list=state.semanticTargetsByForm.get(target.normalizedForm)||[]; list.push(target); state.semanticTargetsByForm.set(target.normalizedForm,list); }
-      state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime);
+      if(semanticNavigation.schemaVersion!==1||
+         semanticNavigation.purpose!=='explicit-related-theme-discovery-not-canonical-synonymy'||
+         semanticNavigation.canonicalThemeCount!==state.themeDirectory.length||
+         semanticNavigation.createsPsalmRelations!==false||
+         semanticNavigation.semanticMerging!==false)
+        throw Error('La navigation par mots associés est incohérente avec les thèmes canoniques.');
+      state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime, semanticNavigation);
       state.records = bundle.records || [];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
       // No note becomes public through classification: all IDs must already exist in browser catalog.
@@ -516,6 +523,19 @@
         return render(items,[resolvedA[0],resolvedB[0]],{dualTheme:true});
       }
       const resolved=resolveIndexedThemes(query);
+      if(!resolved.length){
+        const related=state.themeEngine?.relatedThemesForQuery(query)||[];
+        if(related.length){
+          hideAmbiguity();hideTransverseNavigation();
+          const thematic=thematicItems(related);
+          const textual=textualPsalmMatches(query);
+          publishPresentationState({kind:'related-theme-discovery',
+            themes:related.map(theme=>({id:theme.id,label:theme.label})),
+            psalmCount:thematic.length});
+          return render(thematic,related,{relatedDiscovery:true,
+            relatedQuery:query,relatedThemes:related,textualCount:textual.length});
+        }
+      }
       if(resolved.length>1){
         showSingleThemeAmbiguity(resolved); const thematic=thematicItems(resolved), textual=textualPsalmMatches(query); hideTransverseNavigation();
         publishPresentationState({kind:'ambiguous-themes',themes:resolved.map(theme=>({id:theme.id,label:theme.label}))});
@@ -580,9 +600,18 @@
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
     $('resultCount').textContent=companion?.dualExactQueries?`${items.length} texte${items.length>1?'s':''} avec les deux mots`:companion?.dualExactPending?'Deuxième mot à saisir':companion?.grammarSearch?`${items.length} textes`:companion?.suggestionPending?'Choisissez un thème':companion?.dualPending?'Choisissez 2 thèmes':companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} trouvé${items.length>1?'s':''}`:companion?.unresolvedTheme?'Aucun thème trouvé':themeLabels.length?`${items.length} psaume${items.length>1?'s':''} trouvé${items.length>1?'s':''}`:`${items.length} résultat${items.length>1?'s':''}`;
     const textualNotice=!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>Aussi dans le texte</strong><span>${companion.textualCount} psaume${companion.textualCount>1?'s':''} contiennent ce mot ou cette expression.</span></div><button class="secondary" data-show-text-search>Voir les occurrences</button></div>`:'';
+    const relatedNotice=companion?.relatedDiscovery?
+      '<section class="search-scope-note related-discovery"><div><strong>Thèmes associés à « '+
+      esc(companion.relatedQuery)+' »</strong><span>Ces pistes proviennent des thèmes déjà indexés. '+
+      'Ce ne sont pas des synonymes certains ni de nouvelles associations entre psaumes.</span></div>'+
+      '<div class="related-discovery-themes">'+companion.relatedThemes.map(t=>
+        '<button class="theme-text-link" type="button" data-related-theme="'+esc(t.id)+'">'+
+        esc(t.label)+'</button>').join('')+'</div>'+
+      (companion.textualCount>0?'<button class="secondary" type="button" data-show-text-search>'+
+        'Voir aussi les occurrences du mot</button>':'')+'</section>':'';
     const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><div><strong>Aucun thème indexé ne correspond à cette recherche</strong><span>${companion?.textualAvailable?'Le mot ou l’expression apparaît cependant dans le corpus.':'Aucune occurrence textuelle exacte ne correspond non plus avec les filtres sélectionnés.'}</span></div>${companion?.textualAvailable?'<button class="secondary" data-show-text-search>Voir les occurrences</button>':''}</div>`:'';
-    if(!items.length){ const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const suggestionPending=companion?.suggestionPending?'<div class="empty">Plusieurs thèmes correspondent à votre recherche. Choisissez celui qui vous intéresse ci-dessus.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; const wordEmpty=companion?.dualExactQueries?'<div class="empty">Aucun texte ne contient les deux mots dans les catégories sélectionnées.</div>':companion?.dualExactPending?'<div class="empty">Saisissez les deux mots pour lancer cette recherche.</div>':''; $('results').innerHTML=emptyNumber||dualEmpty||suggestionPending||pending||wordEmpty||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>');bindTextSearchLink();return; }
-    $('results').innerHTML=unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount,secondaryOccurrenceCount})=>{
+    if(!items.length){ const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const suggestionPending=companion?.suggestionPending?'<div class="empty">Plusieurs thèmes correspondent à votre recherche. Choisissez celui qui vous intéresse ci-dessus.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; const wordEmpty=companion?.dualExactQueries?'<div class="empty">Aucun texte ne contient les deux mots dans les catégories sélectionnées.</div>':companion?.dualExactPending?'<div class="empty">Saisissez les deux mots pour lancer cette recherche.</div>':''; $('results').innerHTML=relatedNotice+(emptyNumber||dualEmpty||suggestionPending||pending||wordEmpty||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>'));bindThemeLinks($('results'));bindTextSearchLink();return; }
+    $('results').innerHTML=relatedNotice+unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount,secondaryOccurrenceCount})=>{
       const bookMeta=r.book?.number?`Livre ${r.book.number}${r.book.title?` · ${r.book.title}`:''}`:'';
       const status=companion?.dualExactQueries?`${companion.dualExactQueries[0]} : ${occurrenceCount} · ${companion.dualExactQueries[1]} : ${secondaryOccurrenceCount}`:companion?.exactSearch?`${occurrenceCount} occurrence${occurrenceCount>1?'s':''}`:themeMatches?'Deux thèmes':thematic?importanceLabel(thematic.importance):numberLookup?'Numéro':companion?.textualFallback?'Occurrence du terme':'Texte';
       const details=resultDetailsBody(r,{thematic,matchedThemes,numberLookup,themeMatches,companion});
