@@ -39,6 +39,32 @@ Le classement ne crée jamais une relation. Aucun score, fréquence de mot, prox
 
 De même, les scores de `theme-connections.json` classent uniquement des cooccurrences déjà calculées entre thèmes indexés. Ils ne valident pas une relation thème–psaume et ne modifient pas son `importance`.
 
+## Navigation sémantique explicite par mots courants (2026-11-12)
+
+`theme-semantic-navigation-public.json` est un **répertoire de suggestions thématiques** distinct du runtime canonique.
+Les 1 267 identifiants de thèmes ont été parcourus ; seuls les termes dont le rapprochement
+est justifié par les **intitulés thématiques** ont été retenus comme pistes de navigation.
+Aucune nouvelle relation thème–psaume n'est créée, aucun mot littéral n'est inventé et
+aucun lien de cooccurrence n'est présenté comme une équivalence.
+
+La résolution canonique exacte (`resolveIndexedThemes`) garde la priorité absolue.
+Si elle ne trouve aucun thème, une **requête expressément retenue** peut proposer plusieurs
+thèmes déjà existants, et l'interface doit le dire : « Thèmes associés », non synonymes certains.
+Les psaumes affichés proviennent uniquement des occurrences indexées pour chacun de ces thèmes,
+sans changer les critères Central / Important / Lié.
+L’utilisateur conserve la possibilité de rechercher les occurrences **littérales** séparément.
+
+Exemple : `conte`, `contes`, `contes de fées`, `légende` ou `merveilleux`
+proposent la navigation vers les thèmes canoniques `blanche-neige`, `fees`,
+`haricot-magique`, `baguette-magique`, `licorne` déjà présents.
+Ces rapprochements ne signifient pas que les cinq thèmes sont doctrinalement identiques.
+Ils ne présument aucun « Aladin » indexé si aucun thème canonique ne le porte.
+
+Le contrôle `audit_semantic_theme_navigation.py` garantit la couverture des identifiants
+canoniques, l'absence de collision avec les alias exacts et l'absence de références
+inventées aux psaumes. `smoke_semantic_engine.mjs` vérifie tous les mots associés ;
+`smoke_semantic_discovery_browser.mjs` teste les parcours Android simulé et ordinateur.
+
 ## Accès documentaire par numéro
 
 Une requête composée uniquement d'un entier positif, avec ou sans le préfixe `psaume` (par exemple `105` ou `psaume 105`), est interprétée comme une recherche documentaire de numéro.

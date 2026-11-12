@@ -70,6 +70,7 @@ PUBLIC_FILES = (
     "data/thematic-index/theme-relations-public.json",
     "data/thematic-index/theme-rubrics-public.json",
     "data/thematic-index/theme-search-runtime.json",
+    "data/thematic-index/theme-semantic-navigation-public.json",
 )
 
 FORBIDDEN_PREFIXES = (

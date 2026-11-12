@@ -1,0 +1,54 @@
+name: Biblaw - semantic theme discovery and release regression
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'css/biblaw-light.css'
+      - 'js/biblaw.js'
+      - 'js/theme-suggestion-engine.js'
+      - 'data/thematic-index/theme-semantic-navigation-public.json'
+      - 'scripts/audit_semantic_theme_navigation.py'
+      - 'scripts/smoke_semantic_discovery_browser.mjs'
+      - '.github/workflows/biblaw-semantic-discovery.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  semantic-navigation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Audit all canonical IDs and every curated semantic query
+        run: |
+          node --check js/biblaw.js
+          node --check js/theme-suggestion-engine.js
+          node --check js/biblaw-faq.js
+          python scripts/audit_semantic_theme_navigation.py
+          node scripts/smoke_semantic_engine.mjs
+          python scripts/audit_public_ui_contract.py
+          node scripts/check_faq_integrity.mjs
+          node scripts/check_faq_101_topics.mjs
+          node scripts/check_faq_dom.mjs
+      - name: Build Pages locally only (no deployment)
+        run: python scripts/build_pages_site.py
+      - name: Install Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Test natural queries and full previous UI functionality
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-semantic-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node scripts/smoke_semantic_discovery_browser.mjs
+          node scripts/smoke_biblaw_all_themes_browser.mjs
+          node scripts/smoke_biblaw_m3_lazy_browser.mjs
+          node scripts/smoke_faq_single_retour_browser.mjs
+          node scripts/smoke_occurrence_expansion_browser.mjs

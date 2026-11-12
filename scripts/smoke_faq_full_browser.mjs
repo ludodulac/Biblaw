@@ -15,7 +15,7 @@ try{
   page.on('request',r=>{if(/\/data\/faq-[\w-]+\.json/.test(r.url()))faqRequests.push(r.url());});
   try{
    await page.goto(base,{waitUntil:'networkidle'});
-   await page.waitForFunction(()=>!document.getElementById('corpusStats').textContent.includes('Chargement'),{timeout:45000});
+   // M3: open the public FAQ without waiting for an unrelated 22 MB corpus.
    assert.equal(faqRequests.length,0,'FAQ loaded before the visitor opened it');
    await page.locator('#faqToggle').click();
    await page.locator('#faqTopicButtons .faq-topic-button').first().waitFor();
@@ -51,6 +51,7 @@ try{
      if(seen===0||seen===50||seen===94){
       for(const index of [...new Set([0,count-1])]){
        await refs.nth(index).click();
+       await page.locator('#recordDialog').waitFor({state:'visible',timeout:60000});
        assert.equal(await page.locator('#recordDialog').isVisible(),true);
        assert.ok(await page.locator('#dialogContent .faq-cited-verse').count()>0);
        await page.locator('#faqReturnFromPsalm').click();
@@ -63,10 +64,10 @@ try{
       const bytes=await readFile(await file.path());
       assert.equal(bytes.subarray(0,5).toString(),'%PDF-');
      }
-     await page.locator('#faqBack').click();
+     await page.locator('#faqClose').click();
      seen++;
     }
-    await page.locator('#faqThemeBack').click();
+    await page.locator('#faqClose').click();
    }
    assert.equal(seen,95);
    assert.equal(titles.size,95);
@@ -92,7 +93,7 @@ try{
     assert.match(await page.locator('#faqAnswerTitle').innerText(),canonical);
     assert.equal(await page.locator('#faqAnswerBody .faq-psalm-link').count(),count);
     assert.ok(await page.locator('#faqAnswerBody strong').count()>0);
-    await page.locator('#faqBack').click();
+    await page.locator('#faqClose').click();
    }
    await page.locator('#faqSearch').fill('Que nous apprennent réellement les expériences de mort imminente ?');
    assert.equal(await page.locator('#faqList .faq-question-item').count(),0);

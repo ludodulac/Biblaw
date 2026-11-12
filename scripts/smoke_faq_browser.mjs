@@ -8,7 +8,7 @@ page.on('pageerror',e=>errors.push(e.message));
 page.on('request',r=>{if(/\/data\/faq-[\w-]+\.json/.test(r.url()))faqRequests.push(r.url());});
 try{
   await page.goto(base,{waitUntil:'networkidle'});
-  await page.waitForFunction(()=>!document.getElementById('corpusStats').textContent.includes('Chargement'),{timeout:45000});
+  // M3: FAQ navigation does not need to download the general corpus first.
   assert.equal(faqRequests.length,0,'FAQ content loaded on the site homepage');
   await page.locator('#faqToggle').click();
   await page.locator('#faqTopicButtons .faq-topic-button').first().waitFor();
@@ -23,6 +23,7 @@ try{
   assert.ok((await page.locator('#faqAnswerTitle').innerText()).includes('souffrance'));
   assert.ok(faqRequests.length>1,'The answer was not fetched on demand');
   await page.locator('#faqAnswerBody .faq-psalm-link').first().click();
+  await page.locator('#recordDialog').waitFor({state:'visible',timeout:60000});
   assert.equal(await page.locator('#recordDialog').isVisible(),true);
   assert.ok(await page.locator('#dialogContent .faq-cited-verse').count()>0);
   await page.locator('#faqReturnFromPsalm').click();
@@ -31,8 +32,8 @@ try{
   await page.locator('#faqPdf').click();
   const file=await download;
   assert.match(file.suggestedFilename(),/^Biblaw_Question_.*\.pdf$/);
-  await page.locator('#faqBack').click();
-  await page.locator('#faqThemeBack').click();
+  await page.locator('#faqClose').click();
+  await page.locator('#faqClose').click();
   assert.equal(await page.locator('#faqTopicButtons .faq-topic-button').count(),11);
   await page.locator('#faqClose').click();
   assert.equal(await page.locator('#faqLibrary').isVisible(),false);

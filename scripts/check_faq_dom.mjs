@@ -33,7 +33,7 @@ function elt(tag='div'){
   return node;
 }
 const needed=['faqStatus','faqList','faqIndex','faqAnswer','faqAnswerTitle',
-  'faqAnswerBody','faqBack','faqClose','faqPdf','faqPrint','faqLibrary','faqToggle',
+  'faqAnswerBody','faqClose','faqPdf','faqPrint','faqLibrary','faqToggle',
   'faqSearch','faqSearchStatus'];
 const nodes=Object.fromEntries(needed.map(k=>[k,elt()]));
 nodes.faqLibrary.hidden=true;
@@ -85,7 +85,7 @@ for(const item of nodes.faqList.children){
     linkCount++;
   }
   questionCount++;
-  nodes.faqBack.onclick();
+  nodes.faqClose.onclick();
   assert.equal(nodes.faqIndex.hidden,false);
   assert.equal(nodes.faqAnswer.hidden,true);
 }
@@ -97,7 +97,8 @@ nodes.faqPdf.onclick();
 assert.equal(exported,1,'PDF export did not trigger');
 nodes.faqPrint.onclick();
 assert.equal(printed,1,'Print button did not trigger');
-nodes.faqClose.onclick();
+nodes.faqClose.onclick(); // answer → question list
+nodes.faqClose.onclick(); // question list → main search
 assert.equal(nodes.faqLibrary.hidden,true);
 console.log('BIBLAW FAQ UI smoke OK: '+questionCount+' answers opened, '+linkCount+
   ' active canonical citation buttons tested, PDF and print actions tested.');

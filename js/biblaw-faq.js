@@ -6,7 +6,10 @@
   const state={questions:[],byId:new Map(),records:new Map(),openPsalm:null,current:null,
     lastLink:null,lastScroll:0,loading:null,routes:[],aliases:new Map(),
     themesMode:false,themeIndex:null,indexLoading:null,selectedTopic:null,
-    sourceCache:new Map(),answerLoading:new Map(),requestId:0};
+    sourceCache:new Map(),answerLoading:new Map(),requestId:0,
+    recordsReady:false,corpusLoading:null,visibleQuestionIds:[],
+    indexScroll:0,topicsScroll:0,indexFocus:null,answerScrolls:new Map(),
+    answerNavigation:null};
   const labelNumber=(n,verses)=>'Psaume '+n+', verset'+(verses.length>1?'s':'')+' '+verses.join(', ');
   function validReference(ref){
     const record=state.records.get(ref.recordId);
@@ -60,10 +63,13 @@
     $('faqList').replaceChildren();
     $('faqTopicButtons').replaceChildren();
     $('faqTopics').hidden=Boolean(chosen||query);
-    $('faqThemeBack').hidden=!chosen&&!query;
-    $('faqSelectedTheme').hidden=!chosen;
+    $('faqSelectedTheme').hidden=!chosen||Boolean(query);
     if(chosen)$('faqSelectedTheme').textContent=manifest?.topics.find(t=>t.id===chosen)?.label||'';
-    if(!manifest){$('faqSearchStatus').textContent='';return;}
+    if(!manifest){
+      state.visibleQuestionIds=[];
+      $('faqSearchStatus').textContent='';
+      return;
+    }
     if(!chosen&&!query){
       for(const topic of manifest.topics){
         const button=document.createElement('button');
@@ -71,19 +77,20 @@
         const label=document.createElement('span');label.textContent=topic.label;
         const count=document.createElement('small');count.textContent=topic.count+' questions';
         button.append(label,count);
-        button.onclick=()=>{state.selectedTopic=topic.id;renderThemedIndex();};
+        button.onclick=()=>selectTopic(topic.id);
         $('faqTopicButtons').append(button);
       }
     }
     const shown=manifest.questions.filter(q=>query
       ?[q.title,...q.aliases].some(text=>normalizeQuestion(text).includes(query))
       :q.theme===chosen);
+    state.visibleQuestionIds=shown.map(q=>q.id);
     for(const question of shown){
       const b=document.createElement('button');b.type='button';b.className='faq-question-item';
       const title=document.createElement('span');title.className='faq-question-title';title.textContent=question.title;
       const chevron=document.createElement('span');chevron.className='faq-chevron';
       chevron.textContent='›';chevron.setAttribute('aria-hidden','true');
-      b.append(title,chevron);b.onclick=()=>showAnswer(question.id);
+      b.append(title,chevron);b.onclick=()=>showAnswer(question.id,b);
       $('faqList').append(b);
     }
     $('faqSearchStatus').textContent=query
@@ -91,6 +98,29 @@
         ?'Aucune réponse fondée dans les psaumes pour cette question.'
         :shown.length+' réponse'+(shown.length>1?'s':'')+' trouvée'+(shown.length>1?'s':''))
       :chosen?shown.length+' questions dans ce thème.':'';
+  }
+  function selectTopic(id){
+    state.requestId++;
+    state.topicsScroll=window.scrollY;
+    state.selectedTopic=id;
+    $('faqSearch').value='';
+    renderThemedIndex();
+    showStatus('');
+    window.scrollTo({top:0,behavior:'instant'});
+    $('faqSelectedTheme').setAttribute('tabindex','-1');
+    $('faqSelectedTheme').focus({preventScroll:true});
+  }
+  function returnToTopics(){
+    state.requestId++;
+    const previous=state.selectedTopic;
+    state.selectedTopic=null;
+    $('faqSearch').value='';
+    renderThemedIndex();
+    showStatus('');
+    window.scrollTo({top:state.topicsScroll,behavior:'instant'});
+    // Rebuilt topic buttons: focus the new matching node, not a stale reference.
+    const position=state.themeIndex?.topics.findIndex(topic=>topic.id===previous)??-1;
+    if(position>=0)$('faqTopicButtons').children[position]?.focus({preventScroll:true});
   }
   async function loadIndex(){
     if(state.themeIndex)return true;
@@ -136,7 +166,9 @@
         throw Error('Références vérifiées indisponibles : '+id);
       article=linkedReferences(q,books.verifiedPsalms,source.citations);
     }
-    for(const ref of article.references)if(!validReference(ref))
+    // FAQ answers may be read before the search corpus arrives. Verify links as soon
+    // as the corpus is available, and always again before opening a cited Psalm.
+    if(state.recordsReady)for(const ref of article.references)if(!validReference(ref))
       throw Error('Référence de psaume non valide : '+id+' / '+ref.recordId);
     return article;
   }
@@ -162,6 +194,9 @@
     const entry=state.themeIndex?.questions.find(item=>item.id===id);
     if(!entry)return;
     const requestId=++state.requestId;
+    // The validated answer cache is reused synchronously: no spinner,
+    // no network request and no microtask delay on subsequent visits.
+    if(state.byId.has(id)){showLoadedAnswer(id);return;}
     showStatus('Chargement de la réponse…');
     try{
       await fetchAnswer(entry);
@@ -176,17 +211,19 @@
     $('faqList').replaceChildren();
     const query=normalizeQuestion($('faqSearch').value);
     let shown=0;
+    state.visibleQuestionIds=[];
     for(const question of state.questions){
       const texts=[question.title,...(state.aliases.get(question.id)||[])];
       if(query&&!texts.some(text=>normalizeQuestion(text).includes(query)))continue;
       shown++;
+      state.visibleQuestionIds.push(question.id);
       const b=document.createElement('button');b.type='button';
       b.className='faq-question-item';
       const title=document.createElement('span');title.className='faq-question-title';title.textContent=question.title;
       const chevron=document.createElement('span');chevron.className='faq-chevron';
       chevron.textContent='›';chevron.setAttribute('aria-hidden','true');
       b.append(title,chevron);
-      b.onclick=()=>showAnswer(question.id);
+      b.onclick=()=>showAnswer(question.id,b);
       $('faqList').append(b);
     }
     const unsupported=state.routes.some(route=>route.resolution==='unsupported'&&
@@ -220,21 +257,92 @@
       const button=document.createElement('button');
       button.type='button';button.className='faq-psalm-link';
       button.textContent=ref.label;
-      const valid=validReference(ref);
+      // Links remain operable while the independent FAQ is ready but the
+      // documentary corpus is still downloading. Actual records are checked
+      // only after the corpus has loaded, never guessed from a citation.
+      const valid=!state.recordsReady||validReference(ref);
       button.disabled=!valid;
       button.title=valid?'Lire '+labelNumber(ref.number,ref.verses):'Référence non disponible dans le corpus public';
       button.setAttribute('aria-label',button.title);
-      if(valid)button.onclick=()=>{
-        if(typeof state.openPsalm!=='function'){showStatus('Lecteur des psaumes indisponible.');return;}
-        state.lastLink=button;state.lastScroll=window.scrollY;
-        state.openPsalm(ref);
-      };
+      if(valid)button.onclick=()=>openReference(ref,button);
       container.append(button);
       cursor=at+ref.label.length;
     }
     appendFormattedText(container,answer.slice(cursor));
   }
-  function showAnswer(id){
+  async function openReference(ref,button){
+    if(typeof state.openPsalm!=='function'){
+      showStatus('Lecteur des psaumes indisponible.');return;
+    }
+    const requestId=state.requestId,question=state.current;
+    state.lastLink=button;state.lastScroll=window.scrollY;
+    try{
+      if(!state.recordsReady){
+        showStatus('Chargement du corpus pour ouvrir ce psaume…');
+        const loading=state.corpusLoading;
+        // M3: the corpus loader may be a lazy function or an already-started
+        // promise (legacy integrations and integrity tests still use the latter).
+        if(!loading||!await (typeof loading==='function'?loading():loading))
+          throw Error('Le corpus documentaire est indisponible. Réessayez plus tard.');
+      }
+      // Ignore a delayed request when the visitor has left the answer.
+      if(requestId!==state.requestId||state.current!==question||$('faqLibrary').hidden)return;
+      if(!validReference(ref))throw Error('Référence de psaume non valide : '+ref.recordId);
+      state.openPsalm(ref);
+      showStatus('');
+    }catch(error){
+      if(requestId===state.requestId&&!$('faqLibrary').hidden)
+        showStatus(error.message||'Impossible d’ouvrir ce psaume.');
+      console.error(error);
+    }
+  }
+  function rememberAnswerScroll(){
+    if(state.current&&!$('faqAnswer').hidden)
+      state.answerScrolls.set(state.current.id,window.scrollY);
+  }
+  function renderAnswerNavigation(){
+    // A single navigation control is attached to the article, with no
+    // per-question DOM duplication or new dependency on the search engine.
+    if(!state.themesMode)return;
+    if(!state.answerNavigation){
+      const nav=document.createElement('nav');
+      nav.className='faq-answer-nav';
+      nav.setAttribute('aria-label','Naviguer entre les questions');
+      const previous=document.createElement('button'),next=document.createElement('button');
+      for(const button of [previous,next]){
+        button.type='button';
+        button.className='secondary';
+      }
+      previous.textContent='← Question précédente';
+      next.textContent='Question suivante →';
+      previous.onclick=()=>{
+        const i=state.visibleQuestionIds.indexOf(state.current?.id);
+        if(i>0)showAnswer(state.visibleQuestionIds[i-1]);
+      };
+      next.onclick=()=>{
+        const i=state.visibleQuestionIds.indexOf(state.current?.id);
+        if(i>=0&&i<state.visibleQuestionIds.length-1)
+          showAnswer(state.visibleQuestionIds[i+1]);
+      };
+      nav.append(previous,next);
+      $('faqAnswer').append(nav);
+      state.answerNavigation={nav,previous,next};
+    }
+    const {nav,previous,next}=state.answerNavigation;
+    const i=state.visibleQuestionIds.indexOf(state.current?.id);
+    previous.hidden=i<=0;
+    next.hidden=i<0||i>=state.visibleQuestionIds.length-1;
+    nav.hidden=previous.hidden&&next.hidden;
+    if(!previous.hidden)
+      previous.title=state.themeIndex.questions.find(q=>q.id===state.visibleQuestionIds[i-1])?.title||'';
+    if(!next.hidden)
+      next.title=state.themeIndex.questions.find(q=>q.id===state.visibleQuestionIds[i+1])?.title||'';
+  }
+  function showAnswer(id,sourceButton=null){
+    if(!$('faqIndex').hidden){
+      state.indexScroll=window.scrollY;
+      state.indexFocus=sourceButton;
+    }else rememberAnswerScroll();
     if(state.themesMode)return showLazyAnswer(id);
     return showLoadedAnswer(id);
   }
@@ -245,19 +353,25 @@
     $('faqAnswerTitle').textContent=question.title;
     $('faqAnswerBody').replaceChildren();
     appendAnswerWithLinks($('faqAnswerBody'),question);
+    renderAnswerNavigation();
     showStatus('');
-    window.scrollTo({top:0,behavior:'instant'});
+    window.scrollTo({top:state.answerScrolls.get(id)||0,behavior:'instant'});
     $('faqAnswerTitle').setAttribute('tabindex','-1');
     $('faqAnswerTitle').focus({preventScroll:true});
   }
   function backToIndex(){
+    state.requestId++; // A late fetch must never reopen the answer.
+    rememberAnswerScroll();
     state.current=null;
     $('faqIndex').hidden=false;$('faqAnswer').hidden=true;
     showStatus('');
-    window.scrollTo({top:0,behavior:'instant'});
+    window.scrollTo({top:state.indexScroll,behavior:'instant'});
+    state.indexFocus?.focus({preventScroll:true});
   }
   async function init(records){
-    state.records=new Map((records||[]).map(r=>[r.id,r]));
+    // Keep the archived full-loader available to the existing integrity checks.
+    state.themesMode=false;
+    setRecords(records||[]);
     if(state.loading)return state.loading;
     state.loading=fetch('data/faq-public-085.json?v=099').then(async response=>{
       if(!response.ok)throw Error('Les questions ne sont pas disponibles.');
@@ -469,19 +583,26 @@
     }).catch(error=>{showStatus(error.message);console.error(error);return false;});
     return state.loading;
   }
+  function setRecords(records){
+    state.records=new Map(records.map(r=>[r.id,r]));
+    state.recordsReady=true;
+  }
   function prime(records){
-    state.records=new Map((records||[]).map(r=>[r.id,r]));
+    if(Array.isArray(records))setRecords(records);
     state.themesMode=true;
-    $('faqThemeBack').onclick=()=>{
-      state.selectedTopic=null;$('faqSearch').value='';renderIndex();
-    };
     return true;
+  }
+  function setCorpusLoading(loader){
+    state.corpusLoading=typeof loader==='function'?loader:Promise.resolve(loader);
   }
   function open(){
     $('faqLibrary').hidden=false;
     document.body.classList.add('view-faq');
     $('faqSearch').value='';
     state.selectedTopic=null;
+    state.indexScroll=0;
+    state.topicsScroll=0;
+    state.indexFocus=null;
     renderIndex();
     backToIndex();
     if(state.themesMode){
@@ -491,6 +612,7 @@
   }
   function close(){
     state.requestId++;
+    rememberAnswerScroll();
     document.body.classList.remove('view-faq');
     $('faqLibrary').hidden=true;
   }
@@ -509,16 +631,30 @@
       showStatus('');
     }catch(error){showStatus('Impossible de créer le PDF : '+error.message);}
   }
-  $('faqSearch').oninput=renderIndex;
-  $('faqBack').onclick=backToIndex;
+  $('faqSearch').oninput=()=>{
+    state.requestId++;
+    showStatus('');
+    renderIndex();
+  };
+  // One persistent "Retour" in the header for every FAQ level:
+  // answer → questions, questions/search → themes, themes → main search.
+  // The label and position never change, including on a small screen.
   $('faqClose').onclick=()=>{
+    if(!$('faqAnswer').hidden){backToIndex();return;}
+    if(state.themesMode&&(state.selectedTopic||$('faqSearch').value.trim())){
+      returnToTopics();return;
+    }
     close();window.scrollTo({top:0,behavior:'instant'});
+    $('faqToggle').setAttribute('aria-expanded','false');
     $('faqToggle').focus({preventScroll:true});
   };
   $('faqPdf').onclick=download;
   $('faqPrint').onclick=()=>window.print();
   globalThis.BiblawFAQ=Object.freeze({
-    init,prime,open,close,restoreAfterPsalm,
+    init,prime,setRecords,setCorpusLoading,open,close,restoreAfterPsalm,
     setOpenPsalm(callback){state.openPsalm=callback;}
   });
+  // Initialize thematic navigation immediately, independently of the 11 MB
+  // search catalog. Opening the FAQ requests only its 29 KB index.
+  prime();
 })();

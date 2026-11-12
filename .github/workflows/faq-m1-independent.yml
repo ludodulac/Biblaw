@@ -1,0 +1,42 @@
+name: Biblaw FAQ M1 - independent startup
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'js/biblaw-faq.js'
+      - 'js/biblaw.js'
+      - 'scripts/smoke_faq_independent_browser.mjs'
+      - '.github/workflows/faq-m1-independent.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  faq-independent:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify FAQ and references
+        run: |
+          node scripts/check_faq_integrity.mjs
+          node scripts/check_faq_100_merge.mjs
+          node scripts/check_faq_101_topics.mjs
+          node scripts/check_faq_dom.mjs
+      - name: Build the local GitHub Pages payload (no publication)
+        run: python scripts/build_pages_site.py
+      - name: Install isolated Chromium test dependency
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Test FAQ opening and links on desktop/mobile with blocked corpus
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/biblaw-faq-m1-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          node scripts/smoke_faq_independent_browser.mjs

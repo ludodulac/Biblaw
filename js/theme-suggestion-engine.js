@@ -19,8 +19,22 @@
   const localExistentialRelation=query=>{const terms=norm(thematicFrenchStructure(query)).split(' ').filter(Boolean),existenceForms=new Set(['existe','existent','existons','exister','existence']);for(let w=0;w<terms.length;w++)if(terms[w]==='pourquoi')for(let e=w+1;e<terms.length&&e-w<=6;e++)if(existenceForms.has(terms[e])&&(terms[e]==='existons'||e-w>=2))return true;for(let r=0;r<terms.length;r++)if(terms[r]==='raison')for(let e=r+1;e<terms.length&&e-r<=3;e++)if(terms[e]==='exister'||terms[e]==='existence')return true;return false;};
   const composeThemeQueryNotions=query=>{const relational=relationalConsciousnessWithoutBodyNotions(query),terms=norm(query).split(' ').filter(Boolean),has=term=>terms.includes(term),hasAny=values=>values.some(has),existence=terms.some(term=>['existe','existent','existons','exister','existence'].includes(term)),representation=hasAny(['intention','intentions','croire','croyant','penser','pensant']),action=hasAny(['faire','agir','action','acte','actes']),moralOpposition=hasAny(['bien','bon','bonne','bonnes'])&&hasAny(['mal','mauvais','mauvaise','mauvaises']),questionedJustice=hasAny(['tromper','erreur','suffire','suffit','garantir','garantit','juste','justes']);if(representation&&action&&(moralOpposition||questionedJustice))return[...relational,new Set(['intention']),new Set(['acte'])];if(localExistentialRelation(query))return[...relational,new Set(['sens','but']),new Set(['vie'])];if(has('sens')&&existence)return[...relational,new Set(['sens']),new Set(['vie'])];if(has('but')&&existence)return[...relational,new Set(['but']),new Set(['vie'])];return relational;};
   const themeQueryNotions=query=>{const seen=new Set();return[...composeThemeQueryNotions(query),...norm(thematicFrenchStructure(query)).split(' ').filter(term=>term&&!THEME_QUERY_STOP_WORDS.has(term)).map(term=>new Set(THEME_QUERY_EQUIVALENTS[term]||[term]))].filter(variants=>{const key=[...variants].sort().join('|');if(seen.has(key))return false;seen.add(key);return true;});};
-  function create(themeDirectory,runtime){
+  function create(themeDirectory,runtime,semanticNavigation=null){
     const themes=themeDirectory||[],themeById=new Map(themes.map(t=>[t.id,t]));
+    // Explicit navigation proposals only. Canonical identity always wins;
+    // these prompts never manufacture a thematic relation to a Psalm.
+    function relatedThemesForQuery(query){
+      for(const form of themeQueryForms(query)){
+        if(runtime?.aliases?.[form]?.themeIds?.length)return[];
+        if(themes.some(theme=>form===norm(theme.label)||form===norm(theme.id)))return[];
+      }
+      for(const form of themeQueryForms(query)){
+        const proposal=semanticNavigation?.queries?.[form];
+        if(proposal?.category==='related-navigation-only')
+          return [...new Set(proposal.themeIds||[])].map(id=>themeById.get(id)).filter(Boolean);
+      }
+      return[];
+    }
     function resolveIndexedThemes(query){const forms=themeQueryForms(query);if(!forms.length)return[];for(const q of forms){const alias=runtime?.aliases?.[q];if(alias?.themeIds?.length)return alias.themeIds.map(id=>themeById.get(id)).filter(Boolean);}for(const q of forms){const exact=themes.filter(t=>q===norm(t.label)||q===norm(t.id));if(exact.length)return exact;}return[];}
     function evaluate(query){
       const composedNotions=composeThemeQueryNotions(query),composedNotionCount=composedNotions.length,notions=themeQueryNotions(query);
@@ -38,7 +52,7 @@
       return{normalizedQuery:norm(query),recognizedNotions:notions.map(serializeNotion),composedNotions:composedNotions.map(serializeNotion),candidateCountBeforeTop8:ranked.length,candidateRanking:ranked.map(serializeCandidate),top8:selected.map(item=>item.theme)};
     }
     function suggestIndexedThemes(query){const primary=evaluate(query).top8,fallback=SAFE_THEME_QUERY_FALLBACKS[norm(query)];if(!fallback)return primary;const selected=[],selectedIds=new Set();for(const theme of [...primary,...evaluate(fallback).top8])if(theme&&!selectedIds.has(theme.id)&&selected.length<8){selected.push(theme);selectedIds.add(theme.id);}return selected;}
-    return{resolveIndexedThemes,composeThemeQueryNotions,themeQueryNotions,suggestIndexedThemes,evaluate};
+    return{resolveIndexedThemes,relatedThemesForQuery,composeThemeQueryNotions,themeQueryNotions,suggestIndexedThemes,evaluate};
   }
   return{norm,composeThemeQueryNotions,themeQueryNotions,create};
 });
