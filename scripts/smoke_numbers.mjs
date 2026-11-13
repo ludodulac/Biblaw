@@ -57,11 +57,15 @@ for(const entry of numbers.entries){
     locators.add(key); links++;
   }
   assert.ok(entry.examples.every(ex=>locators.has(ex.recordId+':'+ex.verse)));
+  assert.ok(entry.references.every(ref=>typeof ref.title==='string'&&ref.title.trim().length>=3),
+    'Chaque verset doit avoir sa phrase à cliquer');
   assert.ok(Array.isArray(entry.topics)&&entry.topics.length>0,
     'Les références doivent être regroupées par sujet');
   const groupedRefs=new Set();
   for(const group of entry.topics){
     assert.ok(group.label&&group.key);
+    assert.notEqual(group.label,'Autres passages','Pas de catégorie opaque');
+    assert.notEqual(group.key,'autres','Les passages non classés ont leur propre titre');
     assert.ok(group.references.length>0);
     for(const ref of group.references){
       const key=ref.recordId+':'+ref.verse;
@@ -73,6 +77,9 @@ for(const entry of numbers.entries){
 }
 const two = numbers.entries.find(e=>e.value===2);
 const three = numbers.entries.find(e=>e.value===3);
+const five = numbers.entries.find(e=>e.value===5);
+assert.ok(five && five.topics.some(t=>t.label==='5 sens'),
+  'Les 5 sens doivent apparaître comme sujet propre');
 assert.ok(two?.topics.some(t=>t.label==='2 mondes'), 'Les deux mondes regroupés');
 assert.ok(three?.topics.some(t=>t.label==='3 centres'), 'Les trois centres regroupés');
 assert.ok(three.topics.find(t=>t.label==='3 centres').references.some(
@@ -174,10 +181,23 @@ centreSection.ontoggle();
 const centreLinks=centreSection.children.at(-1).children;
 assert.equal(centreLinks.length,three.topics.find(t=>t.label==='3 centres').references.length);
 assert.ok(centreLinks.length>0);
-await centreLinks[0].click();
+assert.equal(centreLinks[0].children.length,2,
+  'Chaque source a un extrait puis le lien au verset');
+assert.ok(centreLinks[0].children[0].className.includes('numbers-ref-phrase'));
+assert.ok(centreLinks[0].children[0].textContent.includes('3 centres'));
+assert.ok(centreLinks[0].children[1].textContent.includes('Psaume'));
+await centreLinks[0].children[0].click();
 assert.ok(opened.recordId&&opened.verses.length===1,'Un sujet ouvre le verset exact');
 get('numberPdf').click();
 assert.ok(exported.at(-1).text.includes('3 centres'),'Le PDF conserve les rubriques');
+assert.ok(exported.at(-1).text.includes('Psaume'),'Le PDF conserve les sources');
+const singleton = get('numberTopicGroups').children.find(el=>
+  el.className.includes('numbers-topic-single'));
+assert.ok(singleton,'Les expressions isolées remplacent « Autres passages »');
+const nameButton = singleton.children[0].children[0];
+assert.ok(nameButton.textContent.length>4,'Nom/fragment de verset visible');
+await nameButton.click();
+assert.ok(opened.recordId,'Le fragment isolé ouvre directement son verset');
 get('numbersBack').click();
 get('numbersFilter').value='2';
 get('numbersFilter').events.input();
