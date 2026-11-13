@@ -44,3 +44,15 @@ body.view-numbers .shell{padding-top:1.1rem}
 .numbers-library .numbers-topic-count{font-size:.88rem;font-weight:400;color:#706357;white-space:nowrap}
 .numbers-library .numbers-topic-summary{margin:0;padding:.3rem 1rem;color:#594a38;line-height:1.6}
 .numbers-library .numbers-topic .numbers-references{padding:.6rem 1rem 1rem;border-top:1px solid #eee5db}
+
+/* Each verse carries a short clickable quote above its original source link. */
+.numbers-library .numbers-ref-item{display:flex;flex-direction:column;align-items:flex-start;gap:.35rem;min-width:0;padding:.45rem .2rem}
+.numbers-library .numbers-ref-phrase{display:block;width:100%;padding:.1rem 0;background:transparent;border:0;border-radius:.2rem;text-align:left;font:inherit;font-weight:650;line-height:1.45;color:#463522;cursor:pointer;overflow-wrap:anywhere}
+.numbers-library .numbers-ref-phrase:hover,.numbers-library .numbers-ref-phrase:focus-visible{color:#8b5427;text-decoration:underline;text-underline-offset:.2rem}
+.numbers-library .numbers-ref-item .numbers-reference,.numbers-library .numbers-example .numbers-reference{font-size:.9rem;line-height:1.45;margin:0;color:#66574a}
+.numbers-library .numbers-example .numbers-ref-phrase{margin-bottom:.45rem}
+.numbers-library .numbers-topic-single{padding:.55rem .9rem}
+.numbers-library .numbers-topic .numbers-references{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:.15rem 1rem}
+.numbers-library .numbers-topic .numbers-ref-item:not(:last-child){border-bottom:1px solid #eee7dd}
+.numbers-library .numbers-all>.numbers-references{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:.15rem 1rem}
+@media(max-width:760px){.numbers-library .numbers-topic .numbers-references,.numbers-library .numbers-all>.numbers-references{grid-template-columns:1fr}}
