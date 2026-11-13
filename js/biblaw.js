@@ -838,6 +838,7 @@
     }
     BiblawFAQ.close();
     globalThis.BiblawAnimals?.close();
+    globalThis.BiblawNumbers?.close();
     $('faqToggle').setAttribute('aria-expanded','false');
     $('notesThemeFilter').value='';
     $('notesArchiveSearch').value='';
@@ -1135,11 +1136,9 @@
     showSearchView();
     globalThis.BiblawAnimals?.open();
   });
-  $('numbersTab')?.addEventListener('click',event=>{
-    event.preventDefault();
+  $('numbersToggle')?.addEventListener('click',()=>{
     showSearchView();
     globalThis.BiblawNumbers?.open();
-    if(window.history?.replaceState) window.history.replaceState(null,'','#numbersLibrary');
   });
   $('faqReturnFromPsalm').onclick=()=>$('recordDialog').close();
   $('recordDialog').addEventListener('close',()=>{

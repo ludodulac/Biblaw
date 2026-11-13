@@ -14,12 +14,20 @@ assert.equal(psalms.size,1158);
 assert.ok(numbers.entries.length>15);
 assert.ok(numbers.entries.some(e=>e.value===7));
 assert.ok(numbers.entries.some(e=>e.value===21));
+const one=numbers.entries.find(e=>e.value===1);
+assert.ok(one,'1 doit représenter l’unité, pas un article indéfini');
+assert.equal(one.references.length,1,'Le simple fait de compter une chose ne suffit pas');
+assert.equal(one.references[0].recordId,'book-05-psalm-028');
+assert.equal(one.references[0].verse,3);
+assert.match(one.summary,/unit[eé]|uni[st]/i);
+assert.ok(numbers.entries.every(e=>e.title&&e.summary));
 assert.ok(numbers.entries.every(e=>e.references.length>0));
-assert.ok(html.includes('id="numbersTab"') && html.includes('id="numbersLibrary"'));
+assert.ok(html.includes('id="numbersToggle"') && html.includes('id="numbersLibrary"'));
+assert.ok(!html.includes('numbers-site-tabs'), 'Pas d’onglet ajouté dans l’en-tête');
 assert.ok(html.includes('js/biblaw-numbers.js'));
 assert.ok(html.includes('css/biblaw-numbers.css'));
 assert.ok(read('scripts/build_pages_site.py').includes('numbers-public.json'));
-for(const id of ['numbersTab','numbersBack','numbersFilter','numbersDurationFilter',
+for(const id of ['numbersToggle','numbersBack','numbersFilter','numbersDurationFilter',
                  'numbersList','numberExamples','numberAllMentions','numberAllMentionsList',
                  'numbersDirectory','numbersDetail','numberPdf','numberPrint',
                  'numbersStatus','numbersMethod','numbersCount','numberTitle','numberSummary',
@@ -33,6 +41,7 @@ for(const entry of numbers.entries){
   prev=entry.value;
   assert.equal(entry.label,String(entry.value));
   assert.ok(entry.summary.length>40);
+  assert.ok(entry.title.length>4);
   assert.ok(entry.durationCount<=entry.references.length);
   const locators=new Set();
   for(const ref of entry.references){
@@ -106,7 +115,9 @@ get('numbersTermsDetails').ontoggle();
 assert.equal(get('numbersTermsList').children.length,numbers.numberTerms.length);
 get('numbersFilter').value='21';
 get('numbersFilter').events.input();
-assert.equal(get('numbersList').children.length,1,'Filter exact number');
+assert.equal(get('numbersList').children.length,1,'Filtre des nombres');
+assert.equal(get('numbersList').children[0].children[0].children[0].textContent,'21',
+  'Le chiffre est visible directement sur le bouton cliquable');
 get('numbersList').children[0].click();
 assert.equal(get('numbersDetail').hidden,false);
 assert.equal(get('numberTitle').textContent,'Nombre 21');
