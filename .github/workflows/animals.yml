@@ -1,0 +1,28 @@
+name: Animaux Biblaw — projection et navigation
+on:
+  pull_request:
+    paths:
+      - 'data/animals-editorial.json'
+      - 'scripts/build_animals_public.py'
+      - 'js/biblaw-animals.js'
+      - 'js/biblaw.js'
+      - 'css/biblaw-animals.css'
+      - 'index.html'
+      - 'scripts/smoke_animals.mjs'
+      - 'scripts/build_pages_site.py'
+      - '.github/workflows/animals.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Générer les références à partir des psaumes
+        run: python scripts/build_animals_public.py
+      - name: Tester les catégories, citations et le lecteur
+        run: node scripts/smoke_animals.mjs
+      - name: Vérifier les fichiers effectivement publiés
+        run: python scripts/build_pages_site.py
