@@ -163,7 +163,7 @@
   async function load() {
     if (state.entries.length) return true;
     if (state.loading) return state.loading;
-    state.loading = fetch('data/animals-public.json?v=001').then(async response => {
+    state.loading = fetch('data/animals-public.json?v=002').then(async response => {
       if (!response.ok) throw new Error('Répertoire des animaux non disponible.');
       const data = await response.json();
       if (data.schemaVersion !== 1 || !Array.isArray(data.entries) ||
