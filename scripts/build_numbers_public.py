@@ -54,8 +54,8 @@ FORMS.update({
     "vingt et une": 21, "trente et une": 31, "quarante et une": 41,
     "cinquante et une": 51, "soixante et une": 61, "cent": 100,
     "cents": 100, "mille": 1000, "zero": 0, "zéro": 0,
-    "une seule": 1, "un seul": 1, "un unique": 1, "une unique": 1,
-    "premier jour": 1, "premiere semaine": 1, "premier mois": 1,
+    # Do not index "un seul", "une seule" or "premier jour": these are
+    # usually ordinary grammar, not teachings about the number 1.
 })
 for k in (2, 3, 4, 5, 6, 7, 8, 9):
     FORMS[french(k) + " cent"] = k * 100
@@ -71,31 +71,56 @@ WORDS = re.compile(
 )
 DIGITS = re.compile(r"(?<![a-z0-9])(?:\d{1,3}(?:[ \u00a0]\d{3})+|\d{1,4})(?![a-z0-9])")
 RANK = re.compile(r"(?<![a-z0-9])(\d{1,3})(?:er|ere|e|eme)(?![a-z0-9])")
-DAY = re.compile(r"\b(?:jour|jours|journee|journees|semaine|semaines|mois|an|ans|annee|annees|nuit|nuits|fois)\b")
+DAY = re.compile(r"\b(?:jours?|journees?|semaines?|mois|ans?|annees?|nuits?|fois)\b")
+PRACTICE = re.compile(
+    r"\b(?:exercices?|pratiques?|travaux|travail|meditations?|prieres?|"
+    r"initiations?|consecrations?|etapes?|epreuves?|methodes?|"
+    r"rituels?|celebrations?|preparations?|purifications?)\b"
+)
+SYMBOL = re.compile(
+    r"\b(?:elements?|archanges?|mondes?|perles?|porteurs?|"
+    r"forces?|vertus?|principes?|lois?|portes?|spheres?|etats?|"
+    r"rayons?|piliers?|degres?|sceaux?|cercles?|corps|regnes?|"
+    r"dimensions?|regles?|centres?|enseignements?|alliance|unite|"
+    r"temples?|choses?)\b"
+)
 THEME = re.compile(r"\b(?:chiffre|chiffres|nombre|nombres|numerologie|numerologique|septenaire)\b")
 MAX_NUMBER = 9999
 
+# The one is indexed only when the text explicitly makes it symbolic,
+# not when an indefinite article means "one thing".
+ONE_EVIDENCE = {("book-05-psalm-028", 3)}
 # Short editorial summaries checked against the verses listed alongside them.
 # The wording attributes teachings to the Psalm, without adopting them as
 # scientific facts or inventing a universal numerological meaning.
 EDITORIAL = {
+    1: {
+        "title": "L’unité — le 4 qui s’élève vers le 1",
+        "summary": "Dans le psaume 28 de Michaël (livre 5), le texte décrit le secret du 4 qui s’élève vers le 1 : les quatre éléments s’unissent dans le monde divin. Il s’agit d’une image d’unité, et non du simple fait qu’une chose est seule.",
+        "sources": [("book-05-psalm-028", 3)],
+    },
     3: {
+        "title": "Les trois mondes et leurs rapports",
         "summary": "Dans le psaume 1 de Gabriel (livre 2), trois mondes sont distingués sous le monde divin : le monde spirituel, le monde aurique et le monde physique. Le chiffre 3 apparaît aussi dans d’autres comparaisons et indications concrètes.",
         "sources": [("book-02-psalm-001", 2)],
     },
     4: {
+        "title": "Les quatre éléments et l’unité",
         "summary": "Michaël présente les quatre éléments comme la base d’un travail de purification et de construction intérieure (psaume 28, livre 5). Le texte évoque l’union des quatre éléments et leur rapport au divin. D’autres psaumes mentionnent aussi les quatre Archanges.",
         "sources": [("book-05-psalm-028", 1), ("book-05-psalm-028", 3)],
     },
     7: {
+        "title": "Sept jours, sept années : cycles de purification",
         "summary": "Dans le psaume 45 de Gabriel (livre 6), le chiffre 7 est utilisé pour décrire des périodes de purification : 7 jours dans un cas et 7 années dans d’autres. Le psaume 41 du même livre évoque également 7 années de transformation. Il s’agit d’enseignements du texte, non de durées médicalement démontrées.",
         "sources": [("book-06-psalm-045", 8), ("book-06-psalm-045", 12)],
     },
     12: {
+        "title": "Les douze perles et les douze porteurs",
         "summary": "Gabriel évoque son collier à 12 perles, lié dans son enseignement à un travail préparatoire et à 12 porteurs protecteurs du monde divin (psaume 200, livre 30). Cette figure n’est pas présentée comme une définition universelle du nombre 12.",
         "sources": [("book-30-psalm-200", 9), ("book-30-psalm-200", 31)],
     },
     21: {
+        "title": "La méthode des vingt et un jours",
         "summary": "Gabriel donne une méthode de 21 jours pour apprendre à observer sa vie intérieure et à rencontrer son âme : s’arrêter, observer ses pensées et sentiments, puis créer un espace intérieur de consultation régulière (psaume 17, livre 2, versets 6–7). Ouriel évoque également une présence annoncée pendant 21 jours après une célébration (psaume 34, livre 8).",
         "sources": [("book-02-psalm-017", 6), ("book-02-psalm-017", 7),
                     ("book-08-psalm-034", 1)],
@@ -129,10 +154,26 @@ def mentions(verse_text: str) -> list[dict]:
                                    and end + 1 < len(t) and t[end+1].isdigit())):
             continue
         occupied.append((start, end))
-        following = t[end:min(len(t), end+32)]
-        is_duration = bool(DAY.search(following))
+        # A number is pertinent only when attached to a documented
+        # symbolic structure, a practice or a temporal cycle. A random
+        # count of people or objects is not a "meaning of the number".
+        following = t[end:min(len(t), end+58)]
+        preceding = t[max(0, start-26):start]
+        context = preceding + " " + following
+        is_duration = bool(DAY.search(following[:40]))
+        practical = bool(PRACTICE.search(context))
+        symbolic = bool(SYMBOL.search(context))
+        duration_relevant = is_duration and not (
+            re.search(r"\bil y a\s*$", preceding) or
+            re.search(r"\ben l'an\s*$", preceding)
+        )
+        category = ("cycle" if duration_relevant else
+                    "pratique" if practical else
+                    "symbole" if symbolic else None)
+        # 1 is treated only via explicitly verified symbolic verses below.
         picked.append({"number": number, "kind": kind,
-                       "duration": is_duration,
+                       "duration": duration_relevant,
+                       "category": category,
                        "matched": verse_text[max(0,start):min(len(verse_text),end)]})
     return picked
 
@@ -151,6 +192,11 @@ def generate(destination: Path = OUTPUT) -> dict:
         for verse in psalm["verses"]:
             txt = verse["text"]
             for m in mentions(txt):
+                if m["number"] == 1:
+                    if (psalm["id"], verse["number"]) not in ONE_EVIDENCE:
+                        continue
+                elif m["category"] is None:
+                    continue
                 occurrence = {
                     "recordId": psalm["id"],
                     "archangel": psalm["archangel"],
@@ -158,6 +204,7 @@ def generate(destination: Path = OUTPUT) -> dict:
                     "verse": verse["number"],
                     "duration": m["duration"],
                     "kind": m["kind"],
+                    "category": m["category"] or "symbole",
                 }
                 by_number[m["number"]].append(occurrence)
                 if len(examples[m["number"]]) < 40:
@@ -209,23 +256,35 @@ def generate(destination: Path = OUTPUT) -> dict:
             }: continue
             samples.append(item)
             if len(samples) == 5: break
+        categories = {ref["category"] for ref in passages}
+        category_names = [
+            name for category, name in [
+                ("cycle", "des durées et des cycles"),
+                ("pratique", "des pratiques et des étapes de travail"),
+                ("symbole", "des images symboliques et des structures d’enseignement")
+            ] if category in categories
+        ]
         numbers.append({
             "value": n, "label": str(n),
-            "summary": editorial["summary"] if editorial else (f"Le nombre {n} est mentionné explicitement dans "
-                        f"{len(passages)} verset{'s' if len(passages)>1 else ''} "
-                        f"de {psalm_count} psaume{'s' if psalm_count>1 else ''}. "
-                        "Les passages ci-dessous montrent ses usages dans le texte ; "
-                        "ils ne lui attribuent pas automatiquement une valeur symbolique."),
+            "title": editorial["title"] if editorial else
+                " ; ".join(category_names).capitalize(),
+            "summary": editorial["summary"] if editorial else (
+                f"Le nombre {n} apparaît dans des passages qui évoquent " +
+                ", ".join(category_names) + ". "
+                "Les versets sont présentés sans attribuer au nombre un sens universel "
+                "que le texte ne formule pas."),
             "references": passages, "examples": samples,
             "durationCount": len(durations),
+            "practiceCount": sum(ref["category"] == "pratique" for ref in passages),
         })
     payload = {
         "schemaVersion": 1,
         "scope": "1 158 psaumes canoniques de Biblaw ; texte des versets uniquement.",
-        "method": ("Recherche des nombres écrits en chiffres et en lettres (0–99, "
-                   "centaines et milliers usuels) et de quelques rangs chiffrés ; "
-                   "« un / une » isolés sont exclus pour éviter les articles. "
-                   "Les listes sont descriptives, pas une interprétation numérologique."),
+        "method": ("Sélection de passages qui associent explicitement un nombre à "
+                   "des exercices, durées, cycles, éléments ou symboles. "
+                   "Les chiffres servant seulement à compter des objets ou des personnes "
+                   "sont écartés ; le 1 n’apparaît que lorsqu’une unité est enseignée. "
+                   "Ces repérages sont documentaires et peuvent nécessiter une lecture du contexte."),
         "psalmCount": len(records),
         "entries": numbers,
         "numberTerms": conceptual,
