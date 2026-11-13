@@ -12,6 +12,7 @@ import shutil
 from pathlib import Path
 from build_public_note_extractions import generate as generate_public_notes
 from build_animals_public import generate as generate_public_animals
+from build_numbers_public import generate as generate_public_numbers
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -24,12 +25,14 @@ PUBLIC_FILES = (
     "css/biblaw.css",
     "css/biblaw-light.css",
     "css/biblaw-animals.css",
+    "css/biblaw-numbers.css",
     "css/theme-entry.css",
     "css/validation.css",
     "js/theme-suggestion-engine.js",
     "js/biblaw-pdf.js",
     "js/biblaw-faq.js",
     "js/biblaw-animals.js",
+    "js/biblaw-numbers.js",
     "js/biblaw-autocomplete.js",
     "js/biblaw.js",
     "js/theme-relations.js",
@@ -117,8 +120,14 @@ def main() -> None:
     assert animal_stats["psalmCount"] == 1158 and animal_stats["totems"] >= 15
     assert animal_stats["others"] >= 35
 
+    # Read-only numerical directory, generated from canonical verse text.
+    numbers_public = OUT / "data" / "numbers-public.json"
+    number_stats = generate_public_numbers(numbers_public)
+    assert number_stats["psalms"] == 1158 and number_stats["numbers"] > 15
+    assert number_stats["links"] > 100
+
     staged = sorted(str(path.relative_to(OUT)) for path in OUT.rglob("*") if path.is_file())
-    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json")), (
+    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json")), (
         "Pages staging contains a file outside the explicit allow-list"
     )
     assert not any(path.startswith(FORBIDDEN_PREFIXES) for path in staged), "internal repository data leaked into Pages staging"
