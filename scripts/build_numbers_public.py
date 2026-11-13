@@ -193,9 +193,10 @@ TOPIC_DESCRIPTIONS = {
   (21, "jours"): "Les vingt et un jours d’observation intérieure (Gabriel, psaume 17).",
 }
 
-def phrase_topics(text: str, number: int) -> set[str]:
+def phrase_topics(text: str, number: int) -> list[str]:
+    """Topic phrases ordered by their first actual occurrence in the verse."""
     normalized = norm(text)
-    labels: set[str] = set()
+    labels: list[str] = []
     for mention in mentions(text):
         if mention["number"] != number: continue
         next_words = re.findall(r"[a-z]+", normalized[mention["end"]:][:65])[:4]
@@ -205,7 +206,9 @@ def phrase_topics(text: str, number: int) -> set[str]:
         if index < len(next_words):
             noun = next_words[index]
             if noun in TOPIC_BY_FORM:
-                labels.add(TOPIC_BY_FORM[noun])
+                label = TOPIC_BY_FORM[noun]
+                if label not in labels:
+                    labels.append(label)
     return labels
 
 def short_verse_phrase(text: str, number: int) -> str:
@@ -235,39 +238,55 @@ def short_verse_phrase(text: str, number: int) -> str:
 
 
 def group_topics(number: int, references: list[dict], by_id: dict) -> list[dict]:
-    """Named recurring subjects plus individually titled, clickable passages.
+    """Partition the cited verses into distinct, named subjects.
 
-    No opaque 'Autres passages' bucket: if a verse has no known topic, the
-    exact excerpt surrounding its number becomes its visible heading.
+    Each source verse belongs to exactly one group, even if it mentions several
+    numeric subjects. Each source title is a short quote from that verse,
+    rather than a repeated title such as '3 centres' for 34 different verses.
     """
     buckets: dict[str, dict] = defaultdict(dict)
-    remaining: list[dict] = []
+    singletons: list[dict] = []
+    used_titles: set[str] = set()
     for ref in references:
         verse = next(v for v in by_id[ref["recordId"]]["verses"]
                      if v["number"] == ref["verse"])
         labels = phrase_topics(verse["text"], number)
-        ref["title"] = (f"{number} {sorted(labels)[0]}" if labels else
-                        short_verse_phrase(verse["text"], number))
-        key = (ref["recordId"], ref["verse"])
-        if not labels:
-            remaining.append(ref)
+        # Prefer the first explicit expression in the verse. A later
+        # expression cannot cause the same verse to be shown a second time.
+        primary = labels[0] if labels else ""
+        title = short_verse_phrase(verse["text"], number)
+        if title.casefold() in used_titles:
+            # Two verses can start with an identical formula. Show a longer,
+            # authentic excerpt when possible rather than repeat its heading.
+            title = context_excerpt(verse["text"], number, limit=185)
+        if title.casefold() in used_titles:
+            # Identical repeated quotations still refer to different Psalms.
+            # Add the exact location only as the last disambiguation step.
+            title += f" — psaume {ref['psalm']}, v. {ref['verse']}"
+        used_titles.add(title.casefold())
+        ref["title"] = title
+        if primary:
+            key = (ref["recordId"], ref["verse"])
+            buckets[primary].setdefault(key, ref)
         else:
-            for label in labels:
-                buckets[label].setdefault(key, ref)
+            singletons.append(ref)
     groups = [{
         "key": label, "label": f"{number} {label}",
         "summary": TOPIC_DESCRIPTIONS.get((number, label), ""),
         "references": list(buckets[label].values()),
     } for label in sorted(buckets, key=lambda k: (-len(buckets[k]), k))]
-    # Each residual reference receives a concrete quote-based heading,
-    # instead of a catch-all category with dozens of opaque verse numbers.
-    for ref in remaining:
+    # Do not create 'Autres passages': every remainder has its own short
+    # clickable excerpt and is listed once, with one source link beneath it.
+    for ref in singletons:
         groups.append({
             "key": f"extrait-{ref['recordId']}-{ref['verse']}",
-            "label": ref["title"],
-            "summary": "",
-            "references": [ref],
+            "label": ref["title"], "summary": "", "references": [ref],
         })
+    all_locations = [(ref["recordId"], ref["verse"])
+                     for group in groups for ref in group["references"]]
+    assert len(all_locations) == len(references) == len(set(all_locations)), (
+        f"Duplicate or lost verse in number {number} topics"
+    )
     return groups
 
 
@@ -456,7 +475,7 @@ def generate(destination: Path = OUTPUT) -> dict:
                 ("symbole", "des images symboliques et des structures d’enseignement")
             ] if category in categories
         ]
-        named = [t["label"] for t in topics if t["key"] != "autres"]
+        named = [t["label"] for t in topics if not t["key"].startswith("extrait-")]
         # A number without a documented teaching and without a named topic
         # should not acquire an invented general interpretation.
         if not editorial and not named and len(passages) < 2:

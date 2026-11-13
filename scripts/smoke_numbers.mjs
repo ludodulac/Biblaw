@@ -27,10 +27,11 @@ assert.ok(html.includes('id="numbersToggle"') && html.includes('id="numbersLibra
 assert.ok(!html.includes('numbers-site-tabs'), 'Pas d’onglet ajouté dans l’en-tête');
 assert.ok(html.includes('js/biblaw-numbers.js'));
 assert.ok(html.includes('css/biblaw-numbers.css'));
+assert.ok(!html.includes('id="numberAllMentions"'),'Une seconde liste des mêmes références est interdite');
+assert.ok(!html.includes('id="numberExamples"'),'Les extraits ne doivent pas répéter les sujets');
 assert.ok(read('scripts/build_pages_site.py').includes('numbers-public.json'));
 for(const id of ['numbersToggle','numbersBack','numbersFilter','numbersDurationFilter',
-                 'numbersList','numberExamples','numberAllMentions','numberAllMentionsList',
-                 'numbersDirectory','numbersDetail','numberPdf','numberPrint',
+                 'numbersList','numbersDirectory','numbersDetail','numberPdf','numberPrint',
                  'numbersStatus','numbersMethod','numbersCount','numberTitle','numberSummary',
                  'numbersTermsDetails','numbersTermsList',
                  'numberTopicGroups','numberTopicHeading']){
@@ -61,7 +62,8 @@ for(const entry of numbers.entries){
     'Chaque verset doit avoir sa phrase à cliquer');
   assert.ok(Array.isArray(entry.topics)&&entry.topics.length>0,
     'Les références doivent être regroupées par sujet');
-  const groupedRefs=new Set();
+  const groupedRefs=new Set(), titles=new Set();
+  let refsInGroups=0;
   for(const group of entry.topics){
     assert.ok(group.label&&group.key);
     assert.notEqual(group.label,'Autres passages','Pas de catégorie opaque');
@@ -70,10 +72,15 @@ for(const entry of numbers.entries){
     for(const ref of group.references){
       const key=ref.recordId+':'+ref.verse;
       assert.ok(locators.has(key),'Chaque sujet ne cite que des versets du nombre');
+      assert.ok(!groupedRefs.has(key),'Un verset ne doit pas figurer dans deux sujets');
       groupedRefs.add(key);
+      refsInGroups++;
+      assert.ok(!titles.has(ref.title),'Un même titre ne doit pas être répété');
+      titles.add(ref.title);
     }
   }
   assert.equal(groupedRefs.size,locators.size,'Chaque verset appartient à un sujet');
+  assert.equal(refsInGroups,entry.references.length,'Aucun doublon dans les sujets');
 }
 const two = numbers.entries.find(e=>e.value===2);
 const three = numbers.entries.find(e=>e.value===3);
@@ -146,12 +153,20 @@ get('numbersFilter').value='21';
 get('numbersFilter').events.input();
 assert.equal(get('numbersList').children.length,1,'Filtre des nombres');
 assert.equal(get('numbersList').children[0].children[0].children[0].textContent,'21',
-  'Le chiffre est visible directement sur le bouton cliquable');
+  'Le chiffre reste visible et cliquable');
 get('numbersList').children[0].click();
 assert.equal(get('numbersDetail').hidden,false);
 assert.equal(get('numberTitle').textContent,'Nombre 21');
-assert.ok(get('numberExamples').children.length);
-const link=get('numberExamples').children[0].children[1];
+assert.equal(get('numberTopicGroups').children.length,gabriel21.topics.length,
+  'Tous les versets sont affichables dans une liste unique');
+const days=get('numberTopicGroups').children.find(el=>
+  el.children[0]?.children[0]?.textContent==='21 jours');
+assert.ok(days,'Les 21 jours sont regroupés');
+days.open=true;days.ontoggle();
+assert.equal(days.children.at(-1).children.length,
+  gabriel21.topics.find(t=>t.label==='21 jours').references.length);
+const link=days.children.at(-1).children[0].children[0];
+assert.ok(link.textContent.length>=3);
 win.scrollY=520;
 await link.click();
 assert.ok(opened.recordId&&opened.verses.length===1);
@@ -159,20 +174,19 @@ win.scrollY=0;
 context.BiblawNumbers.restoreAfterPsalm();
 assert.equal(win.scrollY,520);
 assert.equal(link.focused,true);
-get('numberAllMentions').open=true;
-get('numberAllMentions').ontoggle();
-assert.equal(get('numberAllMentionsList').children.length,
-  numbers.entries.find(e=>e.value===21).references.length);
 get('numberPdf').click();
 assert.equal(exported.length,1);
-assert.ok(exported[0].text.includes('Toutes les références'));
+assert.ok(exported[0].text.includes('Sujets et versets'));
+assert.ok(!exported[0].text.includes('Toutes les références'),
+  'Le PDF ne doit pas réimprimer les mêmes références');
 get('numbersBack').click();
 assert.equal(get('numbersDirectory').hidden,false);
 get('numbersFilter').value='3';
 get('numbersFilter').events.input();
 get('numbersList').children[0].click();
 assert.equal(get('numberTopicGroups').hidden,false);
-assert.equal(get('numberExamples').hidden,true,'Ne pas afficher une longue liste brute');
+assert.equal(get('numberTopicGroups').children.length,three.topics.length,
+  'Il n’y a qu’une liste organisée par sujet');
 const centreSection=get('numberTopicGroups').children.find(el=>
   el.children[0].children[0].textContent==='3 centres');
 assert.ok(centreSection,'Le lecteur propose « 3 centres »');
@@ -191,6 +205,8 @@ assert.ok(opened.recordId&&opened.verses.length===1,'Un sujet ouvre le verset ex
 get('numberPdf').click();
 assert.ok(exported.at(-1).text.includes('3 centres'),'Le PDF conserve les rubriques');
 assert.ok(exported.at(-1).text.includes('Psaume'),'Le PDF conserve les sources');
+const occurrences=(exported.at(-1).text.match(/Psaume /g)||[]).length;
+assert.equal(occurrences,three.references.length,'Chaque verset n’apparaît qu’une fois dans le PDF');
 const singleton = get('numberTopicGroups').children.find(el=>
   el.className.includes('numbers-topic-single'));
 assert.ok(singleton,'Les expressions isolées remplacent « Autres passages »');
