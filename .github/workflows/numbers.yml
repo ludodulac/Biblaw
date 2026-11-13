@@ -1,0 +1,27 @@
+name: Biblaw — index des chiffres et nombres
+on:
+  pull_request:
+    paths:
+      - 'scripts/build_numbers_public.py'
+      - 'scripts/smoke_numbers.mjs'
+      - 'scripts/build_pages_site.py'
+      - 'js/biblaw-numbers.js'
+      - 'js/biblaw.js'
+      - 'css/biblaw-numbers.css'
+      - 'index.html'
+      - '.github/workflows/numbers.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Générer l’index des 1158 psaumes
+        run: python scripts/build_numbers_public.py
+      - name: Tester les références et la navigation
+        run: node scripts/smoke_numbers.mjs
+      - name: Préparer le site GitHub Pages
+        run: python scripts/build_pages_site.py
