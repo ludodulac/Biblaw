@@ -81,7 +81,7 @@ SYMBOL = re.compile(
     r"\b(?:elements?|archanges?|mondes?|perles?|porteurs?|"
     r"forces?|vertus?|principes?|lois?|portes?|spheres?|etats?|"
     r"rayons?|piliers?|degres?|sceaux?|cercles?|corps|regnes?|"
-    r"dimensions?|regles?|centres?|enseignements?|alliance|unite|"
+    r"dimensions?|regles?|centres?|sens|enseignements?|alliance|unite|"
     r"temples?|choses?)\b"
 )
 THEME = re.compile(r"\b(?:chiffre|chiffres|nombre|nombres|numerologie|numerologique|septenaire)\b")
@@ -133,6 +133,7 @@ EDITORIAL = {
 # Vague forms such as "3 choses" or "2 personnes" are excluded.
 TOPIC_FORMS = {
   "centres":"centre centres",
+  "sens":"sens",
   "mondes":"monde mondes",
   "éléments":"element elements",
   "archanges":"archange archanges",
@@ -207,24 +208,68 @@ def phrase_topics(text: str, number: int) -> set[str]:
                 labels.add(TOPIC_BY_FORM[noun])
     return labels
 
+def short_verse_phrase(text: str, number: int) -> str:
+    """A short, literal passage around the number, never an invented theme.
+
+    Long verses are cut at word boundaries; the title retains a recognizable
+    fragment of the canonical verse. Numbers such as '3 choses' remain findable.
+    """
+    clean = " ".join(text.split())
+    hit = next((item for item in mentions(clean) if item["number"] == number), None)
+    if not hit:
+        return clean[:92].rsplit(" ", 1)[0] + ("…" if len(clean) > 92 else "")
+    # Normalization can alter offsets very slightly on rare ligatures; this
+    # is used for presentation only, and verse links remain exact IDs.
+    left = max(0, hit["start"] - 15)
+    right = min(len(clean), max(hit["end"] + 66, left + 40))
+    if left > 0:
+        next_space = clean.find(" ", left, min(len(clean), left + 20))
+        if next_space >= 0:
+            left = next_space + 1
+    if right < len(clean):
+        last_space = clean.rfind(" ", left + 35, right)
+        if last_space > left:
+            right = last_space
+    phrase = clean[left:right].strip(" ,;:.!?'«»\"")
+    return ("…" if left else "") + phrase + ("…" if right < len(clean) else "")
+
+
 def group_topics(number: int, references: list[dict], by_id: dict) -> list[dict]:
+    """Named recurring subjects plus individually titled, clickable passages.
+
+    No opaque 'Autres passages' bucket: if a verse has no known topic, the
+    exact excerpt surrounding its number becomes its visible heading.
+    """
     buckets: dict[str, dict] = defaultdict(dict)
+    remaining: list[dict] = []
     for ref in references:
         verse = next(v for v in by_id[ref["recordId"]]["verses"]
                      if v["number"] == ref["verse"])
         labels = phrase_topics(verse["text"], number)
+        ref["title"] = (f"{number} {sorted(labels)[0]}" if labels else
+                        short_verse_phrase(verse["text"], number))
         key = (ref["recordId"], ref["verse"])
-        for label in labels or {""}:
-            buckets[label].setdefault(key, ref)
+        if not labels:
+            remaining.append(ref)
+        else:
+            for label in labels:
+                buckets[label].setdefault(key, ref)
     groups = [{
         "key": label, "label": f"{number} {label}",
         "summary": TOPIC_DESCRIPTIONS.get((number, label), ""),
         "references": list(buckets[label].values()),
-    } for label in sorted((k for k in buckets if k), key=lambda k: (-len(buckets[k]), k))]
-    if "" in buckets:
-        groups.append({"key": "autres", "label": "Autres passages",
-                       "summary": "", "references": list(buckets[""].values())})
+    } for label in sorted(buckets, key=lambda k: (-len(buckets[k]), k))]
+    # Each residual reference receives a concrete quote-based heading,
+    # instead of a catch-all category with dozens of opaque verse numbers.
+    for ref in remaining:
+        groups.append({
+            "key": f"extrait-{ref['recordId']}-{ref['verse']}",
+            "label": ref["title"],
+            "summary": "",
+            "references": [ref],
+        })
     return groups
+
 
 def mentions(verse_text: str) -> list[dict]:
     t = norm(verse_text)
@@ -396,6 +441,13 @@ def generate(destination: Path = OUTPUT) -> dict:
             }: continue
             samples.append(item)
             if len(samples) == 5: break
+        topic_reference_titles = {
+            (ref["recordId"], ref["verse"]): ref["title"] for ref in passages
+        }
+        for sample in samples:
+            sample["title"] = topic_reference_titles[
+                (sample["recordId"], sample["verse"])
+            ]
         categories = {ref["category"] for ref in passages}
         category_names = [
             name for category, name in [
@@ -441,7 +493,7 @@ def generate(destination: Path = OUTPUT) -> dict:
         "outputBytes": destination.stat().st_size,
     }
     print("Biblaw chiffres/nombres:", result, flush=True)
-    for n in (2, 3, 4, 7, 12, 21, 40):
+    for n in (2, 3, 4, 5, 7, 12, 21, 40):
         match = next((e for e in numbers if e["value"] == n), None)
         if not match:continue
         print(f"EXEMPLES {n}: {len(match['references'])} versets "
