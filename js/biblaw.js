@@ -254,7 +254,7 @@
       // Supply the records only after the search engine is ready.
       // FAQ topics and answers already work independently before this point.
       BiblawFAQ.setRecords(state.records);
-      BiblawAnimals.setRecords(state.records);
+      globalThis.BiblawAnimals?.setRecords(state.records);
       document.dispatchEvent(new CustomEvent('biblaw:corpus-ready',{
         detail:{themes:state.themeDirectory}
       }));
@@ -818,7 +818,7 @@
     if(shouldFocus===true)$('notesThemeFilter').focus({preventScroll:true});
   }
   function showSearchView() {
-    BiblawAnimals.close();
+    globalThis.BiblawAnimals?.close();
     closeBibleThemes();
     BiblawFAQ.close();
     $('faqToggle').setAttribute('aria-expanded','false');
@@ -835,7 +835,7 @@
       return;
     }
     BiblawFAQ.close();
-    BiblawAnimals.close();
+    globalThis.BiblawAnimals?.close();
     $('faqToggle').setAttribute('aria-expanded','false');
     $('notesThemeFilter').value='';
     $('notesArchiveSearch').value='';
@@ -1114,20 +1114,20 @@
   };
   document.querySelectorAll('[name=readerPart]').forEach(x=>x.onchange=()=>{if(!x.checked||!state.active?.attachedPrayer?.text)return;state.readerPart=x.value;renderReader();});
   BiblawFAQ.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
-  BiblawAnimals.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
+  globalThis.BiblawAnimals?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   $('faqToggle').addEventListener('click',()=>{
     showSearchView();
     BiblawFAQ.open();
     $('faqToggle').setAttribute('aria-expanded','true');
   });
-  $('animalsToggle').addEventListener('click',()=>{
+  $('animalsToggle')?.addEventListener('click',()=>{
     showSearchView();
-    BiblawAnimals.open();
+    globalThis.BiblawAnimals?.open();
   });
   $('faqReturnFromPsalm').onclick=()=>$('recordDialog').close();
   $('recordDialog').addEventListener('close',()=>{
     BiblawFAQ.restoreAfterPsalm();
-    BiblawAnimals.restoreAfterPsalm();
+    globalThis.BiblawAnimals?.restoreAfterPsalm();
     $('faqReturnFromPsalm').hidden=true;
   });
   $('notesLibraryToggle').addEventListener('click',()=>toggleNotesLibrary());
@@ -1147,5 +1147,5 @@
   bindSuggestions();
   // A function deliberately defers the expensive load until a Psalm is opened.
   BiblawFAQ.setCorpusLoading(ensureCorpusReady);
-  BiblawAnimals.setCorpusLoading(ensureCorpusReady);
+  globalThis.BiblawAnimals?.setCorpusLoading(ensureCorpusReady);
 })();
