@@ -25,14 +25,13 @@ def normalize(value: str) -> str:
     )
 
 
-def explicit_match(text: str, form: str) -> bool:
+def make_pattern(form: str) -> re.Pattern:
     # Lexical matches only: 'ver' is not the preposition 'vers',
     # 'cerf' in a kite (cerf-volant) is not the animal.
     expression = re.escape(normalize(form))
     if normalize(form) in {"cerf", "cerfs"}:
-        expression += r"(?![\s\-‑–—]*volant)"
-    return bool(re.search(r"(?<![a-z])" + expression + r"(?![a-z])", normalize(text)))
-
+        expression += r"(?![\\s\\-‑–—]*volant)"
+    return re.compile(r"(?<![a-z])" + expression + r"(?![a-z])")
 
 def load_psalms() -> list[dict]:
     records = []
@@ -53,6 +52,13 @@ def generate(destination: Path) -> dict:
     editorial = json.loads(EDITORIAL.read_text(encoding="utf-8"))
     records = load_psalms()
     by_id = {record["id"]: record for record in records}
+    # Normalize the entire corpus only once; do not scan or normalize it
+    # repeatedly for each lexical variant.
+    normalized_verses = {
+        record["id"]: [
+            (verse["number"], normalize(verse["text"])) for verse in record["verses"]
+        ] for record in records
+    }
     entries = []
     seen_ids = set()
     count = {"totem": 0, "other": 0}
@@ -66,6 +72,7 @@ def generate(destination: Path) -> dict:
         if not entry["label"].strip() or not entry["summary"].strip() or not entry["forms"]:
             raise ValueError(f"Incomplete animal entry: {entry['id']}")
         count[category] += 1
+        patterns = [make_pattern(form) for form in entry["forms"]]
         references = []
         for ref in entry["sources"]:
             record = by_id.get(ref["recordId"])
@@ -84,8 +91,8 @@ def generate(destination: Path) -> dict:
         all_mentions = []
         for record in records:
             verse_nums = [
-                verse["number"] for verse in record["verses"]
-                if any(explicit_match(verse["text"], form) for form in entry["forms"])
+                number for number, text in normalized_verses[record["id"]]
+                if any(pattern.search(text) for pattern in patterns)
             ]
             if verse_nums:
                 all_mentions.append({
@@ -100,10 +107,10 @@ def generate(destination: Path) -> dict:
         # somewhere within the group of linked verses.
         for reference in entry["sources"]:
             record = by_id[reference["recordId"]]
-            selected = (verse["text"] for verse in record["verses"]
-                        if verse["number"] in reference["verses"])
-            if not any(explicit_match(text, form)
-                       for text in selected for form in entry["forms"]):
+            selected = (text for number, text in normalized_verses[record["id"]]
+                        if number in reference["verses"])
+            if not any(pattern.search(text)
+                       for text in selected for pattern in patterns):
                 raise ValueError(f"Editorial reference does not name animal: {entry['id']} {reference}")
 
         entries.append({
