@@ -48,7 +48,7 @@ def norm(value: str) -> str:
 # or for transparent "premier jour" / "première semaine" phrases.
 FORMS: dict[str, int] = {}
 for n in range(0, 100):
-    if n == 1: continue
+    if n in (0, 1): continue
     FORMS[french(n)] = n
 FORMS.update({
     "vingt et une": 21, "trente et une": 31, "quarante et une": 41,
