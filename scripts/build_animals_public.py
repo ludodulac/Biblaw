@@ -15,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EDITORIAL = ROOT / "data" / "animals-editorial.json"
 CORPUS = ROOT / "data" / "corpus" / "books"
+NOTES = ROOT / "data" / "notes" / "books"
 
 
 def normalize(value: str) -> str:
@@ -73,6 +74,11 @@ def generate(destination: Path) -> dict:
             raise ValueError(f"Incomplete animal entry: {entry['id']}")
         count[category] += 1
         patterns = [make_pattern(form) for form in entry["forms"]]
+        exclusions = [make_pattern(form) for form in entry.get("excludeForms", [])]
+        def includes(text: str) -> bool:
+            return any(pattern.search(text) for pattern in patterns) and not any(
+                exclusion.search(text) for exclusion in exclusions
+            )
         references = []
         for ref in entry["sources"]:
             record = by_id.get(ref["recordId"])
@@ -88,11 +94,36 @@ def generate(destination: Path) -> dict:
                 "verses": ref["verses"],
             })
 
+        note_refs = []
+        for note_id in entry.get("noteSources", []):
+            if not re.fullmatch(r"book-\d{2}-psalm-\d{3}-note-\d{3}", note_id):
+                raise ValueError(f"Invalid source note ID: {note_id}")
+            note_book = note_id.split("-")[1]
+            note_path = NOTES / f"book-{note_book}" / f"{note_id}.json"
+            if not note_path.is_file():
+                raise ValueError(f"Missing canonical note: {note_id}")
+            note = json.loads(note_path.read_text(encoding="utf-8"))
+            psalm_id = note.get("appliesTo", {}).get("recordId")
+            psalm = by_id.get(psalm_id)
+            if (note.get("id") != note_id or note.get("recordType") != "note" or
+                psalm is None or not note.get("validation", {}).get("status") or
+                not any(pattern.search(normalize(note.get("text", ""))) for pattern in patterns)):
+                raise ValueError(f"Invalid or unsupported animal note reference: {entry['id']} / {note_id}")
+            source_page = note.get("source", {}).get("pdfPage")
+            if not isinstance(source_page, int) or source_page < 1:
+                raise ValueError(f"Missing source PDF page for note: {note_id}")
+            note_refs.append({
+                "id": note_id, "recordId": psalm["id"],
+                "archangel": psalm["archangel"], "number": psalm["number"],
+                "sourcePdfPage": source_page, "publicationStatus": "unverified",
+            })
+        if not references and not note_refs:
+            raise ValueError(f"No documentary source for: {entry['id']}")
         all_mentions = []
         for record in records:
             verse_nums = [
                 number for number, text in normalized_verses[record["id"]]
-                if any(pattern.search(text) for pattern in patterns)
+                if includes(text)
             ]
             if verse_nums:
                 all_mentions.append({
@@ -101,16 +132,15 @@ def generate(destination: Path) -> dict:
                     "number": record["number"],
                     "verses": verse_nums,
                 })
-        if not all_mentions:
-            raise ValueError(f"No explicit verse occurrence for: {entry['id']}")
+        if not all_mentions and not note_refs:
+            raise ValueError(f"No explicit verse or note occurrence for: {entry['id']}")
         # Editorial examples must contain an actual mention of the animal,
         # somewhere within the group of linked verses.
         for reference in entry["sources"]:
             record = by_id[reference["recordId"]]
             selected = (text for number, text in normalized_verses[record["id"]]
                         if number in reference["verses"])
-            if not any(pattern.search(text)
-                       for text in selected for pattern in patterns):
+            if not any(includes(text) for text in selected):
                 raise ValueError(f"Editorial reference does not name animal: {entry['id']} {reference}")
 
         entries.append({
@@ -119,6 +149,7 @@ def generate(destination: Path) -> dict:
             "label": entry["label"],
             "summary": entry["summary"],
             "sources": references,
+            "noteSources": note_refs,
             "occurrences": all_mentions,
         })
 

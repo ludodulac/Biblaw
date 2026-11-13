@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "1158 psaumes canoniques de Biblaw; seules les mentions explicitement attestées sont indexées.",
-  "classification": "Totem : exemple ou qualité à suivre selon le psaume. Autres : mise en garde ou mention non présentée comme modèle. Un même animal peut apparaître dans les deux rubriques lorsque les psaumes l'emploient différemment.",
-  "editorialStatus": "Synthèses factuelles fondées sur les versets cités; transcriptions sources à vérifier éditorialement.",
+  "classification": "Totem : exemple ou qualité à suivre selon le psaume ou une note explicitement identifiée. Autres animaux : mises en garde, mentions descriptives ou références uniquement présentes en note. Un même animal peut figurer dans les deux rubriques selon le contexte. Les notes issues d'extractions automatiques sont identifiées comme transcriptions à vérifier.",
+  "editorialStatus": "Résumés factuels fondés sur les références citées. Les notes d'archives sont des transcriptions à vérifier, non des citations éditorialement authentifiées.",
   "entries": [
     {
       "id": "abeille",
@@ -94,7 +94,7 @@
       "id": "biche",
       "category": "totem",
       "label": "Biche",
-      "summary": "Dans le psaume « Le message de la Biche : Protège la famille », Gabriel demande de préserver la famille, la solidarité, le soutien mutuel et la grande famille universelle. Il invite à agir concrètement pour le bien de la collectivité et pour que chacun puisse trouver un foyer.",
+      "summary": "Dans le psaume 110 de Gabriel, la Biche transmet un message sur la protection de la famille, la solidarité, le soutien mutuel et l’importance du foyer. La note associée rapporte que Gabriel s’est manifesté sous la forme d’une Biche à l’aura bleue lors d’un dialogue avec le règne animal, et insiste sur la paix familiale et la protection des enfants. Cette note est une transcription encore à vérifier.",
       "forms": [
         "biche",
         "biches"
@@ -112,6 +112,9 @@
             13
           ]
         }
+      ],
+      "noteSources": [
+        "book-14-psalm-110-note-001"
       ]
     },
     {
@@ -163,7 +166,7 @@
       "id": "chouette",
       "category": "totem",
       "label": "Chouette",
-      "summary": "La chouette voit dans l’obscurité. Les psaumes invitent à développer, à son exemple, une vision capable de percevoir ce qui est caché, sans condamner ni se laisser gagner par l’obscurité.",
+      "summary": "Le psaume 26 de Michaël prend la chouette en exemple pour sa capacité à voir dans l’obscurité et invite à apprendre à discerner ce qui est caché. Une note du psaume 143 de Michaël précise qu’elle est devenue son animal totem sur les terres esséniennes du Québec et lui attribue la vision des mondes visible et invisible. Cette note est une transcription encore à vérifier.",
       "forms": [
         "chouette",
         "chouettes"
@@ -178,6 +181,9 @@
             12
           ]
         }
+      ],
+      "noteSources": [
+        "book-21-psalm-143-note-003"
       ]
     },
     {
@@ -720,7 +726,7 @@
       "id": "coccinelle-autres",
       "category": "other",
       "label": "Coccinelle",
-      "summary": "La coccinelle est simplement nommée, avec les lapins et les papillons, parmi les habitants du jardin des fées évoqué dans le psaume. Aucune conduite à imiter ou à éviter ne lui est attribuée.",
+      "summary": "La coccinelle figure avec le lapin et le papillon dans l’évocation du jardin des fées, associé à la féerie et à la sérénité. Le psaume ne propose aucune conduite propre à la coccinelle comme exemple ou contre-exemple.",
       "forms": [
         "coccinelle",
         "coccinelles"
@@ -904,7 +910,7 @@
       "id": "lapin-autres",
       "category": "other",
       "label": "Lapin",
-      "summary": "Le lapin est simplement cité parmi les animaux du jardin des fées, avec la coccinelle et le papillon. Le psaume ne lui attribue pas de comportement à reproduire ou à éviter.",
+      "summary": "Le lapin est cité avec la coccinelle et le papillon parmi les habitants du jardin des fées. Le texte présente cet univers comme un lieu de féerie et de ressourcement, sans demander d’imiter ou d’éviter le comportement du lapin.",
       "forms": [
         "lapin",
         "lapins"
@@ -1458,6 +1464,62 @@
             40
           ]
         }
+      ]
+    },
+    {
+      "id": "serpent-autres-mentions",
+      "category": "other",
+      "label": "Serpent — autres mentions",
+      "summary": "Ce relevé rassemble les passages où le serpent est nommé sans employer explicitement « serpent de la sagesse » ni « serpent tentateur » (ou leurs appellations voisines). Selon le psaume, ces mentions décrivent un état de l’homme, une tentation, une puissance ou une comparaison symbolique ; leur seule présence ne permet pas de les qualifier de modèles ou de contre-exemples. Les passages avec appellations explicites restent dans les deux fiches particulières.",
+      "forms": [
+        "serpent",
+        "serpents"
+      ],
+      "excludeForms": [
+        "serpent de la sagesse",
+        "grand serpent de la sagesse",
+        "serpent tentateur",
+        "serpents tentateurs",
+        "serpent de la tentation",
+        "serpent de la destruction",
+        "serpent instinctif"
+      ],
+      "sources": [
+        {
+          "recordId": "book-02-psalm-009",
+          "verses": [
+            7
+          ]
+        },
+        {
+          "recordId": "book-08-psalm-030",
+          "verses": [
+            1,
+            5,
+            7,
+            10
+          ]
+        },
+        {
+          "recordId": "book-10-psalm-064",
+          "verses": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "renard-autres",
+      "category": "other",
+      "label": "Renard (mention en note)",
+      "summary": "Le renard apparaît dans une note rattachée au psaume 95 de Gabriel : elle cite Matthieu 8, 19-20, où il est question des tanières des renards et des nids des oiseaux. Aucun verset des psaumes analysés ne présente ici le renard comme un modèle ou un contre-exemple. Cette note est une transcription encore à vérifier.",
+      "forms": [
+        "renard",
+        "renards"
+      ],
+      "sources": [],
+      "noteSources": [
+        "book-14-psalm-095-note-001"
       ]
     }
   ]
