@@ -35,3 +35,12 @@ body.view-numbers .shell{padding-top:1.1rem}
 .numbers-library .numbers-number-context{font-size:.81rem;color:#6c6257;font-weight:400}
 .numbers-library .numbers-number-button:hover .numbers-number,
 .numbers-library .numbers-number-button:focus-visible .numbers-number{text-decoration:underline}
+
+/* Compact, expandable phrase groups: « 3 centres », « 2 mondes »... */
+.numbers-library .numbers-topic{margin:.6rem 0;border:1px solid #e4dacf;border-radius:.75rem;background:#fdfaf6;overflow:hidden}
+.numbers-library .numbers-topic summary{display:flex;justify-content:space-between;align-items:center;gap:.6rem;cursor:pointer;padding:.85rem 1rem;line-height:1.4;color:#48392a}
+.numbers-library .numbers-topic summary:hover,.numbers-library .numbers-topic summary:focus-visible{background:#f4ede3}
+.numbers-library .numbers-topic summary strong{font-weight:650}
+.numbers-library .numbers-topic-count{font-size:.88rem;font-weight:400;color:#706357;white-space:nowrap}
+.numbers-library .numbers-topic-summary{margin:0;padding:.3rem 1rem;color:#594a38;line-height:1.6}
+.numbers-library .numbers-topic .numbers-references{padding:.6rem 1rem 1rem;border-top:1px solid #eee5db}
