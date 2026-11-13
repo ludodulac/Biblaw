@@ -238,4 +238,51 @@ for n in notes:
         note_hits+=1
         if note_hits<=55:print("  NOTE",n["id"],"/".join(unknown[:10]),repr(n.get("text",""))[:260])
 print("NOTES_MISSING_SPECIES_COUNT:",note_hits)
+print("LEXICAL_COVERAGE_GAPS:")
+gap_data=defaultdict(list)
+for r in records:
+    for v in r.get("verses",[]):
+        t=norm(v["text"])
+        covered=any(pat.search(t) for pat in indexed_patterns.values())
+        if covered:continue
+        for label,pat in patterns.items():
+            if pat.search(t):
+                # Skip literal non-animal senses to avoid erroneous suggestions.
+                if label=="Moule" and re.search(r"\bmoule(s)?\b",t):continue
+                if label=="Puce" and re.search(r"\bpuce electronique\b",t):continue
+                if label=="Cerf" and re.search(r"\bcerf[\s\-]+volant\b",t):continue
+                gap_data[label].append((r["id"],v["number"],v["text"]))
+for label,arr in sorted(gap_data.items(),key=lambda x:-len(x[1])):
+    print("  UNLINKED",label,len(arr),"verses",len({a[0] for a in arr}),"psalms")
+    for rid,n,t in arr[:4]:print("    SOURCE",rid,n,repr(t)[:350])
+print("NOTES_ANIMAL_MENTIONS:")
+note_mention_count=defaultdict(list)
+for n in notes:
+    t=norm(n.get("text",""))
+    for label,pat in patterns.items():
+        if pat.search(t):
+            if label in ("Moule","Puce"):continue
+            note_mention_count[label].append(n["id"])
+for label,arr in sorted(note_mention_count.items(),key=lambda x:-len(x[1])):
+    print("  NOTE_ANIMAL",label,len(arr),"examples",",".join(arr[:5]))
+print("POSSIBLE_POSITIVE_EXAMPLES_LISTED_ONLY_OTHER:")
+totem_form_patterns={}
+other_forms={}
+for e in animal_entries:
+    if e["category"]=="totem":
+        totem_form_patterns.setdefault(e["label"],[]).extend(e["forms"])
+    else:other_forms.setdefault(e["label"],[]).extend(e["forms"])
+models=re.compile(r"\b(sois|soyez|deviens|devenez|imite|imiter|imitez|prendre exemple|prends exemple|prenez exemple|fais comme|faites comme|en exemple|est un modele|vertu|vertus|qualite|qualites)\b")
+for label, forms in other_forms.items():
+    if label in totem_form_patterns:continue
+    pat=matcher(forms)
+    hits=[]
+    for r in records:
+        for v in r.get("verses",[]):
+            t=norm(v["text"])
+            if pat.search(t) and models.search(t):
+                hits.append((r["id"],v["number"],v["text"]))
+    if hits:
+        print("  CANDIDATE",label,"number",len(hits))
+        for rid,n,t in hits[:3]:print("    VERSE",rid,n,repr(t)[:420])
 print("ANIMAL_AUDIT_END")
