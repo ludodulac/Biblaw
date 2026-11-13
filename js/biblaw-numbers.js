@@ -111,11 +111,50 @@
     $('numbersDirectory').hidden = true;
     $('numbersDetail').hidden = false;
     $('numberTitle').textContent = entry.value === null ? 'Les chiffres et les nombres dans les psaumes' : 'Nombre ' + entry.value;
-    $('numberSummary').textContent = entry.summary;
+    $('numberSummary').textContent = entry.summary || '';
+    $('numberSummary').hidden = !entry.summary;
+    // For numbers cited many times, show clickable subjects rather than a
+    // wall of references. Each subject holds ALL linked verses for that phrase.
+    const topics = entry.topics || [];
+    const grouped = entry.references.length > 8 && topics.some(t => t.key !== 'autres');
+    const topicList = $('numberTopicGroups');
+    topicList.hidden = !grouped;
+    $('numberTopicHeading').hidden = !grouped;
+    topicList.replaceChildren();
+    if (grouped) {
+      for (const topic of topics) {
+        const details = document.createElement('details');
+        details.className = 'numbers-topic';
+        const heading = document.createElement('summary');
+        const name = document.createElement('strong');
+        name.textContent = topic.label;
+        const count = document.createElement('span');
+        count.className = 'numbers-topic-count';
+        count.textContent = topic.references.length + ' verset' +
+          (topic.references.length > 1 ? 's' : '');
+        heading.append(name, count);
+        details.append(heading);
+        if (topic.summary) {
+          const info = document.createElement('p');
+          info.className = 'numbers-topic-summary';
+          info.textContent = topic.summary;
+          details.append(info);
+        }
+        const refs = document.createElement('div');
+        refs.className = 'numbers-references';
+        details.append(refs);
+        details.ontoggle = () => {
+          if (details.open && !refs.childElementCount)
+            for (const ref of topic.references) refs.append(referenceButton(ref));
+        };
+        topicList.append(details);
+      }
+    }
     const sampleList = $('numberExamples');
+    sampleList.hidden = grouped;
     sampleList.replaceChildren();
     const examples = entry.examples || [];
-    $('numberExamplesHeading').hidden = !examples.length;
+    $('numberExamplesHeading').hidden = grouped || !examples.length;
     for (const sample of examples) {
       const block = document.createElement('div');
       block.className = 'numbers-example';
@@ -141,7 +180,7 @@
   async function load() {
     if (state.entries.length) return true;
     if (state.loading) return state.loading;
-    state.loading = fetch('data/numbers-public.json?v=002').then(async response => {
+    state.loading = fetch('data/numbers-public.json?v=003').then(async response => {
       if (!response.ok) throw new Error('Répertoire des nombres indisponible.');
       const result = await response.json();
       if (result.schemaVersion !== 1 || result.psalmCount !== 1158 ||
@@ -202,13 +241,17 @@
     const entry = state.current;
     if (!entry) return;
     const examples = (entry.examples || []).map(e => e.excerpt + '\n' + refLabel(e)).join('\n\n');
+    const topicText = (entry.topics || []).map(group =>
+      group.label + '\n' + group.references.map(refLabel).join('\n')).join('\n\n');
     const references = entry.references.map(refLabel).join('\n');
     try {
       BiblawPDF.download({
         recordType:'faq',
         id:'biblaw-number-'+entry.value,
         title:entry.value === null ? 'Chiffres et nombres' : 'Nombre '+entry.label,
-        text:entry.summary+'\n\nExemples relevés :\n'+examples+
+        text:(entry.summary ? entry.summary + '\n\n' : '') +
+          'Expressions et sujets :\n' + topicText +
+          '\n\nExemples relevés :\n'+examples+
           '\n\nToutes les références :\n'+references
       });
       status('');
