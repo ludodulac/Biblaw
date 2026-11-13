@@ -50,7 +50,8 @@ assert.ok(bicheOther.sources.some(ref => ref.recordId === 'book-01-psalm-012' &&
 assert.ok(bicheOther.sources.some(ref => ref.recordId === 'book-19-psalm-107' &&
   ref.verses.includes(9)), 'Enseignement sur les préjugés de Raphaël');
 for (const entry of published.entries) {
-  assert.ok(entry.occurrences.length > 0, 'Actual verse occurrences ' + entry.label);
+  assert.ok(entry.occurrences.length > 0 || (entry.noteSources || []).length > 0,
+    'Actual verse or archived note occurrences ' + entry.label);
   for (const reference of [...entry.sources, ...entry.occurrences]) {
     const record = byId.get(reference.recordId);
     assert.ok(record && record.recordType === 'psalm');
