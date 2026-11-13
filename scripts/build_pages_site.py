@@ -11,6 +11,7 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 from build_public_note_extractions import generate as generate_public_notes
+from build_animals_public import generate as generate_public_animals
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -22,11 +23,13 @@ PUBLIC_FILES = (
     "Bible essénienne (classée par livres).pdf",
     "css/biblaw.css",
     "css/biblaw-light.css",
+    "css/biblaw-animals.css",
     "css/theme-entry.css",
     "css/validation.css",
     "js/theme-suggestion-engine.js",
     "js/biblaw-pdf.js",
     "js/biblaw-faq.js",
+    "js/biblaw-animals.js",
     "js/biblaw-autocomplete.js",
     "js/biblaw.js",
     "js/theme-relations.js",
@@ -107,8 +110,15 @@ def main() -> None:
     note_stats = generate_public_notes(note_archive)
     assert note_stats["archiveCount"] == 280 and note_stats["alreadyPublishedCount"] == 11
 
+    # Only publish the checked, compact projection; keep canonical Psalms
+    # and editorial working files out of the Pages bundle.
+    animals_public = OUT / "data" / "animals-public.json"
+    animal_stats = generate_public_animals(animals_public)
+    assert animal_stats["psalmCount"] == 1158 and animal_stats["totems"] >= 15
+    assert animal_stats["others"] >= 35
+
     staged = sorted(str(path.relative_to(OUT)) for path in OUT.rglob("*") if path.is_file())
-    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json")), (
+    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json")), (
         "Pages staging contains a file outside the explicit allow-list"
     )
     assert not any(path.startswith(FORBIDDEN_PREFIXES) for path in staged), "internal repository data leaked into Pages staging"
