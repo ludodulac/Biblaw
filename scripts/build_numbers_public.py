@@ -225,6 +225,25 @@ def generate(destination: Path = OUTPUT) -> dict:
                 grouped[key] = dict(ref)
             else:
                 grouped[key]["duration"] |= ref["duration"]
+        # Editorial examples may mention the number even if its context
+        # is too far from the token for the automatic proximity check.
+        # Include those specifically reviewed verses in the index too.
+        editorial = EDITORIAL.get(n)
+        if editorial:
+            for rid, verse in editorial["sources"]:
+                record = next((p for p in records if p["id"] == rid), None)
+                selected = next((v for v in record["verses"] if v["number"] == verse), None) if record else None
+                mentions_in_verse = [m for m in mentions(selected["text"]) if m["number"] == n] if selected else []
+                if not mentions_in_verse:
+                    raise ValueError(f"Editorial reference without named number {n}: {rid}, {verse}")
+                if (rid, verse) not in grouped:
+                    occurrence = mentions_in_verse[0]
+                    grouped[(rid, verse)] = {
+                        "recordId": rid, "archangel": record["archangel"],
+                        "psalm": record["number"], "verse": verse,
+                        "duration": occurrence["duration"], "kind": "editorial",
+                        "category": occurrence["category"] or "symbole",
+                    }
         passages = list(grouped.values())
         psalm_count = len({r["recordId"] for r in passages})
         durations = [x for x in passages if x["duration"]]
@@ -249,8 +268,11 @@ def generate(destination: Path = OUTPUT) -> dict:
                     "kind": "editorial", "excerpt": text[:360],
                 })
         samples = []
+        valid_locations = set(grouped)
         for item in (candidate_examples if editorial else
                      sorted(candidate_examples, key=lambda x: (not x["duration"], x["recordId"]))):
+            if (item["recordId"], item["verse"]) not in valid_locations:
+                continue
             if (item["recordId"], item["verse"]) in {
                 (s["recordId"], s["verse"]) for s in samples
             }: continue
