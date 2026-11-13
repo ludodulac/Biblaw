@@ -1,0 +1,33 @@
+/* Single documentary tab for numbers; separate from homepage action buttons. */
+.numbers-site-tabs{display:flex;justify-content:flex-start;align-items:flex-end;max-width:1120px;margin:0 auto;padding:.35rem 1.1rem 0;border-bottom:1px solid #e6ded1}
+.numbers-site-tabs .numbers-tab{display:inline-flex;align-items:center;border-radius:.7rem .7rem 0 0;padding:.65rem 1rem;font-size:.95rem;text-decoration:none;color:#594736;border:1px solid transparent;border-bottom:0;font-weight:600}
+.numbers-site-tabs .numbers-tab:hover,.numbers-site-tabs .numbers-tab:focus-visible{background:#f8f3ec;color:#382f25}
+.numbers-site-tabs .numbers-tab.active{background:#fff;border-color:#e6ded1;color:#332718;box-shadow:0 -1px 0 #fff inset}
+body.view-numbers #primarySearch,
+body.view-numbers #notesLibrary,
+body.view-numbers #faqLibrary,
+body.view-numbers #animalsLibrary,
+body.view-numbers #bibleThemesLibrary,
+body.view-numbers #ambiguityPanel,
+body.view-numbers .results-section,
+body.view-numbers #validatedRelationsPanel,
+body.view-numbers #transversePanel,
+body.view-numbers #secondaryTools{display:none!important}
+body.view-numbers .shell{padding-top:1.1rem}
+.numbers-library[hidden],.numbers-library [hidden]{display:none!important}
+.numbers-library .numbers-intro{line-height:1.65;color:#615648;margin:.4rem 0 1rem}
+.numbers-library .numbers-controls{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap;margin:1rem 0}
+.numbers-library .numbers-filter{max-width:16rem;min-height:2.6rem;border:1px solid #c9bca7;border-radius:.55rem;padding:.5rem .8rem;font-size:1rem}
+.numbers-library .numbers-duration-choice{display:flex;align-items:center;gap:.4rem;font-size:.92rem;color:#655845}
+.numbers-library .numbers-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:.35rem}
+.numbers-library .numbers-list .faq-question-item{text-align:left}
+.numbers-library .numbers-count{font-size:.94rem;color:#695c4e}
+.numbers-library .numbers-example{border-left:3px solid #c5a16c;margin:.8rem 0;padding:.75rem 1rem;background:#faf8f4;border-radius:.3rem}
+.numbers-library .numbers-example p{margin:0 0 .65rem;line-height:1.65;white-space:pre-wrap}
+.numbers-library .numbers-reference{display:inline-block;white-space:normal;text-align:left;line-height:1.5;margin:.3rem .7rem .3rem 0}
+.numbers-library .numbers-references{display:flex;flex-wrap:wrap;align-items:flex-start;padding:.8rem 0}
+.numbers-library .numbers-all{border:1px solid #e4dacf;background:#fdfaf6;border-radius:.75rem;margin:1.3rem 0;padding:.9rem 1rem}
+.numbers-library .numbers-all summary{cursor:pointer;font-weight:650;color:#554433}
+.numbers-library .numbers-heading{font-size:1.1rem;color:#483727;margin:1.4rem 0 .6rem}
+@media(max-width:760px){.numbers-site-tabs{padding:.35rem .7rem 0}.numbers-site-tabs .numbers-tab{padding:.6rem .9rem;font-size:.9rem}.numbers-library .numbers-list{grid-template-columns:1fr}.numbers-library .numbers-example{padding:.6rem .7rem}}
+@media print{body.view-numbers .site-header,body.view-numbers .numbers-site-tabs,body.view-numbers #numbersBack,body.view-numbers #numbersDirectory,body.view-numbers .faq-actions,body.view-numbers .numbers-all{display:none!important}}
