@@ -853,7 +853,8 @@
   function open(id, citedVerses=null){
     const r=state.recordById.get(id)||state.archivedNoteById.get(id);if(!r)return;
     const targetVerses=Array.isArray(citedVerses)&&r.recordType==='psalm'?new Set(citedVerses.map(Number)):null;
-    const fromFAQ=Boolean(targetVerses?.size);
+    const fromFAQ=Boolean(targetVerses?.size) ||
+      (r.recordType==='note' && document.body.classList.contains('view-animals'));
     state.active=r;
     $('dialogEyebrow').textContent=label(r);
     $('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:r.recordType==='note'&&r.bookNumber?
@@ -862,8 +863,9 @@
     state.readerPart=fromFAQ?'psalm':hasPrayer?'both':'psalm';
     $('faqReturnFromPsalm').hidden=!fromFAQ;
     $('faqReturnFromPsalm').textContent=document.body.classList.contains('view-animals')?'← Retour à l’animal':'← Retour à la réponse';
-    $('faqVerseContext').hidden=!fromFAQ;
-    $('faqVerseContext').textContent=fromFAQ?'Versets cités dans la réponse : '+[...targetVerses].join(', '):'';
+    $('faqVerseContext').hidden=!targetVerses?.size;
+    $('faqVerseContext').textContent=targetVerses?.size?
+      'Versets cités dans la réponse : '+[...targetVerses].join(', '):'';
     $('readerChoice').hidden=!hasPrayer;
     document.querySelectorAll('[name=readerPart]').forEach(input=>{input.checked=input.value===state.readerPart;});
     $('readerExportStatus').hidden=true;
@@ -1115,6 +1117,11 @@
   document.querySelectorAll('[name=readerPart]').forEach(x=>x.onchange=()=>{if(!x.checked||!state.active?.attachedPrayer?.text)return;state.readerPart=x.value;renderReader();});
   BiblawFAQ.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawAnimals?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
+  globalThis.BiblawAnimals?.setOpenNote(async id=>{
+    if(!await loadArchivedNotes())throw Error('Notes indisponibles.');
+    if(!state.archivedNoteById.has(id))throw Error('Note introuvable.');
+    open(id);
+  });
   $('faqToggle').addEventListener('click',()=>{
     showSearchView();
     BiblawFAQ.open();
