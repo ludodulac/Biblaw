@@ -285,4 +285,25 @@ for label, forms in other_forms.items():
     if hits:
         print("  CANDIDATE",label,"number",len(hits))
         for rid,n,t in hits[:3]:print("    VERSE",rid,n,repr(t)[:420])
+print("PER_SPECIES_VARIANTS_NOT_ATTACHED_TO_THEIR_FICHE:")
+special={"Boeuf":["Bœuf"],"Chat":["Chat noir"],"Lion":["Lion et lionne"],
+         "Serpent":["Serpent tentateur","Serpent de la sagesse"]}
+for label,pat in patterns.items():
+    targets=special.get(label,[label])
+    entries=[e for e in animal_entries if e["label"] in targets]
+    if not entries:continue
+    ps=[indexed_patterns[e["id"]] for e in entries]
+    missing_specific=[]
+    total=0
+    for r in records:
+        for v in r.get("verses",[]):
+            t=norm(v["text"])
+            if not pat.search(t):continue
+            if label=="Cerf" and re.search(r"\bcerf[\s\-]+volant\b",t) and not re.search(r"\bcerfs?\b(?![\s\-]+volant)",t):continue
+            total+=1
+            if not any(p.search(t) for p in ps):missing_specific.append((r["id"],v["number"],v["text"]))
+    if missing_specific:
+        print("  MISSING_REFERENCES",label,"unindexed",len(missing_specific),"out_of",total)
+        for rid,n,txt in missing_specific[:3]:
+            print("    SOURCE",rid,n,repr(txt)[:260])
 print("ANIMAL_AUDIT_END")
