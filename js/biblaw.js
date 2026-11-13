@@ -850,7 +850,7 @@
     const target=$('ambiguityPanel').hidden?document.querySelector('.results-section'):$('ambiguityPanel');
     if (target)target.scrollIntoView({behavior:'smooth',block:'start'});
   }
-  function open(id, citedVerses=null, backLabel='← Retour à la réponse'){
+  function open(id, citedVerses=null){
     const r=state.recordById.get(id)||state.archivedNoteById.get(id);if(!r)return;
     const targetVerses=Array.isArray(citedVerses)&&r.recordType==='psalm'?new Set(citedVerses.map(Number)):null;
     const fromFAQ=Boolean(targetVerses?.size);
@@ -861,7 +861,7 @@
     const hasPrayer=r.recordType==='psalm'&&Boolean(r.attachedPrayer?.text);
     state.readerPart=fromFAQ?'psalm':hasPrayer?'both':'psalm';
     $('faqReturnFromPsalm').hidden=!fromFAQ;
-    $('faqReturnFromPsalm').textContent=backLabel;
+    $('faqReturnFromPsalm').textContent=document.body.classList.contains('view-animals')?'← Retour à l’animal':'← Retour à la réponse';
     $('faqVerseContext').hidden=!fromFAQ;
     $('faqVerseContext').textContent=fromFAQ?'Versets cités dans la réponse : '+[...targetVerses].join(', '):'';
     $('readerChoice').hidden=!hasPrayer;
@@ -1114,7 +1114,7 @@
   };
   document.querySelectorAll('[name=readerPart]').forEach(x=>x.onchange=()=>{if(!x.checked||!state.active?.attachedPrayer?.text)return;state.readerPart=x.value;renderReader();});
   BiblawFAQ.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
-  BiblawAnimals.setOpenPsalm(ref=>open(ref.recordId,ref.verses,'← Retour à l’animal'));
+  BiblawAnimals.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   $('faqToggle').addEventListener('click',()=>{
     showSearchView();
     BiblawFAQ.open();
