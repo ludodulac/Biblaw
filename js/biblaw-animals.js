@@ -7,7 +7,7 @@
     entries: [], loading: null, category: null, current: null,
     openPsalm: null, corpusLoading: null, records: new Map(),
     recordsReady: false, requestId: 0, lastLink: null,
-    lastScroll: 0, indexScroll: 0
+    lastScroll: 0, indexScroll: 0, openToken: 0
   };
   const archangel = name => ({
     michael: 'Michaël', gabriel: 'Gabriel', raphael: 'Raphaël',
@@ -103,7 +103,7 @@
     $('animalsFamilies').hidden = false;
     $('animalsTitle').textContent = 'Les animaux dans la Bible';
     $('animalsFamilyButtons').replaceChildren();
-    for (const category of ['totem', 'other']) {
+    for (const category of (state.entries.length ? ['totem', 'other'] : [])) {
       const count = state.entries.filter(e => e.category === category).length;
       $('animalsFamilyButtons').append(makeNavigationButton(
         titles[category] + ' (' + count + ')',
@@ -114,7 +114,7 @@
       'Les animaux totems sont ceux que les psaumes donnent en exemple. ' +
       '« Autres animaux » rassemble les comparaisons à ne pas imiter et les simples mentions ' +
       'qui ne présentent pas un comportement comme modèle. Ce classement ne juge pas les animaux.';
-    status(state.loading && !state.entries.length ? 'Chargement des animaux…' : '');
+    status(!state.entries.length ? 'Chargement des animaux…' : '');
     scrollTop();
   }
   function renderDirectory(category) {
@@ -178,17 +178,19 @@
     return state.loading;
   }
   async function open() {
-    const id = ++state.requestId;
+    const id = ++state.openToken;
+    ++state.requestId;
     $('animalsLibrary').hidden = false;
     document.body.classList.add('view-animals');
     $('animalsToggle').setAttribute('aria-expanded', 'true');
     renderFamilies();
     const ready = await load();
-    if (id > state.requestId || $('animalsLibrary').hidden) return;
+    if (id !== state.openToken || $('animalsLibrary').hidden) return;
     if (ready) renderFamilies();
     else status('Impossible de charger les animaux. Réessayez en rouvrant cette rubrique.');
   }
   function close() {
+    state.openToken++;
     state.requestId++;
     state.current = null;
     state.category = null;
