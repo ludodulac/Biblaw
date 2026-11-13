@@ -30,7 +30,7 @@ def make_pattern(form: str) -> re.Pattern:
     # 'cerf' in a kite (cerf-volant) is not the animal.
     expression = re.escape(normalize(form))
     if normalize(form) in {"cerf", "cerfs"}:
-        expression += r"(?![\\s\\-‑–—]*volant)"
+        expression += r"(?![\s\-‑–—]*volant)"
     return re.compile(r"(?<![a-z])" + expression + r"(?![a-z])")
 
 def load_psalms() -> list[dict]:
