@@ -100,4 +100,4 @@ get('animalsBack').click();
 get('animalsBack').click();
 assert.equal(get('animalsLibrary').hidden, true);
 assert.ok(!classes.has('view-animals'));
-console.log('Animals site: corpus, two categories, 61 entries, verse links, back, PDF OK.');
+console.log('Animals site: corpus, two categories, ' + published.entries.length + ' entries, verse links, back, PDF OK.');
