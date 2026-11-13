@@ -1,0 +1,17 @@
+name: Audit complet des animaux de Biblaw
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit_animals_full.py'
+      - '.github/workflows/audit-animals-full.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Analyser tous les psaumes et leurs notes
+        run: python scripts/audit_animals_full.py
