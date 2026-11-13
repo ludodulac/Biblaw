@@ -18,6 +18,15 @@ const published = JSON.parse(read('data/animals-public.json'));
 assert.equal(published.entries.length, editorial.entries.length);
 assert.ok(published.entries.some(e => e.category === 'totem' && e.label === 'Licorne'));
 assert.ok(published.entries.some(e => e.category === 'other' && e.label === 'Perroquet'));
+const bicheTotem = published.entries.find(e => e.category === 'totem' && e.label === 'Biche');
+const bicheOther = published.entries.find(e => e.category === 'other' && e.label === 'Biche');
+assert.ok(bicheTotem && bicheOther, 'Biche présente dans les deux catégories');
+assert.ok(bicheTotem.sources.some(ref => ref.recordId === 'book-14-psalm-110' &&
+  ref.verses.includes(1) && ref.verses.includes(13)), 'Message de Gabriel et famille');
+assert.ok(bicheOther.sources.some(ref => ref.recordId === 'book-01-psalm-012' &&
+  ref.verses.includes(2)), 'Mise en garde du psaume de Michaël');
+assert.ok(bicheOther.sources.some(ref => ref.recordId === 'book-19-psalm-107' &&
+  ref.verses.includes(9)), 'Enseignement sur les préjugés de Raphaël');
 for (const entry of published.entries) {
   assert.ok(entry.occurrences.length > 0, 'Actual verse occurrences ' + entry.label);
   for (const reference of [...entry.sources, ...entry.occurrences]) {
