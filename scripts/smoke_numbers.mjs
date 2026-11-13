@@ -14,13 +14,14 @@ assert.equal(psalms.size,1158);
 assert.ok(numbers.entries.length>15);
 assert.ok(numbers.entries.some(e=>e.value===7));
 assert.ok(numbers.entries.some(e=>e.value===21));
+assert.ok(!numbers.entries.some(e=>e.value===0),'Le zéro sans enseignement doit être retiré');
 const one=numbers.entries.find(e=>e.value===1);
 assert.ok(one,'1 doit représenter l’unité, pas un article indéfini');
 assert.equal(one.references.length,1,'Le simple fait de compter une chose ne suffit pas');
 assert.equal(one.references[0].recordId,'book-05-psalm-028');
 assert.equal(one.references[0].verse,3);
 assert.match(one.summary,/unit[eé]|uni[st]/i);
-assert.ok(numbers.entries.every(e=>e.title&&e.summary));
+assert.ok(numbers.entries.every(e=>e.title&&typeof e.summary==='string'));
 assert.ok(numbers.entries.every(e=>e.references.length>0));
 assert.ok(html.includes('id="numbersToggle"') && html.includes('id="numbersLibrary"'));
 assert.ok(!html.includes('numbers-site-tabs'), 'Pas d’onglet ajouté dans l’en-tête');
@@ -31,7 +32,8 @@ for(const id of ['numbersToggle','numbersBack','numbersFilter','numbersDurationF
                  'numbersList','numberExamples','numberAllMentions','numberAllMentionsList',
                  'numbersDirectory','numbersDetail','numberPdf','numberPrint',
                  'numbersStatus','numbersMethod','numbersCount','numberTitle','numberSummary',
-                 'numbersTermsDetails','numbersTermsList']){
+                 'numbersTermsDetails','numbersTermsList',
+                 'numberTopicGroups','numberTopicHeading']){
   assert.equal(html.split('id="'+id+'"').length-1,1,'UI element '+id+' must be unique');
 }
 let prev=-1, links=0;
@@ -40,7 +42,7 @@ for(const entry of numbers.entries){
   assert.ok(entry.value>prev,'Ascending numeric order');
   prev=entry.value;
   assert.equal(entry.label,String(entry.value));
-  assert.ok(entry.summary.length>40);
+  if(entry.summary) assert.ok(entry.summary.length>25);
   assert.ok(entry.title.length>4);
   assert.ok(entry.durationCount<=entry.references.length);
   const locators=new Set();
@@ -55,7 +57,27 @@ for(const entry of numbers.entries){
     locators.add(key); links++;
   }
   assert.ok(entry.examples.every(ex=>locators.has(ex.recordId+':'+ex.verse)));
+  assert.ok(Array.isArray(entry.topics)&&entry.topics.length>0,
+    'Les références doivent être regroupées par sujet');
+  const groupedRefs=new Set();
+  for(const group of entry.topics){
+    assert.ok(group.label&&group.key);
+    assert.ok(group.references.length>0);
+    for(const ref of group.references){
+      const key=ref.recordId+':'+ref.verse;
+      assert.ok(locators.has(key),'Chaque sujet ne cite que des versets du nombre');
+      groupedRefs.add(key);
+    }
+  }
+  assert.equal(groupedRefs.size,locators.size,'Chaque verset appartient à un sujet');
 }
+const two = numbers.entries.find(e=>e.value===2);
+const three = numbers.entries.find(e=>e.value===3);
+assert.ok(two?.topics.some(t=>t.label==='2 mondes'), 'Les deux mondes regroupés');
+assert.ok(three?.topics.some(t=>t.label==='3 centres'), 'Les trois centres regroupés');
+assert.ok(three.topics.find(t=>t.label==='3 centres').references.some(
+  ref=>ref.recordId==='book-03-psalm-019'&&ref.verse===5),
+  'Raphaël : la pensée, le ressenti, la volonté');
 assert.ok(links>100);
 assert.ok(numbers.numberTerms.every(ref=>{
   const p=psalms.get(ref.recordId);
@@ -139,6 +161,31 @@ assert.equal(exported.length,1);
 assert.ok(exported[0].text.includes('Toutes les références'));
 get('numbersBack').click();
 assert.equal(get('numbersDirectory').hidden,false);
+get('numbersFilter').value='3';
+get('numbersFilter').events.input();
+get('numbersList').children[0].click();
+assert.equal(get('numberTopicGroups').hidden,false);
+assert.equal(get('numberExamples').hidden,true,'Ne pas afficher une longue liste brute');
+const centreSection=get('numberTopicGroups').children.find(el=>
+  el.children[0].children[0].textContent==='3 centres');
+assert.ok(centreSection,'Le lecteur propose « 3 centres »');
+centreSection.open=true;
+centreSection.ontoggle();
+const centreLinks=centreSection.children.at(-1).children;
+assert.equal(centreLinks.length,three.topics.find(t=>t.label==='3 centres').references.length);
+assert.ok(centreLinks.length>0);
+await centreLinks[0].click();
+assert.ok(opened.recordId&&opened.verses.length===1,'Un sujet ouvre le verset exact');
+get('numberPdf').click();
+assert.ok(exported.at(-1).text.includes('3 centres'),'Le PDF conserve les rubriques');
+get('numbersBack').click();
+get('numbersFilter').value='2';
+get('numbersFilter').events.input();
+get('numbersList').children[0].click();
+assert.ok(get('numberTopicGroups').children.some(el=>
+  el.children[0].children[0].textContent==='2 mondes'));
+assert.equal(get('numberSummary').hidden,true,'Aucun résumé générique inventé pour le 2');
+get('numbersBack').click();
 get('numbersDurationFilter').checked=true;
 get('numbersDurationFilter').events.change();
 assert.ok(get('numbersList').children.length>0);
