@@ -56,6 +56,22 @@
     link.addEventListener('click', () => openRef(ref, link));
     return link;
   }
+  function referenceItem(ref) {
+    const item = document.createElement('div');
+    item.className = 'numbers-ref-item';
+    if (ref.title) {
+      const phrase = document.createElement('button');
+      phrase.type = 'button';
+      phrase.className = 'numbers-ref-phrase';
+      phrase.textContent = ref.title;
+      phrase.title = 'Ouvrir le verset cité';
+      phrase.addEventListener('click', () => openRef(ref, phrase));
+      item.append(phrase);
+    }
+    // Keep the familiar source label as an independent clickable link.
+    item.append(referenceButton(ref));
+    return item;
+  }
   function numberRow(entry) {
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -123,6 +139,15 @@
     topicList.replaceChildren();
     if (grouped) {
       for (const topic of topics) {
+        // One-off passages can be opened directly by clicking their phrase.
+        if (topic.references.length === 1) {
+          const single = document.createElement('div');
+          single.className = 'numbers-topic numbers-topic-single';
+          const item = referenceItem(topic.references[0]);
+          single.append(item);
+          topicList.append(single);
+          continue;
+        }
         const details = document.createElement('details');
         details.className = 'numbers-topic';
         const heading = document.createElement('summary');
@@ -145,7 +170,7 @@
         details.append(refs);
         details.ontoggle = () => {
           if (details.open && !refs.childElementCount)
-            for (const ref of topic.references) refs.append(referenceButton(ref));
+            for (const ref of topic.references) refs.append(referenceItem(ref));
         };
         topicList.append(details);
       }
@@ -158,9 +183,13 @@
     for (const sample of examples) {
       const block = document.createElement('div');
       block.className = 'numbers-example';
-      const excerpt = document.createElement('p');
-      excerpt.textContent = sample.excerpt;
-      block.append(excerpt, referenceButton(sample));
+      const phrase = document.createElement('button');
+      phrase.type = 'button';
+      phrase.className = 'numbers-ref-phrase';
+      phrase.textContent = sample.title || sample.excerpt.slice(0, 105);
+      phrase.title = 'Ouvrir le verset cité';
+      phrase.addEventListener('click', () => openRef(sample, phrase));
+      block.append(phrase, referenceButton(sample));
       sampleList.append(block);
     }
     const details = $('numberAllMentions');
@@ -172,7 +201,7 @@
     details.ontoggle = () => {
       if (!details.open || $('numberAllMentionsList').childElementCount) return;
       const target = $('numberAllMentionsList');
-      for (const ref of entry.references) target.append(referenceButton(ref));
+      for (const ref of entry.references) target.append(referenceItem(ref));
     };
     window.scrollTo({top:0,behavior:'instant'});
     $('numberTitle').focus({preventScroll:true});
@@ -180,7 +209,7 @@
   async function load() {
     if (state.entries.length) return true;
     if (state.loading) return state.loading;
-    state.loading = fetch('data/numbers-public.json?v=003').then(async response => {
+    state.loading = fetch('data/numbers-public.json?v=004').then(async response => {
       if (!response.ok) throw new Error('Répertoire des nombres indisponible.');
       const result = await response.json();
       if (result.schemaVersion !== 1 || result.psalmCount !== 1158 ||
@@ -242,8 +271,10 @@
     if (!entry) return;
     const examples = (entry.examples || []).map(e => e.excerpt + '\n' + refLabel(e)).join('\n\n');
     const topicText = (entry.topics || []).map(group =>
-      group.label + '\n' + group.references.map(refLabel).join('\n')).join('\n\n');
-    const references = entry.references.map(refLabel).join('\n');
+      group.label + '\n' + group.references.map(ref =>
+        (ref.title ? ref.title + '\n' : '') + refLabel(ref)).join('\n')).join('\n\n');
+    const references = entry.references.map(ref =>
+      (ref.title ? ref.title + '\n' : '') + refLabel(ref)).join('\n\n');
     try {
       BiblawPDF.download({
         recordType:'faq',
