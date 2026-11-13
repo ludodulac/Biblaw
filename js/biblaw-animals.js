@@ -5,7 +5,7 @@
   const $ = id => document.getElementById(id);
   const state = {
     entries: [], loading: null, category: null, current: null,
-    openPsalm: null, corpusLoading: null, records: new Map(),
+    openPsalm: null, openNote: null, corpusLoading: null, records: new Map(),
     recordsReady: false, requestId: 0, lastLink: null,
     lastScroll: 0, indexScroll: 0, openToken: 0
   };
@@ -69,6 +69,40 @@
     if (valid) link.addEventListener('click', () => openReference(ref, link));
     container.append(link);
   }
+  async function openNoteReference(ref, button) {
+    if (typeof state.openNote !== 'function') {
+      status('Le lecteur des notes est indisponible.'); return;
+    }
+    const id = state.requestId;
+    const current = state.current;
+    state.lastLink = button;
+    state.lastScroll = window.scrollY;
+    try {
+      await state.openNote(ref.id);
+      if (id === state.requestId && current === state.current) status('');
+    } catch (error) {
+      if (id === state.requestId && current === state.current && !$('animalsLibrary').hidden)
+        status(error?.message || 'Impossible d’ouvrir la note.');
+      console.error(error);
+    }
+  }
+  function appendNoteReferenceList(parent, references) {
+    const list = document.createElement('div');
+    list.className = 'animals-reference-list';
+    for (const ref of references) {
+      const link = document.createElement('button');
+      link.type = 'button';
+      link.className = 'faq-psalm-link animals-reference';
+      const noteNumber = Number(ref.id.match(/note-(\d{3})$/)?.[1] || 0);
+      link.textContent = 'Note ' + noteNumber + ' du psaume ' + ref.number +
+        ' de ' + archangel(ref.archangel) + ' — page PDF ' + ref.sourcePdfPage +
+        ' (transcription à vérifier)';
+      link.title = 'Lire la note extraite et son avertissement';
+      link.addEventListener('click', () => openNoteReference(ref, link));
+      list.append(link);
+    }
+    parent.append(list);
+  }
   function appendReferenceList(parent, references) {
     const list = document.createElement('div');
     list.className = 'animals-reference-list';
@@ -111,9 +145,10 @@
       ));
     }
     $('animalsExplanation').textContent =
-      'Les animaux totems sont ceux que les psaumes donnent en exemple. ' +
-      '« Autres animaux » rassemble les comparaisons à ne pas imiter et les simples mentions ' +
-      'qui ne présentent pas un comportement comme modèle. Ce classement ne juge pas les animaux.';
+      'Les animaux totems sont présentés comme exemples dans les psaumes ou dans leurs notes. ' +
+      '« Autres animaux » regroupe aussi les simples mentions, les références en note et les mises en garde : ' +
+      'une mention neutre n’est pas un comportement à éviter. Un même animal peut figurer dans les deux catégories. ' +
+      'Les notes extraites automatiquement sont signalées comme transcriptions à vérifier.';
     status(!state.entries.length ? 'Chargement des animaux…' : '');
     scrollTop();
   }
@@ -146,9 +181,16 @@
     $('animalAnswerTitle').textContent = entry.label;
     $('animalAnswerText').textContent = entry.summary;
     $('animalReferences').replaceChildren();
-    appendReferenceList($('animalReferences'), entry.sources);
+    $('animalVerseHeading').hidden = !entry.sources.length;
+    if (entry.sources.length) appendReferenceList($('animalReferences'), entry.sources);
+    const noteSection = $('animalNotesSection');
+    const noteSources = entry.noteSources || [];
+    noteSection.hidden = !noteSources.length;
+    $('animalNoteReferences').replaceChildren();
+    if (noteSources.length) appendNoteReferenceList($('animalNoteReferences'), noteSources);
     const details = $('animalAllMentions');
     const total = entry.occurrences.reduce((count, ref) => count + ref.verses.length, 0);
+    details.hidden = !total;
     $('animalAllMentionsLabel').textContent =
       'Toutes les mentions explicites dans les psaumes (' + total + ' versets)';
     details.open = false;
@@ -163,7 +205,7 @@
   async function load() {
     if (state.entries.length) return true;
     if (state.loading) return state.loading;
-    state.loading = fetch('data/animals-public.json?v=002').then(async response => {
+    state.loading = fetch('data/animals-public.json?v=003').then(async response => {
       if (!response.ok) throw new Error('Répertoire des animaux non disponible.');
       const data = await response.json();
       if (data.schemaVersion !== 1 || !Array.isArray(data.entries) ||
@@ -220,11 +262,16 @@
     const entry = state.current;
     if (!entry) return;
     const citations = entry.sources.map(ref => refLabel(ref)).join('\n');
+    const notes = (entry.noteSources || []).map(ref =>
+      'Note du psaume ' + ref.number + ' de ' + archangel(ref.archangel) +
+      ' (PDF p. ' + ref.sourcePdfPage + ', transcription à vérifier)').join('\n');
+    const references = (citations ? '\n\nVersets à l’appui :\n' + citations : '') +
+      (notes ? '\n\nNotes associées (à vérifier) :\n' + notes : '');
     try {
       BiblawPDF.download({
         recordType: 'faq', id: 'animal-' + entry.id,
         title: entry.label,
-        text: entry.summary + '\n\nVersets à l’appui :\n' + citations
+        text: entry.summary + references
       });
       status('');
     } catch (error) {
@@ -241,6 +288,7 @@
       state.recordsReady = true;
     },
     setCorpusLoading(loader) { state.corpusLoading = loader; },
+    setOpenNote(callback) { state.openNote = callback; },
     setOpenPsalm(callback) { state.openPsalm = callback; }
   });
 })();
