@@ -158,6 +158,9 @@ def mentions(verse_text: str) -> list[dict]:
         # symbolic structure, a practice or a temporal cycle. A random
         # count of people or objects is not a "meaning of the number".
         following = t[end:min(len(t), end+58)]
+        # "21e siècle" is a historical date marker, not a symbolic cycle.
+        if kind == "rang" and re.match(r"\s+siecle\b", following):
+            continue
         preceding = t[max(0, start-26):start]
         context = preceding + " " + following
         is_duration = bool(DAY.search(following[:40]))
@@ -174,8 +177,21 @@ def mentions(verse_text: str) -> list[dict]:
         picked.append({"number": number, "kind": kind,
                        "duration": duration_relevant,
                        "category": category,
+                       "start": start, "end": end,
                        "matched": verse_text[max(0,start):min(len(verse_text),end)]})
     return picked
+
+def context_excerpt(text: str, number: int, limit: int = 440) -> str:
+    """Show the teaching around the actual number, not just the verse start."""
+    if len(text) <= limit: return text
+    hit = next((m for m in mentions(text) if m["number"] == number), None)
+    if not hit: return text[:limit].rstrip() + "…"
+    start = max(0, hit["start"] - 165)
+    stop = min(len(text), start + limit)
+    if stop - start < limit: start = max(0, stop - limit)
+    return ("…" if start else "") + text[start:stop].rstrip() + (
+        "…" if stop < len(text) else ""
+    )
 
 def generate(destination: Path = OUTPUT) -> dict:
     records = []
@@ -208,7 +224,7 @@ def generate(destination: Path = OUTPUT) -> dict:
                 }
                 by_number[m["number"]].append(occurrence)
                 if len(examples[m["number"]]) < 40:
-                    examples[m["number"]].append({**occurrence, "excerpt": txt[:360]})
+                    examples[m["number"]].append({**occurrence, "excerpt": context_excerpt(txt, m["number"])})
             if THEME.search(norm(txt)):
                 conceptual.append({
                     "recordId": psalm["id"], "archangel": psalm["archangel"],
@@ -265,7 +281,7 @@ def generate(destination: Path = OUTPUT) -> dict:
                     "recordId": rid, "archangel": record["archangel"],
                     "psalm": record["number"], "verse": verse,
                     "duration": any(m["duration"] for m in mentions(text) if m["number"] == n),
-                    "kind": "editorial", "excerpt": text[:360],
+                    "kind": "editorial", "excerpt": context_excerpt(text, n),
                 })
         samples = []
         valid_locations = set(grouped)
