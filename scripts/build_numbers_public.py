@@ -72,9 +72,36 @@ WORDS = re.compile(
 DIGITS = re.compile(r"(?<![a-z0-9])(?:\d{1,3}(?:[ \u00a0]\d{3})+|\d{1,4})(?![a-z0-9])")
 RANK = re.compile(r"(?<![a-z0-9])(\d{1,3})(?:er|ere|e|eme)(?![a-z0-9])")
 DAY = re.compile(r"\b(?:jour|jours|journee|journees|semaine|semaines|mois|an|ans|annee|annees|nuit|nuits|fois)\b")
-THEME = re.compile(r"\b(?:chiffre|chiffres|nombre|nombres|numerolog|septenaire)\w*\b")
-STRIP_PUNCT = " ,.;:!?()[]«»\"'"
+THEME = re.compile(r"\b(?:chiffre|chiffres|nombre|nombres|numerologie|numerologique|septenaire)\b")
 MAX_NUMBER = 9999
+
+# Short editorial summaries checked against the verses listed alongside them.
+# The wording attributes teachings to the Psalm, without adopting them as
+# scientific facts or inventing a universal numerological meaning.
+EDITORIAL = {
+    3: {
+        "summary": "Dans le psaume 1 de Gabriel (livre 2), trois mondes sont distingués sous le monde divin : le monde spirituel, le monde aurique et le monde physique. Le chiffre 3 apparaît aussi dans d’autres comparaisons et indications concrètes.",
+        "sources": [("book-02-psalm-001", 2)],
+    },
+    4: {
+        "summary": "Michaël présente les quatre éléments comme la base d’un travail de purification et de construction intérieure (psaume 28, livre 5). Le texte évoque l’union des quatre éléments et leur rapport au divin. D’autres psaumes mentionnent aussi les quatre Archanges.",
+        "sources": [("book-05-psalm-028", 1), ("book-05-psalm-028", 3)],
+    },
+    7: {
+        "summary": "Dans le psaume 45 de Gabriel (livre 6), le chiffre 7 est utilisé pour décrire des périodes de purification : 7 jours dans un cas et 7 années dans d’autres. Le psaume 41 du même livre évoque également 7 années de transformation. Il s’agit d’enseignements du texte, non de durées médicalement démontrées.",
+        "sources": [("book-06-psalm-045", 8), ("book-06-psalm-045", 12)],
+    },
+    12: {
+        "summary": "Gabriel évoque son collier à 12 perles, lié dans son enseignement à un travail préparatoire et à 12 porteurs protecteurs du monde divin (psaume 200, livre 30). Cette figure n’est pas présentée comme une définition universelle du nombre 12.",
+        "sources": [("book-30-psalm-200", 9), ("book-30-psalm-200", 31)],
+    },
+    21: {
+        "summary": "Gabriel donne une méthode de 21 jours pour apprendre à observer sa vie intérieure et à rencontrer son âme : s’arrêter, observer ses pensées et sentiments, puis créer un espace intérieur de consultation régulière (psaume 17, livre 2, versets 6–7). Ouriel évoque également une présence annoncée pendant 21 jours après une célébration (psaume 34, livre 8).",
+        "sources": [("book-02-psalm-017", 6), ("book-02-psalm-017", 7),
+                    ("book-08-psalm-034", 1)],
+    },
+}
+
 
 def mentions(verse_text: str) -> list[dict]:
     t = norm(verse_text)
@@ -156,8 +183,27 @@ def generate(destination: Path = OUTPUT) -> dict:
         durations = [x for x in passages if x["duration"]]
         # Pick genuinely observed contexts, prioritising durations / actions;
         # never fabricate a symbolic meaning from the value of a number.
+        editorial = EDITORIAL.get(n)
+        priority = list(editorial["sources"]) if editorial else []
+        for rid, verse in priority:
+            record = next((psalm for psalm in records if psalm["id"] == rid), None)
+            selected = next((v for v in record["verses"] if v["number"] == verse), None) if record else None
+            if not selected or not any(m["number"] == n for m in mentions(selected["text"])):
+                raise ValueError(f"Editorial reference without named number {n}: {rid}, {verse}")
+        candidate_examples = list(examples[n])
+        if editorial:
+            for rid, verse in reversed(priority):
+                record = next(p for p in records if p["id"] == rid)
+                text = next(v["text"] for v in record["verses"] if v["number"] == verse)
+                candidate_examples.insert(0, {
+                    "recordId": rid, "archangel": record["archangel"],
+                    "psalm": record["number"], "verse": verse,
+                    "duration": any(m["duration"] for m in mentions(text) if m["number"] == n),
+                    "kind": "editorial", "excerpt": text[:360],
+                })
         samples = []
-        for item in sorted(examples[n], key=lambda x: (not x["duration"], x["recordId"])):
+        for item in (candidate_examples if editorial else
+                     sorted(candidate_examples, key=lambda x: (not x["duration"], x["recordId"]))):
             if (item["recordId"], item["verse"]) in {
                 (s["recordId"], s["verse"]) for s in samples
             }: continue
@@ -165,7 +211,7 @@ def generate(destination: Path = OUTPUT) -> dict:
             if len(samples) == 5: break
         numbers.append({
             "value": n, "label": str(n),
-            "summary": (f"Le nombre {n} est mentionné explicitement dans "
+            "summary": editorial["summary"] if editorial else (f"Le nombre {n} est mentionné explicitement dans "
                         f"{len(passages)} verset{'s' if len(passages)>1 else ''} "
                         f"de {psalm_count} psaume{'s' if psalm_count>1 else ''}. "
                         "Les passages ci-dessous montrent ses usages dans le texte ; "
