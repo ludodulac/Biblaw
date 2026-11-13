@@ -1,8 +1,4 @@
-/* Single documentary tab for numbers; separate from homepage action buttons. */
-.numbers-site-tabs{display:flex;justify-content:flex-start;align-items:flex-end;max-width:1120px;margin:0 auto;padding:.35rem 1.1rem 0;border-bottom:1px solid #e6ded1}
-.numbers-site-tabs .numbers-tab{display:inline-flex;align-items:center;border-radius:.7rem .7rem 0 0;padding:.65rem 1rem;font-size:.95rem;text-decoration:none;color:#594736;border:1px solid transparent;border-bottom:0;font-weight:600}
-.numbers-site-tabs .numbers-tab:hover,.numbers-site-tabs .numbers-tab:focus-visible{background:#f8f3ec;color:#382f25}
-.numbers-site-tabs .numbers-tab.active{background:#fff;border-color:#e6ded1;color:#332718;box-shadow:0 -1px 0 #fff inset}
+/* Documentary numbers directory; home button shares the other shortcuts. */
 body.view-numbers #primarySearch,
 body.view-numbers #notesLibrary,
 body.view-numbers #faqLibrary,
@@ -30,4 +26,12 @@ body.view-numbers .shell{padding-top:1.1rem}
 .numbers-library .numbers-all summary{cursor:pointer;font-weight:650;color:#554433}
 .numbers-library .numbers-heading{font-size:1.1rem;color:#483727;margin:1.4rem 0 .6rem}
 @media(max-width:760px){.numbers-site-tabs{padding:.35rem .7rem 0}.numbers-site-tabs .numbers-tab{padding:.6rem .9rem;font-size:.9rem}.numbers-library .numbers-list{grid-template-columns:1fr}.numbers-library .numbers-example{padding:.6rem .7rem}}
-@media print{body.view-numbers .site-header,body.view-numbers .numbers-site-tabs,body.view-numbers #numbersBack,body.view-numbers #numbersDirectory,body.view-numbers .faq-actions,body.view-numbers .numbers-all{display:none!important}}
+@media print{body.view-numbers .site-header,body.view-numbers #numbersBack,body.view-numbers #numbersDirectory,body.view-numbers .faq-actions,body.view-numbers .numbers-all{display:none!important}}
+
+.numbers-library .numbers-number-button{width:100%;min-height:5rem;cursor:pointer}
+.numbers-library .numbers-number-button .faq-question-title{display:flex;flex-direction:column;gap:.18rem;align-items:flex-start}
+.numbers-library .numbers-number{font-size:1.32rem;color:#423024;line-height:1.3}
+.numbers-library .numbers-number-title{font-size:.96rem;color:#564c3f;font-weight:600}
+.numbers-library .numbers-number-context{font-size:.81rem;color:#6c6257;font-weight:400}
+.numbers-library .numbers-number-button:hover .numbers-number,
+.numbers-library .numbers-number-button:focus-visible .numbers-number{text-decoration:underline}
