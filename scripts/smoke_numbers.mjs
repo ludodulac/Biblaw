@@ -22,7 +22,8 @@ assert.ok(read('scripts/build_pages_site.py').includes('numbers-public.json'));
 for(const id of ['numbersTab','numbersBack','numbersFilter','numbersDurationFilter',
                  'numbersList','numberExamples','numberAllMentions','numberAllMentionsList',
                  'numbersDirectory','numbersDetail','numberPdf','numberPrint',
-                 'numbersStatus','numbersMethod','numbersCount','numberTitle','numberSummary']){
+                 'numbersStatus','numbersMethod','numbersCount','numberTitle','numberSummary',
+                 'numbersTermsDetails','numbersTermsList']){
   assert.equal(html.split('id="'+id+'"').length-1,1,'UI element '+id+' must be unique');
 }
 let prev=-1, links=0;
@@ -47,6 +48,16 @@ for(const entry of numbers.entries){
   assert.ok(entry.examples.every(ex=>locators.has(ex.recordId+':'+ex.verse)));
 }
 assert.ok(links>100);
+assert.ok(numbers.numberTerms.every(ref=>{
+  const p=psalms.get(ref.recordId);
+  return p&&p.archangel===ref.archangel&&p.number===ref.psalm&&
+    p.verses.some(v=>v.number===ref.verse);
+}), 'Termes généraux sourcés');
+const gabriel21=numbers.entries.find(e=>e.value===21);
+assert.ok(gabriel21.examples.some(ref=>ref.recordId==='book-02-psalm-017'&&ref.verse===6),
+  'Gabriel : méthode de 21 jours');
+assert.ok(gabriel21.examples.some(ref=>ref.recordId==='book-02-psalm-017'&&ref.verse===7),
+  'Gabriel : deuxième phase des 21 jours');
 class Element {
   constructor(){
     this.children=[];this.hidden=false;this.textContent='';
@@ -90,6 +101,9 @@ await context.BiblawNumbers.open();
 assert.equal(get('numbersLibrary').hidden,false);
 assert.ok(names.has('view-numbers'));
 assert.equal(get('numbersList').children.length,numbers.entries.length);
+get('numbersTermsDetails').open=true;
+get('numbersTermsDetails').ontoggle();
+assert.equal(get('numbersTermsList').children.length,numbers.numberTerms.length);
 get('numbersFilter').value='21';
 get('numbersFilter').events.input();
 assert.equal(get('numbersList').children.length,1,'Filter exact number');
