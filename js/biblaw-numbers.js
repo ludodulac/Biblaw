@@ -59,12 +59,22 @@
   function numberRow(entry) {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'faq-question-item';
+    btn.className = 'faq-question-item numbers-number-button';
     const name = document.createElement('span');
     name.className = 'faq-question-title';
     const count = entry.references.length;
-    name.textContent = entry.label + ' — ' + count + ' verset' + (count > 1 ? 's' : '') +
-      (entry.durationCount ? ' · ' + entry.durationCount + ' mentions de durée/fois' : '');
+    const number = document.createElement('strong');
+    number.className = 'numbers-number';
+    number.textContent = entry.label;
+    const title = document.createElement('span');
+    title.className = 'numbers-number-title';
+    title.textContent = entry.title || 'Enseignements et pratiques';
+    name.append(number, title);
+    const detail = document.createElement('small');
+    detail.className = 'numbers-number-context';
+    detail.textContent = count + ' verset' + (count > 1 ? 's' : '') +
+      (entry.durationCount ? ' · ' + entry.durationCount + ' passages liés à des durées ou cycles' : '');
+    name.append(detail);
     const arrow = document.createElement('span');
     arrow.className = 'faq-chevron';
     arrow.textContent = '›';
@@ -83,7 +93,7 @@
     const shown = state.entries.filter(e =>
       (!value || String(e.value).includes(value)) &&
       (!onlyDuration || e.durationCount > 0));
-    $('numbersCount').textContent = shown.length + ' nombres trouvés sur ' +
+    $('numbersCount').textContent = shown.length + ' nombres avec un contexte d’enseignement sur ' +
       state.entries.length + ' · 1 158 psaumes examinés.';
     const list = $('numbersList');
     list.replaceChildren();
@@ -131,7 +141,7 @@
   async function load() {
     if (state.entries.length) return true;
     if (state.loading) return state.loading;
-    state.loading = fetch('data/numbers-public.json?v=001').then(async response => {
+    state.loading = fetch('data/numbers-public.json?v=002').then(async response => {
       if (!response.ok) throw new Error('Répertoire des nombres indisponible.');
       const result = await response.json();
       if (result.schemaVersion !== 1 || result.psalmCount !== 1158 ||
@@ -156,8 +166,7 @@
     state.requestId++;
     $('numbersLibrary').hidden = false;
     document.body.classList.add('view-numbers');
-    $('numbersTab').classList.add('active');
-    $('numbersTab').setAttribute('aria-expanded', 'true');
+    $('numbersToggle').setAttribute('aria-expanded', 'true');
     $('numbersDirectory').hidden = false;
     $('numbersDetail').hidden = true;
     status('Recherche des chiffres et des nombres…');
@@ -172,8 +181,7 @@
     state.current = null;
     $('numbersLibrary').hidden = true;
     document.body.classList.remove('view-numbers');
-    $('numbersTab').classList.remove('active');
-    $('numbersTab').setAttribute('aria-expanded', 'false');
+    $('numbersToggle').setAttribute('aria-expanded', 'false');
   }
   function back() {
     if (state.current) {
@@ -182,7 +190,7 @@
     } else {
       close();
       window.scrollTo({top:0,behavior:'instant'});
-      $('numbersTab').focus({preventScroll:true});
+      $('numbersToggle').focus({preventScroll:true});
     }
   }
   function restoreAfterPsalm() {
