@@ -140,6 +140,9 @@
         throw new Error('Répertoire des nombres incomplet.');
       state.entries = result.entries;
       state.numberTerms = result.numberTerms;
+      $('numbersTermsDetails').hidden = !result.numberTerms.length;
+      $('numbersTermsLabel').textContent = 'Versets employant les mots « nombre », « chiffre », etc. (' +
+        result.numberTerms.length + ')';
       $('numbersMethod').textContent = result.method;
       return true;
     }).catch(error => {
@@ -205,6 +208,10 @@
       status('Téléchargement PDF indisponible : '+error.message);
     }
   }
+  $('numbersTermsDetails').ontoggle = () => {
+    if (!$('numbersTermsDetails').open || $('numbersTermsList').childElementCount) return;
+    for (const ref of state.numberTerms) $('numbersTermsList').append(referenceButton(ref));
+  };
   $('numbersBack').addEventListener('click', back);
   $('numbersFilter').addEventListener('input', renderDirectory);
   $('numbersDurationFilter').addEventListener('change', renderDirectory);
