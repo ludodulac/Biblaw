@@ -18,7 +18,7 @@ CORPUS = ROOT / "data" / "corpus" / "books"
 OUTPUT = ROOT / "data" / "numbers-public.json"
 
 UNITS = {
-    0: "zero", 1: "un", 2: "deux", 3: "trois", 4: "quatre",
+    1: "un", 2: "deux", 3: "trois", 4: "quatre",
     5: "cinq", 6: "six", 7: "sept", 8: "huit", 9: "neuf",
     10: "dix", 11: "onze", 12: "douze", 13: "treize",
     14: "quatorze", 15: "quinze", 16: "seize", 17: "dix sept",
@@ -53,7 +53,7 @@ for n in range(0, 100):
 FORMS.update({
     "vingt et une": 21, "trente et une": 31, "quarante et une": 41,
     "cinquante et une": 51, "soixante et une": 61, "cent": 100,
-    "cents": 100, "mille": 1000, "zero": 0, "zéro": 0,
+    "cents": 100, "mille": 1000,
     # Do not index "un seul", "une seule" or "premier jour": these are
     # usually ordinary grammar, not teachings about the number 1.
 })
@@ -96,37 +96,135 @@ ONE_EVIDENCE = {("book-05-psalm-028", 3)}
 EDITORIAL = {
     1: {
         "title": "L’unité — le 4 qui s’élève vers le 1",
-        "summary": "Dans le psaume 28 de Michaël (livre 5), le texte décrit le secret du 4 qui s’élève vers le 1 : les quatre éléments s’unissent dans le monde divin. Il s’agit d’une image d’unité, et non du simple fait qu’une chose est seule.",
+        "summary": "Les quatre éléments s’unissent dans le monde divin (Michaël, psaume 28, verset 3).",
         "sources": [("book-05-psalm-028", 3)],
     },
     3: {
-        "title": "Les trois mondes et leurs rapports",
-        "summary": "Dans le psaume 1 de Gabriel (livre 2), trois mondes sont distingués sous le monde divin : le monde spirituel, le monde aurique et le monde physique. Le chiffre 3 apparaît aussi dans d’autres comparaisons et indications concrètes.",
-        "sources": [("book-02-psalm-001", 2)],
+        "title": "Les trois mondes et les trois centres",
+        "summary": "Gabriel distingue les mondes spirituel, aurique et physique ; Raphaël évoque trois centres de l’être : pensée, ressenti et volonté.",
+        "sources": [("book-02-psalm-001", 2), ("book-03-psalm-019", 5)],
     },
     4: {
         "title": "Les quatre éléments et l’unité",
-        "summary": "Michaël présente les quatre éléments comme la base d’un travail de purification et de construction intérieure (psaume 28, livre 5). Le texte évoque l’union des quatre éléments et leur rapport au divin. D’autres psaumes mentionnent aussi les quatre Archanges.",
+        "summary": "Michaël décrit la communion avec les quatre éléments et leur union dans le monde divin (psaume 28).",
         "sources": [("book-05-psalm-028", 1), ("book-05-psalm-028", 3)],
     },
     7: {
-        "title": "Sept jours, sept années : cycles de purification",
-        "summary": "Dans le psaume 45 de Gabriel (livre 6), le chiffre 7 est utilisé pour décrire des périodes de purification : 7 jours dans un cas et 7 années dans d’autres. Le psaume 41 du même livre évoque également 7 années de transformation. Il s’agit d’enseignements du texte, non de durées médicalement démontrées.",
+        "title": "Sept jours et sept années",
+        "summary": "Gabriel distingue des périodes de sept jours et de sept années dans son enseignement sur la purification (psaume 45).",
         "sources": [("book-06-psalm-045", 8), ("book-06-psalm-045", 12)],
     },
     12: {
         "title": "Les douze perles et les douze porteurs",
-        "summary": "Gabriel évoque son collier à 12 perles, lié dans son enseignement à un travail préparatoire et à 12 porteurs protecteurs du monde divin (psaume 200, livre 30). Cette figure n’est pas présentée comme une définition universelle du nombre 12.",
+        "summary": "Gabriel associe les douze perles de son collier à douze porteurs protecteurs (psaume 200).",
         "sources": [("book-30-psalm-200", 9), ("book-30-psalm-200", 31)],
     },
     21: {
         "title": "La méthode des vingt et un jours",
-        "summary": "Gabriel donne une méthode de 21 jours pour apprendre à observer sa vie intérieure et à rencontrer son âme : s’arrêter, observer ses pensées et sentiments, puis créer un espace intérieur de consultation régulière (psaume 17, livre 2, versets 6–7). Ouriel évoque également une présence annoncée pendant 21 jours après une célébration (psaume 34, livre 8).",
+        "summary": "Gabriel propose vingt et un jours d’observation intérieure pour apprendre à rencontrer son âme (psaume 17, versets 6–7).",
         "sources": [("book-02-psalm-017", 6), ("book-02-psalm-017", 7),
                     ("book-08-psalm-034", 1)],
     },
 }
 
+
+
+# Only words genuinely adjacent to a number give it a subject.
+# Vague forms such as "3 choses" or "2 personnes" are excluded.
+TOPIC_FORMS = {
+  "centres":"centre centres",
+  "mondes":"monde mondes",
+  "éléments":"element elements",
+  "archanges":"archange archanges",
+  "forces":"force forces",
+  "vertus":"vertu vertus",
+  "principes":"principe principes",
+  "lois":"loi lois",
+  "portes":"porte portes",
+  "états":"etat etats",
+  "étapes":"etape etapes",
+  "aspects":"aspect aspects",
+  "rayons":"rayon rayons",
+  "piliers":"pilier piliers",
+  "cercles":"cercle cercles",
+  "degrés":"degre degres",
+  "sphères":"sphere spheres",
+  "dimensions":"dimension dimensions",
+  "couleurs":"couleur couleurs",
+  "règnes":"regne regnes",
+  "corps":"corps",
+  "sceaux":"sceau sceaux",
+  "temples":"temple temples",
+  "perles":"perle perles",
+  "porteurs":"porteur porteurs",
+  "formes":"forme formes",
+  "processus":"processus",
+  "prières":"priere prieres",
+  "méditations":"meditation meditations",
+  "exercices":"exercice exercices",
+  "initiations":"initiation initiations",
+  "épreuves":"epreuve epreuves",
+  "consécrations":"consecration consecrations",
+  "rituels":"rituel rituels",
+  "travaux":"travail travaux",
+  "règles":"regle regles",
+  "jours":"jour jours",
+  "journées":"journee journees",
+  "semaines":"semaine semaines",
+  "mois":"mois",
+  "années":"annee annees an ans",
+  "nuits":"nuit nuits",
+  "cycles":"cycle cycles",
+  "phases":"phase phases",
+  "passages":"passage passages",
+  "enseignements":"enseignement enseignements",
+}
+TOPIC_BY_FORM = {form: label for label, forms in TOPIC_FORMS.items() for form in forms.split()}
+ADJECTIVES = {"grand","grands","grande","grandes","petit","petits","petites",
+              "premier","premiers","premiere","premieres","principal","principaux",
+              "principales","different","differents","differentes","divin","divins",
+              "divine","divines","sacre","sacres","sacrees","subtils","subtiles"}
+TOPIC_DESCRIPTIONS = {
+  (3, "centres"): "Pensée, ressenti et volonté (Raphaël, psaume 19).",
+  (3, "mondes"): "Monde spirituel, monde aurique et monde physique (Gabriel, psaume 1).",
+  (4, "éléments"): "Les quatre éléments dans l’enseignement de Michaël (psaume 28).",
+  (12, "perles"): "Les douze perles du collier de Gabriel (psaume 200).",
+  (21, "jours"): "Les vingt et un jours d’observation intérieure (Gabriel, psaume 17).",
+}
+
+def phrase_topics(text: str, number: int) -> set[str]:
+    normalized = norm(text)
+    labels: set[str] = set()
+    for mention in mentions(text):
+        if mention["number"] != number: continue
+        next_words = re.findall(r"[a-z]+", normalized[mention["end"]:][:65])[:4]
+        index = 0
+        while index < min(2, len(next_words)) and next_words[index] in ADJECTIVES:
+            index += 1
+        if index < len(next_words):
+            noun = next_words[index]
+            if noun in TOPIC_BY_FORM:
+                labels.add(TOPIC_BY_FORM[noun])
+    return labels
+
+def group_topics(number: int, references: list[dict], by_id: dict) -> list[dict]:
+    buckets: dict[str, dict] = defaultdict(dict)
+    for ref in references:
+        verse = next(v for v in by_id[ref["recordId"]]["verses"]
+                     if v["number"] == ref["verse"])
+        labels = phrase_topics(verse["text"], number)
+        key = (ref["recordId"], ref["verse"])
+        for label in labels or {""}:
+            buckets[label].setdefault(key, ref)
+    groups = [{
+        "key": label, "label": f"{number} {label}",
+        "summary": TOPIC_DESCRIPTIONS.get((number, label), ""),
+        "references": list(buckets[label].values()),
+    } for label in sorted((k for k in buckets if k), key=lambda k: (-len(buckets[k]), k))]
+    if "" in buckets:
+        groups.append({"key": "autres", "label": "Autres passages",
+                       "summary": "", "references": list(buckets[""].values())})
+    return groups
 
 def mentions(verse_text: str) -> list[dict]:
     t = norm(verse_text)
@@ -201,6 +299,7 @@ def generate(destination: Path = OUTPUT) -> dict:
             records.append(psalm)
     if len(records) != 1158 or len({x["id"] for x in records}) != 1158:
         raise ValueError("Expected 1158 unique canonical Psalms")
+    by_id = {record["id"]: record for record in records}
     by_number: dict[int, list] = defaultdict(list)
     conceptual: list[dict] = []
     examples: dict[int, list] = defaultdict(list)
@@ -208,6 +307,8 @@ def generate(destination: Path = OUTPUT) -> dict:
         for verse in psalm["verses"]:
             txt = verse["text"]
             for m in mentions(txt):
+                if m["number"] == 0:
+                    continue
                 if m["number"] == 1:
                     if (psalm["id"], verse["number"]) not in ONE_EVIDENCE:
                         continue
@@ -261,6 +362,7 @@ def generate(destination: Path = OUTPUT) -> dict:
                         "category": occurrence["category"] or "symbole",
                     }
         passages = list(grouped.values())
+        topics = group_topics(n, passages, by_id)
         psalm_count = len({r["recordId"] for r in passages})
         durations = [x for x in passages if x["duration"]]
         # Pick genuinely observed contexts, prioritising durations / actions;
@@ -302,15 +404,17 @@ def generate(destination: Path = OUTPUT) -> dict:
                 ("symbole", "des images symboliques et des structures d’enseignement")
             ] if category in categories
         ]
+        named = [t["label"] for t in topics if t["key"] != "autres"]
+        # A number without a documented teaching and without a named topic
+        # should not acquire an invented general interpretation.
+        if not editorial and not named and len(passages) < 2:
+            continue
         numbers.append({
             "value": n, "label": str(n),
             "title": editorial["title"] if editorial else
-                " ; ".join(category_names).capitalize(),
-            "summary": editorial["summary"] if editorial else (
-                f"Le nombre {n} apparaît dans des passages qui évoquent " +
-                ", ".join(category_names) + ". "
-                "Les versets sont présentés sans attribuer au nombre un sens universel "
-                "que le texte ne formule pas."),
+                (", ".join(named[:2]) if named else "Passages à consulter"),
+            "summary": editorial["summary"] if editorial else "",
+            "topics": topics,
             "references": passages, "examples": samples,
             "durationCount": len(durations),
             "practiceCount": sum(ref["category"] == "pratique" for ref in passages),
@@ -320,9 +424,9 @@ def generate(destination: Path = OUTPUT) -> dict:
         "scope": "1 158 psaumes canoniques de Biblaw ; texte des versets uniquement.",
         "method": ("Sélection de passages qui associent explicitement un nombre à "
                    "des exercices, durées, cycles, éléments ou symboles. "
-                   "Les chiffres servant seulement à compter des objets ou des personnes "
-                   "sont écartés ; le 1 n’apparaît que lorsqu’une unité est enseignée. "
-                   "Ces repérages sont documentaires et peuvent nécessiter une lecture du contexte."),
+                   "Les simples comptages et le zéro sans enseignement documenté "
+                   "ne sont pas présentés. Les références sont regroupées par "
+                   "expressions réellement présentes dans les psaumes, telles que « 3 centres ».") ,
         "psalmCount": len(records),
         "entries": numbers,
         "numberTerms": conceptual,
@@ -337,11 +441,12 @@ def generate(destination: Path = OUTPUT) -> dict:
         "outputBytes": destination.stat().st_size,
     }
     print("Biblaw chiffres/nombres:", result, flush=True)
-    for n in (3, 4, 7, 12, 21, 40):
+    for n in (2, 3, 4, 7, 12, 21, 40):
         match = next((e for e in numbers if e["value"] == n), None)
         if not match:continue
         print(f"EXEMPLES {n}: {len(match['references'])} versets "
               f"({match['durationCount']} durées)", flush=True)
+        print("  GROUPES", [(t["label"],len(t["references"])) for t in match["topics"][:14]],flush=True)
         for item in match["examples"][:4]:
             print(" ", item["recordId"], item["verse"],repr(item["excerpt"][:185]),flush=True)
     return result
