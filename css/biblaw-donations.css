@@ -1,12 +1,12 @@
 /* Biblaw — don Stripe : menu natif <details>, fonctionne même sans JavaScript. */
 .site-header .header-actions{
-  display:flex;align-items:center;justify-content:flex-end;gap:1rem;min-width:0
+  display:flex;align-items:center;justify-content:flex-end;gap:1.15rem;min-width:0
 }
 .site-header .donate-dropdown{position:relative;flex:none}
 .site-header .donate-toggle{
   display:inline-flex;align-items:center;justify-content:center;gap:.25rem;
   box-sizing:border-box;min-height:2.7rem;padding:.56rem 1rem;
-  margin-inline:.3rem;
+  margin-inline:.45rem;
   border:1px solid #e4d5bd;border-radius:.7rem;background:#fbf7ef;
   color:#78521e;cursor:pointer;font-size:.88rem;font-weight:650;
   white-space:nowrap;list-style:none;user-select:none
@@ -15,8 +15,8 @@
 .site-header .donate-toggle::marker{content:""}
 .site-header .donate-toggle:hover,.site-header .donate-dropdown[open]>.donate-toggle{background:#f5ecdd}
 .site-header .donate-heart{
-  display:inline-block;color:#c62237;font-size:1.07rem;
-  line-height:1;margin-inline:.14rem .55rem;flex:none
+  display:inline-block;color:#d11e37!important;font-size:1.07rem;
+  line-height:1;margin-inline:.12rem .6rem;flex:none
 }
 .site-header .donate-panel{
   box-sizing:border-box;position:absolute;top:calc(100% + .7rem);right:0;z-index:200;
@@ -48,7 +48,7 @@
   .site-header{flex-wrap:wrap;row-gap:.4rem}
   .site-header .header-actions{width:100%;justify-content:space-between;gap:.55rem}
   .site-header .header-actions #faqToggle{flex:1;min-width:0;max-width:none;font-size:.78rem}
-  .site-header .donate-toggle{margin-inline:0;padding:.54rem .75rem;font-size:.82rem}
-  .site-header .donate-heart{margin-inline:.08rem .38rem}
+  .site-header .donate-toggle{margin-inline:.3rem;padding:.54rem .85rem;font-size:.82rem}
+  .site-header .donate-heart{margin-inline:.08rem .46rem}
   .site-header .donate-panel{left:0;right:auto;padding:1rem}
 }
