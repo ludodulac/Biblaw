@@ -17,6 +17,7 @@ from build_masters_public import generate as generate_public_masters
 from build_objects_public import generate as generate_public_objects
 from build_nature_public import generate as generate_public_nature
 from build_contrary_public import generate as generate_public_contrary
+from build_angels_public import generate as generate_public_angels
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -167,8 +168,13 @@ def main() -> None:
     assert contrary_stats["psalms"] == 1158 and contrary_stats["tested"] > 120
     assert contrary_stats["present"] > 20 and contrary_stats["citations"] > 60
 
+    # All 12 + 144 virtue entries are derived from canonical Psalm/verse text.
+    angels_public = OUT / "data" / "angels-public.json"
+    angel_stats = generate_public_angels(angels_public)
+    assert angel_stats["psalms"] == 1158 and angel_stats["perles"] == 12 and angel_stats["fils"] == 144
+
     staged = sorted(str(path.relative_to(OUT)) for path in OUT.rglob("*") if path.is_file())
-    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json", "data/nature-public.json", "data/contrary-public.json")), (
+    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json", "data/nature-public.json", "data/contrary-public.json", "data/angels-public.json")), (
         "Pages staging contains a file outside the explicit allow-list"
     )
     # The donation menu is part of the public UI. Its CSS and JS must always be deployed.
