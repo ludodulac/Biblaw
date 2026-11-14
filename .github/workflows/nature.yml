@@ -1,0 +1,29 @@
+name: Vérifier les éléments naturels de la Bible
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/nature-lexicon.json"
+      - "scripts/build_nature_public.py"
+      - "scripts/smoke_nature.mjs"
+      - "js/biblaw-nature.js"
+      - "css/biblaw-nature.css"
+      - ".github/workflows/nature.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nature:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v7
+      - name: Générer l’index nature à partir des psaumes canoniques
+        run: |
+          python scripts/build_nature_public.py
+          mkdir -p _site/data
+          cp data/nature-public.json _site/data/nature-public.json
+      - name: Vérifier le JavaScript et les références documentaires
+        run: |
+          node --check js/biblaw-nature.js
+          node scripts/smoke_nature.mjs
