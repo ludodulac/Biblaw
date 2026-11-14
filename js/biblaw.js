@@ -1181,9 +1181,9 @@
   // des versets cités, sans modifier le texte ni le fonctionnement de la recherche.
   const sourceParams=new URLSearchParams(window.location?.search||'');
   const sourcePsalm=sourceParams.get('psaume')||'';
-  if(/^book-\\d{2}-psalm-\\d{3}$/.test(sourcePsalm)){
+  if(/^book-\d{2}-psalm-\d{3}$/.test(sourcePsalm)){
     const requested=(sourceParams.get('versets')||'').split(',')
-      .filter(value=>/^\\d{1,3}$/.test(value)).map(Number).slice(0,20);
+      .filter(value=>/^\d{1,3}$/.test(value)).map(Number).slice(0,20);
     void ensureCorpusReady().then(ready=>{
       if(!ready)return;
       const record=state.recordById.get(sourcePsalm);
