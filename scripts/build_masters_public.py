@@ -63,7 +63,7 @@ def pattern_for(names: tuple[str, ...]) -> re.Pattern:
         key = normalize(name)
         escaped = re.escape(key).replace(r"\-", r"[\s\-‑–—]+")
         escaped = escaped.replace(r"\ ", r"[\s\-‑–—]+")
-        escaped = escaped.replace("’", "['’]").replace("'", "['’]")
+        # Both ASCII and typographic apostrophes are explicit aliases.
         terms.append(escaped)
     return re.compile(r"(?<![a-z])(?:" + "|".join(sorted(set(terms), key=len, reverse=True)) + r")(?![a-z])")
 
