@@ -256,6 +256,7 @@
       BiblawFAQ.setRecords(state.records);
       globalThis.BiblawAnimals?.setRecords(state.records);
       globalThis.BiblawNumbers?.setRecords(state.records);
+      globalThis.BiblawMasters?.setRecords(state.records);
       document.dispatchEvent(new CustomEvent('biblaw:corpus-ready',{
         detail:{themes:state.themeDirectory}
       }));
@@ -821,6 +822,7 @@
   function showSearchView() {
     globalThis.BiblawNumbers?.close();
     globalThis.BiblawAnimals?.close();
+    globalThis.BiblawMasters?.close();
     closeBibleThemes();
     BiblawFAQ.close();
     $('faqToggle').setAttribute('aria-expanded','false');
@@ -839,6 +841,7 @@
     BiblawFAQ.close();
     globalThis.BiblawAnimals?.close();
     globalThis.BiblawNumbers?.close();
+    globalThis.BiblawMasters?.close();
     $('faqToggle').setAttribute('aria-expanded','false');
     $('notesThemeFilter').value='';
     $('notesArchiveSearch').value='';
@@ -866,7 +869,8 @@
     state.readerPart=fromFAQ?'psalm':hasPrayer?'both':'psalm';
     $('faqReturnFromPsalm').hidden=!fromFAQ;
     $('faqReturnFromPsalm').textContent=document.body.classList.contains('view-animals')?'← Retour à l’animal':
-      document.body.classList.contains('view-numbers')?'← Retour au nombre':'← Retour à la réponse';
+      document.body.classList.contains('view-numbers')?'← Retour au nombre':
+      document.body.classList.contains('view-masters')?'← Retour au maître':'← Retour à la réponse';
     $('faqVerseContext').hidden=!targetVerses?.size;
     $('faqVerseContext').textContent=targetVerses?.size?
       'Versets cités dans la réponse : '+[...targetVerses].join(', '):'';
@@ -1122,6 +1126,7 @@
   BiblawFAQ.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawAnimals?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawNumbers?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
+  globalThis.BiblawMasters?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawAnimals?.setOpenNote(async id=>{
     if(!await loadArchivedNotes())throw Error('Notes indisponibles.');
     if(!state.archivedNoteById.has(id))throw Error('Note introuvable.');
@@ -1140,11 +1145,16 @@
     showSearchView();
     globalThis.BiblawNumbers?.open();
   });
+  $('mastersToggle')?.addEventListener('click',()=>{
+    showSearchView();
+    globalThis.BiblawMasters?.open();
+  });
   $('faqReturnFromPsalm').onclick=()=>$('recordDialog').close();
   $('recordDialog').addEventListener('close',()=>{
     BiblawFAQ.restoreAfterPsalm();
     globalThis.BiblawAnimals?.restoreAfterPsalm();
     globalThis.BiblawNumbers?.restoreAfterPsalm();
+    globalThis.BiblawMasters?.restoreAfterPsalm();
     $('faqReturnFromPsalm').hidden=true;
   });
   $('notesLibraryToggle').addEventListener('click',()=>toggleNotesLibrary());
@@ -1166,6 +1176,7 @@
   BiblawFAQ.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawAnimals?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawNumbers?.setCorpusLoading(ensureCorpusReady);
+  globalThis.BiblawMasters?.setCorpusLoading(ensureCorpusReady);
   if(window.location?.hash==='#numbersLibrary'){
     showSearchView();
     globalThis.BiblawNumbers?.open();
