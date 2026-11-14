@@ -201,6 +201,9 @@ jobs:
         run: |
           test -f _site/index.html
           test -f _site/css/biblaw-light.css
+          test -f _site/css/biblaw-donations.css
+          test -f _site/js/biblaw-donations.js
+          grep -q 'biblaw-donations.css' _site/index.html
           test -f _site/css/theme-entry.css
           test -f _site/js/theme-entry.js
           test -f _site/js/theme-rubrics.js
