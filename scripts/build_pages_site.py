@@ -34,6 +34,7 @@ PUBLIC_FILES = (
     "css/biblaw-objects.css",
     "css/biblaw-nature.css",
     "css/biblaw-contrary.css",
+    "css/biblaw-angels.css",
     "css/biblaw-donations.css",
     "css/theme-entry.css",
     "css/validation.css",
@@ -46,6 +47,7 @@ PUBLIC_FILES = (
     "js/biblaw-objects.js",
     "js/biblaw-nature.js",
     "js/biblaw-contrary.js",
+    "js/biblaw-angels.js",
     "js/biblaw-donations.js",
     "js/biblaw-autocomplete.js",
     "js/biblaw.js",
@@ -54,6 +56,7 @@ PUBLIC_FILES = (
     "js/theme-rubrics.js",
     "js/validation.js",
     "data/browser-search-catalog.json",
+    "data/anges-gabriel.json",
     "data/note-themes-public-073.json",
     "data/faq-public-085.json",
     "data/faq-090-1.json",
@@ -172,6 +175,9 @@ def main() -> None:
     # Without these two assets the button appears grey/unstyled and never opens.
     assert (OUT / "css" / "biblaw-donations.css").is_file(), "Donations stylesheet missing from deployed site"
     assert (OUT / "js" / "biblaw-donations.js").is_file(), "Donations script missing from deployed site"
+    assert (OUT / "js" / "biblaw-angels.js").is_file(), "Gabriel angels script missing from deployed site"
+    assert (OUT / "css" / "biblaw-angels.css").is_file(), "Gabriel angels stylesheet missing from deployed site"
+    assert (OUT / "data" / "anges-gabriel.json").is_file(), "Gabriel angels directory missing from deployed site"
     public_html = (OUT / "index.html").read_text(encoding="utf-8")
     assert 'id="donateDetails"' in public_html, "Donations menu missing from deployed HTML"
     assert 'biblaw-donations.css' in public_html, "Donations stylesheet must be linked in deployed HTML"
