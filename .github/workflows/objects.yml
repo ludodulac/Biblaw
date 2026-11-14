@@ -1,0 +1,27 @@
+name: Vérifier les objets de la Bible
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/objects-lexicon.json"
+      - "scripts/build_objects_public.py"
+      - "scripts/smoke_objects.mjs"
+      - "js/biblaw-objects.js"
+      - "css/biblaw-objects.css"
+      - ".github/workflows/objects.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  objects:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v7
+      - name: Générer les objets depuis les 1 158 psaumes
+        run: |
+          python scripts/build_objects_public.py
+          mkdir -p _site/data
+          cp data/objects-public.json _site/data/objects-public.json
+      - name: Vérifier les objets et les liens vers leurs versets
+        run: node scripts/smoke_objects.mjs
