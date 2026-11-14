@@ -1,0 +1,29 @@
+name: Vérifier les Forces contraires
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/contrary-lexicon.json"
+      - "scripts/build_contrary_public.py"
+      - "scripts/smoke_contrary.mjs"
+      - "js/biblaw-contrary.js"
+      - "css/biblaw-contrary.css"
+      - ".github/workflows/contrary.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contrary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v7
+      - name: Extraire les termes des psaumes canoniques
+        run: |
+          python scripts/build_contrary_public.py
+          mkdir -p _site/data
+          cp data/contrary-public.json _site/data/contrary-public.json
+      - name: Vérifier les références, les définitions et l’interface
+        run: |
+          node --check js/biblaw-contrary.js
+          node scripts/smoke_contrary.mjs
