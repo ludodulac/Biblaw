@@ -1,0 +1,49 @@
+/* Maîtres de la tradition: reuse the existing FAQ/animal visual language. */
+body.view-masters #primarySearch,
+body.view-masters #notesLibrary,
+body.view-masters #faqLibrary,
+body.view-masters #bibleThemesLibrary,
+body.view-masters #animalsLibrary,
+body.view-masters #numbersLibrary,
+body.view-masters #ambiguityPanel,
+body.view-masters .results-section,
+body.view-masters #validatedRelationsPanel,
+body.view-masters #transversePanel,
+body.view-masters #secondaryTools {display:none!important}
+body.view-masters .shell {padding-top:1.1rem}
+.masters-library[hidden],.masters-library [hidden] {display:none!important}
+.masters-library .masters-intro,.masters-method {color:#62584b;line-height:1.65}
+.masters-library .masters-count {font-size:.92rem;color:#71665a;margin:.75rem 0}
+.masters-library .masters-filter {
+  width:min(100%,24rem);min-height:2.7rem;border:1px solid #c9bca7;
+  border-radius:.55rem;padding:.6rem .8rem;font:inherit
+}
+.masters-list {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,275px),1fr));gap:.45rem}
+.masters-person {width:100%;text-align:left}
+.masters-person .faq-question-title {display:flex;align-items:flex-start;flex-direction:column;gap:.3rem}
+.masters-person-name {font-size:1.07rem;color:#46372b}
+.masters-person-count {font-size:.85rem;font-weight:400;color:#756b60}
+.masters-library .faq-answer-body {white-space:normal}
+.masters-source {
+  border:1px solid #e4dacf;border-radius:.75rem;background:#fdfaf6;
+  padding:.95rem 1.1rem;margin:.8rem 0
+}
+.masters-source-name {font-size:1rem;color:#453729;margin:0 0 .65rem}
+.masters-verse {padding:.2rem 0 .65rem}
+.masters-verse + .masters-verse {border-top:1px solid #eae1d7;padding-top:.8rem}
+.masters-excerpt {margin:0 0 .4rem;line-height:1.6;color:#50483e;overflow-wrap:anywhere}
+.masters-reference {text-align:left;line-height:1.45}
+.masters-more {margin-top:.35rem}
+.masters-more summary {font-weight:600;color:#70523a;cursor:pointer}
+.masters-more-list {padding:.65rem 0 .1rem}
+.masters-method {margin:1.5rem 0;font-size:.88rem}
+@media(max-width:760px){
+  .masters-library {padding:1rem .85rem}
+  .masters-list {grid-template-columns:1fr}
+  .masters-source {padding:.85rem}
+}
+@media print{
+  body.view-masters .site-header,body.view-masters #mastersBack,
+  body.view-masters #mastersDirectory {display:none!important}
+  body.view-masters .masters-source {break-inside:avoid}
+}
