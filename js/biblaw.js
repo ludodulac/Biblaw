@@ -1177,7 +1177,21 @@
   globalThis.BiblawAnimals?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawNumbers?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawMasters?.setCorpusLoading(ensureCorpusReady);
-  if(window.location?.hash==='#numbersLibrary'){
+  // Lien documentaire depuis Espace Jeunesse : lecture du psaume et surlignage
+  // des versets cités, sans modifier le texte ni le fonctionnement de la recherche.
+  const sourceParams=new URLSearchParams(window.location?.search||'');
+  const sourcePsalm=sourceParams.get('psaume')||'';
+  if(/^book-\\d{2}-psalm-\\d{3}$/.test(sourcePsalm)){
+    const requested=(sourceParams.get('versets')||'').split(',')
+      .filter(value=>/^\\d{1,3}$/.test(value)).map(Number).slice(0,20);
+    void ensureCorpusReady().then(ready=>{
+      if(!ready)return;
+      const record=state.recordById.get(sourcePsalm);
+      if(!record||record.recordType!=='psalm')return;
+      const selected=[...new Set(requested)].filter(n=>record.verses.some(v=>v.number===n));
+      open(sourcePsalm,selected.length?selected:null);
+    }).catch(error=>console.error('Lien vers le psaume indisponible',error));
+  }else if(window.location?.hash==='#numbersLibrary'){
     showSearchView();
     globalThis.BiblawNumbers?.open();
   }
