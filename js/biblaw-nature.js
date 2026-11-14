@@ -1,4 +1,4 @@
-/* Biblaw — concrete nature explicitly named in canonical Psalms. */
+/* Biblaw — documentary index of natural elements in canonical Psalms. */
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
@@ -12,7 +12,10 @@
     raphael: 'Raphaël', ouriel: 'Ouriel',
   }[name] || name || '');
   const toTop = () => window.scrollTo({top: 0, behavior: 'instant'});
-  const count = (number, singular) => number + ' ' + singular + (number > 1 ? 's' : '');
+  const count = (number, singular) =>
+    number + ' ' + (singular === 'élément naturel'
+      ? (number > 1 ? 'éléments naturels' : 'élément naturel')
+      : singular + (number > 1 ? 's' : ''));
   const normalize = text => (text || '').normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
@@ -223,7 +226,7 @@
   $('natureBack').addEventListener('click', back);
   $('natureFilter').addEventListener('input', () => { if (state.entries) renderDirectory(); });
   $('natureCategory').addEventListener('change', () => { if (state.entries) renderDirectory(); });
-  globalThis.BiblawNature = Element.freeze({
+  globalThis.BiblawNature = Object.freeze({
     open, close, restoreAfterPsalm,
     setOpenPsalm(callback) { state.openPsalm = callback; },
     setCorpusLoading(callback) { state.corpusLoading = callback; },
