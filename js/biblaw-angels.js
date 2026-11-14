@@ -210,7 +210,7 @@
     $('angelsName').focus({preventScroll:true});
     status('Chargement et recherche des psaumes…');
     try{
-      await corpus();
+      if(!s.cache.has(entry.label))await corpus();
       if(request!==s.requestId||$('angelsLibrary').hidden)return;
       const sources=await occurrences(entry,request);
       if(request!==s.requestId||!sources)return;
@@ -237,13 +237,28 @@
   async function load(){
     if(s.data)return true;
     if(s.loading)return s.loading;
-    s.loading=fetch('data/anges-gabriel.json?v=001').then(async response=>{
-      if(!response.ok)throw Error('Données du collier de Gabriel indisponibles.');
-      const data=await response.json();
+    s.loading=Promise.all([
+      fetch('data/anges-gabriel.json?v=001'),
+      fetch('data/angels-public.json?v=001')
+    ]).then(async ([response,indexResponse])=>{
+      if(!response.ok||!indexResponse.ok)
+        throw Error('Répertoire des Anges indisponible.');
+      const [data,compiled]=await Promise.all([response.json(),indexResponse.json()]);
       if(data.schemaVersion!==1||!Array.isArray(data.perles)||
         data.perles.length!==12||data.perles.some(p=>!Array.isArray(p.fils)||p.fils.length!==12))
         throw Error('Liste des 12 × 12 Anges incomplète.');
+      if(compiled.schemaVersion!==1||compiled.psalmCount!==1158||
+        compiled.perlesCount!==12||compiled.filsCount!==144||
+        compiled.entryCount!==156||!Array.isArray(compiled.entries)||
+        compiled.entries.length!==156)
+        throw Error('Index des 1 158 psaumes incomplet.');
+      const allLabels=new Set(data.perles.flatMap(p=>[p.label,...p.fils]));
+      if(allLabels.size!==156||new Set(compiled.entries.map(e=>e.label)).size!==156||
+        compiled.entries.some(e=>!allLabels.has(e.label)||!Array.isArray(e.sources)||
+          e.psalmCount!==e.sources.length))
+        throw Error('Les références des Anges ne correspondent pas au collier.');
       s.data=data;s.perles=data.perles;
+      for(const entry of compiled.entries)s.cache.set(entry.label,entry.sources);
       s.fils=data.perles.flatMap(parent=>parent.fils.map((label,index)=>({
         id:parent.id+'-fils-'+(index+1),label,
         parentId:parent.id,parentLabel:parent.label
