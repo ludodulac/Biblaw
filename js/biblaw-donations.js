@@ -1,18 +1,18 @@
-/* Ouverture de la fenêtre de soutien ; les paiements sont pris en charge par Stripe. */
+/* Amélioration progressive : le sélecteur natif <details> fonctionne sans JS. */
 (() => {
-  const button = document.getElementById('donateToggle');
-  const dialog = document.getElementById('donateDialog');
-  const closeButton = document.getElementById('donateClose');
-  if (!button || !dialog || !closeButton) return;
-
-  button.addEventListener('click', () => {
-    if (!dialog.open) dialog.showModal();
-  });
-  closeButton.addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', (event) => {
-    if (event.target === dialog) dialog.close();
-  });
-  dialog.addEventListener('close', () => button.focus());
+  const details = document.getElementById('donateDetails');
+  const toggle = document.getElementById('donateToggle');
+  if (details) {
+    document.addEventListener('click', (event) => {
+      if (details.open && !details.contains(event.target)) details.open = false;
+    });
+    document.addEventListener('keydown', (event) => {
+      if (details.open && event.key === 'Escape') {
+        details.open = false;
+        toggle?.focus();
+      }
+    });
+  }
 
   const params = new URLSearchParams(window.location.search);
   const thanks = document.getElementById('donateThanks');
@@ -20,7 +20,7 @@
     thanks.hidden = false;
     params.delete('merci');
     const query = params.toString();
-    window.history.replaceState(window.history.state, '', 
+    window.history.replaceState(window.history.state, '',
       window.location.pathname + (query ? '?' + query : '') + window.location.hash);
   }
 })();
