@@ -1,0 +1,43 @@
+/* Biblaw — contributions volontaires via les liens Stripe hébergés. */
+.site-header .header-actions{display:flex;align-items:center;gap:.6rem;min-width:0}
+.donate-toggle{
+  flex:none;min-height:2.6rem;padding:.52rem .85rem;border:1px solid #e3d5be;
+  border-radius:.7rem;background:#fbf7ef;color:#78521e;
+  font-weight:650;font-size:.87rem;white-space:nowrap;cursor:pointer;
+}
+.donate-toggle:hover{background:#f5ecdd}
+.donate-dialog{
+  box-sizing:border-box;width:min(29rem,calc(100vw - 2rem));max-height:min(90vh,44rem);
+  padding:1.4rem;border:1px solid #e7dfd2;border-radius:1.15rem;
+  background:#fff;color:#292722;box-shadow:0 1.5rem 5rem #24211d36;
+}
+.donate-dialog::backdrop{background:rgba(30,25,20,.48);backdrop-filter:blur(3px)}
+.donate-dialog-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.donate-dialog h2{margin:0;font-family:"Source Serif 4",Georgia,serif;font-size:1.5rem;color:#32281d;line-height:1.22}
+.donate-close{flex:none;display:grid;place-items:center;border:0;border-radius:.55rem;
+  background:#f5f2eb;color:#52483b;width:2.25rem;height:2.25rem;font-size:1.5rem;cursor:pointer}
+.donate-dialog-intro{margin:.9rem 0 1.2rem;color:#61594e;line-height:1.6}
+.donate-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
+.donate-options a{
+  display:grid;place-items:center;padding:.9rem .4rem;min-height:3rem;
+  text-decoration:none!important;background:#fffaf2;color:#6d4819!important;
+  border:1px solid #dcbf90;border-radius:.85rem;font-size:1.22rem;font-weight:700;
+  transition:background .15s ease,border-color .15s ease;
+}
+.donate-options a:hover{background:#f4e8d5;border-color:#ad7b31}
+.donate-options a:focus-visible,.donate-close:focus-visible,.donate-toggle:focus-visible{
+  outline:3px solid #ad7b31;outline-offset:3px;
+}
+.donate-legal{margin:1rem 0 0;color:#756e64;font-size:.78rem;line-height:1.5}
+.donate-stripe{margin:.7rem 0 0;color:#6b6256;text-align:center;font-size:.8rem}
+.donate-thanks{
+  margin:0 auto 1.1rem;max-width:50rem;padding:.9rem 1.1rem;border:1px solid #d8e7d6;
+  border-radius:.7rem;background:#f0f8ed;color:#295b32;text-align:center
+}
+@media(max-width:760px){
+  .site-header{flex-wrap:wrap;row-gap:.4rem}
+  .site-header .header-actions{width:100%;justify-content:space-between}
+  .site-header .header-actions #faqToggle{flex:1;min-width:0;max-width:none;font-size:.78rem}
+  .site-header .donate-toggle{padding:.52rem .65rem;font-size:.81rem}
+  .donate-dialog{padding:1.1rem}
+}
