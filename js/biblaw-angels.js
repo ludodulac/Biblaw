@@ -143,7 +143,6 @@
       box.append(el('p','angels-description','Gardiens : '+parent.gardiens));
       box.append(el('p','angels-description','Ses 12 Anges-fils : '+parent.fils.join(' · ')));
     }
-    if(entry.label==='Illua')box.append(el('p','angels-warning',s.data.transcriptionNotice));
   }
   function verseCard(source,verse){
     const row=el('div','angels-verse');
