@@ -81,6 +81,18 @@ def keeps_object_mention(object_id: str, normalized: str, match: re.Match) -> bo
             after = normalized[match.end():match.end() + 40]
             if not re.match(r"\s+d(?:e|u|es)\s+\w+", after):
                 return False
+    # Several everyday-object names also function as French verbs or
+    # participles. Retain only strong noun contexts for these ambiguous forms.
+    if object_id in {"aimant", "enveloppe", "masque", "affiche",
+                     "pince", "scie", "hache", "bêche"}:
+        previous = normalized[max(0, match.start() - 35):match.start()]
+        if not re.search(
+            r"(?:^|[^a-z])(?:un|une|le|la|les|des|du|au|aux|"
+            r"ce|cet|cette|ces|mon|ma|mes|ton|ta|tes|son|sa|ses|"
+            r"notre|nos|votre|vos|leur|leurs|quelques|plusieurs)\s+$",
+            previous,
+        ):
+            return False
     if object_id == "photographie":
         preceding = normalized[max(0, match.start() - 22):match.start()]
         token = normalized[match.start():match.end()]
