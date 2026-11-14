@@ -14,6 +14,7 @@ from build_public_note_extractions import generate as generate_public_notes
 from build_animals_public import generate as generate_public_animals
 from build_numbers_public import generate as generate_public_numbers
 from build_masters_public import generate as generate_public_masters
+from build_objects_public import generate as generate_public_objects
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -28,6 +29,7 @@ PUBLIC_FILES = (
     "css/biblaw-animals.css",
     "css/biblaw-numbers.css",
     "css/biblaw-masters.css",
+    "css/biblaw-objects.css",
     "css/theme-entry.css",
     "css/validation.css",
     "js/theme-suggestion-engine.js",
@@ -36,6 +38,7 @@ PUBLIC_FILES = (
     "js/biblaw-animals.js",
     "js/biblaw-numbers.js",
     "js/biblaw-masters.js",
+    "js/biblaw-objects.js",
     "js/biblaw-autocomplete.js",
     "js/biblaw.js",
     "js/theme-relations.js",
@@ -134,8 +137,14 @@ def main() -> None:
     master_stats = generate_public_masters(masters_public)
     assert master_stats["psalms"] == 1158 and master_stats["masters"] >= 4
 
+    # Publish only attested concrete-object names, excerpted from canonical verses.
+    objects_public = OUT / "data" / "objects-public.json"
+    object_stats = generate_public_objects(objects_public)
+    assert object_stats["psalms"] == 1158 and object_stats["tested"] > 150
+    assert object_stats["objects"] > 20 and object_stats["links"] > 50
+
     staged = sorted(str(path.relative_to(OUT)) for path in OUT.rglob("*") if path.is_file())
-    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json")), (
+    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json")), (
         "Pages staging contains a file outside the explicit allow-list"
     )
     assert not any(path.startswith(FORBIDDEN_PREFIXES) for path in staged), "internal repository data leaked into Pages staging"
