@@ -13,9 +13,7 @@
   }[name] || name || '');
   const toTop = () => window.scrollTo({top: 0, behavior: 'instant'});
   const count = (number, singular) =>
-    number + ' ' + (singular === 'élément contraryl'
-      ? (number > 1 ? 'éléments contraryls' : 'élément contraryl')
-      : singular + (number > 1 ? 's' : ''));
+    number + ' ' + singular + (number > 1 ? 's' : '');
   const normalize = text => (text || '').normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
@@ -53,14 +51,14 @@
       (!category || entry.category === category) &&
       (!filter || normalize(entry.label).includes(filter)));
     $('contraryCount').textContent =
-      count(entries.length, 'élément contraryl') + ' · ' +
-      count(state.entries.filter(e => e.verseCount).length, 'élément contraryl') +
+      count(entries.length, 'terme') + ' · ' +
+      count(state.entries.filter(e => e.verseCount).length, 'terme') +
       ' attestés dans les psaumes.';
     const list = $('contraryList');
     list.replaceChildren();
     for (const entry of entries) list.append(elementButton(entry));
     if (!entries.length) list.append(node('p', 'contrary-empty',
-      'Aucun élément contraryl correspondant à cette recherche.'));
+      'Aucun terme correspondant à cette recherche.'));
   }
   function verseButton(source, verse) {
     const button = node('button', 'faq-psalm-link contrary-verse-link',
@@ -108,10 +106,10 @@
     $('contraryCategoryName').textContent = entry.category;
     $('contraryDefinition').textContent = entry.definition;
     $('contrarySummary').textContent = entry.verseCount ?
-      'Le mot désignant cet élément contraryl apparaît dans ' + count(entry.psalmCount, 'psaume') +
+      'Cette expression apparaît dans ' + count(entry.psalmCount, 'psaume') +
       ' et ' + count(entry.verseCount, 'verset') +
-      '. Les extraits reproduisent le contexte où il est nommé.' :
-      'Aucune mention explicite de cet élément contraryl n’a été trouvée dans les 1 158 psaumes examinés.';
+      '. Les extraits reproduisent les formulations des psaumes, sans interprétation imposée.' :
+      'Aucune occurrence exacte de cette expression n’a été relevée parmi les 1 158 psaumes examinés.';
     const list = $('contraryReferences');
     list.replaceChildren();
     const initial = entry.sources.slice(0, 12);
@@ -158,11 +156,11 @@
     if (state.entries) return true;
     if (state.loading) return state.loading;
     state.loading = fetch('data/contrary-public.json?v=001').then(async response => {
-      if (!response.ok) throw Error('Répertoire des éléments contraryls indisponible.');
+      if (!response.ok) throw Error('Répertoire des termes indisponible.');
       const data = await response.json();
       if (data.schemaVersion !== 1 || data.psalmCount !== 1158 ||
           !Array.isArray(data.entries) || !Array.isArray(data.categories))
-        throw Error('Répertoire des éléments contraryls incomplet.');
+        throw Error('Répertoire des termes incomplet.');
       state.entries = data.entries;
       state.categories = data.categories;
       const select = $('contraryCategory');
@@ -180,7 +178,7 @@
       $('contraryNotice').textContent = data.notice || '';
       return true;
     }).catch(error => {
-      status(error.message || 'Impossible de charger les éléments contraryls.');
+      status(error.message || 'Impossible de charger les termes.');
       console.error(error);
       return false;
     }).finally(() => { state.loading = null; });
@@ -193,7 +191,7 @@
     $('contraryToggle').setAttribute('aria-expanded', 'true');
     $('contraryDirectory').hidden = false;
     $('contraryDetail').hidden = true;
-    status('Recherche des éléments contraryls dans les psaumes…');
+    status('Recherche des termes dans les psaumes…');
     toTop();
     const ready = await load();
     if (token !== state.requestId || $('contraryLibrary').hidden) return;
