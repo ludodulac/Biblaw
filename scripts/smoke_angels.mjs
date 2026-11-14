@@ -32,8 +32,11 @@ const labels=source.perles.flatMap(perle=>{
   return [perle.label,...perle.fils];
 });
 assert.equal(new Set(labels).size,156);
-assert.ok(labels.includes('Illua'));
-assert.ok(source.transcriptionNotice.includes('orthographe non confirmée'));
+assert.ok(labels.includes('Illumination'));
+assert.ok(!labels.includes('Illua'), 'The truncated error must never be shown as an angel');
+assert.ok(source.source.correction.includes('Illumination'));
+assert.ok(source.source.corroboreePar.url.includes('esseniens.ca'));
+assert.ok(!browser.includes("Illua"), 'No fabricated or broken label in visitor interface');
 const found=new Map(compiled.entries.map(entry=>[entry.label,entry]));
 assert.equal(found.size,156);
 let total=0;
