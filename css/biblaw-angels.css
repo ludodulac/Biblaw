@@ -1,0 +1,60 @@
+/* Index des Anges de Gabriel : même présentation que les autres répertoires Biblaw. */
+body.view-angels #primarySearch,
+body.view-angels #notesLibrary,
+body.view-angels #faqLibrary,
+body.view-angels #bibleThemesLibrary,
+body.view-angels #animalsLibrary,
+body.view-angels #numbersLibrary,
+body.view-angels #mastersLibrary,
+body.view-angels #objectsLibrary,
+body.view-angels #natureLibrary,
+body.view-angels #contraryLibrary,
+body.view-angels #ambiguityPanel,
+body.view-angels .results-section,
+body.view-angels #validatedRelationsPanel,
+body.view-angels #transversePanel,
+body.view-angels #secondaryTools {display:none!important}
+body.view-angels .shell {padding-top:1.1rem}
+.angels-library[hidden],.angels-library [hidden] {display:none!important}
+.angels-intro,.angels-method {line-height:1.65;color:#61574a}
+.angels-method {font-size:.88rem;margin:1.25rem 0}
+.angels-controls {display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin:1rem 0}
+.angels-controls input,.angels-controls select {
+  font:inherit;min-height:2.7rem;padding:.55rem .7rem;border:1px solid #c9bca7;
+  border-radius:.55rem;background:#fff;color:#483a2c
+}
+.angels-controls input {flex:1 1 17rem;max-width:25rem}
+.angels-controls label {display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;color:#5d4b3d}
+.angels-count {font-size:.9rem;color:#6e6156}
+.angels-list {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:.45rem}
+.angels-item {width:100%;text-align:left}
+.angels-item .faq-question-title {display:flex;flex-direction:column;align-items:flex-start;gap:.3rem}
+.angels-item strong {color:#453729;font-size:1.06rem}
+.angels-item small {color:#74675b;font-size:.84rem;font-weight:400}
+.angels-parent {font-weight:650;color:#685037;line-height:1.5}
+.angels-description {color:#5b5147;line-height:1.6;margin:.4rem 0}
+.angels-warning {padding:.8rem;border-left:3px solid #98724e;background:#fcf8f1}
+.angels-library .faq-answer-body {white-space:normal;line-height:1.6}
+.angels-source {border:1px solid #e3d9cb;border-radius:.8rem;background:#fdfaf6;
+  padding:.95rem 1.05rem;margin:.75rem 0}
+.angels-source h4 {font-size:1rem;color:#473729;margin:0 0 .7rem}
+.angels-verse {padding:.2rem 0 .65rem}
+.angels-verse + .angels-verse {border-top:1px solid #e9e0d7;padding-top:.7rem}
+.angels-excerpt {line-height:1.65;color:#504638;margin:0 0 .4rem;overflow-wrap:anywhere}
+.angels-reference {white-space:normal;text-align:left;line-height:1.5}
+.angels-more {margin-top:.4rem}
+.angels-more summary {cursor:pointer;font-weight:600;color:#795439}
+.angels-more > div {padding-top:.7rem}
+.angels-load-more {margin:.8rem 0}
+@media(max-width:760px) {
+  .angels-library {padding:1rem .85rem}
+  .angels-list {grid-template-columns:1fr}
+  .angels-controls {display:flex;flex-direction:column;align-items:stretch}
+  .angels-controls input {width:100%;max-width:none;flex:1 1 auto}
+  .angels-source {padding:.85rem}
+}
+@media print {
+  body.view-angels .site-header,body.view-angels #angelsBack,
+  body.view-angels #angelsDirectory {display:none!important}
+  .angels-source {break-inside:avoid}
+}
