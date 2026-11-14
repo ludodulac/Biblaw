@@ -258,6 +258,7 @@
       globalThis.BiblawNumbers?.setRecords(state.records);
       globalThis.BiblawMasters?.setRecords(state.records);
       globalThis.BiblawObjects?.setRecords(state.records);
+      globalThis.BiblawNature?.setRecords(state.records);
       document.dispatchEvent(new CustomEvent('biblaw:corpus-ready',{
         detail:{themes:state.themeDirectory}
       }));
@@ -825,6 +826,7 @@
     globalThis.BiblawAnimals?.close();
     globalThis.BiblawMasters?.close();
     globalThis.BiblawObjects?.close();
+    globalThis.BiblawNature?.close();
     closeBibleThemes();
     BiblawFAQ.close();
     $('faqToggle').setAttribute('aria-expanded','false');
@@ -845,6 +847,7 @@
     globalThis.BiblawNumbers?.close();
     globalThis.BiblawMasters?.close();
     globalThis.BiblawObjects?.close();
+    globalThis.BiblawNature?.close();
     $('faqToggle').setAttribute('aria-expanded','false');
     $('notesThemeFilter').value='';
     $('notesArchiveSearch').value='';
@@ -874,7 +877,8 @@
     $('faqReturnFromPsalm').textContent=document.body.classList.contains('view-animals')?'← Retour à l’animal':
       document.body.classList.contains('view-numbers')?'← Retour au nombre':
       document.body.classList.contains('view-masters')?'← Retour au maître':
-      document.body.classList.contains('view-objects')?'← Retour à l’objet':'← Retour à la réponse';
+      document.body.classList.contains('view-objects')?'← Retour à l’objet':
+      document.body.classList.contains('view-nature')?'← Retour à l’élément naturel':'← Retour à la réponse';
     $('faqVerseContext').hidden=!targetVerses?.size;
     $('faqVerseContext').textContent=targetVerses?.size?
       'Versets cités dans la réponse : '+[...targetVerses].join(', '):'';
@@ -1132,6 +1136,7 @@
   globalThis.BiblawNumbers?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawMasters?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawObjects?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
+  globalThis.BiblawNature?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawAnimals?.setOpenNote(async id=>{
     if(!await loadArchivedNotes())throw Error('Notes indisponibles.');
     if(!state.archivedNoteById.has(id))throw Error('Note introuvable.');
@@ -1158,6 +1163,10 @@
     showSearchView();
     globalThis.BiblawObjects?.open();
   });
+  $('natureToggle')?.addEventListener('click',()=>{
+    showSearchView();
+    globalThis.BiblawNature?.open();
+  });
   $('faqReturnFromPsalm').onclick=()=>$('recordDialog').close();
   $('recordDialog').addEventListener('close',()=>{
     BiblawFAQ.restoreAfterPsalm();
@@ -1165,6 +1174,7 @@
     globalThis.BiblawNumbers?.restoreAfterPsalm();
     globalThis.BiblawMasters?.restoreAfterPsalm();
     globalThis.BiblawObjects?.restoreAfterPsalm();
+    globalThis.BiblawNature?.restoreAfterPsalm();
     $('faqReturnFromPsalm').hidden=true;
   });
   $('notesLibraryToggle').addEventListener('click',()=>toggleNotesLibrary());
@@ -1188,6 +1198,7 @@
   globalThis.BiblawNumbers?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawMasters?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawObjects?.setCorpusLoading(ensureCorpusReady);
+  globalThis.BiblawNature?.setCorpusLoading(ensureCorpusReady);
   // Lien documentaire depuis Espace Jeunesse : lecture du psaume et surlignage
   // des versets cités, sans modifier le texte ni le fonctionnement de la recherche.
   const sourceParams=new URLSearchParams(window.location?.search||'');
