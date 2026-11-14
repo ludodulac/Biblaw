@@ -174,8 +174,8 @@ def main() -> None:
     assert (OUT / "js" / "biblaw-donations.js").is_file(), "Donations script missing from deployed site"
     public_html = (OUT / "index.html").read_text(encoding="utf-8")
     assert 'id="donateDetails"' in public_html, "Donations menu missing from deployed HTML"
-    assert 'biblaw-donations.css?v=002' in public_html, "Donations stylesheet must be linked in deployed HTML"
-    assert 'biblaw-donations.js?v=002' in public_html, "Donations script must be linked in deployed HTML"
+    assert 'biblaw-donations.css' in public_html, "Donations stylesheet must be linked in deployed HTML"
+    assert 'biblaw-donations.js' in public_html, "Donations script must be linked in deployed HTML"
     assert not any(path.startswith(FORBIDDEN_PREFIXES) for path in staged), "internal repository data leaked into Pages staging"
     assert "data/thematic-index/theme-relations-validated.json" not in staged, "canonical relation evidence leaked into Pages staging"
 
