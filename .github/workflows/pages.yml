@@ -191,6 +191,8 @@ jobs:
         run: node scripts/smoke_faq_097_098.mjs
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
+      - name: Vérifier les objets cités et leurs liens exacts vers les psaumes
+        run: node scripts/smoke_objects.mjs
       - name: Vérifier les fichiers du nouveau site blanc et la confidentialité des notes
         run: |
           test -f _site/index.html
