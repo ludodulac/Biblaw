@@ -1,0 +1,42 @@
+name: Vérifier les Anges du collier de Gabriel
+on:
+  pull_request:
+    paths:
+      - "data/anges-gabriel.json"
+      - "scripts/build_angels_public.py"
+      - "scripts/smoke_angels.mjs"
+      - "scripts/build_pages_site.py"
+      - "js/biblaw-angels.js"
+      - "css/biblaw-angels.css"
+      - "index.html"
+      - "js/biblaw.js"
+      - ".github/workflows/angels.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data/anges-gabriel.json"
+      - "scripts/build_angels_public.py"
+      - "scripts/smoke_angels.mjs"
+      - "js/biblaw-angels.js"
+      - ".github/workflows/angels.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  angels:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v7
+      - name: Vérifier la syntaxe des fichiers
+        run: |
+          python -m py_compile scripts/build_angels_public.py scripts/build_pages_site.py
+          node --check js/biblaw-angels.js
+          node --check js/biblaw.js
+      - name: Rechercher les 156 vertus dans les psaumes canoniques
+        run: |
+          python scripts/build_angels_public.py
+          mkdir -p _site/data
+          cp data/angels-public.json _site/data/angels-public.json
+      - name: Vérifier les 12 et 144 Anges, les références et l'interface
+        run: node scripts/smoke_angels.mjs

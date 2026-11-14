@@ -17,6 +17,7 @@ from build_masters_public import generate as generate_public_masters
 from build_objects_public import generate as generate_public_objects
 from build_nature_public import generate as generate_public_nature
 from build_contrary_public import generate as generate_public_contrary
+from build_angels_public import generate as generate_public_angels
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -34,6 +35,7 @@ PUBLIC_FILES = (
     "css/biblaw-objects.css",
     "css/biblaw-nature.css",
     "css/biblaw-contrary.css",
+    "css/biblaw-angels.css",
     "css/biblaw-donations.css",
     "css/theme-entry.css",
     "css/validation.css",
@@ -46,6 +48,7 @@ PUBLIC_FILES = (
     "js/biblaw-objects.js",
     "js/biblaw-nature.js",
     "js/biblaw-contrary.js",
+    "js/biblaw-angels.js",
     "js/biblaw-donations.js",
     "js/biblaw-autocomplete.js",
     "js/biblaw.js",
@@ -54,6 +57,7 @@ PUBLIC_FILES = (
     "js/theme-rubrics.js",
     "js/validation.js",
     "data/browser-search-catalog.json",
+    "data/anges-gabriel.json",
     "data/note-themes-public-073.json",
     "data/faq-public-085.json",
     "data/faq-090-1.json",
@@ -164,14 +168,22 @@ def main() -> None:
     assert contrary_stats["psalms"] == 1158 and contrary_stats["tested"] > 120
     assert contrary_stats["present"] > 20 and contrary_stats["citations"] > 60
 
+    # All 12 + 144 virtue entries are derived from canonical Psalm/verse text.
+    angels_public = OUT / "data" / "angels-public.json"
+    angel_stats = generate_public_angels(angels_public)
+    assert angel_stats["psalms"] == 1158 and angel_stats["perles"] == 12 and angel_stats["fils"] == 144
+
     staged = sorted(str(path.relative_to(OUT)) for path in OUT.rglob("*") if path.is_file())
-    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json", "data/nature-public.json", "data/contrary-public.json")), (
+    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json", "data/nature-public.json", "data/contrary-public.json", "data/angels-public.json")), (
         "Pages staging contains a file outside the explicit allow-list"
     )
     # The donation menu is part of the public UI. Its CSS and JS must always be deployed.
     # Without these two assets the button appears grey/unstyled and never opens.
     assert (OUT / "css" / "biblaw-donations.css").is_file(), "Donations stylesheet missing from deployed site"
     assert (OUT / "js" / "biblaw-donations.js").is_file(), "Donations script missing from deployed site"
+    assert (OUT / "js" / "biblaw-angels.js").is_file(), "Gabriel angels script missing from deployed site"
+    assert (OUT / "css" / "biblaw-angels.css").is_file(), "Gabriel angels stylesheet missing from deployed site"
+    assert (OUT / "data" / "anges-gabriel.json").is_file(), "Gabriel angels directory missing from deployed site"
     public_html = (OUT / "index.html").read_text(encoding="utf-8")
     assert 'id="donateDetails"' in public_html, "Donations menu missing from deployed HTML"
     assert 'biblaw-donations.css' in public_html, "Donations stylesheet must be linked in deployed HTML"
