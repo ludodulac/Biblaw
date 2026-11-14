@@ -191,6 +191,10 @@ jobs:
         run: node scripts/smoke_faq_097_098.mjs
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
+      - name: Vérifier les Forces contraires, leur contexte et leurs références
+        run: |
+          node --check js/biblaw-contrary.js
+          node scripts/smoke_contrary.mjs
       - name: Vérifier les éléments naturels et les liens vers les psaumes
         run: |
           node --check js/biblaw-nature.js
