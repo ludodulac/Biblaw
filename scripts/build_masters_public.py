@@ -48,7 +48,7 @@ MASTERS = (
     ("salomon", "Salomon", ("Salomon",), False),
     ("socrate", "Socrate", ("Socrate",), False),
     ("thot", "Thot", ("Thot", "Thoth"), False),
-    ("zoroastre", "Zoroastre", ("Zoroastre", "Zarathoustra", "Zarathustra", "Zarathus(h)tra"), False),
+    ("zoroastre", "Zoroastre", ("Zoroastre", "Zarathoustra", "Zarathustra"), False),
 )
 
 def normalize(value: str) -> str:
@@ -61,33 +61,34 @@ def pattern_for(names: tuple[str, ...]) -> re.Pattern:
     for name in names:
         # Spaces, apostrophes and dashes vary in historical transcriptions.
         key = normalize(name)
-        escaped = re.escape(key).replace(r"\ ", r"[\s\-‑–—]+")
-        escaped = escaped.replace(r"\-", r"[\s\-‑–—]+")
+        escaped = re.escape(key).replace(r"\-", r"[\s\-‑–—]+")
+        escaped = escaped.replace(r"\ ", r"[\s\-‑–—]+")
         escaped = escaped.replace("’", "['’]").replace("'", "['’]")
         terms.append(escaped)
     return re.compile(r"(?<![a-z])(?:" + "|".join(sorted(set(terms), key=len, reverse=True)) + r")(?![a-z])")
 
 def snippet(original: str, match: re.Match, width: int = 215) -> str:
-    """Human-readable verbatim context around a match (no invented paraphrase)."""
-    text = re.sub(r"\s+", " ", original).strip()
-    if len(text) <= width:
-        return text
-    # Match offsets are from normalized text. Unicode decompositions can change
-    # string lengths, so locate a nearby term in normalized text then take an
-    # approximately matching position in the original, falling back safely.
-    offset = match.start()
-    before = max(0, offset - 77)
-    after = min(len(text), before + width)
+    """Verbatim fragment, with an offset mapped from normalized to source text."""
+    original = str(original)
+    if len(original) <= width:
+        return re.sub(r"\s+", " ", original).strip()
+    positions = []
+    for index, char in enumerate(original):
+        positions.extend([index] * len(normalize(char)))
+    start = positions[match.start()]
+    before = max(0, start - 72)
+    after = min(len(original), before + width)
     before = max(0, after - width)
     if before:
-        boundary = text.find(" ", before, min(before + 16, len(text)))
-        if boundary > 0:
+        boundary = original.find(" ", before, min(before + 16, len(original)))
+        if boundary > before:
             before = boundary + 1
-    if after < len(text):
-        boundary = text.rfind(" ", max(before, after - 16), after)
+    if after < len(original):
+        boundary = original.rfind(" ", max(before, after - 16), after)
         if boundary > before:
             after = boundary
-    return ("…" if before else "") + text[before:after].strip() + ("…" if after < len(text) else "")
+    excerpt = re.sub(r"\s+", " ", original[before:after]).strip()
+    return ("…" if before else "") + excerpt + ("…" if after < len(original) else "")
 
 def generate(destination: Path) -> dict:
     files = sorted(PSALMS.glob("book-*/psalm-*.json"))
@@ -166,6 +167,7 @@ def generate(destination: Path) -> dict:
               "withMentions": sum(e["verseCount"] > 0 for e in entries),
               "links": sum(e["verseCount"] for e in entries)}
     print("Maîtres de la tradition Biblaw:", result)
+    print("Noms attestés:", ", ".join(f"{e['label']} ({e['verseCount']})" for e in entries if e["verseCount"]))
     return result
 
 if __name__ == "__main__":
