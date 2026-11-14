@@ -16,6 +16,7 @@ from build_numbers_public import generate as generate_public_numbers
 from build_masters_public import generate as generate_public_masters
 from build_objects_public import generate as generate_public_objects
 from build_nature_public import generate as generate_public_nature
+from build_contrary_public import generate as generate_public_contrary
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -32,6 +33,7 @@ PUBLIC_FILES = (
     "css/biblaw-masters.css",
     "css/biblaw-objects.css",
     "css/biblaw-nature.css",
+    "css/biblaw-contrary.css",
     "css/biblaw-donations.css",
     "css/theme-entry.css",
     "css/validation.css",
@@ -43,6 +45,7 @@ PUBLIC_FILES = (
     "js/biblaw-masters.js",
     "js/biblaw-objects.js",
     "js/biblaw-nature.js",
+    "js/biblaw-contrary.js",
     "js/biblaw-donations.js",
     "js/biblaw-autocomplete.js",
     "js/biblaw.js",
@@ -154,8 +157,15 @@ def main() -> None:
     assert nature_stats["psalms"] == 1158 and nature_stats["tested"] > 130
     assert nature_stats["present"] > 30 and nature_stats["citations"] > 100
 
+    # A documentary, categorised glossary of explicitly attested expressions.
+    # Neutral physical phenomena (e.g. electricity) are never claimed to be evil.
+    contrary_public = OUT / "data" / "contrary-public.json"
+    contrary_stats = generate_public_contrary(contrary_public)
+    assert contrary_stats["psalms"] == 1158 and contrary_stats["tested"] > 120
+    assert contrary_stats["present"] > 20 and contrary_stats["citations"] > 60
+
     staged = sorted(str(path.relative_to(OUT)) for path in OUT.rglob("*") if path.is_file())
-    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json", "data/nature-public.json")), (
+    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json", "data/nature-public.json", "data/contrary-public.json")), (
         "Pages staging contains a file outside the explicit allow-list"
     )
     # The donation menu is part of the public UI. Its CSS and JS must always be deployed.
