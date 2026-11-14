@@ -32,6 +32,7 @@ PUBLIC_FILES = (
     "css/biblaw-masters.css",
     "css/biblaw-objects.css",
     "css/biblaw-nature.css",
+    "css/biblaw-donations.css",
     "css/theme-entry.css",
     "css/validation.css",
     "js/theme-suggestion-engine.js",
@@ -42,6 +43,7 @@ PUBLIC_FILES = (
     "js/biblaw-masters.js",
     "js/biblaw-objects.js",
     "js/biblaw-nature.js",
+    "js/biblaw-donations.js",
     "js/biblaw-autocomplete.js",
     "js/biblaw.js",
     "js/theme-relations.js",
@@ -156,6 +158,14 @@ def main() -> None:
     assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json", "data/nature-public.json")), (
         "Pages staging contains a file outside the explicit allow-list"
     )
+    # The donation menu is part of the public UI. Its CSS and JS must always be deployed.
+    # Without these two assets the button appears grey/unstyled and never opens.
+    assert (OUT / "css" / "biblaw-donations.css").is_file(), "Donations stylesheet missing from deployed site"
+    assert (OUT / "js" / "biblaw-donations.js").is_file(), "Donations script missing from deployed site"
+    public_html = (OUT / "index.html").read_text(encoding="utf-8")
+    assert 'id="donateDetails"' in public_html, "Donations menu missing from deployed HTML"
+    assert 'biblaw-donations.css?v=002' in public_html, "Donations stylesheet must be linked in deployed HTML"
+    assert 'biblaw-donations.js?v=002' in public_html, "Donations script must be linked in deployed HTML"
     assert not any(path.startswith(FORBIDDEN_PREFIXES) for path in staged), "internal repository data leaked into Pages staging"
     assert "data/thematic-index/theme-relations-validated.json" not in staged, "canonical relation evidence leaked into Pages staging"
 
