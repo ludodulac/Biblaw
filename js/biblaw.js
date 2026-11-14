@@ -260,6 +260,7 @@
       globalThis.BiblawObjects?.setRecords(state.records);
       globalThis.BiblawNature?.setRecords(state.records);
       globalThis.BiblawContrary?.setRecords(state.records);
+      globalThis.BiblawAngels?.setRecords(state.records);
       document.dispatchEvent(new CustomEvent('biblaw:corpus-ready',{
         detail:{themes:state.themeDirectory}
       }));
@@ -829,6 +830,7 @@
     globalThis.BiblawObjects?.close();
     globalThis.BiblawNature?.close();
     globalThis.BiblawContrary?.close();
+    globalThis.BiblawAngels?.close();
     closeBibleThemes();
     BiblawFAQ.close();
     $('faqToggle').setAttribute('aria-expanded','false');
@@ -851,6 +853,7 @@
     globalThis.BiblawObjects?.close();
     globalThis.BiblawNature?.close();
     globalThis.BiblawContrary?.close();
+    globalThis.BiblawAngels?.close();
     $('faqToggle').setAttribute('aria-expanded','false');
     $('notesThemeFilter').value='';
     $('notesArchiveSearch').value='';
@@ -1142,6 +1145,7 @@
   globalThis.BiblawObjects?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawNature?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawContrary?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
+  globalThis.BiblawAngels?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawAnimals?.setOpenNote(async id=>{
     if(!await loadArchivedNotes())throw Error('Notes indisponibles.');
     if(!state.archivedNoteById.has(id))throw Error('Note introuvable.');
@@ -1176,6 +1180,14 @@
     showSearchView();
     globalThis.BiblawContrary?.open();
   });
+  $('perlesToggle')?.addEventListener('click',()=>{
+    showSearchView();
+    globalThis.BiblawAngels?.open('perles');
+  });
+  $('filsToggle')?.addEventListener('click',()=>{
+    showSearchView();
+    globalThis.BiblawAngels?.open('fils');
+  });
   $('faqReturnFromPsalm').onclick=()=>$('recordDialog').close();
   $('recordDialog').addEventListener('close',()=>{
     BiblawFAQ.restoreAfterPsalm();
@@ -1185,6 +1197,7 @@
     globalThis.BiblawObjects?.restoreAfterPsalm();
     globalThis.BiblawNature?.restoreAfterPsalm();
     globalThis.BiblawContrary?.restoreAfterPsalm();
+    globalThis.BiblawAngels?.restoreAfterPsalm();
     $('faqReturnFromPsalm').hidden=true;
   });
   $('notesLibraryToggle').addEventListener('click',()=>toggleNotesLibrary());
@@ -1210,6 +1223,7 @@
   globalThis.BiblawObjects?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawNature?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawContrary?.setCorpusLoading(ensureCorpusReady);
+  globalThis.BiblawAngels?.setCorpusLoading(ensureCorpusReady);
   // Lien documentaire depuis Espace Jeunesse : lecture du psaume et surlignage
   // des versets cités, sans modifier le texte ni le fonctionnement de la recherche.
   const sourceParams=new URLSearchParams(window.location?.search||'');
