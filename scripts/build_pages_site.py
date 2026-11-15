@@ -34,6 +34,7 @@ PUBLIC_FILES = (
     "css/biblaw-masters.css",
     "css/biblaw-objects.css",
     "css/biblaw-nature.css",
+    "css/biblaw-bread.css",
     "css/biblaw-contrary.css",
     "css/biblaw-angels.css",
     "css/biblaw-donations.css",
@@ -47,6 +48,7 @@ PUBLIC_FILES = (
     "js/biblaw-masters.js",
     "js/biblaw-objects.js",
     "js/biblaw-nature.js",
+    "js/biblaw-bread.js",
     "js/biblaw-contrary.js",
     "js/biblaw-angels.js",
     "js/biblaw-donations.js",
@@ -58,6 +60,7 @@ PUBLIC_FILES = (
     "js/validation.js",
     "data/browser-search-catalog.json",
     "data/anges-gabriel.json",
+    "data/bread-public.json",
     "data/note-themes-public-073.json",
     "data/faq-public-085.json",
     "data/faq-090-1.json",
@@ -184,10 +187,17 @@ def main() -> None:
     assert (OUT / "js" / "biblaw-angels.js").is_file(), "Gabriel angels script missing from deployed site"
     assert (OUT / "css" / "biblaw-angels.css").is_file(), "Gabriel angels stylesheet missing from deployed site"
     assert (OUT / "data" / "anges-gabriel.json").is_file(), "Gabriel angels directory missing from deployed site"
+    # Bread navigation loads JSON on demand; omit any asset and the menu appears empty.
+    assert (OUT / "css" / "biblaw-bread.css").is_file(), "Bread stylesheet missing from deployed site"
+    assert (OUT / "js" / "biblaw-bread.js").is_file(), "Bread navigation script missing from deployed site"
+    assert (OUT / "data" / "bread-public.json").is_file(), "Bread directory missing from deployed site"
     public_html = (OUT / "index.html").read_text(encoding="utf-8")
     assert 'id="donateDetails"' in public_html, "Donations menu missing from deployed HTML"
     assert 'biblaw-donations.css' in public_html, "Donations stylesheet must be linked in deployed HTML"
     assert 'biblaw-donations.js' in public_html, "Donations script must be linked in deployed HTML"
+    assert 'id="breadToggle"' in public_html, "Bread button missing from deployed HTML"
+    assert 'biblaw-bread.js' in public_html, "Bread script must be linked in deployed HTML"
+    assert 'biblaw-bread.css' in public_html, "Bread stylesheet must be linked in deployed HTML"
     assert not any(path.startswith(FORBIDDEN_PREFIXES) for path in staged), "internal repository data leaked into Pages staging"
     assert "data/thematic-index/theme-relations-validated.json" not in staged, "canonical relation evidence leaked into Pages staging"
 
