@@ -186,7 +186,7 @@
         fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); }),
         fetch('data/note-themes-public-073.json?v=079').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); }),
         fetch('data/thematic-index/theme-semantic-navigation-public.json').then(r => { if (!r.ok) throw Error('theme-semantic-navigation-public'); return r.json(); }),
-        fetch('data/annexes/textes.json?v=001').then(r => { if (!r.ok) throw Error('annexes-36-45'); return r.json(); })
+        fetch('data/annexes/textes.json?v=002').then(r => { if (!r.ok) throw Error('annexes-textes'); return r.json(); })
       ]);
       $('corpusStats').textContent='Préparation des index de recherche…';
       await yieldToBrowser();
@@ -956,7 +956,12 @@
         r.source.printedPageStart+(r.source.printedPageStart===r.source.printedPageEnd?'':' à '+r.source.printedPageEnd)+'.</p>';
       const warning='<p class="notes-review-warning" role="note"><strong>Transcription des photographies à relire.</strong> '+
         'Vérifiez le texte imprimé avant de le citer.</p>';
-      const paragraphs=String(r.text||'').split(/\n\n+/).map(part=>'<p>'+modeAwareText(part)+'</p>').join('');
+      const paragraphs=Array.isArray(r.sections)&&r.sections.length?
+        (r.introduction?'<p>'+modeAwareText(r.introduction)+'</p>':'')+
+        r.sections.map(section=>'<section class="annex-section"><h3>'+esc(section.title)+'</h3>'+
+          String(section.text||'').split(/\n\n+/).map(part=>'<p>'+modeAwareText(part)+'</p>').join('')+
+          '</section>').join(''):
+        String(r.text||'').split(/\n\n+/).map(part=>'<p>'+modeAwareText(part)+'</p>').join('');
       state.readerHtml={psalm:warning+source+'<div class="annex-reader">'+paragraphs+'</div>',prayer:''};
     }else{
       const preliminary=r.publicationStatus==='unverified';
