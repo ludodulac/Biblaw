@@ -53,14 +53,23 @@ class BreadIndexTests(unittest.TestCase):
         for element_id in ("breadToggle", "breadLibrary", "breadCategories",
                            "breadBack", "breadReferences", "breadMethod"):
             self.assertEqual(html.count(f'id="{element_id}"'), 1)
-        self.assertIn('js/biblaw-bread.js?v=001', html)
-        self.assertIn('css/biblaw-bread.css?v=001', html)
+        self.assertIn('js/biblaw-bread.js?v=002', html)
+        self.assertIn('css/biblaw-bread.css?v=002', html)
         self.assertIn("BiblawBread?.open()", app)
         self.assertIn("BiblawBread?.setCorpusLoading(ensureCorpusReady)", app)
         self.assertIn("BiblawBread?.restoreAfterPsalm()", app)
         self.assertIn("sourceParams.get('rubrique')==='pain'", app)
         self.assertIn("window.location?.hash==='#breadLibrary'", app)
         self.assertIn('js/biblaw.js?v=146', html)
+
+
+    def test_bread_assets_are_in_pages_deploy_allow_list(self):
+        builder = (ROOT / "scripts" / "build_pages_site.py").read_text(encoding="utf-8")
+        workflow = (ROOT / ".github" / "workflows" / "pages.yml").read_text(encoding="utf-8")
+        for path in ("css/biblaw-bread.css", "js/biblaw-bread.js", "data/bread-public.json"):
+            self.assertIn(f'"{path}"', builder)
+            self.assertIn(f"test -f _site/{path}", workflow)
+
 
 
 if __name__ == "__main__":
