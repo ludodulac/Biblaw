@@ -18,6 +18,7 @@ from build_objects_public import generate as generate_public_objects
 from build_nature_public import generate as generate_public_nature
 from build_contrary_public import generate as generate_public_contrary
 from build_angels_public import generate as generate_public_angels
+from build_magic_public import generate as generate_public_magic
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -35,6 +36,7 @@ PUBLIC_FILES = (
     "css/biblaw-objects.css",
     "css/biblaw-nature.css",
     "css/biblaw-bread.css",
+    "css/biblaw-magic.css",
     "css/biblaw-contrary.css",
     "css/biblaw-angels.css",
     "css/biblaw-donations.css",
@@ -49,6 +51,7 @@ PUBLIC_FILES = (
     "js/biblaw-objects.js",
     "js/biblaw-nature.js",
     "js/biblaw-bread.js",
+    "js/biblaw-magic.js",
     "js/biblaw-contrary.js",
     "js/biblaw-angels.js",
     "js/biblaw-donations.js",
@@ -176,8 +179,14 @@ def main() -> None:
     angel_stats = generate_public_angels(angels_public)
     assert angel_stats["psalms"] == 1158 and angel_stats["perles"] == 12 and angel_stats["fils"] == 144
 
+    # Curated, verse-verified guide + complete literal concordance of magic terms.
+    magic_public = OUT / "data" / "magic-public.json"
+    magic_stats = generate_public_magic(magic_public)
+    assert magic_stats["psalms"] == 1158 and magic_stats["parts"] >= 9
+    assert magic_stats["curatedVerses"] >= 130 and magic_stats["lexicalVerses"] >= 150
+
     staged = sorted(str(path.relative_to(OUT)) for path in OUT.rglob("*") if path.is_file())
-    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json", "data/nature-public.json", "data/contrary-public.json", "data/angels-public.json")), (
+    assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json", "data/nature-public.json", "data/contrary-public.json", "data/angels-public.json", "data/magic-public.json")), (
         "Pages staging contains a file outside the explicit allow-list"
     )
     # The donation menu is part of the public UI. Its CSS and JS must always be deployed.
@@ -191,6 +200,9 @@ def main() -> None:
     assert (OUT / "css" / "biblaw-bread.css").is_file(), "Bread stylesheet missing from deployed site"
     assert (OUT / "js" / "biblaw-bread.js").is_file(), "Bread navigation script missing from deployed site"
     assert (OUT / "data" / "bread-public.json").is_file(), "Bread directory missing from deployed site"
+    assert (OUT / "css" / "biblaw-magic.css").is_file(), "Magic stylesheet missing from deployed site"
+    assert (OUT / "js" / "biblaw-magic.js").is_file(), "Magic script missing from deployed site"
+    assert (OUT / "data" / "magic-public.json").is_file(), "Magic directory missing from deployed site"
     public_html = (OUT / "index.html").read_text(encoding="utf-8")
     assert 'id="donateDetails"' in public_html, "Donations menu missing from deployed HTML"
     assert 'biblaw-donations.css' in public_html, "Donations stylesheet must be linked in deployed HTML"
@@ -198,6 +210,9 @@ def main() -> None:
     assert 'id="breadToggle"' in public_html, "Bread button missing from deployed HTML"
     assert 'biblaw-bread.js' in public_html, "Bread script must be linked in deployed HTML"
     assert 'biblaw-bread.css' in public_html, "Bread stylesheet must be linked in deployed HTML"
+    assert 'id="magicToggle"' in public_html, "Magic button missing from deployed HTML"
+    assert 'biblaw-magic.js' in public_html, "Magic script must be linked in deployed HTML"
+    assert 'biblaw-magic.css' in public_html, "Magic stylesheet must be linked in deployed HTML"
     assert not any(path.startswith(FORBIDDEN_PREFIXES) for path in staged), "internal repository data leaked into Pages staging"
     assert "data/thematic-index/theme-relations-validated.json" not in staged, "canonical relation evidence leaked into Pages staging"
 

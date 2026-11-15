@@ -191,6 +191,12 @@ jobs:
         run: node scripts/smoke_faq_097_098.mjs
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
+      - name: Vérifier la magie, les psaumes cités et les occurrences de tout le corpus
+        run: |
+          python -m unittest discover -s tests -p test_magic_index.py
+          node --check js/biblaw-magic.js
+          node --check js/biblaw.js
+          node scripts/smoke_magic.mjs
       - name: Vérifier les Anges-perles et les 144 Anges-fils et leurs références
         run: |
           node --check js/biblaw-angels.js
@@ -214,6 +220,10 @@ jobs:
           test -f _site/css/biblaw-bread.css
           test -f _site/js/biblaw-bread.js
           test -f _site/data/bread-public.json
+          test -f _site/css/biblaw-magic.css
+          test -f _site/js/biblaw-magic.js
+          test -f _site/data/magic-public.json
+          grep -q 'id="magicToggle"' _site/index.html
           grep -q 'id="breadToggle"' _site/index.html
           grep -q 'biblaw-donations.css' _site/index.html
           test -f _site/css/theme-entry.css
