@@ -259,6 +259,7 @@
       globalThis.BiblawMasters?.setRecords(state.records);
       globalThis.BiblawObjects?.setRecords(state.records);
       globalThis.BiblawNature?.setRecords(state.records);
+      globalThis.BiblawBread?.setRecords(state.records);
       globalThis.BiblawContrary?.setRecords(state.records);
       globalThis.BiblawAngels?.setRecords(state.records);
       document.dispatchEvent(new CustomEvent('biblaw:corpus-ready',{
@@ -829,6 +830,7 @@
     globalThis.BiblawMasters?.close();
     globalThis.BiblawObjects?.close();
     globalThis.BiblawNature?.close();
+    globalThis.BiblawBread?.close();
     globalThis.BiblawContrary?.close();
     globalThis.BiblawAngels?.close();
     closeBibleThemes();
@@ -852,6 +854,7 @@
     globalThis.BiblawMasters?.close();
     globalThis.BiblawObjects?.close();
     globalThis.BiblawNature?.close();
+    globalThis.BiblawBread?.close();
     globalThis.BiblawContrary?.close();
     globalThis.BiblawAngels?.close();
     $('faqToggle').setAttribute('aria-expanded','false');
@@ -885,6 +888,7 @@
       document.body.classList.contains('view-masters')?'← Retour au maître':
       document.body.classList.contains('view-objects')?'← Retour à l’objet':
       document.body.classList.contains('view-nature')?'← Retour à l’élément naturel':
+      document.body.classList.contains('view-bread')?'← Retour au pain':
       document.body.classList.contains('view-contrary')?'← Retour aux forces contraires':'← Retour à la réponse';
     $('faqVerseContext').hidden=!targetVerses?.size;
     $('faqVerseContext').textContent=targetVerses?.size?
@@ -1144,6 +1148,7 @@
   globalThis.BiblawMasters?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawObjects?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawNature?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
+  globalThis.BiblawBread?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawContrary?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawAngels?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawAnimals?.setOpenNote(async id=>{
@@ -1176,6 +1181,10 @@
     showSearchView();
     globalThis.BiblawNature?.open();
   });
+  $('breadToggle')?.addEventListener('click',()=>{
+    showSearchView();
+    globalThis.BiblawBread?.open();
+  });
   $('contraryToggle')?.addEventListener('click',()=>{
     showSearchView();
     globalThis.BiblawContrary?.open();
@@ -1196,6 +1205,7 @@
     globalThis.BiblawMasters?.restoreAfterPsalm();
     globalThis.BiblawObjects?.restoreAfterPsalm();
     globalThis.BiblawNature?.restoreAfterPsalm();
+    globalThis.BiblawBread?.restoreAfterPsalm();
     globalThis.BiblawContrary?.restoreAfterPsalm();
     globalThis.BiblawAngels?.restoreAfterPsalm();
     $('faqReturnFromPsalm').hidden=true;
@@ -1222,6 +1232,7 @@
   globalThis.BiblawMasters?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawObjects?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawNature?.setCorpusLoading(ensureCorpusReady);
+  globalThis.BiblawBread?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawContrary?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawAngels?.setCorpusLoading(ensureCorpusReady);
   // Lien documentaire depuis Espace Jeunesse : lecture du psaume et surlignage
