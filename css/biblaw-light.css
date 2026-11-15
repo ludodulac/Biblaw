@@ -848,3 +848,7 @@ body.view-annexes #secondaryTools {display:none!important}
 .annex-record-item .notes-record-preview {line-height:1.5}
 .annex-reader {font-size:1rem;line-height:1.75}
 .annex-reader p {margin:0 0 1.1rem;white-space:pre-wrap}
+
+#annexFilter {display:block;box-sizing:border-box;width:100%;padding:.75rem .95rem;margin:.3rem 0 .7rem;border:1px solid #c9bfb2;border-radius:.85rem;background:#fff;color:#30271e;font:inherit;min-height:2.8rem}
+#annexFilter:focus-visible {outline:2px solid #8c6c3b;outline-offset:2px}
+#downloadRecord[hidden] {display:none!important}
