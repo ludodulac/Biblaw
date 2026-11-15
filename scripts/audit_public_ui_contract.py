@@ -24,7 +24,13 @@ assert "bookMeta||'Corpus structuré'" in js
 assert 'id="downloadRecord"' in html and 'Télécharger PDF' in html
 assert 'js/biblaw-pdf.js' in html and 'BiblawPDF.download(state.active,scope)' in js
 assert 'name="readerPart" value="psalm"' in html and 'name="readerPart" value="prayer"' in html and 'name="readerPart" value="both"' in html
-assert 'id="sourceScope"' in html and html.count('name="sourceType"') == 3
+assert 'id="sourceScope"' in html and html.count('name="sourceType"') == 4
+for source_type in ('psalm','prayer','note','annex'):
+    assert f'name="sourceType" value="{source_type}"' in html, f"Missing {source_type} corpus filter"
+assert 'id="annexLibraryToggle"' in html and 'id="annexLibrary"' in html
+assert 'data/annexes/textes.json' in js and '...annexes.records' in js
+assert "r.recordType==='annex'" in js
+
 assert 'r.attachedPrayer?.text' in js
 assert 'id="query2"' in html and 'Thème 2 facultatif' in html
 assert 'id="secondaryTools"' in html and 'Autres recherches et filtres' in html
