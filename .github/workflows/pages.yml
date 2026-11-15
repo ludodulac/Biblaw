@@ -211,6 +211,10 @@ jobs:
           test -f _site/css/biblaw-light.css
           test -f _site/css/biblaw-donations.css
           test -f _site/js/biblaw-donations.js
+          test -f _site/css/biblaw-bread.css
+          test -f _site/js/biblaw-bread.js
+          test -f _site/data/bread-public.json
+          grep -q 'id="breadToggle"' _site/index.html
           grep -q 'biblaw-donations.css' _site/index.html
           test -f _site/css/theme-entry.css
           test -f _site/js/theme-entry.js
