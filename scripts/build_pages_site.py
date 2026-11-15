@@ -8,6 +8,7 @@ accessible editorial validation workshop.
 """
 from __future__ import annotations
 
+import json
 import shutil
 from pathlib import Path
 from build_public_note_extractions import generate as generate_public_notes
@@ -186,6 +187,15 @@ def main() -> None:
     assert magic_stats["psalms"] == 1158 and magic_stats["parts"] >= 9
     assert magic_stats["curatedVerses"] >= 130 and magic_stats["lexicalVerses"] >= 150
 
+    # Annexes are append-only numbered sections. Check source before publication.
+    annex = json.loads((OUT / "data" / "annexes" / "textes.json").read_text(encoding="utf-8"))
+    annex_records = annex.get("records", [])
+    assert annex.get("version") == 1 and annex.get("recordCount") == len(annex_records) and len(annex_records) >= 11
+    assert [r.get("number") for r in annex_records] == list(range(1, len(annex_records)+1))
+    assert len({r["id"] for r in annex_records}) == len(annex_records)
+    assert all(r.get("recordType") == "annex" and r.get("title") and r.get("text") and
+               r.get("validation", {}).get("status") == "transcribed-needs-review"
+               for r in annex_records)
     staged = sorted(str(path.relative_to(OUT)) for path in OUT.rglob("*") if path.is_file())
     assert staged == sorted((*PUBLIC_FILES, "data/notes-extracted-public.json", "data/animals-public.json", "data/numbers-public.json", "data/masters-public.json", "data/objects-public.json", "data/nature-public.json", "data/contrary-public.json", "data/angels-public.json", "data/magic-public.json")), (
         "Pages staging contains a file outside the explicit allow-list"
