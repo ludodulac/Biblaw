@@ -1249,6 +1249,11 @@
       const selected=[...new Set(requested)].filter(n=>record.verses.some(v=>v.number===n));
       open(sourcePsalm,selected.length?selected:null);
     }).catch(error=>console.error('Lien vers le psaume indisponible',error));
+  }else if(sourceParams.get('rubrique')==='pain' || window.location?.hash==='#breadLibrary'){
+    // Lien direct vers le pain : ouvrir immédiatement ses catégories, sans
+    // obliger le visiteur à retrouver le bouton tout en bas de la page.
+    showSearchView();
+    globalThis.BiblawBread?.open();
   }else if(window.location?.hash==='#numbersLibrary'){
     showSearchView();
     globalThis.BiblawNumbers?.open();
