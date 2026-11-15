@@ -59,7 +59,7 @@
   const parsePsalmNumberQuery = value => { const match=norm(value).match(/^(?:psaume\s+)?([0-9]{1,4})$/); if(!match)return null; const number=Number(match[1]); return Number.isInteger(number)&&number>0?number:null; };
   const selectedTypes = () => new Set([...document.querySelectorAll('[name=sourceType]:checked')].map(x => x.value));
   const archangelName = value => ({ michael: 'Michaël', gabriel: 'Gabriel', raphael: 'Raphaël', ouriel: 'Ouriel' }[value] || value || '');
-  const label = r => r.recordType === 'psalm' ? `Psaume ${r.number} · ${archangelName(r.archangel)}` : r.recordType === 'master-prayer' ? `Prière ${r.number} · ${archangelName(r.archangel)}` : `Note · ${archangelName(r.archangel)}`;
+  const label = r => r.recordType === 'psalm' ? `Psaume ${r.number} · ${archangelName(r.archangel)}` : r.recordType === 'master-prayer' ? `Prière ${r.number} · ${archangelName(r.archangel)}` : r.recordType === 'annex' ? `Texte ${r.number} · Annexe` : `Note · ${archangelName(r.archangel)}`;
   const importanceLabel = value => ({ central: 'Central', important: 'Important', related: 'Lié' }[value] || 'Indexé');
   const importanceRank = value => ({ central: 0, important: 1, related: 2 }[value] ?? 3);
   const publishPresentationState = detail => document.dispatchEvent(new CustomEvent('biblaw:presentation-state', { detail }));
@@ -177,7 +177,7 @@
   }
   async function load() {
     try {
-      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime, noteThemesIndex, semanticNavigation] = await Promise.all([
+      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime, noteThemesIndex, semanticNavigation, annexes] = await Promise.all([
         fetch('data/browser-search-catalog.json').then(r => { if (!r.ok) throw Error('browser-search-catalog'); return r.json(); }),
         fetch('data/thematic-index/theme-directory-public.json').then(r => { if (!r.ok) throw Error('theme-directory'); return r.json(); }),
         fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); }),
@@ -185,7 +185,8 @@
         Promise.resolve({targets:[]}),
         fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); }),
         fetch('data/note-themes-public-073.json?v=079').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); }),
-        fetch('data/thematic-index/theme-semantic-navigation-public.json').then(r => { if (!r.ok) throw Error('theme-semantic-navigation-public'); return r.json(); })
+        fetch('data/thematic-index/theme-semantic-navigation-public.json').then(r => { if (!r.ok) throw Error('theme-semantic-navigation-public'); return r.json(); }),
+        fetch('data/annexes/introduction-36-45.json?v=001').then(r => { if (!r.ok) throw Error('annexes-36-45'); return r.json(); })
       ]);
       $('corpusStats').textContent='Préparation des index de recherche…';
       await yieldToBrowser();
@@ -206,8 +207,13 @@
          semanticNavigation.semanticMerging!==false)
         throw Error('La navigation par mots associés est incohérente avec les thèmes canoniques.');
       state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime, semanticNavigation);
-      state.records = bundle.records || [];
+      // Searchable source records, separate from canonical Psalm thematic associations.
+      if(annexes.version!==1 || annexes.recordCount!==11 || !Array.isArray(annexes.records) ||
+         annexes.records.some((r,i)=>r.recordType!=='annex'||r.number!==i+1||!r.id||!r.title||!r.text||
+           r.validation?.status!=='transcribed-needs-review')) throw Error('Invalid annex transcription dataset');
+      state.records = [...(bundle.records || []), ...annexes.records];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
+      if(state.recordById.size!==state.records.length) throw Error('Duplicate annex or corpus identifiers');
       // No note becomes public through classification: all IDs must already exist in browser catalog.
       const publishedNotes = new Set(state.records.filter(r => type(r)==='note').map(r=>r.id));
       if (publishedNotes.size!==11 || noteThemesIndex.publicNoteCount!==11) throw Error('Public note count mismatch');
@@ -248,7 +254,7 @@
       const prayers = new Map(state.records.filter(r => r.recordType === 'master-prayer').map(r => [r.appliesToPsalmId, r]));
       state.records.filter(r => r.recordType === 'psalm').forEach(r => { if (prayers.has(r.id)) r.attachedPrayer = prayers.get(r.id); });
       const psalms = state.records.filter(r => r.recordType === 'psalm'), verses = psalms.reduce((n, r) => n + (r.verses || []).length, 0);
-      $('corpusStats').textContent = `${psalms.length} psaumes · ${verses} versets · ${state.themeDirectory.length} thèmes indexés`;
+      $('corpusStats').textContent = `${psalms.length} psaumes · ${verses} versets · ${state.themeDirectory.length} thèmes indexés · ${annexes.recordCount} textes annexes`;
       updateExpansionControl();
       indexPublicWords();
       // Supply the records only after the search engine is ready.
@@ -838,9 +844,11 @@
     closeBibleThemes();
     BiblawFAQ.close();
     $('faqToggle').setAttribute('aria-expanded','false');
-    document.body.classList.remove('view-notes');
+    document.body.classList.remove('view-notes','view-annexes');
     $('notesLibrary').hidden=true;
     $('notesLibraryToggle').setAttribute('aria-expanded','false');
+    $('annexLibrary').hidden=true;
+    $('annexLibraryToggle').setAttribute('aria-expanded','false');
   }
   function toggleNotesLibrary(forceClose=false) {
     const panel=$('notesLibrary'),show=!forceClose&&panel.hidden;
@@ -850,6 +858,9 @@
       window.scrollTo({top:0,behavior:'smooth'});
       return;
     }
+    $('annexLibrary').hidden=true;
+    document.body.classList.remove('view-annexes');
+    $('annexLibraryToggle').setAttribute('aria-expanded','false');
     BiblawFAQ.close();
     globalThis.BiblawAnimals?.close();
     globalThis.BiblawNumbers?.close();
@@ -869,6 +880,38 @@
     $('notesLibraryToggle').setAttribute('aria-expanded','true');
     showNotesTab('archive');
     window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function renderAnnexDirectory(){
+    const list=$('annexList'), filter=norm($('annexFilter').value||'');
+    list.replaceChildren();
+    const annexes=state.records.filter(r=>r.recordType==='annex').sort((a,b)=>a.number-b.number);
+    const visible=annexes.filter(r=>!filter||norm([r.title,r.text].join(' ')).includes(filter));
+    $('annexCount').textContent=visible.length+' texte'+(visible.length>1?'s':'')+' sur '+annexes.length;
+    for(const record of visible){
+      const button=document.createElement('button');
+      button.type='button';button.className='notes-record-item annex-record-item';
+      const title=document.createElement('strong');title.textContent='Texte '+record.number+' — '+record.title;
+      const location=document.createElement('span');location.className='notes-record-location';
+      location.textContent='Page'+(record.source.printedPageStart!==record.source.printedPageEnd?'s':'')+
+        ' '+record.source.printedPageStart+(record.source.printedPageStart!==record.source.printedPageEnd?
+        '–'+record.source.printedPageEnd:'');
+      const excerpt=document.createElement('span');excerpt.className='notes-record-preview';
+      excerpt.textContent=record.text.slice(0,230).replace(/\s+/g,' ')+'…';
+      button.append(title,location,excerpt);button.addEventListener('click',()=>open(record.id));
+      list.append(button);
+    }
+    if(!visible.length){const p=document.createElement('p');p.textContent='Aucun texte ne contient cette recherche.';list.append(p);}
+  }
+  async function toggleAnnexLibrary(){
+    if(!$('annexLibrary').hidden){showSearchView();$('annexLibraryToggle').focus({preventScroll:true});return;}
+    showSearchView();
+    $('annexLibrary').hidden=false;
+    $('annexLibraryToggle').setAttribute('aria-expanded','true');
+    document.body.classList.add('view-annexes');
+    $('annexCount').textContent='Chargement des textes annexes…';
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(await ensureCorpusReady()){if(!$('annexLibrary').hidden)renderAnnexDirectory();}
+    else $('annexCount').textContent='Impossible de charger les textes. Vous pouvez réessayer.';
   }
   function focusSearchOutcome() {
     const target=$('ambiguityPanel').hidden?document.querySelector('.results-section'):$('ambiguityPanel');
@@ -900,11 +943,20 @@
     $('readerChoice').hidden=!hasPrayer;
     document.querySelectorAll('[name=readerPart]').forEach(input=>{input.checked=input.value===state.readerPart;});
     $('readerExportStatus').hidden=true;
+    $('downloadRecord').hidden=r.recordType==='annex';
     if(r.recordType==='psalm'){
       const verses=(r.verses||[]).map(v=>`<div class="verse${targetVerses?.has(Number(v.number))?' faq-cited-verse':''}" data-verse="${esc(v.number)}"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${modeAwareText(v.text)}</div></div>`).join('');
       const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`;
       const prayerBlock=hasPrayer?`<section class="prayer-block"><h3>Prière ${r.attachedPrayer.number}</h3>${modeAwareText(r.attachedPrayer.text)}</section>`:'';
       state.readerHtml={psalm:verses+themesBlock,prayer:prayerBlock};
+    }else if(r.recordType==='annex'){
+      const source='<p class="notes-source-reference">Bible essénienne · introduction, page'+
+        (r.source.printedPageStart===r.source.printedPageEnd?' ':'s ')+
+        r.source.printedPageStart+(r.source.printedPageStart===r.source.printedPageEnd?'':' à '+r.source.printedPageEnd)+'.</p>';
+      const warning='<p class="notes-review-warning" role="note"><strong>Transcription des photographies à relire.</strong> '+
+        'Vérifiez le texte imprimé avant de le citer.</p>';
+      const paragraphs=String(r.text||'').split(/\n\n+/).map(part=>'<p>'+modeAwareText(part)+'</p>').join('');
+      state.readerHtml={psalm:warning+source+'<div class="annex-reader">'+paragraphs+'</div>',prayer:''};
     }else{
       const preliminary=r.publicationStatus==='unverified';
       const source=r.sourcePdfPage?
@@ -1220,6 +1272,9 @@
     globalThis.BiblawAngels?.restoreAfterPsalm();
     $('faqReturnFromPsalm').hidden=true;
   });
+  $('annexLibraryToggle').addEventListener('click',()=>void toggleAnnexLibrary());
+  $('annexLibraryClose').addEventListener('click',()=>toggleAnnexLibrary());
+  $('annexFilter').addEventListener('input',()=>{if(state.corpusReady)renderAnnexDirectory();});
   $('notesLibraryToggle').addEventListener('click',()=>toggleNotesLibrary());
   $('notesLibraryClose').addEventListener('click',()=>{
     if(state.notesTab==='published'){
