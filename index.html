@@ -23,6 +23,7 @@
 <label><input type="checkbox" name="sourceType" value="psalm" checked> Psaumes</label>
 <label><input type="checkbox" name="sourceType" value="prayer"> Prières</label>
 <label><input type="checkbox" name="sourceType" value="note"> Notes</label>
+<label><input type="checkbox" name="sourceType" value="annex"> Textes annexes</label>
 
 <div class="archangel-picker"><label for="archangelFilter">Archange :</label><select class="input" id="archangelFilter" aria-label="Choisir un archange dans la liste déroulante"><option value="">Tous les archanges</option><option value="michael">Michaël</option><option value="gabriel">Gabriel</option><option value="raphael">Raphaël</option><option value="ouriel">Ouriel</option></select></div>
 </fieldset><p id="scopeInfo" class="scope-info" hidden></p><div class="theme-search-row">
@@ -42,6 +43,7 @@
   <button id="popularQuestionsToggle" type="button" hidden aria-expanded="false" aria-controls="popularQuestionsPanel">Questions populaires</button>
   <button id="advancedSearchToggle" type="button" hidden aria-expanded="false" aria-controls="query2">Croiser deux termes</button>
   <button id="notesLibraryToggle" class="popular-questions-toggle" type="button" aria-expanded="false" aria-controls="notesLibrary">Toutes les notes</button>
+  <button id="annexLibraryToggle" class="popular-questions-toggle" type="button" aria-expanded="false" aria-controls="annexLibrary">Textes annexes</button>
   <button id="bibleThemesToggle" class="popular-questions-toggle" type="button" aria-expanded="false" aria-controls="bibleThemesLibrary" aria-label="Index des thèmes">Index des thèmes</button>
   <button id="animalsToggle" class="popular-questions-toggle" type="button" aria-expanded="false" aria-controls="animalsLibrary">Les animaux dans la Bible</button>
   <button id="numbersToggle" class="popular-questions-toggle" type="button" aria-expanded="false" aria-controls="numbersLibrary">Chiffres et nombres dans la Bible</button>
@@ -75,6 +77,14 @@
   <p id="notesPublishedInfo" class="notes-library-info" hidden>Ces 11 notes sont déjà publiées dans BIBLAW et classées sous 26 sujets. Elles sont également incluses dans les 280 notes ci-dessus.</p>
   <div id="notesThemePicker" hidden><label for="notesThemeFilter">Chercher un sujet</label><input id="notesThemeFilter" type="search" placeholder="Ex. Ménora, calendrier maya…" autocomplete="off"><div id="notesThemeList" class="notes-theme-list" aria-label="Sujets classés alphabétiquement"></div><div id="notesReferenceSection" class="notes-reference-section" hidden><h3>Note de renvoi</h3><div id="notesReferenceList" class="notes-result-list"></div></div></div>
   <div id="notesThemeResults" hidden><h3 id="notesSelectedTheme"></h3><div id="notesResultList" class="notes-result-list"></div></div>
+</section>
+<section id="annexLibrary" class="panel notes-library annex-library" hidden aria-labelledby="annexLibraryTitle">
+  <div class="notes-library-header"><h2 id="annexLibraryTitle">Textes annexes</h2><button id="annexLibraryClose" type="button" class="secondary">← Retour</button></div>
+  <p class="notes-library-info">Introduction · pages imprimées 36 à 45. Ces transcriptions proviennent de photographies et restent à relire sur l'original.</p>
+  <label class="notes-archive-label" for="annexFilter">Rechercher dans les titres et les textes</label>
+  <input id="annexFilter" type="search" placeholder="Ex. psaumes, Lumière, Archanges…" autocomplete="off">
+  <p id="annexCount" class="notes-archive-count" role="status" aria-live="polite">Chargement des textes annexes…</p>
+  <div id="annexList" class="annex-list"></div>
 </section>
 <section id="faqLibrary" class="panel faq-library" aria-labelledby="faqLibraryTitle" hidden>
   <div class="faq-header">
@@ -347,4 +357,4 @@
 <label><input type="radio" name="readerPart" value="psalm"> Psaume</label>
 <label><input type="radio" name="readerPart" value="prayer"> Prière</label>
 <label><input type="radio" name="readerPart" value="both" checked> Les deux</label>
-</fieldset><p id="faqVerseContext" class="faq-verse-context" hidden></p><div id="dialogContent" class="dialog-content"></div><p id="readerExportStatus" class="reader-export-status" role="status" aria-live="polite" hidden></p><div class="dialog-actions"><button id="faqReturnFromPsalm" class="secondary" type="button" hidden>← Retour à la réponse</button><button id="printRecord" class="secondary">Imprimer</button><button id="downloadRecord" class="primary" type="button">Télécharger PDF</button></div></dialog><script src="js/theme-suggestion-engine.js?v=132"></script><script src="js/biblaw-pdf.js?v=085"></script><script src="js/biblaw-autocomplete.js?v=083"></script><script src="js/biblaw-faq.js?v=105"></script><script src="js/biblaw-animals.js?v=003"></script><script src="js/biblaw-numbers.js?v=005"></script><script src="js/biblaw-masters.js?v=001"></script><script src="js/biblaw-objects.js?v=001"></script><script src="js/biblaw-nature.js?v=001"></script><script src="js/biblaw-contrary.js?v=001"></script><script src="js/biblaw-angels.js?v=001"></script><script src="js/biblaw-bread.js?v=002"></script><script src="js/biblaw-magic.js?v=001"></script><script src="js/biblaw.js?v=147"></script><script src="js/theme-relations.js?v=104"></script><script src="js/theme-entry.js"></script><script src="js/theme-rubrics.js"></script><script src="js/biblaw-donations.js?v=002"></script></body></html>
+</fieldset><p id="faqVerseContext" class="faq-verse-context" hidden></p><div id="dialogContent" class="dialog-content"></div><p id="readerExportStatus" class="reader-export-status" role="status" aria-live="polite" hidden></p><div class="dialog-actions"><button id="faqReturnFromPsalm" class="secondary" type="button" hidden>← Retour à la réponse</button><button id="printRecord" class="secondary">Imprimer</button><button id="downloadRecord" class="primary" type="button">Télécharger PDF</button></div></dialog><script src="js/theme-suggestion-engine.js?v=132"></script><script src="js/biblaw-pdf.js?v=085"></script><script src="js/biblaw-autocomplete.js?v=083"></script><script src="js/biblaw-faq.js?v=105"></script><script src="js/biblaw-animals.js?v=003"></script><script src="js/biblaw-numbers.js?v=005"></script><script src="js/biblaw-masters.js?v=001"></script><script src="js/biblaw-objects.js?v=001"></script><script src="js/biblaw-nature.js?v=001"></script><script src="js/biblaw-contrary.js?v=001"></script><script src="js/biblaw-angels.js?v=001"></script><script src="js/biblaw-bread.js?v=002"></script><script src="js/biblaw-magic.js?v=001"></script><script src="js/biblaw.js?v=148"></script><script src="js/theme-relations.js?v=104"></script><script src="js/theme-entry.js"></script><script src="js/theme-rubrics.js"></script><script src="js/biblaw-donations.js?v=002"></script></body></html>
