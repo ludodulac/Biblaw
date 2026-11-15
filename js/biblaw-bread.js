@@ -106,7 +106,7 @@
   async function load() {
     if (state.parts) return true;
     if (state.loading) return state.loading;
-    state.loading = fetch('data/bread-public.json?v=001').then(async response => {
+    state.loading = fetch('data/bread-public.json?v=002').then(async response => {
       if (!response.ok) throw Error('Répertoire du pain indisponible.');
       const data = await response.json();
       if (data.schemaVersion !== 1 || !Array.isArray(data.parts) || !data.parts.length)
