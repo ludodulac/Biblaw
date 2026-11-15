@@ -69,7 +69,7 @@
     };
     const category = r => (r.recordType==='master-prayer'?'prayer':r.recordType)+':'+(r.archangel||'');
     function addRecord(record) {
-      if(!record||!['psalm','master-prayer','note'].includes(record.recordType))return;
+      if(!record||!['psalm','master-prayer','note','annex'].includes(record.recordType))return;
       // Only passed records, which must come from the browser's public catalog.
       const scope=category(record);
       const fragments=record.recordType==='psalm'?
