@@ -852,3 +852,6 @@ body.view-annexes #secondaryTools {display:none!important}
 #annexFilter {display:block;box-sizing:border-box;width:100%;padding:.75rem .95rem;margin:.3rem 0 .7rem;border:1px solid #c9bfb2;border-radius:.85rem;background:#fff;color:#30271e;font:inherit;min-height:2.8rem}
 #annexFilter:focus-visible {outline:2px solid #8c6c3b;outline-offset:2px}
 #downloadRecord[hidden] {display:none!important}
+
+.annex-reader .annex-section {border-top:1px solid #e5ddd0;padding-top:.85rem;margin-top:1.2rem}
+.annex-reader .annex-section h3 {font-size:1.02rem;font-weight:700;color:#483c2c;line-height:1.35;margin:0 0 .6rem}
