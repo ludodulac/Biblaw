@@ -58,6 +58,9 @@ class BreadIndexTests(unittest.TestCase):
         self.assertIn("BiblawBread?.open()", app)
         self.assertIn("BiblawBread?.setCorpusLoading(ensureCorpusReady)", app)
         self.assertIn("BiblawBread?.restoreAfterPsalm()", app)
+        self.assertIn("sourceParams.get('rubrique')==='pain'", app)
+        self.assertIn("window.location?.hash==='#breadLibrary'", app)
+        self.assertIn('js/biblaw.js?v=146', html)
 
 
 if __name__ == "__main__":
