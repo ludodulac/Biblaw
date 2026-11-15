@@ -62,7 +62,7 @@ PUBLIC_FILES = (
     "js/theme-rubrics.js",
     "js/validation.js",
     "data/browser-search-catalog.json",
-    "data/annexes/introduction-36-45.json",
+    "data/annexes/textes.json",
     "data/anges-gabriel.json",
     "data/bread-public.json",
     "data/note-themes-public-073.json",
@@ -213,7 +213,7 @@ def main() -> None:
     assert 'biblaw-bread.css' in public_html, "Bread stylesheet must be linked in deployed HTML"
     assert 'id="annexLibraryToggle"' in public_html, "Annex navigation missing from deployed HTML"
     assert 'value="annex"' in public_html, "Annex search checkbox missing from deployed HTML"
-    assert (OUT / "data" / "annexes" / "introduction-36-45.json").is_file(), "Annex transcription missing from deployed site"
+    assert (OUT / "data" / "annexes" / "textes.json").is_file(), "Annex transcription missing from deployed site"
     assert 'id="magicToggle"' in public_html, "Magic button missing from deployed HTML"
     assert 'biblaw-magic.js' in public_html, "Magic script must be linked in deployed HTML"
     assert 'biblaw-magic.css' in public_html, "Magic stylesheet must be linked in deployed HTML"
