@@ -57,7 +57,7 @@ assert.ok(!html.includes('class="search-query-label"'),'No duplicate label above
 assert.ok(html.includes('<div hidden aria-hidden="true"><input id="query2"'), '084 must not show a second search field');
 assert.ok(css.includes('background:#fff2d4')&&css.includes('border:2px solid #b7832f'),
   'Writing field must be visually distinct from Archangel selector');
-assert.ok(html.includes('biblaw-autocomplete.js?v=083') && Number(html.match(/biblaw-light\.css\?v=(\d+)/)?.[1])>=83);
+assert.ok(Number(html.match(/biblaw-autocomplete\.js\?v=(\d+)/)?.[1])>=83 && Number(html.match(/biblaw-light\.css\?v=(\d+)/)?.[1])>=83);
 assert.ok(app.includes('rankExactWordPairs(query,query2)'),'Keep two-word ranking intact');
 assert.ok(app.includes('publishedNotes.size!==11'),'Keep eleven public notes guard');
 assert.ok(app.includes('correctMobileQueryDuplicate();'),'Keep duplicated input guard');
