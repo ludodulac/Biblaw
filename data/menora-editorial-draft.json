@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "partial-verified-references",
-  "method": "Synthèses éditoriales, non citations. Chaque lien indiqué a été vérifié dans un fichier canonique du corpus. Les correspondances sont thématiques et non des définitions officielles de la menora. Les thèmes sans lien restent en cours de recherche.",
+  "method": "Textes de synthèse éditoriale : ils ne sont pas des citations de la Bible essénienne. Les liens présents pointent vers des versets vérifiés dans les fichiers canoniques, et établissent un rapprochement thématique, non une attribution explicite de la menora. Les rubriques sans référence directe sont signalées comme telles.",
   "items": [
     {
       "id": "rouge",
@@ -15,6 +15,12 @@
           "recordId": "book-22-psalm-156",
           "verses": [
             24
+          ]
+        },
+        {
+          "recordId": "book-01-psalm-010",
+          "verses": [
+            5
           ]
         }
       ],
@@ -34,7 +40,20 @@
       "counterVirtue": "Dissipation",
       "virtueSummary": "L'enthousiasme donne de l'élan à l'engagement et soutient la continuité de l'effort vers un idéal élevé.",
       "counterSummary": "La dissipation disperse l'attention et les forces, multiplie les distractions et détourne l'être de la direction qu'il a choisie.",
-      "virtueReferences": [],
+      "virtueReferences": [
+        {
+          "recordId": "book-01-psalm-017",
+          "verses": [
+            1
+          ]
+        },
+        {
+          "recordId": "book-01-psalm-013",
+          "verses": [
+            6
+          ]
+        }
+      ],
       "counterReferences": []
     },
     {
@@ -58,7 +77,14 @@
           ]
         }
       ],
-      "counterReferences": []
+      "counterReferences": [
+        {
+          "recordId": "book-01-psalm-006",
+          "verses": [
+            5
+          ]
+        }
+      ]
     },
     {
       "id": "vert",
@@ -155,6 +181,12 @@
           "recordId": "book-18-psalm-127",
           "verses": [
             13
+          ]
+        },
+        {
+          "recordId": "book-01-psalm-015",
+          "verses": [
+            7
           ]
         }
       ],
