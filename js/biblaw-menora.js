@@ -52,7 +52,7 @@
           const link = document.createElement('button');
           link.type = 'button';
           link.className = 'faq-psalm-link';
-          link.textContent = 'Lire ' + ref.recordId + ' · verset ' + ref.verses.join(', ');
+          link.textContent = 'Lire le psaume ' + Number(ref.recordId.match(/psalm-(\d+)$/)?.[1] || 0) + ' · ' + (ref.verses.length > 1 ? 'versets ' : 'verset ') + ref.verses.join(', ');
           link.addEventListener('click', async () => {
             try {
               if (!state.openPsalm) throw Error('Lecteur indisponible.');
