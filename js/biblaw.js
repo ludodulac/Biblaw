@@ -1255,14 +1255,6 @@
     showSearchView();
     globalThis.BiblawMagic?.open();
   });
-  $('menoraVirtuesToggle')?.addEventListener('click',()=>{
-    showSearchView();
-    globalThis.BiblawMenora?.open('virtues');
-  });
-  $('menoraContraryToggle')?.addEventListener('click',()=>{
-    showSearchView();
-    globalThis.BiblawMenora?.open('contrary');
-  });
   $('contraryToggle')?.addEventListener('click',()=>{
     showSearchView();
     globalThis.BiblawContrary?.open();
