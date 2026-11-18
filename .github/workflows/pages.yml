@@ -211,6 +211,16 @@ jobs:
           node scripts/smoke_nature.mjs
       - name: Vérifier les objets cités et leurs liens exacts vers les psaumes
         run: node scripts/smoke_objects.mjs
+      - name: Vérifier le fonctionnement des boutons menora
+        run: |
+          node --check js/biblaw-menora.js
+          node --check js/biblaw.js
+          test -f _site/js/biblaw-menora.js
+          test -f _site/data/menora-editorial-draft.json
+          grep -q 'id="menoraVirtuesToggle"' _site/index.html
+          grep -q 'id="menoraContraryToggle"' _site/index.html
+          grep -q 'js/biblaw-menora.js?v=002' _site/index.html
+          grep -q 'js/biblaw.js?v=151' _site/index.html
       - name: Vérifier les fichiers du nouveau site blanc et la confidentialité des notes
         run: |
           test -f _site/index.html
