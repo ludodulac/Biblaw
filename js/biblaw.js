@@ -268,6 +268,7 @@
       globalThis.BiblawNature?.setRecords(state.records);
       globalThis.BiblawBread?.setRecords(state.records);
       globalThis.BiblawMagic?.setRecords(state.records);
+      globalThis.BiblawMenora?.setRecords(state.records);
       globalThis.BiblawContrary?.setRecords(state.records);
       globalThis.BiblawAngels?.setRecords(state.records);
       document.dispatchEvent(new CustomEvent('biblaw:corpus-ready',{
@@ -1315,6 +1316,7 @@
   globalThis.BiblawNature?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawBread?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawMagic?.setCorpusLoading(ensureCorpusReady);
+  globalThis.BiblawMenora?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawContrary?.setCorpusLoading(ensureCorpusReady);
   globalThis.BiblawAngels?.setCorpusLoading(ensureCorpusReady);
   // Lien documentaire depuis Espace Jeunesse : lecture du psaume et surlignage
