@@ -219,8 +219,8 @@ jobs:
           test -f _site/data/menora-editorial-draft.json
           grep -q 'id="menoraVirtuesToggle"' _site/index.html
           grep -q 'id="menoraContraryToggle"' _site/index.html
-          grep -q 'js/biblaw-menora.js?v=002' _site/index.html
-          grep -q 'js/biblaw.js?v=151' _site/index.html
+          grep -q 'js/biblaw-menora.js?v=003' _site/index.html
+          grep -q 'js/biblaw.js?v=152' _site/index.html
       - name: Vérifier les fichiers du nouveau site blanc et la confidentialité des notes
         run: |
           test -f _site/index.html
