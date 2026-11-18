@@ -44,10 +44,11 @@
       const summary = document.createElement('p');
       summary.textContent = kind === 'virtues' ? item.virtueSummary : item.counterSummary;
       article.append(heading, summary);
-      if (Array.isArray(item.references) && item.references.length) {
+      const selectedRefs = kind === 'virtues' ? item.virtueReferences : item.counterReferences;
+      if (Array.isArray(selectedRefs) && selectedRefs.length) {
         const references = document.createElement('div');
         references.className = 'menora-references';
-        for (const ref of item.references) {
+        for (const ref of selectedRefs) {
           const link = document.createElement('button');
           link.type = 'button';
           link.className = 'faq-psalm-link';
@@ -76,7 +77,7 @@
       const items = await load();
       if (state.current !== kind) return;
       render(kind, items);
-      status.textContent = 'Synthèses documentaires en cours de vérification : références des psaumes à venir.';
+      status.textContent = 'Premières références vérifiées dans les psaumes ; recherche documentaire encore en cours.';
     } catch (error) {
       if (state.current === kind) status.textContent = error.message;
     }
