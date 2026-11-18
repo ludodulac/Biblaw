@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
-  const state = {items: null, loading: null, current: null};
+  const state = {items: null, loading: null, current: null, openPsalm: null, corpusLoading: null, recordsReady: false};
   const modes = {
     virtues: {toggle: 'menoraVirtuesToggle', panel: 'menoraVirtuesLibrary', title: 'Les sept vertus de la menora'},
     contrary: {toggle: 'menoraContraryToggle', panel: 'menoraContraryLibrary', title: 'Les sept contre-vertus de la menora'}
@@ -53,12 +53,25 @@
           link.type = 'button';
           link.className = 'faq-psalm-link';
           link.textContent = 'Lire ' + ref.recordId + ' · verset ' + ref.verses.join(', ');
-          link.addEventListener('click', () => {
-            if (typeof state.openPsalm === 'function') state.openPsalm(ref);
+          link.addEventListener('click', async () => {
+            try {
+              if (!state.openPsalm) throw Error('Lecteur indisponible.');
+              if (!state.recordsReady) {
+                if (!state.corpusLoading || !await state.corpusLoading()) throw Error('Corpus indisponible.');
+              }
+              if (state.current === kind) state.openPsalm(ref);
+            } catch (error) {
+              panel.querySelector('.menora-status').textContent = error.message || 'Lecture impossible.';
+            }
           });
           references.append(link);
         }
         article.append(references);
+      } else {
+        const notice = document.createElement('p');
+        notice.className = 'menora-no-reference';
+        notice.textContent = 'Aucun verset directement vérifié pour cette rubrique à ce stade.';
+        article.append(notice);
       }
       container.append(article);
     }
@@ -94,5 +107,7 @@
   globalThis.BiblawMenora = Object.freeze({
     open, close,
     setOpenPsalm(callback) {state.openPsalm = callback;},
+    setCorpusLoading(callback) {state.corpusLoading = callback;},
+    setRecords(records) {state.recordsReady = Array.isArray(records) && records.some(record => record.recordType === 'psalm');},
   });
 })();
