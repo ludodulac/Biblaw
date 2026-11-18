@@ -17,7 +17,7 @@
   }
   async function load() {
     if (state.items) return state.items;
-    if (!state.loading) state.loading = fetch('data/menora-editorial-draft.json?v=001')
+    if (!state.loading) state.loading = fetch('data/menora-editorial-draft.json?v=002')
       .then(response => {
         if (!response.ok) throw new Error('Dossier de la menora indisponible.');
         return response.json();
@@ -51,8 +51,10 @@
         for (const ref of selectedRefs) {
           const link = document.createElement('button');
           link.type = 'button';
-          link.className = 'faq-psalm-link';
-          link.textContent = 'Lire le psaume ' + Number(ref.recordId.match(/psalm-(\d+)$/)?.[1] || 0) + ' · ' + (ref.verses.length > 1 ? 'versets ' : 'verset ') + ref.verses.join(', ');
+          link.className = 'faq-psalm-link animals-reference';
+          const archangel = {michael: 'Michaël', gabriel: 'Gabriel', raphael: 'Raphaël', ouriel: 'Ouriel'}[ref.archangel] || ref.archangel;
+          link.textContent = 'Psaume ' + ref.number + ' de ' + archangel + ', verset' + (ref.verses.length > 1 ? 's ' : ' ') + ref.verses.join(', ');
+          link.title = 'Lire les versets dans le psaume';
           link.addEventListener('click', async () => {
             try {
               if (!state.openPsalm) throw Error('Lecteur indisponible.');
