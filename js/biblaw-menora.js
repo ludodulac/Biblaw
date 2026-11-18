@@ -97,6 +97,13 @@
     window.scrollTo({top: 0, behavior: 'instant'});
   }
   for (const [kind, mode] of Object.entries(modes)) {
+    $(mode.toggle).addEventListener('click', () => {
+      for (const name of ['BiblawMagic', 'BiblawBread', 'BiblawAnimals', 'BiblawNumbers', 'BiblawMasters', 'BiblawObjects', 'BiblawNature', 'BiblawContrary', 'BiblawAngels']) globalThis[name]?.close?.();
+      document.querySelectorAll('.faq-library').forEach(other => {
+        if (other !== $(mode.panel) && other !== $(modes.virtues.panel) && other !== $(modes.contrary.panel)) other.hidden = true;
+      });
+      open(kind);
+    });
     $(mode.panel).querySelector('.menora-back').addEventListener('click', () => {
       close();
       window.scrollTo({top: 0, behavior: 'instant'});
