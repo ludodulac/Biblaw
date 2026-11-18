@@ -840,6 +840,7 @@
     globalThis.BiblawNature?.close();
     globalThis.BiblawBread?.close();
     globalThis.BiblawMagic?.close();
+    globalThis.BiblawMenora?.close();
     globalThis.BiblawContrary?.close();
     globalThis.BiblawAngels?.close();
     closeBibleThemes();
@@ -1212,6 +1213,7 @@
   globalThis.BiblawNature?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawBread?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawMagic?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
+  globalThis.BiblawMenora?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawContrary?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawAngels?.setOpenPsalm(ref=>open(ref.recordId,ref.verses));
   globalThis.BiblawAnimals?.setOpenNote(async id=>{
@@ -1251,6 +1253,14 @@
   $('magicToggle')?.addEventListener('click',()=>{
     showSearchView();
     globalThis.BiblawMagic?.open();
+  });
+  $('menoraVirtuesToggle')?.addEventListener('click',()=>{
+    showSearchView();
+    globalThis.BiblawMenora?.open('virtues');
+  });
+  $('menoraContraryToggle')?.addEventListener('click',()=>{
+    showSearchView();
+    globalThis.BiblawMenora?.open('contrary');
   });
   $('contraryToggle')?.addEventListener('click',()=>{
     showSearchView();
