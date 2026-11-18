@@ -53,6 +53,7 @@ PUBLIC_FILES = (
     "js/biblaw-nature.js",
     "js/biblaw-bread.js",
     "js/biblaw-magic.js",
+    "js/biblaw-menora.js",
     "js/biblaw-contrary.js",
     "js/biblaw-angels.js",
     "js/biblaw-donations.js",
@@ -66,6 +67,7 @@ PUBLIC_FILES = (
     "data/annexes/textes.json",
     "data/anges-gabriel.json",
     "data/bread-public.json",
+    "data/menora-editorial-draft.json",
     "data/note-themes-public-073.json",
     "data/faq-public-085.json",
     "data/faq-090-1.json",
@@ -214,6 +216,8 @@ def main() -> None:
     assert (OUT / "css" / "biblaw-magic.css").is_file(), "Magic stylesheet missing from deployed site"
     assert (OUT / "js" / "biblaw-magic.js").is_file(), "Magic script missing from deployed site"
     assert (OUT / "data" / "magic-public.json").is_file(), "Magic directory missing from deployed site"
+    assert (OUT / "js" / "biblaw-menora.js").is_file(), "Menora script missing from deployed site"
+    assert (OUT / "data" / "menora-editorial-draft.json").is_file(), "Menora directory missing from deployed site"
     public_html = (OUT / "index.html").read_text(encoding="utf-8")
     assert 'id="donateDetails"' in public_html, "Donations menu missing from deployed HTML"
     assert 'biblaw-donations.css' in public_html, "Donations stylesheet must be linked in deployed HTML"
