@@ -22,7 +22,7 @@ assert "thematic||themeMatches?'Voir le psaume source':'Voir'" in js
 assert 'data-open=' in js and 'data-open=' not in html
 assert "bookMeta||'Corpus structuré'" in js
 assert 'id="downloadRecord"' in html and 'Télécharger PDF' in html
-assert 'js/biblaw-pdf.js' in html and 'BiblawPDF.download(state.active,scope)' in js
+assert 'js/biblaw-pdf.js' in html and 'BiblawPDF.download(state.noteExportRecord||state.active,scope)' in js
 assert 'name="readerPart" value="psalm"' in html and 'name="readerPart" value="prayer"' in html and 'name="readerPart" value="both"' in html
 assert 'id="sourceScope"' in html and html.count('name="sourceType"') == 4
 for source_type in ('psalm','prayer','note','annex'):
