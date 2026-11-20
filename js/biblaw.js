@@ -983,16 +983,16 @@
       const openedRecord=r;
       void loadArchivedNotes().then(ok=>{
         if(!ok || state.active!==openedRecord || !$('recordDialog').open)return;
-        const match=/^book-(\\d+)-psalm-(\\d+)-note-\\d+$/.exec(r.id||'');
+        const match=/^book-(\d+)-psalm-(\d+)-note-\d+$/.exec(r.id||'');
         if(!match)return;
         const book=Number(match[1]),psalm=Number(match[2]);
         const candidates=state.archivedNotes.filter(note=>
           Number(note.bookNumber)===book && Number(note.psalmNumber)===psalm);
         if(!candidates.length)return;
         const summary=String(r.summary||r.text||'');
-        const words=new Set(norm(summary).split(/\\s+/).filter(w=>w.length>=5));
+        const words=new Set(norm(summary).split(/\s+/).filter(w=>w.length>=5));
         const ranked=candidates.map(note=>{
-          const noteWords=new Set(norm(note.text||'').split(/\\s+/).filter(w=>w.length>=5));
+          const noteWords=new Set(norm(note.text||'').split(/\s+/).filter(w=>w.length>=5));
           const overlap=[...words].filter(w=>noteWords.has(w)).length;
           return {note,overlap,ratio:words.size?overlap/words.size:0};
         }).sort((a,b)=>b.overlap-a.overlap||b.ratio-a.ratio);
