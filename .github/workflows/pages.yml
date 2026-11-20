@@ -189,6 +189,8 @@ jobs:
         run: python scripts/audit_faq_097_098.py
       - name: Tester cent deux réponses, soixante-neuf liens et les PDF 097/098
         run: node scripts/smoke_faq_097_098.mjs
+      - name: Repérer les transcriptions de notes qui se chevauchent (audit sans modification)
+        run: python scripts/audit_notes_280_overlap.py
       - name: Construire la charge utile Pages minimale
         run: python scripts/build_pages_site.py
       - name: Vérifier la magie, les psaumes cités et les occurrences de tout le corpus
