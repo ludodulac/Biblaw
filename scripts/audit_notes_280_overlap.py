@@ -20,7 +20,7 @@ for note in records:
     by_psalm[n["appliesTo"]["recordId"]].append(note)
 
 def clean(value):
-    return re.sub(r"\\s+", " ", str(value or "")).strip().casefold()
+    return re.sub(r"\s+", " ", str(value or "")).strip().casefold()
 
 flags = []
 for psalm, group in sorted(by_psalm.items()):
