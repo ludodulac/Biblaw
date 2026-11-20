@@ -977,42 +977,41 @@
     }
     renderReader();
     $('recordDialog').showModal();
-    // A curated note number is not always the extracted note number.
-    // Compare text inside the same source Psalm; never trust the numeric ID alone.
-    if(r.recordType==='note'){
-      const activeId=r.id;
+    // The public catalog contains editorial summaries, while the archive has
+    // the extracted source text. Numeric note suffixes can differ between them.
+    if(r.recordType==='note' && !r.publicationStatus){
+      const openedRecord=r;
       void loadArchivedNotes().then(ok=>{
-        if(!ok || state.active?.id!==activeId || !$('recordDialog').open)return;
+        if(!ok || state.active!==openedRecord || !$('recordDialog').open)return;
         const match=/^book-(\\d+)-psalm-(\\d+)-note-\\d+$/.exec(r.id||'');
         if(!match)return;
         const book=Number(match[1]),psalm=Number(match[2]);
-        const candidates=state.archivedNotes.filter(note=>Number(note.bookNumber)===book&&Number(note.psalmNumber)===psalm);
+        const candidates=state.archivedNotes.filter(note=>
+          Number(note.bookNumber)===book && Number(note.psalmNumber)===psalm);
         if(!candidates.length)return;
-        const original=String(r.summary||r.text||'');
-        const words=new Set(norm(original).split(/\\s+/).filter(word=>word.length>=5));
+        const summary=String(r.summary||r.text||'');
+        const words=new Set(norm(summary).split(/\\s+/).filter(w=>w.length>=5));
         const ranked=candidates.map(note=>{
-          const noteWords=new Set(norm(note.text||'').split(/\\s+/).filter(word=>word.length>=5));
-          const overlap=[...words].filter(word=>noteWords.has(word)).length;
+          const noteWords=new Set(norm(note.text||'').split(/\\s+/).filter(w=>w.length>=5));
+          const overlap=[...words].filter(w=>noteWords.has(w)).length;
           return {note,overlap,ratio:words.size?overlap/words.size:0};
         }).sort((a,b)=>b.overlap-a.overlap||b.ratio-a.ratio);
         const best=ranked[0],second=ranked[1];
-        const unique=best&&best.overlap>=3&&best.ratio>=0.35&&(!second||best.overlap>=second.overlap+2);
-        const target=$('dialogContent');
-        const block=document.createElement('section');
-        block.className='notes-archive-matches';
-        block.style.marginTop='1.5rem';
-        const heading=document.createElement('h3');heading.textContent='Notes originales extraites de ce psaume';block.append(heading);
-        const info=document.createElement('p');
-        info.textContent=unique?'Correspondance textuelle probable (numérotation à vérifier sur le PDF).':'Plusieurs notes sont présentes dans ce psaume : vérifiez leur correspondance dans le document source.';
-        block.append(info);
-        for(const {note} of (unique?[best]:ranked)){
-          const section=document.createElement('section');section.className='prayer-block';
-          const title=document.createElement('strong');title.textContent='Livre '+note.bookNumber+' · Psaume '+note.psalmNumber+' · Note extraite '+note.noteNumber;
-          const warning=document.createElement('p');warning.textContent='Transcription à vérifier · Page PDF '+(note.sourcePdfPage||'non indiquée');
-          const full=document.createElement('p');full.textContent=note.text;
-          section.append(title,warning,full);block.append(section);
-        }
-        target.append(block);
+        const confident=best && best.overlap>=3 && best.ratio>=0.35 &&
+          (!second || best.overlap>=second.overlap+2);
+        // Show all candidates rather than silently substituting a wrong note.
+        const selected=confident?[best]:ranked;
+        const noteHtml=selected.map(({note})=>{
+          const ref='Livre '+note.bookNumber+' · Psaume '+note.psalmNumber+
+            ' · Note extraite '+note.noteNumber;
+          const page=note.sourcePdfPage?' · Page PDF '+note.sourcePdfPage:'';
+          return '<section class="prayer-block"><h4>'+esc(ref)+'</h4>'+
+            '<p class="notes-source-reference">Transcription extraite à vérifier'+esc(page)+'</p>'+
+            '<div>'+modeAwareText(note.text)+'</div></section>';
+        }).join('');
+        const title=confident?'Transcription correspondante probable':'Transcriptions du même psaume (correspondance à vérifier)';
+        state.readerHtml.psalm+='<section class="notes-archive-matches"><h3>'+title+'</h3>'+noteHtml+'</section>';
+        renderReader();
       });
     }
 
