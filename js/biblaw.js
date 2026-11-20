@@ -977,6 +977,27 @@
     }
     renderReader();
     $('recordDialog').showModal();
+    // A published summary may have a matching full note in the extracted archive.
+    // Display only a verified identity match, never a guessed transcription.
+    if(r.recordType==='note' && !r.text && r.summary){
+      const activeId=r.id;
+      void loadArchivedNotes().then(ok=>{
+        if(!ok || state.active?.id!==activeId || !$('recordDialog').open)return;
+        const candidates=state.archivedNotes.filter(note=>
+          note.id===r.id || (r.bookNumber && r.psalmNumber && r.noteNumber &&
+          Number(note.bookNumber)===Number(r.bookNumber) &&
+          Number(note.psalmNumber)===Number(r.psalmNumber) &&
+          Number(note.noteNumber)===Number(r.noteNumber)));
+        if(candidates.length!==1 || !candidates[0].text)return;
+        const note=candidates[0];
+        const status=note.publicationStatus==='unverified'?
+          '<p class="notes-review-warning" role="note">Transcription à vérifier sur le document original.</p>':'';
+        const reference='<p class="notes-source-reference">Texte de la note originale extraite</p>';
+        state.readerHtml={psalm:reference+status+'<div class="prayer-block">'+modeAwareText(note.text)+'</div><p class="notes-source-reference"><strong>Résumé documentaire :</strong> '+esc(r.summary)+'</p>',prayer:''};
+        renderReader();
+      });
+    }
+
     if(fromFAQ)requestAnimationFrame(()=>{
       const first=$('dialogContent').querySelector('.faq-cited-verse');
       first?.scrollIntoView({block:'center',behavior:'instant'});
