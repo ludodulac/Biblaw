@@ -977,23 +977,38 @@
     }
     renderReader();
     $('recordDialog').showModal();
-    // A published summary may have a matching full note in the extracted archive.
-    // Display only a verified identity match, never a guessed transcription.
-    if(r.recordType==='note' && !r.text && r.summary){
+    // Link a short public note to its extracted full transcription only when
+    // the source identity or the text itself establishes a unique match.
+    if(r.recordType==='note'){
       const activeId=r.id;
       void loadArchivedNotes().then(ok=>{
         if(!ok || state.active?.id!==activeId || !$('recordDialog').open)return;
-        const candidates=state.archivedNotes.filter(note=>
-          note.id===r.id || (r.bookNumber && r.psalmNumber && r.noteNumber &&
-          Number(note.bookNumber)===Number(r.bookNumber) &&
-          Number(note.psalmNumber)===Number(r.psalmNumber) &&
-          Number(note.noteNumber)===Number(r.noteNumber)));
-        if(candidates.length!==1 || !candidates[0].text)return;
-        const note=candidates[0];
+        const sourceText=String(r.text||r.summary||'').trim();
+        const key=norm(sourceText);
+        const sameIdentity=note=>note.id===r.id ||
+          (r.bookNumber!=null && r.psalmNumber!=null && r.noteNumber!=null &&
+           Number(note.bookNumber)===Number(r.bookNumber) &&
+           Number(note.psalmNumber)===Number(r.psalmNumber) &&
+           Number(note.noteNumber)===Number(r.noteNumber));
+        let candidates=state.archivedNotes.filter(sameIdentity);
+        if(!candidates.length && key.length>=35){
+          candidates=state.archivedNotes.filter(note=>
+            (!r.archangel || !note.archangel || norm(note.archangel)===norm(r.archangel)) &&
+            norm(note.text||'').includes(key));
+        }
+        // Never substitute an unrelated note or downgrade a full public text.
+        if(candidates.length!==1)return;
+        const note=candidates[0], fullText=String(note.text||'').trim();
+        if(!fullText || fullText.length<=sourceText.length ||
+           (key.length>=35 && !norm(fullText).includes(key) && !sameIdentity(note)))return;
         const status=note.publicationStatus==='unverified'?
-          '<p class="notes-review-warning" role="note">Transcription à vérifier sur le document original.</p>':'';
-        const reference='<p class="notes-source-reference">Texte de la note originale extraite</p>';
-        state.readerHtml={psalm:reference+status+'<div class="prayer-block">'+modeAwareText(note.text)+'</div><p class="notes-source-reference"><strong>Résumé documentaire :</strong> '+esc(r.summary)+'</p>',prayer:''};
+          '<p class="notes-review-warning" role="note"><strong>Transcription à vérifier.</strong> Consultez le document original avant de citer cette note.</p>':'';
+        const source=note.sourcePdfPage?
+          '<p class="notes-source-reference">Bible essénienne · page PDF '+esc(note.sourcePdfPage)+'</p>':'';
+        const reference='<p class="notes-source-reference">Livre '+esc(note.bookNumber)+' · Psaume '+esc(note.psalmNumber)+' · Note '+esc(note.noteNumber)+'</p>';
+        state.readerHtml={psalm:status+reference+source+
+          '<div class="prayer-block">'+modeAwareText(fullText)+'</div>'+
+          '<p class="notes-source-reference"><strong>Résumé documentaire :</strong> '+esc(sourceText)+'</p>',prayer:''};
         renderReader();
       });
     }
