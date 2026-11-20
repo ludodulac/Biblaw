@@ -56,7 +56,9 @@ def generate(output: Path = DEFAULT_OUTPUT) -> dict:
         assert isinstance(page, int) and page > 0
         assert item.get("validation", {}).get("status"), "Missing original review status"
         publication_status = "published" if item["id"] in published_ids else "unverified"
-        # Keep the extracted transcription for every note, including the 11\n        # curated notes: their editorial summary is a separate document.\n        text = item.get("text") or ""\n        assert isinstance(text, str) and text.strip(), f"Empty note transcription: {path}"
+        # Keep extracted transcriptions separate from editorial summaries.
+        text = item.get("text") or ""
+        assert isinstance(text, str) and text.strip(), f"Empty note transcription: {path}"
         records.append({
             "id": item["id"],
             "recordType": "note",
