@@ -926,6 +926,7 @@
     const fromFAQ=Boolean(targetVerses?.size) ||
       (r.recordType==='note' && document.body.classList.contains('view-animals'));
     state.active=r;
+    state.noteExportRecord=null;
     $('dialogEyebrow').textContent=label(r);
     $('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:r.recordType==='note'&&r.bookNumber?
       'Note '+r.noteNumber+' · Livre '+r.bookNumber+' · Psaume '+r.psalmNumber:'Note associée');
@@ -1014,6 +1015,10 @@
             '<p class="notes-source-reference">Transcription extraite à vérifier'+esc(page)+'</p>'+
             '<div>'+modeAwareText(note.text)+'</div></section>';
         }).join('');
+        const exportedText=[String(r.text||r.summary||''),...selected.map(({note})=>
+          'Livre '+note.bookNumber+' · Psaume '+note.psalmNumber+' · Note extraite '+note.noteNumber+'\n'+
+          'Transcription extraite à vérifier'+(note.sourcePdfPage?' · Page PDF '+note.sourcePdfPage:'')+'\n'+note.text)].join('\n\n');
+        state.noteExportRecord={...r,text:exportedText};
         const title=confident?'Transcription correspondante probable':'Transcriptions du même psaume (correspondance à vérifier)';
         state.readerHtml.psalm+='<section class="notes-archive-matches"><h3>'+title+'</h3>'+noteHtml+'</section>';
         renderReader();
@@ -1242,7 +1247,12 @@
     const status=$('readerExportStatus');status.hidden=true;
     try{
       const scope=state.active.recordType==='psalm'?(state.active.attachedPrayer?.text?state.readerPart:'psalm'):'both';
-      BiblawPDF.download(state.active,scope);
+      if(state.active.recordType==='note' && !state.active.publicationStatus && !state.noteExportRecord){
+        status.textContent='La transcription intégrale est encore en cours de chargement. Réessayez dans un instant.';
+        status.hidden=false;
+        return;
+      }
+      BiblawPDF.download(state.noteExportRecord||state.active,scope);
     }catch(error){
       status.textContent='Téléchargement impossible : '+String(error?.message||error);
       status.hidden=false;
