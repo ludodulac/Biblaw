@@ -981,14 +981,19 @@
     // the extracted source text. Numeric note suffixes can differ between them.
     if(r.recordType==='note' && !r.publicationStatus){
       const openedRecord=r;
+      const noteStatus=document.createElement('p');
+      noteStatus.className='notes-review-warning';
+      noteStatus.textContent='Recherche de la transcription intégrale en cours…';
+      $('dialogContent').append(noteStatus);
       void loadArchivedNotes().then(ok=>{
-        if(!ok || state.active!==openedRecord || !$('recordDialog').open)return;
+        if(state.active!==openedRecord || !$('recordDialog').open)return;
+        if(!ok){noteStatus.textContent='Impossible de charger les transcriptions. Réessayez après actualisation.';return;}
         const match=/^book-(\d+)-psalm-(\d+)-note-\d+$/.exec(r.id||'');
-        if(!match)return;
+        if(!match){noteStatus.textContent='Référence de note non reconnue : '+String(r.id||'inconnue');return;}
         const book=Number(match[1]),psalm=Number(match[2]);
         const candidates=state.archivedNotes.filter(note=>
           Number(note.bookNumber)===book && Number(note.psalmNumber)===psalm);
-        if(!candidates.length)return;
+        if(!candidates.length){noteStatus.textContent='Aucune transcription retrouvée pour ce livre et ce psaume.';return;}
         const summary=String(r.summary||r.text||'');
         const words=new Set(norm(summary).split(/\s+/).filter(w=>w.length>=5));
         const ranked=candidates.map(note=>{
