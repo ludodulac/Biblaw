@@ -17,7 +17,7 @@ assert len({n["id"] for n in records}) == len(records), "Duplicate identifiers"
 
 by_psalm = defaultdict(list)
 for note in records:
-    by_psalm[n["appliesTo"]["recordId"]].append(note)
+    by_psalm[note["appliesTo"]["recordId"]].append(note)
 
 def clean(value):
     return re.sub(r"\s+", " ", str(value or "")).strip().casefold()
