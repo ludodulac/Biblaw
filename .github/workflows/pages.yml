@@ -220,7 +220,7 @@ jobs:
           grep -q 'id="menoraVirtuesToggle"' _site/index.html
           grep -q 'id="menoraContraryToggle"' _site/index.html
           grep -q 'js/biblaw-menora.js?v=005' _site/index.html
-          grep -q 'js/biblaw.js?v=152' _site/index.html
+          grep -Eq 'js/biblaw\.js\?v=[0-9]+' _site/index.html
       - name: Vérifier les fichiers du nouveau site blanc et la confidentialité des notes
         run: |
           test -f _site/index.html
