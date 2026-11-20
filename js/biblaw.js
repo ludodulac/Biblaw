@@ -1023,9 +1023,7 @@
         const title=confident?'Transcription correspondante probable':'Transcriptions du même psaume (correspondance à vérifier)';
         state.readerHtml.psalm+='<section class="notes-archive-matches"><h3>'+title+'</h3>'+noteHtml+'</section>';
         renderReader();
-        $('dialogContent').querySelectorAll('[data-open-single-note]').forEach(button=>{
-          button.addEventListener('click',()=>open(button.dataset.openSingleNote));
-        });
+        // Note actions are handled by the reader's single delegated listener.
       });
     }
 
@@ -1034,6 +1032,15 @@
       first?.scrollIntoView({block:'center',behavior:'instant'});
     });
   }
+  // One delegated handler survives reader re-renders and avoids per-note listeners.
+  $('dialogContent').addEventListener('click',event=>{
+    const button=event.target.closest('[data-open-single-note]');
+    if(!button || !$('dialogContent').contains(button))return;
+    const id=button.dataset.openSingleNote;
+    if(!state.archivedNoteById.has(id))return;
+    $('recordDialog').close();
+    open(id);
+  });
   function renderReader(){
     const visible=state.readerPart, parts=state.readerHtml||{psalm:'',prayer:''};
     $('dialogContent').innerHTML=(visible!=='prayer'?parts.psalm:'')+(visible!=='psalm'?parts.prayer:'');
