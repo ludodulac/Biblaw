@@ -52,7 +52,15 @@ try{
       'An unverified source-page number must not create a deep link');
     const download=page.waitForEvent('download');
     await page.locator('#downloadRecord').click();
-    assert.match((await download).suggestedFilename(),/^Biblaw_Note_.*\.pdf$/);
+    const savedDownload=await download;
+    assert.match(savedDownload.suggestedFilename(),/^Biblaw_Note_.*\\.pdf$/);
+    // The PDF must contain the same actual transcription as the opened note,
+    // not only an editorial summary or an unrelated note.
+    const pdfBytes=await readFile(await savedDownload.path());
+    const expectedText=bookOne[0].text.trim().split(/\\s+/).slice(0,5).join(' ');
+    const expectedHex=Buffer.from(expectedText,'latin1').toString('hex').toUpperCase();
+    assert.ok(pdfBytes.toString('latin1').includes(expectedHex.slice(0,20)),
+      'Downloaded note PDF must contain the opened transcription');
     await page.locator('#closeDialog').click();
     await page.locator('#notesArchiveSearch').fill('Esséniens');
     assert.ok(await page.locator('.notes-archive-book').count()>0);
