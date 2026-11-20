@@ -56,14 +56,7 @@ def generate(output: Path = DEFAULT_OUTPUT) -> dict:
         assert isinstance(page, int) and page > 0
         assert item.get("validation", {}).get("status"), "Missing original review status"
         publication_status = "published" if item["id"] in published_ids else "unverified"
-        if publication_status == "published":
-            original = json.loads((ROOT / "data" / "notes" / (item["id"] + ".json")).read_text(encoding="utf-8"))
-            assert original.get("id") == item["id"]
-            assert original.get("recordType") == "note"
-            text = original.get("text") or original.get("summary") or ""
-        else:
-            text = item.get("text") or ""
-        assert isinstance(text, str) and text.strip(), f"Empty note transcription: {path}"
+        # Keep the extracted transcription for every note, including the 11\n        # curated notes: their editorial summary is a separate document.\n        text = item.get("text") or ""\n        assert isinstance(text, str) and text.strip(), f"Empty note transcription: {path}"
         records.append({
             "id": item["id"],
             "recordType": "note",
