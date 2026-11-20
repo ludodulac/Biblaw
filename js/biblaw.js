@@ -1013,7 +1013,8 @@
           const page=note.sourcePdfPage?' · Page PDF '+note.sourcePdfPage:'';
           return '<section class="prayer-block"><h4>'+esc(ref)+'</h4>'+
             '<p class="notes-source-reference">Transcription extraite à vérifier'+esc(page)+'</p>'+
-            '<div>'+modeAwareText(note.text)+'</div></section>';
+            '<div>'+modeAwareText(note.text)+'</div>'+ 
+            '<button type="button" class="secondary" data-open-single-note="'+esc(note.id)+'">Ouvrir cette note seule · imprimer ou télécharger</button></section>';
         }).join('');
         const exportedText=[String(r.text||r.summary||''),...selected.map(({note})=>
           'Livre '+note.bookNumber+' · Psaume '+note.psalmNumber+' · Note extraite '+note.noteNumber+'\n'+
@@ -1022,6 +1023,9 @@
         const title=confident?'Transcription correspondante probable':'Transcriptions du même psaume (correspondance à vérifier)';
         state.readerHtml.psalm+='<section class="notes-archive-matches"><h3>'+title+'</h3>'+noteHtml+'</section>';
         renderReader();
+        $('dialogContent').querySelectorAll('[data-open-single-note]').forEach(button=>{
+          button.addEventListener('click',()=>open(button.dataset.openSingleNote));
+        });
       });
     }
 
