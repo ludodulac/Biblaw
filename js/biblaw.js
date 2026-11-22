@@ -63,7 +63,7 @@
   const importanceLabel = value => ({ central: 'Central', important: 'Important', related: 'Lié' }[value] || 'Indexé');
   const importanceRank = value => ({ central: 0, important: 1, related: 2 }[value] ?? 3);
   const publishPresentationState = detail => document.dispatchEvent(new CustomEvent('biblaw:presentation-state', { detail }));
-  const activateThemeMode = () => { state.mode='themes'; $('primarySearch').classList.remove('advanced-visible'); $('query2').value=''; $('query2').placeholder='Deuxième thème à croiser'; $('query2').setAttribute('aria-label','Thème 2 facultatif'); $('query').setAttribute('aria-label','Votre recherche'); $('advancedSearchToggle').textContent='Croiser 2 thèmes'; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('dualExactHelp').hidden=true; document.querySelectorAll('[name=sourceType]').forEach(box=>{box.checked=box.value==='psalm';}); $('scopeInfo').hidden=true; state.semanticSelection=null; state.grammarSelection=null; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Ex. Saint-Esprit, amour, psaume 105'; $('modeHelp').textContent='Chercher dans les thèmes indexés des psaumes.'; hideAmbiguity(); updateExpansionControl(); };
+  const activateThemeMode = () => { state.mode='themes'; $('primarySearch').classList.remove('advanced-visible'); $('query2').value=''; $('query2').placeholder='Deuxième thème à croiser'; $('query2').setAttribute('aria-label','Thème 2 facultatif'); $('query').setAttribute('aria-label','Votre recherche'); $('advancedSearchToggle').textContent='Croiser 2 thèmes'; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('dualExactHelp').hidden=true; document.querySelectorAll('[name=sourceType]').forEach(box=>{box.checked=box.value==='psalm'||box.value==='annex';}); $('scopeInfo').hidden=true; state.semanticSelection=null; state.grammarSelection=null; $('modeThemes').classList.add('active'); $('modeExact').classList.remove('active'); $('primarySearch').classList.remove('exact-mode'); $('query2').disabled=false; $('advancedSearchToggle').hidden=false; $('query').placeholder='Ex. Saint-Esprit, amour, psaume 105'; $('modeHelp').textContent='Chercher dans les thèmes indexés des psaumes.'; hideAmbiguity(); updateExpansionControl(); };
   const activateExactMode = () => { state.mode='exact'; $('modeExact').classList.add('active'); $('modeThemes').classList.remove('active'); $('primarySearch').classList.add('exact-mode'); $('primarySearch').classList.remove('advanced-visible'); $('query2').disabled=true; $('query2').value=''; $('advancedSearchToggle').hidden=false; $('advancedSearchToggle').setAttribute('aria-expanded','false'); $('advancedSearchToggle').textContent='Croiser 2 mots'; $('query2').placeholder='Deuxième mot · ex. amour'; $('query2').setAttribute('aria-label','Deuxième mot pour départager'); $('query').setAttribute('aria-label','Premier mot prioritaire'); $('dualExactHelp').hidden=true; $('query').placeholder='Ex. Saint-Esprit, vie, amour'; $('modeHelp').textContent='Chercher les mots exacts dans les textes.'; hideAmbiguity(); hideTransverseNavigation(); updateExpansionControl(); };
 
   // 082: Six suggestions maximum, sourced from the already-public corpus.
@@ -309,8 +309,17 @@
   const composeThemeQueryNotions = query => BiblawThemeEngine.composeThemeQueryNotions(query);
   const themeQueryNotions = query => BiblawThemeEngine.themeQueryNotions(query);
   function suggestIndexedThemes(query) { return state.themeEngine?.suggestIndexedThemes(query) || []; }
+  function annexThemeOccurrences(theme){
+    if(!selectedTypes().has('annex')||$('archangelFilter').value)return [];
+    const label=String(theme.label||'').trim();
+    if(label.length<4)return [];
+    return state.records.filter(r=>r.recordType==='annex').map(record=>({record,count:literalOccurrenceCount(record,label)}))
+      .filter(item=>item.count>0).map(({record,count})=>({record,score:count,
+        thematic:{importance:'related',score:count,teaching:'Expression du thème présente dans ce texte annexe (correspondance textuelle, non indexation thématique validée).'},
+        matchedThemes:[{id:theme.id,label:theme.label,thematic:{importance:'related',score:count}}]}));
+  }
   function thematicItems(themes, ignoreFilters=false) {
-    if (!ignoreFilters && !selectedTypes().has('psalm')) return [];
+    if (!ignoreFilters && !selectedTypes().has('psalm') && !selectedTypes().has('annex')) return [];
     const a=ignoreFilters?'':$('archangelFilter').value,merged=new Map();
     for (const theme of themes) for (const o of theme.occurrences||[]) {
       if (a&&o.archangel!==a) continue;
@@ -322,10 +331,15 @@
       if(betterImportance||(sameImportance&&(o.score||1)>(current.thematic?.score||0))) current.thematic=o;
       current.matchedThemes.push({id:theme.id,label:theme.label,thematic:o}); merged.set(record.id,current);
     }
+    if(ignoreFilters||selectedTypes().has('annex'))for(const theme of themes)for(const item of annexThemeOccurrences(theme)){
+      const existing=merged.get(item.record.id);
+      if(existing){existing.matchedThemes.push(...item.matchedThemes);existing.score+=item.score;}
+      else merged.set(item.record.id,item);
+    }
     return [...merged.values()].sort((x,y)=>importanceRank(x.thematic?.importance)-importanceRank(y.thematic?.importance)||x.record.number-y.record.number||String(x.record.id).localeCompare(String(y.record.id),'fr'));
   }
   function intersectionItems(themeA, themeB) {
-    if (!selectedTypes().has('psalm')) return [];
+    if (!selectedTypes().has('psalm')&&!selectedTypes().has('annex')) return [];
     const a=$('archangelFilter').value;
     const occurrencesA=new Map((themeA.occurrences||[]).filter(o=>!a||o.archangel===a).map(o=>[o.recordId,o]));
     const occurrencesB=new Map((themeB.occurrences||[]).filter(o=>!a||o.archangel===a).map(o=>[o.recordId,o]));
@@ -334,6 +348,13 @@
       const thematicB=occurrencesB.get(recordId); if(!thematicB)continue;
       const record=state.recordById.get(recordId); if(!record||record.recordType!=='psalm')continue;
       items.push({record, thematic:thematicA, matchedThemes:[{id:themeA.id,label:themeA.label,thematic:thematicA},{id:themeB.id,label:themeB.label,thematic:thematicB}], themeMatches:[{theme:themeA,thematic:thematicA},{theme:themeB,thematic:thematicB}]});
+    }
+    if(selectedTypes().has('annex')&&!a){
+      const byB=new Set(annexThemeOccurrences(themeB).map(item=>item.record.id));
+      for(const item of annexThemeOccurrences(themeA))if(byB.has(item.record.id)){
+        const other={importance:'related',score:1,teaching:'Les expressions des deux thèmes sont présentes dans ce texte annexe (correspondance textuelle).'};
+        items.push({record:item.record,thematic:other,matchedThemes:[{id:themeA.id,label:themeA.label,thematic:other},{id:themeB.id,label:themeB.label,thematic:other}],themeMatches:[{theme:themeA,thematic:other},{theme:themeB,thematic:other}]});
+      }
     }
     return items.sort((x,y)=>importanceRank(x.themeMatches[0].thematic.importance)-importanceRank(y.themeMatches[0].thematic.importance)||(y.themeMatches[0].thematic.score||0)-(x.themeMatches[0].thematic.score||0)||x.record.number-y.record.number||String(x.record.id).localeCompare(String(y.record.id),'fr'));
   }
@@ -614,7 +635,7 @@
   function render(items,indexedThemes=null,companion=null){
     document.body.classList.toggle('has-query',Boolean($('query').value.trim()));
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
-    $('resultCount').textContent=companion?.dualExactQueries?`${items.length} texte${items.length>1?'s':''} avec les deux mots`:companion?.dualExactPending?'Deuxième mot à saisir':companion?.grammarSearch?`${items.length} textes`:companion?.suggestionPending?'Choisissez un thème':companion?.dualPending?'Choisissez 2 thèmes':companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} trouvé${items.length>1?'s':''}`:companion?.unresolvedTheme?'Aucun thème trouvé':themeLabels.length?`${items.length} psaume${items.length>1?'s':''} trouvé${items.length>1?'s':''}`:`${items.length} résultat${items.length>1?'s':''}`;
+    $('resultCount').textContent=companion?.dualExactQueries?`${items.length} texte${items.length>1?'s':''} avec les deux mots`:companion?.dualExactPending?'Deuxième mot à saisir':companion?.grammarSearch?`${items.length} textes`:companion?.suggestionPending?'Choisissez un thème':companion?.dualPending?'Choisissez 2 thèmes':companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} trouvé${items.length>1?'s':''}`:companion?.unresolvedTheme?'Aucun thème trouvé':themeLabels.length?`${items.length} texte${items.length>1?'s':''} trouvé${items.length>1?'s':''}`:`${items.length} résultat${items.length>1?'s':''}`;
     const textualNotice=!companion?.dualTheme&&themeLabels.length===1&&companion?.textualCount>0?`<div class="search-scope-note"><div><strong>Aussi dans le texte</strong><span>${companion.textualCount} psaume${companion.textualCount>1?'s':''} contiennent ce mot ou cette expression.</span></div><button class="secondary" data-show-text-search>Voir les occurrences</button></div>`:'';
     const relatedNotice=companion?.relatedDiscovery?
       '<section class="search-scope-note related-discovery"><div><strong>Thèmes associés à « '+
