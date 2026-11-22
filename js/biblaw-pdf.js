@@ -28,6 +28,15 @@
    if(record.sourcePdfPage)add('meta','Source : Bible essenienne, page PDF '+record.sourcePdfPage);
    add('text',record.text||record.summary);
   }
+  else if(record.recordType==='annex'){
+   title=record.title||'Texte annexe';
+   filename='Biblaw_Annexe_'+slug(record.id||record.number)+'.pdf';
+   add('title',title);
+   if(record.source?.printedPageStart)add('meta','Bible essenienne, pages '+record.source.printedPageStart+' a '+record.source.printedPageEnd);
+   if(record.validation?.status==='transcribed-needs-review')add('meta','TRANSCRIPTION A RELIRE SUR LE DOCUMENT ORIGINAL');
+   for(const paragraph of String(record.text||'').split(/\\n\\n+/))add('text',paragraph);
+   for(const note of record.footnotes||[]){add('gap','');add('title','Note '+note.number+' - paragraphe '+note.paragraph);add('text',note.text);}
+  }
   else if(record.recordType==='faq'){
     title=String(record.title||'Question');
     filename='Biblaw_Question_'+slug(record.id||'reponse')+'.pdf';
