@@ -624,7 +624,7 @@
   function resultDetailsBody(r,{thematic,matchedThemes,numberLookup,themeMatches,companion}) {
     const related=(thematic||themeMatches)?relatedThemes(r,matchedThemes):[];
     const textualThemes=!thematic&&!themeMatches&&companion?.textualFallback?(state.themesByRecord.get(r.id)||[]):[];
-    const relatedBlock=(thematic||themeMatches)?`<div class="related-themes compact-related"><span class="related-label">Autres thèmes dans ce psaume :</span> ${themeTags(related)}</div>`:textualThemes.length?`<div class="related-themes compact-related"><span class="related-label">Thèmes canoniques indexés dans ce psaume :</span> ${themeTags(textualThemes)}</div>`:'';
+    const relatedBlock=(thematic||themeMatches)?`<div class="related-themes compact-related"><span class="related-label">${r.recordType==='annex'?'Autres thèmes indexés :':'Autres thèmes dans ce psaume :'}</span> ${themeTags(related)}</div>`:textualThemes.length?`<div class="related-themes compact-related"><span class="related-label">Thèmes canoniques indexés dans ce psaume :</span> ${themeTags(textualThemes)}</div>`:'';
     const exactBlock=!thematic&&!themeMatches&&!numberLookup?exactVerses(r,companion?.dualExactQueries):'';
     const singleThemeBody=thematic&&!themeMatches?`<div class="context-label theme-found">THÈME INDEXÉ · ${esc((matchedThemes||[]).map(x=>x.label).join(' · '))}</div><p class="result-summary">${modeAwareText(thematic.teaching||summary(r))}</p>${contextualVerses(r,thematic)}`:'';
     const dualBody=themeMatches?dualThemeReasons(r,themeMatches):'';
