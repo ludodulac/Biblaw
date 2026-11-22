@@ -965,7 +965,7 @@
     $('readerChoice').hidden=!hasPrayer;
     document.querySelectorAll('[name=readerPart]').forEach(input=>{input.checked=input.value===state.readerPart;});
     $('readerExportStatus').hidden=true;
-    $('downloadRecord').hidden=r.recordType==='annex';
+    $('downloadRecord').hidden=false;
     if(r.recordType==='psalm'){
       const verses=(r.verses||[]).map(v=>`<div class="verse${targetVerses?.has(Number(v.number))?' faq-cited-verse':''}" data-verse="${esc(v.number)}"><div class="verse-number">${v.number}</div><div>${v.speakerId?`<span class="speaker">${esc(v.speakerId.replaceAll('-',' '))} · ${esc(v.speechRole||'')}</span>`:''}${modeAwareText(v.text)}</div></div>`).join('');
       const themesBlock=`<section class="related-themes dialog-themes"><div class="context-label">Thèmes présents dans ce psaume</div>${themeTags(state.themesByRecord.get(r.id)||[])}</section>`;
@@ -977,13 +977,22 @@
         r.source.printedPageStart+(r.source.printedPageStart===r.source.printedPageEnd?'':' à '+r.source.printedPageEnd)+'.</p>';
       const warning='<p class="notes-review-warning" role="note"><strong>Transcription des photographies à relire.</strong> '+
         'Vérifiez le texte imprimé avant de le citer.</p>';
+      const noteByParagraph=new Map((r.footnotes||[]).map(note=>[Number(note.paragraph),note]));
+      const renderAnnexParagraph=part=>{
+        const match=/^\s*(\d{1,3})\s/.exec(part);
+        const note=match?noteByParagraph.get(Number(match[1])):null;
+        const marker=note?' <a href="#annex-note-'+esc(note.number)+'" class="annex-footnote-ref" aria-label="Lire la note '+esc(note.number)+'">[note '+esc(note.number)+']</a>':'';
+        return '<p>'+modeAwareText(part)+marker+'</p>';
+      };
       const paragraphs=Array.isArray(r.sections)&&r.sections.length?
         (r.introduction?'<p>'+modeAwareText(r.introduction)+'</p>':'')+
         r.sections.map(section=>'<section class="annex-section"><h3>'+esc(section.title)+'</h3>'+
-          String(section.text||'').split(/\n\n+/).map(part=>'<p>'+modeAwareText(part)+'</p>').join('')+
+          String(section.text||'').split(/\n\n+/).map(renderAnnexParagraph).join('')+
           '</section>').join(''):
-        String(r.text||'').split(/\n\n+/).map(part=>'<p>'+modeAwareText(part)+'</p>').join('');
-      state.readerHtml={psalm:warning+source+'<div class="annex-reader">'+paragraphs+'</div>',prayer:''};
+        String(r.text||'').split(/\n\n+/).map(renderAnnexParagraph).join('');
+      const footnotes=(r.footnotes||[]).length?'<section class="annex-footnotes"><h3>Notes du texte</h3>'+
+        r.footnotes.map(note=>'<div id="annex-note-'+esc(note.number)+'"><h4>Note '+esc(note.number)+' · paragraphe '+esc(note.paragraph)+'</h4><p>'+modeAwareText(note.text)+'</p></div>').join('')+'</section>':'';
+      state.readerHtml={psalm:warning+source+'<div class="annex-reader">'+paragraphs+footnotes+'</div>',prayer:''};
     }else{
       const preliminary=r.publicationStatus==='unverified';
       const source=r.sourceKind==='annex'?
