@@ -904,7 +904,10 @@
     const annexes=state.records.filter(r=>r.recordType==='annex').sort((a,b)=>a.number-b.number);
     const visible=annexes.filter(r=>!filter||norm([r.title,r.text].join(' ')).includes(filter));
     $('annexCount').textContent=visible.length+' texte'+(visible.length>1?'s':'')+' sur '+annexes.length;
+    let previousGroup='';
     for(const record of visible){
+      const group=record.category==='dialogues-archanges'?'Dialogues théologiques avec les Archanges':'Autres textes annexes';
+      if(group!==previousGroup){const heading=document.createElement('h3');heading.className='annex-group-heading';heading.textContent=group;list.append(heading);previousGroup=group;}
       const button=document.createElement('button');
       button.type='button';button.className='notes-record-item annex-record-item';
       const title=document.createElement('strong');title.textContent='Texte '+record.number+' — '+record.title;
