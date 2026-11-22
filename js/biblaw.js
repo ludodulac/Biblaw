@@ -788,7 +788,8 @@
   function noteCard(record,titleOverride='') {
     if (!record || type(record)!=='note') return null;
     const id=record.id,parts=id.split('-');
-    const context=parts.length===6?'Livre '+Number(parts[1])+' · Psaume '+Number(parts[3])+' · Note '+Number(parts[5]):'Note';
+    const context=record.sourceKind==='annex'?'Texte annexe · § '+record.referenceParagraph+' · page '+record.printedPage:
+      parts.length===6?'Livre '+Number(parts[1])+' · Psaume '+Number(parts[3])+' · Note '+Number(parts[5]):'Note';
     const button=document.createElement('button');
     button.type='button';button.className='notes-record-item';
     const heading=document.createElement('strong');
@@ -982,8 +983,9 @@
       state.readerHtml={psalm:warning+source+'<div class="annex-reader">'+paragraphs+'</div>',prayer:''};
     }else{
       const preliminary=r.publicationStatus==='unverified';
-      const source=r.sourcePdfPage?
-        '<p class="notes-source-reference">Source : Bible essénienne · PDF page '+r.sourcePdfPage+
+      const source=r.sourceKind==='annex'?
+        '<p class="notes-source-reference">Texte annexe : '+esc(r.documentTitle)+' · paragraphe '+esc(r.referenceParagraph)+' · page imprimée '+esc(r.printedPage)+'.</p>':
+        r.sourcePdfPage?'<p class="notes-source-reference">Source : Bible essénienne · PDF page '+r.sourcePdfPage+
         ' (référence de l’extraction à vérifier).</p>':'';
       const warning=preliminary?
         '<p class="notes-review-warning" role="note"><strong>Transcription automatique à vérifier.</strong> '+
