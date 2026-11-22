@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], noteReferences: [], selectedNoteTheme: null, readerPart:'both', readerHtml:null, autocompleteIndex:null, corpusReady:false, corpusPromise:null, pendingSearch:false, bibleThemesSorted:null, bibleThemeDirectoryScroll:0, bibleThemeSelected:null, bibleThemeRequestId:0, archivedNotes:null, archivedNoteById:new Map(), archivedNoteLoading:null, notesTab:'archive' };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], noteReferences: [], selectedNoteTheme: null, readerPart:'both', readerHtml:null, autocompleteIndex:null, corpusReady:false, corpusPromise:null, pendingSearch:false, bibleThemesSorted:null, bibleThemeDirectoryScroll:0, bibleThemeSelected:null, bibleThemeRequestId:0, archivedNotes:null, annexFootnotes:[], archivedNoteById:new Map(), archivedNoteLoading:null, notesTab:'archive' };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -653,27 +653,29 @@
   function renderArchivedNotes(){
     if(!state.archivedNotes)return;
     const query=norm($('notesArchiveSearch').value||'');
-    const book=Number($('notesArchiveBook').value||0);
-    const shown=state.archivedNotes.filter(note=>
-      (!book||note.bookNumber===book)&&
-      (!query||norm([note.text,'Livre '+note.bookNumber,'Psaume '+note.psalmNumber,
-        'Note '+note.noteNumber,note.archangel].join(' ')).includes(query)));
+    const selectedBook=$('notesArchiveBook').value;
+    const book=Number(selectedBook||0);
+    const shown=[...state.archivedNotes,...state.annexFootnotes].filter(note=>
+      (selectedBook==='annex'?note.sourceKind==='annex':(!selectedBook||note.bookNumber===book))&&
+      (!query||norm([note.text,'Livre '+(note.bookNumber||''),'Psaume '+(note.psalmNumber||''),
+        'Note '+note.noteNumber,note.archangel||'',note.documentTitle||'',note.sourceKind==='annex'?'annexe dialogue':''].join(' ')).includes(query)));
     $('notesArchiveCount').textContent=shown.length+' note'+(shown.length>1?'s':'')+
-      (query||book?' trouvée'+(shown.length>1?'s':''):' parmi 280 notes extraites')+
+      (query||book?' trouvée'+(shown.length>1?'s':''):' parmi '+(280+state.annexFootnotes.length)+' notes')+
       ' · '+shown.filter(n=>n.publicationStatus==='published').length+' déjà publiée'+
       (shown.filter(n=>n.publicationStatus==='published').length>1?'s':'')+'.';
     const target=$('notesArchiveList'),frag=document.createDocumentFragment();
     const byBook=new Map();
     for(const note of shown){
-      const bucket=byBook.get(note.bookNumber)||[];
-      bucket.push(note);byBook.set(note.bookNumber,bucket);
+      const groupKey=note.sourceKind==='annex'?'annex':note.bookNumber;
+      const bucket=byBook.get(groupKey)||[];
+      bucket.push(note);byBook.set(groupKey,bucket);
     }
-    for(const [number,notes] of [...byBook].sort((a,b)=>a[0]-b[0])){
+    for(const [number,notes] of [...byBook].sort((a,b)=>a[0]==='annex'?1:b[0]==='annex'?-1:a[0]-b[0])){
       const group=document.createElement('details');
       group.className='notes-archive-book';
       group.open=Boolean(query||book);
       const heading=document.createElement('summary');
-      heading.textContent='Livre '+number+' — '+notes.length+' note'+(notes.length>1?'s':'');
+      heading.textContent=(number==='annex'?'Textes annexes':'Livre '+number)+' — '+notes.length+' note'+(notes.length>1?'s':'');
       group.append(heading);
       const grid=document.createElement('div');grid.className='notes-archive-cards';
       for(const note of notes){
@@ -681,7 +683,9 @@
         button.type='button';button.className='notes-record-item notes-archive-item';
         button.setAttribute('data-archived-note-id',note.id);
         const heading=document.createElement('strong');
-        heading.textContent='Psaume '+note.psalmNumber+' · Note '+note.noteNumber+
+        heading.textContent=note.sourceKind==='annex'?
+          note.documentTitle+' · Note '+note.noteNumber+' · Paragraphe '+note.referenceParagraph:
+          'Psaume '+note.psalmNumber+' · Note '+note.noteNumber+
           (note.appliesTo?.verse?' · Verset '+note.appliesTo.verse:'');
         const status=document.createElement('span');
         status.className='notes-review-status '+(note.publicationStatus==='published'?
@@ -692,7 +696,8 @@
         excerpt.textContent=plain.length>158?
           plain.slice(0,158).replace(/\s+\S*$/,'').trimEnd()+'…':plain;
         const source=document.createElement('span');source.className='notes-record-location';
-        source.textContent='Document source : page PDF '+note.sourcePdfPage;
+        source.textContent=note.sourceKind==='annex'?'Texte annexe · page imprimée '+note.printedPage:
+          'Document source : page PDF '+note.sourcePdfPage;
         button.append(heading,status,excerpt,source);
         button.addEventListener('click',()=>open(note.id));
         grid.append(button);
@@ -740,7 +745,15 @@
           option.textContent='Livre '+n+' ('+archive.perBookCounts[String(n)]+' notes)';
           filter.append(option);
         }
-        renderArchivedNotes();return true;
+        return fetch('data/annexes/notes.json?v=001').then(response=>{
+          if(!response.ok)throw Error('annex-footnotes');return response.json();
+        }).then(data=>{
+          if(data.version!==1||!Array.isArray(data.notes)||data.notes.some(n=>n.sourceKind!=='annex'||!n.id||!n.text||!n.documentTitle||!n.referenceParagraph))throw Error('Invalid annex notes');
+          state.annexFootnotes=data.notes;
+          for(const note of data.notes){if(state.archivedNoteById.has(note.id))throw Error('Duplicate note ID');state.archivedNoteById.set(note.id,note);}
+          const option=document.createElement('option');option.value='annex';option.textContent='Textes annexes ('+data.notes.length+' notes)';filter.append(option);
+          renderArchivedNotes();return true;
+        });
       }).catch(error=>{
         console.error(error);
         $('notesArchiveCount').textContent='Les notes n’ont pas pu être chargées. Fermez puis rouvrez « Notes » pour réessayer.';
@@ -929,7 +942,8 @@
     state.noteExportRecord=null;
     $('dialogEyebrow').textContent=label(r);
     $('dialogTitle').textContent=r.title||(r.recordType==='master-prayer'?`Prière ${r.number}`:r.recordType==='note'&&r.bookNumber?
-      'Note '+r.noteNumber+' · Livre '+r.bookNumber+' · Psaume '+r.psalmNumber:'Note associée');
+      'Note '+r.noteNumber+' · Livre '+r.bookNumber+' · Psaume '+r.psalmNumber:r.sourceKind==='annex'?
+      r.documentTitle+' · Note '+r.noteNumber:'Note associée');
     const hasPrayer=r.recordType==='psalm'&&Boolean(r.attachedPrayer?.text);
     state.readerPart=fromFAQ?'psalm':hasPrayer?'both':'psalm';
     $('faqReturnFromPsalm').hidden=!fromFAQ;
