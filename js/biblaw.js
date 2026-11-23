@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], noteReferences: [], selectedNoteTheme: null, readerPart:'both', readerHtml:null, autocompleteIndex:null, corpusReady:false, corpusPromise:null, pendingSearch:false, bibleThemesSorted:null, bibleThemeDirectoryScroll:0, bibleThemeSelected:null, bibleThemeRequestId:0, archivedNotes:null, annexFootnotes:[], archivedNoteById:new Map(), archivedNoteLoading:null, notesTab:'archive' };
+  const state = { mode: 'themes', records: [], recordById: new Map(), psalmsByNumber: new Map(), normalizedFragmentsById: new Map(), themeDirectory: [], themeById: new Map(), themesByRecord: new Map(), lexicalExpansionGroups: [], lexicalExpansionByForm: new Map(), semanticBrowserRuntime: null, semanticTargetsByForm: new Map(), semanticSelection: null, grammarByForm: new Map(), grammarSelection: null, runtime: null, themeEngine: null, active: null, resolvedThemes: [], noteThemes: [], noteReferences: [], selectedNoteTheme: null, readerPart:'both', readerHtml:null, autocompleteIndex:null, corpusReady:false, corpusPromise:null, pendingSearch:false, bibleThemesSorted:null, bibleThemeDirectoryScroll:0, bibleThemeSelected:null, bibleThemeRequestId:0, archivedNotes:null, annexThemes:[], annexFootnotes:[], archivedNoteById:new Map(), archivedNoteLoading:null, notesTab:'archive' };
   const POPULAR_QUESTION_FAMILIES = [
     { id:'existence', label:'Existence, sens et raison de vivre', questions:[
       { id:'Q001', text:'Pourquoi existons-nous ?' },
@@ -177,7 +177,7 @@
   }
   async function load() {
     try {
-      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime, noteThemesIndex, semanticNavigation, annexes] = await Promise.all([
+      const [bundle, directory, runtime, lexicalExpansion, semanticBrowserRuntime, grammarBrowserRuntime, noteThemesIndex, semanticNavigation, annexes, annexThemeIndex] = await Promise.all([
         fetch('data/browser-search-catalog.json').then(r => { if (!r.ok) throw Error('browser-search-catalog'); return r.json(); }),
         fetch('data/thematic-index/theme-directory-public.json').then(r => { if (!r.ok) throw Error('theme-directory'); return r.json(); }),
         fetch('data/thematic-index/theme-search-runtime.json').then(r => { if (!r.ok) throw Error('theme-search-runtime'); return r.json(); }),
@@ -186,7 +186,8 @@
         fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); }),
         fetch('data/note-themes-public-073.json?v=079').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); }),
         fetch('data/thematic-index/theme-semantic-navigation-public.json').then(r => { if (!r.ok) throw Error('theme-semantic-navigation-public'); return r.json(); }),
-        fetch('data/annexes/textes.json?v=004').then(r => { if (!r.ok) throw Error('annexes-textes'); return r.json(); }).catch(error => { console.warn('Annexes temporarily unavailable; core search remains active',error); return {version:1,recordCount:0,records:[]}; })
+        fetch('data/annexes/textes.json?v=004').then(r => { if (!r.ok) throw Error('annexes-textes'); return r.json(); }).catch(error => { console.warn('Annexes temporarily unavailable; core search remains active',error); return {version:1,recordCount:0,records:[]}; }),
+        fetch('data/annexes/themes-index.json?v=002').then(r => { if(!r.ok)throw Error('annex themes');return r.json(); }).catch(error=>{console.warn('Annex theme index unavailable',error);return {themes:[]};})
       ]);
       $('corpusStats').textContent='Préparation des index de recherche…';
       await yieldToBrowser();
@@ -207,6 +208,7 @@
          semanticNavigation.semanticMerging!==false)
         throw Error('La navigation par mots associés est incohérente avec les thèmes canoniques.');
       state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime, semanticNavigation);
+      state.annexThemes=(annexThemeIndex.themes||[]).filter(t=>t.id&&t.label&&Array.isArray(t.occurrences));
       // Searchable source records, separate from canonical Psalm thematic associations.
       if(annexes.version!==1||!Array.isArray(annexes.records)||annexes.recordCount!==annexes.records.length){
         console.warn('Annex catalog inconsistent; core Psalm search continues');
@@ -305,12 +307,27 @@
   function mergeExpansionMatches(items,query,matchSource=matches){ const forms=activeExpansionForms(); if(!forms.length||!singleWordQueryKey(query))return items; const byId=new Map(items.map(item=>[item.record.id,item])); for(const form of forms)for(const item of matchSource(form)){ const current=byId.get(item.record.id); if(current)current.occurrenceCount+=item.occurrenceCount; else byId.set(item.record.id,item); } items.splice(0,items.length,...byId.values()); return items; }
   function psalmNumberMatches(number) { if(!selectedTypes().has('psalm'))return []; const a=$('archangelFilter').value; return (state.psalmsByNumber.get(number)||[]).filter(r=>!a||r.archangel===a).sort((x,y)=>(x.book?.number||9999)-(y.book?.number||9999)||String(x.id).localeCompare(String(y.id),'fr')).map(record=>({record,score:1,numberLookup:true})); }
   function textualPsalmMatches(query) { return matches(query).filter(x=>x.record.recordType==='psalm'); }
-  function resolveIndexedThemes(query) { return state.themeEngine?.resolveIndexedThemes(query) || []; }
+  function resolveIndexedThemes(query) {
+    const canonical=selectedTypes().has('psalm')?(state.themeEngine?.resolveIndexedThemes(query)||[]):[];
+    const annex=selectedTypes().has('annex')?state.annexThemes.filter(t=>norm(t.label)===norm(query)):[];
+    if(annex.length&&canonical.length){
+      const matched=canonical.find(t=>norm(t.label)===norm(annex[0].label));
+      if(matched)return [{...matched,occurrences:[...(matched.occurrences||[]),...annex.flatMap(t=>t.occurrences)]}];
+    }
+    return [...canonical,...annex];
+  }
   const composeThemeQueryNotions = query => BiblawThemeEngine.composeThemeQueryNotions(query);
   const themeQueryNotions = query => BiblawThemeEngine.themeQueryNotions(query);
-  function suggestIndexedThemes(query) { return state.themeEngine?.suggestIndexedThemes(query) || []; }
+  function suggestIndexedThemes(query) {
+    const canonical=selectedTypes().has('psalm')?(state.themeEngine?.suggestIndexedThemes(query)||[]):[];
+    const annex=selectedTypes().has('annex')&&norm(query).length>=3?state.annexThemes.filter(t=>norm(t.label).includes(norm(query))).slice(0,8):[];
+    return [...new Map([...canonical,...annex].map(t=>[t.id,t])).values()];
+  }
   function annexThemeOccurrences(theme){
-    if(!selectedTypes().has('annex')||$('archangelFilter').value)return [];
+    if(!selectedTypes().has('annex'))return [];
+    const curated=state.annexThemes.find(t=>t.id===theme.id||norm(t.label)===norm(theme.label));
+    if(curated)return curated.occurrences.map(o=>({record:state.recordById.get(o.recordId),score:o.score||1,thematic:o,matchedThemes:[{id:theme.id,label:theme.label,thematic:o}]})).filter(item=>item.record&&(!$('archangelFilter').value||item.record.archangel===$('archangelFilter').value));
+    if($('archangelFilter').value)return [];
     const label=String(theme.label||'').trim();
     if(label.length<4)return [];
     return state.records.filter(r=>r.recordType==='annex').map(record=>({record,count:literalOccurrenceCount(record,label)}))
