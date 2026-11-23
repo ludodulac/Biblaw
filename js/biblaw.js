@@ -570,6 +570,24 @@
     const psalmNumber=parsePsalmNumberQuery(query);
     if(psalmNumber!==null && !query2 && state.mode==='themes'){ hideAmbiguity();hideTransverseNavigation();publishPresentationState({kind:'other'}); return render(psalmNumberMatches(psalmNumber),null,{numberLookup:true,psalmNumber}); }
     if(state.mode==='themes'){
+      // Annex-only search is resolved directly against its own editorial index.
+      // It must not depend on the Psalm theme engine or its ambiguity suggestions.
+      if(selectedTypes().has('annex')&&!selectedTypes().has('psalm')&&!query2){
+        const key=norm(query);
+        const exact=state.annexThemes.filter(t=>norm(t.label)===key);
+        const candidates=exact.length?exact:state.annexThemes.filter(t=>norm(t.label).includes(key));
+        if(candidates.length===1){
+          hideAmbiguity();hideTransverseNavigation();
+          const selected=candidates[0];
+          return render(thematicItems([selected]),[selected],{textualCount:0});
+        }
+        if(candidates.length>1){
+          hideAmbiguity();hideTransverseNavigation();
+          return render(thematicItems(candidates),candidates,{textualCount:0});
+        }
+        hideAmbiguity();hideTransverseNavigation();
+        return render([],[],{unresolvedTheme:true,textualAvailable:false,annexIndexMissing:state.annexThemes.length===0});
+      }
       if(query2){
         const resolvedA=resolveIndexedThemes(query), resolvedB=resolveIndexedThemes(query2);
         if(resolvedA.length!==1||resolvedB.length!==1){ showDualAmbiguity(query,resolvedA,query2,resolvedB); publishPresentationState({kind:'ambiguous-themes',themes:[...resolvedA,...resolvedB].map(theme=>({id:theme.id,label:theme.label}))}); return render([],[],{dualPending:true}); }
@@ -668,6 +686,7 @@
         esc(t.label)+'</button>').join('')+'</div>'+
       (companion.textualCount>0?'<button class="secondary" type="button" data-show-text-search>'+
         'Voir aussi les occurrences du mot</button>':'')+'</section>':'';
+    if(companion?.annexIndexMissing){$('resultCount').textContent='Index des annexes non chargé';$('results').innerHTML='<div class="empty">L’index thématique des textes annexes n’a pas pu être chargé. Vérifiez la publication du fichier data/annexes/themes-index.json.</div>';return;}
     const unresolvedNotice=companion?.unresolvedTheme?`<div class="search-scope-note"><div><strong>Aucun thème indexé ne correspond à cette recherche</strong><span>${companion?.textualAvailable?'Le mot ou l’expression apparaît cependant dans le corpus.':'Aucune occurrence textuelle exacte ne correspond non plus avec les filtres sélectionnés.'}</span></div>${companion?.textualAvailable?'<button class="secondary" data-show-text-search>Voir les occurrences</button>':''}</div>`:'';
     if(!items.length){ const emptyNumber=companion?.numberLookup?`<div class="empty">Aucun psaume numéro ${esc(companion.psalmNumber)} ne correspond aux filtres sélectionnés.</div>`:''; const dualEmpty=companion?.dualTheme?'<div class="empty">Aucun psaume n’est actuellement indexé sous les deux thèmes.</div>':''; const suggestionPending=companion?.suggestionPending?'<div class="empty">Plusieurs thèmes correspondent à votre recherche. Choisissez celui qui vous intéresse ci-dessus.</div>':''; const pending=companion?.dualPending?'<div class="empty">Choisissez une correspondance canonique pour chaque thème afin de calculer l’intersection documentaire.</div>':''; const wordEmpty=companion?.dualExactQueries?'<div class="empty">Aucun texte ne contient les deux mots dans les catégories sélectionnées.</div>':companion?.dualExactPending?'<div class="empty">Saisissez les deux mots pour lancer cette recherche.</div>':''; $('results').innerHTML=relatedNotice+(emptyNumber||dualEmpty||suggestionPending||pending||wordEmpty||unresolvedNotice||(textualNotice+'<div class="empty">Aucun passage indexé ne correspond encore à cette recherche et aux filtres sélectionnés.</div>'));bindThemeLinks($('results'));bindTextSearchLink();return; }
     $('results').innerHTML=relatedNotice+unresolvedNotice+textualNotice+items.map(({record:r,thematic,matchedThemes,numberLookup,themeMatches,occurrenceCount,secondaryOccurrenceCount})=>{
