@@ -187,7 +187,7 @@
         fetch('data/note-themes-public-073.json?v=079').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); }),
         fetch('data/thematic-index/theme-semantic-navigation-public.json').then(r => { if (!r.ok) throw Error('theme-semantic-navigation-public'); return r.json(); }),
         fetch('data/annexes/textes.json?v=004').then(r => { if (!r.ok) throw Error('annexes-textes'); return r.json(); }).catch(error => { console.warn('Annexes temporarily unavailable; core search remains active',error); return {version:1,recordCount:0,records:[]}; }),
-        fetch('data/annexes/themes-index.json?v=003').then(r => { if(!r.ok)throw Error('annex themes');return r.json(); }).catch(error=>{console.warn('Annex theme index unavailable',error);return {themes:[]};})
+        fetch('data/annexes/themes-index.json?v=004').then(r => { if(!r.ok)throw Error('annex themes');return r.json(); }).catch(error=>{console.warn('Annex theme index unavailable',error);return {themes:[]};})
       ]);
       $('corpusStats').textContent='Préparation des index de recherche…';
       await yieldToBrowser();
