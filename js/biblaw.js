@@ -322,6 +322,7 @@
     if (!ignoreFilters && !selectedTypes().has('psalm') && !selectedTypes().has('annex')) return [];
     const a=ignoreFilters?'':$('archangelFilter').value,merged=new Map();
     for (const theme of themes) for (const o of theme.occurrences||[]) {
+      if (!ignoreFilters&&!selectedTypes().has('psalm'))continue;
       if (a&&o.archangel!==a) continue;
       const record=state.recordById.get(o.recordId); if(!record||record.recordType!=='psalm') continue;
       const current=merged.get(record.id)||{record,score:0,thematic:o,matchedThemes:[]};
@@ -345,6 +346,7 @@
     const occurrencesB=new Map((themeB.occurrences||[]).filter(o=>!a||o.archangel===a).map(o=>[o.recordId,o]));
     const items=[];
     for (const [recordId, thematicA] of occurrencesA) {
+      if(!selectedTypes().has('psalm'))continue;
       const thematicB=occurrencesB.get(recordId); if(!thematicB)continue;
       const record=state.recordById.get(recordId); if(!record||record.recordType!=='psalm')continue;
       items.push({record, thematic:thematicA, matchedThemes:[{id:themeA.id,label:themeA.label,thematic:thematicA},{id:themeB.id,label:themeB.label,thematic:thematicB}], themeMatches:[{theme:themeA,thematic:thematicA},{theme:themeB,thematic:thematicB}]});
@@ -633,6 +635,9 @@
   }
 
   function render(items,indexedThemes=null,companion=null){
+    // Final scope gate: no search mode, related theme or navigation may bypass source checkboxes.
+    const allowed=selectedTypes(),archangel=$('archangelFilter').value;
+    items=(items||[]).filter(item=>item?.record&&allowed.has(type(item.record))&&(!archangel||item.record.archangel===archangel));
     document.body.classList.toggle('has-query',Boolean($('query').value.trim()));
     const themeLabels=Array.isArray(indexedThemes)?indexedThemes.map(t=>t.label):indexedThemes?[indexedThemes.label]:[];
     $('resultCount').textContent=companion?.dualExactQueries?`${items.length} texte${items.length>1?'s':''} avec les deux mots`:companion?.dualExactPending?'Deuxième mot à saisir':companion?.grammarSearch?`${items.length} textes`:companion?.suggestionPending?'Choisissez un thème':companion?.dualPending?'Choisissez 2 thèmes':companion?.numberLookup?`${items.length} psaume${items.length>1?'s':''} trouvé${items.length>1?'s':''}`:companion?.unresolvedTheme?'Aucun thème trouvé':themeLabels.length?`${items.length} texte${items.length>1?'s':''} trouvé${items.length>1?'s':''}`:`${items.length} résultat${items.length>1?'s':''}`;
