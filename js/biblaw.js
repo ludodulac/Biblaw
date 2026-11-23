@@ -269,7 +269,7 @@
       const prayers = new Map(state.records.filter(r => r.recordType === 'master-prayer').map(r => [r.appliesToPsalmId, r]));
       state.records.filter(r => r.recordType === 'psalm').forEach(r => { if (prayers.has(r.id)) r.attachedPrayer = prayers.get(r.id); });
       const psalms = state.records.filter(r => r.recordType === 'psalm'), verses = psalms.reduce((n, r) => n + (r.verses || []).length, 0);
-      $('corpusStats').textContent = `${psalms.length} psaumes · ${verses} versets · ${state.themeDirectory.length} thèmes indexés · ${annexes.recordCount} textes annexes`;
+      $('corpusStats').textContent = `${psalms.length} psaumes · ${verses} versets · ${state.themeDirectory.length} thèmes indexés · ${annexes.recordCount} textes annexes indexés`;
       updateExpansionControl();
       indexPublicWords();
       // Supply the records only after the search engine is ready.
@@ -339,7 +339,7 @@
       const record=state.recordById.get(o.recordId);
       if(!record||!['psalm','annex'].includes(record.recordType))continue;
       if(record.recordType==='psalm'&&(!ignoreFilters&&!selectedTypes().has('psalm')||a&&o.archangel!==a))continue;
-      if(record.recordType==='annex'&&(!ignoreFilters&&!selectedTypes().has('annex')||a))continue;
+      if(record.recordType==='annex'&&(!ignoreFilters&&!selectedTypes().has('annex')||a&&record.archangel!==a))continue;
       const current=merged.get(record.id)||{record,score:0,thematic:o,matchedThemes:[]};
       const betterImportance=importanceRank(o.importance)<importanceRank(current.thematic?.importance);
       const sameImportance=importanceRank(o.importance)===importanceRank(current.thematic?.importance);
@@ -352,14 +352,14 @@
   function intersectionItems(themeA, themeB) {
     if (!selectedTypes().has('psalm')&&!selectedTypes().has('annex')) return [];
     const a=$('archangelFilter').value;
-    const occurrencesA=new Map((themeA.occurrences||[]).filter(o=>!a||o.archangel===a).map(o=>[o.recordId,o]));
-    const occurrencesB=new Map((themeB.occurrences||[]).filter(o=>!a||o.archangel===a).map(o=>[o.recordId,o]));
+    const occurrencesA=new Map((themeA.occurrences||[]).filter(o=>!a||o.archangel===a||state.recordById.get(o.recordId)?.archangel===a).map(o=>[o.recordId,o]));
+    const occurrencesB=new Map((themeB.occurrences||[]).filter(o=>!a||o.archangel===a||state.recordById.get(o.recordId)?.archangel===a).map(o=>[o.recordId,o]));
     const items=[];
     for (const [recordId, thematicA] of occurrencesA) {
       const thematicB=occurrencesB.get(recordId); if(!thematicB)continue;
       const record=state.recordById.get(recordId); if(!record||!['psalm','annex'].includes(record.recordType))continue;
       if(record.recordType==='psalm'&&!selectedTypes().has('psalm'))continue;
-      if(record.recordType==='annex'&&(!selectedTypes().has('annex')||a))continue;
+      if(record.recordType==='annex'&&(!selectedTypes().has('annex')||a&&record.archangel!==a))continue;
       items.push({record, thematic:thematicA, matchedThemes:[{id:themeA.id,label:themeA.label,thematic:thematicA},{id:themeB.id,label:themeB.label,thematic:thematicB}], themeMatches:[{theme:themeA,thematic:thematicA},{theme:themeB,thematic:thematicB}]});
     }
     return items.sort((x,y)=>importanceRank(x.themeMatches[0].thematic.importance)-importanceRank(y.themeMatches[0].thematic.importance)||(y.themeMatches[0].thematic.score||0)-(x.themeMatches[0].thematic.score||0)||x.record.number-y.record.number||String(x.record.id).localeCompare(String(y.record.id),'fr'));
