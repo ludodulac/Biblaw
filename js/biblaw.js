@@ -187,7 +187,7 @@
         fetch('data/note-themes-public-073.json?v=079').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); }),
         fetch('data/thematic-index/theme-semantic-navigation-public.json').then(r => { if (!r.ok) throw Error('theme-semantic-navigation-public'); return r.json(); }),
         fetch('data/annexes/textes.json?v=003').then(r => { if (!r.ok) throw Error('annexes-textes'); return r.json(); }),
-        fetch('data/annexes/themes-index.json?v=001').then(r => { if (!r.ok) throw Error('annex-themes'); return r.json(); })
+        fetch('data/annexes/themes-index.json?v=002').then(r => { if (!r.ok) throw Error('annex-themes'); return r.json(); })
       ]);
       $('corpusStats').textContent='Préparation des index de recherche…';
       await yieldToBrowser();
