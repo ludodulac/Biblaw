@@ -277,7 +277,7 @@
       return true;
     } catch (error) {
       console.error(error);
-      $('corpusStats').textContent='Corpus indisponible. Relancez une recherche pour réessayer.';
+      $('corpusStats').textContent='Corpus indisponible : '+String(error?.message||error).slice(0,180);
       $('resultCount').textContent='';
       $('results').innerHTML = '<div class="empty" role="status">Le corpus ne peut pas être chargé. Vérifiez votre connexion et réessayez.</div>';
       return false;
