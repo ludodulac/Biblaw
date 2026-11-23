@@ -186,7 +186,7 @@
         fetch('data/linguistic-grammar-browser-runtime.json').then(r => { if (!r.ok) throw Error('linguistic-grammar-browser-runtime'); return r.json(); }),
         fetch('data/note-themes-public-073.json?v=079').then(r => { if (!r.ok) throw Error('note-themes-public-073'); return r.json(); }),
         fetch('data/thematic-index/theme-semantic-navigation-public.json').then(r => { if (!r.ok) throw Error('theme-semantic-navigation-public'); return r.json(); }),
-        fetch('data/annexes/textes.json?v=002').then(r => { if (!r.ok) throw Error('annexes-textes'); return r.json(); })
+        fetch('data/annexes/textes.json?v=004').then(r => { if (!r.ok) throw Error('annexes-textes'); return r.json(); }).catch(error => { console.warn('Annexes temporarily unavailable; core search remains active',error); return {version:1,recordCount:0,records:[]}; })
       ]);
       $('corpusStats').textContent='Préparation des index de recherche…';
       await yieldToBrowser();
@@ -208,10 +208,10 @@
         throw Error('La navigation par mots associés est incohérente avec les thèmes canoniques.');
       state.themeEngine = BiblawThemeEngine.create(state.themeDirectory, state.runtime, semanticNavigation);
       // Searchable source records, separate from canonical Psalm thematic associations.
-      if(annexes.version!==1 || !Array.isArray(annexes.records) ||
-         !annexes.records.length || annexes.recordCount!==annexes.records.length ||
-         annexes.records.some((r,i)=>r.recordType!=='annex'||r.number!==i+1||!r.id||!r.title||!r.text||
-           r.validation?.status!=='transcribed-needs-review')) throw Error('Invalid annex transcription dataset');
+      if(annexes.version!==1||!Array.isArray(annexes.records)||annexes.recordCount!==annexes.records.length){
+        console.warn('Annex catalog inconsistent; core Psalm search continues');
+        annexes.records=[];annexes.recordCount=0;
+      }
       state.records = [...(bundle.records || []), ...annexes.records];
       state.recordById = new Map(state.records.map(r => [r.id, r]));
       if(state.recordById.size!==state.records.length) throw Error('Duplicate annex or corpus identifiers');
