@@ -323,11 +323,11 @@
     const canonical=state.themeEngine?.resolveIndexedThemes(query)||[];
     const annex=state.annexThemeDirectory.filter(theme=>norm(theme.label)===norm(query));
     // An identical label in both indexes is one theme, not an ambiguous choice.
-    if(annex.length===1&&canonical.length===1&&norm(canonical[0].label)===norm(annex[0].label)){
-      const primary=canonical[0],secondary=annex[0];
-      return [{...primary,occurrences:[...(primary.occurrences||[]),...(secondary.occurrences||[])]}];
+    if(annex.length===1){
+      const exactCanonical=canonical.find(theme=>norm(theme.label)===norm(annex[0].label));
+      if(exactCanonical)return [{...exactCanonical,occurrences:[...(exactCanonical.occurrences||[]),...(annex[0].occurrences||[])]}];
+      if(canonical.length===0)return annex;
     }
-    if(annex.length===1&&canonical.length===0)return annex;
     return [...new Map([...canonical,...annex].map(theme=>[theme.id,theme])).values()];
   }
   const composeThemeQueryNotions = query => BiblawThemeEngine.composeThemeQueryNotions(query);
